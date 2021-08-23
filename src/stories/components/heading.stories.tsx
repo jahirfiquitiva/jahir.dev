@@ -1,12 +1,9 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
+import { Container } from '~/components/container';
 import { Heading } from '~/components/heading';
 
-const Container = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  max-width: auto;
-
+const HeadingsContainer = styled(Container)`
   & > .text-gradient {
     align-self: flex-start;
   }
@@ -14,7 +11,7 @@ const Container = styled.div`
 
 export const Default: Story = (args) => {
   return (
-    <Container>
+    <HeadingsContainer>
       <Heading
         size="1"
         shadowColor={args.shadow}
@@ -63,7 +60,7 @@ export const Default: Story = (args) => {
       >
         {args.label} 6
       </Heading>
-    </Container>
+    </HeadingsContainer>
   );
 };
 

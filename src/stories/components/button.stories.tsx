@@ -1,8 +1,27 @@
+import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
-import { Button } from '~/components/button';
+import { mdiAccessPoint } from '@mdi/js';
+import { Container } from '~/components/container';
+import { Button, IconButton, GitHubButton } from '~/components/button';
+
+const ButtonsContainer = styled(Container)`
+  & > button {
+    align-self: flex-start;
+  }
+  & > button:not(:last-child) {
+    margin-bottom: 8px;
+  }
+`;
 
 export const Default: Story = (args) => {
-  return <Button>{args.label}</Button>;
+  return (
+    <ButtonsContainer>
+      <Button>{args.label}</Button>
+      <IconButton icon={mdiAccessPoint}>{args.label}</IconButton>
+      <GitHubButton>GitHub</GitHubButton>
+      <GitHubButton />
+    </ButtonsContainer>
+  );
 };
 
 export default {
@@ -13,6 +32,6 @@ export default {
         type: 'text',
       },
       defaultValue: 'Button',
-    }
+    },
   },
 } as Meta;
