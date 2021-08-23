@@ -13,6 +13,6 @@ export default {
         type: 'text',
       },
       defaultValue: 'Button',
-    },
+    }
   },
 } as Meta;

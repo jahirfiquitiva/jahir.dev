@@ -1,6 +1,11 @@
 import { MutatorCallback } from 'swr/dist/types';
 
 // eslint-disable-next-line
+export const nofunc = (_: never): void => {};
+// eslint-disable-next-line
+export const nopfunc = (): void => {};
+
+// eslint-disable-next-line
 export type NextApiFunc = any | unknown | null;
 
 export interface SwrData<T = unknown> {

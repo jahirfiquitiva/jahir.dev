@@ -1,3 +1,17 @@
+.text-gradient {
+  display: inline-block;
+  --gradient-start-color: rgba(0, 0, 0, 0);
+  --gradient-end-color: rgba(0, 0, 0, 0);
+  background: var(--gradient-start-color);
+  background: -moz-linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
+  background: -webkit-linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
+  background: linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+} 
+
 .dark-mode .text-gradient,
 .text-gradient.forced {
   text-shadow: none !important;
@@ -24,43 +38,44 @@
   background-clip: text;
 }
 
-.divider.grad-a {
+.text-gradient.brand-to-blue,
+.divider.brand-to-blue {
   --start-grad-color: var(--gradients-a);
   --end-grad-color: var(--gradients-b);
 }
 
-.text-gradient.grad-b,
-.divider.grad-b {
+.text-gradient.blue-to-green,
+.divider.blue-to-green {
   --start-grad-color: var(--gradients-b);
   --end-grad-color: var(--gradients-c);
 }
 
-.text-gradient.grad-c,
-.divider.grad-c {
+.text-gradient.green-to-yellow,
+.divider.green-to-yellow {
   --start-grad-color: var(--gradients-c);
   --end-grad-color: var(--gradients-d);
 }
 
-.text-gradient.grad-d,
-.divider.grad-d {
+.text-gradient.yellow-to-orange,
+.divider.yellow-to-orange {
   --start-grad-color: var(--gradients-d);
   --end-grad-color: var(--gradients-e);
 }
 
-.text-gradient.grad-e,
-.divider.grad-e {
+.text-gradient.orange-to-red,
+.divider.orange-to-red {
   --start-grad-color: var(--gradients-e);
   --end-grad-color: var(--gradients-f);
 }
 
-.text-gradient.grad-f,
-.divider.grad-f {
+.text-gradient.red-to-purple,
+.divider.red-to-purple {
   --start-grad-color: var(--gradients-f);
   --end-grad-color: var(--gradients-g);
 }
 
-.text-gradient.grad-g,
-.divider.grad-g {
+.text-gradient.purple-to-brand,
+.divider.purple-to-brand {
   --start-grad-color: var(--gradients-g);
   --end-grad-color: var(--gradients-a);
 }

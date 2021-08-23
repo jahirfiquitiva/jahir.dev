@@ -1,0 +1,32 @@
+.text-shadow {
+  --text-shadow-color: rgba(0, 0, 0, 0);
+  text-shadow: var(--text-shadow-size) var(--text-shadow-size) 0 var(--text-shadow-color);
+}
+
+.text-shadow.brand {
+  --text-shadow-color: var(--dark-gradients-a);
+}
+
+.text-shadow.blue {
+  --text-shadow-color: var(--dark-gradients-b);
+}
+
+.text-shadow.green {
+  --text-shadow-color: var(--dark-gradients-c);
+}
+
+.text-shadow.yellow {
+  --text-shadow-color: var(--dark-gradients-d);
+}
+
+.text-shadow.orange {
+  --text-shadow-color: var(--dark-gradients-e);
+}
+
+.text-shadow.red {
+  --text-shadow-color: var(--dark-gradients-f);
+}
+
+.text-shadow.purple {
+  --text-shadow-color: var(--dark-gradients-g);
+}
