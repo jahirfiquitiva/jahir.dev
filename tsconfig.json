@@ -18,16 +18,7 @@
     "removeComments": true,
     "baseUrl": "./",
     "paths": {
-      "~/blocks/*": ["src/blocks/*"],
-      "~/components/*": ["src/components/*"],
-      "~/elements/*": ["src/elements/*"],
-      "~/fonts/*": ["src/fonts/*"],
-      "~/hooks/*": ["src/hooks/*"],
-      "~/providers/*": ["src/providers/*"],
-      "~/stories/*": ["src/stories/*"],
-      "~/styles/*": ["src/styles/*"],
-      "~/utils/*": ["src/utils/*"],
-      "~/types/*": ["src/types/*"]
+      "~/*": ["./src/*"]
     }
   },
   "exclude": [".next", ".idea", "node_modules"],

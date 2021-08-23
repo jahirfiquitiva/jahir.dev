@@ -6,9 +6,9 @@ const customPaths = tsConf.compilerOptions.paths;
 
 module.exports = {
   stories: [
-    '../stories/**/*.stories.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
-    '../stories/**/*.stories.tsx',
+    './../src/stories/**/*.stories.mdx',
+    './../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
+    './../src/stories/**/*.stories.tsx',
   ],
   addons: [
     '@storybook/addon-docs',

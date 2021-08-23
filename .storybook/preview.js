@@ -1,7 +1,8 @@
-import { addDecorator } from '@storybook/react';
-import { Chakra } from '~/components/chakra/provider';
+// import { addDecorator } from '@storybook/react';
+// import { Chakra } from '~/components/chakra/provider';
+import '~/styles/global.css';
 
-addDecorator((storyFn) => <Chakra>{storyFn()}</Chakra>);
+// addDecorator((storyFn) => <Chakra>{storyFn()}</Chakra>);
 
 export const parameters = {
   options: {
