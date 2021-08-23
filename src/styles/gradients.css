@@ -1,0 +1,66 @@
+.dark-mode .text-gradient,
+.text-gradient.forced {
+  text-shadow: none !important;
+  --start-grad-color: var(--gradients-a);
+  --end-grad-color: var(--gradients-b);
+  background: var(--start-grad-color);
+  background: -moz-linear-gradient(
+    90deg,
+    var(--start-grad-color) 0%,
+    var(--end-grad-color) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--start-grad-color) 0%,
+    var(--end-grad-color) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    var(--start-grad-color) 0%,
+    var(--end-grad-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.divider.grad-a {
+  --start-grad-color: var(--gradients-a);
+  --end-grad-color: var(--gradients-b);
+}
+
+.text-gradient.grad-b,
+.divider.grad-b {
+  --start-grad-color: var(--gradients-b);
+  --end-grad-color: var(--gradients-c);
+}
+
+.text-gradient.grad-c,
+.divider.grad-c {
+  --start-grad-color: var(--gradients-c);
+  --end-grad-color: var(--gradients-d);
+}
+
+.text-gradient.grad-d,
+.divider.grad-d {
+  --start-grad-color: var(--gradients-d);
+  --end-grad-color: var(--gradients-e);
+}
+
+.text-gradient.grad-e,
+.divider.grad-e {
+  --start-grad-color: var(--gradients-e);
+  --end-grad-color: var(--gradients-f);
+}
+
+.text-gradient.grad-f,
+.divider.grad-f {
+  --start-grad-color: var(--gradients-f);
+  --end-grad-color: var(--gradients-g);
+}
+
+.text-gradient.grad-g,
+.divider.grad-g {
+  --start-grad-color: var(--gradients-g);
+  --end-grad-color: var(--gradients-a);
+}
