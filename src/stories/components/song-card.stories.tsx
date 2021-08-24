@@ -5,12 +5,12 @@ import { SongCard } from '~/components/cards';
 export const Default: Story = () => {
   return (
     <SongCard
-      url={'https://open.spotify.com/track/3A0ITFj6kbb9CggwtPe55f'}
-      title={'Venom'}
-      artist={'Little Simz'}
-      album={'GREY Area'}
+      url={'https://open.spotify.com/track/3uwYgNxFDfx1GoLB6tLoUn'}
+      title={'Good Day'}
+      artist={'Twenty One Pilots'}
+      album={'Scaled And Icy'}
       image={{
-        url: 'https://i.scdn.co/image/ab67616d000048511c54fc953531d5da04232deb',
+        url: 'https://jahir.dev/_next/image?url=https://i.scdn.co/image/ab67616d0000485120b467550945fd123e00f0a5&w=256&q=75',
       }}
     />
   );

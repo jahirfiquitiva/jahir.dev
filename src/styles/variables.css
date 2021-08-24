@@ -53,6 +53,10 @@
   --toast-error: rgba(243, 137, 156, 0.7);
 
   --music-cards-overlay-color: rgba(255, 255, 255, 0.4);
+
+  --cards-border-color: var(--divider);
+  --cards-hover-border-color: var(--divider);
+  --cards-hover-shadow-color: var(--divider);
 }
 
 .dark-mode {
