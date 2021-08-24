@@ -2,16 +2,8 @@ import styled from '@emotion/styled';
 import { mdiAccessPoint } from '@mdi/js';
 import { Meta, Story } from '@storybook/react';
 
-import {
-  GitHubButton,
-  BmacButton,
-  PayPalButton,
-  TwitterIconButton,
-  GitHubIconButton,
-  InstagramIconButton,
-  LinkedInIconButton,
-  PolyworkIconButton,
-} from '~/components/buttons';
+import { SocialLinks } from '~/blocks/social-links';
+import { GitHubButton, BmacButton, PayPalButton } from '~/components/buttons';
 import { Button, ButtonGroup } from '~/elements/button';
 import { Container } from '~/elements/container';
 
@@ -44,13 +36,7 @@ export const Default: Story = (args) => {
 
       <br />
 
-      <ButtonGroup>
-        <GitHubIconButton />
-        <LinkedInIconButton />
-        <TwitterIconButton />
-        <InstagramIconButton />
-        <PolyworkIconButton />
-      </ButtonGroup>
+      <SocialLinks />
     </ButtonsContainer>
   );
 };

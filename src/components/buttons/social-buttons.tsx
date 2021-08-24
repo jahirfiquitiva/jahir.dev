@@ -56,7 +56,7 @@ export const TwitterIconButton: Component<LinkButtonProps> = (props) => {
     <BaseTwitterIconButton
       {...props}
       icon={mdiTwitter}
-      href={'https://twitter.com/in/jahirfiquitiva'}
+      href={'https://twitter.com/jahirfiquitiva'}
     />
   );
 };
