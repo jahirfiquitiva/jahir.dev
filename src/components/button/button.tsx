@@ -1,9 +1,10 @@
+import { ElementType } from 'react';
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
-import { mdiGithub } from '@mdi/js';
+import { mdiCreditCardOutline, mdiHeartOutline } from '@mdi/js';
 import { Component, ComponentProps } from '~/components/fc';
 
-export const Button = styled.button`
+const baseButtonStyles = `
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -18,35 +19,60 @@ export const Button = styled.button`
   }
 `;
 
-interface IconButtonProps extends ComponentProps {
+export const BaseButton = styled.button`
+  ${baseButtonStyles}
+`;
+
+export interface IconButtonProps extends ComponentProps {
+  as?: ElementType<any>;
+  href?: string;
+  target?: string;
+  rel?: string;
   icon?: string;
   iconSize?: number;
 }
 
-export const IconButton: Component<IconButtonProps> = (props) => {
-  const { icon, iconSize = 1, className, children } = props;
+export const Button: Component<IconButtonProps> = (props) => {
+  const {
+    as,
+    icon,
+    iconSize = 1,
+    className,
+    children,
+    href,
+    rel,
+    target,
+  } = props;
+
   return (
-    <Button className={className}>
+    <BaseButton
+      as={as}
+      className={className}
+      /* @ts-ignore */
+      href={href}
+      rel={rel}
+      target={target}
+    >
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
-    </Button>
+    </BaseButton>
   );
 };
 
-const BaseGitHubButton = styled(IconButton)`
-  background-color: #333;
+const BaseGitHubButton = styled(Button)`
+  background-color: #d34399;
 
   &:hover,
   &:focus {
-    background-color: #292929;
+    background-color: #a43477;
   }
 `;
 
 export const GitHubButton: Component<IconButtonProps> = (props) => {
-  return <BaseGitHubButton {...props} icon={mdiGithub} />;
+  return <BaseGitHubButton {...props} icon={mdiHeartOutline} />;
 };
 
-const BasePayPalButton = styled(IconButton)`
+const BasePayPalButton = styled(Button)`
   background-color: #1a4593;
 
   &:hover,
@@ -54,3 +80,7 @@ const BasePayPalButton = styled(IconButton)`
     background-color: #002b7a;
   }
 `;
+
+export const PayPalButton: Component<IconButtonProps> = (props) => {
+  return <BasePayPalButton {...props} icon={mdiCreditCardOutline} />;
+};

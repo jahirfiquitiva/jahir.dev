@@ -2,7 +2,16 @@ import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 import { mdiAccessPoint } from '@mdi/js';
 import { Container } from '~/components/container';
-import { Button, IconButton, GitHubButton } from '~/components/button';
+import Image from 'next/image';
+import {
+  Button,
+  ButtonGroup,
+  GitHubButton,
+  GitHubIconButton,
+  InstagramIconButton,
+  LinkedInIconButton,
+  PayPalButton,
+} from '~/components/button';
 
 const ButtonsContainer = styled(Container)`
   & > button {
@@ -17,9 +26,15 @@ export const Default: Story = (args) => {
   return (
     <ButtonsContainer>
       <Button>{args.label}</Button>
-      <IconButton icon={mdiAccessPoint}>{args.label}</IconButton>
-      <GitHubButton>GitHub</GitHubButton>
-      <GitHubButton />
+      <Button icon={mdiAccessPoint}>{args.label}</Button>
+      <GitHubButton>GitHub Sponsors</GitHubButton>
+      <PayPalButton>PayPal</PayPalButton>
+
+      <ButtonGroup>
+        <GitHubIconButton />
+        <LinkedInIconButton />
+        <InstagramIconButton />
+      </ButtonGroup>
     </ButtonsContainer>
   );
 };
