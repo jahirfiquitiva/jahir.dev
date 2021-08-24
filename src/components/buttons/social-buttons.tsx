@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
+import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter, mdiTimelineTextOutline } from '@mdi/js';
 
 import { LinkIconButton, LinkButtonProps } from '~/elements/button';
 import { Component } from '~/elements/fc';
@@ -94,6 +94,25 @@ export const InstagramIconButton: Component<LinkButtonProps> = (props) => {
       {...props}
       icon={mdiInstagram}
       href={'https://instagram.com/jahirfiquitiva'}
+    />
+  );
+};
+
+const BasePolyworkIconButton = styled(LinkIconButton)`
+  background-color: #6959fc;
+
+  &:hover,
+  &:focus {
+    background-color: #4f3fe3;
+  }
+`;
+
+export const PolyworkIconButton: Component<LinkButtonProps> = (props) => {
+  return (
+    <BasePolyworkIconButton
+      {...props}
+      icon={mdiTimelineTextOutline}
+      href={'https://timeline.jahir.dev'}
     />
   );
 };

@@ -10,6 +10,7 @@ import {
   GitHubIconButton,
   InstagramIconButton,
   LinkedInIconButton,
+  PolyworkIconButton,
 } from '~/components/buttons';
 import { Button, ButtonGroup } from '~/elements/button';
 import { Container } from '~/elements/container';
@@ -48,6 +49,7 @@ export const Default: Story = (args) => {
         <LinkedInIconButton />
         <TwitterIconButton />
         <InstagramIconButton />
+        <PolyworkIconButton />
       </ButtonGroup>
     </ButtonsContainer>
   );
