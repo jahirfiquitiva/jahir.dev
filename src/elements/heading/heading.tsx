@@ -1,10 +1,10 @@
-import { Component, ComponentProps } from '~/components/fc';
+import { Component, ComponentProps } from '~/elements/fc';
 import {
   ComponentWithGradientProps,
   ComponentWithTextShadowProps,
   gradientToClassName,
   textShadowToClassName,
-} from '~/components/props';
+} from '~/elements/props';
 
 interface HeadingProps
   extends ComponentProps,

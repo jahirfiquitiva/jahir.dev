@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from '~/components/button';
+import { Button } from '~/elements/button';
 
 const Home: FC = () => {
   return (

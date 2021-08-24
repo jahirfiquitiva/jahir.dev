@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 import { mdiAccessPoint } from '@mdi/js';
-import { Container } from '~/components/container';
+import { Container } from '~/elements/container';
 import Image from 'next/image';
 import {
   Button,
@@ -11,7 +11,7 @@ import {
   InstagramIconButton,
   LinkedInIconButton,
   PayPalButton,
-} from '~/components/button';
+} from '~/elements/button';
 
 const ButtonsContainer = styled(Container)`
   & > button {

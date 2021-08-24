@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 import { mdiCreditCard, mdiGithub, mdiInstagram, mdiLinkedin } from '@mdi/js';
-import { Component, ComponentProps } from '~/components/fc';
-import { IconButtonProps, BaseButton } from '~/components/button';
+import { Component, ComponentProps } from '~/elements/fc';
+import { IconButtonProps, BaseButton } from '~/elements/button';
 
 export const BaseIconButton: Component<IconButtonProps> = (props) => {
   const { icon, iconSize = 1, className } = props;

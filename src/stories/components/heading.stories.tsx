@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
-import { Container } from '~/components/container';
-import { Heading } from '~/components/heading';
+import { Container } from '~/elements/container';
+import { Heading } from '~/elements/heading';
 
 const HeadingsContainer = styled(Container)`
   & > .text-gradient {
