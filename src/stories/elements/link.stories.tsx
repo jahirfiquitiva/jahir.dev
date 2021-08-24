@@ -23,7 +23,7 @@ export const Default: Story = (args) => {
 };
 
 export default {
-  title: 'Components/Link',
+  title: 'Elements/Link',
   argTypes: {
     label: {
       control: {

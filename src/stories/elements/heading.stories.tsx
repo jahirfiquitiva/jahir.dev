@@ -66,7 +66,7 @@ export const Default: Story = (args) => {
 };
 
 export default {
-  title: 'Components/Heading',
+  title: 'Elements/Heading',
   argTypes: {
     label: {
       control: {

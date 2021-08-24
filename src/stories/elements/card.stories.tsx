@@ -21,7 +21,7 @@ export const Default: Story = (args) => {
 };
 
 export default {
-  title: 'Components/Card',
+  title: 'Elements/Card',
   argTypes: {
     content: {
       control: {
