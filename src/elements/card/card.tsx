@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
 
 import { ExtLink } from '~/elements/ext-link';
 
@@ -12,8 +11,9 @@ const baseCardStyles = `
 
   & * {
     border-radius: var(--border-radius);
+    transition: all 0.25s ease-in-out;
   }
-`
+`;
 
 export const Card = styled.div`
   ${baseCardStyles}
@@ -45,11 +45,6 @@ const baseLinkCardStyles = `
 `;
 
 export const ExtLinkCard = styled(ExtLink)`
-  display: block;
-  ${baseLinkCardStyles}
-`;
-
-export const LinkCard = styled(Link)`
   display: block;
   ${baseLinkCardStyles}
 `;

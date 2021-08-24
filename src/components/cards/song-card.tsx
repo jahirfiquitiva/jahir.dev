@@ -89,12 +89,6 @@ const SongLinkCard = styled(ExtLinkCard)`
       text-decoration: underline;
       -webkit-text-decoration-style: solid;
     }
-
-    & .details p,
-    & .details p {
-      -webkit-text-decoration: none;
-      text-decoration: none;
-    }
   }
 `;
 
