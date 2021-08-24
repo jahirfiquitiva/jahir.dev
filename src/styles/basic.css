@@ -107,8 +107,9 @@ a:focus {
   color: var(--accent-dark);
   text-decoration: underline;
   -webkit-text-decoration-style: solid;
-  -webkit-text-decoration-color: var(--accent-dark);
-  text-decoration: underline solid var(--accent-dark);
+  -webkit-text-decoration-color: currentColor;
+  text-decoration: underline solid currentColor;
+  text-decoration-color: currentColor;
   text-decoration-skip: edges;
 }
 

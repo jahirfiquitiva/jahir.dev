@@ -8,16 +8,25 @@ interface ExtLinkProps extends ComponentProps {
 }
 
 export const ExtLink: Component<ExtLinkProps> = (props) => {
-  const { to, title, newTab = true, className, children, underline = true } = props;
+  const {
+    to,
+    title,
+    newTab = true,
+    className,
+    children,
+    style,
+    underline = true,
+  } = props;
 
   return (
     <a
-      className={`${className || ''} ${underline ? '' : 'nodeco'}`.trim()}
+      className={[className || '', underline ? '' : 'nodeco'].join(' ')}
       title={title}
       aria-label={title}
       href={to}
       target={newTab ? '_blank' : '_self'}
       rel={'noopener noreferrer'}
+      style={style}
     >
       {children}
     </a>
