@@ -1,17 +1,18 @@
 import styled from '@emotion/styled';
-import { Meta, Story } from '@storybook/react';
 import { mdiAccessPoint } from '@mdi/js';
-import { Container } from '~/elements/container';
-import Image from 'next/image';
+import { Meta, Story } from '@storybook/react';
+
 import {
-  Button,
-  ButtonGroup,
   GitHubButton,
+  BmacButton,
+  PayPalButton,
+  TwitterIconButton,
   GitHubIconButton,
   InstagramIconButton,
   LinkedInIconButton,
-  PayPalButton,
-} from '~/elements/button';
+} from '~/components/buttons';
+import { Button, ButtonGroup } from '~/elements/button';
+import { Container } from '~/elements/container';
 
 const ButtonsContainer = styled(Container)`
   & > button {
@@ -27,12 +28,19 @@ export const Default: Story = (args) => {
     <ButtonsContainer>
       <Button>{args.label}</Button>
       <Button icon={mdiAccessPoint}>{args.label}</Button>
-      <GitHubButton>GitHub Sponsors</GitHubButton>
-      <PayPalButton>PayPal</PayPalButton>
+
+      <ButtonGroup>
+        <GitHubButton>GitHub Sponsors</GitHubButton>
+        <BmacButton>Buy Me a Pizza</BmacButton>
+        <PayPalButton>PayPal</PayPalButton>
+      </ButtonGroup>
+
+      <br />
 
       <ButtonGroup>
         <GitHubIconButton />
         <LinkedInIconButton />
+        <TwitterIconButton />
         <InstagramIconButton />
       </ButtonGroup>
     </ButtonsContainer>

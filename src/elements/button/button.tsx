@@ -8,7 +8,7 @@ const baseButtonStyles = `
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-height: 32px;
+  min-height: 24px;
   color: #fff;
   padding: 0.4rem 0.8rem;
   text-decoration: none;
@@ -22,7 +22,7 @@ const BaseButton = styled.button`
   ${baseButtonStyles}
 `;
 
-interface ButtonProps extends ComponentProps {
+export interface ButtonProps extends ComponentProps {
   icon?: string;
   iconSize?: number;
 }
@@ -42,8 +42,8 @@ const BaseLinkButton = styled.a`
   ${baseButtonStyles}
 `;
 
-interface LinkButtonProps extends ButtonProps {
-  href: string;
+export interface LinkButtonProps extends ButtonProps {
+  href?: string;
   target?: string;
   rel?: string;
 }
@@ -54,13 +54,13 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
     iconSize = 1,
     className,
     children,
-    href,
+    href = '#',
     target = '_blank',
     rel = 'noopener noreferrer',
   } = props;
 
   return (
-    <BaseLinkButton className={className} href={href} target={target} rel={rel}>
+    <BaseLinkButton className={`button ${className}`} href={href} target={target} rel={rel}>
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
     </BaseLinkButton>
@@ -78,7 +78,7 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
   } = props;
 
   return (
-    <BaseLinkButton className={className} href={href} target={target} rel={rel}>
+    <BaseLinkButton className={`button ${className}`} href={href} target={target} rel={rel}>
       {icon && <Icon path={icon} size={iconSize} />}
     </BaseLinkButton>
   );
@@ -87,31 +87,3 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
 export const LinkIconButton = styled(BaseLinkIconButton)`
   padding: 0.375rem 0.4rem 0.425rem;
 `;
-
-/*
-const BaseGitHubButton = styled(Button)`
-  background-color: #d34399;
-
-  &:hover,
-  &:focus {
-    background-color: #a43477;
-  }
-`;
-
-export const GitHubButton: Component<IconButtonProps> = (props) => {
-  return <BaseGitHubButton {...props} icon={mdiHeartOutline} />;
-};
-
-const BasePayPalButton = styled(Button)`
-  background-color: #1a4593;
-
-  &:hover,
-  &:focus {
-    background-color: #002b7a;
-  }
-`;
-
-export const PayPalButton: Component<IconButtonProps> = (props) => {
-  return <BasePayPalButton {...props} icon={mdiCreditCardOutline} />;
-};
-*/
