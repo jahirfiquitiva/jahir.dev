@@ -108,6 +108,11 @@ a:focus {
   text-decoration-skip: edges;
 }
 
+a.nodeco:hover,
+a.nodeco:focus {
+  text-decoration: none;
+}
+
 button,
 .button {
   background-color: var(--accent);
