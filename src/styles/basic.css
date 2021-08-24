@@ -91,6 +91,10 @@ body {
   font-size: var(--base-font-size);
 }
 
+.small {
+  font-size: calc(var(--base-font-size) * 0.85);
+}
+
 a,
 a:visited {
   font-weight: 500;
