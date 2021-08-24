@@ -8,10 +8,10 @@ const baseButtonStyles = `
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-height: 24px;
   color: #fff;
   padding: 0.4rem 0.8rem;
   text-decoration: none;
+  min-height: 36px;
 
   & > *:not(:last-child) {
     margin-right: 0.4rem;
@@ -25,13 +25,14 @@ const BaseButton = styled.button`
 export interface ButtonProps extends ComponentProps {
   icon?: string;
   iconSize?: number;
+  onClick?: () => void;
 }
 
 export const Button: Component<ButtonProps> = (props) => {
-  const { icon, iconSize = 1, className, children } = props;
+  const { icon, iconSize = 1, className, children, onClick } = props;
 
   return (
-    <BaseButton className={className}>
+    <BaseButton className={className} onClick={onClick}>
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
     </BaseButton>
@@ -40,9 +41,11 @@ export const Button: Component<ButtonProps> = (props) => {
 
 const BaseLinkButton = styled.a`
   ${baseButtonStyles}
+  min-height: 28px;
+  line-height: 1;
 `;
 
-export interface LinkButtonProps extends ButtonProps {
+export interface LinkButtonProps extends Omit<ButtonProps, 'onClick'> {
   href?: string;
   target?: string;
   rel?: string;
@@ -51,7 +54,7 @@ export interface LinkButtonProps extends ButtonProps {
 export const LinkButton: Component<LinkButtonProps> = (props) => {
   const {
     icon,
-    iconSize = 1,
+    iconSize = 0.9,
     className,
     children,
     href = '#',
@@ -60,7 +63,12 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
   } = props;
 
   return (
-    <BaseLinkButton className={`button ${className}`} href={href} target={target} rel={rel}>
+    <BaseLinkButton
+      className={`button ${className}`}
+      href={href}
+      target={target}
+      rel={rel}
+    >
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
     </BaseLinkButton>
@@ -70,7 +78,7 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
 const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
   const {
     icon,
-    iconSize = 1,
+    iconSize = 0.95,
     className,
     href,
     target = '_blank',
@@ -78,12 +86,19 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
   } = props;
 
   return (
-    <BaseLinkButton className={`button ${className}`} href={href} target={target} rel={rel}>
+    <BaseLinkButton
+      className={`button ${className}`}
+      href={href}
+      target={target}
+      rel={rel}
+    >
       {icon && <Icon path={icon} size={iconSize} />}
     </BaseLinkButton>
   );
 };
 
 export const LinkIconButton = styled(BaseLinkIconButton)`
-  padding: 0.375rem 0.4rem 0.425rem;
+  padding: 0.425rem;
+  min-height: 24px;
+  min-width: 24px;
 `;

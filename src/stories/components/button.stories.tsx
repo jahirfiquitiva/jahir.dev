@@ -26,7 +26,13 @@ const ButtonsContainer = styled(Container)`
 export const Default: Story = (args) => {
   return (
     <ButtonsContainer>
-      <Button>{args.label}</Button>
+      <Button
+        onClick={() => {
+          alert(args.label);
+        }}
+      >
+        {args.label}
+      </Button>
       <Button icon={mdiAccessPoint}>{args.label}</Button>
 
       <ButtonGroup>
