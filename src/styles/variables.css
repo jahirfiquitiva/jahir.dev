@@ -48,7 +48,7 @@
   --name-gradients-b: var(--gradients-b);
 
   --projects-card-color: rgba(235, 240, 251, 0.25);
-  --projects-card-color-hover: rgba(235, 240, 251, 0.85);
+  --projects-card-color-hover: rgba(235, 240, 251, 0.8);
   --projects-card-text-shadow: rgba(235, 240, 251, 0.7);
 
   --toast-success: rgba(121, 217, 166, 0.9);
@@ -93,7 +93,7 @@
   --gradients-g: var(--dark-gradients-g);
 
   --projects-card-color: rgba(8, 15, 30, 0.25);
-  --projects-card-color-hover: rgba(8, 15, 30, 0.75);
+  --projects-card-color-hover: rgba(8, 15, 30, 0.7);
   --projects-card-text-shadow: rgba(9, 17, 34, 0.4);
 
   --toast-success: rgba(121, 217, 166, 0.6);

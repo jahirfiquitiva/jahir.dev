@@ -10,6 +10,7 @@ import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 
 const BaseBlogPostCard = styled(ExtLinkCard)`
+  --border-radius: 8px;
   --shadow-one-size: 4px;
   --shadow-two-size: 8px;
   width: 100%;
