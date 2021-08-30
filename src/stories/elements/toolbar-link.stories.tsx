@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
-import { ToolbarLinks } from '~/components/toolbar-links/toolbar-links';
+import { ToolbarButton, ToolbarMenuToggle } from '~/elements/toolbar-button';
 import { ToolbarLink } from '~/elements/toolbar-link';
 
 const LinksContainer = styled.div`
@@ -11,23 +11,23 @@ const LinksContainer = styled.div`
 
 export const Default: Story = (args) => {
   return (
-    <>
-      <LinksContainer>
-        <ToolbarLink to={args.url} title={args.a11yTitle}>
-          {args.label}
-        </ToolbarLink>
-        <ToolbarLink
-          to={args.url}
-          title={args.a11yTitle}
-          gradientColor={'green-to-yellow'}
-          emoji={'🎧'}
-          label={args.label}
-          active
-        />
-      </LinksContainer>
+    <LinksContainer>
+      <ToolbarLink to={args.url} title={args.a11yTitle}>
+        {args.label}
+      </ToolbarLink>
+      <ToolbarLink
+        to={args.url}
+        title={args.a11yTitle}
+        gradientColor={'green-to-yellow'}
+        emoji={'🎧'}
+        label={args.label}
+        active
+      />
 
-      <ToolbarLinks />
-    </>
+      <ToolbarButton>🌚</ToolbarButton>
+
+      <ToolbarMenuToggle />
+    </LinksContainer>
   );
 };
 
