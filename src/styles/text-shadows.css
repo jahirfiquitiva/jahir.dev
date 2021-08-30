@@ -30,3 +30,31 @@
 .text-shadow.purple {
   --text-shadow-color: var(--dark-gradients-g);
 }
+
+.text-shadow.as-gradient.brand {
+  --text-shadow-color: var(--gradients-a);
+}
+
+.text-shadow.as-gradient.blue {
+  --text-shadow-color: var(--gradients-b);
+}
+
+.text-shadow.as-gradient.green {
+  --text-shadow-color: var(--gradients-c);
+}
+
+.text-shadow.as-gradient.yellow {
+  --text-shadow-color: var(--gradients-d);
+}
+
+.text-shadow.as-gradient.orange {
+  --text-shadow-color: var(--gradients-e);
+}
+
+.text-shadow.as-gradient.red {
+  --text-shadow-color: var(--gradients-f);
+}
+
+.text-shadow.as-gradient.purple {
+  --text-shadow-color: var(--gradients-g);
+}

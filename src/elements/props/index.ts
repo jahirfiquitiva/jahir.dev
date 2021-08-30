@@ -8,7 +8,7 @@ const gradientOptionsArray = [
   'purple-to-brand',
 ] as const;
 
-type GradientOptions = typeof gradientOptionsArray;
+export type GradientOptions = typeof gradientOptionsArray[number];
 
 export interface ComponentWithGradientProps {
   gradientColor?: GradientOptions;
@@ -21,10 +21,10 @@ export const gradientToClassName = (
 ): string => {
   // TODO: Validate if gradient is of expected type
   if (!gradient) return '';
-  return `text-gradient ${gradient} ${forceGradient ? 'forced' : ''}`;
+  return `text-gradient ${gradient} ${forceGradient ? 'forced' : ''}`.trim();
 };
 
-type TextShadowOptions =
+export type TextShadowOptions =
   | 'brand'
   | 'blue'
   | 'green'
@@ -37,8 +37,11 @@ export interface ComponentWithTextShadowProps {
   shadowColor?: TextShadowOptions;
 }
 
-export const textShadowToClassName = (shadow?: TextShadowOptions): string => {
+export const textShadowToClassName = (
+  shadow?: TextShadowOptions | null,
+  asGradient?: boolean,
+): string => {
   // TODO: Validate if shadow is of expected type
   if (!shadow) return '';
-  return `text-shadow ${shadow}`;
+  return `text-shadow ${shadow} ${asGradient ? 'as-gradient' : ''}`.trim();
 };
