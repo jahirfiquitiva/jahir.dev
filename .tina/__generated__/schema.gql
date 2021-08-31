@@ -79,6 +79,7 @@ type Posts {
   excerpt: String
   hero: String
   date: String
+  inProgress: Boolean
   body: String
 }
 
@@ -117,6 +118,7 @@ input PostsMutation {
   excerpt: String
   hero: String
   date: String
+  inProgress: Boolean
   body: String
 }
 

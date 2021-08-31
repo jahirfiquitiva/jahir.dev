@@ -28,6 +28,11 @@ export default defineSchema({
           name: 'date',
         },
         {
+          type: 'boolean',
+          label: 'Is in progress',
+          name: 'inProgress',
+        },
+        {
           type: 'string',
           label: 'Body',
           name: 'body',

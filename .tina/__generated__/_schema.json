@@ -42,6 +42,15 @@
           ]
         },
         {
+          "type": "boolean",
+          "label": "Is in progress",
+          "name": "inProgress",
+          "namespace": [
+            "posts",
+            "inProgress"
+          ]
+        },
+        {
           "type": "string",
           "label": "Body",
           "name": "body",

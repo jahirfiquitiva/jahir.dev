@@ -146,6 +146,7 @@ export type Posts = {
   excerpt?: Maybe<Scalars['String']>;
   hero?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
+  inProgress?: Maybe<Scalars['Boolean']>;
   body?: Maybe<Scalars['String']>;
 };
 
@@ -208,6 +209,7 @@ export type PostsMutation = {
   excerpt?: Maybe<Scalars['String']>;
   hero?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
+  inProgress?: Maybe<Scalars['Boolean']>;
   body?: Maybe<Scalars['String']>;
 };
 

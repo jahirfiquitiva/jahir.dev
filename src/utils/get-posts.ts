@@ -3,7 +3,7 @@ import fs from 'fs';
 import { join } from 'path';
 
 import matter from 'gray-matter';
-import readingTime from 'reading-time';
+import readingTime, { IReadTimeResults } from 'reading-time';
 import removeMd from 'remove-markdown';
 
 import { BlogPost } from '~/types/blog-post';
@@ -84,6 +84,12 @@ export const getTableOfContents = (body?: string): string | null => {
   return tableOfContents.join('\n');
 };
 
+export const getReadingTime = (content?: string): IReadTimeResults | null => {
+  if (!content) return null;
+  const calculatedTime = readingTime(content);
+  return calculatedTime?.time > 0 ? calculatedTime : null;
+};
+
 export function getPostBySlug(
   slug: string,
   fields: string[] = [],
@@ -108,8 +114,7 @@ export function getPostBySlug(
     } else if (field === 'color') {
       items[field] = data.color || getRandomItemFrom(defaultColors);
     } else if (field === 'time') {
-      const calculatedTime = readingTime(content);
-      items['readingTime'] = calculatedTime?.time > 0 ? calculatedTime : null;
+      items['readingTime'] = getReadingTime(content);
     } else if (field === 'hero') {
       const { hero } = data;
       const actualHero: string = hero

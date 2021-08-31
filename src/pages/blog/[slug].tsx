@@ -8,19 +8,21 @@ import { BlogPost } from '~/blocks/blog-post';
 import { Page } from '~/blocks/page';
 import { Component, ComponentProps } from '~/elements/fc';
 import { FullBlogPost } from '~/types/blog-post';
+import {
+  getPostDescription,
+  getReadingTime,
+  getTableOfContents,
+} from '~/utils/get-posts';
 
 interface BlogPostProps extends ComponentProps {
-  slug?: string;
-  data: {
-    getPostsDocument: {
-      data: FullBlogPost;
-    };
-  };
+  slug: string;
+  post: FullBlogPost;
+  data: unknown;
 }
 
 export const BlogPostPage: Component<BlogPostProps> = (props) => {
-  const { data, slug } = props;
-  const post = data?.getPostsDocument?.data;
+  const { post, data, slug } = props;
+  const tinaPost = data?.getPostsDocument?.data;
   const router = useRouter();
 
   if (!router.isFallback && !slug) {
@@ -28,7 +30,13 @@ export const BlogPostPage: Component<BlogPostProps> = (props) => {
   }
 
   return (
-    <Page>{router.isFallback ? <p>Loading…</p> : <p>{post?.title}</p>}</Page>
+    <Page>
+      {router.isFallback ? (
+        <p>Loading…</p>
+      ) : (
+        <BlogPost {...post} {...tinaPost} hero={post?.hero} content={tinaPost?.body} />
+      )}
+    </Page>
   );
 };
 
@@ -46,14 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             title
             excerpt
             date
-            coverImage
-            author {
-              name
-              picture
-            }
-            ogImage {
-              url
-            }
+            hero
             body
           }
         }
@@ -62,9 +63,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables,
   });
 
+  const initialPostData = tinaProps.data.getPostsDocument.data;
+  const { hero, body } = initialPostData;
+  const readingTime = getReadingTime(body);
+  const actualHero: string = hero
+    ? hero.startsWith('http')
+      ? hero
+      : `/static/images/posts/${hero}`
+    : '';
+  const post: FullBlogPost = {
+    ...initialPostData,
+    readingTime,
+    hero: actualHero,
+    excerpt: getPostDescription(body),
+    tableOfContents: getTableOfContents(body),
+    content: body,
+    slug,
+  };
+
   return {
     props: {
       ...tinaProps, // {data: {...}, query: '...', variables: {...}}
+      post,
       slug,
     },
   };
@@ -82,8 +102,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
               }
             }
           }
+        }
       }
-    }
     `,
     variables: {},
   });

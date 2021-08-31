@@ -3,7 +3,6 @@
   flex-direction: column;
   padding: 2rem 1.2rem 3rem;
   width: 100%;
-  max-width: 90vw;
 }
 
 .post .date {
@@ -144,6 +143,5 @@ p.possiblecodetitle + pre[class*='language-'] {
 @media (min-width: 960px) {
   .post {
     padding: 3rem 0;
-    max-width: 900px;
   }
 }
