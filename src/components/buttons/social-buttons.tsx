@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
-import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter, mdiTimelineTextOutline } from '@mdi/js';
+import {
+  mdiGithub,
+  mdiLinkedin,
+  mdiInstagram,
+  mdiTwitter,
+  mdiTimelineTextOutline,
+} from '@mdi/js';
 
 import { LinkIconButton, LinkButtonProps } from '~/elements/button';
 import { Component } from '~/elements/fc';
@@ -17,6 +23,7 @@ export const GitHubIconButton: Component<LinkButtonProps> = (props) => {
   return (
     <BaseGitHubIconButton
       {...props}
+      title={'Link to GitHub'}
       icon={mdiGithub}
       href={'https://github.com/jahirfiquitiva'}
     />
@@ -36,6 +43,7 @@ export const LinkedInIconButton: Component<LinkButtonProps> = (props) => {
   return (
     <BaseLinkedInIconButton
       {...props}
+      title={'Link to LinkedIn'}
       icon={mdiLinkedin}
       href={'https://linkedin.com/in/jahirfiquitiva'}
     />
@@ -55,6 +63,7 @@ export const TwitterIconButton: Component<LinkButtonProps> = (props) => {
   return (
     <BaseTwitterIconButton
       {...props}
+      title={'Link to Twitter'}
       icon={mdiTwitter}
       href={'https://twitter.com/jahirfiquitiva'}
     />
@@ -68,7 +77,7 @@ const BaseInstagramIconButton = styled(LinkIconButton)`
     circle at 28% 110%,
     #fdf497 0%,
     #fdf497 5%,
-    #fd5949 45%,  
+    #fd5949 45%,
     #d6249f 60%,
     #285aeb 90%
   );
@@ -92,6 +101,7 @@ export const InstagramIconButton: Component<LinkButtonProps> = (props) => {
   return (
     <BaseInstagramIconButton
       {...props}
+      title={'Link to Instagram'}
       icon={mdiInstagram}
       href={'https://instagram.com/jahirfiquitiva'}
     />
@@ -111,6 +121,7 @@ export const PolyworkIconButton: Component<LinkButtonProps> = (props) => {
   return (
     <BasePolyworkIconButton
       {...props}
+      title={'Link to Polywork Timeline'}
       icon={mdiTimelineTextOutline}
       href={'https://timeline.jahir.dev'}
     />

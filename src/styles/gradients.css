@@ -3,17 +3,29 @@
   --gradient-start-color: rgba(0, 0, 0, 0);
   --gradient-end-color: rgba(0, 0, 0, 0);
   background: var(--gradient-start-color);
-  background: -moz-linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
-  background: -webkit-linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
-  background: linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
+  background: -moz-linear-gradient(
+    90deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-end-color) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-end-color) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-end-color) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0);
-} 
+}
 
 .dark-mode .text-gradient,
 .text-gradient.forced {
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
   text-shadow: none !important;
   --start-grad-color: var(--gradients-a);
   --end-grad-color: var(--gradients-b);

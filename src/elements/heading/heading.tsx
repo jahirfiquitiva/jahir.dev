@@ -1,3 +1,5 @@
+import styled from '@emotion/styled';
+
 import { Component, ComponentProps } from '~/elements/fc';
 import {
   ComponentWithGradientProps,
@@ -13,7 +15,7 @@ interface HeadingProps
   size?: '1' | '2' | '3' | '4' | '5' | '6';
 }
 
-export const Heading: Component<HeadingProps> = (props) => {
+const BaseHeading: Component<HeadingProps> = (props) => {
   const {
     size = '1',
     shadowColor,
@@ -34,4 +36,6 @@ export const Heading: Component<HeadingProps> = (props) => {
   return <h1 className={fullClassName}>{children}</h1>;
 };
 
-export default Heading;
+export const Heading = styled(BaseHeading)`
+  display: inline-block;
+`;

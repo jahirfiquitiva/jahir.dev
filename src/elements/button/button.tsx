@@ -23,16 +23,22 @@ const BaseButton = styled.button`
 `;
 
 export interface ButtonProps extends ComponentProps {
+  title?: string;
   icon?: string;
   iconSize?: number;
   onClick?: () => void;
 }
 
 export const Button: Component<ButtonProps> = (props) => {
-  const { icon, iconSize = 1, className, children, onClick } = props;
+  const { title, icon, iconSize = 1, className, children, onClick } = props;
 
   return (
-    <BaseButton className={className} onClick={onClick}>
+    <BaseButton
+      title={title}
+      aria-label={title}
+      className={className}
+      onClick={onClick}
+    >
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
     </BaseButton>
@@ -53,6 +59,7 @@ export interface LinkButtonProps extends Omit<ButtonProps, 'onClick'> {
 
 export const LinkButton: Component<LinkButtonProps> = (props) => {
   const {
+    title,
     icon,
     iconSize = 0.9,
     className,
@@ -64,6 +71,8 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
 
   return (
     <BaseLinkButton
+      title={title}
+      aria-label={title}
       className={`button ${className}`}
       href={href}
       target={target}
@@ -77,6 +86,7 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
 
 const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
   const {
+    title,
     icon,
     iconSize = 0.95,
     className,
@@ -87,6 +97,8 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
 
   return (
     <BaseLinkButton
+      title={title}
+      aria-label={title}
       className={`button ${className}`}
       href={href}
       target={target}

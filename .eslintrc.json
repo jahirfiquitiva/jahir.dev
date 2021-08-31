@@ -16,6 +16,7 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "quotes": ["error", "single", { "avoidEscape": true }],
     "max-lines": ["error", 300],
     "max-params": ["error", 6],
     "operator-linebreak": ["error", "after", {"overrides": {"?": "before", ":": "before"}}],

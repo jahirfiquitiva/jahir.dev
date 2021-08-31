@@ -17,6 +17,7 @@ export const GitHubButton: Component<LinkButtonProps> = (props) => {
   return (
     <BaseGitHubButton
       {...props}
+      title={'Link to GitHub Sponsors'}
       icon={mdiHeartOutline}
       href={'https://github.com/sponsors/jahirfiquitiva'}
     />
@@ -36,6 +37,7 @@ export const BmacButton: Component<LinkButtonProps> = (props) => {
   return (
     <BaseBmacButton
       {...props}
+      title={'Link to Buy me a Coffee'}
       icon={mdiPizza}
       href={'https://buymeacoff.ee/jahirfiquitiva'}
     />
@@ -55,6 +57,7 @@ export const PayPalButton: Component<LinkButtonProps> = (props) => {
   return (
     <BasePayPalButton
       {...props}
+      title={'Link to PayPal Donations'}
       icon={mdiCreditCardOutline}
       href={'https://jahir.xyz/DonatePayPal'}
     />
