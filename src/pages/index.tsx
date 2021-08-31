@@ -1,12 +1,14 @@
 import { FC } from 'react';
+
+import { Page } from '~/blocks/page';
 import { Button } from '~/elements/button';
 
 const Home: FC = () => {
   return (
-    <div>
+    <Page>
       <p>Main site</p>
       <Button>Hola</Button>
-    </div>
+    </Page>
   );
 };
 

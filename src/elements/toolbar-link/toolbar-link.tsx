@@ -45,7 +45,7 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
 
   @media (min-width: 960px) {
     justify-content: center;
-    margin: 0 0.1rem;
+    margin: 0 0.2rem;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -88,7 +88,7 @@ export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
       <BaseToolbarLink
         title={actualTitle}
         aria-label={actualTitle}
-        className={`${className} nodeco`}
+        className={`${className} nodeco ${active ? 'active' : ''}`.trim()}
         active={active}
       >
         {emoji && (

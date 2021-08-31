@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 import { Component, ComponentProps } from '~/elements/fc';
 import { ToolbarLink } from '~/elements/toolbar-link';
@@ -53,7 +55,8 @@ const ToolbarLinksContainer = styled.div`
     max-height: unset;
 
     & a {
-      margin: 0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
 `;
@@ -64,6 +67,18 @@ interface ToolbarLinksProps extends ComponentProps {
 
 export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
   const { active } = props;
+  const router = useRouter();
+  const [activeLink, setActiveLink] = useState(-1);
+
+  useEffect(() => {
+    const { pathname } = router;
+    if (pathname.includes('/blog')) setActiveLink(1);
+    else if (pathname.includes('/uses')) setActiveLink(2);
+    else if (pathname.includes('/donate')) setActiveLink(3);
+    else if (pathname.includes('/contact')) setActiveLink(4);
+    else setActiveLink(-1);
+  }, [router]);
+
   return (
     <ToolbarLinksContainer className={active ? 'active' : ''}>
       <ToolbarLink
@@ -71,25 +86,28 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
         gradientColor={'blue-to-green'}
         emoji={'📝'}
         label={'Blog'}
-        active
+        active={activeLink === 1}
       />
       <ToolbarLink
         to={'/uses'}
         gradientColor={'yellow-to-orange'}
         emoji={'⚡️'}
         label={'Uses'}
+        active={activeLink === 2}
       />
       <ToolbarLink
         to={'/donate'}
         gradientColor={'red-to-purple'}
         emoji={'🧡'}
         label={'Donate'}
+        active={activeLink === 3}
       />
       <ToolbarLink
         to={'/contact'}
         gradientColor={'brand-to-blue'}
         emoji={'📬'}
         label={'Contact'}
+        active={activeLink === 4}
       />
     </ToolbarLinksContainer>
   );

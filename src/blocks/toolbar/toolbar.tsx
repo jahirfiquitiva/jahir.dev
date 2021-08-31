@@ -57,10 +57,10 @@ const ToolbarContainer = styled.div`
     );
   grid-auto-rows: minmax(min-content, max-content);
   grid-gap: 0.2rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   min-height: var(--toolbar-height);
   max-height: var(--toolbar-height);
-  max-width: var(--max-site-width);
+  max-width: calc(var(--max-site-width) + 1.6rem);
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
 
@@ -81,7 +81,7 @@ const NavigationContainer = styled.nav`
   -webkit-backdrop-filter: saturate(150%) blur(8px);
   backdrop-filter: saturate(150%) blur(8px);
   min-height: var(--toolbar-height);
-  max-height: calc(var(--toolbar-height) + 0.4rem);
+  max-height: calc(var(--toolbar-height) + 0.8rem);
   position: fixed;
   top: 0;
   transition: all 0.3s ease-in-out;
