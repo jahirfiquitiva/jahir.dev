@@ -190,3 +190,7 @@ textarea {
     margin: 2rem 0;
   }
 }
+
+body.sb-show-main.sb-main-padded {
+padding: 0;
+}

@@ -23,17 +23,18 @@ const ToolbarLinksContainer = styled.div`
   justify-content: flex-start;
   grid-row: 2;
   grid-column: 1 / 3;
-  transition: all 0.2s ease-in-out;
-  height: 0;
+  transition: all 0.1s ease-in-out;
+  max-height: 0;
   ${collapsedStyles}
 
   &.active {
-    height: 100%;
+    transition: all 0.2s ease-in-out;
+    max-height: 100%;
     ${expandedStyles}
     & a {
       margin: 0.1rem 0;
       &:first-of-type {
-        margin-top: 0.2rem;
+        margin-top: 0;
       }
       &:last-of-type {
         margin-bottom: 0;
@@ -49,7 +50,7 @@ const ToolbarLinksContainer = styled.div`
     flex-direction: row;
     grid-row: 1;
     grid-column: 2;
-    height: 100%;
+    max-height: unset;
 
     & a {
       margin: 0;

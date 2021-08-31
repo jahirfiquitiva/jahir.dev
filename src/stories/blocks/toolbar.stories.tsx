@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
 
-import { Toolbar } from '~/components/toolbar';
+import { Toolbar } from '~/blocks/toolbar';
 
 export const Default: Story = () => {
   return <Toolbar />;
 };
 
 export default {
-  title: 'Components/Toolbar',
+  title: 'Blocks/Toolbar',
 } as Meta;

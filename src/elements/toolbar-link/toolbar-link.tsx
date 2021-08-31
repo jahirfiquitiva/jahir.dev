@@ -33,7 +33,6 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   height: 100%;
   border-radius: 4px;
   padding: 0 1rem 0 0.8rem;
-  text-decoration: none !important;
 
   &.active,
   &:active,
