@@ -1,0 +1,64 @@
+{
+  "collections": [
+    {
+      "label": "Blog Posts",
+      "name": "posts",
+      "path": "posts",
+      "fields": [
+        {
+          "type": "string",
+          "label": "Title",
+          "name": "title",
+          "namespace": [
+            "posts",
+            "title"
+          ]
+        },
+        {
+          "type": "string",
+          "label": "Excerpt",
+          "name": "excerpt",
+          "namespace": [
+            "posts",
+            "excerpt"
+          ]
+        },
+        {
+          "type": "string",
+          "label": "Hero Image",
+          "name": "hero",
+          "namespace": [
+            "posts",
+            "hero"
+          ]
+        },
+        {
+          "type": "datetime",
+          "label": "Date",
+          "name": "date",
+          "namespace": [
+            "posts",
+            "date"
+          ]
+        },
+        {
+          "type": "string",
+          "label": "Body",
+          "name": "body",
+          "isBody": true,
+          "ui": {
+            "component": "markdown"
+          },
+          "namespace": [
+            "posts",
+            "body"
+          ]
+        }
+      ],
+      "namespace": [
+        "posts"
+      ]
+    }
+  ],
+  "namespace": []
+}
