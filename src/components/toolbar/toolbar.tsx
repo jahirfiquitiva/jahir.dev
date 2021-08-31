@@ -48,7 +48,12 @@ export const Toolbar = () => {
       <ToolbarLinks />
       <ToolbarActionButtons>
         <ToolbarButton>🌚</ToolbarButton>
-        <ToolbarMenuToggle />
+        <ToolbarMenuToggle
+          active={expanded}
+          onClick={() => {
+            setExpanded(!expanded);
+          }}
+        />
       </ToolbarActionButtons>
     </ToolbarContainer>
   );

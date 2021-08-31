@@ -47,10 +47,22 @@ const BaseToolbarMenuToggle: Component<ToolbarMenuToggle> = ({
 export const ToolbarMenuToggle = styled(BaseToolbarMenuToggle)`
   padding: 0;
   color: var(--accent);
+  display: inline-block;
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+
   &.active,
   &:active,
   &:focus,
   &:hover {
     color: var(--accent-dark);
+  }
+
+  @media (min-width: 960px) {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
   }
 `;
