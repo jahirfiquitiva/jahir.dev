@@ -4,7 +4,7 @@ import { usePalette } from 'react-palette';
 
 import { ExtLinkCard } from '~/elements/card';
 import { Component, ComponentProps } from '~/elements/fc';
-import { BlogPostProps } from '~/types/blog-post';
+import { BlogPost } from '~/types/blog-post';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
@@ -58,26 +58,28 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
   }
 `;
 
-interface BlogPostCardProps extends ComponentProps, BlogPostProps {}
+interface BlogPostCardProps extends ComponentProps, BlogPost {}
 
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
-  const { frontmatter, color: defaultColor, slug } = props;
+  const {
+    title,
+    excerpt,
+    hero = '',
+    date,
+    color: defaultColor,
+    slug,
+    link,
+    readingTime,
+  } = props;
   const { isDark } = { isDark: false }; // useContext(ThemeContext); TODO: fix
 
-  const defHero = frontmatter?.hero || '';
   const heroUrl =
-    defHero.length > 0 ? (defHero.startsWith('..') ? null : defHero) : null;
+    hero.length > 0 ? (hero.startsWith('..') ? null : hero) : null;
 
   const { data: paletteData } = usePalette(heroUrl || '');
-  const color =
-    getColorFromPalette(paletteData, isDark) ||
-    frontmatter.color ||
-    defaultColor;
+  const color = getColorFromPalette(paletteData, isDark) || defaultColor;
 
-  const rightLink =
-    frontmatter.link && frontmatter.link.length > 0
-      ? frontmatter.link
-      : `/blog/${slug}`;
+  const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
 
   return (
     <Link href={rightLink} passHref={true}>
@@ -92,14 +94,14 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         }}
       >
         <div className={'content'}>
-          <h6>{frontmatter.title}</h6>
-          {frontmatter.description && <p>{frontmatter.description}</p>}
+          <h6>{title}</h6>
+          {excerpt && <p>{excerpt}</p>}
           <p className={'date-time'}>
-            {formatDate(new Date(frontmatter.date))}
-            {(frontmatter.readingTime?.text?.length || 0) > 0 && (
+            {formatDate(new Date(date || ''))}
+            {(readingTime?.text?.length || 0) > 0 && (
               <>
                 {' • '}
-                {frontmatter.readingTime?.text}
+                {readingTime?.text}
               </>
             )}
           </p>

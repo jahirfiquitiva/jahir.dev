@@ -1,23 +1,21 @@
-export interface FrontmatterProps {
-  title: string,
-  date: string,
-  hero?: string,
-  description?: string,
-  color?: string,
-  link?: string,
-  page?: number,
-  tableOfContents?: string,
+export interface BlogPost {
+  title: string;
+  date: string;
+  slug: string;
+  hero?: string;
+  excerpt?: string;
+  color?: string;
+  link?: string;
   readingTime?: {
-    text?: string,
-    minutes?: number,
-    time?: number,
-    words?: number,
-  }
+    text?: string;
+    minutes?: number;
+    time?: number;
+    words?: number;
+  };
+  inProgress?: boolean;
 }
 
-export interface BlogPostProps {
-  slug: string,
-  color?: string,
-  frontmatter: FrontmatterProps,
-  markdownBody?: string
+export interface FullBlogPost extends BlogPost {
+  tableOfContents?: string;
+  content?: string;
 }

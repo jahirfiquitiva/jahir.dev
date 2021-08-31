@@ -19,7 +19,7 @@
   --on-accent: #fff;
   --text-primary: rgba(9, 17, 34, 0.95);
   --text-secondary: rgba(9, 17, 34, 0.8);
-  --text-tertiary: rgba(9, 17, 34, 0.5);
+  --text-tertiary: rgba(9, 17, 34, 0.6);
   --divider: rgba(9, 17, 34, 0.12);
   --toolbar-color: rgba(235, 240, 251, 0.65);
   --toolbar-color-opaque: rgb(235, 240, 251);
@@ -61,9 +61,10 @@
   --cards-hover-border-color: var(--divider);
   --cards-hover-shadow-color: var(--divider);
 
-  --blog-card-color: rgba(235, 240, 251, 0.85);
-  --blog-card-color-hover: rgba(235, 240, 251, 0.95);
-  --blog-card-text-shadow: rgba(235, 240, 251, 0.5);
+  /* 235, 240, 251 */
+  --blog-card-color: rgba(255, 255, 255, 0.85);
+  --blog-card-color-hover: rgba(255, 255, 255, 0.95);
+  --blog-card-text-shadow: rgba(255, 255, 255, 0.5);
 }
 
 .dark-mode {
@@ -76,7 +77,7 @@
   --on-accent: rgba(9, 17, 34, 0.9);
   --text-primary: #fff;
   --text-secondary: rgba(235, 240, 251, 0.85);
-  --text-tertiary: rgba(235, 240, 251, 0.5);
+  --text-tertiary: rgba(235, 240, 251, 0.6);
   --divider: rgba(235, 240, 251, 0.12);
   --toolbar-color: rgba(8, 15, 30, 0.65);
   --toolbar-shadow-a: rgba(56, 103, 214, 0.08);

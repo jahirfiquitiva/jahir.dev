@@ -20,12 +20,21 @@
     "@mdi/react": "^1.5.0",
     "@storybook/react": "^6.3.7",
     "@svgr/webpack": "^5.5.0",
+    "@tinacms/cli": "^0.55.2",
+    "dotenv": "^10.0.0",
+    "gray-matter": "^4.0.3",
     "isomorphic-fetch": "^3.0.0",
     "next": "11.1.0",
+    "next-tinacms-github": "^1.1.12",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-palette": "^1.0.2",
-    "swr": "^0.5.6"
+    "react-tinacms-editor": "^0.51.8",
+    "reading-time": "^1.4.0",
+    "remove-markdown": "^0.3.0",
+    "styled-components": "^5.3.1",
+    "swr": "^0.5.6",
+    "tinacms": "^0.55.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
