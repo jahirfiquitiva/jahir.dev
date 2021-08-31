@@ -7,8 +7,9 @@
   --manrope-font: 'Manrope', var(--inter-font);
   --code-font: 'Fira Code', Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono',
     'Courier New', Courier, monospace;
+  --max-site-width: 960px;
   --base-font-size: 1rem;
-  --toolbar-height: 2.4rem;
+  --toolbar-height: 2.8rem;
   --text-shadow-size: 2px;
   --background: #fff;
   --primary: #f6f9fe;

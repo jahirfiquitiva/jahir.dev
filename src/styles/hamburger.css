@@ -28,7 +28,7 @@
 
 .hamburger-box {
   width: 22px;
-  height: 24px;
+  height: 21px;
   display: inline-block;
   position: relative;
   pointer-events: none;
@@ -58,7 +58,7 @@
   display: block;
 }
 .hamburger-inner::before {
-  top: -8px;
+  top: -6px;
 }
 .hamburger-inner::after {
   bottom: -4px;
@@ -110,7 +110,7 @@
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .hamburger--spring-r .hamburger-inner::after {
-  top: -15px;
+  top: -12px;
   transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
     opacity 0s linear;
 }
@@ -120,6 +120,7 @@
 }
 
 .hamburger--spring-r.is-active .hamburger-inner {
+  bottom: 2px;
   transform: translate3d(0, -8px, 0) rotate(-45deg);
   transition-delay: 0.22s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);

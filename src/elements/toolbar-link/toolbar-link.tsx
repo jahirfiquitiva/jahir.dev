@@ -32,7 +32,7 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   min-width: var(--toolbar-height);
   height: 100%;
   border-radius: 4px;
-  padding: 0.5rem 1rem 0.6rem 0.8rem;
+  padding: 0 1rem 0 0.8rem;
   text-decoration: none !important;
 
   &.active,
@@ -47,6 +47,8 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   @media (min-width: 960px) {
     justify-content: center;
     margin: 0 0.1rem;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 `;
 
