@@ -7,9 +7,13 @@ const ToolbarLinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  grid-row: 2;
+  grid-column: 1 / 3;
 
   @media (min-width: 960px) {
     flex-direction: row;
+    grid-row: 1;
+    grid-column: 2;
   }
 `;
 

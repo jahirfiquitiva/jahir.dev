@@ -23,12 +23,13 @@ interface ToolbarLinkProps
   label?: string;
 }
 
-const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
+export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   max-height: var(--toolbar-height);
+  min-width: var(--toolbar-height);
   height: 100%;
   border-radius: 4px;
   padding: 0.5rem 1rem 0.6rem 0.8rem;
@@ -86,7 +87,7 @@ export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
       <BaseToolbarLink
         title={actualTitle}
         aria-label={actualTitle}
-        className={`${className} nodeco}`}
+        className={`${className} nodeco`}
         active={active}
       >
         {emoji && (
