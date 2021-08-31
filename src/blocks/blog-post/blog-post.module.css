@@ -1,0 +1,149 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.2rem 3rem;
+  width: 100%;
+  max-width: 90vw;
+}
+
+.post .date {
+  color: var(--text-tertiary);
+  margin-top: .8rem;
+  margin-bottom: 2.4rem;
+}
+
+.post .toc {
+  margin-bottom: 1.2rem;
+}
+
+.post .toc .title {
+  font-family: var(--manrope-font);
+  font-size: calc(var(--base-font-size) * 1.5);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.post ol,
+.post ul {
+  list-style: none;
+  position: relative;
+  padding-left: 1.6rem;
+  margin-left: .2rem;
+  counter-reset: start 1;
+}
+
+.post ol > li:before,
+.post ul > li:before {
+  content: counter(list-item, decimal) ".";
+  position: absolute;
+  font-weight: 400;
+  color: #6b7280;
+  left: 0;
+}
+
+.post ul > li:before {
+  content: counter(list-item, disc);
+}
+
+.post img.hero {
+  margin-bottom: 2.4rem;
+  object-fit: cover;
+  max-height: 440px;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.post img {
+  display: block;
+  margin: auto;
+  height: auto;
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4 {
+  margin-top: 1.6rem;
+  margin-bottom: .4rem;
+  scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
+}
+
+.post h5,
+.post h6 {
+  scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
+  margin-top: 1.2rem;
+}
+
+.post h1 {
+  margin-bottom: 0;
+}
+
+.post p {
+  margin: .4rem 0;
+}
+
+.post ul li {
+  margin-top: .1rem;
+  margin-bottom: .1rem;
+}
+
+.post blockquote {
+  margin: 1.2rem 0;
+  background-color: var(--primary);
+  border-left: 2px solid var(--accent-light);
+  padding: .4rem 1.2rem;
+}
+
+.post em {
+  font-style: italic;
+}
+
+.post article,
+.post article .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.post article .heroContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+p.possiblecodetitle {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 1px solid var(--divider);
+  margin: 1.2rem 0 0;
+  padding: 0.6rem 0.8rem;
+  font-weight: 500;
+}
+
+p.possiblecodetitle.possibleimagetitle {
+  border-radius: 6px;
+  margin-bottom: .8rem;
+}
+
+p.possiblecodetitle.possibleimagetitle img {
+  margin-top: .8rem;
+  margin-bottom: .2rem;
+}
+
+p.possiblecodetitle + pre[class*='language-'] {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-width: 0;
+}
+
+@media (min-width: 960px) {
+  .post {
+    padding: 3rem 0;
+    max-width: 900px;
+  }
+}
