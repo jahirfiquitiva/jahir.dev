@@ -8,7 +8,7 @@ import { Heading } from '~/elements/heading';
 import { gradientToClassName } from '~/elements/props';
 
 const HelloContainer = styled.div`
-  margin-top: 2.6rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   display: grid;
   grid-template-columns: 1fr;
