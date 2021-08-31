@@ -8,8 +8,8 @@ import { Heading } from '~/elements/heading';
 import { gradientToClassName } from '~/elements/props';
 
 const HelloContainer = styled.div`
-  margin-top: 2.4rem;
-  margin-bottom: 1.2rem;
+  margin-top: 2.6rem;
+  margin-bottom: 1rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -22,7 +22,7 @@ const HelloContainer = styled.div`
 const HeadingContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 
 const HeadingParagraph = styled.p`
@@ -35,7 +35,7 @@ export const HelloParagraph = styled(HeadingParagraph)`
 
 const ImageContainer = styled(HeadingContainer)`
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 2rem 0.8rem;
 
   & * {
     border-radius: 50%;

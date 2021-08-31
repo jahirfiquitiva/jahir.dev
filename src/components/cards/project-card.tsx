@@ -1,17 +1,17 @@
-
+import Icon from '@mdi/react';
 import Image from 'next/image';
 import Link from 'next/link';
 // import { usePalette } from 'react-palette';
 
+import { BaseProjectCard } from './base-project-card';
+
 import { Component, ComponentProps } from '~/elements/fc';
 // import { BlogPostProps } from '~/types/blog-post';
 import { ProjectProps } from '~/types/project';
+import { SkillProps, skills } from '~/types/skill';
 import buildShadowColors from '~/utils/build-shadow-colors';
 // import formatDate from '~/utils/format-date';
 // import getColorFromPalette from '~/utils/get-color-from-palette';
-import { SkillProps, skills } from '~/types/skill';
-import Icon from '@mdi/react';
-import { BaseProjectCard } from './base-project-card';
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
