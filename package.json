@@ -19,6 +19,7 @@
     "@mdi/js": "^5.9.55",
     "@mdi/react": "^1.5.0",
     "@storybook/react": "^6.3.7",
+    "@svgr/webpack": "^5.5.0",
     "isomorphic-fetch": "^3.0.0",
     "next": "11.1.0",
     "react": "17.0.2",

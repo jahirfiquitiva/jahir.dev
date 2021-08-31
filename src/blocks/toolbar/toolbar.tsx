@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { ToolbarLinks } from '~/components/toolbar-links';
 import { Component } from '~/elements/fc';
+import { Logo } from '~/elements/logo';
 import { ToolbarButton, ToolbarMenuToggle } from '~/elements/toolbar-button';
 import { ToolbarLink } from '~/elements/toolbar-link';
 
@@ -12,6 +13,24 @@ const ToolbarLogo = styled(ToolbarLink)`
   font-family: var(--manrope-font);
   font-weight: 600;
   font-size: 1.05rem;
+
+  .logosvg {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.6rem;
+    fill: var(--accent);
+    color: var(--accent);
+    --fill-color: var(--accent);
+  }
+
+  &:hover .logosvg,
+  &:focus .logosvg,
+  .logosvg:hover,
+  .logosvg:focus {
+    fill: var(--accent-dark);
+    color: var(--accent-dark);
+    --fill-color: var(--accent-dark);
+  }
 `;
 
 const ToolbarActionButtons = styled.div`
@@ -62,7 +81,7 @@ const NavigationContainer = styled.nav`
   -webkit-backdrop-filter: saturate(150%) blur(8px);
   backdrop-filter: saturate(150%) blur(8px);
   min-height: var(--toolbar-height);
-  max-height: calc(var(--toolbar-height) + .4rem);
+  max-height: calc(var(--toolbar-height) + 0.4rem);
   position: fixed;
   top: 0;
   transition: all 0.3s ease-in-out;
@@ -90,7 +109,9 @@ export const Toolbar: Component = () => {
           to={'/'}
           label={'Jahir Fiquitiva'}
           gradientColor={'brand-to-blue'}
-        />
+        >
+          <Logo className={'logosvg'} />
+        </ToolbarLogo>
         <ToolbarLinks active={expanded} />
         <ToolbarActionButtons>
           <ToolbarButton>🌚</ToolbarButton>
