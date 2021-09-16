@@ -12,17 +12,69 @@ import {
   getPostDescription,
   getReadingTime,
   getTableOfContents,
-} from '~/utils/get-posts';
+} from '~/utils/get-post-data';
+
+interface TinaData {
+  title: string;
+  excerpt?: string;
+  hero?: string;
+  date?: string;
+  body?: string;
+}
+
+interface ComplexTinaData {
+  getPostsDocument?: {
+    data?: TinaData;
+  };
+}
 
 interface BlogPostProps extends ComponentProps {
   slug: string;
-  post: FullBlogPost;
-  data: unknown;
+  post?: FullBlogPost;
+  data?: ComplexTinaData;
 }
 
-export const BlogPostPage: Component<BlogPostProps> = (props) => {
-  const { post, data, slug } = props;
-  const tinaPost = data?.getPostsDocument?.data;
+const getTinaData = (
+  originalData?: ComplexTinaData,
+): TinaData | undefined | null => {
+  if (!originalData) return null;
+  return originalData?.getPostsDocument?.data;
+};
+
+const buildFullBlogPostData = (
+  tinaData?: TinaData | null,
+): FullBlogPost | null => {
+  if (!tinaData) return null;
+  const { hero, body } = tinaData;
+  const readingTime = getReadingTime(body);
+  const actualHero: string = hero
+    ? hero.startsWith('http')
+      ? hero
+      : `/static/images/posts/${hero}`
+    : '';
+  return {
+    ...tinaData,
+    readingTime,
+    hero: actualHero,
+    excerpt: getPostDescription(tinaData?.excerpt, body),
+    tableOfContents: getTableOfContents(body),
+    slug: '',
+  };
+};
+
+const getPostData = (
+  slug: string,
+  staticData?: FullBlogPost | null,
+  tinaData?: ComplexTinaData,
+): FullBlogPost => {
+  const tinaPost = getTinaData(tinaData);
+  const liveData = buildFullBlogPostData(tinaPost);
+  return { ...staticData, ...liveData, slug } as FullBlogPost;
+};
+
+const BlogPostPage: Component<BlogPostProps> = (props) => {
+  const { slug, data, post: staticData } = props;
+  const post = getPostData(slug, staticData, data);
   const router = useRouter();
 
   if (!router.isFallback && !slug) {
@@ -34,7 +86,21 @@ export const BlogPostPage: Component<BlogPostProps> = (props) => {
       {router.isFallback ? (
         <p>Loading…</p>
       ) : (
-        <BlogPost {...post} {...tinaPost} hero={post?.hero} content={tinaPost?.body} />
+        <>
+          <p>{post.title}</p>
+          <hr />
+          <p>{post.excerpt}</p>
+          <hr />
+          <p>{post?.readingTime?.text}</p>
+          <hr />
+          <p>{post.hero}</p>
+          <hr />
+          <p>{post.date}</p>
+          <hr />
+          <p>{post.inProgress ? 'true' : 'false'}</p>
+          <hr />
+          <p>{post.body}</p>
+        </>
       )}
     </Page>
   );
@@ -63,28 +129,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables,
   });
 
-  const initialPostData = tinaProps.data.getPostsDocument.data;
-  const { hero, body } = initialPostData;
-  const readingTime = getReadingTime(body);
-  const actualHero: string = hero
-    ? hero.startsWith('http')
-      ? hero
-      : `/static/images/posts/${hero}`
-    : '';
-  const post: FullBlogPost = {
-    ...initialPostData,
-    readingTime,
-    hero: actualHero,
-    excerpt: getPostDescription(body),
-    tableOfContents: getTableOfContents(body),
-    content: body,
-    slug,
-  };
-
+  const tinaPost = getTinaData(tinaProps?.data);
+  const fullPostData = buildFullBlogPostData(tinaPost);
   return {
     props: {
-      ...tinaProps, // {data: {...}, query: '...', variables: {...}}
-      post,
+      ...tinaProps,
+      post: fullPostData,
       slug,
     },
   };

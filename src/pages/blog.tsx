@@ -15,7 +15,6 @@ const Blog: Component<BlogProps> = (props) => {
   const { posts } = props;
   return (
     <Page>
-      <Hello />
       {(posts || []).map((post, i) => {
         return <BlogPostCard key={i} {...post} />;
       })}

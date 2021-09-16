@@ -1,21 +1,18 @@
+import { IReadTimeResults } from 'reading-time';
+
 export interface BlogPost {
-  title: string;
-  date: string;
   slug: string;
+  title: string;
+  date?: string;
   hero?: string;
   excerpt?: string;
   color?: string;
   link?: string;
-  readingTime?: {
-    text?: string;
-    minutes?: number;
-    time?: number;
-    words?: number;
-  };
+  readingTime?: IReadTimeResults | null;
   inProgress?: boolean;
 }
 
 export interface FullBlogPost extends BlogPost {
-  tableOfContents?: string;
-  content?: string;
+  tableOfContents?: string | null;
+  body?: string;
 }

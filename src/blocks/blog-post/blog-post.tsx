@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -45,8 +46,10 @@ const components: any = {
 
 interface BlogPostProps extends ComponentProps, FullBlogPost {}
 
+const REACT_MD_ENABLED = false;
+
 export const BlogPost: Component<BlogPostProps> = (props) => {
-  const { title, hero, date, readingTime, tableOfContents, content } = props;
+  const { title, hero, date, readingTime, tableOfContents, body: content } = props;
 
   const { isDark } = { isDark: false }; // TODO: useContext(ThemeContext);
 
@@ -56,6 +59,33 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
     getColorFromPalette(heroPalette, isDark) || '#fff',
     0.4,
   );
+
+  const renderTableOfContents = () => {
+    if (!REACT_MD_ENABLED) return <></>;
+    if (!tableOfContents || tableOfContents.length <= 0) return <></>;
+    return (
+      <div className={styles.toc}>
+        <p className={styles.title}>Table of Contents:</p>
+        <ReactMarkdown
+          className={styles.content}
+          children={tableOfContents ?? ''}
+        />
+      </div>
+    );
+  };
+
+  const renderContent = () => {
+    if (!REACT_MD_ENABLED) return <></>;
+    if (!content || content.length <= 0) return <></>;
+    return (
+      <ReactMarkdown
+        remarkPlugins={[gfm]}
+        className={styles.content}
+        components={components}
+        children={content}
+      />
+    );
+  };
 
   return (
     <div className={styles.post}>
@@ -90,23 +120,9 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
             decoding={'async'}
           />
         )}
-        {(tableOfContents ?? '').length > 0 && (
-          <div className={styles.toc}>
-            <p className={styles.title}>Table of Contents:</p>
-            <ReactMarkdown className={styles.content}>
-              {tableOfContents ?? ''}
-            </ReactMarkdown>
-          </div>
-        )}
-        {content && (
-          <ReactMarkdown
-            remarkPlugins={[gfm]}
-            className={styles.content}
-            components={components}
-          >
-            {content}
-          </ReactMarkdown>
-        )}
+        {renderTableOfContents()}
+        {renderContent()}
+        <p>{content}</p>
       </article>
     </div>
   );
