@@ -1,14 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/display-name */
-/* @ts-nocheck */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// @ts-nocheck
 import Link from 'next/link';
 import { Children, createElement } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 import styles from './blog-post.module.css';
+
+import { Component, ComponentProps } from '~/elements/fc';
 
 const flatten = (text: string, child: any): any => {
   return typeof child === 'string'
@@ -16,7 +19,7 @@ const flatten = (text: string, child: any): any => {
     : Children.toArray(child.props.children).reduce(flatten, text);
 };
 
-const CustomLink = (props) => {
+const CustomLink: Component<ComponentProps & { href: string }> = (props) => {
   const { href } = props;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
@@ -31,7 +34,9 @@ const CustomLink = (props) => {
   return <a target={'_blank'} rel={'noopener noreferrer'} {...props} />;
 };
 
-const HeadingRenderer = (props: any) => {
+const HeadingRenderer: Component<ComponentProps & { level: string }> = (
+  props,
+) => {
   const arrayChildren = Children.toArray(props.children);
   const text = arrayChildren.reduce(flatten, '');
   const slug = text.toLowerCase().replace(/\W/g, '-');
