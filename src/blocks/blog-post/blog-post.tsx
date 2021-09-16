@@ -122,7 +122,6 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
         )}
         {renderTableOfContents()}
         {renderContent()}
-        <p>{content}</p>
       </article>
     </div>
   );
