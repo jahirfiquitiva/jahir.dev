@@ -45,7 +45,7 @@ export function getPostBySlug(
       items[field] = data.excerpt || data.description || null;
     } else if (field === 'slug') {
       items[field] = data.slug || realSlug;
-    } else if (field === 'content') {
+    } else if (field === 'content' || field === 'body') {
       items[field] = content;
     } else if (field === 'toc') {
       items['tableOfContents'] = getTableOfContents(content);

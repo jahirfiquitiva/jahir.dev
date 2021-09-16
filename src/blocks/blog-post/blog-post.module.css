@@ -1,13 +1,13 @@
 .post {
   display: flex;
   flex-direction: column;
-  padding: 2rem 1.2rem 3rem;
+  padding: 2rem 0 3rem;
   width: 100%;
 }
 
 .post .date {
   color: var(--text-tertiary);
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   margin-bottom: 2.4rem;
 }
 
@@ -28,13 +28,13 @@
   list-style: none;
   position: relative;
   padding-left: 1.6rem;
-  margin-left: .2rem;
+  margin-left: 0.2rem;
   counter-reset: start 1;
 }
 
 .post ol > li:before,
 .post ul > li:before {
-  content: counter(list-item, decimal) ".";
+  content: counter(list-item, decimal) '.';
   position: absolute;
   font-weight: 400;
   color: #6b7280;
@@ -67,7 +67,7 @@
 .post h3,
 .post h4 {
   margin-top: 1.6rem;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
   scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
 }
 
@@ -82,19 +82,19 @@
 }
 
 .post p {
-  margin: .4rem 0;
+  margin: 0.4rem 0;
 }
 
 .post ul li {
-  margin-top: .1rem;
-  margin-bottom: .1rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
 }
 
 .post blockquote {
   margin: 1.2rem 0;
   background-color: var(--primary);
   border-left: 2px solid var(--accent-light);
-  padding: .4rem 1.2rem;
+  padding: 0.4rem 1.2rem;
 }
 
 .post em {
@@ -125,12 +125,12 @@ p.possiblecodetitle {
 
 p.possiblecodetitle.possibleimagetitle {
   border-radius: 6px;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
 p.possiblecodetitle.possibleimagetitle img {
-  margin-top: .8rem;
-  margin-bottom: .2rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.2rem;
 }
 
 p.possiblecodetitle + pre[class*='language-'] {

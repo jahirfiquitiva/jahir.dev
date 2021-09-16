@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next';
 
-import { Hello } from '~/blocks/home/hello';
 import { Page } from '~/blocks/page';
 import { BlogPostCard } from '~/components/cards';
 import { Component, ComponentProps } from '~/elements/fc';

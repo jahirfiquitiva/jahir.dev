@@ -59,7 +59,7 @@ const buildFullBlogPostData = (
     excerpt: getPostDescription(tinaData?.excerpt, body),
     tableOfContents: getTableOfContents(body),
     slug: '',
-  };
+  } as FullBlogPost;
 };
 
 const getPostData = (
