@@ -4,7 +4,7 @@ import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
 import { staticRequest, getStaticPropsForTina } from 'tinacms';
 
-import { BlogPost } from '~/blocks/blog-post';
+import { BlogPost } from '~/blocks/blog-post/blog-post';
 import { Page } from '~/blocks/page';
 import { Component, ComponentProps } from '~/elements/fc';
 import { FullBlogPost } from '~/types/blog-post';
@@ -82,27 +82,7 @@ const BlogPostPage: Component<BlogPostProps> = (props) => {
   }
 
   return (
-    <Page>
-      {router.isFallback ? (
-        <p>Loading…</p>
-      ) : (
-        <>
-          <p>{post.title}</p>
-          <hr />
-          <p>{post.excerpt}</p>
-          <hr />
-          <p>{post?.readingTime?.text}</p>
-          <hr />
-          <p>{post.hero}</p>
-          <hr />
-          <p>{post.date}</p>
-          <hr />
-          <p>{post.inProgress ? 'true' : 'false'}</p>
-          <hr />
-          <p>{post.body}</p>
-        </>
-      )}
-    </Page>
+    <Page>{router.isFallback ? <p>Loading…</p> : <BlogPost {...post} />}</Page>
   );
 };
 

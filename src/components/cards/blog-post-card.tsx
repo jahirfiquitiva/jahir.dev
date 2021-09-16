@@ -4,7 +4,7 @@ import { usePalette } from 'react-palette';
 
 import { ExtLinkCard } from '~/elements/card';
 import { Component, ComponentProps } from '~/elements/fc';
-import { BlogPost } from '~/types/blog-post';
+import { SimpleBlogPost } from '~/types/blog-post';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
@@ -58,7 +58,7 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
   }
 `;
 
-interface BlogPostCardProps extends ComponentProps, BlogPost {}
+interface BlogPostCardProps extends ComponentProps, SimpleBlogPost {}
 
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const {

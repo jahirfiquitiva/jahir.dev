@@ -45,10 +45,10 @@ to keep gradients in titles while using the dark theme only. They look better wi
 Here's a quick comparison:
 
 *Before*
-![Toolbar before](/assets/images/posts/website-redesign/toolbar-before.png)
+![Toolbar before](/static/images/posts/website-redesign/toolbar-before.png)
 
 *After*
-![Toolbar now](/assets/images/posts/website-redesign/toolbar-after.png)
+![Toolbar now](/static/images/posts/website-redesign/toolbar-after.png)
 
 If you're wondering how to apply a gradient to text, you can do so like this:
 
@@ -99,10 +99,10 @@ image a bit.
 Comparison:
 
 *Before*
-![Projects cards Before](/assets/images/posts/website-redesign/projects-before.png)
+![Projects cards Before](/static/images/posts/website-redesign/projects-before.png)
 
 *After*
-![Projects cards now](/assets/images/posts/website-redesign/projects-after.png)
+![Projects cards now](/static/images/posts/website-redesign/projects-after.png)
 
 Finally, I added a link to my resume in the projects section, because even though I'm not actively looking for new job
 opportunities, I like to know of any available positions which might take my career to the next step.
@@ -126,12 +126,12 @@ interactive than before and they don't need to go to the contact site and fill u
 Here's the comparison:
 
 *Before*
-![Blog before](/assets/images/posts/website-redesign/blog-before.png)
-![Blog footer before](/assets/images/posts/website-redesign/blog-footer-before.png)
+![Blog before](/static/images/posts/website-redesign/blog-before.png)
+![Blog footer before](/static/images/posts/website-redesign/blog-footer-before.png)
 
 *After*
-![Blog now](/assets/images/posts/website-redesign/blog-after.png)
-![Blog footer now](/assets/images/posts/website-redesign/blog-footer-after.png)
+![Blog now](/static/images/posts/website-redesign/blog-after.png)
+![Blog footer now](/static/images/posts/website-redesign/blog-footer-after.png)
 
 #### Footer
 
@@ -144,10 +144,10 @@ website.
 Comparison:
 
 *Before*
-![Footer before](/assets/images/posts/website-redesign/footer-before.png)
+![Footer before](/static/images/posts/website-redesign/footer-before.png)
 
 *After*
-![Footer now](/assets/images/posts/website-redesign/footer-after.png)
+![Footer now](/static/images/posts/website-redesign/footer-after.png)
 
 ## New Features
 

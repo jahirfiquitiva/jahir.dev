@@ -4,7 +4,7 @@ import { join } from 'path';
 
 import matter from 'gray-matter';
 
-import { BlogPost } from '~/types/blog-post';
+import { SimpleBlogPost } from '~/types/blog-post';
 import getRandomItemFrom from '~/utils/get-random-item';
 import { getTableOfContents, getReadingTime } from '~/utils/get-post-data';
 
@@ -14,7 +14,7 @@ export const getPostSlugs = (): string[] => {
 };
 
 type BaseObject = { [key: string]: string };
-type InternalBlogPost = BaseObject & BlogPost;
+type InternalBlogPost = BaseObject & SimpleBlogPost;
 
 const defaultColors = [
   '#fc5c65',

@@ -46,7 +46,7 @@ const components: any = {
 
 interface BlogPostProps extends ComponentProps, FullBlogPost {}
 
-const REACT_MD_ENABLED = false;
+const REACT_MD_ENABLED = true;
 
 export const BlogPost: Component<BlogPostProps> = (props) => {
   const { title, hero, date, readingTime, tableOfContents, body: content } = props;
