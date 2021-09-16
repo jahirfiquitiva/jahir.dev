@@ -97,7 +97,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
           <h6>{title}</h6>
           {excerpt && <p>{excerpt}</p>}
           <p className={'date-time'}>
-            {formatDate(new Date(date || ''))}
+            {formatDate(date)}
             {(readingTime?.text?.length || 0) > 0 && (
               <>
                 {' • '}

@@ -103,7 +103,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
           {title}
         </h1>
         <p className={styles.date}>
-          {formatDate(new Date(date))}
+          {formatDate(date)}
           {(readingTime?.text?.length || 0) > 0 && (
             <>
               {' • '}
