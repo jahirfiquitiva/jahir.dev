@@ -5,13 +5,13 @@ import { ExtLink } from '~/elements/ext-link';
 const baseCardStyles = `
   --border-radius: 6px;
   padding: 0;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.35s ease-in-out;
   border-radius: var(--border-radius);
   border: 1px solid var(--divider);
 
   & * {
     border-radius: var(--border-radius);
-    transition: all 0.25s ease-in-out;
+    transition: all 0.35s ease-in-out;
   }
 `;
 

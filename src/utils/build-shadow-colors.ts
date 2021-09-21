@@ -12,6 +12,8 @@ const buildShadowColors = (
   return buildStyles({
     '--shadow-color': hexToRGB(color, shadowOpacity || 0.15),
     '--border-color': hexToRGB(color, borderOpacity || 0.2),
+    '--dashed-color': hexToRGB(color, 0.75),
+    '--bg-color': hexToRGB(color, 0.1),
     '--hl-color': color,
   });
 };

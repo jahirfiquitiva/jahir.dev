@@ -25,7 +25,7 @@ const getSkill = (skillName: string): SkillProps | null => {
   }
 };
 
-const iconSize = 0.8;
+const iconSize = 1;
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const {
     title,
@@ -49,12 +49,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
           const skill = getSkill(skillName);
           if (!skill) return null;
           return (
-            <li
-              key={i}
-              className={
-                skillName.toLowerCase().includes('kotlin') ? 'no-mr' : ''
-              }
-            >
+            <li key={i}>
               <Icon
                 path={skill.iconPath}
                 color={skill.color}
@@ -76,35 +71,27 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
           ...buildShadowColors(color),
         }}
       >
-        {preview?.length && (
-          <div className={'preview'}>
+        <div className={'details'}>
+          <div className={'icon-title'}>
             <Image
-              src={preview}
+              src={icon}
               alt={title}
-              width={341}
-              height={256}
+              width={48}
+              height={48}
               layout={'fixed'}
               loading={'lazy'}
             />
+            <h6>{title}</h6>
           </div>
-        )}
-        <div className={'wrapper'}>
-          <div className={'content'}>
-            <div className={'icon-title'}>
-              <Image
-                src={icon}
-                alt={title}
-                width={48}
-                height={48}
-                layout={'fixed'}
-                loading={'lazy'}
-              />
-              <h5>{title}</h5>
-            </div>
-            <p>{description}</p>
-            {renderProjectStack()}
-          </div>
+          <p>{description}</p>
+          {renderProjectStack()}
         </div>
+        {preview?.length && (
+          <div
+            className={'preview'}
+            style={{ backgroundImage: `url('${preview}')` }}
+          />
+        )}
       </BaseProjectCard>
     </Link>
   );
