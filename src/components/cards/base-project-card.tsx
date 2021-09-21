@@ -3,18 +3,21 @@ import styled from '@emotion/styled';
 import { ExtLinkCard } from '~/elements/card';
 
 export const BaseProjectCard = styled(ExtLinkCard)`
-  --border-radius: 8px;
-  border: 1px dashed var(--dashed-color);
+  --border-radius: 10px;
+  border: 1px solid var(--dashed-color);
   width: 100%;
-  max-height: 192px;
-  max-width: 480px;
   overflow: hidden;
   background-color: var(--bg-color);
   color: var(--text-secondary);
   display: grid;
-  grid-template-columns: 65% 1fr;
+  grid-template-columns: 60% 1fr;
+  position: relative;
 
-  @media screen and (min-width: 375px) {
+  @media screen and (min-width: 425px) {
+    grid-template-columns: 70% 1fr;
+  }
+
+  @media screen and (min-width: 500px) {
     grid-template-columns: 60% 1fr;
   }
 
@@ -32,15 +35,26 @@ export const BaseProjectCard = styled(ExtLinkCard)`
       margin-bottom: 0.4rem;
       margin-left: -0.2rem;
 
+      & div:first-of-type,
+      & img {
+        min-width: 48px;
+      }
+
       h6 {
-        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         color: var(--text-primary);
         text-shadow: 1px 2px 2px var(--projects-card-text-shadow);
-        margin-left: 0.9rem;
-        font-size: calc(var(--base-font-size) * 1.5);
+        line-height: 1.5;
+        left: calc(48px + 1rem);
+        position: absolute;
+        margin-top: 0;
+        padding-left: 0.9rem;
+        font-size: calc(var(--base-font-size) * 1.25);
 
         @media screen and (min-width: 375px) {
-          font-size: calc(var(--base-font-size) * 1.75);
+          font-size: calc(var(--base-font-size) * 1.5);
         }
       }
     }
@@ -48,6 +62,7 @@ export const BaseProjectCard = styled(ExtLinkCard)`
     p {
       font-size: 0.95rem;
       text-decoration: none;
+      color: var(--text-secondary);
     }
 
     .stack {
@@ -74,28 +89,17 @@ export const BaseProjectCard = styled(ExtLinkCard)`
 
   .preview {
     opacity: 0.75;
+    max-height: 100%;
+    max-width: 100%;
     background-repeat: no-repeat;
-    background-position: 30% 220%;
-    background-size: 180%;
-
-    @media screen and (min-width: 375px) {
-      background-position: 30% 250%;
-      background-size: 145%;
-    }
-
-    @media screen and (min-width: 425px) {
-      background-position: 30% -350%;
-      background-size: 145%;
-    }
-
-    @media screen and (min-width: 480px) {
-      background-position: 30% -50%;
-      background-size: 145%;
-    }
+    background-position: right bottom;
+    background-size: 100%;
+    filter: drop-shadow(2px 3px 4px var(--filter-color, var(--dashed-color)));
   }
 
   &:hover,
   &:focus {
+    border-color: var(--dashed-color);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
 
@@ -115,6 +119,10 @@ export const BaseProjectCard = styled(ExtLinkCard)`
         -webkit-text-decoration-color: var(--hl-color);
         text-decoration: underline solid var(--hl-color);
       }
+
+      p {
+        color: var(--text-primary);
+      }
     }
 
     .stack {
@@ -122,20 +130,9 @@ export const BaseProjectCard = styled(ExtLinkCard)`
     }
 
     .preview {
-      filter: blur(0);
       opacity: 1;
-      background-position: 30% 30px;
-      background-size: 200%;
-
-      @media screen and (min-width: 375px) {
-        background-position: 40% 40px;
-        background-size: 160%;
-      }
-
-      @media screen and (min-width: 425px) {
-        background-position: 40% -20%;
-        background-size: 160%;
-      }
+      background-position: right bottom;
+      background-size: 105%;
     }
   }
 `;

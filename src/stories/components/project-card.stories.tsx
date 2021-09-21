@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 
 import { ProjectCard } from '~/components/cards';
-import { projects } from '~/types/project';
 
 const projectData = {
     title: 'Blueprint',

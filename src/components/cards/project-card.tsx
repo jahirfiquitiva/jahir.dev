@@ -27,19 +27,10 @@ const getSkill = (skillName: string): SkillProps | null => {
 
 const iconSize = 1;
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
-  const {
-    title,
-    description,
-    link,
-    icon,
-    preview,
-    stack,
-    color,
-    // darkColor,
-    // gradient,
-    // darkGradient,
-  } = props;
+  const { title, description, link, icon, preview, stack, color, darkColor } =
+    props;
   // TODO
+  const { isDark } = { isDark: false }; // TODO: useContext(ThemeContext);
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;
@@ -68,7 +59,12 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
         to={link}
         className={'nodeco'}
         style={{
-          ...buildShadowColors(color),
+          ...buildShadowColors(
+            isDark ? darkColor || color : color,
+            0.2,
+            0.4,
+            isDark,
+          ),
         }}
       >
         <div className={'details'}>
