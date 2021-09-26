@@ -37,12 +37,13 @@ export const BaseProjectCard = styled(ExtLinkCard)`
 
       & div:first-of-type,
       & img {
+        overflow: unset !important;
         min-width: 48px;
       }
 
       img {
         opacity: 0.9;
-        filter: drop-shadow(0 1px 2px var(--projects-card-text-shadow));
+        filter: drop-shadow(0 1px 2px var(--filter-color, var(--dashed-color)));
       }
 
       h6 {
