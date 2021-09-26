@@ -45,8 +45,8 @@
     var(--start-grad-color) 0%,
     var(--end-grad-color) 100%
   );
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
   background-clip: text;
 }
 

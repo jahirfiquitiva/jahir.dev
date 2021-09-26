@@ -18,10 +18,11 @@ export interface ComponentWithGradientProps {
 export const gradientToClassName = (
   gradient?: GradientOptions,
   forceGradient?: boolean,
+  isDivider?: boolean,
 ): string => {
   // TODO: Validate if gradient is of expected type
   if (!gradient) return '';
-  return `text-gradient ${gradient} ${forceGradient ? 'forced' : ''}`.trim();
+  return `${isDivider ? '' : 'text-gradient'} ${gradient} ${forceGradient ? 'forced' : ''}`.trim();
 };
 
 export type TextShadowOptions =

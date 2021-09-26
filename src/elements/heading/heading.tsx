@@ -8,7 +8,7 @@ import {
   textShadowToClassName,
 } from '~/elements/props';
 
-interface HeadingProps
+export interface HeadingProps
   extends ComponentProps,
     ComponentWithGradientProps,
     ComponentWithTextShadowProps {

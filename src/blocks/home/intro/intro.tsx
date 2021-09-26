@@ -7,6 +7,7 @@ import { Component } from '~/elements/fc';
 const ParagraphsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  margin-bottom: 1.2rem;
 
   @media (min-width: 768px) {
     grid-column-gap: 3rem;
@@ -21,7 +22,7 @@ const IntroParagraph = styled(HelloParagraph)`
 
 export const Intro: Component = () => {
   return (
-    <>
+    <section>
       <Hello />
       <ParagraphsContainer>
         <IntroParagraph>
@@ -57,6 +58,6 @@ export const Intro: Component = () => {
           <SocialLinks />
         </div>
       </ParagraphsContainer>
-    </>
+    </section>
   );
 };

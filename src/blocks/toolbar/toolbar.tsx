@@ -52,10 +52,7 @@ const ToolbarActionButtons = styled.div`
 const ToolbarContainer = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: var(--toolbar-height) minmax(
-      calc(var(--toolbar-height) * 4),
-      100%
-    );
+  grid-template-rows: var(--toolbar-height) 0;
   grid-auto-rows: minmax(min-content, max-content);
   grid-gap: 0.2rem;
   padding: 0.4rem;
@@ -66,6 +63,10 @@ const ToolbarContainer = styled.div`
   transition: all 0.3s ease-in-out;
 
   &.active {
+    grid-template-rows: var(--toolbar-height) minmax(
+      calc(var(--toolbar-height) * 4),
+      100%
+    );
     max-height: unset;
   }
 

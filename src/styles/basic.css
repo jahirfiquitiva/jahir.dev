@@ -16,7 +16,8 @@ body {
 
 hr {
   --start-grad-color: var(--divider);
-  --start-grad-color: var(--divider);
+  --end-grad-color: var(--divider);
+
   margin: 1rem 0;
   height: 4px;
   background: var(--start-grad-color);
