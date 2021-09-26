@@ -7,7 +7,7 @@ import { Divider } from '~/elements/divider';
 import { SectionHeading } from '~/components/section-heading';
 import { mediaQueries } from '~/types/viewports';
 
-export const ProjectsGrid = styled.div`
+export const ProjectsGrid = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
@@ -15,6 +15,10 @@ export const ProjectsGrid = styled.div`
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: 1fr 1fr;
+  }
+
+  li a {
+    height: 100%;
   }
 `;
 
@@ -33,8 +37,12 @@ export const Projects = () => {
       <ProjectsGrid>
         {projects
           .filter((project) => !project.hide)
-          .map((project, i) => {
-            return <ProjectCard key={i} {...project} />;
+          .map((project, index) => {
+            return (
+              <li>
+                <ProjectCard key={index} {...project} />
+              </li>
+            );
           })}
       </ProjectsGrid>
     </section>

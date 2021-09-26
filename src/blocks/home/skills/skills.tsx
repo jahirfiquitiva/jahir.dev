@@ -31,8 +31,8 @@ export const Skills = () => {
           .filter((skill) => !skill.hide)
           .map((skill, index) => {
             return (
-              <li>
-                <Chip key={index} style={buildSkillChipStyles(skill.color)}>
+              <li key={index}>
+                <Chip style={buildSkillChipStyles(skill.color)}>
                   <Icon path={skill.iconPath} size={0.8} />
                   {skill.name}
                 </Chip>

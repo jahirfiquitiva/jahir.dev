@@ -9,7 +9,7 @@ const baseCardStyles = `
   border-radius: var(--border-radius);
   border: 1px solid var(--divider);
 
-  & * {
+  & div {
     border-radius: var(--border-radius);
     transition: all 0.35s ease-in-out;
   }
