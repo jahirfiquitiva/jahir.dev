@@ -7,7 +7,7 @@ const ProjectsGrid = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 1rem;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
 `;

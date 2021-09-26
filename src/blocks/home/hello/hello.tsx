@@ -12,9 +12,9 @@ const HelloContainer = styled.div`
   margin-bottom: 1rem;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-auto-flow: dense;
 
-  @media (min-width: 960px) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr auto;
   }
 `;
@@ -23,6 +23,11 @@ const HeadingContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-end;
+  grid-row: 2;
+
+  @media (min-width: 768px) {
+    grid-row: 1;
+  }
 `;
 
 const HeadingParagraph = styled.p`
@@ -36,6 +41,7 @@ export const HelloParagraph = styled(HeadingParagraph)`
 const ImageContainer = styled(HeadingContainer)`
   align-items: center;
   padding: 0 2rem 0.8rem;
+  grid-row: 1;
 
   & div:first-of-type {
     overflow: unset !important;

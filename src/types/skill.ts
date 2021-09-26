@@ -19,7 +19,7 @@ export const skills: SkillProps[] = [
   { name: 'Python', iconPath: mdiLanguagePython, color: '#3a74a5' },
   { name: 'JavaScript', iconPath: mdiLanguageJavascript, color: '#f7df1e' },
   { name: 'TypeScript', iconPath: mdiLanguageTypescript, color: '#3178c6' },
-  { name: 'HTLM5', iconPath: mdiLanguageHtml5, color: '#e34f26' },
+  { name: 'HTML5', iconPath: mdiLanguageHtml5, color: '#e34f26' },
   { name: 'CSS3', iconPath: mdiLanguageCss3, color: '#3572b5' },
   { name: 'Node JS', iconPath: mdiNodejs, color: '#61af43' },
   { name: 'React', iconPath: mdiReact, color: '#00c2e6' },
