@@ -113,10 +113,10 @@ export const LinkIconButton = styled(BaseLinkIconButton)`
   padding: 0.425rem;
   min-height: 24px;
   min-width: 24px;
-  color: #fff !important;
+  color: #fff;
 
   & svg {
-    color: #fff !important;
-    fill: #fff !important;
+    color: #fff;
+    fill: #fff;
   }
 `;
