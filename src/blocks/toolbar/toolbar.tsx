@@ -102,8 +102,12 @@ const NavigationContainer = styled.nav`
   }
 `;
 
+const ThemeToggleButton = styled(ToolbarButton)`
+  justify-content: center;
+`
+
 export const Toolbar: Component = () => {
-  const { toggleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -118,7 +122,9 @@ export const Toolbar: Component = () => {
         </ToolbarLogo>
         <ToolbarLinks active={expanded} />
         <ToolbarActionButtons>
-          <ToolbarButton onClick={toggleTheme}>🌚</ToolbarButton>
+          <ThemeToggleButton onClick={toggleTheme}>
+            {isDark ? '🌞' : '🌚'}
+          </ThemeToggleButton>
           <ToolbarMenuToggle
             active={expanded}
             onClick={() => {

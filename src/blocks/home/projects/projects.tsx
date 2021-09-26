@@ -11,6 +11,7 @@ export const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
+  padding: 1.6rem 0 2rem;
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: 1fr 1fr;
