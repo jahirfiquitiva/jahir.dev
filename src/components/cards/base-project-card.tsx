@@ -74,8 +74,7 @@ export const BaseProjectCard = styled(ExtLinkCard)`
         display: inline-flex;
         align-items: center;
         overflow: hidden;
-        height: 24px;
-        width: 24px;
+        padding: 1px;
         * {
           width: 100%;
           height: 100%;

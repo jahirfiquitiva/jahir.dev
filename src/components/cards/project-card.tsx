@@ -26,7 +26,7 @@ const getSkill = (skillName: string): SkillProps | null => {
   }
 };
 
-const iconSize = 1;
+const iconSize = 0.9;
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props;
