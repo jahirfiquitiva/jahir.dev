@@ -40,6 +40,11 @@ export const BaseProjectCard = styled(ExtLinkCard)`
         min-width: 48px;
       }
 
+      img {
+        opacity: 0.9;
+        filter: drop-shadow(0 1px 2px var(--projects-card-text-shadow));
+      }
+
       h6 {
         white-space: nowrap;
         overflow: hidden;
@@ -104,6 +109,7 @@ export const BaseProjectCard = styled(ExtLinkCard)`
 
     .icon-title {
       img {
+        opacity: 1;
         -webkit-transform: scale(1.05);
         -moz-transform: scale(1.05);
         -ms-transform: scale(1.05);

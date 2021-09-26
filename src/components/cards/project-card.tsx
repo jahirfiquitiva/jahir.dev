@@ -11,6 +11,8 @@ import { ProjectProps } from '~/types/project';
 import { SkillProps, skills } from '~/types/skill';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import { useTheme } from '~/providers/theme';
+import getReadableColor from '~/utils/get-readable-color';
+import buildStyles from '~/utils/build-styles';
 // import formatDate from '~/utils/format-date';
 // import getColorFromPalette from '~/utils/get-color-from-palette';
 
@@ -31,6 +33,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props;
   const { isDark } = useTheme();
+  const projectColor = isDark ? darkColor || color : color;
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;
@@ -77,7 +80,13 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
               layout={'fixed'}
               loading={'lazy'}
             />
-            <h6>{title}</h6>
+            <h6
+              style={buildStyles({
+                '--hl-color': getReadableColor(projectColor, isDark),
+              })}
+            >
+              {title}
+            </h6>
           </div>
           <p>{description}</p>
           {renderProjectStack()}

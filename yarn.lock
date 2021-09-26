@@ -4177,6 +4177,13 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
 
+"@types/use-dark-mode@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@types/use-dark-mode/-/use-dark-mode-2.3.1.tgz#986f12af0a038bc6b3446ecdbc651a448c90f817"
+  integrity sha512-pCeP5sRWlhQNePb7J2tOkuH2utVGrnJi86s3JUfrQpes955RloX3/EnhB7F4hm7u/U8JUHMAsrclK7V09gIQdA==
+  dependencies:
+    use-dark-mode "*"
+
 "@types/webpack-env@^1.16.0":
   version "1.16.2"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.16.2.tgz#8db514b059c1b2ae14ce9d7bb325296de6a9a0fa"
@@ -8527,6 +8534,11 @@ from2@^2.1.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
+
+frostcolor@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/frostcolor/-/frostcolor-3.0.0.tgz#8c958d407245068b5ced25ebc61e26d369bf8bd2"
+  integrity sha512-av8I3GxFlF3i6FBVi3fsr9EM/iCyWi7ELhbX+2w+LGrT6ymbO29JBkRueZbqd8WQHUyV0JCcRa5fzm1llLSeaA==
 
 fs-extra@^0.30.0:
   version "0.30.0"
@@ -16347,7 +16359,7 @@ use-composed-ref@^1.0.0:
   dependencies:
     ts-essentials "^2.0.3"
 
-use-dark-mode@^2.3.1:
+use-dark-mode@*, use-dark-mode@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/use-dark-mode/-/use-dark-mode-2.3.1.tgz#d506349c7b7e09e9977cb8a6ab4470896aa3779a"
   integrity sha512-hmcdJR96tTustRQdaQwe6jMrZHnmPqXBxgy4jaQ4gsfhwajsCpjECuq9prgDe9XxMx/f9r96o2/md6O4Lwhwjg==
