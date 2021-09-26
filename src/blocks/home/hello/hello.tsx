@@ -37,9 +37,13 @@ const ImageContainer = styled(HeadingContainer)`
   align-items: center;
   padding: 0 2rem 0.8rem;
 
-  & * {
+  & div:first-of-type {
+    overflow: unset !important;
+  }
+
+  & img {
     border-radius: 50%;
-    filter: drop-shadow(0 4px 4px var(--toolbar-shadow-c));
+    filter: drop-shadow(0 3px 3px var(--toolbar-shadow-c));
   }
 `;
 
