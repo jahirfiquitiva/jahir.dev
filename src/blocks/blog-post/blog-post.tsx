@@ -16,6 +16,7 @@ import { FullBlogPost } from '~/types/blog-post';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
+import { useTheme } from '~/providers/theme';
 
 const getChildType = (child: any): string | null | undefined => {
   try {
@@ -50,9 +51,7 @@ const REACT_MD_ENABLED = true;
 
 export const BlogPost: Component<BlogPostProps> = (props) => {
   const { title, hero, date, readingTime, tableOfContents, body: content } = props;
-
-  const { isDark } = { isDark: false }; // TODO: useContext(ThemeContext);
-
+  const { isDark } = useTheme();
   const { data: heroPalette } = usePalette(hero || '');
 
   const color = hexToRGB(

@@ -3,13 +3,14 @@ import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { TinaEditProvider } from 'tinacms/dist/edit-state';
+import { ThemeProvider } from '~/providers/theme';
 import '~/styles/global.css';
 
 const TinaCMS = dynamic(() => import('tinacms'), { ssr: false });
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <>
+    <ThemeProvider>
       <TinaEditProvider
         editMode={
           <TinaCMS
@@ -33,7 +34,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       >
         <Component {...pageProps} />
       </TinaEditProvider>
-    </>
+    </ThemeProvider>
   );
 };
 

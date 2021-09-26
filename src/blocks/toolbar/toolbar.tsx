@@ -6,6 +6,7 @@ import { Component } from '~/elements/fc';
 import { Logo } from '~/elements/logo';
 import { ToolbarButton, ToolbarMenuToggle } from '~/elements/toolbar-button';
 import { ToolbarLink } from '~/elements/toolbar-link';
+import { useTheme } from '~/providers/theme';
 
 const ToolbarLogo = styled(ToolbarLink)`
   grid-row: 1;
@@ -100,6 +101,7 @@ const NavigationContainer = styled.nav`
 `;
 
 export const Toolbar: Component = () => {
+  const { toggleTheme } = useTheme();
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -114,7 +116,7 @@ export const Toolbar: Component = () => {
         </ToolbarLogo>
         <ToolbarLinks active={expanded} />
         <ToolbarActionButtons>
-          <ToolbarButton>🌚</ToolbarButton>
+          <ToolbarButton onClick={toggleTheme}>🌚</ToolbarButton>
           <ToolbarMenuToggle
             active={expanded}
             onClick={() => {

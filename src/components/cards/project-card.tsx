@@ -10,6 +10,7 @@ import { Component, ComponentProps } from '~/elements/fc';
 import { ProjectProps } from '~/types/project';
 import { SkillProps, skills } from '~/types/skill';
 import buildShadowColors from '~/utils/build-shadow-colors';
+import { useTheme } from '~/providers/theme';
 // import formatDate from '~/utils/format-date';
 // import getColorFromPalette from '~/utils/get-color-from-palette';
 
@@ -29,8 +30,7 @@ const iconSize = 1;
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props;
-  // TODO
-  const { isDark } = { isDark: false }; // TODO: useContext(ThemeContext);
+  const { isDark } = useTheme();
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;

@@ -154,6 +154,14 @@ a.button:visited {
   text-decoration: none;
 }
 
+a.button.link-button,
+a.button.link-button:hover,
+a.button.link-button:focus,
+a.button.link-button:active,
+a.button.link-button:visited {
+  color: #fff;
+}
+
 b,
 strong {
   font-weight: 500;
@@ -192,5 +200,5 @@ textarea {
 }
 
 body.sb-show-main.sb-main-padded {
-padding: 0;
+  padding: 0;
 }

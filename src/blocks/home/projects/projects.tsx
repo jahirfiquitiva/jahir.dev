@@ -15,9 +15,11 @@ const ProjectsGrid = styled.div`
 export const Projects = () => {
   return (
     <ProjectsGrid>
-      {projects.map((project, i) => {
-        return <ProjectCard key={i} {...project} />;
-      })}
+      {projects
+        .filter((project) => !project.hide)
+        .map((project, i) => {
+          return <ProjectCard key={i} {...project} />;
+        })}
     </ProjectsGrid>
   );
 };

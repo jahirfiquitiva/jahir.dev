@@ -99,7 +99,7 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
     <BaseLinkButton
       title={title}
       aria-label={title}
-      className={`button ${className}`}
+      className={`button link-button ${className}`}
       href={href}
       target={target}
       rel={rel}
@@ -113,4 +113,10 @@ export const LinkIconButton = styled(BaseLinkIconButton)`
   padding: 0.425rem;
   min-height: 24px;
   min-width: 24px;
+  color: #fff !important;
+
+  & svg {
+    color: #fff !important;
+    fill: #fff !important;
+  }
 `;

@@ -10,6 +10,7 @@ export interface ProjectProps {
   darkGradient?: string[];
   tag?: string;
   stack?: string[];
+  hide?: boolean;
 }
 
 export const projects: ProjectProps[] = [
@@ -74,6 +75,7 @@ export const projects: ProjectProps[] = [
     color: '#3E95FB',
     tag: 'android',
     stack: ['android', 'kotlin', 'material design'],
+    hide: true,
   },
   {
     title: 'FABsMenu',
@@ -84,6 +86,7 @@ export const projects: ProjectProps[] = [
     color: '#eb3b75',
     tag: 'android',
     stack: ['android', 'java', 'material design'],
+    hide: true,
   },
   {
     title: 'Dashbud',
@@ -104,6 +107,7 @@ export const projects: ProjectProps[] = [
     color: '#88a4e6',
     tag: 'web',
     stack: ['HTLM5', 'css3', 'javascript'],
+    hide: true,
   },
   {
     title: 'BoyaConf',
@@ -125,6 +129,7 @@ export const projects: ProjectProps[] = [
     color: '#929292',
     tag: 'python',
     stack: ['python'],
+    hide: true,
   },
   {
     title: 'Stan',
@@ -134,6 +139,7 @@ export const projects: ProjectProps[] = [
     color: '#FC8303',
     tag: 'python',
     stack: ['python'],
+    hide: true,
   },
   {
     title: 'More',
