@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 import { ExtLinkCard } from '~/elements/card';
+import { mediaQueries } from '~/types/viewports';
 
 export const BaseProjectCard = styled(ExtLinkCard)`
   --border-radius: 10px;
@@ -13,11 +14,11 @@ export const BaseProjectCard = styled(ExtLinkCard)`
   grid-template-columns: 60% 1fr;
   position: relative;
 
-  @media screen and (min-width: 425px) {
+  ${mediaQueries.mobile.lg} {
     grid-template-columns: 70% 1fr;
   }
 
-  @media screen and (min-width: 500px) {
+  ${mediaQueries.tablet.sm} {
     grid-template-columns: 60% 1fr;
   }
 
@@ -59,7 +60,7 @@ export const BaseProjectCard = styled(ExtLinkCard)`
         padding-left: 0.9rem;
         font-size: calc(var(--base-font-size) * 1.25);
 
-        @media screen and (min-width: 375px) {
+        ${mediaQueries.mobile.md} {
           font-size: calc(var(--base-font-size) * 1.5);
         }
       }

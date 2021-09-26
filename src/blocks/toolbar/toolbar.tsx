@@ -7,6 +7,7 @@ import { Logo } from '~/elements/logo';
 import { ToolbarButton, ToolbarMenuToggle } from '~/elements/toolbar-button';
 import { ToolbarLink } from '~/elements/toolbar-link';
 import { useTheme } from '~/providers/theme';
+import { mediaQueries } from '~/types/viewports';
 
 const ToolbarLogo = styled(ToolbarLink)`
   grid-row: 1;
@@ -43,7 +44,7 @@ const ToolbarActionButtons = styled.div`
   grid-row: 1;
   grid-column: 2;
 
-  @media (min-width: 960px) {
+  ${mediaQueries.desktop} {
     grid-column: 3;
     justify-content: center;
   }
@@ -70,7 +71,7 @@ const ToolbarContainer = styled.div`
     max-height: unset;
   }
 
-  @media (min-width: 960px) {
+  ${mediaQueries.desktop} {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
   }

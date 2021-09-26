@@ -8,6 +8,7 @@ import {
   gradientToClassName,
   TextShadowOptions,
 } from '~/elements/props';
+import { mediaQueries } from '~/types/viewports';
 
 interface BaseToolbarLinkProps {
   active?: boolean;
@@ -43,7 +44,7 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
     border-radius: 4px;
   }
 
-  @media (min-width: 960px) {
+  ${mediaQueries.desktop} {
     justify-content: center;
     margin: 0 0.2rem;
     padding-top: 0;

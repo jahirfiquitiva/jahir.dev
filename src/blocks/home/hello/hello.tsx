@@ -6,6 +6,7 @@ import { ExtLink } from '~/elements/ext-link';
 import { Component } from '~/elements/fc';
 import { Heading } from '~/elements/heading';
 import { gradientToClassName } from '~/elements/props';
+import { mediaQueries } from '~/types/viewports';
 
 const HelloContainer = styled.div`
   margin-top: 2rem;
@@ -14,7 +15,7 @@ const HelloContainer = styled.div`
   grid-template-columns: 1fr;
   grid-auto-flow: dense;
 
-  @media (min-width: 768px) {
+  ${mediaQueries.tablet.sm} {
     grid-template-columns: 1fr auto;
   }
 `;
@@ -25,7 +26,7 @@ const HeadingContainer = styled.div`
   justify-content: flex-end;
   grid-row: 2;
 
-  @media (min-width: 768px) {
+  ${mediaQueries.tablet.sm} {
     grid-row: 1;
   }
 `;

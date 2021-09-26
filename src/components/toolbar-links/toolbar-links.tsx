@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { Component, ComponentProps } from '~/elements/fc';
 import { ToolbarLink } from '~/elements/toolbar-link';
+import { mediaQueries } from '~/types/viewports';
 
 const collapsedStyles = `
   visibility: hidden;
@@ -44,7 +45,7 @@ const ToolbarLinksContainer = styled.div`
     }
   }
 
-  @media (min-width: 960px) {
+  ${mediaQueries.desktop} {
     visibility: visible;
     pointer-events: auto;
     opacity: 1;

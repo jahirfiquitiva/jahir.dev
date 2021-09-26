@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Toolbar } from '~/blocks/toolbar';
 import { Component } from '~/elements/fc';
 import { PageProps } from '~/types/page';
+import { mediaQueries } from '~/types/viewports';
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer from Colombia ' +
@@ -28,7 +29,7 @@ const PageContainer = styled.main`
   min-height: calc(100vh - var(--toolbar-height) - 1.6rem);
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
   
-  @media (min-width: 960px) {
+  ${mediaQueries.desktop} {
     padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
   }
 `;

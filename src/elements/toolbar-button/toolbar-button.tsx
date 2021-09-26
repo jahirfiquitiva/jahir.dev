@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 import { Component, ComponentProps } from '~/elements/fc';
 import { BaseToolbarLink } from '~/elements/toolbar-link';
+import { mediaQueries } from '~/types/viewports';
 
 const PseudoToolbarButton = BaseToolbarLink.withComponent('button');
 export const ToolbarButton = styled(PseudoToolbarButton)`
@@ -45,8 +46,8 @@ const BaseToolbarMenuToggle: Component<ToolbarMenuToggle> = ({
 };
 
 export const ToolbarMenuToggle = styled(BaseToolbarMenuToggle)`
-  padding: .4rem 0 0;
-  margin-left: .2rem;
+  padding: 0.4rem 0 0;
+  margin-left: 0.2rem;
   color: var(--accent);
   display: inline-block;
   visibility: visible;
@@ -60,7 +61,7 @@ export const ToolbarMenuToggle = styled(BaseToolbarMenuToggle)`
     color: var(--accent-dark);
   }
 
-  @media (min-width: 960px) {
+  ${mediaQueries.desktop} {
     display: none;
     visibility: hidden;
     pointer-events: none;

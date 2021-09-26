@@ -3,13 +3,14 @@ import { Hello, HelloParagraph } from '~/blocks/home/hello';
 import { SocialLinks } from '~/blocks/social-links';
 import { ExtLink } from '~/elements/ext-link';
 import { Component } from '~/elements/fc';
+import { mediaQueries } from '~/types/viewports';
 
 const ParagraphsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: 1.2rem;
 
-  @media (min-width: 768px) {
+  ${mediaQueries.tablet.sm} {
     grid-column-gap: 3rem;
     grid-row-gap: 0;
     grid-template-columns: 1fr 1fr;
