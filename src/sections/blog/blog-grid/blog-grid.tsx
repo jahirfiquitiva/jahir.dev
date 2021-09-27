@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import { mdiBulletinBoard, mdiMagnify } from '@mdi/js';
+import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
+import { BlogIdeas } from '~/blocks/blog-ideas';
 import { BlogPostCard } from '~/components/cards';
 import { SectionHeading } from '~/components/section-heading';
 import { Component, ComponentProps } from '~/elements/base/fc';
@@ -17,6 +18,7 @@ interface BlogGridProps extends ComponentProps {
 const BlogSection = styled.section`
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const BlogsMasonry = styled(MasonryGrid)`
@@ -70,7 +72,7 @@ export const BlogGrid: Component<BlogGridProps> = (props) => {
           return <BlogPostCard key={i} {...post} />;
         })}
       </BlogsMasonry>
-      <Field tag={'textarea'} label={'Ideas'} iconPath={mdiBulletinBoard} />
+      <BlogIdeas />
     </BlogSection>
   );
 };

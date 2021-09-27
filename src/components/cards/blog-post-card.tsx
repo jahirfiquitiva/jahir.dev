@@ -58,11 +58,9 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
   &:focus {
     & .content {
       background-color: var(--blog-card-color-hover);
-      & h6,
       & h6 {
         color: var(--hl-color);
         text-decoration: underline;
-        -webkit-text-decoration-style: solid;
       }
     }
   }

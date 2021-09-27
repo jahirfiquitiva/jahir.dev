@@ -69,6 +69,7 @@ const ToolbarContainer = styled.div`
   transition: all 0.3s ease-in-out;
 
   &.active {
+    grid-row-gap: 0.2rem;
     grid-template-rows: var(--toolbar-height) minmax(
         calc(var(--toolbar-height) * 4),
         100%
