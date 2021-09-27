@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
+import Link from 'next/link';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 
@@ -64,9 +65,9 @@ const BaseLinkButton = styled.a`
 `;
 
 export interface LinkButtonProps extends Omit<ButtonProps, 'onClick'> {
-  href?: string;
-  target?: string;
-  rel?: string;
+  to: string;
+  title?: string;
+  newTab?: boolean;
 }
 
 export const LinkButton: Component<LinkButtonProps> = (props) => {
@@ -76,19 +77,35 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
     iconSize = 0.9,
     className,
     children,
-    href = '#',
-    target = '_blank',
-    rel = 'noopener noreferrer',
+    to,
+    newTab = true,
   } = props;
+
+  if (!newTab) {
+    const linkProps = { ...props, newTab: undefined };
+    return (
+      <Link href={to} passHref>
+        <BaseLinkButton
+          title={title}
+          aria-label={title}
+          className={`button ${className}`}
+          href={to}
+          target={newTab ? '_blank' : '_self'}
+          rel={'noopener noreferrer'}
+          {...linkProps}
+        />
+      </Link>
+    );
+  }
 
   return (
     <BaseLinkButton
       title={title}
       aria-label={title}
       className={`button ${className}`}
-      href={href}
-      target={target}
-      rel={rel}
+      href={to}
+      target={newTab ? '_blank' : '_self'}
+      rel={'noopener noreferrer'}
     >
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
@@ -97,24 +114,33 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
 };
 
 const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
-  const {
-    title,
-    icon,
-    iconSize = 0.95,
-    className,
-    href,
-    target = '_blank',
-    rel = 'noopener noreferrer',
-  } = props;
+  const { title, icon, iconSize = 0.95, className, to, newTab = true } = props;
+
+  if (!newTab) {
+    const linkProps = { ...props, newTab: undefined };
+    return (
+      <Link href={to} passHref>
+        <BaseLinkButton
+          title={title}
+          aria-label={title}
+          className={`button link-button ${className}`}
+          href={to}
+          target={newTab ? '_blank' : '_self'}
+          rel={'noopener noreferrer'}
+          {...linkProps}
+        />
+      </Link>
+    );
+  }
 
   return (
     <BaseLinkButton
       title={title}
       aria-label={title}
       className={`button link-button ${className}`}
-      href={href}
-      target={target}
-      rel={rel}
+      href={to}
+      target={newTab ? '_blank' : '_self'}
+      rel={'noopener noreferrer'}
     >
       {icon && <Icon path={icon} size={iconSize} />}
     </BaseLinkButton>

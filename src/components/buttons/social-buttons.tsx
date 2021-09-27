@@ -25,7 +25,7 @@ export const GitHubIconButton: Component<LinkButtonProps> = (props) => {
       {...props}
       title={'Link to GitHub'}
       icon={mdiGithub}
-      href={'https://github.com/jahirfiquitiva'}
+      to={'https://github.com/jahirfiquitiva'}
     />
   );
 };
@@ -45,7 +45,7 @@ export const LinkedInIconButton: Component<LinkButtonProps> = (props) => {
       {...props}
       title={'Link to LinkedIn'}
       icon={mdiLinkedin}
-      href={'https://linkedin.com/in/jahirfiquitiva'}
+      to={'https://linkedin.com/in/jahirfiquitiva'}
     />
   );
 };
@@ -65,7 +65,7 @@ export const TwitterIconButton: Component<LinkButtonProps> = (props) => {
       {...props}
       title={'Link to Twitter'}
       icon={mdiTwitter}
-      href={'https://twitter.com/jahirfiquitiva'}
+      to={'https://twitter.com/jahirfiquitiva'}
     />
   );
 };
@@ -103,7 +103,7 @@ export const InstagramIconButton: Component<LinkButtonProps> = (props) => {
       {...props}
       title={'Link to Instagram'}
       icon={mdiInstagram}
-      href={'https://instagram.com/jahirfiquitiva'}
+      to={'https://instagram.com/jahirfiquitiva'}
     />
   );
 };
@@ -123,7 +123,7 @@ export const PolyworkIconButton: Component<LinkButtonProps> = (props) => {
       {...props}
       title={'Link to Polywork Timeline'}
       icon={mdiTimelineTextOutline}
-      href={'https://timeline.jahir.dev'}
+      to={'https://timeline.jahir.dev'}
     />
   );
 };
