@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { OptImage } from '~/elements/base/opt-image';
+import { GradientOptions, TextShadowOptions } from '~/elements/props';
 import { LinkButton } from '~/elements/simple/button';
 import { Heading } from '~/elements/simple/heading';
 
@@ -55,17 +56,57 @@ const fhfMessage =
   ' or has been moved. 😥';
 
 const errorError = 'Woops! ~ Something went wrong';
-const errorMessage = 'Unfortunately an unexpected error occurred 😥. ';
+const errorMessage = 'Unfortunately an unexpected error occurred. 😥';
+
+const constructionError = 'Site under (re)construction!';
+const constructionMessage =
+  'Please bear with me as I work really hard to bring this site (back) to life 😬';
 
 interface ErrorProps extends ComponentProps {
-  isFourHundredFour?: boolean;
+  errorType?: 'under-construction' | 'four-hundred-four' | 'error';
 }
 
 export const Error: Component<ErrorProps> = (props) => {
-  const { isFourHundredFour = false } = props;
+  const { errorType = 'error' } = props;
+  const isFourHundredFour = errorType === 'four-hundred-four';
+  const isConstruction = errorType === 'under-construction';
+
+  const getErrorTitle = (): string => {
+    if (isFourHundredFour) return fhfError;
+    if (isConstruction) return constructionError;
+    return errorError;
+  };
+
+  const getErrorMessage = (): string => {
+    if (isFourHundredFour) return fhfMessage;
+    if (isConstruction) return constructionMessage;
+    return errorMessage;
+  };
+
+  const getShadowColor = (): TextShadowOptions => {
+    if (isConstruction) return 'yellow';
+    return 'red';
+  };
+
+  const getGradientColor = (): GradientOptions => {
+    if (isConstruction) return 'yellow-to-orange';
+    return 'red-to-purple';
+  };
+
+  const getImage = (): string => {
+    if (isFourHundredFour) return '/static/gifs/404.gif';
+    if (isConstruction) return '/static/gifs/construction.gif';
+    return '/static/gifs/monkey.gif';
+  };
+
+  const getImageAlt = (): string => {
+    if (isFourHundredFour) return 'John Travolta GIF';
+    if (isConstruction) return 'Person building a house';
+    return 'Monkey throwing laptop aggressively';
+  };
 
   const renderContactMessage = () => {
-    if (isFourHundredFour) return <></>;
+    if (errorType !== 'error') return <></>;
     return (
       <p>
         Feel free to{' '}
@@ -80,10 +121,14 @@ export const Error: Component<ErrorProps> = (props) => {
   const renderContent = (): ReactElement => {
     return (
       <>
-        <Heading size={'2'} shadowColor={'red'} gradientColor={'red-to-purple'}>
-          {isFourHundredFour ? fhfError : errorError}
+        <Heading
+          size={'2'}
+          shadowColor={getShadowColor()}
+          gradientColor={getGradientColor()}
+        >
+          {getErrorTitle()}
         </Heading>
-        <p>{isFourHundredFour ? fhfMessage : errorMessage}</p>
+        <p>{getErrorMessage()}</p>
         {renderContactMessage()}
         <LinkButton to={'/'} newTab={false}>
           Go back home
@@ -102,21 +147,15 @@ export const Error: Component<ErrorProps> = (props) => {
 
   return renderContainer(
     <>
-      {isFourHundredFour ? (
+      {errorType === 'four-hundred-four' ? (
         <FourHundredFourContent>{renderContent()}</FourHundredFourContent>
       ) : (
         <ErrorContent>{renderContent()}</ErrorContent>
       )}
       <OptImage
         h={isFourHundredFour ? '476px' : '180px'}
-        src={
-          isFourHundredFour ? '/static/gifs/404.gif' : '/static/gifs/monkey.gif'
-        }
-        alt={
-          isFourHundredFour
-            ? 'John Travolta GIF'
-            : 'Monkey throwing laptop aggressively'
-        }
+        src={getImage()}
+        alt={getImageAlt()}
       />
     </>,
   );

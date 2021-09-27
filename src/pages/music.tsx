@@ -5,8 +5,8 @@ import { Page } from '~/blocks/page';
 
 const FourHundredFour: FC = () => {
   return (
-    <Page title={'Not found! ~ Jahir Fiquitiva 💎'}>
-      <Error errorType={'four-hundred-four'} />
+    <Page title={'Music ~ Jahir Fiquitiva 💎'}>
+      <Error errorType={'under-construction'} />
     </Page>
   );
 };
