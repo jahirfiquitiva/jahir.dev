@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { mdiLightbulbOnOutline } from '@mdi/js';
 
 import { Component } from '~/elements/base/fc';
+import { Button } from '~/elements/simple/button';
 import { Field } from '~/elements/simple/field';
 import { Heading } from '~/elements/simple/heading';
 import { mediaQueries } from '~/types';
@@ -11,15 +12,26 @@ const BlogIdeasContainer = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 0.8rem;
   border-radius: 10px;
-  padding: 1.8rem 1.6rem 1.4rem;
+  padding: 1.8rem 1.6rem;
+  margin-bottom: 1.6rem;
   background-color: var(--primary);
   border: 1px dashed var(--accent-light);
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto 1fr;
     grid-column-gap: 1.2rem;
     grid-row-gap: 1rem;
+  }
+`;
+
+const BlogIdeasForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  & button {
+    display: inline-flex;
+    align-self: flex-end;
   }
 `;
 
@@ -40,13 +52,16 @@ export const BlogIdeas: Component = () => {
         </p>
       </div>
 
-      <Field
-        tag={'textarea'}
-        label={'Ideas'}
-        iconPath={mdiLightbulbOnOutline}
-        placeholder={'What should I blog about next?'}
-        hideLabel
-      />
+      <BlogIdeasForm>
+        <Field
+          tag={'textarea'}
+          label={'Ideas'}
+          iconPath={mdiLightbulbOnOutline}
+          placeholder={'What should I blog about next?'}
+          hideLabel
+        />
+        <Button type={'button'}>Submit</Button>
+      </BlogIdeasForm>
     </BlogIdeasContainer>
   );
 };

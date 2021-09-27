@@ -23,7 +23,6 @@ const BlogSection = styled.section`
 
 const BlogsMasonry = styled(MasonryGrid)`
   margin: 1.6rem 0;
-  flex: 1;
 `;
 
 export const BlogGrid: Component<BlogGridProps> = (props) => {

@@ -8,7 +8,7 @@ const baseButtonStyles = `
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--on-accent);
   padding: 0.4rem 0.8rem;
   text-decoration: none;
   min-height: 42px;
@@ -23,6 +23,7 @@ const BaseButton = styled.button`
 `;
 
 export interface ButtonProps extends ComponentProps {
+  type?: 'button' | 'reset' | 'submit' | undefined;
   title?: string;
   icon?: string;
   iconSize?: number;
@@ -30,10 +31,19 @@ export interface ButtonProps extends ComponentProps {
 }
 
 export const Button: Component<ButtonProps> = (props) => {
-  const { title, icon, iconSize = 1, className, children, onClick } = props;
+  const {
+    type,
+    title,
+    icon,
+    iconSize = 1,
+    className,
+    children,
+    onClick,
+  } = props;
 
   return (
     <BaseButton
+      type={type}
       title={title}
       aria-label={title}
       className={className}
