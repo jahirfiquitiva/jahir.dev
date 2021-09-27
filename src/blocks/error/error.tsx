@@ -160,7 +160,7 @@ export const Error: Component<ErrorProps> = (props) => {
         h={isFourHundredFour ? '476px' : '260px'}
         src={contentOptions[errorType]?.gif}
         alt={contentOptions[errorType]?.alt}
-        allowNextComponent
+        allowNextComponent={!isFourHundredFour}
       />
     </>,
   );
