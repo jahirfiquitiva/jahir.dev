@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
 
@@ -29,19 +29,26 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const { isDark = false } = useTheme();
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props;
-  const projectColor = isDark ? darkColor || color : color;
-  const [shadowColors, setShadowColors] = useState(
-    buildShadowColors(projectColor, 0.2, 0.4, isDark),
-  );
-  const [titleColor, setTitleColor] = useState(
-    getReadableColor(projectColor, isDark),
+  const [projectColor, setProjectColor] = useState(
+    isDark ? darkColor || color : color,
   );
 
-  useMemo(() => {
-    const projectColor = isDark ? darkColor || color : color;
-    setShadowColors(buildShadowColors(projectColor, 0.2, 0.4, isDark));
-    setTitleColor(getReadableColor(projectColor, isDark));
+  const updateCardColors = useCallback(() => {
+    const newProjectColor = isDark ? darkColor || color : color;
+    setProjectColor(newProjectColor);
   }, [isDark, color, darkColor]);
+
+  useMemo(() => {
+    updateCardColors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDark, color, darkColor, updateCardColors]);
+
+  useEffect(() => {
+    const update = setTimeout(updateCardColors, 250);
+    return () => {
+      clearTimeout(update);
+    };
+  }, [updateCardColors]);
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;
@@ -66,7 +73,11 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
 
   return (
     <Link href={link} passHref={true}>
-      <BaseProjectCard to={link} className={'nodeco'} style={shadowColors}>
+      <BaseProjectCard
+        to={link}
+        className={'nodeco'}
+        style={buildShadowColors(projectColor, 0.2, 0.4, isDark)}
+      >
         <div className={'details'}>
           <div className={'icon-title'}>
             <Image
@@ -77,7 +88,13 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
               layout={'fixed'}
               loading={'lazy'}
             />
-            <h6 style={buildStyles({ '--hl-color': titleColor })}>{title}</h6>
+            <h6
+              style={buildStyles({
+                '--hl-color': getReadableColor(projectColor, isDark),
+              })}
+            >
+              {title}
+            </h6>
           </div>
           <p>{description}</p>
           {renderProjectStack()}
