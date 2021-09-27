@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Component, ComponentProps } from '~/elements/fc';
 
 interface ExtLinkProps extends ComponentProps {
@@ -17,6 +19,14 @@ export const ExtLink: Component<ExtLinkProps> = (props) => {
     style,
     underline = true,
   } = props;
+
+  if (!newTab) {
+    return (
+      <Link href={to}>
+        <a {...props} />
+      </Link>
+    );
+  }
 
   return (
     <a

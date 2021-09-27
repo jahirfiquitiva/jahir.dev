@@ -17,6 +17,7 @@ import { FullBlogPost } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
+import { OptImage } from '~/elements/opt-image';
 
 const getChildType = (child: any): string | null | undefined => {
   try {
@@ -118,13 +119,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
           )}
         </p>
         {hero && (
-          <img
-            className={styles.hero}
-            src={hero || ''}
-            alt={title}
-            loading={'lazy'}
-            decoding={'async'}
-          />
+          <OptImage className={styles.hero} src={hero || ''} alt={title} />
         )}
         {renderTableOfContents()}
         {renderContent()}

@@ -10,11 +10,17 @@ export const ToolbarButton = styled(PseudoToolbarButton)`
   min-width: var(--toolbar-height);
   max-width: var(--toolbar-height);
   padding: 0.4rem 0.8rem;
+
   &.active,
   &:active,
   &:focus,
   &:hover {
     transform: none;
+  }
+
+  ${mediaQueries.desktop} {
+    max-width: 48px;
+    padding: 0 0.4rem;
   }
 `;
 

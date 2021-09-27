@@ -26,7 +26,7 @@ const ToolbarLinksContainer = styled.div`
   justify-content: flex-start;
   grid-row: 2;
   grid-column: 1 / 3;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.15s ease-in-out;
   max-height: 0;
   ${collapsedStyles}
 

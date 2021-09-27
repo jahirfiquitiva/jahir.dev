@@ -11,7 +11,7 @@ const baseButtonStyles = `
   color: #fff;
   padding: 0.4rem 0.8rem;
   text-decoration: none;
-  min-height: 36px;
+  min-height: 42px;
 
   & > *:not(:last-child) {
     margin-right: 0.4rem;
@@ -47,7 +47,6 @@ export const Button: Component<ButtonProps> = (props) => {
 
 const BaseLinkButton = styled.a`
   ${baseButtonStyles}
-  min-height: 28px;
   line-height: 1;
 `;
 

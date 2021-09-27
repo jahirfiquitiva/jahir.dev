@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
@@ -8,11 +9,28 @@ import { gradientToClassName } from '~/elements/props';
 import { mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
+const gradientUnderlineStyles = `
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-color: var(--start-grad-color, var(--accent-dark));
+  text-decoration: underline solid var(--start-grad-color, var(--accent-dark));
+  text-decoration-skip: edges;
+`;
+
 const FooterHomeLink = styled(ExtLink)`
   position: relative;
   display: flex;
   align-items: center;
   font-size: var(--base-font-size);
+
+  &:hover,
+  &:focus {
+    ${gradientUnderlineStyles}
+
+    & * {
+      ${gradientUnderlineStyles}
+    }
+  }
 
   & svg {
     min-width: 24px;
@@ -34,6 +52,7 @@ const FooterHomeLink = styled(ExtLink)`
       left: 0;
     }
   }
+
   ${mediaQueries.tablet.sm} {
     font-size: calc(var(--base-font-size) * 1.25);
   }
@@ -63,19 +82,10 @@ const FooterGridLink = styled(ExtLink)`
 
   &:hover,
   &:focus {
-    text-decoration: underline;
-    text-decoration-style: solid;
-    text-decoration-color: var(--start-grad-color, var(--accent-dark));
-    text-decoration: underline solid var(--start-grad-color, var(--accent-dark));
-    text-decoration-skip: edges;
+    ${gradientUnderlineStyles}
 
     & * {
-      text-decoration: underline;
-      text-decoration-style: solid;
-      text-decoration-color: var(--start-grad-color, var(--accent-dark));
-      text-decoration: underline solid
-        var(--start-grad-color, var(--accent-dark));
-      text-decoration-skip: edges;
+      ${gradientUnderlineStyles}
     }
   }
 `;
@@ -86,6 +96,7 @@ const FooterGridSectionTwo = styled(FooterGridSection)`
   pointer-events: none;
   opacity: 0;
   align-items: flex-end;
+
   ${mediaQueries.mobile.md} {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -110,6 +121,7 @@ const FooterGridSectionThree = styled(FooterGridSectionTwo)`
   opacity: 1;
   align-items: flex-end;
   justify-content: flex-end;
+
   ${mediaQueries.mobile.md} {
     align-items: flex-end;
     grid-column-start: 2;
@@ -208,7 +220,11 @@ export const Footer: Component = () => {
     <FooterContainer>
       <FooterGrid>
         <FooterGridSection>
-          <FooterHomeLink to={'/'}>
+          <FooterHomeLink
+            to={'/'}
+            newTab={false}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
+          >
             <Logo className={'logosvg'} />{' '}
             <span className={gradientToClassName('brand-to-blue', true)}>
               Jahir Fiquitiva
@@ -221,6 +237,7 @@ export const Footer: Component = () => {
         <FooterGridSectionTwo>
           <FooterGridLink
             to={'/blog'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
           >
             <span>📝&nbsp;&nbsp;</span>
@@ -230,6 +247,7 @@ export const Footer: Component = () => {
           </FooterGridLink>
           <FooterGridLink
             to={'/uses'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
             <span>⚡️&nbsp;&nbsp;</span>
@@ -239,6 +257,7 @@ export const Footer: Component = () => {
           </FooterGridLink>
           <FooterGridLink
             to={'/donate'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
             <span>🧡&nbsp;&nbsp;</span>
@@ -248,6 +267,7 @@ export const Footer: Component = () => {
           </FooterGridLink>
           <FooterGridLink
             to={'/contact'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
             <span>📬&nbsp;&nbsp;</span>
@@ -259,6 +279,7 @@ export const Footer: Component = () => {
         <FooterGridSectionThree>
           <FooterGridLink
             to={'/music'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
           >
             <span>🎧&nbsp;&nbsp;</span>
@@ -268,6 +289,7 @@ export const Footer: Component = () => {
           </FooterGridLink>
           <FooterGridLink
             to={'/inspiration'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
           >
             <span>🍀&nbsp;&nbsp;</span>
@@ -279,6 +301,7 @@ export const Footer: Component = () => {
         <FooterGridSectionFour>
           <FooterGridLink
             to={'/thanks'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
             <span>🧡&nbsp;&nbsp;</span>
@@ -288,6 +311,7 @@ export const Footer: Component = () => {
           </FooterGridLink>
           <FooterGridLink
             to={'/coding'}
+            newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
           >
             <span>👨‍💻&nbsp;&nbsp;</span>

@@ -25,13 +25,14 @@ const fonts = [
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--toolbar-height) - 1.6rem);
+  min-height: 100vh;
 `;
 
 const SiteContent = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
   max-width: var(--max-site-width);
   margin: 0 auto;
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;

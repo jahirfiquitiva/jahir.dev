@@ -25,10 +25,6 @@ const ProjectsHeader = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
-    & *:first-child {
-      flex: 1;
-    }
   }
 `;
 
@@ -37,12 +33,11 @@ const ProjectsHeaderLinksContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
 
   ${mediaQueries.tablet.sm} {
     margin-top: 0;
-    justify-content: space-between;
   }
 `;
 

@@ -75,6 +75,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     <Link href={link} passHref={true}>
       <BaseProjectCard
         to={link}
+        /* newTab={false} TODO: Enable when doing custom pages per project */
         className={'nodeco'}
         style={buildShadowColors(projectColor, 0.2, 0.4, isDark)}
       >

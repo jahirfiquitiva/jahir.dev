@@ -19,13 +19,15 @@ const GitHubStatsLink = styled.a`
   --divider: rgba(var(--divider-opaque), var(--divider-alpha));
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0.4rem 0.6rem;
   margin-right: 0.8rem;
   text-decoration: none;
   border: 1px solid var(--divider);
   color: var(--text-secondary);
-  min-height: 28px;
+  max-height: 42px;
   cursor: pointer;
+  width: auto;
 
   ${mediaQueries.mobile.md} {
     margin-right: 1.2rem;
@@ -50,15 +52,20 @@ const GitHubStatsLink = styled.a`
     }
   }
 
+  & p {
+    padding-left: 0.2rem;
+    &:first-of-type {
+      margin-right: 0.6rem;
+      padding-right: 0.6rem;
+      border-right: 1px solid var(--divider);
+    }
+  }
+
   & svg {
     margin-right: 0.4rem;
     margin-left: 0;
-
-    &:not(:first-child) {
-      padding-left: 0.6rem;
-      margin-left: 0.6rem;
-      border-left: 1px solid var(--divider);
-    }
+    min-width: 24px;
+    min-height: 24px;
   }
 `;
 

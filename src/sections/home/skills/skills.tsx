@@ -18,7 +18,7 @@ const buildSkillChipStyles = (color: string): CSSProperties => {
 };
 
 const SkillsHeading = styled(SectionHeading)`
-  margin-top: 1.2rem;
+  margin-top: 0.6rem;
 `;
 
 export const Skills: Component = () => {

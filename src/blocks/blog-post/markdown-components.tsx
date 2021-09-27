@@ -12,6 +12,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import styles from './blog-post.module.css';
 
 import { Component, ComponentProps } from '~/elements/fc';
+import { OptImage } from '~/elements/opt-image';
 
 const flatten = (text: string, child: any): any => {
   return typeof child === 'string'
@@ -77,7 +78,5 @@ export const markdownComponents: any = {
   h6: ({ node, ...props }) => <HeadingRenderer {...props} />,
   em: ({ node, ...props }) => <em className={styles.em} {...props} />,
   a: ({ node, ...props }) => <CustomLink {...props} />,
-  img: ({ node, ...props }) => (
-    <img {...props} loading={'lazy'} decoding={'async'} />
-  ),
+  img: ({ node, ...props }) => <OptImage {...props} allowNextComponent />,
 };
