@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import { Page } from '~/blocks/page';
 import { BlogPostCard } from '~/components/cards';
 import { Component, ComponentProps } from '~/elements/fc';
+import { MasonryGrid } from '~/elements/masonry-grid';
 import { SimpleBlogPost } from '~/types/blog-post';
 import { getAllPosts } from '~/utils/get-posts';
 
@@ -14,9 +15,11 @@ const Blog: Component<BlogProps> = (props) => {
   const { posts } = props;
   return (
     <Page>
-      {(posts || []).map((post, i) => {
-        return <BlogPostCard key={i} {...post} />;
-      })}
+      <MasonryGrid gap={'1rem'}>
+        {(posts || []).map((post, i) => {
+          return <BlogPostCard key={i} {...post} />;
+        })}
+      </MasonryGrid>
     </Page>
   );
 };

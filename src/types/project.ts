@@ -36,7 +36,7 @@ export const projects: ProjectProps[] = [
   },
   {
     title: 'Kuper',
-    description: 'Dashboard for Zooper & Kustom KLWP/KWGT Android widget packs',
+    description: 'Dashboard for KLWP/KWGT Android widget packs',
     icon: '/static/images/projects/android/kuper.png',
     preview: '/static/images/projects/android/kuper-preview.png',
     link: 'https://github.com/jahirfiquitiva/Kuper/',
@@ -58,7 +58,7 @@ export const projects: ProjectProps[] = [
   {
     title: 'Tap',
     description:
-      'A Floating Action Button for quickly creating Keep notes and Todoist tasks',
+      'Floating Action Button for quickly creating Keep notes and Todoist tasks',
     icon: '/static/images/projects/android/tap.png',
     preview: '/static/images/projects/android/tap-preview.png',
     link: 'https://jahir.xyz/TapApp',

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { ProjectCard } from '~/components/cards';
-import { Heading } from '~/elements/heading';
-import { gradientToClassName } from '~/elements/props';
 import { projects } from '~/types/project';
 import { Divider } from '~/elements/divider';
 import { SectionHeading } from '~/components/section-heading';
-import { mediaQueries } from '~/types/viewports';
+import { viewports } from '~/types/viewports';
+import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
 
+/*
 export const ProjectsGrid = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -21,6 +21,16 @@ export const ProjectsGrid = styled.ul`
     height: 100%;
   }
 `;
+*/
+
+export const ProjectsGrid = styled(MasonryGrid)`
+  padding: 1.6rem 0 2rem;
+`;
+
+const masonryBreakpoints: MasonryBreakpoints = {};
+masonryBreakpoints[viewports.default] = 1;
+masonryBreakpoints[viewports.mobile.sm] = 1;
+masonryBreakpoints[viewports.tablet.sm] = 2;
 
 export const Projects = () => {
   return (
@@ -34,15 +44,12 @@ export const Projects = () => {
       >
         Projects
       </SectionHeading>
-      <ProjectsGrid>
+
+      <ProjectsGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
         {projects
           .filter((project) => !project.hide)
           .map((project, index) => {
-            return (
-              <li>
-                <ProjectCard key={index} {...project} />
-              </li>
-            );
+            return <ProjectCard key={index} {...project} />;
           })}
       </ProjectsGrid>
     </section>

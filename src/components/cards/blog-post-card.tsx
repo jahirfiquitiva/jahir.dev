@@ -4,10 +4,13 @@ import { usePalette } from 'react-palette';
 
 import { ExtLinkCard } from '~/elements/card';
 import { Component, ComponentProps } from '~/elements/fc';
+import { useTheme } from '~/providers/theme';
 import { SimpleBlogPost } from '~/types/blog-post';
 import buildShadowColors from '~/utils/build-shadow-colors';
+import buildStyles from '~/utils/build-styles';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
+import getReadableColor from '~/utils/get-readable-color';
 
 const BaseBlogPostCard = styled(ExtLinkCard)`
   --border-radius: 8px;
@@ -17,7 +20,6 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-clip: content-box;
 
   .content {
     border: 1px solid var(--divider);
@@ -35,6 +37,7 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
     }
 
     p {
+      margin: 0.2rem 0;
       font-size: 0.9rem;
       color: var(--text-secondary);
 
@@ -71,7 +74,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     link,
     readingTime,
   } = props;
-  const { isDark } = { isDark: false }; // useContext(ThemeContext); TODO: fix
+  const { isDark } = useTheme();
 
   const heroUrl =
     hero.length > 0 ? (hero.startsWith('..') ? null : hero) : null;
@@ -94,7 +97,13 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         }}
       >
         <div className={'content'}>
-          <h6>{title}</h6>
+          <h6
+            style={buildStyles({
+              '--hl-color': getReadableColor(color, isDark),
+            })}
+          >
+            {title}
+          </h6>
           {excerpt && <p>{excerpt}</p>}
           <p className={'date-time'}>
             {formatDate(date)}
