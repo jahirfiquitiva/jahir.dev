@@ -24,7 +24,7 @@ const IntroParagraph = styled(HelloParagraph)`
 
 export const Intro: Component = () => {
   return (
-    <section>
+    <section id={'about'}>
       <Hello />
       <ParagraphsContainer>
         <IntroParagraph>

@@ -37,6 +37,9 @@ hr {
     var(--end-grad-color) 100%
   );
   border: none;
+}
+
+section {
   scroll-margin-top: var(--toolbar-height);
 }
 
@@ -200,4 +203,11 @@ textarea {
 
 body.sb-show-main.sb-main-padded {
   padding: 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
 }

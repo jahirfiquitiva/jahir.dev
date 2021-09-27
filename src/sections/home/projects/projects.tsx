@@ -6,6 +6,7 @@ import { GitHubStats } from '~/components/github-stats';
 import { SectionHeading } from '~/components/section-heading';
 import { LinkButton } from '~/elements/button';
 import { Divider } from '~/elements/divider';
+import { Component } from '~/elements/fc';
 import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
 import { projects, mediaQueries, viewports } from '~/types';
 
@@ -50,9 +51,9 @@ masonryBreakpoints[viewports.default] = 1;
 masonryBreakpoints[viewports.mobile.sm] = 1;
 masonryBreakpoints[viewports.tablet.sm] = 2;
 
-export const Projects = () => {
+export const Projects: Component = () => {
   return (
-    <section>
+    <section id={'projects'}>
       <Divider gradientColor={'blue-to-green'} />
 
       <ProjectsHeader>
@@ -60,7 +61,7 @@ export const Projects = () => {
           size={'3'}
           shadowColor={'green'}
           gradientColor={'green-to-yellow'}
-          emoji="👨‍💻"
+          emoji={'👨‍💻'}
         >
           Projects
         </SectionHeading>

@@ -5,6 +5,7 @@ import { CSSProperties } from 'react';
 import { SectionHeading } from '~/components/section-heading';
 import { Chip, ChipGroup } from '~/elements/chip';
 import { Divider } from '~/elements/divider';
+import { Component } from '~/elements/fc';
 import { skills } from '~/types';
 import buildStyles from '~/utils/build-styles';
 import hexToRGB from '~/utils/hex-to-rgb';
@@ -20,15 +21,15 @@ const SkillsHeading = styled(SectionHeading)`
   margin-top: 1.2rem;
 `;
 
-export const Skills = () => {
+export const Skills: Component = () => {
   return (
-    <section>
+    <section id={'skills'}>
       <Divider gradientColor={'brand-to-blue'} />
       <SkillsHeading
         size={'3'}
         shadowColor={'blue'}
         gradientColor={'blue-to-green'}
-        emoji="🚀"
+        emoji={'🚀'}
       >
         Skills
       </SkillsHeading>
