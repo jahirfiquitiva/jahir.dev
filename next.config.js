@@ -97,6 +97,7 @@ module.exports = {
       buildRedirect('/support', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),
       buildRedirect('/blog/post-of-fame', '/donate#thanks'),
+      buildRedirect('/blog/uses', '/uses'),
       // buildRedirect('/uses', '/blog/uses'), // TODO: Check if needed
     ];
   },

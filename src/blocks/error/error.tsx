@@ -50,17 +50,54 @@ const FourHundredFourContent = styled(ErrorContent)`
   flex: 1;
 `;
 
-const fhfError = 'Woops! ~ Page Not Found';
-const fhfMessage =
-  'Unfortunately the site you were trying to reach does not exist' +
-  ' or has been moved. 😥';
+interface Content {
+  title: string;
+  message: string;
+  gif: string;
+  alt: string;
+  shadowColor?: TextShadowOptions;
+  gradientColors?: GradientOptions;
+}
 
-const errorError = 'Woops! ~ Something went wrong';
-const errorMessage = 'Unfortunately an unexpected error occurred. 😥';
+interface ContentOptions {
+  error: Content;
+  'four-hundred-four': Content;
+  'under-construction': Content;
+  sent: Content;
+}
 
-const constructionError = 'Site under (re)construction!';
-const constructionMessage =
-  'Please bear with me as I work really hard to bring this site (back) to life 😬';
+const contentOptions: ContentOptions = {
+  error: {
+    title: 'Woops! ~ Something went wrong',
+    message: 'Unfortunately an unexpected error occurred. 😥',
+    gif: '/static/gifs/monkey.gif',
+    alt: 'Monkey throwing laptop aggressively',
+  },
+  'four-hundred-four': {
+    title: 'Woops! ~ Page not found',
+    message:
+      'Unfortunately the site you were trying to reach does not exist or has been moved. 😥',
+    gif: '/static/gifs/404.gif',
+    alt: 'John Travolta GIF',
+  },
+  'under-construction': {
+    title: 'Site under (re)construction!',
+    message:
+      'Please bear with me as I work really hard to bring this site (back) to life 😬',
+    shadowColor: 'yellow',
+    gradientColors: 'yellow-to-orange',
+    gif: '/static/gifs/construction.gif',
+    alt: 'Person building a house',
+  },
+  sent: {
+    title: 'Thanks for your message!',
+    message: 'I will get back to you as soon as possible 🙌',
+    gif: '/static/gifs/mail.gif',
+    alt: 'Dog checking mail',
+    shadowColor: 'green',
+    gradientColors: 'blue-to-green',
+  },
+};
 
 interface ErrorProps extends ComponentProps {
   errorType?: 'under-construction' | 'four-hundred-four' | 'error' | 'sent';
@@ -69,41 +106,6 @@ interface ErrorProps extends ComponentProps {
 export const Error: Component<ErrorProps> = (props) => {
   const { errorType = 'error' } = props;
   const isFourHundredFour = errorType === 'four-hundred-four';
-  const isConstruction = errorType === 'under-construction';
-
-  const getErrorTitle = (): string => {
-    if (isFourHundredFour) return fhfError;
-    if (isConstruction) return constructionError;
-    return errorError;
-  };
-
-  const getErrorMessage = (): string => {
-    if (isFourHundredFour) return fhfMessage;
-    if (isConstruction) return constructionMessage;
-    return errorMessage;
-  };
-
-  const getShadowColor = (): TextShadowOptions => {
-    if (isConstruction) return 'yellow';
-    return 'red';
-  };
-
-  const getGradientColor = (): GradientOptions => {
-    if (isConstruction) return 'yellow-to-orange';
-    return 'red-to-purple';
-  };
-
-  const getImage = (): string => {
-    if (isFourHundredFour) return '/static/gifs/404.gif';
-    if (isConstruction) return '/static/gifs/construction.gif';
-    return '/static/gifs/monkey.gif';
-  };
-
-  const getImageAlt = (): string => {
-    if (isFourHundredFour) return 'John Travolta GIF';
-    if (isConstruction) return 'Person building a house';
-    return 'Monkey throwing laptop aggressively';
-  };
 
   const renderContactMessage = () => {
     if (errorType !== 'error') return <></>;
@@ -123,12 +125,14 @@ export const Error: Component<ErrorProps> = (props) => {
       <>
         <Heading
           size={'2'}
-          shadowColor={getShadowColor()}
-          gradientColor={getGradientColor()}
+          shadowColor={contentOptions[errorType]?.shadowColor || 'red'}
+          gradientColor={
+            contentOptions[errorType]?.gradientColors || 'red-to-purple'
+          }
         >
-          {getErrorTitle()}
+          {contentOptions[errorType]?.title}
         </Heading>
-        <p>{getErrorMessage()}</p>
+        <p>{contentOptions[errorType]?.message}</p>
         {renderContactMessage()}
         <LinkButton to={'/'} newTab={false}>
           Go back home
@@ -153,9 +157,10 @@ export const Error: Component<ErrorProps> = (props) => {
         <ErrorContent>{renderContent()}</ErrorContent>
       )}
       <OptImage
-        h={isFourHundredFour ? '476px' : '180px'}
-        src={getImage()}
-        alt={getImageAlt()}
+        h={isFourHundredFour ? '476px' : '260px'}
+        src={contentOptions[errorType]?.gif}
+        alt={contentOptions[errorType]?.alt}
+        allowNextComponent
       />
     </>,
   );
