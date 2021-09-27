@@ -4,13 +4,13 @@ import { mdiFileCodeOutline } from '@mdi/js';
 import { ProjectCard } from '~/components/cards';
 import { GitHubStats } from '~/components/github-stats';
 import { SectionHeading } from '~/components/section-heading';
-import { LinkButton } from '~/elements/simple/button';
-import { Divider } from '~/elements/simple/divider';
 import { Component } from '~/elements/base/fc';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
+import { LinkButton } from '~/elements/simple/button';
+import { Divider } from '~/elements/simple/divider';
 import { projects, mediaQueries, viewports } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`
@@ -36,11 +36,22 @@ const ProjectsHeaderLinksContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
+
+  & a:not(:first-of-type) {
+    margin-top: 0.8rem;
+  }
+
+  ${mediaQueries.mobile.lg} {
+    & a:not(:first-of-type) {
+      margin-top: 0;
+    }
+  }
 
   ${mediaQueries.tablet.sm} {
     margin-top: 0;
+    justify-content: flex-end;
   }
 `;
 
