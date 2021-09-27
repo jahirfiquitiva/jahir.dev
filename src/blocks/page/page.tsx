@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 
 import { Toolbar } from '~/blocks/toolbar';
+import { MetaTags } from '~/components/metatags';
 import { Component } from '~/elements/fc';
 import { PageProps } from '~/types/page';
 import { mediaQueries } from '~/types/viewports';
@@ -28,7 +29,7 @@ const PageContainer = styled.main`
   margin: 0 auto;
   min-height: calc(100vh - var(--toolbar-height) - 1.6rem);
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
-  
+
   ${mediaQueries.desktop} {
     padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
   }
@@ -48,7 +49,6 @@ export const Page: Component<PageProps> = (props) => {
 
   return (
     <>
-      {/*
       <MetaTags
         title={title}
         description={description}
@@ -58,7 +58,6 @@ export const Page: Component<PageProps> = (props) => {
         siteType={siteType}
         metaImageStyle={metaImageStyle}
       />
-      */}
 
       <Head>
         {fonts.map((it, i) => {

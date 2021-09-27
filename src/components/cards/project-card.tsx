@@ -27,7 +27,7 @@ const getSkill = (skillName: string): SkillProps | null => {
 
 const iconSize = 0.75;
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
-  const { isDark } = useTheme();
+  const { isDark = false } = useTheme();
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props;
   const projectColor = isDark ? darkColor || color : color;
