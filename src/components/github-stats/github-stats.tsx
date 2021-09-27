@@ -4,6 +4,7 @@ import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import useRequest from '~/hooks/useRequest';
 import { Component } from '~/elements/fc';
 import { baseCardStyles, ExtLinkCard } from '~/elements/card';
+import { mediaQueries } from '~/types/viewports';
 
 type GitHubStatsData = {
   success?: boolean;
@@ -25,6 +26,10 @@ const GitHubStatsLink = styled.a`
   min-height: 28px;
   cursor: pointer;
 
+  ${mediaQueries.mobile.md} {
+    margin-right: 1.2rem;
+  }
+
   & * {
     color: var(--text-secondary);
   }
@@ -34,11 +39,11 @@ const GitHubStatsLink = styled.a`
     --divider-alpha: 0.4;
     color: var(--text-primary);
     text-decoration: none;
-    -webkit-transform: translateY(-.1rem);
-    -moz-transform: translateY(-.1rem);
-    -ms-transform: translateY(-.1rem);
-    -o-transform: translateY(-.1rem);
-    transform: translateY(-.1rem);
+    -webkit-transform: translateY(-0.1rem);
+    -moz-transform: translateY(-0.1rem);
+    -ms-transform: translateY(-0.1rem);
+    -o-transform: translateY(-0.1rem);
+    transform: translateY(-0.1rem);
     & * {
       color: var(--text-primary);
     }
@@ -61,7 +66,7 @@ export const GitHubStats: Component = (props) => {
   const { className } = props;
   const { data } = useRequest<GitHubStatsData>('/api/github');
 
-  if (!data || !data?.success) return <></>;
+  // if (!data || !data?.success) return <></>;
   return (
     <GitHubStatsLink
       className={`nodeco ${className}`}

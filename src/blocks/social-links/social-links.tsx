@@ -13,9 +13,9 @@ interface SocialLinksProps extends ComponentProps {
 }
 
 export const SocialLinks: Component<SocialLinksProps> = (props) => {
-  const { iconSize = 0.9 } = props;
+  const { iconSize = 0.9, className } = props;
   return (
-    <ButtonGroup>
+    <ButtonGroup className={className}>
       <GitHubIconButton iconSize={iconSize} />
       <LinkedInIconButton iconSize={iconSize} />
       <TwitterIconButton iconSize={iconSize} />

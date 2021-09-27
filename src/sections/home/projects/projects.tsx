@@ -3,28 +3,11 @@ import { ProjectCard } from '~/components/cards';
 import { projects } from '~/types/project';
 import { Divider } from '~/elements/divider';
 import { SectionHeading } from '~/components/section-heading';
-import { viewports } from '~/types/viewports';
+import { mediaQueries, viewports } from '~/types/viewports';
 import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
 import { GitHubStats } from '~/components/github-stats';
 import { LinkButton } from '~/elements/button';
 import { mdiFileCodeOutline } from '@mdi/js';
-
-/*
-export const ProjectsGrid = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  padding: 1.6rem 0 2rem;
-
-  ${mediaQueries.tablet.sm} {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  li a {
-    height: 100%;
-  }
-`;
-*/
 
 export const ProjectsGrid = styled(MasonryGrid)`
   padding: 1.6rem 0 2.4rem;
@@ -32,14 +15,34 @@ export const ProjectsGrid = styled(MasonryGrid)`
 
 const ProjectsHeader = styled.div`
   margin-top: 2.4rem;
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+
+  ${mediaQueries.tablet.sm} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & *:first-child {
+      flex: 1;
+    }
+  }
 `;
 
-const ProjectsHeaderLinksContainer = styled(ProjectsHeader)`
-  margin-top: 0;
-  justify-content: center;
+const ProjectsHeaderLinksContainer = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  ${mediaQueries.tablet.sm} {
+    margin-top: 0;
+    justify-content: space-between;
+  }
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};

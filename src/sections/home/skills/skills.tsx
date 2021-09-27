@@ -1,6 +1,6 @@
+import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
-import { CSSProperties } from 'hoist-non-react-statics/node_modules/@types/react';
 import { SectionHeading } from '~/components/section-heading';
 import { Chip, ChipGroup } from '~/elements/chip';
 import { Divider } from '~/elements/divider';

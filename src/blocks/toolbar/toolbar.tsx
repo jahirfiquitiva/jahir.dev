@@ -9,7 +9,7 @@ import { ToolbarLink } from '~/elements/toolbar-link';
 import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types/viewports';
 
-const ToolbarLogo = styled(ToolbarLink)`
+export const ToolbarLogo = styled(ToolbarLink)`
   grid-row: 1;
   grid-column: 1;
   font-family: var(--manrope-font);

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Head from 'next/head';
 
+import { Footer } from '~/blocks/footer';
 import { Toolbar } from '~/blocks/toolbar';
 import { MetaTags } from '~/components/metatags';
 import { Component } from '~/elements/fc';
@@ -77,6 +78,7 @@ export const Page: Component<PageProps> = (props) => {
         <Toolbar />
       </header>
       <PageContainer>{children}</PageContainer>
+      <Footer />
     </>
   );
 };

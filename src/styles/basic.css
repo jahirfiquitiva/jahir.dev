@@ -93,7 +93,7 @@ body {
 }
 
 .small {
-  font-size: calc(var(--base-font-size) * 0.85);
+  font-size: calc(var(--base-font-size) * 0.9);
 }
 
 a,
