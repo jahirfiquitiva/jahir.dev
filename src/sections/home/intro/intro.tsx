@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Hello, HelloParagraph } from '~/blocks/home/hello';
+import { Hello, HelloParagraph } from '~/sections/home/hello';
 import { SocialLinks } from '~/blocks/social-links';
 import { ExtLink } from '~/elements/ext-link';
 import { Component } from '~/elements/fc';

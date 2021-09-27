@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { Intro } from '~/blocks/home/intro';
-import { Projects } from '~/blocks/home/projects';
-import { Skills } from '~/blocks/home/skills';
+import { Intro } from '~/sections/home/intro';
+import { Projects } from '~/sections/home/projects';
+import { Skills } from '~/sections/home/skills';
 import { Page } from '~/blocks/page';
 
 const Home: FC = () => {
