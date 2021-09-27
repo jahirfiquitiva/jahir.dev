@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { ExtLinkCard } from '~/elements/card';
+import { ExtLinkCard } from '~/elements/simple/card';
 import { mediaQueries } from '~/types';
 
 export const BaseProjectCard = styled(ExtLinkCard)`

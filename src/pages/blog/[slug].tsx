@@ -6,7 +6,7 @@ import { staticRequest, getStaticPropsForTina } from 'tinacms';
 
 import { BlogPost } from '~/blocks/blog-post/blog-post';
 import { Page } from '~/blocks/page';
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 import { FullBlogPost } from '~/types';
 import {
   getPostDescription,

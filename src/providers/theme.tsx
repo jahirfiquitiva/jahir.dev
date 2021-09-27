@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import useDarkMode from 'use-dark-mode';
 
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 
 export interface ThemeContextValue {
   isDark?: boolean;

@@ -2,10 +2,13 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 
 import { ToolbarLinks } from '~/components/toolbar-links';
-import { Component } from '~/elements/fc';
-import { Logo } from '~/elements/logo';
-import { ToolbarButton, ToolbarMenuToggle } from '~/elements/toolbar-button';
-import { ToolbarLink } from '~/elements/toolbar-link';
+import { Component } from '~/elements/base/fc';
+import {
+  ToolbarButton,
+  ToolbarMenuToggle,
+} from '~/elements/complex/toolbar-button';
+import { ToolbarLink } from '~/elements/complex/toolbar-link';
+import { Logo } from '~/elements/simple/logo';
 import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 

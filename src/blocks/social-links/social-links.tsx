@@ -5,8 +5,8 @@ import {
   LinkedInIconButton,
   PolyworkIconButton,
 } from '~/components/buttons';
-import { ButtonGroup } from '~/elements/button';
-import { Component, ComponentProps } from '~/elements/fc';
+import { ButtonGroup } from '~/elements/simple/button';
+import { Component, ComponentProps } from '~/elements/base/fc';
 
 interface SocialLinksProps extends ComponentProps {
   iconSize?: number;

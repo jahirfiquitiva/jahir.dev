@@ -1,4 +1,4 @@
-import { ComponentProps } from '~/elements/fc';
+import { ComponentProps } from '~/elements/base/fc';
 
 type MetaImageStyle = 'summary_large_image' | 'summary';
 

@@ -2,9 +2,9 @@
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
-import { ExtLink } from '~/elements/ext-link';
-import { Component } from '~/elements/fc';
-import { Logo } from '~/elements/logo';
+import { ExtLink } from '~/elements/base/ext-link';
+import { Component } from '~/elements/base/fc';
+import { Logo } from '~/elements/simple/logo';
 import { gradientToClassName } from '~/elements/props';
 import { mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';

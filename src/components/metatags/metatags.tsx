@@ -1,7 +1,7 @@
 import NextHead from 'next/head';
 import { useMemo, useState } from 'react';
 
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
 import { useTheme } from '~/providers/theme';
 import { PageProps } from '~/types';
 

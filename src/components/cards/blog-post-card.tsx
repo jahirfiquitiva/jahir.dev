@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { usePalette } from 'react-palette';
 
-import { ExtLinkCard } from '~/elements/card';
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
+import { ExtLinkCard } from '~/elements/simple/card';
 import { useTheme } from '~/providers/theme';
 import { SimpleBlogPost } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';

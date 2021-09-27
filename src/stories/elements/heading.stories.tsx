@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
 import { Container } from '~/elements/container';
-import { Heading } from '~/elements/heading';
+import { Heading } from '~/elements/simple/heading';
 
 const HeadingsContainer = styled(Container)`
   & > .text-gradient {

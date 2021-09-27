@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 
 import { Page } from '~/blocks/page';
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 import { BlogGrid } from '~/sections/blog/blog-grid';
 import { SimpleBlogPost } from '~/types';
 import { getAllPosts } from '~/utils/get-posts';

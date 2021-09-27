@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 
 const baseButtonStyles = `
   display: inline-flex;

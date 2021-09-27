@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import { mdiMagnify } from '@mdi/js';
+import { mdiBulletinBoard, mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
 import { BlogPostCard } from '~/components/cards';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/fc';
-import { Input } from '~/elements/input';
-import { MasonryGrid } from '~/elements/masonry-grid';
+import { Component, ComponentProps } from '~/elements/base/fc';
+import { MasonryGrid } from '~/elements/complex/masonry-grid';
+import { Field } from '~/elements/simple/field';
 import { SimpleBlogPost } from '~/types';
 import { debounce } from '~/utils/debounce';
 
@@ -54,7 +54,8 @@ export const BlogGrid: Component<BlogGridProps> = (props) => {
       >
         Blog
       </SectionHeading>
-      <Input
+      <Field
+        tag={'input'}
         iconPath={mdiMagnify}
         type={'text'}
         name={'search-input'}
@@ -69,6 +70,7 @@ export const BlogGrid: Component<BlogGridProps> = (props) => {
           return <BlogPostCard key={i} {...post} />;
         })}
       </BlogsMasonry>
+      <Field tag={'textarea'} label={'Ideas'} iconPath={mdiBulletinBoard} />
     </BlogSection>
   );
 };

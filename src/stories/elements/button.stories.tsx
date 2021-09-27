@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { mdiAccessPoint } from '@mdi/js';
 import { Meta, Story } from '@storybook/react';
 
-import { Button } from '~/elements/button';
+import { Button } from '~/elements/simple/button';
 import { Container } from '~/elements/container';
 
 const ButtonsContainer = styled(Container)`

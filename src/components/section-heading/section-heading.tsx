@@ -1,6 +1,6 @@
-import { Component } from '~/elements/fc';
-import { Heading, HeadingProps } from '~/elements/heading';
+import { Component } from '~/elements/base/fc';
 import { gradientToClassName } from '~/elements/props';
+import { Heading, HeadingProps } from '~/elements/simple/heading';
 
 interface SectionHeadingProps extends HeadingProps {
   emoji?: string;

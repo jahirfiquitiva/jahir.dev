@@ -4,8 +4,8 @@ import Icon from '@mdi/react';
 import Image from 'next/image';
 import { usePalette } from 'react-palette';
 
-import { Card, ExtLinkCard } from '~/elements/card';
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
+import { Card, ExtLinkCard } from '~/elements/simple/card';
 import { TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 

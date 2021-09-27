@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
 
 export const LogoSvg: Component = (props) => {
   return (

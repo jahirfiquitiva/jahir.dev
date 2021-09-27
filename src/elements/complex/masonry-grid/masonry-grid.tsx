@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 
 export type MasonryBreakpoints = { [key: string | number]: number };
 

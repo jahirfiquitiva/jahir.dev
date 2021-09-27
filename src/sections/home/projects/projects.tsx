@@ -4,10 +4,10 @@ import { mdiFileCodeOutline } from '@mdi/js';
 import { ProjectCard } from '~/components/cards';
 import { GitHubStats } from '~/components/github-stats';
 import { SectionHeading } from '~/components/section-heading';
-import { LinkButton } from '~/elements/button';
-import { Divider } from '~/elements/divider';
-import { Component } from '~/elements/fc';
-import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
+import { LinkButton } from '~/elements/simple/button';
+import { Divider } from '~/elements/simple/divider';
+import { Component } from '~/elements/base/fc';
+import { MasonryGrid, MasonryBreakpoints } from '~/elements/complex/masonry-grid';
 import { projects, mediaQueries, viewports } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`

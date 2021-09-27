@@ -7,8 +7,8 @@ import {
   mdiTimelineTextOutline,
 } from '@mdi/js';
 
-import { LinkIconButton, LinkButtonProps } from '~/elements/button';
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
+import { LinkIconButton, LinkButtonProps } from '~/elements/simple/button';
 
 const BaseGitHubIconButton = styled(LinkIconButton)`
   background-color: #333;

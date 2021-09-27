@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 
 import { GitHubButton, BmacButton, PayPalButton } from '~/components/buttons';
-import { ButtonGroup } from '~/elements/button';
+import { ButtonGroup } from '~/elements/simple/button';
 
 export const Default: Story = () => {
   return (

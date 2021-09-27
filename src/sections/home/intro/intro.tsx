@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
-import { ExtLink } from '~/elements/ext-link';
-import { Component } from '~/elements/fc';
+import { ExtLink } from '~/elements/base/ext-link';
+import { Component } from '~/elements/base/fc';
 import { Hello, HelloParagraph } from '~/sections/home/hello';
 import { mediaQueries } from '~/types';
 

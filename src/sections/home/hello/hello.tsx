@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 import { HelloHeading } from '~/components/hello-heading';
-import { ExtLink } from '~/elements/ext-link';
-import { Component } from '~/elements/fc';
-import { Heading } from '~/elements/heading';
+import { ExtLink } from '~/elements/base/ext-link';
+import { Component } from '~/elements/base/fc';
+import { Heading } from '~/elements/simple/heading';
 import { gradientToClassName } from '~/elements/props';
 import { mediaQueries } from '~/types';
 

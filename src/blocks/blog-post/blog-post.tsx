@@ -11,13 +11,13 @@ import gfm from 'remark-gfm';
 import styles from './blog-post.module.css';
 import { markdownComponents } from './markdown-components';
 
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 import { useTheme } from '~/providers/theme';
 import { FullBlogPost } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
-import { OptImage } from '~/elements/opt-image';
+import { OptImage } from '~/elements/base/opt-image';
 
 const getChildType = (child: any): string | null | undefined => {
   try {

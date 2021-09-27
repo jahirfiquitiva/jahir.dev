@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo, useCallback } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
 
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 import { useTheme } from '~/providers/theme';
 import { ProjectProps, SkillProps, skills } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';

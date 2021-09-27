@@ -3,9 +3,9 @@ import Icon from '@mdi/react';
 import { CSSProperties } from 'react';
 
 import { SectionHeading } from '~/components/section-heading';
-import { Chip, ChipGroup } from '~/elements/chip';
-import { Divider } from '~/elements/divider';
-import { Component } from '~/elements/fc';
+import { Chip, ChipGroup } from '~/elements/simple/chip';
+import { Divider } from '~/elements/simple/divider';
+import { Component } from '~/elements/base/fc';
 import { skills } from '~/types';
 import buildStyles from '~/utils/build-styles';
 import hexToRGB from '~/utils/hex-to-rgb';

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/elements/fc';
-import { BaseToolbarLink } from '~/elements/toolbar-link';
+import { Component, ComponentProps } from '~/elements/base/fc';
+import { BaseToolbarLink } from '~/elements/complex/toolbar-link';
 import { mediaQueries } from '~/types';
 
 const PseudoToolbarButton = BaseToolbarLink.withComponent('button');

@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import { baseCardStyles } from '~/elements/card';
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
+import { baseCardStyles } from '~/elements/simple/card';
 import useRequest from '~/hooks/useRequest';
 import { mediaQueries } from '~/types';
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
-import { Card } from '~/elements/card/card';
+import { Card } from '~/elements/simple/card/card';
 import { Container } from '~/elements/container';
 
 const CardContent = styled.div`

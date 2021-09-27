@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { LogoSvg } from './logo-svg';
 
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
 
 export const Logo: Component = ({ className }) => {
   const [mounted, setMounted] = useState(false);

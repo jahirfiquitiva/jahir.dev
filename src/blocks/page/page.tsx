@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { Footer } from '~/blocks/footer';
 import { Toolbar } from '~/blocks/toolbar';
 import { MetaTags } from '~/components/metatags';
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
 import { PageProps, mediaQueries } from '~/types';
 
 const defaultSiteDescription =

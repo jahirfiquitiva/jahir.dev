@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { mdiHeartOutline, mdiCreditCardOutline, mdiPizza } from '@mdi/js';
 
-import { LinkButton, LinkButtonProps } from '~/elements/button';
-import { Component } from '~/elements/fc';
+import { Component } from '~/elements/base/fc';
+import { LinkButton, LinkButtonProps } from '~/elements/simple/button';
 
 const BaseGitHubButton = styled(LinkButton)`
   background-color: #d34399;

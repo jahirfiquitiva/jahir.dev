@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { Component, ComponentProps } from '~/elements/fc';
-import { ToolbarLink } from '~/elements/toolbar-link';
+import { Component, ComponentProps } from '~/elements/base/fc';
+import { ToolbarLink } from '~/elements/complex/toolbar-link';
 import { mediaQueries } from '~/types';
 
 const collapsedStyles = `

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Component, ComponentProps } from '~/elements/fc';
+import { Component, ComponentProps } from '~/elements/base/fc';
 
 interface ExtLinkProps extends ComponentProps {
   to: string;

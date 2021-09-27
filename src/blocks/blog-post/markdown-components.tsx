@@ -11,8 +11,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 import styles from './blog-post.module.css';
 
-import { Component, ComponentProps } from '~/elements/fc';
-import { OptImage } from '~/elements/opt-image';
+import { Component, ComponentProps } from '~/elements/base/fc';
+import { OptImage } from '~/elements/base/opt-image';
 
 const flatten = (text: string, child: any): any => {
   return typeof child === 'string'
