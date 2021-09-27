@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { useState, useMemo } from 'react';
 import Icon from '@mdi/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,10 +27,22 @@ const getSkill = (skillName: string): SkillProps | null => {
 
 const iconSize = 0.75;
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
+  const { isDark } = useTheme();
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props;
-  const { isDark } = useTheme();
   const projectColor = isDark ? darkColor || color : color;
+  const [shadowColors, setShadowColors] = useState(
+    buildShadowColors(projectColor, 0.2, 0.4, isDark),
+  );
+  const [titleColor, setTitleColor] = useState(
+    getReadableColor(projectColor, isDark),
+  );
+
+  useMemo(() => {
+    const projectColor = isDark ? darkColor || color : color;
+    setShadowColors(buildShadowColors(projectColor, 0.2, 0.4, isDark));
+    setTitleColor(getReadableColor(projectColor, isDark));
+  }, [isDark]);
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;
@@ -55,16 +67,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
 
   return (
     <Link href={link} passHref={true}>
-      <BaseProjectCard
-        to={link}
-        className={'nodeco'}
-        style={buildShadowColors(
-          isDark ? darkColor || color : color,
-          0.2,
-          0.4,
-          isDark,
-        )}
-      >
+      <BaseProjectCard to={link} className={'nodeco'} style={shadowColors}>
         <div className={'details'}>
           <div className={'icon-title'}>
             <Image
@@ -75,13 +78,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
               layout={'fixed'}
               loading={'lazy'}
             />
-            <h6
-              style={buildStyles({
-                '--hl-color': getReadableColor(projectColor, isDark),
-              })}
-            >
-              {title}
-            </h6>
+            <h6 style={buildStyles({ '--hl-color': titleColor })}>{title}</h6>
           </div>
           <p>{description}</p>
           {renderProjectStack()}

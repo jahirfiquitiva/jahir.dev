@@ -124,7 +124,7 @@ button,
   background-color: var(--accent);
   color: var(--on-accent);
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   min-height: 36px;
   padding: 0.4rem 0.8rem;
   font-family: var(--manrope-font);

@@ -13,6 +13,8 @@ type GitHubStatsData = {
 
 const GitHubStatsLink = styled.a`
   ${baseCardStyles}
+  --divider-alpha: 0.3;
+  --divider: rgba(var(--divider-opaque), var(--divider-alpha));
   display: flex;
   align-items: center;
   padding: 0.4rem 0.6rem;
@@ -29,6 +31,7 @@ const GitHubStatsLink = styled.a`
 
   &:hover,
   &:focus {
+    --divider-alpha: 0.4;
     color: var(--text-primary);
     text-decoration: none;
     -webkit-transform: translateY(-.1rem);
