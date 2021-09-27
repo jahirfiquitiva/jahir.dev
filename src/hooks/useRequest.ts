@@ -1,6 +1,6 @@
 import { MutatorCallback } from 'swr/dist/types';
 import useSWR from 'swr';
-import fetcher from '~/utils/fetcher';
+import fetcher from '~/lib/fetcher';
 
 interface SwrData<T = unknown> {
   data?: T | null;

@@ -1998,6 +1998,31 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@formium/client@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@formium/client/-/client-0.1.4.tgz#80058c4e648fd4ada72b9fbd818c56e2cdb6f161"
+  integrity sha512-R49ONI0XN3a9AFPQkW5N/8kHzj/vrTjhYkQesZolNMhKe356xzQSYWM/C5z+6DiPGiz7yO3INZTsEDXBGB29Ag==
+  dependencies:
+    "@formium/types" "^0.1.2"
+    "@formium/utils" "^0.1.1"
+    cross-fetch "^3.0.5"
+    query-string "^6.13.1"
+    tslib "^2.0.0"
+
+"@formium/types@^0.1.2":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@formium/types/-/types-0.1.3.tgz#723277d87bc8a2594f214a75314cf1743cc17d4a"
+  integrity sha512-AfLHaFDZQsPApmX8WSPeh2GzAEE1dBjahSKxQOD6laTSLwJE0IoEz2Gr9Mu1ODiqNuEQu2U74innGFdnCZKpjg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@formium/utils@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@formium/utils/-/utils-0.1.1.tgz#2b38827e4ba6758bc64ddfc484472eec9fabe3f1"
+  integrity sha512-JUllY6rqoZyb19e/DOJtLeVofQMSMR1wM64vQAc5VseFE4lE2Mo0NFr/AxlEYRR+bBMQDlcjizuh4T6LPtjFIg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@graphql-codegen/core@^1.15.4", "@graphql-codegen/core@^1.17.0":
   version "1.17.10"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/core/-/core-1.17.10.tgz#3b85b5bc2e84fcacbd25fced5af47a4bb2d7a8bd"
@@ -6677,7 +6702,7 @@ cross-fetch@3.1.2:
   dependencies:
     node-fetch "2.6.1"
 
-cross-fetch@^3.0.4:
+cross-fetch@^3.0.4, cross-fetch@^3.0.5:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
   integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
@@ -8333,6 +8358,11 @@ fill-range@^7.0.1:
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
+
+filter-obj@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/filter-obj/-/filter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
+  integrity sha1-mzERErxsYSehbgFsbF1/GeCAXFs=
 
 final-form-arrays@^3.0.1, final-form-arrays@^3.0.2:
   version "3.0.2"
@@ -13416,6 +13446,16 @@ query-string@^4.1.0:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+query-string@^6.13.1:
+  version "6.14.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.14.1.tgz#7ac2dca46da7f309449ba0f86b1fd28255b0c86a"
+  integrity sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    filter-obj "^1.1.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 querystring-es3@0.2.1, querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -14966,6 +15006,11 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.10.tgz#0d9becccde7003d6c658d487dd48a32f0bf3014b"
   integrity sha512-oie3/+gKf7QtpitB0LYLETe+k8SifzsX4KixvpOsbI6S0kRiRQ5MKOio8eMSAKQ17N06+wdEOXRiId+zOxo0hA==
 
+split-on-first@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/split-on-first/-/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
+  integrity sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -15133,6 +15178,11 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
+
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
+  integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
 string-hash@1.1.3:
   version "1.1.3"

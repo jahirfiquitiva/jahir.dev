@@ -27,6 +27,7 @@ export interface ButtonProps extends ComponentProps {
   title?: string;
   icon?: string;
   iconSize?: number;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
@@ -37,6 +38,7 @@ export const Button: Component<ButtonProps> = (props) => {
     icon,
     iconSize = 1,
     className,
+    disabled,
     children,
     onClick,
   } = props;
@@ -47,6 +49,7 @@ export const Button: Component<ButtonProps> = (props) => {
       title={title}
       aria-label={title}
       className={className}
+      disabled={disabled}
       onClick={onClick}
     >
       {icon && <Icon path={icon} size={iconSize} />}

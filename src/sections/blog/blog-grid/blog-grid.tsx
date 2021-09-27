@@ -9,7 +9,7 @@ import { Component, ComponentProps } from '~/elements/base/fc';
 import { MasonryGrid } from '~/elements/complex/masonry-grid';
 import { Field } from '~/elements/simple/field';
 import { SimpleBlogPost } from '~/types';
-import { debounce } from '~/utils/debounce';
+import { debounce } from '~/lib/debounce';
 
 interface BlogGridProps extends ComponentProps {
   posts?: SimpleBlogPost[];

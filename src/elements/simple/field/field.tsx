@@ -73,6 +73,7 @@ interface InputProps extends ComponentProps {
   placeholder?: string;
   iconPath?: string;
   hideLabel?: boolean;
+  disabled?: boolean;
   value?: string;
   onChange?: (newValue: string) => void | Dispatch<SetStateAction<string>>;
 }
@@ -101,8 +102,16 @@ const FieldWrapper: Component<InputProps> = (props) => {
 };
 
 const Input: Component<InputProps> = (props) => {
-  const { type, name, placeholder, iconPath, value, onChange, ...otherProps } =
-    props;
+  const {
+    type,
+    name,
+    placeholder,
+    iconPath,
+    disabled,
+    value,
+    onChange,
+    ...otherProps
+  } = props;
 
   return (
     <FieldWrapper iconPath={iconPath} name={name} {...otherProps}>
@@ -111,6 +120,7 @@ const Input: Component<InputProps> = (props) => {
         name={name}
         placeholder={placeholder}
         className={iconPath ? 'with-icon' : undefined}
+        disabled={disabled}
         value={value}
         onChange={(e) => {
           if (onChange) onChange(e.target.value);
@@ -121,7 +131,15 @@ const Input: Component<InputProps> = (props) => {
 };
 
 const TextArea: Component<Omit<InputProps, 'type'>> = (props) => {
-  const { name, placeholder, iconPath, value, onChange, ...otherProps } = props;
+  const {
+    name,
+    placeholder,
+    iconPath,
+    disabled,
+    value,
+    onChange,
+    ...otherProps
+  } = props;
 
   return (
     <FieldWrapper iconPath={iconPath} name={name} {...otherProps}>
@@ -129,6 +147,7 @@ const TextArea: Component<Omit<InputProps, 'type'>> = (props) => {
         name={name}
         placeholder={placeholder}
         className={iconPath ? 'with-icon' : undefined}
+        disabled={disabled}
         value={value}
         onChange={(e) => {
           if (onChange) onChange(e.target.value);

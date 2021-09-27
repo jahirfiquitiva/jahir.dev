@@ -21,9 +21,10 @@ export const ExtLink: Component<ExtLinkProps> = (props) => {
   } = props;
 
   if (!newTab) {
+    const linkProps = { ...props, newTab: undefined };
     return (
       <Link href={to}>
-        <a {...props} />
+        <a {...linkProps} />
       </Link>
     );
   }
