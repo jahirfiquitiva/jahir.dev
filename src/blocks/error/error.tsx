@@ -63,7 +63,7 @@ const constructionMessage =
   'Please bear with me as I work really hard to bring this site (back) to life 😬';
 
 interface ErrorProps extends ComponentProps {
-  errorType?: 'under-construction' | 'four-hundred-four' | 'error';
+  errorType?: 'under-construction' | 'four-hundred-four' | 'error' | 'sent';
 }
 
 export const Error: Component<ErrorProps> = (props) => {
