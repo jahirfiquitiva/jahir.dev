@@ -22,17 +22,25 @@ const fonts = [
   'fira-code/fira-code-v10-latin-500.woff2',
 ];
 
-const PageContainer = styled.main`
+const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: var(--max-site-width);
-  margin: 0 auto;
+  width: 100%;
   min-height: calc(100vh - var(--toolbar-height) - 1.6rem);
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
 
   ${mediaQueries.desktop} {
     padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
   }
+`;
+
+const SiteContent = styled.main`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-site-width);
+  margin: 0 auto;
 `;
 
 export const Page: Component<PageProps> = (props) => {
@@ -76,8 +84,10 @@ export const Page: Component<PageProps> = (props) => {
       <header>
         <Toolbar />
       </header>
-      <PageContainer>{children}</PageContainer>
-      <Footer />
+      <PageContainer>
+        <SiteContent>{children}</SiteContent>
+        <Footer />
+      </PageContainer>
     </>
   );
 };

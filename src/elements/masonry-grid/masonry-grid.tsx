@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 import { Component, ComponentProps } from '~/elements/fc';
@@ -9,11 +10,18 @@ interface MasonryGridProps extends ComponentProps {
   gap?: string | 0;
 }
 
-export const MasonryGrid: Component<MasonryGridProps> = (props) => {
+const BaseMasonryGrid: Component<MasonryGridProps> = (props) => {
   const { breakpoints, gap, children, className } = props;
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={breakpoints} className={className}>
+    <ResponsiveMasonry
+      columnsCountBreakPoints={breakpoints}
+      className={className}
+    >
       <Masonry gutter={gap}>{children}</Masonry>
     </ResponsiveMasonry>
   );
 };
+
+export const MasonryGrid = styled(BaseMasonryGrid)`
+  width: 100%;
+`;
