@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jahir Fiquitiva's Website
 
-## Getting Started
+## Project Structure
 
-First, run the development server:
+### Elements
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+This folder includes the most simple react components:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `button`
+  - `Button` (supports setting an `Icon`)
+  - `LinkButton` (`a` that looks like `Button`)
+  - `LinkIconButton` (`a` that looks like `Button` but only has an `Icon`)
+  - `ButtonGroup` (`div` that wraps multiple `Button`s)
+- `card`
+  - `Card` (`div` with a soft border)
+  - `ExtLinkCard` (`a` that looks like `Card`)
+- `chip`
+  - `Chip` (`span` with full rounded corners)
+  - `ChipGroup` (`ul` to wrap `Chip`s)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Components
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This folder includes slightly more complex components. All components in this folder use at least one of the components in `Elements`
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Blocks
 
-## Learn More
+This folder includes complex components. All components in this folder use at least one of the components in `Components` and `Elements` (either separately or grouped)
 
-To learn more about Next.js, take a look at the following resources:
+### Sections
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This folder includes the actual website sections.
