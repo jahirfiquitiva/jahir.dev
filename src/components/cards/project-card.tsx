@@ -1,20 +1,17 @@
+import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 import Image from 'next/image';
 import Link from 'next/link';
-// import { usePalette } from 'react-palette';
 
 import { BaseProjectCard } from './base-project-card';
 
 import { Component, ComponentProps } from '~/elements/fc';
-// import { BlogPostProps } from '~/types/blog-post';
 import { ProjectProps } from '~/types/project';
 import { SkillProps, skills } from '~/types/skill';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import { useTheme } from '~/providers/theme';
 import getReadableColor from '~/utils/get-readable-color';
 import buildStyles from '~/utils/build-styles';
-// import formatDate from '~/utils/format-date';
-// import getColorFromPalette from '~/utils/get-color-from-palette';
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
@@ -61,14 +58,12 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
       <BaseProjectCard
         to={link}
         className={'nodeco'}
-        style={{
-          ...buildShadowColors(
-            isDark ? darkColor || color : color,
-            0.2,
-            0.4,
-            isDark,
-          ),
-        }}
+        style={buildShadowColors(
+          isDark ? darkColor || color : color,
+          0.2,
+          0.4,
+          isDark,
+        )}
       >
         <div className={'details'}>
           <div className={'icon-title'}>

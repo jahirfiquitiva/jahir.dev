@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import { Component } from '~/elements/fc';
 import { Heading, HeadingProps } from '~/elements/heading';
 import { gradientToClassName } from '~/elements/props';

@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 import { CSSProperties } from 'hoist-non-react-statics/node_modules/@types/react';
 import { SectionHeading } from '~/components/section-heading';
@@ -14,18 +15,22 @@ const buildSkillChipStyles = (color: string): CSSProperties => {
   });
 };
 
+const SkillsHeading = styled(SectionHeading)`
+  margin-top: 1.2rem;
+`;
+
 export const Skills = () => {
   return (
     <section>
       <Divider gradientColor={'brand-to-blue'} />
-      <SectionHeading
+      <SkillsHeading
         size={'3'}
         shadowColor={'blue'}
         gradientColor={'blue-to-green'}
         emoji="🚀"
       >
         Skills
-      </SectionHeading>
+      </SkillsHeading>
       <ChipGroup>
         {skills
           .filter((skill) => !skill.hide)

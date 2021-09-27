@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { ExtLink } from '~/elements/ext-link';
 
-const baseCardStyles = `
+export const baseCardStyles = `
   --border-radius: 6px;
   padding: 0;
   transition: all 0.35s ease-in-out;

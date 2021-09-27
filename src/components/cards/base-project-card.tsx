@@ -105,6 +105,8 @@ export const BaseProjectCard = styled(ExtLinkCard)`
 
   &:hover,
   &:focus {
+    --shadow-one-size: 4px;
+    --shadow-two-size: 6px;
     border-color: var(--dashed-color);
     border: 1px solid var(--border-color);
     color: var(--text-primary);

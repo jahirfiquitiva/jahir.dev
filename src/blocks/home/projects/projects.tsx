@@ -5,6 +5,9 @@ import { Divider } from '~/elements/divider';
 import { SectionHeading } from '~/components/section-heading';
 import { viewports } from '~/types/viewports';
 import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
+import { GitHubStats } from '~/components/github-stats';
+import { LinkButton } from '~/elements/button';
+import { mdiFileCodeOutline } from '@mdi/js';
 
 /*
 export const ProjectsGrid = styled.ul`
@@ -24,7 +27,19 @@ export const ProjectsGrid = styled.ul`
 */
 
 export const ProjectsGrid = styled(MasonryGrid)`
-  padding: 1.6rem 0 2rem;
+  padding: 1.6rem 0 2.4rem;
+`;
+
+const ProjectsHeader = styled.div`
+  margin-top: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const ProjectsHeaderLinksContainer = styled(ProjectsHeader)`
+  margin-top: 0;
+  justify-content: center;
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
@@ -36,14 +51,28 @@ export const Projects = () => {
   return (
     <section>
       <Divider gradientColor={'blue-to-green'} />
-      <SectionHeading
-        size={'3'}
-        shadowColor={'green'}
-        gradientColor={'green-to-yellow'}
-        emoji="👨‍💻"
-      >
-        Projects
-      </SectionHeading>
+
+      <ProjectsHeader>
+        <SectionHeading
+          size={'3'}
+          shadowColor={'green'}
+          gradientColor={'green-to-yellow'}
+          emoji="👨‍💻"
+        >
+          Projects
+        </SectionHeading>
+
+        <ProjectsHeaderLinksContainer>
+          <GitHubStats />
+          <LinkButton
+            icon={mdiFileCodeOutline}
+            href={'/resume'}
+            target={'_blank'}
+          >
+            View resume
+          </LinkButton>
+        </ProjectsHeaderLinksContainer>
+      </ProjectsHeader>
 
       <ProjectsGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
         {projects
