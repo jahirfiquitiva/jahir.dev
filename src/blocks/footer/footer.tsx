@@ -5,7 +5,7 @@ import { ExtLink } from '~/elements/ext-link';
 import { Component } from '~/elements/fc';
 import { Logo } from '~/elements/logo';
 import { gradientToClassName } from '~/elements/props';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 const FooterHomeLink = styled(ExtLink)`
   position: relative;

@@ -5,7 +5,7 @@ import { usePalette } from 'react-palette';
 import { ExtLinkCard } from '~/elements/card';
 import { Component, ComponentProps } from '~/elements/fc';
 import { useTheme } from '~/providers/theme';
-import { SimpleBlogPost } from '~/types/blog-post';
+import { SimpleBlogPost } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import formatDate from '~/utils/format-date';

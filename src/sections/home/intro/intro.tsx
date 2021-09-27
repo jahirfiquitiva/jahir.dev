@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { Hello, HelloParagraph } from '~/sections/home/hello';
+
 import { SocialLinks } from '~/blocks/social-links';
 import { ExtLink } from '~/elements/ext-link';
 import { Component } from '~/elements/fc';
-import { mediaQueries } from '~/types/viewports';
+import { Hello, HelloParagraph } from '~/sections/home/hello';
+import { mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`
   display: grid;

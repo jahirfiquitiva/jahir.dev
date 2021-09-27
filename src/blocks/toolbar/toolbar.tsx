@@ -7,7 +7,7 @@ import { Logo } from '~/elements/logo';
 import { ToolbarButton, ToolbarMenuToggle } from '~/elements/toolbar-button';
 import { ToolbarLink } from '~/elements/toolbar-link';
 import { useTheme } from '~/providers/theme';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 export const ToolbarLogo = styled(ToolbarLink)`
   grid-row: 1;

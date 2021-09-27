@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { Component, ComponentProps } from '~/elements/fc';
 import { BaseToolbarLink } from '~/elements/toolbar-link';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 const PseudoToolbarButton = BaseToolbarLink.withComponent('button');
 export const ToolbarButton = styled(PseudoToolbarButton)`

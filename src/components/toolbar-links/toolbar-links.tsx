@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { Component, ComponentProps } from '~/elements/fc';
 import { ToolbarLink } from '~/elements/toolbar-link';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 const collapsedStyles = `
   visibility: hidden;

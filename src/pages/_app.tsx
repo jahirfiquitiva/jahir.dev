@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { TinaEditProvider } from 'tinacms/dist/edit-state';
+
 import { ThemeProvider } from '~/providers/theme';
 import '~/styles/global.css';
 

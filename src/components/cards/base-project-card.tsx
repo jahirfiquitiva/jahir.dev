@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import { ExtLinkCard } from '~/elements/card';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 export const BaseProjectCard = styled(ExtLinkCard)`
   --border-radius: 10px;

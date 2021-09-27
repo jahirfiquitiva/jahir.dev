@@ -1,17 +1,16 @@
-import { useState, useMemo } from 'react';
 import Icon from '@mdi/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useMemo } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
 
 import { Component, ComponentProps } from '~/elements/fc';
-import { ProjectProps } from '~/types/project';
-import { SkillProps, skills } from '~/types/skill';
-import buildShadowColors from '~/utils/build-shadow-colors';
 import { useTheme } from '~/providers/theme';
-import getReadableColor from '~/utils/get-readable-color';
+import { ProjectProps, SkillProps, skills } from '~/types';
+import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
+import getReadableColor from '~/utils/get-readable-color';
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
@@ -42,7 +41,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     const projectColor = isDark ? darkColor || color : color;
     setShadowColors(buildShadowColors(projectColor, 0.2, 0.4, isDark));
     setTitleColor(getReadableColor(projectColor, isDark));
-  }, [isDark]);
+  }, [isDark, color, darkColor]);
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;

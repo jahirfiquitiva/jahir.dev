@@ -8,7 +8,7 @@ import {
   gradientToClassName,
   TextShadowOptions,
 } from '~/elements/props';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 interface BaseToolbarLinkProps {
   active?: boolean;

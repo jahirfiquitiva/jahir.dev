@@ -12,11 +12,11 @@ import styles from './blog-post.module.css';
 import { markdownComponents } from './markdown-components';
 
 import { Component, ComponentProps } from '~/elements/fc';
-import { FullBlogPost } from '~/types/blog-post';
+import { useTheme } from '~/providers/theme';
+import { FullBlogPost } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
-import { useTheme } from '~/providers/theme';
 
 const getChildType = (child: any): string | null | undefined => {
   try {
@@ -50,7 +50,14 @@ interface BlogPostProps extends ComponentProps, FullBlogPost {}
 const REACT_MD_ENABLED = true;
 
 export const BlogPost: Component<BlogPostProps> = (props) => {
-  const { title, hero, date, readingTime, tableOfContents, body: content } = props;
+  const {
+    title,
+    hero,
+    date,
+    readingTime,
+    tableOfContents,
+    body: content,
+  } = props;
   const { isDark } = useTheme();
   const { data: heroPalette } = usePalette(hero || '');
 

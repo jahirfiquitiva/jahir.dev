@@ -1,7 +1,9 @@
-import { useMemo, useState } from 'react';
 import NextHead from 'next/head';
-import { PageProps } from '~/types/page';
+import { useMemo, useState } from 'react';
+
+import { Component } from '~/elements/fc';
 import { useTheme } from '~/providers/theme';
+import { PageProps } from '~/types';
 
 const defaultImage = 'https://jahir.dev/assets/images/brand/banner.png';
 const defaultLogoImage =
@@ -15,7 +17,7 @@ export interface MetaTagsProps extends PageProps {
   metaImageStyle?: MetaImageStyle;
 }
 
-export const MetaTags = (props: MetaTagsProps) => {
+export const MetaTags: Component<MetaTagsProps> = (props) => {
   const {
     title,
     description,

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
-import Icon from '@mdi/react';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
-import useRequest from '~/hooks/useRequest';
+import Icon from '@mdi/react';
+
+import { baseCardStyles } from '~/elements/card';
 import { Component } from '~/elements/fc';
-import { baseCardStyles, ExtLinkCard } from '~/elements/card';
-import { mediaQueries } from '~/types/viewports';
+import useRequest from '~/hooks/useRequest';
+import { mediaQueries } from '~/types';
 
 type GitHubStatsData = {
   success?: boolean;

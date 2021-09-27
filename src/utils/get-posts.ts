@@ -4,7 +4,7 @@ import { join } from 'path';
 
 import matter from 'gray-matter';
 
-import { SimpleBlogPost } from '~/types/blog-post';
+import { SimpleBlogPost } from '~/types';
 import getRandomItemFrom from '~/utils/get-random-item';
 import { getTableOfContents, getReadingTime } from '~/utils/get-post-data';
 

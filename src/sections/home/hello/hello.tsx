@@ -6,7 +6,7 @@ import { ExtLink } from '~/elements/ext-link';
 import { Component } from '~/elements/fc';
 import { Heading } from '~/elements/heading';
 import { gradientToClassName } from '~/elements/props';
-import { mediaQueries } from '~/types/viewports';
+import { mediaQueries } from '~/types';
 
 const HelloContainer = styled.div`
   margin-top: 2rem;

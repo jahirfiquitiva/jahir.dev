@@ -4,7 +4,7 @@ import { Page } from '~/blocks/page';
 import { BlogPostCard } from '~/components/cards';
 import { Component, ComponentProps } from '~/elements/fc';
 import { MasonryGrid } from '~/elements/masonry-grid';
-import { SimpleBlogPost } from '~/types/blog-post';
+import { SimpleBlogPost } from '~/types';
 import { getAllPosts } from '~/utils/get-posts';
 
 interface BlogProps extends ComponentProps {

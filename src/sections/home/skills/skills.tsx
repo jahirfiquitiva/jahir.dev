@@ -1,10 +1,11 @@
-import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
+import { CSSProperties } from 'react';
+
 import { SectionHeading } from '~/components/section-heading';
 import { Chip, ChipGroup } from '~/elements/chip';
 import { Divider } from '~/elements/divider';
-import { skills } from '~/types/skill';
+import { skills } from '~/types';
 import buildStyles from '~/utils/build-styles';
 import hexToRGB from '~/utils/hex-to-rgb';
 

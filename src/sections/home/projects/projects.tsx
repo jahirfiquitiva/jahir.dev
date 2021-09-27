@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
-import { ProjectCard } from '~/components/cards';
-import { projects } from '~/types/project';
-import { Divider } from '~/elements/divider';
-import { SectionHeading } from '~/components/section-heading';
-import { mediaQueries, viewports } from '~/types/viewports';
-import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
-import { GitHubStats } from '~/components/github-stats';
-import { LinkButton } from '~/elements/button';
 import { mdiFileCodeOutline } from '@mdi/js';
+
+import { ProjectCard } from '~/components/cards';
+import { GitHubStats } from '~/components/github-stats';
+import { SectionHeading } from '~/components/section-heading';
+import { LinkButton } from '~/elements/button';
+import { Divider } from '~/elements/divider';
+import { MasonryGrid, MasonryBreakpoints } from '~/elements/masonry-grid';
+import { projects, mediaQueries, viewports } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`
   padding: 1.6rem 0 2.4rem;
