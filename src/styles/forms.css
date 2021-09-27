@@ -1,15 +1,22 @@
-form label {
+input,
+select,
+textarea {
+  background: rgba(0, 0, 0, 0);
+  color: var(--text-primary);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  min-height: 48px;
+  padding: 0.4rem 0.6rem;
+}
+
+label {
   margin-top: 1rem;
+  font-weight: 500;
 }
 
 form input,
 form textarea {
-  background: rgba(0, 0, 0, 0);
-  border: 1px solid var(--divider);
-  border-radius: 6px;
-  min-height: 32px;
-  margin-top: .4rem;
-  padding: .4rem .6rem;
+  margin-top: 0.4rem;
 }
 
 form textarea {
@@ -49,7 +56,7 @@ form button {
 }
 
 form button svg {
-  margin-right: .4rem;
+  margin-right: 0.4rem;
 }
 
 @media (min-width: 960px) {
