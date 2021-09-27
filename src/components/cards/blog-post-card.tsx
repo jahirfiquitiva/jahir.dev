@@ -37,6 +37,13 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
     }
 
     p {
+      --max-lines: 2;
+      display: -webkit-box;
+      max-lines: var(--max-lines);
+      -webkit-line-clamp: var(--max-lines);
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
       margin: 0.2rem 0;
       font-size: 0.9rem;
       color: var(--text-secondary);

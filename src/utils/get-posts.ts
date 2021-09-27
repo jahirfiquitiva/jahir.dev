@@ -1,3 +1,4 @@
+import { getPostDescription } from './get-post-data';
 /* eslint-disable */
 import fs from 'fs';
 import { join } from 'path';
@@ -42,7 +43,10 @@ export function getPostBySlug(
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === 'excerpt') {
-      items[field] = data.excerpt || data.description || null;
+      items[field] = getPostDescription(
+        data.excerpt || data.description,
+        content,
+      );
     } else if (field === 'slug') {
       items[field] = data.slug || realSlug;
     } else if (field === 'content' || field === 'body') {

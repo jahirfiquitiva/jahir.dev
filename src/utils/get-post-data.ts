@@ -2,9 +2,10 @@ import readingTime, { IReadTimeResults } from 'reading-time';
 import removeMd from 'remove-markdown';
 
 export const getPostDescription = (
-  description?: string,
-  content?: string,
-  defaultDescription?: string,
+  description?: string | null,
+  content?: string | null,
+  defaultDescription?: string | null,
+  maxCharacters?: number,
 ): string => {
   if (description && (description?.length || 0) > 0) return description;
   if (!content || (content?.length || 0) <= 0) {
@@ -17,13 +18,15 @@ export const getPostDescription = (
     ?.trim();
   const plainText = removeMd(noTitles);
   const noNewLines = plainText.replace(/[\r\n]+/gm, '  ').trim();
-  const splitContent = noNewLines.substring(0, 140);
+  const splitContent = noNewLines.substring(0, maxCharacters || 140);
   return splitContent.length > 0
     ? `${splitContent}...`
     : defaultDescription || '';
 };
 
-export const getTableOfContents = (body?: string): string | undefined | null => {
+export const getTableOfContents = (
+  body?: string,
+): string | undefined | null => {
   if (!body || !body.length) return null;
   const lines = body
     .split(/\r\n|\n\r|\n|\r/)
