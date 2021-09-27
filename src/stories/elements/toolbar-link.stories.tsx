@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
-import { ToolbarButton, ToolbarMenuToggle } from '~/elements/complex/toolbar-button';
-import { ToolbarLink } from '~/elements/toolbar-link';
+import {
+  ToolbarButton,
+  ToolbarMenuToggle,
+} from '~/elements/complex/toolbar-button';
+import { ToolbarLink } from '~/elements/complex/toolbar-link';
 
 const LinksContainer = styled.div`
   display: inline-flex;

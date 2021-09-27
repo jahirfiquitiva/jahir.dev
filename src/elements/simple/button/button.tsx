@@ -65,7 +65,7 @@ const BaseLinkButton = styled.a`
 `;
 
 export interface LinkButtonProps extends Omit<ButtonProps, 'onClick'> {
-  to: string;
+  to?: string;
   title?: string;
   newTab?: boolean;
 }
@@ -84,7 +84,7 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
   if (!newTab) {
     const linkProps = { ...props, newTab: undefined };
     return (
-      <Link href={to} passHref>
+      <Link href={to || '#'} passHref>
         <BaseLinkButton
           title={title}
           aria-label={title}
@@ -119,7 +119,7 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
   if (!newTab) {
     const linkProps = { ...props, newTab: undefined };
     return (
-      <Link href={to} passHref>
+      <Link href={to || '#'} passHref>
         <BaseLinkButton
           title={title}
           aria-label={title}
