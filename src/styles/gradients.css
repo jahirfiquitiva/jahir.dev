@@ -24,29 +24,45 @@
 
 .dark-mode .text-gradient,
 .text-gradient.forced {
-  -webkit-text-fill-color: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0);
-  text-shadow: none !important;
   --start-grad-color: var(--gradients-a);
   --end-grad-color: var(--gradients-b);
+  text-shadow: none;
   background: var(--start-grad-color);
   background: -moz-linear-gradient(
     90deg,
-    var(--start-grad-color) 0%,
+    var(--start-grad-color) 0,
     var(--end-grad-color) 100%
   );
   background: -webkit-linear-gradient(
     90deg,
-    var(--start-grad-color) 0%,
+    var(--start-grad-color) 0,
+    var(--end-grad-color) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(var(--start-grad-color)),
+    to(var(--end-grad-color))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    var(--start-grad-color) 0,
+    var(--end-grad-color) 100%
+  );
+  background: -moz-linear-gradient(
+    left,
+    var(--start-grad-color) 0,
     var(--end-grad-color) 100%
   );
   background: linear-gradient(
     90deg,
-    var(--start-grad-color) 0%,
+    var(--start-grad-color) 0,
     var(--end-grad-color) 100%
   );
-  -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: inherit;
   background-clip: text;
 }
 

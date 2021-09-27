@@ -124,9 +124,6 @@ export const BaseProjectCard = styled(ExtLinkCard)`
       h6 {
         color: var(--hl-color);
         text-decoration: underline;
-        -webkit-text-decoration-style: solid;
-        -webkit-text-decoration-color: var(--hl-color);
-        text-decoration: underline solid var(--hl-color);
       }
 
       p {

@@ -100,6 +100,9 @@ a,
 a:visited {
   font-weight: 500;
   color: var(--accent);
+  text-underline-position: under;
+  text-decoration-skip: edges;
+  text-decoration-color: currentColor;
   text-decoration: none;
 }
 
@@ -107,11 +110,6 @@ a:hover,
 a:focus {
   color: var(--accent-dark);
   text-decoration: underline;
-  -webkit-text-decoration-style: solid;
-  -webkit-text-decoration-color: currentColor;
-  text-decoration: underline solid currentColor;
-  text-decoration-color: currentColor;
-  text-decoration-skip: edges;
 }
 
 a.nodeco:hover,

@@ -6,6 +6,7 @@ import { Component } from '~/elements/fc';
 import { Logo } from '~/elements/logo';
 import { gradientToClassName } from '~/elements/props';
 import { mediaQueries } from '~/types';
+import buildStyles from '~/utils/build-styles';
 
 const FooterHomeLink = styled(ExtLink)`
   position: relative;
@@ -14,15 +15,16 @@ const FooterHomeLink = styled(ExtLink)`
   font-size: var(--base-font-size);
 
   & svg {
+    min-width: 24px;
     max-width: 28px;
     margin-right: 0.6rem;
   }
 
   & > span {
     position: absolute;
+    display: inline-block;
     white-space: nowrap;
     left: 36px;
-    flex: 1;
   }
 
   ${mediaQueries.mobile.md} {
@@ -55,6 +57,29 @@ const FooterGridSection = styled.div`
   }
 `;
 
+const FooterGridLink = styled(ExtLink)`
+  margin: 0.4rem 0;
+  font-size: calc(var(--base-font-size) * 1.1);
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: var(--start-grad-color, var(--accent-dark));
+    text-decoration: underline solid var(--start-grad-color, var(--accent-dark));
+    text-decoration-skip: edges;
+
+    & * {
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-color: var(--start-grad-color, var(--accent-dark));
+      text-decoration: underline solid
+        var(--start-grad-color, var(--accent-dark));
+      text-decoration-skip: edges;
+    }
+  }
+`;
+
 const FooterGridSectionTwo = styled(FooterGridSection)`
   display: none;
   visibility: hidden;
@@ -65,34 +90,6 @@ const FooterGridSectionTwo = styled(FooterGridSection)`
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row: 1;
-  }
-
-  & a {
-    margin: 0.4rem 0;
-    font-size: calc(var(--base-font-size) * 1.1);
-
-    &:hover,
-    &:focus {
-      -webkit-text-decoration-style: solid;
-      -webkit-text-decoration-color: var(
-        --start-grad-color,
-        var(--accent-dark)
-      );
-      text-decoration: underline solid
-        var(--start-grad-color, var(--accent-dark));
-      text-decoration-skip: edges;
-
-      & span {
-        -webkit-text-decoration-style: solid;
-        -webkit-text-decoration-color: var(
-          --start-grad-color,
-          var(--accent-dark)
-        );
-        text-decoration: underline solid
-          var(--start-grad-color, var(--accent-dark));
-        text-decoration-skip: edges;
-      }
-    }
   }
 
   ${mediaQueries.tablet.lg} {
@@ -218,62 +215,86 @@ export const Footer: Component = () => {
             </span>
           </FooterHomeLink>
           <FooterSocialLinks />
-          <p className="small">Copyright © {new Date().getFullYear()}</p>
-          <p className="small">All Rights Reserved</p>
+          <p className={'small'}>Copyright © {new Date().getFullYear()}</p>
+          <p className={'small'}>All Rights Reserved</p>
         </FooterGridSection>
         <FooterGridSectionTwo>
-          <ExtLink to={'/blog'}>
-            📝&nbsp;&nbsp;
+          <FooterGridLink
+            to={'/blog'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
+          >
+            <span>📝&nbsp;&nbsp;</span>
             <span className={gradientToClassName('blue-to-green', true)}>
               Blog
             </span>
-          </ExtLink>
-          <ExtLink to={'/uses'}>
-            ⚡️&nbsp;&nbsp;
+          </FooterGridLink>
+          <FooterGridLink
+            to={'/uses'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
+          >
+            <span>⚡️&nbsp;&nbsp;</span>
             <span className={gradientToClassName('yellow-to-orange', true)}>
               Uses
             </span>
-          </ExtLink>
-          <ExtLink to={'/donate'}>
-            🧡&nbsp;&nbsp;
+          </FooterGridLink>
+          <FooterGridLink
+            to={'/donate'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
+          >
+            <span>🧡&nbsp;&nbsp;</span>
             <span className={gradientToClassName('red-to-purple', true)}>
               Donate
             </span>
-          </ExtLink>
-          <ExtLink to={'/contact'}>
-            📬&nbsp;&nbsp;
+          </FooterGridLink>
+          <FooterGridLink
+            to={'/contact'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
+          >
+            <span>📬&nbsp;&nbsp;</span>
             <span className={gradientToClassName('brand-to-blue', true)}>
               Contact
             </span>
-          </ExtLink>
+          </FooterGridLink>
         </FooterGridSectionTwo>
         <FooterGridSectionThree>
-          <ExtLink to={'/music'}>
-            🎧&nbsp;&nbsp;
+          <FooterGridLink
+            to={'/music'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
+          >
+            <span>🎧&nbsp;&nbsp;</span>
             <span className={gradientToClassName('blue-to-green', true)}>
               Music
             </span>
-          </ExtLink>
-          <ExtLink to={'/inspiration'}>
-            🍀&nbsp;&nbsp;
+          </FooterGridLink>
+          <FooterGridLink
+            to={'/inspiration'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
+          >
+            <span>🍀&nbsp;&nbsp;</span>
             <span className={gradientToClassName('green-to-yellow', true)}>
               Inspiration
             </span>
-          </ExtLink>
+          </FooterGridLink>
         </FooterGridSectionThree>
         <FooterGridSectionFour>
-          <ExtLink to={'/thanks'}>
-            🧡&nbsp;&nbsp;
+          <FooterGridLink
+            to={'/thanks'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
+          >
+            <span>🧡&nbsp;&nbsp;</span>
             <span className={gradientToClassName('red-to-purple', true)}>
               Supporters
             </span>
-          </ExtLink>
-          <ExtLink to={'/coding'}>
-            👨‍💻&nbsp;&nbsp;
+          </FooterGridLink>
+          <FooterGridLink
+            to={'/coding'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
+          >
+            <span>👨‍💻&nbsp;&nbsp;</span>
             <span className={gradientToClassName('orange-to-red', true)}>
               Challenges
             </span>
-          </ExtLink>
+          </FooterGridLink>
         </FooterGridSectionFour>
       </FooterGrid>
     </FooterContainer>

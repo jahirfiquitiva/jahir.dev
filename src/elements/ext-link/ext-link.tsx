@@ -20,7 +20,7 @@ export const ExtLink: Component<ExtLinkProps> = (props) => {
 
   return (
     <a
-      className={[className || '', underline ? '' : 'nodeco'].join(' ')}
+      className={[className || '', underline ? '' : 'nodeco'].join(' ').trim()}
       title={title}
       aria-label={title}
       href={to}

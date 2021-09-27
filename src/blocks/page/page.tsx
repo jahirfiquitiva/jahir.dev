@@ -25,22 +25,20 @@ const fonts = [
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   min-height: calc(100vh - var(--toolbar-height) - 1.6rem);
-  padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
-
-  ${mediaQueries.desktop} {
-    padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
-  }
 `;
 
 const SiteContent = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 100%;
   max-width: var(--max-site-width);
   margin: 0 auto;
+  padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
+
+  ${mediaQueries.desktop} {
+    padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
+  }
 `;
 
 export const Page: Component<PageProps> = (props) => {
