@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 import Link from 'next/link';
+import { MouseEventHandler } from 'react';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 
@@ -30,7 +31,7 @@ export interface ButtonProps extends ComponentProps {
   iconSize?: number;
   disabled?: boolean;
   // eslint-disable-next-line @typescript-eslint/ban-types
-  onClick?: Function;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Button: Component<ButtonProps> = (props) => {
