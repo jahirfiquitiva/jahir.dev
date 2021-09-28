@@ -10,6 +10,7 @@ export interface SimpleBlogPost {
   link?: string;
   readingTime?: IReadTimeResults | null;
   inProgress?: boolean;
+  keywords?: Array<string>;
 }
 
 export interface FullBlogPost extends SimpleBlogPost {

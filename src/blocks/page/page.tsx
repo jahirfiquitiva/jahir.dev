@@ -5,7 +5,7 @@ import { Footer } from '~/blocks/footer';
 import { Toolbar } from '~/blocks/toolbar';
 import { MetaTags } from '~/components/metatags';
 import { Component } from '~/elements/base/fc';
-import { PageProps, mediaQueries } from '~/types';
+import { PageProps, mediaQueries, defaultKeywords } from '~/types';
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +
@@ -51,7 +51,7 @@ export const Page: Component<PageProps> = (props) => {
     children,
     title = 'Jahir Fiquitiva 💎',
     description = defaultSiteDescription,
-    keywords = [],
+    keywords = defaultKeywords,
     image,
     exactUrl,
     siteType,

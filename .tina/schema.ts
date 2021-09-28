@@ -23,6 +23,11 @@ export default defineSchema({
           name: 'hero',
         },
         {
+          type: 'string',
+          label: 'Keywords (separate by comma)',
+          name: 'keywords',
+        },
+        {
           type: 'datetime',
           label: 'Date',
           name: 'date',

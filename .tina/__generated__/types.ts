@@ -145,6 +145,7 @@ export type Posts = {
   title?: Maybe<Scalars['String']>;
   excerpt?: Maybe<Scalars['String']>;
   hero?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   inProgress?: Maybe<Scalars['Boolean']>;
   body?: Maybe<Scalars['String']>;
@@ -208,6 +209,7 @@ export type PostsMutation = {
   title?: Maybe<Scalars['String']>;
   excerpt?: Maybe<Scalars['String']>;
   hero?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   inProgress?: Maybe<Scalars['Boolean']>;
   body?: Maybe<Scalars['String']>;

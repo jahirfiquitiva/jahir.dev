@@ -5,3 +5,4 @@ export * from './blog-post';
 export * from './project';
 export * from './skill';
 export * from './viewports';
+export * from './keywords';

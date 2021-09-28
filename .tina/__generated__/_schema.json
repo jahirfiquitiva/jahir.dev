@@ -33,6 +33,15 @@
           ]
         },
         {
+          "type": "string",
+          "label": "Keywords (separate by comma)",
+          "name": "keywords",
+          "namespace": [
+            "posts",
+            "keywords"
+          ]
+        },
+        {
           "type": "datetime",
           "label": "Date",
           "name": "date",

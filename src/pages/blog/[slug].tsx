@@ -7,12 +7,13 @@ import { staticRequest, getStaticPropsForTina } from 'tinacms';
 import { BlogPost } from '~/blocks/blog-post/blog-post';
 import { Page } from '~/blocks/page';
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { FullBlogPost } from '~/types';
+import { FullBlogPost, defaultKeywords } from '~/types';
 import {
   getPostDescription,
   getReadingTime,
   getTableOfContents,
 } from '~/utils/get-post-data';
+import { unique } from '~/utils/unique';
 
 interface TinaData {
   title: string;
@@ -20,6 +21,7 @@ interface TinaData {
   hero?: string;
   date?: string;
   body?: string;
+  keywords?: string;
 }
 
 interface ComplexTinaData {
@@ -45,19 +47,26 @@ const buildFullBlogPostData = (
   tinaData?: TinaData | null,
 ): FullBlogPost | null => {
   if (!tinaData) return null;
-  const { hero, body } = tinaData;
+  const { hero, body, keywords } = tinaData;
   const readingTime = getReadingTime(body);
   const actualHero: string = hero
     ? hero.startsWith('http')
       ? hero
       : `/static/images/posts/${hero}`
     : '';
+  // @ts-ignore
+  const filteredKeywords = (keywords || '')
+    .split('|')
+    ?.map((it: string) => it.trim())
+    ?.filter((it: string) => it.length > 0);
+  const uniqueKeywords = unique([...filteredKeywords, ...defaultKeywords]);
   return {
     ...tinaData,
     readingTime,
     hero: actualHero,
     excerpt: getPostDescription(tinaData?.excerpt, body),
     tableOfContents: getTableOfContents(body),
+    keywords: uniqueKeywords,
     slug: '',
   } as FullBlogPost;
 };
@@ -82,7 +91,17 @@ const BlogPostPage: Component<BlogPostProps> = (props) => {
   }
 
   return (
-    <Page>{router.isFallback ? <p>Loading…</p> : <BlogPost {...post} />}</Page>
+    <Page
+      title={`${post.title} | Blog ~ Jahir Fiquitiva 💎`}
+      description={post?.excerpt}
+      keywords={post?.keywords}
+      image={post.hero}
+      siteType={'blog'}
+      exactUrl={`https://jahir.dev/blog/${slug}`}
+      metaImageStyle={'summary_large_image'}
+    >
+      {router.isFallback ? <p>Loading…</p> : <BlogPost {...post} />}
+    </Page>
   );
 };
 
@@ -102,6 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             date
             hero
             body
+            keywords
           }
         }
       }

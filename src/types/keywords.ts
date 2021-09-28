@@ -1,0 +1,18 @@
+export const defaultKeywords: Array<string> = [
+  'portfolio',
+  'skills',
+  'developer',
+  'development',
+  'android',
+  'material',
+  'material design',
+  'kotlin',
+  'java',
+  'javascript',
+  'css',
+  'html',
+  'python',
+  'design',
+  'iconography',
+  'illustration',
+];
