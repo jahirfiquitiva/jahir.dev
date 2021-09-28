@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from '@emotion/styled';
-import { mdiLightbulbOnOutline } from '@mdi/js';
+import { mdiLightbulbOnOutline, mdiMessageArrowRightOutline } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
 import { Component } from '~/elements/base/fc';
@@ -199,6 +200,7 @@ export const BlogIdeas: Component = () => {
           </p>
 
           <Button
+            icon={mdiMessageArrowRightOutline}
             onClick={(e: any) => {
               e.preventDefault();
               submitSuggestion().catch();
