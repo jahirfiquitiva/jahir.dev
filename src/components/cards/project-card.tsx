@@ -32,23 +32,16 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const [projectColor, setProjectColor] = useState(
     isDark ? darkColor || color : color,
   );
-
-  const updateCardColors = useCallback(() => {
-    const newProjectColor = isDark ? darkColor || color : color;
-    setProjectColor(newProjectColor);
-  }, [isDark, color, darkColor]);
+  const shadowColors = buildShadowColors(projectColor, 0.2, 0.4, isDark);
+  const titleColors = buildStyles({
+    '--hl-color': getReadableColor(projectColor, isDark),
+  });
 
   useMemo(() => {
-    updateCardColors();
+    const newProjectColor = isDark ? darkColor || color : color;
+    setProjectColor(newProjectColor);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDark, color, darkColor, updateCardColors]);
-
-  useEffect(() => {
-    const update = setTimeout(updateCardColors, 250);
-    return () => {
-      clearTimeout(update);
-    };
-  }, [updateCardColors]);
+  }, [isDark, color, darkColor]);
 
   const renderProjectStack = () => {
     if (!stack || !stack.length) return null;
@@ -77,7 +70,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
         to={link}
         /* newTab={false} TODO: Enable when doing custom pages per project */
         className={'nodeco'}
-        style={buildShadowColors(projectColor, 0.2, 0.4, isDark)}
+        style={shadowColors}
       >
         <div className={'details'}>
           <div className={'icon-title'}>
@@ -89,13 +82,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
               layout={'fixed'}
               loading={'lazy'}
             />
-            <h6
-              style={buildStyles({
-                '--hl-color': getReadableColor(projectColor, isDark),
-              })}
-            >
-              {title}
-            </h6>
+            <h6 style={titleColors}>{title}</h6>
           </div>
           <p>{description}</p>
           {renderProjectStack()}
