@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
 
+import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
 import { SectionHeading } from '~/components/section-heading';
 import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
@@ -23,7 +23,7 @@ const Paragraph = styled.p`
 `;
 
 const DonationOptionsContainer = styled.div`
-  margin: 2rem 0 1.2rem;
+  margin: 2rem 0 0;
 `;
 
 export const DonateIntro: Component = () => {

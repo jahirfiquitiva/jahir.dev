@@ -19,6 +19,10 @@ import { Field } from '~/elements/simple/field';
 import { formium } from '~/lib/formium';
 import { mediaQueries } from '~/types';
 
+const InternalForm = styled.form`
+  margin-bottom: var(--content-bottom-margin);
+`;
+
 const FormRow = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -172,7 +176,7 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
   };
 
   return (
-    <form>
+    <InternalForm>
       <FormRow>
         <Field
           tag={'input'}
@@ -255,6 +259,6 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
         data-sitekey={props.reCaptchaKey}
         data-size={'invisible'}
       />
-    </form>
+    </InternalForm>
   );
 };

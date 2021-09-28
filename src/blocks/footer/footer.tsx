@@ -165,7 +165,7 @@ const FooterGrid = styled.div`
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
-  max-width: var(--max-site-width);
+  max-width: calc(var(--max-site-width) - 0.8rem);
   margin: 0 auto;
   grid-column-gap: 0.8rem;
   grid-row-gap: 0;

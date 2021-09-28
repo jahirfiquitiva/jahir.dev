@@ -14,7 +14,7 @@ import { Divider } from '~/elements/simple/divider';
 import { projects, mediaQueries, viewports } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`
-  padding: 1.6rem 0 2.4rem;
+  padding: 1.6rem 0 var(--content-bottom-margin);
 `;
 
 const ProjectsHeader = styled.div`
