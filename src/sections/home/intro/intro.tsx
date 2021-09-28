@@ -14,7 +14,7 @@ const ParagraphsContainer = styled.div`
 
   ${mediaQueries.tablet.sm} {
     grid-column-gap: 3rem;
-    grid-row-gap: 1.2rem;
+    grid-row-gap: 0rem;
     grid-template-columns: 1fr 1fr;
   }
 `;
@@ -23,44 +23,98 @@ const IntroParagraph = styled(HelloParagraph)`
   text-align: justify;
 `;
 
+const CollapsedIntro = styled.details`
+  margin-bottom: 1.2rem;
+  & summary {
+    cursor: pointer;
+  }
+
+  & div:first-of-type {
+    opacity: 0;
+    height: 0;
+    transition: all 0.25s ease-in-out;
+  }
+
+  &[open] div:first-of-type {
+    height: unset;
+    opacity: 1;
+  }
+`;
+
 export const Intro: Component = () => {
   return (
     <section id={'about'}>
       <ParagraphsContainer>
         <Hello />
         <IntroParagraph>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          nostrum incidunt, odio, architecto non voluptates iure quod tempora
-          odit nihil praesentium porro vero eaque dolores, laborum doloribus
-          possimus? Soluta, expedita!
+          I am also currently working part time as an associate professor for a
+          Colombian government program called{' '}
+          <ExtLink to={'https://www.misiontic2022.gov.co/portal/'}>
+            Misión TIC 2022
+          </ExtLink>
+          , where I teach to people of all ages and different background topics
+          such as: git, javascript, react, nodejs, express and mongodb.
         </IntroParagraph>
-        <div>
-          <IntroParagraph>
-            I consider myself a curious and inquisitive person, so on my spare
-            time I like to work on{' '}
-            <ExtLink to={'#projects'} newTab={false} title={'Link to projects'}>
-              side projects
-            </ExtLink>{' '}
-            and try to constantly learn something new to improve my skillset.
-          </IntroParagraph>
-          <IntroParagraph>
-            Learn more about me on{' '}
-            <ExtLink
-              to={'https://timeline.jahir.dev/'}
-              title={'Link to my timeline'}
-            >
-              my timeline
-            </ExtLink>
-            .
-          </IntroParagraph>
-        </div>
-        <div>
-          <IntroParagraph>
-            <b>You can find me on:</b>
-          </IntroParagraph>
-          <SocialLinks />
-        </div>
+        <IntroParagraph>
+          Before getting into software development, I wanted to be a
+          mechatronics engineer and build robots like transformers 😅. When I
+          started programming my first robots, I realized what my real passion
+          was.
+        </IntroParagraph>
       </ParagraphsContainer>
+      <CollapsedIntro>
+        <summary>More about me...</summary>
+        <ParagraphsContainer>
+          <IntroParagraph>
+            When not coding, I like to watch TV shows and movies, play some
+            games with friends or hang out with them. I&apos;m also{' '}
+            <ExtLink to={'/music'} newTab={false}>
+              listening to music
+            </ExtLink>{' '}
+            98% of the time.
+          </IntroParagraph>
+          <IntroParagraph>
+            I&apos;m passionate for crafting great-looking things.
+            <br />
+            Please don&apos;t hesitate to{' '}
+            <ExtLink to={'contact'}>contact me</ExtLink>!
+          </IntroParagraph>
+          <IntroParagraph>
+            I&apos;m currently taking the Beginner JavaScript course by Wes Bos:
+            going back to basics aiming to understand things better.
+          </IntroParagraph>
+          <div>
+            <IntroParagraph>
+              I consider myself a curious and inquisitive person, so on my spare
+              time I like to work on{' '}
+              <ExtLink
+                to={'#projects'}
+                newTab={false}
+                title={'Link to projects'}
+              >
+                side projects
+              </ExtLink>{' '}
+              and try to constantly learn something new to improve my skillset.
+            </IntroParagraph>
+            <IntroParagraph>
+              Learn even more about me on{' '}
+              <ExtLink
+                to={'https://timeline.jahir.dev/'}
+                title={'Link to my timeline'}
+              >
+                my timeline
+              </ExtLink>
+              .
+            </IntroParagraph>
+          </div>
+        </ParagraphsContainer>
+      </CollapsedIntro>
+      <div>
+        <IntroParagraph>
+          <b>You can find me on:</b>
+        </IntroParagraph>
+        <SocialLinks />
+      </div>
     </section>
   );
 };

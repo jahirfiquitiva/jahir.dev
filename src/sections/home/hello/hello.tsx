@@ -13,9 +13,12 @@ const HeadingContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   grid-row: 2;
+  text-align: justify;
+  margin-bottom: 1.2rem;
 
   ${mediaQueries.tablet.sm} {
     grid-row: 1;
+    text-align: start;
   }
 `;
 
@@ -61,7 +64,9 @@ export const Hello: Component = () => {
           Passionate and creative full-stack software engineer based in{' '}
           <ExtLink to={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
             Colombia 🇨🇴
-          </ExtLink>
+          </ExtLink>{' '}
+          working as a technologist at{' '}
+          <ExtLink to={'https://mattersupply.co/'}>Matter Supply Co.</ExtLink>
         </HeadingParagraph>
       </HeadingContainer>
 
