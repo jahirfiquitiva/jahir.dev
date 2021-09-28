@@ -6,10 +6,13 @@ import { BlogIdeas } from '~/blocks/blog-ideas';
 import { BlogPostCard } from '~/components/cards';
 import { SectionHeading } from '~/components/section-heading';
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { MasonryGrid } from '~/elements/complex/masonry-grid';
+import {
+  MasonryBreakpoints,
+  MasonryGrid,
+} from '~/elements/complex/masonry-grid';
 import { Field } from '~/elements/simple/field';
-import { SimpleBlogPost } from '~/types';
 import { debounce } from '~/lib/debounce';
+import { SimpleBlogPost, viewports } from '~/types';
 
 interface BlogGridProps extends ComponentProps {
   posts?: SimpleBlogPost[];
@@ -24,6 +27,11 @@ const BlogSection = styled.section`
 const BlogsMasonry = styled(MasonryGrid)`
   margin: 1.6rem 0;
 `;
+
+const masonryBreakpoints: MasonryBreakpoints = {};
+masonryBreakpoints[viewports.default] = 1;
+masonryBreakpoints[viewports.mobile.lg] = 2;
+masonryBreakpoints[viewports.tablet.lg] = 3;
 
 export const BlogGrid: Component<BlogGridProps> = (props) => {
   const { posts } = props;
@@ -66,7 +74,7 @@ export const BlogGrid: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
-      <BlogsMasonry gap={'1rem'}>
+      <BlogsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
         })}

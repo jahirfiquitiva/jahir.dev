@@ -48,7 +48,7 @@ const ToolbarActionButtons = styled.div`
   grid-row: 1;
   grid-column: 2;
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
     grid-column: 3;
     justify-content: center;
     min-width: 48px;
@@ -79,7 +79,7 @@ const ToolbarContainer = styled.div`
     max-height: unset;
   }
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
 
@@ -119,7 +119,7 @@ const ThemeToggleButton = styled(ToolbarButton)`
   font-size: calc(var(--base-font-size) * 1.1);
   justify-content: center;
   padding: 0;
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
     padding: 0;
     max-width: 48px;
   }

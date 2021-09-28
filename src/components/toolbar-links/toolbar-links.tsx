@@ -44,7 +44,7 @@ const ToolbarLinksContainer = styled.div`
     }
   }
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
     visibility: visible;
     pointer-events: auto;
     opacity: 1;

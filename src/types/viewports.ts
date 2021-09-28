@@ -8,6 +8,7 @@ type Viewports = {
   tablet: {
     sm: number;
     lg: number;
+    xl: number;
   };
   desktop: number;
 };
@@ -22,6 +23,7 @@ export const viewports: Viewports = {
   tablet: {
     sm: 596,
     lg: 768,
+    xl: 792,
   },
   desktop: 960,
 };
@@ -42,6 +44,7 @@ type MediaQueries = {
   tablet: {
     sm: SingleMediaQuery;
     lg: SingleMediaQuery;
+    xl: SingleMediaQuery;
   };
   desktop: SingleMediaQuery;
 };
@@ -56,6 +59,7 @@ export const mediaQueries: MediaQueries = {
   tablet: {
     sm: buildMediaQuery(viewports.tablet.sm),
     lg: buildMediaQuery(viewports.tablet.lg),
+    xl: buildMediaQuery(viewports.tablet.xl),
   },
   desktop: buildMediaQuery(viewports.desktop),
 };

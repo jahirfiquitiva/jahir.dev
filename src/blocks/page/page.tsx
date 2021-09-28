@@ -37,7 +37,11 @@ const SiteContent = styled.main`
   margin: 0 auto;
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
+    padding: calc(var(--toolbar-height) + 1.6rem) 0.4rem 0;
+  }
+
+  ${mediaQueries.tablet.xl} {
     padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
   }
 `;

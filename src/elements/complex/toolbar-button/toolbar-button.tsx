@@ -69,7 +69,7 @@ export const ToolbarMenuToggle = styled(BaseToolbarMenuToggle)`
     color: var(--accent-dark);
   }
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
     display: none;
     visibility: hidden;
     pointer-events: none;
