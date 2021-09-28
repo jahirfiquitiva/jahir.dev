@@ -41,6 +41,17 @@ const BlogIdeasForm = styled.form`
   }
 `;
 
+const BlogIdeasField = styled(Field)`
+  height: 100%;
+
+  & > div {
+    flex: 1;
+    & textarea {
+      height: 100%;
+    }
+  }
+`;
+
 const VisibleToastStyled = `
   min-height: 42px;
   height: auto;
@@ -174,12 +185,13 @@ export const BlogIdeas: Component = () => {
       </div>
 
       <BlogIdeasForm>
-        <Field
+        <BlogIdeasField
           tag={'textarea'}
           label={'Ideas'}
           disabled={submitting}
           iconPath={mdiLightbulbOnOutline}
           placeholder={'What should I blog about next?'}
+          name={'suggestion'}
           value={suggestion}
           onChange={setSuggestion}
           required
