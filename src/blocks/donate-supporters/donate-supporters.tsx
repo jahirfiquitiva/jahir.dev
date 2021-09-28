@@ -85,8 +85,8 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
           alt={name}
           objectFit={'cover'}
           objectPosition={'center'}
-          width={24}
-          height={24}
+          width={28}
+          height={28}
         />
         &nbsp;{name}
       </SupporterLinkChip>
