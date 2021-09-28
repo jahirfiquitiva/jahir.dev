@@ -7,6 +7,7 @@ export const ButtonGroup = styled.div`
   align-items: center;
 
   & > *:not(:last-child) {
-    margin-right: .8rem;
+    margin-right: 0.8rem;
+    margin-bottom: 0.8rem;
   }
-`
+`;

@@ -22,6 +22,10 @@ const Paragraph = styled.p`
   margin: 0.8rem 0;
 `;
 
+const DonationOptionsContainer = styled.div`
+  margin: 2rem 0 1.2rem;
+`;
+
 export const DonateIntro: Component = () => {
   return (
     <section id={'donate'}>
@@ -66,14 +70,16 @@ export const DonateIntro: Component = () => {
         Whatever I receive, will be highly appreciated. Thanks in advance! 🤗
       </Paragraph>
 
-      <Paragraph>
-        <b>Donation options:</b>
-      </Paragraph>
-      <ButtonGroup>
-        <GitHubButton>GitHub Sponsors</GitHubButton>
-        <BmacButton>Buy me a Pizza</BmacButton>
-        <PayPalButton>PayPal</PayPalButton>
-      </ButtonGroup>
+      <DonationOptionsContainer>
+        <Paragraph>
+          <b>Donation options:</b>
+        </Paragraph>
+        <ButtonGroup>
+          <GitHubButton>GitHub Sponsors</GitHubButton>
+          <BmacButton>Buy me a Pizza</BmacButton>
+          <PayPalButton>PayPal</PayPalButton>
+        </ButtonGroup>
+      </DonationOptionsContainer>
     </section>
   );
 };
