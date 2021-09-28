@@ -37,6 +37,9 @@ export const Music: Component = () => {
 
   const renderTopTracks = () => {
     if (loadingTopTracks) return <p>Loading...</p>;
+    if ((topTracksData?.tracks?.length || 0) <= 0) {
+      return <p>No data available at this moment</p>;
+    }
     return (
       <TopTracksContainer>
         {topTracksData?.tracks?.map((track, i) => {
