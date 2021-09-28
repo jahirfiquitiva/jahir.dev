@@ -192,25 +192,25 @@ const FooterContainer = styled.footer`
 `;
 
 const FooterSocialLinks = styled(SocialLinks)`
-  margin: 0.6rem 0 0.4rem;
-
-  & > *:not(:last-child) {
-    margin: 0.3rem 0.6rem 0.3rem 0;
-  }
+  margin: 1.2rem 0 0.4rem;
 
   ${mediaQueries.mobile.md} {
-    margin: 0.6rem 0 0.6rem;
-
+    margin: 1.2rem 0 0.6rem;
+    & > * {
+      margin-bottom: 0.5rem;
+    }
     & > *:not(:last-child) {
-      margin: 0.6rem 0.6rem 0.6rem 0;
+      margin-right: 0.5rem;
     }
   }
 
   ${mediaQueries.tablet.sm} {
-    margin: 1rem 0 0.8rem;
-
+    margin: 1.2rem 0 0.8rem;
+    & > * {
+      margin-bottom: 0.8rem;
+    }
     & > *:not(:last-child) {
-      margin: 0.6rem 0.6rem 0.6rem 0;
+      margin-right: 0.8rem;
     }
   }
 `;

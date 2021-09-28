@@ -32,10 +32,9 @@ const ToolbarLinksContainer = styled.div`
 
   &.active {
     transition: all 0.2s ease-in-out;
-    max-height: 100%;
     ${expandedStyles}
     & a {
-      margin: 0.1rem 0;
+      margin: 0.2rem 0;
       &:first-of-type {
         margin-top: 0;
       }
@@ -56,8 +55,13 @@ const ToolbarLinksContainer = styled.div`
     max-height: unset;
 
     & a {
-      margin-top: 0;
-      margin-bottom: 0;
+      margin: 0;
+    }
+
+    &.active {
+      & a {
+        margin: 0;
+      }
     }
   }
 `;

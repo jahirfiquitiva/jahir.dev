@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
 

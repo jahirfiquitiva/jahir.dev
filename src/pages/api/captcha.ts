@@ -16,7 +16,6 @@ export default async (
   const validData = await fetch(`${url}${token}`)
     .then((response: { json: () => any }) => response.json())
     .then((data: any) => {
-      console.log(data);
       return (
         data.success &&
         data.score &&

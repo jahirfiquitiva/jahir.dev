@@ -13,6 +13,7 @@ import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 
 export const ToolbarLogo = styled(ToolbarLink)`
+  max-height: calc(var(--toolbar-height) - 0.8rem);
   grid-row: 1;
   grid-column: 1;
   font-family: var(--manrope-font);
@@ -43,7 +44,7 @@ const ToolbarActionButtons = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  max-height: var(--toolbar-height);
+  max-height: calc(var(--toolbar-height) - 0.8rem);
   grid-row: 1;
   grid-column: 2;
 
@@ -58,20 +59,21 @@ const ToolbarActionButtons = styled.div`
 const ToolbarContainer = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: var(--toolbar-height) 0;
+  grid-template-rows: calc(var(--toolbar-height) - 0.4rem) 0;
   grid-auto-rows: minmax(min-content, max-content);
   grid-column-gap: 0.2rem;
   grid-row-gap: 0;
   padding: 0.4rem;
   min-height: var(--toolbar-height);
+  max-height: var(--toolbar-height);
   max-width: calc(var(--max-site-width) + 2rem);
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
 
   &.active {
-    grid-row-gap: 0.2rem;
-    grid-template-rows: var(--toolbar-height) minmax(
-        calc(var(--toolbar-height) * 4),
+    grid-row-gap: 0.1rem;
+    grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+        calc(calc(var(--toolbar-height) * 4) - 1.2rem),
         100%
       );
     max-height: unset;
@@ -80,6 +82,10 @@ const ToolbarContainer = styled.div`
   ${mediaQueries.desktop} {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
+
+    &.active {
+      grid-template-rows: 1fr;
+    }
   }
 `;
 
@@ -108,12 +114,13 @@ const NavigationContainer = styled.nav`
 `;
 
 const ThemeToggleButton = styled(ToolbarButton)`
+  min-width: 48px;
+  max-height: calc(var(--toolbar-height) - 0.6rem);
   font-size: calc(var(--base-font-size) * 1.1);
   justify-content: center;
   padding: 0;
   ${mediaQueries.desktop} {
     padding: 0;
-    min-width: 48px;
     max-width: 48px;
   }
 `;

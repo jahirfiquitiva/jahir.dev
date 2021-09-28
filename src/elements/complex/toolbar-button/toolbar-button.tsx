@@ -9,6 +9,7 @@ export const ToolbarButton = styled(PseudoToolbarButton)`
   background-color: rgba(0, 0, 0, 0);
   min-width: var(--toolbar-height);
   max-width: var(--toolbar-height);
+  max-height: calc(var(--toolbar-height) - 0.6rem);
   padding: 0.4rem 0.8rem;
 
   &.active,
@@ -52,6 +53,7 @@ const BaseToolbarMenuToggle: Component<ToolbarMenuToggle> = ({
 };
 
 export const ToolbarMenuToggle = styled(BaseToolbarMenuToggle)`
+  min-width: 48px;
   padding: 0.4rem 0 0;
   margin-left: 0.2rem;
   color: var(--accent);
