@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { Error } from '~/blocks/error';
 import { Page } from '~/blocks/page';
+import { Contact } from '~/sections/contact';
 
 const FourHundredFour: FC = () => {
   return (
     <Page title={'Contact ~ Jahir Fiquitiva 💎'}>
-      <Error errorType={'under-construction'} />
+      <Contact />
     </Page>
   );
 };

@@ -74,6 +74,7 @@ interface InputProps extends ComponentProps {
   iconPath?: string;
   hideLabel?: boolean;
   disabled?: boolean;
+  required?: boolean;
   value?: string;
   onChange?: (newValue: string) => void | Dispatch<SetStateAction<string>>;
 }
@@ -86,10 +87,11 @@ const FieldWrapper: Component<InputProps> = (props) => {
     iconPath,
     hideLabel = !placeholder && !label,
     children,
+    className,
   } = props;
 
   return (
-    <LabelInputWrapper>
+    <LabelInputWrapper className={className}>
       <label htmlFor={name} className={hideLabel ? 'hidden' : undefined}>
         {label || placeholder}
       </label>
@@ -108,6 +110,7 @@ const Input: Component<InputProps> = (props) => {
     placeholder,
     iconPath,
     disabled,
+    required,
     value,
     onChange,
     ...otherProps
@@ -121,6 +124,7 @@ const Input: Component<InputProps> = (props) => {
         placeholder={placeholder}
         className={iconPath ? 'with-icon' : undefined}
         disabled={disabled}
+        required={required}
         value={value}
         onChange={(e) => {
           if (onChange) onChange(e.target.value);
@@ -136,6 +140,7 @@ const TextArea: Component<Omit<InputProps, 'type'>> = (props) => {
     placeholder,
     iconPath,
     disabled,
+    required,
     value,
     onChange,
     ...otherProps
@@ -148,6 +153,7 @@ const TextArea: Component<Omit<InputProps, 'type'>> = (props) => {
         placeholder={placeholder}
         className={iconPath ? 'with-icon' : undefined}
         disabled={disabled}
+        required={required}
         value={value}
         onChange={(e) => {
           if (onChange) onChange(e.target.value);

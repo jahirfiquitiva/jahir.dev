@@ -14,11 +14,6 @@ label {
   font-weight: 500;
 }
 
-form input,
-form textarea {
-  margin-top: 0.4rem;
-}
-
 form textarea {
   padding-top: 1rem;
   padding-bottom: 1rem;

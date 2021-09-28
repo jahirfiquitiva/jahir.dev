@@ -181,6 +181,7 @@ export const BlogIdeas: Component = () => {
           placeholder={'What should I blog about next?'}
           value={suggestion}
           onChange={setSuggestion}
+          required
           hideLabel
         />
         <BlogIdeasSubmitWrapper>
@@ -198,8 +199,8 @@ export const BlogIdeas: Component = () => {
           </p>
 
           <Button
-            type={'button'}
-            onClick={() => {
+            onClick={(e: any) => {
+              e.preventDefault();
               submitSuggestion().catch();
             }}
             disabled={suggestion.length <= 5 || submitting}
