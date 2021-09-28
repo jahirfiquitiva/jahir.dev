@@ -29,7 +29,8 @@ export interface ButtonProps extends ComponentProps {
   icon?: string;
   iconSize?: number;
   disabled?: boolean;
-  onClick?: () => void;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onClick?: Function;
 }
 
 export const Button: Component<ButtonProps> = (props) => {

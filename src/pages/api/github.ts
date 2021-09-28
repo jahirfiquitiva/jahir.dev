@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import fetch from 'isomorphic-fetch';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { NextApiFunc } from '~/types';

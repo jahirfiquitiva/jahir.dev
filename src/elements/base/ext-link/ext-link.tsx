@@ -21,7 +21,8 @@ export const ExtLink: Component<ExtLinkProps> = (props) => {
   } = props;
 
   if (!newTab) {
-    const linkProps = { ...props, newTab: undefined };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { newTab, ...linkProps } = props;
     return (
       <Link href={to}>
         <a {...linkProps} />

@@ -66,6 +66,13 @@ const LabelInputWrapper = styled.div`
   }
 `;
 
+const Error = styled.p`
+  opacity: 1;
+  margin-top: 0.4rem;
+  color: var(--error-color);
+  font-size: calc(var(--base-font-size) * 0.9);
+`;
+
 interface InputProps extends ComponentProps {
   type?: string;
   name?: string;
@@ -75,6 +82,7 @@ interface InputProps extends ComponentProps {
   hideLabel?: boolean;
   disabled?: boolean;
   required?: boolean;
+  error?: string;
   value?: string;
   onChange?: (newValue: string) => void | Dispatch<SetStateAction<string>>;
 }
@@ -86,6 +94,7 @@ const FieldWrapper: Component<InputProps> = (props) => {
     label,
     iconPath,
     hideLabel = !placeholder && !label,
+    error,
     children,
     className,
   } = props;
@@ -99,6 +108,7 @@ const FieldWrapper: Component<InputProps> = (props) => {
         {children}
         {iconPath && <Icon path={iconPath} size={1} />}
       </InputWrapper>
+      {error && <Error>!! {error}</Error>}
     </LabelInputWrapper>
   );
 };

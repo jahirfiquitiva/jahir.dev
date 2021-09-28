@@ -1,17 +1,21 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable max-len */
 require('dotenv').config();
 const { buildPostsData } = require('./scripts/build-posts-data');
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  child-src *.google.com *.twitter.com *.unsplash.com *.scdn.co;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com;
+  child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
-  img-src * blob: data:;
+  img-src *.gstatic.com * blob: data:;
+  frame-src www.google.com;
+  object-src 'none';
+  base-uri 'none';
   media-src 'none';
   connect-src *;
-  font-src 'self';
+  font-src 'self' *.gstatic.com;
 `;
 
 const securityHeaders = [
