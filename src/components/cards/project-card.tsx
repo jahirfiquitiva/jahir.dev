@@ -64,6 +64,8 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     );
   };
 
+  if (typeof window === 'undefined') return null;
+
   return (
     <Link href={link} passHref={true}>
       <BaseProjectCard

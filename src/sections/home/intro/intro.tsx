@@ -7,13 +7,14 @@ import { Hello, HelloParagraph } from '~/sections/home/hello';
 import { mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`
+  margin-top: 0.8rem;
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: 1.2rem;
 
   ${mediaQueries.tablet.sm} {
     grid-column-gap: 3rem;
-    grid-row-gap: 0;
+    grid-row-gap: 1.2rem;
     grid-template-columns: 1fr 1fr;
   }
 `;
@@ -25,8 +26,8 @@ const IntroParagraph = styled(HelloParagraph)`
 export const Intro: Component = () => {
   return (
     <section id={'about'}>
-      <Hello />
       <ParagraphsContainer>
+        <Hello />
         <IntroParagraph>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
           nostrum incidunt, odio, architecto non voluptates iure quod tempora

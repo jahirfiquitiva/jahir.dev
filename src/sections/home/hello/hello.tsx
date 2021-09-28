@@ -4,21 +4,9 @@ import Image from 'next/image';
 import { HelloHeading } from '~/components/hello-heading';
 import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
-import { Heading } from '~/elements/simple/heading';
 import { gradientToClassName } from '~/elements/props';
+import { Heading } from '~/elements/simple/heading';
 import { mediaQueries } from '~/types';
-
-const HelloContainer = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-flow: dense;
-
-  ${mediaQueries.tablet.sm} {
-    grid-template-columns: 1fr auto;
-  }
-`;
 
 const HeadingContainer = styled.div`
   display: inline-flex;
@@ -41,7 +29,7 @@ export const HelloParagraph = styled(HeadingParagraph)`
 
 const ImageContainer = styled(HeadingContainer)`
   align-items: center;
-  padding: 0 2rem 0.8rem;
+  padding: 0 0.4rem 0.4rem 0;
   grid-row: 1;
 
   & div:first-of-type {
@@ -52,11 +40,15 @@ const ImageContainer = styled(HeadingContainer)`
     border-radius: 50%;
     filter: drop-shadow(0 3px 3px var(--toolbar-shadow-c));
   }
+
+  ${mediaQueries.tablet.sm} {
+    align-items: flex-end;
+  }
 `;
 
 export const Hello: Component = () => {
   return (
-    <HelloContainer>
+    <>
       <HeadingContainer>
         <HelloHeading />
         <Heading size={'3'} shadowColor={'blue'}>
@@ -66,7 +58,7 @@ export const Hello: Component = () => {
           </span>
         </Heading>
         <HeadingParagraph>
-          Passionate and creative full-stack software engineer from{' '}
+          Passionate and creative full-stack software engineer based in{' '}
           <ExtLink to={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
             Colombia 🇨🇴
           </ExtLink>
@@ -81,6 +73,6 @@ export const Hello: Component = () => {
           width={180}
         />
       </ImageContainer>
-    </HelloContainer>
+    </>
   );
 };

@@ -8,7 +8,7 @@ import { Component } from '~/elements/base/fc';
 import { PageProps, mediaQueries } from '~/types';
 
 const defaultSiteDescription =
-  'Passionate and creative full-stack software engineer from Colombia ' +
+  'Passionate and creative full-stack software engineer based in Colombia ' +
   '\uD83C\uDDE8\uD83C\uDDF4.\n' +
   'This website contains information about me, my skills and my projects.';
 
