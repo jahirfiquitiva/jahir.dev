@@ -107,7 +107,7 @@ a,
 a:visited {
   font-weight: 500;
   color: var(--accent);
-  text-underline-position: under;
+  /* text-underline-position: under; */
   text-decoration-skip: edges;
   text-decoration-color: currentColor;
   text-decoration: none;

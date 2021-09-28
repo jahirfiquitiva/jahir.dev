@@ -11,7 +11,7 @@ import {
 } from '~/elements/complex/masonry-grid';
 import { LinkButton } from '~/elements/simple/button';
 import { Divider } from '~/elements/simple/divider';
-import { projects, mediaQueries, viewports } from '~/types';
+import { projects, mediaQueries, viewports, buildMediaQuery } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`
   padding: 1.6rem 0 var(--content-bottom-margin);
@@ -43,7 +43,7 @@ const ProjectsHeaderLinksContainer = styled.div`
     margin-top: 0.8rem;
   }
 
-  ${mediaQueries.mobile.lg} {
+  ${buildMediaQuery(385)} {
     & a:not(:first-of-type) {
       margin-top: 0;
     }
