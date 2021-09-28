@@ -6,10 +6,12 @@ import { LinkButton, LinkButtonProps } from '~/elements/simple/button';
 
 const BaseGitHubButton = styled(LinkButton)`
   background-color: #d34399;
+  color: #fff !important;
 
   &:hover,
   &:focus {
     background-color: #a43477;
+    color: #fff !important;
   }
 `;
 
@@ -24,7 +26,7 @@ export const GitHubButton: Component<LinkButtonProps> = (props) => {
   );
 };
 
-const BaseBmacButton = styled(LinkButton)`
+const BaseBmacButton = styled(BaseGitHubButton)`
   background-color: #5f7fff;
 
   &:hover,
@@ -44,7 +46,7 @@ export const BmacButton: Component<LinkButtonProps> = (props) => {
   );
 };
 
-const BasePayPalButton = styled(LinkButton)`
+const BasePayPalButton = styled(BaseGitHubButton)`
   background-color: #1a4593;
 
   &:hover,

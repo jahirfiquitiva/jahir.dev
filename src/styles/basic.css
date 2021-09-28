@@ -133,8 +133,8 @@ button,
   min-height: 36px;
   padding: 0.4rem 0.8rem;
   font-family: var(--manrope-font);
-  font-weight: 500;
-  letter-spacing: 0.05715em;
+  font-weight: 600;
+  letter-spacing: 0.028575em;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }

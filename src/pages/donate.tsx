@@ -1,14 +1,14 @@
 import { FC } from 'react';
 
-import { Error } from '~/blocks/error';
 import { Page } from '~/blocks/page';
+import { Donate } from '~/sections/donate';
 
-const FourHundredFour: FC = () => {
+const DonatePage: FC = () => {
   return (
     <Page title={'Donate ~ Jahir Fiquitiva 💎'}>
-      <Error errorType={'under-construction'} />
+      <Donate />
     </Page>
   );
 };
 
-export default FourHundredFour;
+export default DonatePage;
