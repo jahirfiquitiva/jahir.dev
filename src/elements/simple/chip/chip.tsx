@@ -1,4 +1,8 @@
 import styled from '@emotion/styled';
+import { CSSProperties } from 'react';
+
+import buildStyles from '~/utils/build-styles';
+import hexToRGB from '~/utils/hex-to-rgb';
 
 export const Chip = styled.span`
   --bg-color: var(--divider);
@@ -14,7 +18,6 @@ export const Chip = styled.span`
   color: var(--text-secondary);
   cursor: default;
   transition: all 0.2s ease-in-out;
-  margin: 0.4rem 0.6rem 0.4rem 0;
 
   &:hover,
   &:focus {
@@ -23,8 +26,17 @@ export const Chip = styled.span`
     text-decoration: none;
   }
 
-  & svg {
-    margin-right: 0.4rem;
+  & > :first-of-type {
+    margin-right: 0.4rem !important;
+  }
+`;
+
+export const ImageChip = styled(Chip)`
+  padding: 0.4rem;
+  padding-right: 0.8rem;
+
+  & img {
+    border-radius: 50%;
   }
 `;
 
@@ -33,4 +45,19 @@ export const ChipGroup = styled.ul`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+
+  & > * {
+    margin-bottom: 0.6rem;
+    &:not(:last-child) {
+      margin-right: 0.6rem;
+    }
+  }
 `;
+
+export const buildChipStyles = (color?: string | null): CSSProperties => {
+  if (!color) return {};
+  return buildStyles({
+    '--bg-color': hexToRGB(color, 0.2),
+    '--border-color': hexToRGB(color, 0.6),
+  });
+};

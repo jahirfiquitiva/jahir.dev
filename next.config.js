@@ -70,7 +70,15 @@ module.exports = {
   // Prefer loading of ES Modules over CommonJS
   experimental: { esmExternals: true },
   images: {
-    domains: ['images.unsplash.com', 'i.scdn.co', 'spotify.com', 'jahir.dev'],
+    domains: [
+      'images.unsplash.com',
+      'i.scdn.co',
+      'spotify.com',
+      'jahir.dev',
+      'unavatar.now.sh',
+      'unavatar.io',
+      'lh3.googleusercontent.com',
+    ],
   },
   async headers() {
     return [
