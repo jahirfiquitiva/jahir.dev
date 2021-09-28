@@ -5,21 +5,29 @@ import Image from 'next/image';
 import { usePalette } from 'react-palette';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { Card, ExtLinkCard } from '~/elements/simple/card';
+import { ExtLinkCard } from '~/elements/simple/card';
+import { useTheme } from '~/providers/theme';
 import { TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
+import buildStyles from '~/utils/build-styles';
+import getReadableColor from '~/utils/get-readable-color';
+import hexToRGB from '~/utils/hex-to-rgb';
 
 interface SongCardProps extends ComponentProps, TrackData {
   isForNowPlaying?: boolean;
 }
 
-const BaseSongCard = styled(Card)`
+const BaseSongCard = styled(ExtLinkCard)`
+  --border-radius: 8px;
   border: none;
   text-decoration-color: currentColor;
   overflow-x: hidden;
   max-width: 100%;
-  pointer-events: none;
-  user-select: none;
+  color: var(--text-secondary);
+
+  &.not-playing {
+    pointer-events: none;
+  }
 
   .overlay {
     height: auto;
@@ -31,10 +39,6 @@ const BaseSongCard = styled(Card)`
     border-radius: var(--border-radius);
     border: 1px solid var(--divider);
     max-width: 100%;
-
-    &.valid {
-      background-color: var(--music-cards-overlay-color);
-    }
   }
 
   .album {
@@ -67,27 +71,25 @@ const BaseSongCard = styled(Card)`
   }
 
   .details h6 {
-    font-size: calc(var(--base-font-size) * 1.1);
+    font-size: calc(var(--base-font-size) * 1.05);
+    opacity: 1;
   }
 
   .details p {
+    font-size: calc(var(--base-font-size) * 0.95);
     font-weight: 400;
-    opacity: 0.85;
+    opacity: 0.8;
     -webkit-text-decoration: none !important;
     text-decoration: none !important;
     text-decoration-color: rgba(0, 0, 0, 0) !important;
   }
-`;
-
-const SongLinkCard = styled(ExtLinkCard)`
-  --border-radius: 8px;
 
   &:focus,
   &:hover {
+    color: var(--text-primary);
     & .details h6,
     & .details h6 {
       text-decoration: underline;
-      -webkit-text-decoration-style: solid;
     }
   }
 `;
@@ -96,26 +98,35 @@ export const SongCard: Component<SongCardProps> = (props) => {
   const { isForNowPlaying, isPlaying = false } = props;
   const shouldRenderDetails = !isForNowPlaying || isPlaying;
 
-  const { isDark } = { isDark: false }; // useContext(ThemeContext); TODO: Enable
+  const { isDark } = useTheme();
   const { data: paletteData } = usePalette(
     shouldRenderDetails ? props.image?.url ?? '' : '',
   );
 
   const preSize: number =
     (props.image?.width ?? 36) + (props.image?.height ?? 36);
-  const size: number = preSize > 0 ? (preSize > 128 ? 96 : 72) : 0;
+  const size: number = preSize > 0 ? (preSize > 128 ? 84 : 64) : 0;
 
-  const backgroundColor: string | undefined = paletteData
-    ? isDark
-      ? paletteData?.darkMuted || undefined
-      : paletteData?.lightVibrant || undefined
+  const backgroundColor: string | undefined = shouldRenderDetails
+    ? paletteData
+      ? isDark
+        ? paletteData?.darkMuted || undefined
+        : paletteData?.vibrant || undefined
+      : undefined
     : undefined;
 
-  const textColor: string | undefined = paletteData
-    ? isDark
-      ? paletteData?.lightVibrant || undefined
-      : paletteData?.darkMuted || undefined
+  const textColor: string | null | undefined = shouldRenderDetails
+    ? getReadableColor(
+        paletteData
+          ? isDark
+            ? paletteData?.vibrant || undefined
+            : paletteData?.darkMuted || undefined
+          : undefined,
+        isDark,
+      )
     : undefined;
+
+  const shadowColors = buildShadowColors(backgroundColor, 0.25, 0.45, isDark);
 
   const renderAlbumImage = () => {
     if (shouldRenderDetails && props.image) {
@@ -133,63 +144,51 @@ export const SongCard: Component<SongCardProps> = (props) => {
     return <Icon path={mdiSpotify} size={2} color={'#1ED760'} />;
   };
 
-  const renderActualCard = () => {
-    return (
-      <BaseSongCard
-        style={{ backgroundColor, color: textColor, borderColor: textColor }}
-      >
+  return (
+    <BaseSongCard
+      className={
+        ['nodeco', !shouldRenderDetails ? 'not-playing' : '']
+          .join(' ')
+          .trim() || undefined
+      }
+      title={props.title}
+      to={props.url || '#'}
+      style={buildStyles({
+        ...shadowColors,
+        backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
+        color: textColor,
+        borderColor: textColor,
+      })}
+    >
+      <div className={'overlay'}>
         <div
-          className={[
-            'overlay',
-            shouldRenderDetails && paletteData ? 'valid' : '',
-          ].join(' ')}
+          className={'album'}
+          style={{ minWidth: shouldRenderDetails ? size : 0 }}
         >
-          <div
-            className={'album'}
-            style={{ minWidth: shouldRenderDetails ? size : 0 }}
-          >
-            {renderAlbumImage()}
-          </div>
-          <div
-            className={'details'}
-            style={{ color: textColor, borderColor: textColor }}
-          >
-            <h6>
-              {(props.title?.length ?? 0) > 0 && shouldRenderDetails
-                ? props.title
-                : 'Nothing'}
-            </h6>
-            {shouldRenderDetails && (
-              <p>
-                {props.artist}
-                {props.album && (
-                  <>
-                    {' • '}
-                    {props.album}
-                  </>
-                )}
-              </p>
-            )}
-          </div>
+          {renderAlbumImage()}
         </div>
-      </BaseSongCard>
-    );
-  };
-
-  if (props.url && shouldRenderDetails) {
-    return (
-      <SongLinkCard
-        className={'nodeco'}
-        title={props.title}
-        to={props.url}
-        style={{
-          ...buildShadowColors(backgroundColor, 0.4, 0.5),
-          color: textColor,
-        }}
-      >
-        {renderActualCard()}
-      </SongLinkCard>
-    );
-  }
-  return renderActualCard();
+        <div
+          className={'details'}
+          style={buildStyles({ color: textColor, borderColor: textColor })}
+        >
+          <h6>
+            {(props.title?.length ?? 0) > 0 && shouldRenderDetails
+              ? props.title
+              : 'Nothing'}
+          </h6>
+          {shouldRenderDetails && (
+            <p>
+              {props.artist}
+              {props.album && (
+                <>
+                  {' • '}
+                  {props.album}
+                </>
+              )}
+            </p>
+          )}
+        </div>
+      </div>
+    </BaseSongCard>
+  );
 };

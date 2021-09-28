@@ -59,7 +59,7 @@
   --toast-success: rgba(121, 217, 166, 0.9);
   --toast-error: rgba(243, 137, 156, 0.7);
 
-  --music-cards-overlay-color: rgba(255, 255, 255, 0.4);
+  --music-cards-overlay-color: rgba(255, 255, 255, 0.6);
 
   --cards-border-color: var(--divider);
   --cards-hover-border-color: var(--divider);
@@ -109,7 +109,7 @@
   --toast-success: rgba(121, 217, 166, 0.6);
   --toast-error: rgba(243, 137, 156, 0.5);
 
-  --music-cards-overlay-color: rgba(8, 15, 30, 0.4);
+  --music-cards-overlay-color: rgba(8, 15, 30, 0.6);
 
   --blog-card-color: rgba(8, 15, 30, 0.85);
   --blog-card-color-hover: rgba(8, 15, 30, 0.95);

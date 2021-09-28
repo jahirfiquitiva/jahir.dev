@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { Error } from '~/blocks/error';
 import { Page } from '~/blocks/page';
+import { Music } from '~/sections/music';
 
 const FourHundredFour: FC = () => {
   return (
     <Page title={'Music ~ Jahir Fiquitiva 💎'}>
-      <Error errorType={'under-construction'} />
+      <Music />
     </Page>
   );
 };

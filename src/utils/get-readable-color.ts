@@ -1,11 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { Color } from 'frostcolor';
 
-const lightThemeThreshold = 55;
+const lightThemeThreshold = 48;
 const darkThemeThreshold = 85;
 
-const getReadableColor = (color?: string | null, isDark?: boolean) => {
-  if (!color) return;
+const getReadableColor = (
+  color?: string | null,
+  isDark?: boolean,
+): string | null | undefined => {
+  if (!color) return color;
   let newColor = Color.fromString(color);
   try {
     if (isDark) {

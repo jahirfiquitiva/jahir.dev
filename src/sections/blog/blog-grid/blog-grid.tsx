@@ -3,6 +3,7 @@ import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
 import { BlogIdeas } from '~/blocks/blog-ideas';
+import { Section } from '~/blocks/section';
 import { BlogPostCard } from '~/components/cards';
 import { SectionHeading } from '~/components/section-heading';
 import { Component, ComponentProps } from '~/elements/base/fc';
@@ -17,12 +18,6 @@ import { SimpleBlogPost, viewports } from '~/types';
 interface BlogGridProps extends ComponentProps {
   posts?: SimpleBlogPost[];
 }
-
-const BlogSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`;
 
 const BlogsMasonry = styled(MasonryGrid)`
   margin: 1.6rem 0;
@@ -54,7 +49,7 @@ export const BlogGrid: Component<BlogGridProps> = (props) => {
   }, [search]);
 
   return (
-    <BlogSection id={'blog'}>
+    <Section id={'blog'}>
       <SectionHeading
         size={'3'}
         shadowColor={'green'}
@@ -80,6 +75,6 @@ export const BlogGrid: Component<BlogGridProps> = (props) => {
         })}
       </BlogsMasonry>
       <BlogIdeas />
-    </BlogSection>
+    </Section>
   );
 };

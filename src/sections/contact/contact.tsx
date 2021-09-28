@@ -1,16 +1,10 @@
 import styled from '@emotion/styled';
 
 import { ContactForm } from '~/blocks/contact-form';
+import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
 import { ExtLink } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
-
-const ContactSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-`;
 
 const Paragraph = styled.p`
   margin: 0.8rem 0 0.4rem;
@@ -22,7 +16,7 @@ interface ContactProps extends ComponentProps {
 
 export const Contact: Component<ContactProps> = (props) => {
   return (
-    <ContactSection>
+    <CenteredSection id={'contact'}>
       <SectionHeading
         size={'3'}
         shadowColor={'brand'}
@@ -41,6 +35,6 @@ export const Contact: Component<ContactProps> = (props) => {
         of inquiries. 😀
       </Paragraph>
       <ContactForm reCaptchaKey={props.reCaptchaKey} />
-    </ContactSection>
+    </CenteredS>
   );
 };
