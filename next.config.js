@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   frame-src www.google.com;
   object-src 'none';
   base-uri 'none';
-  media-src 'none';
+  media-src 'self';
   connect-src *;
   font-src 'self' *.gstatic.com;
 `;

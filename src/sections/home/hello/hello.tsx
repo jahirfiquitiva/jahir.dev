@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 import { HelloHeading } from '~/components/hello-heading';
 import { ExtLink } from '~/elements/base/ext-link';
@@ -49,17 +50,52 @@ const ImageContainer = styled(HeadingContainer)`
   }
 `;
 
+const ClickableName = styled.span`
+  cursor: pointer;
+`;
+
+const NameAudio = styled.audio`
+  height: 0;
+  width: 0;
+  opacity: 0;
+  display: none;
+  pointer-events: none;
+`;
+
+const PronunciationText = styled.p`
+  margin-top: 0.4rem;
+  font-size: calc(var(--base-font-size) * 0.9);
+  font-style: italic;
+`;
+
 export const Hello: Component = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playName = () => {
+    try {
+      audioRef?.current?.play();
+    } catch (e) {}
+  };
+
   return (
     <>
       <HeadingContainer>
         <HelloHeading />
         <Heading size={'3'} shadowColor={'blue'}>
           I am{' '}
-          <span className={gradientToClassName('brand-to-blue')}>
+          <ClickableName
+            className={gradientToClassName('brand-to-blue')}
+            onClick={playName}
+          >
             Jahir Fiquitiva
-          </span>
+          </ClickableName>
         </Heading>
+        <NameAudio ref={audioRef}>
+          <source
+            src={'/static/audio/name-pronunciation.mp3'}
+            type={'audio/mpeg'}
+          />
+        </NameAudio>
         <HeadingParagraph>
           Passionate and creative full-stack software engineer based in{' '}
           <ExtLink to={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
@@ -68,6 +104,14 @@ export const Hello: Component = () => {
           working as a technologist at{' '}
           <ExtLink to={'https://mattersupply.co/'}>Matter Supply Co.</ExtLink>
         </HeadingParagraph>
+        <PronunciationText>
+          <b>* PS:</b> Click on my name to hear its pronunciation! (or you can
+          follow{' '}
+          <ExtLink to={'/static/audio/name-pronunciation.mp3'}>
+            this link
+          </ExtLink>
+          )
+        </PronunciationText>
       </HeadingContainer>
 
       <ImageContainer>
