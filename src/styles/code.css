@@ -26,14 +26,28 @@ samp {
   font-family: var(--code-font);
 }
 
+code {
+  white-space: normal;
+  word-break: break-all;
+  padding: 0.6rem 0.8rem;
+  background-color: var(--primary);
+  color: var(--text-primary);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/*
 pre::-webkit-scrollbar {
   display: none;
 }
+*/
 
-pre {
+pre,
+code {
+  -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
   background-color: var(--primary);
   color: var(--text-primary);
   font-size: 0.9rem;
@@ -41,8 +55,7 @@ pre {
   padding: 0.8rem;
   white-space: pre;
   word-wrap: normal;
-  max-width: 90vw;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid var(--divider);
   margin: 1.2rem 0;
 }
@@ -58,19 +71,12 @@ pre pre {
 }
 
 pre code {
+  padding: 0.4rem 0.6rem;
+  border: none;
   background-color: transparent;
   color: var(--text-primary);
   font-size: 0.9rem;
   padding: 0;
-}
-
-code {
-  padding: 0.4rem 0.6rem;
-  background-color: var(--primary);
-  color: var(--text-primary);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 500;
 }
 
 code[class*='language-'],

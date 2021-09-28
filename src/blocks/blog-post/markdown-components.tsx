@@ -78,5 +78,5 @@ export const markdownComponents: any = {
   h6: ({ node, ...props }) => <HeadingRenderer {...props} />,
   em: ({ node, ...props }) => <em className={styles.em} {...props} />,
   a: ({ node, ...props }) => <CustomLink {...props} />,
-  img: ({ node, ...props }) => <OptImage {...props} allowNextComponent />,
+  img: ({ node, ...props }) => <OptImage {...props} />,
 };

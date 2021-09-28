@@ -69,6 +69,9 @@
   --blog-card-color: rgba(255, 255, 255, 0.85);
   --blog-card-color-hover: rgba(255, 255, 255, 0.95);
   --blog-card-text-shadow: rgba(255, 255, 255, 0.5);
+
+  --scrollbar-bg-color: var(--accent-light);
+  --scrollbar-thumb-color: #f2f5fc;
 }
 
 .dark-mode {
@@ -111,4 +114,28 @@
   --blog-card-color: rgba(8, 15, 30, 0.85);
   --blog-card-color-hover: rgba(8, 15, 30, 0.95);
   --blog-card-text-shadow: rgba(9, 17, 34, 0.5);
+
+  --scrollbar-bg-color: var(--accent);
+  --scrollbar-thumb-color: var(--primary);
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-bg-color) var(--scrollbar-thumb-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-thumb-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-bg-color);
+  border-radius: 20px;
+  border: 3px solid var(--scrollbar-thumb-color);
 }
