@@ -91,8 +91,8 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
     if (message.length <= 0) {
       errors.message = 'Message must not be empty';
     }
-    if (message.length <= 50) {
-      errors.message = 'Message should be at least 50 characters long';
+    if (message.length <= 25) {
+      errors.message = 'Message should be at least 25 characters long';
     }
     if (email.length <= 0) {
       errors.email = 'Your email must not be empty';
@@ -131,26 +131,26 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
   const customFormSubmit = async (e: any) => {
     e?.preventDefault();
 
-    // try {
-    //   // @ts-ignore
-    //   window?.grecaptcha
-    //     ?.execute(reCaptchaKey, { action: reCaptchaAction })
-    //     ?.then(setToken);
-    // } catch (e) {}
+    try {
+      // @ts-ignore
+      window?.grecaptcha
+        ?.execute(reCaptchaKey, { action: reCaptchaAction })
+        ?.then(setToken);
+    } catch (e) {}
 
-    // // Validate reCaptcha and honeypot
-    // if (!token || honeypot.length) {
-    //   finishSubmission(false);
-    //   return;
-    // }
-    // const validCaptchaResponse = await fetch(
-    //   `/api/captcha?action=${reCaptchaAction}&token=${token}`,
-    // );
-    // const validCaptcha = await validCaptchaResponse.json();
-    // if (!validCaptcha || !validCaptcha.valid) {
-    //   finishSubmission(false);
-    //   return;
-    // }
+    // Validate reCaptcha and honeypot
+    if (!token || honeypot.length) {
+      finishSubmission(false);
+      return;
+    }
+    const validCaptchaResponse = await fetch(
+      `/api/captcha?action=${reCaptchaAction}&token=${token}`,
+    );
+    const validCaptcha = await validCaptchaResponse.json();
+    if (!validCaptcha || !validCaptcha.valid) {
+      finishSubmission(false);
+      return;
+    }
 
     // Validate form fields
     const errors = getFormErrors();

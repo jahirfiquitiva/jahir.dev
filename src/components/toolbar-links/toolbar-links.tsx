@@ -55,12 +55,14 @@ const ToolbarLinksContainer = styled.div`
     max-height: unset;
 
     & a {
-      margin: 0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     &.active {
       & a {
-        margin: 0;
+        margin-top: 0;
+        margin-bottom: 0;
       }
     }
   }
