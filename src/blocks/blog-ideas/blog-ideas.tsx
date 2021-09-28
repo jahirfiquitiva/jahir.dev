@@ -16,8 +16,8 @@ const BlogIdeasContainer = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 0.8rem;
   border-radius: 8px;
-  padding: 1.8rem 1.6rem;
-  margin-bottom: 1.6rem;
+  padding: 1.2rem;
+  margin-bottom: var(--content-bottom-margin);
   background-color: var(--primary);
   border: 1px dashed var(--accent-light);
 

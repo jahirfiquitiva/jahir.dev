@@ -62,11 +62,7 @@ const NoSupportersText = styled.p`
 
 const SupportersContainer = styled.div`
   margin-top: 0.4rem;
-  margin-bottom: var(--content-bottom-margin);
-
-  ${mediaQueries.tablet.sm} {
-    margin-bottom: 1.6rem;
-  }
+  margin-bottom: calc(var(--content-bottom-margin) - 1rem);
 `;
 
 interface SupporterChipProps extends ComponentProps, Supporter {}
