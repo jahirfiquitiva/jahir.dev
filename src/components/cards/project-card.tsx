@@ -6,12 +6,12 @@ import { useState, useMemo } from 'react';
 import { BaseProjectCard } from './base-project-card';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
+import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
 import { ProjectProps, SkillProps, skills } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import getReadableColor from '~/utils/get-readable-color';
-import { Heading } from '~/elements/simple/heading';
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
