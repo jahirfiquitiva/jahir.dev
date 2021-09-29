@@ -145,6 +145,7 @@ export const Toolbar: Component = () => {
             {isDark ? '🌞' : '🌚'}
           </ThemeToggleButton>
           <ToolbarMenuToggle
+            name={expanded ? 'Collapse menu' : 'Expand menu'}
             active={expanded}
             onClick={() => {
               setExpanded(!expanded);

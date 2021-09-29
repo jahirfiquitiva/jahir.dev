@@ -26,17 +26,20 @@ export const ToolbarButton = styled(PseudoToolbarButton)`
 `;
 
 interface ToolbarMenuToggle extends ComponentProps {
+  name?: string;
   active?: boolean;
   onClick?: () => void;
 }
 
 const BaseToolbarMenuToggle: Component<ToolbarMenuToggle> = ({
+  name,
   active,
   onClick,
   className,
 }) => {
   return (
     <ToolbarButton
+      name={name}
       className={`${className} hamburger hamburger--spring-r ${
         active ? 'is-active' : ''
       }`.trim()}
