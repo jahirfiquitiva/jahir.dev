@@ -24,76 +24,56 @@ const IntroParagraph = styled(HelloParagraph)`
   text-align: justify;
 `;
 
+const ExtraParagraph = styled(IntroParagraph)`
+  margin: 0 0 1.2rem;
+`;
+
 export const Intro: Component = () => {
   return (
     <section id={'about'}>
       <ParagraphsContainer>
         <Hello />
         <IntroParagraph>
-          I am also currently working part time as an associate professor for a
-          Colombian government program called{' '}
-          <ExtLink to={'https://www.misiontic2022.gov.co/portal/'}>
-            Misión TIC 2022
-          </ExtLink>
-          , where I teach to people of all ages and different background topics
-          such as: git, javascript, react, nodejs, express and mongodb.
+          I consider myself a curious and inquisitive person, so on my spare
+          time I like to work on{' '}
+          <ExtLink to={'#projects'} newTab={false} title={'Link to projects'}>
+            side projects
+          </ExtLink>{' '}
+          and try to constantly learn something new to improve my skillset.
         </IntroParagraph>
+
         <IntroParagraph>
-          Before getting into software development, I wanted to be a
-          mechatronics engineer and build robots like transformers 😅. When I
-          started programming my first robots, I realized what my real passion
-          was.
+          When not coding, I like to watch TV shows and movies, play some games
+          with friends or hang out with them. I&apos;m also{' '}
+          <ExtLink to={'/music'} newTab={false}>
+            listening to music
+          </ExtLink>{' '}
+          98% of the time.
         </IntroParagraph>
       </ParagraphsContainer>
-      <Details summary={'More about me...'}>
-        <ParagraphsContainer>
-          <IntroParagraph>
-            When not coding, I like to watch TV shows and movies, play some
-            games with friends or hang out with them. I&apos;m also{' '}
-            <ExtLink to={'/music'} newTab={false}>
-              listening to music
-            </ExtLink>{' '}
-            98% of the time.
-          </IntroParagraph>
-          <IntroParagraph>
-            I&apos;m passionate for crafting great-looking things.
-            <br />
-            Please don&apos;t hesitate to{' '}
-            <ExtLink to={'contact'}>contact me</ExtLink>!
-          </IntroParagraph>
-          <IntroParagraph>
-            I&apos;m currently taking the Beginner JavaScript course by Wes Bos:
-            going back to basics aiming to understand things better.
-          </IntroParagraph>
-          <div>
-            <IntroParagraph>
-              I consider myself a curious and inquisitive person, so on my spare
-              time I like to work on{' '}
-              <ExtLink
-                to={'#projects'}
-                newTab={false}
-                title={'Link to projects'}
-              >
-                side projects
-              </ExtLink>{' '}
-              and try to constantly learn something new to improve my skillset.
-            </IntroParagraph>
-            <IntroParagraph>
-              Learn even more about me on{' '}
-              <ExtLink
-                to={'https://timeline.jahir.dev/'}
-                title={'Link to my timeline'}
-              >
-                my timeline
-              </ExtLink>
-              .
-            </IntroParagraph>
-          </div>
-        </ParagraphsContainer>
-      </Details>
       <div>
+        <ExtraParagraph>
+          Learn more about me on{' '}
+          <ExtLink
+            to={'https://timeline.jahir.dev/'}
+            title={'Link to my timeline'}
+          >
+            my timeline
+          </ExtLink>{' '}
+          and please don&apos;t hesitate to{' '}
+          <ExtLink to={'contact'} newTab={false}>
+            contact me
+          </ExtLink>
+          !
+          <br />
+          If curious, you can click on my name to hear its{' '}
+          <ExtLink to={'/static/audio/name-pronunciation.mp3'}>
+            pronunciation
+          </ExtLink>
+          .
+        </ExtraParagraph>
         <IntroParagraph>
-          <b>You can find me on:</b>
+          <b>You can also find me on:</b>
         </IntroParagraph>
         <SocialLinks />
       </div>

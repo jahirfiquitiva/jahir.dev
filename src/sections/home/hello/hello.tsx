@@ -62,12 +62,6 @@ const NameAudio = styled.audio`
   pointer-events: none;
 `;
 
-const PronunciationText = styled.p`
-  margin-top: 0.4rem;
-  font-size: calc(var(--base-font-size) * 0.9);
-  font-style: italic;
-`;
-
 export const Hello: Component = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -100,18 +94,8 @@ export const Hello: Component = () => {
           Passionate and creative full-stack software engineer based in{' '}
           <ExtLink to={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
             Colombia 🇨🇴
-          </ExtLink>{' '}
-          working as a technologist at{' '}
-          <ExtLink to={'https://mattersupply.co/'}>Matter Supply Co.</ExtLink>
-        </HeadingParagraph>
-        <PronunciationText>
-          <b>* PS:</b> Click on my name to hear its pronunciation! (or you can
-          follow{' '}
-          <ExtLink to={'/static/audio/name-pronunciation.mp3'}>
-            this link
           </ExtLink>
-          )
-        </PronunciationText>
+        </HeadingParagraph>
       </HeadingContainer>
 
       <ImageContainer>
