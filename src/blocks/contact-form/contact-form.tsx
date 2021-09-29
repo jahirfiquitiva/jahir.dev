@@ -79,32 +79,40 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
 
-  const getFormErrors = (): FormData => {
+  const getFormErrors = (ignoreEmptyFields?: boolean): FormData => {
     const errors: {
       name?: string;
       email?: string;
       subject?: string;
       message?: string;
     } = {};
-    if (name.length <= 0) {
-      errors.name = 'Your name must not be empty';
-    }
-    if (subject.length <= 0) {
-      errors.subject = 'Subject must not be empty';
+    if (!ignoreEmptyFields) {
+      if (name.length <= 0) {
+        errors.name = 'Your name must not be empty';
+      }
+      if (subject.length <= 0) {
+        errors.subject = 'Subject must not be empty';
+      }
     }
     if (message.length <= 0) {
-      errors.message = 'Message must not be empty';
-    }
-    if (message.length <= 25) {
+      if (!ignoreEmptyFields) errors.message = 'Message must not be empty';
+    } else if (message.length <= 25) {
       errors.message = 'Message should be at least 25 characters long';
     }
     if (email.length <= 0) {
-      errors.email = 'Your email must not be empty';
-    }
-    if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      if (!ignoreEmptyFields) errors.email = 'Your email must not be empty';
+    } else if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
       errors.email = 'Your email seems to not be valid';
     }
     return errors;
+  };
+
+  const onFormFocus = () => {
+    setErrors({});
+  };
+
+  const onFormBlur = () => {
+    setErrors(getFormErrors(true)); // Ignore empty fields
   };
 
   const finishSubmission = (success: boolean) => {
@@ -176,7 +184,7 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
   };
 
   return (
-    <InternalForm>
+    <InternalForm onFocus={onFormFocus} onBlur={onFormBlur}>
       <FormRow>
         <Field
           tag={'input'}

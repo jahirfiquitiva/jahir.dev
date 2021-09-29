@@ -35,6 +35,6 @@ export const Contact: Component<ContactProps> = (props) => {
         of inquiries. 😀
       </Paragraph>
       <ContactForm reCaptchaKey={props.reCaptchaKey} />
-    </CenteredS>
+    </CenteredSection>
   );
 };
