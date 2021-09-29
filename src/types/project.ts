@@ -16,7 +16,7 @@ export interface ProjectProps {
 export const projects: ProjectProps[] = [
   {
     title: 'Blueprint',
-    description: 'Dashboard for creating Android icon packs.',
+    description: 'Dashboard for creating Android icon packs',
     icon: '/static/images/projects/android/blueprint.png',
     preview: '/static/images/projects/android/blueprint-preview.png',
     link: 'https://github.com/jahirfiquitiva/Blueprint/',
