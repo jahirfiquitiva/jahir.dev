@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Error } from '~/blocks/error';
 import { Page } from '~/blocks/page';
 
-const FourHundredFour: FC = () => {
+const SentPage: FC = () => {
   return (
     <Page title={'Email sent! ~ Jahir Fiquitiva 💎'}>
       <Error errorType={'sent'} />
@@ -11,4 +11,4 @@ const FourHundredFour: FC = () => {
   );
 };
 
-export default FourHundredFour;
+export default SentPage;

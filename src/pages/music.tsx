@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Page } from '~/blocks/page';
 import { Music } from '~/sections/music';
 
-const FourHundredFour: FC = () => {
+const MusicPage: FC = () => {
   return (
     <Page title={'Music ~ Jahir Fiquitiva 💎'}>
       <Music />
@@ -11,4 +11,4 @@ const FourHundredFour: FC = () => {
   );
 };
 
-export default FourHundredFour;
+export default MusicPage;
