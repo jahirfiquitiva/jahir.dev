@@ -1600,6 +1600,21 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
+            "value": "stack"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
             "value": "date"
           },
           "arguments": [],
@@ -2312,6 +2327,20 @@
           "name": {
             "kind": "Name",
             "value": "keywords"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "stack"
           },
           "type": {
             "kind": "NamedType",

@@ -7,3 +7,4 @@ export * from './skill';
 export * from './viewports';
 export * from './keywords';
 export * from './inspiration';
+export * from './challenge';

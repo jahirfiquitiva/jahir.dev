@@ -16,6 +16,11 @@ export const challengesSchema: TinaCloudCollection = {
       name: 'keywords',
     },
     {
+      type: 'string',
+      label: 'Stack',
+      name: 'stack',
+    },
+    {
       type: 'datetime',
       label: 'Date',
       name: 'date',

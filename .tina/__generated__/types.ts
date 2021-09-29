@@ -193,6 +193,7 @@ export type Challenges = {
   __typename?: 'Challenges';
   title?: Maybe<Scalars['String']>;
   keywords?: Maybe<Scalars['String']>;
+  stack?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   inProgress?: Maybe<Scalars['Boolean']>;
   body?: Maybe<Scalars['String']>;
@@ -273,6 +274,7 @@ export type PostsMutation = {
 export type ChallengesMutation = {
   title?: Maybe<Scalars['String']>;
   keywords?: Maybe<Scalars['String']>;
+  stack?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   inProgress?: Maybe<Scalars['Boolean']>;
   body?: Maybe<Scalars['String']>;

@@ -109,6 +109,7 @@ type PostsConnection implements Connection {
 type Challenges {
   title: String
   keywords: String
+  stack: String
   date: String
   inProgress: Boolean
   body: String
@@ -159,6 +160,7 @@ input PostsMutation {
 input ChallengesMutation {
   title: String
   keywords: String
+  stack: String
   date: String
   inProgress: Boolean
   body: String

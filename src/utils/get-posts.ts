@@ -1,16 +1,17 @@
-import { getPostDescription } from './get-post-data';
 /* eslint-disable */
 import fs from 'fs';
-import { join } from 'path';
-
 import matter from 'gray-matter';
+import { join } from 'path';
 
 import { SimpleBlogPost } from '~/types';
 import getRandomItemFrom from '~/utils/get-random-item';
 import { getTableOfContents, getReadingTime } from '~/utils/get-post-data';
+import { getPostDescription } from './get-post-data';
 
-const postsDirectory = join(process.cwd(), 'posts');
-export const getPostSlugs = (): string[] => {
+const basePath = process.cwd();
+
+export const getPostSlugs = (directory: string = 'posts'): string[] => {
+  const postsDirectory = join(basePath, directory);
   return fs.readdirSync(postsDirectory);
 };
 
@@ -32,8 +33,10 @@ const defaultColors = [
 export function getPostBySlug(
   slug: string,
   fields: string[] = [],
+  directory: string = 'posts',
 ): InternalBlogPost {
   const realSlug = slug.replace(/\.md$/, '');
+  const postsDirectory = join(basePath, directory);
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
@@ -73,10 +76,13 @@ export function getPostBySlug(
   return items as InternalBlogPost;
 }
 
-export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs();
+export function getAllPosts(
+  fields: string[] = [],
+  directory: string = 'posts',
+) {
+  const slugs = getPostSlugs(directory);
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug(slug, fields, directory))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
     .filter(

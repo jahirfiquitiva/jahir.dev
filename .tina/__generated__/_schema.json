@@ -101,6 +101,15 @@
           ]
         },
         {
+          "type": "string",
+          "label": "Stack",
+          "name": "stack",
+          "namespace": [
+            "challenges",
+            "stack"
+          ]
+        },
+        {
           "type": "datetime",
           "label": "Date",
           "name": "date",
