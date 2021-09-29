@@ -8,11 +8,19 @@ import {
   textShadowToClassName,
 } from '~/elements/props';
 
+const fontSizesKeys = ['xxxl', 'xxl', 'xl', 'md', 'sm', 'xs', 'xxs'] as const;
+const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
+
+type HeadingSize = typeof headingSizes[number];
+
+type FontSize = typeof fontSizesKeys[number] | HeadingSize | null | undefined;
+
 export interface HeadingProps
   extends ComponentProps,
     ComponentWithGradientProps,
     ComponentWithTextShadowProps {
-  size?: '1' | '2' | '3' | '4' | '5' | '6';
+  size?: HeadingSize;
+  fontSize?: FontSize;
 }
 
 const BaseHeading: Component<HeadingProps> = (props) => {
@@ -26,7 +34,7 @@ const BaseHeading: Component<HeadingProps> = (props) => {
   } = props;
   const shadowClass = textShadowToClassName(shadowColor);
   const gradientClass = gradientToClassName(gradientColor, forceGradient);
-  const fullClassName = `${shadowClass} ${gradientClass} ${className}`;
+  const fullClassName = `${shadowClass} ${gradientClass} ${className}`.trim();
 
   if (size === '6') return <h6 className={fullClassName}>{children}</h6>;
   if (size === '5') return <h5 className={fullClassName}>{children}</h5>;
@@ -36,6 +44,21 @@ const BaseHeading: Component<HeadingProps> = (props) => {
   return <h1 className={fullClassName}>{children}</h1>;
 };
 
-export const Heading = styled(BaseHeading)`
+const buildFontSizeStyle = (fontSize?: FontSize): string => {
+  if (!fontSize) return '';
+  let actualFontSize = '';
+  if (headingSizes.includes(fontSize as HeadingSize)) {
+    actualFontSize = fontSizesKeys[parseInt(fontSize)] || '';
+  } else {
+    actualFontSize = fontSize;
+  }
+  if (!actualFontSize) return '';
+  return `font-size: var(--font-size-${actualFontSize});`;
+};
+
+export const Heading = styled((props: HeadingProps) => (
+  <BaseHeading {...props} />
+))`
   display: inline-block;
+  ${({ fontSize }) => buildFontSizeStyle(fontSize)}
 `;

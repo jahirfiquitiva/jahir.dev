@@ -97,7 +97,9 @@ export const Inspiration: Component<InspirationProps> = (props) => {
               to={item.link}
               title={`Link to ${item.title}'s website`}
             >
-              <Heading size={'6'}>{item.title}</Heading>
+              <Heading size={'4'} fontSize={'6'}>
+                {item.title}
+              </Heading>
               {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
               <FaviconLinkContainer>
                 {item.favicon && (item.favicon?.length || 0) ? (

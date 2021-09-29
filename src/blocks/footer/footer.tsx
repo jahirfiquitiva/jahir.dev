@@ -21,7 +21,7 @@ const FooterHomeLink = styled(ExtLink)`
   position: relative;
   display: flex;
   align-items: center;
-  font-size: var(--base-font-size);
+  font-size: var(--font-size-xs);
 
   &:hover,
   &:focus {

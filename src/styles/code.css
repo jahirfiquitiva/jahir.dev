@@ -29,11 +29,11 @@ samp {
 code {
   white-space: normal;
   word-break: break-all;
-  padding: 0.6rem 0.8rem;
+  padding: 0.2rem 0.4rem;
   background-color: var(--primary);
   color: var(--text-primary);
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: inherit;
   font-weight: 500;
 }
 
@@ -50,7 +50,6 @@ code {
   scrollbar-width: none;
   background-color: var(--primary);
   color: var(--text-primary);
-  font-size: 0.9rem;
   overflow-x: auto;
   padding: 0.8rem;
   white-space: pre;
@@ -75,7 +74,7 @@ pre code {
   border: none;
   background-color: transparent;
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: var(--font-size-xs);
   padding: 0;
 }
 

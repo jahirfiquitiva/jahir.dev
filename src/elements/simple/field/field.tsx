@@ -70,7 +70,7 @@ const Error = styled.p`
   opacity: 1;
   margin-top: 0.4rem;
   color: var(--error-color);
-  font-size: calc(var(--base-font-size) * 0.9);
+  font-size: var(--font-size-xxs);
 `;
 
 interface InputProps extends ComponentProps {

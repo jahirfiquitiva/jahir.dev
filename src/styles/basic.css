@@ -74,33 +74,33 @@ h6 {
 }
 
 h1 {
-  font-size: calc(var(--base-font-size) * 2.6);
+  font-size: var(--font-size-xxxl);
 }
 
 h2 {
-  font-size: calc(var(--base-font-size) * 2.25);
+  font-size: var(--font-size-xxl);
 }
 
 h3 {
-  font-size: calc(var(--base-font-size) * 2);
+  font-size: var(--font-size-xl);
 }
 
 h4 {
-  font-size: calc(var(--base-font-size) * 1.5);
+  font-size: var(--font-size-md);
 }
 
 h5 {
-  font-size: calc(var(--base-font-size) * 1.25);
+  font-size: var(--font-size-sm);
 }
 
 h6,
 p,
 body {
-  font-size: var(--base-font-size);
+  font-size: var(--font-size-xs);
 }
 
 .small {
-  font-size: calc(var(--base-font-size) * 0.9);
+  font-size: var(--font-size-xxs);
 }
 
 a,

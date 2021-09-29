@@ -47,7 +47,7 @@ export const BaseProjectCard = styled(ExtLinkCard)`
         filter: drop-shadow(0 1px 2px var(--filter-color, var(--dashed-color)));
       }
 
-      h6 {
+      h4 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -121,7 +121,7 @@ export const BaseProjectCard = styled(ExtLinkCard)`
         transform: scale(1.05);
       }
 
-      h6 {
+      h4 {
         color: var(--hl-color);
         text-decoration: underline;
       }

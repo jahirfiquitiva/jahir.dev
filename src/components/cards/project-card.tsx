@@ -11,6 +11,7 @@ import { ProjectProps, SkillProps, skills } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import getReadableColor from '~/utils/get-readable-color';
+import { Heading } from '~/elements/simple/heading';
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
@@ -84,7 +85,9 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
               layout={'fixed'}
               loading={'lazy'}
             />
-            <h6 style={titleColors}>{title}</h6>
+            <Heading size={'4'} fontSize={'6'} style={titleColors}>
+              {title}
+            </Heading>
           </div>
           <p>{description}</p>
           {renderProjectStack()}

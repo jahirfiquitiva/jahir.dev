@@ -6,6 +6,7 @@ import { usePalette } from 'react-palette';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { ExtLinkCard } from '~/elements/simple/card';
+import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
 import { TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
@@ -62,7 +63,7 @@ const BaseSongCard = styled(ExtLinkCard)`
     margin-right: 0.2rem;
   }
 
-  .details h6,
+  .details h5,
   .details p {
     white-space: nowrap;
     overflow: hidden;
@@ -70,7 +71,7 @@ const BaseSongCard = styled(ExtLinkCard)`
     color: inherit;
   }
 
-  .details h6 {
+  .details h5 {
     font-size: calc(var(--base-font-size) * 1.05);
     opacity: 1;
   }
@@ -78,7 +79,7 @@ const BaseSongCard = styled(ExtLinkCard)`
   .details p {
     font-size: calc(var(--base-font-size) * 0.95);
     font-weight: 400;
-    opacity: 0.8;
+    opacity: 0.9;
     -webkit-text-decoration: none !important;
     text-decoration: none !important;
     text-decoration-color: rgba(0, 0, 0, 0) !important;
@@ -87,8 +88,8 @@ const BaseSongCard = styled(ExtLinkCard)`
   &:focus,
   &:hover {
     color: var(--text-primary);
-    & .details h6,
-    & .details h6 {
+    & .details h5,
+    & .details h5 {
       text-decoration: underline;
     }
   }
@@ -171,11 +172,11 @@ export const SongCard: Component<SongCardProps> = (props) => {
           className={'details'}
           style={buildStyles({ color: textColor, borderColor: textColor })}
         >
-          <h6>
+          <Heading size={'5'} fontSize={'6'}>
             {(props.title?.length ?? 0) > 0 && shouldRenderDetails
               ? props.title
               : 'Nothing'}
-          </h6>
+          </Heading>
           {shouldRenderDetails && (
             <p>
               {props.artist}

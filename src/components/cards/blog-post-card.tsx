@@ -4,6 +4,7 @@ import { usePalette } from 'react-palette';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { ExtLinkCard } from '~/elements/simple/card';
+import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
 import { SimpleBlogPost } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
@@ -31,7 +32,7 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
     backdrop-filter: saturate(200%) blur(8px);
     text-shadow: 1px 1px 1px var(--blog-card-text-shadow);
 
-    h6 {
+    h4 {
       font-size: 1.1rem;
       color: var(--text-primary);
     }
@@ -58,7 +59,7 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
   &:focus {
     & .content {
       background-color: var(--blog-card-color-hover);
-      & h6 {
+      & h4 {
         color: var(--hl-color);
         text-decoration: underline;
       }
@@ -102,13 +103,15 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         }}
       >
         <div className={'content'}>
-          <h6
+          <Heading
+            size={'4'}
+            fontSize={'6'}
             style={buildStyles({
               '--hl-color': getReadableColor(color, isDark),
             })}
           >
             {title}
-          </h6>
+          </Heading>
           {excerpt && <p>{excerpt}</p>}
           <p className={'date-time'}>
             {formatDate(date)}

@@ -8,10 +8,18 @@
   --code-font: 'Fira Code', Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono',
     'Courier New', Courier, monospace;
   --max-site-width: 768px;
-  --base-font-size: 1rem;
   --toolbar-height: 56px;
   --text-shadow-size: 2px;
   --content-bottom-margin: 2.4rem;
+
+  --base-font-size: 1rem;
+  --font-size-xxxl: calc(var(--base-font-size) * 2.6);
+  --font-size-xxl: calc(var(--base-font-size) * 2.25);
+  --font-size-xl: calc(var(--base-font-size) * 2);
+  --font-size-md: calc(var(--base-font-size) * 1.5);
+  --font-size-sm: calc(var(--base-font-size) * 1.25);
+  --font-size-xs: var(--base-font-size);
+  --font-size-xxs: calc(var(--base-font-size) * 0.9);
 
   --background: #fff;
   --primary: #f6f9fe;
