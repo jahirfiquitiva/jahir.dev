@@ -65,6 +65,8 @@ export type Query = {
   getDocumentList: DocumentConnection;
   getPostsDocument: PostsDocument;
   getPostsList: PostsConnection;
+  getChallengesDocument: ChallengesDocument;
+  getChallengesList: ChallengesConnection;
 };
 
 
@@ -98,6 +100,19 @@ export type QueryGetPostsDocumentArgs = {
 
 
 export type QueryGetPostsListArgs = {
+  before?: Maybe<Scalars['String']>;
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryGetChallengesDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryGetChallengesListArgs = {
   before?: Maybe<Scalars['String']>;
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -138,7 +153,7 @@ export type CollectionDocumentsArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export type DocumentNode = PostsDocument;
+export type DocumentNode = PostsDocument | ChallengesDocument;
 
 export type Posts = {
   __typename?: 'Posts';
@@ -174,11 +189,44 @@ export type PostsConnection = Connection & {
   edges?: Maybe<Array<Maybe<PostsConnectionEdges>>>;
 };
 
+export type Challenges = {
+  __typename?: 'Challenges';
+  title?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  inProgress?: Maybe<Scalars['Boolean']>;
+  body?: Maybe<Scalars['String']>;
+};
+
+export type ChallengesDocument = Node & Document & {
+  __typename?: 'ChallengesDocument';
+  id: Scalars['ID'];
+  sys: SystemInfo;
+  data: Challenges;
+  form: Scalars['JSON'];
+  values: Scalars['JSON'];
+  dataJSON: Scalars['JSON'];
+};
+
+export type ChallengesConnectionEdges = {
+  __typename?: 'ChallengesConnectionEdges';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<ChallengesDocument>;
+};
+
+export type ChallengesConnection = Connection & {
+  __typename?: 'ChallengesConnection';
+  pageInfo?: Maybe<PageInfo>;
+  totalCount: Scalars['Int'];
+  edges?: Maybe<Array<Maybe<ChallengesConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
   updateDocument: DocumentNode;
   updatePostsDocument: PostsDocument;
+  updateChallengesDocument: ChallengesDocument;
 };
 
 
@@ -201,14 +249,29 @@ export type MutationUpdatePostsDocumentArgs = {
   params: PostsMutation;
 };
 
+
+export type MutationUpdateChallengesDocumentArgs = {
+  relativePath: Scalars['String'];
+  params: ChallengesMutation;
+};
+
 export type DocumentMutation = {
   posts?: Maybe<PostsMutation>;
+  challenges?: Maybe<ChallengesMutation>;
 };
 
 export type PostsMutation = {
   title?: Maybe<Scalars['String']>;
   excerpt?: Maybe<Scalars['String']>;
   hero?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  inProgress?: Maybe<Scalars['Boolean']>;
+  body?: Maybe<Scalars['String']>;
+};
+
+export type ChallengesMutation = {
+  title?: Maybe<Scalars['String']>;
   keywords?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   inProgress?: Maybe<Scalars['Boolean']>;

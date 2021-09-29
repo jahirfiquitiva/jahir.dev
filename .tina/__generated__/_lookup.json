@@ -3,7 +3,8 @@
     "type": "DocumentConnection",
     "resolveType": "multiCollectionDocumentList",
     "collections": [
-      "posts"
+      "posts",
+      "challenges"
     ]
   },
   "Node": {
@@ -23,5 +24,15 @@
     "type": "PostsConnection",
     "resolveType": "collectionDocumentList",
     "collection": "posts"
+  },
+  "ChallengesDocument": {
+    "type": "ChallengesDocument",
+    "resolveType": "collectionDocument",
+    "collection": "challenges"
+  },
+  "ChallengesConnection": {
+    "type": "ChallengesConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "challenges"
   }
 }
