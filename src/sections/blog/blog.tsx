@@ -28,7 +28,7 @@ masonryBreakpoints[viewports.default] = 1;
 masonryBreakpoints[viewports.mobile.lg] = 2;
 masonryBreakpoints[viewports.tablet.lg] = 3;
 
-export const BlogGrid: Component<BlogGridProps> = (props) => {
+export const Blog: Component<BlogGridProps> = (props) => {
   const { posts } = props;
   const [search, setSearch] = useState('');
   const [filteredPosts, setFilteredPosts] = useState(posts);
