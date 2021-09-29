@@ -93,8 +93,11 @@
 .post blockquote {
   margin: 1.2rem 0;
   background-color: var(--primary);
-  border-left: 2px solid var(--accent-light);
-  padding: 0.4rem 1.2rem;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid var(--divider);
+  border-left: 4px solid var(--accent-light);
+  padding: 0.6rem 1.6rem;
 }
 
 .post em {
