@@ -34,7 +34,10 @@ code {
   color: var(--text-primary);
   border-radius: 6px;
   font-size: inherit;
-  font-weight: 500;
+}
+
+p code {
+  font-size: var(--font-size-xxs);
 }
 
 /*
