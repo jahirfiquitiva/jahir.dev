@@ -25,6 +25,7 @@ const BaseButton = styled.button`
 `;
 
 export interface ButtonProps extends ComponentProps {
+  name?: string;
   type?: 'button' | 'reset' | 'submit' | undefined;
   title?: string;
   icon?: string;
@@ -36,6 +37,7 @@ export interface ButtonProps extends ComponentProps {
 
 export const Button: Component<ButtonProps> = (props) => {
   const {
+    name,
     type,
     title,
     icon,
@@ -49,6 +51,7 @@ export const Button: Component<ButtonProps> = (props) => {
   return (
     <BaseButton
       type={type}
+      name={name}
       title={title}
       aria-label={title}
       className={className}

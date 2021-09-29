@@ -212,6 +212,8 @@ export const BlogIdeas: Component = () => {
           </p>
 
           <Button
+            name={'Submit blog post ideas'}
+            title={'Submit blog post ideas'}
             icon={mdiMessageArrowRightOutline}
             onClick={(e: any) => {
               e.preventDefault();

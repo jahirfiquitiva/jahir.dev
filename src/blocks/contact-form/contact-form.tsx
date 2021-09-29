@@ -255,6 +255,8 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
         apply.
       </FormDisclaimer>
       <Button
+        name={'Send contact form email'}
+        title={'Send contact form email'}
         disabled={submitting}
         onClick={customFormSubmit}
         icon={mdiMessageArrowRightOutline}
