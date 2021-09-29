@@ -9,6 +9,7 @@
     "lint": "next lint",
     "clean": "rm -rf .next && rm -rf out && rm -rf storybook",
     "prebuild": "yarn clean",
+    "postbuild": "node ./scripts/generate-sitemap.js",
     "sb": "start-storybook -p 6006 -c .storybook",
     "build-sb": "build-storybook -c .storybook -o storybook",
     "update-deps": "npx npm-check-updates -u && yarn",
@@ -75,6 +76,7 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-standard": "^5.0.0",
+    "globby": "11.0.4",
     "prettier": "^2.4.1",
     "typescript": "^4.4.3"
   },
