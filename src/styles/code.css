@@ -92,7 +92,6 @@ pre[class*='language-'] code,
 .token.imports,
 .token.plain-text {
   color: var(--text-primary);
-  font-weight: 400;
 }
 
 .token.property,
@@ -146,17 +145,3 @@ pre[class*='language-'] code,
 .token.punctuation {
   color: var(--code-punctuation);
 }
-
-/*
-.remark-code-title {
-  @apply text-gray-800 dark:text-gray-200 px-5 py-3 border border-b-0 border-gray-200 dark:border-gray-700 rounded-t bg-gray-200 dark:bg-gray-800 text-sm font-mono font-bold;
-}
-
-.remark-code-title + pre {
-  @apply mt-0 rounded-t-none;
-}
-
-.mdx-marker {
-  @apply block -mx-4 px-4 bg-gray-100 dark:bg-gray-800 border-l-4 border-blue-500;
-}
-*/
