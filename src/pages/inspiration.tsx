@@ -8,7 +8,10 @@ import { InspirationSite, inspirationSites } from '~/types';
 
 const InspirationPage: FC<InspirationProps> = (props) => {
   return (
-    <Page title={'Inspiration ~ Jahir Fiquitiva 💎'}>
+    <Page
+      title={'Inspiration ~ Jahir Fiquitiva 💎'}
+      exactUrl={'https://jahir.dev/inspiration'}
+    >
       <Inspiration inspirationItems={props.inspirationItems} />
     </Page>
   );

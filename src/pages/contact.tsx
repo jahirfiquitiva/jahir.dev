@@ -10,7 +10,10 @@ interface ContactPageProps {
 
 const ContactPage: FC<ContactPageProps> = (props) => {
   return (
-    <Page title={'Contact ~ Jahir Fiquitiva 💎'}>
+    <Page
+      title={'Contact ~ Jahir Fiquitiva 💎'}
+      exactUrl={'https://jahir.dev/contact'}
+    >
       <Contact reCaptchaKey={props.reCaptchaKey} />
     </Page>
   );

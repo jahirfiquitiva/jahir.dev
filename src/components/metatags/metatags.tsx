@@ -65,7 +65,7 @@ export const MetaTags: Component<MetaTagsProps> = (props) => {
       <meta itemProp={'name'} content={title} />
       <meta itemProp={'description'} content={description} />
       <meta itemProp={'image'} content={actualImage} />
-      <link rel={'canonical'} href={'https://jahir.dev'} />
+      <link rel={'canonical'} href={exactUrl || 'https://jahir.dev'} />
 
       <meta property={'og:title'} content={title} />
       <meta property={'og:type'} content={siteType} />

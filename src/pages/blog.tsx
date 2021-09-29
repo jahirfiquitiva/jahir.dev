@@ -13,7 +13,10 @@ interface BlogProps extends ComponentProps {
 const BlogPage: Component<BlogProps> = (props) => {
   const { posts } = props;
   return (
-    <Page title={'Blog ~ Jahir Fiquitiva 💎'}>
+    <Page
+      title={'Blog ~ Jahir Fiquitiva 💎'}
+      exactUrl={'https://jahir.dev/blog'}
+    >
       <Blog posts={posts} />
     </Page>
   );

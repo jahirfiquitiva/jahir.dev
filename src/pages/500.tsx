@@ -5,7 +5,10 @@ import { Page } from '~/blocks/page';
 
 const ErrorPage: FC = () => {
   return (
-    <Page title={'Error! ~ Jahir Fiquitiva 💎'}>
+    <Page
+      title={'Error! ~ Jahir Fiquitiva 💎'}
+      exactUrl={'https://jahir.dev/500'}
+    >
       <Error />
     </Page>
   );

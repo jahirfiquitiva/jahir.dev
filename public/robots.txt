@@ -4,4 +4,6 @@ Disallow: /static/
 Disallow: /frames/
 Disallow: /gallery/
 Disallow: /share/
+Disallow: /admin
+Disallow: /exit-admin
 Sitemap: https://jahir.dev/sitemap.xml

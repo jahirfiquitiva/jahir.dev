@@ -9,7 +9,7 @@ const Home: FC = () => {
   return (
     <Page>
       <Intro />
-      <Skills/>
+      <Skills />
       <Projects />
     </Page>
   );
