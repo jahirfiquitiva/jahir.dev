@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /static/
+Disallow: /frames/
+Disallow: /gallery/
+Disallow: /share/
+Sitemap: https://jahir.dev/sitemap.xml
