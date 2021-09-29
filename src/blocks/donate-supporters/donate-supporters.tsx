@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading } from '~/components/section-heading';
@@ -123,10 +124,10 @@ export const DonateSupporters: Component = () => {
         </ThanksGifContainer>
       </DonateSupportersHeader>
       <SupportersContainer id={'supporters'}>
-        {supporters.map((category) => {
+        {supporters.map((category, categoryIndex) => {
           const [emoji, ...name] = category.name.split(' ');
           return (
-            <>
+            <Fragment key={categoryIndex}>
               <Heading size={'5'}>
                 <ExtLink
                   to={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
@@ -141,16 +142,16 @@ export const DonateSupporters: Component = () => {
                 <NoSupportersText className={'small'}>None</NoSupportersText>
               ) : (
                 <ChipGroup>
-                  {category?.supporters?.map((supporter, i) => {
+                  {category?.supporters?.map((supporter, supporterIndex) => {
                     return (
-                      <li key={i}>
+                      <li key={`${categoryIndex}-${supporterIndex}`}>
                         <SupporterChip {...supporter} />
                       </li>
                     );
                   })}
                 </ChipGroup>
               )}
-            </>
+            </Fragment>
           );
         })}
       </SupportersContainer>

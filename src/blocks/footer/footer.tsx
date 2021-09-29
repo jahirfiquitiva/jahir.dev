@@ -310,13 +310,13 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/coding'}
+            to={'/#projects'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
           >
             <span>👨‍💻&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('orange-to-red', true)}>
-              Challenges
+            <span className={gradientToClassName('green-to-yellow', true)}>
+              Projects
             </span>
           </FooterGridLink>
         </FooterGridSectionFour>

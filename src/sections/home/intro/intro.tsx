@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { SocialLinks } from '~/blocks/social-links';
 import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
+import { Details } from '~/elements/simple/details';
 import { Hello, HelloParagraph } from '~/sections/home/hello';
 import { mediaQueries } from '~/types';
 
@@ -21,24 +22,6 @@ const ParagraphsContainer = styled.div`
 
 const IntroParagraph = styled(HelloParagraph)`
   text-align: justify;
-`;
-
-const CollapsedIntro = styled.details`
-  margin-bottom: 1.2rem;
-  & summary {
-    cursor: pointer;
-  }
-
-  & div:first-of-type {
-    opacity: 0;
-    height: 0;
-    transition: all 0.25s ease-in-out;
-  }
-
-  &[open] div:first-of-type {
-    height: unset;
-    opacity: 1;
-  }
 `;
 
 export const Intro: Component = () => {
@@ -62,8 +45,7 @@ export const Intro: Component = () => {
           was.
         </IntroParagraph>
       </ParagraphsContainer>
-      <CollapsedIntro>
-        <summary>More about me...</summary>
+      <Details summary={'More about me...'}>
         <ParagraphsContainer>
           <IntroParagraph>
             When not coding, I like to watch TV shows and movies, play some
@@ -108,7 +90,7 @@ export const Intro: Component = () => {
             </IntroParagraph>
           </div>
         </ParagraphsContainer>
-      </CollapsedIntro>
+      </Details>
       <div>
         <IntroParagraph>
           <b>You can find me on:</b>
