@@ -3,7 +3,7 @@ title: 'Redesigning my website'
 author: 'Jahir' 
 date: '2021-04-15T00:00:00.000Z'
 keywords: 'Design| website| Website Redesign|Design update|Redesign|Portfolio| spotify '
-hero: https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80
+hero: redesign-website.jpeg
 ---
 
 ## Intro

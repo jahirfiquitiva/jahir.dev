@@ -4,7 +4,7 @@ description: Get to know the software and hardware I use
 date: '2020-06-27T00:00:00.000Z'
 color: '#26de81'
 page: 2
-hero: 'https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=fabian-grohs-dC6Pb2JdAqs-unsplash.jpg&w=640'
+hero: uses.jpg
 ---
 
 This site is inspired and featured on [uses.tech](https://uses.tech)
