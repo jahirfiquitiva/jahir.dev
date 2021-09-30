@@ -92,7 +92,11 @@ const BlogPostPage: Component<BlogPostProps> = (props) => {
 
   return (
     <Page
-      title={`${post.title} | Blog ~ Jahir Fiquitiva 💎`}
+      title={
+        post.title
+          ? `${post.title} | Blog ~ Jahir Fiquitiva 💎`
+          : 'Blog ~ Jahir Fiquitiva 💎'
+      }
       description={post?.excerpt}
       keywords={post?.keywords}
       image={post.hero}

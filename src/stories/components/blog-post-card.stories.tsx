@@ -5,7 +5,7 @@ import { BlogPostCard } from '~/components/cards';
 const examplePostData = {
   title: 'What I use',
   date: '2018-10-02',
-  hero: 'https://jahir.dev/assets/images/posts/react-package.jpg',
+  hero: 'https://jahir.dev/static/images/posts/react-package.jpg',
 };
 
 export const Default: Story = () => {

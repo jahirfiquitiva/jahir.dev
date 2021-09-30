@@ -5,9 +5,9 @@ import { Component } from '~/elements/base/fc';
 import { useTheme } from '~/providers/theme';
 import { PageProps } from '~/types';
 
-const defaultImage = 'https://jahir.dev/assets/images/brand/banner.png';
+const defaultImage = 'https://jahir.dev/static/images/brand/banner.png';
 const defaultLogoImage =
-  'https://jahir.dev/assets/images/brand/logo-full-me.png';
+  'https://jahir.dev/static/images/brand/logo-full-me.png';
 
 type MetaImageStyle = 'summary_large_image' | 'summary';
 
