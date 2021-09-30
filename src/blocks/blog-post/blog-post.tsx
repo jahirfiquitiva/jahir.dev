@@ -13,39 +13,12 @@ import styles from './blog-post.module.css';
 import { markdownComponents } from './markdown-components';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
+import { OptImage } from '~/elements/base/opt-image';
 import { useTheme } from '~/providers/theme';
 import { FullBlogPost } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
-import { OptImage } from '~/elements/base/opt-image';
-
-const getChildType = (child: any): string | null | undefined => {
-  try {
-    const { type } = child;
-    return type?.name || type;
-  } catch (e) {
-    return null;
-  }
-};
-
-const components: any = {
-  ...markdownComponents,
-  // @ts-ignore
-  // eslint-disable-next-line react/display-name
-  p({ node, className, ...props }) {
-    const classNames = [
-      getChildType(props.children?.[0]) === 'em'
-        ? styles.possiblecodetitle
-        : '',
-      getChildType(props.children?.[2]) === 'img'
-        ? styles.possibleimagetitle
-        : '',
-    ];
-
-    return <p className={classNames.join(' ')} {...props} />;
-  },
-};
 
 const HeroImage = styled(OptImage)`
   & img {
@@ -100,7 +73,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
       <ReactMarkdown
         remarkPlugins={[gfm]}
         className={styles.content}
-        components={components}
+        components={markdownComponents}
         children={content}
       />
     );

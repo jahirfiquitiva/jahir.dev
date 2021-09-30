@@ -5,12 +5,12 @@ import { Component } from '~/elements/base/fc';
 import { LinkButton, LinkButtonProps } from '~/elements/simple/button';
 
 const BaseGitHubButton = styled(LinkButton)`
-  background-color: #d34399;
+  background-color: #c94091;
   color: #fff !important;
 
   &:hover,
   &:focus {
-    background-color: #a43477;
+    background-color: #b43982;
     color: #fff !important;
   }
 `;
@@ -27,11 +27,11 @@ export const GitHubButton: Component<LinkButtonProps> = (props) => {
 };
 
 const BaseBmacButton = styled(BaseGitHubButton)`
-  background-color: #5f7fff;
+  background-color: #516cd9;
 
   &:hover,
   &:focus {
-    background-color: #4c66cc;
+    background-color: #485fc0;
   }
 `;
 
