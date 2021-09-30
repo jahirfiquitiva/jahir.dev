@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import matter from 'gray-matter';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
@@ -13,6 +14,7 @@ import {
   getReadingTime,
   getTableOfContents,
 } from '~/utils/get-post-data';
+import { getPostSlugs } from '~/utils/get-posts';
 import { unique } from '~/utils/unique';
 
 interface TinaData {
@@ -115,8 +117,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // @ts-ignore
   const { slug } = params;
   const variables = { relativePath: `${slug}.md` };
-  const tinaProps = await getStaticPropsForTina({
-    query: `
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let tinaProps: any = {};
+  try {
+    tinaProps = await getStaticPropsForTina({
+      query: `
       query BlogPostQuery($relativePath: String!) {
         getPostsDocument(relativePath: $relativePath) {
           data {
@@ -130,11 +136,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
       }
     `,
-    variables,
-  });
+      variables,
+    });
+  } catch (e) {}
+
+  const content = await import(`./../../../posts/${slug}.md`);
+  const defaultData = matter(content.default);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { orig, ...staticData } = defaultData;
+  const actualStaticData: TinaData = {
+    ...staticData,
+    ...staticData?.data,
+    title: staticData.data.title,
+    body: staticData.content,
+  };
 
   const tinaPost = getTinaData(tinaProps?.data);
-  const fullPostData = buildFullBlogPostData(tinaPost);
+  const fullPostData = buildFullBlogPostData({
+    ...actualStaticData,
+    ...tinaPost,
+  });
   return {
     props: {
       ...tinaProps,
@@ -145,8 +166,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postsListData = await staticRequest({
-    query: `
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let tinaPaths: Array<string> = [];
+  try {
+    const postsListData = await staticRequest({
+      query: `
       query {
         getPostsList {
           edges {
@@ -159,13 +183,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
         }
       }
     `,
-    variables: {},
+      variables: {},
+    });
+    tinaPaths = [
+      // @ts-ignore
+      ...postsListData.getPostsList.edges.map((edge) => edge.node.sys.filename),
+    ];
+  } catch (e) {}
+
+  const blogSlugs = getPostSlugs().map((preSlug) => {
+    return preSlug.replace(/^.*[\\/]/, '').slice(0, -3);
   });
+
+  const allPaths = unique([...tinaPaths, ...blogSlugs]);
   return {
-    // @ts-ignore
-    paths: postsListData.getPostsList.edges.map((edge) => ({
-      params: { slug: edge.node.sys.filename },
-    })),
+    paths: allPaths.map((slug) => ({ params: { slug } })),
     fallback: false,
   };
 };

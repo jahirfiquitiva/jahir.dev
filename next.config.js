@@ -73,6 +73,26 @@ module.exports = {
   reactStrictMode: true,
   // Prefer loading of ES Modules over CommonJS
   experimental: { esmExternals: true },
+  webpack(config, { isServer }) {
+    if (isServer) {
+      require('./scripts/generate-sitemap');
+    }
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+      type: 'javascript/auto',
+      issuer: {
+        and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
+      },
+    });
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader',
+    });
+
+    return config;
+  },
   images: {
     domains: [
       'images.unsplash.com',
