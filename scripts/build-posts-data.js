@@ -61,7 +61,7 @@ const getPostDescription = (
 
 const transformPostToMatter = (post) => {
   const slug = post.filename.replace(/^.*[\\/]/, '').slice(0, -3);
-  const matterData = matter(post.content).data;
+  const { data: matterData, content: actualContent } = matter(post.content);
   const { link, title, date, excerpt } = matterData;
   const isInProgress = matterData['in-progress'] === true;
   if (isInProgress) return null;
@@ -70,7 +70,7 @@ const transformPostToMatter = (post) => {
     link,
     title,
     date,
-    excerpt: getPostDescription(excerpt, post.content),
+    excerpt: getPostDescription(excerpt, actualContent),
   };
 };
 
