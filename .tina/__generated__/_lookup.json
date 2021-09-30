@@ -3,8 +3,7 @@
     "type": "DocumentConnection",
     "resolveType": "multiCollectionDocumentList",
     "collections": [
-      "posts",
-      "challenges"
+      "posts"
     ]
   },
   "Node": {

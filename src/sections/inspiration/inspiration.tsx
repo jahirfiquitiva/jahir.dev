@@ -103,7 +103,11 @@ export const Inspiration: Component<InspirationProps> = (props) => {
               {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
               <FaviconLinkContainer>
                 {item.favicon && (item.favicon?.length || 0) ? (
-                  <OptImage alt={item.title} src={item.favicon ?? ''} />
+                  <OptImage
+                    alt={item.title}
+                    src={item.favicon ?? ''}
+                    avoidNextImage
+                  />
                 ) : (
                   <Icon path={mdiWeb} size={0.8} />
                 )}

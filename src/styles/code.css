@@ -81,8 +81,7 @@ pre code {
   border: none;
   background-color: transparent;
   color: var(--text-primary);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
+  font-size: var(--font-size-xxs);
   padding: 0;
 }
 

@@ -50,6 +50,10 @@ const FourHundredFourContent = styled(ErrorContent)`
   flex: 1;
 `;
 
+const GifImage = styled(OptImage)`
+  max-width: 425px;
+`;
+
 interface Content {
   title: string;
   message: string;
@@ -156,11 +160,10 @@ export const Error: Component<ErrorProps> = (props) => {
       ) : (
         <ErrorContent>{renderContent()}</ErrorContent>
       )}
-      <OptImage
-        h={isFourHundredFour ? '476px' : '260px'}
+      <GifImage
         src={contentOptions[errorType]?.gif}
         alt={contentOptions[errorType]?.alt}
-        allowNextComponent={!isFourHundredFour}
+        objectFit={isFourHundredFour ? 'cover' : 'contain'}
       />
     </>,
   );

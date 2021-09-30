@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { CSSProperties } from 'react';
 
 const buildStyles = (customStyles?: Object): CSSProperties => {

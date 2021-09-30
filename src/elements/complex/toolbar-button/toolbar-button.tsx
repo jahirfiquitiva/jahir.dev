@@ -58,7 +58,7 @@ const BaseToolbarMenuToggle: Component<ToolbarMenuToggle> = ({
 export const ToolbarMenuToggle = styled(BaseToolbarMenuToggle)`
   min-width: 48px;
   padding: 0.4rem 0 0;
-  margin-left: 0.2rem;
+  margin-left: 0.4rem;
   color: var(--accent);
   display: inline-block;
   visibility: visible;

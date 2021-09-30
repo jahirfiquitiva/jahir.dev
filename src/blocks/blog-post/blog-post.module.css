@@ -1,7 +1,7 @@
 .post {
   display: flex;
   flex-direction: column;
-  padding: 2rem 0 3rem;
+  padding: 0.8rem 0 calc(var(--content-bottom-margin) + 0.8rem);
   width: 100%;
 }
 
@@ -45,21 +45,12 @@
   content: counter(list-item, disc);
 }
 
-.post img.hero {
-  margin-bottom: 2.4rem;
-  object-fit: cover;
-  max-height: 440px;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
 .post img {
   display: block;
   margin: auto;
   height: auto;
   max-width: 100%;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .post h1,
@@ -122,18 +113,34 @@ p.possiblecodetitle {
   border-top-right-radius: 6px;
   border: 1px solid var(--divider);
   margin: 1.2rem 0 0;
-  padding: 0.6rem 0.8rem;
+  padding: 0.8rem;
   font-weight: 500;
 }
 
 p.possiblecodetitle.possibleimagetitle {
-  border-radius: 6px;
+  border-radius: 10px;
   margin-bottom: 0.8rem;
+}
+
+p.possiblecodetitle.possibleimagetitle em {
+  display: inline-block;
+  margin-bottom: 0.4rem;
 }
 
 p.possiblecodetitle.possibleimagetitle img {
   margin-top: 0.8rem;
   margin-bottom: 0.2rem;
+  border-radius: 0;
+}
+
+p.possiblecodetitle.possibleimagetitle > div:first-of-type img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+p.possiblecodetitle.possibleimagetitle > div:last-of-type img {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 p.possiblecodetitle + pre[class*='language-'] {

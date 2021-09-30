@@ -57,6 +57,12 @@ const ToolbarLinksContainer = styled.div`
     & a {
       margin-top: 0;
       margin-bottom: 0;
+      &:not(:last-of-type) {
+        margin-right: 0.4rem;
+      }
+      &:last-of-type {
+        margin-right: 0.2rem;
+      }
     }
 
     &.active {
@@ -78,9 +84,9 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
   const [activeLink, setActiveLink] = useState(-1);
 
   useEffect(() => {
-    const { pathname } = router;
-    if (pathname.includes('/blog')) setActiveLink(1);
-    else if (pathname.includes('/uses')) setActiveLink(2);
+    const { asPath: pathname } = router;
+    if (pathname.includes('/uses')) setActiveLink(2);
+    else if (pathname.includes('/blog')) setActiveLink(1);
     else if (pathname.includes('/donate')) setActiveLink(3);
     else if (pathname.includes('/contact')) setActiveLink(4);
     else setActiveLink(-1);

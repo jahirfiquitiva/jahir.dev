@@ -8,26 +8,36 @@ import { Component, ComponentProps } from '~/elements/base/fc';
 interface OptImageProps extends ComponentProps {
   src: string;
   alt: string;
-  h?: string;
   className?: string;
-  allowNextComponent?: boolean;
+  avoidNextImage?: boolean;
+  objectFit?: 'cover' | 'contain';
 }
 
 const ImageWrapper = styled.div`
   position: relative;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
   width: 100%;
-  min-height: 100%;
+  overflow: hidden;
+
+  & > div:first-of-type,
+  & img {
+    object-fit: contain;
+    position: relative !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
 `;
 
 export const OptImage: Component<OptImageProps> = (props) => {
-  const { allowNextComponent = false, h, ...rest } = props;
-  if (allowNextComponent) {
+  const { avoidNextImage = false, ...rest } = props;
+  if (!avoidNextImage) {
     return (
-      <ImageWrapper style={{ minHeight: h || '96px' }}>
+      <ImageWrapper className={props.className}>
         <Image
           // @ts-ignore
           layout={'fill'}
-          objectFit={'contain'}
           {...rest}
         />
       </ImageWrapper>

@@ -47,8 +47,6 @@ type Query {
   getDocumentList(before: String, after: String, first: Int, last: Int): DocumentConnection!
   getPostsDocument(relativePath: String): PostsDocument!
   getPostsList(before: String, after: String, first: Int, last: Int): PostsConnection!
-  getChallengesDocument(relativePath: String): ChallengesDocument!
-  getChallengesList(before: String, after: String, first: Int, last: Int): ChallengesConnection!
 }
 
 type DocumentConnectionEdges {
@@ -74,7 +72,7 @@ type Collection {
   documents(before: String, after: String, first: Int, last: Int): DocumentConnection!
 }
 
-union DocumentNode = PostsDocument | ChallengesDocument
+union DocumentNode = PostsDocument
 
 type Posts {
   title: String
@@ -106,45 +104,14 @@ type PostsConnection implements Connection {
   edges: [PostsConnectionEdges]
 }
 
-type Challenges {
-  title: String
-  keywords: String
-  stack: String
-  date: String
-  inProgress: Boolean
-  body: String
-}
-
-type ChallengesDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Challenges!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
-}
-
-type ChallengesConnectionEdges {
-  cursor: String
-  node: ChallengesDocument
-}
-
-type ChallengesConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
-  edges: [ChallengesConnectionEdges]
-}
-
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String!, relativePath: String!, params: DocumentMutation!): DocumentNode!
   updatePostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
-  updateChallengesDocument(relativePath: String!, params: ChallengesMutation!): ChallengesDocument!
 }
 
 input DocumentMutation {
   posts: PostsMutation
-  challenges: ChallengesMutation
 }
 
 input PostsMutation {
@@ -152,15 +119,6 @@ input PostsMutation {
   excerpt: String
   hero: String
   keywords: String
-  date: String
-  inProgress: Boolean
-  body: String
-}
-
-input ChallengesMutation {
-  title: String
-  keywords: String
-  stack: String
   date: String
   inProgress: Boolean
   body: String

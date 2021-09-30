@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @next/next/no-img-element */
+import styled from '@emotion/styled';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { usePalette } from 'react-palette';
@@ -45,6 +46,17 @@ const components: any = {
     return <p className={classNames.join(' ')} {...props} />;
   },
 };
+
+const HeroImage = styled(OptImage)`
+  & img {
+    margin-bottom: 2.4rem !important;
+    object-fit: cover;
+    max-height: 440px !important;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+`;
 
 interface BlogPostProps extends ComponentProps, FullBlogPost {}
 
@@ -118,9 +130,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
             </>
           )}
         </p>
-        {hero && (
-          <OptImage className={styles.hero} src={hero || ''} alt={title} />
-        )}
+        {hero && <HeroImage src={hero || ''} alt={title} />}
         {renderTableOfContents()}
         {renderContent()}
       </article>
