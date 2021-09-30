@@ -65,10 +65,7 @@ masonryBreakpoints[viewports.tablet.lg] = 3;
 
 const formatLink = (link?: string): string => {
   if (!link) return '';
-  let newLink = link.replace(/(^\w+:|^)\/\//, '');
-  newLink = newLink.replace('www.', '');
-  newLink = newLink.replace('/', '');
-  return newLink;
+  return link.replace(/(^\w+:|^)\/\//, '').replace(/\//g, '');
 };
 
 export const Inspiration: Component<InspirationProps> = (props) => {

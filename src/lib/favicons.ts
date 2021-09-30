@@ -6,10 +6,24 @@ interface FaviconGrabberIcon {
   src: string;
 }
 
+const timeoutFetch = async (
+  input: RequestInfo,
+  init?: RequestInit | undefined,
+): Promise<Response> => {
+  const response = await Promise.race([
+    fetch(input, init),
+    // eslint-disable-next-line promise/param-names
+    new Promise((_resolve, reject) => {
+      setTimeout(() => reject(new Error('request timeout')), 10000);
+    }),
+  ]);
+  return response as Response;
+};
+
 export const getWebsiteFavicon = async (website: string): Promise<string> => {
   try {
     const domain = website.replace(/(^\w+:|^)\/\//, '').replace(/\//g, '');
-    const faviconGrabber = await fetch(
+    const faviconGrabber = await timeoutFetch(
       `https://favicongrabber.com/api/grab/${domain}?pretty=true`,
     );
 
@@ -28,7 +42,7 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
       return icon?.src || '';
     }
 
-    const webmasterApi = await fetch(
+    const webmasterApi = await timeoutFetch(
       'https://api.webmasterapi.com/v1/favicon',
       {
         method: 'POST',

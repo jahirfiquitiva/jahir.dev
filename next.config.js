@@ -72,7 +72,7 @@ module.exports = {
   },
   reactStrictMode: true,
   // Prefer loading of ES Modules over CommonJS
-  experimental: { esmExternals: true },
+  experimental: { esmExternals: true, staticPageGenerationTimeout: 180 },
   webpack(config, { isServer }) {
     if (isServer) {
       require('./scripts/generate-sitemap');
