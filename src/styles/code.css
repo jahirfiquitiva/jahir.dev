@@ -27,8 +27,6 @@ samp {
 }
 
 code {
-  white-space: normal;
-  word-break: break-all;
   padding: 0.2rem 0.4rem;
   background-color: var(--primary);
   color: var(--text-primary);
@@ -41,12 +39,6 @@ p code {
   font-size: var(--font-size-xxs);
 }
 
-/*
-pre::-webkit-scrollbar {
-  display: none;
-}
-*/
-
 pre,
 code {
   -webkit-overflow-scrolling: touch;
@@ -55,8 +47,6 @@ code {
   background-color: var(--primary);
   color: var(--text-primary);
   overflow-x: auto;
-  white-space: pre;
-  word-wrap: normal;
   border-radius: 8px;
   border: 1px solid var(--divider);
   margin: 1.2rem 0;
@@ -83,6 +73,8 @@ pre code {
   color: var(--text-primary);
   font-size: var(--font-size-xxs);
   padding: 0;
+  white-space: pre;
+  word-wrap: normal;
 }
 
 code[class*='language-'],
