@@ -1,6 +1,8 @@
 User-agent: *
 Disallow: /assets/
-Disallow: /static/
+Disallow: /static/audio/
+Disallow: /static/fonts/
+Disallow: /static/js/
 Disallow: /frames/
 Disallow: /gallery/
 Disallow: /share/
