@@ -52,7 +52,7 @@ const buildFullBlogPostData = (
   const actualHero: string = hero
     ? hero.startsWith('http')
       ? hero
-      : `/static/images/posts/${hero}`
+      : `https://jahir.dev/static/images/posts/${hero}`
     : '';
   // @ts-ignore
   const filteredKeywords = (keywords || '')
