@@ -37,4 +37,4 @@ storybook
 # Tina
 # .tina/__generated__
 
-public/sitemap.xml
+public/*.xml

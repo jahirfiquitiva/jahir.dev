@@ -1,6 +1,6 @@
-const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
+const { writeFileSync } = require('fs');
 const { buildPostsData } = require('./build-posts-data');
 
 (async () => {
@@ -74,5 +74,5 @@ const { buildPostsData } = require('./build-posts-data');
   });
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('public/sitemap.xml', formatted);
+  writeFileSync('./public/sitemap.xml', formatted);
 })();
