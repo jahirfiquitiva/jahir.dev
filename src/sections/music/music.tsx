@@ -24,6 +24,10 @@ const TopTracksContainer = styled.div`
   }
 `;
 
+const TopTracksText = styled.p`
+  margin-bottom: var(--content-bottom-margin);
+`;
+
 export const Music: Component = () => {
   const { data: nowPlayingData, loading: loadingNowPlaying } =
     useRequest<TopTrackData>('/api/now-playing');
@@ -36,9 +40,9 @@ export const Music: Component = () => {
   };
 
   const renderTopTracks = () => {
-    if (loadingTopTracks) return <p>Loading...</p>;
+    if (loadingTopTracks) return <TopTracksText>Loading...</TopTracksText>;
     if ((topTracksData?.tracks?.length || 0) <= 0) {
-      return <p>No data available at this moment</p>;
+      return <TopTracksText>No data available at this moment</TopTracksText>;
     }
     return (
       <TopTracksContainer>
