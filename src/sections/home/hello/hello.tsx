@@ -100,7 +100,7 @@ export const Hello: Component = () => {
 
       <ImageContainer>
         <Image
-          src={'/static/images/jahir/jahir.jpg'}
+          src={'/static/images/jahir/jahir-hd.jpg'}
           alt={"Jahir's Photo"}
           height={180}
           width={180}
