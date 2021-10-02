@@ -122,6 +122,7 @@ module.exports = {
     );
     return [
       ...postsRedirects,
+      buildRedirect('/assets/:path*', '/static/:path*'),
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
       buildRedirect('/links', '/'),
