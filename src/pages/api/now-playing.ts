@@ -2,7 +2,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getNowPlaying } from '~/lib/spotify';
-import { NextApiFunc } from '~/types';
+import { NextApiFunc, TrackData, validateTrack } from '~/types';
 
 export default async (
   _: NextApiRequest,
@@ -30,12 +30,15 @@ export default async (
     'public, s-maxage=60, stale-while-revalidate=30',
   );
 
-  return res.status(200).json({
+  const track: TrackData = {
     title,
     artist,
     album,
     url,
     image: albumImage,
     isPlaying,
-  });
+  };
+
+  if (validateTrack(track)) return res.status(200).json(track);
+  return res.status(200).json({ isPlaying: false });
 };

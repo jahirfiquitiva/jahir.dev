@@ -1,4 +1,4 @@
-const forbiddenKeywords = ['netflix', 'disney'];
+const forbiddenKeywords = ['netflix', 'disney', 'musical'];
 
 export interface TopTrackData {
   title?: string;
