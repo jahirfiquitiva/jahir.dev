@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import styled from '@emotion/styled';
 import {
   mdiAccountOutline,
@@ -9,7 +9,6 @@ import {
   mdiMessageTextOutline,
   mdiTextBoxOutline,
 } from '@mdi/js';
-import { useCallback } from 'hoist-non-react-statics/node_modules/@types/react';
 import { useState, useEffect } from 'react';
 
 import { ExtLink } from '~/elements/base/ext-link';
@@ -178,7 +177,7 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
       .then((data?: any) => {
         finishSubmission(data && data.ok);
       })
-      .catch((_: any) => {
+      .catch(() => {
         finishSubmission(false);
       });
   };
