@@ -12,12 +12,16 @@
   },
   "DocumentNode": {
     "type": "DocumentNode",
-    "resolveType": "multiCollectionDocument"
+    "resolveType": "multiCollectionDocument",
+    "createDocument": "create",
+    "updateDocument": "update"
   },
   "PostsDocument": {
     "type": "PostsDocument",
     "resolveType": "collectionDocument",
-    "collection": "posts"
+    "collection": "posts",
+    "createPostsDocument": "create",
+    "updatePostsDocument": "update"
   },
   "PostsConnection": {
     "type": "PostsConnection",
