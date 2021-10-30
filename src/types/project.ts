@@ -99,6 +99,17 @@ export const projects: ProjectProps[] = [
     stack: ['HTLM5', 'css3', 'javascript', 'react'],
   },
   {
+    title: 'Colombian Holidays',
+    description: 'Get to know upcoming Colombian holidays',
+    icon: '/static/images/projects/web/col-holidays.png',
+    link: 'https://col-holidays.co/',
+    preview: '/static/images/projects/web/col-holidays-preview.png',
+    color: '#003893',
+    darkColor: '#fcd116',
+    tag: 'web',
+    stack: ['NextJS', 'react', 'typescript'],
+  },
+  {
     title: 'Prev Websites',
     description: 'Check the source code of previous versions of this website',
     icon: '/static/images/projects/web/prev-websites.png',
