@@ -5,8 +5,6 @@ import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
 import { Component } from '~/elements/base/fc';
 import { Activity as ActivityData } from '~/types';
-import { calculateTimeSince } from '~/utils/calculate-time-since';
-import React, { useEffect, useState } from 'react';
 
 interface ActivityProps extends DashboardCardProps {
   data?: ActivityData;
@@ -74,7 +72,6 @@ const codingApps = [
 export const Activity: Component<ActivityProps> = (props) => {
   // const [timeSince, setTimeSince] = useState('');
   const { data, to } = props;
-  console.log(data);
 
   const isForCodingApp = codingApps.includes(data?.appId || '');
 
