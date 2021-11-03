@@ -44,11 +44,11 @@ export const transformDataToDashboardData = (
         (it) => it.id === CUSTOM_STATUS_ID,
       );
       resultData.status = {
-        emoji: statusActivity.emoji?.id
+        emoji: statusActivity?.emoji?.id
           ? undefined
-          : statusActivity.emoji?.name,
-        status: statusActivity.state,
-        updatedAt: statusActivity.created_at,
+          : statusActivity?.emoji?.name,
+        status: statusActivity?.state,
+        updatedAt: statusActivity?.created_at,  
       };
       resultData.activities = discordData.activities
         .filter(
