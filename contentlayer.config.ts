@@ -5,17 +5,16 @@ import {
   defineDocumentType,
   makeSource,
 } from 'contentlayer/source-files';
-import { bundleMDX } from 'mdx-bundler';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
+import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 import { defaultKeywords, RehypeElement } from './src/types';
 import {
   getPostDescription,
-  getTableOfContents,
 } from './src/utils/get-post-data';
 import getRandomItemFrom from './src/utils/get-random-item';
 import { unique } from './src/utils/unique';
@@ -132,6 +131,7 @@ const contentLayerConfig = makeSource({
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
+      rehypePrism,
       [
         rehypeAutolinkHeadings,
         {
