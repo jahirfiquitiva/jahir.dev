@@ -15,6 +15,7 @@ interface DashboardGridProps extends ComponentProps {
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints[viewports.default] = 1;
 masonryBreakpoints[viewports.mobile.lg] = 2;
+masonryBreakpoints[viewports.tablet.lg] = 2;
 
 export const DashboardGrid: Component<DashboardGridProps> = (props) => {
   const { data: dashboardData } = props;
@@ -40,6 +41,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         key={'github-followers-card'}
         count={dashboardData?.counters?.githubFollowers}
         text={'GitHub Followers'}
+        site={'github'}
         to={'https://github.com/jahirfiquitiva'}
       />
     ) : undefined,
@@ -48,6 +50,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         key={'github-stars-card'}
         count={dashboardData?.counters?.githubStars}
         text={'GitHub Stars'}
+        site={'github'}
         to={'https://github.com/jahirfiquitiva?tab=repositories'}
       />
     ) : undefined,
@@ -56,6 +59,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         key={'twitter-followers-card'}
         count={dashboardData?.counters?.twitterFollowers}
         text={'Twitter Followers'}
+        site={'twitter'}
         to={'https://twitter.com/intent/user?screen_name=jahirfiquitiva'}
       />
     ) : undefined,

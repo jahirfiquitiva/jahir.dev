@@ -50,7 +50,7 @@ const BaseSongCard = styled(ExtLinkCard)`
   }
 
   .album img {
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   .details {

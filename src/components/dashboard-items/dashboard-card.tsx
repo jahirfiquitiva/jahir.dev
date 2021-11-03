@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Component, ComponentProps } from '~/elements/base/fc';
 
+import { Component, ComponentProps } from '~/elements/base/fc';
 import { Card, ExtLinkCard } from '~/elements/simple/card';
 
 const dashboardCardStyles = `
@@ -12,7 +12,7 @@ const dashboardCardStyles = `
   color: var(--text-secondary);
 
   & > div {
-    padding: 0.4rem 0.8rem 0.8rem;
+    padding: 0.6rem 0.8rem 0.8rem;
   }
 
   p.status,
