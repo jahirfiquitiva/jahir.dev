@@ -37,9 +37,10 @@ const ImageComparisonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2.4rem;
-
+  margin-bottom: 1.2rem;
+  
   & > div:first-child {
+    background-color: #080f1e;
     border-radius: 8px;
     border: 2px solid var(--divider);
     & img {
@@ -47,7 +48,7 @@ const ImageComparisonContainer = styled.div`
     }
     & > div {
       & div {
-        background-color: rgb(var(--divider-opaque)) !important;
+        background-color: rgb(235, 240, 251) !important;
         background-repeat: no-repeat !important;
         background-position: center 100% !important;
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==') !important;
