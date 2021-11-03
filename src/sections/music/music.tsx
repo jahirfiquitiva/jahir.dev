@@ -4,6 +4,7 @@ import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
 import { SongCard } from '~/components/cards';
 import { Component } from '~/elements/base/fc';
+import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
@@ -51,7 +52,7 @@ export const Music: Component = () => {
   return (
     <CenteredSection id={'music'}>
       <DashboardGrid data={dashboardData} />
-
+      <Divider thin />
       <MusicHeading size={'4'}>Top Tracks</MusicHeading>
       {renderTopTracks()}
     </CenteredSection>
