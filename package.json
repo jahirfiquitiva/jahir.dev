@@ -49,6 +49,7 @@
     "@bpsmart/eslint-config-base": "^0.1.0",
     "@bpsmart/eslint-config-react": "^0.0.8",
     "@emotion/babel-plugin": "^11.3.0",
+    "@jsdevtools/rehype-toc": "^3.0.2",
     "@storybook/addon-a11y": "^6.3.12",
     "@storybook/addon-controls": "^6.3.12",
     "@storybook/addon-docs": "^6.3.12",

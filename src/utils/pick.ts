@@ -12,7 +12,7 @@ export const pick = <Obj, Keys extends keyof Obj>(
   keys: Keys[],
 ): ConvertPick<{ [K in Keys]: Obj[K] }> => {
   return keys.reduce((acc, key) => {
-    acc[key] = obj[key];
+    acc[key] = obj[key] || null;
     return acc;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }, {} as any);

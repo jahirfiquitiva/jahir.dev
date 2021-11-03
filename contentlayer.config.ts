@@ -1,16 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import rehypeToc from '@jsdevtools/rehype-toc';
 import {
   ComputedFields,
   defineDocumentType,
   makeSource,
 } from 'contentlayer/source-files';
+import { bundleMDX } from 'mdx-bundler';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
-import { defaultKeywords } from './src/types';
+import { defaultKeywords, RehypeElement } from './src/types';
 import {
   getPostDescription,
   getTableOfContents,
@@ -76,10 +78,6 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc.color || getRandomItemFrom(defaultColors),
   },
-  tableOfContents: {
-    type: 'string',
-    resolve: (doc) => getTableOfContents(doc.body.raw),
-  },
 };
 
 const Blog = defineDocumentType(() => ({
@@ -90,8 +88,9 @@ const Blog = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     date: { type: 'string', required: true },
     hero: { type: 'string', required: true },
-    color: { type: 'string', required: true },
+    color: { type: 'string' },
     excerpt: { type: 'string' },
+    description: { type: 'string' },
     link: { type: 'string' },
     keywords: {
       type: 'list',
@@ -102,6 +101,28 @@ const Blog = defineDocumentType(() => ({
   },
   computedFields,
 }));
+
+const transformToC = (toc: RehypeElement): RehypeElement => {
+  return {
+    type: 'element',
+    tagName: 'div',
+    properties: { className: 'toc' },
+    children: [
+      {
+        type: 'element',
+        tagName: 'p',
+        properties: { className: 'title' },
+        children: [
+          {
+            type: 'text',
+            value: 'Table of Contents:',
+          },
+        ],
+      },
+      ...(toc.children || []),
+    ],
+  };
+};
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
@@ -116,6 +137,14 @@ const contentLayerConfig = makeSource({
         {
           properties: {
             className: ['anchor'],
+          },
+        },
+      ],
+      [
+        rehypeToc,
+        {
+          customizeTOC: (toc: RehypeElement) => {
+            return transformToC(toc);
           },
         },
       ],

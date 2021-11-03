@@ -67,10 +67,6 @@ const defaultNextConfig = {
   // Prefer loading of ES Modules over CommonJS
   experimental: { esmExternals: true, staticPageGenerationTimeout: 180 },
   webpack(config, { isServer }) {
-    if (isServer) {
-      require('./scripts/generate-sitemap');
-    }
-
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
