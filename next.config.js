@@ -2,7 +2,6 @@
 /* eslint-disable max-len */
 require('dotenv').config();
 const { withContentlayer } = require('next-contentlayer');
-const { buildPostsData } = require('./scripts/build-posts-data');
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `
@@ -58,13 +57,6 @@ const buildRedirect = (source, destination, permanent = true) => {
   };
 };
 
-const buildExternalBlogPostsRedirects = async () => {
-  const matters = await buildPostsData(true).catch(() => []);
-  return matters.map((it) => {
-    return buildRedirect(`/blog/${it.slug}`, it.link);
-  });
-};
-
 const defaultNextConfig = {
   env: {
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
@@ -118,11 +110,7 @@ const defaultNextConfig = {
     ];
   },
   async redirects() {
-    const postsRedirects = await buildExternalBlogPostsRedirects().catch(
-      () => [],
-    );
     return [
-      ...postsRedirects,
       buildRedirect('/assets/:path*', '/static/:path*'),
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
