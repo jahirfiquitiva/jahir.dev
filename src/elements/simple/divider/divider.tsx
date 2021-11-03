@@ -6,7 +6,9 @@ import {
   gradientToClassName,
 } from '~/elements/props';
 
-interface DividerProps extends ComponentProps, ComponentWithGradientProps {}
+interface DividerProps extends ComponentProps, ComponentWithGradientProps {
+  thin?: boolean;
+}
 
 const BaseDivider = styled.hr`
   -webkit-text-fill-color: unset;
@@ -14,11 +16,19 @@ const BaseDivider = styled.hr`
   background-clip: unset;
 `;
 
+const ThinDivider = styled(BaseDivider)`
+  height: 1px;
+`;
+
 export const Divider: Component<DividerProps> = (props) => {
-  const { gradientColor } = props;
-  return (
-    <BaseDivider
-      className={`divider ${gradientToClassName(gradientColor, false, true)}`}
-    />
-  );
+  const { gradientColor, thin } = props;
+  const className = `divider ${gradientToClassName(
+    gradientColor,
+    false,
+    true,
+  )}`.trim();
+  if (thin) {
+    return <ThinDivider className={className} />;
+  }
+  return <BaseDivider className={className} />;
 };

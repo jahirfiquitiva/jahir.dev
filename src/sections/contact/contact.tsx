@@ -5,6 +5,7 @@ import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
 import { ExtLink } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
+import { Divider } from '~/elements/simple/divider';
 
 const Paragraph = styled.p`
   margin: 0.8rem 0 0.4rem;
@@ -42,6 +43,7 @@ export const Contact: Component<ContactProps> = (props) => {
           message on Discord
         </ExtLink>
       </Paragraph>
+      <Divider thin />
       <ContactForm reCaptchaKey={props.reCaptchaKey} />
     </CenteredSection>
   );
