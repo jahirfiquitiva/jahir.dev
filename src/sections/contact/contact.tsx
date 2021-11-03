@@ -34,6 +34,14 @@ export const Contact: Component<ContactProps> = (props) => {
         <ExtLink to={'https://jahir.xyz/tlgrm'}>Telegram</ExtLink> for any kind
         of inquiries. 😀
       </Paragraph>
+      <Paragraph>
+        Although if it&apos;s related to{' '}
+        <ExtLink to={'https://dashbud.dev'}>my dashboards</ExtLink>, I would
+        rather you send a{' '}
+        <ExtLink to={'https://discordapp.com/invite/78h7xgj'}>
+          message on Discord
+        </ExtLink>
+      </Paragraph>
       <ContactForm reCaptchaKey={props.reCaptchaKey} />
     </CenteredSection>
   );
