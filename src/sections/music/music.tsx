@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
+import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
 import { SongCard } from '~/components/cards';
-import { SectionHeading } from '~/components/section-heading';
 import { Component } from '~/elements/base/fc';
 import { Heading } from '~/elements/simple/heading';
 import { useDashboardData } from '~/hooks/useDashboardData';
@@ -31,16 +31,8 @@ const TopTracksText = styled.p`
 
 export const Music: Component = () => {
   const dashboardData = useDashboardData();
-  console.log(dashboardData);
-  const { data: nowPlayingData, loading: loadingNowPlaying } =
-    useRequest<TopTrackData>('/api/now-playing');
   const { data: topTracksData, loading: loadingTopTracks } =
     useRequest<{ tracks?: Array<TopTrackData> }>('/api/top-tracks');
-
-  const renderNowPlaying = () => {
-    if (loadingNowPlaying) return <p>Loading...</p>;
-    return <SongCard {...nowPlayingData} isForNowPlaying />;
-  };
 
   const renderTopTracks = () => {
     if (loadingTopTracks) return <TopTracksText>Loading...</TopTracksText>;
@@ -58,17 +50,7 @@ export const Music: Component = () => {
 
   return (
     <CenteredSection id={'music'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'blue'}
-        gradientColor={'blue-to-green'}
-        emoji={'🎧'}
-      >
-        Music
-      </SectionHeading>
-
-      <MusicHeading size={'4'}>Now Playing</MusicHeading>
-      {renderNowPlaying()}
+      <DashboardGrid data={dashboardData} />
 
       <MusicHeading size={'4'}>Top Tracks</MusicHeading>
       {renderTopTracks()}

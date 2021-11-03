@@ -70,6 +70,5 @@ export interface DashboardData {
   status?: Status;
   activities?: Array<Activity>;
   nowPlaying?: TrackData | null;
-  topSongs?: Array<TopTrackData> | null;
   counters?: Counters | null;
 }

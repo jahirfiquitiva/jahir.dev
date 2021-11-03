@@ -17,6 +17,7 @@
   --font-size-xxxl: calc(var(--base-font-size) * 2.6);
   --font-size-xxl: calc(var(--base-font-size) * 2.25);
   --font-size-xl: calc(var(--base-font-size) * 2);
+  --font-size-lg: calc(var(--base-font-size) * 1.75);
   --font-size-md: calc(var(--base-font-size) * 1.5);
   --font-size-sm: calc(var(--base-font-size) * 1.25);
   --font-size-xs: var(--base-font-size);

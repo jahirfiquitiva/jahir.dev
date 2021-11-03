@@ -32,7 +32,6 @@ const EXCLUDE_ACTIVITIES_APPS = [CUSTOM_STATUS_ID, 'spotify'];
 export const transformDataToDashboardData = (
   discordData?: DiscordData | null,
   nowPlaying?: TrackData | null,
-  topSongs?: Array<TopTrackData> | null,
   counters?: Counters | null,
 ): DashboardData => {
   const resultData: DashboardData = {};
@@ -48,7 +47,7 @@ export const transformDataToDashboardData = (
           ? undefined
           : statusActivity?.emoji?.name,
         status: statusActivity?.state,
-        updatedAt: statusActivity?.created_at,  
+        updatedAt: statusActivity?.created_at,
       };
       resultData.activities = discordData.activities
         .filter(
@@ -62,7 +61,6 @@ export const transformDataToDashboardData = (
     }
   }
   resultData.nowPlaying = nowPlaying;
-  resultData.topSongs = topSongs;
   resultData.counters = counters;
   return resultData;
 };
