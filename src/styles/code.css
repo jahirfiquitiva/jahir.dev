@@ -136,3 +136,21 @@ pre[class*='language-'] code,
 .token.punctuation {
   color: var(--code-punctuation);
 }
+
+.rehype-code-title {
+  border: 1px solid var(--divider);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: none;
+  color: var(--text-secondary);
+  background-color: var(--toolbar-highlight);
+  padding: 0.4rem 0.7rem 0.5rem;
+  margin-top: 1.2rem;
+  font-family: var(--code-font);
+}
+
+.rehype-code-title + pre {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
-const removeMd = require('remove-markdown');
 
 const readFileContent = (dirname, filename) =>
   new Promise((resolve, reject) => {
-    if (!filename || !filename.endsWith('md')) return null;
+    if (!filename || !filename.endsWith('mdx')) return null;
     fs.readFile(path.join(dirname, filename), 'utf-8', (err, content) => {
       if (err) {
         reject(err);
@@ -36,52 +35,24 @@ const readFiles = async (dirname) => {
   );
 };
 
-const getPostDescription = (
-  description,
-  content,
-  defaultDescription,
-  maxCharacters,
-) => {
-  if (description && (description?.length || 0) > 0) return description;
-  if (!content || (content?.length || 0) <= 0) {
-    return defaultDescription || '';
-  }
-  const noTitles = content
-    ?.split(/[\r\n]+/gm)
-    ?.filter((it) => !it.startsWith('#'))
-    ?.join('  ')
-    ?.trim();
-  const plainText = removeMd(noTitles);
-  const noNewLines = plainText.replace(/[\r\n]+/gm, '  ').trim();
-  const splitContent = noNewLines.substring(0, maxCharacters || 140);
-  return splitContent.length > 0
-    ? `${splitContent}...`
-    : defaultDescription || '';
-};
-
 const transformPostToMatter = (post) => {
   const slug = post.filename.replace(/^.*[\\/]/, '').slice(0, -3);
   const { data: matterData, content: actualContent } = matter(post.content);
-  const { link, title, date, excerpt } = matterData;
+  const { link } = matterData;
   const isInProgress = matterData['in-progress'] === true;
   if (isInProgress) return null;
   return {
     slug,
     link,
-    title,
-    date,
-    excerpt: getPostDescription(excerpt, actualContent),
   };
 };
 
-const buildPostsData = async (isForRedirects = false) => {
-  const filesContents = await readFiles('./posts/');
+const getPostsToRedirect = async () => {
+  const filesContents = await readFiles('./data/blog/');
   return filesContents
     .filter((it) => it)
     .map(transformPostToMatter)
-    .filter((it) =>
-      isForRedirects ? it && it.link && it.link.length > 0 : it,
-    );
+    .filter((it) => it.link && it.link.length > 0);
 };
 
-module.exports = { buildPostsData };
+module.exports = { getPostsToRedirect };

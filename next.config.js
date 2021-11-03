@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable max-len */
 require('dotenv').config();
-const { buildPostsData } = require('./scripts/build-posts-data');
+const { withContentlayer } = require('next-contentlayer');
+
+const { getPostsToRedirect } = require('./scripts/posts-to-redirect');
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `
@@ -58,26 +60,17 @@ const buildRedirect = (source, destination, permanent = true) => {
 };
 
 const buildExternalBlogPostsRedirects = async () => {
-  const matters = await buildPostsData(true).catch(() => []);
+  const matters = await getPostsToRedirect().catch(() => []);
   return matters.map((it) => {
     return buildRedirect(`/blog/${it.slug}`, it.link);
   });
 };
 
-module.exports = {
-  env: {
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-    REPO_FULL_NAME: process.env.REPO_FULL_NAME,
-    BASE_BRANCH: process.env.BASE_BRANCH,
-  },
+const defaultNextConfig = {
   reactStrictMode: true,
   // Prefer loading of ES Modules over CommonJS
   experimental: { esmExternals: true, staticPageGenerationTimeout: 180 },
   webpack(config, { isServer }) {
-    if (isServer) {
-      require('./scripts/generate-sitemap');
-    }
-
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
@@ -85,10 +78,6 @@ module.exports = {
       issuer: {
         and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
       },
-    });
-    config.module.rules.push({
-      test: /\.md$/,
-      use: 'raw-loader',
     });
 
     return config;
@@ -135,3 +124,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = withContentlayer()(defaultNextConfig);

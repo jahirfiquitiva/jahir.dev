@@ -22,6 +22,7 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 
   & > div:first-of-type,
+  & > span:first-of-type,
   & img {
     object-fit: contain;
     position: relative !important;

@@ -1,6 +1,6 @@
 import { IReadTimeResults } from 'reading-time';
 
-export interface SimpleBlogPost {
+export interface Post {
   slug: string;
   title: string;
   date: string;
@@ -11,9 +11,4 @@ export interface SimpleBlogPost {
   readingTime?: IReadTimeResults | null;
   inProgress?: boolean;
   keywords?: Array<string>;
-}
-
-export interface FullBlogPost extends SimpleBlogPost {
-  tableOfContents?: string | null;
-  body?: string;
 }

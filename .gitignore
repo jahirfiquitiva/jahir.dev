@@ -38,3 +38,6 @@ storybook
 # .tina/__generated__
 
 public/*.xml
+
+# Contentlayer
+.contentlayer

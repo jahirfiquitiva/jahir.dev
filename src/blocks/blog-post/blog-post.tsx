@@ -4,17 +4,14 @@
 /* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
 import { usePalette } from 'react-palette';
-import gfm from 'remark-gfm';
 
 import styles from './blog-post.module.css';
-import { markdownComponents } from './markdown-components';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { OptImage } from '~/elements/base/opt-image';
 import { useTheme } from '~/providers/theme';
-import { FullBlogPost } from '~/types';
+import { Post } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
@@ -30,19 +27,10 @@ const HeroImage = styled(OptImage)`
   }
 `;
 
-interface BlogPostProps extends ComponentProps, FullBlogPost {}
-
-const REACT_MD_ENABLED = true;
+interface BlogPostProps extends ComponentProps, Post {}
 
 export const BlogPost: Component<BlogPostProps> = (props) => {
-  const {
-    title,
-    hero,
-    date,
-    readingTime,
-    tableOfContents,
-    body: content,
-  } = props;
+  const { title, hero, date, readingTime, children } = props;
   const { isDark } = useTheme();
   const { data: heroPalette } = usePalette(hero || '');
 
@@ -50,33 +38,6 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
     getColorFromPalette(heroPalette, isDark) || '#fff',
     0.4,
   );
-
-  const renderTableOfContents = () => {
-    if (!REACT_MD_ENABLED) return <></>;
-    if (!tableOfContents || tableOfContents.length <= 0) return <></>;
-    return (
-      <div className={styles.toc}>
-        <p className={styles.title}>Table of Contents:</p>
-        <ReactMarkdown
-          className={styles.content}
-          children={tableOfContents ?? ''}
-        />
-      </div>
-    );
-  };
-
-  const renderContent = () => {
-    if (!REACT_MD_ENABLED) return <></>;
-    if (!content || content.length <= 0) return <></>;
-    return (
-      <ReactMarkdown
-        remarkPlugins={[gfm]}
-        className={styles.content}
-        components={markdownComponents}
-        children={content}
-      />
-    );
-  };
 
   return (
     <div className={styles.post}>
@@ -103,8 +64,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
           )}
         </p>
         {hero && <HeroImage src={hero || ''} alt={title} />}
-        {renderTableOfContents()}
-        {renderContent()}
+        {children}
       </article>
     </div>
   );

@@ -1,9 +1,6 @@
-import { SimpleBlogPost } from '~/types';
+import { Post } from '~/types';
 
 export interface CodingChallenge
-  extends Omit<
-    SimpleBlogPost,
-    'hero' | 'excerpt' | 'color' | 'link' | 'readingTime'
-  > {
+  extends Omit<Post, 'hero' | 'excerpt' | 'color' | 'link' | 'readingTime'> {
   stack?: Array<string>;
 }
