@@ -1,23 +1,23 @@
-export const calculateTimeSince = (timestamp?: number): string | null => {
+export const calculateTimeSince = (
+  timestamp?: number,
+  now: Date = new Date(),
+): string | null => {
   if (!timestamp) return null;
 
-  const date = new Date(timestamp);
+  const pastDate = Math.abs(new Date(timestamp).getTime() / 1000).toFixed(0);
+  const currentDate = Math.abs(now.getTime() / 1000).toFixed(0);
 
-  const pastDate = timestamp - 3600 * 5;
-  console.log('==========================================');
-  console.log('Before:', date.getTime());
-  console.log('Before:', date);
-  console.log('Now:', new Date().toISOString());
-  console.log('==========================================');
-  const currentDate = new Date().getTime();
+  // eslint-disable-next-line
+  // @ts-ignore
   const diff = currentDate - pastDate;
 
-  let hours = (Math.floor(diff / 3600) % 24).toString();
+  const hours = Math.floor(diff / 3600) % 24;
+  let hoursString = hours.toString();
   let minutes = (Math.floor(diff / 60) % 60).toString();
   let seconds = (diff % 60).toString();
 
-  if (hours.length < 2) {
-    hours = `0${hours}`;
+  if (hours < 10) {
+    hoursString = `0${hours}`;
   }
 
   if (minutes.length < 2) {
@@ -28,5 +28,8 @@ export const calculateTimeSince = (timestamp?: number): string | null => {
     seconds = `0${seconds}`;
   }
 
-  return `${hours}:${minutes}:${seconds}`;
+  if (hours > 0) {
+    return `${hoursString}:${minutes}:${seconds}`;
+  }
+  return `${minutes}:${seconds}`;
 };

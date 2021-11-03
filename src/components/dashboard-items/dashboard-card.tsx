@@ -15,6 +15,15 @@ const dashboardCardStyles = `
     padding: 0.6rem 0.8rem 0.8rem;
   }
 
+  & div,
+  p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    border-radius: 0;
+  } 
+
   p.status,
   p.count {
     color: var(--text-primary);
@@ -57,17 +66,21 @@ export interface DashboardCardProps extends ComponentProps {
 }
 
 export const DashboardCard: Component<DashboardCardProps> = (props) => {
-  const { to, children } = props;
+  const { to, className, style, children } = props;
 
   const renderCardContent = () => <div>{children}</div>;
 
   if (to) {
     return (
-      <BaseDashboardLinkCard to={to}>
+      <BaseDashboardLinkCard to={to} className={className} style={style}>
         {renderCardContent()}
       </BaseDashboardLinkCard>
     );
   }
 
-  return <BaseDashboardCard>{renderCardContent()}</BaseDashboardCard>;
+  return (
+    <BaseDashboardCard className={className} style={style}>
+      {renderCardContent()}
+    </BaseDashboardCard>
+  );
 };

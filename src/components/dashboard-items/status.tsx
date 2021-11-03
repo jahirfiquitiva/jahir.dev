@@ -9,9 +9,16 @@ interface StatusProps extends DashboardCardProps {
   data?: StatusData;
 }
 
+const StatusCard = styled(DashboardCard)`
+  & > div {
+    padding-bottom: 0.6rem;
+  }
+`;
+
 const CardContent = styled.div`
+  padding-top: 0.2rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 
   & span {
     display: inline-block;
@@ -20,7 +27,9 @@ const CardContent = styled.div`
     color: currentColor;
     fill: currentColor;
     font-size: var(--font-size-xl);
+    line-height: 1;
     margin-top: auto;
+    padding-bottom: 0.2rem;
   }
 `;
 
@@ -28,6 +37,10 @@ const CardTexts = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const Status: Component<StatusProps> = (props) => {
@@ -35,7 +48,7 @@ export const Status: Component<StatusProps> = (props) => {
 
   if (!data) return null;
   return (
-    <DashboardCard to={to}>
+    <StatusCard to={to}>
       <CardContent>
         <CardTexts>
           <p className={'link-text'}>Status:</p>
@@ -43,6 +56,6 @@ export const Status: Component<StatusProps> = (props) => {
         </CardTexts>
         <span>{data?.emoji}</span>
       </CardContent>
-    </DashboardCard>
+    </StatusCard>
   );
 };

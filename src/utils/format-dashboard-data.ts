@@ -10,6 +10,10 @@ import {
   DiscordActivity,
 } from '~/types';
 
+const buildAssetLink = (appId?: string, assetId?: string) => {
+  return `https://cdn.discordapp.com/app-assets/${appId}/${assetId}.webp`;
+};
+
 const transformDiscordActivityToDashboardActivity = (
   discordActivity?: DiscordActivity,
 ): Activity | null => {
@@ -20,9 +24,15 @@ const transformDiscordActivityToDashboardActivity = (
     name: discordActivity.name,
     details: discordActivity.details,
     state: discordActivity.state,
-    smallImage: discordActivity.assets?.small_image,
+    smallImage: buildAssetLink(
+      discordActivity.application_id,
+      discordActivity.assets?.small_image,
+    ),
     smallImageText: discordActivity.assets?.small_text,
-    largeImage: discordActivity.assets?.large_image,
+    largeImage: buildAssetLink(
+      discordActivity.application_id,
+      discordActivity.assets?.large_image,
+    ),
     largeImageText: discordActivity.assets?.large_text,
   };
 };

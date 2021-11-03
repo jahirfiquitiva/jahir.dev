@@ -53,6 +53,7 @@ const defaultNextConfig = {
       'unavatar.now.sh',
       'unavatar.io',
       'lh3.googleusercontent.com',
+      'cdn.discordapp.com',
     ],
   },
   async redirects() {

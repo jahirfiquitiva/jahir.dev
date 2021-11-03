@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com;
-    child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io;
+    child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io cdn.discordapp.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src *.gstatic.com * blob: data:;
     frame-src www.google.com;

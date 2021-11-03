@@ -40,6 +40,10 @@ const BaseSongCard = styled(ExtLinkCard)`
     border-radius: var(--border-radius);
     border: 1px solid var(--divider);
     max-width: 100%;
+
+    & div {
+      border-radius: 0;
+    }
   }
 
   .album {

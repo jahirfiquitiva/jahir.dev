@@ -1,5 +1,6 @@
 import { SongCard } from '~/components/cards';
 import { Status } from '~/components/dashboard-items';
+import { Activity } from '~/components/dashboard-items/activity';
 import { Counter } from '~/components/dashboard-items/counter';
 import { Component, ComponentProps } from '~/elements/base/fc';
 import {
@@ -14,7 +15,7 @@ interface DashboardGridProps extends ComponentProps {
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints[viewports.default] = 1;
-masonryBreakpoints[viewports.mobile.lg] = 2;
+masonryBreakpoints[viewports.tablet.sm] = 2;
 masonryBreakpoints[viewports.tablet.lg] = 2;
 
 export const DashboardGrid: Component<DashboardGridProps> = (props) => {
@@ -33,9 +34,16 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
 
   const masonryItems = [
     dashboardData?.status?.status ? (
-      <Status key={'status-card'} data={dashboardData?.status} />
+      <Status
+        key={'status-card'}
+        data={dashboardData?.status}
+        to={`https://discordapp.com/users/${dashboardData?.user?.id}`}
+      />
     ) : undefined,
     renderNowPlaying(),
+    dashboardData?.activities?.map((activity, index) => {
+      return <Activity key={`activity-${index}`} data={activity} />;
+    }),
     dashboardData?.counters?.githubFollowers ? (
       <Counter
         key={'github-followers-card'}
@@ -63,7 +71,9 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         to={'https://twitter.com/intent/user?screen_name=jahirfiquitiva'}
       />
     ) : undefined,
-  ].filter((it) => it);
+  ]
+    .flat()
+    .filter((it) => it);
 
   return (
     <MasonryGrid gap={'1rem'} breakpoints={masonryBreakpoints}>
