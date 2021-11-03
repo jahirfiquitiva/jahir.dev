@@ -1,17 +1,17 @@
 import { FC } from 'react';
 
 import { Page } from '~/blocks/page';
-import { Music } from '~/sections/music';
+import { Dashboard } from '~/sections/dashboard';
 
-const MusicPage: FC = () => {
+const DashboardPage: FC = () => {
   return (
     <Page
-      title={'Music ~ Jahir Fiquitiva 💎'}
-      exactUrl={'https://jahir.dev/music'}
+      title={'Dashboard ~ Jahir Fiquitiva 💎'}
+      exactUrl={'https://jahir.dev/dashboard'}
     >
-      <Music />
+      <Dashboard />
     </Page>
   );
 };
 
-export default MusicPage;
+export default DashboardPage;

@@ -11,7 +11,7 @@ import useRequest from '~/hooks/useRequest';
 import { mediaQueries, TopTrackData } from '~/types';
 
 const MusicHeading = styled(Heading)`
-  margin-top: 2.6rem;
+  margin-top: 1.6rem;
   margin-bottom: 1rem;
 `;
 
@@ -30,7 +30,7 @@ const TopTracksText = styled.p`
   margin-bottom: var(--content-bottom-margin);
 `;
 
-export const Music: Component = () => {
+export const Dashboard: Component = () => {
   const dashboardData = useDashboardData();
   const { data: topTracksData, loading: loadingTopTracks } =
     useRequest<{ tracks?: Array<TopTrackData> }>('/api/top-tracks');
