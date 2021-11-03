@@ -5,6 +5,7 @@ import { SongCard } from '~/components/cards';
 import { SectionHeading } from '~/components/section-heading';
 import { Component } from '~/elements/base/fc';
 import { Heading } from '~/elements/simple/heading';
+import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
 import { mediaQueries, TopTrackData } from '~/types';
 
@@ -29,6 +30,8 @@ const TopTracksText = styled.p`
 `;
 
 export const Music: Component = () => {
+  const dashboardData = useDashboardData();
+  console.log(dashboardData);
   const { data: nowPlayingData, loading: loadingNowPlaying } =
     useRequest<TopTrackData>('/api/now-playing');
   const { data: topTracksData, loading: loadingTopTracks } =

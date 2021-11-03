@@ -6,6 +6,7 @@ export interface DiscordStatus {
   id?: string;
   emoji?: {
     name?: string;
+    id?: string;
   };
   created_at?: number;
 }
@@ -68,7 +69,7 @@ export interface DashboardData {
   statusName?: DiscordStatusName;
   status?: Status;
   activities?: Array<Activity>;
-  nowPlaying?: TrackData;
-  topSongs?: Array<TopTrackData>;
-  counters?: Counters;
+  nowPlaying?: TrackData | null;
+  topSongs?: Array<TopTrackData> | null;
+  counters?: Counters | null;
 }
