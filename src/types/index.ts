@@ -9,3 +9,4 @@ export * from './keywords';
 export * from './inspiration';
 export * from './challenge';
 export * from './rehype-element';
+export * from './dashboard';
