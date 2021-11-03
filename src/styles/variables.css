@@ -1,4 +1,5 @@
 :root,
+.light,
 .light-mode {
   --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -82,6 +83,7 @@
   --scrollbar-thumb-color: #f2f5fc;
 }
 
+.dark,
 .dark-mode {
   --text-shadow-size: 0;
   --background: #080f1e;

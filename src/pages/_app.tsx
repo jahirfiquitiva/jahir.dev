@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import { FC } from 'react';
 
@@ -7,9 +8,11 @@ import '~/styles/global.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <NextThemeProvider attribute={'class'}>
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </NextThemeProvider>
   );
 };
 

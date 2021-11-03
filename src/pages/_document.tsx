@@ -11,7 +11,6 @@ export default class MyDocument extends Document {
           <BaseMetaTags />
         </Head>
         <body>
-          <script src={'/static/js/noflash.js'} />
           <Main />
           <NextScript />
         </body>
