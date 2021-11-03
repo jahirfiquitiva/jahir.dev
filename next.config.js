@@ -67,11 +67,6 @@ const buildExternalBlogPostsRedirects = async () => {
 };
 
 const defaultNextConfig = {
-  env: {
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-    REPO_FULL_NAME: process.env.REPO_FULL_NAME,
-    BASE_BRANCH: process.env.BASE_BRANCH,
-  },
   reactStrictMode: true,
   // Prefer loading of ES Modules over CommonJS
   experimental: { esmExternals: true, staticPageGenerationTimeout: 180 },
@@ -83,10 +78,6 @@ const defaultNextConfig = {
       issuer: {
         and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
       },
-    });
-    config.module.rules.push({
-      test: /\.md$/,
-      use: 'raw-loader',
     });
 
     return config;
