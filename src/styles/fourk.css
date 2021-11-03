@@ -70,7 +70,8 @@
     content: '👋';
     display: block;
     position: fixed;
-    bottom: 0;
+    opacity: 0.75;
+    top: var(--toolbar-height);
     right: 2.4rem;
     font-size: 5.4vh;
     pointer-events: none;

@@ -46,6 +46,7 @@ export const Button: Component<ButtonProps> = (props) => {
     disabled,
     children,
     onClick,
+    style,
   } = props;
 
   return (
@@ -57,6 +58,7 @@ export const Button: Component<ButtonProps> = (props) => {
       className={className}
       disabled={disabled}
       onClick={onClick}
+      style={style}
     >
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
@@ -87,7 +89,7 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
   } = props;
 
   if (!newTab) {
-    const linkProps = { ...props, newTab: undefined };
+    const linkProps = { ...props, newTab: undefined, to: undefined };
     return (
       <Link href={to || '#'} passHref>
         <BaseLinkButton
