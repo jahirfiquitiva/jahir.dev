@@ -26,8 +26,8 @@ export default async (
       'public, s-maxage=3600, stale-while-revalidate=1200',
     );
 
-    return res.status(200).json({
-      success: true,
+    return res.status(followersRequest.status || 200).json({
+      success: followersRequest.status >= 200 && followersRequest.status < 300,
       followers: (followersData.ids || []).length,
     });
   } catch (err) {
