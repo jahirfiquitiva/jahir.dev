@@ -36,18 +36,20 @@ all the links. I decided to do it subtly so the gradient looks like it goes all 
 
 Then I started working on the gradient for titles. I did it while using the dark theme of my website, and when I
 switched to the light theme, I noticed the titles had a text shadow. 😮
-*How long had I not been working on my website that I forgot about that? idk* 😬
+_How long had I not been working on my website that I forgot about that? idk_ 😬
 
 Anyways, I still liked that, and thought it was fine to keep, but then I also wanted the gradients, so my solution was
 to keep gradients in titles while using the dark theme only. They look better with a dark background anyways.
 
 Here's a quick comparison:
-
-*Before*
-![Toolbar before](/static/images/posts/website-redesign/toolbar-before.png)
-
-*After*
-![Toolbar now](/static/images/posts/website-redesign/toolbar-after.png)
+<ImageComparison
+  sliderPosition={35}
+  firstImageAlt={'Toolbar before'}
+  firstImage={'/static/images/posts/website-redesign/toolbar-before.png'}
+  secondImageAlt={'Toolbar now'}
+  secondImage={'/static/images/posts/website-redesign/toolbar-after.png'}
+  description={'Toolbar before and now. Slide over the image to view the differences'}
+/>
 
 If you're wondering how to apply a gradient to text, you can do so like this:
 
@@ -56,14 +58,26 @@ If you're wondering how to apply a gradient to text, you can do so like this:
   --gradient-start-color: #2d52ab;
   --gradient-end-color: #247aae;
   background: var(--gradient-start-color);
-  background: -moz-linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
-  background: -webkit-linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
-  background: linear-gradient(90deg, var(--gradient-start-color) 0%, var(--gradient-end-color) 100%);
+  background: -moz-linear-gradient(
+    90deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-end-color) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-end-color) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-end-color) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: rgba(0 0 0 0);
   color: rgba(0 0 0 0);
-} 
+}
 ```
 
 You can also generate the gradient background using [cssgradient.io](https://cssgradient.io/)
@@ -75,9 +89,9 @@ there and didn't really say much about me. So I removed a couple paragraphs to m
 
 Now it just shows:
 
-* a pretty short description of me
-* the place I'm currently working at and my position
-* a slightly longer description
+- a pretty short description of me
+- the place I'm currently working at and my position
+- a slightly longer description
 
 #### Less social links
 
@@ -87,7 +101,7 @@ most active in, and for contacting, you can already access that from toolbar �
 #### Projects section
 
 Just a couple of months ago I changed the projects section in my website, also inspired
-by  [Julie Chabin's website](https://www.julie.design/)
+by [Julie Chabin's website](https://www.julie.design/)
 where the projects card had a gradient background and a preview of the project.
 
 The design was ok, but also slightly boring, also the cards occupied too much vertical space that probably wasn't
@@ -97,11 +111,20 @@ image a bit.
 
 Comparison:
 
-*Before*
+_Before_
 ![Projects cards Before](/static/images/posts/website-redesign/projects-before.png)
 
-*After*
+_After_
 ![Projects cards now](/static/images/posts/website-redesign/projects-after.png)
+
+<ImageComparison
+  sliderPosition={35}
+  firstImageAlt={'Projects cards before'}
+  secondImage={'/static/images/posts/website-redesign/projects-before.png'}
+  secondImageAlt={'Projects cards now'}
+  firstImage={'/static/images/posts/website-redesign/projects-after.png'}
+  description={'Projects cards before and now. Slide over the image to view the differences'}
+/>
 
 Finally, I added a link to my resume in the projects section, because even though I'm not actively looking for new job
 opportunities, I like to know of any available positions which might take my career to the next step.
@@ -124,11 +147,11 @@ interactive than before and they don't need to go to the contact site and fill u
 
 Here's the comparison:
 
-*Before*
+_Before_
 ![Blog before](/static/images/posts/website-redesign/blog-before.png)
 ![Blog footer before](/static/images/posts/website-redesign/blog-footer-before.png)
 
-*After*
+_After_
 ![Blog now](/static/images/posts/website-redesign/blog-after.png)
 ![Blog footer now](/static/images/posts/website-redesign/blog-footer-after.png)
 
@@ -142,10 +165,10 @@ website.
 
 Comparison:
 
-*Before*
+_Before_
 ![Footer before](/static/images/posts/website-redesign/footer-before.png)
 
-*After*
+_After_
 ![Footer now](/static/images/posts/website-redesign/footer-after.png)
 
 ## New Features
@@ -162,7 +185,8 @@ MDX. The problem was: I don't use MDX in my website. Therefore, decided to code 
 export const getTableOfContents = (body?: string): string | null => {
   if (!body || !body.length) return null;
   // Split markdown body line by line
-  const lines = body.split(/\r\n|\n\r|\n|\r/)
+  const lines = body
+    .split(/\r\n|\n\r|\n|\r/)
     // Get only the lines that start with # aka the titles
     .filter((it) => it.trim().startsWith('#'));
   let mainTitle = '';
@@ -192,7 +216,7 @@ export const getTableOfContents = (body?: string): string | null => {
         indent = `   ${split.join('  ')}* `;
       }
       if (!title || !title.length) return null;
-      // Generate the link slug, where the title will point to, by replacing non word 
+      // Generate the link slug, where the title will point to, by replacing non word
       // characters with a dash
       const slug = title.toLowerCase().replace(/\W/g, '-');
       return `${indent}[${title}](#${slug})`;
