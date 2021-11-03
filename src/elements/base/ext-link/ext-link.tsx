@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 
-export interface ExtLinkProps extends ComponentProps {
+interface ExtLinkProps extends ComponentProps {
   to: string;
   title?: string;
   newTab?: boolean;
