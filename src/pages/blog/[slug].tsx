@@ -9,10 +9,11 @@ import { Page } from '~/blocks/page';
 import { MDXComponents as mdxComponents } from '~/components/mdx';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
-import { FullBlogPost } from '~/types';
+import { Post } from '~/types';
 import { getAllPosts } from '~/utils/get-posts';
+import { Component, ComponentProps } from '~/elements/base/fc';
 
-const mapContentLayerBlog = (post?: Blog): FullBlogPost | null => {
+const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
   return {
     slug: post.slug,
@@ -27,10 +28,14 @@ const mapContentLayerBlog = (post?: Blog): FullBlogPost | null => {
     keywords: post.keywords,
     tableOfContents: post.tableOfContents,
     body: post.body.raw,
-  } as FullBlogPost;
+  } as Post;
 };
 
-export default function Post(props: { post: Blog }) {
+interface PostPageProps extends ComponentProps {
+  post?: Blog;
+}
+
+const PostPage: Component<PostPageProps> = (props) => {
   const post = mapContentLayerBlog(props.post);
   const router = useRouter();
   const Component = useMemo(
@@ -77,7 +82,7 @@ export default function Post(props: { post: Blog }) {
       )}
     </Page>
   );
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -102,3 +107,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
   return { props: { post } };
 };
+
+export default PostPage;

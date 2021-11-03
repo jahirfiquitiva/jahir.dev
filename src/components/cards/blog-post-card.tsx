@@ -6,7 +6,7 @@ import { Component, ComponentProps } from '~/elements/base/fc';
 import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
-import { SimpleBlogPost } from '~/types';
+import { Post } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import formatDate from '~/utils/format-date';
@@ -67,7 +67,7 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
   }
 `;
 
-interface BlogPostCardProps extends ComponentProps, SimpleBlogPost {}
+interface BlogPostCardProps extends ComponentProps, Post {}
 
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const {

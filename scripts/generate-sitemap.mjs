@@ -1,7 +1,6 @@
-const globby = require('globby');
-const prettier = require('prettier');
-const { writeFileSync } = require('fs');
-const { buildPostsData } = require('./build-posts-data');
+import { writeFileSync } from 'fs';
+import { globby } from 'globby';
+import prettier from 'prettier';
 
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
@@ -15,6 +14,8 @@ const { buildPostsData } = require('./build-posts-data');
     '!src/pages/_*.ts',
     '!src/pages/_*.tsx',
     '!src/pages/api',
+    'data/**/*.mdx',
+    '!data/*.mdx',
   ]);
 
   const actualRoutes = [];
@@ -36,14 +37,6 @@ const { buildPostsData } = require('./build-posts-data');
       : actualRoutes.push(path);
   });
   actualRoutes.push('/uses');
-
-  await buildPostsData()
-    .then((matters) => {
-      matters.forEach((matter) => {
-        actualRoutes.push(`/blog/${matter.slug}`);
-      });
-    })
-    .catch();
 
   const now = new Date().toISOString();
   const lastmod = `${now.substring(0, now.lastIndexOf('.'))}+00:00`;
