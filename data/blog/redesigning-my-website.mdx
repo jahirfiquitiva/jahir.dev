@@ -43,12 +43,12 @@ to keep gradients in titles while using the dark theme only. They look better wi
 
 Here's a quick comparison:
 <ImageComparison
-  sliderPosition={35}
+  sliderPosition={0.35}
   firstImageAlt={'Toolbar before'}
   firstImage={'/static/images/posts/website-redesign/toolbar-before.png'}
   secondImageAlt={'Toolbar now'}
   secondImage={'/static/images/posts/website-redesign/toolbar-after.png'}
-  description={'Toolbar before and now. Slide over the image to view the differences'}
+  description={'Toolbar before (left) and now (right). Slide over the image to view the differences'}
 />
 
 If you're wondering how to apply a gradient to text, you can do so like this:
@@ -111,19 +111,13 @@ image a bit.
 
 Comparison:
 
-_Before_
-![Projects cards Before](/static/images/posts/website-redesign/projects-before.png)
-
-_After_
-![Projects cards now](/static/images/posts/website-redesign/projects-after.png)
-
 <ImageComparison
-  sliderPosition={35}
+  sliderPosition={0.4}
   firstImageAlt={'Projects cards before'}
-  secondImage={'/static/images/posts/website-redesign/projects-before.png'}
+  firstImage={'/static/images/posts/website-redesign/projects-before.png'}
   secondImageAlt={'Projects cards now'}
-  firstImage={'/static/images/posts/website-redesign/projects-after.png'}
-  description={'Projects cards before and now. Slide over the image to view the differences'}
+  secondImage={'/static/images/posts/website-redesign/projects-after.png'}
+  description={'Projects cards before (left) and now (right). Slide over the image to view the differences'}
 />
 
 Finally, I added a link to my resume in the projects section, because even though I'm not actively looking for new job
@@ -147,13 +141,23 @@ interactive than before and they don't need to go to the contact site and fill u
 
 Here's the comparison:
 
-_Before_
-![Blog before](/static/images/posts/website-redesign/blog-before.png)
-![Blog footer before](/static/images/posts/website-redesign/blog-footer-before.png)
+<ImageComparison
+  sliderPosition={0.4}
+  firstImageAlt={'Blog before'}
+  firstImage={'/static/images/posts/website-redesign/blog-before.png'}
+  secondImageAlt={'Blog now'}
+  secondImage={'/static/images/posts/website-redesign/blog-after.png'}
+  description={'Blog before (left) and now (right). Slide over the image to view the differences'}
+/>
 
-_After_
-![Blog now](/static/images/posts/website-redesign/blog-after.png)
-![Blog footer now](/static/images/posts/website-redesign/blog-footer-after.png)
+<ImageComparison
+  sliderPosition={0.4}
+  firstImageAlt={'Blog footer before'}
+  firstImage={'/static/images/posts/website-redesign/blog-footer-before.png'}
+  secondImageAlt={'Blog footer now'}
+  secondImage={'/static/images/posts/website-redesign/blog-footer-after.png'}
+  description={'Blog footer before (left) and now (right). Slide over the image to view the differences'}
+/>
 
 #### Footer
 
@@ -165,11 +169,14 @@ website.
 
 Comparison:
 
-_Before_
-![Footer before](/static/images/posts/website-redesign/footer-before.png)
-
-_After_
-![Footer now](/static/images/posts/website-redesign/footer-after.png)
+<ImageComparison
+  sliderPosition={0.3}
+  firstImageAlt={'Footer before'}
+  firstImage={'/static/images/posts/website-redesign/footer-before.png'}
+  secondImageAlt={'Footer now'}
+  secondImage={'/static/images/posts/website-redesign/footer-after.png'}
+  description={'Footer before (left) and now (right). Slide over the image to view the differences'}
+/>
 
 ## New Features
 

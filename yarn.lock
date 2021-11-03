@@ -1742,13 +1742,6 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@img-comparison-slider/react@^7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@img-comparison-slider/react/-/react-7.3.0.tgz#31bc43a66812145c403311d4d5ada1699aa9f24f"
-  integrity sha512-PRNJDGq7ZdFkpvAC58aCKgcF4+hocN6Djd3jhkyWUfjM5YvTv8s3y7oDCXdd5JzUt4S7WbFpbc+0V9ERVGZppg==
-  dependencies:
-    img-comparison-slider "^7.3.0"
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -7794,11 +7787,6 @@ image-size@1.0.0:
   dependencies:
     queue "6.0.2"
 
-img-comparison-slider@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/img-comparison-slider/-/img-comparison-slider-7.3.0.tgz#aa74d1f042e28f5313ff0ecd21845aa08b90bc46"
-  integrity sha512-08uszUyBKH6Lc1MXpUu624fG/HgKO+Go1URlSNj9VKwuZI2neQYPzx4BJL4rKNt1j2IZ9DUnhkgu9nnN5cxTNg==
-
 immer@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
@@ -11148,6 +11136,11 @@ react-colorful@^5.1.2:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.5.0.tgz#8359f218984a927095477a190ab9927eaf865c0c"
   integrity sha512-BuzrlrM0ylg7coPkXOrRqlf2BgHLw5L44sybbr9Lg4xy7w9e5N7fGYbojOO0s8J0nvrM3PERN2rVFkvSa24lnQ==
+
+react-compare-image@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-compare-image/-/react-compare-image-3.1.0.tgz#effa6dda23fed0700d41f71b5158f75208b61aa7"
+  integrity sha512-47ISXkAx9KXA0rjgbQvaFK5AVbxVwP1XjTQEgsmMDN8bWpONVg/IoYmelRBdMs9gQICQCIw1se/cLENEBwHWlQ==
 
 react-dev-utils@^11.0.3:
   version "11.0.4"

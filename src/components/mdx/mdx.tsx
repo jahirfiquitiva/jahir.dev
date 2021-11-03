@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
-import { ImgComparisonSlider } from '@img-comparison-slider/react';
+import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from '@emotion/styled';
+import { Fragment } from 'react';
+import ReactCompareImage from 'react-compare-image';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 
@@ -29,25 +30,8 @@ interface CustomSplitProps extends ComponentProps {
   secondImageAlt?: string;
   sliderPosition?: number;
   description?: string;
+  hover?: boolean;
 }
-
-const StyledImageComparison = styled(ImgComparisonSlider)`
-  --divider-width: 8px;
-  --divider-color: var(--text-tertiary);
-  --divider-shadow: 0px 0px 6px var(--divider);
-  --divider-opacity: 0;
-  --default-handle-opacity: 0;
-  --default-handle-width: 12px;
-  border-radius: 8px;
-  border: 2px solid var(--divider);
-
-  & .handle-container {
-    cursor: col-resize !important;
-  }
-  & .handle-container .divider {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==') !important;
-  }
-`;
 
 const ImageComparisonContainer = styled.div`
   display: flex;
@@ -55,16 +39,23 @@ const ImageComparisonContainer = styled.div`
   align-items: center;
   margin-bottom: 2.4rem;
 
-  & div,
-  & div[slot],
-  & .first,
-  &  .first .first-overlay,
-  & .first .first-overlay-container {
-  height: 100% !important;
-  min-height: 100% !important;
-  margin: auto 0 !important;
-  object-fit: contain;
-  background-color: var(--primary);
+  & > div:first-child {
+    border-radius: 8px;
+    border: 2px solid var(--divider);
+    & img {
+      object-fit: contain !important;
+    }
+    & > div {
+      & div {
+        background-color: rgb(var(--divider-opaque)) !important;
+        background-repeat: no-repeat !important;
+        background-position: center 100% !important;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==') !important;
+      }
+      & div:last-child {
+        background-position: center 0 !important;
+      }
+    }
   }
 
   & p {
@@ -74,36 +65,34 @@ const ImageComparisonContainer = styled.div`
   }
 `;
 
-const ComparisonImage = styled.img`
-  height: 100% !important;
-  min-height: 100% !important;
-  margin: auto 0 !important;
-  object-fit: contain;
-  background-color: var(--primary);
-`;
-
 const CustomImageComparison: Component<CustomSplitProps> = (props) => {
   if (!window || !document) return null;
   return (
     <ImageComparisonContainer>
-      <StyledImageComparison value={props.sliderPosition || 50} hover>
-        <div 
-          slot={'first'}>
-          <ComparisonImage
-          loading={'lazy'}
-          decoding={'async'}
-          src={props.firstImage}
-          alt={props.firstImageAlt}
-        />
-        </div>
-        <ComparisonImage
-          slot={'second'}
-          loading={'lazy'}
-          decoding={'async'}
-          src={props.secondImage}
-          alt={props.secondImageAlt}
-        />
-      </StyledImageComparison>
+      <ReactCompareImage
+        hover
+        leftImage={props.firstImage}
+        leftImageAlt={props.firstImageAlt}
+        rightImage={props.secondImage}
+        rightImageAlt={props.secondImageAlt}
+        aspectRatio={'taller'}
+        handle={<Fragment />}
+        sliderLineWidth={8}
+        sliderPositionPercentage={props.sliderPosition || 0.5}
+        skeleton={
+          <img
+            src={
+              'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+            }
+            alt={'Image comparison loading'}
+            height={'100%'}
+            width={'100%'}
+            loading={'lazy'}
+            decoding={'async'}
+            style={{ minHeight: 48 }}
+          />
+        }
+      />
       {props.description && <p>{props.description}</p>}
     </ImageComparisonContainer>
   );
