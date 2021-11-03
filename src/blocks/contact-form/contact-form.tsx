@@ -74,7 +74,6 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
 
@@ -82,15 +81,11 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
     const errors: {
       name?: string;
       email?: string;
-      subject?: string;
       message?: string;
     } = {};
     if (!ignoreEmptyFields) {
       if (name.length <= 0) {
         errors.name = 'Your name must not be empty';
-      }
-      if (subject.length <= 0) {
-        errors.subject = 'Subject must not be empty';
       }
     }
     if (message.length <= 0) {
@@ -173,7 +168,7 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
     // Start form submission to formium
     setSubmitting(true);
     await formium
-      .submitForm(formSlug, { name, email, subject, message })
+      .submitForm(formSlug, { name, email, message })
       .then((data?: any) => {
         finishSubmission(data && data.ok);
       })
@@ -210,19 +205,6 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
           required
         />
       </FormRow>
-      <Field
-        tag={'input'}
-        type={'email'}
-        name={'subject'}
-        label={'Subject'}
-        value={subject}
-        onChange={setSubject}
-        placeholder={"Let's work together!"}
-        iconPath={mdiTextBoxOutline}
-        disabled={submitting}
-        error={errors?.subject}
-        required
-      />
       <TextAreaField
         tag={'textarea'}
         name={'message'}

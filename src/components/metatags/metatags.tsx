@@ -48,18 +48,10 @@ export const MetaTags: Component<MetaTagsProps> = (props) => {
 
   return (
     <NextHead>
-      <meta charSet={'UTF-8'} />
-      <meta
-        name={'viewport'}
-        content={'width=device-width, initial-scale=1.0'}
-      />
-      <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
-
       <title>{title}</title>
 
       <meta name={'title'} content={title} />
       <meta name={'description'} content={description} />
-      <meta name={'author'} content={'Jahir Fiquitiva'} />
       <meta name={'keywords'} content={(keywords || []).join(', ')} />
 
       <meta itemProp={'name'} content={title} />
@@ -73,23 +65,12 @@ export const MetaTags: Component<MetaTagsProps> = (props) => {
       <meta property={'og:image'} content={actualImage} />
       <meta property={'og:description'} content={description} />
       <meta property={'og:site_name'} content={title} />
-      <meta property={'og:locale'} content={'en_US'} />
 
       <meta property={'twitter:url'} name={'twitter:url'} content={exactUrl} />
       <meta
         property={'twitter:card'}
         name={'twitter:card'}
         content={actualMetaImageStyle}
-      />
-      <meta
-        property={'twitter:creator'}
-        name={'twitter:creator'}
-        content={'@jahirfiquitiva'}
-      />
-      <meta
-        property={'twitter:site'}
-        name={'twitter:site'}
-        content={'@jahirfiquitiva'}
       />
       <meta property={'twitter:title'} name={'twitter:title'} content={title} />
       <meta
@@ -108,6 +89,42 @@ export const MetaTags: Component<MetaTagsProps> = (props) => {
         content={actualImage}
       />
 
+      <meta name={'theme-color'} content={siteColor} />
+      <meta name={'msapplication-TileColor'} content={siteColor} />
+      <meta name={'msapplication-navbutton-color'} content={siteColor} />
+      <meta
+        name={'apple-mobile-web-app-status-bar-style'}
+        content={siteColor}
+      />
+    </NextHead>
+  );
+};
+
+export const BaseMetaTags = () => {
+  return (
+    <>
+      <meta charSet={'UTF-8'} />
+      <meta
+        name={'viewport'}
+        content={'width=device-width, initial-scale=1.0'}
+      />
+      <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
+
+      <meta name={'author'} content={'Jahir Fiquitiva'} />
+
+      <meta property={'og:locale'} content={'en_US'} />
+
+      <meta
+        property={'twitter:creator'}
+        name={'twitter:creator'}
+        content={'@jahirfiquitiva'}
+      />
+      <meta
+        property={'twitter:site'}
+        name={'twitter:site'}
+        content={'@jahirfiquitiva'}
+      />
+
       <link
         href={'https://plus.google.com/+JahirFiquitivaR/'}
         rel={'publisher'}
@@ -115,14 +132,6 @@ export const MetaTags: Component<MetaTagsProps> = (props) => {
       <meta
         name={'google-site-verification'}
         content={'lJwL3cKpjX_Eqp6yEY4hsydJazQl85xv29ZUmEg4oEE'}
-      />
-
-      <meta name={'theme-color'} content={siteColor} />
-      <meta name={'msapplication-TileColor'} content={siteColor} />
-      <meta name={'msapplication-navbutton-color'} content={siteColor} />
-      <meta
-        name={'apple-mobile-web-app-status-bar-style'}
-        content={siteColor}
       />
 
       <link rel={'shortcut icon'} href={'/static/images/brand/favicon32.png'} />
@@ -153,6 +162,6 @@ export const MetaTags: Component<MetaTagsProps> = (props) => {
         name={'msapplication-TileImage'}
         content={'/static/images/brand/favicon32.png'}
       />
-    </NextHead>
+    </>
   );
 };

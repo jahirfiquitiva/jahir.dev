@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'react';
-import useDarkMode from 'use-dark-mode';
+import { useTheme as useNextTheme } from 'next-themes';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 
@@ -13,13 +13,24 @@ export interface ThemeProps extends ThemeContextValue, ComponentProps {}
 const ThemeContext = createContext<ThemeContextValue>({ isDark: false });
 
 export const ThemeProvider: Component<ThemeProps> = (props) => {
-  const { value: isDark, toggle: toggleTheme } = useDarkMode(false, {
-    onChange: undefined,
-  });
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useNextTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
   const { children } = props;
 
+  const themeContextValue: ThemeContextValue = {
+    isDark: resolvedTheme === 'dark',
+    toggleTheme: () => {
+      setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    },
+  };
+
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={themeContextValue}>
       {children}
     </ThemeContext.Provider>
   );
