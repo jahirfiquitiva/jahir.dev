@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { forwardRef } from 'react';
 import { usePalette } from 'react-palette';
 
 import { Component, ComponentProps } from '~/elements/base/fc';

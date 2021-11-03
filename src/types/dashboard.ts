@@ -46,9 +46,9 @@ export interface Activity {
   name?: string;
   details?: string;
   state?: string;
-  smallImage?: string;
+  smallImage?: string | null;
   smallImageText?: string;
-  largeImage?: string;
+  largeImage?: string | null;
   largeImageText?: string;
 }
 

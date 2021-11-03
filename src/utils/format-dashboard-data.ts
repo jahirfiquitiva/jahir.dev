@@ -10,7 +10,8 @@ import {
   DiscordActivity,
 } from '~/types';
 
-const buildAssetLink = (appId?: string, assetId?: string) => {
+const buildAssetLink = (appId?: string, assetId?: string): string | null => {
+  if (!appId || !assetId) return null;
   return `https://cdn.discordapp.com/app-assets/${appId}/${assetId}.webp`;
 };
 

@@ -18,6 +18,7 @@ const StatusCard = styled(DashboardCard)`
 const CardContent = styled.div`
   padding-top: 0.2rem;
   display: flex;
+  justify-content: center;
   align-items: flex-end;
 
   & span {

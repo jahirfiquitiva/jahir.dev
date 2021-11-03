@@ -28,6 +28,7 @@ const CardContent = styled.div`
 const CardTexts = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1;
   margin: 0 0.8rem;
 
@@ -62,15 +63,22 @@ const ActivitySmallIconContainer = styled(ActivityIconContainer)`
 `;
 
 const VSCODE_DISCORD_APP_ID = '782685898163617802';
+const VSCODE_2_DISCORD_APP_ID = '810516608442695700';
 const INTELLIJ_DISCORD_APP_ID = '626050705526095874';
-const codingApps = [VSCODE_DISCORD_APP_ID, INTELLIJ_DISCORD_APP_ID];
+const codingApps = [
+  VSCODE_DISCORD_APP_ID,
+  VSCODE_2_DISCORD_APP_ID,
+  INTELLIJ_DISCORD_APP_ID,
+];
 
 export const Activity: Component<ActivityProps> = (props) => {
-  const [timeSince, setTimeSince] = useState('');
+  // const [timeSince, setTimeSince] = useState('');
   const { data, to } = props;
+  console.log(data);
 
   const isForCodingApp = codingApps.includes(data?.appId || '');
 
+  /*
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeSince(calculateTimeSince(data?.startedAt, new Date()) || '');
@@ -84,6 +92,7 @@ export const Activity: Component<ActivityProps> = (props) => {
     if (!timeSince || !timeSince.length) return null;
     return <p>Elapsed: {timeSince}</p>;
   };
+  */
 
   if (!data) return null;
   return (
@@ -106,7 +115,7 @@ export const Activity: Component<ActivityProps> = (props) => {
           </p>
           <p>{data?.details}</p>
           <p>{data?.state}</p>
-          {renderTimeText()}
+          {/* renderTimeText() */}
         </CardTexts>
         {data?.smallImage && (
           <ActivitySmallIconContainer>
