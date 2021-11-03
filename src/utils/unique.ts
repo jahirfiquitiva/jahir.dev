@@ -1,27 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable operator-linebreak */
-export const unique = <T>(
+export const unique = <T, Key extends keyof T>(
   array: Array<T> | T[],
-  property?: string,
+  property?: Key,
 ): Array<T> => {
-  if (!property || !property.length) {
+  if (!property) {
     return Array.from(new Set([...array]));
   }
 
-  const compare =
-    typeof property === 'function'
-      ? property
-      : // @ts-ignore
-        (left: T, right: T) => left[property] === right[property];
-
-  // eslint-disable-next-line no-array-constructor
-  const newArray = new Array<T>();
-
-  array.forEach((right) => {
-    const run = (left: T) => compare.call(this, left, right);
-    const i = newArray.findIndex(run);
-    if (i === -1) newArray.push(right);
+  const set = new Set();
+  return array.filter((o: T) => {
+    return !set.has(o[property]) && set.add(o[property]);
   });
-
-  return newArray;
 };

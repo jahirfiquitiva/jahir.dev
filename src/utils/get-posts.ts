@@ -1,18 +1,8 @@
 /* eslint-disable */
-import fs from 'fs';
-import { join } from 'path';
-
 import { pick } from '~/utils/pick';
 
 import { allBlogs } from '.contentlayer/data';
 import type { Blog } from '.contentlayer/types';
-
-const basePath = process.cwd();
-
-export const getPostSlugs = (directory: string = 'posts'): string[] => {
-  const postsDirectory = join(basePath, directory);
-  return fs.readdirSync(postsDirectory);
-};
 
 export const getAllPosts = (fields: (keyof Blog)[] = []): Array<Blog> => {
   const filteredPosts = allBlogs

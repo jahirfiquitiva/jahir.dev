@@ -5,6 +5,14 @@ import { getTopTracks } from '~/lib/spotify';
 import { NextApiFunc, validateTrack } from '~/types';
 import { unique } from '~/utils/unique';
 
+interface SpotifyTrack {
+  title?: string;
+  artist?: string;
+  album?: string;
+  url?: string;
+  image?: string;
+}
+
 export default async (
   _: NextApiRequest,
   res: NextApiResponse,
@@ -12,7 +20,7 @@ export default async (
   const response = await getTopTracks();
   const { items = [] } = await response.json();
 
-  const tracks = items
+  const tracks: Array<SpotifyTrack> = items
     .map((track: any) => ({
       // ...track,
       title: track.name,
