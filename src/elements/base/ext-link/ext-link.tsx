@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 
-interface ExtLinkProps extends ComponentProps {
+export interface ExtLinkProps extends ComponentProps {
   to: string;
   title?: string;
   newTab?: boolean;
@@ -21,11 +21,20 @@ export const ExtLink: Component<ExtLinkProps> = (props) => {
   } = props;
 
   if (!newTab) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { newTab, ...linkProps } = props;
     return (
       <Link href={to}>
-        <a {...linkProps} />
+        <a
+          className={[className || '', underline ? '' : 'nodeco']
+            .join(' ')
+            .trim()}
+          title={title}
+          aria-label={title}
+          target={newTab ? '_blank' : '_self'}
+          rel={'noopener noreferrer'}
+          style={style}
+        >
+          {children}
+        </a>
       </Link>
     );
   }

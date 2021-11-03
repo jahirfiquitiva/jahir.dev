@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { forwardRef } from 'react';
 import { usePalette } from 'react-palette';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { ExtLinkCard } from '~/elements/simple/card';
+import { ExtLinkCard, ExtLinkProps } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
 import { Post } from '~/types';
@@ -13,7 +14,7 @@ import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import getReadableColor from '~/utils/get-readable-color';
 
-const BaseBlogPostCard = styled(ExtLinkCard)`
+const InternalBaseBlogPostCard = styled(ExtLinkCard)`
   --border-radius: 8px;
   --shadow-one-size: 4px;
   --shadow-two-size: 8px;
@@ -66,6 +67,11 @@ const BaseBlogPostCard = styled(ExtLinkCard)`
     }
   }
 `;
+
+// eslint-disable-next-line react/display-name
+export const BaseBlogPostCard = forwardRef((props: ExtLinkProps, ref) => {
+  return <InternalBaseBlogPostCard ref={ref} {...props} />;
+});
 
 interface BlogPostCardProps extends ComponentProps, Post {}
 

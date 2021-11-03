@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { forwardRef } from 'react';
 
-import { ExtLink } from '~/elements/base/ext-link';
+import { ExtLink, ExtLinkProps } from '~/elements/base/ext-link';
 
 export const baseCardStyles = `
   --border-radius: 6px;
@@ -44,7 +45,12 @@ const baseLinkCardStyles = `
   }
 `;
 
-export const ExtLinkCard = styled(ExtLink)`
+const BaseExtLinkCard = styled((props: ExtLinkProps) => <ExtLink {...props} />)`
   display: block;
   ${baseLinkCardStyles}
 `;
+
+// eslint-disable-next-line react/display-name
+export const ExtLinkCard = forwardRef((props: ExtLinkProps, ref) => {
+  return <BaseExtLinkCard ref={ref} {...props} />;
+});
