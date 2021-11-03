@@ -208,7 +208,7 @@ article a.anchor {
 
 article a.anchor::after {
   content: '#';
-  color: rgba(var(--divider-opaque), 0.2);;
+  color: rgba(var(--divider-opaque), 0.2);
   text-decoration: none;
 }
 
