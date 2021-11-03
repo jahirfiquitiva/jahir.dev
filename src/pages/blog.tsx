@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
     'excerpt',
     'color',
     'link',
-    'time',
+    'readingTime',
     'inProgress',
   ]);
   return {

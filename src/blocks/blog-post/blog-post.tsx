@@ -42,6 +42,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
     readingTime,
     tableOfContents,
     body: content,
+    children,
   } = props;
   const { isDark } = useTheme();
   const { data: heroPalette } = usePalette(hero || '');
@@ -104,7 +105,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
         </p>
         {hero && <HeroImage src={hero || ''} alt={title} />}
         {renderTableOfContents()}
-        {renderContent()}
+        {children}
       </article>
     </div>
   );

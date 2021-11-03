@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable max-len */
 require('dotenv').config();
+const { withContentlayer } = require('next-contentlayer');
 const { buildPostsData } = require('./scripts/build-posts-data');
 
 // https://securityheaders.com
@@ -64,7 +65,7 @@ const buildExternalBlogPostsRedirects = async () => {
   });
 };
 
-module.exports = {
+const defaultNextConfig = {
   env: {
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     REPO_FULL_NAME: process.env.REPO_FULL_NAME,
@@ -135,3 +136,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = withContentlayer()(defaultNextConfig);

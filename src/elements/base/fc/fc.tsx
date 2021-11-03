@@ -1,7 +1,7 @@
 import { CSSProperties, FC, ReactNode } from 'react';
 
 export interface ComponentProps {
-  children?: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[] | Element;
   className?: string;
   style?: CSSProperties;
 }
