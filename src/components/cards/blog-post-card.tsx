@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { forwardRef } from 'react';
 import { usePalette } from 'react-palette';
 
+import { ExtLinkProps } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { ExtLinkCard, ExtLinkProps } from '~/elements/simple/card';
+import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
 import { Post } from '~/types';
