@@ -1,9 +1,10 @@
 import fetch from 'isomorphic-fetch';
-const apiKey = process.env.WEBMASTER_API_KEY || '';
+const apiKey = 'test-apiKey'; // process.env.WEBMASTER_API_KEY || '';
 
 interface FaviconGrabberIcon {
   sizes?: string;
-  src: string;
+  src?: string;
+  href?: string;
 }
 
 const timeoutFetch = async (
@@ -21,25 +22,29 @@ const timeoutFetch = async (
 };
 
 export const getWebsiteFavicon = async (website: string): Promise<string> => {
+  const domain = website.replace(/(^\w+:|^)\/\//, '').replace(/\//g, '');
   try {
-    const domain = website.replace(/(^\w+:|^)\/\//, '').replace(/\//g, '');
     const faviconGrabber = await timeoutFetch(
-      `https://favicongrabber.com/api/grab/${domain}?pretty=true`,
+      `http://favicongrabber.com/api/grab/${domain}?pretty=true`,
     );
 
     if (faviconGrabber.status >= 200 && faviconGrabber.status < 300) {
       const faviconData = await faviconGrabber.json();
-      const icons = faviconData?.icons || [];
-      const ttPixelsIcons =
-        icons.filter((it: FaviconGrabberIcon) => {
-          return (
-            !(it?.src || '')?.startsWith('data') ||
-            (it?.sizes || '')?.includes('32') ||
-            (it?.src || '')?.includes('32')
-          );
-        }) || [];
-      const icon = (ttPixelsIcons.length > 0 ? ttPixelsIcons : icons)?.shift();
-      return icon?.src || '';
+      if (!faviconData?.error) {
+        const icons = faviconData?.icons || [];
+        const ttPixelsIcons =
+          icons.filter((it: FaviconGrabberIcon) => {
+            return (
+              !(it?.src || '')?.startsWith('data') ||
+              (it?.sizes || '')?.includes('32') ||
+              (it?.src || '')?.includes('32')
+            );
+          }) || [];
+        const icon = (
+          ttPixelsIcons.length > 0 ? ttPixelsIcons : icons
+        )?.shift();
+        if (icon) return icon?.src || '';
+      }
     }
 
     const webmasterApi = await timeoutFetch(
@@ -58,10 +63,21 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
 
     if (webmasterApi.status >= 200 && webmasterApi.status < 300) {
       const webmasterApiJson = await webmasterApi.json();
-      return webmasterApiJson?.results?.default ?? '';
+      const defaultIcon = webmasterApiJson?.results?.default;
+      const icons = webmasterApiJson?.results?.list || [];
+      const ttPixelsIcons =
+        icons.filter((it: FaviconGrabberIcon) => {
+          return (
+            !(it?.href || '')?.startsWith('data') ||
+            (it?.sizes || '')?.includes('32') ||
+            (it?.href || '')?.includes('32')
+          );
+        }) || [];
+      const icon = (ttPixelsIcons.length > 0 ? ttPixelsIcons : icons)?.shift();
+      return icon?.src || defaultIcon;
     }
-    return '';
+    return `https://www.google.com/s2/favicons?domain=${domain}`;
   } catch (e) {
-    return '';
+    return `https://www.google.com/s2/favicons?domain=${domain}`;
   }
 };

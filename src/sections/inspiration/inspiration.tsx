@@ -26,7 +26,7 @@ const InspirationCard = styled(ExtLinkCard)`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  & h6,
+  & h4,
   & p {
     white-space: nowrap;
     overflow: hidden;
@@ -35,7 +35,7 @@ const InspirationCard = styled(ExtLinkCard)`
 
   &:hover,
   &:focus {
-    & h6,
+    & h4,
     & p {
       text-decoration: underline;
     }
@@ -78,9 +78,9 @@ export const Inspiration: Component<InspirationProps> = (props) => {
     <CenteredSection id={'inspiration'}>
       <SectionHeading
         size={'3'}
-        shadowColor={'green'}
-        gradientColor={'green-to-yellow'}
-        emoji={'🍀'}
+        shadowColor={'brand'}
+        gradientColor={'brand-to-blue'}
+        emoji={'🌎'}
       >
         Inspiration
       </SectionHeading>
