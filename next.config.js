@@ -22,8 +22,6 @@ const buildExternalBlogPostsRedirects = async () => {
 
 const defaultNextConfig = {
   reactStrictMode: true,
-  // Prefer loading of ES Modules over CommonJS
-  experimental: { esmExternals: true, staticPageGenerationTimeout: 180 },
   webpack(config, { dev, isServer }) {
     config.module.rules.push({
       test: /\.svg$/,
