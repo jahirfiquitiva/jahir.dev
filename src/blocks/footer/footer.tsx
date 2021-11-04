@@ -240,6 +240,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
           >
+            <span>📝&nbsp;&nbsp;</span>
             <span className={gradientToClassName('blue-to-green', true)}>
               Blog
             </span>
@@ -249,6 +250,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
+            <span>✨&nbsp;&nbsp;</span>
             <span className={gradientToClassName('yellow-to-orange', true)}>
               Dashboard
             </span>
@@ -258,6 +260,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
+            <span>🧡&nbsp;&nbsp;</span>
             <span className={gradientToClassName('red-to-purple', true)}>
               Donate
             </span>
@@ -267,6 +270,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
+            <span>📬&nbsp;&nbsp;</span>
             <span className={gradientToClassName('brand-to-blue', true)}>
               Contact
             </span>
@@ -278,6 +282,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
+            <span>⚡️&nbsp;&nbsp;</span>
             <span className={gradientToClassName('yellow-to-orange', true)}>
               Uses
             </span>
@@ -287,6 +292,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
+            <span>🌎&nbsp;&nbsp;</span>
             <span className={gradientToClassName('brand-to-blue', true)}>
               Inspiration
             </span>
@@ -298,6 +304,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
+            <span>🧡&nbsp;&nbsp;</span>
             <span className={gradientToClassName('red-to-purple', true)}>
               Supporters
             </span>
@@ -307,6 +314,7 @@ export const Footer: Component = () => {
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
           >
+            <span>👨‍💻&nbsp;&nbsp;</span>
             <span className={gradientToClassName('green-to-yellow', true)}>
               Projects
             </span>

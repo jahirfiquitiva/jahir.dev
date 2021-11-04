@@ -55,11 +55,11 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
 `;
 
 const ToolbarLinkEmoji = styled.span`
-  margin-right: 0.8rem;
+  margin-right: 0.6rem;
 
   @media not all and (min-resolution: 0.001dpcm) {
     @media {
-      margin-right: 0.7rem;
+      margin-right: 0.5rem;
     }
   }
 `;

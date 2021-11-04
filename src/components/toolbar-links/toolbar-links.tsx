@@ -97,24 +97,28 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
       <ToolbarLink
         to={'/blog'}
         gradientColor={'blue-to-green'}
+        emoji={'📝'}
         label={'Blog'}
         active={activeLink === 1}
       />
       <ToolbarLink
         to={'/dashboard'}
         gradientColor={'yellow-to-orange'}
+        emoji={'✨'}
         label={'Dashboard'}
         active={activeLink === 2}
       />
       <ToolbarLink
         to={'/donate'}
         gradientColor={'red-to-purple'}
+        emoji={'🧡'}
         label={'Donate'}
         active={activeLink === 3}
       />
       <ToolbarLink
         to={'/contact'}
         gradientColor={'brand-to-blue'}
+        emoji={'📬'}
         label={'Contact'}
         active={activeLink === 4}
       />
