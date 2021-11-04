@@ -121,7 +121,15 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
 };
 
 const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
-  const { title, icon, iconSize = 0.95, className, to, newTab = true } = props;
+  const {
+    title,
+    icon,
+    iconSize = 0.95,
+    className,
+    to,
+    newTab = true,
+    children,
+  } = props;
 
   if (!newTab) {
     const linkProps = { ...props, newTab: undefined };
@@ -135,7 +143,9 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
           target={newTab ? '_blank' : '_self'}
           rel={'noopener noreferrer'}
           {...linkProps}
-        />
+        >
+          {children}
+        </BaseLinkButton>
       </Link>
     );
   }
@@ -150,14 +160,15 @@ const BaseLinkIconButton: Component<LinkButtonProps> = (props) => {
       rel={'noopener noreferrer'}
     >
       {icon && <Icon path={icon} size={iconSize} />}
+      {children}
     </BaseLinkButton>
   );
 };
 
 export const LinkIconButton = styled(BaseLinkIconButton)`
   padding: 0.425rem;
-  min-height: 24px;
-  min-width: 24px;
+  min-height: 36px;
+  min-width: 36px;
   color: #fff;
 
   & svg {

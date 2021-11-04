@@ -53,6 +53,7 @@ const defaultNextConfig = {
       'unavatar.now.sh',
       'unavatar.io',
       'lh3.googleusercontent.com',
+      'cdn.discordapp.com',
     ],
   },
   async redirects() {
@@ -65,6 +66,7 @@ const defaultNextConfig = {
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
       buildRedirect('/links', '/'),
+      buildRedirect('/music', '/dashboard'),
       buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
       buildRedirect('/support', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),

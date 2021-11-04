@@ -5,13 +5,7 @@ import Icon from '@mdi/react';
 import { Component } from '~/elements/base/fc';
 import { baseCardStyles } from '~/elements/simple/card';
 import useRequest from '~/hooks/useRequest';
-import { mediaQueries } from '~/types';
-
-type GitHubStatsData = {
-  success?: boolean;
-  stars?: number;
-  followers?: number;
-};
+import { GitHubStats as GitHubStatsData, mediaQueries } from '~/types';
 
 const GitHubStatsLink = styled.a`
   ${baseCardStyles}

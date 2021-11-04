@@ -246,13 +246,13 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/uses'}
+            to={'/dashboard'}
             newTab={false}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
-            <span>⚡️&nbsp;&nbsp;</span>
+            <span>✨&nbsp;&nbsp;</span>
             <span className={gradientToClassName('yellow-to-orange', true)}>
-              Uses
+              Dashboard
             </span>
           </FooterGridLink>
           <FooterGridLink
@@ -278,22 +278,22 @@ export const Footer: Component = () => {
         </FooterGridSectionTwo>
         <FooterGridSectionThree>
           <FooterGridLink
-            to={'/music'}
+            to={'/uses'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
-            <span>🎧&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('blue-to-green', true)}>
-              Music
+            <span>⚡️&nbsp;&nbsp;</span>
+            <span className={gradientToClassName('yellow-to-orange', true)}>
+              Uses
             </span>
           </FooterGridLink>
           <FooterGridLink
             to={'/inspiration'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
-            <span>🍀&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('green-to-yellow', true)}>
+            <span>🌎&nbsp;&nbsp;</span>
+            <span className={gradientToClassName('brand-to-blue', true)}>
               Inspiration
             </span>
           </FooterGridLink>

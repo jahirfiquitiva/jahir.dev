@@ -8,6 +8,7 @@ const PseudoToolbarButton = BaseToolbarLink.withComponent('button');
 export const ToolbarButton = styled(PseudoToolbarButton)`
   background-color: rgba(0, 0, 0, 0);
   min-width: var(--toolbar-height);
+  min-height: unset;
   max-width: var(--toolbar-height);
   max-height: calc(var(--toolbar-height) - 0.6rem);
   padding: 0.4rem 0.8rem;

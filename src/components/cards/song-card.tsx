@@ -40,6 +40,10 @@ const BaseSongCard = styled(ExtLinkCard)`
     border-radius: var(--border-radius);
     border: 1px solid var(--divider);
     max-width: 100%;
+
+    & div {
+      border-radius: 0;
+    }
   }
 
   .album {
@@ -50,7 +54,7 @@ const BaseSongCard = styled(ExtLinkCard)`
   }
 
   .album img {
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   .details {
@@ -64,11 +68,12 @@ const BaseSongCard = styled(ExtLinkCard)`
   }
 
   .details h5,
-  .details p {
+  p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: inherit;
+    border-radius: 0;
   }
 
   .details h5 {
@@ -76,7 +81,7 @@ const BaseSongCard = styled(ExtLinkCard)`
     opacity: 1;
   }
 
-  .details p {
+  p {
     font-size: calc(var(--base-font-size) * 0.95);
     font-weight: 400;
     opacity: 0.9;
@@ -95,6 +100,15 @@ const BaseSongCard = styled(ExtLinkCard)`
   }
 `;
 
+const CurrentlyPlayingTitle = styled.p`
+  font-size: calc(var(--base-font-size) * 0.95);
+  font-weight: 400;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  text-decoration-color: rgba(0, 0, 0, 0) !important;
+  margin-bottom: 0.4rem;
+`;
+
 export const SongCard: Component<SongCardProps> = (props) => {
   const { isForNowPlaying, isPlaying = false } = props;
   const shouldRenderDetails = !isForNowPlaying || isPlaying;
@@ -103,10 +117,6 @@ export const SongCard: Component<SongCardProps> = (props) => {
   const { data: paletteData } = usePalette(
     shouldRenderDetails ? props.image?.url ?? '' : '',
   );
-
-  const preSize: number =
-    (props.image?.width ?? 36) + (props.image?.height ?? 36);
-  const size: number = preSize > 0 ? (preSize > 128 ? 84 : 64) : 0;
 
   const backgroundColor: string | undefined = shouldRenderDetails
     ? paletteData
@@ -135,61 +145,81 @@ export const SongCard: Component<SongCardProps> = (props) => {
         <Image
           alt={props.title}
           src={props.image?.url ?? ''}
-          width={size}
-          height={size}
+          width={64}
+          height={64}
           objectFit={'cover'}
           objectPosition={'center'}
         />
       );
     }
-    return <Icon path={mdiSpotify} size={2} color={'#1ED760'} />;
+    return (
+      <Icon
+        path={mdiSpotify}
+        size={2}
+        color={'#1ED760'}
+        style={{ opacity: 0.85 }}
+      />
+    );
   };
 
+  const renderActualCard = () => {
+    return (
+      <BaseSongCard
+        className={
+          ['nodeco', !shouldRenderDetails ? 'not-playing' : '']
+            .join(' ')
+            .trim() || undefined
+        }
+        title={props.title}
+        to={props.url || '#'}
+        style={buildStyles({
+          ...shadowColors,
+          backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
+          color: textColor,
+          borderColor: textColor,
+        })}
+      >
+        <div className={'overlay'}>
+          <div
+            className={'album'}
+            style={{ minWidth: shouldRenderDetails ? 64 : 0 }}
+          >
+            {renderAlbumImage()}
+          </div>
+          <div
+            className={'details'}
+            style={buildStyles({ color: textColor, borderColor: textColor })}
+          >
+            <Heading size={'5'} fontSize={'6'}>
+              {(props.title?.length ?? 0) > 0 && shouldRenderDetails
+                ? props.title
+                : 'Silence'}
+            </Heading>
+            {shouldRenderDetails && (
+              <p>
+                {props.artist}
+                {props.album && (
+                  <>
+                    {' • '}
+                    {props.album}
+                  </>
+                )}
+              </p>
+            )}
+          </div>
+        </div>
+      </BaseSongCard>
+    );
+  };
+
+  if (!isForNowPlaying) return renderActualCard();
+
   return (
-    <BaseSongCard
-      className={
-        ['nodeco', !shouldRenderDetails ? 'not-playing' : '']
-          .join(' ')
-          .trim() || undefined
-      }
-      title={props.title}
-      to={props.url || '#'}
-      style={buildStyles({
-        ...shadowColors,
-        backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
-        color: textColor,
-        borderColor: textColor,
-      })}
-    >
-      <div className={'overlay'}>
-        <div
-          className={'album'}
-          style={{ minWidth: shouldRenderDetails ? size : 0 }}
-        >
-          {renderAlbumImage()}
-        </div>
-        <div
-          className={'details'}
-          style={buildStyles({ color: textColor, borderColor: textColor })}
-        >
-          <Heading size={'5'} fontSize={'6'}>
-            {(props.title?.length ?? 0) > 0 && shouldRenderDetails
-              ? props.title
-              : 'Nothing'}
-          </Heading>
-          {shouldRenderDetails && (
-            <p>
-              {props.artist}
-              {props.album && (
-                <>
-                  {' • '}
-                  {props.album}
-                </>
-              )}
-            </p>
-          )}
-        </div>
-      </div>
-    </BaseSongCard>
+    <div>
+      <CurrentlyPlayingTitle style={buildStyles({ color: textColor })}>
+        🎧&nbsp;&nbsp;Currently listening to...
+      </CurrentlyPlayingTitle>
+      {renderActualCard()}
+    </div>
   );
 };

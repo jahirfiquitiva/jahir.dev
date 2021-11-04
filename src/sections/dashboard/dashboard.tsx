@@ -1,15 +1,18 @@
 import styled from '@emotion/styled';
 
+import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
 import { SongCard } from '~/components/cards';
-import { SectionHeading } from '~/components/section-heading';
+import { State } from '~/components/dashboard-items';
 import { Component } from '~/elements/base/fc';
+import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
+import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
 import { mediaQueries, TopTrackData } from '~/types';
 
 const MusicHeading = styled(Heading)`
-  margin-top: 2.6rem;
+  margin-top: 1.6rem;
   margin-bottom: 1rem;
 `;
 
@@ -28,16 +31,10 @@ const TopTracksText = styled.p`
   margin-bottom: var(--content-bottom-margin);
 `;
 
-export const Music: Component = () => {
-  const { data: nowPlayingData, loading: loadingNowPlaying } =
-    useRequest<TopTrackData>('/api/now-playing');
+export const Dashboard: Component = () => {
+  const dashboardData = useDashboardData();
   const { data: topTracksData, loading: loadingTopTracks } =
     useRequest<{ tracks?: Array<TopTrackData> }>('/api/top-tracks');
-
-  const renderNowPlaying = () => {
-    if (loadingNowPlaying) return <p>Loading...</p>;
-    return <SongCard {...nowPlayingData} isForNowPlaying />;
-  };
 
   const renderTopTracks = () => {
     if (loadingTopTracks) return <TopTracksText>Loading...</TopTracksText>;
@@ -55,18 +52,12 @@ export const Music: Component = () => {
 
   return (
     <CenteredSection id={'music'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'blue'}
-        gradientColor={'blue-to-green'}
-        emoji={'🎧'}
-      >
-        Music
-      </SectionHeading>
-
-      <MusicHeading size={'4'}>Now Playing</MusicHeading>
-      {renderNowPlaying()}
-
+      <State
+        state={dashboardData?.statusName}
+        userId={dashboardData?.user?.id}
+      />
+      <DashboardGrid data={dashboardData} />
+      <Divider thin />
       <MusicHeading size={'4'}>Top Tracks</MusicHeading>
       {renderTopTracks()}
     </CenteredSection>

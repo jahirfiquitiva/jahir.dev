@@ -29,11 +29,12 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  min-height: 48px;
   max-height: calc(var(--toolbar-height) - 0.6rem);
   min-width: 48px;
   height: 100%;
   border-radius: 4px;
-  padding: 0 1rem 0 0.8rem;
+  padding: 0 0.8rem;
 
   &.active,
   &:active,
@@ -45,6 +46,7 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   }
 
   ${mediaQueries.desktop} {
+    min-height: unset;
     justify-content: center;
     margin: 0 0.2rem;
     padding-top: 0;
@@ -53,11 +55,11 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
 `;
 
 const ToolbarLinkEmoji = styled.span`
-  margin-right: 0.8rem;
+  margin-right: 0.6rem;
 
   @media not all and (min-resolution: 0.001dpcm) {
     @media {
-      margin-right: 0.7rem;
+      margin-right: 0.5rem;
     }
   }
 `;

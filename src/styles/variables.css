@@ -17,6 +17,7 @@
   --font-size-xxxl: calc(var(--base-font-size) * 2.6);
   --font-size-xxl: calc(var(--base-font-size) * 2.25);
   --font-size-xl: calc(var(--base-font-size) * 2);
+  --font-size-lg: calc(var(--base-font-size) * 1.75);
   --font-size-md: calc(var(--base-font-size) * 1.5);
   --font-size-sm: calc(var(--base-font-size) * 1.25);
   --font-size-xs: var(--base-font-size);
@@ -83,6 +84,8 @@
 
   --scrollbar-bg-color: var(--accent-light);
   --scrollbar-thumb-color: #f2f5fc;
+
+  --animoji-bg: #c3d1f3;
 }
 
 .dark,
@@ -131,6 +134,8 @@
 
   --scrollbar-bg-color: var(--accent);
   --scrollbar-thumb-color: var(--primary);
+
+  --animoji-bg: #111f40;
 }
 
 /* Works on Firefox */

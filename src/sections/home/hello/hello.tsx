@@ -7,6 +7,7 @@ import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
 import { gradientToClassName } from '~/elements/props';
 import { Heading } from '~/elements/simple/heading';
+import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 
 const HeadingContainer = styled.div`
@@ -63,6 +64,7 @@ const NameAudio = styled.audio`
 `;
 
 export const Hello: Component = () => {
+  const { isDark } = useTheme();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playName = () => {
@@ -78,7 +80,7 @@ export const Hello: Component = () => {
         <Heading size={'3'} shadowColor={'blue'}>
           I am{' '}
           <ClickableName
-            className={gradientToClassName('brand-to-blue')}
+            className={gradientToClassName('brand-to-blue', isDark)}
             onClick={playName}
           >
             Jahir Fiquitiva

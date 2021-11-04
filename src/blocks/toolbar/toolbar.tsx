@@ -13,6 +13,7 @@ import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 
 export const ToolbarLogo = styled(ToolbarLink)`
+  min-height: unset;
   max-height: calc(var(--toolbar-height) - 0.8rem);
   grid-row: 1;
   grid-column: 1;
@@ -69,6 +70,9 @@ const ToolbarContainer = styled.div`
   max-width: calc(var(--max-site-width) + 2rem);
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
+  animation: menu-expansion-animation 0.3s ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
 
   &.active {
     grid-row-gap: 0.1rem;
@@ -76,15 +80,53 @@ const ToolbarContainer = styled.div`
         calc(calc(var(--toolbar-height) * 4) - 1.2rem),
         100%
       );
+    animation: menu-expansion-animation 0.3s ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: normal;
     max-height: unset;
   }
 
   ${mediaQueries.tablet.lg} {
+    animation: none;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
 
     &.active {
+      animation: none;
       grid-template-rows: 1fr;
+    }
+  }
+
+  @keyframes menu-expansion-animation {
+    0% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 0) - 1.2rem),
+          100%
+        );
+    }
+    25% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 1) - 1.2rem),
+          100%
+        );
+    }
+    50% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 2) - 1.2rem),
+          100%
+        );
+    }
+    75% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 3) - 1.2rem),
+          100%
+        );
+    }
+    100% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 4) - 1.2rem),
+          100%
+        );
     }
   }
 `;
@@ -128,6 +170,19 @@ const ThemeToggleButton = styled(ToolbarButton)`
 export const Toolbar: Component = () => {
   const { isDark, toggleTheme } = useTheme();
   const [expanded, setExpanded] = useState(false);
+  const [linksExpanded, setLinksExpanded] = useState(expanded);
+
+  const handleMenuExpansion = () => {
+    if (!expanded) {
+      setExpanded(true);
+      setLinksExpanded(true);
+    } else {
+      setLinksExpanded(false);
+      setTimeout(() => {
+        setExpanded(false);
+      }, 250);
+    }
+  };
 
   return (
     <NavigationContainer className={expanded ? 'active' : ''}>
@@ -139,7 +194,7 @@ export const Toolbar: Component = () => {
         >
           <Logo className={'logosvg'} />
         </ToolbarLogo>
-        <ToolbarLinks active={expanded} />
+        <ToolbarLinks active={linksExpanded} />
         <ToolbarActionButtons>
           <ThemeToggleButton onClick={toggleTheme}>
             {isDark ? '🌞' : '🌚'}
@@ -147,9 +202,7 @@ export const Toolbar: Component = () => {
           <ToolbarMenuToggle
             name={expanded ? 'Collapse menu' : 'Expand menu'}
             active={expanded}
-            onClick={() => {
-              setExpanded(!expanded);
-            }}
+            onClick={handleMenuExpansion}
           />
         </ToolbarActionButtons>
       </ToolbarContainer>
