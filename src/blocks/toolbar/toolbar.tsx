@@ -70,6 +70,9 @@ const ToolbarContainer = styled.div`
   max-width: calc(var(--max-site-width) + 2rem);
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
+  animation: menu-expansion-animation 0.3s ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
 
   &.active {
     grid-row-gap: 0.1rem;
@@ -77,15 +80,53 @@ const ToolbarContainer = styled.div`
         calc(calc(var(--toolbar-height) * 4) - 1.2rem),
         100%
       );
+    animation: menu-expansion-animation 0.3s ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: normal;
     max-height: unset;
   }
 
   ${mediaQueries.tablet.lg} {
+    animation: none;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
 
     &.active {
+      animation: none;
       grid-template-rows: 1fr;
+    }
+  }
+
+  @keyframes menu-expansion-animation {
+    0% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 0) - 1.2rem),
+          100%
+        );
+    }
+    25% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 1) - 1.2rem),
+          100%
+        );
+    }
+    50% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 2) - 1.2rem),
+          100%
+        );
+    }
+    75% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 3) - 1.2rem),
+          100%
+        );
+    }
+    100% {
+      grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
+          calc(calc(var(--toolbar-height) * 4) - 1.2rem),
+          100%
+        );
     }
   }
 `;
