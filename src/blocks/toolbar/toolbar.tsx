@@ -99,30 +99,35 @@ const ToolbarContainer = styled.div`
 
   @keyframes menu-expansion-animation {
     0% {
+      grid-row-gap: 0;
       grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
           calc(calc(var(--toolbar-height) * 0) - 1.2rem),
           100%
         );
     }
     25% {
+      grid-row-gap: 0.025rem;
       grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
           calc(calc(var(--toolbar-height) * 1) - 1.2rem),
           100%
         );
     }
     50% {
+      grid-row-gap: 0.05rem;
       grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
           calc(calc(var(--toolbar-height) * 2) - 1.2rem),
           100%
         );
     }
     75% {
+      grid-row-gap: 0.075rem;
       grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
           calc(calc(var(--toolbar-height) * 3) - 1.2rem),
           100%
         );
     }
     100% {
+      grid-row-gap: 0.1rem;
       grid-template-rows: calc(var(--toolbar-height) - 0.4rem) minmax(
           calc(calc(var(--toolbar-height) * 4) - 1.2rem),
           100%
