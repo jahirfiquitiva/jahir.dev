@@ -256,18 +256,18 @@ export const Footer: Component = () => {
           <FooterGridLink
             to={'/donate'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
           >
-            <span className={gradientToClassName('red-to-purple', true)}>
+            <span className={gradientToClassName('orange-to-red', true)}>
               Donate
             </span>
           </FooterGridLink>
           <FooterGridLink
             to={'/contact'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
-            <span className={gradientToClassName('brand-to-blue', true)}>
+            <span className={gradientToClassName('red-to-purple', true)}>
               Contact
             </span>
           </FooterGridLink>
@@ -296,9 +296,9 @@ export const Footer: Component = () => {
           <FooterGridLink
             to={'/thanks'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
           >
-            <span className={gradientToClassName('red-to-purple', true)}>
+            <span className={gradientToClassName('orange-to-red', true)}>
               Supporters
             </span>
           </FooterGridLink>

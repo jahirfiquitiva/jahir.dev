@@ -115,13 +115,13 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
       />
       <ToolbarLink
         to={'/donate'}
-        gradientColor={'red-to-purple'}
+        gradientColor={'orange-to-red'}
         label={'Donate'}
         active={activeLink === 4}
       />
       <ToolbarLink
         to={'/contact'}
-        gradientColor={'brand-to-blue'}
+        gradientColor={'red-to-purple'}
         label={'Contact'}
         active={activeLink === 5}
       />

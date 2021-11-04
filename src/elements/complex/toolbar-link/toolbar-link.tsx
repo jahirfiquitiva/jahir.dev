@@ -46,6 +46,7 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   }
 
   ${mediaQueries.desktop} {
+    min-height: unset;
     justify-content: center;
     margin: 0 0.2rem;
     padding-top: 0;
