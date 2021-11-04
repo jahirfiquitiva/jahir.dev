@@ -256,18 +256,18 @@ export const Footer: Component = () => {
           <FooterGridLink
             to={'/donate'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
-            <span className={gradientToClassName('orange-to-red', true)}>
+            <span className={gradientToClassName('red-to-purple', true)}>
               Donate
             </span>
           </FooterGridLink>
           <FooterGridLink
             to={'/contact'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
-            <span className={gradientToClassName('red-to-purple', true)}>
+            <span className={gradientToClassName('brand-to-blue', true)}>
               Contact
             </span>
           </FooterGridLink>
@@ -276,9 +276,9 @@ export const Footer: Component = () => {
           <FooterGridLink
             to={'/uses'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
-            <span className={gradientToClassName('green-to-yellow', true)}>
+            <span className={gradientToClassName('yellow-to-orange', true)}>
               Uses
             </span>
           </FooterGridLink>
@@ -296,9 +296,9 @@ export const Footer: Component = () => {
           <FooterGridLink
             to={'/thanks'}
             newTab={false}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-e)' })}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
-            <span className={gradientToClassName('orange-to-red', true)}>
+            <span className={gradientToClassName('red-to-purple', true)}>
               Supporters
             </span>
           </FooterGridLink>

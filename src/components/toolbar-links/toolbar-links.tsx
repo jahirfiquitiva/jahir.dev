@@ -85,11 +85,10 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
 
   useEffect(() => {
     const { asPath: pathname } = router;
-    if (pathname.includes('/uses')) setActiveLink(2);
-    else if (pathname.includes('/blog')) setActiveLink(1);
-    else if (pathname.includes('/dashboard')) setActiveLink(3);
-    else if (pathname.includes('/donate')) setActiveLink(4);
-    else if (pathname.includes('/contact')) setActiveLink(5);
+    if (pathname.includes('/blog')) setActiveLink(1);
+    else if (pathname.includes('/dashboard')) setActiveLink(2);
+    else if (pathname.includes('/donate')) setActiveLink(3);
+    else if (pathname.includes('/contact')) setActiveLink(4);
     else setActiveLink(-1);
   }, [router]);
 
@@ -102,28 +101,22 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
         active={activeLink === 1}
       />
       <ToolbarLink
-        to={'/uses'}
-        gradientColor={'green-to-yellow'}
-        label={'Uses'}
-        active={activeLink === 2}
-      />
-      <ToolbarLink
         to={'/dashboard'}
         gradientColor={'yellow-to-orange'}
         label={'Dashboard'}
-        active={activeLink === 3}
+        active={activeLink === 2}
       />
       <ToolbarLink
         to={'/donate'}
-        gradientColor={'orange-to-red'}
+        gradientColor={'red-to-purple'}
         label={'Donate'}
-        active={activeLink === 4}
+        active={activeLink === 3}
       />
       <ToolbarLink
         to={'/contact'}
-        gradientColor={'red-to-purple'}
+        gradientColor={'brand-to-blue'}
         label={'Contact'}
-        active={activeLink === 5}
+        active={activeLink === 4}
       />
     </ToolbarLinksContainer>
   );
