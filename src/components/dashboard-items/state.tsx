@@ -93,9 +93,21 @@ interface StateProps extends ComponentProps {
 export const State: Component<StateProps> = (props) => {
   const { state, userId } = props;
 
-  if (!userId || !state) return null;
+  const renderStateChip = () => {
+    if (!userId || !state) return null;
+    const stateTextAndColor: StateTextAndColor = stateToTextAndColor(state);
+    return (
+      <ExtLink to={`https://discordapp.com/users/${userId}`} underline={false}>
+        <StateChip
+          style={buildStyles({ '--color-values': stateTextAndColor.color })}
+        >
+          <StateCircle />
+          {stateTextAndColor.text}
+        </StateChip>
+      </ExtLink>
+    );
+  };
 
-  const stateTextAndColor: StateTextAndColor = stateToTextAndColor(state);
   return (
     <StateContainer>
       <Image
@@ -105,14 +117,7 @@ export const State: Component<StateProps> = (props) => {
         height={144}
         quality={100}
       />
-      <ExtLink to={`https://discordapp.com/users/${userId}`} underline={false}>
-        <StateChip
-          style={buildStyles({ '--color-values': stateTextAndColor.color })}
-        >
-          <StateCircle />
-          {stateTextAndColor.text}
-        </StateChip>
-      </ExtLink>
+      {renderStateChip()}
     </StateContainer>
   );
 };
