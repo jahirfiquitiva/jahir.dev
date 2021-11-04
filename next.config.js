@@ -21,7 +21,20 @@ const buildExternalBlogPostsRedirects = async () => {
 };
 
 const defaultNextConfig = {
+  swcMinify: true,
   reactStrictMode: true,
+  images: {
+    domains: [
+      'images.unsplash.com',
+      'i.scdn.co',
+      'spotify.com',
+      'jahir.dev',
+      'unavatar.now.sh',
+      'unavatar.io',
+      'lh3.googleusercontent.com',
+      'cdn.discordapp.com',
+    ],
+  },
   webpack(config, { dev, isServer }) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -41,18 +54,6 @@ const defaultNextConfig = {
     }
 
     return config;
-  },
-  images: {
-    domains: [
-      'images.unsplash.com',
-      'i.scdn.co',
-      'spotify.com',
-      'jahir.dev',
-      'unavatar.now.sh',
-      'unavatar.io',
-      'lh3.googleusercontent.com',
-      'cdn.discordapp.com',
-    ],
   },
   async redirects() {
     const postsRedirects = await buildExternalBlogPostsRedirects().catch(
