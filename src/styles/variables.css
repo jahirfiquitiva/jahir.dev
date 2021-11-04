@@ -84,6 +84,8 @@
 
   --scrollbar-bg-color: var(--accent-light);
   --scrollbar-thumb-color: #f2f5fc;
+
+  --animoji-bg: #c3d1f3;
 }
 
 .dark,
@@ -132,6 +134,8 @@
 
   --scrollbar-bg-color: var(--accent);
   --scrollbar-thumb-color: var(--primary);
+
+  --animoji-bg: #111f40;
 }
 
 /* Works on Firefox */

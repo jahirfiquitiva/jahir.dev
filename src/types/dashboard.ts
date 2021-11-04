@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { TopTrackData, TrackData } from './music';
+import { TrackData } from './music';
 
 export interface DiscordStatus {
   state?: string;
@@ -26,7 +26,7 @@ export interface DiscordActivity extends DiscordStatus {
   application_id?: string;
 }
 
-type DiscordStatusName = 'online' | 'offline' | 'idle' | 'dnd';
+export type DiscordStatusName = 'online' | 'offline' | 'idle' | 'dnd';
 
 export interface DiscordUser {
   id?: string;

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
 import { SongCard } from '~/components/cards';
+import { State } from '~/components/dashboard-items';
 import { Component } from '~/elements/base/fc';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
@@ -51,6 +52,10 @@ export const Dashboard: Component = () => {
 
   return (
     <CenteredSection id={'music'}>
+      <State
+        state={dashboardData?.statusName}
+        userId={dashboardData?.user?.id}
+      />
       <DashboardGrid data={dashboardData} />
       <Divider thin />
       <MusicHeading size={'4'}>Top Tracks</MusicHeading>

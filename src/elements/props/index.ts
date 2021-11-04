@@ -22,7 +22,13 @@ export const gradientToClassName = (
 ): string => {
   // TODO: Validate if gradient is of expected type
   if (!gradient) return '';
-  return `${isDivider ? '' : 'text-gradient'} ${gradient} ${forceGradient ? 'forced' : ''}`.trim();
+  return [
+    isDivider ? '' : 'text-gradient',
+    gradient,
+    forceGradient ? 'forced' : '',
+  ]
+    .join(' ')
+    .trim();
 };
 
 export type TextShadowOptions =
@@ -44,5 +50,7 @@ export const textShadowToClassName = (
 ): string => {
   // TODO: Validate if shadow is of expected type
   if (!shadow) return '';
-  return `text-shadow ${shadow} ${asGradient ? 'as-gradient' : ''}`.trim();
+  return ['text-shadow', shadow, asGradient ? 'as-gradient' : '']
+    .join(' ')
+    .trim();
 };

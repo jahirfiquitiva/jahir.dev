@@ -34,7 +34,9 @@ const BaseHeading: Component<HeadingProps> = (props) => {
   } = props;
   const shadowClass = textShadowToClassName(shadowColor);
   const gradientClass = gradientToClassName(gradientColor, forceGradient);
-  const fullClassName = `${shadowClass} ${gradientClass} ${className}`.trim();
+  const fullClassName = [shadowClass, gradientClass, className]
+    .join(' ')
+    .trim();
 
   if (size === '6') return <h6 className={fullClassName}>{children}</h6>;
   if (size === '5') return <h5 className={fullClassName}>{children}</h5>;

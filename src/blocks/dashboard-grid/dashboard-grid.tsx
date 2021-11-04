@@ -1,7 +1,5 @@
 import { SongCard } from '~/components/cards';
-import { Status } from '~/components/dashboard-items';
-import { Activity } from '~/components/dashboard-items/activity';
-import { Counter } from '~/components/dashboard-items/counter';
+import { Status, Activity, Counter } from '~/components/dashboard-items';
 import { Component, ComponentProps } from '~/elements/base/fc';
 import {
   MasonryGrid,

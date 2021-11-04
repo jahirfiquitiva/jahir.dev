@@ -103,7 +103,6 @@ const BaseSongCard = styled(ExtLinkCard)`
 const CurrentlyPlayingTitle = styled.p`
   font-size: calc(var(--base-font-size) * 0.95);
   font-weight: 400;
-  opacity: 0.9;
   -webkit-text-decoration: none !important;
   text-decoration: none !important;
   text-decoration-color: rgba(0, 0, 0, 0) !important;
