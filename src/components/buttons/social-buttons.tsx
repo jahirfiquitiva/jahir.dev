@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
-import {
-  mdiGithub,
-  mdiLinkedin,
-  mdiInstagram,
-  mdiTwitter,
-  mdiTimelineTextOutline,
-} from '@mdi/js';
+import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
+import Image from 'next/image';
 
 import { Component } from '~/elements/base/fc';
 import { LinkIconButton, LinkButtonProps } from '~/elements/simple/button';
@@ -122,8 +117,14 @@ export const PolyworkIconButton: Component<LinkButtonProps> = (props) => {
     <BasePolyworkIconButton
       {...props}
       title={'Link to Polywork Timeline'}
-      icon={mdiTimelineTextOutline}
       to={'https://timeline.jahir.dev'}
-    />
+    >
+      <Image
+        src={'/static/images/signature/polywork.svg'}
+        alt={'Polywork logo'}
+        width={21}
+        height={21}
+      />
+    </BasePolyworkIconButton>
   );
 };
