@@ -78,9 +78,9 @@ export const Inspiration: Component<InspirationProps> = (props) => {
     <CenteredSection id={'inspiration'}>
       <SectionHeading
         size={'3'}
-        shadowColor={'green'}
-        gradientColor={'green-to-yellow'}
-        emoji={'🍀'}
+        shadowColor={'brand'}
+        gradientColor={'brand-to-blue'}
+        emoji={'🌎'}
       >
         Inspiration
       </SectionHeading>
