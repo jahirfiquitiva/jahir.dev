@@ -12,10 +12,9 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
+import { getWebsiteFavicon } from './src/lib/favicons';
 import { defaultKeywords, RehypeElement } from './src/types';
-import {
-  getPostDescription,
-} from './src/utils/get-post-data';
+import { getPostDescription } from './src/utils/get-post-data';
 import getRandomItemFrom from './src/utils/get-random-item';
 import { unique } from './src/utils/unique';
 
@@ -101,6 +100,39 @@ const Blog = defineDocumentType(() => ({
   computedFields,
 }));
 
+const getItemFavicon = async (link: string) =>
+  new Promise(
+    // eslint-disable-next-line no-async-promise-executor
+    async (resolve) => {
+      let favicon = '';
+      try {
+        favicon = await getWebsiteFavicon(link);
+      } catch (e) {}
+      resolve(favicon);
+    },
+  );
+
+const computedInspirationFields: ComputedFields = {
+  favicon: {
+    type: 'string',
+    resolve: async (doc) => {
+      const favicon = await getItemFavicon(doc.link);
+      return favicon;
+    },
+  },
+};
+
+const InspirationItem = defineDocumentType(() => ({
+  name: 'InspirationItem',
+  filePathPattern: 'inspiration/*.json',
+  fields: {
+    title: { type: 'string', required: true },
+    link: { type: 'string', required: true },
+    favicon: { type: 'string' },
+  },
+  computedFields: computedInspirationFields,
+}));
+
 const transformToC = (toc: RehypeElement): RehypeElement => {
   return {
     type: 'element',
@@ -125,7 +157,7 @@ const transformToC = (toc: RehypeElement): RehypeElement => {
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog],
+  documentTypes: [Blog, InspirationItem],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

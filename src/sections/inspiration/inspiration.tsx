@@ -26,7 +26,7 @@ const InspirationCard = styled(ExtLinkCard)`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  & h6,
+  & h4,
   & p {
     white-space: nowrap;
     overflow: hidden;
@@ -35,7 +35,7 @@ const InspirationCard = styled(ExtLinkCard)`
 
   &:hover,
   &:focus {
-    & h6,
+    & h4,
     & p {
       text-decoration: underline;
     }
