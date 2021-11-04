@@ -29,11 +29,12 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  min-height: 48px;
   max-height: calc(var(--toolbar-height) - 0.6rem);
   min-width: 48px;
   height: 100%;
   border-radius: 4px;
-  padding: 0 1rem 0 0.8rem;
+  padding: 0 0.8rem;
 
   &.active,
   &:active,

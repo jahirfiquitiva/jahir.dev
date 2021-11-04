@@ -13,6 +13,7 @@ import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 
 export const ToolbarLogo = styled(ToolbarLink)`
+  min-height: unset;
   max-height: calc(var(--toolbar-height) - 0.8rem);
   grid-row: 1;
   grid-column: 1;

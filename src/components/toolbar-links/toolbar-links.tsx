@@ -87,8 +87,9 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
     const { asPath: pathname } = router;
     if (pathname.includes('/uses')) setActiveLink(2);
     else if (pathname.includes('/blog')) setActiveLink(1);
-    else if (pathname.includes('/donate')) setActiveLink(3);
-    else if (pathname.includes('/contact')) setActiveLink(4);
+    else if (pathname.includes('/dashboard')) setActiveLink(3);
+    else if (pathname.includes('/donate')) setActiveLink(4);
+    else if (pathname.includes('/contact')) setActiveLink(5);
     else setActiveLink(-1);
   }, [router]);
 
@@ -97,30 +98,32 @@ export const ToolbarLinks: Component<ToolbarLinksProps> = (props) => {
       <ToolbarLink
         to={'/blog'}
         gradientColor={'blue-to-green'}
-        emoji={'📝'}
         label={'Blog'}
         active={activeLink === 1}
       />
       <ToolbarLink
         to={'/uses'}
-        gradientColor={'yellow-to-orange'}
-        emoji={'⚡️'}
+        gradientColor={'green-to-yellow'}
         label={'Uses'}
         active={activeLink === 2}
       />
       <ToolbarLink
+        to={'/dashboard'}
+        gradientColor={'yellow-to-orange'}
+        label={'Dashboard'}
+        active={activeLink === 3}
+      />
+      <ToolbarLink
         to={'/donate'}
         gradientColor={'red-to-purple'}
-        emoji={'🧡'}
         label={'Donate'}
-        active={activeLink === 3}
+        active={activeLink === 4}
       />
       <ToolbarLink
         to={'/contact'}
         gradientColor={'brand-to-blue'}
-        emoji={'📬'}
         label={'Contact'}
-        active={activeLink === 4}
+        active={activeLink === 5}
       />
     </ToolbarLinksContainer>
   );

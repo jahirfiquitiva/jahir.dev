@@ -1,12 +1,14 @@
 import { Component } from '~/elements/base/fc';
 import { gradientToClassName } from '~/elements/props';
 import { Heading, HeadingProps } from '~/elements/simple/heading';
+import { useTheme } from '~/providers/theme';
 
 interface SectionHeadingProps extends HeadingProps {
   emoji?: string;
 }
 
 export const SectionHeading: Component<SectionHeadingProps> = (props) => {
+  const { isDark } = useTheme();
   const { emoji, gradientColor, children, ...otherProps } = props;
 
   const renderEmoji = () => {
@@ -17,7 +19,9 @@ export const SectionHeading: Component<SectionHeadingProps> = (props) => {
   return (
     <Heading {...otherProps}>
       {renderEmoji()}
-      <span className={gradientToClassName(gradientColor)}>{children}</span>
+      <span className={gradientToClassName(gradientColor, isDark)}>
+        {children}
+      </span>
     </Heading>
   );
 };
