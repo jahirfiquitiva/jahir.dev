@@ -14,7 +14,7 @@ const ThemeContext = createContext<ThemeContextValue>({ isDark: false });
 
 export const ThemeProvider: Component<ThemeProps> = (props) => {
   const [mounted, setMounted] = useState(false);
-  const { resolvedTheme, setTheme } = useNextTheme();
+  const { theme, resolvedTheme, setTheme } = useNextTheme();
 
   useEffect(() => setMounted(true), []);
 
@@ -23,7 +23,7 @@ export const ThemeProvider: Component<ThemeProps> = (props) => {
   const { children } = props;
 
   const themeContextValue: ThemeContextValue = {
-    isDark: resolvedTheme === 'dark',
+    isDark: (resolvedTheme || theme) === 'dark',
     toggleTheme: () => {
       setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
     },
