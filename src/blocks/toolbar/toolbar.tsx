@@ -129,6 +129,19 @@ const ThemeToggleButton = styled(ToolbarButton)`
 export const Toolbar: Component = () => {
   const { isDark, toggleTheme } = useTheme();
   const [expanded, setExpanded] = useState(false);
+  const [linksExpanded, setLinksExpanded] = useState(expanded);
+
+  const handleMenuExpansion = () => {
+    if (!expanded) {
+      setExpanded(true);
+      setLinksExpanded(true);
+    } else {
+      setLinksExpanded(false);
+      setTimeout(() => {
+        setExpanded(false);
+      }, 250);
+    }
+  };
 
   return (
     <NavigationContainer className={expanded ? 'active' : ''}>
@@ -140,7 +153,7 @@ export const Toolbar: Component = () => {
         >
           <Logo className={'logosvg'} />
         </ToolbarLogo>
-        <ToolbarLinks active={expanded} />
+        <ToolbarLinks active={linksExpanded} />
         <ToolbarActionButtons>
           <ThemeToggleButton onClick={toggleTheme}>
             {isDark ? '🌞' : '🌚'}
@@ -148,9 +161,7 @@ export const Toolbar: Component = () => {
           <ToolbarMenuToggle
             name={expanded ? 'Collapse menu' : 'Expand menu'}
             active={expanded}
-            onClick={() => {
-              setExpanded(!expanded);
-            }}
+            onClick={handleMenuExpansion}
           />
         </ToolbarActionButtons>
       </ToolbarContainer>
