@@ -36,15 +36,6 @@ const defaultNextConfig = {
     ],
   },
   webpack(config, { dev, isServer }) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-      type: 'javascript/auto',
-      issuer: {
-        and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
-      },
-    });
-
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
         react: 'preact/compat',
