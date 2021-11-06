@@ -32,6 +32,10 @@ const StateChip = styled(Chip)`
   font-weight: 600;
   font-family: var(--manrope-font);
   letter-spacing: 0.0625rem;
+
+  & > :first-of-type {
+    margin-right: 0.6rem;
+  }
 `;
 
 const StateCircle = styled.span`
@@ -40,6 +44,7 @@ const StateCircle = styled.span`
   background-color: rgb(var(--color-values));
   border-radius: 50%;
   animation: pulse-animation 2s infinite;
+  margin-right: 0.6rem;
 
   @keyframes pulse-animation {
     0% {

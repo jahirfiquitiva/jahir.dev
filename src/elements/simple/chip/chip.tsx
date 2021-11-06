@@ -27,13 +27,17 @@ export const Chip = styled.span`
   }
 
   & > :first-of-type {
-    margin-right: 0.4rem !important;
+    margin-right: 0.4rem;
   }
 `;
 
 export const ImageChip = styled(Chip)`
   padding: 0.4rem;
   padding-right: 0.8rem;
+
+  & > :first-of-type {
+    margin-right: 0.4rem !important;
+  }
 
   & img {
     border-radius: 50%;

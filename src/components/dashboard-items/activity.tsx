@@ -28,7 +28,14 @@ const CardTexts = styled.div`
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  margin: 0 0.8rem;
+
+  &.has-image-left {
+    margin-left: 0.8rem;
+  }
+
+  &.has-image-right {
+    margin-right: 0.8rem;
+  }
 
   & p {
     color: var(--text-secondary);
@@ -92,6 +99,14 @@ export const Activity: Component<ActivityProps> = (props) => {
   */
 
   if (!data) return null;
+
+  const cardTextsClasses = [
+    data?.largeImage ? 'has-image-left' : '',
+    data?.smallImage ? 'has-image-right' : '',
+  ]
+    .join(' ')
+    .trim();
+
   return (
     <DashboardCard to={to}>
       <CardContent>
@@ -105,7 +120,7 @@ export const Activity: Component<ActivityProps> = (props) => {
             />
           </ActivityIconContainer>
         )}
-        <CardTexts>
+        <CardTexts className={cardTextsClasses}>
           <p>
             {isForCodingApp ? 'Using ' : ''}
             {data?.name}

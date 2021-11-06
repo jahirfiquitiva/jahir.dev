@@ -33,6 +33,7 @@ const TopTracksText = styled.p`
 
 export const Dashboard: Component = () => {
   const dashboardData = useDashboardData();
+  console.log(dashboardData);
   const { data: topTracksData, loading: loadingTopTracks } =
     useRequest<{ tracks?: Array<TopTrackData> }>('/api/top-tracks');
 
