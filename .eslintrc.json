@@ -12,6 +12,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
+    "import/no-extraneous-dependencies": "off",
     "quotes": ["error", "single", { "avoidEscape": true }],
     "max-lines": ["error", 300],
     "max-params": ["error", 6],

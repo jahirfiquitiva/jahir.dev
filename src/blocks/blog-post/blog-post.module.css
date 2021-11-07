@@ -17,7 +17,7 @@
 
 .post .toc .title {
   font-family: var(--manrope-font);
-  font-size: calc(var(--base-font-size) * 1.5);
+  font-size: var(--font-size-md);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0;

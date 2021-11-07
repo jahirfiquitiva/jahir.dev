@@ -1,0 +1,9 @@
+@import './variables';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import './../styles/fonts/all';
+}
