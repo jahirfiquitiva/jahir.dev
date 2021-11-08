@@ -4,16 +4,11 @@ import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading } from '~/components/section-heading';
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
-import {
-  buildChipStyles,
-  Chip,
-  ChipGroup,
-  ImageChip,
-} from '~/elements/simple/chip';
+import { buildChipStyles, ChipGroup, ImageChip } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
+import Link from '~/new-components/elements/simple/link';
 import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 import { Supporter, supporters } from '~/types/supporter';
@@ -75,7 +70,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
   const color = getColorFromPalette(paletteData, isDark);
 
   return (
-    <ExtLink to={link || '#'} underline={false}>
+    <Link href={link || '#'} underline={false}>
       <SupporterLinkChip style={buildChipStyles(color)}>
         <Image
           src={photo || ''}
@@ -87,7 +82,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
         />
         &nbsp;{name}
       </SupporterLinkChip>
-    </ExtLink>
+    </Link>
   );
 };
 
@@ -129,11 +124,11 @@ export const DonateSupporters: Component = () => {
           return (
             <Fragment key={categoryIndex}>
               <Heading size={'5'}>
-                <ExtLink
-                  to={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
+                <Link
+                  href={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
                 >
                   {emoji}&nbsp;&nbsp;&nbsp;{name.join(' ').trim()}&nbsp;Sponsor
-                </ExtLink>
+                </Link>
               </Heading>
               {category?.description && (
                 <p className={'small'}>{category?.description}</p>

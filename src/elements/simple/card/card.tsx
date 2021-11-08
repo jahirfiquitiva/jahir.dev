@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { ExtLink } from '~/elements/base/ext-link';
+import Link from '~/new-components/elements/simple/link';
 
 export const baseCardStyles = `
   --border-radius: 6px;
@@ -44,7 +44,7 @@ const baseLinkCardStyles = `
   }
 `;
 
-export const ExtLinkCard = styled(ExtLink)`
+export const ExtLinkCard = styled(Link)`
   display: block;
   ${baseLinkCardStyles}
 `;

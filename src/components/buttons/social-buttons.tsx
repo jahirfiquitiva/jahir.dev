@@ -3,9 +3,11 @@ import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
 import Image from 'next/image';
 
 import { Component } from '~/elements/base/fc';
-import { LinkIconButton, LinkButtonProps } from '~/elements/simple/button';
+import LinkButton, {
+  LinkButtonProps,
+} from '~/new-components/elements/simple/link-button';
 
-const BaseGitHubIconButton = styled(LinkIconButton)`
+const BaseGitHubIconButton = styled(LinkButton)`
   background-color: #333;
 
   &:hover,
@@ -14,18 +16,20 @@ const BaseGitHubIconButton = styled(LinkIconButton)`
   }
 `;
 
-export const GitHubIconButton: Component<LinkButtonProps> = (props) => {
+export const GitHubIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BaseGitHubIconButton
       {...props}
       title={'Link to GitHub'}
       icon={mdiGithub}
-      to={'https://github.com/jahirfiquitiva'}
+      href={'https://github.com/jahirfiquitiva'}
     />
   );
 };
 
-const BaseLinkedInIconButton = styled(LinkIconButton)`
+const BaseLinkedInIconButton = styled(LinkButton)`
   background-color: #0077b5;
 
   &:hover,
@@ -34,18 +38,20 @@ const BaseLinkedInIconButton = styled(LinkIconButton)`
   }
 `;
 
-export const LinkedInIconButton: Component<LinkButtonProps> = (props) => {
+export const LinkedInIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BaseLinkedInIconButton
       {...props}
       title={'Link to LinkedIn'}
       icon={mdiLinkedin}
-      to={'https://linkedin.com/in/jahirfiquitiva'}
+      href={'https://linkedin.com/in/jahirfiquitiva'}
     />
   );
 };
 
-const BaseTwitterIconButton = styled(LinkIconButton)`
+const BaseTwitterIconButton = styled(LinkButton)`
   background-color: #1da1f2;
 
   &:hover,
@@ -54,18 +60,20 @@ const BaseTwitterIconButton = styled(LinkIconButton)`
   }
 `;
 
-export const TwitterIconButton: Component<LinkButtonProps> = (props) => {
+export const TwitterIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BaseTwitterIconButton
       {...props}
       title={'Link to Twitter'}
       icon={mdiTwitter}
-      to={'https://twitter.com/jahirfiquitiva'}
+      href={'https://twitter.com/jahirfiquitiva'}
     />
   );
 };
 
-const BaseInstagramIconButton = styled(LinkIconButton)`
+const BaseInstagramIconButton = styled(LinkButton)`
   background-color: #833ab4;
   background-color: #d6249f;
   background: radial-gradient(
@@ -92,18 +100,20 @@ const BaseInstagramIconButton = styled(LinkIconButton)`
   }
 `;
 
-export const InstagramIconButton: Component<LinkButtonProps> = (props) => {
+export const InstagramIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BaseInstagramIconButton
       {...props}
       title={'Link to Instagram'}
       icon={mdiInstagram}
-      to={'https://instagram.com/jahirfiquitiva'}
+      href={'https://instagram.com/jahirfiquitiva'}
     />
   );
 };
 
-const BasePolyworkIconButton = styled(LinkIconButton)`
+const BasePolyworkIconButton = styled(LinkButton)`
   background-color: #6959fc;
 
   &:hover,
@@ -112,12 +122,14 @@ const BasePolyworkIconButton = styled(LinkIconButton)`
   }
 `;
 
-export const PolyworkIconButton: Component<LinkButtonProps> = (props) => {
+export const PolyworkIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BasePolyworkIconButton
       {...props}
       title={'Link to Polywork Timeline'}
-      to={'https://timeline.jahir.dev'}
+      href={'https://timeline.jahir.dev'}
     >
       <Image
         src={'/static/images/signature/polywork.svg'}

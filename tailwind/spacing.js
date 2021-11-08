@@ -11,4 +11,5 @@ module.exports = {
   32: '3.2rem',
   48: '4.8rem',
   56: '5.6rem',
+  button: '42px',
 };

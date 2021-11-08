@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 import { HelloHeading } from '~/components/hello-heading';
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
 import { gradientToClassName } from '~/elements/props';
 import { Heading } from '~/elements/simple/heading';
+import Link from '~/new-components/elements/simple/link';
 import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 
@@ -94,9 +94,9 @@ export const Hello: Component = () => {
         </NameAudio>
         <HeadingParagraph>
           Passionate and creative full-stack software engineer based in{' '}
-          <ExtLink to={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
+          <Link href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
             Colombia 🇨🇴
-          </ExtLink>
+          </Link>
         </HeadingParagraph>
       </HeadingContainer>
 

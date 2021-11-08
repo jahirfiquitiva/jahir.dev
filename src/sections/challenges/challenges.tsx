@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
+import Link from '~/new-components/elements/simple/link';
 import { viewports } from '~/types';
 import { CodingChallenge } from '~/types/challenge';
 
@@ -43,9 +43,7 @@ export const Challenges: Component<ChallengesProps> = (props) => {
         {challenges?.map((challenge, i) => {
           return (
             <ChallengeItem key={i}>
-              <ExtLink to={`/coding/${challenge.slug}`} newTab={false}>
-                {challenge?.title}
-              </ExtLink>
+              <Link href={`/coding/${challenge.slug}`}>{challenge?.title}</Link>
             </ChallengeItem>
           );
         })}

@@ -2,10 +2,10 @@
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
-import { Logo } from '~/elements/simple/logo';
 import { gradientToClassName } from '~/elements/props';
+import { Logo } from '~/elements/simple/logo';
+import Link from '~/new-components/elements/simple/link';
 import { mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -17,7 +17,7 @@ const gradientUnderlineStyles = `
   text-decoration-skip: edges;
 `;
 
-const FooterHomeLink = styled(ExtLink)`
+const FooterHomeLink = styled(Link)`
   position: relative;
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ const FooterGridSection = styled.div`
   }
 `;
 
-const FooterGridLink = styled(ExtLink)`
+const FooterGridLink = styled(Link)`
   margin: 0.4rem 0;
   font-size: calc(var(--base-font-size) * 1.1);
 
@@ -221,8 +221,7 @@ export const Footer: Component = () => {
       <FooterGrid>
         <FooterGridSection>
           <FooterHomeLink
-            to={'/'}
-            newTab={false}
+            href={'/'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
             <Logo className={'logosvg'} />{' '}
@@ -236,8 +235,7 @@ export const Footer: Component = () => {
         </FooterGridSection>
         <FooterGridSectionTwo>
           <FooterGridLink
-            to={'/blog'}
-            newTab={false}
+            href={'/blog'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
           >
             <span>📝&nbsp;&nbsp;</span>
@@ -246,8 +244,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/dashboard'}
-            newTab={false}
+            href={'/dashboard'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
             <span>✨&nbsp;&nbsp;</span>
@@ -256,8 +253,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/donate'}
-            newTab={false}
+            href={'/donate'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
             <span>🧡&nbsp;&nbsp;</span>
@@ -266,8 +262,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/contact'}
-            newTab={false}
+            href={'/contact'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
             <span>📬&nbsp;&nbsp;</span>
@@ -278,8 +273,7 @@ export const Footer: Component = () => {
         </FooterGridSectionTwo>
         <FooterGridSectionThree>
           <FooterGridLink
-            to={'/uses'}
-            newTab={false}
+            href={'/uses'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
             <span>⚡️&nbsp;&nbsp;</span>
@@ -288,8 +282,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/inspiration'}
-            newTab={false}
+            href={'/inspiration'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
             <span>🌎&nbsp;&nbsp;</span>
@@ -300,8 +293,7 @@ export const Footer: Component = () => {
         </FooterGridSectionThree>
         <FooterGridSectionFour>
           <FooterGridLink
-            to={'/thanks'}
-            newTab={false}
+            href={'/thanks'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
             <span>🧡&nbsp;&nbsp;</span>
@@ -310,8 +302,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
-            to={'/#projects'}
-            newTab={false}
+            href={'/#projects'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
           >
             <span>👨‍💻&nbsp;&nbsp;</span>

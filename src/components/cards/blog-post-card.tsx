@@ -93,9 +93,8 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   return (
     <Link href={rightLink} passHref={true}>
       <BaseBlogPostCard
-        to={rightLink}
-        newTab={false}
-        className={'nodeco'}
+        href={rightLink}
+        underline={false}
         style={{
           ...buildShadowColors(color),
           backgroundColor: color || 'unset',

@@ -9,8 +9,8 @@ import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
-import { LinkButton } from '~/elements/simple/button';
 import { Divider } from '~/elements/simple/divider';
+import LinkButton from '~/new-components/elements/simple/link-button';
 import { projects, mediaQueries, viewports, buildMediaQuery } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`
@@ -77,7 +77,7 @@ export const Projects: Component = () => {
 
         <ProjectsHeaderLinksContainer>
           <GitHubStats />
-          <LinkButton to={'/resume'} icon={mdiFileCodeOutline}>
+          <LinkButton href={'/resume'} icon={mdiFileCodeOutline}>
             View resume
           </LinkButton>
         </ProjectsHeaderLinksContainer>

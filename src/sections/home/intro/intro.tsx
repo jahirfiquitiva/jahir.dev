@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
-import { Details } from '~/elements/simple/details';
+import Link from '~/new-components/elements/simple/link';
 import { Hello, HelloParagraph } from '~/sections/home/hello';
 import { mediaQueries } from '~/types';
 
@@ -36,40 +35,35 @@ export const Intro: Component = () => {
         <IntroParagraph>
           I consider myself a curious and inquisitive person, so on my spare
           time I like to work on{' '}
-          <ExtLink to={'#projects'} newTab={false} title={'Link to projects'}>
+          <Link href={'#projects'} title={'Link to projects'}>
             side projects
-          </ExtLink>{' '}
+          </Link>{' '}
           and try to constantly learn something new to improve my skillset.
         </IntroParagraph>
 
         <IntroParagraph>
           When not coding, I like to watch TV shows and movies, play some games
           with friends or hang out with them. I&apos;m also{' '}
-          <ExtLink to={'/music'} newTab={false}>
-            listening to music
-          </ExtLink>{' '}
-          98% of the time.
+          <Link href={'/music'}>listening to music</Link> 98% of the time.
         </IntroParagraph>
       </ParagraphsContainer>
       <div>
         <ExtraParagraph>
           Learn more about me on{' '}
-          <ExtLink
-            to={'https://timeline.jahir.dev/'}
+          <Link
+            href={'https://timeline.jahir.dev/'}
             title={'Link to my timeline'}
           >
             my timeline
-          </ExtLink>{' '}
+          </Link>{' '}
           and please don&apos;t hesitate to{' '}
-          <ExtLink to={'contact'} newTab={false}>
-            contact me
-          </ExtLink>
+          <Link href={'/contact'}>contact me</Link>
           !
           <br />
           If curious, you can click on my name to hear its{' '}
-          <ExtLink to={'/static/audio/name-pronunciation.mp3'}>
+          <Link href={'/static/audio/name-pronunciation.mp3'}>
             pronunciation
-          </ExtLink>
+          </Link>
           .
         </ExtraParagraph>
         <IntroParagraph>

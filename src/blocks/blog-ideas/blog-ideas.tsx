@@ -5,10 +5,10 @@ import { mdiLightbulbOnOutline, mdiMessageArrowRightOutline } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
 import { Component } from '~/elements/base/fc';
-import { Button } from '~/elements/simple/button';
 import { Field } from '~/elements/simple/field';
 import { Heading } from '~/elements/simple/heading';
 import { formium } from '~/lib/formium';
+import Button from '~/new-components/elements/simple/button';
 import { mediaQueries } from '~/types';
 
 const BlogIdeasContainer = styled.div`
@@ -213,7 +213,6 @@ export const BlogIdeas: Component = () => {
 
           <Button
             name={'Submit blog post ideas'}
-            title={'Submit blog post ideas'}
             icon={mdiMessageArrowRightOutline}
             onClick={(e: any) => {
               e.preventDefault();

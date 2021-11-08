@@ -7,7 +7,7 @@ interface BaseLinkProps {
   underline?: boolean;
 }
 
-interface ExtLinkProps extends ComponentProps, BaseLinkProps {
+export interface LinkProps extends ComponentProps, BaseLinkProps {
   href: string;
   title?: string;
   newTab?: boolean;
@@ -27,7 +27,7 @@ const StyledLink = styled.a<BaseLinkProps>(({ underline }) => [
 const isLocalLink = (href: string) =>
   href.startsWith('/') || href.startsWith('#');
 
-const Link: Component<ExtLinkProps> = (props) => {
+const Link: Component<LinkProps> = (props) => {
   const {
     href,
     title,

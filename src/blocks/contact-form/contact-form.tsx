@@ -11,11 +11,11 @@ import {
 } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { Button } from '~/elements/simple/button';
 import { Field } from '~/elements/simple/field';
 import { formium } from '~/lib/formium';
+import Button from '~/new-components/elements/simple/button';
+import Link from '~/new-components/elements/simple/link';
 import { mediaQueries } from '~/types';
 
 const InternalForm = styled.form`
@@ -226,18 +226,13 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
       />
       <FormDisclaimer className={'small'}>
         This site is protected by reCAPTCHA and the Google{' '}
-        <ExtLink to={'https://policies.google.com/privacy'}>
-          Privacy Policy
-        </ExtLink>{' '}
+        <Link href={'https://policies.google.com/privacy'}>Privacy Policy</Link>{' '}
         and{' '}
-        <ExtLink to={'https://policies.google.com/terms'}>
-          Terms of Service
-        </ExtLink>{' '}
+        <Link href={'https://policies.google.com/terms'}>Terms of Service</Link>{' '}
         apply.
       </FormDisclaimer>
       <Button
         name={'Send contact form email'}
-        title={'Send contact form email'}
         disabled={submitting}
         onClick={customFormSubmit}
         icon={mdiMessageArrowRightOutline}

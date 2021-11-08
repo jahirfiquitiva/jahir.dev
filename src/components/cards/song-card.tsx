@@ -165,13 +165,13 @@ export const SongCard: Component<SongCardProps> = (props) => {
   const renderActualCard = () => {
     return (
       <BaseSongCard
+        underline={false}
         className={
-          ['nodeco', !shouldRenderDetails ? 'not-playing' : '']
-            .join(' ')
-            .trim() || undefined
+          [!shouldRenderDetails ? 'not-playing' : ''].join(' ').trim() ||
+          undefined
         }
         title={props.title}
-        to={props.url || '#'}
+        href={props.url || '#'}
         style={buildStyles({
           ...shadowColors,
           backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),

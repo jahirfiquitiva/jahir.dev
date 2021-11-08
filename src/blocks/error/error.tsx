@@ -5,8 +5,8 @@ import { ReactElement } from 'react';
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { OptImage } from '~/elements/base/opt-image';
 import { GradientOptions, TextShadowOptions } from '~/elements/props';
-import { LinkButton } from '~/elements/simple/button';
 import { Heading } from '~/elements/simple/heading';
+import LinkButton from '~/new-components/elements/simple/link-button';
 
 const ErrorContainer = styled.div`
   display: flex;
@@ -138,9 +138,7 @@ export const Error: Component<ErrorProps> = (props) => {
         </Heading>
         <p>{contentOptions[errorType]?.message}</p>
         {renderContactMessage()}
-        <LinkButton to={'/'} newTab={false}>
-          Go back home
-        </LinkButton>
+        <LinkButton href={'/'}>Go back home</LinkButton>
       </>
     );
   };

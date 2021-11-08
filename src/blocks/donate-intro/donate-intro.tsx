@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
 import { SectionHeading } from '~/components/section-heading';
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component } from '~/elements/base/fc';
-import { ButtonGroup } from '~/elements/simple/button';
+import ButtonGroup from '~/new-components/elements/complex/button-group';
+import Link from '~/new-components/elements/simple/link';
 import { mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`
@@ -42,23 +42,23 @@ export const DonateIntro: Component = () => {
         <Paragraph>
           I try really hard to build great apps and provide the best possible
           experience and products to all users, and most of them are{' '}
-          <ExtLink to={'https://github.com/jahirfiquitiva'}>
+          <Link href={'https://github.com/jahirfiquitiva'}>
             open source
-          </ExtLink>
+          </Link>
           . However, that wouldn&apos;t be possible without the help and the
           motivation from{' '}
-          <ExtLink to={'#thanks'} newTab={false}>
+          <Link href={'#thanks'}>
             supporters
-          </ExtLink>
+          </Link>
           !
         </Paragraph>
 
         <Paragraph>
           <b>
             If you like and/or use any of{' '}
-            <ExtLink to={'/#projects'} newTab={false}>
+            <Link href={'/#projects'}>
               my projects
-            </ExtLink>
+            </Link>
             , or want to support my work, please kindly consider donating, so I
             can continue maintaining and improving them as well as creating new
             ones.

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-import { ExtLink } from '~/elements/base/ext-link';
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { Chip } from '~/elements/simple/chip';
+import Link from '~/new-components/elements/simple/link';
 import { DiscordStatusName } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -102,14 +102,14 @@ export const State: Component<StateProps> = (props) => {
     if (!userId || !state) return null;
     const stateTextAndColor: StateTextAndColor = stateToTextAndColor(state);
     return (
-      <ExtLink to={`https://discordapp.com/users/${userId}`} underline={false}>
+      <Link href={`https://discordapp.com/users/${userId}`} underline={false}>
         <StateChip
           style={buildStyles({ '--color-values': stateTextAndColor.color })}
         >
           <StateCircle />
           {stateTextAndColor.text}
         </StateChip>
-      </ExtLink>
+      </Link>
     );
   };
 

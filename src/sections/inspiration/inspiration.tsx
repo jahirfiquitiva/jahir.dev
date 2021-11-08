@@ -94,7 +94,7 @@ export const Inspiration: Component<InspirationProps> = (props) => {
           return (
             <InspirationCard
               key={i}
-              to={item.link}
+              href={item.link}
               title={`Link to ${item.title}'s website`}
             >
               <Heading size={'4'} fontSize={'6'}>

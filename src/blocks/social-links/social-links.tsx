@@ -6,7 +6,7 @@ import {
   PolyworkIconButton,
 } from '~/components/buttons';
 import { Component, ComponentProps } from '~/elements/base/fc';
-import { ButtonGroup } from '~/elements/simple/button';
+import ButtonGroup from '~/new-components/elements/complex/button-group';
 
 interface SocialLinksProps extends ComponentProps {
   iconSize?: number;

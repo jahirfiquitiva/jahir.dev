@@ -1,25 +1,26 @@
 import { mdiSatelliteVariant } from '@mdi/js';
-import Icon from '@mdi/react';
 import { FC } from 'react';
 
-import { Error } from '~/blocks/error';
 import { Page } from '~/blocks/page';
-import { Button as OldButton } from '~/elements/simple/button';
 import Button from '~/new-components/elements/simple/button';
 import Link from '~/new-components/elements/simple/link';
+import LinkButton from '~/new-components/elements/simple/link-button';
 
 const FourHundredFour: FC = () => {
   return (
     <Page
-      title={'Not found! ~ Jahir Fiquitiva 💎'}
-      exactUrl={'https://jahir.dev/404'}
+      title={'New components! ~ Jahir Fiquitiva 💎'}
+      exactUrl={'https://jahir.dev/new'}
     >
       <div className={'flex max-w-3xl mx-auto my-32'}>
         <Button>Hola mundo</Button>
-        <Button>
-          <Icon path={mdiSatelliteVariant} size={1} />
+        <Button icon={mdiSatelliteVariant}>
           <span>Hola mundo</span>
         </Button>
+
+        <LinkButton href={'/dashboard'} icon={mdiSatelliteVariant}>
+          <span>Hola mundo</span>
+        </LinkButton>
         <Link href={'/'}>Home page</Link>
       </div>
     </Page>

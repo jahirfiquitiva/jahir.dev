@@ -72,7 +72,7 @@ export const DashboardCard: Component<DashboardCardProps> = (props) => {
 
   if (to) {
     return (
-      <BaseDashboardLinkCard to={to} className={className} style={style}>
+      <BaseDashboardLinkCard href={to} className={className} style={style}>
         {renderCardContent()}
       </BaseDashboardLinkCard>
     );

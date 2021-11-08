@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 import { mdiHeartOutline, mdiCreditCardOutline, mdiPizza } from '@mdi/js';
 
 import { Component } from '~/elements/base/fc';
-import { LinkButton, LinkButtonProps } from '~/elements/simple/button';
+import LinkButton, {
+  LinkButtonProps,
+} from '~/new-components/elements/simple/link-button';
 
 const BaseGitHubButton = styled(LinkButton)`
   background-color: #c94091;
@@ -15,13 +17,15 @@ const BaseGitHubButton = styled(LinkButton)`
   }
 `;
 
-export const GitHubButton: Component<LinkButtonProps> = (props) => {
+export const GitHubButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BaseGitHubButton
       {...props}
       title={'Link to GitHub Sponsors'}
       icon={mdiHeartOutline}
-      to={'https://github.com/sponsors/jahirfiquitiva'}
+      href={'https://github.com/sponsors/jahirfiquitiva'}
     />
   );
 };
@@ -35,13 +39,13 @@ const BaseBmacButton = styled(BaseGitHubButton)`
   }
 `;
 
-export const BmacButton: Component<LinkButtonProps> = (props) => {
+export const BmacButton: Component<Omit<LinkButtonProps, 'href'>> = (props) => {
   return (
     <BaseBmacButton
       {...props}
       title={'Link to Buy me a Coffee'}
       icon={mdiPizza}
-      to={'https://buymeacoff.ee/jahirfiquitiva'}
+      href={'https://buymeacoff.ee/jahirfiquitiva'}
     />
   );
 };
@@ -55,13 +59,15 @@ const BasePayPalButton = styled(BaseGitHubButton)`
   }
 `;
 
-export const PayPalButton: Component<LinkButtonProps> = (props) => {
+export const PayPalButton: Component<Omit<LinkButtonProps, 'href'>> = (
+  props,
+) => {
   return (
     <BasePayPalButton
       {...props}
       title={'Link to PayPal Donations'}
       icon={mdiCreditCardOutline}
-      to={'https://jahir.xyz/DonatePayPal'}
+      href={'https://jahir.xyz/DonatePayPal'}
     />
   );
 };

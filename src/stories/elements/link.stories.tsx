@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
-import { ExtLink } from '~/elements/base/ext-link';
+import Link from '~/new-components/elements/simple/link';
 
 const LinksContainer = styled.div`
   display: inline-flex;
@@ -11,13 +11,13 @@ const LinksContainer = styled.div`
 export const Default: Story = (args) => {
   return (
     <LinksContainer>
-      <ExtLink
-        to={args.url}
+      <Link
+        href={args.url}
         underline={args.underline}
         title={args.a11yTitle || args.label}
       >
         {args.label}
-      </ExtLink>
+      </Link>
     </LinksContainer>
   );
 };

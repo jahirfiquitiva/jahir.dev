@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { mdiArrowUp } from '@mdi/js';
 import { useState, useEffect, CSSProperties } from 'react';
 
-import { Button } from '~/elements/simple/button';
+import Button from '~/new-components/elements/simple/button';
 import { mediaQueries } from '~/types';
 
 const visibleStyles: CSSProperties = {
@@ -117,6 +117,7 @@ export const BackToTop = () => {
 
   return (
     <BTTButton
+      name={'Back to top button'}
       icon={mdiArrowUp}
       iconSize={1.1}
       onClick={scrollToTop}

@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { mdiAccessPoint } from '@mdi/js';
 import { Meta, Story } from '@storybook/react';
 
-import { Button } from '~/elements/simple/button';
-import { Container } from '~/elements/container';
+import ButtonGroup from '~/new-components/elements/complex/button-group';
+import Button from '~/new-components/elements/simple/button';
 
-const ButtonsContainer = styled(Container)`
+const ButtonsContainer = styled(ButtonGroup)`
   & > button {
     align-self: flex-start;
   }
