@@ -33,9 +33,8 @@ const StyledButton = styled.button`
 `;
 
 export interface ButtonProps extends ComponentProps {
-  name?: string;
+  title: string;
   type?: 'button' | 'reset' | 'submit' | undefined;
-  title?: string;
   icon?: string;
   iconSize?: number;
   disabled?: boolean;
@@ -45,9 +44,8 @@ export interface ButtonProps extends ComponentProps {
 
 const Button: Component<ButtonProps> = (props) => {
   const {
-    name,
     type,
-    title = name,
+    title,
     icon,
     iconSize = 1,
     className,
@@ -60,7 +58,7 @@ const Button: Component<ButtonProps> = (props) => {
   return (
     <StyledButton
       type={type}
-      name={name}
+      name={title}
       title={title}
       aria-label={title}
       className={className}

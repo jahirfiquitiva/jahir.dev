@@ -8,7 +8,7 @@ import { Component, ComponentProps } from '~/elements/base/fc';
 import { buildChipStyles, ChipGroup, ImageChip } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 import { Supporter, supporters } from '~/types/supporter';

@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { Chip } from '~/elements/simple/chip';
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 import { DiscordStatusName } from '~/types';
 import buildStyles from '~/utils/build-styles';
 

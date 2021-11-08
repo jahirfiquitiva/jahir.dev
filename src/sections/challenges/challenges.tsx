@@ -7,7 +7,7 @@ import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 import { viewports } from '~/types';
 import { CodingChallenge } from '~/types/challenge';
 

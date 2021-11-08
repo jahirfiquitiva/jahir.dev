@@ -10,7 +10,7 @@ import {
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
 import { Divider } from '~/elements/simple/divider';
-import LinkButton from '~/new-components/elements/simple/link-button';
+import LinkButton from '~/new-components/atoms/simple/link-button';
 import { projects, mediaQueries, viewports, buildMediaQuery } from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`

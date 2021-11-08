@@ -5,7 +5,7 @@ import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { Divider } from '~/elements/simple/divider';
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 
 const Paragraph = styled.p`
   margin: 0.8rem 0 0.4rem;

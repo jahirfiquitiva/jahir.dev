@@ -4,7 +4,7 @@ import { mdiHeartOutline, mdiCreditCardOutline, mdiPizza } from '@mdi/js';
 import { Component } from '~/elements/base/fc';
 import LinkButton, {
   LinkButtonProps,
-} from '~/new-components/elements/simple/link-button';
+} from '~/new-components/atoms/simple/link-button';
 
 const BaseGitHubButton = styled(LinkButton)`
   background-color: #c94091;

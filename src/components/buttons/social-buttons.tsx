@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Component } from '~/elements/base/fc';
 import LinkButton, {
   LinkButtonProps,
-} from '~/new-components/elements/simple/link-button';
+} from '~/new-components/atoms/simple/link-button';
 
 const BaseGitHubIconButton = styled(LinkButton)`
   background-color: #333;

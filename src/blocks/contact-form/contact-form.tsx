@@ -7,15 +7,14 @@ import {
   mdiEmailOutline,
   mdiMessageArrowRightOutline,
   mdiMessageTextOutline,
-  mdiTextBoxOutline,
 } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
 import { Component, ComponentProps } from '~/elements/base/fc';
 import { Field } from '~/elements/simple/field';
 import { formium } from '~/lib/formium';
-import Button from '~/new-components/elements/simple/button';
-import Link from '~/new-components/elements/simple/link';
+import Button from '~/new-components/atoms/simple/button';
+import Link from '~/new-components/atoms/simple/link';
 import { mediaQueries } from '~/types';
 
 const InternalForm = styled.form`

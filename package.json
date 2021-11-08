@@ -101,7 +101,8 @@
   },
   "babelMacros": {
     "twin": {
-      "preset": "emotion"
+      "preset": "emotion",
+      "sassyPseudo": true
     }
   }
 }

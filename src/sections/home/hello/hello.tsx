@@ -6,7 +6,7 @@ import { HelloHeading } from '~/components/hello-heading';
 import { Component } from '~/elements/base/fc';
 import { gradientToClassName } from '~/elements/props';
 import { Heading } from '~/elements/simple/heading';
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 import { useTheme } from '~/providers/theme';
 import { mediaQueries } from '~/types';
 

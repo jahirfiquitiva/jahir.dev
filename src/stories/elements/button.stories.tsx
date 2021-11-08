@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { mdiAccessPoint } from '@mdi/js';
 import { Meta, Story } from '@storybook/react';
 
-import ButtonGroup from '~/new-components/elements/complex/button-group';
-import Button from '~/new-components/elements/simple/button';
+import ButtonGroup from '~/new-components/atoms/complex/button-group';
+import Button from '~/new-components/atoms/simple/button';
 
 const ButtonsContainer = styled(ButtonGroup)`
   & > button {

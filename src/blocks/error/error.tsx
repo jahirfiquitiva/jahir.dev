@@ -6,7 +6,7 @@ import { Component, ComponentProps } from '~/elements/base/fc';
 import { OptImage } from '~/elements/base/opt-image';
 import { GradientOptions, TextShadowOptions } from '~/elements/props';
 import { Heading } from '~/elements/simple/heading';
-import LinkButton from '~/new-components/elements/simple/link-button';
+import LinkButton from '~/new-components/atoms/simple/link-button';
 
 const ErrorContainer = styled.div`
   display: flex;

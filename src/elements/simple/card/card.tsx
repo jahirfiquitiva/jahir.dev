@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 
 export const baseCardStyles = `
   --border-radius: 6px;

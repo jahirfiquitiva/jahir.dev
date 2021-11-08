@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
-import Link from '~/new-components/elements/simple/link';
+import Link from '~/new-components/atoms/simple/link';
 
 const LinksContainer = styled.div`
   display: inline-flex;
