@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
 import { Component, Activity as ActivityData } from '~/types';
-import { Image } from '~/new-components/atoms/simple/image';
+import { Image } from '~/new-components/atoms/simple';
 
 interface ActivityProps extends DashboardCardProps {
   data?: ActivityData;

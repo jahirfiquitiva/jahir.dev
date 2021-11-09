@@ -6,7 +6,7 @@ import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
-import Link from '~/new-components/atoms/simple/link';
+import { Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, CodingChallenge, viewports } from '~/types';
 
 const ChallengesGrid = styled(MasonryGrid)`

@@ -19,6 +19,18 @@
   --divider-alpha: 0.12;
   --divider-opaque: 9, 17, 34;
   --divider: rgba(var(--divider-opaque), var(--divider-alpha, 0.12));
+
+  --card-base: 56, 103, 214; /* accent color as rgb */
+  --card-shadow-opacity: 0.12;
+  --card-shadow: rgba(var(--card-base), var(--card-shadow-opacity));
+  --card-shadow-border-opacity: 0.2;
+  --card-shadow-border: rgba(
+    var(--card-base),
+    var(--card-shadow-border-opacity)
+  );
+
+  --shadow-color: 0, 0, 0;
+  --shadow-color-full: rgba(var(--shadow-color), var(--card-shadow-opacity));
 }
 
 .dark,
@@ -39,4 +51,8 @@
   --text-tertiary: rgba(235, 240, 251, 0.6);
 
   --divider-opaque: 235, 240, 251;
+
+  --card-base: 136, 164, 230; /* accent color as rgb */
+
+  --shadow-color: 255, 255, 255;
 }

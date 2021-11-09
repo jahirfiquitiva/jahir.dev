@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { usePalette } from 'react-palette';
 
-import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
+import { LinkCard } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
@@ -12,7 +12,7 @@ import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import getReadableColor from '~/utils/get-readable-color';
 
-const BaseBlogPostCard = styled(ExtLinkCard)`
+const BaseBlogPostCard = styled(LinkCard)`
   --border-radius: 8px;
   --shadow-one-size: 4px;
   --shadow-two-size: 8px;

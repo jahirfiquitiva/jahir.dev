@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { ReactElement } from 'react';
 
 import { Heading } from '~/elements/simple/heading';
-import { Image } from '~/new-components/atoms/simple/image';
-import LinkButton from '~/new-components/atoms/simple/link-button';
+import { Image, LinkButton } from '~/new-components/atoms/simple';
 import {
   Component,
   ComponentProps,

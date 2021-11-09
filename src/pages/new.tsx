@@ -1,10 +1,7 @@
-import { mdiSatelliteVariant } from '@mdi/js';
 import { FC } from 'react';
 
 import { Page } from '~/blocks/page';
-import Button from '~/new-components/atoms/simple/button';
-import Link from '~/new-components/atoms/simple/link';
-import LinkButton from '~/new-components/atoms/simple/link-button';
+import { Card, LinkCard } from '~/new-components/atoms/simple';
 
 const FourHundredFour: FC = () => {
   return (
@@ -13,21 +10,17 @@ const FourHundredFour: FC = () => {
       exactUrl={'https://jahir.dev/new'}
     >
       <div className={'flex max-w-3xl mx-auto my-32'}>
-        <Button title={'Hola mundo btn'}>Hola mundo</Button>
-        <Button title={'hola mundo butn 2'} icon={mdiSatelliteVariant}>
-          <span>Hola mundo</span>
-        </Button>
+        <Card>
+          <div className={'p-8'}>
+            <p>Hola mundo</p>
+          </div>
+        </Card>
 
-        <LinkButton
-          title={'Hola mundo link'}
-          href={'/dashboard'}
-          icon={mdiSatelliteVariant}
-        >
-          <span>Hola mundo</span>
-        </LinkButton>
-        <Link title={'home page'} href={'/'}>
-          Home page
-        </Link>
+        <LinkCard href={'/'} title={'Home page'}>
+          <div className={'p-8'}>
+            <p>Hola mundo</p>
+          </div>
+        </LinkCard>
       </div>
     </Page>
   );

@@ -2,16 +2,15 @@ import styled from '@emotion/styled';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import { baseCardStyles } from '~/elements/simple/card';
 import useRequest from '~/hooks/useRequest';
+import { LinkCard } from '~/new-components/atoms/simple';
 import {
   Component,
   GitHubStats as GitHubStatsData,
   mediaQueries,
 } from '~/types';
 
-const GitHubStatsLink = styled.a`
-  ${baseCardStyles}
+const GitHubStatsLink = styled(LinkCard)`
   --divider-alpha: 0.3;
   --divider: rgba(var(--divider-opaque), var(--divider-alpha));
   display: flex;

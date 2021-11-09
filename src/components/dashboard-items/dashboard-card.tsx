@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
+import { Card, LinkCard } from '~/new-components/atoms/simple';
 
-import { Card, ExtLinkCard } from '~/elements/simple/card';
 import { Component, ComponentProps } from '~/types';
 
 const dashboardCardStyles = `
@@ -57,7 +57,7 @@ const BaseDashboardCard = styled(Card)`
   ${dashboardCardStyles}
 `;
 
-const BaseDashboardLinkCard = styled(ExtLinkCard)`
+const BaseDashboardLinkCard = styled(LinkCard)`
   ${dashboardCardStyles}
 `;
 

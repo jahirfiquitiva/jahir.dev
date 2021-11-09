@@ -8,16 +8,15 @@ import {
   MasonryBreakpoints,
   MasonryGrid,
 } from '~/elements/complex/masonry-grid';
-import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
-import { Image } from '~/new-components/atoms/simple/image';
+import { Image, LinkCard } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, InspirationSite, viewports } from '~/types';
 
 const InspirationGrid = styled(MasonryGrid)`
   margin: var(--content-bottom-margin) 0;
 `;
 
-const InspirationCard = styled(ExtLinkCard)`
+const InspirationCard = styled(LinkCard)`
   border: 1px solid var(--divider);
   padding: 0.8rem 1rem;
   white-space: nowrap;

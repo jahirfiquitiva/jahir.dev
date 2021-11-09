@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { ContactForm } from '~/blocks/contact-form';
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/types';
 import { Divider } from '~/elements/simple/divider';
-import Link from '~/new-components/atoms/simple/link';
+import { Link } from '~/new-components/atoms/simple';
+import { Component, ComponentProps } from '~/types';
 
 const Paragraph = styled.p`
   margin: 0.8rem 0 0.4rem;

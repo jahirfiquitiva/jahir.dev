@@ -18,5 +18,9 @@ module.exports = {
     secondary: 'var(--text-secondary)',
     tertiary: 'var(--text-tertiary)',
   },
+  card: {
+    shadow: 'var(--card-shadow)',
+    'shadow-border': 'var(--card-shadow-border)',
+  },
   divider: 'var(--divider)',
 };

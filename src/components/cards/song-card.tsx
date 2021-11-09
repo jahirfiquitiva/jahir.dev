@@ -3,9 +3,8 @@ import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
 import { usePalette } from 'react-palette';
 
-import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
-import { Image } from '~/new-components/atoms/simple/image';
+import { Image, LinkCard } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
@@ -17,7 +16,7 @@ interface SongCardProps extends ComponentProps, TrackData {
   isForNowPlaying?: boolean;
 }
 
-const BaseSongCard = styled(ExtLinkCard)`
+const BaseSongCard = styled(LinkCard)`
   --border-radius: 8px;
   border: none;
   text-decoration-color: currentColor;

@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 import { Chip } from '~/elements/simple/chip';
-import { Image } from '~/new-components/atoms/simple/image';
-import Link from '~/new-components/atoms/simple/link';
+import { Image, Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, DiscordStatusName } from '~/types';
 import buildStyles from '~/utils/build-styles';
 

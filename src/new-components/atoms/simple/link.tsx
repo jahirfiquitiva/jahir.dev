@@ -16,7 +16,10 @@ export interface LinkProps extends ComponentProps, BaseLinkProps {
 
 const BaseLinkStyles = tw`
   inline-block
-  text-accent  
+  text-accent
+  transition-all
+  motion-reduce:transition-none
+  
   hocus:(text-accent-dark dark:text-accent-light)
 `;
 
@@ -31,7 +34,7 @@ const StyledLink = styled.a<BaseLinkProps>(
 const isLocalLink = (href: string) =>
   href.startsWith('/') || href.startsWith('#');
 
-const Link: Component<LinkProps> = (props) => {
+export const Link: Component<LinkProps> = (props) => {
   const {
     title,
     href,
@@ -60,5 +63,3 @@ const Link: Component<LinkProps> = (props) => {
     </NextLink>
   );
 };
-
-export default Link;

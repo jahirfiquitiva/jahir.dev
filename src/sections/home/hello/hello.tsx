@@ -3,8 +3,7 @@ import { useRef } from 'react';
 
 import { HelloHeading } from '~/components/hello-heading';
 import { Heading } from '~/elements/simple/heading';
-import { Image } from '~/new-components/atoms/simple/image';
-import Link from '~/new-components/atoms/simple/link';
+import { Image, Link } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
 

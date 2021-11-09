@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { Meta, Story } from '@storybook/react';
 
-import { Card } from '~/elements/simple/card/card';
-import { Container } from '~/elements/container';
+import { Card } from '~/new-components/atoms/simple';
 
 const CardContent = styled.div`
   padding: 0.8rem;
@@ -10,13 +9,13 @@ const CardContent = styled.div`
 
 export const Default: Story = (args) => {
   return (
-    <Container>
+    <div>
       <Card>
         <CardContent>
           <p>{args.content}</p>
         </CardContent>
       </Card>
-    </Container>
+    </div>
   );
 };
 

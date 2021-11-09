@@ -1,17 +1,23 @@
 import styled from '@emotion/styled';
 import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
-import { Image } from '~/new-components/atoms/simple/image';
 
-import LinkButton, {
+import {
+  Image,
+  LinkButton,
   LinkButtonProps,
-} from '~/new-components/atoms/simple/link-button';
+} from '~/new-components/atoms/simple';
 import { Component } from '~/types';
 
 const BaseGitHubIconButton = styled(LinkButton)`
+  padding: 0.4rem;
+  min-height: 36px;
+  min-width: 36px;
+  color: #fff;
   background-color: #333;
 
   &:hover,
   &:focus {
+    color: #fff !important;
     background-color: #292929;
   }
 `;

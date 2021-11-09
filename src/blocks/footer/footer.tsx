@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
 import { Logo } from '~/elements/simple/logo';
-import Link from '~/new-components/atoms/simple/link';
+import { Link } from '~/new-components/atoms/simple';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 

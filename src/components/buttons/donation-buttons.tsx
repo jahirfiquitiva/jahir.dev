@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 import { mdiHeartOutline, mdiCreditCardOutline, mdiPizza } from '@mdi/js';
 
-import LinkButton, {
-  LinkButtonProps,
-} from '~/new-components/atoms/simple/link-button';
+import { LinkButton, LinkButtonProps } from '~/new-components/atoms/simple';
 import { Component } from '~/types';
 
 const BaseGitHubButton = styled(LinkButton)`

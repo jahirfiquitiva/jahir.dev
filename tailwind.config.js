@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 const borderRadius = require('./tailwind/border-radius');
+const { generateBoxShadows } = require('./tailwind/box-shadows');
 const colors = require('./tailwind/colors');
 const fontFamilies = require('./tailwind/font-families');
 const fontSizes = require('./tailwind/font-sizes');
@@ -29,6 +30,7 @@ module.exports = {
       letterSpacing: {
         button: '0.028575em',
       },
+      boxShadow: generateBoxShadows(),
     },
   },
   variants: {

@@ -8,7 +8,7 @@ import { usePalette } from 'react-palette';
 
 import styles from './blog-post.module.css';
 
-import { Image } from '~/new-components/atoms/simple/image';
+import { Image } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import formatDate from '~/utils/format-date';

@@ -21,6 +21,7 @@ export const ButtonStyles = tw`
   cursor-pointer
   transition-all
   duration-200
+  ease-in-out
 
   hocus:(bg-accent-dark -translate-y-1 min-h-button)
 `;
@@ -42,7 +43,7 @@ export interface ButtonProps extends ComponentProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: Component<ButtonProps> = (props) => {
+export const Button: Component<ButtonProps> = (props) => {
   const {
     type,
     title,
@@ -71,5 +72,3 @@ const Button: Component<ButtonProps> = (props) => {
     </StyledButton>
   );
 };
-
-export default Button;

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import { Image } from '~/new-components/atoms/simple/image';
+import { Image } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
 const CustomLink: Component<ComponentProps & { href: string }> = (props) => {

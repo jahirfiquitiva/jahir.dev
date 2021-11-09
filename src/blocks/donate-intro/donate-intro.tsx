@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
 import { SectionHeading } from '~/components/section-heading';
 import ButtonGroup from '~/new-components/atoms/complex/button-group';
-import Link from '~/new-components/atoms/simple/link';
+import { Link } from '~/new-components/atoms/simple';
 import { Component, mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`

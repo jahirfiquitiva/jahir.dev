@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import tw, { styled } from 'twin.macro';
 
 import { ButtonStyles } from './button';
-import Link, { LinkProps } from './link';
+import { Link, LinkProps } from './link';
 
 import { Component } from '~/types';
 
@@ -24,7 +24,7 @@ export interface LinkButtonProps extends LinkProps {
   disabled?: boolean;
 }
 
-const LinkButton: Component<LinkButtonProps> = (props) => {
+export const LinkButton: Component<LinkButtonProps> = (props) => {
   const { icon, iconSize = 1, children } = props;
 
   return (
@@ -34,5 +34,3 @@ const LinkButton: Component<LinkButtonProps> = (props) => {
     </BaseLinkButton>
   );
 };
-
-export default LinkButton;

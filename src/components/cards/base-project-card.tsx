@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-import { ExtLinkCard } from '~/elements/simple/card';
+import { LinkCard } from '~/new-components/atoms/simple';
 import { mediaQueries } from '~/types';
 
-export const BaseProjectCard = styled(ExtLinkCard)`
+export const BaseProjectCard = styled(LinkCard)`
   --border-radius: 10px;
   border: 1px solid var(--dashed-color);
   width: 100%;
@@ -20,6 +20,10 @@ export const BaseProjectCard = styled(ExtLinkCard)`
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: 60% 1fr;
+  }
+
+  & * {
+    transition: all 0.3s ease-in-out;
   }
 
   .details {
