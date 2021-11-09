@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
+import { Image } from '~/new-components/atoms/simple/image';
 import { Component, ComponentProps } from '~/types';
 
 const CustomLink: Component<ComponentProps & { href: string }> = (props) => {

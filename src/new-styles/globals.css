@@ -7,3 +7,8 @@
 @layer base {
   @import './../styles/fonts/all';
 }
+
+b,
+strong {
+  font-weight: 500;
+}

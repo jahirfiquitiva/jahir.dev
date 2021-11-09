@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import { OptImage } from '~/elements/base/opt-image';
 import { Heading } from '~/elements/simple/heading';
+import { Image } from '~/new-components/atoms/simple/image';
 import LinkButton from '~/new-components/atoms/simple/link-button';
 import {
   Component,
@@ -54,7 +54,7 @@ const FourHundredFourContent = styled(ErrorContent)`
   flex: 1;
 `;
 
-const GifImage = styled(OptImage)`
+const GifImage = styled(Image)`
   max-width: 425px;
 `;
 

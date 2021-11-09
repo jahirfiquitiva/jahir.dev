@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
 import { Component, Activity as ActivityData } from '~/types';
+import { Image } from '~/new-components/atoms/simple/image';
 
 interface ActivityProps extends DashboardCardProps {
   data?: ActivityData;
@@ -114,8 +114,7 @@ export const Activity: Component<ActivityProps> = (props) => {
             <Image
               src={data?.largeImage}
               alt={data?.largeImageText}
-              width={64}
-              height={64}
+              size={64}
             />
           </ActivityIconContainer>
         )}

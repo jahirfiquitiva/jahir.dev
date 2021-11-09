@@ -1,5 +1,4 @@
 import Icon from '@mdi/react';
-import Image from 'next/image';
 import { useState, useMemo } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
@@ -16,6 +15,7 @@ import {
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import getReadableColor from '~/utils/get-readable-color';
+import { Image } from '~/new-components/atoms/simple/image';
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
@@ -80,14 +80,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     >
       <div className={'details'}>
         <div className={'icon-title'}>
-          <Image
-            src={icon}
-            alt={title}
-            width={48}
-            height={48}
-            layout={'fixed'}
-            loading={'lazy'}
-          />
+          <Image src={icon} alt={title} size={48} />
           <Heading size={'4'} fontSize={'6'} style={titleColors}>
             {title}
           </Heading>

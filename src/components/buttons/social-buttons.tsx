@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
-import Image from 'next/image';
+import { Image } from '~/new-components/atoms/simple/image';
 
 import LinkButton, {
   LinkButtonProps,
@@ -128,8 +128,7 @@ export const PolyworkIconButton: Component<SocialIconButtonProps> = (props) => {
       <Image
         src={'/static/images/signature/polywork.svg'}
         alt={'Polywork logo'}
-        width={21}
-        height={21}
+        size={21}
       />
     </BasePolyworkIconButton>
   );

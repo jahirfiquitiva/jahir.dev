@@ -4,14 +4,19 @@ import { mdiFileCodeOutline } from '@mdi/js';
 import { ProjectCard } from '~/components/cards';
 import { GitHubStats } from '~/components/github-stats';
 import { SectionHeading } from '~/components/section-heading';
-import { Component } from '~/types';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
 import { Divider } from '~/elements/simple/divider';
 import LinkButton from '~/new-components/atoms/simple/link-button';
-import { projects, mediaQueries, viewports, buildMediaQuery } from '~/types';
+import {
+  Component,
+  projects,
+  mediaQueries,
+  viewports,
+  buildMediaQuery,
+} from '~/types';
 
 export const ProjectsGrid = styled(MasonryGrid)`
   padding: 1.6rem 0 var(--content-bottom-margin);

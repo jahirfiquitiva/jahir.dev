@@ -5,6 +5,7 @@ import { Component, ComponentProps } from '~/types';
 
 interface BaseLinkProps {
   underline?: boolean;
+  underlineOnHocus?: boolean;
 }
 
 export interface LinkProps extends ComponentProps, BaseLinkProps {
@@ -16,15 +17,16 @@ export interface LinkProps extends ComponentProps, BaseLinkProps {
 const BaseLinkStyles = tw`
   inline-block
   text-accent  
-  hocus:(text-accent-dark)
+  hocus:(text-accent-dark dark:text-accent-light)
 `;
 
-const StyledLink = styled.a<BaseLinkProps>(({ underline }) => [
-  BaseLinkStyles,
-  underline
-    ? tw`underline hocus:(underline)`
-    : tw`no-underline hocus:(no-underline)`,
-]);
+const StyledLink = styled.a<BaseLinkProps>(
+  ({ underline, underlineOnHocus }) => [
+    BaseLinkStyles,
+    underline ? tw`underline` : tw`no-underline`,
+    underlineOnHocus ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+  ],
+);
 
 const isLocalLink = (href: string) =>
   href.startsWith('/') || href.startsWith('#');
@@ -35,6 +37,7 @@ const Link: Component<LinkProps> = (props) => {
     href,
     newTab = !isLocalLink(href),
     underline = true,
+    underlineOnHocus = underline,
     children,
     className,
     style,
@@ -48,6 +51,7 @@ const Link: Component<LinkProps> = (props) => {
         target={newTab ? '_blank' : '_self'}
         rel={'noopener noreferrer'}
         underline={underline}
+        underlineOnHocus={underlineOnHocus}
         className={className}
         style={style}
       >

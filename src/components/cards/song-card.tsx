@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
-import Image from 'next/image';
 import { usePalette } from 'react-palette';
 
 import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
+import { Image } from '~/new-components/atoms/simple/image';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
@@ -142,10 +142,9 @@ export const SongCard: Component<SongCardProps> = (props) => {
     if (shouldRenderDetails && props.image) {
       return (
         <Image
-          alt={props.title}
           src={props.image?.url ?? ''}
-          width={64}
-          height={64}
+          alt={props.title}
+          size={64}
           objectFit={'cover'}
           objectPosition={'center'}
         />

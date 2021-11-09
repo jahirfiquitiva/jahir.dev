@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 
 import { ToolbarLinks } from '~/components/toolbar-links';
-import { Component } from '~/types';
 import {
   ToolbarButton,
   ToolbarMenuToggle,
@@ -10,7 +9,7 @@ import {
 import { ToolbarLink } from '~/elements/complex/toolbar-link';
 import { Logo } from '~/elements/simple/logo';
 import { useTheme } from '~/providers/theme';
-import { mediaQueries } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
 export const ToolbarLogo = styled(ToolbarLink)`
   min-height: unset;

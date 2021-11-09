@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 import { useRef } from 'react';
 
 import { HelloHeading } from '~/components/hello-heading';
 import { Heading } from '~/elements/simple/heading';
+import { Image } from '~/new-components/atoms/simple/image';
 import Link from '~/new-components/atoms/simple/link';
 import { useTheme } from '~/providers/theme';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
@@ -105,8 +105,7 @@ export const Hello: Component = () => {
         <Image
           src={'/static/images/jahir/jahir-hd.jpg'}
           alt={"Jahir's Photo"}
-          height={180}
-          width={180}
+          size={180}
         />
       </ImageContainer>
     </>

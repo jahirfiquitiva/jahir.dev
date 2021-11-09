@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
@@ -7,6 +6,7 @@ import { SectionHeading } from '~/components/section-heading';
 import { buildChipStyles, ChipGroup, ImageChip } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
+import { Image } from '~/new-components/atoms/simple/image';
 import Link from '~/new-components/atoms/simple/link';
 import { useTheme } from '~/providers/theme';
 import {
@@ -85,8 +85,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
           alt={name}
           objectFit={'cover'}
           objectPosition={'center'}
-          width={28}
-          height={28}
+          size={28}
         />
         &nbsp;{name}
       </SupporterLinkChip>
@@ -115,10 +114,7 @@ export const DonateSupporters: Component = () => {
         </TitleContainer>
         <ThanksGifContainer>
           <Image
-            layout={'fill'}
             objectFit={'contain'}
-            loading={'lazy'}
-            decoding={'async'}
             src={'/static/gifs/thanks.gif'}
             alt={
               'Adventure Time characters hugging each other and saying thanks'
@@ -137,6 +133,8 @@ export const DonateSupporters: Component = () => {
                     .join(' ')
                     .trim()} Tier Page`}
                   href={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
+                  underline={false}
+                  underlineOnHocus
                 >
                   {emoji}&nbsp;&nbsp;&nbsp;{name.join(' ').trim()}&nbsp;Sponsor
                 </Link>

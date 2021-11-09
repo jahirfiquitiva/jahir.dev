@@ -10,12 +10,11 @@ import {
 } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
-import { Component, ComponentProps } from '~/types';
 import { Field } from '~/elements/simple/field';
 import { formium } from '~/lib/formium';
 import Button from '~/new-components/atoms/simple/button';
 import Link from '~/new-components/atoms/simple/link';
-import { mediaQueries } from '~/types';
+import { Component, ComponentProps, mediaQueries } from '~/types';
 
 const InternalForm = styled.form`
   margin-bottom: var(--content-bottom-margin);

@@ -2,10 +2,9 @@ import styled from '@emotion/styled';
 
 import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
 import { SectionHeading } from '~/components/section-heading';
-import { Component } from '~/types';
 import ButtonGroup from '~/new-components/atoms/complex/button-group';
 import Link from '~/new-components/atoms/simple/link';
-import { mediaQueries } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`
   display: grid;
@@ -42,7 +41,10 @@ export const DonateIntro: Component = () => {
         <Paragraph>
           I try really hard to build great apps and provide the best possible
           experience and products to all users, and most of them are{' '}
-          <Link title={'Link to Jahir Fiquitiva\'s GitHub profile'} href={'https://github.com/jahirfiquitiva'}>
+          <Link
+            title={"Link to Jahir Fiquitiva's GitHub profile"}
+            href={'https://github.com/jahirfiquitiva'}
+          >
             open source
           </Link>
           . However, that wouldn&apos;t be possible without the help and the

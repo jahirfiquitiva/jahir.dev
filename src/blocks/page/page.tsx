@@ -4,9 +4,8 @@ import Head from 'next/head';
 import { Footer } from '~/blocks/footer';
 import { Toolbar } from '~/blocks/toolbar';
 import { MetaTags } from '~/components/metatags';
-import { Component } from '~/types';
 import { BackToTop } from '~/elements/complex/back-to-top';
-import { PageProps, mediaQueries, defaultKeywords } from '~/types';
+import { Component, PageProps, mediaQueries, defaultKeywords } from '~/types';
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +

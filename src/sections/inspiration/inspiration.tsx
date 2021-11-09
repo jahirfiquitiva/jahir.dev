@@ -1,19 +1,17 @@
 import styled from '@emotion/styled';
 import { mdiWeb } from '@mdi/js';
 import Icon from '@mdi/react';
-import Image from 'next/image';
 
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/types';
-import { OptImage } from '~/elements/base/opt-image';
 import {
   MasonryBreakpoints,
   MasonryGrid,
 } from '~/elements/complex/masonry-grid';
 import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
-import { InspirationSite, viewports } from '~/types';
+import { Image } from '~/new-components/atoms/simple/image';
+import { Component, ComponentProps, InspirationSite, viewports } from '~/types';
 
 const InspirationGrid = styled(MasonryGrid)`
   margin: var(--content-bottom-margin) 0;
@@ -103,7 +101,7 @@ export const Inspiration: Component<InspirationProps> = (props) => {
               {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
               <FaviconLinkContainer>
                 {item.favicon && (item.favicon?.length || 0) ? (
-                  <OptImage
+                  <Image
                     alt={item.title}
                     src={item.favicon ?? ''}
                     avoidNextImage

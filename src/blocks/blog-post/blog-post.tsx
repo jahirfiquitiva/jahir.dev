@@ -8,14 +8,14 @@ import { usePalette } from 'react-palette';
 
 import styles from './blog-post.module.css';
 
-import { OptImage } from '~/elements/base/opt-image';
+import { Image } from '~/new-components/atoms/simple/image';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';
 
-const HeroImage = styled(OptImage)`
+const HeroImage = styled(Image)`
   & img {
     margin-bottom: 2.4rem !important;
     object-fit: cover;

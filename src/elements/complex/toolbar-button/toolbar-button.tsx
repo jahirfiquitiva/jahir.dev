@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/types';
 import { BaseToolbarLink } from '~/elements/complex/toolbar-link';
-import { mediaQueries } from '~/types';
+import { Component, ComponentProps, mediaQueries } from '~/types';
 
 const PseudoToolbarButton = BaseToolbarLink.withComponent('button');
 export const ToolbarButton = styled(PseudoToolbarButton)`

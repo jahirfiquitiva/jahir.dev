@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 import { Chip } from '~/elements/simple/chip';
+import { Image } from '~/new-components/atoms/simple/image';
 import Link from '~/new-components/atoms/simple/link';
 import { Component, ComponentProps, DiscordStatusName } from '~/types';
 import buildStyles from '~/utils/build-styles';
@@ -121,8 +121,7 @@ export const State: Component<StateProps> = (props) => {
       <Image
         src={'/static/images/jahir/animoji.png'}
         alt={'Image of Jahir as an Animoji'}
-        width={144}
-        height={144}
+        size={144}
         quality={100}
       />
       {renderStateChip()}
