@@ -1,25 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import styled from '@emotion/styled';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
+import tw, { styled } from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
-const ImageWrapper = styled.div`
-  position: relative;
-  min-height: 0;
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  overflow: hidden;
+const baseImageWrapperStyles = tw`
+  relative
+  w-full
+  min-h-0
+  max-w-full
+  max-h-full
+  overflow-hidden
+`;
 
+const ImageWrapper = styled.div`
+  ${baseImageWrapperStyles}
   & > div:first-of-type,
   & > span:first-of-type,
   & img {
-    object-fit: contain;
-    position: relative !important;
-    min-height: 0 !important;
-    height: auto !important;
+    ${tw`
+      object-contain
+      relative!
+      min-h-0!
+      h-auto!
+    `}
   }
 `;
 
