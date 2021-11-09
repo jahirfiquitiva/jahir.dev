@@ -77,7 +77,6 @@ export const GitHubStats: Component = (props) => {
       className={className}
       href={'https://github.com/jahirfiquitiva'}
       underline={false}
-      newTab
     >
       <Icon path={mdiStar} size={iconSize} />
       <p>{data?.stars || 0}</p>
