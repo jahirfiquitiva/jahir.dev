@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
 import { Logo } from '~/elements/simple/logo';
-import { Link , GradientSpan } from '~/new-components/atoms/simple';
+import { Link, GradientSpan } from '~/new-components/atoms/simple';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -223,7 +223,7 @@ export const Footer: Component = () => {
             href={'/'}
             underline={false}
             underlineOnHocus={false}
-            >
+          >
             <Logo className={'logosvg'} />{' '}
             <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
               Jahir Fiquitiva
@@ -237,9 +237,11 @@ export const Footer: Component = () => {
           <FooterGridLink
             title={'Link to blog page'}
             href={'/blog'}
-            style={buildStyles({ 'text-decoration': 'underline solid var(--gradient-blue)' })}
+            style={buildStyles({
+              'text-decoration': 'underline solid var(--gradient-blue)',
+            })}
             underline={false}
-            >
+          >
             <span>📝&nbsp;&nbsp;</span>
             <GradientSpan gradientColor={'blue-to-green'} forceGradient>
               Blog
@@ -248,11 +250,13 @@ export const Footer: Component = () => {
           <FooterGridLink
             title={'Link to dashboard page'}
             href={'/dashboard'}
-            style={buildStyles({ 'text-decoration': 'underline solid var(--gradient-yellow)' })}
+            style={buildStyles({
+              'text-decoration': 'underline solid var(--gradient-yellow)',
+            })}
             underline={false}
           >
             <span>✨&nbsp;&nbsp;</span>
-              <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
+            <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
               Dashboard
             </GradientSpan>
           </FooterGridLink>
