@@ -73,10 +73,11 @@ export const GitHubStats: Component = (props) => {
   if (!data || !data?.success) return <></>;
   return (
     <GitHubStatsLink
-      className={`nodeco ${className}`}
+      title={"Link to Jahir's GitHub profile"}
+      className={className}
       href={'https://github.com/jahirfiquitiva'}
-      target={'_blank'}
-      rel={'noopener noreferrer'}
+      underline={false}
+      newTab
     >
       <Icon path={mdiStar} size={iconSize} />
       <p>{data?.stars || 0}</p>

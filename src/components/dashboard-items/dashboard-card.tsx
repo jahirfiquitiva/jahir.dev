@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Card, LinkCard } from '~/new-components/atoms/simple';
 
+import { Card, LinkCard } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
 const dashboardCardStyles = `
