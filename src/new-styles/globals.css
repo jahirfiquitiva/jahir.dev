@@ -3,7 +3,6 @@
 
 @import 'tailwindcss/base';
 @import './texts';
-@import './../styles/text-shadows';
 
 @import 'tailwindcss/components';
 

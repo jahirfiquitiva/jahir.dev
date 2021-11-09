@@ -4,7 +4,6 @@ import {
   Component,
   ComponentProps,
   ComponentWithGradientProps,
-  gradientToClassName,
   gradientToTailwind,
 } from '~/types';
 
@@ -22,16 +21,15 @@ const BaseDivider = tw.hr`
   border-0
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ThinDivider = styled(BaseDivider)`
   ${tw`h-thin-divider`}
 `;
 
 export const Divider: Component<DividerProps> = (props) => {
-  const { gradientColor, thin } = props;
-  const className = gradientToClassName(gradientColor, false, true);
+  const { gradientColor, thin, ...otherProps } = props;
   const tailwind = gradientToTailwind(gradientColor);
-  if (thin) {
-    return <ThinDivider css={tailwind} className={className} />;
-  }
-  return <BaseDivider css={tailwind} className={className} />;
+
+  if (thin) return <ThinDivider css={tailwind} {...otherProps} />;
+  return <BaseDivider css={tailwind} {...otherProps} />;
 };

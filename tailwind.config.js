@@ -26,6 +26,11 @@ module.exports = {
     fontSize: fontSizes,
     screens: viewports,
     spacing,
+    textShadow: {
+      default:
+        'var(--text-shadow-size) var(--text-shadow-size) 0 var(--text-shadow-color);',
+      none: 'none',
+    },
     extend: {
       minHeight: spacing,
       letterSpacing: {
@@ -36,5 +41,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms')], //, require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-textshadow'),
+  ],
 };

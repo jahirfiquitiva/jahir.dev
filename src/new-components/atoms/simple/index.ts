@@ -7,3 +7,4 @@ export * from './heading';
 export * from './image';
 export * from './link-button';
 export * from './link';
+export * from './logo';

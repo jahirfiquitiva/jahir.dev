@@ -2,8 +2,7 @@
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
-import { Logo } from '~/elements/simple/logo';
-import { Link, GradientSpan } from '~/new-components/atoms/simple';
+import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -222,7 +221,9 @@ export const Footer: Component = () => {
             title={'Link to home page'}
             href={'/'}
             underline={false}
-            underlineOnHocus={false}
+            style={buildStyles({
+              'text-decoration': 'underline solid var(--gradient-brand)',
+            })}
           >
             <Logo className={'logosvg'} />{' '}
             <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
@@ -266,9 +267,9 @@ export const Footer: Component = () => {
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
             <span>🧡&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('red-to-purple', true)}>
+            <GradientSpan gradientColor={'red-to-purple'} forceGradient>
               Donate
-            </span>
+            </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
             title={'Link to page page'}
@@ -276,9 +277,9 @@ export const Footer: Component = () => {
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
             <span>📬&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('brand-to-blue', true)}>
+            <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
               Contact
-            </span>
+            </GradientSpan>
           </FooterGridLink>
         </FooterGridSectionTwo>
         <FooterGridSectionThree>
@@ -288,9 +289,9 @@ export const Footer: Component = () => {
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
             <span>⚡️&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('yellow-to-orange', true)}>
+            <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
               Uses
-            </span>
+            </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
             title={'Link to inpsiration page'}
@@ -298,9 +299,9 @@ export const Footer: Component = () => {
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
             <span>🌎&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('brand-to-blue', true)}>
+            <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
               Inspiration
-            </span>
+            </GradientSpan>
           </FooterGridLink>
         </FooterGridSectionThree>
         <FooterGridSectionFour>
@@ -310,9 +311,9 @@ export const Footer: Component = () => {
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
             <span>🧡&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('red-to-purple', true)}>
+            <GradientSpan gradientColor={'red-to-purple'} forceGradient>
               Supporters
-            </span>
+            </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
             title={'Link to projects page'}
@@ -320,9 +321,9 @@ export const Footer: Component = () => {
             style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
           >
             <span>👨‍💻&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('green-to-yellow', true)}>
+            <GradientSpan gradientColor={'green-to-yellow'} forceGradient>
               Projects
-            </span>
+            </GradientSpan>
           </FooterGridLink>
         </FooterGridSectionFour>
       </FooterGrid>

@@ -7,7 +7,7 @@ import {
   ToolbarMenuToggle,
 } from '~/elements/complex/toolbar-button';
 import { ToolbarLink } from '~/elements/complex/toolbar-link';
-import { Logo } from '~/elements/simple/logo';
+import { Logo } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries } from '~/types';
 

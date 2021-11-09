@@ -1,19 +1,20 @@
-import tw, { css } from 'twin.macro';
+import tw from 'twin.macro';
 
 import {
   Component,
   ComponentProps,
   ComponentWithGradientProps,
+  GradientOptions,
   gradientToTailwind,
 } from '~/types';
 
-const forcedGradientSpan = tw`
+export const forcedGradientStyles = tw`
   text-transparent
   bg-gradient-to-r
   bg-clip-text
 `;
 
-const baseGradientSpan = tw`
+export const baseGradientStyles = tw`
   inline-block
   dark:(
     text-transparent
@@ -23,6 +24,7 @@ const baseGradientSpan = tw`
 `;
 
 interface GradientSpanProps extends ComponentProps, ComponentWithGradientProps {
+  gradientColor: GradientOptions;
   onClick?: () => void;
 }
 
@@ -34,11 +36,9 @@ export const GradientSpan: Component<GradientSpanProps> = (props) => {
   return (
     <span
       css={[
-        forceGradient ? forcedGradientSpan : null,
-        css`
-          text-shadow: none;
-        `,
-        baseGradientSpan,
+        forceGradient ? forcedGradientStyles : null,
+        tw`dark:(text-shadow-none)`,
+        baseGradientStyles,
         gradientTailwind,
       ]}
       {...otherProps}

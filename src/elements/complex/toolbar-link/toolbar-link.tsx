@@ -2,13 +2,10 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 import { GradientSpan } from '~/new-components/atoms/simple';
-
 import {
   Component,
   ComponentProps,
   ComponentWithGradientProps,
-  textShadowToClassName,
-  gradientToClassName,
   TextShadowOptions,
   mediaQueries,
 } from '~/types';
@@ -81,13 +78,13 @@ export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
 
   const actualTitle = title || (label ? `Link to ${label}` : '');
 
-  const getEmojiShadowColor = (): TextShadowOptions | null => {
-    if (!gradientColor) return null;
-    return gradientColor.substring(
-      0,
-      gradientColor.indexOf('-'),
-    ) as TextShadowOptions;
-  };
+  // const getEmojiShadowColor = (): TextShadowOptions | null => {
+  //   if (!gradientColor) return null;
+  //   return gradientColor.substring(
+  //     0,
+  //     gradientColor.indexOf('-'),
+  //   ) as TextShadowOptions;
+  // };
 
   return (
     <Link href={to} passHref={true}>
@@ -97,16 +94,14 @@ export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
         className={`${className} nodeco ${active ? 'active' : ''}`.trim()}
         active={active}
       >
-        {emoji && (
-          <ToolbarLinkEmoji
-            className={textShadowToClassName(getEmojiShadowColor(), true)}
-          >
-            {emoji}
-          </ToolbarLinkEmoji>
-        )}
+        {/* className={textShadowToClassName(getEmojiShadowColor(), true)} */}
+        {emoji && <ToolbarLinkEmoji>{emoji}</ToolbarLinkEmoji>}
         {children}
         {label && (
-          <GradientSpan gradientColor={gradientColor} forceGradient>
+          <GradientSpan
+            gradientColor={gradientColor || 'brand-to-blue'}
+            forceGradient
+          >
             {label}
           </GradientSpan>
         )}

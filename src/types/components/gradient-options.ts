@@ -17,22 +17,6 @@ export interface ComponentWithGradientProps {
   forceGradient?: boolean;
 }
 
-export const gradientToClassName = (
-  gradient?: GradientOptions,
-  forceGradient?: boolean,
-  isDivider?: boolean,
-): string => {
-  // TODO: Validate if gradient is of expected type
-  if (!gradient) return '';
-  return [
-    isDivider ? '' : 'text-gradient',
-    gradient,
-    forceGradient ? 'forced' : '',
-  ]
-    .join(' ')
-    .trim();
-};
-
 export const gradientToTailwind = (gradient?: GradientOptions) => {
   if (!gradient) return tw``;
   switch (gradient) {

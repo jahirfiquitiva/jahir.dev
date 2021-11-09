@@ -1,10 +1,14 @@
-import tw from 'twin.macro';
+import tw, { css } from 'twin.macro';
+
+import { forcedGradientStyles, baseGradientStyles } from './gradient-span';
 
 import {
   Component,
   ComponentProps,
   ComponentWithTextShadowProps,
+  ComponentWithGradientProps,
   textShadowToClassName,
+  gradientToTailwind,
 } from '~/types';
 
 const fontSizesKeys = [
@@ -25,7 +29,8 @@ type FontSize = typeof fontSizesKeys[number] | null | undefined;
 
 export interface HeadingProps
   extends ComponentProps,
-    ComponentWithTextShadowProps {
+    ComponentWithTextShadowProps,
+    ComponentWithGradientProps {
   size?: HeadingSize;
   fontSize?: FontSize;
 }
@@ -47,18 +52,37 @@ export const Heading: Component<HeadingProps> = (props) => {
     size = '1',
     fontSize,
     shadowColor,
+    gradientColor,
+    forceGradient,
     children,
-    className: baseClassName,
+    className,
     style,
   } = props;
 
-  const css = [fontSize ? fontSizeStyles[fontSize] : null];
-  const shadowClass = textShadowToClassName(shadowColor);
-  const className = [shadowClass, baseClassName].join(' ').trim();
+  const gradientTailwind = gradientToTailwind(gradientColor);
+  const gradientStyles = gradientColor
+    ? [baseGradientStyles, gradientTailwind]
+    : [];
+  const headingCss = [
+    css`
+      & span.emoji:first-child {
+        color: var(--background);
+      }
+    `,
+    forceGradient && gradientColor ? forcedGradientStyles : null,
+    fontSize ? fontSizeStyles[fontSize] : null,
+    shadowColor ? tw`text-shadow dark:(text-shadow-none)` : null,
+    shadowColor
+      ? css`
+          --text-shadow-color: var(--text-shadow-${shadowColor});
+        `
+      : null,
+    ...gradientStyles,
+  ];
 
   const HeadingTag = `h${size}` as keyof JSX.IntrinsicElements;
   return (
-    <HeadingTag css={css} className={className} style={style}>
+    <HeadingTag css={headingCss} className={className} style={style}>
       {children}
     </HeadingTag>
   );
