@@ -2,9 +2,10 @@ import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 
 import { SectionHeading } from '~/components/section-heading';
-import { Chip, ChipGroup, buildChipStyles } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
+import { ChipGroup, Chip } from '~/new-components/atoms/simple';
 import { Component, skills } from '~/types';
+import { buildChipStyles } from '~/utils/build-chip-styles';
 
 const SkillsHeading = styled(SectionHeading)`
   margin-top: 0.6rem;

@@ -6,4 +6,6 @@ module.exports = {
   md: '8px',
   lg: '10px',
   xl: '12px',
+  half: '50%',
+  full: '9999px',
 };

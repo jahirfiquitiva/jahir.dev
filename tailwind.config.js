@@ -20,6 +20,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     borderRadius,
+    boxShadow: generateBoxShadows(),
     colors,
     fontFamily: fontFamilies,
     fontSize: fontSizes,
@@ -30,7 +31,6 @@ module.exports = {
       letterSpacing: {
         button: '0.028575em',
       },
-      boxShadow: generateBoxShadows(),
     },
   },
   variants: {

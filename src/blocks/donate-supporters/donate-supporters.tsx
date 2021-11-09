@@ -3,10 +3,14 @@ import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading } from '~/components/section-heading';
-import { buildChipStyles, ChipGroup, ImageChip } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
-import { Image, Link } from '~/new-components/atoms/simple';
+import {
+  Image,
+  Link,
+  ChipGroup,
+  ImageChip,
+} from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import {
   Component,
@@ -15,6 +19,7 @@ import {
   Supporter,
   supporters,
 } from '~/types';
+import { buildChipStyles } from '~/utils/build-chip-styles';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 
 const DonateSupportersHeader = styled.div`
