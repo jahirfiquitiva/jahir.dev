@@ -1,14 +1,10 @@
+@import './../styles/fonts/all';
 @import './variables';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import './texts';
+@import './../styles/text-shadows';
 
-@layer base {
-  @import './../styles/fonts/all';
-}
+@import 'tailwindcss/components';
 
-b,
-strong {
-  font-weight: 500;
-}
+@import 'tailwindcss/utilities';

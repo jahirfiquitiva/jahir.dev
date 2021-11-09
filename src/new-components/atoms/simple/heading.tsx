@@ -6,6 +6,7 @@ import {
   ComponentWithGradientProps,
   ComponentWithTextShadowProps,
   gradientToTailwind,
+  textShadowToClassName,
 } from '~/types';
 
 const fontSizesKeys = [
@@ -26,28 +27,36 @@ type FontSize = typeof fontSizesKeys[number] | null | undefined;
 
 export interface HeadingProps
   extends ComponentProps,
-    ComponentWithGradientProps,
     ComponentWithTextShadowProps {
   size?: HeadingSize;
   fontSize?: FontSize;
 }
 
-const baseHeadingStyles = tw`inline-block`;
+const fontSizeStyles = {
+  tiny: tw`text-tiny`,
+  base: tw`text-base`,
+  xs: tw`text-xs`,
+  sm: tw`text-sm`,
+  md: tw`text-md`,
+  lg: tw`text-lg`,
+  xl: tw`text-xl`,
+  '2xl': tw`text-2xl`,
+  '3xl': tw`text-3xl`,
+};
 
 export const Heading: Component<HeadingProps> = (props) => {
   const {
     size = '1',
+    fontSize,
     shadowColor,
-    gradientColor,
-    forceGradient,
     children,
-    className,
+    className: baseClassName,
     style,
   } = props;
 
-  const gradientTailwind = gradientToTailwind(gradientColor);
-
-  const css = [baseHeadingStyles, gradientTailwind];
+  const css = [fontSize ? fontSizeStyles[fontSize] : null];
+  const shadowClass = textShadowToClassName(shadowColor);
+  const className = [shadowClass, baseClassName].join(' ').trim();
 
   if (size === '6') {
     return (

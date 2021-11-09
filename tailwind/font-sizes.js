@@ -1,11 +1,17 @@
+const BASE_FONT_SIZE = 1; // rem
+
+const multiplyFontSize = (multiplier) => {
+  return `${BASE_FONT_SIZE * multiplier}rem`;
+};
+
 module.exports = {
-  tiny: '0.85rem',
-  base: '1rem',
-  xs: this.base,
-  sm: '1.25rem',
-  md: '1.5rem',
-  lg: '1.75rem',
-  xl: '2rem',
-  '2xl': '2.25rem',
-  '3xl': '2.5rem',
+  tiny: multiplyFontSize(0.85),
+  base: multiplyFontSize(1),
+  xs: multiplyFontSize(1),
+  sm: multiplyFontSize(1.25),
+  md: multiplyFontSize(1.5),
+  lg: multiplyFontSize(1.75),
+  xl: multiplyFontSize(2),
+  '2xl': multiplyFontSize(2.25),
+  '3xl': multiplyFontSize(2.5),
 };

@@ -1,8 +1,12 @@
-import { Heading, HeadingProps } from '~/elements/simple/heading';
+import {
+  Heading,
+  HeadingProps,
+  GradientSpan,
+} from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
-import { Component, gradientToClassName } from '~/types';
+import { Component, ComponentWithGradientProps } from '~/types';
 
-interface SectionHeadingProps extends HeadingProps {
+interface SectionHeadingProps extends HeadingProps, ComponentWithGradientProps {
   emoji?: string;
 }
 
@@ -18,9 +22,9 @@ export const SectionHeading: Component<SectionHeadingProps> = (props) => {
   return (
     <Heading {...otherProps}>
       {renderEmoji()}
-      <span className={gradientToClassName(gradientColor, isDark)}>
+      <GradientSpan gradientColor={gradientColor} forceGradient={isDark}>
         {children}
-      </span>
+      </GradientSpan>
     </Heading>
   );
 };

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
+import { GradientSpan } from '~/new-components/atoms/simple';
+
 import {
   Component,
   ComponentProps,
@@ -104,9 +106,9 @@ export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
         )}
         {children}
         {label && (
-          <span className={gradientToClassName(gradientColor, true)}>
+          <GradientSpan gradientColor={gradientColor} forceGradient>
             {label}
-          </span>
+          </GradientSpan>
         )}
       </BaseToolbarLink>
     </Link>

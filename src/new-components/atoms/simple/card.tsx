@@ -1,4 +1,4 @@
-import tw, { styled } from 'twin.macro';
+import tw, { styled, css } from 'twin.macro';
 
 import { Link } from './link';
 
@@ -21,12 +21,16 @@ const baseFirstDivChildStyles = tw`
   motion-reduce:transition-none
 `;
 
-export const Card = styled.div`
+const baseFullCardStyles = css`
   ${baseCardStyles}
 
   & > div {
     ${baseFirstDivChildStyles}
   }
+`;
+
+export const Card = styled.div`
+  ${baseFullCardStyles}
 `;
 
 const linkCardHocusStyles = tw`hocus:(
@@ -38,12 +42,7 @@ const linkCardHocusStyles = tw`hocus:(
 export const LinkCard = styled(Link)`
   --shadow-color: var(--card-base);
   --shadow-color-full: var(--card-shadow);
-  ${baseCardStyles}
+  ${baseFullCardStyles}
   ${tw`shadow-none no-underline`}
-
-  & > div {
-    ${baseFirstDivChildStyles}
-  }
-
   ${linkCardHocusStyles}
 `;

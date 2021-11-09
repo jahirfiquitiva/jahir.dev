@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Heading } from '~/elements/simple/heading';
+import { Heading } from '~/new-components/atoms/simple';
 import { Component } from '~/types';
 
 const hellos = [

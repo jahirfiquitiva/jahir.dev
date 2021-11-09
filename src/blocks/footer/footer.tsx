@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
 import { Logo } from '~/elements/simple/logo';
-import { Link } from '~/new-components/atoms/simple';
+import { Link , GradientSpan } from '~/new-components/atoms/simple';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -221,12 +221,13 @@ export const Footer: Component = () => {
           <FooterHomeLink
             title={'Link to home page'}
             href={'/'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
-          >
+            underline={false}
+            underlineOnHocus={false}
+            >
             <Logo className={'logosvg'} />{' '}
-            <span className={gradientToClassName('brand-to-blue', true)}>
+            <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
               Jahir Fiquitiva
-            </span>
+            </GradientSpan>
           </FooterHomeLink>
           <FooterSocialLinks />
           <p className={'small'}>Copyright © {new Date().getFullYear()}</p>
@@ -236,22 +237,24 @@ export const Footer: Component = () => {
           <FooterGridLink
             title={'Link to blog page'}
             href={'/blog'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
-          >
+            style={buildStyles({ 'text-decoration': 'underline solid var(--gradient-blue)' })}
+            underline={false}
+            >
             <span>📝&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('blue-to-green', true)}>
+            <GradientSpan gradientColor={'blue-to-green'} forceGradient>
               Blog
-            </span>
+            </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
             title={'Link to dashboard page'}
             href={'/dashboard'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
+            style={buildStyles({ 'text-decoration': 'underline solid var(--gradient-yellow)' })}
+            underline={false}
           >
             <span>✨&nbsp;&nbsp;</span>
-            <span className={gradientToClassName('yellow-to-orange', true)}>
+              <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
               Dashboard
-            </span>
+            </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
             title={'Link to donate page'}

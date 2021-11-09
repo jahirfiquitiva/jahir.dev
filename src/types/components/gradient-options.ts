@@ -34,7 +34,7 @@ export const gradientToClassName = (
 };
 
 export const gradientToTailwind = (gradient?: GradientOptions) => {
-  if(!gradient) return tw``;
+  if (!gradient) return tw``;
   switch (gradient) {
     case 'brand-to-blue': {
       return tw`from-gradients-brand to-gradients-blue`;

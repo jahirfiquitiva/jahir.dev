@@ -2,8 +2,12 @@ import styled from '@emotion/styled';
 import { useRef } from 'react';
 
 import { HelloHeading } from '~/components/hello-heading';
-import { Heading } from '~/elements/simple/heading';
-import { Image, Link } from '~/new-components/atoms/simple';
+import {
+  GradientSpan,
+  Heading,
+  Image,
+  Link,
+} from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, gradientToClassName, mediaQueries } from '~/types';
 
@@ -48,7 +52,7 @@ const ImageContainer = styled(HeadingContainer)`
   }
 `;
 
-const ClickableName = styled.span`
+const ClickableName = styled(GradientSpan)`
   cursor: pointer;
 `;
 
@@ -77,7 +81,8 @@ export const Hello: Component = () => {
         <Heading size={'3'} shadowColor={'blue'}>
           I am{' '}
           <ClickableName
-            className={gradientToClassName('brand-to-blue', isDark)}
+            gradientColor={'brand-to-blue'}
+            forceGradient={isDark}
             onClick={playName}
           >
             Jahir Fiquitiva

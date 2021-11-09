@@ -4,57 +4,57 @@
 }
 
 .text-shadow.brand {
-  --text-shadow-color: var(--dark-gradients-a);
+  --text-shadow-color: var(--text-shadow-brand);
 }
 
 .text-shadow.blue {
-  --text-shadow-color: var(--dark-gradients-b);
+  --text-shadow-color: var(--text-shadow-blue);
 }
 
 .text-shadow.green {
-  --text-shadow-color: var(--dark-gradients-c);
+  --text-shadow-color: var(--text-shadow-green);
 }
 
 .text-shadow.yellow {
-  --text-shadow-color: var(--dark-gradients-d);
+  --text-shadow-color: var(--text-shadow-yellow);
 }
 
 .text-shadow.orange {
-  --text-shadow-color: var(--dark-gradients-e);
+  --text-shadow-color: var(--text-shadow-orange);
 }
 
 .text-shadow.red {
-  --text-shadow-color: var(--dark-gradients-f);
+  --text-shadow-color: var(--text-shadow-red);
 }
 
 .text-shadow.purple {
-  --text-shadow-color: var(--dark-gradients-g);
+  --text-shadow-color: var(--text-shadow-purple);
 }
 
 .text-shadow.as-gradient.brand {
-  --text-shadow-color: var(--gradients-a);
+  --text-shadow-color: var(--gradient-brand);
 }
 
 .text-shadow.as-gradient.blue {
-  --text-shadow-color: var(--gradients-b);
+  --text-shadow-color: var(--gradient-blue);
 }
 
 .text-shadow.as-gradient.green {
-  --text-shadow-color: var(--gradients-c);
+  --text-shadow-color: var(--gradient-green);
 }
 
 .text-shadow.as-gradient.yellow {
-  --text-shadow-color: var(--gradients-d);
+  --text-shadow-color: var(--gradient-yellow);
 }
 
 .text-shadow.as-gradient.orange {
-  --text-shadow-color: var(--gradients-e);
+  --text-shadow-color: var(--gradient-orange);
 }
 
 .text-shadow.as-gradient.red {
-  --text-shadow-color: var(--gradients-f);
+  --text-shadow-color: var(--gradient-red);
 }
 
 .text-shadow.as-gradient.purple {
-  --text-shadow-color: var(--gradients-g);
+  --text-shadow-color: var(--gradient-purple);
 }
