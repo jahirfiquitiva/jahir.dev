@@ -102,7 +102,11 @@ export const State: Component<StateProps> = (props) => {
     if (!userId || !state) return null;
     const stateTextAndColor: StateTextAndColor = stateToTextAndColor(state);
     return (
-      <Link href={`https://discordapp.com/users/${userId}`} underline={false}>
+      <Link
+        title={'Link to Discord profile'}
+        href={`https://discordapp.com/users/${userId}`}
+        underline={false}
+      >
         <StateChip
           style={buildStyles({ '--color-values': stateTextAndColor.color })}
         >

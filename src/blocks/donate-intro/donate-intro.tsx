@@ -42,12 +42,12 @@ export const DonateIntro: Component = () => {
         <Paragraph>
           I try really hard to build great apps and provide the best possible
           experience and products to all users, and most of them are{' '}
-          <Link href={'https://github.com/jahirfiquitiva'}>
+          <Link title={'Link to Jahir Fiquitiva\'s GitHub profile'} href={'https://github.com/jahirfiquitiva'}>
             open source
           </Link>
           . However, that wouldn&apos;t be possible without the help and the
           motivation from{' '}
-          <Link href={'#thanks'}>
+          <Link title={'Link to supporters page'} href={'#thanks'}>
             supporters
           </Link>
           !
@@ -56,7 +56,7 @@ export const DonateIntro: Component = () => {
         <Paragraph>
           <b>
             If you like and/or use any of{' '}
-            <Link href={'/#projects'}>
+            <Link title={'Link to projects list'} href={'/#projects'}>
               my projects
             </Link>
             , or want to support my work, please kindly consider donating, so I

@@ -117,7 +117,7 @@ export const BackToTop = () => {
 
   return (
     <BTTButton
-      name={'Back to top button'}
+      title={'Back to top button'}
       icon={mdiArrowUp}
       iconSize={1.1}
       onClick={scrollToTop}

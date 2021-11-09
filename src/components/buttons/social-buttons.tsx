@@ -16,7 +16,9 @@ const BaseGitHubIconButton = styled(LinkButton)`
   }
 `;
 
-export const GitHubIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+type SocialIconButtonProps = Omit<LinkButtonProps, 'href' | 'title'>;
+
+export const GitHubIconButton: Component<SocialIconButtonProps> = (
   props,
 ) => {
   return (
@@ -38,7 +40,7 @@ const BaseLinkedInIconButton = styled(LinkButton)`
   }
 `;
 
-export const LinkedInIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+export const LinkedInIconButton: Component<SocialIconButtonProps> = (
   props,
 ) => {
   return (
@@ -60,7 +62,7 @@ const BaseTwitterIconButton = styled(LinkButton)`
   }
 `;
 
-export const TwitterIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+export const TwitterIconButton: Component<SocialIconButtonProps> = (
   props,
 ) => {
   return (
@@ -100,7 +102,7 @@ const BaseInstagramIconButton = styled(LinkButton)`
   }
 `;
 
-export const InstagramIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+export const InstagramIconButton: Component<SocialIconButtonProps> = (
   props,
 ) => {
   return (
@@ -122,7 +124,7 @@ const BasePolyworkIconButton = styled(LinkButton)`
   }
 `;
 
-export const PolyworkIconButton: Component<Omit<LinkButtonProps, 'href'>> = (
+export const PolyworkIconButton: Component<SocialIconButtonProps> = (
   props,
 ) => {
   return (

@@ -221,6 +221,7 @@ export const Footer: Component = () => {
       <FooterGrid>
         <FooterGridSection>
           <FooterHomeLink
+            title={'Link to home page'}
             href={'/'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
@@ -235,6 +236,7 @@ export const Footer: Component = () => {
         </FooterGridSection>
         <FooterGridSectionTwo>
           <FooterGridLink
+            title={'Link to blog page'}
             href={'/blog'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-b)' })}
           >
@@ -244,6 +246,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
+            title={'Link to dashboard page'}
             href={'/dashboard'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
@@ -253,6 +256,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
+            title={'Link to donate page'}
             href={'/donate'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
@@ -262,6 +266,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
+            title={'Link to page page'}
             href={'/contact'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
@@ -273,6 +278,7 @@ export const Footer: Component = () => {
         </FooterGridSectionTwo>
         <FooterGridSectionThree>
           <FooterGridLink
+            title={'Link to uses page'}
             href={'/uses'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
@@ -282,6 +288,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
+            title={'Link to inpsiration page'}
             href={'/inspiration'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
           >
@@ -293,6 +300,7 @@ export const Footer: Component = () => {
         </FooterGridSectionThree>
         <FooterGridSectionFour>
           <FooterGridLink
+            title={'Link to supporters page'}
             href={'/thanks'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
           >
@@ -302,6 +310,7 @@ export const Footer: Component = () => {
             </span>
           </FooterGridLink>
           <FooterGridLink
+            title={'Link to projects page'}
             href={'/#projects'}
             style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
           >

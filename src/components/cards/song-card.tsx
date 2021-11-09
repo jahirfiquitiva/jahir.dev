@@ -170,7 +170,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
           [!shouldRenderDetails ? 'not-playing' : ''].join(' ').trim() ||
           undefined
         }
-        title={props.title}
+        title={`Link to spotify song: ${props.title || 'unknown'}`}
         href={props.url || '#'}
         style={buildStyles({
           ...shadowColors,

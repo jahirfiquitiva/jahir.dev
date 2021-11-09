@@ -34,7 +34,10 @@ export const Counter: Component<CounterProps> = (props) => {
 
   if (!count) return null;
   return (
-    <DashboardCard to={to}>
+    <DashboardCard
+      title={`Link to ${site === 'twitter' ? 'Twitter' : 'GitHub'}`}
+      to={to}
+    >
       <CardContent>
         <CardTexts>
           <p className={'count'}>{count}</p>

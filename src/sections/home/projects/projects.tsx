@@ -77,7 +77,11 @@ export const Projects: Component = () => {
 
         <ProjectsHeaderLinksContainer>
           <GitHubStats />
-          <LinkButton href={'/resume'} icon={mdiFileCodeOutline}>
+          <LinkButton
+            title={"Link to Jahir's resume pdf file"}
+            href={'/resume'}
+            icon={mdiFileCodeOutline}
+          >
             View resume
           </LinkButton>
         </ProjectsHeaderLinksContainer>

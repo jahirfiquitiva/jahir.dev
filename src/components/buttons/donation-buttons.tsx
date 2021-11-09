@@ -17,7 +17,9 @@ const BaseGitHubButton = styled(LinkButton)`
   }
 `;
 
-export const GitHubButton: Component<Omit<LinkButtonProps, 'href'>> = (
+type DonationButtonProps = Omit<LinkButtonProps, 'href' | 'title'>;
+
+export const GitHubButton: Component<DonationButtonProps> = (
   props,
 ) => {
   return (
@@ -39,7 +41,7 @@ const BaseBmacButton = styled(BaseGitHubButton)`
   }
 `;
 
-export const BmacButton: Component<Omit<LinkButtonProps, 'href'>> = (props) => {
+export const BmacButton: Component<DonationButtonProps> = (props) => {
   return (
     <BaseBmacButton
       {...props}
@@ -59,7 +61,7 @@ const BasePayPalButton = styled(BaseGitHubButton)`
   }
 `;
 
-export const PayPalButton: Component<Omit<LinkButtonProps, 'href'>> = (
+export const PayPalButton: Component<DonationButtonProps> = (
   props,
 ) => {
   return (

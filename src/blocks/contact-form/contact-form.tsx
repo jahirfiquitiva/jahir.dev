@@ -225,13 +225,23 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
       />
       <FormDisclaimer className={'small'}>
         This site is protected by reCAPTCHA and the Google{' '}
-        <Link href={'https://policies.google.com/privacy'}>Privacy Policy</Link>{' '}
+        <Link
+          title={'Google Privacy Policy link'}
+          href={'https://policies.google.com/privacy'}
+        >
+          Privacy Policy
+        </Link>{' '}
         and{' '}
-        <Link href={'https://policies.google.com/terms'}>Terms of Service</Link>{' '}
+        <Link
+          title={'Google Terms of Service link'}
+          href={'https://policies.google.com/terms'}
+        >
+          Terms of Service
+        </Link>{' '}
         apply.
       </FormDisclaimer>
       <Button
-        name={'Send contact form email'}
+        title={'Button to send contact form email'}
         disabled={submitting}
         onClick={customFormSubmit}
         icon={mdiMessageArrowRightOutline}

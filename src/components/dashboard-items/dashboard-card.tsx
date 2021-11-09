@@ -62,17 +62,23 @@ const BaseDashboardLinkCard = styled(ExtLinkCard)`
 `;
 
 export interface DashboardCardProps extends ComponentProps {
+  title?: string;
   to?: string;
 }
 
 export const DashboardCard: Component<DashboardCardProps> = (props) => {
-  const { to, className, style, children } = props;
+  const { title, to, className, style, children } = props;
 
   const renderCardContent = () => <div>{children}</div>;
 
   if (to) {
     return (
-      <BaseDashboardLinkCard href={to} className={className} style={style}>
+      <BaseDashboardLinkCard
+        title={title || 'Link to dashboard item'}
+        href={to}
+        className={className}
+        style={style}
+      >
         {renderCardContent()}
       </BaseDashboardLinkCard>
     );

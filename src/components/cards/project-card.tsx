@@ -1,6 +1,5 @@
 import Icon from '@mdi/react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState, useMemo } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
@@ -68,32 +67,35 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
   if (typeof window === 'undefined') return null;
 
   return (
-    <Link href={link} passHref={true}>
-      <BaseProjectCard href={link} underline={false} style={shadowColors}>
-        <div className={'details'}>
-          <div className={'icon-title'}>
-            <Image
-              src={icon}
-              alt={title}
-              width={48}
-              height={48}
-              layout={'fixed'}
-              loading={'lazy'}
-            />
-            <Heading size={'4'} fontSize={'6'} style={titleColors}>
-              {title}
-            </Heading>
-          </div>
-          <p>{description}</p>
-          {renderProjectStack()}
-        </div>
-        {preview?.length && (
-          <div
-            className={'preview'}
-            style={{ backgroundImage: `url('${preview}')` }}
+    <BaseProjectCard
+      title={`Link to project: ${title}`}
+      href={link}
+      underline={false}
+      style={shadowColors}
+    >
+      <div className={'details'}>
+        <div className={'icon-title'}>
+          <Image
+            src={icon}
+            alt={title}
+            width={48}
+            height={48}
+            layout={'fixed'}
+            loading={'lazy'}
           />
-        )}
-      </BaseProjectCard>
-    </Link>
+          <Heading size={'4'} fontSize={'6'} style={titleColors}>
+            {title}
+          </Heading>
+        </div>
+        <p>{description}</p>
+        {renderProjectStack()}
+      </div>
+      {preview?.length && (
+        <div
+          className={'preview'}
+          style={{ backgroundImage: `url('${preview}')` }}
+        />
+      )}
+    </BaseProjectCard>
   );
 };

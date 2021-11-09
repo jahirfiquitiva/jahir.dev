@@ -94,7 +94,10 @@ export const Hello: Component = () => {
         </NameAudio>
         <HeadingParagraph>
           Passionate and creative full-stack software engineer based in{' '}
-          <Link href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}>
+          <Link
+            title={'Link to Colombia on Google Maps'}
+            href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
+          >
             Colombia 🇨🇴
           </Link>
         </HeadingParagraph>

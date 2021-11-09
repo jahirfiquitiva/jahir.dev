@@ -44,24 +44,32 @@ export const Intro: Component = () => {
         <IntroParagraph>
           When not coding, I like to watch TV shows and movies, play some games
           with friends or hang out with them. I&apos;m also{' '}
-          <Link href={'/music'}>listening to music</Link> 98% of the time.
+          <Link title={'Link to music page'} href={'/music'}>
+            listening to music
+          </Link>{' '}
+          98% of the time.
         </IntroParagraph>
       </ParagraphsContainer>
       <div>
         <ExtraParagraph>
           Learn more about me on{' '}
           <Link
+            title={"Link to Jahir's polywork timeline"}
             href={'https://timeline.jahir.dev/'}
-            title={'Link to my timeline'}
           >
             my timeline
           </Link>{' '}
           and please don&apos;t hesitate to{' '}
-          <Link href={'/contact'}>contact me</Link>
+          <Link title={'Link to contact page'} href={'/contact'}>
+            contact me
+          </Link>
           !
           <br />
           If curious, you can click on my name to hear its{' '}
-          <Link href={'/static/audio/name-pronunciation.mp3'}>
+          <Link
+            title={"Link to Jahir's name pronunciation audio file"}
+            href={'/static/audio/name-pronunciation.mp3'}
+          >
             pronunciation
           </Link>
           .

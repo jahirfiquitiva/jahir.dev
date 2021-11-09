@@ -18,13 +18,16 @@ export const Default: Story = (args) => {
   return (
     <ButtonsContainer>
       <Button
+        title={args.label}
         onClick={() => {
           alert(args.label);
         }}
       >
         {args.label}
       </Button>
-      <Button icon={mdiAccessPoint}>{args.label}</Button>
+      <Button title={args.label} icon={mdiAccessPoint}>
+        {args.label}
+      </Button>
     </ButtonsContainer>
   );
 };

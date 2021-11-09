@@ -70,7 +70,11 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
   const color = getColorFromPalette(paletteData, isDark);
 
   return (
-    <Link href={link || '#'} underline={false}>
+    <Link
+      title={`Link to ${name}'s website`}
+      href={link || '#'}
+      underline={false}
+    >
       <SupporterLinkChip style={buildChipStyles(color)}>
         <Image
           src={photo || ''}
@@ -125,6 +129,9 @@ export const DonateSupporters: Component = () => {
             <Fragment key={categoryIndex}>
               <Heading size={'5'}>
                 <Link
+                  title={`Link to GitHub Sponsors ${name
+                    .join(' ')
+                    .trim()} Tier Page`}
                   href={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
                 >
                   {emoji}&nbsp;&nbsp;&nbsp;{name.join(' ').trim()}&nbsp;Sponsor

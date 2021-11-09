@@ -93,6 +93,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   return (
     <Link href={rightLink} passHref={true}>
       <BaseBlogPostCard
+        title={`Link to blog post: ${title}`}
         href={rightLink}
         underline={false}
         style={{

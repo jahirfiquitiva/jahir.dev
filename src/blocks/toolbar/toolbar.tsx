@@ -205,7 +205,7 @@ export const Toolbar: Component = () => {
             {isDark ? '🌞' : '🌚'}
           </ThemeToggleButton>
           <ToolbarMenuToggle
-            name={expanded ? 'Collapse menu' : 'Expand menu'}
+            title={expanded ? 'Collapse menu button' : 'Expand menu button'}
             active={expanded}
             onClick={handleMenuExpansion}
           />

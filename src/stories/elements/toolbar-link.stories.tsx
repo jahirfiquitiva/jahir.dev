@@ -29,7 +29,7 @@ export const Default: Story = (args) => {
 
       <ToolbarButton>🌚</ToolbarButton>
 
-      <ToolbarMenuToggle />
+      <ToolbarMenuToggle title={'Toggle dark theme'} />
     </LinksContainer>
   );
 };

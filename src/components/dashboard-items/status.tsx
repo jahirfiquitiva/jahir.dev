@@ -49,7 +49,7 @@ export const Status: Component<StatusProps> = (props) => {
 
   if (!data) return null;
   return (
-    <StatusCard to={to}>
+    <StatusCard title={'Link to Discord profile'} to={to}>
       <CardContent>
         <CardTexts>
           <p className={'link-text'}>Status:</p>

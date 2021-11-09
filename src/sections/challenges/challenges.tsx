@@ -43,7 +43,12 @@ export const Challenges: Component<ChallengesProps> = (props) => {
         {challenges?.map((challenge, i) => {
           return (
             <ChallengeItem key={i}>
-              <Link href={`/coding/${challenge.slug}`}>{challenge?.title}</Link>
+              <Link
+                title={`Link to coding challenge: ${challenge?.title}`}
+                href={`/coding/${challenge.slug}`}
+              >
+                {challenge?.title}
+              </Link>
             </ChallengeItem>
           );
         })}

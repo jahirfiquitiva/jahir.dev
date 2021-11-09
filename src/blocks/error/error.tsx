@@ -138,7 +138,9 @@ export const Error: Component<ErrorProps> = (props) => {
         </Heading>
         <p>{contentOptions[errorType]?.message}</p>
         {renderContactMessage()}
-        <LinkButton href={'/'}>Go back home</LinkButton>
+        <LinkButton title={'Link to home page'} href={'/'}>
+          Go back home
+        </LinkButton>
       </>
     );
   };

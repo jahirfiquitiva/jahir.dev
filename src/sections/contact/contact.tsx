@@ -31,15 +31,31 @@ export const Contact: Component<ContactProps> = (props) => {
       </Paragraph>
       <Paragraph>
         PS: I also have open{' '}
-        <Link href={'https://jahir.xyz/twitterdm'}>Twitter DMs</Link> and{' '}
-        <Link href={'https://jahir.xyz/tlgrm'}>Telegram</Link> for any kind of
-        inquiries. 😀
+        <Link
+          title={'Link to compose a Twitter direct message for Jahir'}
+          href={'https://jahir.xyz/twitterdm'}
+        >
+          Twitter DMs
+        </Link>{' '}
+        and{' '}
+        <Link
+          title={"Link to Jahir's Telegram profile"}
+          href={'https://jahir.xyz/tlgrm'}
+        >
+          Telegram
+        </Link>{' '}
+        for any kind of inquiries. 😀
       </Paragraph>
       <Paragraph>
         Although if it&apos;s related to{' '}
-        <Link href={'https://dashbud.dev'}>my dashboards</Link>, I would rather
-        you send a{' '}
-        <Link href={'https://discordapp.com/invite/78h7xgj'}>
+        <Link title={'Link to dashbud page'} href={'https://dashbud.dev'}>
+          my dashboards
+        </Link>
+        , I would rather you send a{' '}
+        <Link
+          title={'Link to dashboards Discord server'}
+          href={'https://discordapp.com/invite/78h7xgj'}
+        >
           message on Discord
         </Link>
       </Paragraph>
