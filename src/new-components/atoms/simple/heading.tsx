@@ -58,44 +58,10 @@ export const Heading: Component<HeadingProps> = (props) => {
   const shadowClass = textShadowToClassName(shadowColor);
   const className = [shadowClass, baseClassName].join(' ').trim();
 
-  if (size === '6') {
-    return (
-      <h6 css={css} className={className} style={style}>
-        {children}
-      </h6>
-    );
-  }
-  if (size === '5') {
-    return (
-      <h5 css={css} className={className} style={style}>
-        {children}
-      </h5>
-    );
-  }
-  if (size === '4') {
-    return (
-      <h4 css={css} className={className} style={style}>
-        {children}
-      </h4>
-    );
-  }
-  if (size === '3') {
-    return (
-      <h3 css={css} className={className} style={style}>
-        {children}
-      </h3>
-    );
-  }
-  if (size === '2') {
-    return (
-      <h2 css={css} className={className} style={style}>
-        {children}
-      </h2>
-    );
-  }
+  const HeadingTag = `h${size}` as keyof JSX.IntrinsicElements;
   return (
-    <h1 css={css} className={className} style={style}>
+    <HeadingTag css={css} className={className} style={style}>
       {children}
-    </h1>
+    </HeadingTag>
   );
 };
