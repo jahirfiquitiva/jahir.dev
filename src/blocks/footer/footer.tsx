@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
 import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
-import { Component, gradientToClassName, mediaQueries } from '~/types';
+import { Component, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
 const gradientUnderlineStyles = `
