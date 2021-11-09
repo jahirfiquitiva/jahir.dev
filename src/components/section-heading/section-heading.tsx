@@ -17,11 +17,7 @@ export const SectionHeading: Component<SectionHeadingProps> = (props) => {
 
   const renderEmoji = () => {
     if (!emoji) return <></>;
-    return (
-      <>
-        <span className={'emoji'}>{emoji}</span>&nbsp;&nbsp;
-      </>
-    );
+    return <span className={'emoji'}>{emoji}</span>;
   };
 
   return (

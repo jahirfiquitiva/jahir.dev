@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { forcedGradientStyles, baseGradientStyles } from './gradient-span';
@@ -7,7 +8,8 @@ import {
   ComponentProps,
   ComponentWithTextShadowProps,
   ComponentWithGradientProps,
-  textShadowToClassName,
+  TextShadowOptions,
+  GradientOptions,
   gradientToTailwind,
 } from '~/types';
 
@@ -47,6 +49,45 @@ const fontSizeStyles = {
   '3xl': tw`text-3xl`,
 };
 
+const buildGradientAndShadowStyles = (
+  fontSize?: FontSize,
+  shadowColor?: TextShadowOptions,
+  gradientColor?: GradientOptions,
+  forceGradient?: boolean,
+) => {
+  const shadowStyles = shadowColor
+    ? [
+        tw`text-shadow dark:(text-shadow-none)`,
+        css`
+          --text-shadow-color: var(--text-shadow-${shadowColor});
+        `,
+      ]
+    : [];
+
+  const gradientTailwind = gradientToTailwind(gradientColor);
+  const gradientStyles = gradientColor
+    ? [
+        forceGradient ? forcedGradientStyles : null,
+        baseGradientStyles,
+        gradientTailwind,
+      ]
+    : [];
+
+  const headingCss = [
+    css`
+      & span.emoji:first-child {
+        color: rgb(var(--shadow-color));
+        ${tw`mr-8`}
+      }
+    `,
+    fontSize ? fontSizeStyles[fontSize] : null,
+    ...shadowStyles,
+    ...gradientStyles,
+  ];
+
+  return headingCss;
+};
+
 export const Heading: Component<HeadingProps> = (props) => {
   const {
     size = '1',
@@ -59,26 +100,14 @@ export const Heading: Component<HeadingProps> = (props) => {
     style,
   } = props;
 
-  const gradientTailwind = gradientToTailwind(gradientColor);
-  const gradientStyles = gradientColor
-    ? [baseGradientStyles, gradientTailwind]
-    : [];
-  const headingCss = [
-    css`
-      & span.emoji:first-child {
-        color: var(--background);
-      }
-    `,
-    forceGradient && gradientColor ? forcedGradientStyles : null,
-    fontSize ? fontSizeStyles[fontSize] : null,
-    shadowColor ? tw`text-shadow dark:(text-shadow-none)` : null,
-    shadowColor
-      ? css`
-          --text-shadow-color: var(--text-shadow-${shadowColor});
-        `
-      : null,
-    ...gradientStyles,
-  ];
+  const headingCss = useMemo(() => {
+    return buildGradientAndShadowStyles(
+      fontSize,
+      shadowColor,
+      gradientColor,
+      forceGradient,
+    );
+  }, [fontSize, shadowColor, gradientColor, forceGradient]);
 
   const HeadingTag = `h${size}` as keyof JSX.IntrinsicElements;
   return (
