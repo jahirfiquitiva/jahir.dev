@@ -5,9 +5,8 @@ import { mdiLightbulbOnOutline, mdiMessageArrowRightOutline } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
 import { Field } from '~/elements/simple/field';
-import { Heading } from '~/elements/simple/heading';
 import { formium } from '~/lib/formium';
-import { Button } from '~/new-components/atoms/simple';
+import { Button, Heading } from '~/new-components/atoms/simple';
 import { Component, mediaQueries } from '~/types';
 
 const BlogIdeasContainer = styled.div`

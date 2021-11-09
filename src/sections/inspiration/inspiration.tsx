@@ -8,8 +8,7 @@ import {
   MasonryBreakpoints,
   MasonryGrid,
 } from '~/elements/complex/masonry-grid';
-import { Heading } from '~/elements/simple/heading';
-import { Image, LinkCard } from '~/new-components/atoms/simple';
+import { Heading, Image, LinkCard } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, InspirationSite, viewports } from '~/types';
 
 const InspirationGrid = styled(MasonryGrid)`

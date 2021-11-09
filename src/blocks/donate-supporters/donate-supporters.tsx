@@ -3,8 +3,8 @@ import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading } from '~/components/section-heading';
-import { Heading } from '~/elements/simple/heading';
 import {
+  Heading,
   Image,
   Link,
   ChipGroup,

@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import { Heading } from '~/elements/simple/heading';
-import { Image, LinkButton } from '~/new-components/atoms/simple';
+import { Heading, Image, LinkButton } from '~/new-components/atoms/simple';
 import {
   Component,
   ComponentProps,

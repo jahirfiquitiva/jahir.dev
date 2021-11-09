@@ -3,8 +3,7 @@ import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
 import { usePalette } from 'react-palette';
 
-import { Heading } from '~/elements/simple/heading';
-import { Image, LinkCard } from '~/new-components/atoms/simple';
+import { Heading, Image, LinkCard } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';

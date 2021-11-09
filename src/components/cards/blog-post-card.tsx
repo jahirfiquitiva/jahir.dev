@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { usePalette } from 'react-palette';
 
-import { Heading } from '~/elements/simple/heading';
-import { LinkCard } from '~/new-components/atoms/simple';
+import { Heading, LinkCard } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';

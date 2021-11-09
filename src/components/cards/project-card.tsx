@@ -3,8 +3,7 @@ import { useState, useMemo } from 'react';
 
 import { BaseProjectCard } from './base-project-card';
 
-import { Heading } from '~/elements/simple/heading';
-import { Image } from '~/new-components/atoms/simple';
+import { Heading, Image } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import {
   Component,

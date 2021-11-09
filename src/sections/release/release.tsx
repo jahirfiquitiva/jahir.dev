@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/types';
-import { Heading } from '~/elements/simple/heading';
 import useRequest from '~/hooks/useRequest';
+import { Heading } from '~/new-components/atoms/simple';
+import { Component, ComponentProps } from '~/types';
 
 const ReleaseHeading = styled(Heading)`
   margin: 0;
