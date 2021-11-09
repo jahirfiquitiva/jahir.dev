@@ -1,11 +1,9 @@
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
 import {
   Component,
   ComponentProps,
-  ComponentWithGradientProps,
   ComponentWithTextShadowProps,
-  gradientToTailwind,
   textShadowToClassName,
 } from '~/types';
 

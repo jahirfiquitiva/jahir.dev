@@ -15,11 +15,12 @@ const forcedGradientSpan = tw`
 
 const baseGradientSpan = tw`
   inline-block
-dark:(
-  text-transparent
-  bg-gradient-to-r
-  bg-clip-text
-)`;
+  dark:(
+    text-transparent
+    bg-gradient-to-r
+    bg-clip-text
+  )
+`;
 
 interface GradientSpanProps extends ComponentProps, ComponentWithGradientProps {
   onClick?: () => void;
