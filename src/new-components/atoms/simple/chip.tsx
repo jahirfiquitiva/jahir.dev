@@ -58,7 +58,7 @@ const baseChipGroupStyles = tw`
   flex
   flex-wrap
   list-none
-  px-10
+  py-10
 `;
 
 export const ChipGroup = styled.ul`

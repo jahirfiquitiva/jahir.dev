@@ -13,4 +13,6 @@ module.exports = {
   48: '4.8rem',
   56: '5.6rem',
   button: '42px',
+  divider: '4px',
+  'thin-divider': '1px',
 };

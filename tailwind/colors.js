@@ -22,5 +22,23 @@ module.exports = {
     shadow: 'var(--card-shadow)',
     'shadow-border': 'var(--card-shadow-border)',
   },
+  gradients: {
+    brand: 'var(--gradient-brand)',
+    blue: 'var(--gradient-blue)',
+    green: 'var(--gradient-green)',
+    yellow: 'var(--gradient-yellow)',
+    orange: 'var(--gradient-orange)',
+    red: 'var(--gradient-red)',
+    purple: 'var(--gradient-purple)',
+  },
+  'text-shadow': {
+    brand: 'var(--text-shadow-brand)',
+    blue: 'var(--text-shadow-blue)',
+    green: 'var(--text-shadow-green)',
+    yellow: 'var(--text-shadow-yellow)',
+    orange: 'var(--text-shadow-orange)',
+    red: 'var(--text-shadow-red)',
+    purple: 'var(--text-shadow-purple)',
+  },
   divider: 'var(--divider)',
 };

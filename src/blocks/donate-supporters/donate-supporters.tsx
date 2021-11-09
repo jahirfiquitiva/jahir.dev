@@ -3,13 +3,13 @@ import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading } from '~/components/section-heading';
-import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
 import {
   Image,
   Link,
   ChipGroup,
   ImageChip,
+  Divider,
 } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import {

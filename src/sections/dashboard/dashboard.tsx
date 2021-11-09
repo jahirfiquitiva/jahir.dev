@@ -4,10 +4,10 @@ import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
 import { SongCard } from '~/components/cards';
 import { State } from '~/components/dashboard-items';
-import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
+import { Divider } from '~/new-components/atoms/simple';
 import { Component, mediaQueries, TopTrackData } from '~/types';
 
 const MusicHeading = styled(Heading)`

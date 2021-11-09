@@ -31,6 +31,22 @@
 
   --shadow-color: 0, 0, 0;
   --shadow-color-full: rgba(var(--shadow-color), var(--card-shadow-opacity));
+
+  --gradient-brand: var(--accent-dark);
+  --gradient-blue: #247aae;
+  --gradient-green: #1a9956;
+  --gradient-yellow: #c69227;
+  --gradient-orange: #c86827;
+  --gradient-red: #bc2f48;
+  --gradient-purple: #7a4cbb;
+
+  --text-shadow-brand: var(--accent);
+  --text-shadow-blue: #81c1e9;
+  --text-shadow-green: #79d9a6;
+  --text-shadow-yellow: #fad483;
+  --text-shadow-orange: #fcb483;
+  --text-shadow-red: #f3899c;
+  --text-shadow-purple: #b898e3;
 }
 
 .dark,
@@ -55,4 +71,12 @@
   --card-base: 136, 164, 230; /* accent color as rgb */
 
   --shadow-color: 255, 255, 255;
+
+  --gradient-brand: var(--accent);
+  --gradient-blue: var(--text-shadow-blue);
+  --gradient-green: var(--text-shadow-green);
+  --gradient-yellow: var(--text-shadow-yellow);
+  --gradient-orange: var(--text-shadow-orange);
+  --gradient-red: var(--text-shadow-red);
+  --gradient-purple: var(--text-shadow-purple);
 }

@@ -8,8 +8,7 @@ import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
-import { Divider } from '~/elements/simple/divider';
-import { LinkButton } from '~/new-components/atoms/simple';
+import { Divider, LinkButton } from '~/new-components/atoms/simple';
 import {
   Component,
   projects,
