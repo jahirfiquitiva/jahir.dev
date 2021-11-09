@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 import { BaseToolbarLink } from '~/elements/complex/toolbar-link';
 import { mediaQueries } from '~/types';
 

@@ -3,7 +3,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 
 interface OptImageProps extends ComponentProps {
   src: string;

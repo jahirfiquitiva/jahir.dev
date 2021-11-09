@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
 import Image from 'next/image';
 
-import { Component } from '~/elements/base/fc';
 import LinkButton, {
   LinkButtonProps,
 } from '~/new-components/atoms/simple/link-button';
+import { Component } from '~/types';
 
 const BaseGitHubIconButton = styled(LinkButton)`
   background-color: #333;
@@ -18,9 +18,7 @@ const BaseGitHubIconButton = styled(LinkButton)`
 
 type SocialIconButtonProps = Omit<LinkButtonProps, 'href' | 'title'>;
 
-export const GitHubIconButton: Component<SocialIconButtonProps> = (
-  props,
-) => {
+export const GitHubIconButton: Component<SocialIconButtonProps> = (props) => {
   return (
     <BaseGitHubIconButton
       {...props}
@@ -40,9 +38,7 @@ const BaseLinkedInIconButton = styled(LinkButton)`
   }
 `;
 
-export const LinkedInIconButton: Component<SocialIconButtonProps> = (
-  props,
-) => {
+export const LinkedInIconButton: Component<SocialIconButtonProps> = (props) => {
   return (
     <BaseLinkedInIconButton
       {...props}
@@ -62,9 +58,7 @@ const BaseTwitterIconButton = styled(LinkButton)`
   }
 `;
 
-export const TwitterIconButton: Component<SocialIconButtonProps> = (
-  props,
-) => {
+export const TwitterIconButton: Component<SocialIconButtonProps> = (props) => {
   return (
     <BaseTwitterIconButton
       {...props}
@@ -124,9 +118,7 @@ const BasePolyworkIconButton = styled(LinkButton)`
   }
 `;
 
-export const PolyworkIconButton: Component<SocialIconButtonProps> = (
-  props,
-) => {
+export const PolyworkIconButton: Component<SocialIconButtonProps> = (props) => {
   return (
     <BasePolyworkIconButton
       {...props}

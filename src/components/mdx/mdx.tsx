@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 
 const CustomLink: Component<ComponentProps & { href: string }> = (props) => {
   const { href } = props;

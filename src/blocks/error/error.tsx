@@ -2,11 +2,15 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { OptImage } from '~/elements/base/opt-image';
-import { GradientOptions, TextShadowOptions } from '~/elements/props';
 import { Heading } from '~/elements/simple/heading';
 import LinkButton from '~/new-components/atoms/simple/link-button';
+import {
+  Component,
+  ComponentProps,
+  GradientOptions,
+  TextShadowOptions,
+} from '~/types';
 
 const ErrorContainer = styled.div`
   display: flex;

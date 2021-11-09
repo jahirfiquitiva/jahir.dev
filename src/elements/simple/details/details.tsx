@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 
 const BaseDetails = styled.details`
   margin-bottom: 1.2rem;

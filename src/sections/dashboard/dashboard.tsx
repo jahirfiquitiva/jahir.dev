@@ -4,7 +4,7 @@ import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
 import { SongCard } from '~/components/cards';
 import { State } from '~/components/dashboard-items';
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
 import { useDashboardData } from '~/hooks/useDashboardData';

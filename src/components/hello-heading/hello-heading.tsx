@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { Component } from '~/elements/base/fc';
 import { Heading } from '~/elements/simple/heading';
+import { Component } from '~/types';
 
 const hellos = [
   'Hello, world',

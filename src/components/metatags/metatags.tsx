@@ -1,9 +1,8 @@
 import NextHead from 'next/head';
 import { useMemo, useState } from 'react';
 
-import { Component } from '~/elements/base/fc';
 import { useTheme } from '~/providers/theme';
-import { PageProps } from '~/types';
+import { Component, PageProps } from '~/types';
 
 const defaultImage = 'https://jahir.dev/static/images/brand/banner.png';
 const defaultLogoImage =

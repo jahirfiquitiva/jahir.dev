@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 
 import { ToolbarLinks } from '~/components/toolbar-links';
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 import {
   ToolbarButton,
   ToolbarMenuToggle,

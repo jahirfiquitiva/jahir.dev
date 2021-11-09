@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 import { Heading } from '~/elements/simple/heading';
 import useRequest from '~/hooks/useRequest';
 

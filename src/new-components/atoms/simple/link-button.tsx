@@ -4,7 +4,7 @@ import tw, { styled } from 'twin.macro';
 import { ButtonStyles } from './button';
 import Link, { LinkProps } from './link';
 
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 
 const StyledLinkButton = styled(Link)`
   ${ButtonStyles}

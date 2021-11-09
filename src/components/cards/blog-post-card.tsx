@@ -2,11 +2,10 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { usePalette } from 'react-palette';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
-import { Post } from '~/types';
+import { Component, ComponentProps, Post } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import formatDate from '~/utils/format-date';

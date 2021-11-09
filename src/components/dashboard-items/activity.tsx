@@ -3,8 +3,7 @@ import Image from 'next/image';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
-import { Component } from '~/elements/base/fc';
-import { Activity as ActivityData } from '~/types';
+import { Component, Activity as ActivityData } from '~/types';
 
 interface ActivityProps extends DashboardCardProps {
   data?: ActivityData;

@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
-import { Component } from '~/elements/base/fc';
-import { Status as StatusData } from '~/types';
+import { Component, Status as StatusData } from '~/types';
 
 interface StatusProps extends DashboardCardProps {
   data?: StatusData;

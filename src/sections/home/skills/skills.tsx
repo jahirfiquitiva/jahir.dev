@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 
 import { SectionHeading } from '~/components/section-heading';
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 import { Chip, ChipGroup, buildChipStyles } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
 import { skills } from '~/types';

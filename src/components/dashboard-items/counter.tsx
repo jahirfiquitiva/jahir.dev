@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 
 interface CounterProps extends DashboardCardProps {
   count?: number;

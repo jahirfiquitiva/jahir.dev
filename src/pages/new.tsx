@@ -18,10 +18,16 @@ const FourHundredFour: FC = () => {
           <span>Hola mundo</span>
         </Button>
 
-        <LinkButton href={'/dashboard'} icon={mdiSatelliteVariant}>
+        <LinkButton
+          title={'Hola mundo link'}
+          href={'/dashboard'}
+          icon={mdiSatelliteVariant}
+        >
           <span>Hola mundo</span>
         </LinkButton>
-        <Link href={'/'}>Home page</Link>
+        <Link title={'home page'} href={'/'}>
+          Home page
+        </Link>
       </div>
     </Page>
   );

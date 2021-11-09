@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import {
+  Component,
+  ComponentProps,
   ComponentWithGradientProps,
   gradientToClassName,
-} from '~/elements/props';
+} from '~/types';
 
 interface DividerProps extends ComponentProps, ComponentWithGradientProps {
   thin?: boolean;

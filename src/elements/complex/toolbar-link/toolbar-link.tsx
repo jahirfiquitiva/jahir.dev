@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import {
+  Component,
+  ComponentProps,
   ComponentWithGradientProps,
   textShadowToClassName,
   gradientToClassName,
   TextShadowOptions,
-} from '~/elements/props';
-import { mediaQueries } from '~/types';
+  mediaQueries,
+} from '~/types';
 
 interface BaseToolbarLinkProps {
   active?: boolean;

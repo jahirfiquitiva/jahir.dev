@@ -3,12 +3,10 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 import { HelloHeading } from '~/components/hello-heading';
-import { Component } from '~/elements/base/fc';
-import { gradientToClassName } from '~/elements/props';
 import { Heading } from '~/elements/simple/heading';
 import Link from '~/new-components/atoms/simple/link';
 import { useTheme } from '~/providers/theme';
-import { mediaQueries } from '~/types';
+import { Component, gradientToClassName, mediaQueries } from '~/types';
 
 const HeadingContainer = styled.div`
   display: inline-flex;

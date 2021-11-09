@@ -4,14 +4,18 @@ import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { buildChipStyles, ChipGroup, ImageChip } from '~/elements/simple/chip';
 import { Divider } from '~/elements/simple/divider';
 import { Heading } from '~/elements/simple/heading';
 import Link from '~/new-components/atoms/simple/link';
 import { useTheme } from '~/providers/theme';
-import { mediaQueries } from '~/types';
-import { Supporter, supporters } from '~/types/supporter';
+import {
+  Component,
+  ComponentProps,
+  mediaQueries,
+  Supporter,
+  supporters,
+} from '~/types';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 
 const DonateSupportersHeader = styled.div`

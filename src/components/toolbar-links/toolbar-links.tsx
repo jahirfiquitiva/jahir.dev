@@ -2,9 +2,8 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { ToolbarLink } from '~/elements/complex/toolbar-link';
-import { mediaQueries } from '~/types';
+import { Component, ComponentProps, mediaQueries } from '~/types';
 
 const collapsedStyles = `
   visibility: hidden;

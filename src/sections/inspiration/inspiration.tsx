@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 import { OptImage } from '~/elements/base/opt-image';
 import {
   MasonryBreakpoints,

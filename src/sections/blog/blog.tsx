@@ -6,7 +6,7 @@ import { BlogIdeas } from '~/blocks/blog-ideas';
 import { Section } from '~/blocks/section';
 import { BlogPostCard } from '~/components/cards';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 import {
   MasonryBreakpoints,
   MasonryGrid,

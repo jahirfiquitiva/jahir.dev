@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { MouseEventHandler } from 'react';
 import tw, { styled } from 'twin.macro';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 
 export const ButtonStyles = tw`
   inline-flex

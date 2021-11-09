@@ -5,7 +5,7 @@ import {
   LinkedInIconButton,
   PolyworkIconButton,
 } from '~/components/buttons';
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 import ButtonGroup from '~/new-components/atoms/complex/button-group';
 
 interface SocialLinksProps extends ComponentProps {

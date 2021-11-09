@@ -1,15 +1,15 @@
 import NextLink from 'next/link';
 import tw, { styled } from 'twin.macro';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 
 interface BaseLinkProps {
   underline?: boolean;
 }
 
 export interface LinkProps extends ComponentProps, BaseLinkProps {
+  title: string;
   href: string;
-  title?: string;
   newTab?: boolean;
 }
 
@@ -21,7 +21,9 @@ const BaseLinkStyles = tw`
 
 const StyledLink = styled.a<BaseLinkProps>(({ underline }) => [
   BaseLinkStyles,
-  underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+  underline
+    ? tw`underline hocus:(underline)`
+    : tw`no-underline hocus:(no-underline)`,
 ]);
 
 const isLocalLink = (href: string) =>
@@ -29,8 +31,8 @@ const isLocalLink = (href: string) =>
 
 const Link: Component<LinkProps> = (props) => {
   const {
-    href,
     title,
+    href,
     newTab = !isLocalLink(href),
     underline = true,
     children,

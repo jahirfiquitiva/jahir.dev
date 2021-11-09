@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { mdiHeartOutline, mdiCreditCardOutline, mdiPizza } from '@mdi/js';
 
-import { Component } from '~/elements/base/fc';
 import LinkButton, {
   LinkButtonProps,
 } from '~/new-components/atoms/simple/link-button';
+import { Component } from '~/types';
 
 const BaseGitHubButton = styled(LinkButton)`
   background-color: #c94091;
@@ -19,9 +19,7 @@ const BaseGitHubButton = styled(LinkButton)`
 
 type DonationButtonProps = Omit<LinkButtonProps, 'href' | 'title'>;
 
-export const GitHubButton: Component<DonationButtonProps> = (
-  props,
-) => {
+export const GitHubButton: Component<DonationButtonProps> = (props) => {
   return (
     <BaseGitHubButton
       {...props}
@@ -61,9 +59,7 @@ const BasePayPalButton = styled(BaseGitHubButton)`
   }
 `;
 
-export const PayPalButton: Component<DonationButtonProps> = (
-  props,
-) => {
+export const PayPalButton: Component<DonationButtonProps> = (props) => {
   return (
     <BasePayPalButton
       {...props}

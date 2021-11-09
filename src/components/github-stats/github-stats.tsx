@@ -2,10 +2,13 @@ import styled from '@emotion/styled';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import { Component } from '~/elements/base/fc';
 import { baseCardStyles } from '~/elements/simple/card';
 import useRequest from '~/hooks/useRequest';
-import { GitHubStats as GitHubStatsData, mediaQueries } from '~/types';
+import {
+  Component,
+  GitHubStats as GitHubStatsData,
+  mediaQueries,
+} from '~/types';
 
 const GitHubStatsLink = styled.a`
   ${baseCardStyles}

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import { SocialLinks } from '~/blocks/social-links';
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 import Link from '~/new-components/atoms/simple/link';
 import { Hello, HelloParagraph } from '~/sections/home/hello';
 import { mediaQueries } from '~/types';

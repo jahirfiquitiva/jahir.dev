@@ -2,14 +2,12 @@ import styled from '@emotion/styled';
 
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/base/fc';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
 import Link from '~/new-components/atoms/simple/link';
-import { viewports } from '~/types';
-import { CodingChallenge } from '~/types/challenge';
+import { Component, ComponentProps, CodingChallenge, viewports } from '~/types';
 
 const ChallengesGrid = styled(MasonryGrid)`
   margin: var(--content-bottom-margin) 0;

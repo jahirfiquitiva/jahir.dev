@@ -4,11 +4,10 @@ import Icon from '@mdi/react';
 import Image from 'next/image';
 import { usePalette } from 'react-palette';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { ExtLinkCard } from '~/elements/simple/card';
 import { Heading } from '~/elements/simple/heading';
 import { useTheme } from '~/providers/theme';
-import { TrackData } from '~/types';
+import { Component, ComponentProps, TrackData } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import getReadableColor from '~/utils/get-readable-color';

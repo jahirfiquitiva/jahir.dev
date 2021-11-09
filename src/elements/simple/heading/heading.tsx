@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import {
+  Component,
+  ComponentProps,
   ComponentWithGradientProps,
   ComponentWithTextShadowProps,
   gradientToClassName,
   textShadowToClassName,
-} from '~/elements/props';
+} from '~/types';
 
 const fontSizesKeys = ['xxxl', 'xxl', 'xl', 'md', 'sm', 'xs', 'xxs'] as const;
 const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;

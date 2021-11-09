@@ -2,7 +2,7 @@
 
 import { LogoSvg } from './logo-svg';
 
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 
 export const Logo: Component = ({ className }) => {
   // const [mounted, setMounted] = useState(false);

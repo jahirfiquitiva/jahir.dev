@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { ContactForm } from '~/blocks/contact-form';
 import { CenteredSection } from '~/blocks/section';
 import { SectionHeading } from '~/components/section-heading';
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 import { Divider } from '~/elements/simple/divider';
 import Link from '~/new-components/atoms/simple/link';
 

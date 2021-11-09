@@ -4,7 +4,7 @@ import { mdiFileCodeOutline } from '@mdi/js';
 import { ProjectCard } from '~/components/cards';
 import { GitHubStats } from '~/components/github-stats';
 import { SectionHeading } from '~/components/section-heading';
-import { Component } from '~/elements/base/fc';
+import { Component } from '~/types';
 import {
   MasonryGrid,
   MasonryBreakpoints,

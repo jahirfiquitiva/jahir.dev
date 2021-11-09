@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 import { Dispatch, SetStateAction } from 'react';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Component, ComponentProps } from '~/types';
 
 const InputWrapper = styled.div`
   position: relative;

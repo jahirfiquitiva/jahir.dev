@@ -4,12 +4,11 @@ import styled from '@emotion/styled';
 import { mdiLightbulbOnOutline, mdiMessageArrowRightOutline } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
-import { Component } from '~/elements/base/fc';
 import { Field } from '~/elements/simple/field';
 import { Heading } from '~/elements/simple/heading';
 import { formium } from '~/lib/formium';
 import Button from '~/new-components/atoms/simple/button';
-import { mediaQueries } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
 const BlogIdeasContainer = styled.div`
   display: grid;

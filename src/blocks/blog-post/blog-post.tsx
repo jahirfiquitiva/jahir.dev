@@ -8,10 +8,9 @@ import { usePalette } from 'react-palette';
 
 import styles from './blog-post.module.css';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { OptImage } from '~/elements/base/opt-image';
 import { useTheme } from '~/providers/theme';
-import { Post } from '~/types';
+import { Component, ComponentProps, Post } from '~/types';
 import formatDate from '~/utils/format-date';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 import hexToRGB from '~/utils/hex-to-rgb';

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-import { Component, ComponentProps } from '~/elements/base/fc';
 import { Card, ExtLinkCard } from '~/elements/simple/card';
+import { Component, ComponentProps } from '~/types';
 
 const dashboardCardStyles = `
   --border-radius: 8px;
