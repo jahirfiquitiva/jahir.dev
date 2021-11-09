@@ -84,7 +84,7 @@ const Blog = defineDocumentType(() => ({
   bodyType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
-    date: { type: 'string', required: true },
+    date: { type: 'string', required: true, timezone: 'America/Bogota' },
     hero: { type: 'string', required: true },
     color: { type: 'string' },
     excerpt: { type: 'string' },

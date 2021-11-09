@@ -1,7 +1,6 @@
-import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
 import { BlogPost } from '~/blocks/blog-post';
@@ -37,11 +36,7 @@ interface PostPageProps extends ComponentProps {
 const PostPage: Component<PostPageProps> = (props) => {
   const post = mapContentLayerBlog(props.post);
   const router = useRouter();
-  const Component = useMemo(
-    () =>
-      props?.post?.body.code ? getMDXComponent(props.post?.body.code) : null,
-    [props.post?.body.code],
-  );
+  const Component = useMDXComponent(props.post?.body.code || '');
 
   if (!router.isFallback && !post?.slug) {
     return <FourHundredFour />;
