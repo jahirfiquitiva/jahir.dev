@@ -29,16 +29,6 @@ const FormRow = styled.div`
   }
 `;
 
-const TextAreaField = styled(Field)`
-  & textarea {
-    min-height: 96px;
-
-    ${mediaQueries.tablet.sm} {
-      min-height: 144px;
-    }
-  }
-`;
-
 const FormDisclaimer = styled.p`
   margin-top: 0.8rem;
   color: var(--text-tertiary);
@@ -202,7 +192,7 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
           required
         />
       </FormRow>
-      <TextAreaField
+      <Field
         tag={'textarea'}
         name={'message'}
         label={'Message'}

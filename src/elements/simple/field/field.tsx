@@ -4,56 +4,6 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { Component, ComponentProps } from '~/types';
 
-const InputWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  margin-top: 0.4rem;
-
-  & textarea,
-  & input {
-    flex: 1;
-    padding: 0.4rem 0.6rem;
-
-    &.with-icon {
-      padding-right: 2.8rem;
-    }
-
-    &:focus {
-      outline-color: var(--accent);
-      outline-width: 1px;
-      border: 1px solid var(--accent);
-    }
-  }
-
-  & textarea {
-    min-height: 64px;
-    padding: 1rem 0.8rem;
-
-    &.with-icon {
-      padding-right: 0.8rem;
-      padding-bottom: 2.8rem;
-    }
-  }
-
-  & svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translateY(50%);
-    margin-right: 0.8rem;
-    pointer-events: none;
-    user-select: none;
-    color: var(--text-tertiary);
-  }
-
-  & textarea + svg {
-    top: unset;
-    bottom: 0;
-    transform: translateY(-50%);
-  }
-`;
-
 const LabelInputWrapper = styled.div`
   display: flex;
   flex-direction: column;

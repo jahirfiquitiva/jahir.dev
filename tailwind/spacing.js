@@ -13,6 +13,10 @@ module.exports = {
   48: '4.8rem',
   56: '5.6rem',
   button: '42px',
+  field: '48px',
+  'field-icon': '2.8rem',
+  textarea: '96px',
+  'textarea-lg': '144px',
   divider: '4px',
   'thin-divider': '1px',
 };

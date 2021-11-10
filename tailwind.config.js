@@ -36,6 +36,9 @@ module.exports = {
       letterSpacing: {
         button: '0.028575em',
       },
+      outline: {
+        accent: ['1px solid var(--accent)', '1px'],
+      },
     },
   },
   variants: {

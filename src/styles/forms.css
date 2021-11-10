@@ -1,14 +1,3 @@
-input,
-select,
-textarea {
-  background: rgba(0, 0, 0, 0);
-  color: var(--text-primary);
-  border: 1px solid var(--divider);
-  border-radius: 6px;
-  min-height: 48px;
-  padding: 0.4rem 0.6rem;
-}
-
 label {
   margin-top: 1rem;
   font-weight: 500;
@@ -17,21 +6,6 @@ label {
 form textarea {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-form input:focus,
-form textarea:focus {
-  outline-color: var(--accent);
-  outline-width: 1px;
-  border: 1px solid var(--accent);
-}
-
-form button:disabled,
-form input:disabled,
-form textarea:disabled {
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: not-allowed;
 }
 
 form textarea {
