@@ -36,6 +36,7 @@ export interface ButtonProps extends ComponentProps {
   icon?: string;
   iconSize?: number;
   disabled?: boolean;
+  wrapChildrenInSpan?: boolean;
   // eslint-disable-next-line @typescript-eslint/ban-types
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
@@ -51,6 +52,7 @@ export const Button: Component<ButtonProps> = (props) => {
     children,
     onClick,
     style,
+    wrapChildrenInSpan = true,
   } = props;
 
   return (
@@ -66,7 +68,7 @@ export const Button: Component<ButtonProps> = (props) => {
       style={style}
     >
       {icon && <Icon path={icon} size={iconSize} />}
-      {children && <span>{children}</span>}
+      {children && wrapChildrenInSpan ? <span>{children}</span> : children}
     </button>
   );
 };

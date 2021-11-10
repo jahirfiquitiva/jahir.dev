@@ -33,7 +33,8 @@ module.exports = {
       minHeight: spacing,
       minWidth: spacing,
       letterSpacing: {
-        button: '0.028575em',
+        button: '0.03125rem', // 0.5px
+        fab: '0.0625rem', // 1px
       },
       outline: {
         accent: ['2px solid var(--accent)', '0px'],

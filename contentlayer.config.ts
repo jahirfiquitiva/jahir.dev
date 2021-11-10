@@ -78,7 +78,7 @@ const computedFields: ComputedFields = {
   },
 };
 
-const Blog = defineDocumentType(() => ({
+export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/*.mdx',
   bodyType: 'mdx',
@@ -90,10 +90,7 @@ const Blog = defineDocumentType(() => ({
     excerpt: { type: 'string' },
     description: { type: 'string' },
     link: { type: 'string' },
-    keywords: {
-      type: 'list',
-      of: { type: 'string' },
-    },
+    keywords: { type: 'string' },
     inProgress: { type: 'boolean' },
     tableOfContents: { type: 'string' },
   },
@@ -122,7 +119,7 @@ const computedInspirationFields: ComputedFields = {
   },
 };
 
-const InspirationItem = defineDocumentType(() => ({
+export const InspirationItem = defineDocumentType(() => ({
   name: 'InspirationItem',
   filePathPattern: 'inspiration/*.json',
   fields: {

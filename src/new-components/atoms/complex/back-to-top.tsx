@@ -23,37 +23,62 @@ const BackToTopButton = tw(Button)`
   fixed
   right-0
   bottom-0
-  mr-16
-  mb-16
-  bg-accent-lighter
-  h-fab
-  min-h-fab
-  w-fab
-  min-w-fab
+  mr-10
+  mb-10
+  bg-accent-light
+  min-h-button
+  min-w-button
   rounded-half
   shadow-fab
   text-accent-text
   text-tiny
-  p-12
+  tracking-fab
+  p-7
   uppercase
   duration-300
+
+  hocus:(bg-accent)
 
   all-child:(not-last:(
     inline-block
     visible
-    pointer-events-auto
+    pointer-events-none
+    select-none
     opacity-100
     mr-0
   ))
 
-  dark:(bg-accent-darker)
-  2xl:(rounded-full)
+  md:(mr-15 mb-15)
+
+  2xl:(rounded-full mr-20 mb-20 py-8 px-12
+    all-child:(not-last:(
+      hidden
+      invisible
+      pointer-events-none
+      select-none
+      opacity-0
+    ))
+  )
 `;
 
-const StyledBackToTopButton = styled(BackToTopButton)`
-  & span {
-    ${tw`h-0 w-0 invisible opacity-0 select-none`}
-  }
+const BackToTopSpan = tw.span`
+  h-0
+  w-0
+  text-0
+  invisible 
+  opacity-0 
+  pointer-events-none 
+  select-none
+
+  2xl:(
+    h-unset
+    w-unset
+    text-unset
+    visible
+    opacity-100
+    pointer-events-none 
+    select-none
+  )
 `;
 
 const scrollToTop = () => {
@@ -95,14 +120,15 @@ export const BackToTop = () => {
   }, []);
 
   return (
-    <StyledBackToTopButton
+    <BackToTopButton
       title={'Button to go back to top'}
       icon={mdiChevronUp}
       iconSize={1.1}
       onClick={scrollToTop}
       css={showButton ? visibleStyles : hiddenStyles}
+      wrapChildrenInSpan={false}
     >
-      Back to top
-    </StyledBackToTopButton>
+      <BackToTopSpan>Back to top</BackToTopSpan>
+    </BackToTopButton>
   );
 };
