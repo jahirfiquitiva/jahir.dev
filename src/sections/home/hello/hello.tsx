@@ -9,7 +9,7 @@ import {
   Link,
 } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
-import { Component, gradientToClassName, mediaQueries } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
 const HeadingContainer = styled.div`
   display: inline-flex;

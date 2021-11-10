@@ -1,13 +1,8 @@
 import { Heading, HeadingProps } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
-import {
-  Component,
-  ComponentWithGradientProps,
-  GradientOptions,
-} from '~/types';
+import { Component, ComponentWithGradientProps } from '~/types';
 
 interface SectionHeadingProps extends HeadingProps, ComponentWithGradientProps {
-  gradientColor: GradientOptions;
   emoji?: string;
 }
 
