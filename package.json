@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "gen-inspo-files": "rm -rf ./data/inspiration/*.js* && NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-inspiration-files.mjs",
-    "clean": "rm -rf .next && rm -rf out",
+    "clean": "rm -rf .next && rm -rf out && rm -rf .contentlayer",
     "predev": "yarn clean && yarn gen-inspo-files",
     "prebuild": "yarn predev",
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
