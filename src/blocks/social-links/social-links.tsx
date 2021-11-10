@@ -5,8 +5,8 @@ import {
   LinkedInIconButton,
   PolyworkIconButton,
 } from '~/components/buttons';
+import { ButtonGroup } from '~/new-components/atoms/complex';
 import { Component, ComponentProps } from '~/types';
-import ButtonGroup from '~/new-components/atoms/complex/button-group';
 
 interface SocialLinksProps extends ComponentProps {
   iconSize?: number;

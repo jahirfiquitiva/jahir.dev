@@ -13,6 +13,7 @@ module.exports = {
   32: '3.2rem',
   48: '4.8rem',
   56: '5.6rem',
+  fab: '36px',
   button: '42px',
   field: '48px',
   'field-icon': '2.8rem',

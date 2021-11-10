@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { Footer } from '~/blocks/footer';
 import { Toolbar } from '~/blocks/toolbar';
 import { MetaTags } from '~/components/metatags';
-import { BackToTop } from '~/elements/complex/back-to-top';
+import { BackToTop } from '~/new-components/atoms/complex';
 import { Component, PageProps, mediaQueries, defaultKeywords } from '~/types';
 
 const defaultSiteDescription =

@@ -31,6 +31,7 @@ module.exports = {
     },
     extend: {
       minHeight: spacing,
+      minWidth: spacing,
       letterSpacing: {
         button: '0.028575em',
       },

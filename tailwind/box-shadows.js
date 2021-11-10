@@ -9,7 +9,10 @@ const generateBoxShadows = () => {
       .replace(/0.1/g, '0.2')
       .replace(/0, 0, 0/g, 'var(--shadow-color)');
   }
-  return newBoxShadows;
+  return {
+    ...newBoxShadows,
+    fab: '0 2px 8px rgba(var(--shadow-color), 0.24)',
+  };
 };
 
 module.exports = { generateBoxShadows };
