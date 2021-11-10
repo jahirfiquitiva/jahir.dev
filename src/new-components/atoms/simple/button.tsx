@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 import { MouseEventHandler } from 'react';
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
@@ -23,16 +23,11 @@ export const ButtonStyles = tw`
   duration-200
   ease-in-out
 
+  all-child:(not-last:(mr-4))
+
   hocus:(bg-accent-dark -translate-y-1 min-h-button)
 
   disabled:(opacity-50 pointer-events-none cursor-not-allowed)
-`;
-
-const StyledButton = styled.button`
-  ${ButtonStyles}
-  & > *:not(:last-child) {
-    ${tw`mr-4`}
-  }
 `;
 
 export interface ButtonProps extends ComponentProps {
@@ -59,18 +54,19 @@ export const Button: Component<ButtonProps> = (props) => {
   } = props;
 
   return (
-    <StyledButton
+    <button
       type={type}
       name={title}
       title={title}
       aria-label={title}
-      className={className}
       disabled={disabled}
       onClick={onClick}
+      css={ButtonStyles}
+      className={className}
       style={style}
     >
       {icon && <Icon path={icon} size={iconSize} />}
       {children && <span>{children}</span>}
-    </StyledButton>
+    </button>
   );
 };

@@ -8,9 +8,6 @@ import { Component } from '~/types';
 
 const StyledLinkButton = styled(Link)`
   ${ButtonStyles}
-  & > *:not(:last-child) {
-    ${tw`mr-4`}
-  }
   ${tw`hocus:(text-accent-text)`}
 `;
 

@@ -3,16 +3,16 @@ import tw, { styled, css } from 'twin.macro';
 import { Link } from './link';
 
 const baseCardStyles = tw`
-    block
-    rounded
-    p-0
-    transition-all
-    duration-300
-    border
-    border-solid
-    border-divider
-    motion-reduce:transition-none
-  `;
+  block
+  rounded
+  p-0
+  transition-all
+  duration-300
+  border
+  border-solid
+  border-divider
+  motion-reduce:transition-none
+`;
 
 const baseFirstDivChildStyles = tw`
   rounded

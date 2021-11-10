@@ -1,20 +1,13 @@
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
-const ButtonGroup = styled.div`
-  ${tw`
-    inline-flex
-    flex-row
-    flex-wrap
-    items-center
-    content-start
-  `}
+const ButtonGroup = tw.div`
+  inline-flex
+  flex-row
+  flex-wrap
+  items-center
+  content-start
 
-  & > * {
-    ${tw`mb-8`}
-    &:not(:last-child) {
-      ${tw`mr-8`}
-    }
-  }
+  all-child:(mb-8 not-last:(mr-8))
 `;
 
 export default ButtonGroup;

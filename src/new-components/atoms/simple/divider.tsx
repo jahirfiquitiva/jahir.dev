@@ -1,4 +1,4 @@
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
 import {
   Component,
@@ -22,8 +22,8 @@ const BaseDivider = tw.hr`
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ThinDivider = styled(BaseDivider)`
-  ${tw`h-thin-divider`}
+const ThinDivider = tw(BaseDivider)`
+  h-thin-divider
 `;
 
 export const Divider: Component<DividerProps> = (props) => {

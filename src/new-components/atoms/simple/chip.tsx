@@ -5,7 +5,7 @@ const baseChipStyles = tw`
   items-center
   content-center
   py-4
-  px-8
+  px-6
   text-tiny
   rounded-full
   border
@@ -31,43 +31,27 @@ export const Chip = styled.span`
   border-color: var(--border-color);
 
   ${hocusChipStyles}
-
+  ${tw`all-child:(first-of-type:(mr-4))`}
+  
   &:hover,
   &:focus {
     background-color: var(--bg-color);
   }
-
-  & > :first-of-type {
-    ${tw`mr-4`}
-  }
 `;
 
 export const ImageChip = styled(Chip)`
-  ${tw`p-4 pr-8`}
-
-  & > :first-of-type {
-    ${tw`mr-4!`}
-  }
+  ${tw`p-4 pr-8 all-child:(first-of-type:(mr-4!))`}
 
   & img {
     ${tw`rounded-half`}
   }
 `;
 
-const baseChipGroupStyles = tw`
+export const ChipGroup = tw.ul`
   flex
   flex-wrap
   list-none
   py-10
-`;
 
-export const ChipGroup = styled.ul`
-  ${baseChipGroupStyles}
-
-  & > * {
-    ${tw`mb-6`}
-    &:not(:last-child) {
-      ${tw`mr-6`}
-    }
-  }
+  all-child:(mb-6 not-last:(mr-6))
 `;
