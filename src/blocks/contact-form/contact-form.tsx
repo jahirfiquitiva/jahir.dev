@@ -10,9 +10,8 @@ import {
 } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
-import { Field } from '~/elements/simple/field';
 import { formium } from '~/lib/formium';
-import { Button, Link } from '~/new-components/atoms/simple';
+import { Button, Link, Field } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, mediaQueries } from '~/types';
 
 const InternalForm = styled.form`

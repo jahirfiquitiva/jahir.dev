@@ -16,7 +16,7 @@ module.exports = {
   field: '48px',
   'field-icon': '2.8rem',
   textarea: '96px',
-  'textarea-lg': '144px',
+  'textarea-max': '192px',
   divider: '4px',
   'thin-divider': '1px',
 };

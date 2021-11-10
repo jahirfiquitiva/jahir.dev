@@ -2,6 +2,7 @@ export * from './button';
 export * from './card';
 export * from './chip';
 export * from './divider';
+export * from './field';
 export * from './gradient-span';
 export * from './heading';
 export * from './image';

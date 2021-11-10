@@ -12,8 +12,6 @@ module.exports = {
   mode: 'jit',
   purge: [
     './public/**/*.html',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
     './src/**/*.{js,ts,jsx,tsx}',
     './src/**/**/*.{js,ts,jsx,tsx}',
   ],
@@ -37,7 +35,7 @@ module.exports = {
         button: '0.028575em',
       },
       outline: {
-        accent: ['1px solid var(--accent)', '1px'],
+        accent: ['2px solid var(--accent)', '0px'],
       },
     },
   },

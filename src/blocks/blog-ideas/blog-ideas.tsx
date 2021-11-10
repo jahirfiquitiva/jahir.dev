@@ -4,9 +4,8 @@ import styled from '@emotion/styled';
 import { mdiLightbulbOnOutline, mdiMessageArrowRightOutline } from '@mdi/js';
 import { useState, useEffect } from 'react';
 
-import { Field } from '~/elements/simple/field';
 import { formium } from '~/lib/formium';
-import { Button, Heading } from '~/new-components/atoms/simple';
+import { Button, Heading, Field } from '~/new-components/atoms/simple';
 import { Component, mediaQueries } from '~/types';
 
 const BlogIdeasContainer = styled.div`
@@ -35,17 +34,6 @@ const BlogIdeasForm = styled.form`
     padding-top: 0;
     & > textarea {
       margin-top: 0;
-    }
-  }
-`;
-
-const BlogIdeasField = styled(Field)`
-  height: 100%;
-
-  & > div {
-    flex: 1;
-    & textarea {
-      height: 100%;
     }
   }
 `;
@@ -183,9 +171,9 @@ export const BlogIdeas: Component = () => {
       </div>
 
       <BlogIdeasForm>
-        <BlogIdeasField
+        <Field
           tag={'textarea'}
-          label={'Ideas'}
+          label={'Ideas for future blog posts'}
           disabled={submitting}
           iconPath={mdiLightbulbOnOutline}
           placeholder={'What should I blog about next?'}

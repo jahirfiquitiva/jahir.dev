@@ -10,8 +10,8 @@ import {
   MasonryBreakpoints,
   MasonryGrid,
 } from '~/elements/complex/masonry-grid';
-import { Field } from '~/elements/simple/field';
 import { debounce } from '~/lib/debounce';
+import { Field } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, Post, viewports } from '~/types';
 
 interface BlogGridProps extends ComponentProps {

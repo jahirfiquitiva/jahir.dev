@@ -1,4 +1,8 @@
+import Icon from '@mdi/react';
+import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from 'react';
 import tw, { styled } from 'twin.macro';
+
+import { Component, ComponentProps } from '~/types';
 
 const baseFieldStyles = tw`
   bg-transparent
@@ -11,7 +15,11 @@ const baseFieldStyles = tw`
   py-4
   flex-1
 
-  hocus:(
+  hover:(
+    border-accent-light
+  )
+
+  focus:(
     outline-accent
     border-accent
   )
@@ -24,8 +32,9 @@ const baseFieldStyles = tw`
 `;
 
 const Label = tw.label`
-    mt-10
-    font-medium
+  mt-10
+  mb-4
+  font-medium
 `;
 
 const Input = styled.input`
@@ -55,7 +64,6 @@ const BaseFieldWrapper = tw.div`
   flex
   flex-row
   items-center
-  mt-4
 `;
 
 const FieldWrapper = styled(BaseFieldWrapper)`
@@ -64,7 +72,7 @@ const FieldWrapper = styled(BaseFieldWrapper)`
     top-0
     right-0
     transform
-    translate-x-1/2
+    translate-y-1/2
     mr-8
     pointer-events-none
     select-none
@@ -73,7 +81,7 @@ const FieldWrapper = styled(BaseFieldWrapper)`
 
   & textarea + svg {
     top: unset;
-    ${tw`bottom-0 transform -translate-x-1/2`}
+    ${tw`bottom-0 transform -translate-y-1/2`}
   }
 `;
 
@@ -90,3 +98,83 @@ const ErrorText = tw.small`
   mt-4
   text-gradients-red
 `;
+
+interface BaseFieldProps extends ComponentProps {
+  name: string;
+  label: string;
+  type?: HTMLInputTypeAttribute;
+  placeholder?: string;
+  iconPath?: string;
+  hideLabel?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  error?: string;
+  value?: string;
+  onChange?: (newValue: string) => void | Dispatch<SetStateAction<string>>;
+}
+
+const BaseField: Component<BaseFieldProps> = (props) => {
+  const {
+    name,
+    placeholder,
+    label,
+    iconPath,
+    hideLabel = !placeholder && !label,
+    error,
+    children,
+    className,
+  } = props;
+
+  return (
+    <LabeledFieldWrapper className={className}>
+      <Label htmlFor={name} className={hideLabel ? 'hidden' : undefined}>
+        {label || placeholder}
+      </Label>
+      <FieldWrapper>
+        {children}
+        {iconPath && <Icon path={iconPath} size={1} />}
+      </FieldWrapper>
+      {error && <ErrorText>!! {error}</ErrorText>}
+    </LabeledFieldWrapper>
+  );
+};
+
+interface FieldProps extends BaseFieldProps {
+  tag: 'input' | 'textarea';
+}
+
+export const Field: Component<FieldProps> = (props) => {
+  const {
+    tag,
+    type,
+    name,
+    placeholder,
+    iconPath,
+    disabled,
+    required,
+    value,
+    onChange,
+    ...otherProps
+  } = props;
+  const inputProps = {
+    name,
+    placeholder,
+    className: iconPath ? 'with-icon' : undefined,
+    disabled,
+    required,
+    value,
+    onChange: (e: { target: HTMLInputElement | HTMLTextAreaElement }) => {
+      if (onChange) onChange(e.target.value);
+    },
+  };
+
+  return (
+    <BaseField iconPath={iconPath} name={name} {...otherProps}>
+      {tag === 'input' ? (
+        <Input type={type} {...inputProps} />
+      ) : (
+        <TextArea {...inputProps} />
+      )}
+    </BaseField>
+  );
+};
