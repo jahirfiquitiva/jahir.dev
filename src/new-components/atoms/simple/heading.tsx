@@ -13,6 +13,7 @@ import {
   gradientToTailwind,
 } from '~/types';
 
+const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
 const fontSizesKeys = [
   'tiny',
   'base',
@@ -23,8 +24,8 @@ const fontSizesKeys = [
   'xl',
   '2xl',
   '3xl',
+  ...headingSizes,
 ] as const;
-const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
 
 type HeadingSize = typeof headingSizes[number];
 type FontSize = typeof fontSizesKeys[number] | null | undefined;
@@ -47,6 +48,12 @@ const fontSizeStyles = {
   xl: tw`text-xl`,
   '2xl': tw`text-2xl`,
   '3xl': tw`text-3xl`,
+  6: tw`text-sm`, // h6
+  5: tw`text-md`, // h5
+  4: tw`text-lg`, // h4
+  3: tw`text-xl`, // h3
+  2: tw`text-2xl`, // h2
+  1: tw`text-3xl`, // h1
 };
 
 const buildGradientAndShadowStyles = (
