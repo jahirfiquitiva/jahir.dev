@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
-import { SectionHeading } from '~/components/section-heading';
-import ButtonGroup from '~/new-components/atoms/complex/button-group';
+import { ButtonGroup, SectionHeading } from '~/new-components/atoms/complex';
 import { Link } from '~/new-components/atoms/simple';
 import { Component, mediaQueries } from '~/types';
 

@@ -46,12 +46,3 @@ export const ImageChip = styled(Chip)`
     ${tw`rounded-half`}
   }
 `;
-
-export const ChipGroup = tw.ul`
-  flex
-  flex-wrap
-  list-none
-  py-10
-
-  all-child:(mb-6 not-last:(mr-6))
-`;

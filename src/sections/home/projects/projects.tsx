@@ -3,11 +3,11 @@ import { mdiFileCodeOutline } from '@mdi/js';
 
 import { ProjectCard } from '~/components/cards';
 import { GitHubStats } from '~/components/github-stats';
-import { SectionHeading } from '~/components/section-heading';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/elements/complex/masonry-grid';
+import { SectionHeading } from '~/new-components/atoms/complex';
 import { Divider, LinkButton } from '~/new-components/atoms/simple';
 import {
   Component,

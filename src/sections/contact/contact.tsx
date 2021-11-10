@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { ContactForm } from '~/blocks/contact-form';
 import { CenteredSection } from '~/blocks/section';
-import { SectionHeading } from '~/components/section-heading';
+import { SectionHeading } from '~/new-components/atoms/complex';
 import { Divider, Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 

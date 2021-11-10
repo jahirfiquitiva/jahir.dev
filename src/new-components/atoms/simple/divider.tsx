@@ -19,6 +19,8 @@ const BaseDivider = tw.hr`
   to-divider
   border-none
   border-0
+
+  2xl:(my-20)
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

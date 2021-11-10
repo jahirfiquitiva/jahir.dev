@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-const ButtonGroup = tw.div`
+export const ButtonGroup = tw.div`
   inline-flex
   flex-row
   flex-wrap
@@ -9,5 +9,3 @@ const ButtonGroup = tw.div`
 
   all-child:(mb-8 not-last:(mr-8))
 `;
-
-export default ButtonGroup;

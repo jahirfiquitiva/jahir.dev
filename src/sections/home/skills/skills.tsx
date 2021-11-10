@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 
-import { SectionHeading } from '~/components/section-heading';
-import { ChipGroup, Chip, Divider } from '~/new-components/atoms/simple';
+import { SectionHeading, ChipGroup } from '~/new-components/atoms/complex';
+import { Chip, Divider } from '~/new-components/atoms/simple';
 import { Component, skills } from '~/types';
 import { buildChipStyles } from '~/utils/build-chip-styles';
 

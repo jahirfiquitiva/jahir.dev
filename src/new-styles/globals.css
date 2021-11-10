@@ -1,8 +1,9 @@
-@import './../styles/fonts/all';
+@import './fonts/all';
 @import './variables';
 
 @import 'tailwindcss/base';
 @import './texts';
+@import './code';
 
 @import 'tailwindcss/components';
 

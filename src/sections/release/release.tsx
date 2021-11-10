@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 import { CenteredSection } from '~/blocks/section';
-import { SectionHeading } from '~/components/section-heading';
 import useRequest from '~/hooks/useRequest';
+import { SectionHeading } from '~/new-components/atoms/complex';
 import { Heading } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 

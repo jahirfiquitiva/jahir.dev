@@ -2,12 +2,11 @@ import styled from '@emotion/styled';
 import { Fragment } from 'react';
 import { usePalette } from 'react-palette';
 
-import { SectionHeading } from '~/components/section-heading';
+import { SectionHeading, ChipGroup } from '~/new-components/atoms/complex';
 import {
   Heading,
   Image,
   Link,
-  ChipGroup,
   ImageChip,
   Divider,
 } from '~/new-components/atoms/simple';
