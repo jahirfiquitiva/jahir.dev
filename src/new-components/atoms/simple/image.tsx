@@ -46,7 +46,6 @@ export const Image: Component<ImageProps> = (props) => {
       const {
         width = size,
         height = size,
-        layout = 'fixed',
         ...otherImageProps
       } = rest;
       return (
@@ -55,7 +54,6 @@ export const Image: Component<ImageProps> = (props) => {
           className={props.className}
           width={width}
           height={height}
-          layout={layout}
         />
       );
     }

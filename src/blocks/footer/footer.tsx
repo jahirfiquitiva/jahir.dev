@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 import styled from '@emotion/styled';
 
-import { SocialLinks } from '~/blocks/social-links';
 import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
+import { SocialLinks } from '~/new-components/elements';
 import { Component, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -188,30 +188,6 @@ const FooterContainer = styled.footer`
   }
 `;
 
-const FooterSocialLinks = styled(SocialLinks)`
-  margin: 1.2rem 0 0.4rem;
-
-  ${mediaQueries.mobile.md} {
-    margin: 1.2rem 0 0.6rem;
-    & > * {
-      margin-bottom: 0.5rem;
-    }
-    & > *:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-  }
-
-  ${mediaQueries.tablet.sm} {
-    margin: 1.2rem 0 0.8rem;
-    & > * {
-      margin-bottom: 0.8rem;
-    }
-    & > *:not(:last-child) {
-      margin-right: 0.8rem;
-    }
-  }
-`;
-
 export const Footer: Component = () => {
   return (
     <FooterContainer>
@@ -230,7 +206,7 @@ export const Footer: Component = () => {
               Jahir Fiquitiva
             </GradientSpan>
           </FooterHomeLink>
-          <FooterSocialLinks />
+          <SocialLinks />
           <p className={'small'}>Copyright © {new Date().getFullYear()}</p>
           <p className={'small'}>All Rights Reserved</p>
         </FooterGridSection>

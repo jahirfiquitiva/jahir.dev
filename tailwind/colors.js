@@ -1,5 +1,7 @@
 module.exports = {
   transparent: 'rgba(0,0,0,0)',
+  white: '#fff',
+  black: '#000',
   current: 'currentColor',
   inherit: 'inherit',
   background: 'var(--background)',
@@ -45,5 +47,5 @@ module.exports = {
     DEFAULT: 'var(--toolbar)',
     opaque: 'var(--toolbar-opaque)',
     highlight: 'var(--toolbar-highlight)',
-  }
+  },
 };
