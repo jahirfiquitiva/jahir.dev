@@ -1,8 +1,22 @@
 import {
-  mdiAndroid, mdiGit, mdiLanguageCss3, mdiLanguageHtml5, mdiLanguageJava,
-  mdiLanguageJavascript, mdiLanguageKotlin, mdiLanguagePython,
-  mdiLanguageTypescript, mdiLeaf, mdiMaterialDesign, mdiNodejs,
-  mdiPuzzleOutline, mdiReact, mdiTriangle, mdiAccountGroupOutline, mdiPaletteSwatchOutline
+  mdiAndroid,
+  mdiGit,
+  mdiLanguageCss3,
+  mdiLanguageHtml5,
+  mdiLanguageJava,
+  mdiLanguageJavascript,
+  mdiLanguageKotlin,
+  mdiLanguagePython,
+  mdiLanguageTypescript,
+  mdiLeaf,
+  mdiMaterialDesign,
+  mdiNodejs,
+  mdiPuzzleOutline,
+  mdiReact,
+  mdiTriangle,
+  mdiAccountGroupOutline,
+  mdiPaletteSwatchOutline,
+  mdiTailwind,
 } from '@mdi/js';
 
 export interface SkillProps {
@@ -24,10 +38,20 @@ export const skills: SkillProps[] = [
   { name: 'Node JS', iconPath: mdiNodejs, color: '#61af43' },
   { name: 'React', iconPath: mdiReact, color: '#00c2e6' },
   { name: 'NextJS', iconPath: mdiTriangle, color: '#0070f3' },
-  { name: 'Styled Components', iconPath: mdiPaletteSwatchOutline, color: '#c43bad' },
+  {
+    name: 'Styled Components',
+    iconPath: mdiPaletteSwatchOutline,
+    color: '#c43bad',
+  },
+  { name: 'Tailwind', iconPath: mdiTailwind, color: '#06b6d4' },
   { name: 'Mongo DB', iconPath: mdiLeaf, color: '#69a14a' },
   { name: 'Express', iconPath: mdiPuzzleOutline, color: '#888888' },
   { name: 'Git', iconPath: mdiGit, color: '#fc6d26' },
   { name: 'Material Design', iconPath: mdiMaterialDesign, color: '#888888' },
-  { name: 'Community', iconPath: mdiAccountGroupOutline, color: '#888888', hide: true },
+  {
+    name: 'Community',
+    iconPath: mdiAccountGroupOutline,
+    color: '#888888',
+    hide: true,
+  },
 ];
