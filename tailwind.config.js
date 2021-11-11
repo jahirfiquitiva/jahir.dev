@@ -33,7 +33,10 @@ module.exports = {
       minHeight: spacing,
       maxHeight: spacing,
       minWidth: spacing,
-      maxWidth: spacing,
+      maxWidth: {
+        ...spacing,
+        '3xl-w-padding': 'calc(48rem + 0.8rem)',
+      },
       letterSpacing: {
         unset: 'unset',
         button: '0.03125rem', // 0.5px

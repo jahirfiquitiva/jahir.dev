@@ -23,12 +23,14 @@ export const ToolbarButton = styled(Button)<CustomProps>`
   ${tw`
     gap-0
     p-4
+    pt-5
     text-center
     text-accent
     leading-none
     hocus:(text-accent-dark dark:(text-accent-light))
     [span]:(w-full text-center)
-    xs:(px-6)
+    xs:(px-6 pt-5)
+    md:(pt-4)
   `}
 `;
 

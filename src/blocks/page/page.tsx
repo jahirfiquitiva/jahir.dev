@@ -26,6 +26,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-top: calc(var(--toolbar-height) + 0.8rem);
 `;
 
 const SiteContent = styled.main`
@@ -35,14 +36,10 @@ const SiteContent = styled.main`
   width: 100%;
   max-width: 768px; /* calc(var(--max-site-width) - 0.8rem) */
   margin: 0 auto;
-  padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
-
-  ${mediaQueries.tablet.lg} {
-    padding: calc(var(--toolbar-height) + 1.6rem) 0.4rem 0;
-  }
+  padding: 0 1rem 1.6rem;
 
   ${mediaQueries.tablet.xl} {
-    padding: calc(var(--toolbar-height) + 1.6rem) 0 0;
+    padding: 0 0.4rem 1.6rem;
   }
 `;
 

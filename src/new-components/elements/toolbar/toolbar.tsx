@@ -11,6 +11,8 @@ import { useTheme } from '~/providers/theme';
 
 const ToolbarGrid = tw.nav`
   min-h-20
+  max-w-3xl-w-padding
+  mx-auto
   grid
   grid-cols-2
   auto-rows-min
@@ -50,13 +52,16 @@ const HomeLink = tw(ToolbarLink)`
 `;
 
 const MenuButton = tw(ToolbarButton)`
+  pt-4
   gap-0
+  xs:(pt-4)
+  md:(pt-4)
   [svg]:(mx-auto transition-all duration-150 transform rotate-0)
   [&.expanded]:(max-w-button max-h-button p-2 [svg]:(rotate-45))
 `;
 
 const Navigation = () => {
-  const { isDark } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
   const [isExpanded, setExpanded] = useState(false);
   const itemsClassName = isExpanded ? 'expanded' : undefined;
 
@@ -71,13 +76,16 @@ const Navigation = () => {
       </HomeLink>
       <ToolbarButtonsContainer>
         <li>
-          <ToolbarButton title={'Toggle theme'}>
+          <ToolbarButton
+            title={`Button to enable ${isDark ? 'light' : 'dark'} theme`}
+            onClick={toggleTheme}
+          >
             {isDark ? '🌞' : '🌚'}
           </ToolbarButton>
         </li>
         <li>
           <MenuButton
-            title={'Toggle menu'}
+            title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
             icon={isExpanded ? mdiPlus : mdiMenu}
             iconSize={isExpanded ? 1.2 : 1}
             className={itemsClassName}
