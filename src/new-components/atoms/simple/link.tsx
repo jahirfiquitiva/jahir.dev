@@ -25,10 +25,9 @@ const BaseLinkStyles = tw`
 `;
 
 const StyledLink = styled.a<BaseLinkProps>(
-  ({ underline, underlineOnHocus }) => [
+  ({ underline }) => [
     BaseLinkStyles,
-    underline ? tw`underline` : tw`no-underline`,
-    underlineOnHocus ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+    underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
   ],
 );
 
@@ -40,7 +39,7 @@ export const Link: Component<LinkProps> = (props) => {
     title,
     href,
     newTab = !isLocalLink(href),
-    underline = true,
+    underline,
     underlineOnHocus = underline,
     children,
     className,
@@ -54,8 +53,7 @@ export const Link: Component<LinkProps> = (props) => {
         aria-label={title}
         target={newTab ? '_blank' : '_self'}
         rel={'noopener noreferrer'}
-        underline={underline}
-        underlineOnHocus={underlineOnHocus}
+        underline={underline || underlineOnHocus}
         className={className}
         style={style}
       >

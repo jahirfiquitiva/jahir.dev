@@ -12,7 +12,12 @@ import {
 
 const BaseToolbarLink = styled(LinkButton)`
   ${BaseToolbarButtonStyles}
-  ${tw`max-w-unset lg:(gap-6) [span.emoji]:(hidden sm:(block text-text-primary))`}
+  ${tw`
+    max-w-unset
+    [&.active]:(bg-toolbar-highlight)
+    lg:(gap-6)
+    [span.emoji]:(hidden sm:(block text-text-primary))
+  `}
 `;
 
 const GradientToolbarLinkSpan = tw.span`

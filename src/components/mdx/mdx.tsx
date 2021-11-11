@@ -1,27 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
-import Link from 'next/link';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import { Image } from '~/new-components/atoms/simple';
+import { Image, Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
-
-const CustomLink: Component<ComponentProps & { href: string }> = (props) => {
-  const { href } = props;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
-
-  if (isInternalLink) {
-    return (
-      <Link href={href}>
-        <a {...props} />
-      </Link>
-    );
-  }
-
-  return <a target={'_blank'} rel={'noopener noreferrer'} {...props} />;
-};
 
 interface CustomSplitProps extends ComponentProps {
   firstImage: string;
@@ -92,7 +76,7 @@ const CustomImageComparison: Component<CustomSplitProps> = (props) => {
 export const MDXComponents = {
   Image,
   ImageComparison: CustomImageComparison,
-  a: CustomLink,
+  a: Link,
 };
 
 export default MDXComponents;

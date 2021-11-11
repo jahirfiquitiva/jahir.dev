@@ -249,16 +249,13 @@ export const Footer: Component = () => {
             </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
-            title={'Link to dashboard page'}
-            href={'/dashboard'}
-            style={buildStyles({
-              'text-decoration': 'underline solid var(--gradient-yellow)',
-            })}
-            underline={false}
+            title={'Link to uses page'}
+            href={'/uses'}
+            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
           >
-            <span>✨&nbsp;&nbsp;</span>
+            <span>⚡️&nbsp;&nbsp;</span>
             <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
-              Dashboard
+              Uses
             </GradientSpan>
           </FooterGridLink>
           <FooterGridLink
@@ -284,13 +281,16 @@ export const Footer: Component = () => {
         </FooterGridSectionTwo>
         <FooterGridSectionThree>
           <FooterGridLink
-            title={'Link to uses page'}
-            href={'/uses'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
+            title={'Link to dashboard page'}
+            href={'/dashboard'}
+            style={buildStyles({
+              'text-decoration': 'underline solid var(--gradient-yellow)',
+            })}
+            underline={false}
           >
-            <span>⚡️&nbsp;&nbsp;</span>
+            <span>✨&nbsp;&nbsp;</span>
             <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
-              Uses
+              Dashboard
             </GradientSpan>
           </FooterGridLink>
           <FooterGridLink

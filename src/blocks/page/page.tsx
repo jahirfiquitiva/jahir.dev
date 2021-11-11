@@ -26,7 +26,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: calc(var(--toolbar-height) + 0.8rem);
+  padding-top: calc(var(--toolbar-height) + 1.2rem);
 `;
 
 const SiteContent = styled.main`
