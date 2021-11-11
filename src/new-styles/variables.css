@@ -4,15 +4,16 @@
   --text-shadow-size: 2px;
   --toolbar-height: 56px;
 
+  --background-values: 255, 255, 255;
+  --background: #fff;
+  --primary: #f6f9fe;
+
   --toolbar: rgba(235, 240, 251, 0.65);
   --toolbar-opaque: rgb(235, 240, 251);
   --toolbar-shadow-a: rgba(9, 17, 34, 0.08);
   --toolbar-shadow-b: rgba(9, 17, 34, 0.06);
   --toolbar-shadow-c: rgba(9, 17, 34, 0.2);
   --toolbar-highlight: rgba(45, 82, 171, 0.08);
-
-  --background: #fff;
-  --primary: #f6f9fe;
 
   --accent-lighter: #88a4e6;
   --accent-light: #6085de;
@@ -58,12 +59,20 @@
   --text-shadow-red: #f3899c;
   --text-shadow-purple: #b898e3;
 
-  --projects-card-text-shadow: rgba(235, 240, 251, 0.7);
+  --projects-card-text-shadow: rgba(var(--background-values), 0.7);
+
+  --blog-card-color: rgba(255, 255, 255, 0.8);
+  --blog-card-color-hover: rgba(255, 255, 255, 0.9);
+  --blog-card-text-shadow: rgba(var(--background-values), 0.5);
 }
 
 .dark,
 .dark-mode {
   --text-shadow-size: 0;
+
+  --background-values: 8, 15, 30;
+  --background: #080f1e;
+  --primary: #080f1e;
 
   --toolbar: rgba(8, 15, 30, 0.65);
   --toolbar-opaque: rgb(8, 15, 30);
@@ -71,9 +80,6 @@
   --toolbar-shadow-a: rgba(56, 103, 214, 0.08);
   --toolbar-shadow-b: rgba(56, 103, 214, 0.06);
   --toolbar-shadow-c: rgba(56, 103, 214, 0.2);
-
-  --background: #080f1e;
-  --primary: #080f1e;
 
   --accent-lighter: #d7e1f7;
   --accent-light: #afc2ef;
@@ -101,5 +107,9 @@
   --gradient-red: var(--text-shadow-red);
   --gradient-purple: var(--text-shadow-purple);
 
-  --projects-card-text-shadow: rgba(9, 17, 34, 0.4);
+  --projects-card-text-shadow: rgba(var(--background-values), 0.4);
+
+  --blog-card-color: rgba(8, 15, 30, 0.8);
+  --blog-card-color-hover: rgba(8, 15, 30, 0.9);
+  --blog-card-text-shadow: rgba(var(--background-values), 0.5);
 }

@@ -15,6 +15,7 @@ const BaseBlogPostCard = styled(LinkCard)`
   --border-radius: 8px;
   --shadow-one-size: 4px;
   --shadow-two-size: 8px;
+  border-radius: var(--border-radius);
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -27,8 +28,8 @@ const BaseBlogPostCard = styled(LinkCard)`
     flex-direction: column;
     padding: 1.2rem;
     background-color: var(--blog-card-color);
-    -webkit-backdrop-filter: saturate(200%) blur(8px);
-    backdrop-filter: saturate(200%) blur(8px);
+    -webkit-backdrop-filter: saturate(250%) blur(12px);
+    backdrop-filter: saturate(250%) blur(12px);
     text-shadow: 1px 1px 1px var(--blog-card-text-shadow);
     border-radius: var(--border-radius);
 
