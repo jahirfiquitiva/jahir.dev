@@ -4,10 +4,10 @@ import Icon from '@mdi/react';
 
 import { CenteredSection } from '~/blocks/section';
 import {
-  MasonryBreakpoints,
   MasonryGrid,
-} from '~/elements/complex/masonry-grid';
-import { SectionHeading } from '~/new-components/atoms/complex';
+  MasonryBreakpoints,
+  SectionHeading,
+} from '~/new-components/atoms/complex';
 import { Heading, Image, LinkCard } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, InspirationSite, viewports } from '~/types';
 

@@ -3,7 +3,7 @@ import { Status, Activity, Counter } from '~/components/dashboard-items';
 import {
   MasonryGrid,
   MasonryBreakpoints,
-} from '~/elements/complex/masonry-grid';
+} from '~/new-components/atoms/complex';
 import { Component, ComponentProps, DashboardData, viewports } from '~/types';
 
 interface DashboardGridProps extends ComponentProps {

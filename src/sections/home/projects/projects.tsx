@@ -6,8 +6,8 @@ import { GitHubStats } from '~/components/github-stats';
 import {
   MasonryGrid,
   MasonryBreakpoints,
-} from '~/elements/complex/masonry-grid';
-import { SectionHeading } from '~/new-components/atoms/complex';
+  SectionHeading,
+} from '~/new-components/atoms/complex';
 import { Divider, LinkButton } from '~/new-components/atoms/simple';
 import {
   Component,

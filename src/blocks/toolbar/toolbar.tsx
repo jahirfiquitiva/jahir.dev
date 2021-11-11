@@ -66,7 +66,7 @@ const ToolbarContainer = styled.div`
   padding: 0.4rem;
   min-height: var(--toolbar-height);
   max-height: var(--toolbar-height);
-  max-width: calc(var(--max-site-width) + 2rem);
+  max-width: 768px; /* calc(var(--max-site-width) + 2rem); */
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
   animation: menu-expansion-animation 0.3s ease-in-out;

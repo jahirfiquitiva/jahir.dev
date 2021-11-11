@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
@@ -22,6 +22,4 @@ const BaseMasonryGrid: Component<MasonryGridProps> = (props) => {
   );
 };
 
-export const MasonryGrid = styled(BaseMasonryGrid)`
-  width: 100%;
-`;
+export const MasonryGrid = tw(BaseMasonryGrid)`w-full`;

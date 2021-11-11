@@ -2,6 +2,7 @@
 .light,
 .light-mode {
   --text-shadow-size: 2px;
+  --toolbar-height: 56px;
 
   --background: #fff;
   --primary: #f6f9fe;

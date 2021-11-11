@@ -4,8 +4,8 @@ import { CenteredSection } from '~/blocks/section';
 import {
   MasonryGrid,
   MasonryBreakpoints,
-} from '~/elements/complex/masonry-grid';
-import { SectionHeading } from '~/new-components/atoms/complex';
+  SectionHeading,
+} from '~/new-components/atoms/complex';
 import { Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, CodingChallenge, viewports } from '~/types';
 

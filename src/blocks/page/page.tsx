@@ -33,7 +33,7 @@ const SiteContent = styled.main`
   flex-direction: column;
   flex: 1;
   width: 100%;
-  max-width: calc(var(--max-site-width) - 0.8rem);
+  max-width: 768px; /* calc(var(--max-site-width) - 0.8rem) */;
   margin: 0 auto;
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
 
