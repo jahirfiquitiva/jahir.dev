@@ -14,9 +14,12 @@ const BaseGitHubIconButton = styled(LinkButton)`
   min-width: 36px;
   color: #fff;
   background-color: #333;
+  gap: 0;
 
   &:hover,
   &:focus {
+  min-height: 36px;
+  min-width: 36px;
     color: #fff !important;
     background-color: #292929;
   }

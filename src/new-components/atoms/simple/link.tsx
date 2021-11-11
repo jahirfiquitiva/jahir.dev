@@ -15,6 +15,7 @@ export interface LinkProps extends ComponentProps, BaseLinkProps {
 }
 
 const BaseLinkStyles = tw`
+  font-medium
   inline-block
   text-accent
   transition-all

@@ -27,6 +27,7 @@ export const ButtonStyles = tw`
   
   hocus:(bg-accent-dark -translate-y-1 min-h-button)
   disabled:(opacity-50 pointer-events-none cursor-not-allowed)
+  [svg]:(only:(mx-auto))
 `;
 
 export interface BaseButtonProps {

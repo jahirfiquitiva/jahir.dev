@@ -51,7 +51,7 @@ h5 {
 h6,
 p,
 body {
-  @apply text-xs;
+  @apply text-xs leading-relaxed;
 }
 
 small {
