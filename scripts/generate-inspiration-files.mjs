@@ -65,6 +65,10 @@ const inspirationSites = [
     title: 'Sindre Sorhus',
     link: 'https://sindresorhus.com/',
   },
+  {
+    title: 'S.J. Zhang',
+    link: 'https://www.sj.land/',
+  },
 ];
 
 inspirationSites.forEach((site) => {

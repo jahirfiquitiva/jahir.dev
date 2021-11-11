@@ -12,6 +12,9 @@ import getColorFromPalette from '~/utils/get-color-from-palette';
 import getReadableColor from '~/utils/get-readable-color';
 
 const BaseBlogPostCard = styled(LinkCard)`
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
   --border-radius: 8px;
   --shadow-one-size: 4px;
   --shadow-two-size: 8px;
@@ -21,9 +24,23 @@ const BaseBlogPostCard = styled(LinkCard)`
   background-position: center;
   background-repeat: no-repeat;
   background-clip: padding-box;
+  min-height: 256px;
+
+  border: none;
+
+  & * {
+    transition: all 0.3s ease-in-out;
+  }
 
   .content {
-    border: 1px solid var(--divider);
+    opacity: 1;
+    margin-top: auto;
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: none;
     display: flex;
     flex-direction: column;
     padding: 1.2rem;
@@ -32,6 +49,8 @@ const BaseBlogPostCard = styled(LinkCard)`
     backdrop-filter: saturate(250%) blur(12px);
     text-shadow: 1px 1px 1px var(--blog-card-text-shadow);
     border-radius: var(--border-radius);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
     h4 {
       font-size: 1.1rem;
@@ -39,6 +58,8 @@ const BaseBlogPostCard = styled(LinkCard)`
     }
 
     p {
+      height: 0;
+      opacity: 0;
       --max-lines: 2;
       display: -webkit-box;
       max-lines: var(--max-lines);
@@ -46,8 +67,8 @@ const BaseBlogPostCard = styled(LinkCard)`
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin: 0.2rem 0;
       font-size: 0.9rem;
+      line-height: 0;
       color: var(--text-secondary);
 
       &.date-time {
@@ -58,14 +79,24 @@ const BaseBlogPostCard = styled(LinkCard)`
 
   &:hover,
   &:focus {
+    transform: none;
     background-clip: border-box;
     border-radius: var(--border-radius);
     & .content {
+      border: none;
       border-radius: var(--border-radius);
-      background-color: var(--blog-card-color-hover);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
       & h4 {
         color: var(--hl-color);
         text-decoration: underline;
+      }
+      & p {
+        margin: 0.2rem 0;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        height: auto;
+        opacity: 1;
       }
     }
   }

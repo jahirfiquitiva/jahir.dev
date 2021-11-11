@@ -4,69 +4,13 @@
   --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
-  --inter-font: 'Inter', var(--system-font);
-  --manrope-font: 'Manrope', var(--inter-font);
-  --code-font: 'Fira Code', Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono',
-    'Courier New', Courier, monospace;
+    
   --max-site-width: 768px;
   --toolbar-height: 56px;
   --text-shadow-size: 2px;
   --content-bottom-margin: 2.4rem;
 
-  --base-font-size: 1rem;
-  --font-size-xxxl: calc(var(--base-font-size) * 2.6);
-  --font-size-xxl: calc(var(--base-font-size) * 2.25);
-  --font-size-xl: calc(var(--base-font-size) * 2);
-  --font-size-lg: calc(var(--base-font-size) * 1.75);
-  --font-size-md: calc(var(--base-font-size) * 1.5);
-  --font-size-sm: calc(var(--base-font-size) * 1.25);
-  --font-size-xs: var(--base-font-size);
-  --font-size-xxs: calc(var(--base-font-size) * 0.9);
-
-  --background: #fff;
-  --primary: #f6f9fe;
-  --accent: #3867d6;
-  --accent-light: #88a4e6;
-  --accent-lighter: #afc2ef;
-  --accent-dark: #2d52ab;
-  --on-accent: #fff;
-  --on-accent-inverted: rgba(9, 17, 34, 0.9);
-  --text-primary: rgba(9, 17, 34, 0.95);
-  --text-secondary: rgba(9, 17, 34, 0.8);
-  --text-tertiary: rgba(9, 17, 34, 0.6);
-  --divider-alpha: 0.12;
-  --divider-opaque: 9, 17, 34;
-  --divider: rgba(var(--divider-opaque), var(--divider-alpha, 0.12));
-  --toolbar-color: rgba(235, 240, 251, 0.65);
-  --toolbar-color-opaque: rgb(235, 240, 251);
-  --toolbar-shadow-a: rgba(9, 17, 34, 0.08);
-  --toolbar-shadow-b: rgba(9, 17, 34, 0.06);
-  --toolbar-shadow-c: rgba(9, 17, 34, 0.2);
-  --toolbar-highlight: rgba(45, 82, 171, 0.08);
   --error-color: #eb3b5a;
-
-  --gradients-a: var(--accent-dark);
-  --gradients-b: #247aae;
-  --gradients-c: #1a9956;
-  --gradients-d: #c69227;
-  --gradients-e: #c86827;
-  --gradients-f: #bc2f48;
-  --gradients-g: #7a4cbb;
-
-  --dark-gradients-a: var(--accent-light);
-  --dark-gradients-b: #81c1e9;
-  --dark-gradients-c: #79d9a6;
-  --dark-gradients-d: #fad483;
-  --dark-gradients-e: #fcb483;
-  --dark-gradients-f: #f3899c;
-  --dark-gradients-g: #b898e3;
-
-  --name-gradients-a: var(--gradients-a);
-  --name-gradients-b: var(--gradients-b);
-
-  --projects-card-color: rgba(235, 240, 251, 0.25);
-  --projects-card-color-hover: rgba(235, 240, 251, 0.8);
-  --projects-card-text-shadow: rgba(235, 240, 251, 0.7);
 
   --toast-success: rgba(121, 217, 166, 0.9);
   --toast-error: rgba(243, 137, 156, 0.7);
@@ -77,11 +21,6 @@
   --cards-hover-border-color: var(--divider);
   --cards-hover-shadow-color: var(--divider);
 
-  /* 235, 240, 251 */
-  --blog-card-color: rgba(255, 255, 255, 0.85);
-  --blog-card-color-hover: rgba(255, 255, 255, 0.95);
-  --blog-card-text-shadow: rgba(255, 255, 255, 0.5);
-
   --scrollbar-bg-color: var(--accent-light);
   --scrollbar-thumb-color: #f2f5fc;
 
@@ -90,47 +29,13 @@
 
 .dark,
 .dark-mode {
-  --text-shadow-size: 0;
-  --background: #080f1e;
-  --primary: #080f1e;
-  --accent: #88a4e6;
-  --accent-light: #6085de;
-  --accent-lighter: #88a4e6;
-  --accent-dark: #afc2ef;
-  --on-accent: rgba(9, 17, 34, 0.9);
-  --on-accent-inverted: var(--on-accent);
-  --text-primary: #fff;
-  --text-secondary: rgba(235, 240, 251, 0.85);
-  --text-tertiary: rgba(235, 240, 251, 0.6);
-  --divider-opaque: 235, 240, 251;
-  --divider: rgba(var(--divider-opaque), var(--divider-alpha, 0.12));
-  --toolbar-color: rgba(8, 15, 30, 0.65);
-  --toolbar-shadow-a: rgba(56, 103, 214, 0.08);
-  --toolbar-shadow-b: rgba(56, 103, 214, 0.06);
-  --toolbar-shadow-c: rgba(56, 103, 214, 0.2);
-  --toolbar-highlight: rgba(215, 225, 247, 0.08);
   --error-color: #fc5c65;
 
-  --gradients-a: var(--accent);
-  --gradients-b: var(--dark-gradients-b);
-  --gradients-c: var(--dark-gradients-c);
-  --gradients-d: var(--dark-gradients-d);
-  --gradients-e: var(--dark-gradients-e);
-  --gradients-f: var(--dark-gradients-f);
-  --gradients-g: var(--dark-gradients-g);
-
-  --projects-card-color: rgba(8, 15, 30, 0.25);
-  --projects-card-color-hover: rgba(8, 15, 30, 0.7);
-  --projects-card-text-shadow: rgba(9, 17, 34, 0.4);
 
   --toast-success: rgba(121, 217, 166, 0.6);
   --toast-error: rgba(243, 137, 156, 0.5);
 
   --music-cards-overlay-color: rgba(8, 15, 30, 0.6);
-
-  --blog-card-color: rgba(8, 15, 30, 0.85);
-  --blog-card-color-hover: rgba(8, 15, 30, 0.95);
-  --blog-card-text-shadow: rgba(9, 17, 34, 0.5);
 
   --scrollbar-bg-color: var(--accent);
   --scrollbar-thumb-color: var(--primary);

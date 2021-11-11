@@ -25,7 +25,7 @@ const BlogsMasonry = styled(MasonryGrid)`
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints[viewports.default] = 1;
 masonryBreakpoints[viewports.mobile.lg] = 2;
-masonryBreakpoints[viewports.tablet.lg] = 3;
+// masonryBreakpoints[viewports.tablet.lg] = 3;
 
 export const Blog: Component<BlogGridProps> = (props) => {
   const { posts } = props;
@@ -51,8 +51,8 @@ export const Blog: Component<BlogGridProps> = (props) => {
     <Section id={'blog'}>
       <SectionHeading
         size={'3'}
-        shadowColor={'green'}
-        gradientColor={'green-to-yellow'}
+        shadowColor={'blue'}
+        gradientColor={'blue-to-green'}
         emoji={'📝'}
       >
         Blog
