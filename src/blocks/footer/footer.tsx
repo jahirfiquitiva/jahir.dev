@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 
 import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
-import { SocialLinks } from '~/new-components/elements';
+import { SocialLinks, Stack } from '~/new-components/elements';
 import { Component, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
@@ -207,8 +207,21 @@ export const Footer: Component = () => {
             </GradientSpan>
           </FooterHomeLink>
           <SocialLinks />
-          <p className={'small'}>Copyright © {new Date().getFullYear()}</p>
-          <p className={'small'}>All Rights Reserved</p>
+          <p className={'small'}>
+            Built with{' '}
+            <Stack
+              stack={['nextjs', 'typescript', 'styled components', 'tailwind']}
+            />
+          </p>
+          <p className={'small'}>
+            <Link
+              title={'Link to view website source code on GitHub'}
+              href={'https://github.com/jahirfiquitiva/jahir.dev'}
+              underline
+            >
+              View source code
+            </Link>
+          </p>
         </FooterGridSection>
         <FooterGridSectionTwo>
           <FooterGridLink

@@ -1,16 +1,10 @@
-import Icon from '@mdi/react';
 import { useState, useMemo } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/new-components/atoms/simple';
+import { Stack } from '~/new-components/elements';
 import { useTheme } from '~/providers/theme';
-import {
-  Component,
-  ComponentProps,
-  ProjectProps,
-  SkillProps,
-  skills,
-} from '~/types';
+import { Component, ComponentProps, ProjectProps } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import getReadableColor from '~/utils/get-readable-color';
@@ -82,8 +76,6 @@ const ProjectHeading = tw(Heading)`
   text-shadow[1px 2px 2px var(--projects-card-text-shadow)]
 `;
 
-const SkillsList = tw.ul`flex flex-wrap items-center opacity-85 list-none gap-4 mt-6`;
-
 const PreviewImage = tw.div`
   h-full w-full
   rounded-l-none
@@ -97,16 +89,6 @@ const PreviewImage = tw.div`
   drop-shadow-project-preview
 `;
 
-const getSkill = (skillName: string): SkillProps | null => {
-  try {
-    return skills.filter(
-      (it: SkillProps) => it.name.toLowerCase() === skillName.toLowerCase(),
-    )[0];
-  } catch (e) {
-    return null;
-  }
-};
-
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
 const defaultProps: ProjectCardProps = {
@@ -118,27 +100,6 @@ const defaultProps: ProjectCardProps = {
   color: '#4d8af0',
   tag: 'android',
   stack: ['android', 'kotlin', 'material design'],
-};
-
-const renderProjectStack = (stack?: Array<string>, iconSize: number = 0.75) => {
-  if (!stack || !stack.length) return null;
-  return (
-    <SkillsList>
-      {stack.map((skillName: string, i: number) => {
-        const skill = getSkill(skillName);
-        if (!skill) return null;
-        return (
-          <li key={i}>
-            <Icon
-              path={skill.iconPath}
-              color={skill.color}
-              size={skillName === 'android' ? iconSize * 1.25 : iconSize}
-            />
-          </li>
-        );
-      })}
-    </SkillsList>
-  );
 };
 
 export const ProjectCard: Component<ProjectCardProps> = (
@@ -177,7 +138,7 @@ export const ProjectCard: Component<ProjectCardProps> = (
         </IconHeadingContainer>
         <DescriptionContainer>
           <p>{description}</p>
-          {renderProjectStack(stack)}
+          <Stack stack={stack} tw={'opacity-85'} />
         </DescriptionContainer>
       </DetailsContainer>
       {preview ? (
