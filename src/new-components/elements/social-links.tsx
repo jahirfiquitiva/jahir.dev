@@ -9,7 +9,7 @@ import {
 } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
-type SocialLinkProps = Omit<
+export type SocialLinkProps = Omit<
   LinkButtonProps,
   'title' | 'icon' | 'wrapChildrenInSpan' | 'href' | 'newTab'
 >;

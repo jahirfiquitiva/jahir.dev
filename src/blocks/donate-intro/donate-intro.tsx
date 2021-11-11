@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-import { BmacButton, GitHubButton, PayPalButton } from '~/components/buttons';
-import { ButtonGroup, SectionHeading } from '~/new-components/atoms/complex';
+import { SectionHeading } from '~/new-components/atoms/complex';
 import { Link } from '~/new-components/atoms/simple';
+import { DonationLinks } from '~/new-components/elements';
 import { Component, mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`
@@ -75,11 +75,7 @@ export const DonateIntro: Component = () => {
         <Paragraph>
           <b>Donation options:</b>
         </Paragraph>
-        <ButtonGroup>
-          <GitHubButton>GitHub Sponsors</GitHubButton>
-          <BmacButton>Buy me a Pizza</BmacButton>
-          <PayPalButton>PayPal</PayPalButton>
-        </ButtonGroup>
+        <DonationLinks />
       </DonationOptionsContainer>
     </section>
   );
