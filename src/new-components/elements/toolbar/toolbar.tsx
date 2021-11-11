@@ -11,7 +11,6 @@ import { useTheme } from '~/providers/theme';
 
 const ToolbarGrid = tw.nav`
   min-h-20
-  my-20
   grid
   grid-cols-2
   auto-rows-min
@@ -24,7 +23,10 @@ const ToolbarGrid = tw.nav`
   
   all-child:(
     transition-all duration-300
-    last:(h-0 leading-none invisible pointer-events-none select-none opacity-0)
+    last:(
+      h-0 leading-none invisible pointer-events-none select-none opacity-0 
+      lg:(h-auto leading-normal visible pointer-events-auto select-auto opacity-100)
+    )
   )
   [&.expanded]:(
     gap-y-6 delay-0
@@ -53,7 +55,7 @@ const MenuButton = tw(ToolbarButton)`
   [&.expanded]:(max-w-button max-h-button p-2 [svg]:(rotate-45))
 `;
 
-export const Toolbar = () => {
+const Navigation = () => {
   const { isDark } = useTheme();
   const [isExpanded, setExpanded] = useState(false);
   const itemsClassName = isExpanded ? 'expanded' : undefined;
@@ -87,5 +89,30 @@ export const Toolbar = () => {
       </ToolbarButtonsContainer>
       <ToolbarLinks />
     </ToolbarGrid>
+  );
+};
+
+const StyledHeader = tw.header`
+  fixed
+  top-0
+  z-20
+  bg-toolbar
+  w-full
+  p-4
+  backdrop-filter
+  backdrop-blur
+  backdrop-saturate-150
+  box-shadow[
+    0 0 4px 0 var(--toolbar-shadow-a),
+    0 3px 4px 0 var(--toolbar-shadow-b),
+    0 1px 5px 0 var(--toolbar-shadow-c)
+  ]
+`;
+
+export const Toolbar = () => {
+  return (
+    <StyledHeader>
+      <Navigation />
+    </StyledHeader>
   );
 };

@@ -25,6 +25,7 @@ export const ToolbarButton = styled(Button)<CustomProps>`
     p-4
     text-center
     text-accent
+    leading-none
     hocus:(text-accent-dark dark:(text-accent-light))
     [span]:(w-full text-center)
     xs:(px-6)

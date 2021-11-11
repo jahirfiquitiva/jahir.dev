@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 
 import { Footer } from '~/blocks/footer';
-import { Toolbar } from '~/blocks/toolbar';
 import { MetaTags } from '~/components/metatags';
 import { BackToTop } from '~/new-components/atoms/complex';
+import { Toolbar } from '~/new-components/elements';
 import { Component, PageProps, mediaQueries, defaultKeywords } from '~/types';
 
 const defaultSiteDescription =
@@ -33,7 +33,7 @@ const SiteContent = styled.main`
   flex-direction: column;
   flex: 1;
   width: 100%;
-  max-width: 768px; /* calc(var(--max-site-width) - 0.8rem) */;
+  max-width: 768px; /* calc(var(--max-site-width) - 0.8rem) */
   margin: 0 auto;
   padding: calc(var(--toolbar-height) + 1.6rem) 1rem 0;
 
@@ -84,9 +84,8 @@ export const Page: Component<PageProps> = (props) => {
         })}
       </Head>
 
-      <header>
-        <Toolbar />
-      </header>
+      <Toolbar />
+
       <PageContainer>
         <SiteContent>{children}</SiteContent>
         <Footer />
