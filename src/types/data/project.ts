@@ -6,10 +6,8 @@ export interface ProjectProps {
   link: string;
   color?: string;
   darkColor?: string;
-  gradient?: string[];
-  darkGradient?: string[];
   tag?: string;
-  stack?: string[];
+  stack?: Array<string>;
   hide?: boolean;
 }
 
@@ -159,6 +157,5 @@ export const projects: ProjectProps[] = [
     link: 'https://jahir.xyz/github',
     color: '#92a3b5',
     tag: 'other',
-    stack: ['git'],
   },
 ];

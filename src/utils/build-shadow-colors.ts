@@ -8,6 +8,7 @@ const buildShadowColors = (
   shadowOpacity?: number,
   borderOpacity?: number,
   darkMode?: boolean,
+  bgOpacity?: number,
 ): CSSProperties => {
   if (!color) return {};
   return buildStyles({
@@ -16,7 +17,7 @@ const buildShadowColors = (
     '--border-color': hexToRGB(color, borderOpacity || 0.2),
     '--dashed-color': hexToRGB(color, 0.5),
     '--filter-color': hexToRGB(color, 0.7),
-    '--bg-color': hexToRGB(color, darkMode ? 0.1 : 0.05),
+    '--bg-color': hexToRGB(color, darkMode ? bgOpacity || 0.1 : 0.05),
     '--hl-color': color,
   });
 };

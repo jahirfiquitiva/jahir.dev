@@ -12,13 +12,6 @@ const baseCardStyles = tw`
   border-solid
   border-divider
   motion-reduce:transition-none
-
-  [> div]:(
-    rounded
-    transition-all
-    duration-300
-    motion-reduce:transition-none
-  )
 `;
 
 export const Card = styled.div`

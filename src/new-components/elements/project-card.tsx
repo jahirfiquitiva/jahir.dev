@@ -1,0 +1,192 @@
+import Icon from '@mdi/react';
+import { useState, useMemo } from 'react';
+import tw, { css } from 'twin.macro';
+
+import { LinkCard, Image, Heading } from '~/new-components/atoms/simple';
+import { useTheme } from '~/providers/theme';
+import {
+  Component,
+  ComponentProps,
+  ProjectProps,
+  SkillProps,
+  skills,
+} from '~/types';
+import buildShadowColors from '~/utils/build-shadow-colors';
+import buildStyles from '~/utils/build-styles';
+import getReadableColor from '~/utils/get-readable-color';
+
+const BaseProjectCard = tw(LinkCard)`
+  w-full
+  overflow-hidden
+  grid
+  grid-rows-1
+  grid-template-columns[60% 1fr]
+  items-center
+  auto-rows-min
+  text-text-secondary
+  rounded-lg
+  border-color[var(--dashed-color, var(--divider))]
+  sm:(grid-template-columns[70% 1fr])
+  md:(grid-template-columns[60% 1fr])
+  [*]:(transition-all duration-300)
+  [p]:(text-text-secondary)
+
+  hocus:(
+    text-text-primary
+    background-color[var(--bg-color)]
+    border-color[var(--dashed-color, var(--divider))]
+    
+    [h4]:(underline color[var(--hl-color)])
+    [p]:(text-text-primary)
+    [img]:(transform scale-105 opacity-100)
+    [ul]:(opacity-100)
+    [div]:(last-of-type:(opacity-100 background-size[105%]))
+  )
+`;
+
+const DetailsContainer = tw.div`
+  p-8
+  pr-0
+  pb-10
+  flex flex-col
+  rounded-l-lg
+  rounded-r-none
+`;
+
+const IconHeadingContainer = tw(DetailsContainer)`
+  relative
+  flex-row
+  items-center
+  content-start
+  p-0
+  gap-8
+  [img]:(
+    opacity-90
+    filter
+    drop-shadow-project-icon
+  )
+`;
+
+const DescriptionContainer = tw(DetailsContainer)`
+  pl-2 pt-6 pb-0
+  [p]:(text-almost-tiny)
+`;
+
+const ProjectHeading = tw(Heading)`
+  absolute
+  truncate
+  text-text-primary
+  text-sm
+  z-index[1]
+  left[calc(48px + 0.6rem)]
+  text-shadow[1px 2px 2px var(--projects-card-text-shadow)]
+`;
+
+const SkillsList = tw.ul`flex flex-wrap items-center opacity-85 list-none gap-4 mt-6`;
+
+const PreviewImage = tw.div`
+  h-full w-full
+  rounded-l-none
+  rounded-r-lg
+  opacity-75
+  bg-clip-border
+  bg-no-repeat
+  bg-right-bottom
+  background-size[100%]
+  filter
+  drop-shadow-project-preview
+`;
+
+const getSkill = (skillName: string): SkillProps | null => {
+  try {
+    return skills.filter(
+      (it: SkillProps) => it.name.toLowerCase() === skillName.toLowerCase(),
+    )[0];
+  } catch (e) {
+    return null;
+  }
+};
+
+interface ProjectCardProps extends ComponentProps, ProjectProps {}
+
+const defaultProps: ProjectCardProps = {
+  title: 'Blueprint',
+  description: 'Dashboard for creating Android icon packs',
+  icon: '/static/images/projects/android/blueprint.png',
+  preview: '/static/images/projects/android/blueprint-preview.png',
+  link: 'https://github.com/jahirfiquitiva/Blueprint/',
+  color: '#4d8af0',
+  tag: 'android',
+  stack: ['android', 'kotlin', 'material design'],
+};
+
+const renderProjectStack = (stack?: Array<string>, iconSize: number = 0.75) => {
+  if (!stack || !stack.length) return null;
+  return (
+    <SkillsList>
+      {stack.map((skillName: string, i: number) => {
+        const skill = getSkill(skillName);
+        if (!skill) return null;
+        return (
+          <li key={i}>
+            <Icon
+              path={skill.iconPath}
+              color={skill.color}
+              size={skillName === 'android' ? iconSize * 1.25 : iconSize}
+            />
+          </li>
+        );
+      })}
+    </SkillsList>
+  );
+};
+
+export const ProjectCard: Component<ProjectCardProps> = (
+  props = defaultProps,
+) => {
+  const { title, description, link, icon, preview, stack, color, darkColor } =
+    props || defaultProps;
+
+  const { isDark = false } = useTheme();
+  const [projectColor, setProjectColor] = useState(
+    isDark ? darkColor || color : color,
+  );
+  const shadowColors = buildShadowColors(projectColor, 0.2, 0.4, isDark, 0.05);
+  const titleColors = buildStyles({
+    '--hl-color': getReadableColor(projectColor, isDark),
+  });
+
+  useMemo(() => {
+    const newProjectColor = isDark ? darkColor || color : color;
+    setProjectColor(newProjectColor);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDark, color, darkColor]);
+
+  return (
+    <BaseProjectCard
+      title={`Link to project: ${title}`}
+      href={link}
+      style={shadowColors}
+    >
+      <DetailsContainer>
+        <IconHeadingContainer>
+          <Image src={icon} alt={title} size={48} />
+          <ProjectHeading size={'4'} style={titleColors}>
+            {title}
+          </ProjectHeading>
+        </IconHeadingContainer>
+        <DescriptionContainer>
+          <p>{description}</p>
+          {renderProjectStack(stack)}
+        </DescriptionContainer>
+      </DetailsContainer>
+      {preview ? (
+        <PreviewImage
+          css={css`
+            background-image: url('${preview}');
+          `}
+        />
+      ) : undefined}
+    </BaseProjectCard>
+  );
+};

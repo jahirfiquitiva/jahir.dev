@@ -39,7 +39,7 @@ const SiteContent = styled.main`
   padding: 0 1rem 1.6rem;
 
   ${mediaQueries.tablet.xl} {
-    padding: 0 0.4rem 1.6rem;
+    padding: 0 0 1.6rem;
   }
 `;
 

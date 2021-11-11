@@ -8,6 +8,7 @@ module.exports = {
   unset: 'unset',
   0: '0',
   tiny: multiplyFontSize(0.85),
+  'almost-tiny': multiplyFontSize(0.925),
   base: multiplyFontSize(1),
   xs: multiplyFontSize(1),
   sm: multiplyFontSize(1.25),

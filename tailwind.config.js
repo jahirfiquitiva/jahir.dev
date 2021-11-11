@@ -35,18 +35,26 @@ module.exports = {
       minWidth: spacing,
       maxWidth: {
         ...spacing,
-        '3xl-w-padding': 'calc(48rem + 0.8rem)',
+        '3xl-w-padding': 'calc(48rem + 1.6rem)',
       },
       letterSpacing: {
         unset: 'unset',
         button: '0.03125rem', // 0.5px
         fab: '0.0625rem', // 1px
       },
+      dropShadow: {
+        'project-icon': '0 1px 2px var(--filter-color, var(--dashed-color))',
+        'project-preview':
+          '2px 3px 4px var(--filter-color, var(--dashed-color))',
+      },
       outline: {
         accent: ['2px solid var(--accent)', '0px'],
       },
       transitionDelay: {
         0: '0ms',
+      },
+      opacity: {
+        85: '0.85',
       },
     },
   },
