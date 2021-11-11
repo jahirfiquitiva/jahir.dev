@@ -1,9 +1,8 @@
-import tw, { styled } from 'twin.macro';
-import { mdiArrowUp, mdiChevronUp } from '@mdi/js';
-import { useState, useEffect, CSSProperties } from 'react';
+import { mdiChevronUp } from '@mdi/js';
+import { useState, useEffect } from 'react';
+import tw from 'twin.macro';
 
 import { Button } from '~/new-components/atoms/simple';
-import { mediaQueries } from '~/types';
 
 const visibleStyles = tw`
   visible

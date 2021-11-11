@@ -1,6 +1,9 @@
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
-const baseChipStyles = tw`
+export const Chip = tw.span`
+  --bg-color[var(--divider)]
+  --border-color[var(--divider)]
+  
   flex
   items-center
   content-center
@@ -10,39 +13,20 @@ const baseChipStyles = tw`
   rounded-full
   border
   border-solid
+  border-color[var(--border-color)]
   bg-transparent
   text-text-secondary
   cursor-default
   transition-all
   duration-200
   motion-reduce:transition-none
+
+  hocus:(no-underline text-text-primary background-color[var(--bg-color)])
+  all-child:(first-of-type:(mr-4))
 `;
 
-const hocusChipStyles = tw`hocus:(
-  no-underline
-  text-text-primary
-)`;
-
-export const Chip = styled.span`
-  --bg-color: var(--divider);
-  --border-color: var(--divider);
-
-  ${baseChipStyles}
-  border-color: var(--border-color);
-
-  ${hocusChipStyles}
-  ${tw`all-child:(first-of-type:(mr-4))`}
-  
-  &:hover,
-  &:focus {
-    background-color: var(--bg-color);
-  }
-`;
-
-export const ImageChip = styled(Chip)`
-  ${tw`p-4 pr-8 all-child:(first-of-type:(mr-4!))`}
-
-  & img {
-    ${tw`rounded-half`}
-  }
+export const ImageChip = tw(Chip)`
+  p-4 pr-8 
+  all-child:(first-of-type:(mr-4!))
+  [img]:(rounded-half)
 `;

@@ -24,9 +24,7 @@ export const ButtonStyles = tw`
   ease-in-out
 
   all-child:(not-last:(mr-4))
-
   hocus:(bg-accent-dark -translate-y-1 min-h-button)
-
   disabled:(opacity-50 pointer-events-none cursor-not-allowed)
 `;
 

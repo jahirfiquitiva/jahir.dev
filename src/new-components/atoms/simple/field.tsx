@@ -15,20 +15,9 @@ const baseFieldStyles = tw`
   py-4
   flex-1
 
-  hover:(
-    border-accent-light
-  )
-
-  focus:(
-    outline-accent
-    border-accent
-  )
-
-  disabled:(
-    opacity-50
-    pointer-events-none
-    cursor-not-allowed
-  )
+  hover:(border-accent-light)
+  focus:(outline-accent border-accent)
+  disabled:(opacity-50 pointer-events-none cursor-not-allowed)
 `;
 
 const Label = tw.label`
@@ -66,8 +55,8 @@ const BaseFieldWrapper = tw.div`
   items-center
 `;
 
-const FieldWrapper = styled(BaseFieldWrapper)`
-  ${tw`svg:(
+const FieldWrapper = tw(BaseFieldWrapper)`
+  svg:(
     absolute
     top-0
     right-0
@@ -77,20 +66,19 @@ const FieldWrapper = styled(BaseFieldWrapper)`
     pointer-events-none
     select-none
     text-text-tertiary
-  )`}
+  )
 
-  & textarea + svg {
-    top: unset;
-    ${tw`bottom-0 transform -translate-y-1/2`}
-  }
+  [textarea + svg]:(
+    top-unset
+    bottom-0
+    transform
+    -translate-y-1/2
+  )
 `;
 
-const LabeledFieldWrapper = styled.div`
-  ${tw`flex flex-col pt-4`}
-
-  & label.hidden {
-    ${tw`hidden opacity-0 pointer-events-none`}
-  }
+const LabeledFieldWrapper = tw.div`
+  flex flex-col pt-4
+  [label.hidden]:(hidden opacity-0 pointer-events-none)
 `;
 
 const ErrorText = tw.small`

@@ -1,31 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
-const baseImageWrapperStyles = tw`
+const ImageWrapper = tw.div`
   relative
   w-full
   min-h-0
   max-w-full
   max-h-full
   overflow-hidden
-`;
 
-const ImageWrapper = styled.div`
-  ${baseImageWrapperStyles}
-  & > div:first-of-type,
-  & > span:first-of-type,
-  & img {
-    ${tw`
-      object-contain
-      relative!
-      min-h-0!
-      h-auto!
-    `}
-  }
+  [> div:first-of-type, > span:first-of-type, img]:(
+    object-contain
+    relative!
+    min-h-0!
+    h-auto!
+  )
 `;
 
 type BaseImageProps = Pick<
