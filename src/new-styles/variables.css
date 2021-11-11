@@ -57,6 +57,8 @@
   --text-shadow-orange: #fcb483;
   --text-shadow-red: #f3899c;
   --text-shadow-purple: #b898e3;
+
+  --projects-card-text-shadow: rgba(235, 240, 251, 0.7);
 }
 
 .dark,
@@ -98,4 +100,6 @@
   --gradient-orange: var(--text-shadow-orange);
   --gradient-red: var(--text-shadow-red);
   --gradient-purple: var(--text-shadow-purple);
+
+  --projects-card-text-shadow: rgba(9, 17, 34, 0.4);
 }

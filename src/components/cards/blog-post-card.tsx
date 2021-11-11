@@ -19,6 +19,7 @@ const BaseBlogPostCard = styled(LinkCard)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-clip: padding-box;
 
   .content {
     border: 1px solid var(--divider);
@@ -29,6 +30,7 @@ const BaseBlogPostCard = styled(LinkCard)`
     -webkit-backdrop-filter: saturate(200%) blur(8px);
     backdrop-filter: saturate(200%) blur(8px);
     text-shadow: 1px 1px 1px var(--blog-card-text-shadow);
+    border-radius: var(--border-radius);
 
     h4 {
       font-size: 1.1rem;
@@ -55,7 +57,10 @@ const BaseBlogPostCard = styled(LinkCard)`
 
   &:hover,
   &:focus {
+    background-clip: border-box;
+    border-radius: var(--border-radius);
     & .content {
+      border-radius: var(--border-radius);
       background-color: var(--blog-card-color-hover);
       & h4 {
         color: var(--hl-color);
@@ -96,7 +101,6 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         underline={false}
         style={{
           ...buildShadowColors(color),
-          backgroundColor: color || 'unset',
           backgroundImage: `url(${heroUrl})`,
         }}
       >
@@ -113,7 +117,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
           {excerpt && <p>{excerpt}</p>}
           <p className={'date-time'}>
             {formatDate(date)}
-            {(readingTime?.text?.length || 0) > 0 && (
+            {(readingTime?.minutes || 0) > 0 && (
               <>
                 {' • '}
                 {readingTime?.text}
