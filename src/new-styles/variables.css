@@ -61,8 +61,8 @@
 
   --projects-card-text-shadow: rgba(var(--background-values), 0.7);
 
-  --blog-card-color: rgba(255, 255, 255, 0.75);
-  --blog-card-color-hover: rgba(255, 255, 255, 0.9);
+  --blog-card-color: rgba(var(--background-values), 0.85);
+  --blog-card-color-hover: rgba(var(--background-values), 0.95);
   --blog-card-text-shadow: rgba(var(--background-values), 0.5);
 }
 
@@ -109,7 +109,7 @@
 
   --projects-card-text-shadow: rgba(var(--background-values), 0.4);
 
-  --blog-card-color: rgba(8, 15, 30, 0.75);
-  --blog-card-color-hover: rgba(8, 15, 30, 0.9);
+  --blog-card-color: rgba(var(--background-values), 0.8);
+  --blog-card-color-hover: rgba(var(--background-values), 0.9);
   --blog-card-text-shadow: rgba(var(--background-values), 0.5);
 }

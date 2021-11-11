@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { usePalette } from 'react-palette';
 
-import { Heading, LinkCard } from '~/new-components/atoms/simple';
+import { Heading, Image, LinkCard } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
@@ -24,11 +24,50 @@ const BaseBlogPostCard = styled(LinkCard)`
   background-position: center;
   background-repeat: no-repeat;
   background-clip: padding-box;
-  min-height: 208px;
-  border: none;
+  min-height: 232px;
+  max-height: 232px;
 
   & * {
-    transition: all 0.4s ease-in-out;
+    transition: all 0.35s ease-in-out;
+  }
+
+  & > div {
+    border-radius: calc(var(--border-radius));
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    & span:first-of-type {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      max-height: 232px;
+      border-radius: var(--border-radius);
+      height: 100% !important;
+      min-height: 100% !important;
+      & img {
+        max-height: 232px;
+        border-radius: var(--border-radius);
+        object-fit: cover;
+        object-position: center;
+        height: 100% !important;
+        min-height: 100% !important;
+      }
+    }
+  }
+
+  .scrim {
+    border-radius: var(--border-radius);
+    background-color: rgb(var(--background-values), 0.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 
   .content {
@@ -50,6 +89,9 @@ const BaseBlogPostCard = styled(LinkCard)`
     border-radius: var(--border-radius);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    z-index: 1;
+    box-shadow: 0 -4px 6px -1px rgba(255, 255, 255, 0.15),
+      0 -2px 4px -1px rgba(255, 255, 255, 0.06);
 
     h4 {
       font-size: 1.1rem;
@@ -83,7 +125,6 @@ const BaseBlogPostCard = styled(LinkCard)`
 
   &:hover,
   &:focus {
-    transform: none;
     background-clip: border-box;
     border-radius: var(--border-radius);
     & .content {
@@ -137,9 +178,11 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         underline={false}
         style={{
           ...buildShadowColors(color),
-          backgroundImage: `url(${heroUrl})`,
+          backgroundColor: color || 'unset',
         }}
       >
+        <Image src={heroUrl || ''} />
+        <div className={'scrim'} />
         <div className={'content'}>
           <Heading
             size={'4'}
