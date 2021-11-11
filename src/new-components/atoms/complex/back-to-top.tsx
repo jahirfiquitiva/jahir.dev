@@ -33,6 +33,7 @@ const BackToTopButton = tw(Button)`
   text-tiny
   tracking-fab
   p-7
+  gap-0
   uppercase
   duration-300
 

@@ -41,4 +41,9 @@ module.exports = {
     purple: 'var(--text-shadow-purple)',
   },
   divider: 'var(--divider)',
+  toolbar: {
+    DEFAULT: 'var(--toolbar)',
+    opaque: 'var(--toolbar-opaque)',
+    highlight: 'var(--toolbar-highlight)',
+  }
 };

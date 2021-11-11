@@ -6,6 +6,5 @@ export const ButtonGroup = tw.div`
   flex-wrap
   items-center
   content-start
-
-  all-child:(mb-8 not-last:(mr-8))
+  gap-8
 `;

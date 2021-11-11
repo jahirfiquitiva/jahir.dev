@@ -22,19 +22,23 @@ export const ButtonStyles = tw`
   transition-all
   duration-200
   ease-in-out
-
-  all-child:(not-last:(mr-4))
+  gap-4
+  truncate
+  
   hocus:(bg-accent-dark -translate-y-1 min-h-button)
   disabled:(opacity-50 pointer-events-none cursor-not-allowed)
 `;
 
-export interface ButtonProps extends ComponentProps {
+export interface BaseButtonProps {
   title: string;
-  type?: 'button' | 'reset' | 'submit' | undefined;
   icon?: string;
   iconSize?: number;
   disabled?: boolean;
   wrapChildrenInSpan?: boolean;
+}
+
+export interface ButtonProps extends ComponentProps, BaseButtonProps {
+  type?: 'button' | 'reset' | 'submit' | undefined;
   // eslint-disable-next-line @typescript-eslint/ban-types
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }

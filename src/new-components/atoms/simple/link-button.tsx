@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import tw, { styled } from 'twin.macro';
 
-import { ButtonStyles } from './button';
+import { ButtonStyles, BaseButtonProps } from './button';
 import { Link, LinkProps } from './link';
 
 import { Component } from '~/types';
@@ -15,19 +15,15 @@ const BaseLinkButton: Component<LinkProps> = (props) => {
   return <StyledLinkButton {...props} underline={false} />;
 };
 
-export interface LinkButtonProps extends LinkProps {
-  icon?: string;
-  iconSize?: number;
-  disabled?: boolean;
-}
+export interface LinkButtonProps extends LinkProps, BaseButtonProps {}
 
 export const LinkButton: Component<LinkButtonProps> = (props) => {
-  const { icon, iconSize = 1, children } = props;
+  const { icon, iconSize = 1, children, wrapChildrenInSpan = true, ...otherProps } = props;
 
   return (
-    <BaseLinkButton {...props}>
+    <BaseLinkButton {...otherProps}>
       {icon && <Icon path={icon} size={iconSize} />}
-      {children && <span>{children}</span>}
+      {children && wrapChildrenInSpan ? <span>{children}</span> : children}
     </BaseLinkButton>
   );
 };

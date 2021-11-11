@@ -5,6 +5,5 @@ export const ChipGroup = tw.ul`
   flex-wrap
   list-none
   py-10
-
-  all-child:(mb-6 not-last:(mr-6))
+  gap-6
 `;
