@@ -24,12 +24,11 @@ const BaseBlogPostCard = styled(LinkCard)`
   background-position: center;
   background-repeat: no-repeat;
   background-clip: padding-box;
-  min-height: 256px;
-
+  min-height: 208px;
   border: none;
 
   & * {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
   }
 
   .content {
@@ -72,6 +71,11 @@ const BaseBlogPostCard = styled(LinkCard)`
       color: var(--text-secondary);
 
       &.date-time {
+        margin: 0.2rem 0;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        height: auto;
+        opacity: 1;
         color: var(--text-tertiary);
       }
     }
