@@ -37,6 +37,9 @@ module.exports = {
         ...spacing,
         '3xl-w-padding': 'calc(48rem + 1.6rem)',
       },
+      scale: {
+        120: '1.20',
+      },
       lineHeight: {
         relaxed: '1.75',
       },
@@ -55,6 +58,7 @@ module.exports = {
       },
       transitionDuration: {
         0: '0ms',
+        250: '250ms',
         350: '350ms',
         400: '400ms',
         450: '450ms',

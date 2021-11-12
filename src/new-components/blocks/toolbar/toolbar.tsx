@@ -69,8 +69,8 @@ const MenuButton = tw(ToolbarButton)`
   gap-0
   xs:(pt-4)
   md:(pt-4)
-  [svg]:(mx-auto transition-all duration-150 transform rotate-0)
-  [&.expanded]:(p-2 [svg]:(rotate-45))
+  [svg]:(mx-auto transition-all duration-250 transform rotate-0 scale-100)
+  [&.expanded]:(p-2 [svg]:(rotate-45 scale-120))
 `;
 
 const Navigation = () => {
@@ -100,7 +100,6 @@ const Navigation = () => {
           <MenuButton
             title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
             icon={isExpanded ? mdiPlus : mdiMenu}
-            iconSize={isExpanded ? 1.2 : 1}
             className={itemsClassName}
             onClick={() => {
               setExpanded(!isExpanded);
