@@ -1,11 +1,2 @@
 User-agent: *
-Disallow: /assets/
-Disallow: /static/audio/
-Disallow: /static/fonts/
-Disallow: /static/js/
-Disallow: /frames/
-Disallow: /gallery/
-Disallow: /share/
-Disallow: /admin
-Disallow: /exit-admin
 Sitemap: https://jahir.dev/sitemap.xml

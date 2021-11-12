@@ -1,4 +1,4 @@
-import NextHead from 'next/head';
+import Head from 'next/head';
 import { useMemo, useState } from 'react';
 
 import { useTheme } from '~/providers/theme';
@@ -46,7 +46,7 @@ export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
   }, [isDark]);
 
   return (
-    <NextHead>
+    <Head>
       <title>{title}</title>
 
       <meta name={'title'} content={title} />
@@ -95,6 +95,6 @@ export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
         name={'apple-mobile-web-app-status-bar-style'}
         content={siteColor}
       />
-    </NextHead>
+    </Head>
   );
 };
