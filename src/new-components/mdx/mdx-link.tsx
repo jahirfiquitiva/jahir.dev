@@ -24,7 +24,7 @@ const BaseMdxLink: Component<LinkProps> = (props) => {
     () => isIgnoredLinkClassName(props.className),
     [props.className],
   );
-  if (isIgnored) return <StyledLink {...props} />;
+  if (isIgnored) return <StyledLink {...props} href={props.href} />;
   return <Link {...props} underline />;
 };
 
