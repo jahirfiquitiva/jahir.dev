@@ -16,7 +16,7 @@ const BaseToolbarLink = styled(LinkButton)`
     max-w-unset
     [&.active]:(bg-toolbar-highlight)
     lg:(gap-6)
-    [span.emoji]:(hidden sm:(block text-text-primary))
+    [span.emoji]:(hidden sm:(inline-block text-text-primary))
   `}
 `;
 

@@ -17,26 +17,31 @@ const ToolbarGrid = tw.nav`
   grid-template-columns[auto 1fr]
   auto-rows-min
   grid-flow-row-dense
-  gap-x-0 gap-y-0
+  gap-0
   overflow-hidden
   transition-all duration-300
 
   lg:(gap-4 grid-rows-1 grid-template-columns[auto 1fr auto])
   
   all-child:(
-    transition-all duration-200
+    transition-all duration-300
     last:(
-      h-0 invisible pointer-events-none select-none opacity-0
-      first:(duration-100 opacity-0)
-      lg:(h-unset visible pointer-events-auto select-auto opacity-100)
+      max-h-0 invisible pointer-events-none select-none opacity-0 mt-0
+      [li]:(
+        transition-all duration-200 delay-100 overflow-hidden max-h-0 invisible opacity-0
+      )
+      lg:(
+        max-h-unset visible pointer-events-auto select-auto opacity-100 mt-0
+        [li]:(delay-50 max-h-full visible opacity-100)
+      )
     )
   )
   [&.expanded]:(
-    gap-y-6
     all-child:(
       last:(
-        h-unset visible pointer-events-auto select-auto opacity-100
-        first:(opacity-100)
+        max-h-unset visible pointer-events-auto select-auto opacity-100 mt-6
+        [li]:(delay-50 max-h-full visible opacity-100)
+        lg:(mt-0)
       )
     )
   )
