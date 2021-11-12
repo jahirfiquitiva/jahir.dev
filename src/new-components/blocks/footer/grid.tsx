@@ -34,3 +34,16 @@ export const FooterSectionTwo = tw(FooterSectionOne)`
   xs:(col-start-2 col-end-3 grid-row[1])
   lg:(flex visible pointer-events-auto select-auto opacity-100 items-center row-start-1 row-end-3)
 `;
+
+export const FooterSectionThree = tw(FooterSectionOne)`
+  items-end
+  content-end
+
+  xs:(col-start-2 col-end-3 grid-row[1])
+  md:(col-start-3 col-end-4)
+`;
+
+export const FooterSectionFour = tw(FooterSectionThree)`
+  xs:(col-start-2 col-end-3 grid-row[2])
+  md:(col-start-3 col-end-4 grid-row[2])
+`;
