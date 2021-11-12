@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import type { Blog } from '.contentlayer/types';
 import { BlogPost } from '~/blocks/blog-post';
 import { Page } from '~/blocks/page';
-import { MDXComponents as mdxComponents } from '~/components/mdx';
+import { mdxComponents } from '~/new-components/mdx';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';

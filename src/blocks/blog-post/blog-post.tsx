@@ -3,12 +3,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
-import Link from 'next/link';
 import { usePalette } from 'react-palette';
 
 import styles from './blog-post.module.css';
 
-import { Image } from '~/new-components/atoms/simple';
+import { Image, Link } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import formatDate from '~/utils/format-date';
@@ -41,8 +40,12 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
   return (
     <div className={styles.post}>
       <div className={'back'}>
-        <Link href={'/blog'}>
-          <a>← Back to post list</a>
+        <Link
+          title={'Link to go back to blog posts list'}
+          href={'/blog'}
+          underline
+        >
+          <a>← Back to posts list</a>
         </Link>
       </div>
       <article>

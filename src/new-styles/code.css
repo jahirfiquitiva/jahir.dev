@@ -23,10 +23,10 @@ kbd,
 samp {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
-  font-family: var(--code-font);
 }
 
 code {
+  @apply text-almost-tiny;
   padding: 0.2rem 0.4rem;
   background-color: var(--primary);
   color: var(--text-primary);
@@ -36,7 +36,7 @@ code {
 }
 
 p code {
-  font-size: var(--font-size-xxs);
+  @apply text-tiny;
 }
 
 pre,
@@ -53,9 +53,10 @@ code {
 }
 
 pre {
-  padding: 0.8rem;
+  @apply p-8;
 }
 
+.dark pre,
 .dark-mode pre {
   background-color: #0b152b;
 }
@@ -67,12 +68,7 @@ pre pre {
 }
 
 pre code {
-  padding: 0.4rem 0.6rem;
-  border: none;
-  background-color: transparent;
-  color: var(--text-primary);
-  font-size: var(--font-size-xxs);
-  padding: 0;
+  @apply text-tiny text-text-primary p-0 border-none bg-transparent;
   white-space: pre;
   word-wrap: normal;
 }

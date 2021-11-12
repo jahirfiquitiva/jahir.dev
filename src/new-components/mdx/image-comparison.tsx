@@ -1,13 +1,12 @@
 /* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
-import styled from '@emotion/styled';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
+import tw from 'twin.macro';
 
-import { Image, Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
-interface CustomSplitProps extends ComponentProps {
+interface ImageComparisonProps extends ComponentProps {
   firstImage: string;
   firstImageAlt?: string;
   secondImage: string;
@@ -17,29 +16,26 @@ interface CustomSplitProps extends ComponentProps {
   hover?: boolean;
 }
 
-const ImageComparisonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1.2rem;
+const ImageComparisonContainer = tw.div`
+  flex
+  flex-col
+  items-center
+  mb-12
 
-  & > div:first-child {
-    background-color: #080f1e;
-    border-radius: 8px;
-    border: 2px solid var(--divider);
-    & img {
-      object-fit: contain !important;
-    }
-  }
+  [>div:first-child]:(
+    background-color[#080f1e]
+    rounded-md
+    border
+    border-2
+    border-divider
 
-  & p {
-    display: inline-flex;
-    font-size: var(--font-size-xxs);
-    font-style: italic;
-  }
+    [img]:(object-contain!)
+  )
+
+  [p]:(inline-flex text-tiny italic)
 `;
 
-const CustomImageComparison: Component<CustomSplitProps> = (props) => {
+export const ImageComparison: Component<ImageComparisonProps> = (props) => {
   if (!window || !document) return null;
   return (
     <ImageComparisonContainer>
@@ -64,7 +60,7 @@ const CustomImageComparison: Component<CustomSplitProps> = (props) => {
             width={'100%'}
             loading={'lazy'}
             decoding={'async'}
-            style={{ minHeight: 48 }}
+            tw={'min-height[48px]'}
           />
         }
       />
@@ -72,11 +68,3 @@ const CustomImageComparison: Component<CustomSplitProps> = (props) => {
     </ImageComparisonContainer>
   );
 };
-
-export const MDXComponents = {
-  Image,
-  ImageComparison: CustomImageComparison,
-  a: Link,
-};
-
-export default MDXComponents;
