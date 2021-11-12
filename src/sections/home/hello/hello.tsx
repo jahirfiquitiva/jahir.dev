@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { useRef } from 'react';
 
-import { HelloHeading } from '~/components/hello-heading';
 import {
   GradientSpan,
   Heading,
   Image,
   Link,
 } from '~/new-components/atoms/simple';
+import { HelloHeading } from '~/new-components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries } from '~/types';
 
