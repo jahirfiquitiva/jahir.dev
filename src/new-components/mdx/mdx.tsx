@@ -1,15 +1,14 @@
 import { ImageComparison } from './image-comparison';
 
-import {
-  Image,
-  ImageProps,
-  Link,
-  LinkProps,
-} from '~/new-components/atoms/simple';
+import { Image, ImageProps, Link } from '~/new-components/atoms/simple';
 
 export const mdxComponents = {
   img: (props: ImageProps) => <Image {...props} avoidNextImage />,
   Image,
   ImageComparison,
-  a: (props: LinkProps) => <Link {...props} underline />,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  a: (props: any) => {
+    if (props?.className?.includes('anchor')) return <a {...props} />;
+    return <Link {...props} underline />;
+  },
 };
