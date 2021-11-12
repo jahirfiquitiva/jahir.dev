@@ -22,6 +22,7 @@ const ImageComparisonContainer = tw.div`
   flex-col
   items-center
   mb-12
+  min-h-32
 
   [>div:first-of-type]:(
     background-color[#080f1e]
