@@ -1,14 +1,13 @@
 import styled from '@emotion/styled';
 import { mdiFileCodeOutline } from '@mdi/js';
 
-import { GitHubStats } from '~/components/github-stats';
 import {
   MasonryGrid,
   MasonryBreakpoints,
   SectionHeading,
 } from '~/new-components/atoms/complex';
 import { Divider, LinkButton } from '~/new-components/atoms/simple';
-import { ProjectCard } from '~/new-components/elements';
+import { GitHubStats, ProjectCard } from '~/new-components/elements';
 import {
   Component,
   projects,
