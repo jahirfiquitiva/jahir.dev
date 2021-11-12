@@ -1,4 +1,4 @@
-import { useMemo, memo } from 'react';
+import { useMemo } from 'react';
 import tw from 'twin.macro';
 
 import { Link, LinkProps } from '~/new-components/atoms/simple';
@@ -19,13 +19,11 @@ const StyledLink = tw.a`
   hocus:(underline text-accent-dark dark:text-accent-light)
 `;
 
-const BaseMdxLink: Component<LinkProps> = (props) => {
+export const MdxLink: Component<LinkProps> = (props) => {
   const isIgnored = useMemo(
     () => isIgnoredLinkClassName(props.className),
     [props.className],
   );
-  if (isIgnored) return <StyledLink {...props} href={props.href} />;
+  if (isIgnored) return <StyledLink {...props} />;
   return <Link {...props} underline />;
 };
-
-export const MdxLink = memo(BaseMdxLink);

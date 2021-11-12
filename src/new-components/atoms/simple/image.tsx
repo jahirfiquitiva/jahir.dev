@@ -44,11 +44,7 @@ export const Image: Component<ImageProps> = (props) => {
   const { avoidNextImage = false, size, ...rest } = props;
   if (!avoidNextImage) {
     if (typeof size !== 'undefined') {
-      const {
-        width = size,
-        height = size,
-        ...otherImageProps
-      } = rest;
+      const { width = size, height = size, ...otherImageProps } = rest;
       return (
         <NextImage
           {...otherImageProps}

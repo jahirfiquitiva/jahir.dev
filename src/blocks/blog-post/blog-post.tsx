@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
-import { memo } from 'react';
 import { usePalette } from 'react-palette';
 
 import styles from './blog-post.module.css';
@@ -28,7 +27,7 @@ const HeroImage = styled(Image)`
 
 interface BlogPostProps extends ComponentProps, Post {}
 
-const BaseBlogPost: Component<BlogPostProps> = (props) => {
+export const BlogPost: Component<BlogPostProps> = (props) => {
   const { title, hero, date, readingTime, children } = props;
   const { isDark } = useTheme();
   const { data: heroPalette } = usePalette(hero || '');
@@ -72,5 +71,3 @@ const BaseBlogPost: Component<BlogPostProps> = (props) => {
     </div>
   );
 };
-
-export const BlogPost = memo(BaseBlogPost);

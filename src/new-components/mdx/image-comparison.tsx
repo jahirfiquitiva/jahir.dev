@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
-import { Fragment, memo } from 'react';
+import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 import tw from 'twin.macro';
 
@@ -36,7 +36,7 @@ const ImageComparisonContainer = tw.div`
   [p]:(inline-flex text-tiny italic)
 `;
 
-const BaseImageComparison: Component<ImageComparisonProps> = (props) => {
+export const ImageComparison: Component<ImageComparisonProps> = (props) => {
   if (!window || !document) return null;
 
   const { hover = true, vertical = false } = props;
@@ -73,5 +73,3 @@ const BaseImageComparison: Component<ImageComparisonProps> = (props) => {
     </ImageComparisonContainer>
   );
 };
-
-export const ImageComparison = memo(BaseImageComparison);
