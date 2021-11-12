@@ -1,13 +1,16 @@
 /* eslint-disable max-lines */
 import styled from '@emotion/styled';
+import { text } from 'stream/consumers';
 
 import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
 import {
+  Footer as FooterContent,
   FooterGrid,
   FooterSectionOne,
   FooterSectionTwo,
   FooterSectionThree,
   FooterSectionFour,
+  FooterLink,
 } from '~/new-components/blocks';
 import { SocialLinks, Stack } from '~/new-components/elements';
 import { Component, mediaQueries } from '~/types';
@@ -88,6 +91,63 @@ const FooterContainer = styled.footer`
   }
 `;
 
+const sectionTwoLinks: Array<FooterLink> = [
+  {
+    title: 'Link to blog posts page',
+    href: '/blog',
+    emoji: '📝',
+    text: 'Blog',
+    gradientColor: 'blue-to-green',
+  },
+  {
+    title: 'Link to supporters page',
+    href: '/thanks',
+    emoji: '🧡',
+    text: 'Supporters',
+    gradientColor: 'red-to-purple',
+  },
+];
+
+export const Footer: Component = () => {
+  return (
+    <FooterContainer>
+      <FooterContent
+        sectionTwoLinks={sectionTwoLinks}
+        sectionThreeLinks={sectionTwoLinks}
+      >
+        <FooterHomeLink
+          title={'Link to home page'}
+          href={'/'}
+          underline={false}
+          style={buildStyles({
+            textDecoration: 'underline solid var(--gradient-brand)',
+          })}
+        >
+          <Logo className={'logosvg'} />{' '}
+          <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
+            Jahir Fiquitiva
+          </GradientSpan>
+        </FooterHomeLink>
+        <SocialLinks />
+        <p className={'small'}>Built with </p>
+        <Stack
+          stack={['nextjs', 'typescript', 'styled components', 'tailwind']}
+        />
+        <p className={'small'}>
+          <Link
+            title={'Link to view website source code on GitHub'}
+            href={'https://github.com/jahirfiquitiva/jahir.dev'}
+            underline
+          >
+            View source code
+          </Link>
+        </p>
+      </FooterContent>
+    </FooterContainer>
+  );
+};
+
+/*
 export const Footer: Component = () => {
   return (
     <FooterContainer>
@@ -217,3 +277,4 @@ export const Footer: Component = () => {
     </FooterContainer>
   );
 };
+*/
