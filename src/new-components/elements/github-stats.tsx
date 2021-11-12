@@ -1,15 +1,10 @@
-import styled from '@emotion/styled';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 import tw from 'twin.macro';
 
 import useRequest from '~/hooks/useRequest';
 import { LinkCard } from '~/new-components/atoms/simple';
-import {
-  Component,
-  GitHubStats as GitHubStatsData,
-  mediaQueries,
-} from '~/types';
+import { Component, GitHubStats as GitHubStatsData } from '~/types';
 
 const GitHubStatsLink = tw(LinkCard)`
   --divider-alpha[0.4]
@@ -25,8 +20,8 @@ const GitHubStatsLink = tw(LinkCard)`
   min-h-button
   gap-4
 
-  sm:(mr-12)
-  hocus:(--divider-alpha[0.5] text-text-primary border-divider)
+  sm:(mr-10)
+  hocus:(--divider-alpha[0.5] shadow-none text-text-primary border-divider)
 `;
 
 const Count = tw.p`font-medium`;
