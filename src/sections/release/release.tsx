@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
-import { CenteredSection } from '~/blocks/section';
 import useRequest from '~/hooks/useRequest';
 import { SectionHeading } from '~/new-components/atoms/complex';
-import { Heading } from '~/new-components/atoms/simple';
+import { Heading, CenteredSection } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
 const ReleaseHeading = styled(Heading)`

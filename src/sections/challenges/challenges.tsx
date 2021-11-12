@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
 
-import { CenteredSection } from '~/blocks/section';
 import {
   MasonryGrid,
   MasonryBreakpoints,
   SectionHeading,
 } from '~/new-components/atoms/complex';
-import { Link } from '~/new-components/atoms/simple';
+import { Link, CenteredSection } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, CodingChallenge, viewports } from '~/types';
 
 const ChallengesGrid = styled(MasonryGrid)`

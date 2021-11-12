@@ -7,7 +7,7 @@ import { Component, ComponentProps } from '~/types';
 export const ButtonStyles = tw`
   inline-flex
   items-center
-  content-center
+  justify-center
   bg-accent
   text-accent-text
   border-none

@@ -9,3 +9,4 @@ export * from './image';
 export * from './link-button';
 export * from './link';
 export * from './logo';
+export * from './section';

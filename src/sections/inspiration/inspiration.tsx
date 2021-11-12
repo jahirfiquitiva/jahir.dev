@@ -2,13 +2,17 @@ import styled from '@emotion/styled';
 import { mdiWeb } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import { CenteredSection } from '~/blocks/section';
 import {
   MasonryGrid,
   MasonryBreakpoints,
   SectionHeading,
 } from '~/new-components/atoms/complex';
-import { Heading, Image, LinkCard } from '~/new-components/atoms/simple';
+import {
+  Heading,
+  Image,
+  LinkCard,
+  CenteredSection,
+} from '~/new-components/atoms/simple';
 import { Component, ComponentProps, InspirationSite, viewports } from '~/types';
 
 const InspirationGrid = styled(MasonryGrid)`

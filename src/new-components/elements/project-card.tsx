@@ -51,7 +51,7 @@ const IconHeadingContainer = tw(DetailsContainer)`
   relative
   flex-row
   items-center
-  content-start
+  justify-start
   p-0
   gap-8
   [img]:(

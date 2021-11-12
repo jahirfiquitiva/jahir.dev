@@ -11,7 +11,7 @@ const GitHubStatsLink = tw(LinkCard)`
   --divider[rgba(var(--divider-opaque), var(--divider-alpha))]
   flex
   items-center
-  content-center
+  justify-center
   py-4 px-6
   mr-8
   no-underline

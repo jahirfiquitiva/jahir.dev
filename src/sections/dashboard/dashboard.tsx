@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 
 import { DashboardGrid } from '~/blocks/dashboard-grid';
-import { CenteredSection } from '~/blocks/section';
 import { State } from '~/components/dashboard-items';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
-import { Heading, Divider } from '~/new-components/atoms/simple';
+import { Heading, Divider, CenteredSection } from '~/new-components/atoms/simple';
 import { SongCard } from '~/new-components/elements';
 import { Component, mediaQueries, TopTrackData } from '~/types';
 

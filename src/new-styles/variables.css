@@ -43,7 +43,7 @@
   --shadow-color: 0, 0, 0;
   --shadow-color-full: rgba(var(--shadow-color), var(--card-shadow-opacity));
 
-  --gradient-brand: var(--accent-dark);
+  --gradient-brand: var(--accent);
   --gradient-blue: #247aae;
   --gradient-green: #1a9956;
   --gradient-yellow: #c69227;
@@ -51,7 +51,7 @@
   --gradient-red: #bc2f48;
   --gradient-purple: #7a4cbb;
 
-  --text-shadow-brand: var(--accent);
+  --text-shadow-brand: var(--accent-lighter);
   --text-shadow-blue: #81c1e9;
   --text-shadow-green: #79d9a6;
   --text-shadow-yellow: #fad483;

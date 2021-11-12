@@ -5,6 +5,6 @@ export const ButtonGroup = tw.div`
   flex-row
   flex-wrap
   items-center
-  content-start
+  justify-start
   gap-8
 `;

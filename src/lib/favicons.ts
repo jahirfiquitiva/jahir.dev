@@ -35,7 +35,7 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
         const ttPixelsIcons =
           icons.filter((it: FaviconGrabberIcon) => {
             return (
-              !(it?.src || '')?.startsWith('data') ||
+              !(it?.src || '')?.includes('data:image') ||
               (it?.sizes || '')?.includes('32') ||
               (it?.src || '')?.includes('32')
             );
@@ -68,7 +68,7 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
       const ttPixelsIcons =
         icons.filter((it: FaviconGrabberIcon) => {
           return (
-            !(it?.href || '')?.startsWith('data') ||
+            !(it?.href || '')?.includes('data:image') ||
             (it?.sizes || '')?.includes('32') ||
             (it?.href || '')?.includes('32')
           );

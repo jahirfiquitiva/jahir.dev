@@ -6,7 +6,7 @@ export const Chip = tw.span`
   
   flex
   items-center
-  content-center
+  justify-center
   py-4
   px-6
   text-tiny

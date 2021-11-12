@@ -3,14 +3,13 @@ import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
 import { BlogIdeas } from '~/blocks/blog-ideas';
-import { Section } from '~/blocks/section';
 import { debounce } from '~/lib/debounce';
 import {
   MasonryGrid,
   MasonryBreakpoints,
   SectionHeading,
 } from '~/new-components/atoms/complex';
-import { Field } from '~/new-components/atoms/simple';
+import { Field, Section } from '~/new-components/atoms/simple';
 import { BlogPostCard } from '~/new-components/elements';
 import { Component, ComponentProps, Post, viewports } from '~/types';
 
