@@ -1,8 +1,5 @@
-/* eslint-disable react/no-children-prop */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
+import { CSSProperties, useMemo } from 'react';
 import { usePalette } from 'react-palette';
 
 import styles from './blog-post.module.css';
@@ -29,13 +26,19 @@ interface BlogPostProps extends ComponentProps, Post {}
 
 export const BlogPost: Component<BlogPostProps> = (props) => {
   const { title, hero, date, readingTime, children } = props;
-  const { isDark } = useTheme();
+  const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = usePalette(hero || '');
 
-  const color = hexToRGB(
-    getColorFromPalette(heroPalette, isDark) || '#fff',
-    0.4,
-  );
+  const titleStyles = useMemo<CSSProperties>(() => {
+    if (!themeReady) return {};
+    const color = hexToRGB(
+      getColorFromPalette(heroPalette, isDark) || '#fff',
+      0.4,
+    );
+    return {
+      textShadow: `var(--text-shadow-size) var(--text-shadow-size) 0 ${color}`,
+    };
+  }, [themeReady, isDark, heroPalette]);
 
   return (
     <div className={styles.post}>
@@ -49,13 +52,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
         </Link>
       </div>
       <article>
-        <h1
-          style={{
-            textShadow: `var(--text-shadow-size) var(--text-shadow-size) 0 ${color}`,
-          }}
-        >
-          {title}
-        </h1>
+        <h1 style={titleStyles}>{title}</h1>
         <p className={styles.date}>
           {formatDate(date)}
           {(readingTime?.text?.length || 0) > 0 && (
