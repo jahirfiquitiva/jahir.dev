@@ -1,4 +1,4 @@
-export const BaseMetaTags = () => {
+export const DefaultMetaTags = () => {
   return (
     <>
       <meta charSet={'UTF-8'} />

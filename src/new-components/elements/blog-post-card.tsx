@@ -1,11 +1,9 @@
-import { useState, useMemo } from 'react';
 import { usePalette } from 'react-palette';
-import tw, { css } from 'twin.macro';
+import tw from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/new-components/atoms/simple';
-import { Stack } from '~/new-components/elements';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, ProjectProps, Post } from '~/types';
+import { Component, ComponentProps, Post } from '~/types';
 import buildShadowColors from '~/utils/build-shadow-colors';
 import buildStyles from '~/utils/build-styles';
 import formatDate from '~/utils/format-date';

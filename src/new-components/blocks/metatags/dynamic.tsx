@@ -16,7 +16,7 @@ export interface MetaTagsProps extends PageProps {
   metaImageStyle?: MetaImageStyle;
 }
 
-export const MetaTags: Component<MetaTagsProps> = (props) => {
+export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
   const {
     title,
     description,
