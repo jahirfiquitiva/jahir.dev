@@ -138,7 +138,7 @@ export const ProjectCard: Component<ProjectCardProps> = (
         </IconHeadingContainer>
         <DescriptionContainer>
           <p>{description}</p>
-          <Stack stack={stack} tw={'opacity-85'} />
+          <Stack stack={stack} tw={'opacity-85 mt-6'} />
         </DescriptionContainer>
       </DetailsContainer>
       {preview ? (

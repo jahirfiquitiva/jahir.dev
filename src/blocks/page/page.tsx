@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Footer } from '~/blocks/footer';
+
 import { BackToTop } from '~/new-components/atoms/complex';
-import { Toolbar, DynamicMetaTags } from '~/new-components/blocks';
+import { Toolbar, DynamicMetaTags, Footer } from '~/new-components/blocks';
 import { Component, PageProps, mediaQueries, defaultKeywords } from '~/types';
 
 const defaultSiteDescription =

@@ -19,7 +19,7 @@ const getSkill = (skillName: string): SkillProps | null => {
   }
 };
 
-const StackList = tw.ul`flex flex-wrap items-center list-none gap-4 mt-6`;
+const StackList = tw.ul`flex flex-wrap items-center list-none gap-4`;
 
 interface StackListProps extends ComponentProps {
   stack?: Array<SkillKey>;
@@ -36,7 +36,7 @@ export const Stack: Component<StackListProps> = (props) => {
         const skill = getSkill(skillName);
         if (!skill) return null;
         return (
-          <li key={i}>
+          <li key={i} title={skill.name} aria-label={skill.name}>
             <Icon
               path={skill.iconPath}
               color={skill.color}
