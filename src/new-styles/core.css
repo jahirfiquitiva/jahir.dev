@@ -1,0 +1,45 @@
+html,
+body {
+  @apply bg-background overflow-x-hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply m-0 min-h-screen;
+}
+
+section {
+  scroll-margin-top: var(--toolbar-height);
+}
+
+::selection {
+  @apply bg-accent-highlight;
+}
+
+::placeholder {
+  @apply text-text-tertiary opacity-100;
+}
+:-ms-input-placeholder {
+  @apply text-text-tertiary opacity-100;
+}
+::-ms-input-placeholder {
+  @apply text-text-tertiary opacity-100;
+}
+
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+body.sb-show-main.sb-main-padded {
+  padding: 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}

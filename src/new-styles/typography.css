@@ -1,5 +1,5 @@
 html, body {
-  @apply font-sans text-text-secondary;
+  @apply font-sans font-normal text-text-secondary leading-normal sm:leading-relaxed;
 }
 
 h1,
@@ -55,7 +55,7 @@ h5 {
 h6,
 p,
 body {
-  @apply text-xs leading-relaxed;
+  @apply text-xs;
 }
 
 small {

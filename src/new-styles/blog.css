@@ -1,0 +1,43 @@
+article .toc {
+  @apply mt-12;
+}
+
+article .toc .title {
+  @apply font-manrope font-bold text-md text-text-primary mb-0;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  @apply relative;
+}
+
+article a.anchor {
+  @apply invisible absolute w-full h-full cursor-pointer no-underline;
+  margin-left: -1em;
+  padding-right: 0.5em;
+}
+
+article a.anchor::after {
+  @apply no-underline;
+  content: '#';
+  color: rgba(var(--divider-opaque), 0.2);
+}
+
+article h1:hover > a.anchor,
+article h1:focus > a.anchor,
+article h2:hover > a.anchor,
+article h2:focus > a.anchor,
+article h3:hover > a.anchor,
+article h3:focus > a.anchor,
+article h4:hover > a.anchor,
+article h4:focus > a.anchor,
+article h5:hover > a.anchor,
+article h5:focus > a.anchor,
+article h6:hover > a.anchor,
+article h6:focus > a.anchor {
+  @apply visible no-underline;
+}

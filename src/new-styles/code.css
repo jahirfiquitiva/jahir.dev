@@ -1,13 +1,15 @@
 :root,
+.light,
 .light-mode {
   --code-comments: var(--text-tertiary);
   --code-punctuation: var(--text-secondary);
-  --code-selector: #1a9956;
+  --code-selector: #178a4d;
   --code-properties: #7a4cbb;
-  --code-operator: #e4873d;
+  --code-operator: #c86827;
   --code-function: #aa499d;
 }
 
+.dark,
 .dark-mode {
   --code-comments: var(--text-tertiary);
   --code-punctuation: var(--text-secondary);

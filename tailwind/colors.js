@@ -13,6 +13,7 @@ module.exports = {
     dark: 'var(--accent-dark)',
     darker: 'var(--accent-darker)',
     text: 'var(--on-accent)',
+    highlight: 'rgba(var(--card-base), 0.25)',
   },
   text: {
     DEFAULT: 'var(--text-secondary)',
