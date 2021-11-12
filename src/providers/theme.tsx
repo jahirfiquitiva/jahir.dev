@@ -4,25 +4,28 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { Component, ComponentProps } from '~/types';
 
 export interface ThemeContextValue {
-  isDark?: boolean;
+  isDark: boolean;
+  themeReady: boolean;
   toggleTheme?: () => void;
 }
 
 export interface ThemeProps extends ThemeContextValue, ComponentProps {}
 
-const ThemeContext = createContext<ThemeContextValue>({ isDark: false });
+const ThemeContext = createContext<ThemeContextValue>({
+  isDark: false,
+  themeReady: false,
+});
 
 export const ThemeProvider: Component<ThemeProps> = (props) => {
-  const [mounted, setMounted] = useState(false);
   const { theme, resolvedTheme, setTheme } = useNextTheme();
 
+  const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
 
   const { children } = props;
 
   const themeContextValue: ThemeContextValue = {
+    themeReady: mounted,
     isDark: (resolvedTheme || theme) === 'dark',
     toggleTheme: () => {
       setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
@@ -38,13 +41,8 @@ export const ThemeProvider: Component<ThemeProps> = (props) => {
 
 export const useTheme = (): ThemeContextValue => {
   const themeState = useContext(ThemeContext);
-
   if (themeState === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
-
-  return {
-    isDark: themeState.isDark || false,
-    toggleTheme: themeState.toggleTheme,
-  };
+  return themeState;
 };
