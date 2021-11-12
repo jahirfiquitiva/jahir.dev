@@ -65,20 +65,6 @@ const FooterHomeLink = styled(Link)`
   }
 `;
 
-const FooterGridLink = styled(Link)`
-  margin: 0.4rem 0;
-  font-size: calc(var(--base-font-size) * 1.1);
-
-  &:hover,
-  &:focus {
-    ${gradientUnderlineStyles}
-
-    & * {
-      ${gradientUnderlineStyles}
-    }
-  }
-`;
-
 const FooterContainer = styled.footer`
   overflow: hidden;
   display: block;
@@ -100,11 +86,59 @@ const sectionTwoLinks: Array<FooterLink> = [
     gradientColor: 'blue-to-green',
   },
   {
-    title: 'Link to supporters page',
+    title: 'Link to uses page',
+    href: '/uses',
+    emoji: '⚡️',
+    text: 'Uses',
+    gradientColor: 'yellow-to-orange',
+  },
+  {
+    title: 'Link to donate page',
+    href: '/donate',
+    emoji: '🧡',
+    text: 'Donate',
+    gradientColor: 'red-to-purple',
+  },
+  {
+    title: 'Link to contact page',
+    href: '/contact',
+    emoji: '📬',
+    text: 'Contact',
+    gradientColor: 'brand-to-blue',
+  },
+];
+
+const sectionThreeLinks: Array<FooterLink> = [
+  {
+    title: 'Link to dashboard page',
+    href: '/dashboard',
+    emoji: '✨',
+    text: 'Dashboard',
+    gradientColor: 'yellow-to-orange',
+  },
+  {
+    title: 'Link to inspiration page',
+    href: '/inspiration',
+    emoji: '🌎',
+    text: 'Inspiration',
+    gradientColor: 'brand-to-blue',
+  },
+];
+
+const sectionFourLinks: Array<FooterLink> = [
+  {
+    title: 'Link to supporters section',
     href: '/thanks',
     emoji: '🧡',
     text: 'Supporters',
     gradientColor: 'red-to-purple',
+  },
+  {
+    title: 'Link to projects section',
+    href: '/#projects',
+    emoji: '👨‍💻',
+    text: 'Projects',
+    gradientColor: 'green-to-yellow',
   },
 ];
 
@@ -113,7 +147,8 @@ export const Footer: Component = () => {
     <FooterContainer>
       <FooterContent
         sectionTwoLinks={sectionTwoLinks}
-        sectionThreeLinks={sectionTwoLinks}
+        sectionThreeLinks={sectionThreeLinks}
+        sectionFourLinks={sectionFourLinks}
       >
         <FooterHomeLink
           title={'Link to home page'}
@@ -146,135 +181,3 @@ export const Footer: Component = () => {
     </FooterContainer>
   );
 };
-
-/*
-export const Footer: Component = () => {
-  return (
-    <FooterContainer>
-      <FooterGrid>
-        <FooterSectionOne>
-          <FooterHomeLink
-            title={'Link to home page'}
-            href={'/'}
-            underline={false}
-            style={buildStyles({
-              textDecoration: 'underline solid var(--gradient-brand)',
-            })}
-          >
-            <Logo className={'logosvg'} />{' '}
-            <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
-              Jahir Fiquitiva
-            </GradientSpan>
-          </FooterHomeLink>
-          <SocialLinks />
-          <p className={'small'}>Built with </p>
-          <Stack
-            stack={['nextjs', 'typescript', 'styled components', 'tailwind']}
-          />
-          <p className={'small'}>
-            <Link
-              title={'Link to view website source code on GitHub'}
-              href={'https://github.com/jahirfiquitiva/jahir.dev'}
-              underline
-            >
-              View source code
-            </Link>
-          </p>
-        </FooterSectionOne>
-        <FooterSectionTwo>
-          <FooterGridLink
-            title={'Link to blog page'}
-            href={'/blog'}
-            style={buildStyles({
-              textDecoration: 'underline solid var(--gradient-blue)',
-            })}
-            underline={false}
-          >
-            <span>📝&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'blue-to-green'} forceGradient>
-              Blog
-            </GradientSpan>
-          </FooterGridLink>
-          <FooterGridLink
-            title={'Link to uses page'}
-            href={'/uses'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-d)' })}
-          >
-            <span>⚡️&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
-              Uses
-            </GradientSpan>
-          </FooterGridLink>
-          <FooterGridLink
-            title={'Link to donate page'}
-            href={'/donate'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
-          >
-            <span>🧡&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'red-to-purple'} forceGradient>
-              Donate
-            </GradientSpan>
-          </FooterGridLink>
-          <FooterGridLink
-            title={'Link to page page'}
-            href={'/contact'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
-          >
-            <span>📬&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
-              Contact
-            </GradientSpan>
-          </FooterGridLink>
-        </FooterSectionTwo>
-        <FooterSectionThree>
-          <FooterGridLink
-            title={'Link to dashboard page'}
-            href={'/dashboard'}
-            style={buildStyles({
-              textDecoration: 'underline solid var(--gradient-yellow)',
-            })}
-            underline={false}
-          >
-            <span>✨&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'yellow-to-orange'} forceGradient>
-              Dashboard
-            </GradientSpan>
-          </FooterGridLink>
-          <FooterGridLink
-            title={'Link to inpsiration page'}
-            href={'/inspiration'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-a)' })}
-          >
-            <span>🌎&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
-              Inspiration
-            </GradientSpan>
-          </FooterGridLink>
-        </FooterSectionThree>
-        <FooterSectionFour>
-          <FooterGridLink
-            title={'Link to supporters page'}
-            href={'/thanks'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-f)' })}
-          >
-            <span>🧡&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'red-to-purple'} forceGradient>
-              Supporters
-            </GradientSpan>
-          </FooterGridLink>
-          <FooterGridLink
-            title={'Link to projects page'}
-            href={'/#projects'}
-            style={buildStyles({ '--start-grad-color': 'var(--gradients-c)' })}
-          >
-            <span>👨‍💻&nbsp;&nbsp;</span>
-            <GradientSpan gradientColor={'green-to-yellow'} forceGradient>
-              Projects
-            </GradientSpan>
-          </FooterGridLink>
-        </FooterSectionFour>
-      </FooterGrid>
-    </FooterContainer>
-  );
-};
-*/
