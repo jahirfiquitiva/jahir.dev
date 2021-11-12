@@ -2,6 +2,7 @@
 import styled from '@emotion/styled';
 
 import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
+import { FooterGrid, FooterSectionOne, FooterSectionTwo } from '~/new-components/blocks';
 import { SocialLinks, Stack } from '~/new-components/elements';
 import { Component, mediaQueries } from '~/types';
 import buildStyles from '~/utils/build-styles';
@@ -55,24 +56,6 @@ const FooterHomeLink = styled(Link)`
   }
 `;
 
-const FooterGridSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-
-  ${mediaQueries.mobile.md} {
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
-
-  ${mediaQueries.tablet.sm} {
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
-`;
-
 const FooterGridLink = styled(Link)`
   margin: 0.4rem 0;
   font-size: calc(var(--base-font-size) * 1.1);
@@ -87,31 +70,7 @@ const FooterGridLink = styled(Link)`
   }
 `;
 
-const FooterGridSectionTwo = styled(FooterGridSection)`
-  display: none;
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
-  align-items: flex-end;
-
-  ${mediaQueries.mobile.md} {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row: 1;
-  }
-
-  ${mediaQueries.tablet.lg} {
-    display: flex;
-    visibility: visible;
-    pointer-events: auto;
-    opacity: 1;
-    align-items: center;
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
-`;
-
-const FooterGridSectionThree = styled(FooterGridSectionTwo)`
+const FooterGridSectionThree = styled(FooterSectionTwo)`
   display: flex;
   visibility: visible;
   pointer-events: auto;
@@ -134,7 +93,7 @@ const FooterGridSectionThree = styled(FooterGridSectionTwo)`
   }
 `;
 
-const FooterGridSectionFour = styled(FooterGridSectionTwo)`
+const FooterGridSectionFour = styled(FooterSectionTwo)`
   display: flex;
   visibility: visible;
   pointer-events: auto;
@@ -157,25 +116,6 @@ const FooterGridSectionFour = styled(FooterGridSectionTwo)`
   }
 `;
 
-const FooterGrid = styled.div`
-  width: 100%;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr;
-  max-width: 768px; /* calc(var(--max-site-width) - 0.8rem); */
-  margin: 0 auto;
-  grid-column-gap: 0.8rem;
-  grid-row-gap: 0;
-
-  ${mediaQueries.mobile.md} {
-    grid-template-columns: 1fr auto;
-  }
-
-  ${mediaQueries.tablet.lg} {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
 const FooterContainer = styled.footer`
   overflow: hidden;
   display: block;
@@ -192,7 +132,7 @@ export const Footer: Component = () => {
   return (
     <FooterContainer>
       <FooterGrid>
-        <FooterGridSection>
+        <FooterSectionOne>
           <FooterHomeLink
             title={'Link to home page'}
             href={'/'}
@@ -220,8 +160,8 @@ export const Footer: Component = () => {
               View source code
             </Link>
           </p>
-        </FooterGridSection>
-        <FooterGridSectionTwo>
+        </FooterSectionOne>
+        <FooterSectionTwo>
           <FooterGridLink
             title={'Link to blog page'}
             href={'/blog'}
@@ -265,7 +205,7 @@ export const Footer: Component = () => {
               Contact
             </GradientSpan>
           </FooterGridLink>
-        </FooterGridSectionTwo>
+        </FooterSectionTwo>
         <FooterGridSectionThree>
           <FooterGridLink
             title={'Link to dashboard page'}

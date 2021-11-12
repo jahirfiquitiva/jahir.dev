@@ -45,7 +45,7 @@ export const ToolbarButtonsContainer = tw.ul`
   lg:(gap-0 justify-end col-start-3 col-end-4)
 
   [li]:(
-    inline-block m-0 p-0 
+    inline-block m-0 p-0 max-h-button
     last:(
       visible pointer-events-auto select-auto opacity-100 
       lg:(hidden invisible pointer-events-none select-none opacity-0)

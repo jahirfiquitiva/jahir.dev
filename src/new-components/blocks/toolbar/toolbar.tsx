@@ -14,32 +14,37 @@ const ToolbarGrid = tw.nav`
   max-w-3xl-w-padding
   mx-auto
   grid
-  grid-cols-2
+  grid-template-columns[auto 1fr]
   auto-rows-min
   grid-flow-row-dense
   gap-x-0 gap-y-0
   overflow-hidden
-  transition-all duration-300 delay-0
+  transition-all duration-300
 
   lg:(gap-4 grid-rows-1 grid-template-columns[auto 1fr auto])
   
   all-child:(
-    transition-all duration-300
+    transition-all duration-200
     last:(
-      h-0 leading-none invisible pointer-events-none select-none opacity-0 
-      lg:(h-auto leading-normal visible pointer-events-auto select-auto opacity-100)
+      h-0 invisible pointer-events-none select-none opacity-0
+      first:(duration-100 opacity-0)
+      lg:(h-unset visible pointer-events-auto select-auto opacity-100)
     )
   )
   [&.expanded]:(
-    gap-y-6 delay-0
+    gap-y-6
     all-child:(
-      last:(h-auto leading-normal visible pointer-events-auto select-auto opacity-100)
+      last:(
+        h-unset visible pointer-events-auto select-auto opacity-100
+        first:(opacity-100)
+      )
     )
   )
 `;
 
 const HomeLink = tw(ToolbarLink)`
-  w-full
+  self-start
+  justify-start
   gap-6
   [span]:(
     text-transparent
@@ -52,12 +57,15 @@ const HomeLink = tw(ToolbarLink)`
 `;
 
 const MenuButton = tw(ToolbarButton)`
+  min-w-button
+  max-h-button
+  max-w-button
   pt-4
   gap-0
   xs:(pt-4)
   md:(pt-4)
   [svg]:(mx-auto transition-all duration-150 transform rotate-0)
-  [&.expanded]:(max-w-button max-h-button p-2 [svg]:(rotate-45))
+  [&.expanded]:(p-2 [svg]:(rotate-45))
 `;
 
 const Navigation = () => {

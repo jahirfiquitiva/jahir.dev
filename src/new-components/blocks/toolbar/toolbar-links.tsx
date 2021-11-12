@@ -50,18 +50,18 @@ const ToolbarLinksContainer = tw.ul`
 `;
 
 export const ToolbarLinks = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const [activeLink, setActiveLink] = useState(-1);
 
-  // useEffect(() => {
-  //   if (!router || !router.isReady) return;
-  //   const { asPath: pathname } = router;
-  //   if (pathname.includes('/uses')) setActiveLink(2);
-  //   else if (pathname.includes('/blog')) setActiveLink(1);
-  //   else if (pathname.includes('/donate')) setActiveLink(3);
-  //   else if (pathname.includes('/contact')) setActiveLink(4);
-  //   else setActiveLink(-1);
-  // }, [router]);
+  useEffect(() => {
+    if (!router || !router.isReady) return;
+    const { asPath: pathname } = router;
+    if (pathname.includes('/uses')) setActiveLink(2);
+    else if (pathname.includes('/blog')) setActiveLink(1);
+    else if (pathname.includes('/donate')) setActiveLink(3);
+    else if (pathname.includes('/contact')) setActiveLink(4);
+    else setActiveLink(-1);
+  }, [router]);
 
   return (
     <ToolbarLinksContainer>
