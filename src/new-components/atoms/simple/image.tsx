@@ -33,7 +33,7 @@ type BaseImageProps = Pick<
   | 'quality'
 >;
 
-interface ImageProps extends ComponentProps, BaseImageProps {
+export interface ImageProps extends ComponentProps, BaseImageProps {
   src: string;
   size?: number;
   avoidNextImage?: boolean;

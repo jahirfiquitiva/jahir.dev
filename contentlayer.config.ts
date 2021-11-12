@@ -32,10 +32,6 @@ const defaultColors = [
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
-  wordCount: {
-    type: 'number',
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
-  },
   slug: {
     type: 'string',
     // eslint-disable-next-line no-underscore-dangle
@@ -90,9 +86,8 @@ export const Blog = defineDocumentType(() => ({
     excerpt: { type: 'string' },
     description: { type: 'string' },
     link: { type: 'string' },
-    keywords: { type: 'string' },
     inProgress: { type: 'boolean' },
-    tableOfContents: { type: 'string' },
+    keywords: { type: 'string' },
   },
   computedFields,
 }));

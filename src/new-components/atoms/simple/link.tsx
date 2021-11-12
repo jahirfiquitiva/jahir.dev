@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
@@ -8,17 +8,12 @@ interface BaseLinkProps {
   underlineOnHocus?: boolean;
 }
 
-const BaseLinkStyles = tw`
+const baseLinkStyles = tw`
   font-medium
   inline-block
   text-accent  
   hocus:(text-accent-dark dark:text-accent-light)
 `;
-
-const StyledLink = styled.a<BaseLinkProps>(({ underline }) => [
-  BaseLinkStyles,
-  underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
-]);
 
 export const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
@@ -35,25 +30,45 @@ export const Link: Component<LinkProps> = (props) => {
     href,
     newTab = !isLocalLink(href),
     underline,
-    underlineOnHocus = underline,
     children,
     className,
     style,
   } = props;
 
-  return (
-    <NextLink href={href} passHref>
-      <StyledLink
+  if (newTab) {
+    return (
+      <a
+        href={href}
         title={title}
         aria-label={title}
-        target={newTab ? '_blank' : '_self'}
+        target={'_blank'}
         rel={'noopener noreferrer'}
-        underline={underline || underlineOnHocus}
         className={className}
         style={style}
+        css={[
+          baseLinkStyles,
+          underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+        ]}
       >
         {children}
-      </StyledLink>
+      </a>
+    );
+  }
+
+  return (
+    <NextLink href={href}>
+      <a
+        title={title}
+        aria-label={title}
+        className={className}
+        style={style}
+        css={[
+          baseLinkStyles,
+          underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+        ]}
+      >
+        {children}
+      </a>
     </NextLink>
   );
 };
