@@ -1,11 +1,11 @@
 import tw from 'twin.macro';
 
-import { FooterContent } from './content';
-import { FooterLink } from './link';
+import { FooterContent } from './footer-content';
+import { FooterLink } from './footer-link';
 
 import { Link, GradientSpan, Logo } from '~/new-components/atoms/simple';
 import { SocialLinks, Stack } from '~/new-components/elements';
-import { Component, ComponentProps } from '~/types';
+import { Component } from '~/types';
 
 const StyledFooter = tw.footer`
   block
@@ -91,6 +91,7 @@ const FooterLogoLink = tw(Link)`
   items-center
   justify-start
   gap-6
+  text-sm
   [span]:(
     text-transparent
     bg-gradient-to-r

@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-import { FooterLink, transformLink } from './link';
+import { FooterLink, transformLink } from './footer-link';
 
 import { Component, ComponentProps } from '~/types';
 
