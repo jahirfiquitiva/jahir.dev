@@ -37,9 +37,6 @@ module.exports = {
         ...spacing,
         '3xl-w-padding': 'calc(48rem + 1.6rem)',
       },
-      borderWidth: {
-        1: '1px',
-      },
       letterSpacing: {
         unset: 'unset',
         button: '0.03125rem', // 0.5px
