@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { usePalette } from 'react-palette';
 
 import { SectionHeading, ChipGroup } from '~/new-components/atoms/complex';
@@ -72,9 +72,13 @@ interface SupporterChipProps extends ComponentProps, Supporter {}
 
 const SupporterChip: Component<SupporterChipProps> = (props) => {
   const { link, name, photo } = props;
-  const { isDark } = useTheme();
+  const { isDark, themeReady } = useTheme();
   const { data: paletteData } = usePalette(photo || '');
-  const color = getColorFromPalette(paletteData, isDark);
+
+  const color = useMemo<string | null>(() => {
+    if (!themeReady) return null;
+    return getColorFromPalette(paletteData, isDark);
+  }, [themeReady, isDark, paletteData]);
 
   return (
     <Link

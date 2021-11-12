@@ -12,7 +12,8 @@ const getColorFromPalette = (
 ): string | null => {
   if (!palette) return null;
   if (isDark && darkColor) return darkColor;
-  const { lightVibrant: colorLight = null, vibrant: color = null } = palette;
+  const { lightVibrant: colorLight = null, darkVibrant: color = null } =
+    palette;
   return (isDark ? colorLight : color) || color;
 };
 
