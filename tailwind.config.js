@@ -52,8 +52,10 @@ module.exports = {
       },
       transitionDelay: {
         0: '0ms',
+        50: '50ms',
       },
       opacity: {
+        15: '0.15',
         85: '0.85',
       },
     },

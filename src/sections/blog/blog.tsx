@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react';
 
 import { BlogIdeas } from '~/blocks/blog-ideas';
 import { Section } from '~/blocks/section';
-import { BlogPostCard } from '~/components/cards';
 import { debounce } from '~/lib/debounce';
 import {
   MasonryGrid,
@@ -12,6 +11,7 @@ import {
   SectionHeading,
 } from '~/new-components/atoms/complex';
 import { Field } from '~/new-components/atoms/simple';
+import { BlogPostCard } from '~/new-components/elements';
 import { Component, ComponentProps, Post, viewports } from '~/types';
 
 interface BlogGridProps extends ComponentProps {
@@ -25,7 +25,6 @@ const BlogsMasonry = styled(MasonryGrid)`
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints[viewports.default] = 1;
 masonryBreakpoints[viewports.mobile.lg] = 2;
-// masonryBreakpoints[viewports.tablet.lg] = 3;
 
 export const Blog: Component<BlogGridProps> = (props) => {
   const { posts } = props;
@@ -68,7 +67,7 @@ export const Blog: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
-      <BlogsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
+      <BlogsMasonry breakpoints={masonryBreakpoints} gap={'1.2rem'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
         })}
