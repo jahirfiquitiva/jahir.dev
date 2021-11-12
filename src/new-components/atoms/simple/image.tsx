@@ -31,6 +31,7 @@ type BaseImageProps = Pick<
   | 'objectPosition'
   | 'layout'
   | 'quality'
+  | 'priority'
 >;
 
 export interface ImageProps extends ComponentProps, BaseImageProps {
