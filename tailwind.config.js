@@ -50,6 +50,12 @@ module.exports = {
       outline: {
         accent: ['2px solid var(--accent)', '0px'],
       },
+      transitionDuration: {
+        0: '0ms',
+        350: '350ms',
+        400: '400ms',
+        450: '450ms',
+      },
       transitionDelay: {
         0: '0ms',
         50: '50ms',

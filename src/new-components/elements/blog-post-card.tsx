@@ -19,22 +19,21 @@ const BaseBlogPostCard = tw(LinkCard)`
   rounded-md
   text-text-secondary
   min-height[192px]
-  all:(transition-all duration-300 motion-reduce:(transition-none))
+  all:(transition-all duration-400 motion-reduce:(transition-none))
 
   md:(min-height[232px])
   
-  [p]:(text-tiny delay-50 md:(text-almost-tiny))
+  [p]:(text-tiny md:(text-almost-tiny))
   [p.date]:(text-text-tertiary)
   hocus:(
     [h4]:(underline color[var(--hl-color)])
     [p]:(
       my-4
       h-auto
+      opacity-100
       text-text-primary
       leading-relaxed
-      opacity-100
       visible
-      delay-50
     )
     [p.date]:(my-2 text-text-secondary)
   )
@@ -78,14 +77,20 @@ const Scrim = tw.div`
 `;
 
 const Content = tw.div`
+  flex
+  flex-col
   absolute
   top-auto
   left-0
   bottom-0
   right-0
   p-10
+  border-none
+  rounded-t-none
+  rounded-b-md
   shadow-blogCardDetails
   background-color[var(--blog-card-color)]
+  z-index[1]
   backdrop-filter
   backdrop-blur-md
   backdrop-saturate-200
@@ -94,12 +99,13 @@ const Content = tw.div`
 const Excerpt = tw.p`
   display[-webkit-box]
   h-0
-  leading-none
   opacity-0
+  leading-none
   invisible
   pointer-events-none
   select-none
   text-text-secondary
+  text-tiny
   overflow-hidden
   text-overflow[ellipsis]
   max-lines[1]
@@ -107,6 +113,7 @@ const Excerpt = tw.p`
   -webkit-box-orient[vertical]
 
   md:(
+    text-almost-tiny
     max-lines[2]
     -webkit-line-clamp[2]
   )
