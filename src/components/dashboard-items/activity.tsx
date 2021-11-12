@@ -42,14 +42,14 @@ const CardTexts = styled.div`
     margin: 0;
   }
 
-  & p:first-child {
+  & p:first-of-type {
     color: var(--text-primary);
     font-size: var(--font-size-xs);
     font-weight: 500;
     font-family: var(--manrope);
   }
 
-  & p:nth-child(2) {
+  & p:nth-of-type(2) {
     color: var(--text-primary);
   }
 `;

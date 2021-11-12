@@ -54,6 +54,7 @@ export const ToolbarLinks = () => {
   const [activeLink, setActiveLink] = useState(-1);
 
   useEffect(() => {
+    if (!router || !router.isReady) return;
     const { asPath: pathname } = router;
     if (pathname.includes('/uses')) setActiveLink(2);
     else if (pathname.includes('/blog')) setActiveLink(1);

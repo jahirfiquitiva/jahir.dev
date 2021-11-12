@@ -198,7 +198,7 @@ export const Footer: Component = () => {
             href={'/'}
             underline={false}
             style={buildStyles({
-              'text-decoration': 'underline solid var(--gradient-brand)',
+              textDecoration: 'underline solid var(--gradient-brand)',
             })}
           >
             <Logo className={'logosvg'} />{' '}
@@ -207,12 +207,10 @@ export const Footer: Component = () => {
             </GradientSpan>
           </FooterHomeLink>
           <SocialLinks />
-          <p className={'small'}>
-            Built with{' '}
-            <Stack
-              stack={['nextjs', 'typescript', 'styled components', 'tailwind']}
-            />
-          </p>
+          <p className={'small'}>Built with </p>
+          <Stack
+            stack={['nextjs', 'typescript', 'styled components', 'tailwind']}
+          />
           <p className={'small'}>
             <Link
               title={'Link to view website source code on GitHub'}
@@ -228,7 +226,7 @@ export const Footer: Component = () => {
             title={'Link to blog page'}
             href={'/blog'}
             style={buildStyles({
-              'text-decoration': 'underline solid var(--gradient-blue)',
+              textDecoration: 'underline solid var(--gradient-blue)',
             })}
             underline={false}
           >
@@ -273,7 +271,7 @@ export const Footer: Component = () => {
             title={'Link to dashboard page'}
             href={'/dashboard'}
             style={buildStyles({
-              'text-decoration': 'underline solid var(--gradient-yellow)',
+              textDecoration: 'underline solid var(--gradient-yellow)',
             })}
             underline={false}
           >

@@ -14,6 +14,7 @@ interface ImageComparisonProps extends ComponentProps {
   sliderPosition?: number;
   description?: string;
   hover?: boolean;
+  vertical?: boolean;
 }
 
 const ImageComparisonContainer = tw.div`
@@ -22,7 +23,7 @@ const ImageComparisonContainer = tw.div`
   items-center
   mb-12
 
-  [>div:first-child]:(
+  [>div:first-of-type]:(
     background-color[#080f1e]
     rounded-md
     border-2
@@ -35,10 +36,15 @@ const ImageComparisonContainer = tw.div`
 `;
 
 const BaseImageComparison: Component<ImageComparisonProps> = (props) => {
+  if (!window || !document) return null;
+
+  const { hover = true, vertical = false } = props;
+
   return (
     <ImageComparisonContainer>
       <ReactCompareImage
-        hover
+        hover={hover}
+        vertical={vertical}
         leftImage={props.firstImage}
         leftImageAlt={props.firstImageAlt}
         rightImage={props.secondImage}
@@ -48,6 +54,19 @@ const BaseImageComparison: Component<ImageComparisonProps> = (props) => {
         sliderLineWidth={8}
         sliderLineColor={'rgb(235, 240, 251)'}
         sliderPositionPercentage={props.sliderPosition || 0.5}
+        skeleton={
+          <img
+            src={
+              'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+            }
+            alt={'Image comparison loading'}
+            height={'100%'}
+            width={'100%'}
+            loading={'lazy'}
+            decoding={'async'}
+            style={{ minHeight: 48 }}
+          />
+        }
       />
       {props.description && <p>{props.description}</p>}
     </ImageComparisonContainer>

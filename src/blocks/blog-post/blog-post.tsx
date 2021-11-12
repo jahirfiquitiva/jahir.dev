@@ -46,7 +46,7 @@ const BaseBlogPost: Component<BlogPostProps> = (props) => {
           href={'/blog'}
           underline
         >
-          <a>← Back to posts list</a>
+          ← Back to posts list
         </Link>
       </div>
       <article>
@@ -66,7 +66,7 @@ const BaseBlogPost: Component<BlogPostProps> = (props) => {
             </>
           )}
         </p>
-        {hero && <HeroImage src={hero || ''} alt={title} />}
+        {hero && <HeroImage src={hero || ''} alt={title} priority />}
         {children}
       </article>
     </div>

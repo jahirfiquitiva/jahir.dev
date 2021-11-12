@@ -82,7 +82,7 @@ const buildGradientAndShadowStyles = (
 
   const headingCss = [
     css`
-      & span.emoji:first-child {
+      & span.emoji:first-of-type {
         color: rgb(var(--shadow-color));
         ${tw`mr-8`}
       }
