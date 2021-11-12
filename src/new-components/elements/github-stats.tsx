@@ -40,7 +40,13 @@ export const GitHubStats: Component = (props) => {
       underline={false}
     >
       <Icon path={mdiStar} size={iconSize} />
-      <Count tw={'pr-8 border-divider border-r-1'}>{data?.stars || 0}</Count>
+      <Count
+        tw={
+          'pr-8 border border-l-0 border-t-0 border-b-0 border-r border-divider'
+        }
+      >
+        {data?.stars || 0}
+      </Count>
       <Icon path={mdiAccountGroup} size={iconSize} tw={'ml-4'} />
       <Count>{data?.followers || 0}</Count>
     </GitHubStatsLink>

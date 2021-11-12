@@ -1,9 +1,10 @@
 import { ImageComparison } from './image-comparison';
+import { MdxLink } from './mdx-link';
 
-import { Image, Link, LinkProps } from '~/new-components/atoms/simple';
+import { Image } from '~/new-components/atoms/simple';
 
 export const mdxComponents = {
-  a: (props: LinkProps) => <Link {...props} underline />,
+  a: MdxLink,
   img: Image,
   Image,
   ImageComparison,

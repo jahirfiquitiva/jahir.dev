@@ -9,7 +9,11 @@ body {
 }
 
 section {
-  scroll-margin-top: var(--toolbar-height);
+  scroll-margin-top: calc(var(--toolbar-height) - 1rem);
+}
+
+a {
+  @apply cursor-pointer;
 }
 
 ::selection {

@@ -8,31 +8,26 @@ interface BaseLinkProps {
   underlineOnHocus?: boolean;
 }
 
+const BaseLinkStyles = tw`
+  font-medium
+  inline-block
+  text-accent  
+  hocus:(text-accent-dark dark:text-accent-light)
+`;
+
+const StyledLink = styled.a<BaseLinkProps>(({ underline }) => [
+  BaseLinkStyles,
+  underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+]);
+
+export const isLocalLink = (href?: string) =>
+  href && (href.startsWith('/') || href.startsWith('#'));
+
 export interface LinkProps extends ComponentProps, BaseLinkProps {
   title: string;
   href: string;
   newTab?: boolean;
 }
-
-const BaseLinkStyles = tw`
-  font-medium
-  inline-block
-  text-accent
-  transition-all
-  motion-reduce:transition-none
-  
-  hocus:(text-accent-dark dark:text-accent-light)
-`;
-
-const StyledLink = styled.a<BaseLinkProps>(
-  ({ underline }) => [
-    BaseLinkStyles,
-    underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
-  ],
-);
-
-const isLocalLink = (href: string) =>
-  href.startsWith('/') || href.startsWith('#');
 
 export const Link: Component<LinkProps> = (props) => {
   const {
