@@ -1,9 +1,9 @@
-import { SongCard } from '~/components/cards';
 import { Status, Activity, Counter } from '~/components/dashboard-items';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/new-components/atoms/complex';
+import { SongCard } from '~/new-components/elements';
 import { Component, ComponentProps, DashboardData, viewports } from '~/types';
 
 interface DashboardGridProps extends ComponentProps {

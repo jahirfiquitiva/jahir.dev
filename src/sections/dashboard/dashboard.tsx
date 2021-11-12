@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 
 import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { CenteredSection } from '~/blocks/section';
-import { SongCard } from '~/components/cards';
 import { State } from '~/components/dashboard-items';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
 import { Heading, Divider } from '~/new-components/atoms/simple';
+import { SongCard } from '~/new-components/elements';
 import { Component, mediaQueries, TopTrackData } from '~/types';
 
 const MusicHeading = styled(Heading)`
@@ -31,7 +31,7 @@ const TopTracksText = styled.p`
 
 export const Dashboard: Component = () => {
   const dashboardData = useDashboardData();
-  console.log(dashboardData);
+
   const { data: topTracksData, loading: loadingTopTracks } =
     useRequest<{ tracks?: Array<TopTrackData> }>('/api/top-tracks');
 

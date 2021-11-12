@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
 import { usePalette } from 'react-palette';
+import tw from 'twin.macro';
 
 import { Heading, Image, LinkCard } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
@@ -11,14 +11,40 @@ import buildStyles from '~/utils/build-styles';
 import getReadableColor from '~/utils/get-readable-color';
 import hexToRGB from '~/utils/hex-to-rgb';
 
+const BaseSongCard = tw(LinkCard)`
+  p-8
+  flex
+  flex-row
+  items-center
+  gap-8
+  rounded-md
+  overflow-hidden
+  text-text-primary
+  text-decoration-color[currentColor]
+  [&.not-playing]:(border border-divider pointer-events-none)
+  [h5]:(text-inherit)
+  [img]:(rounded-sm)
+  hocus:([h5]:(underline))
+`;
+
+const SongDetails = tw.div`
+  flex
+  flex-col
+  flex-1
+  rounded-none
+  truncate
+`;
+
+const CurrentlyPlayingTitle = tw.p`
+  text-tiny
+  font-normal
+  no-underline
+  mb-4
+`;
+
 interface SongCardProps extends ComponentProps, TrackData {
   isForNowPlaying?: boolean;
 }
-
-const BaseSongCard = styled(LinkCard)``;
-
-const CurrentlyPlayingTitle = styled.p`
-`;
 
 export const SongCard: Component<SongCardProps> = (props) => {
   const { isForNowPlaying, isPlaying = false } = props;
@@ -86,38 +112,30 @@ export const SongCard: Component<SongCardProps> = (props) => {
           ...shadowColors,
           backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
           color: textColor,
-          borderColor: textColor,
+          borderColor: textColor ? hexToRGB(textColor, 0.4) : undefined,
         })}
       >
-        <div className={'overlay'}>
-          <div
-            className={'album'}
-            style={{ minWidth: shouldRenderDetails ? 64 : 0 }}
-          >
-            {renderAlbumImage()}
-          </div>
-          <div
-            className={'details'}
-            style={buildStyles({ color: textColor, borderColor: textColor })}
-          >
-            <Heading size={'5'} fontSize={'6'}>
-              {(props.title?.length ?? 0) > 0 && shouldRenderDetails
-                ? props.title
-                : 'Silence'}
-            </Heading>
-            {shouldRenderDetails && (
-              <p>
-                {props.artist}
-                {props.album && (
-                  <>
-                    {' • '}
-                    {props.album}
-                  </>
-                )}
-              </p>
-            )}
-          </div>
-        </div>
+        {renderAlbumImage()}
+        <SongDetails
+          style={buildStyles({ color: textColor, borderColor: textColor })}
+        >
+          <Heading size={'5'} fontSize={'xs'} tw={'truncate'}>
+            {(props.title?.length ?? 0) > 0 && shouldRenderDetails
+              ? props.title
+              : 'Silence'}
+          </Heading>
+          {shouldRenderDetails && (
+            <p tw={'text-tiny truncate opacity-90'}>
+              {props.artist}
+              {props.album && (
+                <>
+                  {' • '}
+                  {props.album}
+                </>
+              )}
+            </p>
+          )}
+        </SongDetails>
       </BaseSongCard>
     );
   };
