@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import {
   GradientSpan,
   Heading,
@@ -11,8 +13,13 @@ interface SectionHeadingProps extends HeadingProps, ComponentWithGradientProps {
 }
 
 export const SectionHeading: Component<SectionHeadingProps> = (props) => {
-  const { isDark } = useTheme();
+  const { isDark, themeReady } = useTheme();
   const { emoji, gradientColor, children, ...otherProps } = props;
+
+  const shouldForceGradient = useMemo<boolean>(() => {
+    if (!themeReady) return false;
+    return isDark;
+  }, [themeReady, isDark]);
 
   const renderEmoji = () => {
     if (!emoji) return <></>;
@@ -23,7 +30,10 @@ export const SectionHeading: Component<SectionHeadingProps> = (props) => {
     <Heading {...otherProps}>
       {renderEmoji()}
       {gradientColor ? (
-        <GradientSpan gradientColor={gradientColor} forceGradient={isDark}>
+        <GradientSpan
+          gradientColor={gradientColor}
+          forceGradient={shouldForceGradient}
+        >
           {children}
         </GradientSpan>
       ) : (
