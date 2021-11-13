@@ -71,7 +71,7 @@ const GitHubLink: Component<SocialLinkProps> = (props) => {
   return (
     <BaseGitHubLink
       {...props}
-      title={'Link to GitHub'}
+      title={'GitHub'}
       icon={mdiGithub}
       href={'https://github.com/jahirfiquitiva'}
     />
@@ -82,7 +82,7 @@ const LinkedInLink: Component<SocialLinkProps> = (props) => {
   return (
     <BaseLinkedInLink
       {...props}
-      title={'Link to LinkedIn'}
+      title={'LinkedIn'}
       icon={mdiLinkedin}
       href={'https://linkedin.com/in/jahirfiquitiva'}
     />
@@ -93,7 +93,7 @@ const TwitterLink: Component<SocialLinkProps> = (props) => {
   return (
     <BaseTwitterLink
       {...props}
-      title={'Link to Twitter'}
+      title={'Twitter'}
       icon={mdiTwitter}
       href={'https://twitter.com/jahirfiquitiva'}
     />
@@ -104,7 +104,7 @@ const InstagramLink: Component<SocialLinkProps> = (props) => {
   return (
     <BaseInstagramLink
       {...props}
-      title={'Link to Instagram'}
+      title={'Instagram'}
       icon={mdiInstagram}
       href={'https://instagram.com/jahirfiquitiva'}
     />
@@ -115,7 +115,7 @@ const PolyworkLink: Component<SocialLinkProps> = (props) => {
   return (
     <BasePolyworkLink
       {...props}
-      title={'Link to Polywork Timeline'}
+      title={'Polywork Timeline'}
       href={'https://timeline.jahir.dev'}
       wrapChildrenInSpan={false}
     >
