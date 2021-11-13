@@ -19,6 +19,8 @@ const HeroImage = styled(Image)`
     width: 100%;
     height: auto;
     border-radius: 6px;
+    box-shadow: 0 4px 6px -1px var(--shadow-color-full),
+      0 2px 4px -1px rgba(var(--shadow-color), 0.06);
   }
 `;
 
@@ -43,10 +45,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
   return (
     <div className={styles.post}>
       <div className={'back'}>
-        <Link
-          title={'Link to go back to blog posts list'}
-          href={'/blog'}
-        >
+        <Link title={'Link to go back to blog posts list'} href={'/blog'}>
           ← Back to posts list
         </Link>
       </div>
