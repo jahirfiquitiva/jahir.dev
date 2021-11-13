@@ -23,10 +23,10 @@ const SiteContent = styled.main`
   width: 100%;
   max-width: 768px; /* calc(var(--max-site-width) - 0.8rem) */
   margin: 0 auto;
-  padding: 0 1rem 1.6rem;
+  padding: 0 1rem;
 
   ${mediaQueries.tablet.xl} {
-    padding: 0 0 1.6rem;
+    padding: 0;
   }
 `;
 

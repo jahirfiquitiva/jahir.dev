@@ -19,10 +19,7 @@ const DefaultContentContainer = tw(CenteredSection)`
   justify-center
   text-center
 `;
-
-const FourHundredFourContainer = tw(DefaultContentContainer)`
-  justify-between
-`;
+const FourHundredFourContainer = tw(DefaultContentContainer)`justify-between`;
 
 const DefaultContentWrapper = tw.div`
   flex
@@ -89,7 +86,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
         >
           {title}
         </Heading>
-        <p>{message}</p>
+        <p tw={'last-of-type:(mb-20)'}>{message}</p>
         {renderContactMessage()}
         <LinkButton title={'Link to home page'} href={'/'} tw={'mb-20'}>
           Go back home
