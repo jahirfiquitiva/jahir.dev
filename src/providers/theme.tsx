@@ -1,7 +1,7 @@
 import { useTheme as useNextTheme } from 'next-themes';
 import { createContext, useContext, useState, useEffect } from 'react';
 
-import { Component, ComponentProps } from '~/types';
+import { Component } from '~/types';
 
 export interface ThemeContextValue {
   isDark: boolean;
@@ -9,14 +9,12 @@ export interface ThemeContextValue {
   toggleTheme?: () => void;
 }
 
-export interface ThemeProps extends ThemeContextValue, ComponentProps {}
-
 const ThemeContext = createContext<ThemeContextValue>({
   isDark: false,
   themeReady: false,
 });
 
-export const ThemeProvider: Component<ThemeProps> = (props) => {
+export const ThemeProvider: Component = (props) => {
   const { theme, resolvedTheme, setTheme } = useNextTheme();
 
   const [mounted, setMounted] = useState(false);
