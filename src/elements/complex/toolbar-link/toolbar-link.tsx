@@ -45,7 +45,7 @@ export const BaseToolbarLink = styled('a')<BaseToolbarLinkProps>`
     border-radius: 4px;
   }
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.tablet.lg} {
     min-height: unset;
     justify-content: center;
     margin: 0 0.2rem;
