@@ -1,4 +1,4 @@
-import { useMemo, CSSProperties } from 'react';
+import { useMemo, useState, CSSProperties } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/new-components/atoms/simple';
@@ -100,20 +100,27 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     props;
 
   const { isDark, themeReady } = useTheme();
+  const [projectColor, setProjectColor] = useState(
+    isDark ? darkColor || color : color,
+  );
+
+  useMemo(() => {
+    if (!themeReady) return;
+    const newProjectColor = isDark ? darkColor || color : color;
+    setProjectColor(newProjectColor);
+  }, [isDark, color, darkColor, themeReady]);
 
   const titleColors = useMemo<CSSProperties>(() => {
     if (!themeReady) return {};
-    const projectColor = isDark ? darkColor || color : color;
     return buildStyles({
       '--hl-color': getReadableColor(projectColor, isDark),
     });
-  }, [themeReady, isDark, color, darkColor]);
+  }, [themeReady, isDark, projectColor]);
 
   const shadowColors = useMemo<CSSProperties>(() => {
     if (!themeReady) return {};
-    const projectColor = isDark ? darkColor || color : color;
     return buildShadowColors(projectColor, 0.2, 0.4, isDark, 0.05);
-  }, [themeReady, isDark, color, darkColor]);
+  }, [themeReady, isDark, projectColor]);
 
   const cardExtraStyles = useMemo(() => {
     if (preview) return ProjectCardWithPreview;
