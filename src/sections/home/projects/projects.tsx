@@ -10,11 +10,13 @@ import { Divider, LinkButton } from '~/new-components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/new-components/elements';
 import {
   Component,
-  projects,
+  projects as allProjects,
   mediaQueries,
   viewports,
   buildMediaQuery,
 } from '~/types';
+
+const projects = allProjects.filter((project) => !project.hide);
 
 export const ProjectsGrid = styled(MasonryGrid)`
   padding: 1.6rem 0 var(--content-bottom-margin);
@@ -91,11 +93,17 @@ export const Projects: Component = () => {
       </ProjectsHeader>
 
       <ProjectsGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
-        {projects
-          .filter((project) => !project.hide)
-          .map((project, index) => {
-            return <ProjectCard key={index} {...project} />;
-          })}
+        {projects.map((project, index) => {
+          return (
+            <ProjectCard
+              key={`${project.title
+                .toLowerCase()
+                .split(' ')
+                .join('-')}-${index}`}
+              {...project}
+            />
+          );
+        })}
       </ProjectsGrid>
     </section>
   );

@@ -14,14 +14,11 @@ const BaseProjectCard = tw(LinkCard)`
   overflow-hidden
   grid
   grid-rows-1
-  grid-template-columns[60% 1fr]
   items-center
   auto-rows-min
   text-text-secondary
   rounded-lg
   border-color[var(--dashed-color, var(--divider))]
-  sm:(grid-template-columns[70% 1fr])
-  md:(grid-template-columns[60% 1fr])
   [*]:(transition-all duration-300)
   [p]:(text-text-secondary)
 
@@ -36,6 +33,13 @@ const BaseProjectCard = tw(LinkCard)`
     [ul]:(opacity-100)
     [div]:(last-of-type:(opacity-100 background-size[105%]))
   )
+`;
+
+const ProjectCardWithoutPreview = tw`grid-cols-1 [>div:first-of-type]:(p-8)`;
+const ProjectCardWithPreview = tw`
+  grid-template-columns[60% 1fr]
+  sm:(grid-template-columns[70% 1fr])
+  md:(grid-template-columns[60% 1fr])
 `;
 
 const DetailsContainer = tw.div`
@@ -91,22 +95,9 @@ const PreviewImage = tw.div`
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
-const defaultProps: ProjectCardProps = {
-  title: 'Blueprint',
-  description: 'Dashboard for creating Android icon packs',
-  icon: '/static/images/projects/android/blueprint.png',
-  preview: '/static/images/projects/android/blueprint-preview.png',
-  link: 'https://github.com/jahirfiquitiva/Blueprint/',
-  color: '#4d8af0',
-  tag: 'android',
-  stack: ['android', 'kotlin', 'material design'],
-};
-
-export const ProjectCard: Component<ProjectCardProps> = (
-  props = defaultProps,
-) => {
+export const ProjectCard: Component<ProjectCardProps> = (props) => {
   const { title, description, link, icon, preview, stack, color, darkColor } =
-    props || defaultProps;
+    props;
 
   const { isDark, themeReady } = useTheme();
 
@@ -124,12 +115,19 @@ export const ProjectCard: Component<ProjectCardProps> = (
     return buildShadowColors(projectColor, 0.2, 0.4, isDark, 0.05);
   }, [themeReady, isDark, color, darkColor]);
 
+  const cardExtraStyles = useMemo(() => {
+    if (!themeReady || preview) return ProjectCardWithPreview;
+    return ProjectCardWithoutPreview;
+  }, [themeReady, preview]);
+
+  if (!title || !link) return null;
   return (
     <BaseProjectCard
       title={`Link to project: ${title}`}
       href={link}
       style={shadowColors}
       underline={false}
+      css={cardExtraStyles}
     >
       <DetailsContainer>
         <IconHeadingContainer>
