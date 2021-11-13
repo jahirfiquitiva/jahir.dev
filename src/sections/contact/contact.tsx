@@ -85,7 +85,7 @@ export const Contact: Component<ContactProps> = (props) => {
           </Paragraph>
         </div>
         <Image
-          src={'/static/images/contact/selfie-hi.png'}
+          src={'/static/images/contact/3.png'}
           alt={'Illustration of a person taking a selfie'}
           width={384}
           height={512}
