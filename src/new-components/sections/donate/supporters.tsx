@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
 import { Fragment, useMemo } from 'react';
 import { usePalette } from 'react-palette';
+import tw from 'twin.macro';
 
 import { SectionHeading, ChipGroup } from '~/new-components/atoms/complex';
 import {
@@ -11,58 +11,43 @@ import {
   Divider,
 } from '~/new-components/atoms/simple';
 import { useTheme } from '~/providers/theme';
-import {
-  Component,
-  ComponentProps,
-  mediaQueries,
-  Supporter,
-  supporters,
-} from '~/types';
+import { Component, ComponentProps, Supporter, supporters } from '~/types';
 import { buildChipStyles } from '~/utils/build-chip-styles';
 import getColorFromPalette from '~/utils/get-color-from-palette';
 
-const DonateSupportersHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  overflow: hidden;
-  align-items: center;
+const SupportersHeader = tw.div`
+  flex
+  flex-col
+  my-20
+  overflow-hidden
+  items-start
+  gap-16
 
-  & p {
-    margin: 0.8rem 0;
-  }
-
-  ${mediaQueries.tablet.sm} {
-    margin-top: 0.6rem;
-    flex-direction: row;
-  }
+  md:(flex-row items-center)
 `;
 
-const TitleContainer = styled.div`
-  flex: 1;
+const ThanksGif = tw(Image)`
+  order-1
+  min-width[256px]
+  max-width[300px]
+  md:(order-2)
 `;
 
-const ThanksGifContainer = styled.div`
-  position: relative;
-  height: 170px;
-  width: auto;
-  max-width: 300px;
-  margin: 0 auto;
-  width: 100%;
-  min-width: 256px;
-  text-align: end;
-`;
+// const ThanksGifContainer = styled.div`
+//   position: relative;
+//   height: 170px;
+//   width: auto;
+//   max-width: 300px;
+//   margin: 0 auto;
+//   width: 100%;
+//   min-width: 256px;
+//   text-align: end;
+// `;
 
-const NoSupportersText = styled.p`
-  margin-top: 0.4rem;
-  margin-bottom: 1.6rem;
-`;
-
-const SupportersContainer = styled.div`
-  margin-top: 0.4rem;
-  margin-bottom: calc(var(--content-bottom-margin) - 1rem);
-`;
+// const SupportersContainer = styled.div`
+//   margin-top: 0.4rem;
+//   margin-bottom: calc(var(--content-bottom-margin) - 1rem);
+// `;
 
 interface SupporterChipProps extends ComponentProps, Supporter {}
 
@@ -96,36 +81,36 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
   );
 };
 
-export const DonateSupporters: Component = () => {
+export const Supporters: Component = () => {
   return (
-    <section id={'thanks'}>
-      <Divider gradientColor={'red-to-purple'} />
-      <DonateSupportersHeader>
-        <TitleContainer>
-          <SectionHeading
-            size={'3'}
-            emoji={'🙌'}
-            shadowColor={'purple'}
-            gradientColor={'purple-to-brand'}
-          >
-            Thanks!
-          </SectionHeading>
-          <p>
-            I&apos;m really grateful to all the awesome people that support my
-            work.
-          </p>
-        </TitleContainer>
-        <ThanksGifContainer>
-          <Image
+    <>
+      <section id={'thanks'}>
+        <Divider gradientColor={'red-to-purple'} />
+        <SupportersHeader>
+          <div tw={'flex flex-col w-full items-start order-2 md:(order-1)'}>
+            <SectionHeading
+              size={'3'}
+              emoji={'🙌'}
+              shadowColor={'purple'}
+              gradientColor={'purple-to-brand'}
+            >
+              Thanks!
+            </SectionHeading>
+            <p tw={'mt-8 md:(pr-32)'}>
+              I&apos;m really grateful to all the awesome people that support my
+              work.
+            </p>
+          </div>
+          <ThanksGif
             objectFit={'contain'}
             src={'/static/gifs/thanks.gif'}
             alt={
               'Adventure Time characters hugging each other and saying thanks'
             }
           />
-        </ThanksGifContainer>
-      </DonateSupportersHeader>
-      <SupportersContainer id={'supporters'}>
+        </SupportersHeader>
+      </section>
+      <section id={'supporters'} tw={'flex flex-col mt-4 mb-8'}>
         {supporters.map((category, categoryIndex) => {
           const [emoji, ...name] = category.name.split(' ');
           return (
@@ -140,11 +125,11 @@ export const DonateSupporters: Component = () => {
                   {emoji}&nbsp;&nbsp;&nbsp;{name.join(' ').trim()}&nbsp;Sponsor
                 </Link>
               </Heading>
-              {category?.description && <><br/><small>{category?.description}</small></>}
+              {category?.description && <small>{category?.description}</small>}
               {(category?.supporters?.length || 0) <= 0 ? (
-                <NoSupportersText className={'small'}>None</NoSupportersText>
+                <small tw={'mt-4 mb-16'}>None</small>
               ) : (
-                <ChipGroup>
+                <ChipGroup tw={'mb-8 pt-8'}>
                   {category?.supporters?.map((supporter, supporterIndex) => {
                     return (
                       <li key={`${categoryIndex}-${supporterIndex}`}>
@@ -157,7 +142,7 @@ export const DonateSupporters: Component = () => {
             </Fragment>
           );
         })}
-      </SupportersContainer>
-    </section>
+      </section>
+    </>
   );
 };

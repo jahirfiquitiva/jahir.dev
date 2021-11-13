@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Page } from '~/new-components/blocks';
-import { Donate } from '~/sections/donate';
+import { Donate } from '~/new-components/sections';
 
 const DonatePage: FC = () => {
   return (

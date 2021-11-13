@@ -1,27 +1,16 @@
-import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 import { SectionHeading } from '~/new-components/atoms/complex';
 import { Link } from '~/new-components/atoms/simple';
 import { DonationLinks } from '~/new-components/elements';
-import { Component, mediaQueries } from '~/types';
+import { Component } from '~/types';
 
-const ParagraphsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 0;
-
-  ${mediaQueries.tablet.sm} {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.2rem;
-  }
-`;
-
-const Paragraph = styled.p`
-  margin: 0.8rem 0;
-`;
-
-const DonationOptionsContainer = styled.div`
-  margin: 2rem 0 0;
+const ParagraphsContainer = tw.div`
+  grid
+  grid-cols-1
+  gap-8
+  my-12
+  md:(grid-cols-2 gap-10)
 `;
 
 export const DonateIntro: Component = () => {
@@ -37,7 +26,7 @@ export const DonateIntro: Component = () => {
       </SectionHeading>
 
       <ParagraphsContainer>
-        <Paragraph>
+        <p>
           I try really hard to build great apps and provide the best possible
           experience and products to all users, and most of them are{' '}
           <Link
@@ -52,9 +41,9 @@ export const DonateIntro: Component = () => {
             supporters
           </Link>
           !
-        </Paragraph>
+        </p>
 
-        <Paragraph>
+        <p>
           <b>
             If you like and/or use any of{' '}
             <Link title={'Link to projects list'} href={'/#projects'}>
@@ -64,19 +53,19 @@ export const DonateIntro: Component = () => {
             can continue maintaining and improving them as well as creating new
             ones.
           </b>
-        </Paragraph>
+        </p>
       </ParagraphsContainer>
 
-      <Paragraph>
+      <p>
         Whatever I receive, will be highly appreciated. Thanks in advance! 🤗
-      </Paragraph>
+      </p>
 
-      <DonationOptionsContainer>
-        <Paragraph>
+      <div tw={'my-12'}>
+        <p tw={'mb-6'}>
           <b>Donation options:</b>
-        </Paragraph>
+        </p>
         <DonationLinks />
-      </DonationOptionsContainer>
+      </div>
     </section>
   );
 };
