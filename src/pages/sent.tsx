@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Error } from '~/blocks/error';
 import { Page } from '~/blocks/page';
+import { Sent } from '~/new-components/blocks';
 
 const SentPage: FC = () => {
   return (
@@ -9,7 +9,7 @@ const SentPage: FC = () => {
       title={'Email sent! ~ Jahir Fiquitiva 💎'}
       exactUrl={'https://jahir.dev/sent'}
     >
-      <Error errorType={'sent'} />
+      <Sent />
     </Page>
   );
 };

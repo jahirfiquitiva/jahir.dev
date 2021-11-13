@@ -1,4 +1,5 @@
 import tw from 'twin.macro';
+import { ReactElement } from 'react';
 
 import {
   Link,
@@ -75,7 +76,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
     );
   };
 
-  const renderContent = () => {
+  const renderContent = (): ReactElement => {
     return (
       <>
         <Heading
@@ -88,14 +89,14 @@ export const DefaultContent: Component<ContentProps> = (props) => {
         </Heading>
         <p tw={'last-of-type:(mb-20)'}>{message}</p>
         {renderContactMessage()}
-        <LinkButton title={'Link to home page'} href={'/'} tw={'mb-20'}>
+        <LinkButton title={'Link to go to home page'} href={'/'} tw={'mb-20'}>
           Go back home
         </LinkButton>
       </>
     );
   };
 
-  const renderContainer = (children) => {
+  const renderContainer = (children?: ReactElement): ReactElement => {
     return isFourHundredFour ? (
       <FourHundredFourContainer>{children}</FourHundredFourContainer>
     ) : (
