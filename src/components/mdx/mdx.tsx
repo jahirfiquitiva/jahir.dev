@@ -56,7 +56,6 @@ const ImageComparisonContainer = styled.div`
 `;
 
 const CustomImageComparison: Component<CustomSplitProps> = (props) => {
-  if (!window || !document) return null;
   return (
     <ImageComparisonContainer>
       <ReactCompareImage
