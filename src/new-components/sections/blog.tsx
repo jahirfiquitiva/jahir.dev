@@ -1,9 +1,7 @@
-import styled from '@emotion/styled';
 import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 import { theme } from 'twin.macro';
 
-import { BlogIdeas } from '~/blocks/blog-ideas';
 import { debounce } from '~/lib/debounce';
 import {
   MasonryGrid,
@@ -17,10 +15,6 @@ import { Component, ComponentProps, Post } from '~/types';
 interface BlogGridProps extends ComponentProps {
   posts?: Post[];
 }
-
-const BlogsMasonry = styled(MasonryGrid)`
-  margin: 1.6rem 0;
-`;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
@@ -67,12 +61,11 @@ export const Blog: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
-      <BlogsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
+      <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-16'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
         })}
-      </BlogsMasonry>
-      {/* <BlogIdeas /> */}
+      </MasonryGrid>
     </Section>
   );
 };
