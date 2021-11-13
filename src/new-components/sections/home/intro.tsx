@@ -1,56 +1,42 @@
-import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 import { Link } from '~/new-components/atoms/simple';
 import { SocialLinks } from '~/new-components/elements';
-import { Hello, HelloParagraph } from '~/sections/home/hello';
-import { Component, mediaQueries } from '~/types';
 
-const ParagraphsContainer = styled.div`
-  margin-top: 0.8rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-bottom: 1.2rem;
-
-  ${mediaQueries.tablet.sm} {
-    grid-column-gap: 3rem;
-    grid-row-gap: 0rem;
-    grid-template-columns: 1fr 1fr;
-  }
+const ParagraphsContainer = tw.div`
+  mt-8
+  grid
+  grid-cols-1
+  gap-10
+  text-justify
+  md:(grid-cols-2 mt-12)
+  [p:first-of-type]:(pr-0 md:(pr-20))
 `;
 
-const IntroParagraph = styled(HelloParagraph)`
-  text-align: justify;
-`;
-
-const ExtraParagraph = styled(IntroParagraph)`
-  margin: 0 0 1.2rem;
-`;
-
-export const Intro: Component = () => {
+export const Intro = () => {
   return (
-    <section id={'about'}>
+    <>
       <ParagraphsContainer>
-        <Hello />
-        <IntroParagraph>
+        <p>
           I consider myself a curious and inquisitive person, so on my spare
           time I like to work on{' '}
           <Link href={'#projects'} title={'Link to projects'}>
             side projects
           </Link>{' '}
           and try to constantly learn something new to improve my skillset.
-        </IntroParagraph>
+        </p>
 
-        <IntroParagraph>
+        <p>
           When not coding, I like to watch TV shows and movies, play some games
           with friends or hang out with them. I&apos;m also{' '}
           <Link title={'Link to music page'} href={'/music'}>
             listening to music
           </Link>{' '}
           98% of the time.
-        </IntroParagraph>
+        </p>
       </ParagraphsContainer>
-      <div>
-        <ExtraParagraph>
+      <div tw={'mt-12 mb-6'}>
+        <p>
           Learn more about me on{' '}
           <Link
             title={"Link to Jahir's polywork timeline"}
@@ -72,12 +58,12 @@ export const Intro: Component = () => {
             pronunciation
           </Link>
           .
-        </ExtraParagraph>
-        <IntroParagraph>
+        </p>
+        <p tw={'mt-10'}>
           <b>You can also find me on:</b>
-        </IntroParagraph>
-        <SocialLinks />
+        </p>
+        <SocialLinks tw={'my-6'} />
       </div>
-    </section>
+    </>
   );
 };

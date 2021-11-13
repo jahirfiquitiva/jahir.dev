@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 
 import { SectionHeading, ChipGroup } from '~/new-components/atoms/complex';
@@ -6,22 +5,18 @@ import { Chip, Divider } from '~/new-components/atoms/simple';
 import { Component, skills } from '~/types';
 import { buildChipStyles } from '~/utils/build-chip-styles';
 
-const SkillsHeading = styled(SectionHeading)`
-  margin-top: 0.6rem;
-`;
-
 export const Skills: Component = () => {
   return (
     <section id={'skills'}>
       <Divider gradientColor={'brand-to-blue'} />
-      <SkillsHeading
+      <SectionHeading
         size={'3'}
         shadowColor={'blue'}
         gradientColor={'blue-to-green'}
         emoji={'🚀'}
       >
         Skills
-      </SkillsHeading>
+      </SectionHeading>
       <ChipGroup>
         {skills
           .filter((skill) => !skill.hide)

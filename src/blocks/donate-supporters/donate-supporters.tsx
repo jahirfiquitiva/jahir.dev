@@ -54,10 +54,6 @@ const ThanksGifContainer = styled.div`
   text-align: end;
 `;
 
-const SupporterLinkChip = styled(ImageChip)`
-  cursor: pointer;
-`;
-
 const NoSupportersText = styled.p`
   margin-top: 0.4rem;
   margin-bottom: 1.6rem;
@@ -86,7 +82,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
       href={link || '#'}
       underline={false}
     >
-      <SupporterLinkChip style={buildChipStyles(color)}>
+      <ImageChip tw={'cursor-pointer'} style={buildChipStyles(color)}>
         <Image
           src={photo || ''}
           alt={name}
@@ -95,7 +91,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
           size={28}
         />
         &nbsp;{name}
-      </SupporterLinkChip>
+      </ImageChip>
     </Link>
   );
 };

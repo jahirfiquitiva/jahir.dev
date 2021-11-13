@@ -149,7 +149,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     >
       <DetailsContainer>
         <IconHeadingContainer>
-          <Image src={icon} alt={title} size={48} />
+          <Image src={icon} alt={title} size={44} />
           <ProjectHeading size={'4'} style={titleColors}>
             {title}
           </ProjectHeading>

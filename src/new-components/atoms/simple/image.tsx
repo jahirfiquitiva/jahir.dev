@@ -41,16 +41,23 @@ export interface ImageProps extends ComponentProps, BaseImageProps {
 }
 
 export const Image: Component<ImageProps> = (props) => {
-  const { avoidNextImage = false, size, ...rest } = props;
+  const {
+    avoidNextImage = false,
+    size,
+    width = size,
+    height = size,
+    ...rest
+  } = props;
+
   if (!avoidNextImage) {
-    if (typeof rest.layout !== 'undefined') {
-      const { width = size, height = size, ...otherImageProps } = rest;
+    if (typeof size !== 'undefined') {
       return (
         <NextImage
-          {...otherImageProps}
+          {...rest}
           className={props.className}
           width={width}
           height={height}
+          layout={rest.layout || 'fixed'}
         />
       );
     }
