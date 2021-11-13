@@ -55,7 +55,7 @@ export const Link: Component<LinkProps> = (props) => {
   }
 
   return (
-    <NextLink href={href}>
+    <NextLink href={href} passHref>
       <a
         title={title}
         aria-label={title}

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { mdiWeb } from '@mdi/js';
 import Icon from '@mdi/react';
+import { theme } from 'twin.macro';
 
 import {
   MasonryGrid,
@@ -13,7 +14,7 @@ import {
   LinkCard,
   CenteredSection,
 } from '~/new-components/atoms/simple';
-import { Component, ComponentProps, InspirationSite, viewports } from '~/types';
+import { Component, ComponentProps, InspirationSite } from '~/types';
 
 const InspirationGrid = styled(MasonryGrid)`
   margin: var(--content-bottom-margin) 0;
@@ -59,9 +60,9 @@ export interface InspirationProps extends ComponentProps {
 }
 
 const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints[viewports.default] = 1;
-masonryBreakpoints[viewports.mobile.lg] = 2;
-masonryBreakpoints[viewports.tablet.lg] = 3;
+masonryBreakpoints['0'] = 1;
+masonryBreakpoints[theme`screens.sm`] = 2;
+masonryBreakpoints[theme`screens.lg`] = 3;
 
 const formatLink = (link?: string): string => {
   if (!link) return '';

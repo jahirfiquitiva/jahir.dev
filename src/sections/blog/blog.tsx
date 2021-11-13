@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
+import { theme } from 'twin.macro';
 
 import { BlogIdeas } from '~/blocks/blog-ideas';
 import { debounce } from '~/lib/debounce';
@@ -11,7 +12,7 @@ import {
 } from '~/new-components/atoms/complex';
 import { Field, Section } from '~/new-components/atoms/simple';
 import { BlogPostCard } from '~/new-components/elements';
-import { Component, ComponentProps, Post, viewports } from '~/types';
+import { Component, ComponentProps, Post } from '~/types';
 
 interface BlogGridProps extends ComponentProps {
   posts?: Post[];
@@ -22,8 +23,8 @@ const BlogsMasonry = styled(MasonryGrid)`
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints[viewports.default] = 1;
-masonryBreakpoints[viewports.mobile.lg] = 2;
+masonryBreakpoints['0'] = 1;
+masonryBreakpoints[theme`screens.md`] = 2;
 
 export const Blog: Component<BlogGridProps> = (props) => {
   const { posts } = props;
@@ -71,7 +72,7 @@ export const Blog: Component<BlogGridProps> = (props) => {
           return <BlogPostCard key={i} {...post} />;
         })}
       </BlogsMasonry>
-      <BlogIdeas />
+      {/* <BlogIdeas /> */}
     </Section>
   );
 };

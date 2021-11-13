@@ -1,19 +1,20 @@
+import { theme } from 'twin.macro';
+
 import { Status, Activity, Counter } from '~/components/dashboard-items';
 import {
   MasonryGrid,
   MasonryBreakpoints,
 } from '~/new-components/atoms/complex';
 import { SongCard } from '~/new-components/elements';
-import { Component, ComponentProps, DashboardData, viewports } from '~/types';
+import { Component, ComponentProps, DashboardData } from '~/types';
 
 interface DashboardGridProps extends ComponentProps {
   data?: DashboardData | null;
 }
 
 const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints[viewports.default] = 1;
-masonryBreakpoints[viewports.tablet.sm] = 2;
-masonryBreakpoints[viewports.tablet.lg] = 2;
+masonryBreakpoints['0'] = 1;
+masonryBreakpoints[theme`screens.md`] = 2;
 
 export const DashboardGrid: Component<DashboardGridProps> = (props) => {
   const { data: dashboardData } = props;

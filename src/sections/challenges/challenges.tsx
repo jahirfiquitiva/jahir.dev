@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from 'twin.macro';
 
 import {
   MasonryGrid,
@@ -6,7 +7,7 @@ import {
   SectionHeading,
 } from '~/new-components/atoms/complex';
 import { Link, CenteredSection } from '~/new-components/atoms/simple';
-import { Component, ComponentProps, CodingChallenge, viewports } from '~/types';
+import { Component, ComponentProps, CodingChallenge } from '~/types';
 
 const ChallengesGrid = styled(MasonryGrid)`
   margin: var(--content-bottom-margin) 0;
@@ -17,8 +18,8 @@ const ChallengeItem = styled.li`
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints[viewports.default] = 1;
-masonryBreakpoints[viewports.tablet.lg] = 2;
+masonryBreakpoints['0'] = 1;
+masonryBreakpoints[theme`screens.lg`] = 2;
 
 interface ChallengesProps extends ComponentProps {
   challenges?: Array<CodingChallenge>;
