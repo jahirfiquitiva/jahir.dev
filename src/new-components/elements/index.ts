@@ -1,4 +1,5 @@
 export * from './blog-post-card';
+export * from './blog-post/index';
 export * from './donation-links';
 export * from './github-stats';
 export * from './hello-heading';
