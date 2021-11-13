@@ -35,11 +35,12 @@ const NameAudio = tw.audio`
 
 const PhotoContainer = tw.div`
   flex
-  justify-center
+  justify-start
   filter
   drop-shadow
+  mb-8
   grid-row[1]
-  md:(justify-end)
+  md:(justify-end mb-0)
 `;
 
 const Photo = tw(Image)`
@@ -100,7 +101,7 @@ export const Hello = () => {
         <Photo
           src={'/static/images/jahir/jahir-hd.jpg'}
           alt={"Jahir's Photo"}
-          size={192}
+          size={168}
         />
       </PhotoContainer>
     </Container>

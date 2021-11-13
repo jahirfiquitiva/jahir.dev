@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { mdiFileCodeOutline } from '@mdi/js';
+import tw, { theme } from 'twin.macro';
 
 import {
   MasonryGrid,
@@ -8,67 +8,40 @@ import {
 } from '~/new-components/atoms/complex';
 import { Divider, LinkButton } from '~/new-components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/new-components/elements';
-import {
-  Component,
-  projects,
-  mediaQueries,
-  viewports,
-  buildMediaQuery,
-} from '~/types';
+import { Component, projects } from '~/types';
 import { isServer } from '~/utils/is-server';
 
-export const ProjectsGrid = styled(MasonryGrid)`
-  padding: 1.6rem 0 var(--content-bottom-margin);
+const ProjectsHeader = tw.div`
+  w-full
+  flex
+  flex-col
+  items-start
+
+  md:(flex-row items-center justify-between)
 `;
 
-const ProjectsHeader = styled.div`
-  margin-top: 2.4rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+const ProjectsHeaderLinksContainer = tw.div`
+  mt-10
+  flex
+  items-center
+  justify-start
+  flex-wrap
+  gap-10
 
-  ${mediaQueries.tablet.sm} {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-`;
-
-const ProjectsHeaderLinksContainer = styled.div`
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-
-  & a:not(:first-of-type) {
-    margin-top: 0.8rem;
-  }
-
-  ${buildMediaQuery(385)} {
-    & a:not(:first-of-type) {
-      margin-top: 0;
-    }
-  }
-
-  ${mediaQueries.tablet.sm} {
-    margin-top: 0;
-    justify-content: flex-end;
-  }
+  md:(mt-0 justify-end)
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints[viewports.default] = 1;
-masonryBreakpoints[viewports.mobile.sm] = 1;
-masonryBreakpoints[viewports.tablet.sm] = 2;
+masonryBreakpoints['0'] = 1;
+masonryBreakpoints[theme`screens.2xs`] = 1;
+masonryBreakpoints[theme`screens.md`] = 2;
 
 const FilledProjectsGrid: Component = () => {
+  // TODO: Try to remove this condition
   if (!projects || isServer()) return null;
 
   return (
-    <ProjectsGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
+    <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'py-20'}>
       {projects.map((project, index) => {
         return (
           <ProjectCard
@@ -77,7 +50,7 @@ const FilledProjectsGrid: Component = () => {
           />
         );
       })}
-    </ProjectsGrid>
+    </MasonryGrid>
   );
 };
 

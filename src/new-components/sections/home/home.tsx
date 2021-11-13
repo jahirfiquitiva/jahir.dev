@@ -1,5 +1,6 @@
 import { Hello } from './hello';
 import { Intro } from './intro';
+import { Projects } from './projects';
 import { Skills } from './skills';
 
 export const Home = () => {
@@ -10,6 +11,7 @@ export const Home = () => {
         <Intro />
       </section>
       <Skills />
+      <Projects />
     </>
   );
 };

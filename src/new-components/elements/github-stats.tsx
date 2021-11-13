@@ -13,14 +13,12 @@ const GitHubStatsLink = tw(LinkCard)`
   items-center
   justify-center
   py-4 px-6
-  mr-8
   no-underline
   text-text-secondary
   h-full
   min-h-button
   gap-4
 
-  sm:(mr-10)
   hocus:(--divider-alpha[0.5] shadow-none text-text-primary border-divider)
 `;
 
