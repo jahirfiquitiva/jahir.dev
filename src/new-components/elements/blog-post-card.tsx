@@ -39,14 +39,14 @@ const BaseBlogPostCard = tw(LinkCard)`
 `;
 
 const BlogPostImage = tw(Image)`
-  absolute
-  top-0
-  left-0
-  bottom-0
-  right-0
+  relative
+  w-full
   rounded-md
   pointer-events-none
   select-none
+
+  height[192px]
+  md:(height[232px])
 
   [span]:(first-of-type:(
     rounded-md
