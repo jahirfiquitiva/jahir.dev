@@ -26,8 +26,7 @@ export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
     siteType = 'portfolio',
     metaImageStyle = 'summary',
   } = props;
-  const { isDark = false } = useTheme();
-  const [siteColor, setSiteColor] = useState('#ebf0fb');
+  const { isDark, themeReady } = useTheme();
 
   const actualDefaultImage =
     metaImageStyle === 'summary' ? defaultLogoImage : defaultImage;
@@ -41,9 +40,10 @@ export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
       ? 'summary'
       : metaImageStyle || 'summary_large_image';
 
-  useMemo(() => {
-    setSiteColor(isDark ? '#080f1e' : '#ebf0fb');
-  }, [isDark]);
+  const siteColor = useMemo<string>(() => {
+    if (!themeReady || !isDark) return '#ebf0fb';
+    return '#080f1e';
+  }, [themeReady, isDark]);
 
   return (
     <Head>
