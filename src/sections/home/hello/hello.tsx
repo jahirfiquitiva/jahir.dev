@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 
 import {
   GradientSpan,
@@ -65,8 +65,13 @@ const NameAudio = styled.audio`
 `;
 
 export const Hello: Component = () => {
-  const { isDark } = useTheme();
+  const { isDark, themeReady } = useTheme();
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const shouldForceGradient = useMemo<boolean>(() => {
+    if (!themeReady) return false;
+    return isDark;
+  }, [themeReady, isDark]);
 
   const playName = () => {
     try {
@@ -82,7 +87,7 @@ export const Hello: Component = () => {
           I am{' '}
           <ClickableName
             gradientColor={'brand-to-blue'}
-            forceGradient={isDark}
+            forceGradient={shouldForceGradient}
             onClick={playName}
           >
             Jahir Fiquitiva
