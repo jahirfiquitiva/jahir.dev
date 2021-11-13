@@ -1,5 +1,6 @@
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
+import { useMemo, CSSProperties } from 'react';
 import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
@@ -50,31 +51,40 @@ export const SongCard: Component<SongCardProps> = (props) => {
   const { isForNowPlaying, isPlaying = false } = props;
   const shouldRenderDetails = !isForNowPlaying || isPlaying;
 
-  const { isDark } = useTheme();
+  const { isDark, themeReady } = useTheme();
   const { data: paletteData } = usePalette(
     shouldRenderDetails ? props.image?.url ?? '' : '',
   );
 
-  const backgroundColor: string | undefined = shouldRenderDetails
-    ? paletteData
-      ? isDark
-        ? paletteData?.darkMuted || undefined
-        : paletteData?.vibrant || undefined
-      : undefined
-    : undefined;
+  const cardColors = useMemo<CSSProperties>(() => {
+    if (!themeReady) return {};
+    const backgroundColor: string | undefined = shouldRenderDetails
+      ? paletteData
+        ? isDark
+          ? paletteData?.darkMuted || undefined
+          : paletteData?.vibrant || undefined
+        : undefined
+      : undefined;
+    const shadowColors = buildShadowColors(backgroundColor, 0.25, 0.45, isDark);
+    return {
+      ...shadowColors,
+      backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
+    };
+  }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
-  const textColor: string | null | undefined = shouldRenderDetails
-    ? getReadableColor(
-        paletteData
-          ? isDark
-            ? paletteData?.vibrant || undefined
-            : paletteData?.darkMuted || undefined
-          : undefined,
-        isDark,
-      )
-    : undefined;
-
-  const shadowColors = buildShadowColors(backgroundColor, 0.25, 0.45, isDark);
+  const textColor = useMemo<string | null>(() => {
+    if (!themeReady) return null;
+    return shouldRenderDetails
+      ? getReadableColor(
+          paletteData
+            ? isDark
+              ? paletteData?.vibrant || null
+              : paletteData?.darkMuted || null
+            : null,
+          isDark,
+        ) || null
+      : null;
+  }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
   const renderAlbumImage = () => {
     if (shouldRenderDetails && props.image) {
@@ -109,8 +119,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
         title={`Link to spotify song: ${props.title || 'unknown'}`}
         href={props.url || '#'}
         style={buildStyles({
-          ...shadowColors,
-          backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
+          ...cardColors,
           color: textColor,
           borderColor: textColor ? hexToRGB(textColor, 0.4) : undefined,
         })}
