@@ -21,8 +21,6 @@ const BlogPage: Component<BlogProps> = (props) => {
   );
 };
 
-export default BlogPage;
-
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = getAllPosts([
     'title',
@@ -39,3 +37,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { posts: allPosts },
   };
 };
+
+export default BlogPage;

@@ -116,9 +116,20 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
   }, [themeReady, isDark, color, darkColor]);
 
   const cardExtraStyles = useMemo(() => {
-    if (!themeReady || preview) return ProjectCardWithPreview;
+    if (preview) return ProjectCardWithPreview;
     return ProjectCardWithoutPreview;
-  }, [themeReady, preview]);
+  }, [preview]);
+
+  const previewComponent = useMemo(() => {
+    if (!preview) return null;
+    return (
+      <PreviewImage
+        css={css`
+          background-image: url('${preview}');
+        `}
+      />
+    );
+  }, [preview]);
 
   if (!title || !link) return null;
   return (
@@ -141,13 +152,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
           <Stack stack={stack} tw={'opacity-85 mt-6'} />
         </DescriptionContainer>
       </DetailsContainer>
-      {preview ? (
-        <PreviewImage
-          css={css`
-            background-image: url('${preview}');
-          `}
-        />
-      ) : undefined}
+      {previewComponent || undefined}
     </BaseProjectCard>
   );
 };

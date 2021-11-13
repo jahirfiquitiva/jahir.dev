@@ -10,13 +10,12 @@ import { Divider, LinkButton } from '~/new-components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/new-components/elements';
 import {
   Component,
-  projects as allProjects,
+  projects,
   mediaQueries,
   viewports,
   buildMediaQuery,
 } from '~/types';
-
-const projects = allProjects.filter((project) => !project.hide);
+import { isServer } from '~/utils/is-server';
 
 export const ProjectsGrid = styled(MasonryGrid)`
   padding: 1.6rem 0 var(--content-bottom-margin);
@@ -65,6 +64,23 @@ masonryBreakpoints[viewports.default] = 1;
 masonryBreakpoints[viewports.mobile.sm] = 1;
 masonryBreakpoints[viewports.tablet.sm] = 2;
 
+const FilledProjectsGrid: Component = () => {
+  if (!projects || isServer()) return null;
+
+  return (
+    <ProjectsGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
+      {projects.map((project, index) => {
+        return (
+          <ProjectCard
+            key={`${project.title.toLowerCase().split(' ').join('-')}-${index}`}
+            {...project}
+          />
+        );
+      })}
+    </ProjectsGrid>
+  );
+};
+
 export const Projects: Component = () => {
   return (
     <section id={'projects'}>
@@ -92,19 +108,7 @@ export const Projects: Component = () => {
         </ProjectsHeaderLinksContainer>
       </ProjectsHeader>
 
-      <ProjectsGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
-        {projects.map((project, index) => {
-          return (
-            <ProjectCard
-              key={`${project.title
-                .toLowerCase()
-                .split(' ')
-                .join('-')}-${index}`}
-              {...project}
-            />
-          );
-        })}
-      </ProjectsGrid>
+      <FilledProjectsGrid />
     </section>
   );
 };

@@ -11,7 +11,7 @@ export interface ProjectProps {
   hide?: boolean;
 }
 
-export const projects: ProjectProps[] = [
+const allProjects: ProjectProps[] = [
   {
     title: 'Blueprint',
     description: 'Dashboard for creating Android icon packs',
@@ -158,4 +158,6 @@ export const projects: ProjectProps[] = [
     color: '#92a3b5',
     tag: 'other',
   },
-];
+].filter((project) => !project.hide);
+
+export const projects = [...allProjects] as const;
