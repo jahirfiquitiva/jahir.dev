@@ -13,15 +13,14 @@ const defaultContextState: ThemeContextValue = {
   isDark: false,
   themeReady: false,
 };
+
 const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider: Component = (props) => {
   const { theme, resolvedTheme, setTheme } = useNextTheme();
 
   const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const { children } = props;
 
@@ -41,6 +40,5 @@ export const ThemeProvider: Component = (props) => {
 };
 
 export const useTheme = (): ThemeContextValue => {
-  const themeState = useContext(ThemeContext);
-  return themeState || defaultContextState;
+  return useContext(ThemeContext) || defaultContextState;
 };
