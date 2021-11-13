@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 import { formium } from '~/lib/formium';
 import { Button, Link, Field } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, mediaQueries } from '~/types';
+import { isServer } from '~/utils/is-server';
 
 const InternalForm = styled.form`
   margin-bottom: var(--content-bottom-margin);
@@ -101,7 +102,7 @@ export const ContactForm: Component<ContactFormProps> = (props) => {
   };
 
   useEffect(() => {
-    if (!window) return;
+    if (isServer()) return;
     const handleLoaded = () => {
       // @ts-ignore
       window?.grecaptcha?.ready(() => {

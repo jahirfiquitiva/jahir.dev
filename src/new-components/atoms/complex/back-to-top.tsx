@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import tw from 'twin.macro';
 
 import { Button } from '~/new-components/atoms/simple';
+import { isServer } from '~/utils/is-server';
 
 const visibleStyles = tw`
   visible
@@ -82,6 +83,7 @@ const BackToTopSpan = tw.span`
 `;
 
 const scrollToTop = () => {
+  if (isServer()) return;
   try {
     window.scroll({
       top: 0,
@@ -89,7 +91,7 @@ const scrollToTop = () => {
       behavior: 'smooth',
     });
   } catch (error) {
-    if (window) window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }
 };
 
@@ -98,6 +100,7 @@ export const BackToTop = () => {
   const [showButton, setShowButton] = useState(false);
 
   const checkScrollTop = () => {
+    if (isServer()) return;
     const scrolledDistance = window ? window.scrollY || window.pageYOffset : 0;
     const screenHeight = window
       ? document.body.scrollHeight - window.screen.availHeight
