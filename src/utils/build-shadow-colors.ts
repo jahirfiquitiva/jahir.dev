@@ -4,7 +4,7 @@ import buildStyles from '~/utils/build-styles';
 import hexToRGB from '~/utils/hex-to-rgb';
 
 const buildShadowColors = (
-  color?: string,
+  color?: string | null,
   shadowOpacity?: number,
   borderOpacity?: number,
   darkMode?: boolean,

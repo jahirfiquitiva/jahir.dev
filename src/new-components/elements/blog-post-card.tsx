@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
@@ -132,15 +133,18 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     link,
     readingTime,
   } = props;
-  const { isDark } = useTheme();
+  const { isDark, themeReady } = useTheme();
 
   const heroUrl =
     hero.length > 0 ? (hero.startsWith('..') ? null : hero) : null;
-
   const { data: paletteData } = usePalette(heroUrl || '');
-  const color = getColorFromPalette(paletteData, isDark) || defaultColor;
 
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
+
+  const postColor = useMemo<string | undefined>(() => {
+    if (!themeReady) return defaultColor;
+    return getColorFromPalette(paletteData, isDark) || defaultColor;
+  }, [themeReady, isDark, paletteData, defaultColor]);
 
   return (
     <BaseBlogPostCard
@@ -148,8 +152,8 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
       href={rightLink}
       underline={false}
       style={{
-        ...buildShadowColors(color),
-        backgroundColor: color || 'unset',
+        ...buildShadowColors(postColor),
+        backgroundColor: postColor || 'unset',
       }}
     >
       <BlogPostImage src={heroUrl || ''} />
@@ -159,7 +163,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
           size={'4'}
           fontSize={'xs'}
           style={buildStyles({
-            '--hl-color': getReadableColor(color, isDark),
+            '--hl-color': getReadableColor(postColor, isDark),
           })}
         >
           {title}

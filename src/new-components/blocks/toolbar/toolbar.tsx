@@ -1,5 +1,5 @@
 import { mdiMenu, mdiPlus } from '@mdi/js';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import tw from 'twin.macro';
 
 import { ToolbarButton, ToolbarButtonsContainer } from './toolbar-button';
@@ -73,8 +73,34 @@ const MenuButton = tw(ToolbarButton)`
   [&.expanded]:(p-2 [svg]:(rotate-45 scale-120))
 `;
 
+const ThemeToggle = () => {
+  const { isDark, themeReady, toggleTheme } = useTheme();
+
+  const themeText = useMemo<string>(() => {
+    if (!themeReady || !isDark) return 'dark';
+    return 'light';
+  }, [themeReady, isDark]);
+
+  const themeEmoji = useMemo<string>(() => {
+    if (!themeReady || !isDark) return '🌚';
+    return '🌞';
+  }, [themeReady, isDark]);
+
+  if (!themeReady) return null;
+
+  return (
+    <li>
+      <ToolbarButton
+        title={`Button to enable ${themeText} theme`}
+        onClick={toggleTheme}
+      >
+        {themeEmoji}
+      </ToolbarButton>
+    </li>
+  );
+};
+
 const Navigation = () => {
-  const { isDark, toggleTheme } = useTheme();
   const [isExpanded, setExpanded] = useState(false);
   const itemsClassName = isExpanded ? 'expanded' : undefined;
 
@@ -88,14 +114,7 @@ const Navigation = () => {
         Jahir Fiquitiva
       </HomeLink>
       <ToolbarButtonsContainer>
-        <li>
-          <ToolbarButton
-            title={`Button to enable ${isDark ? 'light' : 'dark'} theme`}
-            onClick={toggleTheme}
-          >
-            {isDark ? '🌞' : '🌚'}
-          </ToolbarButton>
-        </li>
+        <ThemeToggle />
         <li>
           <MenuButton
             title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
