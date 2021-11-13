@@ -37,8 +37,6 @@ const ImageComparisonContainer = tw.div`
 `;
 
 export const ImageComparison: Component<ImageComparisonProps> = (props) => {
-  if (!window || !document) return null;
-
   const { hover = true, vertical = false } = props;
 
   return (
