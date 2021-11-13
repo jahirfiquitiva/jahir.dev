@@ -140,15 +140,11 @@ export const DonateSupporters: Component = () => {
                     .join(' ')
                     .trim()} Tier Page`}
                   href={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
-                  underline={false}
-                  underlineOnHocus
                 >
                   {emoji}&nbsp;&nbsp;&nbsp;{name.join(' ').trim()}&nbsp;Sponsor
                 </Link>
               </Heading>
-              {category?.description && (
-                <p className={'small'}>{category?.description}</p>
-              )}
+              {category?.description && <><br/><small>{category?.description}</small></>}
               {(category?.supporters?.length || 0) <= 0 ? (
                 <NoSupportersText className={'small'}>None</NoSupportersText>
               ) : (

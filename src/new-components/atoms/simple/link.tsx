@@ -5,7 +5,6 @@ import { Component, ComponentProps } from '~/types';
 
 interface BaseLinkProps {
   underline?: boolean;
-  underlineOnHocus?: boolean;
 }
 
 const baseLinkStyles = tw`
@@ -29,7 +28,7 @@ export const Link: Component<LinkProps> = (props) => {
     title,
     href,
     newTab = !isLocalLink(href),
-    underline,
+    underline = true,
     children,
     className,
     style,

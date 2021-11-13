@@ -135,7 +135,6 @@ export const Footer: Component = () => {
           <Link
             title={'Link to view website source code on GitHub'}
             href={'https://github.com/jahirfiquitiva/jahir.dev'}
-            underline
           >
             View source code
           </Link>

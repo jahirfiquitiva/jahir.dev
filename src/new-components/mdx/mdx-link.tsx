@@ -25,5 +25,5 @@ export const MdxLink: Component<LinkProps> = (props) => {
     [props.className],
   );
   if (isIgnored) return <StyledLink {...props} />;
-  return <Link {...props} underline />;
+  return <Link {...props} />;
 };

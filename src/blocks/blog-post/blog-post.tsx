@@ -46,7 +46,6 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
         <Link
           title={'Link to go back to blog posts list'}
           href={'/blog'}
-          underline
         >
           ← Back to posts list
         </Link>

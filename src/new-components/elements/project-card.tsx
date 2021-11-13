@@ -129,6 +129,7 @@ export const ProjectCard: Component<ProjectCardProps> = (
       title={`Link to project: ${title}`}
       href={link}
       style={shadowColors}
+      underline={false}
     >
       <DetailsContainer>
         <IconHeadingContainer>

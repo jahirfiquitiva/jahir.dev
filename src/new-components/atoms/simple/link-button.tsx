@@ -8,7 +8,7 @@ import { Component } from '~/types';
 
 const StyledLinkButton = styled(Link)`
   ${ButtonStyles}
-  ${tw`hocus:(text-accent-text)`}
+  ${tw`hocus:(text-accent-text dark:(text-accent-text))`}
 `;
 
 const BaseLinkButton: Component<LinkProps> = (props) => {
