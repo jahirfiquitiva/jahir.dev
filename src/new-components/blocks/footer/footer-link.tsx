@@ -57,7 +57,7 @@ const getTailwindForGradientColor = (gradientColor: GradientOptions) => {
   }
 };
 
-export const transformLink = (link: FooterLink) => {
+export const transformLink = (link: FooterLink, itemIndex: number = 0) => {
   const { title, href, emoji, text, gradientColor } = link;
   return (
     <FooterLinkComponent
@@ -65,6 +65,7 @@ export const transformLink = (link: FooterLink) => {
       href={href}
       underline={false}
       css={[getTailwindForGradientColor(gradientColor)]}
+      key={`footer-item-${itemIndex || title.toLowerCase()}`.trim()}
     >
       <span className={'emoji'}>{emoji}</span>
       <GradientSpan gradientColor={gradientColor} forceGradient>
