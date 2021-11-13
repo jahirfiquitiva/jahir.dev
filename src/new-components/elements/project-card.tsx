@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo, CSSProperties } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/new-components/atoms/simple';
@@ -108,20 +108,21 @@ export const ProjectCard: Component<ProjectCardProps> = (
   const { title, description, link, icon, preview, stack, color, darkColor } =
     props || defaultProps;
 
-  const { isDark = false } = useTheme();
-  const [projectColor, setProjectColor] = useState(
-    isDark ? darkColor || color : color,
-  );
-  const shadowColors = buildShadowColors(projectColor, 0.2, 0.4, isDark, 0.05);
-  const titleColors = buildStyles({
-    '--hl-color': getReadableColor(projectColor, isDark),
-  });
+  const { isDark, themeReady } = useTheme();
 
-  useMemo(() => {
-    const newProjectColor = isDark ? darkColor || color : color;
-    setProjectColor(newProjectColor);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDark, color, darkColor]);
+  const titleColors = useMemo<CSSProperties>(() => {
+    if (!themeReady) return {};
+    const projectColor = isDark ? darkColor || color : color;
+    return buildStyles({
+      '--hl-color': getReadableColor(projectColor, isDark),
+    });
+  }, [themeReady, isDark, color, darkColor]);
+
+  const shadowColors = useMemo<CSSProperties>(() => {
+    if (!themeReady) return {};
+    const projectColor = isDark ? darkColor || color : color;
+    return buildShadowColors(projectColor, 0.2, 0.4, isDark, 0.05);
+  }, [themeReady, isDark, color, darkColor]);
 
   return (
     <BaseProjectCard
