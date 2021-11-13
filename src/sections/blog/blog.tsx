@@ -66,7 +66,7 @@ export const Blog: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
-      <BlogsMasonry breakpoints={masonryBreakpoints} gap={'1.2rem'}>
+      <BlogsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
         })}

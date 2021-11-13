@@ -4,6 +4,7 @@ import { Link, GradientSpan } from '~/new-components/atoms/simple';
 import { GradientOptions } from '~/types';
 
 const FooterLinkComponent = tw(Link)`
+  truncate
   my-4
   [span.emoji]:(
     hidden
