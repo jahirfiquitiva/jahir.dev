@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { allInspirationItems } from '.contentlayer/data';
-import { Page } from '~/blocks/page';
+import { Page } from '~/new-components/blocks';
 import { Inspiration, InspirationProps } from '~/sections/inspiration';
 
 const InspirationPage: FC<InspirationProps> = () => {

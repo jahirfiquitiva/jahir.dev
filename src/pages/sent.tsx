@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
-import { Page } from '~/blocks/page';
-import { Sent } from '~/new-components/blocks';
+import { Page, Sent } from '~/new-components/blocks';
 
 const SentPage: FC = () => {
   return (

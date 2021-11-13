@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Page } from '~/blocks/page';
+import { Page } from '~/new-components/blocks';
 import { Dashboard } from '~/sections/dashboard';
 
 const DashboardPage: FC = () => {

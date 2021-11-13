@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Page } from '~/blocks/page';
 import { Card, LinkCard } from '~/new-components/atoms/simple';
+import { Page } from '~/new-components/blocks';
 
 const FourHundredFour: FC = () => {
   return (

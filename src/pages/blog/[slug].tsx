@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
 import { BlogPost } from '~/blocks/blog-post';
-import { Page } from '~/blocks/page';
+import { Page } from '~/new-components/blocks';
 import { mdxComponents } from '~/new-components/mdx';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';

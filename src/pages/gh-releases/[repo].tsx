@@ -2,7 +2,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { FC } from 'react';
 
-import { Page } from '~/blocks/page';
+import { Page } from '~/new-components/blocks';
 import { Release, ReleaseProps } from '~/sections/release';
 
 const releasesRepos = ['Frames', 'Blueprint', 'Kuper', 'ChipView', 'FABsMenu'];

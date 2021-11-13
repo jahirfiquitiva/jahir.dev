@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 
-import { Page } from '~/blocks/page';
+import { Page } from '~/new-components/blocks';
 import { Blog } from '~/sections/blog';
 import { Component, ComponentProps, Post } from '~/types';
 import { getAllPosts } from '~/utils/get-posts';

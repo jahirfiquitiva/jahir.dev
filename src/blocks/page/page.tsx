@@ -7,7 +7,7 @@ import { Component, PageProps, mediaQueries, defaultKeywords } from '~/types';
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +
   '\uD83C\uDDE8\uD83C\uDDF4.\n' +
-  'This website contains information about me, my skills and my projects.';
+  'This website includes information about me, my skills and my projects.';
 
 const PageContainer = styled.div`
   display: flex;
