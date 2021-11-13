@@ -1,15 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
 import { BlogPost } from '~/blocks/blog-post';
 import { Page } from '~/blocks/page';
 import { mdxComponents } from '~/new-components/mdx';
+import FourHundredFour from '~/pages/404';
+import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';
 import { getAllPosts } from '~/utils/get-posts';
+import { isServer } from '~/utils/is-server';
 
-const mapContentLayerBlog = (post: Blog): Post => {
+const mapContentLayerBlog = (post?: Blog): Post | null => {
+  if (!post) return null;
   return {
     slug: post.slug,
     title: post.title,
@@ -29,8 +34,23 @@ interface PostPageProps extends ComponentProps {
 }
 
 const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
+  const router = useRouter();
   const MdxComponent = useMDXComponent(basePost.body.code);
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
+
+  if (!router.isFallback && !post?.slug) {
+    return <FourHundredFour />;
+  }
+
+  if (post && post.link) {
+    try {
+      if (!isServer()) window.location.href = post.link;
+    } catch (e) {}
+  }
+
+  if (!post || !MdxComponent) {
+    return <ErrorPage />;
+  }
 
   return (
     <Page
