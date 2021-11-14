@@ -1,7 +1,6 @@
-import styled from '@emotion/styled';
 import { mdiWeb } from '@mdi/js';
 import Icon from '@mdi/react';
-import { theme } from 'twin.macro';
+import tw, { theme } from 'twin.macro';
 
 import {
   MasonryGrid,
@@ -16,43 +15,17 @@ import {
 } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, InspirationSite } from '~/types';
 
-const InspirationGrid = styled(MasonryGrid)`
-  margin: var(--content-bottom-margin) 0;
+const InspirationCard = tw(LinkCard)`
+  py-8 px-10
+  truncate
 `;
 
-const InspirationCard = styled(LinkCard)`
-  border: 1px solid var(--divider);
-  padding: 0.8rem 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+const FaviconLinkContainer = tw.div`
+  mt-2
+  flex
+  items-center
 
-  & h4,
-  & p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  &:hover,
-  &:focus {
-    & h4,
-    & p {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const FaviconLinkContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  & svg,
-  & img {
-    width: 24px;
-    height: 24px;
-    margin-right: 0.8rem;
-  }
+  [>img, >svg]:(width[24px] height[24] mr-8 object-contain object-center)
 `;
 
 export interface InspirationProps extends ComponentProps {
@@ -72,6 +45,11 @@ const formatLink = (link?: string): string => {
     .replace('www.', '');
 };
 
+const validFavicon = (favicon?: string): boolean => {
+  if (!favicon) return false;
+  return favicon.length > 0 && !favicon.includes('data:image');
+};
+
 export const Inspiration: Component<InspirationProps> = (props) => {
   const { inspirationItems } = props;
 
@@ -85,12 +63,12 @@ export const Inspiration: Component<InspirationProps> = (props) => {
       >
         Inspiration
       </SectionHeading>
-      <p>
-        These are some people, websites and tools that have been inspiration to
-        build this website and some of my projects 👏
+      <p tw={'my-8'}>
+        These are some people and websites that have been inspiration to build
+        this website and some of my projects 👏 <i>(In no particular order).</i>
       </p>
 
-      <InspirationGrid breakpoints={masonryBreakpoints} gap={'1rem'}>
+      <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-16'}>
         {(inspirationItems || []).map((item, i) => {
           return (
             <InspirationCard
@@ -103,21 +81,21 @@ export const Inspiration: Component<InspirationProps> = (props) => {
               </Heading>
               {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
               <FaviconLinkContainer>
-                {item.favicon && (item.favicon?.length || 0) ? (
+                {validFavicon(item.favicon) ? (
                   <Image
-                    alt={item.title}
+                    alt={item.title.split('')[0] || 'F'}
                     src={item.favicon ?? ''}
                     avoidNextImage
                   />
                 ) : (
                   <Icon path={mdiWeb} size={0.8} />
                 )}
-                <p className={'small'}>{formatLink(item.link)}</p>
+                <small>{formatLink(item.link)}</small>
               </FaviconLinkContainer>
             </InspirationCard>
           );
         })}
-      </InspirationGrid>
+      </MasonryGrid>
     </CenteredSection>
   );
 };

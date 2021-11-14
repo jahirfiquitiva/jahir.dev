@@ -48,9 +48,9 @@ const fontSizeStyles = {
   xl: tw`text-xl`,
   '2xl': tw`text-2xl`,
   '3xl': tw`text-3xl`,
-  6: tw`text-sm`, // h6
-  5: tw`text-md`, // h5
-  4: tw`text-lg`, // h4
+  6: tw`text-xs`, // h6
+  5: tw`text-sm`, // h5
+  4: tw`text-md`, // h4
   3: tw`text-xl`, // h3
   2: tw`text-2xl`, // h2
   1: tw`text-3xl`, // h1
