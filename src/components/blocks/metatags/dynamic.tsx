@@ -24,7 +24,7 @@ export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
     image,
     exactUrl = 'https://jahir.dev',
     siteType = 'portfolio',
-    metaImageStyle = 'summary',
+    metaImageStyle = 'summary_large_image',
   } = props;
   const { isDark, themeReady } = useTheme();
 

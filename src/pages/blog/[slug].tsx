@@ -55,15 +55,15 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
   return (
     <Page
       title={
-        post?.title
+        post.title
           ? `${post?.title} | Blog ~ Jahir Fiquitiva 💎`
           : 'Blog ~ Jahir Fiquitiva 💎'
       }
-      description={post?.excerpt}
-      keywords={post?.keywords}
-      image={post?.hero}
+      description={post.excerpt}
+      keywords={post.keywords}
+      image={`https://jahir.dev${post.hero || '/static/images/brand/banner.png'}`}
       siteType={'blog'}
-      exactUrl={`https://jahir.dev/blog/${post?.slug}`}
+      exactUrl={`https://jahir.dev/blog/${post.slug}`}
       metaImageStyle={'summary_large_image'}
     >
       <BlogPost {...post}>
