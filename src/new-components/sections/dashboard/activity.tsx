@@ -44,17 +44,8 @@ interface ActivityProps extends DashboardCardProps {
 export const Activity: Component<ActivityProps> = (props) => {
   const { data, href } = props;
 
-  const isForCodingApp = codingApps.includes(data?.appId || '');
-
   if (!data) return null;
-
-  const cardTextsClasses = [
-    data?.largeImage ? 'has-image-left' : '',
-    data?.smallImage ? 'has-image-right' : '',
-  ]
-    .join(' ')
-    .trim();
-
+  const isForCodingApp = codingApps.includes(data?.appId || '');
   return (
     <ActivityCard href={href}>
       <ActivityContent>
@@ -67,7 +58,7 @@ export const Activity: Component<ActivityProps> = (props) => {
             tw={'rounded'}
           />
         )}
-        <ActivityTexts className={cardTextsClasses}>
+        <ActivityTexts>
           <b>
             {isForCodingApp ? 'Using ' : ''}
             {data?.name}

@@ -56,8 +56,10 @@ type StateTextAndColor = {
   color: string;
 };
 
-const stateToTextAndColor = (state?: DiscordStatusName): StateTextAndColor => {
-  switch (state) {
+const statusToTextAndColor = (
+  status?: DiscordStatusName,
+): StateTextAndColor => {
+  switch (status) {
     case 'idle': {
       return {
         text: 'Away',
@@ -87,15 +89,15 @@ const stateToTextAndColor = (state?: DiscordStatusName): StateTextAndColor => {
 
 interface StateProps extends ComponentProps {
   userId?: string;
-  state?: DiscordStatusName;
+  status?: DiscordStatusName;
 }
 
-export const State: Component<StateProps> = (props) => {
-  const { state, userId } = props;
+export const Status: Component<StateProps> = (props) => {
+  const { status, userId } = props;
 
   const renderStateChip = () => {
-    if (!userId || !state) return null;
-    const stateTextAndColor: StateTextAndColor = stateToTextAndColor(state);
+    if (!userId || !status) return null;
+    const statusTextAndColor: StateTextAndColor = statusToTextAndColor(status);
     return (
       <Link
         title={'Link to Discord profile'}
@@ -103,10 +105,10 @@ export const State: Component<StateProps> = (props) => {
         underline={false}
       >
         <StateChip
-          style={buildStyles({ '--color-values': stateTextAndColor.color })}
+          style={buildStyles({ '--color-values': statusTextAndColor.color })}
         >
           <StateCircle />
-          <span tw={'pt-1'}>{stateTextAndColor.text}</span>
+          <span tw={'pt-1'}>{statusTextAndColor.text}</span>
         </StateChip>
       </Link>
     );

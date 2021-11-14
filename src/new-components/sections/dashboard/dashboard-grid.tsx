@@ -1,6 +1,8 @@
 import { theme } from 'twin.macro';
 
-import { Activity, Counter } from '~/components/dashboard-items';
+import { Activity } from './activity';
+import { Counter } from './counter';
+
 import {
   MasonryGrid,
   MasonryBreakpoints,

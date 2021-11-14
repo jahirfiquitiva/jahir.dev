@@ -1,7 +1,8 @@
 import tw from 'twin.macro';
 
-import { DashboardGrid } from '~/blocks/dashboard-grid';
-import { State } from '~/components/dashboard-items';
+import { DashboardGrid } from './dashboard-grid';
+import { Status } from './status';
+
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
 import {
@@ -44,8 +45,8 @@ export const Dashboard: Component = () => {
 
   return (
     <CenteredSection id={'music'}>
-      <State
-        state={dashboardData?.statusName}
+      <Status
+        status={dashboardData?.statusName}
         userId={dashboardData?.user?.id}
       />
       <DashboardGrid data={dashboardData} />
