@@ -1,9 +1,8 @@
-import { FC } from 'react';
-
 import { Page } from '~/components/blocks';
 import { Donate } from '~/components/sections';
+import { Component } from '~/types';
 
-const DonatePage: FC = () => {
+const DonatePage: Component = () => {
   return (
     <Page
       title={'Donate ~ Jahir Fiquitiva 💎'}

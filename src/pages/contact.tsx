@@ -1,9 +1,8 @@
-import { FC } from 'react';
-
 import { Page } from '~/components/blocks';
 import { Contact } from '~/components/sections';
+import { Component } from '~/types';
 
-const ContactPage: FC = () => {
+const ContactPage: Component = () => {
   return (
     <Page
       title={'Contact ~ Jahir Fiquitiva 💎'}

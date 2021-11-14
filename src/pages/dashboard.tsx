@@ -1,9 +1,8 @@
-import { FC } from 'react';
-
 import { Page } from '~/components/blocks';
 import { Dashboard } from '~/components/sections';
+import { Component } from '~/types';
 
-const DashboardPage: FC = () => {
+const DashboardPage: Component = () => {
   return (
     <Page
       title={'Dashboard ~ Jahir Fiquitiva 💎'}

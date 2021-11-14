@@ -1,8 +1,7 @@
-import { FC } from 'react';
-
 import { Page, FourHundredFour } from '~/components/blocks';
+import { Component } from '~/types';
 
-const FourHundredFourPage: FC = () => {
+const FourHundredFourPage: Component = () => {
   return (
     <Page
       title={'Not found! ~ Jahir Fiquitiva 💎'}
