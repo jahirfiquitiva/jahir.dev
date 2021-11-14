@@ -44,7 +44,7 @@ const computedFields: ComputedFields = {
       const actualHero: string = hero
         ? hero.startsWith('http')
           ? hero
-          : `/static/images/posts/${hero}`
+          : `/static/images/blog/${hero}`
         : '';
       return actualHero;
     },

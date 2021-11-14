@@ -53,6 +53,10 @@ const defaultNextConfig = {
     return [
       ...postsRedirects,
       buildRedirect('/assets/:path*', '/static/:path*'),
+      buildRedirect(
+        '/static/images/posts/:path*',
+        '/static/images/blog/:path*',
+      ),
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
       buildRedirect('/links', '/'),

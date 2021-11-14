@@ -43,6 +43,11 @@ const DiscordLink = tw(Link)`
   dark:(color[#8a93f6] hocus:(color[#6974f3]))
 `;
 
+const GitHubLink = tw(Link)`
+  color[#333] hocus:(color[#292929])
+  dark:(color[#ebebeb] hocus:(color[#fff]))
+`;
+
 type ContactImage = {
   key: string;
   alt: string;
@@ -133,6 +138,16 @@ export const Contact: Component = () => {
               >
                 Telegram
               </TelegramLink>
+            </li>
+            <li>
+              <GitHubLink
+                title={"Link to Jahir's Ask me Anything on GitHub"}
+                href={
+                  'https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=q-a'
+                }
+              >
+                Ask me Anything (on GitHub)
+              </GitHubLink>
             </li>
           </ul>
           <p>

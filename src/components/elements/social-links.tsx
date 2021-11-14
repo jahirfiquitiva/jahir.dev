@@ -19,12 +19,17 @@ const BaseSocialLink = tw(LinkButton)`
   min-h-social
   min-w-social
   text-white
-  hocus:(min-h-social min-w-social text-white no-underline)
+  hocus:(min-h-social min-w-social text-white no-underline dark:(text-white))
 `;
 
 const BaseGitHubLink = tw(BaseSocialLink)`
   background-color[#333]
   hocus:(background-color[#292929])
+
+  dark:(
+    color[#1f1f1f] background-color[#ebebeb]
+    hocus:(color[#141414] background-color[#fff])
+  )
 `;
 
 const BaseLinkedInLink = tw(BaseSocialLink)`
