@@ -1,85 +1,9 @@
-.post {
-  display: flex;
-  flex-direction: column;
-  padding: 0.8rem 0 calc(var(--content-bottom-margin) + 0.8rem);
-  width: 100%;
-}
-
-.post .date {
-  color: var(--text-tertiary);
-  margin-top: 0.8rem;
-  margin-bottom: 2.4rem;
-}
-
-.post .toc {
-  margin-bottom: 1.2rem;
-}
-
-.post .toc .title {
-  font-family: var(--manrope-font);
-  font-size: var(--font-size-md);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0;
-}
-
-.post ol,
-.post ul {
-  list-style: none;
-  position: relative;
-  padding-left: 1.6rem;
-  margin-left: 0.2rem;
-  counter-reset: start 1;
-}
-
-.post ol > li:before,
-.post ul > li:before {
-  content: counter(list-item, decimal) '.';
-  position: absolute;
-  font-weight: 400;
-  color: #6b7280;
-  left: 0;
-}
-
-.post ol li ol > li:before,
-.post ul > li:before {
-  content: counter(list-item, disc);
-}
-
 .post img {
   display: block;
   margin: auto;
   height: auto;
   max-width: 100%;
   border-radius: 8px;
-}
-
-.post h1,
-.post h2,
-.post h3,
-.post h4 {
-  margin-top: 1.6rem;
-  margin-bottom: 0.4rem;
-  scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
-}
-
-.post h5,
-.post h6 {
-  scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
-  margin-top: 1.2rem;
-}
-
-.post h1 {
-  margin-bottom: 0;
-}
-
-.post p {
-  margin: 0.4rem 0;
-}
-
-.post ul li {
-  margin-top: 0.1rem;
-  margin-bottom: 0.1rem;
 }
 
 .post blockquote {
@@ -90,10 +14,6 @@
   border: 1px solid var(--divider);
   border-left: 4px solid var(--accent-light);
   padding: 0.6rem 1.6rem;
-}
-
-.post em {
-  font-style: italic;
 }
 
 .post article,

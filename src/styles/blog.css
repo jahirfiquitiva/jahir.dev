@@ -1,9 +1,9 @@
-article .toc {
-  @apply mt-12;
+article h2 {
+  @apply text-xl;
 }
 
-article .toc .title {
-  @apply font-manrope font-bold text-md text-text-primary mb-0;
+article h3 {
+  @apply text-lg;
 }
 
 article h1,
@@ -12,7 +12,26 @@ article h3,
 article h4,
 article h5,
 article h6 {
-  @apply relative;
+  @apply relative block mt-16 mb-4;
+  scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
+}
+
+article h1 {
+  @apply mb-0;
+}
+
+article h3,
+article h4 {
+  @apply mt-12;
+}
+
+article h5,
+article h6 {
+  @apply mt-8;
+}
+
+article p {
+  @apply my-4 mx-0;
 }
 
 article a.anchor {
@@ -40,4 +59,39 @@ article h5:focus > a.anchor,
 article h6:hover > a.anchor,
 article h6:focus > a.anchor {
   @apply visible no-underline;
+}
+
+article ol,
+article ul {
+  list-style: none;
+  position: relative;
+  padding-left: 1.6rem;
+  margin-left: 0.2rem;
+  counter-reset: start 1;
+}
+
+article ul li {
+  @apply my-1 mb-0;
+}
+
+article ol > li:before,
+article ul > li:before {
+  content: counter(list-item, decimal) '.';
+  position: absolute;
+  font-weight: 400;
+  color: #6b7280;
+  left: 0;
+}
+
+article ol li ol > li:before,
+article ul > li:before {
+  content: counter(list-item, disc);
+}
+
+article .toc {
+  @apply mt-12;
+}
+
+article .toc .title {
+  @apply font-manrope font-bold text-md text-text-primary mb-0;
 }
