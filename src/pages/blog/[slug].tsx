@@ -7,11 +7,11 @@ import type { Blog } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
 import { BlogPost } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';
+import isServer from '~/lib/is-server';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';
-import { getAllPosts } from '~/utils/get-posts';
-import { isServer } from '~/utils/is-server';
+import { getAllPosts } from '~/utils/posts';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;

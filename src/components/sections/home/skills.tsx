@@ -3,7 +3,7 @@ import Icon from '@mdi/react';
 import { SectionHeading, ChipGroup } from '~/components/atoms/complex';
 import { Chip, Divider } from '~/components/atoms/simple';
 import { Component, skills } from '~/types';
-import { buildChipStyles } from '~/utils/build-chip-styles';
+import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 
 export const Skills: Component = () => {
   return (

@@ -7,10 +7,10 @@ import tw from 'twin.macro';
 import { Heading, Image, LinkCard } from '~/components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, TrackData } from '~/types';
-import buildShadowColors from '~/utils/build-shadow-colors';
-import buildStyles from '~/utils/build-styles';
-import getReadableColor from '~/utils/get-readable-color';
-import hexToRGB from '~/utils/hex-to-rgb';
+import getReadableColor from '~/utils/colors/get-readable-color';
+import hexToRGB from '~/utils/colors/hex-to-rgb';
+import buildShadowStyles from '~/utils/styles/build-shadow-styles';
+import buildStyles from '~/utils/styles/build-styles';
 
 const BaseSongCard = tw(LinkCard)`
   p-8
@@ -65,7 +65,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
           : paletteData?.vibrant || undefined
         : undefined
       : undefined;
-    const shadowColors = buildShadowColors(backgroundColor, 0.25, 0.45, isDark);
+    const shadowColors = buildShadowStyles(backgroundColor, 0.25, 0.45, isDark);
     return {
       ...shadowColors,
       backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),

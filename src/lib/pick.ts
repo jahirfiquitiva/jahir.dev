@@ -7,7 +7,7 @@ type PickRequired<T> = {
 };
 type ConvertPick<T> = ConvertUndefined<T> & PickRequired<T>;
 
-export const pick = <Obj, Keys extends keyof Obj>(
+const pick = <Obj, Keys extends keyof Obj>(
   obj: Obj,
   keys: Keys[],
 ): ConvertPick<{ [K in Keys]: Obj[K] }> => {
@@ -17,3 +17,5 @@ export const pick = <Obj, Keys extends keyof Obj>(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }, {} as any);
 };
+
+export default pick;

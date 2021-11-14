@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import tw from 'twin.macro';
 
 import { Button } from '~/components/atoms/simple';
-import { isServer } from '~/utils/is-server';
+import isServer from '~/lib/is-server';
 
 const visibleStyles = tw`
   visible

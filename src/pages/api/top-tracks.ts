@@ -2,8 +2,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getTopTracks } from '~/lib/spotify';
+import unique from '~/lib/unique';
 import { NextApiFunc, validateTrack } from '~/types';
-import { unique } from '~/utils/unique';
 
 interface SpotifyTrack {
   title?: string;

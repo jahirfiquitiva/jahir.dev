@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 
 import { Chip, Image, Link } from '~/components/atoms/simple';
 import { Component, ComponentProps, DiscordStatusName } from '~/types';
-import buildStyles from '~/utils/build-styles';
+import buildStyles from '~/utils/styles/build-styles';
 
 const StateContainer = tw.div`
   flex

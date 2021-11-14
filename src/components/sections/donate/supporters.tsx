@@ -12,8 +12,8 @@ import {
 } from '~/components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Supporter, supporters } from '~/types';
-import { buildChipStyles } from '~/utils/build-chip-styles';
-import getColorFromPalette from '~/utils/get-color-from-palette';
+import getColorFromPalette from '~/utils/colors/get-color-from-palette';
+import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 
 const SupportersHeader = tw.div`
   flex

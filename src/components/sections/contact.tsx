@@ -3,8 +3,8 @@ import tw from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Link, CenteredSection, Image } from '~/components/atoms/simple';
+import random from '~/lib/random';
 import { Component } from '~/types';
-import getRandomItemFrom from '~/utils/get-random-item';
 
 const Grid = tw.div`
   grid
@@ -89,7 +89,7 @@ const allContactImages: Array<ContactImage> = [
 
 export const Contact: Component = () => {
   const contactImage = useMemo<ContactImage>(() => {
-    return getRandomItemFrom(allContactImages);
+    return random(allContactImages);
   }, []);
 
   return (

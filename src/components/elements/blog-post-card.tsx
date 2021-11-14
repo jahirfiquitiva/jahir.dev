@@ -5,11 +5,11 @@ import tw from 'twin.macro';
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
-import buildShadowColors from '~/utils/build-shadow-colors';
-import buildStyles from '~/utils/build-styles';
-import formatDate from '~/utils/format-date';
-import getColorFromPalette from '~/utils/get-color-from-palette';
-import getReadableColor from '~/utils/get-readable-color';
+import getColorFromPalette from '~/utils/colors/get-color-from-palette';
+import getReadableColor from '~/utils/colors/get-readable-color';
+import formatDate from '~/utils/format/format-date';
+import buildShadowStyles from '~/utils/styles/build-shadow-styles';
+import buildStyles from '~/utils/styles/build-styles';
 
 const BaseBlogPostCard = tw(LinkCard)`
   relative
@@ -152,7 +152,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
       href={rightLink}
       underline={false}
       style={{
-        ...buildShadowColors(postColor),
+        ...buildShadowStyles(postColor),
         backgroundColor: postColor || 'unset',
       }}
     >

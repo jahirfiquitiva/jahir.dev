@@ -4,8 +4,8 @@ import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 import tw from 'twin.macro';
 
+import isServer from '~/lib/is-server';
 import { Component, ComponentProps } from '~/types';
-import { isServer } from '~/utils/is-server';
 
 interface ImageComparisonProps extends ComponentProps {
   firstImage: string;

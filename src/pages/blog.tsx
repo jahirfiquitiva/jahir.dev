@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { Page } from '~/components/blocks';
 import { Blog } from '~/components/sections';
 import { Component, ComponentProps, Post } from '~/types';
-import { getAllPosts } from '~/utils/get-posts';
+import { getAllPosts } from '~/utils/posts';
 
 interface BlogProps extends ComponentProps {
   posts?: Post[];

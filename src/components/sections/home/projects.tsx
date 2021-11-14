@@ -9,7 +9,7 @@ import {
 import { Divider, LinkButton } from '~/components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/components/elements';
 import { Component, projects } from '~/types';
-import { isServer } from '~/utils/is-server';
+import isServer from '~/lib/is-server';
 
 const ProjectsHeader = tw.div`
   w-full

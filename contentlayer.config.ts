@@ -13,10 +13,10 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 import { getWebsiteFavicon } from './src/lib/favicons';
+import getRandomItemFrom from './src/lib/random';
+import { unique } from './src/lib/unique';
 import { defaultKeywords, RehypeElement } from './src/types';
-import { getPostDescription } from './src/utils/get-post-data';
-import getRandomItemFrom from './src/utils/get-random-item';
-import { unique } from './src/utils/unique';
+import { getPostDescription } from './src/utils/posts';
 
 const defaultColors = [
   '#fc5c65',

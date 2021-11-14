@@ -5,9 +5,9 @@ import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import { Stack } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, ProjectProps } from '~/types';
-import buildShadowColors from '~/utils/build-shadow-colors';
-import buildStyles from '~/utils/build-styles';
-import getReadableColor from '~/utils/get-readable-color';
+import getReadableColor from '~/utils/colors/get-readable-color';
+import buildShadowStyles from '~/utils/styles/build-shadow-styles';
+import buildStyles from '~/utils/styles/build-styles';
 
 const BaseProjectCard = tw(LinkCard)`
   w-full
@@ -119,7 +119,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
 
   const shadowColors = useMemo<CSSProperties>(() => {
     if (!themeReady) return {};
-    return buildShadowColors(projectColor, 0.2, 0.4, isDark, 0.05);
+    return buildShadowStyles(projectColor, 0.2, 0.4, isDark, 0.05);
   }, [themeReady, isDark, projectColor]);
 
   const cardExtraStyles = useMemo(() => {

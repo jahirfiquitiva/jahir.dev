@@ -2,7 +2,6 @@ import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 import { theme } from 'twin.macro';
 
-import { debounce } from '~/lib/debounce';
 import {
   MasonryGrid,
   MasonryBreakpoints,
@@ -10,6 +9,7 @@ import {
 } from '~/components/atoms/complex';
 import { Field, Section } from '~/components/atoms/simple';
 import { BlogPostCard } from '~/components/elements';
+import debounce from '~/lib/debounce';
 import { Component, ComponentProps, Post } from '~/types';
 
 interface BlogGridProps extends ComponentProps {

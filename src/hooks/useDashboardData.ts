@@ -9,7 +9,7 @@ import {
   TwitterStats,
   DiscordData,
 } from '~/types';
-import { transformDataToDashboardData } from '~/utils/format-dashboard-data';
+import { transformDataToDashboardData } from '~/utils/format/format-dashboard-data';
 
 const DISCORD_ID = '624058364812591104';
 export const useDashboardData = (): DashboardData => {

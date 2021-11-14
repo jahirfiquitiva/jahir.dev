@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
-import buildStyles from '~/utils/build-styles';
-import hexToRGB from '~/utils/hex-to-rgb';
+import hexToRGB from '~/utils/colors/hex-to-rgb';
+import buildStyles from '~/utils/styles/build-styles';
 
 export const buildChipStyles = (color?: string | null): CSSProperties => {
   if (!color) return {};

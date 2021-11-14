@@ -5,9 +5,9 @@ import tw from 'twin.macro';
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
-import formatDate from '~/utils/format-date';
-import getColorFromPalette from '~/utils/get-color-from-palette';
-import hexToRGB from '~/utils/hex-to-rgb';
+import getColorFromPalette from '~/utils/colors/get-color-from-palette';
+import hexToRGB from '~/utils/colors/hex-to-rgb';
+import formatDate from '~/utils/format/format-date';
 
 const BlogPostSection = tw.section`
   flex
