@@ -1,13 +1,7 @@
-import styled from '@emotion/styled';
-
 import useRequest from '~/hooks/useRequest';
 import { SectionHeading } from '~/new-components/atoms/complex';
 import { Heading, CenteredSection } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
-
-const ReleaseHeading = styled(Heading)`
-  margin: 0;
-`;
 
 interface ReleaseData {
   success?: boolean;
@@ -43,7 +37,7 @@ export const Release: Component<ReleaseProps> = (props) => {
 
   return (
     <CenteredSection>
-      <ReleaseHeading>{data?.success ? '🎉' : '😮'}</ReleaseHeading>
+      <Heading tw={'m-0'}>{data?.success ? '🎉' : '😮'}</Heading>
       <Heading size={'3'}>
         {data?.success ? 'Download started!' : 'Oh no!'}
       </Heading>
