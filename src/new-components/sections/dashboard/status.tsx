@@ -23,7 +23,7 @@ const BaseStateChip = tw(Chip)`
   --border-color[rgba(var(--color-values), 0.35)]
   uppercase
   text-tiny
-  mt-8
+  mt-10
   cursor-pointer
   text-text-primary
   font-semibold

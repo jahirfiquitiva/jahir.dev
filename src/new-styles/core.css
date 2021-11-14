@@ -47,3 +47,24 @@ body.sb-show-main.sb-main-padded {
     scroll-behavior: auto;
   }
 }
+
+/* == Custom Scrollbar Colors == */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-bg-color) var(--scrollbar-thumb-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-thumb-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-bg-color);
+  border-radius: 20px;
+  border: 3px solid var(--scrollbar-thumb-color);
+}

@@ -65,6 +65,9 @@
   --blog-card-color: rgba(var(--background-values), 0.85);
   --blog-card-color-hover: rgba(var(--background-values), 0.95);
   --blog-card-text-shadow: rgba(var(--background-values), 0.5);
+
+  --scrollbar-bg-color: var(--accent-light);
+  --scrollbar-thumb-color: #f2f5fc;
 }
 
 .dark,
@@ -114,4 +117,7 @@
   --blog-card-color: rgba(var(--background-values), 0.8);
   --blog-card-color-hover: rgba(var(--background-values), 0.9);
   --blog-card-text-shadow: rgba(var(--background-values), 0.5);
+
+  --scrollbar-bg-color: var(--accent);
+  --scrollbar-thumb-color: var(--primary);
 }
