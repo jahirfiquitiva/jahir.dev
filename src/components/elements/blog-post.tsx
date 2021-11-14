@@ -2,7 +2,7 @@ import { CSSProperties, useMemo } from 'react';
 import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
-import { Heading, Image, Link } from '~/components/atoms/simple';
+import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import formatDate from '~/utils/format-date';
@@ -82,6 +82,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
         </p>
         {hero && <Hero src={hero || ''} alt={title} priority />}
         {children}
+        <Divider thin />
         <div tw={'mt-12 text-almost-tiny text-text-tertiary'}>
           <Link
             href={discussUrl(slug)}

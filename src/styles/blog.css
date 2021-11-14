@@ -95,3 +95,11 @@ article .toc {
 article .toc .title {
   @apply font-manrope font-bold text-md text-text-primary mb-0;
 }
+
+article img {
+  @apply filter drop-shadow rounded-sm my-2 h-auto max-w-full;
+}
+
+article blockquote {
+  @apply my-12 mx-0 bg-primary rounded-r-md border border-divider border-l-4 border-l-accent-light py-8 px-12;
+}
