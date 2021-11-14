@@ -45,23 +45,25 @@ export const Image: Component<ImageProps> = (props) => {
     size,
     width = size,
     height = size,
+    layout,
+    className,
     ...rest
   } = props;
 
   if (!avoidNextImage) {
-    if (typeof size !== 'undefined') {
+    if (typeof size !== 'undefined' || typeof layout !== 'undefined') {
       return (
         <NextImage
           {...rest}
-          className={props.className}
+          className={className}
           width={width}
           height={height}
-          layout={rest.layout || 'fixed'}
+          layout={layout || 'fixed'}
         />
       );
     }
     return (
-      <ImageWrapper className={props.className}>
+      <ImageWrapper className={className}>
         <NextImage {...rest} layout={'fill'} />
       </ImageWrapper>
     );

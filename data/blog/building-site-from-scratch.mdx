@@ -89,18 +89,128 @@ for my website.
 
 #### No more forms
 
-The service I was using (for the contact and blog ideas forms) looks like if it was abandoned, there's no support and it even started failing
+The service I was using (for the contact and blog ideas forms) seems kind of abandoned, there's no support and it even started failing
 recently.
 
 Also, while looking into other personal websites and portfolios, many of them don't have a contact form, so I guess it's ok to not have it.
 
-Anyways, the [contact page](/contact) is still available and includes links for different ways to [contact me](/contact)
+Anyways, the [contact page](/contact) is still available and features links for different ways to [contact me](/contact), including a link
+to GitHub discussions in case you want to [ask me anything](https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=q-a) in a less formal
+way. And it also includes beautiful illustrations from [open doodles](https://www.opendoodles.com/).
+
+<Image
+  src={'/static/images/blog/building-from-scratch/contact-page-preview.png'}
+  alt={'Image showing new contact page design'}
+  width={960}
+  height={577}
+  layout={'responsive'}
+/>
 
 ## What's new?
 
-Everything!
-- My name in home page is clickable and will play an audio with the correct pronunciation of my name.
-- Tailwind and Styled Components
-- New projects cards
-- New blog posts cards
-- Music dashboard has evolved into a more complete dashboard
+While building the new website, I noticed some complications within components and styles, so I tried to minimize those and make my code cleaner.
+I also updated a few styles to make the website look better too. Minor tweaks.
+
+Besides that, here's what's new:
+
+#### Name pronunciation
+
+Many times before, I've dealt with people mispronouncing my name, and although I'm mostly ok with that, I
+thought it would be nice to have this. So if you go to [the home page](/) and click on my name you will hear
+how to pronounce my name correctly.
+
+#### Dashboard
+
+I previously had a simple [music dashboard](/dashboard), only listing the song I'm currently listening to, plus the top tracks (i.e. the songs I've listened the most).
+
+I found [lanyard](https://github.com/Phineas/lanyard/), and api that provides your discord activity information, and thought it was pretty cool to show all that activity in real time.
+
+To add a bit more to it, I put a few counters similar to what [Lee Rob](https://leerob.io/dashboard) has.
+
+Here's the [result](/dashboard).
+
+#### Simpler project cards
+
+The previous design had some flaws. Images being positioned absolutely, caused some issues with some specific screen
+size. Here's what they used to look like:
+
+<SimpleGrid className={'mb-16'}>
+<SimpleGridColumn>
+
+<Image
+  src={'/static/images/blog/building-from-scratch/old-cards-issue-1.png'}
+  alt={'Image of previous website cards design'}
+  width={780}
+  height={904}
+  layout={'responsive'}
+/>
+
+</SimpleGridColumn>
+<SimpleGridColumn>
+
+<Image
+  src={'/static/images/blog/building-from-scratch/old-cards-issue-2.png'}
+  alt={'Second image of previous website cards design'}
+  width={1158}
+  height={912}
+  layout={'responsive'}
+/>
+
+</SimpleGridColumn>
+</SimpleGrid>
+
+And this is how they look now:
+
+<Image
+  src={'/static/images/blog/building-from-scratch/new-project-cards.png'}
+  alt={'Image showing new projects cards design'}
+  width={960}
+  height={242}
+  layout={'responsive'}
+/>
+
+#### New blog posts cards
+
+I also updated the blog posts cards because I thought they were actually taking and wasting space.
+
+Here's what they looked like before, compared to what they looked in a first iteration.
+
+<ImageComparison
+  sliderPosition={0.35}
+  firstImageAlt={'Previous website blog posts cards design'}
+  firstImage={
+    '/static/images/posts/building-from-scratch/blog-cards-before.png'
+  }
+  secondImageAlt={'First iteration of blog posts cards design'}
+  secondImage={
+    '/static/images/posts/building-from-scratch/blog-cards-iteration.png'
+  }
+  description={
+    'Previous website blog posts cards (left). First iteration of new design (right).'
+  }
+/>
+
+As you can see, I started using the blog post hero image as the card background, covered by a cool blurry
+scrim. Anyways, this design didn't convince me as I also wanted the hero to be more visible. Therefore,
+I changed it again, to what the current look is:
+
+<ImageComparison
+  sliderPosition={0.35}
+  firstImageAlt={'First iteration of blog posts cards design'}
+  firstImage={
+    '/static/images/posts/building-from-scratch/blog-cards-iteration.png'
+  }
+  secondImageAlt={'Final design for blog posts cards'}
+  secondImage={'/static/images/posts/building-from-scratch/blog-cards-now.png'}
+  description={
+    'First iteration of new design (left). Final design for blog posts cards (right).'
+  }
+/>
+
+## What's next?
+
+I probably will keep this website as you're seeing it for a while. I already spent a lot of time working
+on the new stuff and writing everything from scratch, and I need to put efforts into some other things.
+
+Anyways, I do have a couple ideas for this website, that I hope I can make happen eventually. And they
+should be easier to implement now with the recent changes, especially with MDX.

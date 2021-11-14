@@ -19,6 +19,7 @@ const ActivityCard = tw(DashboardCard)`
   flex
   items-end
   gap-8
+  max-w-full
   truncate
   rounded-md
 `;
@@ -28,12 +29,15 @@ const ActivityContent = tw.div`
   items-center
   flex-1
   gap-8
+  max-w-full
+  truncate
 `;
 
 const ActivityTexts = tw.div`
   flex
   flex-col
   flex-1
+  truncate
   [small]:(inline-block)
 `;
 

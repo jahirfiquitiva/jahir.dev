@@ -97,7 +97,7 @@ article .toc .title {
 }
 
 article img {
-  @apply filter drop-shadow rounded-sm my-2 h-auto max-w-full;
+  @apply shadow filter drop-shadow-md rounded-sm my-2 h-auto max-w-full;
 }
 
 article blockquote {
