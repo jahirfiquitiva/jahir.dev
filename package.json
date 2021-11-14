@@ -15,10 +15,10 @@
     "update-deps": "npx npm-check-updates -u && yarn"
   },
   "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
     "@formium/client": "^0.1.4",
-    "@mdi/js": "^6.4.95",
+    "@mdi/js": "^6.5.95",
     "@mdi/react": "^1.5.0",
     "contentlayer": "^0.0.31",
     "dotenv": "^10.0.0",
