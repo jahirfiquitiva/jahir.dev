@@ -1,28 +1,21 @@
-/* inter-regular - latin */
 @font-face {
   font-family: 'Inter';
-  font-style: normal;
+  src: local('Inter Regular'), local('Inter-Regular'),
+    url('/static/fonts/inter/Inter-Regular.woff2') format('woff2'),
+    url('/static/fonts/inter/Inter-Regular.woff') format('woff'),
+    url('/static/fonts/inter/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-style: normal;
   font-display: optional;
-  src: url('/static/fonts/inter/inter-v3-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
-  url('/static/fonts/inter/inter-v3-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('/static/fonts/inter/inter-v3-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-  url('/static/fonts/inter/inter-v3-latin-regular.woff') format('woff'), /* Modern Browsers */
-  url('/static/fonts/inter/inter-v3-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('/static/fonts/inter/inter-v3-latin-regular.svg#Inter') format('svg'); /* Legacy iOS */
 }
-/* inter-500 - latin */
+
 @font-face {
   font-family: 'Inter';
-  font-style: normal;
+  src: local('Inter Medium'), local('Inter-Medium'),
+    url('/static/fonts/inter/Inter-Medium.woff2') format('woff2'),
+    url('/static/fonts/inter/Inter-Medium.woff') format('woff'),
+    url('/static/fonts/inter/Inter-Medium.ttf') format('truetype');
   font-weight: 500;
+  font-style: normal;
   font-display: optional;
-  src: url('/static/fonts/inter/inter-v3-latin-500.eot'); /* IE9 Compat Modes */
-  src: local(''),
-  url('/static/fonts/inter/inter-v3-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('/static/fonts/inter/inter-v3-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
-  url('/static/fonts/inter/inter-v3-latin-500.woff') format('woff'), /* Modern Browsers */
-  url('/static/fonts/inter/inter-v3-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('/static/fonts/inter/inter-v3-latin-500.svg#Inter') format('svg'); /* Legacy iOS */
 }

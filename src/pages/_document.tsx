@@ -3,13 +3,13 @@ import { Html, Head, Main, NextScript } from 'next/document';
 import { DefaultMetaTags } from '~/components/blocks';
 
 const fonts = [
-  'inter/inter-v3-latin-regular.woff2',
-  'inter/inter-v3-latin-500.woff2',
-  'manrope/manrope-v4-latin-500.woff2',
-  'manrope/manrope-v4-latin-600.woff2',
-  'manrope/manrope-v4-latin-700.woff2',
-  'fira-code/fira-code-v10-latin-regular.woff2',
-  'fira-code/fira-code-v10-latin-500.woff2',
+  'inter/inter-Regular.woff2',
+  'inter/inter-Medium.woff2',
+  'manrope/Manrope-Medium.woff2',
+  'manrope/Manrope-SemiBold.woff2',
+  'manrope/Manrope-Bold.woff2',
+  'fira-code/FiraCode-Regular.woff2',
+  'fira-code/FiraCode-Medium.woff2',
 ];
 
 const Document = () => {
@@ -24,6 +24,7 @@ const Document = () => {
               rel={'preload'}
               href={`/static/fonts/${it}`}
               as={'font'}
+              type={'font/woff2'}
               crossOrigin={'anonymous'}
               key={`font-${i}`}
             />
