@@ -44,7 +44,7 @@ const computedFields: ComputedFields = {
       const actualHero: string = hero
         ? hero.startsWith('http')
           ? hero
-          : `https://jahir.dev/static/images/posts/${hero}`
+          : `/static/images/posts/${hero}`
         : '';
       return actualHero;
     },
@@ -138,7 +138,7 @@ const transformToC = (toc: RehypeElement): RehypeElement => {
         children: [
           {
             type: 'text',
-            value: 'Table of Contents:',
+            value: 'Table of Contents',
           },
         ],
       },
