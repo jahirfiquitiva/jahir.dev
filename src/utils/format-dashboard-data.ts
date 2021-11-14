@@ -1,11 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   DiscordData,
   TrackData,
-  TopTrackData,
   Counters,
   DashboardData,
-  Status,
   Activity,
   DiscordActivity,
 } from '~/types';

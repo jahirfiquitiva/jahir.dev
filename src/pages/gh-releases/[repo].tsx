@@ -17,9 +17,9 @@ const ReleasePage: FC = ({ repo }: ReleaseProps) => {
 
 export default ReleasePage;
 
-export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // @ts-ignore
-  const { repo } = ctx.params;
+  const { repo } = params;
   return { props: { repo } };
 };
 

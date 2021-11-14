@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import tw from 'twin.macro';
 
@@ -63,11 +62,7 @@ export const Image: Component<ImageProps> = (props) => {
     }
     return (
       <ImageWrapper className={props.className}>
-        <NextImage
-          {...rest}
-          // @ts-ignore
-          layout={'fill'}
-        />
+        <NextImage {...rest} layout={'fill'} />
       </ImageWrapper>
     );
   }

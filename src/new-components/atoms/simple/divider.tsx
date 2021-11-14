@@ -23,7 +23,6 @@ const BaseDivider = tw.hr`
   2xl:(my-20)
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ThinDivider = tw(BaseDivider)`
   h-thin-divider
 `;

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-const apiKey = 'test-apiKey'; // process.env.WEBMASTER_API_KEY || '';
+const apiKey = 'test-apiKey';
 
 interface FaviconGrabberIcon {
   sizes?: string;

@@ -40,7 +40,6 @@ export interface BaseButtonProps {
 
 export interface ButtonProps extends ComponentProps, BaseButtonProps {
   type?: 'button' | 'reset' | 'submit' | undefined;
-  // eslint-disable-next-line @typescript-eslint/ban-types
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
