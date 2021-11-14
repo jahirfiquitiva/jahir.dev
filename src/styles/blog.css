@@ -27,11 +27,11 @@ article h4 {
 
 article h5,
 article h6 {
-  @apply mt-8;
+  @apply mt-10;
 }
 
 article p {
-  @apply my-4 mx-0;
+  @apply my-6 mx-0;
 }
 
 article a.anchor {
@@ -89,7 +89,7 @@ article ul > li:before {
 }
 
 article .toc {
-  @apply mt-12;
+  @apply my-12 mx-0;
 }
 
 article .toc .title {
