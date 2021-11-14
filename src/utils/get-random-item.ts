@@ -1,4 +1,4 @@
-const getRandomItemFrom = <T extends unknown>(items: T[]): T => {
+const getRandomItemFrom = <T>(items: T[]): T => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
