@@ -12,11 +12,11 @@ import formatDate from '~/utils/format/format-date';
 const BlogPostSection = tw.section`
   flex
   flex-col
-  pt-8 pb-16
+  pt-4 pb-16
   px-0
   w-full
   md:(pt-12 pb-20)
-  lg:(pt-24 pb-32)
+  lg:(pb-24)
 `;
 
 const Hero = tw(Image)`
@@ -31,7 +31,11 @@ const Hero = tw(Image)`
     rounded
     filter
     drop-shadow
-    max-height[440px !important]
+    max-height[180px !important]
+    xs:(max-height[211px !important])
+    sm:(max-height[239px !important])
+    md:(max-height[298px !important])
+    lg:(max-height[384px !important])
   )
 `;
 
@@ -65,12 +69,14 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
       <Link
         title={'Link to go back to blog posts list'}
         href={'/blog'}
-        tw={'mb-8'}
+        tw={'mb-4 ml-4 lg:(ml-2) xl:(ml-0)'}
       >
         ← Back to posts list
       </Link>
       <article>
-        <Heading style={titleStyles}>{title}</Heading>
+        <Heading style={titleStyles} tw={'mt-4 md:(mt-8) lg:(mt-10)'}>
+          {title}
+        </Heading>
         <p tw={'text-xs text-text-tertiary mt-4 mb-16'}>
           {formatDate(date)}
           {(readingTime?.text?.length || 0) > 0 && (

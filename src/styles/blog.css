@@ -93,7 +93,7 @@ article .toc {
 }
 
 article .toc .title {
-  @apply font-manrope font-bold text-md text-text-primary mb-0;
+  @apply font-manrope font-bold text-sm text-text-primary mb-4;
 }
 
 article img {

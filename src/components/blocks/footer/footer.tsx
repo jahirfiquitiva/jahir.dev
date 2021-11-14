@@ -128,13 +128,7 @@ export const Footer: Component = () => {
         <StackContainer>
           <small>Website built using: </small>
           <Stack
-            stack={[
-              'react',
-              'nextjs',
-              'typescript',
-              'styled components',
-              'tailwind',
-            ]}
+            stack={['nextjs', 'typescript', 'styled components', 'tailwind']}
           />
         </StackContainer>
         <small>
