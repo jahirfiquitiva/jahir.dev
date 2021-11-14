@@ -3,14 +3,10 @@ import tw from 'twin.macro';
 import { DashboardGrid } from './dashboard-grid';
 import { Status } from './status';
 
+import { Heading, Divider, CenteredSection } from '~/components/atoms/simple';
+import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
-import {
-  Heading,
-  Divider,
-  CenteredSection,
-} from '~/components/atoms/simple';
-import { SongCard } from '~/components/elements';
 import { Component, TopTrackData } from '~/types';
 
 const TopTracksContainer = tw.div`

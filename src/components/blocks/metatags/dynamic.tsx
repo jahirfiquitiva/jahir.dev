@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 import { useTheme } from '~/providers/theme';
 import { Component, PageProps } from '~/types';

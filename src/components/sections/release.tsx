@@ -1,6 +1,6 @@
-import useRequest from '~/hooks/useRequest';
 import { SectionHeading } from '~/components/atoms/complex';
 import { Heading, CenteredSection } from '~/components/atoms/simple';
+import useRequest from '~/hooks/useRequest';
 import { Component, ComponentProps } from '~/types';
 
 interface ReleaseData {

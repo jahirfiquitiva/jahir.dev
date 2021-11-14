@@ -2,8 +2,8 @@ import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 import tw from 'twin.macro';
 
-import useRequest from '~/hooks/useRequest';
 import { LinkCard } from '~/components/atoms/simple';
+import useRequest from '~/hooks/useRequest';
 import { Component, GitHubStats as GitHubStatsData } from '~/types';
 
 const GitHubStatsLink = tw(LinkCard)`

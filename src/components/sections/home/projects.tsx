@@ -8,8 +8,8 @@ import {
 } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/components/elements';
-import { Component, projects } from '~/types';
 import isServer from '~/lib/is-server';
+import { Component, projects } from '~/types';
 
 const ProjectsHeader = tw.div`
   w-full
