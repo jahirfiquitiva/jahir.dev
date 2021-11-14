@@ -33,22 +33,6 @@ const ThanksGif = tw(Image)`
   md:(order-2)
 `;
 
-// const ThanksGifContainer = styled.div`
-//   position: relative;
-//   height: 170px;
-//   width: auto;
-//   max-width: 300px;
-//   margin: 0 auto;
-//   width: 100%;
-//   min-width: 256px;
-//   text-align: end;
-// `;
-
-// const SupportersContainer = styled.div`
-//   margin-top: 0.4rem;
-//   margin-bottom: calc(var(--content-bottom-margin) - 1rem);
-// `;
-
 interface SupporterChipProps extends ComponentProps, Supporter {}
 
 const SupporterChip: Component<SupporterChipProps> = (props) => {

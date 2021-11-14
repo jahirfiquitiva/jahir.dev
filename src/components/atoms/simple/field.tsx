@@ -28,9 +28,7 @@ const Label = tw.label`
 
 const Input = styled.input`
   ${baseFieldStyles}
-  &.with-icon {
-    ${tw`pr-field-icon`}
-  }
+  ${tw`[&.with-icon]:(pr-field-icon)`}
 `;
 
 const TextArea = styled.textarea`
@@ -41,11 +39,8 @@ const TextArea = styled.textarea`
     h-full
     min-h-textarea
     max-h-textarea-max
+    [&.with-icon]:(pr-8 pb-field-icon)
   `}
-  
-  &.with-icon {
-    ${tw`pr-8 pb-field-icon`}
-  }
 `;
 
 const BaseFieldWrapper = tw.div`

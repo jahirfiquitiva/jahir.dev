@@ -22,7 +22,6 @@ export default async (
 
   const tracks: Array<SpotifyTrack> = items
     .map((track: any) => ({
-      // ...track,
       title: track.name,
       artist: track.artists.map((_artist: any) => _artist.name).join(', '),
       album: track.album.name,
