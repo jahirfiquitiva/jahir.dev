@@ -65,3 +65,7 @@ Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquiti
 ```bash
 yarn dev
 ```
+
+## Previous versions
+
+All the previous versions of this websites can be found at [jahirfiquitiva/prev-websites](https://github.com/jahirfiquitiva/prev-websites)
