@@ -4,7 +4,6 @@ import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 import tw from 'twin.macro';
 
-import isServer from '~/lib/is-server';
 import { Component, ComponentProps } from '~/types';
 
 interface ImageComparisonProps extends ComponentProps {
@@ -40,8 +39,6 @@ const ImageComparisonContainer = tw.div`
 
 export const ImageComparison: Component<ImageComparisonProps> = (props) => {
   const { hover = true, vertical = false } = props;
-
-  if (isServer()) return null;
 
   return (
     <ImageComparisonContainer>
