@@ -12,7 +12,7 @@ const Grid = tw.div`
   gap-24
   mb-10
 
-  md:(grid-template-columns[55% 1fr])
+  md:(grid-template-columns[51% 1fr])
 `;
 
 const ContactOptionsContainer = tw.div`

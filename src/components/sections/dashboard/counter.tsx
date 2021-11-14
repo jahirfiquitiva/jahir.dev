@@ -14,8 +14,12 @@ interface CounterProps extends DashboardCardProps {
 
 const CounterCard = tw(DashboardCard)`
   flex items-center p-8 pt-6 rounded-md text-text-primary
+  dark:(text-text-primary)
   [small,svg]:(text-text-secondary)
-  hocus:(text-text-primary [small,svg]:(underline text-text-primary))
+  hocus:(
+    text-text-primary dark:(text-text-primary)
+    [small,svg]:(underline text-text-primary)
+  )
 `;
 
 const CardTexts = tw.div`
@@ -37,6 +41,7 @@ export const Counter: Component<CounterProps> = (props) => {
       }`}
       href={href}
       underline={false}
+      css={[site === 'stalk' ? tw`pt-8` : null]}
     >
       <CardTexts>
         {count ? (
