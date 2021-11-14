@@ -3,8 +3,8 @@ import { Html, Head, Main, NextScript } from 'next/document';
 import { DefaultMetaTags } from '~/components/blocks';
 
 const fonts = [
-  'inter/inter-Regular.woff2',
-  'inter/inter-Medium.woff2',
+  'inter/Inter-Regular.woff2',
+  'inter/Inter-Medium.woff2',
   'manrope/Manrope-Medium.woff2',
   'manrope/Manrope-SemiBold.woff2',
   'manrope/Manrope-Bold.woff2',
