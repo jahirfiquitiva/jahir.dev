@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Page, Error } from '~/new-components/blocks';
+import { Page, Error } from '~/components/blocks';
 
 const ErrorPage: FC = () => {
   return (

@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { FC } from 'react';
 
 import { ThemeProvider } from '~/providers/theme';
-import '~/new-styles/globals.css';
+import '~/styles/globals.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (

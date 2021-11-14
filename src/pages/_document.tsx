@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { DefaultMetaTags } from '~/new-components/blocks';
+import { DefaultMetaTags } from '~/components/blocks';
 
 const fonts = [
   'inter/inter-v3-latin-regular.woff2',

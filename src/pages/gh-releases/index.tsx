@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Page, FourHundredFour } from '~/new-components/blocks';
+import { Page, FourHundredFour } from '~/components/blocks';
 
 const FourHundredFourPage: FC = () => {
   return (

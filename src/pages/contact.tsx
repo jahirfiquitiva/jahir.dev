@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Page } from '~/new-components/blocks';
-import { Contact } from '~/new-components/sections';
+import { Page } from '~/components/blocks';
+import { Contact } from '~/components/sections';
 
 const ContactPage: FC = () => {
   return (

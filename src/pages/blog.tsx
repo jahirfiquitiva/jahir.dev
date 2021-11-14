@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 
-import { Page } from '~/new-components/blocks';
-import { Blog } from '~/new-components/sections';
+import { Page } from '~/components/blocks';
+import { Blog } from '~/components/sections';
 import { Component, ComponentProps, Post } from '~/types';
 import { getAllPosts } from '~/utils/get-posts';
 

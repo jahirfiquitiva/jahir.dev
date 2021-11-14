@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Page } from '~/new-components/blocks';
-import { Home } from '~/new-components/sections';
+import { Page } from '~/components/blocks';
+import { Home } from '~/components/sections';
 
 const HomePage: FC = () => {
   return (

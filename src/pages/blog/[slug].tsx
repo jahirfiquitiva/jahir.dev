@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
-import { Page } from '~/new-components/blocks';
-import { BlogPost } from '~/new-components/elements';
-import { mdxComponents } from '~/new-components/mdx';
+import { Page } from '~/components/blocks';
+import { BlogPost } from '~/components/elements';
+import { mdxComponents } from '~/components/mdx';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';
