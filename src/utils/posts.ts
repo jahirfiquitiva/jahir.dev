@@ -1,7 +1,7 @@
 /* eslint-disable */
 import removeMd from 'remove-markdown';
 
-import pick from '~/lib/pick';
+import pick from './../lib/pick';
 
 import { allBlogs } from '.contentlayer/data';
 import type { Blog } from '.contentlayer/types';
