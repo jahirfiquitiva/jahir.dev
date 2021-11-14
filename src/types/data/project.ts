@@ -90,7 +90,7 @@ const allProjects: ProjectProps[] = [
     title: 'Dashbud',
     description: 'Quickly setup any of my Android dashboards',
     icon: '/static/images/projects/web/setup.png',
-    link: '/dashsetup/',
+    link: 'https://dashbud.dev/',
     preview: '/static/images/projects/web/dashbud-preview.png',
     color: '#9853fd',
     tag: 'web',
