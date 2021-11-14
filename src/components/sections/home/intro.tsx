@@ -2,6 +2,7 @@ import tw from 'twin.macro';
 
 import { Link } from '~/components/atoms/simple';
 import { SocialLinks } from '~/components/elements';
+import { Component } from '~/types';
 
 const ParagraphsContainer = tw.div`
   mt-8
@@ -13,7 +14,7 @@ const ParagraphsContainer = tw.div`
   [p:first-of-type]:(pr-0 md:(pr-20))
 `;
 
-export const Intro = () => {
+export const Intro: Component = () => {
   return (
     <>
       <ParagraphsContainer>

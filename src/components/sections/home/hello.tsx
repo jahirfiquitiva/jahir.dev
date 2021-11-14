@@ -1,14 +1,10 @@
 import { useRef, useMemo } from 'react';
 import tw from 'twin.macro';
 
-import {
-  Image,
-  Heading,
-  GradientSpan,
-  Link,
-} from '~/components/atoms/simple';
+import { Image, Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
+import { Component } from '~/types';
 
 const Container = tw.div`
   grid
@@ -51,7 +47,7 @@ const Photo = tw(Image)`
   [img]:(filter drop-shadow)
 `;
 
-export const Hello = () => {
+export const Hello: Component = () => {
   const { isDark, themeReady } = useTheme();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
