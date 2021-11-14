@@ -45,8 +45,6 @@
     "@bpsmart/eslint-config-react": "^0.0.8",
     "@emotion/babel-plugin": "^11.3.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@tailwindcss/forms": "^0.3.4",
-    "@tailwindcss/typography": "^0.4.1",
     "@types/isomorphic-fetch": "^0.0.35",
     "@types/node": "^16.11.7",
     "@types/react": "^17.0.34",
