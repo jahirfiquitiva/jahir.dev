@@ -16,8 +16,10 @@ import {
 import { Component, ComponentProps, InspirationSite } from '~/types';
 
 const InspirationCard = tw(LinkCard)`
-  py-8 px-10
+  py-6 px-8
   truncate
+  all:(max-w-full truncate)
+  sm:(py-8 px-10)
 `;
 
 const FaviconLinkContainer = tw.div`
@@ -34,8 +36,8 @@ export interface InspirationProps extends ComponentProps {
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
-masonryBreakpoints[theme`screens.sm`] = 2;
-masonryBreakpoints[theme`screens.lg`] = 3;
+masonryBreakpoints[theme`screens.2xs`] = 2;
+masonryBreakpoints[theme`screens.md`] = 3;
 
 const formatLink = (link?: string): string => {
   if (!link) return '';
@@ -76,10 +78,12 @@ export const Inspiration: Component<InspirationProps> = (props) => {
               href={item.link}
               title={`Link to ${item.title}'s website`}
             >
-              <Heading size={'4'} fontSize={'6'}>
+              <Heading size={'4'} tw={'text-almost-tiny sm:(text-xs)'}>
                 {item.title}
               </Heading>
-              {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
+              {(item.description?.length || 0) > 0 && (
+                <p tw={'text-tiny sm:(text-almost-tiny)'}>{item.description}</p>
+              )}
               <FaviconLinkContainer>
                 {validFavicon(item.favicon) ? (
                   <Image
