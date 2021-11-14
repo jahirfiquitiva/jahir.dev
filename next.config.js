@@ -58,6 +58,10 @@ const defaultNextConfig = {
         '/static/images/blog/:path*',
       ),
       buildRedirect(
+        '/static/images/me/:path*',
+        '/static/images/jahir/:path*',
+      ),
+      buildRedirect(
         '/static/images/me/me.jpg',
         '/static/images/jahir/jahir.jpg',
       ),
