@@ -6,23 +6,23 @@ import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
 import { Heading, Divider, CenteredSection } from '~/new-components/atoms/simple';
 import { SongCard } from '~/new-components/elements';
-import { Component, mediaQueries, TopTrackData } from '~/types';
+import { Component, TopTrackData } from '~/types';
 
 const MusicHeading = styled(Heading)`
   margin-top: 1.6rem;
   margin-bottom: 1rem;
 `;
 
-const TopTracksContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  margin-bottom: var(--content-bottom-margin);
+// const TopTracksContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   grid-gap: 1rem;
+//   margin-bottom: var(--content-bottom-margin);
 
-  ${mediaQueries.tablet.sm} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
+//   ${mediaQueries.tablet.sm} {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// `;
 
 const TopTracksText = styled.p`
   margin-bottom: var(--content-bottom-margin);
@@ -40,11 +40,11 @@ export const Dashboard: Component = () => {
       return <TopTracksText>No data available at this moment</TopTracksText>;
     }
     return (
-      <TopTracksContainer>
+      <div>
         {topTracksData?.tracks?.map((track, i) => {
           return <SongCard key={i} {...track} />;
         })}
-      </TopTracksContainer>
+      </div>
     );
   };
 

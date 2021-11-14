@@ -1,92 +1,30 @@
-import styled from '@emotion/styled';
-
 import { Card, LinkCard } from '~/new-components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
-const dashboardCardStyles = `
-  --border-radius: 8px;
-  border: 1px solid var(--divider);
-  text-decoration-color: currentColor;
-  overflow-x: hidden;
-  max-width: 100%;
-  color: var(--text-secondary);
-
-  & > div {
-    padding: 0.6rem 0.8rem 0.8rem;
-  }
-
-  & div,
-  p {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    border-radius: 0;
-  } 
-
-  p.status,
-  p.count {
-    color: var(--text-primary);
-    font-size: var(--font-size-xl);
-    font-family: var(--manrope-font);
-    font-weight: 700;
-  }
-
-  p.status {
-    font-weight: 600;
-    font-size: var(--font-size-sm);
-  }
-
-  p.link-text {
-    color: var(--text-secondary);
-  }
-
-  &:hover,
-  &:focus {
-    color: currentColor;
-    text-decoration: none;
-    text-decoration-color: currentColor;
-
-    p.link-text:last-of-type {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const BaseDashboardCard = styled(Card)`
-  ${dashboardCardStyles}
-`;
-
-const BaseDashboardLinkCard = styled(LinkCard)`
-  ${dashboardCardStyles}
-`;
-
 export interface DashboardCardProps extends ComponentProps {
   title?: string;
-  to?: string;
+  href?: string;
 }
 
 export const DashboardCard: Component<DashboardCardProps> = (props) => {
-  const { title, to, className, style, children } = props;
+  const { title, href, className, style, children } = props;
 
-  const renderCardContent = () => <div>{children}</div>;
-
-  if (to) {
+  if (href) {
     return (
-      <BaseDashboardLinkCard
+      <LinkCard
         title={title || 'Link to dashboard item'}
-        href={to}
+        href={href}
         className={className}
         style={style}
       >
-        {renderCardContent()}
-      </BaseDashboardLinkCard>
+        {children}
+      </LinkCard>
     );
   }
 
   return (
-    <BaseDashboardCard className={className} style={style}>
-      {renderCardContent()}
-    </BaseDashboardCard>
+    <Card className={className} style={style}>
+      {children}
+    </Card>
   );
 };

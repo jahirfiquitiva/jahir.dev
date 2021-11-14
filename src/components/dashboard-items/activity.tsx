@@ -1,70 +1,9 @@
-import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
 import { Image } from '~/new-components/atoms/simple';
 import { Component, Activity as ActivityData } from '~/types';
-
-interface ActivityProps extends DashboardCardProps {
-  data?: ActivityData;
-}
-
-const CardContent = styled.div`
-  display: flex;
-  align-items: stretch;
-
-  & img {
-    border-radius: 4px;
-  }
-
-  & img:last-child {
-    margin-top: auto;
-  }
-`;
-
-const CardTexts = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-
-  &.has-image-left {
-    margin-left: 0.8rem;
-  }
-
-  &.has-image-right {
-    margin-right: 0.8rem;
-  }
-
-  & p {
-    color: var(--text-secondary);
-    font-size: var(--font-size-xxs);
-    margin: 0;
-  }
-
-  & p:first-of-type {
-    color: var(--text-primary);
-    font-size: var(--font-size-xs);
-    font-weight: 500;
-    font-family: var(--manrope);
-  }
-
-  & p:nth-of-type(2) {
-    color: var(--text-primary);
-  }
-`;
-
-const ActivityIconContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ActivitySmallIconContainer = styled(ActivityIconContainer)`
-  align-items: center;
-  justify-content: flex-end;
-`;
 
 const VSCODE_DISCORD_APP_ID = '782685898163617802';
 const VSCODE_2_DISCORD_APP_ID = '810516608442695700';
@@ -75,27 +14,37 @@ const codingApps = [
   INTELLIJ_DISCORD_APP_ID,
 ];
 
+const ActivityCard = tw(DashboardCard)`
+  p-8
+  flex
+  items-end
+  gap-8
+  truncate
+  rounded-md
+`;
+
+const ActivityContent = tw.div`
+  flex
+  items-center
+  flex-1
+  gap-8
+`;
+
+const ActivityTexts = tw.div`
+  flex
+  flex-col
+  flex-1
+  [small]:(inline-block)
+`;
+
+interface ActivityProps extends DashboardCardProps {
+  data?: ActivityData;
+}
+
 export const Activity: Component<ActivityProps> = (props) => {
-  // const [timeSince, setTimeSince] = useState('');
-  const { data, to } = props;
+  const { data, href } = props;
 
   const isForCodingApp = codingApps.includes(data?.appId || '');
-
-  /*
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeSince(calculateTimeSince(data?.startedAt, new Date()) || '');
-    }, 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [data?.startedAt]);
-
-  const renderTimeText = () => {
-    if (!timeSince || !timeSince.length) return null;
-    return <p>Elapsed: {timeSince}</p>;
-  };
-  */
 
   if (!data) return null;
 
@@ -107,37 +56,35 @@ export const Activity: Component<ActivityProps> = (props) => {
     .trim();
 
   return (
-    <DashboardCard to={to}>
-      <CardContent>
+    <ActivityCard href={href}>
+      <ActivityContent>
         {data?.largeImage && (
-          <ActivityIconContainer>
-            <Image
-              src={data?.largeImage}
-              alt={data?.largeImageText}
-              size={64}
-            />
-          </ActivityIconContainer>
+          <Image
+            src={data?.largeImage}
+            alt={data?.largeImageText}
+            size={64}
+            layout={'fixed'}
+            tw={'rounded'}
+          />
         )}
-        <CardTexts className={cardTextsClasses}>
-          <p>
+        <ActivityTexts className={cardTextsClasses}>
+          <b>
             {isForCodingApp ? 'Using ' : ''}
             {data?.name}
-          </p>
-          <p>{data?.details}</p>
-          <p>{data?.state}</p>
-          {/* renderTimeText() */}
-        </CardTexts>
-        {data?.smallImage && (
-          <ActivitySmallIconContainer>
-            <Image
-              src={data?.smallImage}
-              alt={data?.smallImageText}
-              width={32}
-              height={32}
-            />
-          </ActivitySmallIconContainer>
-        )}
-      </CardContent>
-    </DashboardCard>
+          </b>
+          <small>{data?.details}</small>
+          <small tw={'text-text-tertiary'}>{data?.state}</small>
+        </ActivityTexts>
+      </ActivityContent>
+      {data?.smallImage && (
+        <Image
+          src={data?.smallImage}
+          alt={data?.smallImageText}
+          size={32}
+          layout={'fixed'}
+          tw={'rounded-sm'}
+        />
+      )}
+    </ActivityCard>
   );
 };

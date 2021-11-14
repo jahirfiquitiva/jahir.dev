@@ -30,13 +30,13 @@ const CardTexts = styled.div`
 `;
 
 export const Counter: Component<CounterProps> = (props) => {
-  const { count, text, site, to } = props;
+  const { count, text, site, href } = props;
 
   if (!count) return null;
   return (
     <DashboardCard
       title={`Link to ${site === 'twitter' ? 'Twitter' : 'GitHub'}`}
-      to={to}
+      href={href}
     >
       <CardContent>
         <CardTexts>
