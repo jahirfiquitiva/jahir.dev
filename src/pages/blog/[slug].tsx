@@ -1,17 +1,17 @@
-import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
-import { BlogPost } from '~/blocks/blog-post';
-import { Page } from '~/blocks/page';
-import { MDXComponents as mdxComponents } from '~/components/mdx';
-import { Component, ComponentProps } from '~/elements/base/fc';
+import { Page } from '~/components/blocks';
+import { BlogPost } from '~/components/elements';
+import { mdxComponents } from '~/components/mdx';
+import isServer from '~/lib/is-server';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
-import { Post } from '~/types';
-import { getAllPosts } from '~/utils/get-posts';
+import { Component, ComponentProps, Post } from '~/types';
+import { getAllPosts } from '~/utils/posts';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
@@ -26,23 +26,17 @@ const mapContentLayerBlog = (post?: Blog): Post | null => {
     readingTime: post.readingTime,
     inProgress: post.inProgress,
     keywords: post.keywords,
-    tableOfContents: post.tableOfContents,
-    body: post.body.raw,
   } as Post;
 };
 
 interface PostPageProps extends ComponentProps {
-  post?: Blog;
+  post: Blog;
 }
 
-const PostPage: Component<PostPageProps> = (props) => {
-  const post = mapContentLayerBlog(props.post);
+const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
   const router = useRouter();
-  const Component = useMemo(
-    () =>
-      props?.post?.body.code ? getMDXComponent(props.post?.body.code) : null,
-    [props.post?.body.code],
-  );
+  const MdxComponent = useMDXComponent(basePost.body.code);
+  const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
 
   if (!router.isFallback && !post?.slug) {
     return <FourHundredFour />;
@@ -50,11 +44,11 @@ const PostPage: Component<PostPageProps> = (props) => {
 
   if (post && post.link) {
     try {
-      if (window) window.location.href = post.link;
+      if (!isServer()) window.location.href = post.link;
     } catch (e) {}
   }
 
-  if (!props.post || !props.post.body || !post || !Component) {
+  if (!post || !MdxComponent) {
     return <ErrorPage />;
   }
 
@@ -62,24 +56,20 @@ const PostPage: Component<PostPageProps> = (props) => {
     <Page
       title={
         post.title
-          ? `${post.title} | Blog ~ Jahir Fiquitiva 💎`
+          ? `${post?.title} | Blog ~ Jahir Fiquitiva 💎`
           : 'Blog ~ Jahir Fiquitiva 💎'
       }
-      description={post?.excerpt}
-      keywords={post?.keywords}
-      image={post.hero}
+      description={post.excerpt}
+      keywords={post.keywords}
+      image={`https://jahir.dev${post.hero || '/static/images/brand/banner.png'}`}
       siteType={'blog'}
       exactUrl={`https://jahir.dev/blog/${post.slug}`}
       metaImageStyle={'summary_large_image'}
     >
-      {router.isFallback ? (
-        <p>Loading…</p>
-      ) : (
-        <BlogPost {...post}>
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          <Component components={{ ...mdxComponents } as any} />
-        </BlogPost>
-      )}
+      <BlogPost {...post}>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <MdxComponent components={{ ...mdxComponents } as any} />
+      </BlogPost>
     </Page>
   );
 };

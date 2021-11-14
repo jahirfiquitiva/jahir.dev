@@ -1,13 +1,15 @@
 :root,
+.light,
 .light-mode {
   --code-comments: var(--text-tertiary);
   --code-punctuation: var(--text-secondary);
-  --code-selector: #1a9956;
+  --code-selector: #178a4d;
   --code-properties: #7a4cbb;
-  --code-operator: #e4873d;
+  --code-operator: #c86827;
   --code-function: #aa499d;
 }
 
+.dark,
 .dark-mode {
   --code-comments: var(--text-tertiary);
   --code-punctuation: var(--text-secondary);
@@ -23,20 +25,16 @@ kbd,
 samp {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
-  font-family: var(--code-font);
 }
 
 code {
-  padding: 0.2rem 0.4rem;
-  background-color: var(--primary);
-  color: var(--text-primary);
-  border-radius: 6px;
+  @apply text-almost-tiny py-2 px-4 bg-primary text-text-primary rounded;
   font-size: inherit;
   font-weight: inherit;
 }
 
 p code {
-  font-size: var(--font-size-xxs);
+  @apply text-tiny;
 }
 
 pre,
@@ -44,36 +42,24 @@ code {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  background-color: var(--primary);
-  color: var(--text-primary);
-  overflow-x: auto;
-  border-radius: 8px;
-  border: 1px solid var(--divider);
-  margin: 1.2rem 0;
+  @apply bg-primary text-text-primary overflow-x-auto rounded-md border border-divider my-12;
 }
 
 pre {
-  padding: 0.8rem;
+  @apply p-8;
 }
 
+.dark pre,
 .dark-mode pre {
   background-color: #0b152b;
 }
 
 pre pre {
-  padding: 0;
-  margin: 0;
-  border: none;
+  @apply p-0 m-0 border-none;
 }
 
 pre code {
-  padding: 0.4rem 0.6rem;
-  border: none;
-  background-color: transparent;
-  color: var(--text-primary);
-  font-size: var(--font-size-xxs);
-  padding: 0;
-  white-space: pre;
+  @apply text-tiny text-text-primary p-0 border-none bg-transparent whitespace-pre;
   word-wrap: normal;
 }
 
@@ -138,19 +124,10 @@ pre[class*='language-'] code,
 }
 
 .rehype-code-title {
-  border: 1px solid var(--divider);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom: none;
-  color: var(--text-secondary);
-  background-color: var(--toolbar-highlight);
+  @apply border border-divider rounded-t-md rounded-b-none text-text-secondary bg-toolbar-highlight mt-12 font-mono;
   padding: 0.4rem 0.7rem 0.5rem;
-  margin-top: 1.2rem;
-  font-family: var(--code-font);
 }
 
 .rehype-code-title + pre {
-  margin-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  @apply mt-0 rounded-t-none border-t-0;
 }

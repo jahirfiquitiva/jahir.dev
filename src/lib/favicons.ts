@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-const apiKey = 'test-apiKey'; // process.env.WEBMASTER_API_KEY || '';
+const apiKey = 'test-apiKey';
 
 interface FaviconGrabberIcon {
   sizes?: string;
@@ -35,9 +35,9 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
         const ttPixelsIcons =
           icons.filter((it: FaviconGrabberIcon) => {
             return (
-              !(it?.src || '')?.startsWith('data') ||
-              (it?.sizes || '')?.includes('32') ||
-              (it?.src || '')?.includes('32')
+              !(it?.src || '')?.includes('data:image') &&
+              ((it?.sizes || '')?.includes('32') ||
+                (it?.src || '')?.includes('32'))
             );
           }) || [];
         const icon = (
@@ -68,9 +68,9 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
       const ttPixelsIcons =
         icons.filter((it: FaviconGrabberIcon) => {
           return (
-            !(it?.href || '')?.startsWith('data') ||
-            (it?.sizes || '')?.includes('32') ||
-            (it?.href || '')?.includes('32')
+            !(it?.href || '')?.includes('data:image') &&
+            ((it?.sizes || '')?.includes('32') ||
+              (it?.href || '')?.includes('32'))
           );
         }) || [];
       const icon = (ttPixelsIcons.length > 0 ? ttPixelsIcons : icons)?.shift();

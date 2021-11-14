@@ -11,7 +11,6 @@ const authHeaders =
     ? { headers: { Authorization: githubApiToken } }
     : {};
 
-// Code copied from 'https://github.com/leerob/leerob.io/blob/master/pages/api/github.js'
 export default async (
   _: NextApiRequest,
   res: NextApiResponse,

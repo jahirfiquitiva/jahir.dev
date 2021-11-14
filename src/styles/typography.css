@@ -1,0 +1,63 @@
+html, body {
+  @apply font-sans font-normal text-text-secondary leading-normal sm:leading-relaxed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply inline-block font-manrope text-text-primary;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-bold;
+}
+
+h4,
+h5,
+h6 {
+  @apply font-semibold;
+}
+
+b,
+strong {
+  @apply font-medium text-text-primary;
+}
+
+body, small, p {
+  @apply font-normal;
+}
+
+h1 {
+  @apply text-3xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-md;
+}
+
+h5 {
+  @apply text-sm;
+}
+
+h6,
+p,
+body {
+  @apply text-xs;
+}
+
+small {
+  @apply text-tiny;
+}

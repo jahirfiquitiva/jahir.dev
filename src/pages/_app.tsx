@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import { FC } from 'react';
 
 import { ThemeProvider } from '~/providers/theme';
-import '~/styles/global.css';
+import '~/styles/globals.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (

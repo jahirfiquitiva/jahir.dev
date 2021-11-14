@@ -13,10 +13,10 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 import { getWebsiteFavicon } from './src/lib/favicons';
+import random from './src/lib/random';
+import unique from './src/lib/unique';
 import { defaultKeywords, RehypeElement } from './src/types';
-import { getPostDescription } from './src/utils/get-post-data';
-import getRandomItemFrom from './src/utils/get-random-item';
-import { unique } from './src/utils/unique';
+import { getPostDescription } from './src/utils/posts';
 
 const defaultColors = [
   '#fc5c65',
@@ -32,10 +32,6 @@ const defaultColors = [
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
-  wordCount: {
-    type: 'number',
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
-  },
   slug: {
     type: 'string',
     // eslint-disable-next-line no-underscore-dangle
@@ -48,7 +44,7 @@ const computedFields: ComputedFields = {
       const actualHero: string = hero
         ? hero.startsWith('http')
           ? hero
-          : `https://jahir.dev/static/images/posts/${hero}`
+          : `/static/images/blog/${hero}`
         : '';
       return actualHero;
     },
@@ -74,11 +70,11 @@ const computedFields: ComputedFields = {
   },
   color: {
     type: 'string',
-    resolve: (doc) => doc.color || getRandomItemFrom(defaultColors),
+    resolve: (doc) => doc.color || random(defaultColors),
   },
 };
 
-const Blog = defineDocumentType(() => ({
+export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/*.mdx',
   bodyType: 'mdx',
@@ -90,12 +86,8 @@ const Blog = defineDocumentType(() => ({
     excerpt: { type: 'string' },
     description: { type: 'string' },
     link: { type: 'string' },
-    keywords: {
-      type: 'list',
-      of: { type: 'string' },
-    },
     inProgress: { type: 'boolean' },
-    tableOfContents: { type: 'string' },
+    keywords: { type: 'string' },
   },
   computedFields,
 }));
@@ -122,7 +114,7 @@ const computedInspirationFields: ComputedFields = {
   },
 };
 
-const InspirationItem = defineDocumentType(() => ({
+export const InspirationItem = defineDocumentType(() => ({
   name: 'InspirationItem',
   filePathPattern: 'inspiration/*.json',
   fields: {
@@ -146,7 +138,7 @@ const transformToC = (toc: RehypeElement): RehypeElement => {
         children: [
           {
             type: 'text',
-            value: 'Table of Contents:',
+            value: 'Table of Contents',
           },
         ],
       },

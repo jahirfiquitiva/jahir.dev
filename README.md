@@ -1,31 +1,67 @@
-# Jahir Fiquitiva's Website
+# [jahir.dev](https://jahir.dev)
+
+## Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://github.com/contentlayerdev/contentlayer)
+- **Styling**: [emotion.sh](http://emotion.sh/), [Tailwind CSS](https://tailwindcss.com/) and [twin.macro](https://github.com/ben-rogerson/twin.macro)
+- **Deployment**: [Vercel](https://vercel.com)
 
 ## Project Structure
 
-### Elements
+```bash
+.
+|____data
+|____public
+|____src
+| |____styles
+| |____components
+| | |____atoms
+| | |____elements
+| | |____blocks
+| | |____sections
+| | |____mdx
+| |____hooks
+| |____providers
+| |____pages
+| | |____api
+| | |____blog
+| |____lib
+| |____utils
+| |____types
+|____scripts
+|____tailwind
+```
 
-This folder includes the most simple react components:
+- **`data/*`** - MDX blog posts, inspiration items (generated)
+- **`public/*`** - Static assets including images, fonts, audios and files
+- **`src/styles/*`** - Some global styles. Built using tailwind classes
+- **`src/components/atoms/*`** - The simplest components. Most of them are stateless
+- **`src/components/elements/*`** - Slightly more complex components. Some use or extend atoms
+- **`src/components/blocks/*`** - The main blocks for the website: `metatags`, `toolbar`, `footer` and `content`
+- **`src/components/sections/*`** - The different sections or pages of my website. _(They're here to keep `src/pages/` as clean as possible)_
+- **`src/components/mdx/*`** - Components built specifically for MDX content
+- **`src/hooks/*`** - A couple hooks used throughout the app
+- **`src/providers/*`** - Just a wrapper for accessing current theme
+- **`src/pages/api/*`** - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://jahir.dev/dashboard), and a page to download github releases assets
+- **`src/pages/blog/*`** - Static pre-rendered blog pages using MDX
+- **`src/pages/*`** - All other static pages
+- **`src/lib/*`** - Short for "library", a collection of helpful utilities or code for external services
+- **`src/utils/*`** - Almost the same as `lib` just with code built to be used in components
+- **`src/tailwind/*`** - Setup for different tailwind components and classes
 
-- `button`
-  - `Button` (supports setting an `Icon`)
-  - `LinkButton` (`a` that looks like `Button`)
-  - `LinkIconButton` (`a` that looks like `Button` but only has an `Icon`)
-  - `ButtonGroup` (`div` that wraps multiple `Button`s)
-- `card`
-  - `Card` (`div` with a soft border)
-  - `ExtLinkCard` (`a` that looks like `Card`)
-- `chip`
-  - `Chip` (`span` with full rounded corners)
-  - `ChipGroup` (`ul` to wrap `Chip`s)
+_Project partially based on [Lee Rob's website](https://github.com/leerob/leerob.io/)_
 
-### Components
+## Running Locally
 
-This folder includes slightly more complex components. All components in this folder use at least one of the components in `Elements`
+```bash
+git clone https://github.com/jahirfiquitiva/jahir.dev.git
+cd jahir.dev
+yarn
+```
 
-### Blocks
+Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
 
-This folder includes complex components. All components in this folder use at least one of the components in `Components` and `Elements` (either separately or grouped)
-
-### Sections
-
-This folder includes the actual website sections.
+```bash
+yarn dev
+```

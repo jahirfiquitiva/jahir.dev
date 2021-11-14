@@ -7,14 +7,12 @@ import prettier from 'prettier';
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
-    'src/pages/*.js',
-    'src/pages/*.jsx',
     'src/pages/*.ts',
     'src/pages/*.tsx',
-    '!src/pages/_*.js',
-    '!src/pages/_*.jsx',
     '!src/pages/_*.ts',
     '!src/pages/_*.tsx',
+    '!src/pages/404.tsx',
+    '!src/pages/500.tsx',
     '!src/pages/api',
     'data/**/*.mdx',
     '!data/*.mdx',
@@ -57,11 +55,11 @@ import prettier from 'prettier';
     .join('\n');
 
   const sitemap = `
-        <?xml version="1.0" encoding="UTF-8"?>
-        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    ${xmlRoutes}
-        </urlset>
-    `;
+      <?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  ${xmlRoutes}
+      </urlset>
+  `;
 
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,

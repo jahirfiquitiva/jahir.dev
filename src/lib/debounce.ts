@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const debounce = (
-  fn: Function,
-  ms?: number,
-  immediate?: boolean,
-): Function => {
+const debounce = (fn: Function, ms?: number, immediate?: boolean): Function => {
   let timeoutId: ReturnType<typeof setTimeout>;
   return function (this: any, ...args: any[]) {
     const callNow = immediate && !ms;
@@ -15,3 +11,5 @@ export const debounce = (
     if (callNow) next();
   };
 };
+
+export default debounce;

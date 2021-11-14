@@ -1,17 +1,15 @@
-import { FC } from 'react';
+import { Page, FourHundredFour } from '~/components/blocks';
+import { Component } from '~/types';
 
-import { Error } from '~/blocks/error';
-import { Page } from '~/blocks/page';
-
-const FourHundredFour: FC = () => {
+const FourHundredFourPage: Component = () => {
   return (
     <Page
       title={'Not found! ~ Jahir Fiquitiva 💎'}
       exactUrl={'https://jahir.dev/404'}
     >
-      <Error errorType={'four-hundred-four'} />
+      <FourHundredFour />
     </Page>
   );
 };
 
-export default FourHundredFour;
+export default FourHundredFourPage;

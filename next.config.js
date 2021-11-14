@@ -36,15 +36,6 @@ const defaultNextConfig = {
     ],
   },
   webpack(config, { dev, isServer }) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-      type: 'javascript/auto',
-      issuer: {
-        and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
-      },
-    });
-
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
         react: 'preact/compat',
@@ -62,6 +53,10 @@ const defaultNextConfig = {
     return [
       ...postsRedirects,
       buildRedirect('/assets/:path*', '/static/:path*'),
+      buildRedirect(
+        '/static/images/posts/:path*',
+        '/static/images/blog/:path*',
+      ),
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
       buildRedirect('/links', '/'),
@@ -70,8 +65,8 @@ const defaultNextConfig = {
       buildRedirect('/support', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),
       buildRedirect('/blog/post-of-fame', '/donate#thanks'),
-      // buildRedirect('/blog/uses', '/uses'),
-      buildRedirect('/uses', '/blog/uses'), // TODO: Check if needed
+      buildRedirect('/uses', '/blog/uses'),
+      buildRedirect('/releases', '/gh-releases'),
     ];
   },
 };

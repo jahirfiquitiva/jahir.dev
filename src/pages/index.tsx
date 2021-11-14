@@ -1,18 +1,13 @@
-import { FC } from 'react';
+import { Page } from '~/components/blocks';
+import { Home } from '~/components/sections';
+import { Component } from '~/types';
 
-import { Page } from '~/blocks/page';
-import { Intro } from '~/sections/home/intro';
-import { Projects } from '~/sections/home/projects';
-import { Skills } from '~/sections/home/skills';
-
-const Home: FC = () => {
+const HomePage: Component = () => {
   return (
     <Page>
-      <Intro />
-      <Skills />
-      <Projects />
+      <Home />
     </Page>
   );
 };
 
-export default Home;
+export default HomePage;

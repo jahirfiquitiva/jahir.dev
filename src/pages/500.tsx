@@ -1,9 +1,7 @@
-import { FC } from 'react';
+import { Page, Error } from '~/components/blocks';
+import { Component } from '~/types';
 
-import { Error } from '~/blocks/error';
-import { Page } from '~/blocks/page';
-
-const ErrorPage: FC = () => {
+const ErrorPage: Component = () => {
   return (
     <Page
       title={'Error! ~ Jahir Fiquitiva 💎'}

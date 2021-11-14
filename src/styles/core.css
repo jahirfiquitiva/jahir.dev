@@ -1,0 +1,70 @@
+html,
+body {
+  @apply bg-background overflow-x-hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply m-0 min-h-screen;
+}
+
+section {
+  scroll-margin-top: calc(var(--toolbar-height) - 1rem);
+}
+
+a {
+  @apply cursor-pointer;
+}
+
+::selection {
+  @apply bg-accent-highlight;
+}
+
+::placeholder {
+  @apply text-text-tertiary opacity-100;
+}
+:-ms-input-placeholder {
+  @apply text-text-tertiary opacity-100;
+}
+::-ms-input-placeholder {
+  @apply text-text-tertiary opacity-100;
+}
+
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+body.sb-show-main.sb-main-padded {
+  padding: 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}
+
+/* == Custom Scrollbar Colors == */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-bg-color) var(--scrollbar-thumb-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-thumb-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-bg-color);
+  border-radius: 20px;
+  border: 3px solid var(--scrollbar-thumb-color);
+}

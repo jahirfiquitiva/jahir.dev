@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import querystring from 'querystring';
 
 import fetch from 'isomorphic-fetch';

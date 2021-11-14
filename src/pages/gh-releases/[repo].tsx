@@ -2,8 +2,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { FC } from 'react';
 
-import { Page } from '~/blocks/page';
-import { Release, ReleaseProps } from '~/sections/release';
+import { Page } from '~/components/blocks';
+import { Release, ReleaseProps } from '~/components/sections';
 
 const releasesRepos = ['Frames', 'Blueprint', 'Kuper', 'ChipView', 'FABsMenu'];
 
@@ -17,9 +17,9 @@ const ReleasePage: FC = ({ repo }: ReleaseProps) => {
 
 export default ReleasePage;
 
-export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // @ts-ignore
-  const { repo } = ctx.params;
+  const { repo } = params;
   return { props: { repo } };
 };
 
