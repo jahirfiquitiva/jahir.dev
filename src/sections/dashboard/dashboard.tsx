@@ -1,32 +1,26 @@
-import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 import { DashboardGrid } from '~/blocks/dashboard-grid';
 import { State } from '~/components/dashboard-items';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
-import { Heading, Divider, CenteredSection } from '~/new-components/atoms/simple';
+import {
+  Heading,
+  Divider,
+  CenteredSection,
+} from '~/new-components/atoms/simple';
 import { SongCard } from '~/new-components/elements';
 import { Component, TopTrackData } from '~/types';
 
-const MusicHeading = styled(Heading)`
-  margin-top: 1.6rem;
-  margin-bottom: 1rem;
+const TopTracksContainer = tw.div`
+  grid
+  grid-cols-1
+  gap-10
+  mb-20
+  md:(grid-cols-2)
 `;
 
-// const TopTracksContainer = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   grid-gap: 1rem;
-//   margin-bottom: var(--content-bottom-margin);
-
-//   ${mediaQueries.tablet.sm} {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// `;
-
-const TopTracksText = styled.p`
-  margin-bottom: var(--content-bottom-margin);
-`;
+const TopTracksText = tw.p`mb-16`;
 
 export const Dashboard: Component = () => {
   const dashboardData = useDashboardData();
@@ -40,11 +34,11 @@ export const Dashboard: Component = () => {
       return <TopTracksText>No data available at this moment</TopTracksText>;
     }
     return (
-      <div>
+      <TopTracksContainer>
         {topTracksData?.tracks?.map((track, i) => {
           return <SongCard key={i} {...track} />;
         })}
-      </div>
+      </TopTracksContainer>
     );
   };
 
@@ -56,7 +50,9 @@ export const Dashboard: Component = () => {
       />
       <DashboardGrid data={dashboardData} />
       <Divider thin />
-      <MusicHeading size={'4'}>Top Tracks</MusicHeading>
+      <Heading size={'4'} tw={'mt-6 mb-10'}>
+        Top Tracks
+      </Heading>
       {renderTopTracks()}
     </CenteredSection>
   );

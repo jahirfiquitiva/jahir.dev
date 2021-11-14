@@ -12,6 +12,7 @@ module.exports = {
     DEFAULT: 'var(--accent)',
     dark: 'var(--accent-dark)',
     darker: 'var(--accent-darker)',
+    animoji: 'var(--accent-animoji)',
     text: 'var(--on-accent)',
     highlight: 'rgba(var(--card-base), 0.25)',
   },

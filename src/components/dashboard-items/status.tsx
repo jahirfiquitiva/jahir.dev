@@ -1,48 +1,37 @@
-import styled from '@emotion/styled';
+import tw, { styled } from 'twin.macro';
 
 import { Chip, Image, Link } from '~/new-components/atoms/simple';
 import { Component, ComponentProps, DiscordStatusName } from '~/types';
 import buildStyles from '~/utils/build-styles';
 
-const StateContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2.6rem;
-
-  & img {
-    background-color: var(--animoji-bg);
-    border-radius: 50%;
-  }
+const StateContainer = tw.div`
+  flex
+  flex-col
+  items-center
+  justify-center
+  mb-24
 `;
 
-const StateChip = styled(Chip)`
-  --color-values: 75, 101, 132;
-  --bg-color: rgba(var(--color-values), 0.1);
-  --border-color: rgba(var(--color-values), 0.35);
-  text-transform: uppercase;
-  margin-top: 0.8rem;
-  cursor: pointer;
-  color: var(--text-primary);
-  font-size: var(--font-size-xxs);
-  font-weight: 600;
-  font-family: var(--manrope-font);
-  letter-spacing: 0.0625rem;
-
-  & > :first-of-type {
-    margin-right: 0.6rem;
-  }
+const Animoji = tw(Image)`
+  rounded-half
+  bg-accent-animoji
 `;
 
-const StateCircle = styled.span`
-  width: 16px;
-  height: 16px;
-  background-color: rgb(var(--color-values));
-  border-radius: 50%;
-  animation: pulse-animation 2s infinite;
-  margin-right: 0.6rem;
+const BaseStateChip = tw(Chip)`
+  --color-values[75, 101, 132]
+  --bg-color[rgba(var(--color-values), 0.1)]
+  --border-color[rgba(var(--color-values), 0.35)]
+  uppercase
+  text-tiny
+  mt-8
+  cursor-pointer
+  text-text-primary
+  font-semibold
+  font-manrope
+  tracking-button
+`;
 
+const StateChip = styled(BaseStateChip)`
   @keyframes pulse-animation {
     0% {
       box-shadow: 0 0 0 0px rgba(var(--color-values), 0.5);
@@ -51,6 +40,15 @@ const StateCircle = styled.span`
       box-shadow: 0 0 0 8px rgba(var(--color-values), 0);
     }
   }
+`;
+
+const StateCircle = tw.span`
+  w-10
+  h-10
+  rounded-half
+  mr-8
+  background-color[rgb(var(--color-values))]
+  animation[pulse-animation 2s infinite]
 `;
 
 type StateTextAndColor = {
@@ -108,7 +106,7 @@ export const State: Component<StateProps> = (props) => {
           style={buildStyles({ '--color-values': stateTextAndColor.color })}
         >
           <StateCircle />
-          {stateTextAndColor.text}
+          <span tw={'pt-1'}>{stateTextAndColor.text}</span>
         </StateChip>
       </Link>
     );
@@ -116,7 +114,7 @@ export const State: Component<StateProps> = (props) => {
 
   return (
     <StateContainer>
-      <Image
+      <Animoji
         src={'/static/images/jahir/animoji.png'}
         alt={'Image of Jahir as an Animoji'}
         size={144}

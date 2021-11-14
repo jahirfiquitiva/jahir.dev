@@ -15,6 +15,7 @@
   --toolbar-shadow-c: rgba(9, 17, 34, 0.2);
   --toolbar-highlight: rgba(45, 82, 171, 0.08);
 
+  --accent-animoji: #d7e1f7;
   --accent-lighter: #88a4e6;
   --accent-light: #6085de;
   --accent: #3867d6;
@@ -86,6 +87,7 @@
   --accent: #88a4e6;
   --accent-dark: #6085de;
   --accent-darker: #3867d6;
+  --accent-animoji: #162956;
 
   --on-accent: rgba(9, 17, 34, 0.9);
 

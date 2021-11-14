@@ -1,6 +1,6 @@
 import { theme } from 'twin.macro';
 
-import { Status, Activity, Counter } from '~/components/dashboard-items';
+import { Activity, Counter } from '~/components/dashboard-items';
 import {
   MasonryGrid,
   MasonryBreakpoints,
@@ -31,24 +31,23 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
   };
 
   const masonryItems = [
-    dashboardData?.status?.status ? (
-      <Status
-        key={'status-card'}
-        data={dashboardData?.status}
-        to={`https://discordapp.com/users/${dashboardData?.user?.id}`}
-      />
-    ) : undefined,
     renderNowPlaying(),
     dashboardData?.activities?.map((activity, index) => {
       return <Activity key={`activity-${index}`} data={activity} />;
     }),
+    <Counter
+      key={'github-stalk'}
+      text={'Stalk my GitHub Activity'}
+      site={'stalk'}
+      href={'https://gitstalk.netlify.app/jahirfiquitiva'}
+    />,
     dashboardData?.counters?.githubFollowers ? (
       <Counter
         key={'github-followers-card'}
         count={dashboardData?.counters?.githubFollowers}
         text={'GitHub Followers'}
         site={'github'}
-        to={'https://github.com/jahirfiquitiva'}
+        href={'https://github.com/jahirfiquitiva'}
       />
     ) : undefined,
     dashboardData?.counters?.githubStars ? (
@@ -57,7 +56,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         count={dashboardData?.counters?.githubStars}
         text={'GitHub Stars'}
         site={'github'}
-        to={'https://github.com/jahirfiquitiva?tab=repositories'}
+        href={'https://github.com/jahirfiquitiva?tab=repositories'}
       />
     ) : undefined,
     dashboardData?.counters?.twitterFollowers ? (
@@ -66,7 +65,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         count={dashboardData?.counters?.twitterFollowers}
         text={'Twitter Followers'}
         site={'twitter'}
-        to={'https://twitter.com/intent/user?screen_name=jahirfiquitiva'}
+        href={'https://twitter.com/intent/user?screen_name=jahirfiquitiva'}
       />
     ) : undefined,
   ]
