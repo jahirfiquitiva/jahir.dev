@@ -13,8 +13,8 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 import { getWebsiteFavicon } from './src/lib/favicons';
-import getRandomItemFrom from './src/lib/random';
-import { unique } from './src/lib/unique';
+import random from './src/lib/random';
+import unique from './src/lib/unique';
 import { defaultKeywords, RehypeElement } from './src/types';
 import { getPostDescription } from './src/utils/posts';
 
@@ -70,7 +70,7 @@ const computedFields: ComputedFields = {
   },
   color: {
     type: 'string',
-    resolve: (doc) => doc.color || getRandomItemFrom(defaultColors),
+    resolve: (doc) => doc.color || random(defaultColors),
   },
 };
 
