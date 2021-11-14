@@ -57,6 +57,10 @@ const defaultNextConfig = {
         '/static/images/posts/:path*',
         '/static/images/blog/:path*',
       ),
+      buildRedirect(
+        '/static/images/me/:path*',
+        '/static/images/jahir/:path*',
+      ),
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashbud/:path*', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
