@@ -9,7 +9,7 @@
 
 ## Project Structure
 
-```
+```bash
 .
 |____data
 |____public
@@ -33,24 +33,24 @@
 |____tailwind
 ```
 
-- `data/*` - MDX blog posts, inspiration items (generated)
-- `public/*` - Static assets including images, fonts, audios and files
-- `src/styles/*` - Some global styles. Built using tailwind classes
-- `src/components/atoms/*` - The simplest components. Most of them are stateless
-- `src/components/elements/*` - Slightly more complex components. Some use or extend atoms
-- `src/components/blocks/*` - The main blocks for the website: `metatags`, `toolbar`, `footer` and `content`
-- `src/components/sections/*` - The different sections or pages of my website. They're here to keep `src/pages/` clean
-- `src/components/mdx/*` - Components built specifically for MDX content
-- `src/hooks/*` - A couple hooks used throughout the app
-- `src/providers/*` - Just a wrapper for accessing current theme
-- `src/pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://jahir.dev/dashboard), and a page to download github releases assets
-- `src/pages/blog/*` - Static pre-rendered blog pages using MDX
-- `src/pages/*` - All other static pages
-- `src/lib/*` - Short for "library", a collection of helpful utilities or code for external services
-- `src/utils/*` - Almost the same as `lib` just with code built for components
-- `src/tailwind/*` - Setup for different tailwind components and classes
+- **`data/*`** - MDX blog posts, inspiration items (generated)
+- **`public/*`** - Static assets including images, fonts, audios and files
+- **`src/styles/*`** - Some global styles. Built using tailwind classes
+- **`src/components/atoms/*`** - The simplest components. Most of them are stateless
+- **`src/components/elements/*`** - Slightly more complex components. Some use or extend atoms
+- **`src/components/blocks/*`** - The main blocks for the website: `metatags`, `toolbar`, `footer` and `content`
+- **`src/components/sections/*`** - The different sections or pages of my website. _(They're here to keep `src/pages/` as clean as possible)_
+- **`src/components/mdx/*`** - Components built specifically for MDX content
+- **`src/hooks/*`** - A couple hooks used throughout the app
+- **`src/providers/*`** - Just a wrapper for accessing current theme
+- **`src/pages/api/*`** - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://jahir.dev/dashboard), and a page to download github releases assets
+- **`src/pages/blog/*`** - Static pre-rendered blog pages using MDX
+- **`src/pages/*`** - All other static pages
+- **`src/lib/*`** - Short for "library", a collection of helpful utilities or code for external services
+- **`src/utils/*`** - Almost the same as `lib` just with code built to be used in components
+- **`src/tailwind/*`** - Setup for different tailwind components and classes
 
-*Project partially based on [Lee Rob's website](https://github.com/leerob/leerob.io/)*
+_Project partially based on [Lee Rob's website](https://github.com/leerob/leerob.io/)_
 
 ## Running Locally
 
