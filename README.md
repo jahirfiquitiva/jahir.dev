@@ -68,4 +68,4 @@ yarn dev
 
 ## Previous versions
 
-All the previous versions of this websites can be found at [jahirfiquitiva/prev-websites](https://github.com/jahirfiquitiva/prev-websites)
+All the previous versions of this website can be found at [jahirfiquitiva/prev-websites](https://github.com/jahirfiquitiva/prev-websites)
