@@ -32,11 +32,7 @@ const FourHundredFourWrapper = tw(DefaultContentContainer)`flex-1`;
 
 const GifImage = tw(Image)`max-width[425px]`;
 
-type ContentType =
-  | 'under-construction'
-  | 'four-hundred-four'
-  | 'error'
-  | 'sent';
+type ContentType = 'under-construction' | 'four-hundred-four' | 'error';
 
 export interface Content {
   type?: ContentType;
@@ -82,7 +78,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
         <Heading
           size={'2'}
           shadowColor={shadowColor || 'red'}
-          gradientColor={gradientColors || 'red-to-purple'}
+          gradientColor={gradientColors || 'orange-to-red'}
           tw={'mb-12'}
         >
           {title}
