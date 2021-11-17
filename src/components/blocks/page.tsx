@@ -37,10 +37,9 @@ export const Page: Component<PageProps> = (props) => {
       <DynamicMetaTags {...defaultMetaTags} {...otherProps} />
 
       <Toolbar />
-      <PageContainer>
-        <SiteContent>{children}</SiteContent>
-        <Footer />
-      </PageContainer>
+      <SiteContent>{children}</SiteContent>
+      <Footer />
+
       <BackToTop />
     </>
   );

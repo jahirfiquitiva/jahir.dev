@@ -48,6 +48,11 @@ body.sb-show-main.sb-main-padded {
   }
 }
 
+#__next {
+  @apply flex flex-col min-h-screen;
+  padding-top: calc(var(--toolbar-height) + 1.2rem);
+}
+
 /* == Custom Scrollbar Colors == */
 * {
   scrollbar-width: thin;
