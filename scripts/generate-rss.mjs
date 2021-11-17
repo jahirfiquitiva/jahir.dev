@@ -1,20 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { writeFileSync } from 'fs';
 
-import remarkHtml from 'remark-html';
-import remarkParse from 'remark-parse';
-import { unified } from 'unified';
 import xml from 'xml';
 
 import { allBlogs } from '.contentlayer/data';
-
-const markdownToHtml = async (markdown) => {
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process(markdown);
-  return result.toString();
-};
 
 const formatImageUrl = (url) => {
   if (!url) return '';
@@ -22,32 +11,29 @@ const formatImageUrl = (url) => {
   return url;
 };
 
-const formatPostDescriptionForRss = (post) => {
+const buildDescriptionHtml = (post) => {
   let description = '';
   if (post.longExcerpt) {
-    description += `${post.longExcerpt}\n\n`;
+    description += `<p>${post.longExcerpt}</p><br/>`;
   } else if (post.excerpt) {
-    description += `${post.excerpt}\n\n`;
+    description += `<p>${post.excerpt}</p><br/>`;
   }
-  description += `[Read more...](https://jahir.dev/blog/${post.slug})\n-----\n`;
+  description += `<b><a href="https://jahir.dev/blog/${post.slug}">Read more...</a></b><br/><br/>`;
   if (post.hero) {
-    description += `![${post.title}](${formatImageUrl(post.hero)})`;
+    description += `<p><img src="${formatImageUrl(post.hero)}" `;
+    description += `alt="${post.title}"></p>`;
   }
   return description;
 };
 
 const getAllPostRssData = async (post) => {
-  const descriptionMd = formatPostDescriptionForRss(post);
-  const rssDescriptionHtml = await markdownToHtml(descriptionMd).catch(
-    () => '',
-  );
-
+  const descriptionHtml = buildDescriptionHtml(post);
   return {
     title: post.title,
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
     description: post.excerpt,
-    html: rssDescriptionHtml,
+    html: descriptionHtml,
     slug: post.slug,
     hero: post.hero,
   };
