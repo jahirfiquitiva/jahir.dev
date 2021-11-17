@@ -37,6 +37,7 @@ import prettier from 'prettier';
       : actualRoutes.push(path);
   });
   actualRoutes.push('/uses');
+  actualRoutes.push('/feed.xml');
 
   const now = new Date().toISOString();
   const lastmod = `${now.substring(0, now.lastIndexOf('.'))}+00:00`;
