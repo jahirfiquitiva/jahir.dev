@@ -6,26 +6,32 @@ import pick from './../lib/pick';
 import { allBlogs } from '.contentlayer/data';
 import type { Blog } from '.contentlayer/types';
 
+const maxCharacters = 140;
+
 export const getPostDescription = (
-  description?: string | null,
   content?: string | null,
   defaultDescription?: string | null,
-  maxCharacters?: number,
+  trimLength?: boolean | null,
 ): string => {
-  if (description && (description?.length || 0) > 0) return description;
-  if (!content || (content?.length || 0) <= 0) {
-    return defaultDescription || '';
-  }
-  const noTitles = content
+  if (defaultDescription && !trimLength) return defaultDescription;
+  if (!content) return defaultDescription || '';
+
+  let description = content
     ?.split(/[\r\n]+/gm)
     ?.filter((it: string) => !it.startsWith('#'))
-    ?.join('  ')
-    ?.trim();
-  const plainText = removeMd(noTitles);
-  const noNewLines = plainText.replace(/[\r\n]+/gm, '  ').trim();
-  const splitContent = noNewLines.substring(0, maxCharacters || 140);
-  return splitContent.length > 0
-    ? `${splitContent}...`
+    ?.join('\n')
+    ?.split('\n')
+    ?.map((text: string) => (text || '').trim())
+    ?.filter((text: string) => text && text.length)
+    ?.map((text: string) =>
+      removeMd(text, { gfm: true, useImgAltText: true }),
+    )?.[0];
+
+  if (trimLength) {
+    description = description.substring(0, maxCharacters);
+  }
+  return description.length > 0
+    ? `${description}...`
     : defaultDescription || '';
 };
 

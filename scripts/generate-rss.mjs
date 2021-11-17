@@ -1,13 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { writeFileSync } from 'fs';
 
-import cheerio from 'cheerio';
-import entities from 'entities';
-import { escape } from 'html-escaper';
-import js2xml from 'js2xmlparser';
 import remarkHtml from 'remark-html';
 import remarkParse from 'remark-parse';
-import RSS from 'rss';
 import { unified } from 'unified';
 import xml from 'xml';
 
@@ -30,11 +25,11 @@ const formatImageUrl = (url) => {
 const formatPostDescriptionForRss = (post) => {
   let description = '';
   if (post.longExcerpt) {
-    description += `${post.longExcerpt}\n\n<br/>`;
+    description += `${post.longExcerpt}<br/><br/>`;
   } else if (post.excerpt) {
-    description += `${post.excerpt}\n\n<br/>`;
+    description += `${post.excerpt}<br/><br/>`;
   }
-  description += `[Read more...](https://jahir.dev/blog/${post.slug})\n\n-----\n`;
+  description += `[Read more...](https://jahir.dev/blog/${post.slug})<br/>-----\n`;
   if (post.hero) {
     description += `![${post.title}](${formatImageUrl(post.hero)})`;
   }
@@ -52,7 +47,7 @@ const getAllPostRssData = async (post) => {
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
     description: post.excerpt,
-    html: rssDescriptionHtml, // `<![CDATA[ ${rssDescriptionHtml} ]]>`, // entities.encodeHTML(rssDescriptionHtml),
+    html: rssDescriptionHtml,
     slug: post.slug,
     hero: post.hero,
   };

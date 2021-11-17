@@ -5,6 +5,7 @@ import {
   defineDocumentType,
   makeSource,
 } from 'contentlayer/source-files';
+import { exit } from 'process';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
@@ -65,18 +66,11 @@ const computedFields: ComputedFields = {
   },
   excerpt: {
     type: 'string',
-    resolve: (doc) =>
-      getPostDescription(doc.excerpt || doc.description, doc.body.raw),
+    resolve: (doc) => getPostDescription(doc.body.raw, doc.excerpt, true),
   },
   longExcerpt: {
     type: 'string',
-    resolve: (doc) =>
-      getPostDescription(
-        doc.excerpt || doc.description,
-        doc.body.raw,
-        null,
-        999,
-      ),
+    resolve: (doc) => getPostDescription(doc.body.raw, doc.excerpt),
   },
   color: {
     type: 'string',
@@ -95,7 +89,6 @@ export const Blog = defineDocumentType(() => ({
     color: { type: 'string' },
     excerpt: { type: 'string' },
     longExcerpt: { type: 'string' },
-    description: { type: 'string' },
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
     keywords: { type: 'string' },
