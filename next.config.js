@@ -2,6 +2,9 @@
 /* eslint-disable max-len */
 require('dotenv').config();
 const { withContentlayer } = require('next-contentlayer');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const { getPostsToRedirect } = require('./scripts/posts-to-redirect');
 
@@ -91,4 +94,4 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withContentlayer()(defaultNextConfig);
+module.exports = withBundleAnalyzer(withContentlayer()(defaultNextConfig));

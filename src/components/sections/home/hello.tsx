@@ -98,6 +98,7 @@ export const Hello: Component = () => {
           src={'/static/images/jahir/jahir-hd.jpg'}
           alt={"Jahir's Photo"}
           size={168}
+          priority
         />
       </PhotoContainer>
     </Container>
