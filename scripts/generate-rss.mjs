@@ -20,14 +20,36 @@ const markdownToHtml = async (markdown) => {
   return result.toString();
 };
 
+const formatImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('/')) return `https://jahir.dev${url}`;
+  return url;
+};
+
+const formatPostDescriptionForRss = (post) => {
+  let description = '';
+  if (post.excerpt) {
+    description += `${post.excerpt}\n\n`;
+  }
+  description += `[Read more...](https://jahir.dev/blog/${post.slug})\n\n-----\n`;
+  if (post.hero) {
+    description += `![${post.title}](${formatImageUrl(post.hero)})`;
+  }
+  return description;
+};
+
 const getAllPostRssData = async (post) => {
-  const html = await markdownToHtml(post.body.raw).catch(() => '');
+  const descriptionMd = formatPostDescriptionForRss(post);
+  const rssDescriptionHtml = await markdownToHtml(descriptionMd).catch(
+    () => '',
+  );
+
   return {
     title: post.title,
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
     description: post.excerpt,
-    html: escape(html),
+    html: escape(rssDescriptionHtml),
     slug: post.slug,
   };
 };
