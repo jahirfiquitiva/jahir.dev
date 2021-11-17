@@ -73,6 +73,7 @@ const defaultNextConfig = {
       buildRedirect('/blog/post-of-fame', '/donate#thanks'),
       buildRedirect('/uses', '/blog/uses'),
       buildRedirect('/releases', '/gh-releases'),
+      buildRedirect('/feed', '/feed.xml'),
     ];
   },
 };
