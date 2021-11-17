@@ -53,6 +53,26 @@ const getAllPostRssData = async (post) => {
   };
 };
 
+const buildItemForFeed = (elem, parentKey = null) => {
+  const newArray = [];
+  for (const key of Object.keys(elem)) {
+    const value = elem[key];
+    if (key === parentKey) {
+      newArray.push(value);
+      continue;
+    }
+
+    const newObject = {};
+    if (typeof value === 'object' && Object.keys(value).length > 1) {
+      newObject[key] = buildItemForFeed(value, key);
+    } else {
+      newObject[key] = elem[key];
+    }
+    newArray.push(newObject);
+  }
+  return newArray;
+};
+
 const buildFeed = (posts) => {
   const sortedPosts = posts.sort(function (first, second) {
     return new Date(second.date).getTime() - new Date(first.date).getTime();
@@ -62,26 +82,21 @@ const buildFeed = (posts) => {
   feedItems.push(
     ...sortedPosts.map(function (post) {
       const description = post.html ? post.html : { _cdata: post.description };
+
+      const actualItem = {
+        title: post.title,
+        pubDate: new Date(post.date).toUTCString(),
+        url: `https://jahir.dev/blog/${post.slug}`,
+        guid: {
+          _attr: { isPermaLink: true },
+          guid: `https://jahir.dev/blog/${post.slug}`,
+        },
+        description: { _attr: { type: 'html' }, description },
+        featured_image: formatImageUrl(post.hero),
+      };
+
       const feedItem = {
-        item: [
-          { title: post.title },
-          {
-            pubDate: new Date(post.date).toUTCString(),
-          },
-          { url: `https://jahir.dev/blog/${post.slug}` },
-          {
-            guid: [
-              { _attr: { isPermaLink: true } },
-              `https://jahir.dev/blog/${post.slug}`,
-            ],
-          },
-          {
-            description: [{ _attr: { type: 'html' } }, description],
-          },
-          {
-            featured_image: formatImageUrl(post.hero),
-          },
-        ],
+        item: buildItemForFeed(actualItem),
       };
 
       return feedItem;
@@ -91,17 +106,29 @@ const buildFeed = (posts) => {
   return feedItems;
 };
 
-// <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+const defaultChannel = {
+  'atom:link': {
+    _attr: {
+      href: 'https://jahir.dev/feed.xml',
+      rel: 'self',
+      type: 'application/rss+xml',
+    },
+  },
+  lastBuildDate: new Date().toUTCString(),
+  language: 'en-US',
+  link: 'https://jahir.dev',
+  title: 'Jahir Fiquitiva',
+  description: 'Passionate and creative full-stack developer from Colombia',
+  image_url: 'https://jahir.dev/static/images/brand/logo-def.png',
+  image: {
+    title: 'Jahir Fiquitiva',
+    link: 'https://jahir.dev',
+    url: 'https://jahir.dev/static/images/brand/logo-def.png',
+  },
+  copyright: `All rights reserved ${new Date().getFullYear()}, Jahir Fiquitiva`,
+};
 
 (async () => {
-  const baseRss = {
-    title: 'Jahir Fiquitiva',
-    description:
-      'Passionate and creative full-stack developer from Colombia &#x1f1e8;&#x1f1f4;',
-    site_url: 'https://jahir.dev',
-    feed_url: 'https://jahir.dev/feed.xml',
-    language: 'en',
-  };
   const feedItems = await Promise.all(allBlogs.map(getAllPostRssData));
 
   const feedObject = {
@@ -115,45 +142,7 @@ const buildFeed = (posts) => {
         },
       },
       {
-        channel: [
-          {
-            'atom:link': {
-              _attr: {
-                href: 'https://jahir.dev/feed.xml',
-                rel: 'self',
-                type: 'application/rss+xml',
-              },
-            },
-          },
-          { image_url: 'https://jahir.dev/static/images/brand/logo-def.png' },
-          {
-            title: 'Jahir Fiquitiva',
-          },
-          {
-            link: 'https://jahir.dev',
-          },
-          {
-            description:
-              'Passionate and creative full-stack developer from Colombia',
-          },
-          { language: 'en-US' },
-          { lastBuildDate: new Date().toUTCString() },
-          {
-            image: [
-              {
-                title: 'Jahir Fiquitiva',
-              },
-              {
-                link: 'https://jahir.dev',
-              },
-              { url: 'https://jahir.dev/static/images/brand/logo-def.png' },
-            ],
-          },
-          {
-            copyright: `All rights reserved ${new Date().getFullYear()}, Jahir Fiquitiva`,
-          },
-          ...buildFeed(feedItems),
-        ],
+        channel: [...buildItemForFeed(defaultChannel), ...buildFeed(feedItems)],
       },
     ],
   };
