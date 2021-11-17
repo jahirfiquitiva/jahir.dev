@@ -9,12 +9,6 @@ const defaultSiteDescription =
   '\uD83C\uDDE8\uD83C\uDDF4.\n' +
   'This website includes information about me, my skills and my projects.';
 
-const PageContainer = tw.div`
-  flex flex-col
-  min-h-screen
-  padding-top[calc(var(--toolbar-height) + 1.2rem)]
-`;
-
 const SiteContent = tw.main`
   flex flex-col flex-1
   w-full max-w-3xl
