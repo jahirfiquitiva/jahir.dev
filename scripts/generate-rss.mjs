@@ -79,6 +79,9 @@ const buildFeed = (posts) => {
           {
             description: [{ _attr: { type: 'html' } }, description],
           },
+          {
+            featured_image: formatImageUrl(post.hero),
+          },
         ],
       };
 
