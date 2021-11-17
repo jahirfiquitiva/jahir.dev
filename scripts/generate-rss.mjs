@@ -2,6 +2,7 @@
 import { writeFileSync } from 'fs';
 
 import cheerio from 'cheerio';
+import entities from 'entities';
 import { escape } from 'html-escaper';
 import js2xml from 'js2xmlparser';
 import remarkHtml from 'remark-html';
@@ -49,8 +50,9 @@ const getAllPostRssData = async (post) => {
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
     description: post.excerpt,
-    html: escape(rssDescriptionHtml),
+    html: rssDescriptionHtml, // `<![CDATA[ ${rssDescriptionHtml} ]]>`, // entities.encodeHTML(rssDescriptionHtml),
     slug: post.slug,
+    hero: post.hero,
   };
 };
 
