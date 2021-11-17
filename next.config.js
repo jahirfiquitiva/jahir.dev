@@ -57,7 +57,7 @@ const defaultNextConfig = {
           },
         ],
       },
-    ],
+    ];
   },
   async redirects() {
     const postsRedirects = await buildExternalBlogPostsRedirects().catch(
