@@ -25,11 +25,11 @@ const formatImageUrl = (url) => {
 const formatPostDescriptionForRss = (post) => {
   let description = '';
   if (post.longExcerpt) {
-    description += `${post.longExcerpt}<br/><br/>`;
+    description += `${post.longExcerpt}\n\n`;
   } else if (post.excerpt) {
-    description += `${post.excerpt}<br/><br/>`;
+    description += `${post.excerpt}\n\n`;
   }
-  description += `[Read more...](https://jahir.dev/blog/${post.slug})<br/>-----\n`;
+  description += `[Read more...](https://jahir.dev/blog/${post.slug})\n-----\n`;
   if (post.hero) {
     description += `![${post.title}](${formatImageUrl(post.hero)})`;
   }
