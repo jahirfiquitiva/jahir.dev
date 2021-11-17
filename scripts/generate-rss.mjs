@@ -29,8 +29,10 @@ const formatImageUrl = (url) => {
 
 const formatPostDescriptionForRss = (post) => {
   let description = '';
-  if (post.excerpt) {
-    description += `${post.excerpt}\n\n`;
+  if (post.longExcerpt) {
+    description += `${post.longExcerpt}\n\n<br/>`;
+  } else if (post.excerpt) {
+    description += `${post.excerpt}\n\n<br/>`;
   }
   description += `[Read more...](https://jahir.dev/blog/${post.slug})\n\n-----\n`;
   if (post.hero) {
@@ -75,7 +77,7 @@ const buildFeed = (posts) => {
           {
             guid: [
               { _attr: { isPermaLink: true } },
-              `${post.slug}-${new Date().getTime()}`,
+              `https://jahir.dev/blog/${post.slug}`,
             ],
           },
           {
@@ -111,9 +113,9 @@ const buildFeed = (posts) => {
     rss: [
       {
         _attr: {
-          // 'xmlns:dc': 'http://purl.org/dc/elements/1.1/',
-          // 'xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
-          // 'xmlns:atom': 'http://www.w3.org/2005/Atom',
+          'xmlns:dc': 'http://purl.org/dc/elements/1.1/',
+          'xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
+          'xmlns:atom': 'http://www.w3.org/2005/Atom',
           version: '2.0',
         },
       },
@@ -137,10 +139,24 @@ const buildFeed = (posts) => {
           },
           {
             description:
-              'Passionate and creative full-stack developer from Colombia &#x1f1e8;&#x1f1f4;',
+              'Passionate and creative full-stack developer from Colombia',
           },
           { language: 'en-US' },
           { lastBuildDate: new Date().toUTCString() },
+          {
+            image: [
+              {
+                title: 'Jahir Fiquitiva',
+              },
+              {
+                link: 'https://jahir.dev',
+              },
+              { url: 'https://jahir.dev/static/images/brand/logo-def.png' },
+            ],
+          },
+          {
+            copyright: `All rights reserved ${new Date().getFullYear()}, Jahir Fiquitiva`,
+          },
           ...buildFeed(feedItems),
         ],
       },

@@ -68,6 +68,16 @@ const computedFields: ComputedFields = {
     resolve: (doc) =>
       getPostDescription(doc.excerpt || doc.description, doc.body.raw),
   },
+  longExcerpt: {
+    type: 'string',
+    resolve: (doc) =>
+      getPostDescription(
+        doc.excerpt || doc.description,
+        doc.body.raw,
+        null,
+        999,
+      ),
+  },
   color: {
     type: 'string',
     resolve: (doc) => doc.color || random(defaultColors),
@@ -84,6 +94,7 @@ export const Blog = defineDocumentType(() => ({
     hero: { type: 'string', required: true },
     color: { type: 'string' },
     excerpt: { type: 'string' },
+    longExcerpt: { type: 'string' },
     description: { type: 'string' },
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
