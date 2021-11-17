@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 const apiKey = 'test-apiKey';
 
 interface FaviconGrabberIcon {
@@ -7,24 +6,10 @@ interface FaviconGrabberIcon {
   href?: string;
 }
 
-const timeoutFetch = async (
-  input: RequestInfo,
-  init?: RequestInit | undefined,
-): Promise<Response> => {
-  const response = await Promise.race([
-    fetch(input, init),
-    // eslint-disable-next-line promise/param-names
-    new Promise((_resolve, reject) => {
-      setTimeout(() => reject(new Error('request timeout')), 10000);
-    }),
-  ]);
-  return response as Response;
-};
-
 export const getWebsiteFavicon = async (website: string): Promise<string> => {
   const domain = website.replace(/(^\w+:|^)\/\//, '').replace(/\//g, '');
   try {
-    const faviconGrabber = await timeoutFetch(
+    const faviconGrabber = await fetch(
       `http://favicongrabber.com/api/grab/${domain}?pretty=true`,
     );
 
@@ -47,7 +32,7 @@ export const getWebsiteFavicon = async (website: string): Promise<string> => {
       }
     }
 
-    const webmasterApi = await timeoutFetch(
+    const webmasterApi = await fetch(
       'https://api.webmasterapi.com/v1/favicon',
       {
         method: 'POST',
