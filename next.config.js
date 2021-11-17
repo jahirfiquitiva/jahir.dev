@@ -46,6 +46,19 @@ const defaultNextConfig = {
 
     return config;
   },
+  async headers() {
+    return [
+      {
+        source: '/feed.xml',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/rss+xml;charset=utf-8',
+          },
+        ],
+      },
+    ],
+  },
   async redirects() {
     const postsRedirects = await buildExternalBlogPostsRedirects().catch(
       () => [],

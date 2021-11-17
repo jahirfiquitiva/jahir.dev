@@ -77,7 +77,7 @@ const buildFeed = (posts) => {
             ],
           },
           {
-            description,
+            description: [{ _attr: { type: 'html' } }, description],
           },
         ],
       };
