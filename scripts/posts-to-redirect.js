@@ -36,23 +36,28 @@ const readFiles = async (dirname) => {
 };
 
 const transformPostToMatter = (post) => {
-  const slug = post.filename.replace(/^.*[\\/]/, '').slice(0, -3);
+  const slug = post.filename.replace(/^.*[\\/]/, '').slice(0, -4);
   const { data: matterData, content: actualContent } = matter(post.content);
-  const { link } = matterData;
+  const { link, date } = matterData;
   const isInProgress = matterData['in-progress'] === true;
   if (isInProgress) return null;
   return {
     slug,
     link,
+    date,
   };
 };
 
 const getPostsToRedirect = async () => {
   const filesContents = await readFiles('./data/blog/');
-  return filesContents
-    .filter((it) => it)
-    .map(transformPostToMatter)
-    .filter((it) => it.link && it.link.length > 0);
+  const matters = filesContents.filter((it) => it).map(transformPostToMatter);
+
+  const sortedPosts = matters.sort(function (first, second) {
+    return new Date(second.date).getTime() - new Date(first.date).getTime();
+  });
+
+  sortedPosts.push({ slug: 'latest', link: `/blog/${sortedPosts[0].slug}` });
+  return sortedPosts.filter((it) => it.link && it.link.length > 0);
 };
 
 module.exports = { getPostsToRedirect };
