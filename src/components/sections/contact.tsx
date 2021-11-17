@@ -111,7 +111,13 @@ export const Contact: Component = () => {
         <ContactOptionsContainer>
           <p>
             I&apos;m always open for a conversation, so please don&apos;t
-            hesitate contacting me!
+            hesitate contacting me! Anyway, please{' '}
+            <Link
+              href={'https://nohello.club/'}
+              title={"Link to don't just say hello club page"}
+            >
+              don&apos;t just say hello
+            </Link>
           </p>
           <p>There&apos;s a few ways you can get it touch:</p>
           <ul tw={'list-disc leading-loose padding-inline-start[1.6rem]'}>
