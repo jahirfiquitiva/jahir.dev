@@ -111,7 +111,10 @@ export const Contact: Component = () => {
         <ContactOptionsContainer>
           <p>
             I&apos;m always open for a conversation, so please don&apos;t
-            hesitate contacting me! Anyway, please{' '}
+            hesitate contacting me!
+          </p>
+          <p>
+            Anyways, please{' '}
             <Link
               href={'https://nohello.club/'}
               title={"Link to don't just say hello club page"}
