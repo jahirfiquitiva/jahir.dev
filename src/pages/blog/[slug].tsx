@@ -7,7 +7,7 @@ import type { Blog } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
 import { BlogPost } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';
-import isServer from '~/lib/is-server';
+import useHasMounted from '~/hooks/useHasMounted';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';
@@ -34,6 +34,7 @@ interface PostPageProps extends ComponentProps {
 }
 
 const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
+  const hasMounted = useHasMounted();
   const router = useRouter();
   const MdxComponent = useMDXComponent(basePost.body.code);
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
@@ -44,7 +45,7 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
 
   if (post && post.link) {
     try {
-      if (!isServer()) window.location.href = post.link;
+      if (hasMounted) window.location.href = post.link;
     } catch (e) {}
   }
 
@@ -61,7 +62,9 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
       }
       description={post.excerpt}
       keywords={post.keywords}
-      image={`https://jahir.dev${post.hero || '/static/images/brand/banner.png'}`}
+      image={`https://jahir.dev${
+        post.hero || '/static/images/brand/banner.png'
+      }`}
       siteType={'blog'}
       exactUrl={`https://jahir.dev/blog/${post.slug}`}
       metaImageStyle={'summary_large_image'}

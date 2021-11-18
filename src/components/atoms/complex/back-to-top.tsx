@@ -1,9 +1,9 @@
 import { mdiChevronUp } from '@mdi/js';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import tw from 'twin.macro';
 
 import { Button } from '~/components/atoms/simple';
-import isServer from '~/lib/is-server';
+import useHasMounted from '~/hooks/useHasMounted';
 
 const visibleStyles = tw`
   visible
@@ -83,7 +83,6 @@ const BackToTopSpan = tw.span`
 `;
 
 const scrollToTop = () => {
-  if (isServer()) return;
   try {
     window.scroll({
       top: 0,
@@ -98,29 +97,31 @@ const scrollToTop = () => {
 const SCROLL_OFFSET = 425;
 export const BackToTop = () => {
   const [showButton, setShowButton] = useState(false);
+  const hasMounted = useHasMounted();
 
-  const checkScrollTop = () => {
-    if (isServer()) return;
-    const scrolledDistance = window ? window.scrollY || window.pageYOffset : 0;
-    const screenHeight = window
-      ? document.body.scrollHeight - window.screen.availHeight
-      : 0;
+  const checkScrollTop = useCallback(() => {
+    if (!hasMounted) return;
+    const scrolledDistance = window.scrollY || window.pageYOffset;
+    const screenHeight = document.body.scrollHeight - window.screen.availHeight;
     try {
       setShowButton(
         scrolledDistance > SCROLL_OFFSET &&
           scrolledDistance < screenHeight - Math.ceil(SCROLL_OFFSET / 2.5),
       );
     } catch (e) {}
-  };
+  }, [hasMounted]);
 
   useEffect(() => {
+    if (!hasMounted) return;
     window.addEventListener('scroll', checkScrollTop);
     checkScrollTop();
+    // eslint-disable-next-line consistent-return
     return () => {
       window.removeEventListener('scroll', checkScrollTop);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [hasMounted, checkScrollTop]);
+
+  if (!hasMounted) return null;
 
   return (
     <BackToTopButton

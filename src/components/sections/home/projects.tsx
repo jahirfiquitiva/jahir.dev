@@ -8,7 +8,7 @@ import {
 } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/components/elements';
-import isServer from '~/lib/is-server';
+import useHasMounted from '~/hooks/useHasMounted';
 import { Component, projects } from '~/types';
 
 const ProjectsHeader = tw.div`
@@ -37,9 +37,9 @@ masonryBreakpoints[theme`screens.2xs`] = 1;
 masonryBreakpoints[theme`screens.md`] = 2;
 
 const FilledProjectsGrid: Component = () => {
-  // TODO: Try to remove this condition
-  if (!projects || isServer()) return null;
+  const hasMounted = useHasMounted();
 
+  if (!hasMounted) return null;
   return (
     <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'py-20'}>
       {projects.map((project, index) => {
