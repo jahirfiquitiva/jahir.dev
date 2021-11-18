@@ -43,14 +43,14 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
     return <FourHundredFour />;
   }
 
+  if (!post || !MdxComponent) {
+    return <ErrorPage />;
+  }
+
   if (post && post.link) {
     try {
       if (hasMounted) window.location.href = post.link;
     } catch (e) {}
-  }
-
-  if (!post || !MdxComponent) {
-    return <ErrorPage />;
   }
 
   return (

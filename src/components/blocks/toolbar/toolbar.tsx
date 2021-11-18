@@ -1,19 +1,14 @@
 import { mdiMenu, mdiPlus } from '@mdi/js';
 import cn from 'classnames';
-import dynamic from 'next/dynamic';
 import tw from 'twin.macro';
 
+import { ThemeToggle } from './theme-toggle';
 import { ToolbarButton, ToolbarButtonsContainer } from './toolbar-button';
 import { ToolbarLink } from './toolbar-link';
 import { ToolbarLinks } from './toolbar-links';
 
 import { Logo } from '~/components/atoms/simple';
 import useToggle from '~/hooks/useToggle';
-
-const DynamicThemeToggle = dynamic<unknown>(
-  () => import('./theme-toggle').then((mod) => mod.ThemeToggle),
-  { ssr: false },
-);
 
 const ToolbarGrid = tw.nav`
   min-h-20
@@ -93,7 +88,7 @@ const Navigation = () => {
         Jahir Fiquitiva
       </HomeLink>
       <ToolbarButtonsContainer>
-        <DynamicThemeToggle />
+        <ThemeToggle />
         <li>
           <MenuButton
             title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
