@@ -20,7 +20,9 @@ const computedFields: ComputedFields = {
     resolve: (doc) => {
       const { stack = '' } = doc;
       if (!stack) return [];
-      return unique((stack || '').split(',').map((it: string) => it.trim()));
+      return unique(
+        (stack || '').split(',').map((it: string) => it.trim().toLowerCase()),
+      );
     },
   },
 };

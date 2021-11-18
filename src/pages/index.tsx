@@ -23,6 +23,7 @@ const HomePage: Component<HomePageProps> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const projects = allProjects
     .sort((a: Project, b: Project) => a.order - b.order)
+    .filter((project: Project) => !project.hide)
     .map((project: Project) =>
       pick(project, [
         'slug',

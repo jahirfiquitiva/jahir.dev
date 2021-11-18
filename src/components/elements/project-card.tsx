@@ -1,4 +1,4 @@
-import { useMemo, CSSProperties } from 'react';
+import { useMemo, CSSProperties, memo } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
@@ -95,7 +95,7 @@ const PreviewImage = tw.div`
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
-export const ProjectCard: Component<ProjectCardProps> = (props) => {
+const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
   const { name, description, link, icon, preview, stack, color, darkColor } =
     props;
 
@@ -133,7 +133,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     );
   }, [preview]);
 
-  if (!name || !link) return null;
+  if (!themeReady || !name || !link) return null;
   return (
     <BaseProjectCard
       title={`Link to project: ${name}`}
@@ -158,3 +158,5 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     </BaseProjectCard>
   );
 };
+
+export const ProjectCard = memo(DefaultProjectCard);

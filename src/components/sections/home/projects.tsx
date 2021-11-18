@@ -40,7 +40,6 @@ interface ProjectsProps extends ComponentProps {
 }
 
 export const Projects: Component<ProjectsProps> = ({ projects }) => {
-  console.log(projects);
   return (
     <section id={'projects'}>
       <Divider gradientColor={'blue-to-green'} />
@@ -71,7 +70,7 @@ export const Projects: Component<ProjectsProps> = ({ projects }) => {
         <MasonryGrid
           breakpoints={masonryBreakpoints}
           gap={'1rem'}
-          tw={'pt-16 pb-24'}
+          tw={'pt-12 pb-24'}
         >
           {(projects || []).map((project, index) => {
             return (

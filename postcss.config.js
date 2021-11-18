@@ -26,7 +26,14 @@ module.exports = {
       safelist: ['html', 'body', '#__next'],
     },
     cssnano: {
-      preset: ['default'],
+      preset: [
+        'default',
+        {
+          discardComments: {
+            removeAll: true,
+          },
+        },
+      ],
     },
   },
 };
