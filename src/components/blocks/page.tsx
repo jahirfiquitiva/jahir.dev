@@ -1,8 +1,20 @@
+import dynamic from 'next/dynamic';
 import tw from 'twin.macro';
 
-import { BackToTop } from '~/components/atoms/complex';
-import { Toolbar, DynamicMetaTags, Footer } from '~/components/blocks';
-import { Component, PageProps, defaultKeywords } from '~/types';
+import { Toolbar, DynamicMetaTags } from '~/components/blocks';
+import { Component, ComponentProps, PageProps, defaultKeywords } from '~/types';
+
+const DynamicFooter = dynamic<ComponentProps>(
+  () => import('~/components/blocks/footer').then((mod) => mod.Footer),
+  { ssr: false },
+);
+const DynamicBackToTop = dynamic<ComponentProps>(
+  () =>
+    import('~/components/atoms/complex/back-to-top').then(
+      (mod) => mod.BackToTop,
+    ),
+  { ssr: false },
+);
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +
@@ -32,9 +44,9 @@ export const Page: Component<PageProps> = (props) => {
 
       <Toolbar />
       <SiteContent>{children}</SiteContent>
-      <Footer />
+      <DynamicFooter />
 
-      <BackToTop />
+      <DynamicBackToTop />
     </>
   );
 };
