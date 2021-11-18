@@ -2,13 +2,13 @@ import dynamic from 'next/dynamic';
 import tw from 'twin.macro';
 
 import { Toolbar, DynamicMetaTags } from '~/components/blocks';
-import { Component, ComponentProps, PageProps, defaultKeywords } from '~/types';
+import { Component, PageProps, defaultKeywords } from '~/types';
 
-const DynamicFooter = dynamic<ComponentProps>(
+const DynamicFooter = dynamic<unknown>(
   () => import('~/components/blocks/footer').then((mod) => mod.Footer),
   { ssr: false },
 );
-const DynamicBackToTop = dynamic<ComponentProps>(
+const DynamicBackToTop = dynamic<unknown>(
   () =>
     import('~/components/atoms/complex/back-to-top').then(
       (mod) => mod.BackToTop,

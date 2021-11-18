@@ -1,6 +1,6 @@
 import { mdiMenu, mdiPlus } from '@mdi/js';
 import cn from 'classnames';
-import { useState, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import tw from 'twin.macro';
 
 import { ToolbarButton, ToolbarButtonsContainer } from './toolbar-button';
@@ -8,7 +8,12 @@ import { ToolbarLink } from './toolbar-link';
 import { ToolbarLinks } from './toolbar-links';
 
 import { Logo } from '~/components/atoms/simple';
-import { useTheme } from '~/providers/theme';
+import useToggle from '~/hooks/useToggle';
+
+const DynamicThemeToggle = dynamic<unknown>(
+  () => import('./theme-toggle').then((mod) => mod.ThemeToggle),
+  { ssr: false },
+);
 
 const ToolbarGrid = tw.nav`
   min-h-20
@@ -74,35 +79,8 @@ const MenuButton = tw(ToolbarButton)`
   [&.expanded]:(p-2 [svg]:(rotate-45 scale-120))
 `;
 
-const ThemeToggle = () => {
-  const { isDark, themeReady, toggleTheme } = useTheme();
-
-  const themeText = useMemo<string>(() => {
-    if (!themeReady || !isDark) return 'dark';
-    return 'light';
-  }, [themeReady, isDark]);
-
-  const themeEmoji = useMemo<string>(() => {
-    if (!themeReady || !isDark) return '🌚';
-    return '🌞';
-  }, [themeReady, isDark]);
-
-  if (!themeReady) return null;
-
-  return (
-    <li>
-      <ToolbarButton
-        title={`Button to enable ${themeText} theme`}
-        onClick={toggleTheme}
-      >
-        {themeEmoji}
-      </ToolbarButton>
-    </li>
-  );
-};
-
 const Navigation = () => {
-  const [isExpanded, setExpanded] = useState(false);
+  const [isExpanded, toggleMenu] = useToggle(false);
   const itemsClassName = cn({ expanded: isExpanded });
 
   return (
@@ -115,14 +93,16 @@ const Navigation = () => {
         Jahir Fiquitiva
       </HomeLink>
       <ToolbarButtonsContainer>
-        <ThemeToggle />
+        <DynamicThemeToggle />
         <li>
           <MenuButton
             title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
             icon={isExpanded ? mdiPlus : mdiMenu}
             className={itemsClassName}
             onClick={() => {
-              setExpanded(!isExpanded);
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              toggleMenu();
             }}
           />
         </li>
