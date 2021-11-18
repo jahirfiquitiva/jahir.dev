@@ -10,15 +10,31 @@ import { Project as ProjectComponent } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
-import { Component, ComponentProps } from '~/types';
+import {
+  Component,
+  ComponentProps,
+  ProjectProps as ProjectType,
+} from '~/types';
+
+const mapContentLayerProject = (project?: Project): ProjectType | null => {
+  if (!project) return null;
+  return {
+    ...project,
+    stack: project?.stack || [],
+  } as ProjectType;
+};
 
 interface ProjectPageProps extends ComponentProps {
   project: Project;
 }
 
-const ProjectPage: Component<ProjectPageProps> = ({ project }) => {
+const ProjectPage: Component<ProjectPageProps> = ({ project: baseProject }) => {
   const router = useRouter();
-  const MdxComponent = useMDXComponent(project.body.code);
+  const MdxComponent = useMDXComponent(baseProject.body.code);
+  const project = useMemo(
+    () => mapContentLayerProject(baseProject),
+    [baseProject],
+  );
 
   if (!router.isFallback && !project?.slug) {
     return <FourHundredFour />;
