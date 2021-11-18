@@ -1,10 +1,17 @@
+import { CSSInterpolation } from '@emotion/serialize';
 import { CSSProperties, FC, ReactNode } from 'react';
 
-export type ComponentChild = ReactNode | ReactNode[] | Element | null | undefined;
+export type ComponentChild =
+  | ReactNode
+  | ReactNode[]
+  | Element
+  | null
+  | undefined;
 
 export interface ComponentProps {
   children?: ComponentChild;
   className?: string;
+  css?: CSSInterpolation;
   style?: CSSProperties;
 }
 

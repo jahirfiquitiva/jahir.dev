@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';

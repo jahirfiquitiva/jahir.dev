@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withPlugins = require('next-compose-plugins');
+const enableBundleAnalysis = process.env.ANALYZE === 'true';
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: enableBundleAnalysis,
 });
 const { withContentlayer } = require('next-contentlayer');
 
@@ -88,7 +88,7 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [[withBundleAnalyzer], [withContentlayer()]],
-  defaultNextConfig,
-);
+const contentLayerConfig = withContentlayer()(defaultNextConfig);
+module.exports = enableBundleAnalysis
+  ? withBundleAnalyzer(contentLayerConfig)
+  : contentLayerConfig;

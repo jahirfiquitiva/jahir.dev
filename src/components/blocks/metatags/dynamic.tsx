@@ -16,11 +16,19 @@ export interface MetaTagsProps extends PageProps {
   metaImageStyle?: MetaImageStyle;
 }
 
+const mapKeywords = (keywords?: string | Array<string> | null): string => {
+  if (!keywords) return '';
+  if (Array.isArray(keywords)) {
+    return (keywords || []).join(', ');
+  }
+  return keywords;
+};
+
 export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
   const {
     title,
     description,
-    keywords,
+    keywords: initialKeywords,
     image,
     exactUrl = 'https://jahir.dev',
     siteType = 'portfolio',
@@ -45,13 +53,17 @@ export const DynamicMetaTags: Component<MetaTagsProps> = (props) => {
     return '#080f1e';
   }, [themeReady, isDark]);
 
+  const keywords = useMemo<string>(() => {
+    return mapKeywords(initialKeywords);
+  }, [initialKeywords]);
+
   return (
     <Head>
       <title>{title}</title>
 
       <meta name={'title'} content={title} />
       <meta name={'description'} content={description} />
-      <meta name={'keywords'} content={(keywords || []).join(', ')} />
+      <meta name={'keywords'} content={keywords} />
 
       <meta itemProp={'name'} content={title} />
       <meta itemProp={'description'} content={description} />

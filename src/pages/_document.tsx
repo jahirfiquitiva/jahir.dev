@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
-import { DefaultMetaTags } from '~/components/blocks';
+import { DefaultMetaTags, DynamicMetaTags } from '~/components/blocks';
 
 const fonts = [
   'inter/Inter-Regular.woff2',
@@ -15,6 +15,7 @@ const Document = () => {
     <Html lang={'en'}>
       <Head>
         <DefaultMetaTags />
+        <DynamicMetaTags />
 
         {fonts.map((it, i) => {
           return (

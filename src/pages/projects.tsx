@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { allProjects } from '.contentlayer/data';
 import type { Project } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
-import { Home, Projects } from '~/components/sections';
+import { Projects } from '~/components/sections';
 import pick from '~/lib/pick';
 import { Component, ComponentProps, ProjectProps } from '~/types';
 

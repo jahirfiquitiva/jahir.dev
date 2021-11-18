@@ -21,7 +21,6 @@
       "~/*": ["./src/*"]
     },
     "incremental": true,
-    "jsxImportSource": "@emotion/react"
   },
   "exclude": [".next", ".idea", "node_modules"],
   "include": ["next-env.d.ts", "twin.d.ts", "**/*.ts", "**/*.tsx"]

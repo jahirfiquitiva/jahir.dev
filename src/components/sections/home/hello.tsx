@@ -1,14 +1,8 @@
-import { useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import tw from 'twin.macro';
 import useSound from 'use-sound';
 
-import {
-  Image,
-  Heading,
-  GradientSpan,
-  Link,
-  Button,
-} from '~/components/atoms/simple';
+import { Image, Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component } from '~/types';
@@ -26,14 +20,6 @@ const ContentContainer = tw.div`
   justify-end
   grid-row[2]
   md:(grid-row[1])
-`;
-
-const NameAudio = tw.audio`
-  h-0 w-0
-  opacity-0
-  hidden invisible
-  pointer-events-none
-  select-none
 `;
 
 const PhotoContainer = tw.div`
