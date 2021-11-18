@@ -1,4 +1,4 @@
-import { useMemo, useState, CSSProperties } from 'react';
+import { useMemo, CSSProperties } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
