@@ -1,3 +1,4 @@
+/*! purgecss start ignore */
 @import './fonts/all.css';
 @import './variables.css';
 
@@ -6,6 +7,7 @@
 @import './typography.css';
 @import './blog.css';
 @import './code.css';
+/*! purgecss end ignore */
 
 @import 'tailwindcss/components';
 

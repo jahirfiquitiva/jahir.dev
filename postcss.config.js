@@ -4,6 +4,7 @@ module.exports = {
     tailwindcss: {},
     autoprefixer: {},
     'postcss-flexbugs-fixes': {},
+    'postcss-calc': {},
     'postcss-preset-env': {
       preserve: false,
       autoprefixer: {
@@ -22,17 +23,10 @@ module.exports = {
         './src/components/**/*.{js,jsx,ts,tsx}',
       ],
       defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-      safelist: ['html', 'body'],
+      safelist: ['html', 'body', '#__next'],
     },
     cssnano: {
-      preset: [
-        'default',
-        {
-          discardComments: {
-            removeAll: true,
-          },
-        },
-      ],
+      preset: ['default'],
     },
   },
 };
