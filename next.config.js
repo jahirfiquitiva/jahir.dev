@@ -9,6 +9,9 @@ const buildRedirect = (source, destination, permanent = true) => {
   };
 };
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
