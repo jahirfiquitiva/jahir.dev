@@ -1,7 +1,6 @@
 import { useTheme as useNextTheme } from 'next-themes';
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
-import useHasMounted from '~/hooks/useHasMounted';
 import { Component } from '~/types';
 
 export interface ThemeContextValue {
@@ -18,8 +17,10 @@ const defaultContextState: ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider: Component = (props) => {
-  const mounted = useHasMounted();
   const { theme, resolvedTheme, setTheme } = useNextTheme();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const { children } = props;
 

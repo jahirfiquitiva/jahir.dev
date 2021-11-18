@@ -121,8 +121,6 @@ export const BackToTop = () => {
     };
   }, [hasMounted, checkScrollTop]);
 
-  if (!hasMounted) return null;
-
   return (
     <BackToTopButton
       title={'Button to go back to top'}

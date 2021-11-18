@@ -1,4 +1,6 @@
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
@@ -23,6 +25,8 @@ export interface LinkProps extends ComponentProps, BaseLinkProps {
   newTab?: boolean;
 }
 
+const prefetchBlockList = ['/music', '/dashboard', '/inspiration', '/static'];
+
 export const Link: Component<LinkProps> = (props) => {
   const {
     title,
@@ -33,6 +37,22 @@ export const Link: Component<LinkProps> = (props) => {
     className,
     style,
   } = props;
+  const router = useRouter();
+
+  const shouldPrefetch = useMemo<boolean>(() => {
+    if (!router || !router.isReady || newTab) return false;
+    if (prefetchBlockList.some((link) => href.startsWith(link))) {
+      return false;
+    }
+    const { asPath: pathname } = router;
+    if (href === pathname || href.startsWith('#')) return false;
+    const hrefWithoutCurrentPath = href.replace(pathname, '');
+    const lastHrefPart = hrefWithoutCurrentPath.substring(
+      hrefWithoutCurrentPath.lastIndexOf('/') + 1,
+    );
+    if (href.startsWith(pathname) && lastHrefPart.startsWith('#')) return false;
+    return true;
+  }, [router, href, newTab]);
 
   if (newTab) {
     return (
@@ -54,8 +74,9 @@ export const Link: Component<LinkProps> = (props) => {
     );
   }
 
+  const prefetchProps = !shouldPrefetch ? { prefetch: false } : {};
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href} passHref {...prefetchProps}>
       <a
         title={title}
         aria-label={title}

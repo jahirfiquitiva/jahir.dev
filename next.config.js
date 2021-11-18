@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withPlugins = require('next-compose-plugins');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
 const { withContentlayer } = require('next-contentlayer');
+
+const appHeaders = require('./headers');
 
 const buildRedirect = (source, destination, permanent = true) => {
   return {
@@ -13,6 +11,9 @@ const buildRedirect = (source, destination, permanent = true) => {
   };
 };
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
@@ -39,17 +40,7 @@ const defaultNextConfig = {
     return config;
   },
   async headers() {
-    return [
-      {
-        source: '/feed.xml',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/rss+xml;charset=utf-8',
-          },
-        ],
-      },
-    ];
+    return appHeaders;
   },
   async redirects() {
     return [
@@ -88,7 +79,4 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [[withBundleAnalyzer], [withContentlayer()]],
-  defaultNextConfig,
-);
+module.exports = withContentlayer()(defaultNextConfig);

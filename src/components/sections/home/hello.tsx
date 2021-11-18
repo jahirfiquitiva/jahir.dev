@@ -1,5 +1,6 @@
-import { useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import tw from 'twin.macro';
+import useSound from 'use-sound';
 
 import { Image, Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
@@ -21,14 +22,6 @@ const ContentContainer = tw.div`
   md:(grid-row[1])
 `;
 
-const NameAudio = tw.audio`
-  h-0 w-0
-  opacity-0
-  hidden invisible
-  pointer-events-none
-  select-none
-`;
-
 const PhotoContainer = tw.div`
   flex
   justify-start
@@ -47,20 +40,26 @@ const Photo = tw(Image)`
   [img]:(filter drop-shadow)
 `;
 
+const AudioButton = tw.button`
+  font-manrope
+  font-bold
+  border-none
+  bg-transparent
+  cursor-pointer
+`;
+
+const audioButtonTitle = "Press to hear Jahir's name pronunciation";
+
 export const Hello: Component = () => {
   const { isDark, themeReady } = useTheme();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playName] = useSound('/static/audio/name-pronunciation.mp3', {
+    interrupt: true,
+  });
 
   const shouldForceGradient = useMemo<boolean>(() => {
     if (!themeReady) return false;
     return isDark;
   }, [themeReady, isDark]);
-
-  const playName = () => {
-    try {
-      audioRef?.current?.play();
-    } catch (e) {}
-  };
 
   return (
     <Container>
@@ -68,20 +67,21 @@ export const Hello: Component = () => {
         <HelloHeading />
         <Heading size={'3'} shadowColor={'blue'}>
           I am{' '}
-          <GradientSpan
-            gradientColor={'brand-to-blue'}
-            forceGradient={shouldForceGradient}
-            onClick={playName}
-            tw={'cursor-pointer'}
+          <AudioButton
+            title={audioButtonTitle}
+            name={audioButtonTitle}
+            aria-label={audioButtonTitle}
+            onClick={() => {
+              playName();
+            }}
           >
-            Jahir Fiquitiva
-          </GradientSpan>
-          <NameAudio ref={audioRef}>
-            <source
-              src={'/static/audio/name-pronunciation.mp3'}
-              type={'audio/mpeg'}
-            />
-          </NameAudio>
+            <GradientSpan
+              gradientColor={'brand-to-blue'}
+              forceGradient={shouldForceGradient}
+            >
+              Jahir Fiquitiva
+            </GradientSpan>
+          </AudioButton>
         </Heading>
         <p tw={'mt-8 mb-4'}>
           Passionate and creative full-stack software engineer based in{' '}
