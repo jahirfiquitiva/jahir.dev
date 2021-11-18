@@ -1,4 +1,5 @@
 import { mdiMenu, mdiPlus } from '@mdi/js';
+import cn from 'classnames';
 import { useState, useMemo } from 'react';
 import tw from 'twin.macro';
 
@@ -102,7 +103,7 @@ const ThemeToggle = () => {
 
 const Navigation = () => {
   const [isExpanded, setExpanded] = useState(false);
-  const itemsClassName = isExpanded ? 'expanded' : undefined;
+  const itemsClassName = cn({ expanded: isExpanded });
 
   return (
     <ToolbarGrid className={itemsClassName}>

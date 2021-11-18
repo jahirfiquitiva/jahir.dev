@@ -1,5 +1,6 @@
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
+import cn from 'classnames';
 import { useMemo, CSSProperties } from 'react';
 import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
@@ -102,10 +103,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
     return (
       <BaseSongCard
         underline={false}
-        className={
-          [!shouldRenderDetails ? 'not-playing' : ''].join(' ').trim() ||
-          undefined
-        }
+        className={cn({ 'not-playing': !shouldRenderDetails })}
         title={`Link to spotify song: ${props.title || 'unknown'}`}
         href={props.url || '#'}
         style={buildStyles({
