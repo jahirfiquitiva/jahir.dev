@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
     "gen-inspo-files": "rm -rf ./data/inspiration/*.js* && NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-inspiration-files.mjs",
     "clean": "rm -rf .next && rm -rf out && rm -rf .contentlayer",
     "predev": "yarn clean && yarn gen-inspo-files",

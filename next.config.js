@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { withContentlayer } = require('next-contentlayer');
 
+const appHeaders = require('./headers');
+
 const buildRedirect = (source, destination, permanent = true) => {
   return {
     source,
@@ -38,17 +40,7 @@ const defaultNextConfig = {
     return config;
   },
   async headers() {
-    return [
-      {
-        source: '/feed.xml',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/rss+xml;charset=utf-8',
-          },
-        ],
-      },
-    ];
+    return appHeaders;
   },
   async redirects() {
     return [
