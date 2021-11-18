@@ -104,18 +104,17 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     isDark ? darkColor || color : color,
   );
 
+  const titleColors = useMemo<CSSProperties>(() => {
+    if (!themeReady) return {};
+    const textColor = getReadableColor(projectColor, isDark);
+    return buildStyles({ '--hl-color': textColor || undefined });
+  }, [themeReady, isDark, projectColor]);
+
   useMemo(() => {
     if (!themeReady) return;
     const newProjectColor = isDark ? darkColor || color : color;
     setProjectColor(newProjectColor);
   }, [isDark, color, darkColor, themeReady]);
-
-  const titleColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
-    return buildStyles({
-      '--hl-color': getReadableColor(projectColor, isDark),
-    });
-  }, [themeReady, isDark, projectColor]);
 
   const shadowColors = useMemo<CSSProperties>(() => {
     if (!themeReady) return {};

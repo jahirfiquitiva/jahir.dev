@@ -4170,11 +4170,6 @@ fraction.js@^4.1.1:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.1.1.tgz#ac4e520473dae67012d618aab91eda09bcb400ff"
   integrity sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==
 
-frostcolor@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/frostcolor/-/frostcolor-3.0.0.tgz#8c958d407245068b5ced25ebc61e26d369bf8bd2"
-  integrity sha512-av8I3GxFlF3i6FBVi3fsr9EM/iCyWi7ELhbX+2w+LGrT6ymbO29JBkRueZbqd8WQHUyV0JCcRa5fzm1llLSeaA==
-
 fs-extra@^10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.0.0.tgz#9ff61b655dde53fb34a82df84bb214ce802e17c1"

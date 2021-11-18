@@ -73,17 +73,11 @@ export const SongCard: Component<SongCardProps> = (props) => {
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
   const textColor = useMemo<string | null>(() => {
-    if (!themeReady) return null;
-    return shouldRenderDetails
-      ? getReadableColor(
-          paletteData
-            ? isDark
-              ? paletteData?.vibrant || null
-              : paletteData?.darkMuted || null
-            : null,
-          isDark,
-        ) || null
-      : null;
+    if (!themeReady || !shouldRenderDetails) return null;
+    const desiredTextColor = isDark
+      ? paletteData?.vibrant
+      : paletteData?.darkMuted;
+    return getReadableColor(desiredTextColor, isDark);
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
   const renderAlbumImage = () => {
