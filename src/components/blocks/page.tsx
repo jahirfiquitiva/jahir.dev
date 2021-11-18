@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic';
 import tw from 'twin.macro';
 
+import { FadeIn } from './fade-in';
+
 import { Toolbar, DynamicMetaTags } from '~/components/blocks';
 import { Component, PageProps, defaultKeywords } from '~/types';
 
@@ -43,7 +45,9 @@ export const Page: Component<PageProps> = (props) => {
       <DynamicMetaTags {...defaultMetaTags} {...otherProps} />
 
       <Toolbar />
-      <SiteContent>{children}</SiteContent>
+      <SiteContent>
+        <FadeIn>{children}</FadeIn>
+      </SiteContent>
       <DynamicFooter />
 
       <DynamicBackToTop />
