@@ -2,13 +2,10 @@ import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 import { theme } from 'twin.macro';
 
-import {
-  MasonryGrid,
-  MasonryBreakpoints,
-  SectionHeading,
-} from '~/components/atoms/complex';
+import { SectionHeading } from '~/components/atoms/complex';
 import { Field, Section, Link } from '~/components/atoms/simple';
 import { BlogPostCard } from '~/components/elements';
+import { Masonry, MasonryBreakpoints } from '~/components/masonry';
 import debounce from '~/lib/debounce';
 import { Component, ComponentProps, Post } from '~/types';
 
@@ -61,11 +58,11 @@ export const Blog: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
-      <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-12'}>
+      <Masonry breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-12'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
         })}
-      </MasonryGrid>
+      </Masonry>
       <Link
         href={'/feed.xml'}
         title={'Link to RSS feed'}

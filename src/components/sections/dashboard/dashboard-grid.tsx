@@ -3,11 +3,8 @@ import { theme } from 'twin.macro';
 import { Activity } from './activity';
 import { Counter } from './counter';
 
-import {
-  MasonryGrid,
-  MasonryBreakpoints,
-} from '~/components/atoms/complex';
 import { SongCard } from '~/components/elements';
+import { Masonry, MasonryBreakpoints } from '~/components/masonry';
 import { Component, ComponentProps, DashboardData } from '~/types';
 
 interface DashboardGridProps extends ComponentProps {
@@ -75,8 +72,8 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
     .filter((it) => it);
 
   return (
-    <MasonryGrid gap={'1rem'} breakpoints={masonryBreakpoints}>
+    <Masonry gap={'1rem'} breakpoints={masonryBreakpoints}>
       {masonryItems}
-    </MasonryGrid>
+    </Masonry>
   );
 };

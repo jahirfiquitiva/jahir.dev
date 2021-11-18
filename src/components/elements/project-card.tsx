@@ -133,7 +133,6 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
     );
   }, [preview]);
 
-  if (!themeReady || !name || !link) return null;
   return (
     <BaseProjectCard
       title={`Link to project: ${name}`}

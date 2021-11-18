@@ -2,10 +2,10 @@ import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
 import cn from 'classnames';
 import { useMemo, CSSProperties } from 'react';
-import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
 import { Heading, Image, LinkCard } from '~/components/atoms/simple';
+import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, TrackData } from '~/types';
 import getReadableColor from '~/utils/colors/get-readable-color';
@@ -53,8 +53,8 @@ export const SongCard: Component<SongCardProps> = (props) => {
   const shouldRenderDetails = !isForNowPlaying || isPlaying;
 
   const { isDark, themeReady } = useTheme();
-  const { data: paletteData } = usePalette(
-    shouldRenderDetails ? props.image?.url ?? '' : '',
+  const { data: paletteData } = useSafePalette(
+    shouldRenderDetails ? props.image?.url : '',
   );
 
   const cardColors = useMemo<CSSProperties>(() => {
