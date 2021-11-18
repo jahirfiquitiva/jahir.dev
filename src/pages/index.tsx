@@ -1,32 +1,21 @@
 import { GetStaticProps } from 'next';
-import dynamic from 'next/dynamic';
 
 import { allProjects } from '.contentlayer/data';
 import type { Project } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
-import { Home, ProjectsProps } from '~/components/sections';
+import { Home, Projects } from '~/components/sections';
 import pick from '~/lib/pick';
-import {
-  Component,
-  ComponentProps,
-  ProjectProps as ProjectType,
-} from '~/types';
-
-const DynamicProjects = dynamic<ProjectsProps>(
-  () =>
-    import('~/components/sections/home/projects').then((mod) => mod.Projects),
-  { ssr: false },
-);
+import { Component, ComponentProps, ProjectProps } from '~/types';
 
 interface HomePageProps extends ComponentProps {
-  projects?: Array<ProjectType>;
+  projects?: Array<ProjectProps>;
 }
 
 const HomePage: Component<HomePageProps> = (props) => {
   return (
     <Page>
       <Home />
-      <DynamicProjects projects={props.projects} />
+      <Projects projects={props.projects} />
     </Page>
   );
 };
