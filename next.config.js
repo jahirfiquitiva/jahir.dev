@@ -1,8 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const enableBundleAnalysis = process.env.ANALYZE === 'true';
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: enableBundleAnalysis,
-});
 const { withContentlayer } = require('next-contentlayer');
 
 const buildRedirect = (source, destination, permanent = true) => {
@@ -88,7 +84,4 @@ const defaultNextConfig = {
   },
 };
 
-const contentLayerConfig = withContentlayer()(defaultNextConfig);
-module.exports = enableBundleAnalysis
-  ? withBundleAnalyzer(contentLayerConfig)
-  : contentLayerConfig;
+module.exports = withContentlayer()(defaultNextConfig);
