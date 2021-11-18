@@ -142,7 +142,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
 
   const postColor = useMemo<string | undefined>(() => {
-    if (!themeReady) return defaultColor;
+    if (!themeReady || !paletteData) return defaultColor;
     return getColorFromPalette(paletteData, isDark) || defaultColor;
   }, [themeReady, isDark, paletteData, defaultColor]);
 

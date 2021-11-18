@@ -57,14 +57,10 @@ export const SongCard: Component<SongCardProps> = (props) => {
   );
 
   const cardColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
-    const backgroundColor: string | undefined = shouldRenderDetails
-      ? paletteData
-        ? isDark
-          ? paletteData?.darkMuted || undefined
-          : paletteData?.vibrant || undefined
-        : undefined
-      : undefined;
+    if (!themeReady || !shouldRenderDetails || !paletteData) return {};
+    const backgroundColor = isDark
+      ? paletteData.darkMuted
+      : paletteData.vibrant;
     const shadowColors = buildShadowStyles(backgroundColor, 0.25, 0.45, isDark);
     return {
       ...shadowColors,
@@ -73,10 +69,10 @@ export const SongCard: Component<SongCardProps> = (props) => {
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
   const textColor = useMemo<string | null>(() => {
-    if (!themeReady || !shouldRenderDetails) return null;
+    if (!themeReady || !shouldRenderDetails || !paletteData) return null;
     const desiredTextColor = isDark
-      ? paletteData?.vibrant
-      : paletteData?.darkMuted;
+      ? paletteData.vibrant
+      : paletteData.darkMuted;
     return getReadableColor(desiredTextColor, isDark);
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 

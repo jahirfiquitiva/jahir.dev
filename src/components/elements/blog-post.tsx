@@ -54,7 +54,7 @@ export const BlogPost: Component<BlogPostProps> = (props) => {
   const { data: heroPalette } = usePalette(hero || '');
 
   const titleStyles = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
+    if (!themeReady || !heroPalette) return {};
     const color = hexToRGB(
       getColorFromPalette(heroPalette, isDark) || '#fff',
       0.4,
