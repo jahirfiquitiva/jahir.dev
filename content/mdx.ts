@@ -8,7 +8,12 @@ import remarkGfm from 'remark-gfm';
 
 import { RehypeElement } from './../src/types';
 
-const customizeTOC = (toc: RehypeElement): RehypeElement => {
+const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
+  try {
+    const { children } = toc;
+    const childrenOfChildren = children?.[0]?.children;
+    if (!children?.length || !childrenOfChildren?.length) return null;
+  } catch (e) {}
   return {
     type: 'element',
     tagName: 'div',

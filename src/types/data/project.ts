@@ -1,4 +1,5 @@
 export interface ProjectProps {
+  slug: string;
   name: string;
   description: string;
   icon: string;
@@ -9,5 +10,4 @@ export interface ProjectProps {
   tag?: string;
   stack?: Array<string>;
   hide?: boolean;
-  slug?: string;
 }

@@ -37,12 +37,15 @@ masonryBreakpoints[theme`screens.md`] = 2;
 
 interface ProjectsProps extends ComponentProps {
   projects?: Array<ProjectProps>;
+  full?: boolean;
 }
 
-export const Projects: Component<ProjectsProps> = ({ projects }) => {
+export const Projects: Component<ProjectsProps> = (props) => {
+  const { projects, full } = props;
+
   return (
     <section id={'projects'}>
-      <Divider gradientColor={'blue-to-green'} />
+      {!full && <Divider gradientColor={'blue-to-green'} />}
 
       <ProjectsHeader>
         <SectionHeading
@@ -80,6 +83,7 @@ export const Projects: Component<ProjectsProps> = ({ projects }) => {
                   `${project.name.toLowerCase().split(' ').join('-')}-${index}`
                 }
                 {...project}
+                link={full ? `/projects/${project.slug}` : project.link}
               />
             );
           })}
