@@ -1,3 +1,4 @@
+import { keyframes } from '@emotion/react';
 import tw, { styled } from 'twin.macro';
 
 import { Chip, Image, Link } from '~/components/atoms/simple';
@@ -17,7 +18,7 @@ const Animoji = tw(Image)`
   bg-accent-animoji
 `;
 
-const BaseStateChip = tw(Chip)`
+const StateChip = tw(Chip)`
   --color-values[75, 101, 132]
   --bg-color[rgba(var(--color-values), 0.1)]
   --border-color[rgba(var(--color-values), 0.35)]
@@ -31,24 +32,27 @@ const BaseStateChip = tw(Chip)`
   tracking-button
 `;
 
-const StateChip = styled(BaseStateChip)`
-  @keyframes pulse-animation {
-    0% {
-      box-shadow: 0 0 0 0px rgba(var(--color-values), 0.5);
-    }
-    100% {
-      box-shadow: 0 0 0 8px rgba(var(--color-values), 0);
-    }
+const pulse = keyframes`
+  from {
+    box-shadow: 0 0 0 0px rgba(var(--color-values), 0.5);
+  }
+  to {
+    box-shadow: 0 0 0 8px rgba(var(--color-values), 0);
   }
 `;
 
-const StateCircle = tw.span`
+const BaseStateCircle = tw.span`
   w-10
   h-10
   rounded-half
   mr-8
   background-color[rgb(var(--color-values))]
-  animation[pulse-animation 2s infinite]
+  animation-duration[2s]
+  animation-iteration-count[infinite]
+`;
+
+const StateCircle = styled(BaseStateCircle)`
+  animation-name: ${pulse};
 `;
 
 type StateTextAndColor = {

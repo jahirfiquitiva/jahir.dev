@@ -8,7 +8,8 @@ export const Chip = tw.span`
   items-center
   justify-center
   py-4
-  px-6
+  pl-6
+  pr-7
   text-tiny
   rounded-full
   border
@@ -20,12 +21,14 @@ export const Chip = tw.span`
   transition-all
   duration-200
   motion-reduce:transition-none
+  line-height[1.8]
 
   hocus:(no-underline text-text-primary background-color[var(--bg-color)])
   all-child:(first-of-type:(mr-4))
 `;
 
 export const ImageChip = tw(Chip)`
+  line-height[unset]
   p-4 pr-8 
   all-child:(first-of-type:(mr-4!))
   [img]:(rounded-half)
