@@ -1,13 +1,10 @@
 import { mdiFileCodeOutline } from '@mdi/js';
 import tw, { theme } from 'twin.macro';
 
-import {
-  MasonryGrid,
-  MasonryBreakpoints,
-  SectionHeading,
-} from '~/components/atoms/complex';
+import { SectionHeading } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/components/elements';
+import { Masonry, MasonryBreakpoints } from '~/components/masonry';
 import { Component, ComponentProps, ProjectProps } from '~/types';
 
 const ProjectsHeader = tw.div`
@@ -69,26 +66,20 @@ export const Projects: Component<ProjectsProps> = (props) => {
         </ProjectsHeaderLinksContainer>
       </ProjectsHeader>
 
-      {projects && (
-        <MasonryGrid
-          breakpoints={masonryBreakpoints}
-          gap={'1rem'}
-          tw={'pt-12 pb-24'}
-        >
-          {(projects || []).map((project, index) => {
-            return (
-              <ProjectCard
-                key={
-                  project.slug ||
-                  `${project.name.toLowerCase().split(' ').join('-')}-${index}`
-                }
-                {...project}
-                link={full ? `/projects/${project.slug}` : project.link}
-              />
-            );
-          })}
-        </MasonryGrid>
-      )}
+      <Masonry breakpoints={masonryBreakpoints} gap={'1rem'} tw={'pt-12 pb-24'}>
+        {(projects || []).map((project, index) => {
+          return (
+            <ProjectCard
+              key={
+                project.slug ||
+                `${project.name.toLowerCase().split(' ').join('-')}-${index}`
+              }
+              {...project}
+              link={full ? `/projects/${project.slug}` : project.link}
+            />
+          );
+        })}
+      </Masonry>
     </section>
   );
 };

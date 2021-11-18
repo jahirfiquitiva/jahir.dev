@@ -151,7 +151,6 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     return getReadableColor(postColor, isDark);
   }, [themeReady, isDark, postColor]);
 
-  if (!themeReady || !title || !slug) return null;
   return (
     <BaseBlogPostCard
       title={`Link to blog post: ${title}`}
