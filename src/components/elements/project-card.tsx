@@ -100,24 +100,20 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     props;
 
   const { isDark, themeReady } = useTheme();
-  const [projectColor, setProjectColor] = useState(
-    isDark ? darkColor || color : color,
-  );
+
+  const projectColor = useMemo<string | null | undefined>(() => {
+    if (!themeReady) return null;
+    return isDark ? darkColor || color : color;
+  }, [isDark, color, darkColor, themeReady]);
 
   const titleColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
+    if (!themeReady || !projectColor) return {};
     const textColor = getReadableColor(projectColor, isDark);
     return buildStyles({ '--hl-color': textColor || undefined });
   }, [themeReady, isDark, projectColor]);
 
-  useMemo(() => {
-    if (!themeReady) return;
-    const newProjectColor = isDark ? darkColor || color : color;
-    setProjectColor(newProjectColor);
-  }, [isDark, color, darkColor, themeReady]);
-
   const shadowColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
+    if (!themeReady || !projectColor) return {};
     return buildShadowStyles(projectColor, 0.2, 0.4, isDark, 0.05);
   }, [themeReady, isDark, projectColor]);
 
