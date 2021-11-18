@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
+import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post } from '~/types';
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
@@ -135,9 +135,9 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   } = props;
   const { isDark, themeReady } = useTheme();
 
-  const heroUrl =
-    hero.length > 0 ? (hero.startsWith('..') ? null : hero) : null;
-  const { data: paletteData } = usePalette(heroUrl || '');
+  const { data: paletteData } = useSafePalette(
+    hero.startsWith('..') ? null : hero,
+  );
 
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
 
@@ -161,7 +161,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         backgroundColor: postColor || 'unset',
       }}
     >
-      <BlogPostImage src={heroUrl || ''} />
+      <BlogPostImage src={hero || ''} />
       <Scrim />
       <Content>
         <Heading

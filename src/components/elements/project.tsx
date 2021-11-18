@@ -1,8 +1,8 @@
 import { CSSProperties, useMemo } from 'react';
-import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
+import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
 import {
   Component,
@@ -55,7 +55,7 @@ export const Project: Component<ProjectProps> = (props) => {
   const { slug, name, preview, children } = props;
   const hero = `/static/images/projects/${preview}`;
   const { isDark, themeReady } = useTheme();
-  const { data: heroPalette } = usePalette(hero || '');
+  const { data: heroPalette } = useSafePalette(hero);
 
   const titleStyles = useMemo<CSSProperties>(() => {
     if (!themeReady || !heroPalette) return {};

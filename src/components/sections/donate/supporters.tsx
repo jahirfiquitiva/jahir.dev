@@ -1,5 +1,4 @@
 import { Fragment, useMemo } from 'react';
-import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
 
 import { SectionHeading, ChipGroup } from '~/components/atoms/complex';
@@ -10,6 +9,7 @@ import {
   ImageChip,
   Divider,
 } from '~/components/atoms/simple';
+import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Supporter, supporters } from '~/types';
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
@@ -38,7 +38,7 @@ interface SupporterChipProps extends ComponentProps, Supporter {}
 const SupporterChip: Component<SupporterChipProps> = (props) => {
   const { link, name, photo } = props;
   const { isDark, themeReady } = useTheme();
-  const { data: paletteData } = usePalette(photo || '');
+  const { data: paletteData } = useSafePalette(photo);
 
   const color = useMemo<string | null>(() => {
     if (!themeReady) return null;
