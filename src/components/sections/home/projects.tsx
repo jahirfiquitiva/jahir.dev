@@ -8,8 +8,7 @@ import {
 } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
 import { GitHubStats, ProjectCard } from '~/components/elements';
-import useHasMounted from '~/hooks/useHasMounted';
-import { Component, projects } from '~/types';
+import { Component, ComponentProps, ProjectProps } from '~/types';
 
 const ProjectsHeader = tw.div`
   w-full
@@ -36,29 +35,12 @@ masonryBreakpoints['0'] = 1;
 masonryBreakpoints[theme`screens.2xs`] = 1;
 masonryBreakpoints[theme`screens.md`] = 2;
 
-const FilledProjectsGrid: Component = () => {
-  const hasMounted = useHasMounted();
+interface ProjectsProps extends ComponentProps {
+  projects?: Array<ProjectProps>;
+}
 
-  if (!hasMounted) return null;
-  return (
-    <MasonryGrid
-      breakpoints={masonryBreakpoints}
-      gap={'1rem'}
-      tw={'pt-16 pb-24'}
-    >
-      {projects.map((project, index) => {
-        return (
-          <ProjectCard
-            key={`${project.title.toLowerCase().split(' ').join('-')}-${index}`}
-            {...project}
-          />
-        );
-      })}
-    </MasonryGrid>
-  );
-};
-
-export const Projects: Component = () => {
+export const Projects: Component<ProjectsProps> = ({ projects }) => {
+  console.log(projects);
   return (
     <section id={'projects'}>
       <Divider gradientColor={'blue-to-green'} />
@@ -85,7 +67,25 @@ export const Projects: Component = () => {
         </ProjectsHeaderLinksContainer>
       </ProjectsHeader>
 
-      <FilledProjectsGrid />
+      {projects && (
+        <MasonryGrid
+          breakpoints={masonryBreakpoints}
+          gap={'1rem'}
+          tw={'pt-16 pb-24'}
+        >
+          {(projects || []).map((project, index) => {
+            return (
+              <ProjectCard
+                key={
+                  project.slug ||
+                  `${project.name.toLowerCase().split(' ').join('-')}-${index}`
+                }
+                {...project}
+              />
+            );
+          })}
+        </MasonryGrid>
+      )}
     </section>
   );
 };

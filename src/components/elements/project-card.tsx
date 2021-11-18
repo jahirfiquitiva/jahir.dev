@@ -96,7 +96,7 @@ const PreviewImage = tw.div`
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
-  const { title, description, link, icon, preview, stack, color, darkColor } =
+  const { name, description, link, icon, preview, stack, color, darkColor } =
     props;
 
   const { isDark, themeReady } = useTheme();
@@ -127,16 +127,16 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     return (
       <PreviewImage
         css={css`
-          background-image: url('${preview}');
+          background-image: url('/static/images/projects/${preview}');
         `}
       />
     );
   }, [preview]);
 
-  if (!title || !link) return null;
+  if (!name || !link) return null;
   return (
     <BaseProjectCard
-      title={`Link to project: ${title}`}
+      title={`Link to project: ${name}`}
       href={link}
       style={shadowColors}
       underline={false}
@@ -144,9 +144,9 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     >
       <DetailsContainer>
         <IconHeadingContainer>
-          <Image src={icon} alt={title} size={44} />
+          <Image src={`/static/images/projects/${icon}`} alt={name} size={44} />
           <ProjectHeading size={'4'} style={titleColors}>
-            {title}
+            {name}
           </ProjectHeading>
         </IconHeadingContainer>
         <DescriptionContainer>

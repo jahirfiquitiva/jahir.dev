@@ -14,7 +14,7 @@ const getItemFavicon = async (link: string) =>
     },
   );
 
-const computedInspirationFields: ComputedFields = {
+const computedFields: ComputedFields = {
   favicon: {
     type: 'string',
     resolve: async (doc) => {
@@ -32,7 +32,7 @@ const InspirationItem = defineDocumentType(() => ({
     link: { type: 'string', required: true },
     favicon: { type: 'string' },
   },
-  computedFields: computedInspirationFields,
+  computedFields,
 }));
 
 export default InspirationItem;
