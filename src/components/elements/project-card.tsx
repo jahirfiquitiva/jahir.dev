@@ -1,5 +1,5 @@
 import { useMemo, CSSProperties, memo } from 'react';
-import tw, { css } from 'twin.macro';
+import tw from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import { Stack } from '~/components/elements';
@@ -10,6 +10,7 @@ import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
 
 const BaseProjectCard = tw(LinkCard)`
+  relative
   w-full
   overflow-hidden
   grid
@@ -31,7 +32,6 @@ const BaseProjectCard = tw(LinkCard)`
     [p]:(text-text-primary)
     [img]:(transform scale-105 opacity-100)
     [ul]:(opacity-100)
-    [div]:(last-of-type:(opacity-100 background-size[105%]))
   )
 `;
 
@@ -80,17 +80,32 @@ const ProjectHeading = tw(Heading)`
   text-shadow[1px 2px 2px var(--projects-card-text-shadow)]
 `;
 
-const PreviewImage = tw.div`
+const PreviewImage = tw(Image)`
   h-full w-full
+  relative
+  top-0
+  right-0
+  bottom-0
+  left-0
+  truncate
   rounded-l-none
   rounded-r-lg
-  opacity-75
-  bg-clip-border
-  bg-no-repeat
-  bg-right-bottom
-  background-size[100%]
-  filter
-  drop-shadow-project-preview
+
+  z-index[0]
+
+  [> span:first-of-type]:(flex! flex-col justify-end)
+  [> span:first-of-type, img]:(min-h-full!)
+
+  [img]:(
+    h-full w-full
+    rounded-l-none
+    rounded-r-lg
+    m-0!
+    opacity-75
+    filter
+    object-cover
+    drop-shadow-project-preview
+  )
 `;
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
@@ -126,12 +141,11 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
     if (!preview) return null;
     return (
       <PreviewImage
-        css={css`
-          background-image: url('/static/images/projects/${preview}');
-        `}
+        src={`/static/images/projects/${preview}`}
+        alt={`Preview image for: ${name}`}
       />
     );
-  }, [preview]);
+  }, [preview, name]);
 
   return (
     <BaseProjectCard
