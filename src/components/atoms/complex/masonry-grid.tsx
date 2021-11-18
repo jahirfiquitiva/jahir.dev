@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, Children } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import tw from 'twin.macro';
 
@@ -28,6 +28,8 @@ const BaseMasonryGrid: Component<MasonryGridProps> = (props) => {
     return mapColumnsBreakPoints(breakpoints);
   }, [breakpoints]);
 
+  const childrenCount = Children.count(children);
+  if (!childrenCount) return null;
   return (
     <ResponsiveMasonry
       columnsCountBreakPoints={mappedBreakpoints}

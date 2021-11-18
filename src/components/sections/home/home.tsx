@@ -1,6 +1,5 @@
 import { Hello } from './hello';
 import { Intro } from './intro';
-import { Projects } from './projects';
 import { Skills } from './skills';
 
 import { Component } from '~/types';
@@ -13,7 +12,6 @@ export const Home: Component = () => {
         <Intro />
       </section>
       <Skills />
-      <Projects />
     </>
   );
 };

@@ -4,7 +4,7 @@ import { Button } from '~/components/atoms/simple';
 
 export const BaseToolbarButtonStyles = tw`
   tracking-unset
-  px-4 py-0
+  px-6 py-0
   min-w-button
   bg-transparent
   text-transparent

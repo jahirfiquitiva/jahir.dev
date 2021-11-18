@@ -1,39 +1,31 @@
+import { keyframes } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { styled } from 'twin.macro';
 
 import { Heading } from '~/components/atoms/simple';
 import { Component } from '~/types';
 
+const wave = keyframes`
+  from, 50%, to {
+    transform: rotate(0deg);
+  }
+  10%, 30% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: rotate(12deg);
+  }
+  40% {
+    transform: rotate(9deg);
+  }
+`;
+
 const WaveSpan = styled.span`
   display: inline-block;
-  animation-name: wave-animation;
+  animation-name: ${wave};
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
-
-  @keyframes wave-animation {
-    0% {
-      transform: rotate(0deg);
-    }
-    10% {
-      transform: rotate(-10deg);
-    }
-    20% {
-      transform: rotate(12deg);
-    }
-    30% {
-      transform: rotate(-10deg);
-    }
-    40% {
-      transform: rotate(9deg);
-    }
-    50% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
 `;
 
 const hellos = [

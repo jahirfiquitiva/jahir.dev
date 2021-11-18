@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import cn from 'classnames';
 import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from 'react';
 import tw, { styled } from 'twin.macro';
 
@@ -110,7 +111,7 @@ const BaseField: Component<BaseFieldProps> = (props) => {
 
   return (
     <LabeledFieldWrapper className={className}>
-      <Label htmlFor={name} className={hideLabel ? 'hidden' : undefined}>
+      <Label htmlFor={name} className={cn({ hidden: hideLabel })}>
         {label || placeholder}
       </Label>
       <FieldWrapper>
@@ -142,7 +143,7 @@ export const Field: Component<FieldProps> = (props) => {
   const inputProps = {
     name,
     placeholder,
-    className: iconPath ? 'with-icon' : undefined,
+    className: cn({ 'with-icon': (iconPath?.length || 0) > 0 }),
     disabled,
     required,
     value,

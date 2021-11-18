@@ -142,9 +142,14 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
 
   const postColor = useMemo<string | undefined>(() => {
-    if (!themeReady) return defaultColor;
+    if (!themeReady || !paletteData) return defaultColor;
     return getColorFromPalette(paletteData, isDark) || defaultColor;
   }, [themeReady, isDark, paletteData, defaultColor]);
+
+  const textColor = useMemo<string | null>(() => {
+    if (!themeReady) return null;
+    return getReadableColor(postColor, isDark);
+  }, [themeReady, isDark, postColor]);
 
   return (
     <BaseBlogPostCard
@@ -162,9 +167,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         <Heading
           size={'4'}
           fontSize={'xs'}
-          style={buildStyles({
-            '--hl-color': getReadableColor(postColor, isDark),
-          })}
+          style={buildStyles({ '--hl-color': textColor || undefined })}
         >
           {title}
         </Heading>

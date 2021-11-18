@@ -73,10 +73,12 @@ module.exports = {
       },
     },
   },
+  corePlugins: {
+    appearance: false,
+    float: false,
+  },
   variants: {
     extend: {},
   },
-  plugins: [
-    require('tailwindcss-textshadow'),
-  ],
+  plugins: [require('tailwindcss-textshadow')],
 };

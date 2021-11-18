@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import fetch from 'isomorphic-fetch';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { NextApiFunc } from '~/types';
@@ -34,7 +33,7 @@ export default async (
 
     res.setHeader(
       'Cache-Control',
-      'public, s-maxage=3600, stale-while-revalidate=1200',
+      'public, s-maxage=3600, stale-while-revalidate=1800',
     );
 
     return res.status(200).json({

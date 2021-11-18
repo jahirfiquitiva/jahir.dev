@@ -66,7 +66,11 @@ export const Blog: Component<BlogGridProps> = (props) => {
           return <BlogPostCard key={i} {...post} />;
         })}
       </MasonryGrid>
-      <Link href={'/feed.xml'} title={'Link to RSS feed'} tw={'mb-16'}>
+      <Link
+        href={'/feed.xml'}
+        title={'Link to RSS feed'}
+        tw={'mb-16 inline-flex self-start'}
+      >
         RSS Feed
       </Link>
     </Section>

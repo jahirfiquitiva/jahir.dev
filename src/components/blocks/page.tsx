@@ -1,15 +1,29 @@
+import dynamic from 'next/dynamic';
 import tw from 'twin.macro';
 
-import { BackToTop } from '~/components/atoms/complex';
-import { Toolbar, DynamicMetaTags, Footer } from '~/components/blocks';
+import { FadeInMain } from './fade-in';
+
+import { Toolbar, DynamicMetaTags } from '~/components/blocks';
 import { Component, PageProps, defaultKeywords } from '~/types';
+
+const DynamicFooter = dynamic<unknown>(
+  () => import('~/components/blocks/footer').then((mod) => mod.Footer),
+  { ssr: false },
+);
+const DynamicBackToTop = dynamic<unknown>(
+  () =>
+    import('~/components/atoms/complex/back-to-top').then(
+      (mod) => mod.BackToTop,
+    ),
+  { ssr: false },
+);
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +
   '\uD83C\uDDE8\uD83C\uDDF4.\n' +
   'This website includes information about me, my skills and my projects.';
 
-const SiteContent = tw.main`
+const Main = tw(FadeInMain)`
   flex flex-col flex-1
   w-full max-w-3xl
   mx-auto my-0
@@ -31,10 +45,12 @@ export const Page: Component<PageProps> = (props) => {
       <DynamicMetaTags {...defaultMetaTags} {...otherProps} />
 
       <Toolbar />
-      <SiteContent>{children}</SiteContent>
-      <Footer />
+      <Main tw={'animation-duration[300ms] animation-delay[150ms]'}>
+        {children}
+      </Main>
+      <DynamicFooter />
 
-      <BackToTop />
+      <DynamicBackToTop />
     </>
   );
 };

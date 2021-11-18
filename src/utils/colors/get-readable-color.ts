@@ -1,29 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Color } from 'frostcolor';
+import { colord, extend } from 'colord';
+import a11yPlugin from 'colord/plugins/a11y';
 
-const lightThemeThreshold = 48;
-const darkThemeThreshold = 85;
+extend([a11yPlugin]);
 
 const getReadableColor = (
-  color?: string | null,
+  desiredFgColor?: string | null,
   isDark?: boolean,
-): string | null | undefined => {
-  if (!color) return color;
-  let newColor = Color.fromString(color);
-  try {
-    if (isDark) {
-      while (newColor.getBrightness() < darkThemeThreshold) {
-        newColor = newColor.lighten(0.1);
-      }
-    } else {
-      while (newColor.getBrightness() > lightThemeThreshold) {
-        newColor = newColor.darken(0.1);
-      }
-    }
-  } catch (e: any) {}
-  return newColor.toHexString();
+): string | null => {
+  if (!desiredFgColor) return null;
+  let fgColor = colord(desiredFgColor);
+  // Colors from css variables: primary
+  const bgColor = isDark ? '#080f1e' : '#f6f9fe';
+  while (!fgColor.isReadable(bgColor)) {
+    fgColor = isDark ? fgColor.lighten() : fgColor.darken();
+  }
+  return fgColor.toHex();
 };
 
 export default getReadableColor;

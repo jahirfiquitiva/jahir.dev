@@ -1,4 +1,4 @@
-import { useMemo, useState, CSSProperties } from 'react';
+import { useMemo, CSSProperties, memo } from 'react';
 import tw, { css } from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
@@ -95,30 +95,25 @@ const PreviewImage = tw.div`
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
-export const ProjectCard: Component<ProjectCardProps> = (props) => {
-  const { title, description, link, icon, preview, stack, color, darkColor } =
+const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
+  const { name, description, link, icon, preview, stack, color, darkColor } =
     props;
 
   const { isDark, themeReady } = useTheme();
-  const [projectColor, setProjectColor] = useState(
-    isDark ? darkColor || color : color,
-  );
 
-  useMemo(() => {
-    if (!themeReady) return;
-    const newProjectColor = isDark ? darkColor || color : color;
-    setProjectColor(newProjectColor);
+  const projectColor = useMemo<string | null | undefined>(() => {
+    if (!themeReady) return null;
+    return isDark ? darkColor || color : color;
   }, [isDark, color, darkColor, themeReady]);
 
   const titleColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
-    return buildStyles({
-      '--hl-color': getReadableColor(projectColor, isDark),
-    });
+    if (!themeReady || !projectColor) return {};
+    const textColor = getReadableColor(projectColor, isDark);
+    return buildStyles({ '--hl-color': textColor || undefined });
   }, [themeReady, isDark, projectColor]);
 
   const shadowColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
+    if (!themeReady || !projectColor) return {};
     return buildShadowStyles(projectColor, 0.2, 0.4, isDark, 0.05);
   }, [themeReady, isDark, projectColor]);
 
@@ -132,16 +127,16 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     return (
       <PreviewImage
         css={css`
-          background-image: url('${preview}');
+          background-image: url('/static/images/projects/${preview}');
         `}
       />
     );
   }, [preview]);
 
-  if (!title || !link) return null;
+  if (!themeReady || !name || !link) return null;
   return (
     <BaseProjectCard
-      title={`Link to project: ${title}`}
+      title={`Link to project: ${name}`}
       href={link}
       style={shadowColors}
       underline={false}
@@ -149,9 +144,9 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     >
       <DetailsContainer>
         <IconHeadingContainer>
-          <Image src={icon} alt={title} size={44} />
+          <Image src={`/static/images/projects/${icon}`} alt={name} size={44} />
           <ProjectHeading size={'4'} style={titleColors}>
-            {title}
+            {name}
           </ProjectHeading>
         </IconHeadingContainer>
         <DescriptionContainer>
@@ -163,3 +158,5 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
     </BaseProjectCard>
   );
 };
+
+export const ProjectCard = memo(DefaultProjectCard);

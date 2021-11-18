@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable max-len */
-require('dotenv').config();
+const withPlugins = require('next-compose-plugins');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 const { withContentlayer } = require('next-contentlayer');
-
-const { getPostsToRedirect } = require('./scripts/posts-to-redirect');
 
 const buildRedirect = (source, destination, permanent = true) => {
   return {
@@ -11,13 +11,6 @@ const buildRedirect = (source, destination, permanent = true) => {
     destination,
     permanent,
   };
-};
-
-const buildExternalBlogPostsRedirects = async () => {
-  const matters = await getPostsToRedirect().catch(() => []);
-  return matters.map((it) => {
-    return buildRedirect(`/blog/${it.slug}`, it.link);
-  });
 };
 
 const defaultNextConfig = {
@@ -43,7 +36,6 @@ const defaultNextConfig = {
         'react-dom': 'preact/compat',
       });
     }
-
     return config;
   },
   async headers() {
@@ -60,35 +52,43 @@ const defaultNextConfig = {
     ];
   },
   async redirects() {
-    const postsRedirects = await buildExternalBlogPostsRedirects().catch(
-      () => [],
-    );
     return [
-      ...postsRedirects,
-      buildRedirect('/assets/:path*', '/static/:path*'),
+      /* Blog posts redirections */
       buildRedirect(
-        '/static/images/posts/:path*',
-        '/static/images/blog/:path*',
+        '/blog/a-priori-care',
+        'https://medium.com/@jahirfiquitiva/taking-a-priori-care-of-your-future-job-7ed24cf18ed2',
       ),
+      buildRedirect(
+        '/blog/md-iconography-guidelines',
+        'https://stories.uplabs.com/what-google-missed-in-their-guidelines-for-material-design-iconography-daf9f88000ec',
+      ),
+      buildRedirect('/blog/post-of-fame', '/donate#thanks'),
+      /* Old static assets paths to news */
+      buildRedirect('/assets/:path*', '/static/:path*'),
+      /* Needed for android dashboards */
       buildRedirect(
         '/static/images/me/me.jpg',
         '/static/images/jahir/jahir.jpg',
       ),
+      /* Dashbud links */
       buildRedirect('/dashbud', 'https://dashbud.dev'),
       buildRedirect('/dashbud/:path*', 'https://dashbud.dev'),
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
       buildRedirect('/dashsetup/:path*', 'https://dashbud.dev'),
+      /* Other redirections */
       buildRedirect('/links', '/'),
       buildRedirect('/music', '/dashboard'),
-      buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
       buildRedirect('/support', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),
-      buildRedirect('/blog/post-of-fame', '/donate#thanks'),
       buildRedirect('/uses', '/blog/uses'),
       buildRedirect('/releases', '/gh-releases'),
       buildRedirect('/feed', '/feed.xml'),
+      buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
     ];
   },
 };
 
-module.exports = withContentlayer()(defaultNextConfig);
+module.exports = withPlugins(
+  [[withBundleAnalyzer], [withContentlayer()]],
+  defaultNextConfig,
+);

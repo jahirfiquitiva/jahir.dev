@@ -1,5 +1,6 @@
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
+import cn from 'classnames';
 import { useMemo, CSSProperties } from 'react';
 import { usePalette } from 'react-palette';
 import tw from 'twin.macro';
@@ -57,14 +58,10 @@ export const SongCard: Component<SongCardProps> = (props) => {
   );
 
   const cardColors = useMemo<CSSProperties>(() => {
-    if (!themeReady) return {};
-    const backgroundColor: string | undefined = shouldRenderDetails
-      ? paletteData
-        ? isDark
-          ? paletteData?.darkMuted || undefined
-          : paletteData?.vibrant || undefined
-        : undefined
-      : undefined;
+    if (!themeReady || !shouldRenderDetails || !paletteData) return {};
+    const backgroundColor = isDark
+      ? paletteData.darkMuted
+      : paletteData.vibrant;
     const shadowColors = buildShadowStyles(backgroundColor, 0.25, 0.45, isDark);
     return {
       ...shadowColors,
@@ -73,17 +70,11 @@ export const SongCard: Component<SongCardProps> = (props) => {
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
   const textColor = useMemo<string | null>(() => {
-    if (!themeReady) return null;
-    return shouldRenderDetails
-      ? getReadableColor(
-          paletteData
-            ? isDark
-              ? paletteData?.vibrant || null
-              : paletteData?.darkMuted || null
-            : null,
-          isDark,
-        ) || null
-      : null;
+    if (!themeReady || !shouldRenderDetails || !paletteData) return null;
+    const desiredTextColor = isDark
+      ? paletteData.vibrant
+      : paletteData.darkMuted;
+    return getReadableColor(desiredTextColor, isDark);
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
 
   const renderAlbumImage = () => {
@@ -112,10 +103,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
     return (
       <BaseSongCard
         underline={false}
-        className={
-          [!shouldRenderDetails ? 'not-playing' : ''].join(' ').trim() ||
-          undefined
-        }
+        className={cn({ 'not-playing': !shouldRenderDetails })}
         title={`Link to spotify song: ${props.title || 'unknown'}`}
         href={props.url || '#'}
         style={buildStyles({

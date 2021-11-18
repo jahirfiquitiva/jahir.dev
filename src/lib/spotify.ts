@@ -1,7 +1,5 @@
 import querystring from 'querystring';
 
-import fetch from 'isomorphic-fetch';
-
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
 const refreshToken = process.env.SPOTIFY_CLIENT_TOKEN || '';

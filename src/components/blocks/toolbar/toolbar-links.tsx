@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import tw from 'twin.macro';
@@ -18,7 +19,7 @@ const toolbarLinksList = [
     key: 2,
     emoji: '⚡️',
     title: 'Uses',
-    href: '/uses',
+    href: '/blog/uses',
     gradient: 'yellow-to-orange',
   },
   {
@@ -45,7 +46,7 @@ const ToolbarLinksContainer = tw.ul`
   col-start-1
   col-end-3
   sm:(justify-start gap-4)
-  lg:(justify-end col-start-2)
+  lg:(justify-end col-start-2 gap-5)
   [li]:(inline-block m-0 p-0)
 `;
 
@@ -73,7 +74,7 @@ export const ToolbarLinks = () => {
               href={link.href}
               emoji={link.emoji}
               gradientColor={link.gradient as GradientOptions}
-              className={activeLink === link.key ? 'active' : undefined}
+              className={cn({ active: activeLink === link.key })}
             >
               {link.title}
             </ToolbarLink>
