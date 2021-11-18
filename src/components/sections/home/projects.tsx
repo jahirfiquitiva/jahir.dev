@@ -35,7 +35,7 @@ masonryBreakpoints['0'] = 1;
 masonryBreakpoints[theme`screens.2xs`] = 1;
 masonryBreakpoints[theme`screens.md`] = 2;
 
-interface ProjectsProps extends ComponentProps {
+export interface ProjectsProps extends ComponentProps {
   projects?: Array<ProjectProps>;
   full?: boolean;
 }
