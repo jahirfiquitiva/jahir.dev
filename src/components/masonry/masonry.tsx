@@ -1,3 +1,4 @@
+// Heavily based on https://github.com/cedricdelpoux/react-responsive-masonry
 import { Children, isValidElement, useMemo } from 'react';
 import tw from 'twin.macro';
 
