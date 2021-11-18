@@ -41,7 +41,11 @@ const FilledProjectsGrid: Component = () => {
 
   if (!hasMounted) return null;
   return (
-    <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'py-20'}>
+    <MasonryGrid
+      breakpoints={masonryBreakpoints}
+      gap={'1rem'}
+      tw={'pt-16 pb-24'}
+    >
       {projects.map((project, index) => {
         return (
           <ProjectCard

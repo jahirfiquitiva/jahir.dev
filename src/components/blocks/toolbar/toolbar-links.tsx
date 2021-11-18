@@ -19,7 +19,7 @@ const toolbarLinksList = [
     key: 2,
     emoji: '⚡️',
     title: 'Uses',
-    href: '/uses',
+    href: '/blog/uses',
     gradient: 'yellow-to-orange',
   },
   {

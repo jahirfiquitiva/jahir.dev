@@ -29,7 +29,7 @@ const sectionTwoLinks: Array<FooterLink> = [
   },
   {
     title: 'Link to uses page',
-    href: '/uses',
+    href: '/blog/uses',
     emoji: '⚡️',
     text: 'Uses',
     gradientColor: 'yellow-to-orange',
