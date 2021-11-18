@@ -8,8 +8,6 @@ const fonts = [
   'manrope/Manrope-Medium.woff2',
   'manrope/Manrope-SemiBold.woff2',
   'manrope/Manrope-Bold.woff2',
-  'fira-code/FiraCode-Regular.woff2',
-  'fira-code/FiraCode-Medium.woff2',
 ];
 
 const Document = () => {
