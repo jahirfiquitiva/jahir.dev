@@ -46,7 +46,7 @@ const ToolbarLinksContainer = tw.ul`
   col-start-1
   col-end-3
   sm:(justify-start gap-4)
-  lg:(justify-end col-start-2)
+  lg:(justify-end col-start-2 gap-5)
   [li]:(inline-block m-0 p-0)
 `;
 
