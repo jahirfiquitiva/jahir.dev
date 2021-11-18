@@ -13,6 +13,7 @@ import {
   LinkCard,
   CenteredSection,
 } from '~/components/atoms/simple';
+import useHasMounted from '~/hooks/useHasMounted';
 import { Component, ComponentProps, InspirationSite } from '~/types';
 
 const InspirationCard = tw(LinkCard)`
@@ -53,6 +54,7 @@ const validFavicon = (favicon?: string): boolean => {
 };
 
 export const Inspiration: Component<InspirationProps> = (props) => {
+  const hasMounted = useHasMounted();
   const { inspirationItems } = props;
 
   return (
@@ -70,36 +72,40 @@ export const Inspiration: Component<InspirationProps> = (props) => {
         this website and some of my projects 👏 <i>(In no particular order).</i>
       </p>
 
-      <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-16'}>
-        {(inspirationItems || []).map((item, i) => {
-          return (
-            <InspirationCard
-              key={i}
-              href={item.link}
-              title={`Link to ${item.title}'s website`}
-            >
-              <Heading size={'4'} tw={'text-almost-tiny sm:(text-xs)'}>
-                {item.title}
-              </Heading>
-              {(item.description?.length || 0) > 0 && (
-                <p tw={'text-tiny sm:(text-almost-tiny)'}>{item.description}</p>
-              )}
-              <FaviconLinkContainer>
-                {validFavicon(item.favicon) ? (
-                  <Image
-                    alt={item.title.split('')[0] || 'F'}
-                    src={item.favicon ?? ''}
-                    avoidNextImage
-                  />
-                ) : (
-                  <Icon path={mdiWeb} size={0.8} />
+      {hasMounted && (
+        <MasonryGrid breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-16'}>
+          {(inspirationItems || []).map((item, i) => {
+            return (
+              <InspirationCard
+                key={i}
+                href={item.link}
+                title={`Link to ${item.title}'s website`}
+              >
+                <Heading size={'4'} tw={'text-almost-tiny sm:(text-xs)'}>
+                  {item.title}
+                </Heading>
+                {(item.description?.length || 0) > 0 && (
+                  <p tw={'text-tiny sm:(text-almost-tiny)'}>
+                    {item.description}
+                  </p>
                 )}
-                <small>{formatLink(item.link)}</small>
-              </FaviconLinkContainer>
-            </InspirationCard>
-          );
-        })}
-      </MasonryGrid>
+                <FaviconLinkContainer>
+                  {validFavicon(item.favicon) ? (
+                    <Image
+                      alt={item.title.split('')[0] || 'F'}
+                      src={item.favicon ?? ''}
+                      avoidNextImage
+                    />
+                  ) : (
+                    <Icon path={mdiWeb} size={0.8} />
+                  )}
+                  <small>{formatLink(item.link)}</small>
+                </FaviconLinkContainer>
+              </InspirationCard>
+            );
+          })}
+        </MasonryGrid>
+      )}
     </CenteredSection>
   );
 };
