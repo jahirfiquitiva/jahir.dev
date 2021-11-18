@@ -19,7 +19,6 @@ const BaseProjectCard = tw(LinkCard)`
   auto-rows-min
   text-text-secondary
   rounded-lg
-  truncate
   border-color[var(--dashed-color, var(--divider))]
   [*]:(transition-all duration-300)
   [p]:(text-text-secondary)
