@@ -1,68 +1,83 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { mdiChevronUp } from '@mdi/js';
 import { useState, useEffect, useCallback } from 'react';
-import tw from 'twin.macro';
 
 import { Button } from '~/components/atoms/simple';
 import useHasMounted from '~/hooks/useHasMounted';
+import { mediaQueries } from '~/types';
 
-const visibleStyles = tw`
-  visible
-  opacity-100
-  pointer-events-auto
+const visibleStyles = css`
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 `;
 
-const hiddenStyles = tw`
-  invisible
-  opacity-0
-  pointer-events-none
+const hiddenStyles = css`
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 `;
 
-const BackToTopButton = tw(Button)`
-  z-index[2]
-  fixed
-  right-0
-  bottom-0
-  mr-10
-  mb-10
-  bg-accent-light
-  min-h-button
-  min-w-button
-  rounded-half
-  shadow-fab
-  text-accent-text
-  text-tiny
-  tracking-fab
-  leading-normal
-  p-7
-  gap-0
-  uppercase
-  duration-300
+const BackToTopButton = styled(Button)`
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0 16px 16px 0;
+  background: var(--accent-light);
+  min-height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(var(--card-base), 0.24);
+  color: var(--on-accent);
+  font-size: var(--font-3xs);
+  letter-spacing: 0.0625rem;
+  line-height: 1.5rem;
+  padding: 0.7rem;
+  gap: 0;
+  text-transform: uppercase;
+  transition-duration: 0.3s;
 
-  hocus:(bg-accent)
+  &:hover,
+  &:focus {
+    background: var(--accent);
+  }
 
-  [span]:(h-0 w-0 text-0)
+  & span {
+    height: 0;
+    width: 0;
+    font-size: 0;
+  }
 
-  all-child:(not-last:(
-    inline-block
-    visible
-    pointer-events-none
-    opacity-100
-    mr-0
-  ))
+  & > *:not(:last-child) {
+    display: inline-block;
+    visibility: visible;
+    pointer-events: none;
+    opacity: 1;
+    margin-right: 0;
+  }
 
-  md:(mr-15 mb-15)
+  ${mediaQueries.tablet.sm} {
+    margin: 0 24px 24px 0;
+  }
 
-  2xl:(
-    rounded-full mr-20 mb-20
-    padding[0.875rem 1.25rem]
-    all-child:(not-last:(
-      hidden
-      invisible
-      opacity-0
-    ))
+  ${mediaQueries.desktop} {
+    border-radius: 99999px;
+    padding: 12px 20px;
+    margin: 0 32px 32px 0;
 
-    [span]:(h-unset w-unset text-unset)
-  )
+    & span {
+      height: unset;
+      width: unset;
+      font-size: unset;
+    }
+
+    & > *:not(:last-child) {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
 `;
 
 const scrollToTop = () => {
