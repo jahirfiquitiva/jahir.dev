@@ -1,11 +1,11 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
-export const Section = tw.section`
-  flex
-  flex-col
-  flex-1
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
-export const CenteredSection = tw(Section)`
-  justify-center
+export const CenteredSection = styled(Section)`
+  justify-content: center;
 `;
