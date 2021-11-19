@@ -1,12 +1,8 @@
+import styled from '@emotion/styled';
 import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
-import tw from 'twin.macro';
 
 import { ButtonGroup } from '~/components/atoms/complex';
-import {
-  Image,
-  LinkButton,
-  LinkButtonProps,
-} from '~/components/atoms/simple';
+import { Image, LinkButton, LinkButtonProps } from '~/components/atoms/simple';
 import { Component, ComponentProps } from '~/types';
 
 export type SocialLinkProps = Omit<
@@ -14,69 +10,90 @@ export type SocialLinkProps = Omit<
   'title' | 'icon' | 'wrapChildrenInSpan' | 'href' | 'newTab'
 >;
 
-const BaseSocialLink = tw(LinkButton)`
-  p-4 gap-0
-  min-h-social
-  min-w-social
-  text-white
-  shadow-none
-  hocus:(
-    min-h-social
-    min-w-social
-    shadow-none
-text-white 
-    no-underline
-    dark:(text-white)
-  )
+const BaseSocialLink = styled(LinkButton)`
+  padding: 0.4rem;
+  gap: 0;
+  min-height: 36px;
+  min-width: 36px;
+  color: #ffffff;
+
+  &:hover,
+  &:focus {
+    color: #ffffff;
+    text-decoration: none;
+  }
 `;
 
-const BaseGitHubLink = tw(BaseSocialLink)`
-  background-color[#333]
-  hocus:(background-color[#292929])
-
-  dark:(
-    color[#1f1f1f] background-color[#ebebeb]
-    hocus:(color[#141414] background-color[#fff])
-  )
+const BaseGitHubLink = styled(BaseSocialLink)`
+  background-color: #333;
+  &:hover,
+  &:focus {
+    background-color: #292929;
+  }
+  .dark & {
+    background-color: #ebebeb;
+    color: #1f1f1f;
+    &:hover,
+    &:focus {
+      background-color: #fff;
+      color: #141414;
+    }
+  }
 `;
 
-const BaseLinkedInLink = tw(BaseSocialLink)`
-  background-color[#0077b5]
-  hocus:(background-color[#006ba3])
+const BaseLinkedInLink = styled(BaseSocialLink)`
+  background-color: #0077b5;
+  &:hover,
+  &:focus {
+    background-color: #006ba3;
+  }
 `;
 
-const BaseTwitterLink = tw(BaseSocialLink)`
-  background-color[#1da1f2]
-  hocus:(background-color[#1a91da])
+const BaseTwitterLink = styled(BaseSocialLink)`
+  background-color: #1da1f2;
+  &:hover,
+  &:focus {
+    background-color: #1a91da;
+  }
 `;
 
-const BaseInstagramLink = tw(BaseSocialLink)`
-  background-color[#d6249f]
-  background[radial-gradient(
+const BaseInstagramLink = styled(BaseSocialLink)`
+  background-color: #d6249f;
+  background: radial-gradient(
     circle at 28% 110%,
     #fdf497 0%,
     #fdf497 5%,
     #fd5949 45%,
     #d6249f 60%,
     #285aeb 90%
-  )]
+  );
 
-  hocus:(
-    background-color[#ab1d7f]
-    background[radial-gradient(
+  &:hover,
+  &:focus {
+    background-color: #ab1d7f;
+    background: radial-gradient(
       circle at 28% 110%,
       #cac379 0%,
       #cac379 5%,
       #ca473a 45%,
       #ab1d7f 60%,
       #1c3fa5 90%
-    )]  
-  )
+    );
+  }
 `;
 
+<<<<<<< HEAD:src/components/elements/links/social-links.tsx
 const BasePolyworkLink = tw(BaseSocialLink)`
   background-color[#6959fc]
   hocus:(background-color[#4f3fe3])
+=======
+const BasePolyworkLink = styled(BaseSocialLink)`
+  background-color: #6959fc;
+  &:hover,
+  &:focus {
+    background-color: #4f3fe3;
+  }
+>>>>>>> 266271c (Convert social links from twin to styled):src/components/elements/social-links.tsx
 `;
 
 const GitHubLink: Component<SocialLinkProps> = (props) => {
