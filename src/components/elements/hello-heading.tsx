@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { styled } from 'twin.macro';
 
 import { Heading } from '~/components/atoms/simple';
 import { Component } from '~/types';
