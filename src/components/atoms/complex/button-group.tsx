@@ -1,10 +1,9 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
-export const ButtonGroup = tw.div`
-  inline-flex
-  flex-row
-  flex-wrap
-  items-center
-  justify-start
-  gap-8
+export const ButtonGroup = styled.div`
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
 `;

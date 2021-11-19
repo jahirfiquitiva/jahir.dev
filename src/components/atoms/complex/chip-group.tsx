@@ -1,9 +1,9 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
-export const ChipGroup = tw.ul`
-  flex
-  flex-wrap
-  list-none
-  py-10
-  gap-6
+export const ChipGroup = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 1rem 0;
+  gap: 0.6rem;
 `;
