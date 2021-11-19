@@ -15,8 +15,8 @@
   --font-md: calc(var(--base-font-size) * 1.5);
   --font-sm: calc(var(--base-font-size) * 1.25);
   --font-xs: var(--base-font-size);
-  --font-almost-tiny: calc(var(--base-font-size) * 0.925);
-  --font-tiny: calc(var(--base-font-size) * 0.85);
+  --font-2xs: calc(var(--base-font-size) * 0.925);
+  --font-3xs: calc(var(--base-font-size) * 0.85);
 
   --text-shadow-size: 2px;
   --toolbar-height: 56px;
