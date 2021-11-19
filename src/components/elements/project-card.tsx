@@ -37,9 +37,9 @@ const BaseProjectCard = tw(LinkCard)`
 
 const ProjectCardWithoutPreview = tw`grid-cols-1 [>div:first-of-type]:(p-8)`;
 const ProjectCardWithPreview = tw`
-  grid-template-columns[60% 1fr]
-  sm:(grid-template-columns[70% 1fr])
-  md:(grid-template-columns[60% 1fr])
+  grid-template-columns[65% 1fr]
+  sm:(grid-template-columns[75% 1fr])
+  md:(grid-template-columns[65% 1fr])
 `;
 
 const DetailsContainer = tw.div`

@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import Icon from '@mdi/react';
-import tw from 'twin.macro';
 
 import {
   Component,
@@ -19,7 +19,13 @@ const getSkill = (skillName: string): SkillProps | null => {
   }
 };
 
-const StackList = tw.ul`flex flex-wrap items-center list-none gap-4`;
+const StackList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  gap: 0.4rem;
+`;
 
 interface StackListProps extends ComponentProps {
   stack?: Array<SkillKey>;

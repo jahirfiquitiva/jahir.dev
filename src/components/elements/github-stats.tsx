@@ -1,28 +1,43 @@
+import styled from '@emotion/styled';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
-import tw from 'twin.macro';
 
 import { LinkCard } from '~/components/atoms/simple';
 import useRequest from '~/hooks/useRequest';
 import { Component, GitHubStats as GitHubStatsData } from '~/types';
 
-const GitHubStatsLink = tw(LinkCard)`
-  --divider-alpha[0.4]
-  --divider[rgba(var(--divider-opaque), var(--divider-alpha))]
-  flex
-  items-center
-  justify-center
-  py-4 px-6
-  no-underline
-  text-text-secondary
-  h-full
-  min-h-button
-  gap-4
+const GitHubStatsLink = styled(LinkCard)`
+  --divider-alpha: 0.4;
+  --divider: rgba(var(--divider-opaque), var(--divider-alpha));
 
-  hocus:(--divider-alpha[0.5] shadow-none text-text-primary border-divider)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.6rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  height: 100%;
+  min-height: 42px;
+  gap: 0.4rem;
+
+  &:hover,
+  &:focus {
+    --divider-alpha: 0.5;
+    box-shadow: none;
+    color: var(--text-primary);
+    border-color: var(--divider);
+  }
 `;
 
-const Count = tw.p`font-medium`;
+const Count = styled.p`
+  font-weight: 500;
+  &:not(:last-of-type) {
+    padding-left: 0;
+    padding-right: 0.8rem;
+    border-right: 1px solid var(--divider);
+    margin-right: 0.4rem;
+  }
+`;
 
 const iconSize = 0.85;
 export const GitHubStats: Component = (props) => {
@@ -38,13 +53,7 @@ export const GitHubStats: Component = (props) => {
       underline={false}
     >
       <Icon path={mdiStar} size={iconSize} />
-      <Count
-        tw={
-          'pr-8 border border-l-0 border-t-0 border-b-0 border-r border-divider'
-        }
-      >
-        {data?.stars || 0}
-      </Count>
+      <Count>{data?.stars || 0}</Count>
       <Icon path={mdiAccountGroup} size={iconSize} tw={'ml-4'} />
       <Count>{data?.followers || 0}</Count>
     </GitHubStatsLink>
