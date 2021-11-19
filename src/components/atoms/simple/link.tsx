@@ -60,7 +60,19 @@ export const Link: Component<LinkProps> = (props) => {
   const linkStyles = useMemo(() => {
     return [
       baseLinkStyles,
-      underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+      underline
+        ? css`
+            &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
+          `
+        : css`
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+          `,
     ];
   }, [underline]);
 
@@ -75,16 +87,6 @@ export const Link: Component<LinkProps> = (props) => {
         css={linkStyles}
         className={className}
         style={style}
-        css={[
-          baseLinkStyles,
-          underline
-            ? css`
-                text-decoration: underline;
-              `
-            : css`
-                text-decoration: none;
-              `,
-        ]}
       >
         {children}
       </a>
@@ -100,16 +102,6 @@ export const Link: Component<LinkProps> = (props) => {
         css={linkStyles}
         className={className}
         style={style}
-        css={[
-          baseLinkStyles,
-          underline
-            ? css`
-                text-decoration: underline;
-              `
-            : css`
-                text-decoration: none;
-              `,
-        ]}
       >
         {children}
       </a>
