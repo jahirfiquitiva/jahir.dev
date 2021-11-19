@@ -18,7 +18,7 @@ export const ButtonStyles = css`
   font-weight: 600;
   letter-spacing: 0.03125rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
   gap: 0.4rem;
   overflow: hidden;
   text-overflow: ellipsis;
