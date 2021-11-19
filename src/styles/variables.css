@@ -1,6 +1,14 @@
 :root,
 .light,
 .light-mode {
+  --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  --inter-font: 'Inter', var(--system-font);
+  --manrope-font: 'Manrope', var(--inter-font);
+  --code-font: 'Fira Code', Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono',
+    'Courier New', Courier, monospace;
+
   --text-shadow-size: 2px;
   --toolbar-height: 56px;
 
