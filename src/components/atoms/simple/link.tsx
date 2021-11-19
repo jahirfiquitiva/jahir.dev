@@ -57,6 +57,25 @@ export const Link: Component<LinkProps> = (props) => {
     return true;
   }, [router, href, newTab]);
 
+  const linkStyles = useMemo(() => {
+    return [
+      baseLinkStyles,
+      underline
+        ? css`
+            &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
+          `
+        : css`
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+          `,
+    ];
+  }, [underline]);
+
   if (newTab) {
     return (
       <a
@@ -65,18 +84,9 @@ export const Link: Component<LinkProps> = (props) => {
         aria-label={title}
         target={'_blank'}
         rel={'noopener noreferrer'}
+        css={linkStyles}
         className={className}
         style={style}
-        css={[
-          baseLinkStyles,
-          underline
-            ? css`
-                text-decoration: underline;
-              `
-            : css`
-                text-decoration: none;
-              `,
-        ]}
       >
         {children}
       </a>
@@ -89,18 +99,9 @@ export const Link: Component<LinkProps> = (props) => {
       <a
         title={title}
         aria-label={title}
+        css={linkStyles}
         className={className}
         style={style}
-        css={[
-          baseLinkStyles,
-          underline
-            ? css`
-                text-decoration: underline;
-              `
-            : css`
-                text-decoration: none;
-              `,
-        ]}
       >
         {children}
       </a>
