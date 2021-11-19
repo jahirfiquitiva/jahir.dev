@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
 import { forcedGradientStyles } from './gradient-span';
 
+import { useTheme } from '~/providers/theme';
 import {
   Component,
   ComponentProps,
@@ -13,7 +13,6 @@ import {
   GradientOptions,
   gradientToCss,
 } from '~/types';
-import { useTheme } from '~/providers/theme';
 
 const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
 const fontSizesKeys = [
