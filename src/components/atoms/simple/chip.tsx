@@ -1,35 +1,42 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
-export const Chip = tw.span`
-  --bg-color[var(--divider)]
-  --border-color[var(--divider)]
-  
-  flex
-  items-center
-  justify-center
-  py-4
-  pl-6
-  pr-7
-  text-tiny
-  rounded-full
-  border
-  border-solid
-  border-color[var(--border-color)]
-  bg-transparent
-  text-text-secondary
-  cursor-default
-  transition-all
-  duration-200
-  motion-reduce:transition-none
-  line-height[1.8]
+export const Chip = styled.span`
+  --bg-color: var(--divider);
+  --border-color: var(--divider);
 
-  hocus:(no-underline text-text-primary background-color[var(--bg-color)])
-  all-child:(first-of-type:(mr-4))
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.7rem 0.4rem 0.6rem;
+  font-size: var(--font-tiny);
+  border-radius: 99999px;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0);
+  color: var(--text-secondary);
+  transition: all 0.25s ease-in-out;
+  line-height: 1.65;
+
+  & > *:first-of-type {
+    margin-right: 0.4rem;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+  }
 `;
 
-export const ImageChip = tw(Chip)`
-  line-height[unset]
-  p-4 pr-8 
-  all-child:(first-of-type:(mr-4!))
-  [img]:(rounded-half)
+export const ImageChip = styled(Chip)`
+  line-height: inherit;
+  padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+
+  & > *:first-of-type {
+    margin-right: 0.4rem !important;
+  }
+
+  & img {
+    border-radius: 50%;
+  }
 `;
