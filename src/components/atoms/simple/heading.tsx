@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import tw, { css } from 'twin.macro';
 
-import { forcedGradientStyles, baseGradientStyles } from './gradient-span';
+import { forcedGradientStyles } from './gradient-span';
 
 import {
   Component,
@@ -10,7 +10,7 @@ import {
   ComponentWithGradientProps,
   TextShadowOptions,
   GradientOptions,
-  gradientToTailwind,
+  gradientToCss,
 } from '~/types';
 
 const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
@@ -71,12 +71,14 @@ const buildGradientAndShadowStyles = (
       ]
     : [];
 
-  const gradientTailwind = gradientToTailwind(gradientColor);
+  const gradientCss = gradientToCss(gradientColor);
   const gradientStyles = gradientColor
     ? [
         forceGradient ? forcedGradientStyles : null,
-        baseGradientStyles,
-        gradientTailwind,
+        css`
+          display: inline-block;
+        `,
+        gradientCss,
       ]
     : [];
 
