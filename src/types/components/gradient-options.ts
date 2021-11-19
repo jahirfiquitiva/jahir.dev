@@ -1,4 +1,4 @@
-import tw from 'twin.macro';
+import { css } from '@emotion/react';
 
 const gradientOptionsArray = [
   'brand-to-blue',
@@ -17,32 +17,56 @@ export interface ComponentWithGradientProps {
   forceGradient?: boolean;
 }
 
-export const gradientToTailwind = (gradient?: GradientOptions) => {
-  if (!gradient) return tw``;
+export const gradientToCss = (gradient?: GradientOptions) => {
+  if (!gradient) return css``;
   switch (gradient) {
     case 'brand-to-blue': {
-      return tw`from-gradients-brand to-gradients-blue`;
+      return css`
+        --from-gradient-color: var(--gradient-brand);
+        --to-gradient-color: var(--gradient-blue);
+      `;
     }
     case 'blue-to-green': {
-      return tw`from-gradients-blue to-gradients-green`;
+      return css`
+        --from-gradient-color: var(--gradient-blue);
+        --to-gradient-color: var(--gradient-green);
+      `;
     }
     case 'green-to-yellow': {
-      return tw`from-gradients-green to-gradients-yellow`;
+      return css`
+        --from-gradient-color: var(--gradient-green);
+        --to-gradient-color: var(--gradient-yellow);
+      `;
     }
     case 'yellow-to-orange': {
-      return tw`from-gradients-yellow to-gradients-orange`;
+      return css`
+        --from-gradient-color: var(--gradient-yellow);
+        --to-gradient-color: var(--gradient-orange);
+      `;
     }
     case 'orange-to-red': {
-      return tw`from-gradients-orange to-gradients-red`;
+      return css`
+        --from-gradient-color: var(--gradient-orange);
+        --to-gradient-color: var(--gradient-red);
+      `;
     }
     case 'red-to-purple': {
-      return tw`from-gradients-red to-gradients-purple`;
+      return css`
+        --from-gradient-color: var(--gradient-red);
+        --to-gradient-color: var(--gradient-purple);
+      `;
     }
     case 'purple-to-brand': {
-      return tw`from-gradients-purple to-gradients-brand`;
+      return css`
+        --from-gradient-color: var(--gradient-purple);
+        --to-gradient-color: var(--gradient-brand);
+      `;
     }
     default: {
-      return tw`from-divider to-divider`;
+      return css`
+        --from-gradient-color: var(--divider);
+        --to-gradient-color: var(--divider);
+      `;
     }
   }
 };
