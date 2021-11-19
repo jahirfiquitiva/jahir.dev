@@ -1,6 +1,4 @@
-:root,
-.light,
-.light-mode {
+:root {
   --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
@@ -9,9 +7,24 @@
   --code-font: 'Fira Code', Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono',
     'Courier New', Courier, monospace;
 
+  --base-font-size: 1rem;
+  --font-3xl: calc(var(--base-font-size) * 2.5);
+  --font-2xl: calc(var(--base-font-size) * 2.25);
+  --font-xl: calc(var(--base-font-size) * 2);
+  --font-lg: calc(var(--base-font-size) * 1.75);
+  --font-md: calc(var(--base-font-size) * 1.5);
+  --font-sm: calc(var(--base-font-size) * 1.25);
+  --font-xs: var(--base-font-size);
+  --font-almost-tiny: calc(var(--base-font-size) * 0.925);
+  --font-tiny: calc(var(--base-font-size) * 0.85);
+
   --text-shadow-size: 2px;
   --toolbar-height: 56px;
+}
 
+:root,
+.light,
+.light-mode {
   --background-values: 255, 255, 255;
   --background: #fff;
   --primary: #f6f9fe;
