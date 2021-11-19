@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { mdiHeartOutline, mdiCreditCardOutline, mdiPizza } from '@mdi/js';
-import tw from 'twin.macro';
 
 import { SocialLinkProps } from './social-links';
 
@@ -7,24 +7,37 @@ import { ButtonGroup } from '~/components/atoms/complex';
 import { LinkButton } from '~/components/atoms/simple';
 import { Component } from '~/types';
 
-const BaseDonationLink = tw(LinkButton)`
-  text-white
-  hocus:(text-white no-underline)
+const BaseDonationLink = styled(LinkButton)`
+  color: #fff;
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration: none;
+  }
 `;
 
-const BaseGitHubSponsorsLink = tw(BaseDonationLink)`
-  background-color[#c94091]
-  hocus:(background-color[#b43982])
+const BaseGitHubSponsorsLink = styled(BaseDonationLink)`
+  background-color: #c94091;
+  &:hover,
+  &:focus {
+    background-color: #b43982;
+  }
 `;
 
-const BaseBmacLink = tw(BaseDonationLink)`
-  background-color[#516cd9]
-  hocus:(background-color[#485fc0])
+const BaseBmacLink = styled(BaseDonationLink)`
+  background-color: #516cd9;
+  &:hover,
+  &:focus {
+    background-color: #485fc0;
+  }
 `;
 
-const BasePayPalLink = tw(BaseDonationLink)`
-  background-color[#1a4593]
-  hocus:(background-color[#002b7a])
+const BasePayPalLink = styled(BaseDonationLink)`
+  background-color: #1a4593;
+  &:hover,
+  &:focus {
+    background-color: #002b7a;
+  }
 `;
 
 type DonationLinkProps = SocialLinkProps;

@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import Icon from '@mdi/react';
-import tw, { styled } from 'twin.macro';
 
 import { ButtonStyles, BaseButtonProps } from './button';
 import { Link, LinkProps } from './link';
@@ -8,7 +8,9 @@ import { Component } from '~/types';
 
 const StyledLinkButton = styled(Link)`
   ${ButtonStyles}
-  ${tw`hocus:(text-accent-text dark:(text-accent-text))`}
+  &:hover, &:focus {
+    color: var(--on-accent);
+  }
 `;
 
 const BaseLinkButton: Component<LinkProps> = (props) => {
@@ -18,7 +20,13 @@ const BaseLinkButton: Component<LinkProps> = (props) => {
 export interface LinkButtonProps extends LinkProps, BaseButtonProps {}
 
 export const LinkButton: Component<LinkButtonProps> = (props) => {
-  const { icon, iconSize = 1, children, wrapChildrenInSpan = true, ...otherProps } = props;
+  const {
+    icon,
+    iconSize = 1,
+    children,
+    wrapChildrenInSpan = true,
+    ...otherProps
+  } = props;
 
   return (
     <BaseLinkButton {...otherProps}>
