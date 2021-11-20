@@ -1,8 +1,8 @@
+import styled from '@emotion/styled';
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
 import cn from 'classnames';
 import { useMemo, CSSProperties } from 'react';
-import tw from 'twin.macro';
 
 import { Heading, Image, LinkCard } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
@@ -13,35 +13,52 @@ import hexToRGB from '~/utils/colors/hex-to-rgb';
 import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
 
-const BaseSongCard = tw(LinkCard)`
-  p-8
-  flex
-  flex-row
-  items-center
-  gap-8
-  rounded-md
-  overflow-hidden
-  text-text-primary
-  text-decoration-color[currentColor]
-  [&.not-playing]:(border border-divider pointer-events-none)
-  [h5]:(text-inherit)
-  [img]:(rounded-sm)
-  hocus:([h5]:(underline))
+const BaseSongCard = styled(LinkCard)`
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 8px;
+  overflow: hidden;
+  color: var(--text-primary);
+  text-decoration-color: currentColor;
+
+  &.not-playing {
+    border: 1px solid var(--divider);
+    pointer-events: none;
+  }
+
+  & h5 {
+    color: inherit;
+  }
+
+  & img {
+    border-radius: 4px;
+  }
+
+  &:hover,
+  &:focus {
+    & h5 {
+      text-decoration: underline;
+    }
+  }
 `;
 
-const SongDetails = tw.div`
-  flex
-  flex-col
-  flex-1
-  rounded-none
-  truncate
+const SongDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-radius: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
-const CurrentlyPlayingTitle = tw.p`
-  text-tiny
-  font-normal
-  no-underline
-  mb-4
+const CurrentlyPlayingTitle = styled.p`
+  font-size: var(--font-3xs);
+  font-weight: 400;
+  text-decoration: none;
+  margin-bottom: 0.4rem;
 `;
 
 interface SongCardProps extends ComponentProps, TrackData {
