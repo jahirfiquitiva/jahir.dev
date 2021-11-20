@@ -21,6 +21,7 @@ const hiddenStyles = css`
 
 const BackToTopButton = styled(Button)`
   position: fixed;
+  z-index: 2;
   right: 0;
   bottom: 0;
   margin: 0 16px 16px 0;
