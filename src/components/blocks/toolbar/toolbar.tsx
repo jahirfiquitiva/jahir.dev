@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { mdiMenu, mdiPlus } from '@mdi/js';
 import cn from 'classnames';
-import tw from 'twin.macro';
 
 import { ThemeToggle } from './theme-toggle';
 import { ToolbarButton, ToolbarButtonsContainer } from './toolbar-button';
@@ -9,71 +9,130 @@ import { ToolbarLinks } from './toolbar-links';
 
 import { Logo } from '~/components/atoms/simple';
 import useToggle from '~/hooks/useToggle';
+import { mediaQueries } from '~/types';
 
-const ToolbarGrid = tw.nav`
-  min-h-20
-  max-w-3xl-w-padding
-  mx-auto
-  grid
-  grid-template-columns[auto 1fr]
-  auto-rows-min
-  grid-flow-row-dense
-  gap-0
-  overflow-hidden
-  transition[all .3s ease-in-out]
+const ToolbarGrid = styled.nav`
+  min-height: 2rem;
+  max-width: calc(768px + 1.6rem);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-auto-rows: min-content;
+  grid-auto-flow: row dense;
+  gap: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 
-  lg:(gap-4 grid-rows-1 grid-template-columns[auto 1fr auto])
-  
-  all-child:(
-    transition[all .3s ease-in-out]
-    last:(
-      max-h-0 invisible pointer-events-none opacity-0 mt-0
-      [li]:(
-        transition[all .2s ease-in-out]
-        delay-100 overflow-hidden max-h-0 invisible opacity-0
-      )
-      lg:(
-        max-h-unset visible pointer-events-auto opacity-100 mt-0
-        [li]:(delay-50 max-h-full visible opacity-100)
-      )
-    )
-  )
-  [&.expanded]:(
-    all-child:(
-      last:(
-        max-h-unset visible pointer-events-auto opacity-100 mt-6
-        [li]:(delay-50 max-h-full visible opacity-100)
-        lg:(mt-0)
-      )
-    )
-  )
+  ${mediaQueries.tablet.lg} {
+    gap: 0.4rem;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  & > * {
+    transition: all 0.3s ease-in-out;
+
+    &:last-child {
+      max-height: 0;
+      margin-top: 0;
+      visibility: hidden;
+      pointer-events: none;
+      opacity: 0;
+
+      ${mediaQueries.tablet.lg} {
+        max-height: unset;
+        visibility: visible;
+        pointer-events: auto;
+        opacity: 1;
+      }
+
+      & > li {
+        transition: all 0.2s ease-in-out;
+        transition-delay: 0.1s;
+        overflow: hidden;
+        visibility: hidden;
+        max-height: 0;
+        opacity: 0;
+
+        ${mediaQueries.tablet.lg} {
+          transition-delay: 50ms;
+          visibility: visible;
+          max-height: 100%;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.expanded {
+    & > *:last-child {
+      max-height: unset;
+      visibility: visible;
+      pointer-events: auto;
+      opacity: 1;
+      margin-top: 0.6rem;
+
+      ${mediaQueries.tablet.lg} {
+        margin-top: 0;
+      }
+
+      & > li {
+        transition-delay: 50ms;
+        visibility: visible;
+        max-height: 100%;
+        opacity: 1;
+      }
+    }
+  }
 `;
 
-const HomeLink = tw(ToolbarLink)`
-  self-start
-  justify-start
-  gap-6
-  [span]:(
-    text-transparent
-    bg-gradient-to-r
-    bg-clip-text
-    from-gradients-brand
-    to-gradients-blue
-  )
-  [svg]:(w-15 h-15)
+const HomeLink = styled(ToolbarLink)`
+  align-self: flex-start;
+  justify-content: flex-start;
+  gap: 0.6rem;
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  & > span {
+    color: var(0, 0, 0, 0);
+    background-clip: text;
+    background-image: linear-gradient(
+      to right,
+      var(--gradient-brand),
+      var(--gradient-blue)
+    );
+  }
 `;
 
-const MenuButton = tw(ToolbarButton)`
-  min-w-button
-  min-h-button
-  max-h-button
-  max-w-button
-  p-0
-  gap-0
-  xs:(p-0)
-  md:(p-0)
-  [svg]:(mx-auto transform rotate-0 scale-100 transition[all .25s ease-in-out])
-  [&.expanded]:(p-0 [svg]:(rotate-45 scale-125))
+const MenuButton = styled(ToolbarButton)`
+  min-height: 42px;
+  min-width: 42px;
+  max-height: 42px;
+  max-width: 42px;
+  padding: 0;
+  gap: 0;
+
+  ${mediaQueries.mobile.md} {
+    padding: 0;
+  }
+  ${mediaQueries.tablet.sm} {
+    padding: 0;
+  }
+
+  & > svg {
+    margin: 0 auto;
+    transition: all 0.25s ease-in-out;
+    transform: rotate(0) scale(1);
+  }
+
+  &.expanded {
+    & > svg {
+      transform: rotate(45deg) scale(1.25);
+    }
+  }
 `;
 
 const Navigation = () => {
@@ -109,21 +168,17 @@ const Navigation = () => {
   );
 };
 
-const StyledHeader = tw.header`
-  fixed
-  top-0
-  bg-toolbar
-  w-full
-  p-4
-  backdrop-filter
-  backdrop-blur
-  backdrop-saturate-150
-  z-index[5]
-  box-shadow[
-    0 0 4px 0 var(--toolbar-shadow-a),
-    0 3px 4px 0 var(--toolbar-shadow-b),
-    0 1px 5px 0 var(--toolbar-shadow-c)
-  ]
+const StyledHeader = styled.header`
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  background: var(--toolbar);
+  width: 100%;
+  padding: 0.4rem;
+  backdrop-filter: blur(8px) saturate(150%);
+  border-bottom: 1px solid var(--divider);
+  box-shadow: 0 0 4px 0 var(--toolbar-shadow-a),
+    0 3px 4px 0 var(--toolbar-shadow-b), 0 1px 5px 0 var(--toolbar-shadow-c);
 `;
 
 export const Toolbar = () => {
