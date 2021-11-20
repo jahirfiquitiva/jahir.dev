@@ -1,124 +1,151 @@
+import styled from '@emotion/styled';
 import { useMemo } from 'react';
-import tw from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, Post } from '~/types';
+import { Component, ComponentProps, Post, mediaQueries } from '~/types';
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import getReadableColor from '~/utils/colors/get-readable-color';
 import formatDate from '~/utils/format/format-date';
 import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
 
-const BaseBlogPostCard = tw(LinkCard)`
-  relative
-  w-full
-  overflow-hidden
-  rounded-md
-  text-text-secondary
-  min-height[192px]
-  all:(transition-all duration-400 motion-reduce:(transition-none))
+const BaseBlogPostCard = styled(LinkCard)`
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  min-height: 192px;
+  transition: all 0.35s ease-in-out;
 
-  md:(min-height[232px])
-  
-  [p]:(text-tiny md:(text-almost-tiny))
-  [p.date]:(text-text-tertiary)
-  hocus:(
-    [h4]:(underline color[var(--hl-color)])
-    [p]:(
-      my-4
-      h-auto
-      opacity-100
-      text-text-primary
-      leading-relaxed
-      visible
-    )
-    [p.date]:(my-2 text-text-secondary)
-  )
+  ${mediaQueries.tablet.sm} {
+    min-height: 232px;
+  }
+
+  * {
+    transition: all 0.35s ease-in-out;
+  }
+
+  & p {
+    font-size: var(--font-3xs);
+
+    &.date {
+      color: var(--text-tertiary);
+    }
+
+    ${mediaQueries.tablet.sm} {
+      font-size: var(--font-2xs);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    & h4 {
+      color: var(--hl-color);
+      text-decoration: underline;
+    }
+
+    & p {
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+      margin: 0.4rem 0;
+      color: var(--text-primary);
+      line-height: 1.75;
+
+      &.date {
+        margin: 0.2rem 0;
+        color: var(--text-secondary);
+      }
+    }
+  }
 `;
 
-const BlogPostImage = tw(Image)`
-  relative
-  w-full
-  rounded-md
-  pointer-events-none
-  select-none
+const BlogPostImage = styled(Image)`
+  min-height: 192px;
+  height: 100%;
+  max-height: 192px;
 
-  height[192px]
-  md:(height[232px])
+  ${mediaQueries.tablet.sm} {
+    max-height: 232px;
+  }
 
-  [span]:(first-of-type:(
-    rounded-md
-    h-full!
-    w-full
-    [img]:(
-      rounded-md
-      h-full!
-      w-full
-      object-cover
-    )
-  ))
+  & > span:first-of-type,
+  & img {
+    min-height: 100% !important;
+    min-width: 100% !important;
+    height: 100% !important;
+  }
+  & img {
+    object-fit: cover;
+  }
 `;
 
-const Scrim = tw.div`
-  absolute
-  top-0
-  left-0
-  bottom-0
-  right-0
-  rounded-md
-  background-color[rgb(var(--background-values))]
-  opacity-0
-  dark:(opacity-15)
-  pointer-events-none
-  select-none
+const Scrim = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 8px;
+  background-color: rgb(var(--background-values));
+  opacity: 0.05;
+  pointer-events: none;
+
+  .dark & {
+    opacity: 0.2;
+  }
 `;
 
-const Content = tw.div`
-  flex
-  flex-col
-  absolute
-  top-auto
-  left-0
-  bottom-0
-  right-0
-  p-10
-  border-none
-  rounded-t-none
-  rounded-b-md
-  shadow-blogCardDetails
-  background-color[var(--blog-card-color)]
-  z-index[1]
-  backdrop-filter
-  backdrop-blur-md
-  backdrop-saturate-200
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 -4px 6px -1px rgba(255, 255, 255, 0.1),
+    0 -2px 4px -1px rgba(255, 255, 255, 0.05);
+  background-color: var(--blog-card-color);
+  z-index: 1;
+  backdrop-filter: blur(8px) saturate(200%);
 `;
 
-const Excerpt = tw.p`
-  display[-webkit-box]
-  h-0
-  opacity-0
-  leading-none
-  invisible
-  pointer-events-none
-  select-none
-  text-text-secondary
-  text-tiny
-  overflow-hidden
-  text-overflow[ellipsis]
-  max-lines[1]
-  -webkit-line-clamp[1]
-  -webkit-box-orient[vertical]
+const Excerpt = styled.p`
+  display: -webkit-box;
+  opacity: 0;
+  line-height: 0;
+  visibility: hidden;
+  pointer-events: none;
+  color: var(--text-secondary);
+  font-size: var(--font-3xs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  max-lines: 1;
 
-  md:(
-    text-almost-tiny
-    max-lines[2]
-    -webkit-line-clamp[2]
-  )
+  ${mediaQueries.tablet.sm} {
+    font-size: var(--font-2xs);
+    -webkit-line-clamp: 2;
+    max-lines: 2;
+  }
 `;
 
-const Date = tw.p`my-2 truncate`;
+const Date = styled.p`
+  margin: 0.2rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
 interface BlogPostCardProps extends ComponentProps, Post {}
 
