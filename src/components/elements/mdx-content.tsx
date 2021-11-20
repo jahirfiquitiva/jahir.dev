@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { CSSProperties, useMemo } from 'react';
-import tw, { styled } from 'twin.macro';
 
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
@@ -7,6 +7,7 @@ import { useTheme } from '~/providers/theme';
 import {
   Component,
   ComponentProps,
+  mediaQueries,
   Post,
   ProjectProps as Project,
   CodingChallenge,
@@ -15,30 +16,81 @@ import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import hexToRGB from '~/utils/colors/hex-to-rgb';
 import formatDate from '~/utils/format/format-date';
 
-const MdxContentSection = tw.section`
-  flex
-  flex-col
-  pt-4 pb-16
-  px-0
-  w-full
-  md:(pt-12 pb-20)
-  lg:(pb-24)
+const MdxContentSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0 1.6rem;
+  width: 100%;
+
+  ${mediaQueries.tablet.sm} {
+    padding: 1.2rem 0 2rem;
+  }
+
+  ${mediaQueries.tablet.lg} {
+    padding: 1.2rem 0 2.4rem;
+  }
 `;
 
-const Hero = tw(Image)`
-  rounded
-  my-24
-  box-shadow[0 4px 6px -1px rgba(var(--shadow-color), 0.175),
-    0 2px 4px -1px rgba(var(--shadow-color), 0.075)]
-  [img]:(
-    object-cover
-    w-full
-    max-height[180px !important]
-    xs:(max-height[211px !important])
-    sm:(max-height[239px !important])
-    md:(max-height[298px !important])
-    lg:(max-height[384px !important])
-  )
+const Hero = styled(Image)`
+  border-radius: 6px;
+  margin: 2.4rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.175),
+    0 2px 4px -1px rgba(0, 0, 0, 0.075);
+
+  & img {
+    object-fit: cover;
+    max-height: 180px !important;
+
+    ${mediaQueries.mobile.md} {
+      max-height: 211px !important;
+    }
+
+    ${mediaQueries.mobile.lg} {
+      max-height: 239px !important;
+    }
+
+    ${mediaQueries.tablet.sm} {
+      max-height: 298px !important;
+    }
+
+    ${mediaQueries.tablet.lg} {
+      max-height: 384px !important;
+    }
+  }
+`;
+
+const BackLink = styled(Link)`
+  margin-bottom: 0.4rem;
+  margin-left: 0.4rem;
+  ${mediaQueries.tablet.lg} {
+    margin-left: 0.2rem;
+  }
+  ${mediaQueries.tablet.xl} {
+    margin-left: 0;
+  }
+`;
+
+const ContentTitle = styled(Heading)`
+  margin-top: 0.4rem;
+  ${mediaQueries.tablet.sm} {
+    margin-top: 0.8rem;
+  }
+  ${mediaQueries.tablet.lg} {
+    margin-top: 1rem;
+  }
+`;
+
+const ContentIntro = styled.p`
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  margin-top: 0.4rem;
+  margin-bottom: 1.6rem;
+`;
+
+const DiscussEdit = styled.p`
+  margin-top: 1.2rem;
+  font-size: var(--font-2xs);
+  color: var(--text-tertiary);
 `;
 
 type ContentTypes = Post | Project | CodingChallenge;
@@ -105,21 +157,18 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
   return (
     <MdxContentSection>
       {backText && backHref && (
-        <Link
+        <BackLink
           title={`Link to go ${backText.toLowerCase()}`}
           href={backHref}
-          tw={'mb-4 ml-4 lg:(ml-2) xl:(ml-0)'}
         >
           ← {backText}
-        </Link>
+        </BackLink>
       )}
 
       <article>
-        <Heading style={titleStyles} tw={'mt-4 md:(mt-8) lg:(mt-10)'}>
-          {title}
-        </Heading>
+        <ContentTitle style={titleStyles}>{title}</ContentTitle>
 
-        <p tw={'text-xs text-text-tertiary mt-4 mb-16'}>
+        <ContentIntro>
           {formatDate(date)}
           {(readingTime?.length || 0) > 0 && (
             <>
@@ -127,14 +176,14 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
               {readingTime}
             </>
           )}
-        </p>
+        </ContentIntro>
 
         {hero && <Hero src={hero || ''} alt={title} priority />}
 
         {children}
 
         <Divider thin />
-        <p tw={'mt-12 text-almost-tiny text-text-tertiary'}>
+        <DiscussEdit>
           <Link href={discussUrl(content)} title={'Link to discuss on Twitter'}>
             Discuss on Twitter
           </Link>
@@ -145,7 +194,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
           >
             Edit on GitHub
           </Link>
-        </p>
+        </DiscussEdit>
       </article>
     </MdxContentSection>
   );

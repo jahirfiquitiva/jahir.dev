@@ -1,12 +1,12 @@
 import { keyframes } from '@emotion/react';
-import tw, { styled } from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { Footer } from './footer';
 import { Toolbar } from './toolbar';
 
 import { BackToTop } from '~/components/atoms/complex';
 import { DynamicMetaTags } from '~/components/blocks';
-import { Component, PageProps, defaultKeywords } from '~/types';
+import { Component, PageProps, defaultKeywords, mediaQueries } from '~/types';
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +
@@ -23,13 +23,18 @@ const fadeIn = keyframes`
 `;
 
 const Main = styled.main`
-  ${tw`
-    flex flex-col flex-1
-    w-full max-w-3xl
-    mx-auto my-0
-    px-10 py-0
-    xl:(px-0)
-  `}
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  ${mediaQueries.tablet.xl} {
+    padding: 0;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     animation-name: ${fadeIn};
     animation-duration: 300ms;
