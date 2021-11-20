@@ -3,7 +3,7 @@ import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
 
 import { ButtonGroup } from '~/components/atoms/complex';
 import { Image, LinkButton, LinkButtonProps } from '~/components/atoms/simple';
-import { Component, ComponentProps } from '~/types';
+import { Component, ComponentProps, mediaQueries } from '~/types';
 
 export type SocialLinkProps = Omit<
   LinkButtonProps,
@@ -96,6 +96,13 @@ const BasePolyworkLink = styled(BaseSocialLink)`
 >>>>>>> 266271c (Convert social links from twin to styled):src/components/elements/social-links.tsx
 `;
 
+const SocialLinksGroup = styled(ButtonGroup)`
+  gap: 0.6rem;
+  ${mediaQueries.mobile.lg} {
+    gap: 0.8rem;
+  }
+`;
+
 const GitHubLink: Component<SocialLinkProps> = (props) => {
   return (
     <BaseGitHubLink
@@ -164,12 +171,12 @@ interface SocialLinksProps extends ComponentProps {
 export const SocialLinks: Component<SocialLinksProps> = (props) => {
   const { iconSize = 0.9, className } = props;
   return (
-    <ButtonGroup tw={'gap-6 sm:(gap-8)'} className={className}>
+    <SocialLinksGroup className={className}>
       <GitHubLink iconSize={iconSize} />
       <LinkedInLink iconSize={iconSize} />
       <TwitterLink iconSize={iconSize} />
       <InstagramLink iconSize={iconSize} />
       <PolyworkLink iconSize={iconSize} />
-    </ButtonGroup>
+    </SocialLinksGroup>
   );
 };
