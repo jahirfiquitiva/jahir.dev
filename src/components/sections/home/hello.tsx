@@ -41,11 +41,13 @@ const Photo = tw(Image)`
 `;
 
 const AudioButton = tw.button`
+  p-0 m-0
   font-manrope
   font-bold
   border-none
   bg-transparent
   cursor-pointer
+  text-shadow[inherit]
 `;
 
 const audioButtonTitle = "Press to hear Jahir's name pronunciation";
