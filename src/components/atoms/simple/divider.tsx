@@ -25,7 +25,7 @@ const BaseDivider = styled.hr`
   );
 
   ${mediaQueries.desktop} {
-    margin: 2remm 0;
+    margin: 2rem 0;
   }
 `;
 

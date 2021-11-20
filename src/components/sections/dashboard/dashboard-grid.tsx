@@ -3,8 +3,7 @@ import { theme } from 'twin.macro';
 import { Activity } from './activity';
 import { Counter } from './counter';
 
-import { SongCard } from '~/components/elements';
-import { Masonry, MasonryBreakpoints } from '~/components/masonry';
+import { SongCard, Masonry, MasonryBreakpoints } from '~/components/elements';
 import { Component, ComponentProps, DashboardData } from '~/types';
 
 interface DashboardGridProps extends ComponentProps {

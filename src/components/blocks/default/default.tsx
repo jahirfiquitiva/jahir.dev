@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { ReactElement } from 'react';
-import tw from 'twin.macro';
 
 import {
   Link,
@@ -15,22 +15,25 @@ import {
   GradientOptions,
 } from '~/types';
 
-const DefaultContentContainer = tw(CenteredSection)`
-  items-center
-  justify-center
-  text-center
-`;
-const FourHundredFourContainer = tw(DefaultContentContainer)`justify-between`;
+const DefaultContainer = styled(CenteredSection)`
+  align-items: center;
+  text-align: center;
 
-const DefaultContentWrapper = tw.div`
-  flex
-  flex-col
-  items-center
-  justify-center
-`;
-const FourHundredFourWrapper = tw(DefaultContentContainer)`flex-1`;
+  & h2 {
+    margin-bottom: 1.2rem;
+  }
 
-const GifImage = tw(Image)`max-width[425px]`;
+  & p:last-of-type,
+  & > a:last-of-type {
+    margin-bottom: 2rem;
+  }
+`;
+const FourOhFourContainer = styled(DefaultContainer)`
+  justify-content: space-between;
+`;
+const FourOhFourWrapper = styled(DefaultContainer)`flex: 1;`;
+
+const GifImage = styled(Image)`max-width: 425px;`;
 
 type ContentType = 'under-construction' | 'four-hundred-four' | 'error';
 
@@ -57,12 +60,12 @@ export const DefaultContent: Component<ContentProps> = (props) => {
     gradientColors,
   } = props;
 
-  const isFourHundredFour = type === 'four-hundred-four';
+  const isFourOhFour = type === 'four-hundred-four';
 
   const renderContactMessage = () => {
     if (type !== 'error') return <></>;
     return (
-      <p tw={'mb-20'}>
+      <p>
         Feel free to{' '}
         <Link href={'/contact'} title={'Link to contact page'}>
           contact me
@@ -79,13 +82,12 @@ export const DefaultContent: Component<ContentProps> = (props) => {
           size={'2'}
           shadowColor={shadowColor || 'red'}
           gradientColor={gradientColors || 'orange-to-red'}
-          tw={'mb-12'}
         >
           {title}
         </Heading>
-        <p tw={'last-of-type:(mb-20)'}>{message}</p>
+        <p>{message}</p>
         {renderContactMessage()}
-        <LinkButton title={'Link to go to home page'} href={'/'} tw={'mb-20'}>
+        <LinkButton title={'Link to go to home page'} href={'/'}>
           Go back home
         </LinkButton>
       </>
@@ -93,24 +95,22 @@ export const DefaultContent: Component<ContentProps> = (props) => {
   };
 
   const renderContainer = (children?: ReactElement): ReactElement => {
-    return isFourHundredFour ? (
-      <FourHundredFourContainer>{children}</FourHundredFourContainer>
+    return isFourOhFour ? (
+      <FourOhFourContainer>{children}</FourOhFourContainer>
     ) : (
-      <DefaultContentContainer>{children}</DefaultContentContainer>
+      <DefaultContainer>{children}</DefaultContainer>
     );
   };
 
   return renderContainer(
     <>
       {type === 'four-hundred-four' ? (
-        <FourHundredFourWrapper>{renderContent()}</FourHundredFourWrapper>
-      ) : (
-        <DefaultContentWrapper>{renderContent()}</DefaultContentWrapper>
-      )}
+        <FourOhFourWrapper>{renderContent()}</FourOhFourWrapper>
+      ) : renderContent()}
       <GifImage
         src={gif}
         alt={alt}
-        objectFit={isFourHundredFour ? 'cover' : 'contain'}
+        objectFit={isFourOhFour ? 'cover' : 'contain'}
       />
     </>,
   );

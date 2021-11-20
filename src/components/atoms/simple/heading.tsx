@@ -88,7 +88,7 @@ const buildGradientAndShadowStyles = (
   const gradientCss = gradientToCss(gradientColor);
   const gradientStyles = gradientColor
     ? [
-        forceGradient ? forcedGradientStyles : null,
+        forceGradient || isDark ? forcedGradientStyles : null,
         css`
           display: inline-block;
         `,
