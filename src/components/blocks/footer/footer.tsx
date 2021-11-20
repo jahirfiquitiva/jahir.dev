@@ -1,4 +1,4 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { FooterContent } from './footer-content';
 import { FooterLink } from './footer-link';
@@ -7,13 +7,48 @@ import { Link, GradientSpan, Logo } from '~/components/atoms/simple';
 import { SocialLinks, Stack } from '~/components/elements';
 import { Component } from '~/types';
 
-const StyledFooter = tw.footer`
-  block
-  overflow-hidden
-  border-t
-  border-divider
-  bg-primary
-  py-20 px-10
+const StyledFooter = styled.footer`
+  display: block;
+  overflow: hidden;
+  border-top: 1px solid var(--divider);
+  background-color: var(--primary);
+  padding: 2rem 1rem;
+`;
+
+const FooterLogoLink = styled(Link)`
+  min-height: 42px;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  font-size: var(--font-sm);
+
+  & > svg {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover,
+  &:focus {
+    & > span {
+      text-decoration: underline;
+      text-decoration: underline solid var(--gradient-brand);
+    }
+  }
+`;
+
+const FooterSocialLinks = styled(SocialLinks)`
+  margin: 0.6rem 0;
+`;
+
+const StackContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  margin: 0.4rem 0;
 `;
 
 const FooterLogoLink = tw(Link)`
