@@ -1,27 +1,29 @@
-import tw from 'twin.macro';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { Link, GradientSpan } from '~/components/atoms/simple';
-import { GradientOptions } from '~/types';
+import { GradientOptions, mediaQueries } from '~/types';
 
-const FooterLinkComponent = tw(Link)`
-  truncate
-  my-4
-  [span.emoji]:(
-    hidden
-    invisible
-    pointer-events-none
-    select-none
-    opacity-0
+const FooterLinkComponent = styled(Link)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0.4rem 0;
 
-    sm:(
-      inline-block
-      visible
-      pointer-events-auto
-      select-auto
-      opacity-100
-      mr-6
-    )
-  )
+  & > span.emoji {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+
+    ${mediaQueries.mobile.lg} {
+      display: inline-block;
+      visibility: visible;
+      pointer-events: auto;
+      opacity: 1;
+      margin-right: 0.6rem;
+    }
+  }
 `;
 
 export interface FooterLink {
@@ -32,30 +34,47 @@ export interface FooterLink {
   gradientColor: GradientOptions;
 }
 
-const getTailwindForGradientColor = (gradientColor: GradientOptions) => {
+const getStylesForUnderline = (gradientColor: GradientOptions) => {
+  let gradientColorName = 'brand';
   switch (gradientColor) {
     case 'blue-to-green': {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-blue)]))`;
+      gradientColorName = 'blue';
+      break;
     }
     case 'green-to-yellow': {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-green)]))`;
+      gradientColorName = 'green';
+      break;
     }
     case 'yellow-to-orange': {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-yellow)]))`;
+      gradientColorName = 'yellow';
+      break;
     }
     case 'orange-to-red': {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-orange)]))`;
+      gradientColorName = 'orange';
+      break;
     }
     case 'red-to-purple': {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-red)]))`;
+      gradientColorName = 'red';
+      break;
     }
     case 'purple-to-brand': {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-purple)]))`;
+      gradientColorName = 'purple';
+      break;
     }
     default: {
-      return tw`hocus:([span]:(underline text-decoration[underline solid var(--gradient-brand)]))`;
+      gradientColorName = 'brand';
+      break;
     }
   }
+  return css`
+    &:hover,
+    &:focus {
+      & > span {
+        text-decoration: underline;
+        text-decoration: underline solid var(--gradient-${gradientColorName});
+      }
+    }
+  `;
 };
 
 export const transformLink = (link: FooterLink, itemIndex: number = 0) => {
@@ -65,7 +84,7 @@ export const transformLink = (link: FooterLink, itemIndex: number = 0) => {
       title={title}
       href={href}
       underline={false}
-      css={[getTailwindForGradientColor(gradientColor)]}
+      css={[getStylesForUnderline(gradientColor)]}
       key={`footer-item-${itemIndex || title.toLowerCase()}`.trim()}
     >
       <span className={'emoji'}>{emoji}</span>

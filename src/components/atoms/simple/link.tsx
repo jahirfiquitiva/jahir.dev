@@ -16,6 +16,10 @@ const baseLinkStyles = css`
   &:hover,
   &:focus {
     color: var(--accent-dark);
+
+    .dark & {
+      color: var(--accent-light);
+    }
   }
 `;
 
