@@ -1,57 +1,89 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { FooterLink, transformLink } from './footer-link';
 
-import { Component, ComponentProps } from '~/types';
+import { Component, ComponentProps, mediaQueries } from '~/types';
 
-const FooterGrid = tw.div`
-  w-full
-  overflow-hidden
-  grid
-  grid-cols-1
-  max-w-3xl
-  my-0 mx-auto
-  gap-10
-  xs:(grid-template-columns[auto 1fr])
-  md:(grid-cols-2)
+const FooterGrid = styled.div`
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  max-width: 768px;
+  margin: 0 auto;
+  gap: 1rem;
+
+  ${mediaQueries.mobile.md} {
+    grid-template-columns: auto 1fr;
+  }
+
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
-const FooterGridWithin = tw(FooterGrid)`
-  gap-y-0
-  grid-row[2]
-  xs:(grid-row[1])
+const FooterGridWithin = styled(FooterGrid)`
+  gap: 0;
+  grid-row: 2;
+
+  ${mediaQueries.mobile.md} {
+    grid-row: 1;
+  }
+
+  ${mediaQueries.tablet.lg} {
+    column-gap: 1rem;
+  }
 `;
 
-const FooterSectionOne = tw.div`
-  flex
-  flex-col
-  justify-center
-  col-start-1
-  col-end-2
-  grid-row[1]
+const FooterSectionOne = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 1;
 `;
 
-const FooterSectionTwo = tw(FooterSectionOne)`
-  hidden
-  invisible
-  pointer-events-none
-  select-none
-  opacity-0
+const FooterSectionTwo = styled(FooterSectionOne)`
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
 
-  xs:(col-start-1 col-end-2 grid-row[1])
-  lg:(flex visible pointer-events-auto select-auto opacity-100 items-start row-start-1 row-end-3)
+  ${mediaQueries.mobile.md} {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: 1;
+  }
+
+  ${mediaQueries.tablet.lg} {
+    display: flex;
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    align-items: flex-start;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
 `;
 
-const FooterSectionThree = tw(FooterSectionOne)`
-  items-end
-  content-end
-  grid-row[1]
-  xs:(col-start-2 col-end-3)
+const FooterSectionThree = styled(FooterSectionOne)`
+  align-items: flex-end;
+  justify-content: flex-end;
+  grid-row: 1;
+
+  ${mediaQueries.mobile.md} {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
 `;
 
-const FooterSectionFour = tw(FooterSectionThree)`
-  grid-row[2]
-  xs:(col-start-2 col-end-3)
+const FooterSectionFour = styled(FooterSectionThree)`
+  grid-row: 2;
+  ${mediaQueries.mobile.md} {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
 `;
 
 interface FooterGridProps extends ComponentProps {
