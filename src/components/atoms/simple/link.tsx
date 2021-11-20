@@ -13,6 +13,7 @@ const baseLinkStyles = css`
   font-weight: 500;
   display: inline-block;
   color: var(--accent);
+
   &:hover,
   &:focus {
     color: var(--accent-dark);

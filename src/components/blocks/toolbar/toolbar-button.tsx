@@ -1,54 +1,92 @@
-import tw, { styled } from 'twin.macro';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { Button } from '~/components/atoms/simple';
+import { mediaQueries } from '~/types';
 
-export const BaseToolbarButtonStyles = tw`
-  tracking-unset
-  px-6 py-0
-  min-w-button
-  bg-transparent
-  text-transparent
-  shadow-none
-  disabled:(shadow-none)
-  hocus:(shadow-none bg-toolbar-highlight transform-none text-transparent)
-  xs:(px-8 py-4)
+export const BaseToolbarButtonStyles = css`
+  letter-spacing: unset;
+  padding: 0 0.6rem;
+  min-width: 42px;
+  background: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+
+  ${mediaQueries.mobile.md} {
+    padding: 0.4rem 0.8rem;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--toolbar-highlight);
+    color: rgba(0, 0, 0, 0);
+    transform: none;
+  }
 `;
 
-interface CustomProps {
-  isForThemeToggle?: boolean;
-}
-
-export const ToolbarButton = styled(Button)<CustomProps>`
+export const ToolbarButton = styled(Button)`
   ${BaseToolbarButtonStyles}
-  ${tw`
-    gap-0
-    p-4
-    pt-5
-    text-center
-    text-accent
-    leading-none
-    hocus:(text-accent-dark dark:(text-accent-light))
-    [span]:(w-full text-center)
-    xs:(px-6 pt-5)
-    md:(pt-4)
-  `}
+  gap: 0;
+  padding: 0.5rem 0.4rem 0.4rem;
+  text-align: center;
+  color: var(--accent);
+  line-height: 1;
+
+  ${mediaQueries.mobile.md} {
+    padding: 0.5rem 0.6rem 0.4rem;
+  }
+
+  ${mediaQueries.tablet.sm} {
+    padding-top: 0.4rem;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--accent-dark);
+
+    .dark & {
+      color: var(--accent-light);
+    }
+  }
+
+  & > span {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
-export const ToolbarButtonsContainer = tw.ul`
-  flex
-  items-center
-  justify-end
-  list-none
-  col-start-2
-  col-end-3
-  gap-6
-  lg:(gap-0 col-start-3 col-end-4)
+export const ToolbarButtonsContainer = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  gap: 0.6rem;
 
-  [li]:(
-    inline-block m-0 p-0 max-h-button
-    last:(
-      block visible pointer-events-auto opacity-100 
-      lg:(hidden invisible pointer-events-none opacity-0)
-    )
-  )
+  ${mediaQueries.tablet.lg} {
+    gap: 0;
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+
+  & > li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    max-height: 42px;
+    max-width: 42px;
+
+    &:last-of-type {
+      display: block;
+      visibility: visible;
+      pointer-events: auto;
+      opacity: 1;
+      ${mediaQueries.tablet.lg} {
+        display: none;
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+  }
 `;
