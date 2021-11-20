@@ -1,28 +1,30 @@
 // Heavily based on https://github.com/cedricdelpoux/react-responsive-masonry
+import styled from '@emotion/styled';
 import { Children, isValidElement, useMemo } from 'react';
-import tw from 'twin.macro';
 
 import useWindowWidth from '~/hooks/useWindowWidth';
 import { Component, ComponentProps, ComponentChild } from '~/types';
 
-const MasonryColumn = tw.div`
-  flex
-  flex-col
-  justify-start
-  flex-1
-  align-content[stretch]
-  box-sizing[border-box]
-  all-child:(box-sizing[border-box])
+const MasonryColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  align-content: stretch;
+  box-sizing: border-box;
+  & > * {
+    box-sizing: border-box;
+  }
 `;
 
-const MasonryGrid = tw.div`
-  flex
-  flex-row
-  justify-center
-  w-full
-  max-w-full
-  align-content[stretch]
-  box-sizing[border-box]
+const MasonryGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  align-content: stretch;
+  box-sizing: border-box;
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };
