@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
-import { theme } from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Field, Section, Link } from '~/components/atoms/simple';
@@ -10,7 +10,17 @@ import {
   MasonryBreakpoints,
 } from '~/components/elements';
 import debounce from '~/lib/debounce';
-import { Component, ComponentProps, Post } from '~/types';
+import { Component, ComponentProps, Post, viewports } from '~/types';
+
+const BlogMasonry = styled(Masonry)`
+  margin: 1.2rem 0;
+`;
+
+const RssLink = styled(Link)`
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: 1.6rem;
+`;
 
 interface BlogGridProps extends ComponentProps {
   posts?: Post[];
@@ -18,7 +28,7 @@ interface BlogGridProps extends ComponentProps {
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
-masonryBreakpoints[theme`screens.md`] = 2;
+masonryBreakpoints[viewports.tablet.sm] = 2;
 
 export const Blog: Component<BlogGridProps> = (props) => {
   const { posts } = props;
@@ -61,18 +71,14 @@ export const Blog: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
-      <Masonry breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-12'}>
+      <BlogMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
         })}
-      </Masonry>
-      <Link
-        href={'/feed.xml'}
-        title={'Link to RSS feed'}
-        tw={'mb-16 inline-flex self-start'}
-      >
+      </BlogMasonry>
+      <RssLink href={'/feed.xml'} title={'Link to RSS feed'}>
         RSS Feed
-      </Link>
+      </RssLink>
     </Section>
   );
 };
