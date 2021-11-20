@@ -1,104 +1,132 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useMemo, CSSProperties, memo } from 'react';
-import tw from 'twin.macro';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import { Stack } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, ProjectProps } from '~/types';
+import { Component, ComponentProps, mediaQueries, ProjectProps } from '~/types';
 import getReadableColor from '~/utils/colors/get-readable-color';
 import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
 
-const BaseProjectCard = tw(LinkCard)`
-  relative
-  w-full
-  overflow-hidden
-  grid
-  grid-rows-1
-  items-center
-  auto-rows-min
-  text-text-secondary
-  rounded-lg
-  shadow-sm
-  border-color[var(--dashed-color, var(--divider))]
-  [*]:(transition[all .3s ease-in-out])
-  [p]:(text-text-secondary)
+const BaseProjectCard = styled(LinkCard)`
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  color: var(--text-secondary);
+  border-radius: 10px;
+  border-color: var(--dashed-color, var(--divider));
 
-  hocus:(
-    text-text-primary
-    background-color[var(--bg-color)]
-    border-color[var(--dashed-color, var(--divider))]
-    
-    [h4]:(underline color[var(--hl-color)])
-    [p]:(text-text-primary)
-    [img]:(transform scale-105 opacity-100)
-    [ul]:(opacity-100)
-  )
+  & * {
+    transition: all 0.3s ease-in-out;
+  }
+  & p {
+    color: var(--text-secondary);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    border-color: var(--dashed-color, var(--divider));
+
+    & h4 {
+      text-decoration: underline;
+      color: var(--hl-color);
+    }
+    & p {
+      color: var(--text-primary);
+    }
+    & img {
+      transform: scale(1.05);
+    }
+    & img,
+    & ul {
+      opacity: 1 !important;
+    }
+  }
 `;
 
-const ProjectCardWithoutPreview = tw`grid-cols-1 [>div:first-of-type]:(p-8)`;
-const ProjectCardWithPreview = tw`
-  grid-template-columns[65% 1fr]
-  sm:(grid-template-columns[75% 1fr])
-  md:(grid-template-columns[65% 1fr])
+const ProjectCardWithoutPreview = css`
+  grid-template-columns: 1fr;
+  & > div:first-of-type {
+    padding: 0.8rem;
+  }
 `;
 
-const DetailsContainer = tw.div`
-  p-8
-  pl-10
-  pr-0
-  flex flex-col
-  rounded-l-lg
-  rounded-r-none
+const ProjectCardWithPreview = css`
+  grid-template-columns: 60% 1fr;
+
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: 61% 1fr;
+  }
 `;
 
-const IconHeadingContainer = tw.div`
-  relative
-  flex
-  items-center
-  justify-start
-  gap-8
-  mb-6
-  margin-right[-0.2rem]
-  [img]:(
-    opacity-90
-    filter
-    drop-shadow-project-icon
-  )
+const DetailsContainer = styled.div`
+  padding: 0.8rem 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 `;
 
-const ProjectHeading = tw(Heading)`
-  absolute
-  truncate
-  text-text-primary
-  text-sm
-  z-index[1]
-  left[calc(48px + 0.6rem)]
-  text-shadow[1px 2px 2px var(--projects-card-text-shadow)]
+const IconHeadingContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.8rem;
+  margin-left: -0.2rem;
+  gap: 0.8rem;
+
+  & img {
+    opacity: 0.9;
+    filter: drop-shadow(0 1px 2px var(--filter-color, var(--dashed-color)));
+  }
 `;
 
-const PreviewImage = tw(Image)`
-  min-h-full!
-  overflow-hidden
-  rounded-l-none
-  rounded-r-lg
-  z-index[0]
-  flex!
-  flex-col
+const ProjectHeading = styled(Heading)`
+  position: absolute;
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  z-index: 1;
+  left: calc(48px + 0.6rem);
+  text-shadow: 1px 2px 2px var(--projects-card-text-shadow);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
-  [> span:first-of-type]:(
-    flex-1
-    [img]:(
-      absolute!
-      max-height[165px]
-      mb-0!
-      opacity-80
-      object-cover
-      object-right-bottom
-      filter
-      drop-shadow-project-preview
-    )
-  )
+const ProjectDescription = styled.p`
+  font-size: var(--font-2xs);
+`;
+
+const PreviewImage = styled(Image)`
+  position: relative;
+  overflow: hidden;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  & > span:first-of-type {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+    min-height: 100% !important;
+    overflow: hidden;
+    & > img {
+      max-height: 165px !important;
+      opacity: 0.8;
+      object-fit: cover;
+      object-position: bottom right;
+      margin: auto 0 0 !important;
+      filter: drop-shadow(2px 3px 4px var(--filter-color, var(--dashed-color)));
+    }
+  }
 `;
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
@@ -155,8 +183,14 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
             {name}
           </ProjectHeading>
         </IconHeadingContainer>
-        <p tw={'text-almost-tiny'}>{description}</p>
-        <Stack stack={stack} tw={'opacity-80 mt-4'} />
+        <ProjectDescription>{description}</ProjectDescription>
+        <Stack
+          stack={stack}
+          css={css`
+            opacity: 0.85;
+            margin-top: 0.4rem;
+          `}
+        />
       </DetailsContainer>
       {previewComponent || undefined}
     </BaseProjectCard>
