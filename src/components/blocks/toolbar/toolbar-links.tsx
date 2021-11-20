@@ -1,11 +1,37 @@
+import styled from '@emotion/styled';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import tw from 'twin.macro';
 
 import { ToolbarLink } from './toolbar-link';
 
-import { GradientOptions } from '~/types';
+import { GradientOptions, mediaQueries } from '~/types';
+
+const ToolbarLinksContainer = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  ${mediaQueries.mobile.lg} {
+    justify-content: flex-start;
+    gap: 0.4rem;
+  }
+
+  ${mediaQueries.tablet.lg} {
+    justify-content: flex-end;
+    grid-column-start: 2;
+    gap: 0.5rem;
+  }
+
+  & > li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 const toolbarLinksList = [
   {
@@ -37,18 +63,6 @@ const toolbarLinksList = [
     gradient: 'brand-to-blue',
   },
 ];
-
-const ToolbarLinksContainer = tw.ul`
-  flex
-  items-center
-  justify-between
-  list-none
-  col-start-1
-  col-end-3
-  sm:(justify-start gap-4)
-  lg:(justify-end col-start-2 gap-5)
-  [li]:(inline-block m-0 p-0)
-`;
 
 export const ToolbarLinks = () => {
   const router = useRouter();
