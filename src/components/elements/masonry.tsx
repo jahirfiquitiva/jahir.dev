@@ -5,18 +5,6 @@ import { Children, isValidElement, useMemo } from 'react';
 import useWindowWidth from '~/hooks/useWindowWidth';
 import { Component, ComponentProps, ComponentChild } from '~/types';
 
-const MasonryColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex: 1;
-  align-content: stretch;
-  box-sizing: border-box;
-  & > * {
-    box-sizing: border-box;
-  }
-`;
-
 const MasonryGrid = styled.div`
   display: flex;
   justify-content: center;
@@ -25,6 +13,15 @@ const MasonryGrid = styled.div`
   overflow: hidden;
   align-content: stretch;
   box-sizing: border-box;
+`;
+
+const MasonryColumn = styled(MasonryGrid)`
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  & > * {
+    box-sizing: border-box;
+  }
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };

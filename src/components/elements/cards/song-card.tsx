@@ -52,6 +52,18 @@ const SongDetails = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  & * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`;
+
+const SongArtistAlbum = styled.p`
+  font-size: var(--font-3xs);
+  text-decoration: none;
+  opacity: 0.9;
 `;
 
 const CurrentlyPlayingTitle = styled.p`
@@ -133,13 +145,13 @@ export const SongCard: Component<SongCardProps> = (props) => {
         <SongDetails
           style={buildStyles({ color: textColor, borderColor: textColor })}
         >
-          <Heading size={'5'} fontSize={'xs'} tw={'truncate'}>
+          <Heading size={'5'} fontSize={'xs'}>
             {(props.title?.length ?? 0) > 0 && shouldRenderDetails
               ? props.title
               : 'Silence'}
           </Heading>
           {shouldRenderDetails && (
-            <p tw={'text-tiny truncate opacity-90'}>
+            <SongArtistAlbum>
               {props.artist}
               {props.album && (
                 <>
@@ -147,7 +159,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
                   {props.album}
                 </>
               )}
-            </p>
+            </SongArtistAlbum>
           )}
         </SongDetails>
       </BaseSongCard>

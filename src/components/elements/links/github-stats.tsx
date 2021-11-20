@@ -31,10 +31,12 @@ const GitHubStatsLink = styled(LinkCard)`
 
 const Count = styled.p`
   font-weight: 500;
+  margin-left: 0.2rem;
   &:not(:last-of-type) {
     padding-left: 0;
     padding-right: 0.8rem;
     border-right: 1px solid var(--divider);
+    margin-left: 0;
     margin-right: 0.4rem;
   }
 `;
@@ -44,7 +46,7 @@ export const GitHubStats: Component = (props) => {
   const { className } = props;
   const { data } = useRequest<GitHubStatsData>('/api/github');
 
-  if (!data || !data?.success) return <></>;
+  // if (!data || !data?.success) return <></>;
   return (
     <GitHubStatsLink
       title={"Link to Jahir's GitHub profile"}
@@ -54,7 +56,7 @@ export const GitHubStats: Component = (props) => {
     >
       <Icon path={mdiStar} size={iconSize} />
       <Count>{data?.stars || 0}</Count>
-      <Icon path={mdiAccountGroup} size={iconSize} tw={'ml-4'} />
+      <Icon path={mdiAccountGroup} size={iconSize} />
       <Count>{data?.followers || 0}</Count>
     </GitHubStatsLink>
   );
