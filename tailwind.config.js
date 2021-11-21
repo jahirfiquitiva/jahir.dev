@@ -41,6 +41,7 @@ module.exports = {
         120: '1.20',
       },
       lineHeight: {
+        0: '0',
         relaxed: '1.75',
       },
       letterSpacing: {

@@ -53,11 +53,13 @@ const computedFields: ComputedFields = {
   },
   excerpt: {
     type: 'string',
-    resolve: (doc) => getPostDescription(doc.body.raw, doc.excerpt, true),
+    resolve: (doc) =>
+      getPostDescription(doc.body.raw, doc.excerpt || doc.description, true),
   },
   longExcerpt: {
     type: 'string',
-    resolve: (doc) => getPostDescription(doc.body.raw, doc.excerpt),
+    resolve: (doc) =>
+      getPostDescription(doc.body.raw, doc.excerpt || doc.description),
   },
   color: {
     type: 'string',
@@ -74,6 +76,7 @@ const Blog = defineDocumentType(() => ({
     date: { type: 'string', required: true },
     hero: { type: 'string', required: true },
     color: { type: 'string' },
+    description: { type: 'string' },
     excerpt: { type: 'string' },
     longExcerpt: { type: 'string' },
     link: { type: 'string' },

@@ -13,13 +13,13 @@ import buildStyles from '~/utils/styles/build-styles';
 
 const BaseBlogPostCard = tw(LinkCard)`
   relative
-  w-full
   overflow-hidden
   rounded-md
   text-text-secondary
   shadow-sm
   min-height[192px]
-  all:(transition-all duration-400 ease-io)
+  transition-all duration-350 ease-io
+  all:(transition-all duration-350 ease-io)
 
   md:(min-height[232px])
   
@@ -40,7 +40,6 @@ const BaseBlogPostCard = tw(LinkCard)`
 `;
 
 const BlogPostImage = tw(Image)`
-  relative
   w-full
   rounded-md
   pointer-events-none
@@ -68,10 +67,10 @@ const Scrim = tw.div`
   bottom-0
   right-0
   rounded-md
-  background-color[rgb(var(--background-values))]
-  opacity-0
-  dark:(opacity-15)
   pointer-events-none
+  background-color[rgb(var(--background-values))]
+  opacity[0.05]
+  dark:(opacity-20)
 `;
 
 const Content = tw.div`
@@ -96,23 +95,22 @@ const Content = tw.div`
 
 const Excerpt = tw.p`
   display[-webkit-box]
-  h-0
   opacity-0
-  leading-none
+  leading-0
   invisible
   pointer-events-none
   text-text-secondary
   text-tiny
   overflow-hidden
   text-overflow[ellipsis]
-  max-lines[1]
-  -webkit-line-clamp[1]
   -webkit-box-orient[vertical]
+  -webkit-line-clamp[1]
+  max-lines[1]
 
   md:(
     text-almost-tiny
-    max-lines[2]
     -webkit-line-clamp[2]
+    max-lines[2]
   )
 `;
 
