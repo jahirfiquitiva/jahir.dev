@@ -1,51 +1,119 @@
+import styled from '@emotion/styled';
 import { useMemo } from 'react';
-import tw from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Link, CenteredSection, Image } from '~/components/atoms/simple';
 import random from '~/lib/random';
-import { Component } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
-const Grid = tw.div`
-  grid
-  grid-cols-1
-  gap-24
-  mb-10
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.4rem;
+  margin-bottom: 1rem;
 
-  md:(grid-template-columns[51% 1fr])
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: 51% 1fr;
+  }
 `;
 
-const ContactOptionsContainer = tw.div`
-  mt-16
-  flex
-  flex-col
-  items-start
-  gap-4
+const ContactOptionsContainer = styled.div`
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
 `;
 
-const EmailLink = tw(Link)`
-  color[#d33c30] hocus:(color[#a42f25])
-  dark:(color[#ec5649] hocus:(color[#f07b72]))
+const ContactOptions = styled.ul`
+  list-style: disc;
+  line-height: 2;
+  padding-inline-start: 1.2rem;
 `;
 
-const TwitterLink = tw(Link)`
-  color[#1a91da] hocus:(color[#1471a9])
-  dark:(color[#1da1f2] hocus:(color[#4ab4f5]))
+const Illustration = styled(Image)`
+  & > img {
+    max-width: 320px;
+    margin: 0 auto !important;
+    ${mediaQueries.tablet.sm} {
+      max-width: unset;
+    }
+  }
 `;
 
-const TelegramLink = tw(Link)`
-  color[#007ab8] hocus:(color[#005f8f])
-  dark:(color[#1a94d1] hocus:(color[#4dacdb]))
+const EmailLink = styled(Link)`
+  color: #d33c30;
+  &:hover,
+  &:focus {
+    color: #a42f25;
+  }
+  .dark & {
+    color: #ee695d;
+    &:hover,
+    &:focus {
+      color: #ea4335;
+    }
+  }
 `;
 
-const DiscordLink = tw(Link)`
-  color[#5865f2] hocus:(color[#4651c2])
-  dark:(color[#6974f3] hocus:(color[#8a93f6]))
+const TwitterLink = styled(Link)`
+  color: #1a91da;
+  &:hover,
+  &:focus {
+    color: #1471a9;
+  }
+  .dark & {
+    color: #1da1f2;
+    &:hover,
+    &:focus {
+      color: #1781c2;
+    }
+  }
 `;
 
-const GitHubLink = tw(Link)`
-  color[#333] hocus:(color[#292929])
-  dark:(color[#ebebeb] hocus:(color[#fff]))
+const TelegramLink = styled(Link)`
+  color: #007ab8;
+  &:hover,
+  &:focus {
+    color: #005f8f;
+  }
+  .dark & {
+    color: #33a0d6;
+    &:hover,
+    &:focus {
+      color: #0088cc;
+    }
+  }
+`;
+
+const DiscordLink = styled(Link)`
+  color: #5865f2;
+  &:hover,
+  &:focus {
+    color: #4651c2;
+  }
+  .dark & {
+    color: #8a93f6;
+    &:hover,
+    &:focus {
+      color: #6974f3;
+    }
+  }
+`;
+
+const GitHubLink = styled(Link)`
+  color: #333;
+  &:hover,
+  &:focus {
+    color: #292929;
+  }
+  .dark & {
+    color: #ebebeb;
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+  }
 `;
 
 type ContactImage = {
@@ -124,7 +192,7 @@ export const Contact: Component = () => {
             .
           </p>
           <p>There&apos;s a few ways you can get it touch:</p>
-          <ul tw={'list-disc leading-loose padding-inline-start[1.2rem]'}>
+          <ContactOptions>
             <li>
               <EmailLink
                 title={'Link to compose an email to Jahir'}
@@ -159,7 +227,7 @@ export const Contact: Component = () => {
                 Ask me Anything (on GitHub)
               </GitHubLink>
             </li>
-          </ul>
+          </ContactOptions>
           <p>
             Although if it&apos;s related to{' '}
             <Link title={'Link to dashbud page'} href={'https://dashbud.dev'}>
@@ -175,11 +243,12 @@ export const Contact: Component = () => {
             .
           </p>
         </ContactOptionsContainer>
-        <Image
+        <Illustration
           src={`/static/images/contact/${contactImage.key}.png`}
           alt={contactImage.alt}
           size={384}
           layout={'responsive'}
+          priority
         />
       </Grid>
     </CenteredSection>
