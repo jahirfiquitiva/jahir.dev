@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
-    "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.6.0",
     "@mdi/js": "^6.5.95",
     "@mdi/react": "^1.5.0",
@@ -43,6 +42,7 @@
     "@bpsmart/eslint-config-react": "^0.0.8",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/css": "^11.5.0",
+    "@emotion/server": "^11.4.0",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@types/node": "^16.11.9",
