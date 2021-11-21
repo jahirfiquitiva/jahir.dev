@@ -9,17 +9,16 @@ const visibleStyles = tw`
   visible
   opacity-100
   pointer-events-auto
-  select-auto
 `;
 
 const hiddenStyles = tw`
   invisible
   opacity-0
   pointer-events-none
-  select-none
 `;
 
 const BackToTopButton = tw(Button)`
+  z-index[2]
   fixed
   right-0
   bottom-0
@@ -33,6 +32,7 @@ const BackToTopButton = tw(Button)`
   text-accent-text
   text-tiny
   tracking-fab
+  leading-normal
   p-7
   gap-0
   uppercase
@@ -40,45 +40,28 @@ const BackToTopButton = tw(Button)`
 
   hocus:(bg-accent)
 
+  [span]:(h-0 w-0 text-0)
+
   all-child:(not-last:(
     inline-block
     visible
     pointer-events-none
-    select-none
     opacity-100
     mr-0
   ))
 
   md:(mr-15 mb-15)
 
-  2xl:(rounded-full mr-20 mb-20 py-8 px-12
+  2xl:(
+    rounded-full mr-20 mb-20
+    padding[0.75rem 1.25rem]
     all-child:(not-last:(
       hidden
       invisible
-      pointer-events-none
-      select-none
       opacity-0
     ))
-  )
-`;
 
-const BackToTopSpan = tw.span`
-  h-0
-  w-0
-  text-0
-  invisible 
-  opacity-0 
-  pointer-events-none 
-  select-none
-
-  2xl:(
-    h-unset
-    w-unset
-    text-unset
-    visible
-    opacity-100
-    pointer-events-none 
-    select-none
+    [span]:(h-unset w-unset text-unset)
   )
 `;
 
@@ -130,7 +113,7 @@ export const BackToTop = () => {
       css={showButton ? visibleStyles : hiddenStyles}
       wrapChildrenInSpan={false}
     >
-      <BackToTopSpan>Back to top</BackToTopSpan>
+      <span>Back to top</span>
     </BackToTopButton>
   );
 };

@@ -50,7 +50,9 @@ pre {
 }
 
 .dark pre,
-.dark-mode pre {
+.dark-mode pre,
+.dark pre code,
+.dark-mode pre code {
   background-color: #0b152b;
 }
 

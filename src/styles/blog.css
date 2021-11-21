@@ -70,8 +70,8 @@ article ul {
   counter-reset: start 1;
 }
 
-article ul li {
-  @apply my-1 mb-0;
+article ul li:not(:first-of-type) {
+  @apply mt-1;
 }
 
 article ol > li:before,
@@ -93,13 +93,14 @@ article .toc {
 }
 
 article .toc .title {
-  @apply font-manrope font-bold text-sm text-text-primary mb-4;
+  @apply font-manrope font-semibold text-sm text-text-primary mb-4;
 }
 
 article img {
-  @apply shadow filter drop-shadow-md rounded-sm my-2 h-auto max-w-full;
+  border: 1px solid var(--divider) !important;
+  @apply rounded my-16 h-auto max-w-full;
 }
 
 article blockquote {
-  @apply my-12 mx-0 bg-primary rounded-r-md border border-divider border-l-4 border-l-accent-light py-8 px-12;
+  @apply my-16 mx-0 bg-primary rounded-md border border-dashed border-accent-light py-6 px-12;
 }

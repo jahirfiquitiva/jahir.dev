@@ -10,9 +10,9 @@
 
   --toolbar: rgba(235, 240, 251, 0.75);
   --toolbar-opaque: rgb(235, 240, 251);
-  --toolbar-shadow-a: rgba(9, 17, 34, 0.08);
-  --toolbar-shadow-b: rgba(9, 17, 34, 0.06);
-  --toolbar-shadow-c: rgba(9, 17, 34, 0.2);
+  --toolbar-shadow-a: rgba(22, 41, 86, 0.08);
+  --toolbar-shadow-b: rgba(22, 41, 86, 0.06);
+  --toolbar-shadow-c: rgba(22, 41, 86, 0.2);
   --toolbar-highlight: rgba(45, 82, 171, 0.08);
 
   --accent-animoji: #d7e1f7;
@@ -41,7 +41,7 @@
     var(--card-shadow-border-opacity)
   );
 
-  --shadow-color: 0, 0, 0;
+  --shadow-color: 8, 15, 30;
   --shadow-color-full: rgba(var(--shadow-color), var(--card-shadow-opacity));
 
   --gradient-brand: var(--accent);
@@ -102,7 +102,7 @@
 
   --card-base: 136, 164, 230; /* accent color as rgb */
 
-  --shadow-color: 255, 255, 255;
+  --shadow-color: 246, 249, 254;
 
   --gradient-brand: var(--accent);
   --gradient-blue: var(--text-shadow-blue);

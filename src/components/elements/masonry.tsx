@@ -5,24 +5,22 @@ import tw from 'twin.macro';
 import useWindowWidth from '~/hooks/useWindowWidth';
 import { Component, ComponentProps, ComponentChild } from '~/types';
 
-const MasonryColumn = tw.div`
-  flex
-  flex-col
-  justify-start
-  flex-1
-  align-content[stretch]
-  box-sizing[border-box]
-  all-child:(box-sizing[border-box])
-`;
-
 const MasonryGrid = tw.div`
   flex
   flex-row
   justify-center
   w-full
   max-w-full
+  overflow-hidden
   align-content[stretch]
   box-sizing[border-box]
+`;
+
+const MasonryColumn = tw(MasonryGrid)`
+  flex-col
+  justify-start
+  flex-1
+  py-2
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };

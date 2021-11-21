@@ -1,20 +1,39 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { boxShadow: defaultBoxShadows } = require('tailwindcss/defaultTheme');
-
-const generateBoxShadows = () => {
-  const newBoxShadows = {};
-  for (const key of Object.keys(defaultBoxShadows)) {
-    newBoxShadows[key] = defaultBoxShadows[key]
-      .replace(/rgba\(0, 0, 0, 0.1\)/g, 'var(--shadow-color-full)')
-      .replace(/0.1/g, '0.2')
-      .replace(/0, 0, 0/g, 'var(--shadow-color)');
-  }
-  return {
-    ...newBoxShadows,
-    fab: '0 2px 8px rgba(var(--shadow-color), 0.24)',
-    blogCardDetails:
-      '0 -4px 6px -1px rgba(255, 255, 255, 0.1), 0 -2px 4px -1px rgba(255, 255, 255, 0.05);',
-  };
+const transform = (shadow) => {
+  return shadow
+    .replace(' / 12%', ', 0.07')
+    .replace(' / 14%', ', 0.09')
+    .replace(' / 20%', ', 0.12')
+    .replace(/rgb\(0 0 0/g, 'rgba(var(--shadow-color)');
 };
 
-module.exports = { generateBoxShadows };
+const mdShadows = {
+  z1: transform(
+    '0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%)',
+  ),
+  z2: transform(
+    '0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%)',
+  ),
+  z4: transform(
+    '0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%)',
+  ),
+  z6: transform(
+    '0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%)',
+  ),
+};
+
+const twShadows = {
+  none: 'none',
+  sm: mdShadows.z1,
+  DEFAULT: mdShadows.z2,
+  md: mdShadows.z4,
+  lg: mdShadows.z6,
+};
+
+module.exports = {
+  ...mdShadows,
+  ...twShadows,
+  fab: '0 2px 8px rgba(var(--shadow-color), 0.24)',
+  blogCardDetails:
+    // eslint-disable-next-line max-len
+    '0 -4px 6px -2px rgba(var(--shadow-color), 0.12), 0 -6px 7px 0 rgba(var(--shadow-color), 0.09), 0 -3px 12px 0 rgba(var(--shadow-color), 0.07)',
+};

@@ -16,7 +16,6 @@ import buildStyles from '~/utils/styles/build-styles';
 const BaseSongCard = tw(LinkCard)`
   p-8
   flex
-  flex-row
   items-center
   gap-8
   rounded-md
@@ -57,18 +56,6 @@ export const SongCard: Component<SongCardProps> = (props) => {
     shouldRenderDetails ? props.image?.url : '',
   );
 
-  const cardColors = useMemo<CSSProperties>(() => {
-    if (!themeReady || !shouldRenderDetails || !paletteData) return {};
-    const backgroundColor = isDark
-      ? paletteData.darkMuted
-      : paletteData.vibrant;
-    const shadowColors = buildShadowStyles(backgroundColor, 0.25, 0.45, isDark);
-    return {
-      ...shadowColors,
-      backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
-    };
-  }, [themeReady, isDark, paletteData, shouldRenderDetails]);
-
   const textColor = useMemo<string | null>(() => {
     if (!themeReady || !shouldRenderDetails || !paletteData) return null;
     const desiredTextColor = isDark
@@ -76,6 +63,18 @@ export const SongCard: Component<SongCardProps> = (props) => {
       : paletteData.darkMuted;
     return getReadableColor(desiredTextColor, isDark);
   }, [themeReady, isDark, paletteData, shouldRenderDetails]);
+
+  const cardColors = useMemo<CSSProperties>(() => {
+    if (!themeReady || !shouldRenderDetails || !paletteData) return {};
+    const backgroundColor = isDark
+      ? paletteData.darkMuted
+      : paletteData.vibrant;
+    const shadowColors = buildShadowStyles(textColor, 0.25, 0.45, isDark);
+    return {
+      ...shadowColors,
+      backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
+    };
+  }, [themeReady, isDark, paletteData, shouldRenderDetails, textColor]);
 
   const renderAlbumImage = () => {
     if (shouldRenderDetails && props.image) {
@@ -109,7 +108,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
         style={buildStyles({
           ...cardColors,
           color: textColor,
-          borderColor: textColor ? hexToRGB(textColor, 0.4) : undefined,
+          borderColor: textColor ? hexToRGB(textColor, 0.32) : undefined,
         })}
       >
         {renderAlbumImage()}

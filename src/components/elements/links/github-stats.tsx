@@ -18,11 +18,23 @@ const GitHubStatsLink = tw(LinkCard)`
   h-full
   min-h-button
   gap-4
+  shadow-sm
 
-  hocus:(--divider-alpha[0.5] shadow-none text-text-primary border-divider)
+  hocus:(
+    --divider-alpha[0.5] shadow text-text-primary border-divider
+    dark:(text-text-primary)
+  )
 `;
 
-const Count = tw.p`font-medium`;
+const Count = tw.p`
+  font-medium
+  ml-2
+  not-last-of-type:(
+    border-r border-divider
+    ml-0 mr-4
+    pl-0 pr-8
+  )
+`;
 
 const iconSize = 0.85;
 export const GitHubStats: Component = (props) => {
@@ -38,14 +50,8 @@ export const GitHubStats: Component = (props) => {
       underline={false}
     >
       <Icon path={mdiStar} size={iconSize} />
-      <Count
-        tw={
-          'pr-8 border border-l-0 border-t-0 border-b-0 border-r border-divider'
-        }
-      >
-        {data?.stars || 0}
-      </Count>
-      <Icon path={mdiAccountGroup} size={iconSize} tw={'ml-4'} />
+      <Count>{data?.stars || 0}</Count>
+      <Icon path={mdiAccountGroup} size={iconSize} />
       <Count>{data?.followers || 0}</Count>
     </GitHubStatsLink>
   );

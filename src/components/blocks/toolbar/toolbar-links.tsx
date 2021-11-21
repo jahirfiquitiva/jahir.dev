@@ -7,6 +7,18 @@ import { ToolbarLink } from './toolbar-link';
 
 import { GradientOptions } from '~/types';
 
+const ToolbarLinksContainer = tw.ul`
+  flex
+  items-center
+  justify-between
+  list-none
+  col-start-1
+  col-end-3
+  sm:(justify-start gap-4)
+  lg:(justify-end col-start-2 gap-5)
+  [li]:(inline-block m-0 p-0)
+`;
+
 const toolbarLinksList = [
   {
     key: 1,
@@ -37,18 +49,6 @@ const toolbarLinksList = [
     gradient: 'brand-to-blue',
   },
 ];
-
-const ToolbarLinksContainer = tw.ul`
-  flex
-  items-center
-  justify-between
-  list-none
-  col-start-1
-  col-end-3
-  sm:(justify-start gap-4)
-  lg:(justify-end col-start-2 gap-5)
-  [li]:(inline-block m-0 p-0)
-`;
 
 export const ToolbarLinks = () => {
   const router = useRouter();

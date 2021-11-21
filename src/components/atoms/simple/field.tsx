@@ -47,7 +47,6 @@ const TextArea = styled.textarea`
 const BaseFieldWrapper = tw.div`
   relative
   flex
-  flex-row
   items-center
 `;
 
@@ -60,7 +59,6 @@ const FieldWrapper = tw(BaseFieldWrapper)`
     translate-y-1/2
     mr-8
     pointer-events-none
-    select-none
     text-text-tertiary
   )
 

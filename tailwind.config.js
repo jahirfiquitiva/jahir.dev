@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 const borderRadius = require('./tailwind/border-radius');
-const { generateBoxShadows } = require('./tailwind/box-shadows');
+const boxShadow = require('./tailwind/box-shadows');
 const colors = require('./tailwind/colors');
 const fontFamilies = require('./tailwind/font-families');
 const fontSizes = require('./tailwind/font-sizes');
@@ -18,7 +18,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     borderRadius,
-    boxShadow: generateBoxShadows(),
+    boxShadow,
     colors,
     fontFamily: fontFamilies,
     fontSize: fontSizes,
@@ -41,6 +41,7 @@ module.exports = {
         120: '1.20',
       },
       lineHeight: {
+        0: '0',
         relaxed: '1.75',
       },
       letterSpacing: {
@@ -63,6 +64,9 @@ module.exports = {
         400: '400ms',
         450: '450ms',
       },
+      transitionTimingFunction: {
+        io: 'ease-in-out',
+      },
       transitionDelay: {
         0: '0ms',
         50: '50ms',
@@ -76,6 +80,7 @@ module.exports = {
   corePlugins: {
     appearance: false,
     float: false,
+    zIndex: false,
   },
   variants: {
     extend: {},

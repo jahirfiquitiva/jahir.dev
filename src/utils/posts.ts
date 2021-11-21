@@ -13,7 +13,7 @@ export const getPostDescription = (
   defaultDescription?: string | null,
   trimLength?: boolean | null,
 ): string => {
-  if (defaultDescription && !trimLength) return defaultDescription;
+  if (defaultDescription) return defaultDescription;
   if (!content) return defaultDescription || '';
 
   let description = content

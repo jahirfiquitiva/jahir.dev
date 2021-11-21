@@ -9,10 +9,10 @@ interface BaseLinkProps {
   underline?: boolean;
 }
 
-const baseLinkStyles = tw`
+export const baseLinkStyles = tw`
   font-medium
   inline-block
-  text-accent  
+  text-accent
   hocus:(text-accent-dark dark:text-accent-light)
 `;
 
@@ -54,6 +54,13 @@ export const Link: Component<LinkProps> = (props) => {
     return true;
   }, [router, href, newTab]);
 
+  const linkStyles = useMemo(() => {
+    return [
+      baseLinkStyles,
+      underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+    ];
+  }, [underline]);
+
   if (newTab) {
     return (
       <a
@@ -62,12 +69,9 @@ export const Link: Component<LinkProps> = (props) => {
         aria-label={title}
         target={'_blank'}
         rel={'noopener noreferrer'}
+        css={linkStyles}
         className={className}
         style={style}
-        css={[
-          baseLinkStyles,
-          underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
-        ]}
       >
         {children}
       </a>
@@ -80,12 +84,9 @@ export const Link: Component<LinkProps> = (props) => {
       <a
         title={title}
         aria-label={title}
+        css={linkStyles}
         className={className}
         style={style}
-        css={[
-          baseLinkStyles,
-          underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
-        ]}
       >
         {children}
       </a>

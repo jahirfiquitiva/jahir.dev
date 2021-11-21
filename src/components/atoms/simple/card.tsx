@@ -7,11 +7,10 @@ const baseCardStyles = tw`
   rounded
   p-0
   transition-all
-  duration-300
+  duration-250
+  ease-io
   border
-  border-solid
   border-divider
-  motion-reduce:transition-none
 `;
 
 export const Card = styled.div`
@@ -20,7 +19,6 @@ export const Card = styled.div`
 
 const linkCardStyles = tw`
   --shadow-color[var(--card-base)]
-  --shadow-color-full[var(--card-shadow)]
   shadow-none no-underline
   hocus:(shadow-md border-card-shadow-border -translate-y-1)
 `;

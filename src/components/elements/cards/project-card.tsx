@@ -19,8 +19,9 @@ const BaseProjectCard = tw(LinkCard)`
   auto-rows-min
   text-text-secondary
   rounded-lg
+  shadow-sm
   border-color[var(--dashed-color, var(--divider))]
-  [*]:(transition-all duration-300)
+  [*]:(transition-all duration-300 ease-io)
   [p]:(text-text-secondary)
 
   hocus:(
@@ -38,36 +39,31 @@ const BaseProjectCard = tw(LinkCard)`
 const ProjectCardWithoutPreview = tw`grid-cols-1 [>div:first-of-type]:(p-8)`;
 const ProjectCardWithPreview = tw`
   grid-template-columns[60% 1fr]
-  sm:(grid-template-columns[70% 1fr])
-  md:(grid-template-columns[60% 1fr])
+  md:(grid-template-columns[61% 1fr])
 `;
 
 const DetailsContainer = tw.div`
   p-8
+  pl-10
   pr-0
-  pb-10
   flex flex-col
   rounded-l-lg
   rounded-r-none
 `;
 
-const IconHeadingContainer = tw(DetailsContainer)`
+const IconHeadingContainer = tw.div`
   relative
-  flex-row
+  flex
   items-center
   justify-start
-  p-0
   gap-8
+  mb-6
+  margin-right[-0.2rem]
   [img]:(
     opacity-90
     filter
     drop-shadow-project-icon
   )
-`;
-
-const DescriptionContainer = tw(DetailsContainer)`
-  pl-2 pt-6 pb-0
-  [p]:(text-almost-tiny)
 `;
 
 const ProjectHeading = tw(Heading)`
@@ -81,30 +77,26 @@ const ProjectHeading = tw(Heading)`
 `;
 
 const PreviewImage = tw(Image)`
-  h-full w-full
-  relative
-  top-0
-  right-0
-  bottom-0
-  left-0
-  truncate
+  min-h-full!
+  overflow-hidden
   rounded-l-none
   rounded-r-lg
-
   z-index[0]
+  flex!
+  flex-col
 
-  [> span:first-of-type]:(flex! flex-col justify-end)
-  [> span:first-of-type, img]:(min-h-full!)
-
-  [img]:(
-    h-full w-full
-    rounded-l-none
-    rounded-r-lg
-    m-0!
-    opacity-75
-    filter
-    object-cover
-    drop-shadow-project-preview
+  [> span:first-of-type]:(
+    flex-1
+    [img]:(
+      absolute!
+      max-height[165px]
+      mb-0!
+      opacity-80
+      object-cover
+      object-right-bottom
+      filter
+      drop-shadow-project-preview
+    )
   )
 `;
 
@@ -162,10 +154,8 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
             {name}
           </ProjectHeading>
         </IconHeadingContainer>
-        <DescriptionContainer>
-          <p>{description}</p>
-          <Stack stack={stack} tw={'opacity-85 mt-6'} />
-        </DescriptionContainer>
+        <p tw={'text-almost-tiny'}>{description}</p>
+        <Stack stack={stack} tw={'opacity-85 mt-4'} />
       </DetailsContainer>
       {previewComponent || undefined}
     </BaseProjectCard>

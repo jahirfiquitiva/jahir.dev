@@ -20,7 +20,7 @@ const ContactOptionsContainer = tw.div`
   flex
   flex-col
   items-start
-  gap-8
+  gap-4
 `;
 
 const EmailLink = tw(Link)`
@@ -121,9 +121,10 @@ export const Contact: Component = () => {
             >
               don&apos;t just say hello
             </Link>
+            .
           </p>
           <p>There&apos;s a few ways you can get it touch:</p>
-          <ul tw={'list-disc leading-loose padding-inline-start[1.6rem]'}>
+          <ul tw={'list-disc leading-loose padding-inline-start[1.2rem]'}>
             <li>
               <EmailLink
                 title={'Link to compose an email to Jahir'}
@@ -171,6 +172,7 @@ export const Contact: Component = () => {
             >
               send a message on Discord
             </DiscordLink>
+            .
           </p>
         </ContactOptionsContainer>
         <Image
@@ -178,7 +180,6 @@ export const Contact: Component = () => {
           alt={contactImage.alt}
           size={384}
           layout={'responsive'}
-          tw={'[>img]:(max-width[320px] mx-auto md:(max-w-unset))'}
         />
       </Grid>
     </CenteredSection>

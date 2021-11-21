@@ -25,27 +25,26 @@ const ContentContainer = tw.div`
 const PhotoContainer = tw.div`
   flex
   justify-start
-  filter
-  drop-shadow
   mb-8
   grid-row[1]
   md:(justify-end mb-0)
+  filter[drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.12))]
 `;
 
 const Photo = tw(Image)`
   rounded-half
-  filter
-  drop-shadow-md
   p-4!
-  [img]:(filter drop-shadow)
+  filter[drop-shadow(0 1px 2px rgba(var(--shadow-color), 0.04))]
 `;
 
 const AudioButton = tw.button`
+  p-0 m-0
   font-manrope
   font-bold
   border-none
   bg-transparent
   cursor-pointer
+  text-shadow[inherit]
 `;
 
 const audioButtonTitle = "Press to hear Jahir's name pronunciation";

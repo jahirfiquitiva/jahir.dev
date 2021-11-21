@@ -13,15 +13,14 @@ export const Chip = tw.span`
   text-tiny
   rounded-full
   border
-  border-solid
   border-color[var(--border-color)]
   bg-transparent
   text-text-secondary
   cursor-default
   transition-all
-  duration-200
-  motion-reduce:transition-none
-  line-height[1.8]
+  duration-250
+  ease-io
+  line-height[1.7]
 
   hocus:(no-underline text-text-primary background-color[var(--bg-color)])
   all-child:(first-of-type:(mr-4))

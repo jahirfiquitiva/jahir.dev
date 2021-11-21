@@ -3,28 +3,28 @@ import tw, { styled } from 'twin.macro';
 
 import { BaseToolbarButtonStyles } from './toolbar-button';
 
-import { LinkButton, LinkButtonProps } from '~/components/atoms/simple';
 import {
-  Component,
-  ComponentWithGradientProps,
-  gradientToTailwind,
-} from '~/types';
+  GradientSpan,
+  LinkButton,
+  LinkButtonProps,
+} from '~/components/atoms/simple';
+import { Component, ComponentWithGradientProps } from '~/types';
 
 const BaseToolbarLink = styled(LinkButton)`
   ${BaseToolbarButtonStyles}
   ${tw`
-    max-w-unset
-    [&.active]:(bg-toolbar-highlight)
+    max-w-unset shadow-none
+    hocus:(shadow-none)
     lg:(gap-6)
-    [span.emoji]:(hidden sm:(inline-block text-text-primary))
+    [&.active]:(bg-toolbar-highlight)
+    [span.emoji]:(
+      hidden invisible pointer-events-none opacity-0
+      sm:(
+        inline-block
+        visible pointer-events-auto opacity-100
+        text-text-primary)
+      )
   `}
-`;
-
-const GradientToolbarLinkSpan = tw.span`
-  text-transparent
-  bg-gradient-to-r
-  bg-clip-text
-  hocus:(text-transparent)
 `;
 
 interface ToolbarLinkProps
@@ -43,9 +43,9 @@ export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
       {emoji ? <span className={'emoji'}>{emoji}</span> : null}
       {outOfSpanChildren}
       {gradientColor ? (
-        <GradientToolbarLinkSpan css={gradientToTailwind(gradientColor)}>
+        <GradientSpan gradientColor={gradientColor} forceGradient>
           {children}
-        </GradientToolbarLinkSpan>
+        </GradientSpan>
       ) : (
         <span>{children}</span>
       )}

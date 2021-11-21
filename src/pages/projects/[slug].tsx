@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 import { allProjects } from '.contentlayer/data';
 import type { Project } from '.contentlayer/types';
 import { Page, UnderConstruction } from '~/components/blocks';
-import { Project as ProjectComponent } from '~/components/elements';
+import { MdxContent } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
@@ -58,11 +58,15 @@ const ProjectPage: Component<ProjectPageProps> = ({ project: baseProject }) => {
       exactUrl={`https://jahir.dev/projects/${project.slug}`}
       metaImageStyle={'summary_large_image'}
     >
-      <ProjectComponent {...project}>
+      <MdxContent
+        backText={'Back to projects list'}
+        backHref={'/projects'}
+        content={project}
+      >
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
         <UnderConstruction />
-      </ProjectComponent>
+      </MdxContent>
     </Page>
   );
 };

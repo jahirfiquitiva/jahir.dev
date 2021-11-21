@@ -10,14 +10,12 @@ const FooterLinkComponent = tw(Link)`
     hidden
     invisible
     pointer-events-none
-    select-none
     opacity-0
 
     sm:(
       inline-block
       visible
       pointer-events-auto
-      select-auto
       opacity-100
       mr-6
     )

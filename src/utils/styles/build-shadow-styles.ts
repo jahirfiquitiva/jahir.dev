@@ -13,7 +13,6 @@ const buildShadowStyles = (
   if (!color) return {};
   return buildStyles({
     '--shadow-color': hexToRGB(color).replace(/rgb\(/g, '').replace(/\)/g, ''),
-    '--shadow-color-full': hexToRGB(color, shadowOpacity || 0.15),
     '--border-color': hexToRGB(color, borderOpacity || 0.2),
     '--dashed-color': hexToRGB(color, 0.5),
     '--filter-color': hexToRGB(color, 0.7),
