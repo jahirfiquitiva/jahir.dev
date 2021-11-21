@@ -30,7 +30,7 @@ const ImageComparisonContainer = tw.div`
     border-2
     border-divider
 
-    [img]:(object-contain!)
+    [img]:(object-contain! m-0)
   )
 
   [p]:(inline-flex text-tiny italic)
