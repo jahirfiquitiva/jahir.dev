@@ -1,10 +1,8 @@
-import { theme } from 'twin.macro';
-
 import { Activity } from './activity';
 import { Counter } from './counter';
 
 import { SongCard, Masonry, MasonryBreakpoints } from '~/components/elements';
-import { Component, ComponentProps, DashboardData } from '~/types';
+import { Component, ComponentProps, DashboardData, viewports } from '~/types';
 
 interface DashboardGridProps extends ComponentProps {
   data?: DashboardData | null;
@@ -12,7 +10,7 @@ interface DashboardGridProps extends ComponentProps {
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
-masonryBreakpoints[theme`screens.md`] = 2;
+masonryBreakpoints[viewports.tablet.sm] = 2;
 
 export const DashboardGrid: Component<DashboardGridProps> = (props) => {
   const { data: dashboardData } = props;
