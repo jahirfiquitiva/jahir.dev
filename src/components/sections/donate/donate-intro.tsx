@@ -1,16 +1,27 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Link } from '~/components/atoms/simple';
 import { DonationLinks } from '~/components/elements';
-import { Component } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
-const ParagraphsContainer = tw.div`
-  grid
-  grid-cols-1
-  gap-8
-  my-12
-  md:(grid-cols-2 gap-10)
+const ParagraphsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+`;
+
+const OptionsContainer = styled.div`
+  margin: 1.2rem 0;
+  & > p {
+    margin-bottom: 0.6rem;
+  }
 `;
 
 export const DonateIntro: Component = () => {
@@ -60,12 +71,12 @@ export const DonateIntro: Component = () => {
         Whatever I receive, will be highly appreciated. Thanks in advance! 🤗
       </p>
 
-      <div tw={'my-12'}>
-        <p tw={'mb-6'}>
+      <OptionsContainer>
+        <p>
           <b>Donation options:</b>
         </p>
         <DonationLinks />
-      </div>
+      </OptionsContainer>
     </section>
   );
 };
