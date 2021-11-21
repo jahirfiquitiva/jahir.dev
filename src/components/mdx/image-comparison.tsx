@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
+import styled from '@emotion/styled';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
-import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
@@ -17,23 +17,28 @@ interface ImageComparisonProps extends ComponentProps {
   vertical?: boolean;
 }
 
-const ImageComparisonContainer = tw.div`
-  flex
-  flex-col
-  items-center
-  mb-12
-  min-h-32
+const ImageComparisonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  min-height: 3.2rem;
 
-  [>div:first-of-type]:(
-    background-color[#080f1e]
-    rounded-md
-    border-2
-    border-divider
+  & > div:first-of-type {
+    background-color: #080f1e;
+    border-radius: 8px;
+    border: 2px solid var(--divider);
 
-    [img]:(object-contain! m-0)
-  )
+    & img {
+      object-fit: contain !important;
+    }
+  }
 
-  [p]:(inline-flex text-tiny italic)
+  & > p {
+    display: inline-flex;
+    font-size: var(--font-3xs);
+    font-style: italic;
+  }
 `;
 
 export const ImageComparison: Component<ImageComparisonProps> = (props) => {

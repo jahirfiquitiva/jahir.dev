@@ -25,7 +25,7 @@ const ToolbarGrid = styled.nav`
 
   ${mediaQueries.tablet.lg} {
     gap: 0.4rem;
-    grid-template-rows: 1fr;
+    grid-template-rows: minmax(0, 1fr);
     grid-template-columns: auto 1fr auto;
   }
 
