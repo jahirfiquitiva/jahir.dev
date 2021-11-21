@@ -37,9 +37,6 @@ module.exports = {
         ...spacing,
         '3xl-w-padding': 'calc(48rem + 1.6rem)',
       },
-      scale: {
-        120: '1.20',
-      },
       lineHeight: {
         0: '0',
         relaxed: '1.75',
@@ -57,23 +54,9 @@ module.exports = {
       outline: {
         accent: ['2px solid var(--accent)', '0px'],
       },
-      transitionDuration: {
-        0: '0ms',
-        250: '250ms',
-        350: '350ms',
-        400: '400ms',
-        450: '450ms',
-      },
-      transitionTimingFunction: {
-        io: 'ease-in-out',
-      },
       transitionDelay: {
         0: '0ms',
         50: '50ms',
-      },
-      opacity: {
-        15: '0.15',
-        85: '0.85',
       },
     },
   },
@@ -81,6 +64,9 @@ module.exports = {
     appearance: false,
     float: false,
     zIndex: false,
+    transitionProperty: false,
+    transitionDuration: false,
+    transitionTimingFunction: false,
   },
   variants: {
     extend: {},

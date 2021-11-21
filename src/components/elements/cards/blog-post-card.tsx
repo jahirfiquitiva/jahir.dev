@@ -18,8 +18,8 @@ const BaseBlogPostCard = tw(LinkCard)`
   text-text-secondary
   shadow-sm
   min-height[192px]
-  transition-all duration-350 ease-io
-  all:(transition-all duration-350 ease-io)
+  transition[all .35s ease-in-out]
+  all:(transition[all .35s ease-in-out])
 
   md:(min-height[232px])
   

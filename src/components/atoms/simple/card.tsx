@@ -6,11 +6,9 @@ const baseCardStyles = tw`
   block
   rounded
   p-0
-  transition-all
-  duration-250
-  ease-io
   border
   border-divider
+  transition[all .25s ease-in-out]
 `;
 
 export const Card = styled.div`

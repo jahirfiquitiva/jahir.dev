@@ -19,12 +19,10 @@ export const ButtonStyles = tw`
   font-semibold
   tracking-button
   cursor-pointer
-  transition-all
-  duration-250
-  ease-io
   gap-4
   truncate
   shadow-sm
+  transition[all .25s ease-in-out]
   
   disabled:(opacity-50 pointer-events-none cursor-not-allowed)
   hocus:(shadow bg-accent-dark -translate-y-1 min-h-button)
