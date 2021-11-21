@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 const borderRadius = require('./tailwind/border-radius');
-const { generateBoxShadows } = require('./tailwind/box-shadows');
+const boxShadow = require('./tailwind/box-shadows');
 const colors = require('./tailwind/colors');
 const fontFamilies = require('./tailwind/font-families');
 const fontSizes = require('./tailwind/font-sizes');
@@ -18,7 +18,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     borderRadius,
-    boxShadow: generateBoxShadows(),
+    boxShadow,
     colors,
     fontFamily: fontFamilies,
     fontSize: fontSizes,

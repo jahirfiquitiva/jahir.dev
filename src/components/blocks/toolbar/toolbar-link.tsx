@@ -13,9 +13,10 @@ import {
 const BaseToolbarLink = styled(LinkButton)`
   ${BaseToolbarButtonStyles}
   ${tw`
-    max-w-unset
-    [&.active]:(bg-toolbar-highlight)
+    max-w-unset shadow-none
+    hocus:(shadow-none)
     lg:(gap-6)
+    [&.active]:(bg-toolbar-highlight)
     [span.emoji]:(hidden sm:(inline-block text-text-primary))
   `}
 `;

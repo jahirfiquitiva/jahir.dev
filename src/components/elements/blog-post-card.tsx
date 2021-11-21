@@ -17,8 +17,9 @@ const BaseBlogPostCard = tw(LinkCard)`
   overflow-hidden
   rounded-md
   text-text-secondary
+  shadow-sm
   min-height[192px]
-  all:(transition-all duration-400 motion-reduce:(transition-none))
+  all:(transition-all duration-400 ease-io)
 
   md:(min-height[232px])
   

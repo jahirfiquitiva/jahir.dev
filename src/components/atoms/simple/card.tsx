@@ -8,10 +8,9 @@ const baseCardStyles = tw`
   p-0
   transition-all
   duration-300
+  ease-io
   border
-  border-solid
   border-divider
-  motion-reduce:transition-none
 `;
 
 export const Card = styled.div`

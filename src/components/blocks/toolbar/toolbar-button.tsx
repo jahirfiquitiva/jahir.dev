@@ -8,9 +8,8 @@ export const BaseToolbarButtonStyles = tw`
   min-w-button
   bg-transparent
   text-transparent
-  
-  hocus:(bg-toolbar-highlight transform-none text-transparent)
-
+  shadow-none
+  hocus:(shadow-none bg-toolbar-highlight transform-none text-transparent)
   xs:(px-8 py-4)
 `;
 
