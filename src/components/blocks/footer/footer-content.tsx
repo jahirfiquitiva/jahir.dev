@@ -35,11 +35,10 @@ const FooterSectionTwo = tw(FooterSectionOne)`
   hidden
   invisible
   pointer-events-none
-  select-none
   opacity-0
 
   xs:(col-start-1 col-end-2 grid-row[1])
-  lg:(flex visible pointer-events-auto select-auto opacity-100 items-start row-start-1 row-end-3)
+  lg:(flex visible pointer-events-auto opacity-100 items-start row-start-1 row-end-3)
 `;
 
 const FooterSectionThree = tw(FooterSectionOne)`

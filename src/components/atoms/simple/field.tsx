@@ -60,7 +60,6 @@ const FieldWrapper = tw(BaseFieldWrapper)`
     translate-y-1/2
     mr-8
     pointer-events-none
-    select-none
     text-text-tertiary
   )
 

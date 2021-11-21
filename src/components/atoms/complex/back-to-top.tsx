@@ -9,14 +9,12 @@ const visibleStyles = tw`
   visible
   opacity-100
   pointer-events-auto
-  select-auto
 `;
 
 const hiddenStyles = tw`
   invisible
   opacity-0
   pointer-events-none
-  select-none
 `;
 
 const BackToTopButton = tw(Button)`
@@ -44,7 +42,6 @@ const BackToTopButton = tw(Button)`
     inline-block
     visible
     pointer-events-none
-    select-none
     opacity-100
     mr-0
   ))
@@ -56,7 +53,6 @@ const BackToTopButton = tw(Button)`
       hidden
       invisible
       pointer-events-none
-      select-none
       opacity-0
     ))
   )
@@ -68,8 +64,7 @@ const BackToTopSpan = tw.span`
   text-0
   invisible 
   opacity-0 
-  pointer-events-none 
-  select-none
+  pointer-events-none
 
   2xl:(
     h-unset
@@ -77,8 +72,7 @@ const BackToTopSpan = tw.span`
     text-unset
     visible
     opacity-100
-    pointer-events-none 
-    select-none
+    pointer-events-none
   )
 `;
 

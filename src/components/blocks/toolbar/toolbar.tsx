@@ -27,12 +27,12 @@ const ToolbarGrid = tw.nav`
   all-child:(
     transition-all duration-300
     last:(
-      max-h-0 invisible pointer-events-none select-none opacity-0 mt-0
+      max-h-0 invisible pointer-events-none opacity-0 mt-0
       [li]:(
         transition-all duration-200 delay-100 overflow-hidden max-h-0 invisible opacity-0
       )
       lg:(
-        max-h-unset visible pointer-events-auto select-auto opacity-100 mt-0
+        max-h-unset visible pointer-events-auto opacity-100 mt-0
         [li]:(delay-50 max-h-full visible opacity-100)
       )
     )
@@ -40,7 +40,7 @@ const ToolbarGrid = tw.nav`
   [&.expanded]:(
     all-child:(
       last:(
-        max-h-unset visible pointer-events-auto select-auto opacity-100 mt-6
+        max-h-unset visible pointer-events-auto opacity-100 mt-6
         [li]:(delay-50 max-h-full visible opacity-100)
         lg:(mt-0)
       )

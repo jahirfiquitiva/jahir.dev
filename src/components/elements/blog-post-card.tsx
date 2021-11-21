@@ -43,7 +43,6 @@ const BlogPostImage = tw(Image)`
   w-full
   rounded-md
   pointer-events-none
-  select-none
 
   height[192px]
   md:(height[232px])
@@ -72,7 +71,6 @@ const Scrim = tw.div`
   opacity-0
   dark:(opacity-15)
   pointer-events-none
-  select-none
 `;
 
 const Content = tw.div`
@@ -102,7 +100,6 @@ const Excerpt = tw.p`
   leading-none
   invisible
   pointer-events-none
-  select-none
   text-text-secondary
   text-tiny
   overflow-hidden

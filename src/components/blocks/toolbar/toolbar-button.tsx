@@ -47,8 +47,8 @@ export const ToolbarButtonsContainer = tw.ul`
   [li]:(
     inline-block m-0 p-0 max-h-button
     last:(
-      visible pointer-events-auto select-auto opacity-100 
-      lg:(hidden invisible pointer-events-none select-none opacity-0)
+      visible pointer-events-auto opacity-100 
+      lg:(hidden invisible pointer-events-none opacity-0)
     )
   )
 `;
