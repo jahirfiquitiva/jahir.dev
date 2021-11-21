@@ -37,7 +37,7 @@ export const Release: Component<ReleaseProps> = (props) => {
 
   return (
     <CenteredSection>
-      <Heading tw={'m-0'}>{data?.success ? '🎉' : '😮'}</Heading>
+      <Heading>{data?.success ? '🎉' : '😮'}</Heading>
       <Heading size={'3'}>
         {data?.success ? 'Download started!' : 'Oh no!'}
       </Heading>
