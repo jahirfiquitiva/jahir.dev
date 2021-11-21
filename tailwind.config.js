@@ -79,6 +79,7 @@ module.exports = {
   corePlugins: {
     appearance: false,
     float: false,
+    zIndex: false,
   },
   variants: {
     extend: {},

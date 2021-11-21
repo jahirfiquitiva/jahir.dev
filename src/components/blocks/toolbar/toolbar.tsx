@@ -110,13 +110,13 @@ const Navigation = () => {
 const StyledHeader = tw.header`
   fixed
   top-0
-  z-20
   bg-toolbar
   w-full
   p-4
   backdrop-filter
   backdrop-blur
   backdrop-saturate-150
+  z-index[5]
   box-shadow[
     0 0 4px 0 var(--toolbar-shadow-a),
     0 3px 4px 0 var(--toolbar-shadow-b),
