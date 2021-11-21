@@ -12,6 +12,15 @@ import { Component, ComponentWithGradientProps, mediaQueries } from '~/types';
 
 const BaseToolbarLink = styled(LinkButton)`
   ${BaseToolbarButtonStyles}
+
+  &:hover,
+  &:focus {
+    color: rgba(0, 0, 0, 0);
+    .dark & {
+      color: rgba(0, 0, 0, 0);
+    }
+  }
+
   max-width: unset;
 
   &.active {

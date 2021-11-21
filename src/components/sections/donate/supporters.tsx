@@ -24,7 +24,7 @@ import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 const SupportersHeader = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  margin: 2rem 0;
+  margin: 2rem 0 0.8rem;
   overflow: hidden;
   gap: 1rem;
 

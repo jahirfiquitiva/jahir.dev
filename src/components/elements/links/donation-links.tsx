@@ -13,6 +13,10 @@ const BaseDonationLink = styled(LinkButton)`
   &:focus {
     color: #fff;
     text-decoration: none;
+
+    .dark & {
+      color: #fff;
+    }
   }
 `;
 
