@@ -1,5 +1,16 @@
-html, body {
-  @apply font-sans font-normal text-text-secondary leading-normal sm:leading-relaxed;
+html,
+body {
+  font-family: var(--inter-font);
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (min-width: 425px) {
+  html,
+  body {
+    line-height: 1.75;
+  }
 }
 
 h1,
@@ -8,56 +19,61 @@ h3,
 h4,
 h5,
 h6 {
-  @apply inline-block font-manrope text-text-primary;
+  display: inline-block;
+  font-family: var(--manrope-font);
+  color: var(--text-primary);
 }
 
 h1,
 h2,
 h3 {
-  @apply font-bold;
+  font-weight: 700;
 }
 
 h4,
 h5,
 h6 {
-  @apply font-semibold;
+  font-weight: 600;
 }
 
 b,
 strong {
-  @apply font-medium text-text-primary;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
-body, small, p {
-  @apply font-normal;
+body,
+small,
+p {
+  font-weight: 400;
 }
 
 h1 {
-  @apply text-3xl;
+  font-size: var(--font-3xl);
 }
 
 h2 {
-  @apply text-2xl;
+  font-size: var(--font-2xl);
 }
 
 h3 {
-  @apply text-xl;
+  font-size: var(--font-xl);
 }
 
 h4 {
-  @apply text-md;
+  font-size: var(--font-md);
 }
 
 h5 {
-  @apply text-sm;
+  font-size: var(--font-sm);
 }
 
 h6,
 p,
 body {
-  @apply text-xs;
+  font-size: var(--font-xs);
 }
 
 small {
-  @apply text-tiny;
+  font-size: var(--font-3xs);
 }
