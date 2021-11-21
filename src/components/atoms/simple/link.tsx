@@ -9,10 +9,10 @@ interface BaseLinkProps {
   underline?: boolean;
 }
 
-const baseLinkStyles = tw`
+export const baseLinkStyles = tw`
   font-medium
   inline-block
-  text-accent  
+  text-accent
   hocus:(text-accent-dark dark:text-accent-light)
 `;
 

@@ -29,7 +29,6 @@ const ImageComparisonContainer = tw.div`
     rounded-md
     border-2
     border-divider
-    shadow-sm
 
     [img]:(object-contain!)
   )
