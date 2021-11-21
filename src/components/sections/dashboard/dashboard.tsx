@@ -47,7 +47,7 @@ export const Dashboard: Component = () => {
       />
       <DashboardGrid data={dashboardData} />
       <Divider thin />
-      <Heading size={'4'} tw={'mt-6 mb-10'}>
+      <Heading size={'4'} fontSize={'sm'} tw={'mt-6 mb-10'}>
         Top Tracks
       </Heading>
       {renderTopTracks()}
