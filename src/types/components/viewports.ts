@@ -31,7 +31,7 @@ export const viewports: Viewports = {
 type SingleMediaQuery = string | `@media all and (min-width: ${number}px)`;
 
 export const buildMediaQuery = (width: number): SingleMediaQuery => {
-  return `@media all and (min-width: ${width}px)`;
+  return `@media (min-width: ${width}px)`;
 };
 
 type MediaQueries = {
