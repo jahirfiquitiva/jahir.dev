@@ -7,7 +7,7 @@ import { Component, mediaQueries } from '~/types';
 
 const ParagraphsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.8rem;
   margin: 1.2rem 0;
 

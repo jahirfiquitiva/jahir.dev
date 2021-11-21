@@ -8,7 +8,7 @@ const FooterGrid = styled.div`
   width: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   max-width: 768px;
   margin: 0 auto;
   gap: 1rem;

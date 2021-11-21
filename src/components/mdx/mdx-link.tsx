@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
 import { useMemo } from 'react';
-import tw from 'twin.macro';
 
-import { Link, LinkProps } from '~/components/atoms/simple';
+import { Link, LinkProps, baseLinkStyles } from '~/components/atoms/simple';
 import { Component } from '~/types';
 
 const ignoredLinksClasses = ['anchor', 'toc-link'];
@@ -12,11 +12,13 @@ const isIgnoredLinkClassName = (className?: string): boolean => {
   );
 };
 
-const StyledLink = tw.a`
-  font-medium
-  inline-block
-  text-accent  
-  hocus:(underline text-accent-dark dark:text-accent-light)
+const StyledLink = styled.a`
+  ${baseLinkStyles}
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 `;
 
 export const MdxLink: Component<LinkProps> = (props) => {

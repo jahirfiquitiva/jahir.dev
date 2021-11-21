@@ -15,8 +15,8 @@ const BaseProjectCard = styled(LinkCard)`
   width: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: min-content;
   color: var(--text-secondary);
   border-radius: 10px;
@@ -53,7 +53,7 @@ const BaseProjectCard = styled(LinkCard)`
 `;
 
 const ProjectCardWithoutPreview = css`
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   & > div:first-of-type {
     padding: 0.8rem;
   }

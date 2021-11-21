@@ -189,6 +189,7 @@ export const Contact: Component = () => {
             >
               don&apos;t just say hello
             </Link>
+            .
           </p>
           <p>There&apos;s a few ways you can get it touch:</p>
           <ContactOptions>
@@ -239,6 +240,7 @@ export const Contact: Component = () => {
             >
               send a message on Discord
             </DiscordLink>
+            .
           </p>
         </ContactOptionsContainer>
         <Illustration

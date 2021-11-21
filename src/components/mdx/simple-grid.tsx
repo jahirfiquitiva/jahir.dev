@@ -1,5 +1,19 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
-export const SimpleGrid = tw.div`grid grid-cols-1 md:(grid-cols-2 gap-10)`;
+import { mediaQueries } from '~/types';
 
-export const SimpleGridColumn = tw.div`flex flex-col w-full`;
+export const SimpleGrid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+`;
+
+export const SimpleGridColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;

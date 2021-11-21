@@ -9,7 +9,7 @@ interface BaseLinkProps {
   underline?: boolean;
 }
 
-const baseLinkStyles = css`
+export const baseLinkStyles = css`
   font-weight: 500;
   display: inline-block;
   color: var(--accent);
