@@ -1,53 +1,66 @@
+import styled from '@emotion/styled';
 import { useMemo } from 'react';
-import tw from 'twin.macro';
 import useSound from 'use-sound';
 
 import { Image, Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
-import { Component } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
-const Container = tw.div`
-  grid
-  grid-cols-1
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
 
-  md:(grid-template-columns[55% 1fr])
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: 55% 1fr;
+  }
 `;
 
-const ContentContainer = tw.div`
-  flex
-  flex-col
-  justify-end
-  grid-row[2]
-  md:(grid-row[1])
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-row: 2;
+
+  ${mediaQueries.tablet.sm} {
+    grid-row: 1;
+  }
+
+  & > p:last-of-type {
+    margin: 0.8rem 0 0.4rem;
+  }
 `;
 
-const PhotoContainer = tw.div`
-  flex
-  justify-start
-  filter
-  drop-shadow
-  mb-8
-  grid-row[1]
-  md:(justify-end mb-0)
+const PhotoContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.075))
+    drop-shadow(0 2px 2px rgba(var(--shadow-color), 0.05));
+  margin-bottom: 0.8rem;
+  grid-row: 1;
+
+  ${mediaQueries.tablet.sm} {
+    justify-content: flex-end;
+    margin-bottom: 0;
+  }
 `;
 
-const Photo = tw(Image)`
-  rounded-half
-  filter
-  drop-shadow-md
-  p-4!
-  [img]:(filter drop-shadow)
+const Photo = styled(Image)`
+  border-radius: 50%;
+  padding: 0.4rem !important;
+  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.075))
+    drop-shadow(0 2px 2px rgba(var(--shadow-color), 0.05));
 `;
 
-const AudioButton = tw.button`
-  p-0 m-0
-  font-manrope
-  font-bold
-  border-none
-  bg-transparent
-  cursor-pointer
-  text-shadow[inherit]
+const AudioButton = styled.button`
+  padding: 0;
+  margin: 0;
+  font-family: var(--manrope-font);
+  font-weight: 700;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  text-shadow: inherit;
 `;
 
 const audioButtonTitle = "Press to hear Jahir's name pronunciation";
@@ -85,7 +98,7 @@ export const Hello: Component = () => {
             </GradientSpan>
           </AudioButton>
         </Heading>
-        <p tw={'mt-8 mb-4'}>
+        <p>
           Passionate and creative full-stack software engineer based in{' '}
           <Link
             title={'Link to Colombia on Google Maps'}

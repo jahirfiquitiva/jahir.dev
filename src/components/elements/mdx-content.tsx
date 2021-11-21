@@ -34,8 +34,8 @@ const MdxContentSection = styled.section`
 const Hero = styled(Image)`
   border-radius: 6px;
   margin: 2.4rem 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.175),
-    0 2px 4px -1px rgba(0, 0, 0, 0.075);
+  box-shadow: 0 4px 6px -1px rgba(var(--shadow-color), 0.175),
+    0 2px 4px -1px rgba(var(--shadow-color), 0.075);
 
   & img {
     object-fit: cover;
