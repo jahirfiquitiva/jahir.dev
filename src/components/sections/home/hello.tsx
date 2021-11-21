@@ -46,6 +46,7 @@ const AudioButton = tw.button`
   border-none
   bg-transparent
   cursor-pointer
+  text-shadow[inherit]
 `;
 
 const audioButtonTitle = "Press to hear Jahir's name pronunciation";

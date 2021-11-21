@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { extractCritical } from '@emotion/server';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 import { DefaultMetaTags } from '~/components/blocks';
@@ -35,6 +38,25 @@ const Document = () => {
       </body>
     </Html>
   );
+};
+
+// @ts-ignore
+Document.getInitialProps = async (context: any) => {
+  // @ts-ignore
+  const initialProps = await Document.getInitialProps(context);
+  const critical = extractCritical(initialProps.html);
+  initialProps.html = critical.html;
+  initialProps.styles = (
+    <>
+      {initialProps.styles}
+      <style
+        data-emotion-css={critical.ids.join(' ')}
+        dangerouslySetInnerHTML={{ __html: critical.css }}
+      />
+    </>
+  );
+
+  return initialProps;
 };
 
 export default Document;
