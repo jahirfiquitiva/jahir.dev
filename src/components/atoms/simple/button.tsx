@@ -20,13 +20,18 @@ export const ButtonStyles = tw`
   tracking-button
   cursor-pointer
   transition-all
-  duration-200
-  ease-in-out
+  duration-250
+  ease-io
   gap-4
   truncate
   
-  hocus:(bg-accent-dark -translate-y-1 min-h-button)
   disabled:(opacity-50 pointer-events-none cursor-not-allowed)
+  hocus:(
+    bg-accent-dark -translate-y-1 min-h-button
+    box-shadow[0 3px 1px -2px rgba(var(--shadow-color), 0.1),
+      0 2px 2px 0 rgba(var(--shadow-color), 0.07),
+      0 1px 5px 0 rgba(var(--shadow-color), 0.06)]
+  )
   [svg]:(only:(mx-auto))
 `;
 

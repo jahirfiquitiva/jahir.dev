@@ -64,7 +64,7 @@ module.exports = {
         450: '450ms',
       },
       transitionTimingFunction: {
-        'ease-in-out': 'ease-in-out',
+        io: 'ease-in-out',
       },
       transitionDelay: {
         0: '0ms',

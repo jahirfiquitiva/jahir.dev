@@ -53,7 +53,8 @@ const BackToTopButton = tw(Button)`
   md:(mr-15 mb-15)
 
   2xl:(
-    rounded-full mr-20 mb-20 py-10 px-16
+    rounded-full mr-20 mb-20
+    padding[0.75rem 1.25rem]
     all-child:(not-last:(
       hidden
       invisible
