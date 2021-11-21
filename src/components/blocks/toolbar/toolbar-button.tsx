@@ -10,6 +10,11 @@ export const BaseToolbarButtonStyles = css`
   min-width: 42px;
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0);
+  box-shadow: none;
+
+  &:disabled {
+    box-shadow: none;
+  }
 
   ${mediaQueries.mobile.md} {
     padding: 0.4rem 0.8rem;
@@ -20,6 +25,7 @@ export const BaseToolbarButtonStyles = css`
     background-color: var(--toolbar-highlight);
     color: rgba(0, 0, 0, 0);
     transform: none;
+    box-shadow: none;
   }
 `;
 

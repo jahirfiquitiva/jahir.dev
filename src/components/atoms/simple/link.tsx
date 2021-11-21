@@ -20,7 +20,7 @@ export const baseLinkStyles = css`
 
     .dark & {
       color: var(--accent-light);
-    }
+    } 
   }
 `;
 
