@@ -20,16 +20,17 @@ const ToolbarGrid = tw.nav`
   grid-flow-row-dense
   gap-0
   overflow-hidden
-  transition-all duration-300
+  transition-all duration-300 ease-io
 
   lg:(gap-4 grid-rows-1 grid-template-columns[auto 1fr auto])
   
   all-child:(
-    transition-all duration-300
+    transition-all duration-300 ease-io
     last:(
       max-h-0 invisible pointer-events-none opacity-0 mt-0
       [li]:(
-        transition-all duration-200 delay-100 overflow-hidden max-h-0 invisible opacity-0
+        transition-all duration-200 ease-io
+        delay-100 overflow-hidden max-h-0 invisible opacity-0
       )
       lg:(
         max-h-unset visible pointer-events-auto opacity-100 mt-0
@@ -59,19 +60,20 @@ const HomeLink = tw(ToolbarLink)`
     from-gradients-brand
     to-gradients-blue
   )
-  [svg]:(w-15 h-15 text-gradients-brand)
+  [svg]:(w-15 h-15)
 `;
 
 const MenuButton = tw(ToolbarButton)`
   min-w-button
+  min-h-button
   max-h-button
   max-w-button
-  pt-4
+  p-0
   gap-0
-  xs:(pt-4)
-  md:(pt-4)
-  [svg]:(mx-auto transition-all duration-250 transform rotate-0 scale-100)
-  [&.expanded]:(p-2 [svg]:(rotate-45 scale-120))
+  xs:(p-0)
+  md:(p-0)
+  [svg]:(mx-auto transition-all duration-250 ease-io transform rotate-0 scale-100)
+  [&.expanded]:(p-0 [svg]:(rotate-45 scale-125))
 `;
 
 const Navigation = () => {

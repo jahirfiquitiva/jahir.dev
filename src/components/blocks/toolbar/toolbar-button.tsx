@@ -9,6 +9,7 @@ export const BaseToolbarButtonStyles = tw`
   bg-transparent
   text-transparent
   shadow-none
+  disabled:(shadow-none)
   hocus:(shadow-none bg-toolbar-highlight transform-none text-transparent)
   xs:(px-8 py-4)
 `;
@@ -41,12 +42,12 @@ export const ToolbarButtonsContainer = tw.ul`
   col-start-2
   col-end-3
   gap-6
-  lg:(gap-0 justify-end col-start-3 col-end-4)
+  lg:(gap-0 col-start-3 col-end-4)
 
   [li]:(
     inline-block m-0 p-0 max-h-button
     last:(
-      visible pointer-events-auto opacity-100 
+      block visible pointer-events-auto opacity-100 
       lg:(hidden invisible pointer-events-none opacity-0)
     )
   )
