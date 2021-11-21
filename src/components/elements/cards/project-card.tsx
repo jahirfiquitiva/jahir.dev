@@ -21,7 +21,7 @@ const BaseProjectCard = tw(LinkCard)`
   rounded-lg
   shadow-sm
   border-color[var(--dashed-color, var(--divider))]
-  [*]:(transition-all duration-300 ease-io)
+  [*]:(transition[all .3s ease-in-out])
   [p]:(text-text-secondary)
 
   hocus:(
@@ -155,7 +155,7 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
           </ProjectHeading>
         </IconHeadingContainer>
         <p tw={'text-almost-tiny'}>{description}</p>
-        <Stack stack={stack} tw={'opacity-85 mt-4'} />
+        <Stack stack={stack} tw={'opacity-80 mt-4'} />
       </DetailsContainer>
       {previewComponent || undefined}
     </BaseProjectCard>

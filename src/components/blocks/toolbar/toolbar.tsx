@@ -20,16 +20,16 @@ const ToolbarGrid = tw.nav`
   grid-flow-row-dense
   gap-0
   overflow-hidden
-  transition-all duration-300 ease-io
+  transition[all .3s ease-in-out]
 
   lg:(gap-4 grid-rows-1 grid-template-columns[auto 1fr auto])
   
   all-child:(
-    transition-all duration-300 ease-io
+    transition[all .3s ease-in-out]
     last:(
       max-h-0 invisible pointer-events-none opacity-0 mt-0
       [li]:(
-        transition-all duration-200 ease-io
+        transition[all .2s ease-in-out]
         delay-100 overflow-hidden max-h-0 invisible opacity-0
       )
       lg:(
@@ -72,7 +72,7 @@ const MenuButton = tw(ToolbarButton)`
   gap-0
   xs:(p-0)
   md:(p-0)
-  [svg]:(mx-auto transition-all duration-250 ease-io transform rotate-0 scale-100)
+  [svg]:(mx-auto transform rotate-0 scale-100 transition[all .25s ease-in-out])
   [&.expanded]:(p-0 [svg]:(rotate-45 scale-125))
 `;
 

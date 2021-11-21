@@ -17,10 +17,8 @@ export const Chip = tw.span`
   bg-transparent
   text-text-secondary
   cursor-default
-  transition-all
-  duration-250
-  ease-io
   line-height[1.7]
+  transition[all .25s ease-in-out]
 
   hocus:(no-underline text-text-primary background-color[var(--bg-color)])
   all-child:(first-of-type:(mr-4))
