@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { mdiGithub, mdiTwitter } from '@mdi/js';
 import Icon from '@mdi/react';
+import cn from 'classnames';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
@@ -19,16 +20,20 @@ const CounterCard = styled(DashboardCard)`
   border-radius: 8px;
   color: var(--text-primary);
 
-  & > small,
-  & > svg {
+  &.stalk {
+    padding-top: 0.8rem;
+  }
+
+  & small,
+  & svg {
     color: var(--text-secondary);
   }
 
   &:hover,
   &:focus {
     color: var(--text-primary);
-    & > small,
-    & > svg {
+    & small,
+    & svg {
       text-decoration: underline;
       color: var(--text-primary);
     }
@@ -36,6 +41,16 @@ const CounterCard = styled(DashboardCard)`
 
   .dark & {
     color: var(--text-primary);
+
+    &:hover,
+    &:focus {
+      color: var(--text-primary);
+      & small,
+      & svg {
+        text-decoration: underline;
+        color: var(--text-primary);
+      }
+    }
   }
 `;
 
@@ -49,8 +64,11 @@ const Text = styled.small`
   font-size: var(--font-xs);
 `;
 
-const CardTexts = tw.div`
-  flex flex-col justify-center flex-1
+const CardTexts = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
 `;
 
 export const Counter: Component<CounterProps> = (props) => {
@@ -68,7 +86,7 @@ export const Counter: Component<CounterProps> = (props) => {
       }`}
       href={href}
       underline={false}
-      css={[site === 'stalk' ? tw`pt-8` : null]}
+      className={cn({ stalk: site === 'stalk' })}
     >
       <CardTexts>
         {count ? <Count>{count}</Count> : undefined}
