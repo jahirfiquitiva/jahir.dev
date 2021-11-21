@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { extractCritical } from '@emotion/server';
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { DefaultMetaTags } from '~/components/blocks';
 
@@ -13,7 +13,7 @@ const fonts = [
   'manrope/Manrope-Bold.woff2',
 ];
 
-const Document = () => {
+const CustomDocument = () => {
   return (
     <Html lang={'en'}>
       <Head>
@@ -41,7 +41,7 @@ const Document = () => {
 };
 
 // @ts-ignore
-Document.getInitialProps = async (context: any) => {
+CustomDocument.getInitialProps = async (context: any) => {
   // @ts-ignore
   const initialProps = await Document.getInitialProps(context);
   const critical = extractCritical(initialProps.html);
@@ -59,4 +59,4 @@ Document.getInitialProps = async (context: any) => {
   return initialProps;
 };
 
-export default Document;
+export default CustomDocument;
