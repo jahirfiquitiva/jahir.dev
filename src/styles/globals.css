@@ -1,6 +1,7 @@
 /*! purgecss start ignore */
 @import './fonts/all.css';
 @import './variables.css';
+
 @import 'tailwindcss/base';
 @import './core.css';
 @import './typography.css';
