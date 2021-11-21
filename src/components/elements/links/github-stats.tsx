@@ -46,7 +46,7 @@ export const GitHubStats: Component = (props) => {
   const { className } = props;
   const { data } = useRequest<GitHubStatsData>('/api/github');
 
-  // if (!data || !data?.success) return <></>;
+  if (!data || !data?.success) return <></>;
   return (
     <GitHubStatsLink
       title={"Link to Jahir's GitHub profile"}
