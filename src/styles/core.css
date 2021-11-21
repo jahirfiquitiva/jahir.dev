@@ -15,8 +15,8 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
   min-height: stretch;
+  min-height: 100vh;
 }
 
 section {
@@ -64,8 +64,8 @@ body.sb-show-main.sb-main-padded {
 #__next {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   min-height: stretch;
+  min-height: 100vh;
   padding-top: calc(var(--toolbar-height) + 1.2rem);
 }
 

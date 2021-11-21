@@ -10,6 +10,9 @@ const StyledLinkButton = styled(Link)`
   ${ButtonStyles}
   &:hover, &:focus {
     color: var(--on-accent);
+    .dark & {
+      color: var(--on-accent);
+    }
   }
 `;
 

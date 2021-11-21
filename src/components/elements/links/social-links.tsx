@@ -22,6 +22,15 @@ const BaseSocialLink = styled(LinkButton)`
     color: #ffffff;
     text-decoration: none;
   }
+
+  .dark & {
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      color: #ffffff;
+    }
+  }
 `;
 
 const BaseGitHubLink = styled(BaseSocialLink)`
