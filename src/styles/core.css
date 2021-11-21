@@ -12,8 +12,9 @@ section {
   scroll-margin-top: calc(var(--toolbar-height) - 1rem);
 }
 
-a {
-  @apply cursor-pointer;
+a,
+a:visited {
+  @apply cursor-pointer no-underline;
 }
 
 ::selection {

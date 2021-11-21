@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
-import {  MdxContent } from '~/components/elements';
+import { MdxContent } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';
 import useHasMounted from '~/hooks/useHasMounted';
 import FourHundredFour from '~/pages/404';

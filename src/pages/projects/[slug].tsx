@@ -58,7 +58,6 @@ const ProjectPage: Component<ProjectPageProps> = ({ project: baseProject }) => {
       exactUrl={`https://jahir.dev/projects/${project.slug}`}
       metaImageStyle={'summary_large_image'}
     >
-      
       <MdxContent
         backText={'Back to projects list'}
         backHref={'/projects'}
