@@ -16,21 +16,21 @@ import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 
 const SupportersHeader = tw.div`
-  flex
-  flex-col
-  my-20
+  grid
+  grid-cols-1
+  mt-20 mb-8
   overflow-hidden
-  items-start
   gap-16
 
-  md:(flex-row items-center)
+  md:(grid-cols-2)
 `;
 
 const ThanksGif = tw(Image)`
+  m-0
   order-1
   min-width[256px]
   max-width[300px]
-  md:(order-2)
+  md:(ml-auto order-2)
 `;
 
 interface SupporterChipProps extends ComponentProps, Supporter {}
@@ -59,7 +59,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
           objectPosition={'center'}
           size={28}
         />
-        &nbsp;{name}
+        <span>{name}</span>
       </ImageChip>
     </Link>
   );
