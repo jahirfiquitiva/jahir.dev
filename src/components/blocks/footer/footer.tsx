@@ -10,14 +10,31 @@ import { Component } from '~/types';
 const StyledFooter = tw.footer`
   block
   overflow-hidden
-  border
-  border-b-0
-  border-l-0
-  border-r-0
+  border-t
   border-divider
   bg-primary
   py-20 px-10
 `;
+
+const FooterLogoLink = tw(Link)`
+  min-h-button
+  inline-flex
+  self-start
+  items-center
+  justify-start
+  gap-6
+  text-sm
+  
+  [svg]:(inline-block w-15 h-15)
+
+  hocus:(
+    [span]:(underline text-decoration[underline solid var(--gradient-brand)])
+  )
+`;
+
+const FooterSocialLinks = tw(SocialLinks)`my-6 mx-0`;
+
+const StackContainer = tw.div`flex items-center justify-start gap-6 my-4`;
 
 const sectionTwoLinks: Array<FooterLink> = [
   {
@@ -83,32 +100,6 @@ const sectionFourLinks: Array<FooterLink> = [
     gradientColor: 'green-to-yellow',
   },
 ];
-
-const FooterLogoLink = tw(Link)`
-  min-h-button
-  inline-flex
-  self-start
-  items-center
-  justify-start
-  gap-6
-  text-sm
-  [span]:(
-    text-transparent
-    bg-gradient-to-r
-    bg-clip-text
-    from-gradients-brand
-    to-gradients-blue
-  )
-  [svg]:(inline-block w-15 h-15 text-gradients-brand)
-
-  hocus:(
-    [span]:(underline text-decoration[underline solid var(--gradient-brand)])
-  )
-`;
-
-const FooterSocialLinks = tw(SocialLinks)`my-6 mx-0`;
-
-const StackContainer = tw.div`flex items-center justify-start gap-6 my-4`;
 
 export const Footer: Component = () => {
   return (

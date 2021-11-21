@@ -17,9 +17,10 @@ const FooterGrid = tw.div`
 `;
 
 const FooterGridWithin = tw(FooterGrid)`
-  gap-y-0
+  gap-0
   grid-row[2]
   xs:(grid-row[1])
+  lg:(gap-x-10)
 `;
 
 const FooterSectionOne = tw.div`
