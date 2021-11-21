@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { mdiWeb } from '@mdi/js';
 import Icon from '@mdi/react';
-import tw, { theme } from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import {
@@ -10,21 +10,66 @@ import {
   CenteredSection,
 } from '~/components/atoms/simple';
 import { Masonry, MasonryBreakpoints } from '~/components/elements';
-import { Component, ComponentProps, InspirationSite } from '~/types';
+import {
+  Component,
+  ComponentProps,
+  InspirationSite,
+  mediaQueries,
+  viewports,
+} from '~/types';
 
-const InspirationCard = tw(LinkCard)`
-  py-6 px-8
-  truncate
-  all:(max-w-full truncate)
-  sm:(py-8 px-10)
+const Subtitle = styled.p`
+  margin: 0.8rem 0;
 `;
 
-const FaviconLinkContainer = tw.div`
-  mt-2
-  flex
-  items-center
+const InspirationMasonry = styled(Masonry)`
+  margin: 1.6rem 0;
+`;
 
-  [>img, >svg]:(width[24px] height[24] mr-8 object-contain object-center)
+const InspirationCard = styled(LinkCard)`
+  padding: 0.6rem 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  ${mediaQueries.mobile.lg} {
+    padding: 0.8rem 1rem;
+  }
+
+  & > h4 {
+    font-size: var(--font-2xs);
+    ${mediaQueries.mobile.lg} {
+      font-size: var(--font-xs);
+    }
+  }
+
+  & > p {
+    font-size: var(--font-3xs);
+    ${mediaQueries.mobile.lg} {
+      font-size: var(--font-2xs);
+    }
+  }
+
+  & > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`;
+
+const FaviconLinkContainer = styled.div`
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+
+  & > img,
+  & > svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.8rem;
+    object-fit: contain;
+    object-position: center;
+  }
 `;
 
 export interface InspirationProps extends ComponentProps {
@@ -33,8 +78,8 @@ export interface InspirationProps extends ComponentProps {
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
-masonryBreakpoints[theme`screens.2xs`] = 2;
-masonryBreakpoints[theme`screens.md`] = 3;
+masonryBreakpoints[viewports.mobile.sm] = 2;
+masonryBreakpoints[viewports.tablet.sm] = 3;
 
 const formatLink = (link?: string): string => {
   if (!link) return '';
@@ -62,12 +107,12 @@ export const Inspiration: Component<InspirationProps> = (props) => {
       >
         Inspiration
       </SectionHeading>
-      <p tw={'my-8'}>
+      <Subtitle>
         These are some people and websites that have been inspiration to build
         this website and some of my projects 👏 <i>(In no particular order).</i>
-      </p>
+      </Subtitle>
 
-      <Masonry breakpoints={masonryBreakpoints} gap={'1rem'} tw={'my-16'}>
+      <InspirationMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(inspirationItems || []).map((item, i) => {
           return (
             <InspirationCard
@@ -75,17 +120,15 @@ export const Inspiration: Component<InspirationProps> = (props) => {
               href={item.link}
               title={`Link to ${item.title}'s website`}
             >
-              <Heading size={'4'} tw={'text-almost-tiny sm:(text-xs)'}>
-                {item.title}
-              </Heading>
-              {(item.description?.length || 0) > 0 && (
-                <p tw={'text-tiny sm:(text-almost-tiny)'}>{item.description}</p>
-              )}
+              <Heading size={'4'}>{item.title}</Heading>
+              {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
               <FaviconLinkContainer>
                 {validFavicon(item.favicon) ? (
                   <Image
                     alt={item.title.split('')[0] || 'F'}
                     src={item.favicon ?? ''}
+                    width={24}
+                    height={24}
                     avoidNextImage
                   />
                 ) : (
@@ -96,7 +139,7 @@ export const Inspiration: Component<InspirationProps> = (props) => {
             </InspirationCard>
           );
         })}
-      </Masonry>
+      </InspirationMasonry>
     </CenteredSection>
   );
 };
