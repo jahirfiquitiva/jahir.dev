@@ -25,22 +25,22 @@ const ContactOptionsContainer = tw.div`
 
 const EmailLink = tw(Link)`
   color[#d33c30] hocus:(color[#a42f25])
-  dark:(color[#ee695d] hocus:(color[#ea4335]))
+  dark:(color[#ec5649] hocus:(color[#f07b72]))
 `;
 
 const TwitterLink = tw(Link)`
   color[#1a91da] hocus:(color[#1471a9])
-  dark:(color[#1da1f2] hocus:(color[#1781c2]))
+  dark:(color[#1da1f2] hocus:(color[#4ab4f5]))
 `;
 
 const TelegramLink = tw(Link)`
   color[#007ab8] hocus:(color[#005f8f])
-  dark:(color[#33a0d6] hocus:(color[#0088cc]))
+  dark:(color[#1a94d1] hocus:(color[#4dacdb]))
 `;
 
 const DiscordLink = tw(Link)`
   color[#5865f2] hocus:(color[#4651c2])
-  dark:(color[#8a93f6] hocus:(color[#6974f3]))
+  dark:(color[#6974f3] hocus:(color[#8a93f6]))
 `;
 
 const GitHubLink = tw(Link)`
