@@ -1,12 +1,7 @@
 /*! purgecss start ignore */
 @import './fonts/all.css';
 @import './variables.css';
-/*! purgecss end ignore */
-
 @import 'tailwindcss/base';
-@import './resetalize.min.css';
-
-/*! purgecss start ignore */
 @import './core.css';
 @import './typography.css';
 @import './blog.css';
