@@ -3,8 +3,8 @@
 @import './variables.css';
 /*! purgecss end ignore */
 
-@import './resetalize.min.css';
 @import 'tailwindcss/base';
+@import './resetalize.min.css';
 
 /*! purgecss start ignore */
 @import './core.css';
