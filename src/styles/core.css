@@ -23,13 +23,14 @@ section {
   scroll-margin-top: calc(var(--toolbar-height) - 1rem);
 }
 
-a, a:visited {
+a,
+a:visited {
   cursor: pointer;
   text-decoration: none;
 }
 
 ::selection {
-  background-color: var(--accent-highlight);
+  background-color: rgba(var(--card-base), 0.25);
 }
 
 ::placeholder {
