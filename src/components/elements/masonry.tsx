@@ -7,6 +7,7 @@ import { Component, ComponentProps, ComponentChild } from '~/types';
 
 const MasonryGrid = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
   width: 100%;
   max-width: 100%;
@@ -19,9 +20,7 @@ const MasonryColumn = styled(MasonryGrid)`
   flex: 1;
   flex-direction: column;
   justify-content: flex-start;
-  & > * {
-    box-sizing: border-box;
-  }
+  padding: 0.2rem 0;
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };
