@@ -1,17 +1,39 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { Link } from '~/components/atoms/simple';
 import { SocialLinks } from '~/components/elements';
-import { Component } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
-const ParagraphsContainer = tw.div`
-  mt-8
-  grid
-  grid-cols-1
-  gap-10
-  text-justify
-  md:(grid-cols-2 mt-12)
-  [p:first-of-type]:(pr-0 md:(pr-20))
+const ParagraphsContainer = styled.div`
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  text-align: justify;
+
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1.2rem;
+  }
+
+  & > p:first-of-type {
+    padding-right: 0;
+    ${mediaQueries.tablet.sm} {
+      padding-right: 2rem;
+    }
+  }
+`;
+
+const SecondPart = styled.div`
+  margin: 1.2rem 0 0.6rem;
+
+  & > p:last-of-type {
+    margin-top: 1rem;
+
+    & + div {
+      margin-top: 0.6rem;
+    }
+  }
 `;
 
 export const Intro: Component = () => {
@@ -36,7 +58,7 @@ export const Intro: Component = () => {
           98% of the time.
         </p>
       </ParagraphsContainer>
-      <div tw={'mt-12 mb-6'}>
+      <SecondPart>
         <p>
           Learn more about me on{' '}
           <Link
@@ -60,11 +82,11 @@ export const Intro: Component = () => {
           </Link>
           .
         </p>
-        <p tw={'mt-10'}>
+        <p>
           <b>You can also find me on:</b>
         </p>
-        <SocialLinks tw={'my-6'} />
-      </div>
+        <SocialLinks />
+      </SecondPart>
     </>
   );
 };
