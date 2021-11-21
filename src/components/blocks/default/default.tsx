@@ -15,20 +15,13 @@ import {
   GradientOptions,
 } from '~/types';
 
-const DefaultContentContainer = tw(CenteredSection)`
+const DefaultContainer = tw(CenteredSection)`
   items-center
   justify-center
   text-center
 `;
-const FourHundredFourContainer = tw(DefaultContentContainer)`justify-between`;
-
-const DefaultContentWrapper = tw.div`
-  flex
-  flex-col
-  items-center
-  justify-center
-`;
-const FourHundredFourWrapper = tw(DefaultContentContainer)`flex-1`;
+const FourOhFourContainer = tw(DefaultContainer)`justify-between`;
+const FourOhFourWrapper = tw(DefaultContainer)`flex-1`;
 
 const GifImage = tw(Image)`max-width[425px]`;
 
@@ -57,7 +50,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
     gradientColors,
   } = props;
 
-  const isFourHundredFour = type === 'four-hundred-four';
+  const isFourOhFour = type === 'four-hundred-four';
 
   const renderContactMessage = () => {
     if (type !== 'error') return <></>;
@@ -93,24 +86,24 @@ export const DefaultContent: Component<ContentProps> = (props) => {
   };
 
   const renderContainer = (children?: ReactElement): ReactElement => {
-    return isFourHundredFour ? (
-      <FourHundredFourContainer>{children}</FourHundredFourContainer>
+    return isFourOhFour ? (
+      <FourOhFourContainer>{children}</FourOhFourContainer>
     ) : (
-      <DefaultContentContainer>{children}</DefaultContentContainer>
+      <DefaultContainer>{children}</DefaultContainer>
     );
   };
 
   return renderContainer(
     <>
       {type === 'four-hundred-four' ? (
-        <FourHundredFourWrapper>{renderContent()}</FourHundredFourWrapper>
+        <FourOhFourWrapper>{renderContent()}</FourOhFourWrapper>
       ) : (
-        <DefaultContentWrapper>{renderContent()}</DefaultContentWrapper>
+        renderContent()
       )}
       <GifImage
         src={gif}
         alt={alt}
-        objectFit={isFourHundredFour ? 'cover' : 'contain'}
+        objectFit={isFourOhFour ? 'cover' : 'contain'}
       />
     </>,
   );

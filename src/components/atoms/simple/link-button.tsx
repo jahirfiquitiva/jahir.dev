@@ -18,7 +18,13 @@ const BaseLinkButton: Component<LinkProps> = (props) => {
 export interface LinkButtonProps extends LinkProps, BaseButtonProps {}
 
 export const LinkButton: Component<LinkButtonProps> = (props) => {
-  const { icon, iconSize = 1, children, wrapChildrenInSpan = true, ...otherProps } = props;
+  const {
+    icon,
+    iconSize = 1,
+    children,
+    wrapChildrenInSpan = true,
+    ...otherProps
+  } = props;
 
   return (
     <BaseLinkButton {...otherProps}>

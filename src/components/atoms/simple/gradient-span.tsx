@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import tw from 'twin.macro';
 
 import {
@@ -31,7 +32,10 @@ interface GradientSpanProps extends ComponentProps, ComponentWithGradientProps {
 export const GradientSpan: Component<GradientSpanProps> = (props) => {
   const { gradientColor, forceGradient, children, ...otherProps } = props;
 
-  const gradientTailwind = gradientToTailwind(gradientColor);
+  const gradientTailwind = useMemo(
+    () => gradientToTailwind(gradientColor),
+    [gradientColor],
+  );
 
   return (
     <span

@@ -12,7 +12,7 @@ const ImageWrapper = tw.div`
   max-h-full
   overflow-hidden
 
-  [> div:first-of-type, > span:first-of-type, img]:(
+  [> span:first-of-type, img]:(
     object-contain
     relative!
     min-h-0!

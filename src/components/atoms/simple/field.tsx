@@ -47,7 +47,6 @@ const TextArea = styled.textarea`
 const BaseFieldWrapper = tw.div`
   relative
   flex
-  flex-row
   items-center
 `;
 
