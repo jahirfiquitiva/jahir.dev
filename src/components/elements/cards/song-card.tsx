@@ -16,7 +16,6 @@ import buildStyles from '~/utils/styles/build-styles';
 const BaseSongCard = tw(LinkCard)`
   p-8
   flex
-  flex-row
   items-center
   gap-8
   rounded-md

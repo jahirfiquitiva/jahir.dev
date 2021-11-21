@@ -3,8 +3,12 @@ import tw, { theme } from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
-import { GitHubStats, ProjectCard } from '~/components/elements';
-import { Masonry, MasonryBreakpoints } from '~/components/masonry';
+import {
+  GitHubStats,
+  ProjectCard,
+  Masonry,
+  MasonryBreakpoints,
+} from '~/components/elements';
 import { Component, ComponentProps, ProjectProps } from '~/types';
 
 const ProjectsHeader = tw.div`

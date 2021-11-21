@@ -8,3 +8,4 @@ export * from './hello-heading';
 export * from './blog-post';
 export * from './project';
 export * from './stack';
+export * from './masonry';

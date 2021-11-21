@@ -4,8 +4,11 @@ import { theme } from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Field, Section, Link } from '~/components/atoms/simple';
-import { BlogPostCard } from '~/components/elements';
-import { Masonry, MasonryBreakpoints } from '~/components/masonry';
+import {
+  BlogPostCard,
+  Masonry,
+  MasonryBreakpoints,
+} from '~/components/elements';
 import debounce from '~/lib/debounce';
 import { Component, ComponentProps, Post } from '~/types';
 

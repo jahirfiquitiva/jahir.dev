@@ -9,7 +9,7 @@ import { Component } from '~/types';
 
 const BaseDonationLink = tw(LinkButton)`
   text-white
-  hocus:(text-white no-underline)
+  hocus:(text-white no-underline dark:(text-white))
 `;
 
 const BaseGitHubSponsorsLink = tw(BaseDonationLink)`

@@ -9,7 +9,7 @@ import {
   LinkCard,
   CenteredSection,
 } from '~/components/atoms/simple';
-import { Masonry, MasonryBreakpoints } from '~/components/masonry';
+import { Masonry, MasonryBreakpoints } from '~/components/elements';
 import { Component, ComponentProps, InspirationSite } from '~/types';
 
 const InspirationCard = tw(LinkCard)`
