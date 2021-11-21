@@ -27,6 +27,15 @@ const GitHubStatsLink = styled(LinkCard)`
     color: var(--text-primary);
     border-color: var(--divider);
   }
+
+  .dark & {
+    color: var(--text-secondary);
+
+    &:hover,
+    &:focus {
+      color: var(--text-primary);
+    }
+  }
 `;
 
 const Count = styled.p`
