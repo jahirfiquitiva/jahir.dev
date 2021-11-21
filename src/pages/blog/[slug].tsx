@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 
 import type { Blog } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
-import { BlogPost } from '~/components/elements';
+import {  MdxContent } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';
 import useHasMounted from '~/hooks/useHasMounted';
 import FourHundredFour from '~/pages/404';
@@ -69,10 +69,14 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
       exactUrl={`https://jahir.dev/blog/${post.slug}`}
       metaImageStyle={'summary_large_image'}
     >
-      <BlogPost {...post}>
+      <MdxContent
+        backText={'Back to blog posts list'}
+        backHref={'/blog'}
+        content={post}
+      >
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
-      </BlogPost>
+      </MdxContent>
     </Page>
   );
 };

@@ -5,7 +5,6 @@ export * from './links/donation-links';
 export * from './links/social-links';
 export * from './links/github-stats';
 export * from './hello-heading';
-export * from './blog-post';
-export * from './project';
+export * from './mdx-content';
 export * from './stack';
 export * from './masonry';
