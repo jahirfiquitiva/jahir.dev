@@ -112,6 +112,8 @@ article img {
   border-radius: 6px;
   border: 1px solid var(--divider) !important;
   margin: 1.6rem 0;
+  height: auto;
+  max-width: 100%;
 }
 
 article blockquote {
