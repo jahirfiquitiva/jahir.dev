@@ -21,6 +21,7 @@ const BaseProjectCard = styled(LinkCard)`
   color: var(--text-secondary);
   border-radius: 10px;
   border-color: var(--dashed-color, var(--divider));
+  box-shadow: var(--shadow-sm);
 
   & * {
     transition: all 0.3s ease-in-out;
@@ -68,7 +69,7 @@ const ProjectCardWithPreview = css`
 `;
 
 const DetailsContainer = styled.div`
-  padding: 0.8rem 0 1rem 1rem;
+  padding: 0.8rem 0 0.8rem 1rem;
   display: flex;
   flex-direction: column;
   border-top-left-radius: 10px;
@@ -80,7 +81,7 @@ const IconHeadingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   margin-left: -0.2rem;
   gap: 0.8rem;
 
@@ -107,23 +108,23 @@ const ProjectDescription = styled.p`
 `;
 
 const PreviewImage = styled(Image)`
-  position: relative;
+  min-height: 100% !important;
   overflow: hidden;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  z-index: 0;
+  display: flex !important;
+  flex-direction: column;
+
   & > span:first-of-type {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: flex-end;
     flex: 1;
-    min-height: 100% !important;
-    overflow: hidden;
     & > img {
+      position: absolute !important;
       max-height: 165px !important;
       opacity: 0.8;
       object-fit: cover;
       object-position: bottom right;
-      margin: auto 0 0 !important;
+      margin-bottom: 0 !important;
       filter: drop-shadow(2px 3px 4px var(--filter-color, var(--dashed-color)));
     }
   }
@@ -187,7 +188,7 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
         <Stack
           stack={stack}
           css={css`
-            opacity: 0.85;
+            opacity: 0.8;
             margin-top: 0.4rem;
           `}
         />
