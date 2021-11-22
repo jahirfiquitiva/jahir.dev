@@ -128,6 +128,7 @@ export const Status: Component<StateProps> = (props) => {
         alt={'Image of Jahir as an Animoji'}
         size={144}
         quality={100}
+        priority
       />
       {renderStateChip()}
     </StateContainer>
