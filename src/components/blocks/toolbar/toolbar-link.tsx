@@ -12,16 +12,22 @@ import { Component, ComponentWithGradientProps, mediaQueries } from '~/types';
 
 const BaseToolbarLink = styled(LinkButton)`
   ${BaseToolbarButtonStyles}
+  max-width: unset;
+  box-shadow: none;
+
+  ${mediaQueries.tablet.lg} {
+    gap: 0.6rem;
+  }
 
   &:hover,
   &:focus {
+    box-shadow: none;
     color: rgba(0, 0, 0, 0);
     .dark & {
       color: rgba(0, 0, 0, 0);
     }
   }
 
-  max-width: unset;
 
   &.active {
     background-color: var(--toolbar-highlight);
@@ -39,10 +45,6 @@ const BaseToolbarLink = styled(LinkButton)`
       opacity: 1;
       color: var(--text-primary);
     }
-  }
-
-  ${mediaQueries.tablet.lg} {
-    gap: 0.6rem;
   }
 `;
 

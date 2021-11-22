@@ -1,4 +1,4 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
@@ -14,27 +14,45 @@ const codingApps = [
   INTELLIJ_DISCORD_APP_ID,
 ];
 
-const ActivityCard = tw(DashboardCard)`
-  p-8
-  flex
-  items-end
-  gap-8
-  max-w-full
-  truncate
-  rounded-md
+const ActivityCard = styled(DashboardCard)`
+  padding: 0.8rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+  max-width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  & > img {
+    &:last-of-type {
+      border-radius: 4px;
+    }
+  }
 `;
 
-const ActivityContent = tw(ActivityCard)`
-  items-center
-  flex-1
+const ActivityContent = styled(ActivityCard)`
+  padding: 0;
+  align-items: center;
+  flex: 1;
+  & > img {
+    border-radius: 6px;
+  }
 `;
 
-const ActivityTexts = tw.div`
-  flex
-  flex-col
-  flex-1
-  truncate
-  [small]:(inline-block)
+const ActivityTexts = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  & > small {
+    display: inline-block;
+    &:last-of-type {
+      color: var(--text-tertiary);
+    }
+  }
 `;
 
 interface ActivityProps extends DashboardCardProps {
@@ -55,7 +73,6 @@ export const Activity: Component<ActivityProps> = (props) => {
             alt={data?.largeImageText}
             size={64}
             layout={'fixed'}
-            tw={'rounded'}
           />
         )}
         <ActivityTexts>
@@ -64,7 +81,7 @@ export const Activity: Component<ActivityProps> = (props) => {
             {data?.name}
           </b>
           <small>{data?.details}</small>
-          <small tw={'text-text-tertiary'}>{data?.state}</small>
+          <small>{data?.state}</small>
         </ActivityTexts>
       </ActivityContent>
       {data?.smallImage && (
@@ -73,7 +90,6 @@ export const Activity: Component<ActivityProps> = (props) => {
           alt={data?.smallImageText}
           size={32}
           layout={'fixed'}
-          tw={'rounded-sm'}
         />
       )}
     </ActivityCard>

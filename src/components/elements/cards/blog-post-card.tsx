@@ -17,6 +17,7 @@ const BaseBlogPostCard = styled(LinkCard)`
   border-radius: 8px;
   color: var(--text-secondary);
   min-height: 192px;
+  box-shadow: var(--shadow-sm);
   transition: all 0.35s ease-in-out;
 
   ${mediaQueries.tablet.sm} {
@@ -52,7 +53,7 @@ const BaseBlogPostCard = styled(LinkCard)`
       visibility: visible;
       margin: 0.4rem 0;
       color: var(--text-primary);
-      line-height: 1.75;
+      line-height: 1.625;
 
       &.date {
         margin: 0.2rem 0;
@@ -63,6 +64,8 @@ const BaseBlogPostCard = styled(LinkCard)`
 `;
 
 const BlogPostImage = styled(Image)`
+  overflow: hidden;
+  border-radius: 8px;
   min-height: 192px;
   height: 100%;
   max-height: 192px;
@@ -89,9 +92,9 @@ const Scrim = styled.div`
   bottom: 0;
   left: 0;
   border-radius: 8px;
+  pointer-events: none;
   background-color: rgb(var(--background-values));
   opacity: 0.05;
-  pointer-events: none;
 
   .dark & {
     opacity: 0.2;
@@ -112,8 +115,9 @@ const Content = styled.div`
   border-top-right-radius: 0;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  box-shadow: 0 -4px 6px -1px rgba(255, 255, 255, 0.1),
-    0 -2px 4px -1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -4px 6px -2px rgba(var(--shadow-color), 0.12),
+    0 -6px 7px 0 rgba(var(--shadow-color), 0.09),
+    0 -3px 12px 0 rgba(var(--shadow-color), 0.07);
   background-color: var(--blog-card-color);
   z-index: 1;
   backdrop-filter: blur(8px) saturate(200%);

@@ -43,6 +43,7 @@ const ToolbarGrid = styled.nav`
         max-height: unset;
         visibility: visible;
         pointer-events: auto;
+        margin-top: 0;
         opacity: 1;
       }
 

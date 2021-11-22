@@ -91,18 +91,12 @@ const BaseInstagramLink = styled(BaseSocialLink)`
   }
 `;
 
-<<<<<<< HEAD:src/components/elements/links/social-links.tsx
-const BasePolyworkLink = tw(BaseSocialLink)`
-  background-color[#6959fc]
-  hocus:(background-color[#4f3fe3])
-=======
 const BasePolyworkLink = styled(BaseSocialLink)`
   background-color: #6959fc;
   &:hover,
   &:focus {
     background-color: #4f3fe3;
   }
->>>>>>> 266271c (Convert social links from twin to styled):src/components/elements/social-links.tsx
 `;
 
 const SocialLinksGroup = styled(ButtonGroup)`
