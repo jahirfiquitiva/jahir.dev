@@ -7,7 +7,7 @@ import useRequest from '~/hooks/useRequest';
 import { Component, GitHubStats as GitHubStatsData } from '~/types';
 
 const GitHubStatsLink = styled(LinkCard)`
-  --divider-alpha: 0.4;
+  --divider-alpha: 0.32;
   --divider: rgba(var(--divider-opaque), var(--divider-alpha));
 
   display: flex;
@@ -19,11 +19,12 @@ const GitHubStatsLink = styled(LinkCard)`
   height: 100%;
   min-height: 42px;
   gap: 0.4rem;
+  box-shadow: var(--shadow-sm);
 
   &:hover,
   &:focus {
-    --divider-alpha: 0.5;
-    box-shadow: none;
+    --divider-alpha: 0.42;
+    box-shadow: var(--shadow);
     color: var(--text-primary);
     border-color: var(--divider);
   }

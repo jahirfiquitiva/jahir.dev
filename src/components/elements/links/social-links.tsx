@@ -15,20 +15,20 @@ const BaseSocialLink = styled(LinkButton)`
   gap: 0;
   min-height: 36px;
   min-width: 36px;
-  color: #ffffff;
+  color: #fff;
 
   &:hover,
   &:focus {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
   }
 
   .dark & {
-    color: #ffffff;
+    color: #fff;
 
     &:hover,
     &:focus {
-      color: #ffffff;
+      color: #fff;
     }
   }
 `;
@@ -74,7 +74,7 @@ const BaseInstagramLink = styled(BaseSocialLink)`
     #fdf497 5%,
     #fd5949 45%,
     #d6249f 60%,
-    #285aeb 90%
+    #285aeb 
   );
 
   &:hover,

@@ -34,10 +34,9 @@ const ContentContainer = styled.div`
 const PhotoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.075))
-    drop-shadow(0 2px 2px rgba(var(--shadow-color), 0.05));
   margin-bottom: 0.8rem;
   grid-row: 1;
+  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.12));
 
   ${mediaQueries.tablet.sm} {
     justify-content: flex-end;
@@ -48,8 +47,7 @@ const PhotoContainer = styled.div`
 const Photo = styled(Image)`
   border-radius: 50%;
   padding: 0.4rem !important;
-  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.075))
-    drop-shadow(0 2px 2px rgba(var(--shadow-color), 0.05));
+  filter: drop-shadow(0 1px 2px rgba(var(--shadow-color), 0.04));
 `;
 
 const AudioButton = styled.button`

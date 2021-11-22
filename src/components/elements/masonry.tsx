@@ -17,9 +17,9 @@ const MasonryGrid = styled.div`
 `;
 
 const MasonryColumn = styled(MasonryGrid)`
-  flex: 1;
   flex-direction: column;
   justify-content: flex-start;
+  flex: 1;
   padding: 0.2rem 0;
 `;
 

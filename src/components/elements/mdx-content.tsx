@@ -39,6 +39,7 @@ const Hero = styled(Image)`
 
   & img {
     object-fit: cover;
+    width: 100%;
     max-height: 180px !important;
 
     ${mediaQueries.mobile.md} {

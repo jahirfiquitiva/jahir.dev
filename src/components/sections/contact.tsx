@@ -32,6 +32,13 @@ const ContactOptions = styled.ul`
 `;
 
 const Illustration = styled(Image)`
+  max-width: 320px;
+  margin: 0 auto !important;
+
+  ${mediaQueries.tablet.sm} {
+    max-width: unset;
+  }
+
   & > img {
     max-width: 320px;
     margin: 0 auto !important;
@@ -48,10 +55,10 @@ const EmailLink = styled(Link)`
     color: #a42f25;
   }
   .dark & {
-    color: #ee695d;
+    color: #ec5649;
     &:hover,
     &:focus {
-      color: #ea4335;
+      color: #f07b72;
     }
   }
 `;
@@ -66,7 +73,7 @@ const TwitterLink = styled(Link)`
     color: #1da1f2;
     &:hover,
     &:focus {
-      color: #1781c2;
+      color: #4ab4f5;
     }
   }
 `;
@@ -81,7 +88,7 @@ const TelegramLink = styled(Link)`
     color: #33a0d6;
     &:hover,
     &:focus {
-      color: #0088cc;
+      color: #66b8e0;
     }
   }
 `;
@@ -93,10 +100,10 @@ const DiscordLink = styled(Link)`
     color: #4651c2;
   }
   .dark & {
-    color: #8a93f6;
+    color: #6974f3;
     &:hover,
     &:focus {
-      color: #6974f3;
+      color: #8a93f6;
     }
   }
 `;

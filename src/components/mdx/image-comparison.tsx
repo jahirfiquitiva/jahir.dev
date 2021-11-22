@@ -31,6 +31,7 @@ const ImageComparisonContainer = styled.div`
 
     & img {
       object-fit: contain !important;
+      margin: 0;
     }
   }
 

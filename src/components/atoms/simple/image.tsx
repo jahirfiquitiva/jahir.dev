@@ -56,10 +56,10 @@ export const Image: Component<ImageProps> = (props) => {
       return (
         <NextImage
           {...rest}
-          className={className}
           width={width}
           height={height}
           layout={layout || 'fixed'}
+          className={className}
         />
       );
     }
