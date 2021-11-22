@@ -17,6 +17,9 @@ export const Card = styled.div`
 
 const linkCardStyles = css`
   --shadow-color: var(--card-base);
+  --shadow-md: 0 2px 4px -1px rgba(var(--shadow-color), 0.12),
+    0 4px 5px 0 rgba(var(--shadow-color), 0.09),
+    0 1px 10px 0 rgba(var(--shadow-color), 0.07);
   box-shadow: none;
   text-decoration: none;
 
