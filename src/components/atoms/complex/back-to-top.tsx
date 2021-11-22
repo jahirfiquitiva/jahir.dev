@@ -63,7 +63,7 @@ const BackToTopButton = styled(Button)`
   }
 
   ${mediaQueries.desktop} {
-    border-radius: 99999px;
+    border-radius: 9999px;
     padding: 14px 20px;
     margin: 0 32px 32px 0;
 

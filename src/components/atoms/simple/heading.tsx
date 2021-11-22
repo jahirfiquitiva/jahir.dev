@@ -16,8 +16,6 @@ import {
 
 const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
 const fontSizesKeys = [
-  'tiny',
-  'almost-tiny',
   '3xs',
   '2xs',
   'xs',
@@ -42,8 +40,6 @@ export interface HeadingProps
 }
 
 const fontSizeStyles = {
-  tiny: '3xs',
-  'almost-tiny': '2xs',
   '3xs': '3xs',
   '2xs': '2xs',
   xs: 'xs',

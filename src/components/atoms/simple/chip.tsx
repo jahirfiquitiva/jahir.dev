@@ -9,7 +9,7 @@ export const Chip = styled.span`
   justify-content: center;
   padding: 0.4rem 0.7rem 0.4rem 0.6rem;
   font-size: var(--font-3xs);
-  border-radius: 99999px;
+  border-radius: 9999px;
   border: 1px solid var(--border-color);
   background: rgba(0, 0, 0, 0);
   color: var(--text-secondary);

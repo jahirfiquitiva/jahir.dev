@@ -51,26 +51,6 @@ const StackContainer = styled.div`
   margin: 0.4rem 0;
 `;
 
-const FooterLogoLink = tw(Link)`
-  min-h-button
-  inline-flex
-  self-start
-  items-center
-  justify-start
-  gap-6
-  text-sm
-  
-  [svg]:(inline-block w-15 h-15)
-
-  hocus:(
-    [span]:(underline text-decoration[underline solid var(--gradient-brand)])
-  )
-`;
-
-const FooterSocialLinks = tw(SocialLinks)`my-6 mx-0`;
-
-const StackContainer = tw.div`flex items-center justify-start gap-6 my-4`;
-
 const sectionTwoLinks: Array<FooterLink> = [
   {
     title: 'Link to blog posts page',

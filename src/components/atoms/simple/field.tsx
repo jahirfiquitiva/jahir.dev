@@ -46,7 +46,7 @@ const Input = styled.input`
 
 const TextArea = styled.textarea`
   ${baseFieldStyles}
-  padding-top: 1.0rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   resize: vertical;
   height: 100%;
@@ -98,6 +98,7 @@ const LabeledFieldWrapper = styled.div`
 const ErrorText = styled.small`
   opacity: 1;
   margin-top: 0.4rem;
+  color: var(--gradient-red);
 `;
 
 interface BaseFieldProps extends ComponentProps {
