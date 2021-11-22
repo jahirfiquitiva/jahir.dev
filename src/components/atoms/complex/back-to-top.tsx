@@ -20,8 +20,8 @@ const hiddenStyles = css`
 `;
 
 const BackToTopButton = styled(Button)`
-  position: fixed;
   z-index: 2;
+  position: fixed;
   right: 0;
   bottom: 0;
   margin: 0 16px 16px 0;
@@ -29,7 +29,7 @@ const BackToTopButton = styled(Button)`
   min-height: 42px;
   min-width: 42px;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(var(--card-base), 0.24);
+  box-shadow: 0 2px 8px rgba(var(--shadow-color), 0.24);
   color: var(--on-accent);
   font-size: var(--font-3xs);
   letter-spacing: 0.0625rem;
@@ -64,7 +64,7 @@ const BackToTopButton = styled(Button)`
 
   ${mediaQueries.desktop} {
     border-radius: 99999px;
-    padding: 12px 20px;
+    padding: 14px 20px;
     margin: 0 32px 32px 0;
 
     & span {
