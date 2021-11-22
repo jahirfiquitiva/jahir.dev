@@ -33,7 +33,7 @@ const BackToTopButton = styled(Button)`
   color: var(--on-accent);
   font-size: var(--font-3xs);
   letter-spacing: 0.0625rem;
-  line-height: 1.5rem;
+  line-height: 1.5;
   padding: 0.7rem;
   gap: 0;
   text-transform: uppercase;
