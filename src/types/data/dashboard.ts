@@ -24,6 +24,7 @@ export interface DiscordActivity extends DiscordStatus {
     large_image?: string;
   };
   application_id?: string;
+  sync_id?: string;
 }
 
 export type DiscordStatusName = 'online' | 'offline' | 'idle' | 'dnd';
