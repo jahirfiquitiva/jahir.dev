@@ -15,7 +15,7 @@ const codingApps = [
 ];
 
 const ActivityCard = styled(DashboardCard)`
-  padding: 0.6rem 0.9rem 0.8rem;
+  padding: 0.8rem;
   display: flex;
   align-items: flex-end;
   gap: 0.8rem;
