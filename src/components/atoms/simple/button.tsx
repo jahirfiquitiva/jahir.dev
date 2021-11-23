@@ -1,32 +1,46 @@
+import { css } from '@emotion/react';
 import Icon from '@mdi/react';
 import { MouseEventHandler } from 'react';
-import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
-export const ButtonStyles = tw`
-  inline-flex
-  items-center
-  justify-center
-  bg-accent
-  text-accent-text
-  border-none
-  rounded
-  min-h-button
-  px-8
-  py-4
-  font-manrope
-  font-semibold
-  tracking-button
-  cursor-pointer
-  gap-4
-  truncate
-  shadow-sm
-  transition[all .25s ease-in-out]
+export const ButtonStyles = css`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  border-radius: 6px;
+  min-height: 42px;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--manrope-font);
+  font-weight: 600;
+  letter-spacing: 0.03125rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  gap: 0.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
   
-  disabled:(opacity-50 pointer-events-none cursor-not-allowed)
-  hocus:(shadow bg-accent-dark -translate-y-1 min-h-button)
-  [svg]:(only:(mx-auto))
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  
+  &:hover,
+  &:focus {
+    box-shadow: var(--shadow);
+    background-color: var(--accent-dark);
+    transform: translateY(-0.1rem);
+  }
+
+  & > svg:only-child {
+    margin: 0 auto;
+  }
 `;
 
 export interface BaseButtonProps {

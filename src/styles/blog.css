@@ -1,9 +1,9 @@
 article h2 {
-  @apply text-xl;
+  font-size: var(--font-xl);
 }
 
 article h3 {
-  @apply text-lg;
+  font-size: var(--font-lg);
 }
 
 article h1,
@@ -12,36 +12,43 @@ article h3,
 article h4,
 article h5,
 article h6 {
-  @apply relative block mt-16 mb-4;
+  position: relative;
+  display: block;
+  margin: 1.6rem 0 0.4rem;
   scroll-margin-top: calc(var(--toolbar-height) + 1.6rem);
 }
 
 article h1 {
-  @apply mb-0;
+  margin-bottom: 0;
 }
 
 article h3,
 article h4 {
-  @apply mt-12;
+  margin-top: 1.2rem;
 }
 
 article h5,
 article h6 {
-  @apply mt-10;
+  margin-top: 1rem;
 }
 
 article p {
-  @apply my-6 mx-0;
+  margin: 0.6rem 0;
 }
 
 article a.anchor {
-  @apply invisible absolute w-full h-full cursor-pointer no-underline;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
   margin-left: -1em;
   padding-right: 0.5em;
 }
 
 article a.anchor::after {
-  @apply no-underline;
+  text-decoration: none;
   content: '#';
   color: rgba(var(--divider-opaque), 0.2);
 }
@@ -58,7 +65,8 @@ article h5:hover > a.anchor,
 article h5:focus > a.anchor,
 article h6:hover > a.anchor,
 article h6:focus > a.anchor {
-  @apply visible no-underline;
+  visibility: visible;
+  text-decoration: none;
 }
 
 article ol,
@@ -71,7 +79,7 @@ article ul {
 }
 
 article ul li:not(:first-of-type) {
-  @apply mt-1;
+  margin-top: 0.1rem;
 }
 
 article ol > li:before,
@@ -89,18 +97,29 @@ article ul > li:before {
 }
 
 article .toc {
-  @apply my-12 mx-0;
+  margin: 1.2rem 0;
 }
 
 article .toc .title {
-  @apply font-manrope font-semibold text-sm text-text-primary mb-4;
+  font-family: var(--manrope-font);
+  font-weight: 600;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
 }
 
 article img {
+  border-radius: 6px;
   border: 1px solid var(--divider) !important;
-  @apply rounded my-16 h-auto max-w-full;
+  margin: 1.6rem 0;
+  height: auto;
+  max-width: 100%;
 }
 
 article blockquote {
-  @apply my-16 mx-0 bg-primary rounded-md border border-dashed border-accent-light py-6 px-12;
+  margin: 1.6rem 0;
+  background: var(--primary);
+  border-radius: 8px;
+  border: 1px dashed var(--accent-light);
+  padding: 0.6rem 1.2rem;
 }

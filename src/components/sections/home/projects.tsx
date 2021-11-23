@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { mdiFileCodeOutline } from '@mdi/js';
-import tw, { theme } from 'twin.macro';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
@@ -9,32 +9,49 @@ import {
   Masonry,
   MasonryBreakpoints,
 } from '~/components/elements';
-import { Component, ComponentProps, ProjectProps } from '~/types';
+import {
+  Component,
+  ComponentProps,
+  mediaQueries,
+  ProjectProps,
+  viewports,
+} from '~/types';
 
-const ProjectsHeader = tw.div`
-  w-full
-  flex
-  flex-col
-  items-start
+const ProjectsHeader = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  md:(flex-row items-center justify-between)
+  ${mediaQueries.tablet.sm} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
-const ProjectsHeaderLinksContainer = tw.div`
-  mt-10
-  flex
-  items-center
-  justify-start
-  flex-wrap
-  gap-10
+const ProjectsHeaderLinksContainer = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
 
-  md:(mt-0 justify-end)
+  ${mediaQueries.tablet.sm} {
+    margin-top: 0;
+    justify-content: flex-end;
+  }
+`;
+
+const ProjectsMasonry = styled(Masonry)`
+  padding: 1.2rem 0 2.4rem;
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
-masonryBreakpoints[theme`screens.2xs`] = 1;
-masonryBreakpoints[theme`screens.md`] = 2;
+masonryBreakpoints[viewports.mobile.sm] = 1;
+masonryBreakpoints[viewports.tablet.sm] = 2;
 
 interface ProjectsProps extends ComponentProps {
   projects?: Array<ProjectProps>;
@@ -70,7 +87,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
         </ProjectsHeaderLinksContainer>
       </ProjectsHeader>
 
-      <Masonry breakpoints={masonryBreakpoints} gap={'1rem'} tw={'pt-12 pb-24'}>
+      <ProjectsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(projects || []).map((project, index) => {
           return (
             <ProjectCard
@@ -83,7 +100,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
             />
           );
         })}
-      </Masonry>
+      </ProjectsMasonry>
     </section>
   );
 };

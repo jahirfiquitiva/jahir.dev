@@ -1,6 +1,7 @@
+import styled from '@emotion/styled';
 import { mdiGithub, mdiTwitter } from '@mdi/js';
 import Icon from '@mdi/react';
-import tw from 'twin.macro';
+import cn from 'classnames';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
@@ -12,18 +13,62 @@ interface CounterProps extends DashboardCardProps {
   site: 'twitter' | 'github' | 'stalk';
 }
 
-const CounterCard = tw(DashboardCard)`
-  flex items-center p-8 pt-6 rounded-md text-text-primary
-  dark:(text-text-primary)
-  [small,svg]:(text-text-secondary)
-  hocus:(
-    text-text-primary dark:(text-text-primary)
-    [small,svg]:(underline text-text-primary)
-  )
+const CounterCard = styled(DashboardCard)`
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0.8rem 0.8rem;
+  border-radius: 8px;
+  color: var(--text-primary);
+
+  &.stalk {
+    padding-top: 0.8rem;
+  }
+
+  & small,
+  & svg {
+    color: var(--text-secondary);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--text-primary);
+    & small,
+    & svg {
+      text-decoration: underline;
+      color: var(--text-primary);
+    }
+  }
+
+  .dark & {
+    color: var(--text-primary);
+
+    &:hover,
+    &:focus {
+      color: var(--text-primary);
+      & small,
+      & svg {
+        text-decoration: underline;
+        color: var(--text-primary);
+      }
+    }
+  }
 `;
 
-const CardTexts = tw.div`
-  flex flex-col justify-center flex-1
+const Count = styled.p`
+  font-size: var(--font-lg);
+  font-family: var(--manrope-font);
+  font-weight: 700;
+`;
+
+const Text = styled.small`
+  font-size: var(--font-xs);
+`;
+
+const CardTexts = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
 `;
 
 export const Counter: Component<CounterProps> = (props) => {
@@ -41,13 +86,11 @@ export const Counter: Component<CounterProps> = (props) => {
       }`}
       href={href}
       underline={false}
-      css={[site === 'stalk' ? tw`pt-8` : null]}
+      className={cn({ stalk: site === 'stalk' })}
     >
       <CardTexts>
-        {count ? (
-          <p tw={'text-lg font-manrope font-bold'}>{count}</p>
-        ) : undefined}
-        {text ? <small tw={'text-xs'}>{text}</small> : undefined}
+        {count ? <Count>{count}</Count> : undefined}
+        {text ? <Text>{text}</Text> : undefined}
       </CardTexts>
       <Icon
         path={site === 'twitter' ? mdiTwitter : mdiGithub}

@@ -1,8 +1,9 @@
+import { css } from '@emotion/react';
 import { useMemo } from 'react';
-import tw, { css } from 'twin.macro';
 
-import { forcedGradientStyles, baseGradientStyles } from './gradient-span';
+import { forcedGradientStyles } from './gradient-span';
 
+import { useTheme } from '~/providers/theme';
 import {
   Component,
   ComponentProps,
@@ -10,13 +11,13 @@ import {
   ComponentWithGradientProps,
   TextShadowOptions,
   GradientOptions,
-  gradientToTailwind,
+  gradientToCss,
 } from '~/types';
 
 const headingSizes = ['1', '2', '3', '4', '5', '6'] as const;
 const fontSizesKeys = [
-  'tiny',
-  'base',
+  '3xs',
+  '2xs',
   'xs',
   'sm',
   'md',
@@ -39,21 +40,21 @@ export interface HeadingProps
 }
 
 const fontSizeStyles = {
-  tiny: tw`text-tiny`,
-  base: tw`text-base`,
-  xs: tw`text-xs`,
-  sm: tw`text-sm`,
-  md: tw`text-md`,
-  lg: tw`text-lg`,
-  xl: tw`text-xl`,
-  '2xl': tw`text-2xl`,
-  '3xl': tw`text-3xl`,
-  6: tw`text-xs`, // h6
-  5: tw`text-sm`, // h5
-  4: tw`text-md`, // h4
-  3: tw`text-xl`, // h3
-  2: tw`text-2xl`, // h2
-  1: tw`text-3xl`, // h1
+  '3xs': '3xs',
+  '2xs': '2xs',
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+  xl: 'xl',
+  '2xl': '2xl',
+  '3xl': '3xl',
+  1: '3xl', // h1
+  2: '2xl', // h2
+  3: 'xl', // h3
+  4: 'md', // h4
+  5: 'sm', // h5
+  6: 'xs', // h6
 };
 
 const buildGradientAndShadowStyles = (
@@ -61,22 +62,33 @@ const buildGradientAndShadowStyles = (
   shadowColor?: TextShadowOptions,
   gradientColor?: GradientOptions,
   forceGradient?: boolean,
+  isDark?: boolean,
 ) => {
   const shadowStyles = shadowColor
     ? [
-        tw`text-shadow dark:(text-shadow-none)`,
+        css`
+          text-shadow: var(--text-shadow-size) var(--text-shadow-size) 0
+            var(--text-shadow-color);
+        `,
+        isDark
+          ? css`
+              text-shadow: none;
+            `
+          : null,
         css`
           --text-shadow-color: var(--text-shadow-${shadowColor});
         `,
       ]
     : [];
 
-  const gradientTailwind = gradientToTailwind(gradientColor);
+  const gradientCss = gradientToCss(gradientColor);
   const gradientStyles = gradientColor
     ? [
-        forceGradient ? forcedGradientStyles : null,
-        baseGradientStyles,
-        gradientTailwind,
+        forceGradient || isDark ? forcedGradientStyles : null,
+        css`
+          display: inline-block;
+        `,
+        gradientCss,
       ]
     : [];
 
@@ -84,10 +96,14 @@ const buildGradientAndShadowStyles = (
     css`
       & span.emoji:first-of-type {
         color: rgb(var(--shadow-color));
-        ${tw`mr-8`}
+        margin-right: 0.8rem;
       }
     `,
-    fontSize ? fontSizeStyles[fontSize] : null,
+    fontSize
+      ? css`
+          font-size: var(--font-${fontSizeStyles[fontSize]});
+        `
+      : null,
     ...shadowStyles,
     ...gradientStyles,
   ];
@@ -96,6 +112,7 @@ const buildGradientAndShadowStyles = (
 };
 
 export const Heading: Component<HeadingProps> = (props) => {
+  const { isDark, themeReady } = useTheme();
   const {
     size = '1',
     fontSize,
@@ -113,8 +130,9 @@ export const Heading: Component<HeadingProps> = (props) => {
       shadowColor,
       gradientColor,
       forceGradient,
+      isDark && themeReady,
     );
-  }, [fontSize, shadowColor, gradientColor, forceGradient]);
+  }, [fontSize, shadowColor, gradientColor, forceGradient, isDark, themeReady]);
 
   const HeadingTag = `h${size}` as keyof JSX.IntrinsicElements;
   return (

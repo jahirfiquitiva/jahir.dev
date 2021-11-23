@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { Fragment, useMemo } from 'react';
-import tw from 'twin.macro';
 
 import { SectionHeading, ChipGroup } from '~/components/atoms/complex';
 import {
@@ -11,26 +11,64 @@ import {
 } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, Supporter, supporters } from '~/types';
+import {
+  Component,
+  ComponentProps,
+  mediaQueries,
+  Supporter,
+  supporters,
+} from '~/types';
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 
-const SupportersHeader = tw.div`
-  grid
-  grid-cols-1
-  mt-20 mb-8
-  overflow-hidden
-  gap-16
+const SupportersHeader = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 2rem 0 0.8rem;
+  overflow: hidden;
+  gap: 1rem;
 
-  md:(grid-cols-2)
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
-const ThanksGif = tw(Image)`
-  m-0
-  order-1
-  min-width[256px]
-  max-width[300px]
-  md:(ml-auto order-2)
+const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 0.8rem;
+  order: 2;
+  ${mediaQueries.tablet.sm} {
+    order: 1;
+  }
+`;
+
+const ThanksGif = styled(Image)`
+  margin: 0;
+  min-width: 256px;
+  max-width: 300px;
+  order: 1;
+  ${mediaQueries.tablet.sm} {
+    margin: 0 0 0 auto;
+    order: 2;
+  }
+`;
+
+const SupportersSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin: 0.4rem 0 0.8rem;
+`;
+
+const NoSupporters = styled.small`
+  margin: 0.4rem 0 1.6rem;
+`;
+
+const SupportersChipGroup = styled(ChipGroup)`
+  margin-bottom: 0.8rem;
+  padding-top: 0.8rem;
 `;
 
 interface SupporterChipProps extends ComponentProps, Supporter {}
@@ -51,7 +89,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
       href={link || '#'}
       underline={false}
     >
-      <ImageChip tw={'cursor-pointer'} style={buildChipStyles(color)}>
+      <ImageChip style={buildChipStyles(color)}>
         <Image
           src={photo || ''}
           alt={name}
@@ -71,7 +109,7 @@ export const Supporters: Component = () => {
       <section id={'thanks'}>
         <Divider gradientColor={'red-to-purple'} />
         <SupportersHeader>
-          <div tw={'flex flex-col w-full items-start order-2 md:(order-1)'}>
+          <HeaderContent>
             <SectionHeading
               size={'3'}
               emoji={'🙌'}
@@ -80,11 +118,11 @@ export const Supporters: Component = () => {
             >
               Thanks!
             </SectionHeading>
-            <p tw={'mt-8 md:(pr-32)'}>
+            <p>
               I&apos;m really grateful to all the awesome people that support my
               work.
             </p>
-          </div>
+          </HeaderContent>
           <ThanksGif
             objectFit={'contain'}
             src={'/static/gifs/thanks.gif'}
@@ -94,7 +132,7 @@ export const Supporters: Component = () => {
           />
         </SupportersHeader>
       </section>
-      <section id={'supporters'} tw={'flex flex-col mt-4 mb-8'}>
+      <SupportersSection id={'supporters'}>
         {supporters.map((category, categoryIndex) => {
           const [emoji, ...name] = category.name.split(' ');
           return (
@@ -111,9 +149,9 @@ export const Supporters: Component = () => {
               </Heading>
               {category?.description && <small>{category?.description}</small>}
               {(category?.supporters?.length || 0) <= 0 ? (
-                <small tw={'mt-4 mb-16'}>None</small>
+                <NoSupporters>None</NoSupporters>
               ) : (
-                <ChipGroup tw={'mb-8 pt-8'}>
+                <SupportersChipGroup>
                   {category?.supporters?.map((supporter, supporterIndex) => {
                     return (
                       <li key={`${categoryIndex}-${supporterIndex}`}>
@@ -121,12 +159,12 @@ export const Supporters: Component = () => {
                       </li>
                     );
                   })}
-                </ChipGroup>
+                </SupportersChipGroup>
               )}
             </Fragment>
           );
         })}
-      </section>
+      </SupportersSection>
     </>
   );
 };

@@ -3,6 +3,7 @@ export * from './components/gradient-options';
 export * from './components/rehype-element';
 export * from './components/text-shadow-options';
 export * from './components/page';
+export * from './components/viewports';
 export * from './data/blog-post';
 export * from './data/challenge';
 export * from './data/dashboard';

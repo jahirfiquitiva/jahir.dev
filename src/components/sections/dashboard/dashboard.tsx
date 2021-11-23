@@ -1,4 +1,4 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { DashboardGrid } from './dashboard-grid';
 import { Status } from './status';
@@ -7,17 +7,27 @@ import { Heading, Divider, CenteredSection } from '~/components/atoms/simple';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
-import { Component, TopTrackData } from '~/types';
+import { Component, mediaQueries, TopTrackData } from '~/types';
 
-const TopTracksContainer = tw.div`
-  grid
-  grid-cols-1
-  gap-10
-  mb-20
-  md:(grid-cols-2)
+const TopTracksContainer = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  ${mediaQueries.tablet.sm} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
-const TopTracksText = tw.p`mb-16`;
+const TopTracksHeading = styled(Heading)`
+  margin: 0.6rem 0 1rem;
+  font-size: var(--font-sm);
+`;
+
+const TopTracksText = styled.p`
+  margin-bottom: 1.6rem;
+`;
 
 export const Dashboard: Component = () => {
   const dashboardData = useDashboardData();
@@ -47,9 +57,7 @@ export const Dashboard: Component = () => {
       />
       <DashboardGrid data={dashboardData} />
       <Divider thin />
-      <Heading size={'4'} fontSize={'sm'} tw={'mt-6 mb-10'}>
-        Top Tracks
-      </Heading>
+      <TopTracksHeading size={'4'}>Top Tracks</TopTracksHeading>
       {renderTopTracks()}
     </CenteredSection>
   );

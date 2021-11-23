@@ -1,8 +1,30 @@
+:root {
+  --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  --inter-font: 'Inter', var(--system-font);
+  --manrope-font: 'Manrope', var(--inter-font);
+  --code-font: 'Fira Code', Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono',
+    'Courier New', Courier, monospace;
+
+  --base-font-size: 1rem;
+  --font-3xl: calc(var(--base-font-size) * 2.5);
+  --font-2xl: calc(var(--base-font-size) * 2.25);
+  --font-xl: calc(var(--base-font-size) * 2);
+  --font-lg: calc(var(--base-font-size) * 1.75);
+  --font-md: calc(var(--base-font-size) * 1.5);
+  --font-sm: calc(var(--base-font-size) * 1.25);
+  --font-xs: var(--base-font-size);
+  --font-2xs: calc(var(--base-font-size) * 0.925);
+  --font-3xs: calc(var(--base-font-size) * 0.85);
+
+  --toolbar-height: 56px;
+}
+
 :root,
 .light,
 .light-mode {
   --text-shadow-size: 2px;
-  --toolbar-height: 56px;
 
   --background-values: 255, 255, 255;
   --background: #fff;
@@ -43,6 +65,13 @@
 
   --shadow-color: 8, 15, 30;
   --shadow-color-full: rgba(var(--shadow-color), var(--card-shadow-opacity));
+
+  --shadow-sm: 0 2px 1px -1px rgba(var(--shadow-color), 0.12),
+    0 1px 1px 0 rgba(var(--shadow-color), 0.09),
+    0 1px 3px 0 rgba(var(--shadow-color), 0.07);
+  --shadow: 0 3px 1px -2px rgba(var(--shadow-color), 0.12),
+    0 2px 2px 0 rgba(var(--shadow-color), 0.09),
+    0 1px 5px 0 rgba(var(--shadow-color), 0.07);
 
   --gradient-brand: var(--accent);
   --gradient-blue: #247aae;

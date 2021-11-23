@@ -1,27 +1,26 @@
+import { css } from '@emotion/react';
 import { useMemo } from 'react';
-import tw from 'twin.macro';
 
+import { useTheme } from '~/providers/theme';
 import {
   Component,
   ComponentProps,
   ComponentWithGradientProps,
   GradientOptions,
-  gradientToTailwind,
+  gradientToCss,
 } from '~/types';
 
-export const forcedGradientStyles = tw`
-  text-transparent
-  bg-gradient-to-r
-  bg-clip-text
-`;
-
-export const baseGradientStyles = tw`
-  inline-block
-  dark:(
-    text-transparent
-    bg-gradient-to-r
-    bg-clip-text
-  )
+export const forcedGradientStyles = css`
+  --from-gradient-color: var(--divider);
+  --to-gradient-color: var(--divider);
+  display: inline-block;
+  color: rgba(0, 0, 0, 0);
+  background-clip: text;
+  background-image: linear-gradient(
+    to right,
+    var(--from-gradient-color),
+    var(--to-gradient-color)
+  );
 `;
 
 interface GradientSpanProps extends ComponentProps, ComponentWithGradientProps {
@@ -30,23 +29,28 @@ interface GradientSpanProps extends ComponentProps, ComponentWithGradientProps {
 }
 
 export const GradientSpan: Component<GradientSpanProps> = (props) => {
+  const { isDark, themeReady } = useTheme();
   const { gradientColor, forceGradient, children, ...otherProps } = props;
 
-  const gradientTailwind = useMemo(
-    () => gradientToTailwind(gradientColor),
-    [gradientColor],
-  );
+  const gradientCss = gradientToCss(gradientColor);
+
+  const spanCss = useMemo(() => {
+    if (!themeReady && !forceGradient) return [];
+
+    const gradientStyles =
+      forceGradient || isDark
+        ? [
+            forcedGradientStyles,
+            css`
+              text-shadow: none;
+            `,
+          ]
+        : [];
+    return [...gradientStyles, gradientCss];
+  }, [themeReady, isDark, gradientCss, forceGradient]);
 
   return (
-    <span
-      css={[
-        forceGradient ? forcedGradientStyles : null,
-        tw`dark:(text-shadow-none)`,
-        baseGradientStyles,
-        gradientTailwind,
-      ]}
-      {...otherProps}
-    >
+    <span css={spanCss} {...otherProps}>
       {children}
     </span>
   );

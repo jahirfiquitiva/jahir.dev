@@ -1,35 +1,42 @@
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 import {
   Component,
   ComponentProps,
   ComponentWithGradientProps,
-  gradientToTailwind,
+  gradientToCss,
+  mediaQueries,
 } from '~/types';
 
 interface DividerProps extends ComponentProps, ComponentWithGradientProps {
   thin?: boolean;
 }
 
-const BaseDivider = tw.hr`
-  my-12
-  h-divider
-  bg-gradient-to-r
-  from-divider
-  to-divider
-  border-none
+const BaseDivider = styled.hr`
+  --from-gradient-color: var(--divider);
+  --to-gradient-color: var(--divider);
+  margin: 1.2rem 0;
+  height: 4px;
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    var(--from-gradient-color),
+    var(--to-gradient-color)
+  );
 
-  2xl:(my-20)
+  ${mediaQueries.desktop} {
+    margin: 2rem 0;
+  }
 `;
 
-const ThinDivider = tw(BaseDivider)`
-  h-thin-divider
+const ThinDivider = styled(BaseDivider)`
+  height: 1px;
 `;
 
 export const Divider: Component<DividerProps> = (props) => {
   const { gradientColor, thin, ...otherProps } = props;
-  const tailwind = gradientToTailwind(gradientColor);
+  const css = gradientToCss(gradientColor);
 
-  if (thin) return <ThinDivider css={tailwind} {...otherProps} />;
-  return <BaseDivider css={tailwind} {...otherProps} />;
+  if (thin) return <ThinDivider css={css} {...otherProps} />;
+  return <BaseDivider css={css} {...otherProps} />;
 };

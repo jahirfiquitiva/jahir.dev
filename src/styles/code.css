@@ -28,13 +28,17 @@ samp {
 }
 
 code {
-  @apply text-almost-tiny py-2 px-4 bg-primary text-text-primary rounded;
+  font-size: var(--text-2xs);
+  padding: 0.2rem 0.4rem;
+  background: var(--primary);
+  color: var(--text-secondary);
+  border-radius: 6px;
   font-size: inherit;
   font-weight: inherit;
 }
 
 p code {
-  @apply text-tiny;
+  font-size: var(--text-3xs);
 }
 
 pre,
@@ -42,11 +46,16 @@ code {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  @apply bg-primary text-text-primary overflow-x-auto rounded-md border border-divider my-12;
+  background-color: var(--primary);
+  color: var(--text-primary);
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--divider);
+  margin: 1.2rem 0;
 }
 
 pre {
-  @apply p-8;
+  padding: 0.8rem;
 }
 
 .dark pre,
@@ -57,11 +66,18 @@ pre {
 }
 
 pre pre {
-  @apply p-0 m-0 border-none;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 pre code {
-  @apply text-tiny text-text-primary p-0 border-none bg-transparent whitespace-pre;
+  font-size: var(--font-2xs);
+  color: var(--text-primary);
+  padding: 0;
+  border: none;
+  background: var(0, 0, 0, 0);
+  white-space: pre;
   word-wrap: normal;
 }
 
@@ -126,10 +142,21 @@ pre[class*='language-'] code,
 }
 
 .rehype-code-title {
-  @apply border border-divider rounded-t-md rounded-b-none text-text-secondary bg-toolbar-highlight mt-12 font-mono;
+  border: 1px solid var(--divider);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: var(--text-secondary);
+  background: var(--toolbar-highlight);
+  margin-top: 1.2rem;
+  font-family: var(--code-font);
   padding: 0.4rem 0.7rem 0.5rem;
 }
 
 .rehype-code-title + pre {
-  @apply mt-0 rounded-t-none border-t-0;
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-width: 0;
 }

@@ -1,39 +1,54 @@
+import styled from '@emotion/styled';
 import { mdiAccountGroup, mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
-import tw from 'twin.macro';
 
 import { LinkCard } from '~/components/atoms/simple';
 import useRequest from '~/hooks/useRequest';
 import { Component, GitHubStats as GitHubStatsData } from '~/types';
 
-const GitHubStatsLink = tw(LinkCard)`
-  --divider-alpha[0.4]
-  --divider[rgba(var(--divider-opaque), var(--divider-alpha))]
-  flex
-  items-center
-  justify-center
-  py-4 px-6
-  no-underline
-  text-text-secondary
-  h-full
-  min-h-button
-  gap-4
-  shadow-sm
+const GitHubStatsLink = styled(LinkCard)`
+  --divider-alpha: 0.32;
+  --divider: rgba(var(--divider-opaque), var(--divider-alpha));
 
-  hocus:(
-    --divider-alpha[0.5] shadow text-text-primary border-divider
-    dark:(text-text-primary)
-  )
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.6rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  height: 100%;
+  min-height: 42px;
+  gap: 0.4rem;
+  box-shadow: var(--shadow-sm);
+
+  &:hover,
+  &:focus {
+    --divider-alpha: 0.42;
+    box-shadow: var(--shadow);
+    color: var(--text-primary);
+    border-color: var(--divider);
+  }
+
+  .dark & {
+    color: var(--text-secondary);
+
+    &:hover,
+    &:focus {
+      color: var(--text-primary);
+    }
+  }
 `;
 
-const Count = tw.p`
-  font-medium
-  ml-2
-  not-last-of-type:(
-    border-r border-divider
-    ml-0 mr-4
-    pl-0 pr-8
-  )
+const Count = styled.p`
+  font-weight: 500;
+  margin-left: 0.2rem;
+  &:not(:last-of-type) {
+    padding-left: 0;
+    padding-right: 0.8rem;
+    border-right: 1px solid var(--divider);
+    margin-left: 0;
+    margin-right: 0.4rem;
+  }
 `;
 
 const iconSize = 0.85;

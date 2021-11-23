@@ -4,7 +4,7 @@
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://github.com/contentlayerdev/contentlayer)
-- **Styling**: [emotion.sh](http://emotion.sh/), [Tailwind CSS](https://tailwindcss.com/) and [twin.macro](https://github.com/ben-rogerson/twin.macro)
+- **Styling**: [emotion](http://emotion.sh/) styled components
 - **Deployment**: [Vercel](https://vercel.com)
 
 ## Project Structure

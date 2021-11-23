@@ -1,7 +1,7 @@
+import { css } from '@emotion/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import tw from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
@@ -9,11 +9,19 @@ interface BaseLinkProps {
   underline?: boolean;
 }
 
-export const baseLinkStyles = tw`
-  font-medium
-  inline-block
-  text-accent
-  hocus:(text-accent-dark dark:text-accent-light)
+export const baseLinkStyles = css`
+  font-weight: 500;
+  display: inline-block;
+  color: var(--accent);
+
+  &:hover,
+  &:focus {
+    color: var(--accent-dark);
+
+    .dark & {
+      color: var(--accent-light);
+    }
+  }
 `;
 
 export const isLocalLink = (href?: string) =>
@@ -57,7 +65,19 @@ export const Link: Component<LinkProps> = (props) => {
   const linkStyles = useMemo(() => {
     return [
       baseLinkStyles,
-      underline ? tw`hocus:(underline)` : tw`hocus:(no-underline)`,
+      underline
+        ? css`
+            &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
+          `
+        : css`
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+          `,
     ];
   }, [underline]);
 

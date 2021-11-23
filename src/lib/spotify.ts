@@ -2,7 +2,10 @@ import querystring from 'querystring';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
-const refreshToken = process.env.SPOTIFY_CLIENT_TOKEN || '';
+const refreshToken =
+  process.env.SPOTIFY_CLIENT_REFRESH_TOKEN ||
+  process.env.SPOTIFY_CLIENT_TOKEN ||
+  '';
 
 const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 const TOP_TRACKS_ENDPOINT =

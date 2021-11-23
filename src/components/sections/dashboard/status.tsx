@@ -1,35 +1,38 @@
 import { keyframes } from '@emotion/react';
-import tw, { styled } from 'twin.macro';
+import styled from '@emotion/styled';
 
 import { Chip, Image, Link } from '~/components/atoms/simple';
 import { Component, ComponentProps, DiscordStatusName } from '~/types';
 import buildStyles from '~/utils/styles/build-styles';
 
-const StateContainer = tw.div`
-  flex
-  flex-col
-  items-center
-  justify-center
-  mb-24
+const StateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.4rem;
 `;
 
-const Animoji = tw(Image)`
-  rounded-half
-  bg-accent-animoji
+const Animoji = styled(Image)`
+  border-radius: 50%;
+  background-color: var(--accent-animoji);
 `;
 
-const StateChip = tw(Chip)`
-  --color-values[75, 101, 132]
-  --bg-color[rgba(var(--color-values), 0.1)]
-  --border-color[rgba(var(--color-values), 0.35)]
-  uppercase
-  text-tiny
-  mt-10
-  cursor-pointer
-  text-text-primary
-  font-semibold
-  font-manrope
-  tracking-button
+const StateChip = styled(Chip)`
+  --color-values: 75, 101, 132;
+  --bg-color: rgba(var(--color-values), 0.1);
+  --border-color: rgba(var(--color-values), 0.35);
+  text-transform: uppercase;
+  font-size: var(--font-3xs);
+  font-weight: 600;
+  font-family: var(--manrope-font);
+  color: var(--text-primary);
+  margin-top: 1rem;
+  letter-spacing: 0.03125rem;
+
+  & > span:last-of-type {
+    padding-top: 1px;
+  }
 `;
 
 const pulse = keyframes`
@@ -41,14 +44,14 @@ const pulse = keyframes`
   }
 `;
 
-const BaseStateCircle = tw.span`
-  w-10
-  h-10
-  rounded-half
-  mr-8
-  background-color[rgb(var(--color-values))]
-  animation-duration[2s]
-  animation-iteration-count[infinite]
+const BaseStateCircle = styled.span`
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-right: 0.8rem;
+  background-color: rgb(var(--color-values));
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 `;
 
 const StateCircle = styled(BaseStateCircle)`
@@ -112,7 +115,7 @@ export const Status: Component<StateProps> = (props) => {
           style={buildStyles({ '--color-values': statusTextAndColor.color })}
         >
           <StateCircle />
-          <span tw={'pt-1'}>{statusTextAndColor.text}</span>
+          <span>{statusTextAndColor.text}</span>
         </StateChip>
       </Link>
     );
@@ -125,6 +128,7 @@ export const Status: Component<StateProps> = (props) => {
         alt={'Image of Jahir as an Animoji'}
         size={144}
         quality={100}
+        priority
       />
       {renderStateChip()}
     </StateContainer>

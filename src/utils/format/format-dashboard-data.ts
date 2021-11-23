@@ -35,18 +35,44 @@ const transformDiscordActivityToDashboardActivity = (
   };
 };
 
+const transformDiscordSpotifyActivity = (
+  activity?: DiscordActivity,
+): TrackData | null => {
+  if (!activity) return null;
+  const cleanActivity = transformDiscordActivityToDashboardActivity(activity);
+  return {
+    title: cleanActivity?.details,
+    artist: cleanActivity?.state,
+    album: cleanActivity?.largeImageText,
+    url: `https://open.spotify.com/track/${activity?.sync_id}`,
+    image: {
+      url: `https://i.scdn.co/image/${
+        activity?.assets?.large_image?.toString()?.split(':')?.[1]
+      }`,
+    },
+    isPlaying: true,
+  };
+};
+
 const CUSTOM_STATUS_ID = 'custom';
-const EXCLUDE_ACTIVITIES_APPS = [CUSTOM_STATUS_ID, 'spotify'];
+const SPOTIFY_ACTIVITY_ID = 'spotify';
+const EXCLUDE_ACTIVITIES_APPS = [CUSTOM_STATUS_ID, SPOTIFY_ACTIVITY_ID];
 export const transformDataToDashboardData = (
   discordData?: DiscordData | null,
   nowPlaying?: TrackData | null,
   counters?: Counters | null,
 ): DashboardData => {
   const resultData: DashboardData = {};
+  let fallbackSpotifyActivity: TrackData | null = null;
   if (discordData) {
     resultData.user = discordData.discord_user;
     resultData.statusName = discordData.discord_status;
     if (discordData.activities) {
+      fallbackSpotifyActivity = transformDiscordSpotifyActivity(
+        discordData.activities.filter((it) =>
+          it.id?.includes(SPOTIFY_ACTIVITY_ID),
+        )?.[0],
+      );
       const [statusActivity] = discordData.activities.filter(
         (it) => it.id === CUSTOM_STATUS_ID,
       );
@@ -68,7 +94,8 @@ export const transformDataToDashboardData = (
         .filter((it) => it) as Array<Activity>;
     }
   }
-  resultData.nowPlaying = nowPlaying;
+  resultData.nowPlaying =
+    nowPlaying && nowPlaying.isPlaying ? nowPlaying : fallbackSpotifyActivity;
   resultData.counters = counters;
   return resultData;
 };

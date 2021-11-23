@@ -1,84 +1,104 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 import cn from 'classnames';
 import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from 'react';
-import tw, { styled } from 'twin.macro';
 
 import { Component, ComponentProps } from '~/types';
 
-const baseFieldStyles = tw`
-  bg-transparent
-  text-text-primary
-  border
-  border-divider
-  rounded
-  min-h-field
-  px-8
-  py-4
-  flex-1
+const baseFieldStyles = css`
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--text-primary);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  min-height: 48px;
+  padding: 0.4rem 0.8rem;
+  flex: 1;
 
-  hover:(border-accent-light)
-  focus:(outline-accent border-accent)
-  disabled:(opacity-50 pointer-events-none cursor-not-allowed)
+  &:hover {
+    border-color: var(--accent-light);
+  }
+
+  &:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 0;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 `;
 
-const Label = tw.label`
-  mt-10
-  mb-4
-  font-medium
+const Label = styled.label`
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
 `;
 
 const Input = styled.input`
   ${baseFieldStyles}
-  ${tw`[&.with-icon]:(pr-field-icon)`}
+  &.with-icon {
+    padding-right: 2.8rem;
+  }
 `;
 
 const TextArea = styled.textarea`
   ${baseFieldStyles}
-  ${tw`
-    py-10
-    resize-y
-    h-full
-    min-h-textarea
-    max-h-textarea-max
-    [&.with-icon]:(pr-8 pb-field-icon)
-  `}
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  resize: vertical;
+  height: 100%;
+  min-height: 96px;
+  max-height: 192px;
+  &.with-icon {
+    padding-right: 2.8rem;
+    padding-bottom: 2.8rem;
+  }
 `;
 
-const BaseFieldWrapper = tw.div`
-  relative
-  flex
-  items-center
+const BaseFieldWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
 `;
 
-const FieldWrapper = tw(BaseFieldWrapper)`
-  svg:(
-    absolute
-    top-0
-    right-0
-    transform
-    translate-y-1/2
-    mr-8
-    pointer-events-none
-    text-text-tertiary
-  )
+const FieldWrapper = styled(BaseFieldWrapper)`
+  & svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(50%);
+    margin-right: 0.8rem;
+    pointer-events: none;
+    color: var(--text-tertiary);
+  }
 
-  [textarea + svg]:(
-    top-unset
-    bottom-0
-    transform
-    -translate-y-1/2
-  )
+  & textarea + svg {
+    top: unset;
+    bottom: 0;
+    transform: translateY(-50%);
+  }
 `;
 
-const LabeledFieldWrapper = tw.div`
-  flex flex-col pt-4
-  [label.hidden]:(hidden opacity-0 pointer-events-none)
+const LabeledFieldWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.4rem;
+
+  & label.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
 `;
 
-const ErrorText = tw.small`
-  opacity-100
-  mt-4
-  text-gradients-red
+const ErrorText = styled.small`
+  opacity: 1;
+  margin-top: 0.4rem;
+  color: var(--gradient-red);
 `;
 
 interface BaseFieldProps extends ComponentProps {
