@@ -16,7 +16,7 @@ interface CounterProps extends DashboardCardProps {
 const CounterCard = styled(DashboardCard)`
   display: flex;
   align-items: center;
-  padding: 0.6rem 0.8rem 0.8rem;
+  padding: 0.6rem 0.9rem 0.8rem 1rem;
   border-radius: 8px;
   color: var(--text-primary);
 

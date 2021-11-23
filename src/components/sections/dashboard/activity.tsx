@@ -15,7 +15,7 @@ const codingApps = [
 ];
 
 const ActivityCard = styled(DashboardCard)`
-  padding: 0.8rem;
+  padding: 0.8rem 1rem;
   display: flex;
   align-items: flex-end;
   gap: 0.8rem;
@@ -24,10 +24,8 @@ const ActivityCard = styled(DashboardCard)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  & > img {
-    &:last-of-type {
-      border-radius: 4px;
-    }
+  & img:last-of-type {
+    border-radius: 4px;
   }
 `;
 
@@ -36,7 +34,7 @@ const ActivityContent = styled(ActivityCard)`
   padding: 0;
   align-items: center;
   flex: 1;
-  & > img {
+  & img {
     border-radius: 6px;
   }
 `;
