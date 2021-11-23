@@ -32,6 +32,7 @@ const ActivityCard = styled(DashboardCard)`
 `;
 
 const ActivityContent = styled(ActivityCard)`
+  border: none;
   padding: 0;
   align-items: center;
   flex: 1;

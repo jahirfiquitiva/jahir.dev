@@ -95,7 +95,9 @@ export const transformDataToDashboardData = (
     }
   }
   resultData.nowPlaying =
-    nowPlaying && nowPlaying.isPlaying ? nowPlaying : fallbackSpotifyActivity;
+    nowPlaying && nowPlaying.isPlaying
+      ? nowPlaying
+      : fallbackSpotifyActivity || { isPlaying: false };
   resultData.counters = counters;
   return resultData;
 };
