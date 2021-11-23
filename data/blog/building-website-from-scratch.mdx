@@ -73,6 +73,13 @@ You can check a [recent Pull Request](https://github.com/jahirfiquitiva/jahir.de
 Additionally, I'd like to mention I was planning on creating some kind of design system for this website, and have docs with Storybook. I did it
 with the first components I created, but at the end it was just too much work to maintain all of that, so it's been removed.
 
+> **Update**:<br/>
+As much as I like `twin.macro`, I noticed a performance decrease (going down to ~65 points), probably due to how complex and custom
+this website's css is.<br/>
+So I have decided to revert everything to just `emotion` styled components, in favor of better performance, especifically
+for mobile devices, and now it gets ~20 extra points.<br/>
+Here's another [Pull Request](https://github.com/jahirfiquitiva/jahir.dev/pull/21) with those changes.
+
 #### Adios, localization
 
 I had localization setup in my previous website for a while. I wanted it to be available for Spanish speakers too (which is my native language),
