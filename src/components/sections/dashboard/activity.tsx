@@ -24,17 +24,18 @@ const ActivityCard = styled(DashboardCard)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  & img:last-of-type {
+  & span > img {
     border-radius: 4px;
   }
 `;
 
 const ActivityContent = styled(ActivityCard)`
+  border-radius: 0;
   border: none;
   padding: 0;
   align-items: center;
   flex: 1;
-  & img {
+  & span > img {
     border-radius: 6px;
   }
 `;
