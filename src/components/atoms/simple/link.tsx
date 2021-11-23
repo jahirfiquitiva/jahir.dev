@@ -33,7 +33,7 @@ export interface LinkProps extends ComponentProps, BaseLinkProps {
   newTab?: boolean;
 }
 
-const prefetchBlockList = ['/music', '/dashboard', '/inspiration', '/static'];
+const prefetchBlockList = ['/music', '/static'];
 
 export const Link: Component<LinkProps> = (props) => {
   const {
