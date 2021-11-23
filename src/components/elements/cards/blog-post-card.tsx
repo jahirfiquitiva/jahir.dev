@@ -125,10 +125,11 @@ const Content = styled.div`
 
 const Excerpt = styled.p`
   display: -webkit-box;
-  opacity: 0;
-  line-height: 0;
-  visibility: hidden;
-  pointer-events: none;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  margin: 0.4rem 0;
+  line-height: 1.625;
   color: var(--text-secondary);
   font-size: var(--font-3xs);
   overflow: hidden;
@@ -138,6 +139,10 @@ const Excerpt = styled.p`
   max-lines: 1;
 
   ${mediaQueries.tablet.sm} {
+    opacity: 0;
+    line-height: 0;
+    visibility: hidden;
+    pointer-events: none;
     font-size: var(--font-2xs);
     -webkit-line-clamp: 2;
     max-lines: 2;
