@@ -3,8 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { NextApiFunc } from '~/types';
 
-const userApiUrl = 'https://api.github.com/users/jahirfiquitiva';
-const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
+const userApiUrl = 'https://api.github.com/users/dohyongcorp';
+const { GITHUB_API_TOKEN: githubApiToken = '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' } = process.env;
 const authHeaders =
   githubApiToken && githubApiToken.length > 0
     ? { headers: { Authorization: githubApiToken } }
