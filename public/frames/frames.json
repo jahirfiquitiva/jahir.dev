@@ -1,5 +1,4 @@
-[
-      {
+[{
 		"name": "Webp Image",
 		"author": "unknown",
 		"url": "https://www.gstatic.com/webp/gallery/4.webp",
@@ -8,7 +7,7 @@
 		"copyright": "Unknown",
 		"collections": "landscapes"
 	},
-      {
+	{
 		"name": "ShotA",
 		"author": "Someone",
 		"url": "https://raw.githubusercontent.com/jahirfiquitiva/MinDesigns-Wallpapers/master/Wallpapers/Free/walla.jpg",
@@ -111,5 +110,32 @@
 		"dimensions": "3200x2560",
 		"copyright": "Unknown",
 		"collections": "landscapes"
+	},
+	{
+		"name": "Halloween 1",
+		"author": "wallsplash",
+		"url": "https://images.unsplash.com/photo-1508361001413-7a9dca21d08a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=david-menidrey-MYRG0ptGh50-unsplash.jpg&w=640",
+		"thumbnail": "https://via.placeholder.com/150",
+		"dimensions": "3200x2560",
+		"copyright": "Free (do whatever you want)",
+		"collections": "halloween"
+	},
+	{
+		"name": "New Halloween",
+		"author": "wallsplash",
+		"url": "https://images.unsplash.com/photo-1592887714077-1c2ca9cdcf48?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=vino-li-W1py5swbJZY-unsplash.jpg&w=640",
+		"thumbnail": "https://via.placeholder.com/150",
+		"dimensions": "3200x2560",
+		"copyright": "Free (do whatever you want)",
+		"collections": "halloween, new year"
+	},
+	{
+		"name": "New Year",
+		"author": "wallsplash",
+		"url": "https://images.unsplash.com/photo-1546271876-af6caec5fae5?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=andreas-dress-OUSa9MU4zZc-unsplash.jpg&w=640",
+		"thumbnail": "https://via.placeholder.com/150",
+		"dimensions": "3200x2560",
+		"copyright": "Free (do whatever you want)",
+		"collections": "new year"
 	}
 ]
