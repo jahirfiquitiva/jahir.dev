@@ -43,3 +43,6 @@ public/*.xml
 .contentlayer
 data/inspiration/*.js*
 !.env.example
+
+.frontmatter
+frontmatter.json
