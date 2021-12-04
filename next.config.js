@@ -17,6 +17,11 @@ const buildRedirect = (source, destination, permanent = true) => {
 const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
+  experimental: {
+    removeConsole: {
+      exclude: ['error'],
+    },
+  },
   images: {
     domains: [
       'images.unsplash.com',
@@ -33,8 +38,8 @@ const defaultNextConfig = {
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
         react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
       });
     }
     return config;
