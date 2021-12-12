@@ -11,7 +11,6 @@ const MasonryGrid = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
   align-content: stretch;
   box-sizing: border-box;
   break-inside: avoid;
@@ -23,8 +22,6 @@ const MasonryColumn = styled(MasonryGrid)`
   justify-content: flex-start;
   flex: 1;
   padding: 0.2rem 0;
-  break-inside: avoid;
-  transform: translateZ(0);
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };
