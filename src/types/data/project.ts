@@ -10,4 +10,5 @@ export interface ProjectProps {
   tag?: string;
   stack?: Array<string>;
   hide?: boolean;
+  repo?: string;
 }

@@ -99,7 +99,10 @@ export const SongCard: Component<SongCardProps> = (props) => {
     const backgroundColor = isDark
       ? paletteData.darkMuted
       : paletteData.vibrant;
-    const shadowColors = buildShadowStyles(textColor, 0.25, 0.45, isDark);
+    const shadowColors = buildShadowStyles(textColor, isDark, {
+      shadow: 0.25,
+      border: 0.45,
+    });
     return {
       ...shadowColors,
       backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),

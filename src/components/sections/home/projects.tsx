@@ -76,7 +76,6 @@ export const Projects: Component<ProjectsProps> = (props) => {
         </SectionHeading>
 
         <ProjectsHeaderLinksContainer>
-          <GitHubStats />
           <LinkButton
             title={"Link to Jahir's resume pdf file"}
             href={'/resume'}

@@ -27,6 +27,10 @@ const StackList = styled.ul`
   gap: 0.4rem;
 `;
 
+const StackItem = styled.li`
+  line-height: 1;
+`;
+
 interface StackListProps extends ComponentProps {
   stack?: Array<SkillKey>;
   iconSize?: number;
@@ -42,13 +46,13 @@ export const Stack: Component<StackListProps> = (props) => {
         const skill = getSkill(skillName);
         if (!skill) return null;
         return (
-          <li key={i} title={skill.name} aria-label={skill.name}>
+          <StackItem key={i} title={skill.name} aria-label={skill.name}>
             <Icon
               path={skill.iconPath}
               color={skill.color}
               size={skillName === 'android' ? iconSize * 1.25 : iconSize}
             />
-          </li>
+          </StackItem>
         );
       })}
     </StackList>

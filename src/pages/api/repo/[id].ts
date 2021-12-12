@@ -7,7 +7,7 @@ const repoApiUrl = 'https://api.github.com/repos/jahirfiquitiva';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
   githubApiToken && githubApiToken.length > 0
-    ? { headers: { Authorization: githubApiToken } }
+    ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
 export default async (
