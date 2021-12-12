@@ -25,9 +25,10 @@ const BaseProjectCard = styled(LinkCard)`
   border-color: var(--border-color, var(--divider));
 
   & * {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.25s ease-in-out;
   }
-  & p {
+  & p,
+  & .stars {
     color: var(--text-secondary);
   }
 
@@ -42,7 +43,8 @@ const BaseProjectCard = styled(LinkCard)`
       text-decoration: underline;
       color: var(--hl-color);
     }
-    & p {
+    & p,
+    & .stars {
       color: var(--text-primary);
     }
     & img {
@@ -99,7 +101,11 @@ const ProjectStarsContainer = styled.div`
   align-items: center;
   padding: 0.2rem 0.4rem;
   gap: 0.2rem;
+  transition-duration: 0.1s;
 
+  & > * {
+    transition-duration: 0.1s;
+  }
   & > svg {
     padding-bottom: 0.1rem;
   }
@@ -168,7 +174,7 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
         `}
       />
       {data?.stars ? (
-        <ProjectStarsContainer>
+        <ProjectStarsContainer className={'stars'}>
           <Icon path={mdiStar} size={0.7} />
           <span>{data?.stars}</span>
         </ProjectStarsContainer>
