@@ -10,6 +10,9 @@ const authHeaders =
     ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
+const oneMillion = 1000000;
+const oneThousand = 1000;
+
 export default async (
   req: NextApiRequest,
   res: NextApiResponse,
@@ -32,6 +35,15 @@ export default async (
     const repository = await repoRequest.json();
     const { stargazers_count: stargazers = 0 } = repository;
 
+    let starsAsText = '';
+    if (stargazers > 0) {
+      if (stargazers >= oneMillion) {
+        starsAsText = `${Math.floor(stargazers / oneMillion)}M+`;
+      } else if (stargazers >= oneThousand) {
+        starsAsText = `${Math.floor(stargazers / oneThousand)}K+`;
+      } else starsAsText = `${stargazers}`;
+    }
+
     res.setHeader(
       'Cache-Control',
       'public, s-maxage=3600, stale-while-revalidate=1800',
@@ -39,7 +51,7 @@ export default async (
 
     return res.status(200).json({
       success: true,
-      stars: stargazers,
+      stars: starsAsText,
     });
   } catch (err) {
     return res.status(400).send({

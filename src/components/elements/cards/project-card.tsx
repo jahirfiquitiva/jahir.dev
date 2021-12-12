@@ -119,7 +119,7 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
     repo,
     owner,
   } = props;
-  const { data } = useRequest<{ stars?: number }>(
+  const { data } = useRequest<{ stars?: string }>(
     `/api/repo/${repo}${owner ? `?owner=${owner}` : ''}`,
   );
 
