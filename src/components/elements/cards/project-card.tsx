@@ -36,7 +36,7 @@ const BaseProjectCard = styled(LinkCard)`
     color: var(--text-primary);
     background-color: var(--bg-color);
     border-color: var(--border-color, var(--divider));
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow);
 
     & h4 {
       text-decoration: underline;

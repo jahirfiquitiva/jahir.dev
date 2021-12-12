@@ -97,6 +97,7 @@ const buildGradientAndShadowStyles = (
       & span.emoji:first-of-type {
         color: rgb(var(--shadow-color));
         margin-right: 0.8rem;
+        font-weight: normal;
       }
     `,
     fontSize
