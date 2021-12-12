@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import useSound from 'use-sound';
 import { useMemo } from 'react';
+import useSound from 'use-sound';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import {
