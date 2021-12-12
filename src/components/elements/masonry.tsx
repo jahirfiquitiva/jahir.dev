@@ -19,7 +19,8 @@ const MasonryColumn = styled(MasonryGrid)`
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
-  padding: 0.2rem 0;
+  width: 0;
+  padding: 0.1rem 0;
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };

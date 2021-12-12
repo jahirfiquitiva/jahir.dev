@@ -67,7 +67,7 @@ const IconHeadingContainer = styled.div`
 
   & img {
     opacity: 0.9;
-    filter: drop-shadow(0 1px 2px var(--filter-color, var(--border-color)));
+    filter: drop-shadow(0 1px 2px var(--border-color));
   }
 `;
 
