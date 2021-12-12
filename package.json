@@ -7,9 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen-inspo-files": "rimraf ./data/inspiration/*.js* && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-inspiration-files.mjs",
     "clean": "rimraf .next && rimraf out && rimraf .contentlayer",
-    "predev": "yarn clean && yarn gen-inspo-files",
+    "predev": "yarn clean",
     "prebuild": "yarn predev",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "update-deps": "npx npm-check-updates -u && yarn"
