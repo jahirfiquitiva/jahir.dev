@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import useSound from 'use-sound';
+import { useMemo } from 'react';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import {
@@ -10,9 +11,52 @@ import {
 } from '~/components/atoms/simple';
 import { SocialLinks } from '~/components/elements';
 import { AudioButton, audioButtonTitle } from '~/components/sections/home';
+import useHasMounted from '~/hooks/useHasMounted';
 import getRandomItem from '~/lib/random';
 
-const possibleImages = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+interface AboutPhoto {
+  key: string;
+  alt: string;
+}
+
+const possibleImages: Array<AboutPhoto> = [
+  {
+    key: '0',
+    alt: 'Me in Lima, Perú',
+  },
+  {
+    key: '1',
+    alt: 'Me in Lima, Perú',
+  },
+  {
+    key: '2',
+    alt: 'Visiting a town in Boyac´á, Colombia',
+  },
+  {
+    key: '3',
+    alt: 'Hiking in my hometown',
+  },
+  {
+    key: '4',
+    alt: 'Visiting Iza, Boyacá, Colombia',
+  },
+  {
+    key: '5',
+    alt: 'Hanging out with friends at a cafe',
+  },
+  {
+    key: '6',
+    alt: 'Hiking while visiting a friend\'s hometown',
+  },
+  {
+    key: '7',
+    alt: 'Hanging out with friends in Iza, Boyacá, Colombia',
+  },
+  {
+    key: '8',
+    alt: 'Hanging out with friends in Playa Blanca, Boyacá, Colombia',
+  },
+];
 
 const Intro = styled.p`
   color: var(--text-primary);
@@ -71,10 +115,30 @@ const AboutAudioButton = styled(AudioButton)`
 `;
 
 export const About = () => {
-  const rightImage = getRandomItem(possibleImages);
+  const hasMounted = useHasMounted();
+  const rightImage: AboutPhoto = getRandomItem(possibleImages);
   const [playName] = useSound('/static/audio/name-pronunciation.mp3', {
     interrupt: true,
   });
+
+  const photoComponent = useMemo(() => {
+    if (!hasMounted) return null;
+    return (
+      <PhotoFigure>
+        <Photo
+          src={`/static/images/about/ab-${rightImage.key}.jpg`}
+          alt={rightImage.alt}
+          width={768}
+          height={320}
+          quality={100}
+          objectFit={'cover'}
+          objectPosition={'center'}
+          layout={'intrinsic'}
+        />
+        <figcaption>📸 {rightImage.alt}</figcaption>
+      </PhotoFigure>
+    );
+  }, [hasMounted, rightImage]);
 
   return (
     <Section id={'about'}>
@@ -87,18 +151,7 @@ export const About = () => {
         About
       </SectionHeading>
 
-      <PhotoFigure>
-        <Photo
-          src={`/static/images/about/ab-${rightImage}.jpg`}
-          width={768}
-          height={320}
-          quality={100}
-          objectFit={'cover'}
-          objectPosition={'center'}
-          layout={'intrinsic'}
-        />
-        <figcaption>Photo of me</figcaption>
-      </PhotoFigure>
+      {photoComponent}
 
       <Intro>
         I am{' '}
