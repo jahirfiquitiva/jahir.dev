@@ -17,7 +17,7 @@ const HomePage: Component<HomePageProps> = (props) => {
       title={'Projects ~ Jahir Fiquitiva 💎'}
       exactUrl={'https://jahir.dev/projects'}
     >
-      <Projects projects={props.projects} full />
+      <Projects projects={props.projects} showFullList />
     </Page>
   );
 };

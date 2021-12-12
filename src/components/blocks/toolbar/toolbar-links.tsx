@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 import { ToolbarLink } from './toolbar-link';
 
@@ -66,16 +66,15 @@ const toolbarLinksList = [
 
 export const ToolbarLinks = () => {
   const router = useRouter();
-  const [activeLink, setActiveLink] = useState(-1);
 
-  useEffect(() => {
-    if (!router || !router.isReady) return;
+  const activeLink = useMemo<number>(() => {
+    if (!router || !router.isReady) return -1;
     const { asPath: pathname } = router;
-    if (pathname.includes('/uses')) setActiveLink(2);
-    else if (pathname.includes('/blog')) setActiveLink(1);
-    else if (pathname.includes('/donate')) setActiveLink(3);
-    else if (pathname.includes('/contact')) setActiveLink(4);
-    else setActiveLink(-1);
+    if (pathname.includes('/uses')) return 2;
+    if (pathname.includes('/blog')) return 1;
+    if (pathname.includes('/donate')) return 3;
+    if (pathname.includes('/contact')) return 4;
+    return -1;
   }, [router]);
 
   return (

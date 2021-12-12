@@ -19,9 +19,9 @@ const cardShadowStyles = css`
   --shadow-color: var(--card-base);
   --shadow-sm-color: rgba(
     var(--shadow-color),
-    calc(var(--shadow-strength) + 0.09)
+    calc(var(--shadow-strength) + 0.15)
   );
-  --shadow-sm: 0 1px 2px -1px var(--shadow-sm-color);
+  --shadow-sm: 0 1px 2px 0 var(--shadow-sm-color);
 
   --shadow-color-a: rgba(
     var(--shadow-color),

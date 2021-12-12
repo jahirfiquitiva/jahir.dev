@@ -24,13 +24,14 @@ export const ButtonStyles = css`
   text-overflow: ellipsis;
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
-  
+  line-height: 1;
+
   &:disabled {
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
   }
-  
+
   &:hover,
   &:focus {
     box-shadow: var(--shadow);
@@ -40,6 +41,10 @@ export const ButtonStyles = css`
 
   & > svg:only-child {
     margin: 0 auto;
+  }
+
+  & > span {
+    line-height: 1;
   }
 `;
 
