@@ -138,7 +138,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
           gradientColor={'red-to-purple'}
           emoji={'👨‍💻'}
         >
-          Projects
+          {!showFullList ? 'Selected ' : ''}Projects
         </SectionHeading>
 
         <ProjectsHeaderLinksContainer>

@@ -142,6 +142,10 @@ export const Footer: Component = () => {
           >
             View source code
           </Link>
+          {' • '}
+          <Link title={'Link to blog RSS feed'} href={'/feed.xml'}>
+            RSS Feed
+          </Link>
         </small>
       </FooterContent>
     </StyledFooter>
