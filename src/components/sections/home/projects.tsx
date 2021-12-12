@@ -4,7 +4,6 @@ import { mdiFileCodeOutline } from '@mdi/js';
 import { SectionHeading } from '~/components/atoms/complex';
 import { Divider, LinkButton } from '~/components/atoms/simple';
 import {
-  GitHubStats,
   ProjectCard,
   Masonry,
   MasonryBreakpoints,

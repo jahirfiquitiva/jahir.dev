@@ -8,7 +8,7 @@ import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import { Stack } from '~/components/elements';
 import useRequest from '~/hooks/useRequest';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, mediaQueries, ProjectProps } from '~/types';
+import { Component, ComponentProps, ProjectProps } from '~/types';
 import getReadableColor from '~/utils/colors/get-readable-color';
 import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
@@ -19,7 +19,7 @@ const BaseProjectCard = styled(LinkCard)`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0.8rem 1rem 0.6rem;
+  padding: 0.8rem 1rem;
   color: var(--text-secondary);
   border-radius: 10px;
   border-color: var(--border-color, var(--divider));
