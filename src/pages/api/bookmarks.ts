@@ -77,7 +77,7 @@ export default async (
         if (isHidden) return null;
 
         const title = Title?.title?.[0]?.text?.content;
-        const iconUrl = icon?.[icon?.type || 0]?.url || icon?.[icon?.type || 0];
+        const iconUrl = icon?.[icon?.type || 0]?.url;
         const domain = (Link?.url || '')
           .replace(/(^\w+:|^)\/\//, '')
           .replace(/\//g, '');

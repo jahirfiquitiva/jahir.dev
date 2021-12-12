@@ -108,10 +108,10 @@ const sectionFourLinks: Array<FooterLink> = [
     gradientColor: 'orange-to-red',
   },
   {
-    title: 'Link to bookmarks page',
-    href: '/bookmarks',
+    title: 'Link to inspiration page',
+    href: '/inspiration',
     emoji: '🌎',
-    text: 'Bookmarks',
+    text: 'Inspiration',
     gradientColor: 'brand-to-blue',
   },
 ];
