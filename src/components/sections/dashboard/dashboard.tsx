@@ -50,7 +50,7 @@ export const Dashboard: Component = () => {
   };
 
   return (
-    <CenteredSection id={'music'}>
+    <CenteredSection id={'dashboard'}>
       <Status
         status={dashboardData?.statusName}
         userId={dashboardData?.user?.id}

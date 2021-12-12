@@ -36,23 +36,23 @@ const ToolbarLinksContainer = styled.ul`
 const toolbarLinksList = [
   {
     key: 1,
-    emoji: '📝',
-    title: 'Blog',
-    href: '/blog',
+    emoji: '🙋‍♂️',
+    title: 'About',
+    href: '/about',
     gradient: 'blue-to-green',
   },
   {
     key: 2,
-    emoji: '⚡️',
-    title: 'Uses',
-    href: '/blog/uses',
+    emoji: '📝',
+    title: 'Blog',
+    href: '/blog',
     gradient: 'yellow-to-orange',
   },
   {
     key: 3,
-    emoji: '🧡',
-    title: 'Donate',
-    href: '/donate',
+    emoji: '👨‍💻',
+    title: 'Projects',
+    href: '/projects',
     gradient: 'red-to-purple',
   },
   {

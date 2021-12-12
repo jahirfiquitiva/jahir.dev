@@ -134,8 +134,8 @@ export const Projects: Component<ProjectsProps> = (props) => {
       <ProjectsHeader>
         <SectionHeading
           size={'3'}
-          shadowColor={'green'}
-          gradientColor={'green-to-yellow'}
+          shadowColor={'red'}
+          gradientColor={'red-to-purple'}
           emoji={'👨‍💻'}
         >
           Projects

@@ -53,11 +53,42 @@ const StackContainer = styled.div`
 
 const sectionTwoLinks: Array<FooterLink> = [
   {
-    title: 'Link to blog posts page',
-    href: '/blog',
+    emoji: '🙋‍♂️',
+    text: 'About',
+    title: 'Link to about page',
+    href: '/about',
+    gradientColor: 'blue-to-green',
+  },
+  {
     emoji: '📝',
     text: 'Blog',
-    gradientColor: 'blue-to-green',
+    title: 'Link to blog posts page',
+    href: '/blog',
+    gradientColor: 'yellow-to-orange',
+  },
+  {
+    emoji: '👨‍💻',
+    text: 'Projects',
+    title: 'Link to projects page',
+    href: '/projects',
+    gradientColor: 'red-to-purple',
+  },
+  {
+    emoji: '📬',
+    text: 'Contact',
+    title: 'Link to contact page',
+    href: '/contact',
+    gradientColor: 'brand-to-blue',
+  },
+];
+
+const sectionThreeLinks: Array<FooterLink> = [
+  {
+    title: 'Link to now page',
+    href: '/now',
+    emoji: '🔮',
+    text: 'Now',
+    gradientColor: 'purple-to-brand',
   },
   {
     title: 'Link to uses page',
@@ -66,53 +97,22 @@ const sectionTwoLinks: Array<FooterLink> = [
     text: 'Uses',
     gradientColor: 'yellow-to-orange',
   },
+];
+
+const sectionFourLinks: Array<FooterLink> = [
   {
     title: 'Link to donate page',
     href: '/donate',
     emoji: '🧡',
     text: 'Donate',
-    gradientColor: 'red-to-purple',
+    gradientColor: 'orange-to-red',
   },
   {
-    title: 'Link to contact page',
-    href: '/contact',
-    emoji: '📬',
-    text: 'Contact',
-    gradientColor: 'brand-to-blue',
-  },
-];
-
-const sectionThreeLinks: Array<FooterLink> = [
-  {
-    title: 'Link to dashboard page',
-    href: '/dashboard',
-    emoji: '✨',
-    text: 'Dashboard',
-    gradientColor: 'yellow-to-orange',
-  },
-  {
-    title: 'Link to inspiration page',
-    href: '/inspiration',
+    title: 'Link to bookmarks page',
+    href: '/bookmarks',
     emoji: '🌎',
-    text: 'Inspiration',
+    text: 'Bookmarks',
     gradientColor: 'brand-to-blue',
-  },
-];
-
-const sectionFourLinks: Array<FooterLink> = [
-  {
-    title: 'Link to supporters section',
-    href: '/thanks',
-    emoji: '🧡',
-    text: 'Supporters',
-    gradientColor: 'red-to-purple',
-  },
-  {
-    title: 'Link to projects section',
-    href: '/#projects',
-    emoji: '👨‍💻',
-    text: 'Projects',
-    gradientColor: 'green-to-yellow',
   },
 ];
 
@@ -133,9 +133,7 @@ export const Footer: Component = () => {
         <FooterSocialLinks />
         <StackContainer>
           <small>Website built using: </small>
-          <Stack
-            stack={['nextjs', 'typescript', 'styled components']}
-          />
+          <Stack stack={['nextjs', 'typescript', 'styled components']} />
         </StackContainer>
         <small>
           <Link

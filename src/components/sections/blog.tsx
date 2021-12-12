@@ -54,8 +54,8 @@ export const Blog: Component<BlogGridProps> = (props) => {
     <Section id={'blog'}>
       <SectionHeading
         size={'3'}
-        shadowColor={'blue'}
-        gradientColor={'blue-to-green'}
+        shadowColor={'yellow'}
+        gradientColor={'yellow-to-orange'}
         emoji={'📝'}
       >
         Blog
