@@ -11,4 +11,5 @@ export interface ProjectProps {
   stack?: Array<string>;
   hide?: boolean;
   repo?: string;
+  owner?: string;
 }

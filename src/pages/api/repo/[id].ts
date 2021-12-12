@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { NextApiFunc } from '~/types';
 
-const repoApiUrl = 'https://api.github.com/repos/jahirfiquitiva';
+const repoApiUrl = 'https://api.github.com/repos';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
   githubApiToken && githubApiToken.length > 0
@@ -15,7 +15,7 @@ export default async (
   res: NextApiResponse,
 ): Promise<NextApiFunc> => {
   try {
-    const { id: repo } = req.query;
+    const { id: repo, owner = 'jahirfiquitiva' } = req.query;
 
     if (!repo) {
       return res.status(400).json({
@@ -24,7 +24,10 @@ export default async (
       });
     }
 
-    const repoRequest = await fetch(`${repoApiUrl}/${repo}`, authHeaders);
+    const repoRequest = await fetch(
+      `${repoApiUrl}/${owner}/${repo}`,
+      authHeaders,
+    );
 
     const repository = await repoRequest.json();
     const { stargazers_count: stargazers = 0 } = repository;

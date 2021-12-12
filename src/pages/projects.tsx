@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
         'stack',
         'hide',
         'repo',
+        'owner',
       ]),
     );
 

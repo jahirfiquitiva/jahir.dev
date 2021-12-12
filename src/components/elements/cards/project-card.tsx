@@ -108,9 +108,20 @@ const ProjectStarsContainer = styled.div`
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
 const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
-  const { name, description, link, icon, stack, color, darkColor, repo } =
-    props;
-  const { data } = useRequest<{ stars?: number }>(`/api/repo/${repo}`);
+  const {
+    name,
+    description,
+    link,
+    icon,
+    stack,
+    color,
+    darkColor,
+    repo,
+    owner,
+  } = props;
+  const { data } = useRequest<{ stars?: number }>(
+    `/api/repo/${repo}${owner ? `?owner=${owner}` : ''}`,
+  );
 
   const { isDark, themeReady } = useTheme();
 
