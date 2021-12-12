@@ -30,30 +30,18 @@ const possibleImages: Array<AboutPhoto> = [
   },
   {
     key: '2',
-    alt: 'Visiting a town in Boyac´á, Colombia',
-  },
-  {
-    key: '3',
     alt: 'Hiking in my hometown',
   },
   {
-    key: '4',
-    alt: 'Visiting Iza, Boyacá, Colombia',
-  },
-  {
-    key: '5',
+    key: '3',
     alt: 'Hanging out with friends at a cafe',
   },
   {
-    key: '6',
-    alt: 'Hiking while visiting a friend\'s hometown',
-  },
-  {
-    key: '7',
+    key: '4',
     alt: 'Hanging out with friends in Iza, Boyacá, Colombia',
   },
   {
-    key: '8',
+    key: '5',
     alt: 'Hanging out with friends in Playa Blanca, Boyacá, Colombia',
   },
 ];
@@ -62,7 +50,6 @@ const Intro = styled.p`
   color: var(--text-primary);
   margin: 0.4rem 0 1.2rem;
   font-size: calc(var(--base-font-size) * 1.15);
-  text-align: justify;
 `;
 
 const Paragraph = styled(Intro)`
@@ -79,6 +66,7 @@ const CuriousParagraph = styled(Paragraph)`
   margin-bottom: 2.4rem;
   font-size: var(--font-2xs);
   & > ul {
+    margin-top: 0.4rem;
     list-style: disc;
     padding-inline-start: 1.2rem;
   }
@@ -116,10 +104,13 @@ const AboutAudioButton = styled(AudioButton)`
 
 export const About = () => {
   const hasMounted = useHasMounted();
-  const rightImage: AboutPhoto = getRandomItem(possibleImages);
   const [playName] = useSound('/static/audio/name-pronunciation.mp3', {
     interrupt: true,
   });
+
+  const rightImage: AboutPhoto = useMemo<AboutPhoto>(() => {
+    return getRandomItem(possibleImages);
+  }, []);
 
   const photoComponent = useMemo(() => {
     if (!hasMounted) return null;
