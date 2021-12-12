@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 import { useMemo } from 'react';
 import useSound from 'use-sound';
 
-import { Image, Heading, GradientSpan, Link } from '~/components/atoms/simple';
+import { Photo } from './photo';
+
+import { Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries } from '~/types';
@@ -10,6 +12,7 @@ import { Component, mediaQueries } from '~/types';
 const Container = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  align-items: center;
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: 55% 1fr;
@@ -31,26 +34,7 @@ const ContentContainer = styled.div`
   }
 `;
 
-const PhotoContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 0.8rem;
-  grid-row: 1;
-  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.12));
-
-  ${mediaQueries.tablet.sm} {
-    justify-content: flex-end;
-    margin-bottom: 0;
-  }
-`;
-
-const Photo = styled(Image)`
-  border-radius: 50%;
-  padding: 0.4rem !important;
-  filter: drop-shadow(0 1px 2px rgba(var(--shadow-color), 0.04));
-`;
-
-const AudioButton = styled.button`
+export const AudioButton = styled.button`
   padding: 0;
   margin: 0;
   font-family: var(--manrope-font);
@@ -61,7 +45,7 @@ const AudioButton = styled.button`
   text-shadow: inherit;
 `;
 
-const audioButtonTitle = "Press to hear Jahir's name pronunciation";
+export const audioButtonTitle = "Press to hear Jahir's name pronunciation";
 
 export const Hello: Component = () => {
   const { isDark, themeReady } = useTheme();
@@ -104,16 +88,20 @@ export const Hello: Component = () => {
           >
             Colombia 🇨🇴
           </Link>
+          . My pronouns are{' '}
+          <Link title={'Link to pronoun: he'} href={'https://pronoun.is/he'}>
+            he
+          </Link>
+          /
+          <Link
+            title={'Link to pronoun: they'}
+            href={'https://pronoun.is/they'}
+          >
+            they
+          </Link>.
         </p>
       </ContentContainer>
-      <PhotoContainer>
-        <Photo
-          src={'/static/images/jahir/jahir-hd.jpg'}
-          alt={"Jahir's Photo"}
-          size={168}
-          priority
-        />
-      </PhotoContainer>
+      <Photo />
     </Container>
   );
 };

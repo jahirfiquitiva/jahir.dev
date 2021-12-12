@@ -90,3 +90,20 @@ body.sb-show-main.sb-main-padded {
   border-radius: 20px;
   border: 3px solid var(--scrollbar-thumb-color);
 }
+
+figure {
+  display: block;
+  position: relative;
+  margin: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+figure figcaption {
+  text-align: center;
+  font-style: italic;
+  font-size: var(--font-3xs);
+  margin: 0.6rem 0;
+}
