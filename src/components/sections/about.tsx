@@ -242,7 +242,7 @@ export const About = () => {
           </li>
           <li>
             Check out the{' '}
-            <Link title={'Link to uses page'} href={'/uses'}>
+            <Link title={'Link to uses page'} href={'/blog/uses'}>
               tools, software and hardware
             </Link>{' '}
             that I use.
