@@ -1,9 +1,9 @@
 export interface BaseInspirationSite {
   title: string;
-  link: string;
-  description?: string;
+  link?: string;
+  domain?: string;
 }
 
 export interface InspirationSite extends BaseInspirationSite {
-  favicon?: string;
+  icon?: string;
 }

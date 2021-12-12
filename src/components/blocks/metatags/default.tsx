@@ -60,6 +60,13 @@ export const DefaultMetaTags = () => {
         name={'msapplication-TileImage'}
         content={'/static/images/brand/favicon32.png'}
       />
+
+      <link
+        rel={'alternate'}
+        href={'/feed.xml'}
+        type={'application/rss+xml'}
+        title={'Jahir Fiquitiva (RSS)'}
+      ></link>
     </>
   );
 };

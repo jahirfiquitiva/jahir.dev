@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -11,10 +12,9 @@ const {
 const authHeaders =
   notionToken && notionToken.length > 0
     ? {
-        headers: {
-          Authorization: `Bearer ${notionToken}`,
-          'Notion-Version': '2021-08-16',
-        },
+        Authorization: `Bearer ${notionToken}`,
+        'Notion-Version': '2021-08-16',
+        'Content-Type': 'application/json',
       }
     : {};
 
@@ -62,16 +62,39 @@ export default async (
       // @ts-ignore
       requestOptions,
     );
-    const data = await databaseRequest.json();
+    const { results = [] } = await databaseRequest.json();
+
+    const bookmarks = results
+      // @ts-ignore
+      .map((result) => {
+        const { icon, properties } = result;
+        const { Title, Link, Type } = properties;
+        const isHidden = (Type['multi_select'] || [])
+          // @ts-ignore
+          .some((type) => {
+            return hiddenCategories.includes(type.name);
+          });
+        if (isHidden) return null;
+
+        const title = Title?.title?.[0]?.text?.content;
+        const iconUrl = icon?.[icon?.type || 0]?.url || icon?.[icon?.type || 0];
+        const domain = (Link?.url || '')
+          .replace(/(^\w+:|^)\/\//, '')
+          .replace(/\//g, '');
+
+        return { link: Link?.url, title, icon: iconUrl, domain };
+      })
+      // @ts-ignore
+      .filter((it) => it);
 
     res.setHeader(
       'Cache-Control',
-      'public, s-maxage=43200, stale-while-revalidate=21600',
+      'public, s-maxage=3600, stale-while-revalidate=1800',
     );
 
     return res.status(200).json({
       success: true,
-      response: data,
+      bookmarks,
     });
   } catch (err) {
     return res.status(400).send({
