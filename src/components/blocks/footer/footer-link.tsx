@@ -15,6 +15,7 @@ const FooterLinkComponent = styled(Link)`
     visibility: hidden;
     pointer-events: none;
     opacity: 0;
+    font-weight: normal;
 
     ${mediaQueries.mobile.lg} {
       display: inline-block;

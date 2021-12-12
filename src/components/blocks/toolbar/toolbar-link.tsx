@@ -28,7 +28,6 @@ const BaseToolbarLink = styled(LinkButton)`
     }
   }
 
-
   &.active {
     background-color: var(--toolbar-highlight);
   }
@@ -38,6 +37,8 @@ const BaseToolbarLink = styled(LinkButton)`
     visibility: hidden;
     pointer-events: none;
     opacity: 0;
+    font-weight: normal;
+
     ${mediaQueries.mobile.lg} {
       display: inline-block;
       visibility: visible;
