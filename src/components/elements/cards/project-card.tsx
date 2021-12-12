@@ -145,7 +145,6 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
   const shadowColors = useMemo<CSSProperties>(() => {
     if (!themeReady || !projectColor) return {};
     return buildShadowStyles(projectColor, isDark, {
-      shadow: 0.2,
       border: 0.5,
       bg: 0.05,
     });
