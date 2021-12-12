@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
-import { mdiEyeOutline, mdiFileCodeOutline } from '@mdi/js';
+import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@mdi/js';
+import { useState, useMemo } from 'react';
 
 import { SectionHeading } from '~/components/atoms/complex';
-import { Divider, LinkButton } from '~/components/atoms/simple';
+import { Field, Divider, LinkButton } from '~/components/atoms/simple';
 import {
   ProjectCard,
   Masonry,
   MasonryBreakpoints,
 } from '~/components/elements';
+import debounce from '~/lib/debounce';
 import {
   Component,
   ComponentProps,
@@ -81,6 +83,49 @@ interface ProjectsProps extends ComponentProps {
 
 export const Projects: Component<ProjectsProps> = (props) => {
   const { projects, showFullList } = props;
+  const [search, setSearch] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  const filterProjects = debounce(() => {
+    setFilteredProjects(
+      projects?.filter(
+        (project) =>
+          project?.name.toLowerCase().includes(search.toLowerCase()) ||
+          project?.description?.toLowerCase().includes(search.toLowerCase()) ||
+          project?.stack?.some((skill) =>
+            skill.toLowerCase().includes(search.toLowerCase()),
+          ),
+      ),
+    );
+  }, 100);
+
+  useMemo(() => {
+    filterProjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
+
+  const renderSearchComponents = () => {
+    if (!showFullList) return null;
+    return (
+      <>
+        <Field
+          tag={'input'}
+          iconPath={mdiMagnify}
+          type={'text'}
+          name={'search-input'}
+          label={'Search projects'}
+          placeholder={'Search projects...'}
+          value={search}
+          onChange={setSearch}
+          hideLabel
+        />
+
+        {(filteredProjects?.length || 0) <= 0 ? (
+          <p style={{ padding: '1.2rem 0 2.4rem' }}>No projects found.</p>
+        ) : null}
+      </>
+    );
+  };
 
   return (
     <section id={'projects'}>
@@ -116,8 +161,10 @@ export const Projects: Component<ProjectsProps> = (props) => {
         </ProjectsHeaderLinksContainer>
       </ProjectsHeader>
 
+      {renderSearchComponents()}
+
       <ProjectsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
-        {(projects || []).map((project, index) => {
+        {(filteredProjects || []).map((project, index) => {
           return (
             <ProjectCard
               key={

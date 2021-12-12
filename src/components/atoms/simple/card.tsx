@@ -33,8 +33,6 @@ const cardShadowStyles = css`
   );
   --shadow: 0 3px 5px -2px var(--shadow-color-a),
     0 7px 14px -5px var(--shadow-color-b);
-  break-inside: avoid;
-  transform: translateZ(0);
 `;
 
 const linkCardStyles = css`

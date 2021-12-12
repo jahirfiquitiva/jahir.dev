@@ -13,8 +13,6 @@ const MasonryGrid = styled.div`
   max-width: 100%;
   align-content: stretch;
   box-sizing: border-box;
-  break-inside: avoid;
-  transform: translateZ(0);
 `;
 
 const MasonryColumn = styled(MasonryGrid)`
@@ -72,7 +70,7 @@ export const Masonry: Component<MasonryProps> = (props) => {
     className,
     style,
   } = props;
-
+  const childrenCount = Children.count(children);
   const windowWidth = useWindowWidth();
 
   const mappedBreakpoints = useMemo<MasonryBreakpoints>(() => {
@@ -97,6 +95,7 @@ export const Masonry: Component<MasonryProps> = (props) => {
     return buildMasonryColumns(children, columnsCount);
   }, [children, columnsCount]);
 
+  if (!childrenCount) return null;
   return (
     <MasonryGrid className={className} style={{ ...style, gap }}>
       {columns.map((col, index) => {

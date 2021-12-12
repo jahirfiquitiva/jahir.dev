@@ -43,7 +43,7 @@ export const Blog: Component<BlogGridProps> = (props) => {
           post?.excerpt?.toLowerCase().includes(search.toLowerCase()),
       ),
     );
-  }, 150);
+  }, 100);
 
   useMemo(() => {
     filterPosts();
@@ -71,6 +71,9 @@ export const Blog: Component<BlogGridProps> = (props) => {
         onChange={setSearch}
         hideLabel
       />
+      {(filteredPosts?.length || 0) <= 0 ? (
+        <p style={{ padding: '1.2rem 0 2.4rem' }}>No blog posts found.</p>
+      ) : null}
       <BlogMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(filteredPosts || []).map((post, i) => {
           return <BlogPostCard key={i} {...post} />;
