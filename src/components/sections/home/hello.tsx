@@ -15,7 +15,7 @@ const Container = styled.div`
   align-items: center;
 
   ${mediaQueries.tablet.sm} {
-    grid-template-columns: 55% 1fr;
+    grid-template-columns: 50% 1fr;
   }
 `;
 
@@ -88,17 +88,7 @@ export const Hello: Component = () => {
           >
             Colombia 🇨🇴
           </Link>
-          . My pronouns are{' '}
-          <Link title={'Link to pronoun: he'} href={'https://pronoun.is/he'}>
-            he
-          </Link>
-          /
-          <Link
-            title={'Link to pronoun: they'}
-            href={'https://pronoun.is/they'}
-          >
-            they
-          </Link>.
+          .
         </p>
       </ContentContainer>
       <Photo />

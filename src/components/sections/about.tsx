@@ -156,15 +156,6 @@ export const About = () => {
         >
           Colombia 🇨🇴
         </Link>
-        .<br />
-        My pronouns are{' '}
-        <Link title={'Link to pronoun: he'} href={'https://pronoun.is/he'}>
-          he
-        </Link>
-        /
-        <Link title={'Link to pronoun: they'} href={'https://pronoun.is/they'}>
-          they
-        </Link>
         .
       </Intro>
 
