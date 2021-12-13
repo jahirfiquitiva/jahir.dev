@@ -5,13 +5,23 @@ import { Image, Link } from '~/components/atoms/simple';
 import { Component, mediaQueries } from '~/types';
 import formatDate from '~/utils/format/format-date';
 
+const NowHeading = styled(SectionHeading)`
+  margin-top: 1.2rem;
+  grid-row: 2;
+  grid-column: 1/3;
+  ${mediaQueries.tablet.sm} {
+    grid-row: 1;
+    margin-top: 0;
+  }
+`;
+
 const NowContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 2.4rem;
+    column-gap: 2.4rem;
     align-items: center;
   }
 `;
@@ -19,10 +29,24 @@ const NowContainer = styled.div`
 const Animoji = styled(Image)`
   border-radius: 50%;
   background-color: var(--accent-animoji);
+  grid-row: 1;
+  grid-column: 1;
+
+  ${mediaQueries.tablet.sm} {
+    grid-row: 2;
+    grid-column: 2;
+  }
 `;
 
 const NowList = styled.ul`
   margin: 1.2rem 0;
+  grid-row: 3;
+  grid-column: 1;
+
+  ${mediaQueries.tablet.sm} {
+    grid-row: 2;
+    grid-column: 1;
+  }
 `;
 
 const NowRow = styled.div`
@@ -40,15 +64,15 @@ const NowRow = styled.div`
 export const Now: Component = () => {
   return (
     <>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'purple'}
-        gradientColor={'purple-to-brand'}
-        emoji={'🔮'}
-      >
-        Now
-      </SectionHeading>
       <NowContainer>
+        <NowHeading
+          size={'3'}
+          shadowColor={'purple'}
+          gradientColor={'purple-to-brand'}
+          emoji={'🔮'}
+        >
+          Now
+        </NowHeading>
         <NowList>
           <li>
             <NowRow>

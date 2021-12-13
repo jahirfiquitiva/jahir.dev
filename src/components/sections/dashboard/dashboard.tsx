@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { DashboardGrid } from './dashboard-grid';
 import { Now } from './now';
 
-import { Divider, CenteredSection } from '~/components/atoms/simple';
+import { Divider, Section } from '~/components/atoms/simple';
 import { SectionHeading } from '~/components/atoms/complex';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
@@ -52,18 +52,22 @@ export const Dashboard: Component = () => {
   };
 
   return (
-    <CenteredSection id={'dashboard'}>
-      <Now />
-      <Divider thin />
-      <TopTracksHeading size={'4'} emoji={'✨'} shadowColor={'orange'}>
-        Right Now
-      </TopTracksHeading>
-      <DashboardGrid data={dashboardData} />
-      <Divider thin />
-      <TopTracksHeading size={'4'} emoji={'🎙️'} shadowColor={'blue'}>
-        Top Tracks
-      </TopTracksHeading>
-      {renderTopTracks()}
-    </CenteredSection>
+    <>
+      <Section id={'now'}>
+        <Now />
+      </Section>
+      <Section id={'dashboard'}>
+        <Divider thin />
+        <TopTracksHeading size={'4'} emoji={'✨'} shadowColor={'orange'}>
+          Right Now
+        </TopTracksHeading>
+        <DashboardGrid data={dashboardData} />
+        <Divider thin />
+        <TopTracksHeading size={'4'} emoji={'🎙️'} shadowColor={'blue'}>
+          Top Tracks
+        </TopTracksHeading>
+        {renderTopTracks()}
+      </Section>
+    </>
   );
 };
