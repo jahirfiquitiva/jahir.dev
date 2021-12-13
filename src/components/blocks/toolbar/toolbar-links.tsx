@@ -70,9 +70,9 @@ export const ToolbarLinks = () => {
   const activeLink = useMemo<number>(() => {
     if (!router || !router.isReady) return -1;
     const { asPath: pathname } = router;
-    if (pathname.includes('/uses')) return 2;
-    if (pathname.includes('/blog')) return 1;
-    if (pathname.includes('/donate')) return 3;
+    if (pathname.includes('/about')) return 1;
+    if (pathname.includes('/blog')) return 2;
+    if (pathname.includes('/projects')) return 3;
     if (pathname.includes('/contact')) return 4;
     return -1;
   }, [router]);
