@@ -3,7 +3,7 @@ import { mdiMagnify, mdiRss } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
 import { SectionHeading } from '~/components/atoms/complex';
-import { Field, Section, Link, LinkButton } from '~/components/atoms/simple';
+import { Field, Section, LinkButton } from '~/components/atoms/simple';
 import {
   BlogPostCard,
   Masonry,
