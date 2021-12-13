@@ -37,33 +37,6 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
       site={'stalk'}
       href={'https://gitstalk.netlify.app/jahirfiquitiva'}
     />,
-    dashboardData?.counters?.githubFollowers ? (
-      <Counter
-        key={'github-followers-card'}
-        count={dashboardData?.counters?.githubFollowers}
-        text={'GitHub Followers'}
-        site={'github'}
-        href={'https://github.com/jahirfiquitiva'}
-      />
-    ) : undefined,
-    dashboardData?.counters?.githubStars ? (
-      <Counter
-        key={'github-stars-card'}
-        count={dashboardData?.counters?.githubStars}
-        text={'GitHub Stars'}
-        site={'github'}
-        href={'https://github.com/jahirfiquitiva?tab=repositories'}
-      />
-    ) : undefined,
-    dashboardData?.counters?.twitterFollowers ? (
-      <Counter
-        key={'twitter-followers-card'}
-        count={dashboardData?.counters?.twitterFollowers}
-        text={'Twitter Followers'}
-        site={'twitter'}
-        href={'https://twitter.com/intent/user?screen_name=jahirfiquitiva'}
-      />
-    ) : undefined,
   ]
     .flat()
     .filter((it) => it);

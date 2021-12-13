@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 import { DashboardGrid } from './dashboard-grid';
-import { Status } from './status';
+import { Now } from './now';
 
-import { Heading, Divider, CenteredSection } from '~/components/atoms/simple';
+import { Divider, CenteredSection } from '~/components/atoms/simple';
+import { SectionHeading } from '~/components/atoms/complex';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
@@ -20,8 +21,9 @@ const TopTracksContainer = styled.div`
   }
 `;
 
-const TopTracksHeading = styled(Heading)`
-  margin: 0.6rem 0 1rem;
+const TopTracksHeading = styled(SectionHeading)`
+  --text-shadow-size: 1px;
+  margin: 0 0 1.2rem;
   font-size: var(--font-sm);
 `;
 
@@ -51,13 +53,16 @@ export const Dashboard: Component = () => {
 
   return (
     <CenteredSection id={'dashboard'}>
-      <Status
-        status={dashboardData?.statusName}
-        userId={dashboardData?.user?.id}
-      />
+      <Now />
+      <Divider thin />
+      <TopTracksHeading size={'4'} emoji={'✨'} shadowColor={'orange'}>
+        Right Now
+      </TopTracksHeading>
       <DashboardGrid data={dashboardData} />
       <Divider thin />
-      <TopTracksHeading size={'4'}>Top Tracks</TopTracksHeading>
+      <TopTracksHeading size={'4'} emoji={'🎙️'} shadowColor={'blue'}>
+        Top Tracks
+      </TopTracksHeading>
       {renderTopTracks()}
     </CenteredSection>
   );
