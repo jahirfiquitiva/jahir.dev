@@ -27,10 +27,6 @@ export const Intro: Component = () => {
       >
         Learn more
       </LinkButton>
-      <p>
-        <b>Find me on:</b>
-      </p>
-      <SocialLinks />
     </Content>
   );
 };

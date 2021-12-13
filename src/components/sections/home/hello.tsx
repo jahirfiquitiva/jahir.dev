@@ -15,7 +15,8 @@ const Container = styled.div`
   align-items: center;
 
   ${mediaQueries.tablet.sm} {
-    grid-template-columns: 50% 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.6rem;
   }
 `;
 
@@ -81,7 +82,9 @@ export const Hello: Component = () => {
           </AudioButton>
         </Heading>
         <p>
-          Passionate and creative full-stack software engineer based in{' '}
+          Passionate and creative full-stack software engineer
+          <br />
+          based in{' '}
           <Link
             title={'Link to Colombia on Google Maps'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}

@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import { DashboardGrid } from './dashboard-grid';
 import { Now } from './now';
 
-import { Divider, Section } from '~/components/atoms/simple';
 import { SectionHeading } from '~/components/atoms/complex';
+import { Divider, Section } from '~/components/atoms/simple';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
