@@ -14,4 +14,5 @@ export * from './data/project';
 export * from './data/skill';
 export * from './data/supporter';
 export * from './data/stats';
+export * from './data/twitter';
 export * from './api';

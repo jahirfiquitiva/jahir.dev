@@ -14,7 +14,7 @@ const TopTracksContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
