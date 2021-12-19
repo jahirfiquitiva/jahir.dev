@@ -12,21 +12,22 @@ import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
 
 const BaseBlogPostCard = styled(LinkCard)`
-  position: relative;
   overflow: hidden;
   max-width: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
   color: var(--text-secondary);
   transition: all 0.35s ease-in-out;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.8rem;
   padding: 0.8rem;
   border-color: var(--border-color, var(--divider));
 
   ${mediaQueries.mobile.lg} {
     flex-direction: row;
-    align-items: center;
+  }
+  ${mediaQueries.tablet.sm} {
+    gap: 1.2rem;
   }
 
   * {
@@ -57,7 +58,6 @@ const BaseBlogPostCard = styled(LinkCard)`
 
 const ImageContainer = styled.div`
   display: block;
-  position: relative;
   box-shadow: none;
   min-height: 100% !important;
 
@@ -65,8 +65,9 @@ const ImageContainer = styled.div`
   & > span > img {
     border-radius: 6px;
     min-width: 96px !important;
-    min-height: 100% !important;
     width: 100% !important;
+    min-height: 100% !important;
+    height: 100% !important;
     max-height: 144px !important;
 
     ${mediaQueries.tablet.sm} {
@@ -82,6 +83,7 @@ const Content = styled.div`
   border: none;
   overflow: hidden;
   max-width: 100%;
+  margin: auto 0;
 `;
 
 const Excerpt = styled.p`
@@ -158,8 +160,8 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         <Image
           src={hero || ''}
           alt={title}
-          height={120}
-          width={160}
+          height={72}
+          width={144}
           objectFit={'cover'}
           objectPosition={'center'}
           layout={'responsive'}
