@@ -8,3 +8,4 @@ export * from './hello-heading';
 export * from './stack';
 export * from './masonry';
 export * from './mdx-content';
+export * from './posts-group';

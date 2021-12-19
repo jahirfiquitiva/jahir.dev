@@ -14,14 +14,19 @@ import buildStyles from '~/utils/styles/build-styles';
 const BaseBlogPostCard = styled(LinkCard)`
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  max-width: 100%;
+  border-radius: 12px;
   color: var(--text-secondary);
-  min-height: 192px;
-  box-shadow: var(--shadow-sm);
   transition: all 0.35s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 0.8rem;
+  border-color: var(--border-color, var(--divider));
 
-  ${mediaQueries.tablet.sm} {
-    min-height: 232px;
+  ${mediaQueries.mobile.lg} {
+    flex-direction: row;
+    align-items: center;
   }
 
   * {
@@ -42,85 +47,41 @@ const BaseBlogPostCard = styled(LinkCard)`
 
   &:hover,
   &:focus {
-    & h4 {
+    border-color: var(--border-color, var(--divider));
+    & h5 {
       color: var(--hl-color);
       text-decoration: underline;
     }
-
-    & p {
-      height: auto;
-      opacity: 1;
-      visibility: visible;
-      margin: 0.4rem 0;
-      color: var(--text-primary);
-      line-height: 1.625;
-
-      &.date {
-        margin: 0.2rem 0;
-        color: var(--text-secondary);
-      }
-    }
   }
 `;
 
-const BlogPostImage = styled(Image)`
-  overflow: hidden;
-  border-radius: 8px;
-  min-height: 192px;
-  height: 100%;
-  max-height: 192px;
+const ImageContainer = styled.div`
+  display: block;
+  position: relative;
+  box-shadow: none;
+  min-height: 100% !important;
 
-  ${mediaQueries.tablet.sm} {
-    max-height: 232px;
-  }
-
-  & > span:first-of-type,
-  & img {
+  & > span,
+  & > span > img {
+    border-radius: 6px;
+    min-width: 96px !important;
     min-height: 100% !important;
-    min-width: 100% !important;
-    height: 100% !important;
-  }
-  & img {
-    object-fit: cover;
-  }
-`;
+    width: 100% !important;
+    max-height: 144px !important;
 
-const Scrim = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 8px;
-  pointer-events: none;
-  background-color: rgb(var(--background-values));
-  opacity: 0.05;
-
-  .dark & {
-    opacity: 0.2;
+    ${mediaQueries.tablet.sm} {
+      min-width: 160px !important;
+    }
   }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
+  flex: 1;
   border: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  box-shadow: 0 -4px 6px -2px rgba(var(--shadow-color), 0.12),
-    0 -6px 7px 0 rgba(var(--shadow-color), 0.09),
-    0 -3px 12px 0 rgba(var(--shadow-color), 0.07);
-  background-color: var(--blog-card-color);
-  z-index: 1;
-  backdrop-filter: blur(8px) saturate(200%);
+  overflow: hidden;
+  max-width: 100%;
 `;
 
 const Excerpt = styled.p`
@@ -138,11 +99,7 @@ const Excerpt = styled.p`
   -webkit-line-clamp: 1;
   max-lines: 1;
 
-  ${mediaQueries.tablet.sm} {
-    opacity: 0;
-    line-height: 0;
-    visibility: hidden;
-    pointer-events: none;
+  ${mediaQueries.mobile.lg} {
     font-size: var(--font-2xs);
     -webkit-line-clamp: 2;
     max-lines: 2;
@@ -193,23 +150,28 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
       href={rightLink}
       underline={false}
       style={{
-        ...buildShadowStyles(postColor),
-        backgroundColor: postColor || 'unset',
+        ...buildShadowStyles(postColor, isDark, { border: 0.35 }),
+        ...buildStyles({ '--hl-color': textColor || undefined }),
       }}
     >
-      <BlogPostImage src={hero || ''} />
-      <Scrim />
+      <ImageContainer>
+        <Image
+          src={hero || ''}
+          alt={title}
+          height={120}
+          width={160}
+          objectFit={'cover'}
+          objectPosition={'center'}
+          layout={'responsive'}
+        />
+      </ImageContainer>
       <Content>
-        <Heading
-          size={'4'}
-          fontSize={'xs'}
-          style={buildStyles({ '--hl-color': textColor || undefined })}
-        >
+        <Heading size={'5'} fontSize={'xs'}>
           {title}
         </Heading>
         {excerpt && <Excerpt>{excerpt}</Excerpt>}
         <Date className={'date'}>
-          {formatDate(date)}
+          {formatDate(date, false)}
           {(readingTime?.minutes || 0) > 0 && (
             <>
               {' • '}

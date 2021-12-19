@@ -54,16 +54,22 @@ const computedFields: ComputedFields = {
   excerpt: {
     type: 'string',
     resolve: (doc) =>
-      getPostDescription(doc.body.raw, doc.excerpt || doc.description, true),
-  },
-  longExcerpt: {
-    type: 'string',
-    resolve: (doc) =>
       getPostDescription(doc.body.raw, doc.excerpt || doc.description),
   },
   color: {
     type: 'string',
     resolve: (doc) => doc.color || random(defaultColors),
+  },
+  year: {
+    type: 'number',
+    resolve: (doc) => {
+      try {
+        const date = new Date(doc.date);
+        return date.getFullYear();
+      } catch (e) {
+        return 0;
+      }
+    },
   },
 };
 
@@ -78,10 +84,10 @@ const Blog = defineDocumentType(() => ({
     color: { type: 'string' },
     description: { type: 'string' },
     excerpt: { type: 'string' },
-    longExcerpt: { type: 'string' },
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
     keywords: { type: 'string' },
+    year: { type: 'number' },
   },
   computedFields,
 }));

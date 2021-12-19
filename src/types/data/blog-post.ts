@@ -11,4 +11,5 @@ export interface Post {
   readingTime?: IReadTimeResults | null;
   inProgress?: boolean;
   keywords?: Array<string>;
+  year?: number;
 }
