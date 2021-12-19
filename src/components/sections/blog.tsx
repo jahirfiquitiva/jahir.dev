@@ -12,13 +12,14 @@ import { BlogPostGroup, sortBlogPosts } from '~/utils/format/sort-blog-posts';
 const BlogHeader = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+  gap: 0.8rem;
 
   ${mediaQueries.tablet.sm} {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    margin: 0 0 0.2rem;
   }
 `;
 
