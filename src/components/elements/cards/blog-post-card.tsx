@@ -115,6 +115,10 @@ const Date = styled.p`
   white-space: nowrap;
 `;
 
+const UnderlinedSpan = styled.span`
+  text-decoration: underline;
+`;
+
 interface BlogPostCardProps extends ComponentProps, Post {}
 
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
@@ -134,8 +138,6 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     hero.startsWith('..') ? null : hero,
   );
 
-  const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
-
   const postColor = useMemo<string | undefined>(() => {
     if (!themeReady || !paletteData) return defaultColor;
     return getColorFromPalette(paletteData, isDark) || defaultColor;
@@ -145,6 +147,19 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     if (!themeReady) return null;
     return getReadableColor(postColor, isDark);
   }, [themeReady, isDark, postColor]);
+
+  const rightLink = useMemo<string>(() => {
+    return link && link.length > 0 ? link : `/blog/${slug}`;
+  }, [link, slug]);
+
+  const domain = useMemo<string>(() => {
+    try {
+      const url = new URL(rightLink);
+      return url.hostname.replace('www.', '');
+    } catch (e) {
+      return '';
+    }
+  }, [rightLink]);
 
   return (
     <BaseBlogPostCard
@@ -173,11 +188,12 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         </Heading>
         {excerpt && <Excerpt>{excerpt}</Excerpt>}
         <Date className={'date'}>
-          {formatDate(date, false)}
-          {(readingTime?.minutes || 0) > 0 && (
+          {formatDate(date, false)}&nbsp;•&nbsp;
+          {(readingTime?.minutes || 0) > 0 ? (
+            readingTime?.text
+          ) : (
             <>
-              {' • '}
-              {readingTime?.text}
+              Published on <UnderlinedSpan>{domain}</UnderlinedSpan>
             </>
           )}
         </Date>
