@@ -107,9 +107,9 @@ const editUrl = (content: ContentTypes) =>
     content,
   )}.mdx`;
 
-const discussUrl = (content: ContentTypes) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://jahir.dev/${slugPath(content)}`,
+const shareUrl = (content: ContentTypes) =>
+  `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    `https://jahir.dev/${slugPath(content)} by @jahirfiquitiva`,
   )}`;
 
 interface ContentFields {
@@ -185,8 +185,11 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
 
         <Divider thin />
         <DiscussEdit>
-          <Link href={discussUrl(content)} title={'Link to discuss on Twitter'}>
-            Discuss on Twitter
+          <Link
+            href={shareUrl(content)}
+            title={'Link to share blog post on Twitter'}
+          >
+            Share on Twitter
           </Link>
           {' • '}
           <Link
