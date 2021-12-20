@@ -7,29 +7,24 @@ import {
   useCallback,
 } from 'react';
 
-import { Component, ComponentProps } from '~/types';
-
-interface ReactionLocalStorageObject {
-  like?: boolean;
-  love?: boolean;
-  award?: boolean;
-  bookmark?: boolean;
-}
+import { Component, ComponentProps, ReactionLocalStorage } from '~/types';
 
 export type ReactionType = 'like' | 'love' | 'award' | 'bookmark';
 type InternalReactionType = ReactionType | 'ls';
 
 interface ReactionAction {
   type: InternalReactionType;
-  payload: ReactionLocalStorageObject;
+  payload: ReactionLocalStorage;
 }
 
 export interface ReactionsContextValue {
-  reactions: ReactionLocalStorageObject;
-  setReactions?: (newState: ReactionLocalStorageObject) => boolean;
+  slug: string;
+  reactions: ReactionLocalStorage;
+  setReactions?: (newState: ReactionLocalStorage) => boolean;
 }
 
 const defaultContextState: ReactionsContextValue = {
+  slug: '',
   reactions: {},
 };
 
@@ -37,7 +32,7 @@ const ReactionsContext =
   createContext<ReactionsContextValue>(defaultContextState);
 
 const reactionsReducer = (
-  state: ReactionLocalStorageObject,
+  state: ReactionLocalStorage,
   action: ReactionAction,
 ) => {
   if (action.type === 'ls') return { ...state, ...action.payload };
@@ -84,6 +79,7 @@ export const ReactionsProvider: Component<ReactionsProviderProps> = (props) => {
   const { children } = props;
 
   const contextValue: ReactionsContextValue = {
+    slug,
     reactions: state,
     setReactions: setState,
   };

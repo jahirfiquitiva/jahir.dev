@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next && rimraf out && rimraf .contentlayer",
-    "predev": "yarn clean",
+    "predev": "yarn clean && prisma generate",
     "prebuild": "yarn predev",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "update-deps": "npx npm-check-updates -u && yarn"

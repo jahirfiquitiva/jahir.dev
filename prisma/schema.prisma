@@ -12,9 +12,8 @@ datasource db {
 model counters {
   slug  String @id @db.VarChar(128)
   views BigInt @default(1)
-  thumbs BigInt @default(1)
-  claps BigInt @default(1)
-  hearts BigInt @default(1)
-  tadas BigInt @default(1)
-  unicorns BigInt @default(1)
+  likes BigInt @default(1)
+  loves BigInt @default(1)
+  awards BigInt @default(1)
+  bookmarks BigInt @default(1)
 }

@@ -1,16 +1,22 @@
 import styled from '@emotion/styled';
 import {
+  mdiBookmark,
   mdiBookmarkOutline,
+  mdiHeart,
   mdiHeartOutline,
   mdiThumbUp,
+  mdiThumbUpOutline,
+  mdiTrophy,
   mdiTrophyOutline,
 } from '@mdi/js';
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 
 import { ButtonGroup } from '~/components/atoms/complex';
 import { OutlinedButton } from '~/components/atoms/simple';
+import useRequest from '~/hooks/useRequest';
 import { useReactions, ReactionType } from '~/providers/reactions';
-import { Component, mediaQueries } from '~/types';
+import { Component, mediaQueries, Reactions as ReactionsType } from '~/types';
 
 const ReactionsGroup = styled(ButtonGroup)`
   gap: 0.4rem;
@@ -111,61 +117,81 @@ const BookmarkButton = styled(ReactButton)`
 `;
 
 export const Reactions: Component = () => {
-  const { reactions, setReactions } = useReactions();
+  const { reactions, setReactions, slug } = useReactions();
+  const { data } = useRequest<ReactionsType>(`/api/reactions/${slug}`);
+  const [state, setState] = useState<ReactionsType>({});
 
   const clickReaction = (key: ReactionType) => {
     if (reactions[key]) return;
-    const newReactions = { ...reactions };
-    // eslint-disable-next-line
-    newReactions[key] = true;
-    if (setReactions) setReactions(newReactions);
+
+    fetch(`/api/reactions/${slug}`, {
+      method: 'POST',
+      body: JSON.stringify({ reaction: key }),
+    })
+      .then((result) => {
+        return result.json();
+      })
+      .then((response) => {
+        // console.log(json);
+        if (response.success) {
+          const newReactions = { ...reactions };
+          // eslint-disable-next-line
+          newReactions[key] = true;
+          // if (setReactions) setReactions(newReactions);
+        }
+      });
   };
 
+  useEffect(() => {
+    setState({ ...data });
+  }, [data]);
+
+  if (!data) return null;
   return (
     <ReactionsGroup>
       <ThumbButton
         title={'Like'}
-        icon={mdiThumbUp}
+        icon={reactions?.like ? mdiThumbUp : mdiThumbUpOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.like })}
         onClick={() => {
           clickReaction('like');
         }}
       >
-        245
+        {state.likes || '0'}
       </ThumbButton>
       <LoveButton
         title={'Love'}
-        icon={mdiHeartOutline}
+        icon={reactions?.love ? mdiHeart : mdiHeartOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.love })}
         onClick={() => {
           clickReaction('love');
         }}
       >
-        245
+        {state.loves || '0'}
       </LoveButton>
       <TrophyButton
         title={'Award'}
-        icon={mdiTrophyOutline}
+        icon={reactions?.award ? mdiTrophy : mdiTrophyOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.award })}
         onClick={() => {
           clickReaction('award');
         }}
       >
-        245
+        {state.awards || '0'}
       </TrophyButton>
       <BookmarkButton
         title={'Bookmark'}
-        icon={mdiBookmarkOutline}
+        icon={reactions?.bookmark ? mdiBookmark : mdiBookmarkOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.bookmark })}
         onClick={() => {
           clickReaction('bookmark');
         }}
       >
-        245
+        {state.bookmarks || '0'}
       </BookmarkButton>
     </ReactionsGroup>
   );
