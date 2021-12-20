@@ -1,4 +1,8 @@
-const groupBy = <T, K extends keyof any>(list: Array<T> | T[], getKey: (item: T) => K) =>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const groupBy = <T, K extends keyof any>(
+  list: Array<T> | T[],
+  getKey: (item: T) => K,
+) =>
   list.reduce((previous, currentItem) => {
     const group = getKey(currentItem);
     if (!previous[group]) previous[group] = [];

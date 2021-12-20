@@ -8,13 +8,7 @@ import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import useRequest from '~/hooks/useRequest';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
-import {
-  Component,
-  ComponentProps,
-  Post,
-  mediaQueries,
-  Reactions as ReactionsType,
-} from '~/types';
+import { Component, ComponentProps, Post, mediaQueries } from '~/types';
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import getReadableColor from '~/utils/colors/get-readable-color';
 import formatDate from '~/utils/format/format-date';
