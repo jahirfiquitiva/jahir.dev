@@ -21,13 +21,12 @@ export const ViewsCounter: Component<ViewsCounterProps> = (props) => {
 
     const hostname = window?.location?.hostname || 'localhost';
     // Count views in production website only
-    if (!hostname.includes('jahir.dev')) return;
+    if (hostname !== 'jahir.dev') return;
 
     const registerView = () =>
       fetch(`/api/views/${slug}`, {
         method: 'POST',
       });
-
     registerView();
   }, [hasMounted, slug]);
 
