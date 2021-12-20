@@ -124,7 +124,7 @@ export const Counter: Component<CounterProps> = (props) => {
             ? mdiTwitter
             : mdiGithub
         }
-        size={1.35}
+        size={1}
         style={{ marginTop: 'auto' }}
       />
     </CounterCard>

@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { mdiEye, mdiThumbUp } from '@mdi/js';
 
 import { Activity } from './activity';
@@ -5,6 +6,10 @@ import { Counter } from './counter';
 
 import { SongCard, Masonry, MasonryBreakpoints } from '~/components/elements';
 import { Component, ComponentProps, DashboardData, viewports } from '~/types';
+
+const DashboardMasonry = styled(Masonry)`
+  margin-top: 1rem;
+`;
 
 interface DashboardGridProps extends ComponentProps {
   data?: DashboardData | null;
@@ -29,7 +34,6 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
   };
 
   const masonryItems = [
-    renderNowPlaying(),
     dashboardData?.activities?.map((activity, index) => {
       return <Activity key={`activity-${index}`} data={activity} />;
     }),
@@ -91,8 +95,11 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
     .filter((it) => it);
 
   return (
-    <Masonry gap={'1rem'} breakpoints={masonryBreakpoints}>
-      {masonryItems}
-    </Masonry>
+    <>
+      {renderNowPlaying()}
+      <DashboardMasonry gap={'1rem'} breakpoints={masonryBreakpoints}>
+        {masonryItems}
+      </DashboardMasonry>
+    </>
   );
 };
