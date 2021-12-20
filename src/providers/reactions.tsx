@@ -68,10 +68,6 @@ export const ReactionsProvider: Component<ReactionsProviderProps> = (props) => {
 
   const incrementReaction = useCallback(
     async (reaction: ReactionType) => {
-      // Do nothing in SSR
-      if (!mounted) return false;
-      // Do nothing if being submitted to db or already pressed
-      if (submitting || lsState[reaction]) return false;
       setSubmitting(true);
 
       const newState = { ...state };

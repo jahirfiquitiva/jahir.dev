@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 
 import { ButtonGroup } from '~/components/atoms/complex';
 import { OutlinedButton } from '~/components/atoms/simple';
+import useHasMounted from '~/hooks/useHasMounted';
 import useWindowDimensions from '~/hooks/useWindowDimensions';
 import { useReactions, ReactionType } from '~/providers/reactions';
 import { useTheme } from '~/providers/theme';
@@ -155,6 +156,7 @@ const getConfettiColor = (
 
 export const Reactions: Component = (props) => {
   const { className, style } = props;
+  const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const { reactions, incrementReaction, slug, submitting } = useReactions();
   const { isDark } = useTheme();
@@ -164,6 +166,14 @@ export const Reactions: Component = (props) => {
     // @ts-ignore
     event?: MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
+    // Do nothing in SSR
+    if (!hasMounted) return;
+
+    const hostname = window?.location?.hostname || 'localhost';
+    // Submit reactions in production website only
+    if (hostname !== 'jahir.dev') return;
+
+    // Do nothing if being submitted to db or already pressed
     if (submitting || reactions[key]) return;
 
     if (event) {
