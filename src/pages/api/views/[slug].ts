@@ -1,15 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { getDevToArticles } from '~/lib/devto';
 import prisma from '~/lib/prisma';
 import { NextApiFunc } from '~/types';
-
-const devToEndpoint = 'https://dev.to/api/articles/me';
-const { DEV_TO_API_KEY: devToApiKey = '' } = process.env;
-const authHeaders =
-  devToApiKey && devToApiKey.length > 0
-    ? { headers: { 'api-key': devToApiKey } }
-    : {};
 
 export default async (
   req: NextApiRequest,
@@ -37,7 +31,7 @@ export default async (
     if (req.method === 'GET') {
       let devToCount = BigInt(0);
       if (devToId) {
-        const devArticlesRequest = await fetch(devToEndpoint, authHeaders);
+        const devArticlesRequest = await getDevToArticles();
         const devArticles = await devArticlesRequest.json();
         const article = devArticles.filter(
           (it: { id: number }) => it.id.toString() === devToId,
