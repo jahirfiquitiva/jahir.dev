@@ -6,6 +6,7 @@ import { Reactions } from './reactions';
 import { ViewsCounter } from '~/components/atoms/complex';
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
+import { ReactionsProvider } from '~/providers/reactions';
 import { useTheme } from '~/providers/theme';
 import {
   Component,
@@ -203,32 +204,34 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
           <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />
         </ContentIntro>
 
-        <Reactions />
+        <ReactionsProvider slug={`${contentType}--${slug}`}>
+          <Reactions slug={`${contentType}--${slug}`} />
 
-        {hero && <Hero src={hero || ''} alt={title} priority />}
+          {hero && <Hero src={hero || ''} alt={title} priority />}
 
-        {children}
+          {children}
 
-        <Divider thin />
+          <Divider thin />
 
-        <MdxFooter>
-          <DiscussEdit>
-            <Link
-              href={shareUrl(content)}
-              title={'Link to share blog post on Twitter'}
-            >
-              Share on Twitter
-            </Link>
-            {' • '}
-            <Link
-              href={editUrl(content)}
-              title={'Link to edit content on GitHub'}
-            >
-              Edit on GitHub
-            </Link>
-          </DiscussEdit>
-          <Reactions />
-        </MdxFooter>
+          <MdxFooter>
+            <DiscussEdit>
+              <Link
+                href={shareUrl(content)}
+                title={'Link to share blog post on Twitter'}
+              >
+                Share on Twitter
+              </Link>
+              {' • '}
+              <Link
+                href={editUrl(content)}
+                title={'Link to edit content on GitHub'}
+              >
+                Edit on GitHub
+              </Link>
+            </DiscussEdit>
+            <Reactions slug={`${contentType}--${slug}`} />
+          </MdxFooter>
+        </ReactionsProvider>
       </article>
     </MdxContentSection>
   );
