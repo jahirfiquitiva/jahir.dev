@@ -72,6 +72,7 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
       <MdxContent
         backText={'Back to blog posts list'}
         backHref={'/blog'}
+        contentType={'blog'}
         content={post}
       >
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}

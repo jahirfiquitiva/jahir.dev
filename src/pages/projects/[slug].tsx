@@ -61,6 +61,7 @@ const ProjectPage: Component<ProjectPageProps> = ({ project: baseProject }) => {
       <MdxContent
         backText={'Back to projects list'}
         backHref={'/projects'}
+        contentType={'projects'}
         content={project}
       >
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}

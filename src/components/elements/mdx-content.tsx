@@ -15,6 +15,7 @@ import {
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import hexToRGB from '~/utils/colors/hex-to-rgb';
 import formatDate from '~/utils/format/format-date';
+import { ViewsCounter } from '../atoms/complex/views-counter';
 
 const MdxContentSection = styled.section`
   display: flex;
@@ -117,6 +118,7 @@ interface ContentFields {
   hero?: string;
   date?: string;
   readingTime?: string;
+  slug?: string;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -126,6 +128,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('hero' in content) fields.hero = content.hero;
   if ('date' in content) fields.date = content.date;
   if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
+  if ('slug' in content) fields.slug = content.slug;
   return fields;
 };
 
@@ -133,13 +136,14 @@ interface CommonContent {
   backText?: string;
   backHref?: string;
   content: ContentTypes;
+  contentType: 'blog' | 'projects';
 }
 
 type MdxContentProps = ComponentProps & CommonContent;
 
 export const MdxContent: Component<MdxContentProps> = (props) => {
-  const { backText, backHref, content, children } = props;
-  const { title, hero, date, readingTime } = getContentFields(content);
+  const { backText, backHref, content, contentType, children } = props;
+  const { title, hero, date, readingTime, slug } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
@@ -177,6 +181,8 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
               {readingTime}
             </>
           )}
+          {' • '}
+          <ViewsCounter slug={`${contentType}/${slug}`} />
         </ContentIntro>
 
         {hero && <Hero src={hero || ''} alt={title} priority />}

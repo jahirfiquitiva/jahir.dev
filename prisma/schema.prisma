@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model counters {
+  slug  String @id @db.VarChar(128)
+  views BigInt @default(1)
+  thumbs BigInt @default(1)
+  claps BigInt @default(1)
+  hearts BigInt @default(1)
+  tadas BigInt @default(1)
+  unicorns BigInt @default(1)
+}
