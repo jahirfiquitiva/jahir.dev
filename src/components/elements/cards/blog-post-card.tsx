@@ -18,15 +18,15 @@ import buildStyles from '~/utils/styles/build-styles';
 const BaseBlogPostCard = styled(LinkCard)`
   position: relative;
   overflow: hidden;
-  max-width: 100%;
-  border-radius: 10px;
+  border-radius: 0;
+  border: none;
   color: var(--text-secondary);
   transition: all 0.35s ease-in-out;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  margin: 0 calc(0.8rem * -1);
   padding: 0.8rem;
-  border-color: var(--border-color, var(--divider));
 
   ${mediaQueries.mobile.lg} {
     flex-direction: row;
@@ -57,7 +57,7 @@ const BaseBlogPostCard = styled(LinkCard)`
 
   &:hover,
   &:focus {
-    border-color: var(--border-color, var(--divider));
+    box-shadow: none;
     background-color: var(--bg-color);
     & h5 {
       color: var(--hl-color);
@@ -169,8 +169,8 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     readingTime,
     devToId,
   } = props;
-  const { data } = useRequest<{ total?: string }>(
-    `/api/reactions/blog--${slug}`,
+  const { data: views } = useRequest<{ total?: string }>(
+    `/api/views/blog--${slug}?devToId=${devToId}`,
   );
 
   const { isDark, themeReady } = useTheme();
@@ -208,7 +208,10 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
       href={rightLink}
       underline={false}
       style={{
-        ...buildShadowStyles(postColor, isDark, { border: 0.35 }),
+        ...buildShadowStyles(postColor, isDark, {
+          border: 0.35,
+          bg: isDark ? 0.1 : 0.025,
+        }),
         ...buildStyles({ '--hl-color': textColor || undefined }),
       }}
     >
@@ -229,24 +232,18 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
         </Heading>
         {excerpt && <Excerpt>{excerpt}</Excerpt>}
         <Date className={'date'}>
-          {formatDate(date, false)}&nbsp;•&nbsp;
-          {(readingTime?.minutes || 0) > 0 ? (
+          {formatDate(date, { year: undefined, month: 'short' })}&nbsp;•&nbsp;
+          {views?.total && views?.total !== '0' ? (
+            <>{views?.total} views</>
+          ) : (readingTime?.minutes || 0) > 0 ? (
             readingTime?.text
-          ) : (
+          ) : domain ? (
             <>
               Published on <UnderlinedSpan>{domain}</UnderlinedSpan>
             </>
-          )}
-          &nbsp;•&nbsp;
-          <ViewsCounter slug={`blog--${slug}`} devToId={devToId} />
+          ) : null}
         </Date>
       </Content>
-      {data?.total && data?.total !== '0' ? (
-        <PostReactionsContainer className={'reactions'}>
-          <Icon path={mdiThumbUp} size={0.7} />
-          <span>{data?.total}</span>
-        </PostReactionsContainer>
-      ) : null}
     </BaseBlogPostCard>
   );
 };
