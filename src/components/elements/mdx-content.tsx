@@ -182,7 +182,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
             </>
           )}
           {' • '}
-          <ViewsCounter slug={`${contentType}/${slug}`} />
+          <ViewsCounter slug={`${contentType}--${slug}`} />
         </ContentIntro>
 
         {hero && <Hero src={hero || ''} alt={title} priority />}
