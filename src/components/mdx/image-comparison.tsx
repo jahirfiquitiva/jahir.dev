@@ -17,7 +17,7 @@ interface ImageComparisonProps extends ComponentProps {
   vertical?: boolean;
 }
 
-const ImageComparisonContainer = styled.div`
+const ImageComparisonContainer = styled.figure`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +35,7 @@ const ImageComparisonContainer = styled.div`
     }
   }
 
-  & > p {
+  & > figcaption {
     display: inline-flex;
     font-size: var(--font-3xs);
     font-style: italic;
@@ -73,7 +73,7 @@ export const ImageComparison: Component<ImageComparisonProps> = (props) => {
           />
         }
       />
-      {props.description && <p>{props.description}</p>}
+      {props.description && <figcaption>{props.description}</figcaption>}
     </ImageComparisonContainer>
   );
 };
