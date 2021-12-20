@@ -18,7 +18,7 @@ import buildStyles from '~/utils/styles/build-styles';
 const BaseBlogPostCard = styled(LinkCard)`
   position: relative;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 12px;
   border: none;
   color: var(--text-secondary);
   transition: all 0.35s ease-in-out;
