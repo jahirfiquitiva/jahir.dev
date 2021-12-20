@@ -13,6 +13,7 @@ import {
   ComponentProps,
   mediaQueries,
   Post,
+  HeroMeta,
   ProjectProps as Project,
   CodingChallenge,
 } from '~/types';
@@ -148,6 +149,7 @@ interface ContentFields {
   readingTime?: string;
   slug?: string;
   devToId?: number;
+  heroMeta?: HeroMeta;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -159,6 +161,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
   if ('slug' in content) fields.slug = content.slug;
   if ('devToId' in content) fields.devToId = content.devToId;
+  if ('heroMeta' in content) fields.heroMeta = content.heroMeta;
   return fields;
 };
 
@@ -173,7 +176,7 @@ type MdxContentProps = ComponentProps & CommonContent;
 
 export const MdxContent: Component<MdxContentProps> = (props) => {
   const { backText, backHref, content, contentType, children } = props;
-  const { title, hero, date, readingTime, slug, devToId } =
+  const { title, hero, date, readingTime, slug, devToId, heroMeta } =
     getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -189,6 +192,13 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
       textShadow: `var(--text-shadow-size) var(--text-shadow-size) 0 ${color}`,
     };
   }, [themeReady, isDark, heroPalette]);
+
+  const extraHeroProps = useMemo(() => {
+    if (heroMeta && heroMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: heroMeta.blur64 };
+    }
+    return {};
+  }, [heroMeta]);
 
   return (
     <MdxContentSection>
@@ -219,7 +229,11 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
         <ReactionsProvider slug={`${contentType}--${slug}`}>
           <MdxReactions />
 
-          {hero && <Hero src={hero || ''} alt={title} priority />}
+          {hero && (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            <Hero src={hero || ''} alt={title} priority {...extraHeroProps} />
+          )}
           {children}
           <Divider thin />
 

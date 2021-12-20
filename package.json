@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next && rimraf out && rimraf .contentlayer",
-    "predev": "yarn clean && prisma generate",
+    "predev": "yarn clean && prisma generate && contentlayer build --clearCache",
     "prebuild": "yarn predev",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "update-deps": "npx npm-check-updates -u && yarn"
@@ -62,6 +62,8 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "globby": "12.0.2",
+    "image-size": "^1.0.0",
+    "plaiceholder": "^2.2.0",
     "postcss": "^8.4.4",
     "postcss-calc": "^8.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -78,6 +80,7 @@
     "remark-gfm": "^3.0.1",
     "remove-markdown": "^0.3.0",
     "rimraf": "^3.0.2",
+    "sharp": "^0.29.3",
     "typescript": "^4.5.3",
     "xml": "^1.0.1"
   },

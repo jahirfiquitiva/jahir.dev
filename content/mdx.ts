@@ -7,6 +7,7 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 import { RehypeElement } from './../src/types';
+import imageMetadata from './image-metadata';
 
 const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
   try {
@@ -38,6 +39,7 @@ const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
 const mdx: MDXOptions = {
   remarkPlugins: [remarkGfm],
   rehypePlugins: [
+    imageMetadata,
     rehypeSlug,
     rehypeCodeTitles,
     rehypePrism,

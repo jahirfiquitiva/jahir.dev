@@ -10,7 +10,7 @@ const maxCharacters = 140;
 
 export const getPostDescription = (
   content?: string | null,
-  defaultDescription?: string | null
+  defaultDescription?: string | null,
 ): string => {
   if (defaultDescription) return defaultDescription;
   if (!content) return defaultDescription || '';
@@ -25,7 +25,7 @@ export const getPostDescription = (
     ?.map((text: string) =>
       removeMd(text, { gfm: true, useImgAltText: true }),
     )?.[0];
-    
+
   return description.length > 0
     ? `${description}...`
     : defaultDescription || '';

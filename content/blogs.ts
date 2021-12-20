@@ -5,6 +5,7 @@ import random from './../src/lib/random';
 import unique from './../src/lib/unique';
 import { defaultKeywords } from './../src/types';
 import { getPostDescription } from './../src/utils/posts';
+import { getBlurData } from './image-metadata';
 
 const defaultColors = [
   '#fc5c65',
@@ -18,6 +19,9 @@ const defaultColors = [
   '#778ca3',
 ];
 
+const getActualHeroUrl = (hero?: string) =>
+  hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
+
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
@@ -28,13 +32,7 @@ const computedFields: ComputedFields = {
   hero: {
     type: 'string',
     resolve: (doc) => {
-      const { hero } = doc;
-      const actualHero: string = hero
-        ? hero.startsWith('http')
-          ? hero
-          : `/static/images/blog/${hero}`
-        : '';
-      return actualHero;
+      return getActualHeroUrl(doc.hero);
     },
   },
   keywords: {
@@ -71,6 +69,12 @@ const computedFields: ComputedFields = {
       }
     },
   },
+  heroMeta: {
+    type: 'json',
+    resolve: async (doc) => {
+      return getBlurData(getActualHeroUrl(doc.hero));
+    },
+  },
 };
 
 const Blog = defineDocumentType(() => ({
@@ -89,6 +93,7 @@ const Blog = defineDocumentType(() => ({
     keywords: { type: 'string' },
     year: { type: 'number' },
     devToId: { type: 'number' },
+    heroMeta: { type: 'json' },
   },
   computedFields,
 }));

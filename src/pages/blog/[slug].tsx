@@ -15,19 +15,7 @@ import { getAllPosts } from '~/utils/posts';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
-  return {
-    slug: post.slug,
-    title: post.title,
-    date: post.date,
-    hero: post.hero,
-    excerpt: post.excerpt,
-    color: post.color,
-    link: post.link,
-    readingTime: post.readingTime,
-    inProgress: post.inProgress,
-    keywords: post.keywords,
-    devToId: post.devToId,
-  } as Post;
+  return { ...post } as Post;
 };
 
 interface PostPageProps extends ComponentProps {

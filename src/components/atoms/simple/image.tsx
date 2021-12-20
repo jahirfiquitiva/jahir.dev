@@ -38,6 +38,9 @@ export interface ImageProps extends ComponentProps, BaseImageProps {
   src: string;
   size?: number;
   avoidNextImage?: boolean;
+  loading?: 'lazy' | 'eager';
+  placeholder?: 'blur' | 'empty';
+  blurDataURL?: string;
 }
 
 export const Image: Component<ImageProps> = (props) => {
@@ -48,6 +51,7 @@ export const Image: Component<ImageProps> = (props) => {
     height = size,
     layout,
     className,
+    loading = 'lazy',
     ...rest
   } = props;
 
@@ -60,12 +64,17 @@ export const Image: Component<ImageProps> = (props) => {
           height={height}
           layout={layout || 'fixed'}
           className={className}
+          loading={props.priority ? undefined : loading}
         />
       );
     }
     return (
       <ImageWrapper className={className}>
-        <NextImage {...rest} layout={'fill'} />
+        <NextImage
+          {...rest}
+          layout={'fill'}
+          loading={props.priority ? undefined : loading}
+        />
       </ImageWrapper>
     );
   }

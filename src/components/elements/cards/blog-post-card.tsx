@@ -168,6 +168,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     link,
     readingTime,
     devToId,
+    heroMeta,
   } = props;
   const { data: views } = useRequest<{ total?: string }>(
     `/api/views/blog--${slug}?devToId=${devToId}`,
@@ -192,6 +193,13 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const rightLink = useMemo<string>(() => {
     return link && link.length > 0 ? link : `/blog/${slug}`;
   }, [link, slug]);
+
+  const extraHeroProps = useMemo(() => {
+    if (heroMeta && heroMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: heroMeta.blur64 };
+    }
+    return {};
+  }, [heroMeta]);
 
   const domain = useMemo<string>(() => {
     try {
@@ -224,6 +232,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
           objectFit={'cover'}
           objectPosition={'center'}
           layout={'responsive'}
+          {...extraHeroProps}
         />
       </ImageContainer>
       <Content>

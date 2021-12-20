@@ -6,7 +6,9 @@ import { Image, ImageProps } from '~/components/atoms/simple';
 
 export const mdxComponents = {
   a: MdxLink,
-  img: (props: ImageProps) => <Image {...props} avoidNextImage />,
+  img: (props: ImageProps) => (
+    <Image {...props} layout={'responsive'} quality={90} />
+  ),
   Image,
   ImageComparison,
   SimpleGrid,
