@@ -220,7 +220,6 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
             <>
               {' • '}
               {readingTime}
-              {' • '}
             </>
           )}
           <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />

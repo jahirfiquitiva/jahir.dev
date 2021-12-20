@@ -30,5 +30,11 @@ export const ViewsCounter: Component<ViewsCounterProps> = (props) => {
     registerView();
   }, [hasMounted, slug]);
 
-  return <span>{`${views > 0 ? views.toLocaleString() : '–––'} views`}</span>;
+  if (views <= 0) return null;
+  return (
+    <span>
+      {' • '}
+      {`${views > 0 ? views.toLocaleString() : '–––'} views`}
+    </span>
+  );
 };
