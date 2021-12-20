@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { CSSProperties, useMemo } from 'react';
 
+import { ViewsCounter } from '~/components/atoms/complex';
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
@@ -15,7 +16,6 @@ import {
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import hexToRGB from '~/utils/colors/hex-to-rgb';
 import formatDate from '~/utils/format/format-date';
-import { ViewsCounter } from '../atoms/complex/views-counter';
 
 const MdxContentSection = styled.section`
   display: flex;
