@@ -205,7 +205,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
         </ContentIntro>
 
         <ReactionsProvider slug={`${contentType}--${slug}`}>
-          <Reactions slug={`${contentType}--${slug}`} />
+          <Reactions />
 
           {hero && <Hero src={hero || ''} alt={title} priority />}
 
@@ -229,7 +229,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
                 Edit on GitHub
               </Link>
             </DiscussEdit>
-            <Reactions slug={`${contentType}--${slug}`} />
+            <Reactions />
           </MdxFooter>
         </ReactionsProvider>
       </article>
