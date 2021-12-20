@@ -3,6 +3,7 @@ import { MdxLink } from './mdx-link';
 import { SimpleGrid, SimpleGridColumn } from './simple-grid';
 
 import { Image, ImageProps } from '~/components/atoms/simple';
+import { Masonry } from '~/components/elements';
 
 export const mdxComponents = {
   a: MdxLink,
@@ -13,4 +14,5 @@ export const mdxComponents = {
   ImageComparison,
   SimpleGrid,
   SimpleGridColumn,
+  Masonry,
 };
