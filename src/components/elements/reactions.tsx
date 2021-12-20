@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from '@emotion/styled';
 import {
   mdiBookmark,
@@ -11,7 +12,7 @@ import {
 } from '@mdi/js';
 import confetti from 'canvas-confetti';
 import cn from 'classnames';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ButtonGroup } from '~/components/atoms/complex';
 import { OutlinedButton } from '~/components/atoms/simple';
@@ -155,18 +156,16 @@ const getConfettiColor = (
 
 export const Reactions: Component = () => {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const { reactions, setReactions, slug } = useReactions();
+  const { reactions, incrementReaction, slug, submitting } = useReactions();
   const { isDark } = useTheme();
-  const { data } = useRequest<{ counters: ReactionsType }>(
-    `/api/reactions/${slug}`,
-  );
-  const [state, setState] = useState<ReactionsType>({});
-  const [submitting, setSubmitting] = useState<boolean>(false);
 
   const clickReaction = (
     key: ReactionType,
+    // @ts-ignore
     event?: MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
+    if (submitting || reactions[key]) return;
+
     if (event) {
       const x = event.clientX / windowWidth;
       const y = event.clientY / windowHeight;
@@ -176,46 +175,8 @@ export const Reactions: Component = () => {
         colors: getConfettiColor(key, isDark),
       });
     }
-    if (submitting || reactions[key]) return;
 
-    const newReactions = { ...reactions };
-    // eslint-disable-next-line
-    newReactions[key] = true;
-    if (setReactions) setReactions(newReactions);
-
-    const newState = {
-      ...state,
-    };
-    newState[`${key}s`] = (
-      BigInt(state[`${key}s`] || 0) + BigInt(1)
-    ).toString();
-    setState(newState);
-
-    fetch(`/api/reactions/${slug}`, {
-      method: 'POST',
-      body: JSON.stringify({ reaction: `${key}s` }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then((response) => {
-        const newReactions = { ...reactions };
-        // eslint-disable-next-line
-        newReactions[key] = response.success;
-        if (setReactions) setReactions(newReactions);
-        setState(response.counters);
-        setSubmitting(false);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        const newReactions = { ...reactions };
-        // eslint-disable-next-line
-        newReactions[key] = false;
-        if (setReactions) setReactions(newReactions);
-      });
+    if (incrementReaction) incrementReaction(key);
   };
 
   useEffect(() => {
@@ -225,18 +186,14 @@ export const Reactions: Component = () => {
   }, [slug]);
 
   useEffect(() => {
-    if (data) setState(data.counters);
-  }, [data]);
-
-  useEffect(() => {
     return () => {
       try {
         confetti.reset();
       } catch (e) {}
     };
-  }, [data]);
+  }, []);
 
-  if (!data) return null;
+  if (!reactions) return null;
   return (
     <ReactionsGroup>
       <ThumbButton
@@ -248,7 +205,7 @@ export const Reactions: Component = () => {
           clickReaction('like', e);
         }}
       >
-        {state.likes || '0'}
+        {reactions.likes || '0'}
       </ThumbButton>
       <LoveButton
         title={'Love'}
@@ -259,7 +216,7 @@ export const Reactions: Component = () => {
           clickReaction('love', e);
         }}
       >
-        {state.loves || '0'}
+        {reactions.loves || '0'}
       </LoveButton>
       <TrophyButton
         title={'Award'}
@@ -270,7 +227,7 @@ export const Reactions: Component = () => {
           clickReaction('award', e);
         }}
       >
-        {state.awards || '0'}
+        {reactions.awards || '0'}
       </TrophyButton>
       <BookmarkButton
         title={'Bookmark'}
@@ -281,7 +238,7 @@ export const Reactions: Component = () => {
           clickReaction('bookmark', e);
         }}
       >
-        {state.bookmarks || '0'}
+        {reactions.bookmarks || '0'}
       </BookmarkButton>
     </ReactionsGroup>
   );

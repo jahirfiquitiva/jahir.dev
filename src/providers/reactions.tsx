@@ -7,9 +7,15 @@ import {
   useCallback,
 } from 'react';
 
-import { Component, ComponentProps, ReactionLocalStorage } from '~/types';
+import useRequest from '~/hooks/useRequest';
+import {
+  Component,
+  ComponentProps,
+  ReactionLocalStorage,
+  Reactions,
+} from '~/types';
 
-export type ReactionType = 'like' | 'love' | 'award' | 'bookmark';
+export type ReactionType = keyof ReactionLocalStorage;
 type InternalReactionType = ReactionType | 'ls';
 
 interface ReactionAction {
@@ -17,10 +23,13 @@ interface ReactionAction {
   payload: ReactionLocalStorage;
 }
 
+export type ContextReactions = ReactionLocalStorage & Reactions;
+
 export interface ReactionsContextValue {
   slug: string;
-  reactions: ReactionLocalStorage;
-  setReactions?: (newState: ReactionLocalStorage) => boolean;
+  reactions: ContextReactions;
+  incrementReaction?: (reaction: ReactionType) => Promise<boolean>;
+  submitting?: boolean;
 }
 
 const defaultContextState: ReactionsContextValue = {
@@ -48,25 +57,54 @@ interface ReactionsProviderProps extends ComponentProps {
 export const ReactionsProvider: Component<ReactionsProviderProps> = (props) => {
   const { slug } = props;
   const [mounted, setMounted] = useState(false);
-  const [state, dispatch] = useReducer(reactionsReducer, {});
+  const [lsState, dispatch] = useReducer(reactionsReducer, {});
 
-  const setState = useCallback(
-    (newState: ReactionLocalStorage) => {
+  const [state, setState] = useState<Reactions>({});
+  const [submitting, setSubmitting] = useState<boolean>(false);
+
+  const { data: remoteReactions } = useRequest<{ counters: Reactions }>(
+    `/api/reactions/${slug}`,
+  );
+
+  const incrementReaction = useCallback(
+    async (reaction: ReactionType) => {
+      // Do nothing in SSR
       if (!mounted) return false;
-      try {
-        window.localStorage.setItem(slug, JSON.stringify(newState));
-        dispatch({ type: 'ls', payload: newState });
-        return true;
-      } catch (e) {
-        return false;
-      }
+      // Do nothing if being submitted to db or already pressed
+      if (submitting || lsState[reaction]) return false;
+      setSubmitting(true);
+
+      const newState = { ...state };
+      const newReactionsCount = BigInt(state[`${reaction}s`] || 0) + BigInt(1);
+      newState[`${reaction}s`] = newReactionsCount.toString();
+      setState(newState);
+
+      const request = await fetch(`/api/reactions/${slug}`, {
+        method: 'POST',
+        body: JSON.stringify({ reaction: `${reaction}s` }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const response = await request.json();
+
+      setState(response.counters);
+
+      const newLsState: ReactionLocalStorage = { ...lsState };
+      newLsState[reaction] = response?.success || false;
+      window.localStorage.setItem(slug, JSON.stringify(newLsState));
+      dispatch({ type: 'ls', payload: newLsState });
+      setSubmitting(false);
+      return response?.success || false;
     },
-    [mounted, slug],
+    [mounted, slug, lsState, state, submitting],
   );
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (remoteReactions) setState(remoteReactions.counters);
+  }, [remoteReactions]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -80,8 +118,9 @@ export const ReactionsProvider: Component<ReactionsProviderProps> = (props) => {
 
   const contextValue: ReactionsContextValue = {
     slug,
-    reactions: state,
-    setReactions: setState,
+    reactions: { ...lsState, ...state },
+    incrementReaction,
+    submitting,
   };
 
   return (

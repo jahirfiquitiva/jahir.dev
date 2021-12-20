@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 const ContentSecurityPolicy = `
   default-src 'self';
+  worker-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline';
   child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io cdn.discordapp.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
