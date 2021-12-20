@@ -51,7 +51,7 @@ export const ReactionsProvider: Component<ReactionsProviderProps> = (props) => {
   const [state, dispatch] = useReducer(reactionsReducer, {});
 
   const setState = useCallback(
-    (newState: ReactionLocalStorageObject) => {
+    (newState: ReactionLocalStorage) => {
       if (!mounted) return false;
       try {
         window.localStorage.setItem(slug, JSON.stringify(newState));
