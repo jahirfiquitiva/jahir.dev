@@ -11,18 +11,13 @@ const authHeaders =
     ? { headers: { 'api-key': devToApiKey } }
     : {};
 
-const devToPosts: Record<string, number> = {
-  'blog--download-xcode': 58033,
-  'blog--publishing-react-package': 416371,
-};
-
 export default async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<NextApiFunc> => {
   try {
     const slug: string = req.query.slug.toString();
-    const devToIdFromQuery: string = (req.query.devToId || '').toString();
+    const devToId: string = (req.query.devToId || '').toString();
 
     if (req.method === 'POST') {
       const newOrUpdatedViews = await prisma.counters.upsert({
@@ -40,11 +35,6 @@ export default async (
     }
 
     if (req.method === 'GET') {
-      const devToId: string = (
-        devToIdFromQuery ||
-        devToPosts[slug] ||
-        0
-      ).toString();
       let devToCount = BigInt(0);
       if (devToId) {
         const devArticlesRequest = await fetch(devToEndpoint, authHeaders);
