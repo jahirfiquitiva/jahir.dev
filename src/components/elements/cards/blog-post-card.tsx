@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import { mdiThumbUp } from '@mdi/js';
+import { mdiCalendarBlank, mdiClockOutline, mdiEyeOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { ViewsCounter } from '~/components/atoms/complex';
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import useRequest from '~/hooks/useRequest';
 import useSafePalette from '~/hooks/useSafePalette';
@@ -41,10 +40,6 @@ const BaseBlogPostCard = styled(LinkCard)`
 
   & p {
     font-size: var(--font-3xs);
-
-    &.date {
-      color: var(--text-tertiary);
-    }
 
     ${mediaQueries.tablet.sm} {
       font-size: var(--font-2xs);
@@ -96,7 +91,10 @@ const Content = styled.div`
   border: none;
   overflow: hidden;
   max-width: 100%;
-  margin: auto 0;
+  margin: 0.4rem 0 0;
+  ${mediaQueries.mobile.lg} {
+    margin: auto 0;
+  }
 `;
 
 const Excerpt = styled.p`
@@ -104,7 +102,7 @@ const Excerpt = styled.p`
   height: auto;
   opacity: 1;
   visibility: visible;
-  margin: 0.4rem 0;
+  margin: 0.2rem 0;
   line-height: 1.625;
   color: var(--text-secondary);
   font-size: var(--font-3xs);
@@ -121,42 +119,46 @@ const Excerpt = styled.p`
   }
 `;
 
-const Date = styled.p`
+const Published = styled.p`
   margin: 0.2rem 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: var(--text-tertiary);
+  font-size: var(--font-3xs);
+  font-weight: normal;
 `;
 
 const UnderlinedSpan = styled.span`
   text-decoration: underline;
 `;
 
-const PostReactionsContainer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: var(--bg-color);
-  border-bottom-left-radius: 10px;
-  font-size: var(--font-2xs);
-  font-family: var(--manrope-font);
-  border: 1px solid;
-  border-color: var(--border-color, var(--divider));
-  border-top-width: 0;
-  border-right-width: 0;
-  display: flex;
+const InfoSpan = styled.span`
+  display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.6rem;
   gap: 0.4rem;
-  transition-duration: 0.1s;
+`;
 
-  & > * {
-    transition-duration: 0.1s;
+const InfoContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  row-gap: 0.4rem;
+  margin-top: 0.4rem;
+  color: var(--text-tertiary);
+  font-size: var(--font-3xs);
+  font-weight: normal;
+  line-height: inherit;
+  flex-wrap: wrap;
+  ${mediaQueries.mobile.lg} {
+    margin-top: 0.2rem;
+  }
+  ${mediaQueries.tablet.sm} {
+    column-gap: 1rem;
   }
 `;
 
 interface BlogPostCardProps extends ComponentProps, Post {}
-
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const {
     title,
@@ -194,7 +196,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     return link && link.length > 0 ? link : `/blog/${slug}`;
   }, [link, slug]);
 
-  const extraHeroProps = useMemo(() => {
+  const extraHeroProps = useMemo<{ placeholder?: 'blur' }>(() => {
     if (heroMeta && heroMeta.blur64) {
       return { placeholder: 'blur', blurDataURL: heroMeta.blur64 };
     }
@@ -240,18 +242,29 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
           {title}
         </Heading>
         {excerpt && <Excerpt>{excerpt}</Excerpt>}
-        <Date className={'date'}>
-          {formatDate(date, { year: undefined, month: 'short' })}&nbsp;•&nbsp;
-          {views?.total && views?.total !== '0' ? (
-            <>{views?.total} views</>
-          ) : (readingTime?.minutes || 0) > 0 ? (
-            readingTime?.text
-          ) : domain ? (
-            <>
-              Published on <UnderlinedSpan>{domain}</UnderlinedSpan>
-            </>
+        {domain ? (
+          <Published>
+            Published on <UnderlinedSpan>{domain}</UnderlinedSpan>
+          </Published>
+        ) : null}
+        <InfoContainer>
+          <InfoSpan>
+            <Icon path={mdiCalendarBlank} size={0.73} />
+            {formatDate(date, { year: undefined, month: 'short' })}
+          </InfoSpan>
+          {(readingTime?.minutes || 0) > 0 ? (
+            <InfoSpan>
+              <Icon path={mdiClockOutline} size={0.73} />
+              {readingTime?.text}
+            </InfoSpan>
           ) : null}
-        </Date>
+          {views?.total && views?.total !== '0' ? (
+            <InfoSpan>
+              <Icon path={mdiEyeOutline} size={0.73} />
+              {views?.total} views
+            </InfoSpan>
+          ) : null}
+        </InfoContainer>
       </Content>
     </BaseBlogPostCard>
   );
