@@ -3,8 +3,10 @@
 ## Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://github.com/contentlayerdev/contentlayer)
 - **Styling**: [emotion](http://emotion.sh/) styled components
+- **Content**: [MDX](https://github.com/mdx-js/mdx), [contentlayer](https://github.com/contentlayerdev/contentlayer) and [Notion API](https://developers.notion.com/)
+- **Database**: [PlanetScale](https://planetscale.com/)
+- **ORM**: [Prisma](https://prisma.io/)
 - **Deployment**: [Vercel](https://vercel.com)
 
 ## Project Structure
