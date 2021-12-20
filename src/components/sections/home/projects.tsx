@@ -150,6 +150,9 @@ export const Projects: Component<ProjectsProps> = (props) => {
 
       <ProjectsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
         {(filteredProjects || []).map((project, index) => {
+          const projectLink = project.link;
+          // TODO: Enable when ready =>
+          // const projectLink = !showFullList ? project.link : `/projects/${project.slug}`
           return (
             <ProjectCard
               key={
@@ -157,7 +160,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
                 `${project.name.toLowerCase().split(' ').join('-')}-${index}`
               }
               {...project}
-              link={!showFullList ? project.link : `/projects/${project.slug}`}
+              link={projectLink}
             />
           );
         })}
