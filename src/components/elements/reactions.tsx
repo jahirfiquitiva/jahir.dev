@@ -153,7 +153,8 @@ const getConfettiColor = (
   }
 };
 
-export const Reactions: Component = () => {
+export const Reactions: Component = (props) => {
+  const { className, style } = props;
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const { reactions, incrementReaction, slug, submitting } = useReactions();
   const { isDark } = useTheme();
@@ -194,7 +195,7 @@ export const Reactions: Component = () => {
 
   if (!reactions) return null;
   return (
-    <ReactionsGroup>
+    <ReactionsGroup className={className} style={style}>
       <ThumbButton
         title={'Like'}
         icon={reactions?.like ? mdiThumbUp : mdiThumbUpOutline}

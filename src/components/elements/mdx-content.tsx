@@ -95,13 +95,25 @@ const ContentIntro = styled.p`
 const DiscussEdit = styled.p`
   font-size: var(--font-2xs);
   color: var(--text-tertiary);
+  order: 2;
+  ${mediaQueries.tablet.lg} {
+    order: 1;
+  }
+`;
+
+const MdxReactions = styled(Reactions)`
+  order: 1;
+  ${mediaQueries.tablet.lg} {
+    order: 2;
+  }
 `;
 
 const MdxFooter = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 1.2rem;
   margin: 2.4rem 0 0.8rem;
+  box-sizing: border-box;
 
   ${mediaQueries.tablet.lg} {
     flex-direction: row;
@@ -205,7 +217,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
         </ContentIntro>
 
         <ReactionsProvider slug={`${contentType}--${slug}`}>
-          <Reactions />
+          <MdxReactions />
 
           {hero && <Hero src={hero || ''} alt={title} priority />}
           {children}
@@ -227,7 +239,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
                 Edit on GitHub
               </Link>
             </DiscussEdit>
-            <Reactions />
+            <MdxReactions />
           </MdxFooter>
         </ReactionsProvider>
       </article>
