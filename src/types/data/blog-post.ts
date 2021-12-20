@@ -12,4 +12,5 @@ export interface Post {
   inProgress?: boolean;
   keywords?: Array<string>;
   year?: number;
+  devToId?: number;
 }

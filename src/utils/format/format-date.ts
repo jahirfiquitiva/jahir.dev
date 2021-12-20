@@ -1,4 +1,4 @@
-const formatDate = (preDate?: string, showYear: boolean = false): string => {
+const formatDate = (preDate?: string, showYear: boolean = true): string => {
   if (!preDate || preDate.length <= 0) return '';
   try {
     const date = new Date(preDate);

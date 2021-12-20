@@ -119,6 +119,7 @@ interface ContentFields {
   date?: string;
   readingTime?: string;
   slug?: string;
+  devToId?: number;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -143,7 +144,8 @@ type MdxContentProps = ComponentProps & CommonContent;
 
 export const MdxContent: Component<MdxContentProps> = (props) => {
   const { backText, backHref, content, contentType, children } = props;
-  const { title, hero, date, readingTime, slug } = getContentFields(content);
+  const { title, hero, date, readingTime, slug, devToId } =
+    getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
@@ -182,7 +184,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
             </>
           )}
           {' • '}
-          <ViewsCounter slug={`${contentType}--${slug}`} />
+          <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />
         </ContentIntro>
 
         {hero && <Hero src={hero || ''} alt={title} priority />}

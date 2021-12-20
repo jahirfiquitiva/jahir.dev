@@ -6,13 +6,14 @@ import { Component, ComponentProps, Views } from '~/types';
 
 interface ViewsCounterProps extends ComponentProps {
   slug: string;
+  devToId?: number | string;
 }
 
 export const ViewsCounter: Component<ViewsCounterProps> = (props) => {
-  const { slug } = props;
+  const { slug, devToId } = props;
 
   const hasMounted = useHasMounted();
-  const { data } = useRequest<Views>(`/api/views/${slug}`);
+  const { data } = useRequest<Views>(`/api/views/${slug}?devToId=${devToId}`);
   const views = Number(data?.total || 0);
 
   useEffect(() => {

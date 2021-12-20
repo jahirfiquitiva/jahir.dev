@@ -22,6 +22,7 @@ export default async (
 ): Promise<NextApiFunc> => {
   try {
     const slug: string = req.query.slug.toString();
+    const devToIdFromQuery: string = (req.query.devToId || '').toString();
 
     if (req.method === 'POST') {
       const newOrUpdatedViews = await prisma.counters.upsert({
@@ -39,13 +40,17 @@ export default async (
     }
 
     if (req.method === 'GET') {
-      const devToId: number = devToPosts[slug] || 0;
+      const devToId: string = (
+        devToIdFromQuery ||
+        devToPosts[slug] ||
+        0
+      ).toString();
       let devToCount = BigInt(0);
       if (devToId) {
         const devArticlesRequest = await fetch(devToEndpoint, authHeaders);
         const devArticles = await devArticlesRequest.json();
         const article = devArticles.filter(
-          (it: { id: number }) => it.id.toString() === devToId.toString(),
+          (it: { id: number }) => it.id.toString() === devToId,
         )?.[0];
         if (article) devToCount = BigInt(article.page_views_count || 0);
       }

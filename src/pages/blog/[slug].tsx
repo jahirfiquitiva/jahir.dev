@@ -26,6 +26,7 @@ const mapContentLayerBlog = (post?: Blog): Post | null => {
     readingTime: post.readingTime,
     inProgress: post.inProgress,
     keywords: post.keywords,
+    devToId: post.devToId,
   } as Post;
 };
 
