@@ -24,7 +24,7 @@ export default async (
 
       return res.status(200).send({
         success: true,
-        total: newOrUpdatedViews.views.toString(),
+        total: (newOrUpdatedViews.views || '0').toString(),
       });
     }
 

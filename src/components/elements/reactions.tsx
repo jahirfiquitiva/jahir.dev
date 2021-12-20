@@ -118,32 +118,63 @@ const BookmarkButton = styled(ReactButton)`
 
 export const Reactions: Component = () => {
   const { reactions, setReactions, slug } = useReactions();
-  const { data } = useRequest<ReactionsType>(`/api/reactions/${slug}`);
+  const { data } = useRequest<{ counters: ReactionsType }>(
+    `/api/reactions/${slug}`,
+  );
   const [state, setState] = useState<ReactionsType>({});
+  const [submitting, setSubmitting] = useState<boolean>(false);
 
   const clickReaction = (key: ReactionType) => {
-    if (reactions[key]) return;
+    if (submitting || reactions[key]) return;
+
+    const newReactions = { ...reactions };
+    // eslint-disable-next-line
+    newReactions[key] = true;
+    if (setReactions) setReactions(newReactions);
+
+    const newState = {
+      ...state,
+    };
+    newState[`${key}s`] = (
+      BigInt(state[`${key}s`] || 0) + BigInt(1)
+    ).toString();
+    setState(newState);
 
     fetch(`/api/reactions/${slug}`, {
       method: 'POST',
-      body: JSON.stringify({ reaction: key }),
+      body: JSON.stringify({ reaction: `${key}s` }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
       .then((result) => {
         return result.json();
       })
       .then((response) => {
-        // console.log(json);
-        if (response.success) {
-          const newReactions = { ...reactions };
-          // eslint-disable-next-line
-          newReactions[key] = true;
-          // if (setReactions) setReactions(newReactions);
-        }
+        const newReactions = { ...reactions };
+        // eslint-disable-next-line
+        newReactions[key] = response.success;
+        if (setReactions) setReactions(newReactions);
+        setState(response.counters);
+        setSubmitting(false);
+      })
+      .catch(() => {
+        setSubmitting(false);
+        const newReactions = { ...reactions };
+        // eslint-disable-next-line
+        newReactions[key] = false;
+        if (setReactions) setReactions(newReactions);
       });
   };
 
   useEffect(() => {
-    setState({ ...data });
+    fetch(`/api/reactions/${slug}`, {
+      method: 'POST',
+    });
+  }, [slug]);
+
+  useEffect(() => {
+    if (data) setState(data.counters);
   }, [data]);
 
   if (!data) return null;

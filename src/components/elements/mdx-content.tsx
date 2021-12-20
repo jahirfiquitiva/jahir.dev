@@ -208,9 +208,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
           <Reactions />
 
           {hero && <Hero src={hero || ''} alt={title} priority />}
-
           {children}
-
           <Divider thin />
 
           <MdxFooter>

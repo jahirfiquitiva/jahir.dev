@@ -19,10 +19,16 @@ export default async (
 
     if (req.method === 'POST') {
       const objectToUpdate = {};
-      // @ts-ignore
-      objectToUpdate[req.body.reaction] = { increment: 1 };
+      const { body } = req;
+      if (body) {
+        const { reaction } = body;
+        if (reaction) {
+          // @ts-ignore
+          objectToUpdate[reaction] = { increment: 1 };
+        }
+      }
 
-      const newOrUpdatedViews = await prisma.counters.upsert({
+      const newOrUpdatedCounters = await prisma.counters.upsert({
         where: { slug },
         create: { slug },
         update: objectToUpdate,
@@ -30,7 +36,7 @@ export default async (
 
       return res.status(200).send({
         success: true,
-        counters: newOrUpdatedViews,
+        counters: newOrUpdatedCounters,
       });
     }
 
