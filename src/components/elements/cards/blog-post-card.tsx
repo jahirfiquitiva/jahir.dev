@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
+import { ViewsCounter } from '~/components/atoms/complex';
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
@@ -131,6 +132,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     slug,
     link,
     readingTime,
+    devToId,
   } = props;
   const { isDark, themeReady } = useTheme();
 
@@ -196,6 +198,8 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
               Published on <UnderlinedSpan>{domain}</UnderlinedSpan>
             </>
           )}
+          &nbsp;•&nbsp;
+          <ViewsCounter slug={`blog--${slug}`} devToId={devToId} />
         </Date>
       </Content>
     </BaseBlogPostCard>

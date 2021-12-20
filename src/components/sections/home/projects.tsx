@@ -3,7 +3,12 @@ import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
 import { SectionHeading } from '~/components/atoms/complex';
-import { Field, Divider, LinkButton } from '~/components/atoms/simple';
+import {
+  Field,
+  Divider,
+  LinkButton,
+  OutlinedLinkButton,
+} from '~/components/atoms/simple';
 import {
   ProjectCard,
   Masonry,
@@ -49,26 +54,6 @@ const ProjectsHeaderLinksContainer = styled.div`
 
 const ProjectsMasonry = styled(Masonry)`
   padding: 1.2rem 0 2.4rem;
-`;
-
-const OutlinedButton = styled(LinkButton)`
-  --divider-alpha: 0.24;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(var(--divider-opaque), var(--divider-alpha, 0.12));
-  box-shadow: none;
-  color: var(--text-secondary);
-
-  &:hover,
-  &:focus {
-    background-color: rgba(45, 82, 171, 0.08);
-    border-color: var(--accent-dark);
-    box-shadow: var(--shadow-sm);
-    color: var(--text-primary);
-    .dark & {
-      background-color: rgba(56, 103, 214, 0.16);
-      color: var(--text-primary);
-    }
-  }
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
@@ -142,13 +127,13 @@ export const Projects: Component<ProjectsProps> = (props) => {
         </SectionHeading>
 
         <ProjectsHeaderLinksContainer>
-          <OutlinedButton
+          <OutlinedLinkButton
             title={"Link to Jahir's resume pdf file"}
             href={'/resume'}
             icon={mdiFileCodeOutline}
           >
             Resume
-          </OutlinedButton>
+          </OutlinedLinkButton>
           {!showFullList ? (
             <LinkButton
               title={'Link to view all projects by Jahir'}

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { CSSProperties, useMemo } from 'react';
 
+import { Reactions } from './reactions';
+
 import { ViewsCounter } from '~/components/atoms/complex';
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
@@ -90,9 +92,22 @@ const ContentIntro = styled.p`
 `;
 
 const DiscussEdit = styled.p`
-  margin-top: 1.2rem;
   font-size: var(--font-2xs);
   color: var(--text-tertiary);
+`;
+
+const MdxFooter = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1.2rem;
+  margin: 2.4rem 0 0.8rem;
+
+  ${mediaQueries.tablet.lg} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0 0;
+  }
 `;
 
 type ContentTypes = Post | Project | CodingChallenge;
@@ -188,26 +203,32 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
           <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />
         </ContentIntro>
 
+        <Reactions />
+
         {hero && <Hero src={hero || ''} alt={title} priority />}
 
         {children}
 
         <Divider thin />
-        <DiscussEdit>
-          <Link
-            href={shareUrl(content)}
-            title={'Link to share blog post on Twitter'}
-          >
-            Share on Twitter
-          </Link>
-          {' • '}
-          <Link
-            href={editUrl(content)}
-            title={'Link to edit content on GitHub'}
-          >
-            Edit on GitHub
-          </Link>
-        </DiscussEdit>
+
+        <MdxFooter>
+          <DiscussEdit>
+            <Link
+              href={shareUrl(content)}
+              title={'Link to share blog post on Twitter'}
+            >
+              Share on Twitter
+            </Link>
+            {' • '}
+            <Link
+              href={editUrl(content)}
+              title={'Link to edit content on GitHub'}
+            >
+              Edit on GitHub
+            </Link>
+          </DiscussEdit>
+          <Reactions />
+        </MdxFooter>
       </article>
     </MdxContentSection>
   );
