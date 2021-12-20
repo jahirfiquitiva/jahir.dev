@@ -19,15 +19,34 @@ const defaultColors = [
   '#778ca3',
 ];
 
+const idChars =
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
+
+const generateRandomId = (length: number = 6) => {
+  let retVal = '';
+  for (let i = 0; i < length; ++i) {
+    retVal += random(idChars);
+  }
+  return retVal;
+};
+const secretPostsId = generateRandomId();
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
-    // eslint-disable-next-line no-underscore-dangle
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+    resolve: (doc) => {
+      // eslint-disable-next-line no-underscore-dangle
+      const defaultSlug = doc._raw.sourceFileName.replace(/\.mdx$/, '');
+      if (!doc.inProgress) return defaultSlug;
+      const secretSlug = `${defaultSlug}-${secretPostsId}`;
+      // eslint-disable-next-line no-console
+      console.log(`Generated secret slug: [${secretSlug}]`);
+      return secretSlug;
+    },
   },
   hero: {
     type: 'string',
@@ -50,6 +69,11 @@ const computedFields: ComputedFields = {
     },
   },
   excerpt: {
+    type: 'string',
+    resolve: (doc) =>
+      getPostDescription(doc.body.raw, doc.excerpt || doc.description, true),
+  },
+  longExcerpt: {
     type: 'string',
     resolve: (doc) =>
       getPostDescription(doc.body.raw, doc.excerpt || doc.description),
@@ -88,6 +112,7 @@ const Blog = defineDocumentType(() => ({
     color: { type: 'string' },
     description: { type: 'string' },
     excerpt: { type: 'string' },
+    longExcerpt: { type: 'string' },
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
     keywords: { type: 'string' },

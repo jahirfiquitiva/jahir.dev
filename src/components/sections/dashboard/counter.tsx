@@ -60,7 +60,7 @@ const CounterCard = styled(DashboardCard)`
 `;
 
 const Count = styled.p`
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
   font-family: var(--manrope-font);
   font-weight: 700;
 `;

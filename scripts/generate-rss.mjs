@@ -13,7 +13,11 @@ const formatImageUrl = (url) => {
 
 const buildDescriptionHtml = (post) => {
   let description = '';
-  if (post.excerpt) description += `<p>${post.excerpt}</p><br/>`;
+  if (post.longExcerpt) {
+    description += `<p>${post.longExcerpt}</p><br/>`;
+  } else if (post.excerpt) {
+    description += `<p>${post.excerpt}</p><br/>`;
+  }
   description += `<b><a href="https://jahir.dev/blog/${post.slug}">Read more...</a></b><br/><br/>`;
   if (post.hero) {
     description += `<p><img src="${formatImageUrl(post.hero)}" `;
