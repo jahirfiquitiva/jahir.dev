@@ -130,6 +130,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('date' in content) fields.date = content.date;
   if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
   if ('slug' in content) fields.slug = content.slug;
+  if ('devToId' in content) fields.devToId = content.devToId;
   return fields;
 };
 
