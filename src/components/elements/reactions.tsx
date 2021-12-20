@@ -12,15 +12,14 @@ import {
 } from '@mdi/js';
 import confetti from 'canvas-confetti';
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { ButtonGroup } from '~/components/atoms/complex';
 import { OutlinedButton } from '~/components/atoms/simple';
-import useRequest from '~/hooks/useRequest';
 import useWindowDimensions from '~/hooks/useWindowDimensions';
 import { useReactions, ReactionType } from '~/providers/reactions';
 import { useTheme } from '~/providers/theme';
-import { Component, mediaQueries, Reactions as ReactionsType } from '~/types';
+import { Component, mediaQueries } from '~/types';
 
 const ReactionsGroup = styled(ButtonGroup)`
   gap: 0.4rem;
