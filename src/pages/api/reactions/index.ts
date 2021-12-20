@@ -1,10 +1,15 @@
+/* eslint-disable no-extend-native */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { getDevToArticles } from '~/lib/devto';
 import prisma from '~/lib/prisma';
 import { NextApiFunc } from '~/types';
+
+// @ts-ignore
+BigInt.prototype.toJSON = function () {
+  return this.toString();
+};
 
 export default async (
   req: NextApiRequest,
@@ -13,29 +18,27 @@ export default async (
   try {
     const totalViews = await prisma.counters.aggregate({
       _sum: {
-        views: true,
+        likes: true,
+        loves: true,
+        awards: true,
+        bookmarks: true,
       },
     });
-
-    const devArticlesRequest = await getDevToArticles();
-    const devArticles = await devArticlesRequest.json();
-
-    const devToViews = devArticles
-      .filter((it: { published?: boolean }) => it.published)
-      .reduce(
-        // eslint-disable-next-line
-        (accumulator: number, article: { page_views_count: number }) => {
-          const { page_views_count: views = 0 } = article;
-          return accumulator + views;
-        },
-        0,
-      );
+    const { _sum: counters } = totalViews;
 
     return res.status(200).send({
       success: true,
-      total: (
-        (totalViews?._sum?.views || BigInt(0)) + BigInt(devToViews)
-      ).toString(),
+      counters,
+      total: Object.keys(counters).reduce(
+        // eslint-disable-next-line
+        (accumulator: string, key: string): string => {
+          return (
+            // @ts-ignore
+            (BigInt(accumulator) + BigInt(counters[key] || 0)).toString()
+          );
+        },
+        '0',
+      ),
     });
   } catch (err) {
     return res.status(500).send({
