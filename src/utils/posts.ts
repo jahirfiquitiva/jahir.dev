@@ -52,8 +52,9 @@ export const getPostDescription = (
       lastIndex += 1;
     }
   }
+  description = description.trim();
   return description.length > 0
-    ? `${description.trim()}...`
+    ? `${description}${description.endsWith('.') ? '..' : '...'}`
     : defaultDescription || '';
 };
 
