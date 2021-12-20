@@ -2,13 +2,21 @@ import { useState, useCallback, useEffect } from 'react';
 
 import useHasMounted from '~/hooks/useHasMounted';
 
-const useWindowWidth = () => {
+interface WindowDimensions {
+  width: number;
+  height: number;
+}
+
+const useWindowDimensions = (): WindowDimensions => {
   const hasMounted = useHasMounted();
-  const [width, setWidth] = useState(0);
+  const [dimens, setDimens] = useState<WindowDimensions>({
+    width: 0,
+    height: 0,
+  });
 
   const handleResize = useCallback(() => {
     if (!hasMounted) return;
-    setWidth(window.innerWidth);
+    setDimens({ width: window.innerWidth, height: window.innerHeight });
   }, [hasMounted]);
 
   // eslint-disable-next-line consistent-return
@@ -20,7 +28,7 @@ const useWindowWidth = () => {
     }
   }, [hasMounted, handleResize]);
 
-  return width;
+  return dimens;
 };
 
-export default useWindowWidth;
+export default useWindowDimensions;

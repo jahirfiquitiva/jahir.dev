@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import { Children, isValidElement, useMemo } from 'react';
 
-import useWindowWidth from '~/hooks/useWindowWidth';
+import useWindowDimensions from '~/hooks/useWindowDimensions';
 import { Component, ComponentProps, ComponentChild } from '~/types';
 
 const MasonryGrid = styled.div`
@@ -72,7 +72,7 @@ export const Masonry: Component<MasonryProps> = (props) => {
     style,
   } = props;
   const childrenCount = Children.count(children);
-  const windowWidth = useWindowWidth();
+  const { width: windowWidth } = useWindowDimensions();
 
   const mappedBreakpoints = useMemo<MasonryBreakpoints>(() => {
     return mapColumnsBreakPoints(breakpoints);

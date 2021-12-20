@@ -9,13 +9,16 @@ import {
   mdiTrophy,
   mdiTrophyOutline,
 } from '@mdi/js';
+import confetti from 'canvas-confetti';
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ButtonGroup } from '~/components/atoms/complex';
 import { OutlinedButton } from '~/components/atoms/simple';
 import useRequest from '~/hooks/useRequest';
+import useWindowDimensions from '~/hooks/useWindowDimensions';
 import { useReactions, ReactionType } from '~/providers/reactions';
+import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries, Reactions as ReactionsType } from '~/types';
 
 const ReactionsGroup = styled(ButtonGroup)`
@@ -116,15 +119,63 @@ const BookmarkButton = styled(ReactButton)`
   }
 `;
 
+const confettiOptions = {
+  particleCount: 50,
+  spread: 60,
+  colors: ['#6085de'],
+  disableForReducedMotion: true,
+  scalar: 0.5,
+  gravity: 0.85,
+  decay: 0.75,
+  ticks: 100,
+};
+
+const getConfettiColor = (
+  key: ReactionType,
+  isDark: boolean,
+): Array<`#${string}`> => {
+  switch (key) {
+    case 'like': {
+      return [isDark ? '#20BF6B' : '#1A9956'];
+    }
+    case 'love': {
+      return [isDark ? '#EB3B5A' : '#D43551'];
+    }
+    case 'award': {
+      return [isDark ? '#F7B731' : '#E1752C'];
+    }
+    case 'bookmark': {
+      return [isDark ? '#A076D9' : '#8854D0'];
+    }
+    default: {
+      return [isDark ? '#afc2ef' : '#2d52ab'];
+    }
+  }
+};
+
 export const Reactions: Component = () => {
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const { reactions, setReactions, slug } = useReactions();
+  const { isDark } = useTheme();
   const { data } = useRequest<{ counters: ReactionsType }>(
     `/api/reactions/${slug}`,
   );
   const [state, setState] = useState<ReactionsType>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const clickReaction = (key: ReactionType) => {
+  const clickReaction = (
+    key: ReactionType,
+    event?: MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    if (event) {
+      const x = event.clientX / windowWidth;
+      const y = event.clientY / windowHeight;
+      confetti({
+        ...confettiOptions,
+        origin: { x, y },
+        colors: getConfettiColor(key, isDark),
+      });
+    }
     if (submitting || reactions[key]) return;
 
     const newReactions = { ...reactions };
@@ -177,6 +228,14 @@ export const Reactions: Component = () => {
     if (data) setState(data.counters);
   }, [data]);
 
+  useEffect(() => {
+    return () => {
+      try {
+        confetti.reset();
+      } catch (e) {}
+    };
+  }, [data]);
+
   if (!data) return null;
   return (
     <ReactionsGroup>
@@ -185,8 +244,8 @@ export const Reactions: Component = () => {
         icon={reactions?.like ? mdiThumbUp : mdiThumbUpOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.like })}
-        onClick={() => {
-          clickReaction('like');
+        onClick={(e) => {
+          clickReaction('like', e);
         }}
       >
         {state.likes || '0'}
@@ -196,8 +255,8 @@ export const Reactions: Component = () => {
         icon={reactions?.love ? mdiHeart : mdiHeartOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.love })}
-        onClick={() => {
-          clickReaction('love');
+        onClick={(e) => {
+          clickReaction('love', e);
         }}
       >
         {state.loves || '0'}
@@ -207,8 +266,8 @@ export const Reactions: Component = () => {
         icon={reactions?.award ? mdiTrophy : mdiTrophyOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.award })}
-        onClick={() => {
-          clickReaction('award');
+        onClick={(e) => {
+          clickReaction('award', e);
         }}
       >
         {state.awards || '0'}
@@ -218,8 +277,8 @@ export const Reactions: Component = () => {
         icon={reactions?.bookmark ? mdiBookmark : mdiBookmarkOutline}
         iconSize={0.73}
         className={cn({ pressed: reactions?.bookmark })}
-        onClick={() => {
-          clickReaction('bookmark');
+        onClick={(e) => {
+          clickReaction('bookmark', e);
         }}
       >
         {state.bookmarks || '0'}
