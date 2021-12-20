@@ -93,6 +93,7 @@ const PhotoFigure = styled.figure`
 `;
 
 const AboutAudioButton = styled(AudioButton)`
+  gap: 0;
   font-family: var(--inter-font);
   &:hover,
   &:focus {

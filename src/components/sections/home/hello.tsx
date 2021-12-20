@@ -8,6 +8,8 @@ import { Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries } from '~/types';
+import Icon from '@mdi/react';
+import { mdiPlayCircle, mdiPlayOutline } from '@mdi/js';
 
 const Container = styled.div`
   display: grid;
@@ -44,6 +46,20 @@ export const AudioButton = styled.button`
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
   text-shadow: inherit;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  & > svg {
+    color: var(--gradient-blue);
+    .dark & {
+      color: var(--text-shadow-blue);
+    }
+  }
+`;
+
+const IntroParagraph = styled.p`
+  max-width: 432px;
 `;
 
 export const audioButtonTitle = "Press to hear Jahir's name pronunciation";
@@ -79,12 +95,11 @@ export const Hello: Component = () => {
             >
               Jahir Fiquitiva
             </GradientSpan>
+            <Icon path={mdiPlayCircle} size={1.25} />
           </AudioButton>
         </Heading>
-        <p>
-          Passionate and creative full-stack software engineer
-          <br />
-          based in{' '}
+        <IntroParagraph>
+          Passionate and creative full-stack software engineer based in{' '}
           <Link
             title={'Link to Colombia on Google Maps'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
@@ -92,7 +107,7 @@ export const Hello: Component = () => {
             Colombia 🇨🇴
           </Link>
           .
-        </p>
+        </IntroParagraph>
       </ContentContainer>
       <Photo />
     </Container>
