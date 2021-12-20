@@ -1,3 +1,5 @@
+import { mdiEye, mdiThumbUp } from '@mdi/js';
+
 import { Activity } from './activity';
 import { Counter } from './counter';
 
@@ -31,12 +33,26 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
     dashboardData?.activities?.map((activity, index) => {
       return <Activity key={`activity-${index}`} data={activity} />;
     }),
-    <Counter
-      key={'github-stalk'}
-      text={'Stalk my GitHub Activity'}
-      site={'stalk'}
-      href={'https://gitstalk.netlify.app/jahirfiquitiva'}
-    />,
+    dashboardData?.counters?.views ? (
+      <Counter
+        key={'views-card'}
+        count={dashboardData?.counters?.views}
+        text={'All-Time Views'}
+        site={'jahir'}
+        href={'/'}
+        iconPath={mdiEye}
+      />
+    ) : undefined,
+    dashboardData?.counters?.reactions ? (
+      <Counter
+        key={'reactions-card'}
+        count={dashboardData?.counters?.reactions}
+        text={'All-Time Reactions'}
+        site={'jahir'}
+        href={'/'}
+        iconPath={mdiThumbUp}
+      />
+    ) : undefined,
     dashboardData?.counters?.githubFollowers ? (
       <Counter
         key={'github-followers-card'}
@@ -55,7 +71,12 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         href={'https://github.com/jahirfiquitiva?tab=repositories'}
       />
     ) : undefined,
-    <div key={'empty-item'} />,
+    <Counter
+      key={'github-stalk'}
+      text={'Stalk my GitHub Activity'}
+      site={'stalk'}
+      href={'https://gitstalk.netlify.app/jahirfiquitiva'}
+    />,
     dashboardData?.counters?.twitterFollowers ? (
       <Counter
         key={'twitter-followers-card'}

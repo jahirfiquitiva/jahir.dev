@@ -17,19 +17,22 @@ export default async (
       },
     });
 
+    let devToViews = 0;
     const devArticlesRequest = await getDevToArticles();
-    const devArticles = await devArticlesRequest.json();
+    if (devArticlesRequest.ok) {
+      const devArticles = await devArticlesRequest.json().catch(() => []);
 
-    const devToViews = devArticles
-      .filter((it: { published?: boolean }) => it.published)
-      .reduce(
-        // eslint-disable-next-line
-        (accumulator: number, article: { page_views_count: number }) => {
-          const { page_views_count: views = 0 } = article;
-          return accumulator + views;
-        },
-        0,
-      );
+      devToViews = devArticles
+        .filter((it: { published?: boolean }) => it.published)
+        .reduce(
+          // eslint-disable-next-line
+          (accumulator: number, article: { page_views_count: number }) => {
+            const { page_views_count: views = 0 } = article;
+            return accumulator + views;
+          },
+          0,
+        );
+    }
 
     return res.status(200).send({
       success: true,

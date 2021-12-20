@@ -2,15 +2,20 @@ import styled from '@emotion/styled';
 import { mdiGithub, mdiTwitter } from '@mdi/js';
 import Icon from '@mdi/react';
 import cn from 'classnames';
+import { useMemo } from 'react';
 
 import { DashboardCard, DashboardCardProps } from './dashboard-card';
 
 import { Component } from '~/types';
 
+type SiteOptions = 'twitter' | 'github' | 'stalk' | 'jahir' | 'other';
+
 interface CounterProps extends DashboardCardProps {
-  count?: number;
+  count?: number | string;
   text?: string;
-  site: 'twitter' | 'github' | 'stalk';
+  site: SiteOptions;
+  title?: string;
+  iconPath?: string;
 }
 
 const CounterCard = styled(DashboardCard)`
@@ -71,19 +76,38 @@ const CardTexts = styled.div`
   flex: 1;
 `;
 
+const getCardTitle = (site: SiteOptions, custom?: string | null) => {
+  switch (site) {
+    case 'twitter': {
+      return 'Twitter';
+    }
+    case 'github': {
+      return 'GitHub';
+    }
+    case 'stalk': {
+      return "stalk Jahir's GitHub activity";
+    }
+    case 'jahir': {
+      return 'home page';
+    }
+    default: {
+      return custom || 'unknown site';
+    }
+  }
+};
+
 export const Counter: Component<CounterProps> = (props) => {
-  const { count, text, site, href } = props;
+  const { count, text, site, title, href, iconPath } = props;
+
+  const cardTitle = useMemo<string>(() => {
+    const text = getCardTitle(site, title);
+    return `Link to ${text}`;
+  }, [site, title]);
 
   if (!count && site !== 'stalk') return null;
   return (
     <CounterCard
-      title={`Link to ${
-        site === 'twitter'
-          ? 'Twitter'
-          : site === 'github'
-          ? 'GitHub'
-          : "stalk Jahir's GitHub activity"
-      }`}
+      title={cardTitle}
       href={href}
       underline={false}
       className={cn({ stalk: site === 'stalk' })}
@@ -93,7 +117,13 @@ export const Counter: Component<CounterProps> = (props) => {
         {text ? <Text>{text}</Text> : undefined}
       </CardTexts>
       <Icon
-        path={site === 'twitter' ? mdiTwitter : mdiGithub}
+        path={
+          iconPath?.length
+            ? iconPath
+            : site === 'twitter'
+            ? mdiTwitter
+            : mdiGithub
+        }
         size={1.35}
         style={{ marginTop: 'auto' }}
       />

@@ -16,7 +16,7 @@ export default async (
     if (req.method === 'POST') {
       const newOrUpdatedViews = await prisma.counters.upsert({
         where: { slug },
-        create: { slug },
+        create: { slug, views: 1 },
         update: {
           views: { increment: 1 },
         },
@@ -32,11 +32,14 @@ export default async (
       let devToCount = BigInt(0);
       if (devToId) {
         const devArticlesRequest = await getDevToArticles();
-        const devArticles = await devArticlesRequest.json();
-        const article = devArticles.filter(
-          (it: { id: number }) => it.id.toString() === devToId,
-        )?.[0];
-        if (article) devToCount = BigInt(article.page_views_count || 0);
+        if (devArticlesRequest.ok) {
+          const devArticles = await devArticlesRequest.json().catch(() => []);
+          const article = devArticles.filter(
+            (it: { id: number }) => it.id.toString() === devToId,
+          )?.[0];
+          // eslint-disable-next-line max-depth
+          if (article) devToCount = BigInt(article.page_views_count || 0);
+        }
       }
 
       const counters = await prisma.counters.findUnique({
