@@ -1,11 +1,20 @@
 import styled from '@emotion/styled';
+import { mdiThumbUp } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { ViewsCounter } from '~/components/atoms/complex';
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
+import useRequest from '~/hooks/useRequest';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, Post, mediaQueries } from '~/types';
+import {
+  Component,
+  ComponentProps,
+  Post,
+  mediaQueries,
+  Reactions as ReactionsType,
+} from '~/types';
 import getColorFromPalette from '~/utils/colors/get-color-from-palette';
 import getReadableColor from '~/utils/colors/get-readable-color';
 import formatDate from '~/utils/format/format-date';
@@ -13,6 +22,7 @@ import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
 
 const BaseBlogPostCard = styled(LinkCard)`
+  position: relative;
   overflow: hidden;
   max-width: 100%;
   border-radius: 10px;
@@ -47,12 +57,20 @@ const BaseBlogPostCard = styled(LinkCard)`
     }
   }
 
+  & .reactions {
+    color: var(--text-secondary);
+  }
+
   &:hover,
   &:focus {
     border-color: var(--border-color, var(--divider));
+    background-color: var(--bg-color);
     & h5 {
       color: var(--hl-color);
       text-decoration: underline;
+    }
+    & .reactions {
+      color: var(--text-primary);
     }
   }
 `;
@@ -120,6 +138,29 @@ const UnderlinedSpan = styled.span`
   text-decoration: underline;
 `;
 
+const PostReactionsContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--bg-color);
+  border-bottom-left-radius: 10px;
+  font-size: var(--font-2xs);
+  font-family: var(--manrope-font);
+  border: 1px solid;
+  border-color: var(--border-color, var(--divider));
+  border-top-width: 0;
+  border-right-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  gap: 0.4rem;
+  transition-duration: 0.1s;
+
+  & > * {
+    transition-duration: 0.1s;
+  }
+`;
+
 interface BlogPostCardProps extends ComponentProps, Post {}
 
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
@@ -134,6 +175,10 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     readingTime,
     devToId,
   } = props;
+  const { data } = useRequest<{ total?: string }>(
+    `/api/reactions/blog--${slug}`,
+  );
+
   const { isDark, themeReady } = useTheme();
 
   const { data: paletteData } = useSafePalette(
@@ -202,6 +247,12 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
           <ViewsCounter slug={`blog--${slug}`} devToId={devToId} />
         </Date>
       </Content>
+      {data?.total && data?.total !== '0' ? (
+        <PostReactionsContainer className={'reactions'}>
+          <Icon path={mdiThumbUp} size={0.7} />
+          <span>{data?.total}</span>
+        </PostReactionsContainer>
+      ) : null}
     </BaseBlogPostCard>
   );
 };

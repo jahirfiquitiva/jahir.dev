@@ -44,10 +44,22 @@ export default async (
       const counters = await prisma.counters.findUnique({
         where: { slug },
       });
+      const newCounters = { ...counters, slug: undefined, views: undefined };
+      const total = Object.keys(newCounters).reduce(
+        // eslint-disable-next-line
+        (accumulator: string, key: string): string => {
+          return (
+            // @ts-ignore
+            (BigInt(accumulator) + BigInt(newCounters[key] || 0)).toString()
+          );
+        },
+        '0',
+      );
 
       return res.status(200).send({
         success: true,
-        counters: { ...counters, slug: undefined, views: undefined },
+        counters: newCounters,
+        total,
       });
     }
 
