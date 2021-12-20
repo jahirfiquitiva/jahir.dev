@@ -51,9 +51,12 @@ export const AudioButton = styled.button`
   align-items: center;
   gap: 0.6rem;
   & > svg {
-    color: var(--gradient-blue);
+    color: inherit;
+    filter: drop-shadow(
+      var(--text-shadow-size) var(--text-shadow-size) 0 var(--text-shadow-blue)
+    );
     .dark & {
-      color: var(--text-shadow-blue);
+      color: var(--gradient-blue);
     }
   }
 `;
