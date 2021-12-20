@@ -15,5 +15,5 @@ export const mdxComponents = {
   SimpleGrid,
   SimpleGridColumn,
   Masonry,
-  Reactions
+  Reactions,
 };

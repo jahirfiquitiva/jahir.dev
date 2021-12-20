@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { mdiPlayCircle } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 import useSound from 'use-sound';
 
@@ -8,8 +10,6 @@ import { Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries } from '~/types';
-import Icon from '@mdi/react';
-import { mdiPlayCircle, mdiPlayOutline } from '@mdi/js';
 
 const Container = styled.div`
   display: grid;

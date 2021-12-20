@@ -73,13 +73,13 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getAllPosts([],true).map((p) => ({ params: { slug: p.slug } })),
+    paths: getAllPosts([], true).map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getAllPosts([],true).find((post) => post.slug === params?.slug);
+  const post = getAllPosts([], true).find((post) => post.slug === params?.slug);
   const shouldRedirect = post && post.link && post.link.length > 0;
   if (shouldRedirect) {
     return {
