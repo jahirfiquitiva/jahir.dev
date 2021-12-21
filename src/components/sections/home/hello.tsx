@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
+import { mdiPlayCircle } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 import useSound from 'use-sound';
 
-import { Image, Heading, GradientSpan, Link } from '~/components/atoms/simple';
+import { Photo } from './photo';
+
+import { Heading, GradientSpan, Link } from '~/components/atoms/simple';
 import { HelloHeading } from '~/components/elements';
 import { useTheme } from '~/providers/theme';
 import { Component, mediaQueries } from '~/types';
@@ -10,9 +14,11 @@ import { Component, mediaQueries } from '~/types';
 const Container = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  align-items: center;
 
   ${mediaQueries.tablet.sm} {
-    grid-template-columns: 55% 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.6rem;
   }
 `;
 
@@ -31,26 +37,7 @@ const ContentContainer = styled.div`
   }
 `;
 
-const PhotoContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 0.8rem;
-  grid-row: 1;
-  filter: drop-shadow(0 4px 3px rgba(var(--shadow-color), 0.12));
-
-  ${mediaQueries.tablet.sm} {
-    justify-content: flex-end;
-    margin-bottom: 0;
-  }
-`;
-
-const Photo = styled(Image)`
-  border-radius: 50%;
-  padding: 0.4rem !important;
-  filter: drop-shadow(0 1px 2px rgba(var(--shadow-color), 0.04));
-`;
-
-const AudioButton = styled.button`
+export const AudioButton = styled.button`
   padding: 0;
   margin: 0;
   font-family: var(--manrope-font);
@@ -59,9 +46,26 @@ const AudioButton = styled.button`
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
   text-shadow: inherit;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  & > svg {
+    color: inherit;
+    filter: drop-shadow(
+      var(--text-shadow-size) var(--text-shadow-size) 0 var(--text-shadow-blue)
+    );
+    .dark & {
+      color: var(--gradient-blue);
+    }
+  }
 `;
 
-const audioButtonTitle = "Press to hear Jahir's name pronunciation";
+const IntroParagraph = styled.p`
+  max-width: 432px;
+`;
+
+export const audioButtonTitle = "Press to hear Jahir's name pronunciation";
 
 export const Hello: Component = () => {
   const { isDark, themeReady } = useTheme();
@@ -94,9 +98,10 @@ export const Hello: Component = () => {
             >
               Jahir Fiquitiva
             </GradientSpan>
+            <Icon path={mdiPlayCircle} size={1.25} />
           </AudioButton>
         </Heading>
-        <p>
+        <IntroParagraph>
           Passionate and creative full-stack software engineer based in{' '}
           <Link
             title={'Link to Colombia on Google Maps'}
@@ -104,16 +109,10 @@ export const Hello: Component = () => {
           >
             Colombia 🇨🇴
           </Link>
-        </p>
+          .
+        </IntroParagraph>
       </ContentContainer>
-      <PhotoContainer>
-        <Photo
-          src={'/static/images/jahir/jahir-hd.jpg'}
-          alt={"Jahir's Photo"}
-          size={168}
-          priority
-        />
-      </PhotoContainer>
+      <Photo />
     </Container>
   );
 };

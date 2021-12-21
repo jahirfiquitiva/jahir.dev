@@ -107,14 +107,14 @@ export const Supporters: Component = () => {
   return (
     <>
       <section id={'thanks'}>
-        <Divider gradientColor={'red-to-purple'} />
+        <Divider gradientColor={'orange-to-red'} />
         <SupportersHeader>
           <HeaderContent>
             <SectionHeading
               size={'3'}
               emoji={'🙌'}
-              shadowColor={'purple'}
-              gradientColor={'purple-to-brand'}
+              shadowColor={'red'}
+              gradientColor={'red-to-purple'}
             >
               Thanks!
             </SectionHeading>

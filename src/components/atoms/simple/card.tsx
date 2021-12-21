@@ -15,11 +15,29 @@ export const Card = styled.div`
   ${baseCardStyles}
 `;
 
-const linkCardStyles = css`
+const cardShadowStyles = css`
   --shadow-color: var(--card-base);
-  --shadow: 0 3px 1px -2px rgba(var(--shadow-color), 0.12),
-    0 2px 2px 0 rgba(var(--shadow-color), 0.09),
-    0 1px 5px 0 rgba(var(--shadow-color), 0.07);
+  --shadow-sm-color: rgba(
+    var(--shadow-color),
+    calc(var(--shadow-strength) + 0.15)
+  );
+  --shadow-sm: 0 1px 2px 0 var(--shadow-sm-color);
+
+  --shadow-color-a: rgba(
+    var(--shadow-color),
+    calc(var(--shadow-strength) + 0.03)
+  );
+  --shadow-color-b: rgba(
+    var(--shadow-color),
+    calc(var(--shadow-strength) + 0.05)
+  );
+  --shadow: 0 3px 5px -2px var(--shadow-color-a),
+    0 7px 14px -5px var(--shadow-color-b);
+`;
+
+const linkCardStyles = css`
+  ${cardShadowStyles}
+
   box-shadow: none;
   text-decoration: none;
 

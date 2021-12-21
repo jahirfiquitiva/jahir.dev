@@ -32,6 +32,9 @@ export const getStaticProps: GetStaticProps = async () => {
     'link',
     'readingTime',
     'inProgress',
+    'year',
+    'devToId',
+    'heroMeta',
   ]);
   return {
     props: { posts: allPosts },

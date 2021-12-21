@@ -24,13 +24,13 @@ export const ButtonStyles = css`
   text-overflow: ellipsis;
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
-  
+
   &:disabled {
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
   }
-  
+
   &:hover,
   &:focus {
     box-shadow: var(--shadow);

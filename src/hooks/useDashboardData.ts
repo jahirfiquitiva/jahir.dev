@@ -17,6 +17,9 @@ export const useDashboardData = (): DashboardData => {
   const { data: nowPlayingData } = useRequest<TopTrackData>('/api/now-playing');
   const { data: githubData } = useRequest<GitHubStats>('/api/github');
   const { data: twitterData } = useRequest<TwitterStats>('/api/twitter');
+  const { data: viewsData } = useRequest<{ total?: string }>('/api/views');
+  const { data: reactionsData } =
+    useRequest<{ total?: string }>('/api/reactions');
 
   const memoizedData = useMemo(() => {
     return transformDataToDashboardData(
@@ -26,9 +29,18 @@ export const useDashboardData = (): DashboardData => {
         githubFollowers: githubData?.followers || 0,
         githubStars: githubData?.stars || 0,
         twitterFollowers: twitterData?.followers || 0,
+        views: viewsData?.total || '0',
+        reactions: reactionsData?.total || '0',
       },
     );
-  }, [discordData, nowPlayingData, githubData, twitterData]);
+  }, [
+    discordData,
+    nowPlayingData,
+    githubData,
+    twitterData,
+    viewsData,
+    reactionsData,
+  ]);
 
   return memoizedData;
 };

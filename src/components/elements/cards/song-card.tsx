@@ -20,6 +20,8 @@ const BaseSongCard = styled(LinkCard)`
   gap: 0.8rem;
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
   color: var(--text-primary);
   text-decoration-color: currentColor;
 
@@ -52,11 +54,13 @@ const SongDetails = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 100%;
 
   & * {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    max-width: 100%;
   }
 `;
 
@@ -71,6 +75,14 @@ const CurrentlyPlayingTitle = styled.p`
   font-weight: 400;
   text-decoration: none;
   margin-bottom: 0.4rem;
+`;
+
+const CurrentlyPlaying = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  align-self: flex-start;
 `;
 
 interface SongCardProps extends ComponentProps, TrackData {
@@ -99,10 +111,10 @@ export const SongCard: Component<SongCardProps> = (props) => {
     const backgroundColor = isDark
       ? paletteData.darkMuted
       : paletteData.vibrant;
-    const shadowColors = buildShadowStyles(textColor, 0.25, 0.45, isDark);
+    const shadowColors = buildShadowStyles(textColor, isDark, { border: 0.45 });
     return {
       ...shadowColors,
-      backgroundColor: hexToRGB(backgroundColor, isDark ? 0.2 : 0.1),
+      backgroundColor: hexToRGB(backgroundColor, isDark ? 0.15 : 0.1),
     };
   }, [themeReady, isDark, paletteData, shouldRenderDetails, textColor]);
 
@@ -169,11 +181,11 @@ export const SongCard: Component<SongCardProps> = (props) => {
   if (!isForNowPlaying) return renderActualCard();
 
   return (
-    <div>
+    <CurrentlyPlaying>
       <CurrentlyPlayingTitle style={buildStyles({ color: textColor })}>
         🎧&nbsp;&nbsp;Currently listening to...
       </CurrentlyPlayingTitle>
       {renderActualCard()}
-    </div>
+    </CurrentlyPlaying>
   );
 };

@@ -42,6 +42,8 @@ const Project = defineDocumentType(() => ({
     darkColor: { type: 'string' },
     hide: { type: 'boolean' },
     stack: { type: 'string' },
+    repo: { type: 'string' },
+    owner: { type: 'string' },
   },
   computedFields,
 }));

@@ -36,23 +36,23 @@ const ToolbarLinksContainer = styled.ul`
 const toolbarLinksList = [
   {
     key: 1,
-    emoji: '📝',
-    title: 'Blog',
-    href: '/blog',
+    emoji: '🙋‍♂️',
+    title: 'About',
+    href: '/about',
     gradient: 'blue-to-green',
   },
   {
     key: 2,
-    emoji: '⚡️',
-    title: 'Uses',
-    href: '/blog/uses',
+    emoji: '📝',
+    title: 'Blog',
+    href: '/blog',
     gradient: 'yellow-to-orange',
   },
   {
     key: 3,
-    emoji: '🧡',
-    title: 'Donate',
-    href: '/donate',
+    emoji: '👨‍💻',
+    title: 'Projects',
+    href: '/projects',
     gradient: 'red-to-purple',
   },
   {
@@ -71,9 +71,9 @@ export const ToolbarLinks = () => {
   useEffect(() => {
     if (!router || !router.isReady) return;
     const { asPath: pathname } = router;
-    if (pathname.includes('/uses')) setActiveLink(2);
-    else if (pathname.includes('/blog')) setActiveLink(1);
-    else if (pathname.includes('/donate')) setActiveLink(3);
+    if (pathname.includes('/about')) setActiveLink(1);
+    else if (pathname.includes('/blog')) setActiveLink(2);
+    else if (pathname.includes('/projects')) setActiveLink(3);
     else if (pathname.includes('/contact')) setActiveLink(4);
     else setActiveLink(-1);
   }, [router]);

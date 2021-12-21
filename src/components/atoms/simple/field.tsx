@@ -85,7 +85,7 @@ const FieldWrapper = styled(BaseFieldWrapper)`
 const LabeledFieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 0.4rem;
+  padding-top: 0.8rem;
 
   & label.hidden {
     display: none;

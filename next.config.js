@@ -37,6 +37,7 @@ const defaultNextConfig = {
   webpack(config, { dev, isServer }) {
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
+        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
         react: 'preact/compat',
         'react-dom': 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
@@ -73,7 +74,8 @@ const defaultNextConfig = {
       buildRedirect('/dashsetup/:path*', 'https://dashbud.dev'),
       /* Other redirections */
       buildRedirect('/links', '/'),
-      buildRedirect('/music', '/dashboard'),
+      buildRedirect('/music', '/now'),
+      buildRedirect('/dashboard', '/now'),
       buildRedirect('/support', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),
       buildRedirect('/uses', '/blog/uses'),

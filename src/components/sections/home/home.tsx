@@ -1,15 +1,28 @@
+import styled from '@emotion/styled';
+import { mdiAccountCircleOutline } from '@mdi/js';
+
 import { Hello } from './hello';
-import { Intro } from './intro';
 import { Skills } from './skills';
 
+import { LinkButton } from '~/components/atoms/simple';
 import { Component } from '~/types';
+
+const LearnMoreButton = styled(LinkButton)`
+  margin: 0.8rem 0 0.2rem;
+`;
 
 export const Home: Component = () => {
   return (
     <>
       <section id={'about'}>
         <Hello />
-        <Intro />
+        <LearnMoreButton
+          icon={mdiAccountCircleOutline}
+          title={'Link to about page'}
+          href={'/about'}
+        >
+          Learn more
+        </LearnMoreButton>
       </section>
       <Skills />
     </>

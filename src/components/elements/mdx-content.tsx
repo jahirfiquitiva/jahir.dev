@@ -1,14 +1,19 @@
 import styled from '@emotion/styled';
 import { CSSProperties, useMemo } from 'react';
 
+import { Reactions } from './reactions';
+
+import { ViewsCounter } from '~/components/atoms/complex';
 import { Heading, Image, Link, Divider } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
+import { ReactionsProvider } from '~/providers/reactions';
 import { useTheme } from '~/providers/theme';
 import {
   Component,
   ComponentProps,
   mediaQueries,
   Post,
+  HeroMeta,
   ProjectProps as Project,
   CodingChallenge,
 } from '~/types';
@@ -89,9 +94,34 @@ const ContentIntro = styled.p`
 `;
 
 const DiscussEdit = styled.p`
-  margin-top: 1.2rem;
   font-size: var(--font-2xs);
   color: var(--text-tertiary);
+  order: 2;
+  ${mediaQueries.tablet.lg} {
+    order: 1;
+  }
+`;
+
+const MdxReactions = styled(Reactions)`
+  order: 1;
+  ${mediaQueries.tablet.lg} {
+    order: 2;
+  }
+`;
+
+const MdxFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 2.4rem 0 0.8rem;
+  box-sizing: border-box;
+
+  ${mediaQueries.tablet.lg} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0 0;
+  }
 `;
 
 type ContentTypes = Post | Project | CodingChallenge;
@@ -107,9 +137,9 @@ const editUrl = (content: ContentTypes) =>
     content,
   )}.mdx`;
 
-const discussUrl = (content: ContentTypes) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://jahir.dev/${slugPath(content)}`,
+const shareUrl = (content: ContentTypes) =>
+  `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    `https://jahir.dev/${slugPath(content)} by @jahirfiquitiva`,
   )}`;
 
 interface ContentFields {
@@ -117,6 +147,9 @@ interface ContentFields {
   hero?: string;
   date?: string;
   readingTime?: string;
+  slug?: string;
+  devToId?: number;
+  heroMeta?: HeroMeta;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -126,6 +159,9 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('hero' in content) fields.hero = content.hero;
   if ('date' in content) fields.date = content.date;
   if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
+  if ('slug' in content) fields.slug = content.slug;
+  if ('devToId' in content) fields.devToId = content.devToId;
+  if ('heroMeta' in content) fields.heroMeta = content.heroMeta;
   return fields;
 };
 
@@ -133,13 +169,15 @@ interface CommonContent {
   backText?: string;
   backHref?: string;
   content: ContentTypes;
+  contentType: 'blog' | 'projects';
 }
 
 type MdxContentProps = ComponentProps & CommonContent;
 
 export const MdxContent: Component<MdxContentProps> = (props) => {
-  const { backText, backHref, content, children } = props;
-  const { title, hero, date, readingTime } = getContentFields(content);
+  const { backText, backHref, content, contentType, children } = props;
+  const { title, hero, date, readingTime, slug, devToId, heroMeta } =
+    getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
@@ -154,6 +192,13 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
       textShadow: `var(--text-shadow-size) var(--text-shadow-size) 0 ${color}`,
     };
   }, [themeReady, isDark, heroPalette]);
+
+  const extraHeroProps = useMemo(() => {
+    if (heroMeta && heroMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: heroMeta.blur64 };
+    }
+    return {};
+  }, [heroMeta]);
 
   return (
     <MdxContentSection>
@@ -177,25 +222,39 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
               {readingTime}
             </>
           )}
+          <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />
         </ContentIntro>
 
-        {hero && <Hero src={hero || ''} alt={title} priority />}
+        <ReactionsProvider slug={`${contentType}--${slug}`}>
+          <MdxReactions />
 
-        {children}
+          {hero && (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            <Hero src={hero || ''} alt={title} priority {...extraHeroProps} />
+          )}
+          {children}
+          <Divider thin />
 
-        <Divider thin />
-        <DiscussEdit>
-          <Link href={discussUrl(content)} title={'Link to discuss on Twitter'}>
-            Discuss on Twitter
-          </Link>
-          {' • '}
-          <Link
-            href={editUrl(content)}
-            title={'Link to edit content on GitHub'}
-          >
-            Edit on GitHub
-          </Link>
-        </DiscussEdit>
+          <MdxFooter>
+            <DiscussEdit>
+              <Link
+                href={shareUrl(content)}
+                title={'Link to share blog post on Twitter'}
+              >
+                Share on Twitter
+              </Link>
+              {' • '}
+              <Link
+                href={editUrl(content)}
+                title={'Link to edit content on GitHub'}
+              >
+                Edit on GitHub
+              </Link>
+            </DiscussEdit>
+            <MdxReactions />
+          </MdxFooter>
+        </ReactionsProvider>
       </article>
     </MdxContentSection>
   );

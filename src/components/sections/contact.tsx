@@ -108,21 +108,6 @@ const DiscordLink = styled(Link)`
   }
 `;
 
-const GitHubLink = styled(Link)`
-  color: #333;
-  &:hover,
-  &:focus {
-    color: #292929;
-  }
-  .dark & {
-    color: #ebebeb;
-    &:hover,
-    &:focus {
-      color: #fff;
-    }
-  }
-`;
-
 type ContactImage = {
   key: string;
   alt: string;
@@ -225,14 +210,14 @@ export const Contact: Component = () => {
               </TelegramLink>
             </li>
             <li>
-              <GitHubLink
+              <Link
                 title={"Link to Jahir's Ask me Anything on GitHub"}
                 href={
                   'https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=q-a'
                 }
               >
                 Ask me Anything (on GitHub)
-              </GitHubLink>
+              </Link>
             </li>
           </ContactOptions>
           <p>

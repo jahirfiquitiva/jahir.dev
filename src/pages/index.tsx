@@ -36,6 +36,8 @@ export const getStaticProps: GetStaticProps = async () => {
         'darkColor',
         'stack',
         'hide',
+        'repo',
+        'owner',
       ]),
     );
 

@@ -24,5 +24,5 @@
     "jsxImportSource": "@emotion/react"
   },
   "exclude": [".next", ".idea", "node_modules"],
-  "include": ["next-env.d.ts", "twin.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "global.d.ts", "**/*.ts", "**/*.tsx"]
 }

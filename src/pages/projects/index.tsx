@@ -15,8 +15,9 @@ const HomePage: Component<HomePageProps> = (props) => {
   return (
     <Page
       title={'Projects ~ Jahir Fiquitiva 💎'}
-      exactUrl={'https://jahir.dev/projects'}>
-      <Projects projects={props.projects} full />
+      exactUrl={'https://jahir.dev/projects'}
+    >
+      <Projects projects={props.projects} showFullList />
     </Page>
   );
 };
@@ -36,6 +37,8 @@ export const getStaticProps: GetStaticProps = async () => {
         'darkColor',
         'stack',
         'hide',
+        'repo',
+        'owner',
       ]),
     );
 

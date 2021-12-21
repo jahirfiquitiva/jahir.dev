@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import { mdiWeb } from '@mdi/js';
-import Icon from '@mdi/react';
 
 import { SectionHeading } from '~/components/atoms/complex';
 import {
@@ -10,6 +8,7 @@ import {
   CenteredSection,
 } from '~/components/atoms/simple';
 import { Masonry, MasonryBreakpoints } from '~/components/elements';
+import useRequest from '~/hooks/useRequest';
 import {
   Component,
   ComponentProps,
@@ -72,9 +71,9 @@ const FaviconLinkContainer = styled.div`
   }
 `;
 
-export interface InspirationProps extends ComponentProps {
-  inspirationItems?: Array<InspirationSite>;
-}
+const EmptyText = styled.p`
+  margin: 1.2rem 0 2.4rem;
+`;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
@@ -89,13 +88,41 @@ const formatLink = (link?: string): string => {
     .replace('www.', '');
 };
 
-const validFavicon = (favicon?: string): boolean => {
-  if (!favicon) return false;
-  return favicon.length > 0 && !favicon.includes('data:image');
+interface InspirationItemProps extends ComponentProps {
+  item: InspirationSite;
+}
+
+const InspirationItem: Component<InspirationItemProps> = (props) => {
+  const { title, link, icon, domain } = props.item;
+  const {
+    data = {
+      favicon: `https://www.google.com/s2/favicons?domain=${domain}`,
+    },
+  } = useRequest<{ favicon?: string }>(`/api/favicon?domain=${domain}`);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { favicon = '' } = data;
+
+  return (
+    <InspirationCard href={link || '#'} title={`Link to ${title}'s website`}>
+      <Heading size={'4'}>{title}</Heading>
+      <FaviconLinkContainer>
+        <Image
+          alt={title.split('')[0] || 'F'}
+          src={icon || favicon || ''}
+          width={24}
+          height={24}
+          avoidNextImage
+        />
+        <small>{formatLink(link)}</small>
+      </FaviconLinkContainer>
+    </InspirationCard>
+  );
 };
 
-export const Inspiration: Component<InspirationProps> = (props) => {
-  const { inspirationItems } = props;
+export const Inspiration: Component = () => {
+  const { data, loading } =
+    useRequest<{ bookmarks: Array<InspirationSite> }>('/api/bookmarks');
 
   return (
     <CenteredSection id={'inspiration'}>
@@ -112,32 +139,14 @@ export const Inspiration: Component<InspirationProps> = (props) => {
         this website and some of my projects 👏 <i>(In no particular order).</i>
       </Subtitle>
 
+      {loading ? <EmptyText>Loading...</EmptyText> : null}
+      {!loading && !data?.bookmarks?.length ? (
+        <EmptyText>No inspiration bookmarks found.</EmptyText>
+      ) : null}
+
       <InspirationMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
-        {(inspirationItems || []).map((item, i) => {
-          return (
-            <InspirationCard
-              key={i}
-              href={item.link}
-              title={`Link to ${item.title}'s website`}
-            >
-              <Heading size={'4'}>{item.title}</Heading>
-              {(item.description?.length || 0) > 0 && <p>{item.description}</p>}
-              <FaviconLinkContainer>
-                {validFavicon(item.favicon) ? (
-                  <Image
-                    alt={item.title.split('')[0] || 'F'}
-                    src={item.favicon ?? ''}
-                    width={24}
-                    height={24}
-                    avoidNextImage
-                  />
-                ) : (
-                  <Icon path={mdiWeb} size={0.8} />
-                )}
-                <small>{formatLink(item.link)}</small>
-              </FaviconLinkContainer>
-            </InspirationCard>
-          );
+        {(data?.bookmarks || []).map((item, i) => {
+          return <InspirationItem key={i} item={item} />;
         })}
       </InspirationMasonry>
     </CenteredSection>

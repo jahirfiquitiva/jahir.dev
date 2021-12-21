@@ -1,5 +1,10 @@
 import { IReadTimeResults } from 'reading-time';
 
+export interface HeroMeta {
+  size: { width: number; height: number };
+  blur64?: string;
+}
+
 export interface Post {
   slug: string;
   title: string;
@@ -11,4 +16,7 @@ export interface Post {
   readingTime?: IReadTimeResults | null;
   inProgress?: boolean;
   keywords?: Array<string>;
+  year?: number;
+  devToId?: number;
+  heroMeta?: HeroMeta;
 }

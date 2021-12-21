@@ -29,8 +29,8 @@ export const DonateIntro: Component = () => {
     <section id={'donate'}>
       <SectionHeading
         size={'3'}
-        shadowColor={'red'}
-        gradientColor={'red-to-purple'}
+        shadowColor={'orange'}
+        gradientColor={'orange-to-red'}
         emoji={'🧡'}
       >
         Donate

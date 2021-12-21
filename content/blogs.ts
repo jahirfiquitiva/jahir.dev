@@ -5,6 +5,7 @@ import random from './../src/lib/random';
 import unique from './../src/lib/unique';
 import { defaultKeywords } from './../src/types';
 import { getPostDescription } from './../src/utils/posts';
+import { getBlurData } from './image-metadata';
 
 const defaultColors = [
   '#fc5c65',
@@ -18,23 +19,39 @@ const defaultColors = [
   '#778ca3',
 ];
 
+const idChars =
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+
+const getActualHeroUrl = (hero?: string) =>
+  hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
+
+const generateRandomId = (length: number = 6) => {
+  let retVal = '';
+  for (let i = 0; i < length; ++i) {
+    retVal += random(idChars);
+  }
+  return retVal;
+};
+const secretPostsId = generateRandomId();
+
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
-    // eslint-disable-next-line no-underscore-dangle
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+    resolve: (doc) => {
+      // eslint-disable-next-line no-underscore-dangle
+      const defaultSlug = doc._raw.sourceFileName.replace(/\.mdx$/, '');
+      if (!doc.inProgress) return defaultSlug;
+      const secretSlug = `${defaultSlug}-${secretPostsId}`;
+      // eslint-disable-next-line no-console
+      console.log(`Generated secret slug: [${secretSlug}]`);
+      return secretSlug;
+    },
   },
   hero: {
     type: 'string',
     resolve: (doc) => {
-      const { hero } = doc;
-      const actualHero: string = hero
-        ? hero.startsWith('http')
-          ? hero
-          : `/static/images/blog/${hero}`
-        : '';
-      return actualHero;
+      return getActualHeroUrl(doc.hero);
     },
   },
   keywords: {
@@ -65,6 +82,23 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc.color || random(defaultColors),
   },
+  year: {
+    type: 'number',
+    resolve: (doc) => {
+      try {
+        const date = new Date(doc.date);
+        return date.getFullYear();
+      } catch (e) {
+        return 0;
+      }
+    },
+  },
+  heroMeta: {
+    type: 'json',
+    resolve: async (doc) => {
+      return getBlurData(getActualHeroUrl(doc.hero));
+    },
+  },
 };
 
 const Blog = defineDocumentType(() => ({
@@ -82,6 +116,9 @@ const Blog = defineDocumentType(() => ({
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
     keywords: { type: 'string' },
+    year: { type: 'number' },
+    devToId: { type: 'number' },
+    heroMeta: { type: 'json' },
   },
   computedFields,
 }));

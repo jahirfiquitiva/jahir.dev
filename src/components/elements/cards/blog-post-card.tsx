@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
+import { mdiCalendarBlank, mdiClockOutline, mdiEyeOutline } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
+import useRequest from '~/hooks/useRequest';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, Post, mediaQueries } from '~/types';
@@ -14,14 +17,21 @@ import buildStyles from '~/utils/styles/build-styles';
 const BaseBlogPostCard = styled(LinkCard)`
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
+  border: none;
   color: var(--text-secondary);
-  min-height: 192px;
-  box-shadow: var(--shadow-sm);
   transition: all 0.35s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 0 calc(0.8rem * -1);
+  padding: 0.8rem;
 
+  ${mediaQueries.mobile.lg} {
+    flex-direction: row;
+  }
   ${mediaQueries.tablet.sm} {
-    min-height: 232px;
+    gap: 1.2rem;
   }
 
   * {
@@ -31,96 +41,60 @@ const BaseBlogPostCard = styled(LinkCard)`
   & p {
     font-size: var(--font-3xs);
 
-    &.date {
-      color: var(--text-tertiary);
-    }
-
     ${mediaQueries.tablet.sm} {
       font-size: var(--font-2xs);
     }
   }
 
+  & .reactions {
+    color: var(--text-secondary);
+  }
+
   &:hover,
   &:focus {
-    & h4 {
+    box-shadow: none;
+    background-color: var(--bg-color);
+    & h5 {
       color: var(--hl-color);
       text-decoration: underline;
     }
-
-    & p {
-      height: auto;
-      opacity: 1;
-      visibility: visible;
-      margin: 0.4rem 0;
+    & .reactions {
       color: var(--text-primary);
-      line-height: 1.625;
-
-      &.date {
-        margin: 0.2rem 0;
-        color: var(--text-secondary);
-      }
     }
   }
 `;
 
-const BlogPostImage = styled(Image)`
-  overflow: hidden;
-  border-radius: 8px;
-  min-height: 192px;
-  height: 100%;
-  max-height: 192px;
+const ImageContainer = styled.div`
+  display: block;
+  box-shadow: none;
+  min-height: 100% !important;
 
-  ${mediaQueries.tablet.sm} {
-    max-height: 232px;
-  }
-
-  & > span:first-of-type,
-  & img {
+  & > span,
+  & > span > img {
+    border-radius: 6px;
+    min-width: 96px !important;
+    width: 100% !important;
     min-height: 100% !important;
-    min-width: 100% !important;
     height: 100% !important;
-  }
-  & img {
-    object-fit: cover;
-  }
-`;
+    max-height: 144px !important;
 
-const Scrim = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 8px;
-  pointer-events: none;
-  background-color: rgb(var(--background-values));
-  opacity: 0.05;
-
-  .dark & {
-    opacity: 0.2;
+    ${mediaQueries.tablet.sm} {
+      min-width: 160px !important;
+    }
   }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
+  flex: 1;
   border: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  box-shadow: 0 -4px 6px -2px rgba(var(--shadow-color), 0.12),
-    0 -6px 7px 0 rgba(var(--shadow-color), 0.09),
-    0 -3px 12px 0 rgba(var(--shadow-color), 0.07);
-  background-color: var(--blog-card-color);
-  z-index: 1;
-  backdrop-filter: blur(8px) saturate(200%);
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0.4rem 0 0;
+  ${mediaQueries.mobile.lg} {
+    margin: auto 0;
+  }
 `;
 
 const Excerpt = styled.p`
@@ -128,7 +102,7 @@ const Excerpt = styled.p`
   height: auto;
   opacity: 1;
   visibility: visible;
-  margin: 0.4rem 0;
+  margin: 0.2rem 0;
   line-height: 1.625;
   color: var(--text-secondary);
   font-size: var(--font-3xs);
@@ -138,26 +112,53 @@ const Excerpt = styled.p`
   -webkit-line-clamp: 1;
   max-lines: 1;
 
-  ${mediaQueries.tablet.sm} {
-    opacity: 0;
-    line-height: 0;
-    visibility: hidden;
-    pointer-events: none;
+  ${mediaQueries.mobile.lg} {
     font-size: var(--font-2xs);
     -webkit-line-clamp: 2;
     max-lines: 2;
   }
 `;
 
-const Date = styled.p`
+const Published = styled.p`
   margin: 0.2rem 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: var(--text-tertiary);
+  font-size: var(--font-3xs);
+  font-weight: normal;
+`;
+
+const UnderlinedSpan = styled.span`
+  text-decoration: underline;
+`;
+
+const InfoSpan = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+`;
+
+const InfoContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  row-gap: 0.4rem;
+  margin-top: 0.4rem;
+  color: var(--text-tertiary);
+  font-size: var(--font-3xs);
+  font-weight: normal;
+  line-height: inherit;
+  flex-wrap: wrap;
+  ${mediaQueries.mobile.lg} {
+    margin-top: 0.2rem;
+  }
+  ${mediaQueries.tablet.sm} {
+    column-gap: 1rem;
+  }
 `;
 
 interface BlogPostCardProps extends ComponentProps, Post {}
-
 export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
   const {
     title,
@@ -168,14 +169,18 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     slug,
     link,
     readingTime,
+    devToId,
+    heroMeta,
   } = props;
+  const { data: views } = useRequest<{ total?: string }>(
+    `/api/views/blog--${slug}?devToId=${devToId}`,
+  );
+
   const { isDark, themeReady } = useTheme();
 
   const { data: paletteData } = useSafePalette(
     hero.startsWith('..') ? null : hero,
   );
-
-  const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
 
   const postColor = useMemo<string | undefined>(() => {
     if (!themeReady || !paletteData) return defaultColor;
@@ -187,36 +192,79 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
     return getReadableColor(postColor, isDark);
   }, [themeReady, isDark, postColor]);
 
+  const rightLink = useMemo<string>(() => {
+    return link && link.length > 0 ? link : `/blog/${slug}`;
+  }, [link, slug]);
+
+  const extraHeroProps = useMemo<{ placeholder?: 'blur' }>(() => {
+    if (heroMeta && heroMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: heroMeta.blur64 };
+    }
+    return {};
+  }, [heroMeta]);
+
+  const domain = useMemo<string>(() => {
+    try {
+      const url = new URL(rightLink);
+      return url.hostname.replace('www.', '');
+    } catch (e) {
+      return '';
+    }
+  }, [rightLink]);
+
   return (
     <BaseBlogPostCard
       title={`Link to blog post: ${title}`}
       href={rightLink}
       underline={false}
       style={{
-        ...buildShadowStyles(postColor),
-        backgroundColor: postColor || 'unset',
+        ...buildShadowStyles(postColor, isDark, {
+          border: 0.35,
+          bg: isDark ? 0.1 : 0.025,
+        }),
+        ...buildStyles({ '--hl-color': textColor || undefined }),
       }}
     >
-      <BlogPostImage src={hero || ''} />
-      <Scrim />
+      <ImageContainer>
+        <Image
+          src={hero || ''}
+          alt={title}
+          height={72}
+          width={144}
+          objectFit={'cover'}
+          objectPosition={'center'}
+          layout={'responsive'}
+          {...extraHeroProps}
+        />
+      </ImageContainer>
       <Content>
-        <Heading
-          size={'4'}
-          fontSize={'xs'}
-          style={buildStyles({ '--hl-color': textColor || undefined })}
-        >
+        <Heading size={'5'} fontSize={'xs'}>
           {title}
         </Heading>
         {excerpt && <Excerpt>{excerpt}</Excerpt>}
-        <Date className={'date'}>
-          {formatDate(date)}
-          {(readingTime?.minutes || 0) > 0 && (
-            <>
-              {' • '}
+        {domain ? (
+          <Published>
+            Published on <UnderlinedSpan>{domain}</UnderlinedSpan>
+          </Published>
+        ) : null}
+        <InfoContainer>
+          <InfoSpan>
+            <Icon path={mdiCalendarBlank} size={0.73} />
+            {formatDate(date, { year: undefined, month: 'short' })}
+          </InfoSpan>
+          {(readingTime?.minutes || 0) > 0 ? (
+            <InfoSpan>
+              <Icon path={mdiClockOutline} size={0.73} />
               {readingTime?.text}
-            </>
-          )}
-        </Date>
+            </InfoSpan>
+          ) : null}
+          {views?.total && views?.total !== '0' ? (
+            <InfoSpan>
+              <Icon path={mdiEyeOutline} size={0.73} />
+              {views?.total} views
+            </InfoSpan>
+          ) : null}
+        </InfoContainer>
       </Content>
     </BaseBlogPostCard>
   );

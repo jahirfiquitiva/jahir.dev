@@ -15,18 +15,7 @@ import { getAllPosts } from '~/utils/posts';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
-  return {
-    slug: post.slug,
-    title: post.title,
-    date: post.date,
-    hero: post.hero,
-    excerpt: post.excerpt,
-    color: post.color,
-    link: post.link,
-    readingTime: post.readingTime,
-    inProgress: post.inProgress,
-    keywords: post.keywords,
-  } as Post;
+  return { ...post } as Post;
 };
 
 interface PostPageProps extends ComponentProps {
@@ -72,6 +61,7 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
       <MdxContent
         backText={'Back to blog posts list'}
         backHref={'/blog'}
+        contentType={'blog'}
         content={post}
       >
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -83,13 +73,13 @@ const PostPage: Component<PostPageProps> = ({ post: basePost }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getAllPosts().map((p) => ({ params: { slug: p.slug } })),
+    paths: getAllPosts([], true).map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getAllPosts().find((post) => post.slug === params?.slug);
+  const post = getAllPosts([], true).find((post) => post.slug === params?.slug);
   const shouldRedirect = post && post.link && post.link.length > 0;
   if (shouldRedirect) {
     return {

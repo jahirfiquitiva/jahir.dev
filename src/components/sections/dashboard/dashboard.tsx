@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 import { DashboardGrid } from './dashboard-grid';
-import { Status } from './status';
+import { Now } from './now';
 
-import { Heading, Divider, CenteredSection } from '~/components/atoms/simple';
+import { SectionHeading } from '~/components/atoms/complex';
+import { Divider, Section } from '~/components/atoms/simple';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
@@ -13,15 +14,16 @@ const TopTracksContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
 
   ${mediaQueries.tablet.sm} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
 
-const TopTracksHeading = styled(Heading)`
-  margin: 0.6rem 0 1rem;
+const TopTracksHeading = styled(SectionHeading)`
+  --text-shadow-size: 1px;
+  margin: 0 0 1.2rem;
   font-size: var(--font-sm);
 `;
 
@@ -50,15 +52,22 @@ export const Dashboard: Component = () => {
   };
 
   return (
-    <CenteredSection id={'music'}>
-      <Status
-        status={dashboardData?.statusName}
-        userId={dashboardData?.user?.id}
-      />
-      <DashboardGrid data={dashboardData} />
-      <Divider thin />
-      <TopTracksHeading size={'4'}>Top Tracks</TopTracksHeading>
-      {renderTopTracks()}
-    </CenteredSection>
+    <>
+      <Section id={'now'}>
+        <Now />
+      </Section>
+      <Section id={'dashboard'}>
+        <Divider thin />
+        <TopTracksHeading size={'4'} emoji={'✨'} shadowColor={'orange'}>
+          Right Now
+        </TopTracksHeading>
+        <DashboardGrid data={dashboardData} />
+        <Divider thin />
+        <TopTracksHeading size={'4'} emoji={'🎙️'} shadowColor={'blue'}>
+          Top Tracks
+        </TopTracksHeading>
+        {renderTopTracks()}
+      </Section>
+    </>
   );
 };

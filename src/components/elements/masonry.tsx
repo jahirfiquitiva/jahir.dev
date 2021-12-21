@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import { Children, isValidElement, useMemo } from 'react';
 
-import useWindowWidth from '~/hooks/useWindowWidth';
+import useWindowDimensions from '~/hooks/useWindowDimensions';
 import { Component, ComponentProps, ComponentChild } from '~/types';
 
 const MasonryGrid = styled.div`
@@ -11,7 +11,6 @@ const MasonryGrid = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
   align-content: stretch;
   box-sizing: border-box;
 `;
@@ -20,7 +19,8 @@ const MasonryColumn = styled(MasonryGrid)`
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
-  padding: 0.2rem 0;
+  width: 0;
+  padding: 0.1rem 0;
 `;
 
 export type MasonryBreakpoints = { [key: string | number]: number };
@@ -71,8 +71,8 @@ export const Masonry: Component<MasonryProps> = (props) => {
     className,
     style,
   } = props;
-
-  const windowWidth = useWindowWidth();
+  const childrenCount = Children.count(children);
+  const { width: windowWidth } = useWindowDimensions();
 
   const mappedBreakpoints = useMemo<MasonryBreakpoints>(() => {
     return mapColumnsBreakPoints(breakpoints);
@@ -96,6 +96,7 @@ export const Masonry: Component<MasonryProps> = (props) => {
     return buildMasonryColumns(children, columnsCount);
   }, [children, columnsCount]);
 
+  if (!childrenCount) return null;
   return (
     <MasonryGrid className={className} style={{ ...style, gap }}>
       {columns.map((col, index) => {

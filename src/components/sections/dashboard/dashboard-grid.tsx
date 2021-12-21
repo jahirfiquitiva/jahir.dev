@@ -1,8 +1,15 @@
+import styled from '@emotion/styled';
+import { mdiEye, mdiThumbUp } from '@mdi/js';
+
 import { Activity } from './activity';
 import { Counter } from './counter';
 
 import { SongCard, Masonry, MasonryBreakpoints } from '~/components/elements';
 import { Component, ComponentProps, DashboardData, viewports } from '~/types';
+
+const DashboardMasonry = styled(Masonry)`
+  margin-top: 1rem;
+`;
 
 interface DashboardGridProps extends ComponentProps {
   data?: DashboardData | null;
@@ -27,16 +34,29 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
   };
 
   const masonryItems = [
-    renderNowPlaying(),
     dashboardData?.activities?.map((activity, index) => {
       return <Activity key={`activity-${index}`} data={activity} />;
     }),
-    <Counter
-      key={'github-stalk'}
-      text={'Stalk my GitHub Activity'}
-      site={'stalk'}
-      href={'https://gitstalk.netlify.app/jahirfiquitiva'}
-    />,
+    dashboardData?.counters?.views ? (
+      <Counter
+        key={'views-card'}
+        count={dashboardData?.counters?.views}
+        text={'All-Time Views'}
+        site={'jahir'}
+        href={'/'}
+        iconPath={mdiEye}
+      />
+    ) : undefined,
+    dashboardData?.counters?.reactions ? (
+      <Counter
+        key={'reactions-card'}
+        count={dashboardData?.counters?.reactions}
+        text={'All-Time Reactions'}
+        site={'jahir'}
+        href={'/'}
+        iconPath={mdiThumbUp}
+      />
+    ) : undefined,
     dashboardData?.counters?.githubFollowers ? (
       <Counter
         key={'github-followers-card'}
@@ -55,6 +75,12 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         href={'https://github.com/jahirfiquitiva?tab=repositories'}
       />
     ) : undefined,
+    <Counter
+      key={'github-stalk'}
+      text={'Stalk my GitHub Activity'}
+      site={'stalk'}
+      href={'https://gitstalk.netlify.app/jahirfiquitiva'}
+    />,
     dashboardData?.counters?.twitterFollowers ? (
       <Counter
         key={'twitter-followers-card'}
@@ -69,8 +95,11 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
     .filter((it) => it);
 
   return (
-    <Masonry gap={'1rem'} breakpoints={masonryBreakpoints}>
-      {masonryItems}
-    </Masonry>
+    <>
+      {renderNowPlaying()}
+      <DashboardMasonry gap={'1rem'} breakpoints={masonryBreakpoints}>
+        {masonryItems}
+      </DashboardMasonry>
+    </>
   );
 };

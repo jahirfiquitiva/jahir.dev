@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import { TrackData } from './music';
 
+import { Reactions } from '~/types';
+
 export interface DiscordStatus {
   state?: string;
   id?: string;
@@ -63,6 +65,8 @@ export interface Counters {
   githubStars?: number;
   githubFollowers?: number;
   twitterFollowers?: number;
+  views?: string;
+  reactions?: string;
 }
 
 export interface DashboardData {

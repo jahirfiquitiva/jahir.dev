@@ -1,4 +1,7 @@
-const formatDate = (preDate?: string): string => {
+const formatDate = (
+  preDate?: string,
+  options: Intl.DateTimeFormatOptions | undefined | null = {},
+): string => {
   if (!preDate || preDate.length <= 0) return '';
   try {
     const date = new Date(preDate);
@@ -6,6 +9,7 @@ const formatDate = (preDate?: string): string => {
       month: 'long',
       day: '2-digit',
       year: 'numeric',
+      ...options,
     }).format(date);
   } catch (e) {
     return '';

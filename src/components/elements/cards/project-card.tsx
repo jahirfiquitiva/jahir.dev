@@ -1,11 +1,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { mdiStar } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo, CSSProperties, memo } from 'react';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
 import { Stack } from '~/components/elements';
+import useRequest from '~/hooks/useRequest';
 import { useTheme } from '~/providers/theme';
-import { Component, ComponentProps, mediaQueries, ProjectProps } from '~/types';
+import { Component, ComponentProps, ProjectProps } from '~/types';
 import getReadableColor from '~/utils/colors/get-readable-color';
 import buildShadowStyles from '~/utils/styles/build-shadow-styles';
 import buildStyles from '~/utils/styles/build-styles';
@@ -14,19 +17,18 @@ const BaseProjectCard = styled(LinkCard)`
   position: relative;
   width: 100%;
   overflow: hidden;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
-  grid-template-columns: minmax(0, 1fr);
-  grid-auto-rows: min-content;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 1rem;
   color: var(--text-secondary);
   border-radius: 10px;
-  border-color: var(--dashed-color, var(--divider));
-  box-shadow: var(--shadow-sm);
+  border-color: var(--border-color, var(--divider));
 
   & * {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.25s ease-in-out;
   }
-  & p {
+  & p,
+  & .stars {
     color: var(--text-secondary);
   }
 
@@ -34,13 +36,15 @@ const BaseProjectCard = styled(LinkCard)`
   &:focus {
     color: var(--text-primary);
     background-color: var(--bg-color);
-    border-color: var(--dashed-color, var(--divider));
+    border-color: var(--border-color, var(--divider));
+    box-shadow: var(--shadow);
 
     & h4 {
       text-decoration: underline;
       color: var(--hl-color);
     }
-    & p {
+    & p,
+    & .stars {
       color: var(--text-primary);
     }
     & img {
@@ -53,31 +57,7 @@ const BaseProjectCard = styled(LinkCard)`
   }
 `;
 
-const ProjectCardWithoutPreview = css`
-  grid-template-columns: minmax(0, 1fr);
-  & > div:first-of-type {
-    padding: 0.8rem;
-  }
-`;
-
-const ProjectCardWithPreview = css`
-  grid-template-columns: 60% 1fr;
-
-  ${mediaQueries.tablet.sm} {
-    grid-template-columns: 61% 1fr;
-  }
-`;
-
-const DetailsContainer = styled.div`
-  padding: 0.8rem 0 0.8rem 1rem;
-  display: flex;
-  flex-direction: column;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-`;
-
 const IconHeadingContainer = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -87,15 +67,13 @@ const IconHeadingContainer = styled.div`
 
   & img {
     opacity: 0.9;
-    filter: drop-shadow(0 1px 2px var(--filter-color, var(--dashed-color)));
+    filter: drop-shadow(0 1px 2px var(--border-color));
   }
 `;
 
 const ProjectHeading = styled(Heading)`
-  position: absolute;
   color: var(--text-primary);
   font-size: var(--font-sm);
-  z-index: 1;
   left: calc(48px + 0.6rem);
   text-shadow: 1px 2px 2px var(--projects-card-text-shadow);
   overflow: hidden;
@@ -107,34 +85,49 @@ const ProjectDescription = styled.p`
   font-size: var(--font-2xs);
 `;
 
-const PreviewImage = styled(Image)`
-  min-height: 100% !important;
-  overflow: hidden;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  z-index: 0;
-  display: flex !important;
-  flex-direction: column;
+const ProjectStarsContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--bg-color);
+  border-bottom-left-radius: 10px;
+  font-size: var(--font-2xs);
+  font-family: var(--manrope-font);
+  border: 1px solid;
+  border-color: var(--border-color, var(--divider));
+  border-top-width: 0;
+  border-right-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.4rem;
+  gap: 0.2rem;
+  transition-duration: 0.1s;
 
-  & > span:first-of-type {
-    flex: 1;
-    & > img {
-      position: absolute !important;
-      max-height: 165px !important;
-      opacity: 0.8;
-      object-fit: cover;
-      object-position: bottom right;
-      margin-bottom: 0 !important;
-      filter: drop-shadow(2px 3px 4px var(--filter-color, var(--dashed-color)));
-    }
+  & > * {
+    transition-duration: 0.1s;
+  }
+  & > svg {
+    padding-bottom: 0.1rem;
   }
 `;
 
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
 const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
-  const { name, description, link, icon, preview, stack, color, darkColor } =
-    props;
+  const {
+    name,
+    description,
+    link,
+    icon,
+    stack,
+    color,
+    darkColor,
+    repo,
+    owner,
+  } = props;
+  const { data } = useRequest<{ stars?: string }>(
+    `/api/repo/${repo}${owner ? `?owner=${owner}` : ''}`,
+  );
 
   const { isDark, themeReady } = useTheme();
 
@@ -151,23 +144,11 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
 
   const shadowColors = useMemo<CSSProperties>(() => {
     if (!themeReady || !projectColor) return {};
-    return buildShadowStyles(projectColor, 0.2, 0.4, isDark, 0.05);
+    return buildShadowStyles(projectColor, isDark, {
+      border: 0.5,
+      bg: 0.05,
+    });
   }, [themeReady, isDark, projectColor]);
-
-  const cardExtraStyles = useMemo(() => {
-    if (preview) return ProjectCardWithPreview;
-    return ProjectCardWithoutPreview;
-  }, [preview]);
-
-  const previewComponent = useMemo(() => {
-    if (!preview) return null;
-    return (
-      <PreviewImage
-        src={`/static/images/projects/${preview}`}
-        alt={`Preview image for: ${name}`}
-      />
-    );
-  }, [preview, name]);
 
   return (
     <BaseProjectCard
@@ -175,25 +156,28 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
       href={link}
       style={shadowColors}
       underline={false}
-      css={cardExtraStyles}
     >
-      <DetailsContainer>
-        <IconHeadingContainer>
-          <Image src={`/static/images/projects/${icon}`} alt={name} size={44} />
-          <ProjectHeading size={'4'} style={titleColors}>
-            {name}
-          </ProjectHeading>
-        </IconHeadingContainer>
-        <ProjectDescription>{description}</ProjectDescription>
-        <Stack
-          stack={stack}
-          css={css`
-            opacity: 0.8;
-            margin-top: 0.4rem;
-          `}
-        />
-      </DetailsContainer>
-      {previewComponent || undefined}
+      <IconHeadingContainer>
+        <Image src={`/static/images/projects/${icon}`} alt={name} size={44} />
+        <ProjectHeading size={'4'} style={titleColors}>
+          {name}
+        </ProjectHeading>
+      </IconHeadingContainer>
+      <ProjectDescription>{description}</ProjectDescription>
+      <Stack
+        stack={stack}
+        css={css`
+          opacity: 0.8;
+          margin-top: 0.4rem;
+          margin-bottom: 0;
+        `}
+      />
+      {data?.stars ? (
+        <ProjectStarsContainer className={'stars'}>
+          <Icon path={mdiStar} size={0.7} />
+          <span>{data?.stars}</span>
+        </ProjectStarsContainer>
+      ) : null}
     </BaseProjectCard>
   );
 };
