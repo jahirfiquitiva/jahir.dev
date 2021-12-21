@@ -155,7 +155,7 @@ export const Now: Component = () => {
           priority
         />
       </NowContainer>
-      <small>Last update: {formatDate('2021-12-14T05:00:00.000Z')}</small>
+      <small>Last update: {formatDate('2021-12-20T05:00:00.000Z')}</small>
     </>
   );
 };
