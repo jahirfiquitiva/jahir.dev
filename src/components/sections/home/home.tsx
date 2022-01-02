@@ -21,7 +21,7 @@ export const Home: Component = () => {
           title={'Link to about page'}
           href={'/about'}
         >
-          Learn more
+          More about me
         </LearnMoreButton>
       </section>
       <Skills />
