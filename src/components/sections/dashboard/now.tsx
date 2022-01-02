@@ -140,12 +140,12 @@ export const Now: Component = () => {
               </p>
             </NowRow>
           </li>
-          <li>
+          {/* <li>
             <NowRow>
               <span>📚</span>
               <p>Reading Clean Code by Robert C. Martin</p>
             </NowRow>
-          </li>
+          </li> */}
         </NowList>
         <Animoji
           src={'/static/images/jahir/animoji.png'}
@@ -155,7 +155,7 @@ export const Now: Component = () => {
           priority
         />
       </NowContainer>
-      <small>Last update: {formatDate('2021-12-20T05:00:00.000Z')}</small>
+      <small>Last update: {formatDate('2022-01-02T05:00:00.000Z')}</small>
     </>
   );
 };
