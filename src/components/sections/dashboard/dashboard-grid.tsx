@@ -43,7 +43,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         count={dashboardData?.counters?.views}
         text={'All-Time Views'}
         site={'jahir'}
-        href={'/'}
+        href={'/blog'}
         iconPath={mdiEye}
       />
     ) : undefined,
@@ -53,7 +53,7 @@ export const DashboardGrid: Component<DashboardGridProps> = (props) => {
         count={dashboardData?.counters?.reactions}
         text={'All-Time Reactions'}
         site={'jahir'}
-        href={'/'}
+        href={'/blog'}
         iconPath={mdiThumbUp}
       />
     ) : undefined,
