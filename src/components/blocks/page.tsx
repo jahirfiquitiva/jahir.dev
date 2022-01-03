@@ -1,12 +1,23 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
+import dynamic from 'next/dynamic';
 
-import { Footer } from './footer';
 import { Toolbar } from './toolbar';
 
-import { BackToTop } from '~/components/atoms/complex';
 import { DynamicMetaTags } from '~/components/blocks';
 import { Component, PageProps, defaultKeywords, mediaQueries } from '~/types';
+
+const DynamicFooter = dynamic(
+  // @ts-ignore
+  () => import('./footer').then((imp) => imp.Footer),
+  { ssr: false },
+);
+const DynamicBackToTop = dynamic(
+  // @ts-ignore
+  () => import('~/components/atoms/complex').then((imp) => imp.BackToTop),
+  { ssr: false },
+);
 
 const defaultSiteDescription =
   'Passionate and creative full-stack software engineer based in Colombia ' +
@@ -58,9 +69,9 @@ export const Page: Component<PageProps> = (props) => {
 
       <Toolbar />
       <Main>{children}</Main>
-      <Footer />
+      <DynamicFooter />
 
-      <BackToTop />
+      <DynamicBackToTop />
     </>
   );
 };

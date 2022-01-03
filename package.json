@@ -11,13 +11,15 @@
     "predev": "yarn clean && prisma generate && contentlayer build --clearCache",
     "prebuild": "yarn predev",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
-    "update-deps": "npx npm-check-updates -u && yarn"
+    "update-deps": "npx npm-check-updates -u && yarn",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mdi/js": "^6.5.95",
     "@mdi/react": "^1.5.0",
+    "@next/bundle-analyzer": "^12.0.7",
     "@prisma/client": "^3.7.0",
     "canvas-confetti": "^1.4.0",
     "classnames": "^2.3.1",

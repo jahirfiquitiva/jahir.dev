@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./headers');
@@ -86,4 +89,4 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withContentlayer()(defaultNextConfig);
+module.exports = withBundleAnalyzer(withContentlayer()(defaultNextConfig));
