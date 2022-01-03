@@ -49,7 +49,7 @@
       }
     ],
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": [
           "object",
