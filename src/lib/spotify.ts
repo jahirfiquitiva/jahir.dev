@@ -1,4 +1,4 @@
-import querystring from 'querystring';
+import { serialize } from './serialize';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
@@ -21,7 +21,7 @@ const getAccessToken = async () => {
       Authorization: `Basic ${basic}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: querystring.stringify({
+    body: serialize({
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
     }),

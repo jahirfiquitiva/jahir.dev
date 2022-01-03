@@ -1,4 +1,4 @@
-import querystring from 'querystring';
+import { serialize } from './serialize';
 
 import { TwitterResponse } from '~/types';
 
@@ -21,9 +21,7 @@ const getAccessToken = async () => {
       Authorization: `Basic ${basic}`,
       'Content-Type': 'application/x-www-form-urlencoded;charset:utf-8',
     },
-    body: querystring.stringify({
-      grant_type: 'client_credentials',
-    }),
+    body: serialize({ grant_type: 'client_credentials' }),
   });
 
   return response.json();
