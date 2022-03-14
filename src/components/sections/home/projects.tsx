@@ -52,8 +52,9 @@ const ProjectsHeaderLinksContainer = styled.div`
   }
 `;
 
-const ProjectsMasonry = styled(Masonry)`
-  padding: 1.6rem 0;
+const ProjectsMasonry = styled(Masonry)<{ showFullList?: boolean }>`
+  padding: 1.6rem 0
+    ${({ showFullList }) => (showFullList ? '2.4rem' : '1.6rem')};
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
@@ -143,7 +144,11 @@ export const Projects: Component<ProjectsProps> = (props) => {
 
       {renderSearchComponents()}
 
-      <ProjectsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
+      <ProjectsMasonry
+        showFullList={showFullList}
+        breakpoints={masonryBreakpoints}
+        gap={'1rem'}
+      >
         {(filteredProjects || []).map((project, index) => {
           const projectLink = project.link;
           // TODO: Enable when ready =>

@@ -67,7 +67,7 @@ body.sb-show-main.sb-main-padded {
   flex-direction: column;
   min-height: stretch;
   min-height: 100vh;
-  padding-top: calc(var(--toolbar-height) + 1.6rem);
+  padding-top: calc(var(--toolbar-height) + 2.4rem);
 }
 
 /* == Custom Scrollbar Colors == */
