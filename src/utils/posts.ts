@@ -3,8 +3,8 @@ import removeMd from 'remove-markdown';
 
 import pick from './../lib/pick';
 
-import { allBlogs } from '.contentlayer/data';
-import type { Blog } from '.contentlayer/types';
+import { allBlogs } from 'contentlayer/generated';
+import type { Blog } from 'contentlayer/generated';
 
 const minCharacters = 70;
 const maxCharacters = 150;

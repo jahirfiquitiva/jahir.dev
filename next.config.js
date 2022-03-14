@@ -20,7 +20,7 @@ const buildRedirect = (source, destination, permanent = true) => {
 const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
-  experimental: {
+  compiler: {
     removeConsole: {
       exclude: ['error'],
     },
