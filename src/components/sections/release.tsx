@@ -1,4 +1,3 @@
-import { SectionHeading } from '~/components/atoms/complex';
 import { Heading, CenteredSection } from '~/components/atoms/simple';
 import useRequest from '~/hooks/useRequest';
 import { Component, ComponentProps } from '~/types';
@@ -28,9 +27,7 @@ export const Release: Component<ReleaseProps> = (props) => {
   if (loading) {
     return (
       <CenteredSection>
-        <SectionHeading size={'3'} emoji={'🤓'}>
-          Loading…
-        </SectionHeading>
+        <Heading size={'3'}>Loading…</Heading>
       </CenteredSection>
     );
   }

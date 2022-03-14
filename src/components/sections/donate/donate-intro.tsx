@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
-import { SectionHeading } from '~/components/atoms/complex';
-import { Link } from '~/components/atoms/simple';
+import { Heading, Link } from '~/components/atoms/simple';
 import { DonationLinks } from '~/components/elements';
 import { Component, mediaQueries } from '~/types';
 
@@ -27,14 +26,13 @@ const OptionsContainer = styled.div`
 export const DonateIntro: Component = () => {
   return (
     <section id={'donate'}>
-      <SectionHeading
+      <Heading
         size={'3'}
         shadowColor={'orange'}
         gradientColor={'orange-to-red'}
-        emoji={'🧡'}
       >
         Donate
-      </SectionHeading>
+      </Heading>
 
       <ParagraphsContainer>
         <p>

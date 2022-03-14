@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-import { SectionHeading } from '~/components/atoms/complex';
 import {
   Heading,
   Image,
@@ -126,14 +125,9 @@ export const Inspiration: Component = () => {
 
   return (
     <CenteredSection id={'inspiration'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'brand'}
-        gradientColor={'brand-to-blue'}
-        emoji={'🌎'}
-      >
+      <Heading size={'3'} shadowColor={'brand'} gradientColor={'brand-to-blue'}>
         Inspiration
-      </SectionHeading>
+      </Heading>
       <Subtitle>
         These are some people and websites that have been inspiration to build
         this website and some of my projects 👏 <i>(In no particular order).</i>

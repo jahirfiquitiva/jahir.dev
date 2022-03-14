@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { useMemo } from 'react';
 import useSound from 'use-sound';
 
-import { SectionHeading } from '~/components/atoms/complex';
 import {
+  Heading,
   Section,
   Image,
   Link,
@@ -134,14 +134,9 @@ export const About = () => {
 
   return (
     <Section id={'about'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'blue'}
-        gradientColor={'blue-to-green'}
-        emoji={'🙋‍♂️'}
-      >
+      <Heading size={'3'} shadowColor={'blue'} gradientColor={'blue-to-green'}>
         About
-      </SectionHeading>
+      </Heading>
 
       {photoComponent}
 

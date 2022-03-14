@@ -2,10 +2,9 @@ import styled from '@emotion/styled';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
-import { SectionHeading } from '~/components/atoms/complex';
 import {
   Field,
-  Divider,
+  Heading,
   DotsDivider,
   LinkButton,
   OutlinedLinkButton,
@@ -118,14 +117,9 @@ export const Projects: Component<ProjectsProps> = (props) => {
       {!showFullList && <DotsDivider />}
 
       <ProjectsHeader>
-        <SectionHeading
-          size={'3'}
-          shadowColor={'red'}
-          gradientColor={'red-to-purple'}
-          emoji={'👨‍💻'}
-        >
-          {!showFullList ? 'Selected ' : ''}Projects
-        </SectionHeading>
+        <Heading size={'3'} shadowColor={'red'} gradientColor={'red-to-purple'}>
+          {!showFullList ? 'Featured ' : ''}Projects
+        </Heading>
 
         <ProjectsHeaderLinksContainer>
           <OutlinedLinkButton

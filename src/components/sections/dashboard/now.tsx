@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 
-import { SectionHeading } from '~/components/atoms/complex';
-import { Image, Link } from '~/components/atoms/simple';
+import { Heading, Image, Link } from '~/components/atoms/simple';
 import { Component, mediaQueries } from '~/types';
 import formatDate from '~/utils/format/format-date';
 
-const NowHeading = styled(SectionHeading)`
+const NowHeading = styled(Heading)`
   margin-top: 1.2rem;
   grid-row: 2;
   grid-column: 1/3;

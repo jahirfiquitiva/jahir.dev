@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Fragment, useMemo } from 'react';
 
-import { SectionHeading, ChipGroup } from '~/components/atoms/complex';
+import { ChipGroup } from '~/components/atoms/complex';
 import {
   Heading,
   Image,
@@ -110,14 +110,9 @@ export const Supporters: Component = () => {
         <Divider gradientColor={'orange-to-red'} />
         <SupportersHeader>
           <HeaderContent>
-            <SectionHeading
-              size={'3'}
-              emoji={'🙌'}
-              shadowColor={'red'}
-              gradientColor={'red-to-purple'}
-            >
+            <Heading size={'3'} emoji={'🙌'} shadowColor={'red'}>
               Thanks!
-            </SectionHeading>
+            </Heading>
             <p>
               I&apos;m really grateful to all the awesome people that support my
               work.

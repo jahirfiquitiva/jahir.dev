@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
-import { SectionHeading } from '~/components/atoms/complex';
-import { Link, CenteredSection, Image } from '~/components/atoms/simple';
+import {
+  Heading,
+  Link,
+  CenteredSection,
+  Image,
+} from '~/components/atoms/simple';
 import random from '~/lib/random';
 import { Component, mediaQueries } from '~/types';
 
@@ -159,14 +163,9 @@ export const Contact: Component = () => {
 
   return (
     <CenteredSection id={'contact'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'brand'}
-        gradientColor={'brand-to-blue'}
-        emoji={'📬'}
-      >
+      <Heading size={'3'} shadowColor={'brand'} gradientColor={'brand-to-blue'}>
         Contact
-      </SectionHeading>
+      </Heading>
       <Grid>
         <ContactOptionsContainer>
           <p>

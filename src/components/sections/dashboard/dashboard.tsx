@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import { DashboardGrid } from './dashboard-grid';
 import { Now } from './now';
 
-import { SectionHeading } from '~/components/atoms/complex';
-import { Divider, Section } from '~/components/atoms/simple';
+import { Heading, Divider, Section } from '~/components/atoms/simple';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
@@ -21,7 +20,7 @@ const TopTracksContainer = styled.div`
   }
 `;
 
-const TopTracksHeading = styled(SectionHeading)`
+const TopTracksHeading = styled(Heading)`
   --text-shadow-size: 1px;
   margin: 0 0 1.2rem;
   font-size: var(--font-sm);

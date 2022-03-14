@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 import { mdiMagnify, mdiRss } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
-import { SectionHeading } from '~/components/atoms/complex';
-import { Field, Section, LinkButton } from '~/components/atoms/simple';
+import { Heading, Field, Section, LinkButton } from '~/components/atoms/simple';
 import { PostsGroup } from '~/components/elements';
 import debounce from '~/lib/debounce';
 import { Component, ComponentProps, Post, mediaQueries } from '~/types';
@@ -61,14 +60,13 @@ export const Blog: Component<BlogGridProps> = (props) => {
   return (
     <Section id={'blog'}>
       <BlogHeader>
-        <SectionHeading
+        <Heading
           size={'3'}
           shadowColor={'yellow'}
           gradientColor={'yellow-to-orange'}
-          emoji={'📝'}
         >
           Blog
-        </SectionHeading>
+        </Heading>
 
         <RssLink href={'/feed.xml'} title={'Link to RSS feed'} icon={mdiRss}>
           RSS Feed
