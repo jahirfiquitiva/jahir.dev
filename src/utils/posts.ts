@@ -3,7 +3,7 @@ import removeMd from 'remove-markdown';
 
 import pick from './../lib/pick';
 
-import { allBlogs } from 'contentlayer/generated';
+// import { allBlogs } from 'contentlayer/generated';
 import type { Blog } from 'contentlayer/generated';
 
 const minCharacters = 70;
@@ -62,15 +62,16 @@ export const getAllPosts = (
   fields: (keyof Blog)[] = [],
   allowInProgress: boolean = false,
 ): Array<Blog> => {
-  const filteredPosts = allBlogs
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-    .filter(
-      (it) =>
-        it.title?.length > 0 &&
-        it.slug?.length > 0 &&
-        (allowInProgress || !it.inProgress),
-    );
-  return fields && fields.length
-    ? filteredPosts.map((post) => pick(post, fields))
-    : filteredPosts;
+  return []
+  // const filteredPosts = allBlogs
+  //   .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+  //   .filter(
+  //     (it) =>
+  //       it.title?.length > 0 &&
+  //       it.slug?.length > 0 &&
+  //       (allowInProgress || !it.inProgress),
+  //   );
+  // return fields && fields.length
+  //   ? filteredPosts.map((post) => pick(post, fields))
+  //   : filteredPosts;
 };
