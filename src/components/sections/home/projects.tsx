@@ -147,7 +147,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
       <ProjectsMasonry
         showFullList={showFullList}
         breakpoints={masonryBreakpoints}
-        gap={'1rem'}
+        gap={'1.1rem'}
       >
         {(filteredProjects || []).map((project, index) => {
           const projectLink = project.link;

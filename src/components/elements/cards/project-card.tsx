@@ -19,10 +19,11 @@ const BaseProjectCard = styled(LinkCard)`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
   color: var(--text-secondary);
   border-radius: 10px;
-  border-color: var(--border-color, var(--divider));
+  border-color: var(--divider);
+  background-color: rgba(var(--divider-opaque), 0.006);
 
   & * {
     transition: all 0.25s ease-in-out;
@@ -30,13 +31,19 @@ const BaseProjectCard = styled(LinkCard)`
   & p,
   & .stars {
     color: var(--text-secondary);
+    border-color: var(--divider);
+  }
+  & img {
+    filter: saturate(0.95) opacity(0.85);
   }
 
   &:hover,
   &:focus {
+    padding: calc(1rem - 1px) calc(1.2rem - 1px);
     color: var(--text-primary);
     background-color: var(--bg-color);
     border-color: var(--border-color, var(--divider));
+    border-width: 2px;
     box-shadow: var(--shadow);
 
     & h4 {
@@ -46,9 +53,13 @@ const BaseProjectCard = styled(LinkCard)`
     & p,
     & .stars {
       color: var(--text-primary);
+      border-color: var(--border-color, var(--divider));
+      border-left-width: 2px;
+      border-bottom-width: 2px;
     }
     & img {
       transform: scale(1.05);
+      filter: saturate(1) opacity(1);
     }
     & img,
     & ul {
@@ -146,7 +157,7 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
     if (!themeReady || !projectColor) return {};
     return buildShadowStyles(projectColor, isDark, {
       border: 0.5,
-      bg: 0.05,
+      bg: 0.035,
     });
   }, [themeReady, isDark, projectColor]);
 
@@ -164,14 +175,6 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
         </ProjectHeading>
       </IconHeadingContainer>
       <ProjectDescription>{description}</ProjectDescription>
-      <Stack
-        stack={stack}
-        css={css`
-          opacity: 0.8;
-          margin-top: 0.4rem;
-          margin-bottom: 0;
-        `}
-      />
       {data?.stars ? (
         <ProjectStarsContainer className={'stars'}>
           <Icon path={mdiStar} size={0.7} />
