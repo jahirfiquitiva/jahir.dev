@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { mdiAccountCircleOutline } from '@mdi/js';
 
 import { Hello } from './hello';
-import { Skills } from './skills';
 
 import { LinkButton } from '~/components/atoms/simple';
 import { Component } from '~/types';
@@ -24,7 +23,6 @@ export const Home: Component = () => {
           More about me
         </LearnMoreButton>
       </section>
-      <Skills />
     </>
   );
 };

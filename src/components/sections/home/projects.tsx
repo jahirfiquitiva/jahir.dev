@@ -6,6 +6,7 @@ import { SectionHeading } from '~/components/atoms/complex';
 import {
   Field,
   Divider,
+  DotsDivider,
   LinkButton,
   OutlinedLinkButton,
 } from '~/components/atoms/simple';
@@ -114,7 +115,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
 
   return (
     <section id={'projects'}>
-      {!showFullList && <Divider gradientColor={'blue-to-green'} />}
+      {!showFullList && <DotsDivider />}
 
       <ProjectsHeader>
         <SectionHeading
