@@ -53,28 +53,24 @@ const StackContainer = styled.div`
 
 const sectionTwoLinks: Array<FooterLink> = [
   {
-    emoji: '🙋‍♂️',
     text: 'About',
     title: 'Link to about page',
     href: '/about',
     gradientColor: 'blue-to-green',
   },
   {
-    emoji: '📝',
     text: 'Blog',
     title: 'Link to blog posts page',
     href: '/blog',
     gradientColor: 'yellow-to-orange',
   },
   {
-    emoji: '👨‍💻',
     text: 'Projects',
     title: 'Link to projects page',
     href: '/projects',
     gradientColor: 'red-to-purple',
   },
   {
-    emoji: '📬',
     text: 'Contact',
     title: 'Link to contact page',
     href: '/contact',
@@ -86,14 +82,12 @@ const sectionThreeLinks: Array<FooterLink> = [
   {
     title: 'Link to now page',
     href: '/now',
-    emoji: '🔮',
     text: 'Now',
     gradientColor: 'purple-to-brand',
   },
   {
     title: 'Link to uses page',
     href: '/blog/uses',
-    emoji: '⚡️',
     text: 'Uses',
     gradientColor: 'yellow-to-orange',
   },
@@ -103,14 +97,12 @@ const sectionFourLinks: Array<FooterLink> = [
   {
     title: 'Link to donate page',
     href: '/donate',
-    emoji: '🧡',
     text: 'Donate',
     gradientColor: 'orange-to-red',
   },
   {
     title: 'Link to inspiration page',
     href: '/inspiration',
-    emoji: '🌎',
     text: 'Inspiration',
     gradientColor: 'brand-to-blue',
   },

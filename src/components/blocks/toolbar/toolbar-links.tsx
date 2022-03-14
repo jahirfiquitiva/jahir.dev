@@ -36,28 +36,24 @@ const ToolbarLinksContainer = styled.ul`
 const toolbarLinksList = [
   {
     key: 1,
-    emoji: '🙋‍♂️',
     title: 'About',
     href: '/about',
     gradient: 'blue-to-green',
   },
   {
     key: 2,
-    emoji: '📝',
     title: 'Blog',
     href: '/blog',
     gradient: 'yellow-to-orange',
   },
   {
     key: 3,
-    emoji: '👨‍💻',
     title: 'Projects',
     href: '/projects',
     gradient: 'red-to-purple',
   },
   {
     key: 4,
-    emoji: '📬',
     title: 'Contact',
     href: '/contact',
     gradient: 'brand-to-blue',
@@ -86,7 +82,6 @@ export const ToolbarLinks = () => {
             <ToolbarLink
               title={`Link to ${link.title} page`}
               href={link.href}
-              emoji={link.emoji}
               gradientColor={link.gradient as GradientOptions}
               className={cn({ active: activeLink === link.key })}
             >

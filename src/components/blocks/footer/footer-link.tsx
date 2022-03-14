@@ -30,9 +30,9 @@ const FooterLinkComponent = styled(Link)`
 export interface FooterLink {
   title: string;
   href: string;
-  emoji: string;
   text: string;
   gradientColor: GradientOptions;
+  emoji?: string;
 }
 
 const getStylesForUnderline = (gradientColor: GradientOptions) => {
