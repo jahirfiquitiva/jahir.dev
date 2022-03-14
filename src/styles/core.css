@@ -107,3 +107,8 @@ figure figcaption {
   font-size: var(--font-3xs);
   margin: 0.6rem 0;
 }
+
+a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}

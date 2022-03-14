@@ -23,14 +23,37 @@ export const forcedGradientStyles = css`
   );
 `;
 
+const onHoverOnlyStyles = css`
+  color: inherit;
+  background: none;
+
+  &:hover,
+  &:focus {
+    color: rgba(0, 0, 0, 0);
+    background-clip: text;
+    background-image: linear-gradient(
+      to right,
+      var(--from-gradient-color),
+      var(--to-gradient-color)
+    );
+  }
+`;
+
 interface GradientSpanProps extends ComponentProps, ComponentWithGradientProps {
   gradientColor: GradientOptions;
+  gradientOnHoverOnly?: boolean;
   onClick?: () => void;
 }
 
 export const GradientSpan: Component<GradientSpanProps> = (props) => {
   const { isDark, themeReady } = useTheme();
-  const { gradientColor, forceGradient, children, ...otherProps } = props;
+  const {
+    gradientColor,
+    gradientOnHoverOnly,
+    forceGradient,
+    children,
+    ...otherProps
+  } = props;
 
   const gradientCss = gradientToCss(gradientColor);
 
@@ -46,8 +69,12 @@ export const GradientSpan: Component<GradientSpanProps> = (props) => {
             `,
           ]
         : [];
-    return [...gradientStyles, gradientCss];
-  }, [themeReady, isDark, gradientCss, forceGradient]);
+    return [
+      ...gradientStyles,
+      gradientCss,
+      ...(gradientOnHoverOnly ? [onHoverOnlyStyles] : []),
+    ];
+  }, [themeReady, isDark, gradientOnHoverOnly, gradientCss, forceGradient]);
 
   return (
     <span css={spanCss} {...otherProps}>

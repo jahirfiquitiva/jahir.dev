@@ -5,6 +5,7 @@ import { Link, GradientSpan } from '~/components/atoms/simple';
 import { GradientOptions, mediaQueries } from '~/types';
 
 const FooterLinkComponent = styled(Link)`
+  color: var(--text-tertiary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -73,6 +74,9 @@ const getStylesForUnderline = (gradientColor: GradientOptions) => {
       & > span {
         text-decoration: underline;
         text-decoration: underline solid var(--gradient-${gradientColorName});
+        text-decoration-skip: edges;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
       }
     }
   `;
@@ -88,8 +92,12 @@ export const transformLink = (link: FooterLink, itemIndex: number = 0) => {
       css={[getStylesForUnderline(gradientColor)]}
       key={`footer-item-${itemIndex || title.toLowerCase()}`.trim()}
     >
-      <span className={'emoji'}>{emoji}</span>
-      <GradientSpan gradientColor={gradientColor} forceGradient>
+      {emoji && <span className={'emoji'}>{emoji}</span>}
+      <GradientSpan
+        gradientColor={gradientColor}
+        forceGradient
+        gradientOnHoverOnly
+      >
         {text}
       </GradientSpan>
     </FooterLinkComponent>
