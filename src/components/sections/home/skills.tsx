@@ -1,14 +1,19 @@
+import styled from '@emotion/styled';
 import Icon from '@mdi/react';
 
 import { ChipGroup } from '~/components/atoms/complex';
-import { Heading, Chip, Divider } from '~/components/atoms/simple';
+import { Heading, Chip, DotsDivider } from '~/components/atoms/simple';
 import { Component, skills } from '~/types';
 import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 
+const SkillsSection = styled.section`
+  padding-bottom: 2.4rem;
+`;
+
 export const Skills: Component = () => {
   return (
-    <section id={'skills'}>
-      <Divider gradientColor={'brand-to-blue'} />
+    <SkillsSection id={'skills'}>
+      <DotsDivider />
       <Heading size={'3'} shadowColor={'blue'} gradientColor={'blue-to-green'}>
         Skills
       </Heading>
@@ -26,6 +31,6 @@ export const Skills: Component = () => {
             );
           })}
       </ChipGroup>
-    </section>
+    </SkillsSection>
   );
 };

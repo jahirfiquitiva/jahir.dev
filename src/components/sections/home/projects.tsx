@@ -53,7 +53,7 @@ const ProjectsHeaderLinksContainer = styled.div`
 `;
 
 const ProjectsMasonry = styled(Masonry)`
-  padding: 1.6rem 0 2.4rem;
+  padding: 1.6rem 0;
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
