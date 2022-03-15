@@ -43,7 +43,7 @@ export const Divider: Component<DividerProps> = (props) => {
 
 export const DotsDivider = styled.hr`
   height: 24px;
-  margin: 1.6rem 0;
+  margin: 1.8rem 0;
   border: none;
   background-image: url('/static/images/brand/dots-divider.svg');
   background-repeat: no-repeat;
@@ -61,6 +61,6 @@ export const DotsDivider = styled.hr`
   }
 
   ${mediaQueries.desktop} {
-    margin: 2rem 0;
+    margin: 2.2rem 0;
   }
 `;
