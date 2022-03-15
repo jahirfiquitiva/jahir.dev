@@ -8,12 +8,36 @@ import {
   LinkButton,
   LinkButtonProps,
 } from '~/components/atoms/simple';
-import { Component, ComponentWithGradientProps, mediaQueries } from '~/types';
+import {
+  Component,
+  ComponentWithGradientProps,
+  mediaQueries,
+  gradientToCss,
+} from '~/types';
 
-const BaseToolbarLink = styled(LinkButton)`
-  ${BaseToolbarButtonStyles}
+const BaseToolbarLink = styled.a`
+  --from-gradient-color: var(--divider);
+  --to-gradient-color: var(--divider);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-accent);
+  border: none;
+  border-radius: 6px;
+  min-height: 42px;
+  padding: 0 0.8rem;
+  font-family: var(--manrope-font);
+  font-weight: 600;
   max-width: unset;
   box-shadow: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  ${mediaQueries.mobile.md} {
+    padding: 0.4rem 1rem;
+  }
 
   ${mediaQueries.tablet.lg} {
     gap: 0.6rem;
@@ -22,29 +46,25 @@ const BaseToolbarLink = styled(LinkButton)`
   &:hover,
   &:focus {
     box-shadow: none;
-    color: rgba(0, 0, 0, 0);
-    .dark & {
-      color: rgba(0, 0, 0, 0);
-    }
-  }
-
-  &.active {
     background-color: var(--toolbar-highlight);
   }
 
-  & > span.emoji {
-    display: none;
-    visibility: hidden;
-    pointer-events: none;
-    opacity: 0;
-    font-weight: normal;
+  &.active {
+    color: var(--text-primary);
+    background-color: var(--toolbar-highlight);
+  }
 
-    ${mediaQueries.mobile.lg} {
-      display: inline-block;
-      visibility: visible;
-      pointer-events: auto;
-      opacity: 1;
-      color: var(--text-primary);
+  &:hover,
+  &:focus,
+  &.active {
+    & > span {
+      color: rgba(0, 0, 0, 0);
+      background-clip: text;
+      background-image: linear-gradient(
+        to right,
+        var(--from-gradient-color),
+        var(--to-gradient-color)
+      );
     }
   }
 `;
@@ -52,25 +72,25 @@ const BaseToolbarLink = styled(LinkButton)`
 interface ToolbarLinkProps
   extends LinkButtonProps,
     Omit<ComponentWithGradientProps, 'forceGradient'> {
-  emoji?: string;
+  wrapChildren?: boolean;
   outOfSpanChildren?: ReactNode | ReactNode[] | Element;
 }
 
 export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {
-  const { emoji, gradientColor, children, outOfSpanChildren, ...otherProps } =
-    props;
+  const {
+    gradientColor,
+    children,
+    wrapChildren = true,
+    outOfSpanChildren,
+    ...otherProps
+  } = props;
+
+  const gradientCss = gradientToCss(gradientColor);
 
   return (
-    <BaseToolbarLink {...otherProps} wrapChildrenInSpan={false}>
-      {emoji ? <span className={'emoji'}>{emoji}</span> : null}
+    <BaseToolbarLink {...otherProps} css={gradientCss}>
       {outOfSpanChildren}
-      {gradientColor ? (
-        <GradientSpan gradientColor={gradientColor} forceGradient>
-          {children}
-        </GradientSpan>
-      ) : (
-        <span>{children}</span>
-      )}
+      {wrapChildren ? <span>{children}</span> : children}
     </BaseToolbarLink>
   );
 };

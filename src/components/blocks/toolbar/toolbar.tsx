@@ -7,7 +7,7 @@ import { ToolbarButton, ToolbarButtonsContainer } from './toolbar-button';
 import { ToolbarLink } from './toolbar-link';
 import { ToolbarLinks } from './toolbar-links';
 
-import { Logo } from '~/components/atoms/simple';
+import { GradientSpan, Logo } from '~/components/atoms/simple';
 import useToggle from '~/hooks/useToggle';
 import { mediaQueries } from '~/types';
 
@@ -147,7 +147,9 @@ const Navigation = () => {
         href={'/'}
         outOfSpanChildren={<Logo />}
       >
-        Jahir Fiquitiva
+        <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
+          Jahir Fiquitiva
+        </GradientSpan>
       </HomeLink>
       <ToolbarButtonsContainer>
         <ThemeToggle />

@@ -70,6 +70,8 @@ export const Link: Component<LinkProps> = (props) => {
             &:hover,
             &:focus {
               text-decoration: underline;
+              text-decoration-thickness: 2px;
+              text-underline-offset: 2px;
             }
           `
         : css`
