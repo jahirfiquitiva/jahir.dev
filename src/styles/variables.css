@@ -63,7 +63,7 @@
     var(--card-shadow-border-opacity)
   );
 
-  --shadow-color: 16, 20, 29;
+  --shadow-color: 12, 18, 30;
   --shadow-color-full: rgba(var(--shadow-color), var(--card-shadow-opacity));
 
   --shadow-strength: 0.1;
@@ -114,12 +114,12 @@
 .dark-mode {
   --text-shadow-size: 0;
 
-  --background-values: 16, 20, 29;
-  --background: #10141d;
-  --primary: #10141d;
+  --background-values: 12, 18, 30;
+  --background: #0c121e;
+  --primary: #0c121e;
 
-  --toolbar: rgba(16, 20, 29, 0.65);
-  --toolbar-opaque: rgb(16, 20, 29);
+  --toolbar: rgba(12, 18, 30, 0.65);
+  --toolbar-opaque: rgb(12, 18, 30);
   --toolbar-highlight: rgba(215, 225, 247, 0.08);
   --toolbar-shadow-a: rgba(56, 103, 214, 0.08);
   --toolbar-shadow-b: rgba(56, 103, 214, 0.06);
