@@ -24,7 +24,8 @@ const PhotoContainer = styled.div`
     top: 0;
     left: 0;
     background-color: var(--accent-dark);
-    mix-blend-mode: lighten;
+    mix-blend-mode: overlay;
+    border-radius: 50% !important;
   }
 
   & > span:hover::after,
