@@ -54,7 +54,7 @@ const ProjectsHeaderLinksContainer = styled.div`
 
 const ProjectsMasonry = styled(Masonry)<{ showFullList?: boolean }>`
   padding: 1.6rem 0
-    ${({ showFullList }) => (showFullList ? '2.4rem' : '1.6rem')};
+    ${({ showFullList }) => (showFullList ? '2.4rem' : '0.8rem')};
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
