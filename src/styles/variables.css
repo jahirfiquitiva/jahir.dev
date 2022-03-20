@@ -32,9 +32,10 @@
 
   --toolbar: rgba(235, 240, 251, 0.75);
   --toolbar-opaque: rgb(235, 240, 251);
-  --toolbar-shadow-a: rgba(22, 41, 86, 0.08);
-  --toolbar-shadow-b: rgba(22, 41, 86, 0.06);
-  --toolbar-shadow-c: rgba(22, 41, 86, 0.2);
+  --toolbar-shadow-a: rgba(45, 82, 171, 0.08);
+  --toolbar-shadow-b: rgba(45, 82, 171, 0.06);
+  --toolbar-shadow-c: rgba(45, 82, 171, 0.2);
+  --toolbar-glow: rgba(45, 82, 171, 0.12);
   --toolbar-highlight: rgba(45, 82, 171, 0.08);
 
   --accent-animoji: #d7e1f7;
@@ -118,12 +119,13 @@
   --background: #0c121e;
   --primary: #0c121e;
 
-  --toolbar: rgba(12, 18, 30, 0.65);
-  --toolbar-opaque: rgb(12, 18, 30);
-  --toolbar-highlight: rgba(215, 225, 247, 0.08);
-  --toolbar-shadow-a: rgba(56, 103, 214, 0.08);
-  --toolbar-shadow-b: rgba(56, 103, 214, 0.06);
-  --toolbar-shadow-c: rgba(56, 103, 214, 0.2);
+  --toolbar: rgba(17, 25, 41, 0.65);
+  --toolbar-opaque: rgb(17, 25, 41);
+  --toolbar-highlight: rgba(215, 225, 247, 0.1);
+  --toolbar-shadow-a: rgba(136, 164, 230, 0.08);
+  --toolbar-shadow-b: rgba(136, 164, 230, 0.06);
+  --toolbar-shadow-c: rgba(136, 164, 230, 0.2);
+  --toolbar-glow: rgba(136, 164, 230, 0.12);
 
   --accent-lighter: #d7e1f7;
   --accent-light: #afc2ef;

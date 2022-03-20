@@ -186,6 +186,13 @@ const StyledHeader = styled.header`
     0 3px 4px 0 var(--toolbar-shadow-b), 0 1px 5px 0 var(--toolbar-shadow-c);
   border-radius: 10px;
   margin: var(--floating-margin) 0 0;
+  transition: box-shadow .25s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 4px 0 var(--toolbar-shadow-a),
+      0 3px 4px 0 var(--toolbar-shadow-b), 0 1px 5px 0 var(--toolbar-shadow-c),
+      0 0 10px 6px var(--toolbar-glow);
+  }
 
   ${mediaQueries.tablet.sm} {
     --floating-margin: 12px;
