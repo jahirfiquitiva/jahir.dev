@@ -32,7 +32,8 @@ const BaseProjectCard = styled(LinkCard)`
     border-color: var(--divider);
   }
   & img {
-    filter: saturate(0.95) opacity(0.85);
+    filter: saturate(0.95) opacity(0.85)
+      drop-shadow(0 0 1px var(--border-color));
   }
 
   &:hover,
@@ -57,7 +58,7 @@ const BaseProjectCard = styled(LinkCard)`
     }
     & img {
       transform: scale(1.05);
-      filter: saturate(1) opacity(1);
+      filter: saturate(1) opacity(1) drop-shadow(0 1px 2px var(--border-color));
     }
     & img,
     & ul {
@@ -73,11 +74,6 @@ const IconHeadingContainer = styled.div`
   margin-bottom: 0.6rem;
   margin-left: -0.2rem;
   gap: 0.8rem;
-
-  & img {
-    opacity: 0.9;
-    filter: drop-shadow(0 1px 2px var(--border-color));
-  }
 `;
 
 const ProjectHeading = styled(Heading)`
