@@ -1,108 +1,94 @@
 import styled from '@emotion/styled';
-import { mdiGithub, mdiLinkedin, mdiInstagram, mdiTwitter } from '@mdi/js';
+import { mdiInstagram } from '@mdi/js';
 
 import { ButtonGroup } from '~/components/atoms/complex';
-import { Image, LinkButton, LinkButtonProps } from '~/components/atoms/simple';
-import { Component, ComponentProps, mediaQueries } from '~/types';
+import { LinkButton, LinkButtonProps } from '~/components/atoms/simple';
+import {
+  Component,
+  ComponentProps,
+  mediaQueries,
+  customIconPaths,
+} from '~/types';
 
 export type SocialLinkProps = Omit<
   LinkButtonProps,
   'title' | 'icon' | 'wrapChildrenInSpan' | 'href' | 'newTab'
 >;
 
+const SocialLinksGroup = styled(ButtonGroup)`
+  gap: 0.2rem;
+  ${mediaQueries.mobile.lg} {
+    gap: 0.4rem;
+  }
+`;
+
 const BaseSocialLink = styled(LinkButton)`
-  padding: 0.4rem;
+  padding: 0;
   gap: 0;
-  min-height: 36px;
-  min-width: 36px;
-  color: #fff;
+  min-height: 32px;
+  min-width: 32px;
+  background: none;
+  color: var(--text-secondary);
+  box-shadow: none;
 
   &:hover,
   &:focus {
+    background: var(--toolbar-highlight);
+    transform: none;
+    box-shadow: none;
     color: #fff;
     text-decoration: none;
   }
 
   .dark & {
-    color: #fff;
-
-    &:hover,
-    &:focus {
-      color: #fff;
-    }
+    color: var(--text-secondary);
   }
 `;
 
 const BaseGitHubLink = styled(BaseSocialLink)`
-  background-color: #333;
   &:hover,
   &:focus {
-    background-color: #292929;
+    color: #333;
   }
-  .dark & {
-    background-color: #ebebeb;
-    color: #1f1f1f;
-    &:hover,
-    &:focus {
-      background-color: #fff;
-      color: #141414;
-    }
+  .dark &:hover,
+  .dark &:focus {
+    color: #ebebeb;
   }
 `;
 
 const BaseLinkedInLink = styled(BaseSocialLink)`
-  background-color: #0077b5;
   &:hover,
-  &:focus {
-    background-color: #006ba3;
+  &:focus,
+  .dark &:hover,
+  .dark &:focus {
+    color: #0077b5;
   }
 `;
 
 const BaseTwitterLink = styled(BaseSocialLink)`
-  background-color: #1da1f2;
   &:hover,
-  &:focus {
-    background-color: #1a91da;
+  &:focus,
+  .dark &:hover,
+  .dark &:focus {
+    color: #1da1f2;
   }
 `;
 
 const BaseInstagramLink = styled(BaseSocialLink)`
-  background-color: #d6249f;
-  background: radial-gradient(
-    circle at 28% 110%,
-    #fdf497 0%,
-    #fdf497 5%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285aeb 
-  );
-
   &:hover,
-  &:focus {
-    background-color: #ab1d7f;
-    background: radial-gradient(
-      circle at 28% 110%,
-      #cac379 0%,
-      #cac379 5%,
-      #ca473a 45%,
-      #ab1d7f 60%,
-      #1c3fa5 90%
-    );
+  &:focus,
+  .dark &:hover,
+  .dark &:focus {
+    color: #d6249f;
   }
 `;
 
 const BasePolyworkLink = styled(BaseSocialLink)`
-  background-color: #6959fc;
   &:hover,
-  &:focus {
-    background-color: #4f3fe3;
-  }
-`;
-
-const SocialLinksGroup = styled(ButtonGroup)`
-  gap: 0.6rem;
-  ${mediaQueries.mobile.lg} {
-    gap: 0.8rem;
+  &:focus,
+  .dark &:hover,
+  .dark &:focus {
+    color: #6959fc;
   }
 `;
 
@@ -111,7 +97,7 @@ const GitHubLink: Component<SocialLinkProps> = (props) => {
     <BaseGitHubLink
       {...props}
       title={'GitHub'}
-      icon={mdiGithub}
+      icon={customIconPaths.gitHubOutline}
       href={'https://github.com/jahirfiquitiva'}
     />
   );
@@ -122,7 +108,7 @@ const LinkedInLink: Component<SocialLinkProps> = (props) => {
     <BaseLinkedInLink
       {...props}
       title={'LinkedIn'}
-      icon={mdiLinkedin}
+      icon={customIconPaths.linkedInOutline}
       href={'https://linkedin.com/in/jahirfiquitiva'}
     />
   );
@@ -133,7 +119,7 @@ const TwitterLink: Component<SocialLinkProps> = (props) => {
     <BaseTwitterLink
       {...props}
       title={'Twitter'}
-      icon={mdiTwitter}
+      icon={customIconPaths.twitterOutline}
       href={'https://twitter.com/jahirfiquitiva'}
     />
   );
@@ -156,14 +142,8 @@ const PolyworkLink: Component<SocialLinkProps> = (props) => {
       {...props}
       title={'Polywork Timeline'}
       href={'https://timeline.jahir.dev'}
-      wrapChildrenInSpan={false}
-    >
-      <Image
-        src={'/static/images/signature/polywork.svg'}
-        alt={'Polywork logo'}
-        size={21}
-      />
-    </BasePolyworkLink>
+      icon={customIconPaths.polywork}
+    />
   );
 };
 
@@ -172,7 +152,7 @@ interface SocialLinksProps extends ComponentProps {
 }
 
 export const SocialLinks: Component<SocialLinksProps> = (props) => {
-  const { iconSize = 0.9, className } = props;
+  const { iconSize = 1, className } = props;
   return (
     <SocialLinksGroup className={className}>
       <GitHubLink iconSize={iconSize} />

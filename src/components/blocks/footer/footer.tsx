@@ -48,7 +48,7 @@ const FooterLogoLink = styled(Link)`
 `;
 
 const FooterSocialLinks = styled(SocialLinks)`
-  margin: 0.6rem 0;
+  margin: 0.3rem 0 0.2rem;
 `;
 
 const StackContainer = styled.div`
@@ -57,6 +57,10 @@ const StackContainer = styled.div`
   justify-content: flex-start;
   gap: 0.6rem;
   margin: 0.4rem 0;
+`;
+
+const SmallLinks = styled.small`
+  opacity: 0.85;
 `;
 
 const sectionTwoLinks: Array<FooterLink> = [
@@ -135,7 +139,7 @@ export const Footer: Component = () => {
           <small>Website built using: </small>
           <Stack stack={['nextjs', 'typescript', 'styled components']} />
         </StackContainer>
-        <small>
+        <SmallLinks>
           <Link
             title={'Link to view website source code on GitHub'}
             href={'https://github.com/jahirfiquitiva/jahir.dev'}
@@ -146,7 +150,7 @@ export const Footer: Component = () => {
           <Link title={'Link to blog RSS feed'} href={'/feed.xml'}>
             RSS Feed
           </Link>
-        </small>
+        </SmallLinks>
       </FooterContent>
     </StyledFooter>
   );
