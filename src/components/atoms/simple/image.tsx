@@ -40,6 +40,7 @@ export interface ImageProps extends ComponentProps, BaseImageProps {
   loading?: 'lazy' | 'eager';
   placeholder?: 'blur' | 'empty';
   blurDataURL?: string;
+  isFourOhFour?: boolean;
 }
 
 export const Image: Component<ImageProps> = (props) => {
@@ -51,6 +52,8 @@ export const Image: Component<ImageProps> = (props) => {
     layout,
     className,
     loading = 'lazy',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    isFourOhFour,
     ...rest
   } = props;
 
