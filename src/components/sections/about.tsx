@@ -25,20 +25,12 @@ const possibleImages: Array<AboutPhoto> = [
     alt: 'Me in Lima, Perú',
   },
   {
-    key: '1',
-    alt: 'Me in Lima, Perú',
-  },
-  {
     key: '2',
     alt: 'Hiking in my hometown',
   },
   {
     key: '3',
     alt: 'Hanging out with friends at a cafe',
-  },
-  {
-    key: '4',
-    alt: 'Hanging out with friends in Iza, Boyacá, Colombia',
   },
   {
     key: '5',
@@ -74,7 +66,6 @@ const CuriousParagraph = styled(Paragraph)`
 
 const Photo = styled(Image)`
   border-radius: 10px;
-  box-shadow: var(--shadow-sm);
   border: 1px solid var(--divider) !important;
   margin: 0 auto !important;
 `;
@@ -82,11 +73,11 @@ const Photo = styled(Image)`
 const PhotoFigure = styled.figure`
   display: flex;
   flex-direction: column;
-  margin: 1.2rem 0;
+  margin: 1.2rem calc(-1.2rem + 2px);
 
   & > span {
+    width: 100% !important;
     border-radius: 10px;
-    box-shadow: var(--shadow-sm);
     overflow: auto !important;
     margin: 0 auto !important;
   }

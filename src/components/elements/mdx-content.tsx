@@ -28,19 +28,17 @@ const MdxContentSection = styled.section`
   width: 100%;
 
   ${mediaQueries.tablet.sm} {
-    padding: 1.2rem 0 2rem;
-  }
-
-  ${mediaQueries.tablet.lg} {
-    padding: 1.2rem 0 2.4rem;
+    padding: 1.2rem 0;
   }
 `;
 
 const Hero = styled(Image)`
-  border-radius: 6px;
+  width: unset;
   margin: 2.4rem 0;
-  box-shadow: 0 4px 6px -1px rgba(var(--shadow-color), 0.175),
-    0 2px 4px -1px rgba(var(--shadow-color), 0.075);
+
+  ${mediaQueries.floating} {
+    margin: 2.4rem var(--negative-margin);
+  }
 
   & img {
     object-fit: cover;

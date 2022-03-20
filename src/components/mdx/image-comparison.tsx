@@ -44,9 +44,6 @@ const ImageComparisonContainer = styled.figure`
   ${mediaQueries.floating} {
     margin-left: var(--negative-margin);
     margin-right: var(--negative-margin);
-    & > div:first-of-type {
-      border-radius: 12px;
-    }
   }
 `;
 

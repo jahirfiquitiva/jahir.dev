@@ -5,10 +5,9 @@ import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import { Component, ComponentProps } from '~/types';
 
 const ImageWrapper = styled.div`
-  display: relative;
+  position: relative;
   width: 100%;
   min-height: 0;
-  max-width: 100%;
   max-height: 100%;
   overflow: hidden;
 
