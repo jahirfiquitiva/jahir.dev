@@ -27,6 +27,14 @@ export const supporters: Array<SupporterCategory> = [
     id: '587',
     name: '🤖 Robot',
     key: 'robot',
+    supporters: [
+      {
+        name: 'Tim Austin',
+        link: 'https://play.google.com/store/apps/dev?id=4682932724915294631',
+        photo:
+          'https://unavatar.io/github/drumdestroyer?fallback=https://source.boringavatars.com/',
+      },
+    ],
   },
   {
     id: '586',
@@ -114,7 +122,8 @@ export const supporters: Array<SupporterCategory> = [
       },
       {
         name: 'Dany Gee',
-        photo: 'https://unavatar.io/github/DanyGee?fallback=https://source.boringavatars.com/',
+        photo:
+          'https://unavatar.io/github/DanyGee?fallback=https://source.boringavatars.com/',
         link: 'https://github.com/DanyGee',
       },
       {
