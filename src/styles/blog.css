@@ -144,4 +144,10 @@ article .toc-item {
     padding: calc(0.8rem + calc(calc(var(--negative-margin) * -1) / 2));
     border-radius: 12px;
   }
+
+  article .rehype-code-title {
+    margin-left: var(--negative-margin);
+    margin-right: var(--negative-margin);
+    padding: 0.6rem calc(0.8rem + calc(calc(var(--negative-margin) * -1) / 2));
+  }
 }

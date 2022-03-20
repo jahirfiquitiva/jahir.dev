@@ -151,6 +151,7 @@ pre[class*='language-'] code,
   background: var(--toolbar-highlight);
   margin-top: 1.2rem;
   font-family: var(--code-font);
+    font-size: var(--font-2xs);
   padding: 0.4rem 0.7rem 0.5rem;
 }
 
