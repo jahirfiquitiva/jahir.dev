@@ -193,7 +193,7 @@ const StyledHeader = styled.header`
       0 0 10px 6px var(--toolbar-glow);
   }
 
-  @media all and (min-width: 816px) {
+  ${mediaQueries.floating} {
     left: 50%;
     right: unset;
     width: 100%;

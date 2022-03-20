@@ -1,3 +1,7 @@
+article {
+  --negative-margin: calc(-1.6rem + 2px);
+}
+
 article h2 {
   font-size: var(--font-xl);
 }
@@ -122,4 +126,12 @@ article blockquote {
   border-radius: 8px;
   border: 1px dashed var(--accent-light);
   padding: 0.6rem 1.2rem;
+}
+
+@media all and (min-width: 840px) {
+  article pre {
+    margin: calc(var(--negative-margin) * -1) var(--negative-margin);
+    padding: calc(0.8rem + calc(calc(var(--negative-margin) * -1) / 2));
+    border-radius: 12px;
+  }
 }

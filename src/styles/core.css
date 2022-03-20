@@ -81,12 +81,14 @@ body.sb-show-main.sb-main-padded {
   left: 0;
   right: 0;
   width: 100%;
-  height: var(--floating-toolbar-margin);
-  background-color: rgba(
-    var(--background-values),
-    var(--toolbar-opacity, 0.75)
+  height: calc(
+    calc(var(--floating-toolbar-margin) * 1.5) + var(--toolbar-height)
   );
-  backdrop-filter: blur(10px) saturate(150%);
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-values)),
+    rgba(0, 0, 0, 0)
+  );
   z-index: 0;
   user-select: none;
   pointer-events: none;

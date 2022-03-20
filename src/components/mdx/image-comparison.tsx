@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import { Component, ComponentProps } from '~/types';
+import { Component, ComponentProps, mediaQueries } from '~/types';
 
 interface ImageComparisonProps extends ComponentProps {
   firstImage: string;
@@ -39,6 +39,14 @@ const ImageComparisonContainer = styled.figure`
     display: inline-flex;
     font-size: var(--font-3xs);
     font-style: italic;
+  }
+
+  ${mediaQueries.floating} {
+    margin-left: var(--negative-margin);
+    margin-right: var(--negative-margin);
+    & > div:first-of-type {
+      border-radius: 12px;
+    }
   }
 `;
 
