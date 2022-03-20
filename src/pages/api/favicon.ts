@@ -18,8 +18,24 @@ export default async (
     });
   }
 
+  let favicon = '';
   try {
-    let favicon = '';
+    const microLinkRequest = await fetch(
+      `https://api.microlink.io/?url=https://${domain}`,
+    );
+    const microLinkResponse = await microLinkRequest.json();
+    const { data } = microLinkResponse;
+    favicon = data?.logo?.url || '';
+  } catch (err) {}
+
+  if (favicon.length) {
+    return res.status(200).json({
+      success: true,
+      favicon,
+    });
+  }
+
+  try {
     try {
       favicon = await getWebsiteFavicon(domain.toString());
     } catch (e) {}
