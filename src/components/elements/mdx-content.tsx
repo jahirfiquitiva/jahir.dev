@@ -64,6 +64,7 @@ const Hero = styled(Image)`
 `;
 
 const BackLink = styled(Link)`
+  align-self: flex-start;
   margin-bottom: 0.4rem;
   margin-left: 0.4rem;
   ${mediaQueries.tablet.lg} {

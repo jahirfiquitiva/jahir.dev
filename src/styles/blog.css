@@ -128,6 +128,15 @@ article blockquote {
   padding: 0.6rem 1.2rem;
 }
 
+article .toc .toc-level {
+  display: flex;
+  flex-direction: column;
+}
+
+article .toc-item {
+  align-self: flex-start;
+}
+
 @media all and (min-width: 840px) {
   article pre {
     margin: calc(calc(var(--negative-margin) * -1) + 0.4rem)
