@@ -36,6 +36,7 @@ export const ToolbarButton = styled(Button)`
   text-align: center;
   color: var(--accent);
   line-height: 1;
+  border-radius: 8px;
 
   ${mediaQueries.mobile.md} {
     padding: 0.5rem 0.6rem 0.4rem;
