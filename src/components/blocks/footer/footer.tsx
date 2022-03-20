@@ -88,31 +88,31 @@ const sectionTwoLinks: Array<FooterLink> = [
 
 const sectionThreeLinks: Array<FooterLink> = [
   {
-    title: 'Link to now page',
-    href: '/now',
-    text: 'Now',
-    gradientColor: 'purple-to-brand',
-  },
-  {
     title: 'Link to uses page',
     href: '/blog/uses',
     text: 'Uses',
     gradientColor: 'yellow-to-orange',
   },
-];
-
-const sectionFourLinks: Array<FooterLink> = [
   {
     title: 'Link to donate page',
     href: '/donate',
     text: 'Donate',
     gradientColor: 'orange-to-red',
   },
+];
+
+const sectionFourLinks: Array<FooterLink> = [
   {
     title: 'Link to inspiration page',
     href: '/inspiration',
     text: 'Inspiration',
     gradientColor: 'brand-to-blue',
+  },
+  {
+    title: 'Link to dashboard page',
+    href: '/dashboard',
+    text: 'Dashboard',
+    gradientColor: 'purple-to-brand',
   },
 ];
 
