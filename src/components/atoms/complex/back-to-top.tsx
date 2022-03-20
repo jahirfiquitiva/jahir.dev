@@ -122,7 +122,7 @@ export const BackToTop = () => {
 
   return (
     <BackToTopButton
-      title={'Button to go back to top'}
+      title={'Go back to top'}
       icon={mdiChevronUp}
       iconSize={1.1}
       onClick={scrollToTop}

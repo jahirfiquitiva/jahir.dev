@@ -14,7 +14,7 @@ export const ThemeToggle = () => {
   }, [themeReady, isDark]);
 
   const buttonText = useMemo<string>(() => {
-    return ['Button to enable', themeText, 'theme'].join(' ');
+    return ['Enable', themeText, 'theme'].join(' ');
   }, [themeText]);
 
   const iconPath = useMemo<string>(() => {
