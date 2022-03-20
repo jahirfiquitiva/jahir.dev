@@ -3,7 +3,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import type { Blog } from 'contentlayer/generated';
+import type { Blog } from '.contentlayer/types';
 import { Page } from '~/components/blocks';
 import { MdxContent } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';

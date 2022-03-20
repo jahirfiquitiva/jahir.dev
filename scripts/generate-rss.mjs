@@ -3,7 +3,7 @@ import { writeFileSync } from 'fs';
 
 import xml from 'xml';
 
-import { allBlogs } from 'contentlayer/generated';
+import { allBlogs } from '.contentlayer/data';
 
 const formatImageUrl = (url) => {
   if (!url) return '';

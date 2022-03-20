@@ -30,7 +30,7 @@ const computedFields: ComputedFields = {
 const Project = defineDocumentType(() => ({
   name: 'Project',
   filePathPattern: 'projects/*.mdx',
-  contentType: 'mdx',
+  bodyType: 'mdx',
   fields: {
     order: { type: 'number', required: true },
     name: { type: 'string', required: true },
