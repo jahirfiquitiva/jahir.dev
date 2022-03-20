@@ -30,7 +30,8 @@
   --background: #fff;
   --primary: #f6f9fe;
 
-  --toolbar: rgba(235, 240, 251, 0.75);
+  --toolbar-opacity: 0.75;
+  --toolbar: rgba(235, 240, 251, var(--toolbar-opacity));
   --toolbar-opaque: rgb(235, 240, 251);
   --toolbar-shadow-a: rgba(45, 82, 171, 0.08);
   --toolbar-shadow-b: rgba(45, 82, 171, 0.06);
@@ -119,7 +120,8 @@
   --background: #0c121e;
   --primary: #0c121e;
 
-  --toolbar: rgba(17, 25, 41, 0.65);
+  --toolbar-opacity: 0.65;
+  --toolbar: rgba(17, 25, 41, var(--toolbar-opacity));
   --toolbar-opaque: rgb(17, 25, 41);
   --toolbar-highlight: rgba(215, 225, 247, 0.1);
   --toolbar-shadow-a: rgba(136, 164, 230, 0.08);

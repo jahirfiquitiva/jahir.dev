@@ -63,11 +63,39 @@ body.sb-show-main.sb-main-padded {
 }
 
 #__next {
+  --floating-toolbar-margin: 8px;
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: stretch;
   min-height: 100vh;
-  padding-top: calc(var(--toolbar-height) + 2.4rem);
+  padding-top: calc(
+    var(--toolbar-height) + 2.4rem + calc(var(--floating-toolbar-margin) * 1.5)
+  );
+}
+
+#__next::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--floating-toolbar-margin);
+  background-color: rgba(
+    var(--background-values),
+    var(--toolbar-opacity, 0.75)
+  );
+  backdrop-filter: blur(10px) saturate(150%);
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media all and (min-width: 596px) {
+  #__next {
+    --floating-toolbar-margin: 12px;
+  }
 }
 
 /* == Custom Scrollbar Colors == */
