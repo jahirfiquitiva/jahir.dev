@@ -70,8 +70,16 @@ const getStylesForUnderline = (gradientColor: GradientOptions) => {
   }
   return css`
     &:hover,
-    &:focus {
+    &:focus,
+    &:active {
       & > span {
+        color: rgba(0, 0, 0, 0);
+        background-clip: text;
+        background-image: linear-gradient(
+          to right,
+          var(--from-gradient-color),
+          var(--to-gradient-color)
+        );
         text-decoration: underline;
         text-decoration: underline solid var(--gradient-${gradientColorName});
         text-decoration-skip: edges;
