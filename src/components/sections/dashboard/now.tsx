@@ -39,7 +39,7 @@ export const Now: Component = () => {
         <AnimojiContainer>
           <Animoji
             src={'/static/images/jahir/animoji.png'}
-            alt={'Image of Jahir as an Animoji'}
+            alt={'Jahir as an Animoji'}
             size={144}
             quality={100}
             priority

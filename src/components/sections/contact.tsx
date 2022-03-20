@@ -120,39 +120,39 @@ type ContactImage = {
 const allContactImages: Array<ContactImage> = [
   {
     key: '0',
-    alt: 'Illustration of a person within a box',
+    alt: 'Person within a box',
   },
   {
     key: '1',
-    alt: 'Illustration of a person dancing',
+    alt: 'Person dancing',
   },
   {
     key: '2',
-    alt: 'Illustration of a person meditating',
+    alt: 'Person meditating',
   },
   {
     key: '3',
-    alt: 'Illustration of a person sitting on the floor',
+    alt: 'Person sitting on the floor',
   },
   {
     key: '4',
-    alt: 'Illustration of a person reading a book',
+    alt: 'Person reading a book',
   },
   {
     key: '5',
-    alt: 'Illustration of a person listening to music',
+    alt: 'Person listening to music',
   },
   {
     key: '6',
-    alt: 'Illustration of a person walking',
+    alt: 'Person walking',
   },
   {
     key: '7',
-    alt: 'Illustration of a person walking like a zombie',
+    alt: 'Person walking like a zombie',
   },
   {
     key: '8',
-    alt: 'Illustration of a person taking a selfie with a t-shirt that says hi',
+    alt: 'Person taking a selfie with a t-shirt that says hi',
   },
 ];
 
