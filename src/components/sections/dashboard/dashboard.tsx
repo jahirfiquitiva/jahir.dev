@@ -3,7 +3,12 @@ import styled from '@emotion/styled';
 import { DashboardGrid } from './dashboard-grid';
 import { Now } from './now';
 
-import { Heading, Divider, Section } from '~/components/atoms/simple';
+import {
+  Heading,
+  Divider,
+  Section,
+  DotsDivider,
+} from '~/components/atoms/simple';
 import { SongCard } from '~/components/elements';
 import { useDashboardData } from '~/hooks/useDashboardData';
 import useRequest from '~/hooks/useRequest';
@@ -56,12 +61,8 @@ export const Dashboard: Component = () => {
         <Now />
       </Section>
       <Section id={'dashboard'}>
-        <Divider thin />
-        <TopTracksHeading size={'4'} shadowColor={'orange'}>
-          Right Now
-        </TopTracksHeading>
         <DashboardGrid data={dashboardData} />
-        <Divider thin />
+        <DotsDivider />
         <TopTracksHeading size={'4'} shadowColor={'blue'}>
           Top Tracks
         </TopTracksHeading>
