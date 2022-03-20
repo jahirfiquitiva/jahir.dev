@@ -172,16 +172,33 @@ const Navigation = () => {
 };
 
 const StyledHeader = styled.header`
+  --floating-margin: 8px;
   position: fixed;
   top: 0;
+  left: var(--floating-margin);
+  right: var(--floating-margin);
   z-index: 5;
   background: var(--toolbar);
-  width: 100%;
-  padding: 0.4rem;
-  backdrop-filter: blur(8px) saturate(150%);
+  padding: calc(var(--floating-margin) - 2px);
+  backdrop-filter: blur(10px) saturate(150%);
   border-bottom: 1px solid var(--divider);
   box-shadow: 0 0 4px 0 var(--toolbar-shadow-a),
     0 3px 4px 0 var(--toolbar-shadow-b), 0 1px 5px 0 var(--toolbar-shadow-c);
+  border-radius: 10px;
+  margin: var(--floating-margin) 0 0;
+
+  ${mediaQueries.tablet.sm} {
+    --floating-margin: 12px;
+  }
+
+  @media all and (min-width: 816px) {
+    left: 50%;
+    right: unset;
+    width: 100%;
+    max-width: calc(768px + calc(var(--floating-margin) * 4));
+    margin: var(--floating-margin) auto 0;
+    transform: translateX(-50%);
+  }
 `;
 
 export const Toolbar = () => {

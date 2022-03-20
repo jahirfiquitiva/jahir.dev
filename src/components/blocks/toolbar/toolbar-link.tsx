@@ -18,7 +18,7 @@ const BaseToolbarLink = styled.a`
   justify-content: center;
   color: var(--on-accent);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   min-height: 42px;
   padding: 0 0.8rem;
   font-family: var(--manrope-font);
