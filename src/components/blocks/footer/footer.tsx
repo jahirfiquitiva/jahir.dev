@@ -11,8 +11,10 @@ const StyledFooter = styled.footer`
   display: block;
   overflow: hidden;
   border-top: 1px solid var(--divider);
-  background-color: var(--primary);
-  padding: 2rem 1rem;
+  padding: 2.4rem 1rem;
+  width: 100%;
+  max-width: calc(768px + 1.6rem);
+  margin: 1.2rem auto 0;
 `;
 
 const FooterLogoLink = styled(Link)`
@@ -22,7 +24,13 @@ const FooterLogoLink = styled(Link)`
   align-items: center;
   justify-content: flex-start;
   gap: 0.6rem;
-  font-size: var(--font-sm);
+  font-size: calc(var(--base-font-size) * 1.1);
+  font-family: var(--manrope-font);
+  font-weight: 600;
+
+  & > span {
+    padding-top: 1px;
+  }
 
   & > svg {
     display: inline-block;
