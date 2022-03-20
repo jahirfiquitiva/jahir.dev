@@ -124,7 +124,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
 
         <ProjectsHeaderLinksContainer>
           <OutlinedLinkButton
-            title={"Link to Jahir's resume pdf file"}
+            title={"Jahir's resume pdf file"}
             href={'/resume'}
             icon={mdiFileCodeOutline}
           >
@@ -132,7 +132,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
           </OutlinedLinkButton>
           {!showFullList ? (
             <LinkButton
-              title={'Link to view all projects by Jahir'}
+              title={'View all projects by Jahir'}
               href={'/projects'}
               icon={mdiEyeOutline}
             >

@@ -17,7 +17,7 @@ export const Home: Component = () => {
         <Hello />
         <LearnMoreButton
           icon={mdiAccountCircleOutline}
-          title={'Link to about page'}
+          title={'About page'}
           href={'/about'}
         >
           More about me

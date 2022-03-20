@@ -80,7 +80,7 @@ export const ToolbarLinks = () => {
         return (
           <li key={index}>
             <ToolbarLink
-              title={`Link to ${link.title} page`}
+              title={`${link.title} page`}
               href={link.href}
               gradientColor={link.gradient as GradientOptions}
               className={cn({ active: activeLink === link.key })}

@@ -148,7 +148,7 @@ const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
 
   return (
     <BaseProjectCard
-      title={`Link to project: ${name}`}
+      title={`Project: ${name}`}
       href={link}
       style={shadowColors}
       underline={false}

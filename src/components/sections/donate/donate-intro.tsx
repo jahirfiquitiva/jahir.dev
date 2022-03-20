@@ -29,19 +29,19 @@ export const DonateIntro: Component = () => {
       <Paragraph>
         I strive to build great products, and most of them are{' '}
         <Link
-          title={"Link to Jahir Fiquitiva's GitHub profile"}
+          title={"Jahir Fiquitiva's GitHub profile"}
           href={'https://github.com/jahirfiquitiva'}
         >
           open source
         </Link>
         . But this wouldn’t be possible without the help of my{' '}
-        <Link title={'Link to supporters section'} href={'#thanks'}>
+        <Link title={'Supporters section'} href={'#thanks'}>
           supporters
         </Link>
         !
         <br />
         If you use any of{' '}
-        <Link title={'Link to projects list'} href={'/#projects'}>
+        <Link title={'Projects list'} href={'/#projects'}>
           my projects
         </Link>
         , please consider donating so that I can continue maintaining them.

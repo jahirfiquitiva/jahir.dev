@@ -214,7 +214,7 @@ export const BlogPostCard: Component<BlogPostCardProps> = (props) => {
 
   return (
     <BaseBlogPostCard
-      title={`Link to blog post: ${title}`}
+      title={`Blog post: ${title}`}
       href={rightLink}
       underline={false}
       style={{

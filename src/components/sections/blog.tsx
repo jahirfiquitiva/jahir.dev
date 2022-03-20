@@ -68,7 +68,7 @@ export const Blog: Component<BlogGridProps> = (props) => {
           Blog
         </Heading>
 
-        <RssLink href={'/feed.xml'} title={'Link to RSS feed'} icon={mdiRss}>
+        <RssLink href={'/feed.xml'} title={'RSS feed'} icon={mdiRss}>
           RSS Feed
         </RssLink>
       </BlogHeader>

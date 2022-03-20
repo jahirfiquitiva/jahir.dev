@@ -202,10 +202,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
   return (
     <MdxContentSection>
       {backText && backHref && (
-        <BackLink
-          title={`Link to go ${backText.toLowerCase()}`}
-          href={backHref}
-        >
+        <BackLink title={backText.toLowerCase()} href={backHref}>
           ← {backText}
         </BackLink>
       )}
@@ -239,15 +236,12 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
             <DiscussEdit>
               <Link
                 href={shareUrl(content)}
-                title={'Link to share blog post on Twitter'}
+                title={'Share blog post on Twitter'}
               >
                 Share on Twitter
               </Link>
               {' • '}
-              <Link
-                href={editUrl(content)}
-                title={'Link to edit content on GitHub'}
-              >
+              <Link href={editUrl(content)} title={'Edit content on GitHub'}>
                 Edit on GitHub
               </Link>
             </DiscussEdit>

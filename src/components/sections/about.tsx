@@ -133,12 +133,12 @@ export const About = () => {
 
       <Intro>
         I am{' '}
-        <Link title={'Link to home page'} href={'/'}>
+        <Link title={'Home page'} href={'/'}>
           Jahir Fiquitiva
         </Link>
         , a full-stack software engineer based in{' '}
         <Link
-          title={'Link to Colombia on Google Maps'}
+          title={'Colombia on Google Maps'}
           href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
         >
           Colombia 🇨🇴
@@ -161,7 +161,7 @@ export const About = () => {
       <Paragraph>
         When not coding, I like to watch TV shows and movies, play some games
         with friends or hang out with them 🤝 I&apos;m also{' '}
-        <Link title={'Link to now page'} href={'/now'}>
+        <Link title={'Dashboard page'} href={'/dashboard'}>
           listening to music
         </Link>{' '}
         most of the time 🎧 According to Spotify Wrapped, I listened to 130437
@@ -171,7 +171,7 @@ export const About = () => {
       <Paragraph>
         I consider myself a curious and inquisitive person, so on my spare time
         I like to work on{' '}
-        <Link title={'Link to projects page'} href={'/projects'}>
+        <Link title={'Projects page'} href={'/projects'}>
           side projects
         </Link>
         , try to contribute to open source software and aim to constantly learn
@@ -180,14 +180,11 @@ export const About = () => {
 
       <Paragraph>
         Learn even more about me on{' '}
-        <Link
-          title={'Link to Polywork timeline'}
-          href={'https://timeline.jahir.dev/'}
-        >
+        <Link title={'Polywork timeline'} href={'https://timeline.jahir.dev/'}>
           my timeline
         </Link>{' '}
         and please don&apos;t hesitate to{' '}
-        <Link title={'Link to contact page'} href={'/contact'}>
+        <Link title={'Contact page'} href={'/contact'}>
           contact me
         </Link>
         !
@@ -220,17 +217,10 @@ export const About = () => {
           </li>
           <li>
             Check out the{' '}
-            <Link title={'Link to uses page'} href={'/blog/uses'}>
+            <Link title={'Uses page'} href={'/blog/uses'}>
               tools, software and hardware
             </Link>{' '}
             that I use.
-          </li>
-          <li>
-            Learn about{' '}
-            <Link title={'Link to now page'} href={'/now'}>
-              what I&apos;m currently being focused
-            </Link>{' '}
-            on in my life.
           </li>
         </ul>
       </CuriousParagraph>

@@ -142,11 +142,7 @@ const Navigation = () => {
 
   return (
     <ToolbarGrid className={itemsClassName}>
-      <HomeLink
-        title={'Link to go to home page'}
-        href={'/'}
-        outOfSpanChildren={<Logo />}
-      >
+      <HomeLink title={'Home page'} href={'/'} outOfSpanChildren={<Logo />}>
         <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
           Jahir Fiquitiva
         </GradientSpan>
@@ -155,7 +151,7 @@ const Navigation = () => {
         <ThemeToggle />
         <li>
           <MenuButton
-            title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
+            title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
             icon={isExpanded ? mdiPlus : mdiMenu}
             className={itemsClassName}
             onClick={() => {

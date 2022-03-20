@@ -66,25 +66,21 @@ const SmallLinks = styled.small`
 const sectionTwoLinks: Array<FooterLink> = [
   {
     text: 'About',
-    title: 'Link to about page',
     href: '/about',
     gradientColor: 'blue-to-green',
   },
   {
     text: 'Blog',
-    title: 'Link to blog posts page',
     href: '/blog',
     gradientColor: 'yellow-to-orange',
   },
   {
     text: 'Projects',
-    title: 'Link to projects page',
     href: '/projects',
     gradientColor: 'red-to-purple',
   },
   {
     text: 'Contact',
-    title: 'Link to contact page',
     href: '/contact',
     gradientColor: 'brand-to-blue',
   },
@@ -92,13 +88,11 @@ const sectionTwoLinks: Array<FooterLink> = [
 
 const sectionThreeLinks: Array<FooterLink> = [
   {
-    title: 'Link to uses page',
     href: '/blog/uses',
     text: 'Uses',
     gradientColor: 'yellow-to-orange',
   },
   {
-    title: 'Link to donate page',
     href: '/donate',
     text: 'Donate',
     gradientColor: 'orange-to-red',
@@ -107,13 +101,11 @@ const sectionThreeLinks: Array<FooterLink> = [
 
 const sectionFourLinks: Array<FooterLink> = [
   {
-    title: 'Link to inspiration page',
     href: '/inspiration',
     text: 'Inspiration',
     gradientColor: 'brand-to-blue',
   },
   {
-    title: 'Link to dashboard page',
     href: '/dashboard',
     text: 'Dashboard',
     gradientColor: 'purple-to-brand',
@@ -128,7 +120,7 @@ export const Footer: Component = () => {
         sectionThreeLinks={sectionThreeLinks}
         sectionFourLinks={sectionFourLinks}
       >
-        <FooterLogoLink title={'Link to go back to home page'} href={'/'}>
+        <FooterLogoLink title={'Home page'} href={'/'}>
           <Logo />
           <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
             Jahir Fiquitiva
@@ -141,13 +133,13 @@ export const Footer: Component = () => {
         </StackContainer>
         <SmallLinks>
           <Link
-            title={'Link to view website source code on GitHub'}
+            title={'View website source code on GitHub'}
             href={'https://github.com/jahirfiquitiva/jahir.dev'}
           >
             View source code
           </Link>
           {' • '}
-          <Link title={'Link to blog RSS feed'} href={'/feed.xml'}>
+          <Link title={'Blog RSS feed'} href={'/feed.xml'}>
             RSS Feed
           </Link>
         </SmallLinks>

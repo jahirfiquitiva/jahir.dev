@@ -73,7 +73,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
     return (
       <p>
         Feel free to{' '}
-        <Link href={'/contact'} title={'Link to contact page'}>
+        <Link href={'/contact'} title={'Contact page'}>
           contact me
         </Link>{' '}
         and share some details so I can try to fix it.
@@ -96,7 +96,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
         </Heading>
         <p>{message}</p>
         {renderContactMessage()}
-        <LinkButton title={'Link to go to home page'} href={'/'}>
+        <LinkButton title={'Home page'} href={'/'}>
           Go back home
         </LinkButton>
       </>

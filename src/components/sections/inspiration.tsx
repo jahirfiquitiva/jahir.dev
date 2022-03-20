@@ -103,7 +103,7 @@ const InspirationItem: Component<InspirationItemProps> = (props) => {
   const { favicon = '' } = data;
 
   return (
-    <InspirationCard href={link || '#'} title={`Link to ${title}'s website`}>
+    <InspirationCard href={link || '#'} title={`${title}'s website`}>
       <Heading size={'4'}>{title}</Heading>
       <FaviconLinkContainer>
         <Image

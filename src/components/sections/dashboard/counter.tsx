@@ -100,8 +100,7 @@ export const Counter: Component<CounterProps> = (props) => {
   const { count, text, site, title, href, iconPath } = props;
 
   const cardTitle = useMemo<string>(() => {
-    const text = getCardTitle(site, title);
-    return `Link to ${text}`;
+    return getCardTitle(site, title);
   }, [site, title]);
 
   if (!count && site !== 'stalk') return null;

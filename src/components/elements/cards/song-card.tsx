@@ -145,7 +145,7 @@ export const SongCard: Component<SongCardProps> = (props) => {
       <BaseSongCard
         underline={false}
         className={cn({ 'not-playing': !shouldRenderDetails })}
-        title={`Link to spotify song: ${props.title || 'unknown'}`}
+        title={`Spotify song: ${props.title || 'unknown'}`}
         href={props.url || '#'}
         style={buildStyles({
           ...cardColors,

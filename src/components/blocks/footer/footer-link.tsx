@@ -29,7 +29,6 @@ const FooterLinkComponent = styled(Link)`
 `;
 
 export interface FooterLink {
-  title: string;
   href: string;
   text: string;
   gradientColor: GradientOptions;
@@ -91,14 +90,14 @@ const getStylesForUnderline = (gradientColor: GradientOptions) => {
 };
 
 export const transformLink = (link: FooterLink, itemIndex: number = 0) => {
-  const { title, href, emoji, text, gradientColor } = link;
+  const { href, emoji, text, gradientColor } = link;
   return (
     <FooterLinkComponent
-      title={title}
+      title={`${text} page`}
       href={href}
       underline={false}
       css={[getStylesForUnderline(gradientColor)]}
-      key={`footer-item-${itemIndex || title.toLowerCase()}`.trim()}
+      key={`footer-item-${itemIndex || text.toLowerCase()}`.trim()}
     >
       {emoji && <span className={'emoji'}>{emoji}</span>}
       <GradientSpan

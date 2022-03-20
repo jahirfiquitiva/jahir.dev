@@ -176,7 +176,7 @@ export const Contact: Component = () => {
             Anyways, please{' '}
             <Link
               href={'https://nohello.club/'}
-              title={"Link to don't just say hello club page"}
+              title={"Don't just say hello club page"}
             >
               don&apos;t just say hello
             </Link>
@@ -186,7 +186,7 @@ export const Contact: Component = () => {
           <ContactOptions>
             <li>
               <EmailLink
-                title={'Link to compose an email to Jahir'}
+                title={'Compose an email to Jahir'}
                 href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
               >
                 Email
@@ -194,7 +194,7 @@ export const Contact: Component = () => {
             </li>
             <li>
               <TwitterLink
-                title={'Link to compose a Twitter direct message for Jahir'}
+                title={'Compose a Twitter direct message for Jahir'}
                 href={'https://jahir.xyz/twitterdm'}
               >
                 Twitter Direct Messages
@@ -202,7 +202,7 @@ export const Contact: Component = () => {
             </li>
             <li>
               <TelegramLink
-                title={"Link to Jahir's Telegram profile"}
+                title={"Jahir's Telegram profile"}
                 href={'https://jahir.xyz/tlgrm'}
               >
                 Telegram
@@ -210,7 +210,7 @@ export const Contact: Component = () => {
             </li>
             <li>
               <Link
-                title={"Link to Jahir's Ask me Anything on GitHub"}
+                title={"Jahir's Ask me Anything on GitHub"}
                 href={
                   'https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=q-a'
                 }
@@ -221,12 +221,12 @@ export const Contact: Component = () => {
           </ContactOptions>
           <p>
             Although if it&apos;s related to{' '}
-            <Link title={'Link to dashbud page'} href={'https://dashbud.dev'}>
+            <Link title={'Dashbud page'} href={'https://dashbud.dev'}>
               my dashboards
             </Link>
             , I would rather you{' '}
             <DiscordLink
-              title={'Link to dashboards Discord server'}
+              title={'Dashboards Discord server'}
               href={'https://discordapp.com/invite/78h7xgj'}
             >
               send a message on Discord
