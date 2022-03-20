@@ -7,7 +7,7 @@ import { Component, skills } from '~/types';
 import { buildChipStyles } from '~/utils/styles/build-chip-styles';
 
 const SkillsSection = styled.section`
-  padding-bottom: 2.4rem;
+  padding-bottom: 1.6rem;
 `;
 
 export const Skills: Component = () => {
