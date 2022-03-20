@@ -22,19 +22,39 @@ interface AboutPhoto {
 const possibleImages: Array<AboutPhoto> = [
   {
     key: '0',
-    alt: 'Me in Lima, Perú',
+    alt: "Visiting Lima, Perú – Oct '19",
+  },
+  {
+    key: '1',
+    alt: "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
   },
   {
     key: '2',
-    alt: 'Hiking in my hometown',
+    alt: "Hiking in my hometown – Mar '20",
   },
   {
     key: '3',
-    alt: 'Hanging out with friends at a cafe',
+    alt: "Hanging out with friends at a cafe – Dec '20",
+  },
+  {
+    key: '4',
+    alt: "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
   },
   {
     key: '5',
-    alt: 'Hanging out with friends in Playa Blanca, Boyacá, Colombia',
+    alt: "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
+  },
+  {
+    key: '6',
+    alt: "Hanging out with friends at a cafe – Feb '22",
+  },
+  {
+    key: '7',
+    alt: "Visiting a small town – Dec '22",
+  },
+  {
+    key: '8',
+    alt: "Trip to San Andrés – Dec '22",
   },
 ];
 

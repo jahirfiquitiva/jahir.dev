@@ -133,7 +133,6 @@ figure {
 
 figure figcaption {
   text-align: center;
-  font-style: italic;
   font-size: var(--font-3xs);
   margin: 0.6rem 0;
 }
