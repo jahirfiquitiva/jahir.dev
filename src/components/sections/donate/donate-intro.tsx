@@ -2,18 +2,10 @@ import styled from '@emotion/styled';
 
 import { Heading, Link } from '~/components/atoms/simple';
 import { DonationLinks } from '~/components/elements';
-import { Component, mediaQueries } from '~/types';
+import { Component } from '~/types';
 
-const ParagraphsContainer = styled.div`
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.8rem;
-  margin: 1.2rem 0;
-
-  ${mediaQueries.tablet.sm} {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
+const Paragraph = styled.p`
+  margin-top: 0.6rem;
 `;
 
 const OptionsContainer = styled.div`
@@ -34,40 +26,28 @@ export const DonateIntro: Component = () => {
         Donate
       </Heading>
 
-      <ParagraphsContainer>
-        <p>
-          I try really hard to build great apps and provide the best possible
-          experience and products to all users, and most of them are{' '}
-          <Link
-            title={"Link to Jahir Fiquitiva's GitHub profile"}
-            href={'https://github.com/jahirfiquitiva'}
-          >
-            open source
-          </Link>
-          . However, that wouldn&apos;t be possible without the help and the
-          motivation from{' '}
-          <Link title={'Link to supporters page'} href={'#thanks'}>
-            supporters
-          </Link>
-          !
-        </p>
-
-        <p>
-          <b>
-            If you like and/or use any of{' '}
-            <Link title={'Link to projects list'} href={'/#projects'}>
-              my projects
-            </Link>
-            , or want to support my work, please kindly consider donating, so I
-            can continue maintaining and improving them as well as creating new
-            ones.
-          </b>
-        </p>
-      </ParagraphsContainer>
-
-      <p>
-        Whatever I receive, will be highly appreciated. Thanks in advance! 🤗
-      </p>
+      <Paragraph>
+        I strive to build great products, and most of them are{' '}
+        <Link
+          title={"Link to Jahir Fiquitiva's GitHub profile"}
+          href={'https://github.com/jahirfiquitiva'}
+        >
+          open source
+        </Link>
+        . But this wouldn’t be possible without the help of my{' '}
+        <Link title={'Link to supporters section'} href={'#thanks'}>
+          supporters
+        </Link>
+        !
+        <br />
+        If you use any of{' '}
+        <Link title={'Link to projects list'} href={'/#projects'}>
+          my projects
+        </Link>
+        , please consider donating so that I can continue maintaining them.
+        <br />
+        Any amount will be highly appreciated. Thanks in advance! 🤗
+      </Paragraph>
 
       <OptionsContainer>
         <p>

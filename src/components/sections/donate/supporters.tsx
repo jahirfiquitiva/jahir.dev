@@ -8,6 +8,7 @@ import {
   Link,
   ImageChip,
   Divider,
+  DotsDivider,
 } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
@@ -107,7 +108,7 @@ export const Supporters: Component = () => {
   return (
     <>
       <section id={'thanks'}>
-        <Divider gradientColor={'orange-to-red'} />
+        <DotsDivider />
         <SupportersHeader>
           <HeaderContent>
             <Heading size={'3'} shadowColor={'red'}>

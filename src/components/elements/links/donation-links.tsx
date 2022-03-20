@@ -83,7 +83,7 @@ export const DonationLinks = () => {
   return (
     <ButtonGroup>
       <GitHubSponsorsLink>GitHub Sponsors</GitHubSponsorsLink>
-      <BmacLink>Buy me a pizza</BmacLink>
+      {/* <BmacLink>Buy me a pizza</BmacLink> */}
       <PayPalLink>PayPal</PayPalLink>
     </ButtonGroup>
   );
