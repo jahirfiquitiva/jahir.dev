@@ -57,12 +57,12 @@ export const Dashboard: Component = () => {
       </Section>
       <Section id={'dashboard'}>
         <Divider thin />
-        <TopTracksHeading size={'4'} emoji={'✨'} shadowColor={'orange'}>
+        <TopTracksHeading size={'4'} shadowColor={'orange'}>
           Right Now
         </TopTracksHeading>
         <DashboardGrid data={dashboardData} />
         <Divider thin />
-        <TopTracksHeading size={'4'} emoji={'🎙️'} shadowColor={'blue'}>
+        <TopTracksHeading size={'4'} shadowColor={'blue'}>
           Top Tracks
         </TopTracksHeading>
         {renderTopTracks()}

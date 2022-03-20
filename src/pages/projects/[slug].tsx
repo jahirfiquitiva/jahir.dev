@@ -1,10 +1,10 @@
+import { allProjects } from '.contentlayer/data';
+import type { Project } from '.contentlayer/types';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { allProjects } from '.contentlayer/data';
-import type { Project } from '.contentlayer/types';
 import { Page, UnderConstruction } from '~/components/blocks';
 import { MdxContent } from '~/components/elements';
 import { mdxComponents } from '~/components/mdx';

@@ -1,13 +1,7 @@
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
-import { BaseToolbarButtonStyles } from './toolbar-button';
-
-import {
-  GradientSpan,
-  LinkButton,
-  LinkButtonProps,
-} from '~/components/atoms/simple';
+import { LinkButtonProps } from '~/components/atoms/simple';
 import {
   Component,
   ComponentWithGradientProps,

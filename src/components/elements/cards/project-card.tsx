@@ -1,11 +1,9 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo, CSSProperties, memo } from 'react';
 
 import { LinkCard, Image, Heading } from '~/components/atoms/simple';
-import { Stack } from '~/components/elements';
 import useRequest from '~/hooks/useRequest';
 import { useTheme } from '~/providers/theme';
 import { Component, ComponentProps, ProjectProps } from '~/types';
@@ -125,17 +123,8 @@ const ProjectStarsContainer = styled.div`
 interface ProjectCardProps extends ComponentProps, ProjectProps {}
 
 const DefaultProjectCard: Component<ProjectCardProps> = (props) => {
-  const {
-    name,
-    description,
-    link,
-    icon,
-    stack,
-    color,
-    darkColor,
-    repo,
-    owner,
-  } = props;
+  const { name, description, link, icon, color, darkColor, repo, owner } =
+    props;
   const { data } = useRequest<{ stars?: string }>(
     `/api/repo/${repo}${owner ? `?owner=${owner}` : ''}`,
   );

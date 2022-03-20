@@ -68,7 +68,6 @@ export const Now: Component = () => {
           size={'3'}
           shadowColor={'purple'}
           gradientColor={'purple-to-brand'}
-          emoji={'🔮'}
         >
           Now
         </NowHeading>

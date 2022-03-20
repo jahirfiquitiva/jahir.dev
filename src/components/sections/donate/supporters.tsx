@@ -110,7 +110,7 @@ export const Supporters: Component = () => {
         <Divider gradientColor={'orange-to-red'} />
         <SupportersHeader>
           <HeaderContent>
-            <Heading size={'3'} emoji={'🙌'} shadowColor={'red'}>
+            <Heading size={'3'} shadowColor={'red'}>
               Thanks!
             </Heading>
             <p>
