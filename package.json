@@ -41,7 +41,6 @@
     "@babel/core": "^7.17.8",
     "@bpsmart/eslint-config-base": "^0.1.0",
     "@bpsmart/eslint-config-react": "^0.0.8",
-    "@emotion/babel-plugin": "^11.7.2",
     "@emotion/css": "^11.7.1",
     "@emotion/server": "^11.4.0",
     "@fullhuman/postcss-purgecss": "^4.1.3",
