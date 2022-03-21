@@ -51,7 +51,7 @@ export const DonateIntro: Component = () => {
 
       <OptionsContainer>
         <p>
-          <b>Donation options:</b>
+          <strong>Donation options:</strong>
         </p>
         <DonationLinks />
       </OptionsContainer>

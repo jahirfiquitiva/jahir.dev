@@ -130,7 +130,8 @@ export const Inspiration: Component = () => {
       </Heading>
       <Subtitle>
         These are some people and websites that have been inspiration to build
-        this website and some of my projects 👏 <i>(In no particular order).</i>
+        this website and some of my projects 👏{' '}
+        <em>(In no particular order).</em>
       </Subtitle>
 
       {loading ? <EmptyText>Loading...</EmptyText> : null}
