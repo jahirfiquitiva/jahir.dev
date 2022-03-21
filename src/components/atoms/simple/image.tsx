@@ -5,10 +5,9 @@ import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import { Component, ComponentProps } from '~/types';
 
 const ImageWrapper = styled.div`
-  display: relative;
+  position: relative;
   width: 100%;
   min-height: 0;
-  max-width: 100%;
   max-height: 100%;
   overflow: hidden;
 
@@ -41,6 +40,7 @@ export interface ImageProps extends ComponentProps, BaseImageProps {
   loading?: 'lazy' | 'eager';
   placeholder?: 'blur' | 'empty';
   blurDataURL?: string;
+  isFourOhFour?: boolean;
 }
 
 export const Image: Component<ImageProps> = (props) => {
@@ -52,6 +52,8 @@ export const Image: Component<ImageProps> = (props) => {
     layout,
     className,
     loading = 'lazy',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    isFourOhFour,
     ...rest
   } = props;
 

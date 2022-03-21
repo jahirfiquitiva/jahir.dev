@@ -5,6 +5,7 @@ import { Link, GradientSpan } from '~/components/atoms/simple';
 import { GradientOptions, mediaQueries } from '~/types';
 
 const FooterLinkComponent = styled(Link)`
+  color: var(--text-tertiary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -28,11 +29,10 @@ const FooterLinkComponent = styled(Link)`
 `;
 
 export interface FooterLink {
-  title: string;
   href: string;
-  emoji: string;
   text: string;
   gradientColor: GradientOptions;
+  emoji?: string;
 }
 
 const getStylesForUnderline = (gradientColor: GradientOptions) => {
@@ -69,27 +69,42 @@ const getStylesForUnderline = (gradientColor: GradientOptions) => {
   }
   return css`
     &:hover,
-    &:focus {
+    &:focus,
+    &:active {
       & > span {
+        color: rgba(0, 0, 0, 0);
+        background-clip: text;
+        background-image: linear-gradient(
+          to right,
+          var(--from-gradient-color),
+          var(--to-gradient-color)
+        );
         text-decoration: underline;
         text-decoration: underline solid var(--gradient-${gradientColorName});
+        text-decoration-skip: edges;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
       }
     }
   `;
 };
 
 export const transformLink = (link: FooterLink, itemIndex: number = 0) => {
-  const { title, href, emoji, text, gradientColor } = link;
+  const { href, emoji, text, gradientColor } = link;
   return (
     <FooterLinkComponent
-      title={title}
+      title={`${text} page`}
       href={href}
       underline={false}
       css={[getStylesForUnderline(gradientColor)]}
-      key={`footer-item-${itemIndex || title.toLowerCase()}`.trim()}
+      key={`footer-item-${itemIndex || text.toLowerCase()}`.trim()}
     >
-      <span className={'emoji'}>{emoji}</span>
-      <GradientSpan gradientColor={gradientColor} forceGradient>
+      {emoji && <span className={'emoji'}>{emoji}</span>}
+      <GradientSpan
+        gradientColor={gradientColor}
+        forceGradient
+        gradientOnHoverOnly
+      >
         {text}
       </GradientSpan>
     </FooterLinkComponent>

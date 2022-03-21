@@ -1,9 +1,9 @@
-import { GetStaticProps } from 'next';
-
 import { allProjects } from '.contentlayer/data';
 import type { Project } from '.contentlayer/types';
+import { GetStaticProps } from 'next';
+
 import { Page } from '~/components/blocks';
-import { Home, Projects } from '~/components/sections';
+import { Home, Projects, Skills } from '~/components/sections';
 import pick from '~/lib/pick';
 import { Component, ComponentProps, ProjectProps } from '~/types';
 
@@ -16,6 +16,7 @@ const HomePage: Component<HomePageProps> = (props) => {
     <Page>
       <Home />
       <Projects projects={props.projects} />
+      <Skills />
     </Page>
   );
 };

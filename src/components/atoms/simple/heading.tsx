@@ -87,6 +87,7 @@ const buildGradientAndShadowStyles = (
         forceGradient || isDark ? forcedGradientStyles : null,
         css`
           display: inline-block;
+          align-self: flex-start;
         `,
         gradientCss,
       ]

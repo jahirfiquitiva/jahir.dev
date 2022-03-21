@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./headers');
@@ -20,7 +20,7 @@ const buildRedirect = (source, destination, permanent = true) => {
 const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
-  experimental: {
+  compiler: {
     removeConsole: {
       exclude: ['error'],
     },
@@ -77,8 +77,8 @@ const defaultNextConfig = {
       buildRedirect('/dashsetup/:path*', 'https://dashbud.dev'),
       /* Other redirections */
       buildRedirect('/links', '/'),
-      buildRedirect('/music', '/now'),
-      buildRedirect('/dashboard', '/now'),
+      buildRedirect('/music', '/dashboard'),
+      buildRedirect('/now', '/dashboard'),
       buildRedirect('/support', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),
       buildRedirect('/uses', '/blog/uses'),

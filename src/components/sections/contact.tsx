@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
-import { SectionHeading } from '~/components/atoms/complex';
-import { Link, CenteredSection, Image } from '~/components/atoms/simple';
+import {
+  Heading,
+  Link,
+  CenteredSection,
+  Image,
+} from '~/components/atoms/simple';
 import random from '~/lib/random';
 import { Component, mediaQueries } from '~/types';
 
@@ -116,39 +120,39 @@ type ContactImage = {
 const allContactImages: Array<ContactImage> = [
   {
     key: '0',
-    alt: 'Illustration of a person within a box',
+    alt: 'Person within a box',
   },
   {
     key: '1',
-    alt: 'Illustration of a person dancing',
+    alt: 'Person dancing',
   },
   {
     key: '2',
-    alt: 'Illustration of a person meditating',
+    alt: 'Person meditating',
   },
   {
     key: '3',
-    alt: 'Illustration of a person sitting on the floor',
+    alt: 'Person sitting on the floor',
   },
   {
     key: '4',
-    alt: 'Illustration of a person reading a book',
+    alt: 'Person reading a book',
   },
   {
     key: '5',
-    alt: 'Illustration of a person listening to music',
+    alt: 'Person listening to music',
   },
   {
     key: '6',
-    alt: 'Illustration of a person walking',
+    alt: 'Person walking',
   },
   {
     key: '7',
-    alt: 'Illustration of a person walking like a zombie',
+    alt: 'Person walking like a zombie',
   },
   {
     key: '8',
-    alt: 'Illustration of a person taking a selfie with a t-shirt that says hi',
+    alt: 'Person taking a selfie with a t-shirt that says hi',
   },
 ];
 
@@ -159,14 +163,9 @@ export const Contact: Component = () => {
 
   return (
     <CenteredSection id={'contact'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'brand'}
-        gradientColor={'brand-to-blue'}
-        emoji={'📬'}
-      >
+      <Heading size={'3'} shadowColor={'brand'} gradientColor={'brand-to-blue'}>
         Contact
-      </SectionHeading>
+      </Heading>
       <Grid>
         <ContactOptionsContainer>
           <p>
@@ -177,7 +176,7 @@ export const Contact: Component = () => {
             Anyways, please{' '}
             <Link
               href={'https://nohello.club/'}
-              title={"Link to don't just say hello club page"}
+              title={"Don't just say hello club page"}
             >
               don&apos;t just say hello
             </Link>
@@ -187,7 +186,7 @@ export const Contact: Component = () => {
           <ContactOptions>
             <li>
               <EmailLink
-                title={'Link to compose an email to Jahir'}
+                title={'Compose an email to Jahir'}
                 href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
               >
                 Email
@@ -195,7 +194,7 @@ export const Contact: Component = () => {
             </li>
             <li>
               <TwitterLink
-                title={'Link to compose a Twitter direct message for Jahir'}
+                title={'Compose a Twitter direct message for Jahir'}
                 href={'https://jahir.xyz/twitterdm'}
               >
                 Twitter Direct Messages
@@ -203,7 +202,7 @@ export const Contact: Component = () => {
             </li>
             <li>
               <TelegramLink
-                title={"Link to Jahir's Telegram profile"}
+                title={"Jahir's Telegram profile"}
                 href={'https://jahir.xyz/tlgrm'}
               >
                 Telegram
@@ -211,7 +210,7 @@ export const Contact: Component = () => {
             </li>
             <li>
               <Link
-                title={"Link to Jahir's Ask me Anything on GitHub"}
+                title={"Jahir's Ask me Anything on GitHub"}
                 href={
                   'https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=q-a'
                 }
@@ -222,12 +221,12 @@ export const Contact: Component = () => {
           </ContactOptions>
           <p>
             Although if it&apos;s related to{' '}
-            <Link title={'Link to dashbud page'} href={'https://dashbud.dev'}>
+            <Link title={'Dashbud page'} href={'https://dashbud.dev'}>
               my dashboards
             </Link>
             , I would rather you{' '}
             <DiscordLink
-              title={'Link to dashboards Discord server'}
+              title={'Dashboards Discord server'}
               href={'https://discordapp.com/invite/78h7xgj'}
             >
               send a message on Discord

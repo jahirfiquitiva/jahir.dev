@@ -13,7 +13,7 @@ export const DashboardCard: Component<DashboardCardProps> = (props) => {
   if (href) {
     return (
       <LinkCard
-        title={title || 'Link to dashboard item'}
+        title={title || 'Dashboard item'}
         href={href}
         underline={underline}
         className={className}

@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { Fragment, useMemo } from 'react';
 
-import { SectionHeading, ChipGroup } from '~/components/atoms/complex';
+import { ChipGroup } from '~/components/atoms/complex';
 import {
   Heading,
   Image,
   Link,
   ImageChip,
-  Divider,
+  DotsDivider,
 } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
 import { useTheme } from '~/providers/theme';
@@ -84,11 +84,7 @@ const SupporterChip: Component<SupporterChipProps> = (props) => {
   }, [themeReady, isDark, paletteData]);
 
   return (
-    <Link
-      title={`Link to ${name}'s website`}
-      href={link || '#'}
-      underline={false}
-    >
+    <Link title={`${name}'s website`} href={link || '#'} underline={false}>
       <ImageChip style={buildChipStyles(color)}>
         <Image
           src={photo || ''}
@@ -107,17 +103,12 @@ export const Supporters: Component = () => {
   return (
     <>
       <section id={'thanks'}>
-        <Divider gradientColor={'orange-to-red'} />
+        <DotsDivider />
         <SupportersHeader>
           <HeaderContent>
-            <SectionHeading
-              size={'3'}
-              emoji={'🙌'}
-              shadowColor={'red'}
-              gradientColor={'red-to-purple'}
-            >
+            <Heading size={'3'} shadowColor={'red'}>
               Thanks!
-            </SectionHeading>
+            </Heading>
             <p>
               I&apos;m really grateful to all the awesome people that support my
               work.
@@ -139,9 +130,7 @@ export const Supporters: Component = () => {
             <Fragment key={categoryIndex}>
               <Heading size={'5'}>
                 <Link
-                  title={`Link to GitHub Sponsors ${name
-                    .join(' ')
-                    .trim()} Tier Page`}
+                  title={`GitHub Sponsors ${name.join(' ').trim()} Tier Page`}
                   href={`https://github.com/sponsors/jahirfiquitiva/sponsorships?tier_id=${category.id}`}
                 >
                   {emoji}&nbsp;&nbsp;&nbsp;{name.join(' ').trim()}&nbsp;Sponsor

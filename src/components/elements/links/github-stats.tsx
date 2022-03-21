@@ -59,7 +59,7 @@ export const GitHubStats: Component = (props) => {
   if (!data || !data?.success) return <></>;
   return (
     <GitHubStatsLink
-      title={"Link to Jahir's GitHub profile"}
+      title={"Jahir's GitHub profile"}
       className={className}
       href={'https://github.com/jahirfiquitiva'}
       underline={false}

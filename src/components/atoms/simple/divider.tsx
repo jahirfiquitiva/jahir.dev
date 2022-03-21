@@ -40,3 +40,27 @@ export const Divider: Component<DividerProps> = (props) => {
   if (thin) return <ThinDivider css={css} {...otherProps} />;
   return <BaseDivider css={css} {...otherProps} />;
 };
+
+export const DotsDivider = styled.hr`
+  height: 24px;
+  margin: 1.8rem 0;
+  border: none;
+  background-image: url('/static/images/brand/dots-divider.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--divider);
+  filter: opacity(0.24);
+
+  & > svg {
+    color: var(--divider);
+    fill: var(--divider);
+  }
+
+  .dark & {
+    filter: opacity(0.24) invert(1);
+  }
+
+  ${mediaQueries.desktop} {
+    margin: 2.2rem 0;
+  }
+`;

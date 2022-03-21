@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@mdi/js';
 import { useState, useMemo } from 'react';
 
-import { SectionHeading } from '~/components/atoms/complex';
 import {
   Field,
-  Divider,
+  Heading,
+  DotsDivider,
   LinkButton,
   OutlinedLinkButton,
 } from '~/components/atoms/simple';
@@ -52,8 +52,9 @@ const ProjectsHeaderLinksContainer = styled.div`
   }
 `;
 
-const ProjectsMasonry = styled(Masonry)`
-  padding: 1.6rem 0 2.4rem;
+const ProjectsMasonry = styled(Masonry)<{ showFullList?: boolean }>`
+  padding: 1.6rem 0
+    ${({ showFullList }) => (showFullList ? '2.4rem' : '0.8rem')};
 `;
 
 const masonryBreakpoints: MasonryBreakpoints = {};
@@ -114,21 +115,16 @@ export const Projects: Component<ProjectsProps> = (props) => {
 
   return (
     <section id={'projects'}>
-      {!showFullList && <Divider gradientColor={'blue-to-green'} />}
+      {!showFullList && <DotsDivider />}
 
       <ProjectsHeader>
-        <SectionHeading
-          size={'3'}
-          shadowColor={'red'}
-          gradientColor={'red-to-purple'}
-          emoji={'👨‍💻'}
-        >
-          {!showFullList ? 'Selected ' : ''}Projects
-        </SectionHeading>
+        <Heading size={'3'} shadowColor={'red'} gradientColor={'red-to-purple'}>
+          {!showFullList ? 'Featured ' : ''}Projects
+        </Heading>
 
         <ProjectsHeaderLinksContainer>
           <OutlinedLinkButton
-            title={"Link to Jahir's resume pdf file"}
+            title={"Jahir's resume pdf file"}
             href={'/resume'}
             icon={mdiFileCodeOutline}
           >
@@ -136,7 +132,7 @@ export const Projects: Component<ProjectsProps> = (props) => {
           </OutlinedLinkButton>
           {!showFullList ? (
             <LinkButton
-              title={'Link to view all projects by Jahir'}
+              title={'View all projects by Jahir'}
               href={'/projects'}
               icon={mdiEyeOutline}
             >
@@ -148,7 +144,11 @@ export const Projects: Component<ProjectsProps> = (props) => {
 
       {renderSearchComponents()}
 
-      <ProjectsMasonry breakpoints={masonryBreakpoints} gap={'1rem'}>
+      <ProjectsMasonry
+        showFullList={showFullList}
+        breakpoints={masonryBreakpoints}
+        gap={'1.1rem'}
+      >
         {(filteredProjects || []).map((project, index) => {
           const projectLink = project.link;
           // TODO: Enable when ready =>

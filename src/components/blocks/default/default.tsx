@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ReactElement } from 'react';
 
@@ -31,9 +32,14 @@ const DefaultContainer = styled(CenteredSection)`
 const FourOhFourContainer = styled(DefaultContainer)`
   justify-content: space-between;
 `;
-const FourOhFourWrapper = styled(DefaultContainer)`flex: 1;`;
+const FourOhFourWrapper = styled(DefaultContainer)`
+  flex: 1;
+`;
 
-const GifImage = styled(Image)`max-width: 425px;`;
+const GifImage = styled(Image)<{ isFourOhFour?: boolean }>`
+  max-width: 425px;
+  ${({ isFourOhFour }) => (isFourOhFour ? 'margin-bottom: -1.2rem' : 0)}
+`;
 
 type ContentType = 'under-construction' | 'four-hundred-four' | 'error';
 
@@ -67,7 +73,7 @@ export const DefaultContent: Component<ContentProps> = (props) => {
     return (
       <p>
         Feel free to{' '}
-        <Link href={'/contact'} title={'Link to contact page'}>
+        <Link href={'/contact'} title={'Contact page'}>
           contact me
         </Link>{' '}
         and share some details so I can try to fix it.
@@ -82,12 +88,15 @@ export const DefaultContent: Component<ContentProps> = (props) => {
           size={'2'}
           shadowColor={shadowColor || 'red'}
           gradientColor={gradientColors || 'orange-to-red'}
+          css={css`
+            align-self: center;
+          `}
         >
           {title}
         </Heading>
         <p>{message}</p>
         {renderContactMessage()}
-        <LinkButton title={'Link to go to home page'} href={'/'}>
+        <LinkButton title={'Home page'} href={'/'}>
           Go back home
         </LinkButton>
       </>
@@ -106,11 +115,14 @@ export const DefaultContent: Component<ContentProps> = (props) => {
     <>
       {type === 'four-hundred-four' ? (
         <FourOhFourWrapper>{renderContent()}</FourOhFourWrapper>
-      ) : renderContent()}
+      ) : (
+        renderContent()
+      )}
       <GifImage
         src={gif}
         alt={alt}
         objectFit={isFourOhFour ? 'cover' : 'contain'}
+        isFourOhFour={isFourOhFour}
       />
     </>,
   );

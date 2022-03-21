@@ -1,3 +1,7 @@
+article {
+  --negative-margin: calc(-1.2rem + 2px);
+}
+
 article h2 {
   font-size: var(--font-xl);
 }
@@ -109,7 +113,7 @@ article .toc .title {
 }
 
 article img {
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid var(--divider) !important;
   margin: 1.6rem 0;
   height: auto;
@@ -122,4 +126,28 @@ article blockquote {
   border-radius: 8px;
   border: 1px dashed var(--accent-light);
   padding: 0.6rem 1.2rem;
+}
+
+article .toc .toc-level {
+  display: flex;
+  flex-direction: column;
+}
+
+article .toc-item {
+  align-self: flex-start;
+}
+
+@media all and (min-width: 840px) {
+  article pre {
+    margin: calc(calc(var(--negative-margin) * -1) + 0.4rem)
+      var(--negative-margin);
+    padding: calc(0.8rem + calc(calc(var(--negative-margin) * -1) / 2));
+    border-radius: 12px;
+  }
+
+  article .rehype-code-title {
+    margin-left: var(--negative-margin);
+    margin-right: var(--negative-margin);
+    padding: 0.6rem calc(0.8rem + calc(calc(var(--negative-margin) * -1) / 2));
+  }
 }

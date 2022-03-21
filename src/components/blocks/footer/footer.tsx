@@ -11,8 +11,10 @@ const StyledFooter = styled.footer`
   display: block;
   overflow: hidden;
   border-top: 1px solid var(--divider);
-  background-color: var(--primary);
-  padding: 2rem 1rem;
+  padding: 2.4rem 1rem;
+  width: 100%;
+  max-width: calc(768px + 1.6rem);
+  margin: 1.2rem auto 0;
 `;
 
 const FooterLogoLink = styled(Link)`
@@ -22,7 +24,13 @@ const FooterLogoLink = styled(Link)`
   align-items: center;
   justify-content: flex-start;
   gap: 0.6rem;
-  font-size: var(--font-sm);
+  font-size: calc(var(--base-font-size) * 1.1);
+  font-family: var(--manrope-font);
+  font-weight: 600;
+
+  & > span {
+    padding-top: 1px;
+  }
 
   & > svg {
     display: inline-block;
@@ -40,7 +48,7 @@ const FooterLogoLink = styled(Link)`
 `;
 
 const FooterSocialLinks = styled(SocialLinks)`
-  margin: 0.6rem 0;
+  margin: 0.3rem 0 0.2rem;
 `;
 
 const StackContainer = styled.div`
@@ -51,32 +59,28 @@ const StackContainer = styled.div`
   margin: 0.4rem 0;
 `;
 
+const SmallLinks = styled.small`
+  opacity: 0.85;
+`;
+
 const sectionTwoLinks: Array<FooterLink> = [
   {
-    emoji: '🙋‍♂️',
     text: 'About',
-    title: 'Link to about page',
     href: '/about',
     gradientColor: 'blue-to-green',
   },
   {
-    emoji: '📝',
     text: 'Blog',
-    title: 'Link to blog posts page',
     href: '/blog',
     gradientColor: 'yellow-to-orange',
   },
   {
-    emoji: '👨‍💻',
     text: 'Projects',
-    title: 'Link to projects page',
     href: '/projects',
     gradientColor: 'red-to-purple',
   },
   {
-    emoji: '📬',
     text: 'Contact',
-    title: 'Link to contact page',
     href: '/contact',
     gradientColor: 'brand-to-blue',
   },
@@ -84,35 +88,27 @@ const sectionTwoLinks: Array<FooterLink> = [
 
 const sectionThreeLinks: Array<FooterLink> = [
   {
-    title: 'Link to now page',
-    href: '/now',
-    emoji: '🔮',
-    text: 'Now',
-    gradientColor: 'purple-to-brand',
-  },
-  {
-    title: 'Link to uses page',
     href: '/blog/uses',
-    emoji: '⚡️',
     text: 'Uses',
     gradientColor: 'yellow-to-orange',
+  },
+  {
+    href: '/donate',
+    text: 'Donate',
+    gradientColor: 'orange-to-red',
   },
 ];
 
 const sectionFourLinks: Array<FooterLink> = [
   {
-    title: 'Link to donate page',
-    href: '/donate',
-    emoji: '🧡',
-    text: 'Donate',
-    gradientColor: 'orange-to-red',
-  },
-  {
-    title: 'Link to inspiration page',
     href: '/inspiration',
-    emoji: '🌎',
     text: 'Inspiration',
     gradientColor: 'brand-to-blue',
+  },
+  {
+    href: '/dashboard',
+    text: 'Dashboard',
+    gradientColor: 'purple-to-brand',
   },
 ];
 
@@ -124,7 +120,7 @@ export const Footer: Component = () => {
         sectionThreeLinks={sectionThreeLinks}
         sectionFourLinks={sectionFourLinks}
       >
-        <FooterLogoLink title={'Link to go back to home page'} href={'/'}>
+        <FooterLogoLink title={'Home page'} href={'/'}>
           <Logo />
           <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
             Jahir Fiquitiva
@@ -135,18 +131,18 @@ export const Footer: Component = () => {
           <small>Website built using: </small>
           <Stack stack={['nextjs', 'typescript', 'styled components']} />
         </StackContainer>
-        <small>
+        <SmallLinks>
           <Link
-            title={'Link to view website source code on GitHub'}
+            title={'View website source code on GitHub'}
             href={'https://github.com/jahirfiquitiva/jahir.dev'}
           >
             View source code
           </Link>
           {' • '}
-          <Link title={'Link to blog RSS feed'} href={'/feed.xml'}>
+          <Link title={'Blog RSS feed'} href={'/feed.xml'}>
             RSS Feed
           </Link>
-        </small>
+        </SmallLinks>
       </FooterContent>
     </StyledFooter>
   );

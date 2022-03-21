@@ -11,6 +11,7 @@ type Viewports = {
     xl: number;
   };
   desktop: number;
+  floating: number;
 };
 
 export const viewports: Viewports = {
@@ -26,6 +27,7 @@ export const viewports: Viewports = {
     xl: 792,
   },
   desktop: 960,
+  floating: 840,
 };
 
 type SingleMediaQuery = string | `@media all and (min-width: ${number}px)`;
@@ -47,6 +49,7 @@ type MediaQueries = {
     xl: SingleMediaQuery;
   };
   desktop: SingleMediaQuery;
+  floating: SingleMediaQuery;
 };
 
 export const mediaQueries: MediaQueries = {
@@ -62,4 +65,5 @@ export const mediaQueries: MediaQueries = {
     xl: buildMediaQuery(viewports.tablet.xl),
   },
   desktop: buildMediaQuery(viewports.desktop),
+  floating: buildMediaQuery(viewports.floating),
 };

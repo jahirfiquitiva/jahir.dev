@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { useMemo } from 'react';
 import useSound from 'use-sound';
 
-import { SectionHeading } from '~/components/atoms/complex';
 import {
+  Heading,
   Section,
   Image,
   Link,
@@ -13,6 +13,7 @@ import { SocialLinks } from '~/components/elements';
 import { AudioButton, audioButtonTitle } from '~/components/sections/home';
 import useHasMounted from '~/hooks/useHasMounted';
 import getRandomItem from '~/lib/random';
+import { mediaQueries } from '~/types';
 
 interface AboutPhoto {
   key: string;
@@ -22,27 +23,39 @@ interface AboutPhoto {
 const possibleImages: Array<AboutPhoto> = [
   {
     key: '0',
-    alt: 'Me in Lima, Perú',
+    alt: "Visiting Lima, Perú – Oct '19",
   },
   {
     key: '1',
-    alt: 'Me in Lima, Perú',
+    alt: "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
   },
   {
     key: '2',
-    alt: 'Hiking in my hometown',
+    alt: "Hiking in my hometown – Mar '20",
   },
   {
     key: '3',
-    alt: 'Hanging out with friends at a cafe',
+    alt: "Hanging out with friends at a cafe – Dec '20",
   },
   {
     key: '4',
-    alt: 'Hanging out with friends in Iza, Boyacá, Colombia',
+    alt: "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
   },
   {
     key: '5',
-    alt: 'Hanging out with friends in Playa Blanca, Boyacá, Colombia',
+    alt: "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
+  },
+  {
+    key: '6',
+    alt: "Hanging out with friends at a cafe – Feb '22",
+  },
+  {
+    key: '7',
+    alt: "Visiting a small town – Dec '22",
+  },
+  {
+    key: '8',
+    alt: "Trip to San Andrés – Dec '22",
   },
 ];
 
@@ -74,7 +87,6 @@ const CuriousParagraph = styled(Paragraph)`
 
 const Photo = styled(Image)`
   border-radius: 10px;
-  box-shadow: var(--shadow-sm);
   border: 1px solid var(--divider) !important;
   margin: 0 auto !important;
 `;
@@ -85,10 +97,14 @@ const PhotoFigure = styled.figure`
   margin: 1.2rem 0;
 
   & > span {
+    width: 100% !important;
     border-radius: 10px;
-    box-shadow: var(--shadow-sm);
     overflow: auto !important;
     margin: 0 auto !important;
+  }
+
+  ${mediaQueries.floating} {
+    margin: 1.2rem calc(-1.2rem + 2px);
   }
 `;
 
@@ -134,25 +150,20 @@ export const About = () => {
 
   return (
     <Section id={'about'}>
-      <SectionHeading
-        size={'3'}
-        shadowColor={'blue'}
-        gradientColor={'blue-to-green'}
-        emoji={'🙋‍♂️'}
-      >
+      <Heading size={'3'} shadowColor={'blue'} gradientColor={'blue-to-green'}>
         About
-      </SectionHeading>
+      </Heading>
 
       {photoComponent}
 
       <Intro>
         I am{' '}
-        <Link title={'Link to home page'} href={'/'}>
+        <Link title={'Home page'} href={'/'}>
           Jahir Fiquitiva
         </Link>
         , a full-stack software engineer based in{' '}
         <Link
-          title={'Link to Colombia on Google Maps'}
+          title={'Colombia on Google Maps'}
           href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
         >
           Colombia 🇨🇴
@@ -175,7 +186,7 @@ export const About = () => {
       <Paragraph>
         When not coding, I like to watch TV shows and movies, play some games
         with friends or hang out with them 🤝 I&apos;m also{' '}
-        <Link title={'Link to now page'} href={'/now'}>
+        <Link title={'Dashboard page'} href={'/dashboard'}>
           listening to music
         </Link>{' '}
         most of the time 🎧 According to Spotify Wrapped, I listened to 130437
@@ -185,7 +196,7 @@ export const About = () => {
       <Paragraph>
         I consider myself a curious and inquisitive person, so on my spare time
         I like to work on{' '}
-        <Link title={'Link to projects page'} href={'/projects'}>
+        <Link title={'Projects page'} href={'/projects'}>
           side projects
         </Link>
         , try to contribute to open source software and aim to constantly learn
@@ -194,14 +205,11 @@ export const About = () => {
 
       <Paragraph>
         Learn even more about me on{' '}
-        <Link
-          title={'Link to Polywork timeline'}
-          href={'https://timeline.jahir.dev/'}
-        >
+        <Link title={'Polywork timeline'} href={'https://timeline.jahir.dev/'}>
           my timeline
         </Link>{' '}
         and please don&apos;t hesitate to{' '}
-        <Link title={'Link to contact page'} href={'/contact'}>
+        <Link title={'Contact page'} href={'/contact'}>
           contact me
         </Link>
         !
@@ -234,17 +242,10 @@ export const About = () => {
           </li>
           <li>
             Check out the{' '}
-            <Link title={'Link to uses page'} href={'/blog/uses'}>
+            <Link title={'Uses page'} href={'/blog/uses'}>
               tools, software and hardware
             </Link>{' '}
             that I use.
-          </li>
-          <li>
-            Learn about{' '}
-            <Link title={'Link to now page'} href={'/now'}>
-              what I&apos;m currently being focused
-            </Link>{' '}
-            on in my life.
           </li>
         </ul>
       </CuriousParagraph>

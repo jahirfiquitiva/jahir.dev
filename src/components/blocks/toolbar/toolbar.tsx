@@ -7,7 +7,7 @@ import { ToolbarButton, ToolbarButtonsContainer } from './toolbar-button';
 import { ToolbarLink } from './toolbar-link';
 import { ToolbarLinks } from './toolbar-links';
 
-import { Logo } from '~/components/atoms/simple';
+import { GradientSpan, Logo } from '~/components/atoms/simple';
 import useToggle from '~/hooks/useToggle';
 import { mediaQueries } from '~/types';
 
@@ -142,18 +142,16 @@ const Navigation = () => {
 
   return (
     <ToolbarGrid className={itemsClassName}>
-      <HomeLink
-        title={'Link to go to home page'}
-        href={'/'}
-        outOfSpanChildren={<Logo />}
-      >
-        Jahir Fiquitiva
+      <HomeLink title={'Home page'} href={'/'} outOfSpanChildren={<Logo />}>
+        <GradientSpan gradientColor={'brand-to-blue'} forceGradient>
+          Jahir Fiquitiva
+        </GradientSpan>
       </HomeLink>
       <ToolbarButtonsContainer>
         <ThemeToggle />
         <li>
           <MenuButton
-            title={`Button to ${isExpanded ? 'collapse' : 'expand'} menu`}
+            title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
             icon={isExpanded ? mdiPlus : mdiMenu}
             className={itemsClassName}
             onClick={() => {
@@ -172,14 +170,33 @@ const Navigation = () => {
 const StyledHeader = styled.header`
   position: fixed;
   top: 0;
+  left: var(--floating-toolbar-margin);
+  right: var(--floating-toolbar-margin);
   z-index: 5;
   background: var(--toolbar);
-  width: 100%;
-  padding: 0.4rem;
-  backdrop-filter: blur(8px) saturate(150%);
+  padding: calc(var(--floating-toolbar-margin) - 2px);
+  backdrop-filter: blur(10px) saturate(150%);
   border-bottom: 1px solid var(--divider);
   box-shadow: 0 0 4px 0 var(--toolbar-shadow-a),
     0 3px 4px 0 var(--toolbar-shadow-b), 0 1px 5px 0 var(--toolbar-shadow-c);
+  border-radius: 10px;
+  margin: var(--floating-toolbar-margin) 0 0;
+  transition: box-shadow 0.25s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 4px 0 var(--toolbar-shadow-a),
+      0 3px 4px 0 var(--toolbar-shadow-b), 0 1px 5px 0 var(--toolbar-shadow-c),
+      0 0 10px 6px var(--toolbar-glow);
+  }
+
+  ${mediaQueries.floating} {
+    left: 50%;
+    right: unset;
+    width: 100%;
+    max-width: calc(768px + calc(var(--floating-toolbar-margin) * 4));
+    margin: var(--floating-toolbar-margin) auto 0;
+    transform: translateX(-50%);
+  }
 `;
 
 export const Toolbar = () => {

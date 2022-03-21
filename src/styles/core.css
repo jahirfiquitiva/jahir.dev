@@ -63,11 +63,41 @@ body.sb-show-main.sb-main-padded {
 }
 
 #__next {
+  --floating-toolbar-margin: 8px;
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: stretch;
   min-height: 100vh;
-  padding-top: calc(var(--toolbar-height) + 1.6rem);
+  padding-top: calc(
+    var(--toolbar-height) + 2.4rem + calc(var(--floating-toolbar-margin) * 1.5)
+  );
+}
+
+#__next::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: calc(
+    calc(var(--floating-toolbar-margin) * 1.5) + var(--toolbar-height)
+  );
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-values)),
+    rgba(0, 0, 0, 0)
+  );
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media all and (min-width: 596px) {
+  #__next {
+    --floating-toolbar-margin: 12px;
+  }
 }
 
 /* == Custom Scrollbar Colors == */
@@ -103,7 +133,11 @@ figure {
 
 figure figcaption {
   text-align: center;
-  font-style: italic;
   font-size: var(--font-3xs);
   margin: 0.6rem 0;
+}
+
+a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }

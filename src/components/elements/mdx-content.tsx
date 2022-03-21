@@ -28,19 +28,17 @@ const MdxContentSection = styled.section`
   width: 100%;
 
   ${mediaQueries.tablet.sm} {
-    padding: 1.2rem 0 2rem;
-  }
-
-  ${mediaQueries.tablet.lg} {
-    padding: 1.2rem 0 2.4rem;
+    padding: 1.2rem 0;
   }
 `;
 
 const Hero = styled(Image)`
-  border-radius: 6px;
+  width: unset;
   margin: 2.4rem 0;
-  box-shadow: 0 4px 6px -1px rgba(var(--shadow-color), 0.175),
-    0 2px 4px -1px rgba(var(--shadow-color), 0.075);
+
+  ${mediaQueries.floating} {
+    margin: 2.4rem var(--negative-margin);
+  }
 
   & img {
     object-fit: cover;
@@ -66,6 +64,7 @@ const Hero = styled(Image)`
 `;
 
 const BackLink = styled(Link)`
+  align-self: flex-start;
   margin-bottom: 0.4rem;
   margin-left: 0.4rem;
   ${mediaQueries.tablet.lg} {
@@ -203,10 +202,7 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
   return (
     <MdxContentSection>
       {backText && backHref && (
-        <BackLink
-          title={`Link to go ${backText.toLowerCase()}`}
-          href={backHref}
-        >
+        <BackLink title={backText.toLowerCase()} href={backHref}>
           ← {backText}
         </BackLink>
       )}
@@ -240,15 +236,12 @@ export const MdxContent: Component<MdxContentProps> = (props) => {
             <DiscussEdit>
               <Link
                 href={shareUrl(content)}
-                title={'Link to share blog post on Twitter'}
+                title={'Share blog post on Twitter'}
               >
                 Share on Twitter
               </Link>
               {' • '}
-              <Link
-                href={editUrl(content)}
-                title={'Link to edit content on GitHub'}
-              >
+              <Link href={editUrl(content)} title={'Edit content on GitHub'}>
                 Edit on GitHub
               </Link>
             </DiscussEdit>
