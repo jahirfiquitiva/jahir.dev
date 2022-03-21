@@ -13,6 +13,7 @@ import { SocialLinks } from '~/components/elements';
 import { AudioButton, audioButtonTitle } from '~/components/sections/home';
 import useHasMounted from '~/hooks/useHasMounted';
 import getRandomItem from '~/lib/random';
+import { mediaQueries } from '~/types';
 
 interface AboutPhoto {
   key: string;
@@ -93,13 +94,17 @@ const Photo = styled(Image)`
 const PhotoFigure = styled.figure`
   display: flex;
   flex-direction: column;
-  margin: 1.2rem calc(-1.2rem + 2px);
+  margin: 1.2rem 0;
 
   & > span {
     width: 100% !important;
     border-radius: 10px;
     overflow: auto !important;
     margin: 0 auto !important;
+  }
+
+  ${mediaQueries.floating} {
+    margin: 1.2rem calc(-1.2rem + 2px);
   }
 `;
 
