@@ -7,7 +7,7 @@ import '~/styles/globals.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <NextThemeProvider attribute={'class'}>
+    <NextThemeProvider attribute={'class'} disableTransitionOnChange>
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>
