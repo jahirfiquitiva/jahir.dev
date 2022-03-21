@@ -7,7 +7,6 @@ import {
   Image,
   Link,
   ImageChip,
-  Divider,
   DotsDivider,
 } from '~/components/atoms/simple';
 import useSafePalette from '~/hooks/useSafePalette';
