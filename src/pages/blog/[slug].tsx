@@ -11,7 +11,7 @@ import useHasMounted from '~/hooks/useHasMounted';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';
-import { getAllPosts } from '~/utils/posts';
+import { getAllPosts } from '~/utils/posts/get-all';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;

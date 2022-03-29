@@ -4,7 +4,7 @@ import readingTime from 'reading-time';
 import random from './../src/lib/random';
 import unique from './../src/lib/unique';
 import { defaultKeywords } from './../src/types';
-import { getPostDescription } from './../src/utils/posts';
+import { getPostDescription } from './../src/utils/posts/description';
 import { getBlurData } from './image-metadata';
 
 const defaultColors = [
@@ -104,7 +104,7 @@ const computedFields: ComputedFields = {
 const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/*.mdx',
-  bodyType: 'mdx',
+  contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'string', required: true },
