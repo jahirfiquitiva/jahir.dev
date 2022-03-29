@@ -12,7 +12,7 @@
     "prebuild": "yarn predev && yarn find:unused",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "update-deps": "npx npm-check-updates -u && yarn",
-    "analyze": "cross-env ANALYZE=true next build",
+    "analyze": "cross-env ANALYZE=true NODE_ENV=production next build && node scripts/analyze-bundles.js",
     "find:unused": "next-unused"
   },
   "dependencies": {
