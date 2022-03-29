@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf .next && rimraf out && rimraf .contentlayer",
+    "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "predev": "yarn clean && prisma generate && contentlayer build --clearCache",
     "prebuild": "yarn predev && yarn find:unused",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
