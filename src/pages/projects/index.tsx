@@ -1,5 +1,4 @@
-import { allProjects } from '.contentlayer/data';
-import type { Project } from '.contentlayer/types';
+import { allProjects, Project } from 'contentlayer/generated';
 import { GetStaticProps } from 'next';
 
 import { Page } from '~/components/blocks';

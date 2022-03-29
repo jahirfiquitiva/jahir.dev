@@ -1,4 +1,4 @@
-import type { Blog } from '.contentlayer/types';
+import type { Blog } from 'contentlayer/generated';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ import useHasMounted from '~/hooks/useHasMounted';
 import FourHundredFour from '~/pages/404';
 import ErrorPage from '~/pages/500';
 import { Component, ComponentProps, Post } from '~/types';
-import { getAllPosts } from '~/utils/posts';
+import { getAllPosts } from '~/utils/posts/get-all';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
