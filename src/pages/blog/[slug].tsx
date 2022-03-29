@@ -1,4 +1,4 @@
-import type { Blog } from '.contentlayer/types';
+import type { Blog } from 'contentlayer/generated';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';

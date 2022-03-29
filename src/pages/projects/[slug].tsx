@@ -1,5 +1,4 @@
-import { allProjects } from '.contentlayer/data';
-import type { Project } from '.contentlayer/types';
+import { allProjects, Project } from 'contentlayer/generated';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
