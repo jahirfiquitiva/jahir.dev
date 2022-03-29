@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: "15.x"
+          node-version: '16.13.1'
 
       # Run `npm install`, using a cache
       - name: Install
@@ -75,7 +75,7 @@ jobs:
         id: fc
         with:
           issue-number: ${{ github.event.number }}
-          body-includes: "<!-- GH BOT -->"
+          body-includes: '<!-- GH BOT -->'
 
       # If no comment exists, make one with the previously saved Action variable!
       - name: Create Comment
