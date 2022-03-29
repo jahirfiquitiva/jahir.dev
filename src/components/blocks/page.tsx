@@ -3,11 +3,14 @@ import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
 
-import { Toolbar } from './toolbar';
-
 import { DynamicMetaTags } from '~/components/blocks';
 import { Component, PageProps, defaultKeywords, mediaQueries } from '~/types';
 
+const DynamicToolbar = dynamic(
+  // @ts-ignore
+  () => import('./toolbar').then((imp) => imp.Toolbar),
+  { ssr: false },
+);
 const DynamicFooter = dynamic(
   // @ts-ignore
   () => import('./footer').then((imp) => imp.Footer),
@@ -67,7 +70,7 @@ export const Page: Component<PageProps> = (props) => {
     <>
       <DynamicMetaTags {...defaultMetaTags} {...otherProps} />
 
-      <Toolbar />
+      <DynamicToolbar />
       <Main>{children}</Main>
       <DynamicFooter />
 
