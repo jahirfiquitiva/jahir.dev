@@ -4,7 +4,6 @@ import { CSSProperties, FC, ReactNode } from 'react';
 export type ComponentChild =
   | ReactNode
   | ReactNode[]
-  | Element
   | null
   | undefined;
 

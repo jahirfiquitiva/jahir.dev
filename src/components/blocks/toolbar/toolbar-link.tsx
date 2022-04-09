@@ -67,7 +67,7 @@ interface ToolbarLinkProps
   extends LinkButtonProps,
     Omit<ComponentWithGradientProps, 'forceGradient'> {
   wrapChildren?: boolean;
-  outOfSpanChildren?: ReactNode | ReactNode[] | Element;
+  outOfSpanChildren?: ReactNode | ReactNode[];
 }
 
 export const ToolbarLink: Component<ToolbarLinkProps> = (props) => {

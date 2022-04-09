@@ -90,4 +90,4 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(withContentlayer()(defaultNextConfig));
+module.exports = withBundleAnalyzer(withContentlayer(defaultNextConfig));
