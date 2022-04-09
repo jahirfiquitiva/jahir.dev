@@ -121,8 +121,8 @@
   --primary: #0c121e;
 
   --toolbar-opacity: 0.65;
-  --toolbar: rgba(17, 25, 41, var(--toolbar-opacity));
-  --toolbar-opaque: rgb(17, 25, 41);
+  --toolbar: rgba(18, 27, 44, var(--toolbar-opacity));
+  --toolbar-opaque: rgb(18, 27, 44);
   --toolbar-highlight: rgba(215, 225, 247, 0.1);
   --toolbar-shadow-a: rgba(136, 164, 230, 0.08);
   --toolbar-shadow-b: rgba(136, 164, 230, 0.06);
