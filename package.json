@@ -103,8 +103,7 @@
     },
     "include": [
       "public",
-      "src",
-      "scripts"
+      "src"
     ],
     "exclude": [],
     "entrypoints": [

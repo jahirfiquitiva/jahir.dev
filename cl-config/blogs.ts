@@ -1,10 +1,10 @@
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
+import { getPostDescription } from './../scripts/build-post-description';
 import random from './../src/lib/random';
 import unique from './../src/lib/unique';
 import { defaultKeywords } from './../src/types';
-import { getPostDescription } from './../src/utils/posts/description';
 import { getBlurData } from './image-metadata';
 
 const defaultColors = [
