@@ -18,8 +18,9 @@ export const useDashboardData = (): DashboardData => {
   const { data: githubData } = useRequest<GitHubStats>('/api/github');
   const { data: twitterData } = useRequest<TwitterStats>('/api/twitter');
   const { data: viewsData } = useRequest<{ total?: string }>('/api/views');
-  const { data: reactionsData } =
-    useRequest<{ total?: string }>('/api/reactions');
+  const { data: reactionsData } = useRequest<{ total?: string }>(
+    '/api/reactions',
+  );
 
   const memoizedData = useMemo(() => {
     return transformDataToDashboardData(

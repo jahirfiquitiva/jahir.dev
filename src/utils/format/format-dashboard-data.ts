@@ -7,8 +7,17 @@ import {
   DiscordActivity,
 } from '~/types';
 
+const ASSET_URL_BASE = 'raw.githubusercontent.com';
+const getAssetUrl = (assetId?: string): string | null => {
+  if (!assetId || !assetId.includes(ASSET_URL_BASE)) return null;
+  const url = assetId?.substring(assetId?.indexOf(ASSET_URL_BASE));
+  return `https://${url}`;
+};
+
 const buildAssetLink = (appId?: string, assetId?: string): string | null => {
   if (!appId || !assetId) return null;
+  const assetUrl = getAssetUrl(assetId);
+  if (assetUrl) return assetUrl;
   return `https://cdn.discordapp.com/app-assets/${appId}/${assetId}.webp`;
 };
 

@@ -36,6 +36,7 @@ const defaultNextConfig = {
       'unavatar.io',
       'lh3.googleusercontent.com',
       'cdn.discordapp.com',
+      'raw.githubusercontent.com',
     ],
   },
   webpack(config, { dev, isServer }) {

@@ -33,8 +33,9 @@ const TopTracksText = styled.p`
 export const Dashboard: Component = () => {
   const dashboardData = useDashboardData();
 
-  const { data: topTracksData, loading: loadingTopTracks } =
-    useRequest<{ tracks?: Array<TopTrackData> }>('/api/top-tracks');
+  const { data: topTracksData, loading: loadingTopTracks } = useRequest<{
+    tracks?: Array<TopTrackData>;
+  }>('/api/top-tracks');
 
   const renderTopTracks = () => {
     if (loadingTopTracks) return <TopTracksText>Loading...</TopTracksText>;
@@ -51,18 +52,14 @@ export const Dashboard: Component = () => {
   };
 
   return (
-    <>
-      <Section id={'now'}>
-        <Now />
-      </Section>
-      <Section id={'dashboard'}>
-        <DashboardGrid data={dashboardData} />
-        <DotsDivider />
-        <TopTracksHeading size={'4'} shadowColor={'blue'}>
-          Top Tracks
-        </TopTracksHeading>
-        {renderTopTracks()}
-      </Section>
-    </>
+    <Section id={'dashboard'}>
+      <Now />
+      <DashboardGrid data={dashboardData} />
+      <DotsDivider />
+      <TopTracksHeading size={'4'} shadowColor={'blue'}>
+        Top Tracks
+      </TopTracksHeading>
+      {renderTopTracks()}
+    </Section>
   );
 };
