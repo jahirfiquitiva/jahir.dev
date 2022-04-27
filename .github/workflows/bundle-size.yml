@@ -1,12 +1,13 @@
 # Source: https://github.com/jchen1/website/blob/master/.github/workflows/bundle-size.yml
 name: Analyze Bundle Size
 
-# Run this workflow on every Pull Request action as well as all pushes to master
+# Run this workflow on every Pull Request action as well as all pushes to main
 on:
   pull_request:
   push:
     branches:
-      - master
+      - main
+      - dev
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,7 +35,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Build & analyze
-        run: mkdir -p .next/analyze/master && npm run analyze | tee .next/analyze/output.txt
+        run: mkdir -p .next/analyze/main && npm run analyze | tee .next/analyze/output.txt
 
       - name: Upload bundle
         uses: actions/upload-artifact@v2
@@ -50,12 +51,12 @@ jobs:
         with:
           workflow: bundle-size.yml
           # workflow_conclusion: success # https://github.com/dawidd6/action-download-artifact/issues/39
-          branch: master
-          path: .next/analyze/master
+          branch: main
+          path: .next/analyze/main
 
       - name: Compare bundle size
         if: success() && github.event.number
-        run: ls -laR .next/analyze/master && node scripts/compare-bundles.js
+        run: ls -laR .next/analyze/main && node scripts/compare-bundles.js
 
       # A bit of find & replace on our output text for displaying properly. Save this to an Action variable.
       - name: Get comment body
