@@ -58,7 +58,7 @@ export interface ButtonProps extends ComponentProps, BaseButtonProps {
 
 export const Button: Component<ButtonProps> = (props) => {
   const {
-    type,
+    type = 'button',
     title,
     icon,
     iconSize = 1,
