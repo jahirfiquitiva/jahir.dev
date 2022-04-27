@@ -18,6 +18,9 @@ const twitterOutline =
 const polywork =
   'M16 16h2c2.2 0 4-1.8 4-4V6c0-2.2-1.8-4-4-4H6C3.8 2 2 3.8 2 6v12c0 2.2 1.8 4 4 4h6c2.2 0 4-1.8 4-4v-2zm0-12h2c1.1 0 2 .9 2 2v2h-4V4zm0 6h4v2c0 1.1-.9 2-2 2h-2v-4zM8 20H6c-1.1 0-2-.9-2-2v-2h4v4zm0-6H4v-4h4v4zm0-6H4V6c0-1.1.9-2 2-2h2v4zm4 12h-2v-4h4v2c0 1.1-.9 2-2 2zm2-6h-4v-4h4v4zm-4-6V4h4v4h-4z';
 
+const nextJs =
+  'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.8 0 3.4-.5 4.8-1.2L9.6 10.6v5.7H8.5V8.5h1.1l7.9 11.8c2.7-1.8 4.5-4.9 4.5-8.4C22 6.5 17.5 2 12 2zm3.5 13.2-1.2-1.8V8.5h1.2v6.7z';
+
 export const customIconPaths = {
   sunOutline,
   moonOutline,
@@ -25,4 +28,5 @@ export const customIconPaths = {
   linkedInOutline,
   twitterOutline,
   polywork,
+  nextJs,
 };
