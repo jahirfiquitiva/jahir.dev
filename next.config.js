@@ -21,6 +21,9 @@ const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   compress: true,
+  experimental: {
+    emotion: true,
+  },
   compiler: {
     removeConsole: {
       exclude: ['error'],

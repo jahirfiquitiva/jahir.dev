@@ -1,3 +1,4 @@
+import { customIconPaths } from './../components/icon-paths';
 import {
   mdiAndroid,
   mdiGit,
@@ -13,7 +14,6 @@ import {
   mdiNodejs,
   mdiPuzzleOutline,
   mdiReact,
-  mdiTriangle,
   mdiAccountGroupOutline,
   mdiPaletteSwatchOutline,
   mdiTailwind,
@@ -37,7 +37,7 @@ export const skills: SkillProps[] = [
   { name: 'CSS3', iconPath: mdiLanguageCss3, color: '#3572b5' },
   { name: 'Node JS', iconPath: mdiNodejs, color: '#61af43' },
   { name: 'React', iconPath: mdiReact, color: '#00c2e6' },
-  { name: 'NextJS', iconPath: mdiTriangle, color: '#0070f3' },
+  { name: 'NextJS', iconPath: customIconPaths.nextJs, color: '#0070f3' },
   {
     name: 'Styled Components',
     iconPath: mdiPaletteSwatchOutline,

@@ -1,9 +1,9 @@
-// Source: https://github.com/jchen1/website/tree/master/scripts
+// Source: https://github.com/jchen1/website/tree/main/scripts
 const fs = require('fs');
 const path = require('path');
 
 const currentBundle = require('../.next/analyze/bundle.json');
-const masterBundle = require('../.next/analyze/master/bundle/bundle.json');
+const mainBundle = require('../.next/analyze/main/bundle/bundle.json');
 
 const prefix = '.next';
 const outdir = path.join(process.cwd(), prefix, 'analyze');
@@ -26,14 +26,14 @@ function formatBytes(bytes, signed = false) {
 
 const sizes = currentBundle
   .map(({ path, size }) => {
-    const masterSize = masterBundle.find((x) => x.path === path);
-    const diffStr = masterSize
-      ? formatBytes(size - masterSize.size, true)
+    const mainSize = mainBundle.find((x) => x.path === path);
+    const diffStr = mainSize
+      ? formatBytes(size - mainSize.size, true)
       : 'added';
     return `| \`${path}\` | ${formatBytes(size)} (${diffStr}) |`;
   })
   .concat(
-    masterBundle
+    mainBundle
       .filter(({ path }) => !currentBundle.find((x) => x.path === path))
       .map(({ path }) => `| \`${path}\` | removed |`),
   )
