@@ -71,12 +71,13 @@ const Paragraph = styled(Intro)`
   font-size: var(--font-xs);
 `;
 
-const CuriousParagraph = styled(Paragraph)`
+const CuriousParagraph = styled.div`
   background-color: var(--primary);
   border: 1px dashed var(--accent-light);
   border-radius: 8px;
   padding: 0.8rem 1rem;
-  margin-bottom: 2.4rem;
+  color: var(--text-secondary);
+  margin: 0.6rem 0 2.4rem;
   font-size: var(--font-2xs);
   & > ul {
     margin-top: 0.4rem;
