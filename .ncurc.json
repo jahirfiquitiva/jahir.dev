@@ -1,4 +1,4 @@
 {
   "upgrade": true,
-  "reject": ["next-themes"]
+  "reject": ["react", "react-dom", "next", "next-themes"]
 }
