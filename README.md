@@ -5,7 +5,7 @@
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [emotion](http://emotion.sh/) styled components
 - **Content**: [MDX](https://github.com/mdx-js/mdx), [contentlayer](https://github.com/contentlayerdev/contentlayer) and [Notion API](https://developers.notion.com/)
-- **Database**: [PlanetScale](https://planetscale.com/)
+- **Database**: [Railway](https://railway.app?referralCode=Ri5XbE)
 - **ORM**: [Prisma](https://prisma.io/)
 - **Deployment**: [Vercel](https://vercel.com)
 
