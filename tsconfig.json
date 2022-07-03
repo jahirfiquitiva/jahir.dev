@@ -18,12 +18,8 @@
     "removeComments": true,
     "baseUrl": "./",
     "paths": {
-      "@/stitches-config": [
-        "stitches.config.ts"
-      ],
-      "@/*": [
-        "./src/*"
-      ],
+      "~/stitches": ["stitches.config.ts"],
+      "@/*": ["./src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true,

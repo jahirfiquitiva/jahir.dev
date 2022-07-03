@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import { styled } from '../../stitches.config';
+import { styled } from '~/stitches';
 import StitchesLogo from '@/components/StitchesLogo';
+import { Button } from '@/components/atoms';
 
 const Box = styled('div', {});
 
@@ -13,10 +14,6 @@ const Link = styled('a', {
   fontFamily: '$system',
   textDecoration: 'none',
   color: '$purple600',
-});
-
-const Button = styled('button', {
-  backgroundColor: '$accent',
 });
 
 const Container = styled('div', {

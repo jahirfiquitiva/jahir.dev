@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { getCssText } from '@/stitches-config';
+import { getCssText } from '~/stitches';
 
 // import { DefaultMetaTags } from '~/components/blocks';
 
