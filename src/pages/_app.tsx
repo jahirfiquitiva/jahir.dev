@@ -1,6 +1,6 @@
 // import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
-import { FC } from 'react';
+import { FC } from '@/types';
 
 // import { ThemeProvider } from '~/providers/theme';
 import '@/styles/globals.scss';

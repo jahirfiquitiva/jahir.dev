@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { styled } from '~/stitches';
 import StitchesLogo from '@/components/StitchesLogo';
 import { Button } from '@/components/atoms';
+import { Layout } from '@/components/elements';
 
 const Box = styled('div', {});
 
@@ -37,7 +38,7 @@ const Container = styled('div', {
 
 export default function Home() {
   return (
-    <Box css={{ paddingY: '$6' }}>
+    <Layout>
       <Head>
         <title>Use Stitches with Next.js</title>
       </Head>
@@ -51,6 +52,6 @@ export default function Home() {
           <span>Click</span>
         </Button>
       </Container>
-    </Box>
+    </Layout>
   );
 }
