@@ -18,8 +18,8 @@
     "removeComments": true,
     "baseUrl": "./",
     "paths": {
-      "@/stitches": [
-        "./stitches.config.js"
+      "@/stitches-config": [
+        "stitches.config.ts"
       ],
       "@/*": [
         "./src/*"
