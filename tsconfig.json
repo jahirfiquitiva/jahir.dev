@@ -18,11 +18,16 @@
     "removeComments": true,
     "baseUrl": "./",
     "paths": {
-      "~/*": ["./src/*"],
+      "@/stitches": [
+        "./stitches.config.js"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true,
-    "jsxImportSource": "@emotion/react",
+    // "jsxImportSource": "@emotion/react",
     "downlevelIteration": true
   },
   "exclude": [".next", ".idea", "node_modules"],
