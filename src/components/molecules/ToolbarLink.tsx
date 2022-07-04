@@ -1,6 +1,7 @@
+import { Link } from '@/components/atoms';
 import { styled } from '~/stitches';
 
-export const ToolbarLink = styled('a', {
+export const ToolbarLink = styled(Link, {
   $$gradientStart: '$colors$gradient-brand',
   $$gradientEnd: '$colors$gradient-blue',
   height: '100%',
