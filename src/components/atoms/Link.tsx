@@ -2,6 +2,8 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
+import { FC } from '@/types';
+
 const prefetchBlockList = ['/music', '/static'];
 
 const isLocalLink = (href?: string) =>
@@ -14,7 +16,7 @@ interface LinkProps {
   openInNewTab?: boolean;
 }
 
-export const Link = (props: LinkProps) => {
+export const Link: FC<LinkProps> = (props) => {
   const { href, openInNewTab = !isLocalLink(href), ...rest } = props;
   const router = useRouter();
 
