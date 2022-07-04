@@ -79,22 +79,22 @@ export const Toolbar: FC = () => {
         </ToolbarLink>
         <ToolbarLinksContainer css={{ justifyContent: 'flex-end' }}>
           <li>
-            <ToolbarLink index={0} href={'/'}>
+            <ToolbarLink index={0} href={'/about'}>
               <span>About</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={1} href={'/'}>
+            <ToolbarLink index={1} href={'/blog'}>
               <span>Blog</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={2} href={'/'}>
+            <ToolbarLink index={2} href={'/projects'}>
               <span>Projects</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={3} href={'/'}>
+            <ToolbarLink index={3} href={'/contact'}>
               <span>Contact</span>
             </ToolbarLink>
           </li>
