@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { styled, theme } from '~/stitches';
 import { Logo } from '@/components/atoms';
 import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
+import { useTheme } from '@/providers/theme';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
@@ -67,38 +68,44 @@ const Nav = styled('nav', {
 interface ToolbarProps {}
 
 export const Toolbar: FC<ToolbarProps> = (props) => {
+  const { toggleTheme } = useTheme();
   return (
     <Header>
       <Nav>
-        <ToolbarLink home href="/">
-          <Logo fillColor={theme.colors.accent?.value} />
+        <ToolbarLink home href='/'>
+          <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
         <ToolbarLinksContainer css={{ justifyContent: 'flex-end' }}>
           <li>
-            <ToolbarLink index={0} href="/">
+            <ToolbarLink index={0} href='/'>
               <span>About</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={1} href="/">
+            <ToolbarLink index={1} href='/'>
               <span>Blog</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={2} href="/">
+            <ToolbarLink index={2} href='/'>
               <span>Projects</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={3} href="/">
+            <ToolbarLink index={3} href='/'>
               <span>Contact</span>
             </ToolbarLink>
           </li>
         </ToolbarLinksContainer>
         <ToolbarLinksContainer>
           <li>
-            <button>T</button>
+            <button
+              onClick={() => {
+                toggleTheme?.();
+              }}>
+              T
+            </button>
           </li>
           <li>
             <button>M</button>
