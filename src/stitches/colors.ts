@@ -5,7 +5,14 @@ type ShadowColor = `shadow-${RainbowColors}`;
 type AccentVariants = 'light' | 'lighter' | 'dark' | 'darker' | 'animoji';
 type AccentColor = 'accent' | `accent-${AccentVariants}`;
 
-type ThemeColorsNames = 'primary' | 'background' | AccentColor | GradientColor | ShadowColor | 'toolbar';
+type ThemeColorsNames =
+  | 'transparent'
+  | 'primary'
+  | 'background'
+  | AccentColor
+  | GradientColor
+  | ShadowColor
+  | 'toolbar';
 
 type HexColor = `#${string}`;
 type RGBColor = `rgb(${number} ${number} ${number})`;
@@ -17,6 +24,7 @@ type ThemeColorValue = HexColor | RGBColor | RGBAColor | StitchesVariable;
 type ThemeColors = { [Key in ThemeColorsNames]?: ThemeColorValue };
 
 export const colors: ThemeColors = {
+  transparent: 'rgba(0 0 0 / 0)',
   primary: '#f6f9fe',
   background: '#fff',
 

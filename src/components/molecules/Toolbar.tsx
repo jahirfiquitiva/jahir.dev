@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { styled, theme } from '~/stitches';
 import { Logo } from '@/components/atoms';
+import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
 
-const ToolbarContainer = styled('header', {
+const Header = styled('header', {
   $$toolbarHeight: '56px',
   $$floatingMargin: '8px',
   zIndex: 2,
@@ -17,7 +18,7 @@ const ToolbarContainer = styled('header', {
 
   '@tablet-sm': {
     $$floatingMargin: '12px',
-    height: 'calc($$toolbarHeight + $$floatingMargin + 8px)',
+    height: 'calc($$toolbarHeight + $$floatingMargin + 4px)',
   },
 
   '&::before': {
@@ -36,18 +37,25 @@ const ToolbarContainer = styled('header', {
 const Nav = styled('nav', {
   $$glowColor: '45 82 171',
   position: 'relative',
-  display: 'flex',
+  display: 'grid',
   alignItems: 'center',
   height: '100%',
   backgroundColor: '$toolbar',
   backdropFilter: 'blur(6px) saturate(150%)',
   borderRadius: '10px',
-  boxShadow: '0 0 8px 1px rgba($$glowColor / .24)',
+  boxShadow: '0 0 6px 1px rgba($$glowColor / .24)',
   border: '1px solid rgba($$glowColor / .12)',
-  p: 'calc($$floatingMargin - 2px) $$floatingMargin',
+  p: 'calc($$floatingMargin / 1.5)',
   transition: 'box-shadow ease-in-out .2s',
+
   '&:hover': {
-    boxShadow: '0 0 8px 2px rgba($$glowColor / .4)',
+    boxShadow: '0 0 8px 2px rgba($$glowColor / .36)',
+  },
+
+  '@tablet-lg': {
+    gap: '$$floatingMargin',
+    gridTemplateRows: 'minmax(0px, 1fr)',
+    gridTemplateColumns: 'auto 1fr auto',
   },
 
   '& svg': {
@@ -60,10 +68,43 @@ interface ToolbarProps {}
 
 export const Toolbar: FC<ToolbarProps> = (props) => {
   return (
-    <ToolbarContainer>
+    <Header>
       <Nav>
-        <Logo fillColor={theme.colors.accent?.value} />
+        <ToolbarLink home href="/">
+          <Logo fillColor={theme.colors.accent?.value} />
+          <span>Jahir Fiquitiva</span>
+        </ToolbarLink>
+        <ToolbarLinksContainer css={{ justifyContent: 'flex-end' }}>
+          <li>
+            <ToolbarLink index={0} href="/">
+              <span>About</span>
+            </ToolbarLink>
+          </li>
+          <li>
+            <ToolbarLink index={1} href="/">
+              <span>Blog</span>
+            </ToolbarLink>
+          </li>
+          <li>
+            <ToolbarLink index={2} href="/">
+              <span>Projects</span>
+            </ToolbarLink>
+          </li>
+          <li>
+            <ToolbarLink index={3} href="/">
+              <span>Contact</span>
+            </ToolbarLink>
+          </li>
+        </ToolbarLinksContainer>
+        <ToolbarLinksContainer>
+          <li>
+            <button>T</button>
+          </li>
+          <li>
+            <button>M</button>
+          </li>
+        </ToolbarLinksContainer>
       </Nav>
-    </ToolbarContainer>
+    </Header>
   );
 };

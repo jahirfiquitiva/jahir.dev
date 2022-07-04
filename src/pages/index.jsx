@@ -19,7 +19,7 @@ const Link = styled('a', {
 
 const Container = styled('div', {
   mx: 'auto',
-  py: '$3',
+  py: '200px',
 
   variants: {
     size: {
