@@ -5,7 +5,7 @@ type ShadowColor = `shadow-${RainbowColors}`;
 type AccentVariants = 'light' | 'lighter' | 'dark' | 'darker' | 'animoji';
 type AccentColor = 'accent' | `accent-${AccentVariants}`;
 
-type ThemeColorsNames = 'primary' | 'background' | AccentColor | GradientColor | ShadowColor;
+type ThemeColorsNames = 'primary' | 'background' | AccentColor | GradientColor | ShadowColor | 'toolbar';
 
 type HexColor = `#${string}`;
 type RGBColor = `rgb(${number} ${number} ${number})`;
@@ -19,6 +19,8 @@ type ThemeColors = { [Key in ThemeColorsNames]?: ThemeColorValue };
 export const colors: ThemeColors = {
   primary: '#f6f9fe',
   background: '#fff',
+
+  toolbar: 'rgba(235 240 251 / .75)',
 
   'accent-animoji': '#d7e1f7',
   'accent-lighter': '#88a4e6',
@@ -47,6 +49,8 @@ export const colors: ThemeColors = {
 export const darkThemeColors: ThemeColors = {
   primary: '#0c121e',
   background: '#0c121e',
+
+  toolbar: 'rgba(18 27 44 / .65)',
 
   'accent-animoji': '#162956',
   'accent-lighter': '#d7e1f7',

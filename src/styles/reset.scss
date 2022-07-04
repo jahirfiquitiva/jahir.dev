@@ -58,8 +58,6 @@ h6 {
 #__next {
   min-height: 100%;
   isolation: isolate;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 5000px;
   position: relative;
   display: flex;
   flex-direction: column;

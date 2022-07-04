@@ -22,7 +22,7 @@ export const { config, createTheme, css, getCssText, globalCss, styled, theme } 
       4: '20px',
       5: '25px',
       6: '35px',
-      'max-site-width': '960px',
+      'max-site-width': '768px',
     },
     fontSizes,
     fonts: {
