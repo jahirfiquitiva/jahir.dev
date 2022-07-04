@@ -1,27 +1,29 @@
+import type { PropertyValue } from '@stitches/react';
+
 import type { UtilsObject } from './types';
 
-const paddingUtils: UtilsObject<string | number> = {
+const paddingUtils: UtilsObject<PropertyValue<'padding'>> = {
   // Abbreviated padding properties
-  p: (value: string | number) => ({
+  p: (value: PropertyValue<'padding'>) => ({
     padding: value,
   }),
-  pt: (value: string | number) => ({
+  pt: (value: PropertyValue<'padding'>) => ({
     paddingTop: value,
   }),
-  pr: (value: string | number) => ({
+  pr: (value: PropertyValue<'padding'>) => ({
     paddingRight: value,
   }),
-  pb: (value: string | number) => ({
+  pb: (value: PropertyValue<'padding'>) => ({
     paddingBottom: value,
   }),
-  pl: (value: string | number) => ({
+  pl: (value: PropertyValue<'padding'>) => ({
     paddingLeft: value,
   }),
-  px: (value: string | number) => ({
+  px: (value: PropertyValue<'padding'>) => ({
     paddingLeft: value,
     paddingRight: value,
   }),
-  py: (value: string | number) => ({
+  py: (value: PropertyValue<'padding'>) => ({
     paddingTop: value,
     paddingBottom: value,
   }),

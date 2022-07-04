@@ -1,27 +1,29 @@
+import type { PropertyValue } from '@stitches/react';
+
 import type { UtilsObject } from './types';
 
-const marginUtils: UtilsObject<string | number> = {
+const marginUtils: UtilsObject<PropertyValue<'margin'>> = {
   // Abbreviated margin properties
-  m: (value: string | number) => ({
+  m: (value: PropertyValue<'margin'>) => ({
     margin: value,
   }),
-  mt: (value: string | number) => ({
+  mt: (value: PropertyValue<'margin'>) => ({
     marginTop: value,
   }),
-  mr: (value: string | number) => ({
+  mr: (value: PropertyValue<'margin'>) => ({
     marginRight: value,
   }),
-  mb: (value: string | number) => ({
+  mb: (value: PropertyValue<'margin'>) => ({
     marginBottom: value,
   }),
-  ml: (value: string | number) => ({
+  ml: (value: PropertyValue<'margin'>) => ({
     marginLeft: value,
   }),
-  mx: (value: string | number) => ({
+  mx: (value: PropertyValue<'margin'>) => ({
     marginLeft: value,
     marginRight: value,
   }),
-  my: (value: string | number) => ({
+  my: (value: PropertyValue<'margin'>) => ({
     marginTop: value,
     marginBottom: value,
   }),

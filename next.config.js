@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-const { withContentlayer } = require('next-contentlayer');
-
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+// const { withContentlayer } = require('next-contentlayer');
 const appHeaders = require('./headers');
 
 const buildRedirect = (source, destination, permanent = true) => {
@@ -22,7 +21,12 @@ const defaultNextConfig = {
   reactStrictMode: true,
   compress: true,
   experimental: {
-    emotion: true,
+    images: {
+      allowFutureImage: true,
+    },
+    newNextLinkBehavior: true,
+    legacyBrowsers: false,
+    browsersListForSwc: true,
   },
   compiler: {
     removeConsole: {
@@ -40,17 +44,19 @@ const defaultNextConfig = {
       'lh3.googleusercontent.com',
       'cdn.discordapp.com',
       'raw.githubusercontent.com',
+      'scontent-atl3-1.cdninstagram.com',
+      '*.cdninstagram.com',
     ],
   },
-  webpack(config, { dev, isServer }) {
-    if (!dev && !isServer) {
-      Object.assign(config.resolve.alias, {
-        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-        react: 'preact/compat',
-        'react-dom': 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-      });
-    }
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      issuer: { and: [/\.(js|ts)x?$/] },
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/media/[name].[hash:8][ext]',
+      },
+    });
     return config;
   },
   async headers() {
@@ -90,9 +96,9 @@ const defaultNextConfig = {
       buildRedirect('/releases', '/gh-releases'),
       buildRedirect('/feed', '/feed.xml'),
       buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
-      buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
     ];
   },
 };
 
-module.exports = withBundleAnalyzer(withContentlayer(defaultNextConfig));
+module.exports = defaultNextConfig;
+// module.exports = withBundleAnalyzer(withContentlayer(defaultNextConfig));

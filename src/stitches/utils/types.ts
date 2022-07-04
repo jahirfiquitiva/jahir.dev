@@ -1,4 +1,4 @@
-import { CSS } from '@stitches/react';
+import type { CSS } from '~/stitches';
 
 export type UtilFunc<T> = (value: T) => CSS;
 

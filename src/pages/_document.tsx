@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+
 import { getCssText } from '~/stitches';
 
 // import { DefaultMetaTags } from '~/components/blocks';
@@ -29,7 +30,7 @@ export default class CustomDocument extends Document {
               />
             );
           })}
-          <style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          <style id={'stitches'} dangerouslySetInnerHTML={{ __html: getCssText() }} />
         </Head>
         <body>
           <Main />

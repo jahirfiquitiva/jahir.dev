@@ -1,27 +1,16 @@
 import { createStitches } from '@stitches/react';
+import type { CSS } from '@stitches/react';
+
 import { fontSizes, utils, colors, darkThemeColors, breakpoints } from '@/stitches';
 
 const systemFont =
+  // eslint-disable-next-line max-len
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 export const { config, createTheme, css, getCssText, globalCss, styled, theme } = createStitches({
   theme: {
     colors,
-    space: {
-      1: '5px',
-      2: '10px',
-      3: '15px',
-      4: '20px',
-      5: '25px',
-      6: '35px',
-    },
     sizes: {
-      1: '5px',
-      2: '10px',
-      3: '15px',
-      4: '20px',
-      5: '25px',
-      6: '35px',
       'max-site-width': '768px',
     },
     fontSizes,
@@ -38,3 +27,5 @@ export const { config, createTheme, css, getCssText, globalCss, styled, theme } 
 export const darkTheme = createTheme('dark', {
   colors: darkThemeColors,
 });
+
+export type StitchesCSS = CSS<typeof config>;

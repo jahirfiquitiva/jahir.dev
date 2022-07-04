@@ -22,8 +22,6 @@ export const ThemeProvider: FC = (props) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const { children } = props;
-
   const themeContextValue: ThemeContextValue = {
     themeReady: mounted,
     isDark: (resolvedTheme || theme) === 'dark',
@@ -32,7 +30,7 @@ export const ThemeProvider: FC = (props) => {
     },
   };
 
-  return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={themeContextValue}>{props.children}</ThemeContext.Provider>;
 };
 
 export const useTheme = (): ThemeContextValue => {

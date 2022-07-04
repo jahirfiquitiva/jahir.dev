@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { styled, theme } from '~/stitches';
-import { Logo } from '@/components/atoms';
-import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
+
+import { Button, Logo } from '@/components/atoms';
 import { useTheme } from '@/providers/theme';
+import { styled, theme } from '~/stitches';
+
+import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
@@ -50,6 +52,7 @@ const Nav = styled('nav', {
   transition: 'box-shadow ease-in-out .2s',
 
   '&:hover': {
+    border: '1px solid rgba($$glowColor / .24)',
     boxShadow: '0 0 8px 2px rgba($$glowColor / .36)',
   },
 
@@ -65,50 +68,48 @@ const Nav = styled('nav', {
   },
 });
 
-interface ToolbarProps {}
-
-export const Toolbar: FC<ToolbarProps> = (props) => {
+export const Toolbar: FC = () => {
   const { toggleTheme } = useTheme();
   return (
     <Header>
       <Nav>
-        <ToolbarLink home href='/'>
+        <ToolbarLink home href={'/'}>
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
         <ToolbarLinksContainer css={{ justifyContent: 'flex-end' }}>
           <li>
-            <ToolbarLink index={0} href='/'>
+            <ToolbarLink index={0} href={'/'}>
               <span>About</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={1} href='/'>
+            <ToolbarLink index={1} href={'/'}>
               <span>Blog</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={2} href='/'>
+            <ToolbarLink index={2} href={'/'}>
               <span>Projects</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={3} href='/'>
+            <ToolbarLink index={3} href={'/'}>
               <span>Contact</span>
             </ToolbarLink>
           </li>
         </ToolbarLinksContainer>
         <ToolbarLinksContainer>
           <li>
-            <button
+            <Button
               onClick={() => {
                 toggleTheme?.();
               }}>
               T
-            </button>
+            </Button>
           </li>
           <li>
-            <button>M</button>
+            <Button>M</Button>
           </li>
         </ToolbarLinksContainer>
       </Nav>

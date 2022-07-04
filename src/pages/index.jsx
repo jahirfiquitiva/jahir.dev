@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { styled } from '~/stitches';
-import StitchesLogo from '@/components/StitchesLogo';
+
 import { Button } from '@/components/atoms';
 import { Layout } from '@/components/elements';
-
-const Box = styled('div', {});
+import StitchesLogo from '@/components/StitchesLogo';
+import { styled } from '~/stitches';
 
 const Text = styled('p', {
   fontFamily: '$system',
@@ -44,9 +43,9 @@ export default function Home() {
       </Head>
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <StitchesLogo />
-        <Text as='h1'>Hello, from Stitches.</Text>
+        <Text as={'h1'}>Hello, from Stitches.</Text>
         <Text>
-          For full documentation, visit <Link href='https://stitches.dev'>stitches.dev</Link>.
+          For full documentation, visit <Link href={'https://stitches.dev'}>stitches.dev</Link>.
         </Text>
         <Button>
           <span>Click</span>
