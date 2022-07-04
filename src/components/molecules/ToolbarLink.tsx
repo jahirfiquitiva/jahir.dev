@@ -10,7 +10,7 @@ export const ToolbarLink = styled('a', {
   fontFamily: '$manrope',
   fontWeight: '600',
   fontSize: '$xs',
-  color: 'black',
+  color: '$text-secondary',
   borderRadius: '6px',
   p: 'calc($$floatingMargin / 2) $$floatingMargin',
   transition: 'background-color ease-in-out .15s',
@@ -53,8 +53,8 @@ export const ToolbarLink = styled('a', {
       3: {
         $$gradientStart: '$colors$gradient-brand',
         $$gradientEnd: '$colors$gradient-blue',
-      }
-    }
+      },
+    },
   },
 });
 

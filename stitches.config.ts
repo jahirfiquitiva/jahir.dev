@@ -35,6 +35,6 @@ export const { config, createTheme, css, getCssText, globalCss, styled, theme } 
   media: breakpoints,
 });
 
-export const darkTheme = createTheme({
+export const darkTheme = createTheme('dark', {
   colors: darkThemeColors,
 });

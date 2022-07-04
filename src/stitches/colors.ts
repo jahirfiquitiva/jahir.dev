@@ -5,14 +5,18 @@ type ShadowColor = `shadow-${RainbowColors}`;
 type AccentVariants = 'light' | 'lighter' | 'dark' | 'darker' | 'animoji';
 type AccentColor = 'accent' | `accent-${AccentVariants}`;
 
+type TextColorVariants = 'primary' | 'secondary' | 'tertiary';
+type TextColor = `text-${TextColorVariants}`;
+
 type ThemeColorsNames =
   | 'transparent'
   | 'primary'
   | 'background'
+  | 'toolbar'
   | AccentColor
   | GradientColor
   | ShadowColor
-  | 'toolbar';
+  | TextColor;
 
 type HexColor = `#${string}`;
 type RGBColor = `rgb(${number} ${number} ${number})`;
@@ -29,6 +33,10 @@ export const colors: ThemeColors = {
   background: '#fff',
 
   toolbar: 'rgba(235 240 251 / .75)',
+
+  'text-primary': 'rgba(9 17 34 / .95)',
+  'text-secondary': 'rgba(9 17 34 / .8)',
+  'text-tertiary': 'rgba(9 17 34 / .6)',
 
   'accent-animoji': '#d7e1f7',
   'accent-lighter': '#88a4e6',
@@ -59,6 +67,10 @@ export const darkThemeColors: ThemeColors = {
   background: '#0c121e',
 
   toolbar: 'rgba(18 27 44 / .65)',
+
+  'text-primary': '#fff',
+  'text-secondary': 'rgba(235 240 251 / .85)',
+  'text-tertiary': 'rgba(235 240 251 / .6)',
 
   'accent-animoji': '#162956',
   'accent-lighter': '#d7e1f7',
