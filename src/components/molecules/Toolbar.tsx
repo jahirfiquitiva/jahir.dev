@@ -73,28 +73,28 @@ export const Toolbar: FC = () => {
   return (
     <Header>
       <Nav>
-        <ToolbarLink home href={'/'}>
+        <ToolbarLink home href={'/'} title={'Home page'}>
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
         <ToolbarLinksContainer css={{ justifyContent: 'flex-end' }}>
           <li>
-            <ToolbarLink index={0} href={'/about'}>
+            <ToolbarLink index={0} href={'/about'} title={'About page'}>
               <span>About</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={1} href={'/blog'}>
+            <ToolbarLink index={1} href={'/blog'} title={'Blog page'}>
               <span>Blog</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={2} href={'/projects'}>
+            <ToolbarLink index={2} href={'/projects'} title={'Projects page'}>
               <span>Projects</span>
             </ToolbarLink>
           </li>
           <li>
-            <ToolbarLink index={3} href={'/contact'}>
+            <ToolbarLink index={3} href={'/contact'} title={'Contact page'}>
               <span>Contact</span>
             </ToolbarLink>
           </li>
