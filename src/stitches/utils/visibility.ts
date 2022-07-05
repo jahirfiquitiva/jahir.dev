@@ -1,4 +1,4 @@
-import type { PropertyValue } from '@stitches/react';
+import type { CSS, PropertyValue } from '@stitches/react';
 
 const visiblityUtils = {
   hidden: (value?: boolean) =>
@@ -15,6 +15,9 @@ const visiblityUtils = {
     visibility: 'visible',
     pointerEvents: 'auto',
     userSelect: 'auto',
+  }),
+  dark: (styles: CSS) => ({
+    '.dark &': styles,
   }),
 };
 
