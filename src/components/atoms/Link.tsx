@@ -2,7 +2,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { FC } from '@/types';
+import type { FC } from '@/types';
 
 const prefetchBlockList = ['/music', '/static'];
 

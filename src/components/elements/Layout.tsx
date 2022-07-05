@@ -1,5 +1,5 @@
 import { Toolbar } from '@/components/molecules';
-import { FC } from '@/types';
+import type { FC } from '@/types';
 
 export const Layout: FC = (props) => {
   return (

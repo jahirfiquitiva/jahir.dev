@@ -1,7 +1,6 @@
 import { Link } from '@/components/atoms';
-import { GradientOption } from '@/stitches/utils/gradient';
-import { styled, StitchesCSS } from '~/stitches';
 import { gradientVariants } from '@/stitches/utils/gradient';
+import { styled } from '~/stitches';
 
 export const ToolbarLink = styled(Link, {
   height: '100%',

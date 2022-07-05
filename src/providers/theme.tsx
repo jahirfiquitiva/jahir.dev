@@ -1,7 +1,7 @@
 import { useTheme as useNextTheme } from 'next-themes';
 import { createContext, useContext, useState, useEffect } from 'react';
 
-import { FC } from '@/types';
+import type { FC } from '@/types';
 
 export interface ThemeContextValue {
   isDark: boolean;

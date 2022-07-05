@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import type { ComponentProps } from 'react';
 
 import { Button } from '@/components/atoms';
-import { FC } from '@/types';
+import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const StyledToolbarButton = styled(Button, {

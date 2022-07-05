@@ -4,14 +4,6 @@ import { getCssText, preloadFonts } from '~/stitches';
 
 // import { DefaultMetaTags } from '~/components/blocks';
 
-const fonts = [
-  'inter/Inter-Regular.woff2',
-  'inter/Inter-Medium.woff2',
-  'manrope/Manrope-Medium.woff2',
-  'manrope/Manrope-SemiBold.woff2',
-  'manrope/Manrope-Bold.woff2',
-];
-
 export default class CustomDocument extends Document {
   render() {
     return (

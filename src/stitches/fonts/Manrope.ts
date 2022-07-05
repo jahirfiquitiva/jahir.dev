@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 // Source: https://github.com/jakejarvis/jarv.is/blob/main/lib/styles/fonts/Inter.ts
 // Legacy
-import manropeLatin800NormalWoff from '@fontsource/manrope/files/manrope-latin-800-normal.woff';
-import manropeLatin800NormalWoff2 from '@fontsource/manrope/files/manrope-latin-800-normal.woff2';
 import manropeLatin600NormalWoff from '@fontsource/manrope/files/manrope-latin-600-normal.woff';
 import manropeLatin600NormalWoff2 from '@fontsource/manrope/files/manrope-latin-600-normal.woff2';
 import manropeLatin700NormalWoff from '@fontsource/manrope/files/manrope-latin-700-normal.woff';
 import manropeLatin700NormalWoff2 from '@fontsource/manrope/files/manrope-latin-700-normal.woff2';
+import manropeLatin800NormalWoff from '@fontsource/manrope/files/manrope-latin-800-normal.woff';
+import manropeLatin800NormalWoff2 from '@fontsource/manrope/files/manrope-latin-800-normal.woff2';
 // Variable
 import manropeLatinVarFullNormalWoff2 from '@fontsource/manrope/files/manrope-latin-variable-wghtOnly-normal.woff2';
 import type { AtRule } from '@stitches/react/types/css';
