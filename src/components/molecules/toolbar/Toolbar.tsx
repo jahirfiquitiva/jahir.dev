@@ -1,11 +1,13 @@
+import { mdiMenu, mdiPlus } from '@mdi/js';
 import { FC, useState } from 'react';
 
 import { Logo } from '@/components/atoms';
 import { useTheme } from '@/providers/theme';
 import { styled, theme } from '~/stitches';
 
-import { MobileMenu, ThemeToggle } from './ToolbarButton';
+import { MobileMenu } from './ToolbarButton';
 import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
@@ -42,7 +44,8 @@ const Header = styled('header', {
   variants: {
     expanded: {
       true: {
-        height: 'calc(calc($$baseActualHeight * 2) - calc($$floatingMargin * 1.75))',
+        height:
+          'calc(calc($$baseActualHeight * 2) - calc($$floatingMargin * 1.75))',
         '@tablet-sm': {
           height: 'calc($$toolbarHeight + $$floatingMargin + 4px)',
         },
@@ -99,7 +102,7 @@ const Nav = styled('nav', {
 
 export const Toolbar: FC = () => {
   const [isExpanded, expand] = useState(false);
-  const { toggleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
   return (
     <Header expanded={isExpanded}>
       <Nav expanded={isExpanded}>
@@ -130,23 +133,16 @@ export const Toolbar: FC = () => {
           </li>
         </ToolbarLinksContainer>
         <ToolbarLinksContainer>
-          <li>
-            <ThemeToggle
-              onClick={() => {
-                toggleTheme?.();
-              }}
-            >
-              T
-            </ThemeToggle>
-          </li>
+          <ThemeToggle />
           <li>
             <MobileMenu
+              title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
+              expanded={isExpanded}
+              iconPath={isExpanded ? mdiPlus : mdiMenu}
               onClick={() => {
                 expand(!isExpanded);
               }}
-            >
-              M
-            </MobileMenu>
+            />
           </li>
         </ToolbarLinksContainer>
       </Nav>

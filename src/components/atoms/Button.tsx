@@ -1,7 +1,12 @@
+import type { ComponentProps } from 'react';
+
+import { FC } from '@/types';
 import { styled } from '~/stitches';
 
-export const Button = styled('button', {
-  minHeight:'32px',
+const StyledButton = styled('button', {
+  display: 'inline-flex',
+  alignItems: 'center',
+  minHeight: '32px',
   border: 'none',
   backgroundColor: '$accent',
   fontFamily: '$manrope',
@@ -10,3 +15,14 @@ export const Button = styled('button', {
     backgroundColor: '$accent-dark',
   },
 });
+
+export const Button: FC<ComponentProps<typeof StyledButton>> = (props) => {
+  return (
+    <StyledButton
+      aria-label={props.title}
+      name={props.title}
+      type={props.type || 'button'}
+      {...props}
+    />
+  );
+};
