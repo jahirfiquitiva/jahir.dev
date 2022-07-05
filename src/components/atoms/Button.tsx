@@ -3,12 +3,6 @@ import type { ComponentProps } from 'react';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-/*
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-*/
 const StyledButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
@@ -21,7 +15,7 @@ const StyledButton = styled('button', {
   py: '0.4rem',
   px: '0.8rem',
   gap: '0.4rem',
-  fontWeight: 700,
+  fontWeight: 600,
   letterSpacing: '0.03125rem',
   transition: 'all 0.25s ease-in-out',
   ellipsize: true,
