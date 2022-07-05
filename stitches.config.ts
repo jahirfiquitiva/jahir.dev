@@ -23,23 +23,23 @@ export const {
   theme,
 } = createStitches({
   theme: {
-    colors: { ...colors },
+    colors,
     sizes: {
       'max-site-width': '768px',
     },
-    fontSizes: { ...fontSizes },
+    fontSizes,
     fonts: {
       system: systemFont,
       inter: `Inter, ${systemFont}`,
       manrope: `Manrope, Inter, ${systemFont}`,
     },
   },
-  utils: { ...utils },
-  media: { ...breakpoints },
+  utils,
+  media: breakpoints,
 });
 
 export const darkTheme = createTheme('dark', {
-  colors: { ...darkThemeColors },
+  colors: darkThemeColors,
 });
 
 export type StitchesCSS = CSS<typeof config>;
