@@ -33,6 +33,7 @@ export const colors: ThemeColors = {
   accent: '#3867d6',
   'accent-dark': '#2d52ab',
   'accent-darker': '#223e80',
+  'on-accent': '#fff',
 
   'gradient-brand': '$accent',
   'gradient-blue': '#247aae',
@@ -68,6 +69,7 @@ export const darkThemeColors: ThemeColors = {
   accent: '#88a4e6',
   'accent-dark': '#6085de',
   'accent-darker': '#3867d6',
+  'on-accent': 'rgba(9 17 34 / .9)',
 
   'gradient-blue': '$shadow-blue',
   'gradient-green': '$shadow-green',

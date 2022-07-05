@@ -8,7 +8,7 @@ export const ToolbarLink = styled(Link, {
   display: 'inline-flex',
   alignItems: 'center',
   verticalAlign: 'middle',
-  fontFamily: '$manrope',
+  useFont: 'manrope',
   fontWeight: 600,
   fontSize: '$2xs',
   color: '$text-secondary',

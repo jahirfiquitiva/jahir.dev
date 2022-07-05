@@ -9,6 +9,8 @@
     "update-deps": "npx --yes npm-check-updates -u && yarn"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.11",
+    "@fontsource/manrope": "^4.5.10",
     "@mdi/js": "^6.9.96",
     "@mdi/react": "^1.6.0",
     "@stitches/react": "^1.2.8",

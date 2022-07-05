@@ -6,14 +6,15 @@ import { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const StyledToolbarButton = styled(Button, {
+  p: 0,
+  gap: 0,
   color: '$accent',
-  justifyContent: 'center',
   height: '42px',
   width: '42px',
-  borderRadius: '6px',
   backgroundColor: '$transparent',
   hocus: {
     backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+    transform: 'translateY(0)',
   },
 });
 
@@ -38,7 +39,7 @@ export const MobileMenu = styled(ToolbarButton, {
     transform: 'rotate(0) scale(1)',
   },
   '@tablet-sm': {
-    hidden: '',
+    hidden: true,
   },
   variants: {
     expanded: {

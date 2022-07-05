@@ -1,0 +1,77 @@
+html,
+body {
+  color: var(--colors-text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (min-width: 425px) {
+  html,
+  body {
+    line-height: 1.65;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: inline-block;
+  color: var(--colors-text-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+b,
+strong {
+  color: var(--colors-text-primary);
+  font-weight: 500;
+}
+
+body,
+small,
+p {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: var(--fontSizes-3xl);
+}
+
+h2 {
+  font-size: var(--fontSizes-2xl);
+}
+
+h3 {
+  font-size: var(--fontSizes-xl);
+}
+
+h4 {
+  font-size: var(--fontSizes-md);
+}
+
+h5 {
+  font-size: var(--fontSizes-sm);
+}
+
+h6,
+p,
+body {
+  font-size: var(--fontSizes-xs);
+}
+
+small {
+  font-size: var(--fontSizes-3xs);
+}

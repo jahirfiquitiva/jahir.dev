@@ -2,6 +2,7 @@ import { createStitches } from '@stitches/react';
 import type { CSS } from '@stitches/react';
 
 import {
+  fonts,
   fontSizes,
   utils,
   colors,
@@ -30,8 +31,10 @@ export const {
     fontSizes,
     fonts: {
       system: systemFont,
-      inter: `Inter, ${systemFont}`,
-      manrope: `Manrope, Inter, ${systemFont}`,
+      inter: `${fonts.Inter.name.regular}, ${systemFont}`,
+      interVar: `${fonts.Inter.name.variable}, ${systemFont}`,
+      manrope: `${fonts.Manrope.name.regular}, ${fonts.Inter.name.regular}, ${systemFont}`,
+      manropeVar: `${fonts.Manrope.name.variable}, ${fonts.Inter.name.variable}, ${systemFont}`,
     },
   },
   utils,
@@ -41,5 +44,20 @@ export const {
 export const darkTheme = createTheme('dark', {
   colors: darkThemeColors,
 });
+
+export const globalStyles = globalCss({
+  '@font-face': [...fonts.Inter.family, ...fonts.Manrope.family],
+  'html, body': {
+    useFont: 'inter',
+  },
+  'h1, h2, h3, h4, h5, h6, button': {
+    useFont: 'manrope',
+  },
+});
+
+export const preloadFonts = [
+  ...fonts.Inter.preloadFonts,
+  ...fonts.Manrope.preloadFonts,
+];
 
 export type StitchesCSS = CSS<typeof config>;

@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { getCssText } from '~/stitches';
+import { getCssText, preloadFonts } from '~/stitches';
 
 // import { DefaultMetaTags } from '~/components/blocks';
 
@@ -18,19 +18,21 @@ export default class CustomDocument extends Document {
       <Html lang={'en'}>
         <Head>
           {/* <DefaultMetaTags /> */}
-          {fonts.map((it, i) => {
-            return (
-              <link
-                rel={'preload'}
-                href={`/static/fonts/${it}`}
-                as={'font'}
-                type={'font/woff2'}
-                crossOrigin={'anonymous'}
-                key={`font-${i}`}
-              />
-            );
-          })}
-          <style id={'stitches'} dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          {preloadFonts.map((font) => (
+            <link
+              key={`font-${font.key}`}
+              rel={'preload'}
+              as={'font'}
+              type={font.type}
+              href={font.src}
+              crossOrigin={'anonymous'}
+            />
+          ))}
+
+          <style
+            id={'stitches'}
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+          />
         </Head>
         <body>
           <Main />

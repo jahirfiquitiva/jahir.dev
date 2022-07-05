@@ -6,7 +6,6 @@ import StitchesLogo from '@/components/StitchesLogo';
 import { styled } from '~/stitches';
 
 const Text = styled('p', {
-  fontFamily: '$system',
   color: '$hiContrast',
 });
 
@@ -45,7 +44,8 @@ export default function Home() {
         <StitchesLogo />
         <Text as={'h1'}>Hello, from Stitches.</Text>
         <Text>
-          For full documentation, visit <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
         </Text>
         <Button>
           <span>Click</span>

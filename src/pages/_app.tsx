@@ -4,10 +4,11 @@ import { AppProps } from 'next/app';
 
 import { ThemeProvider } from '@/providers/theme';
 import { FC } from '@/types';
-import { darkTheme } from '~/stitches';
+import { darkTheme, globalStyles } from '~/stitches';
 import '@/styles/globals.scss';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  globalStyles();
   return (
     <NextThemeProvider
       attribute={'class'}
@@ -16,7 +17,8 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         light: 'light',
         dark: darkTheme.className,
       }}
-      disableTransitionOnChange>
+      disableTransitionOnChange
+    >
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>
