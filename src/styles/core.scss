@@ -1,6 +1,15 @@
 html,
 body {
   background-color: var(--colors-background);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
 }
 
 a {
@@ -19,56 +28,6 @@ button:focus:not(:disabled),
 a:hover:not(:disabled),
 a:focus:not(:disabled) {
   cursor: pointer;
-}
-
-::selection {
-  background-color: rgba(var(--card-base), 0.25);
-}
-
-::placeholder {
-  color: var(--colors-text-tertiary);
-  opacity: 1;
-}
-:-ms-input-placeholder {
-  color: var(--colors-text-tertiary);
-  opacity: 1;
-}
-::-ms-input-placeholder {
-  color: var(--colors-text-tertiary);
-  opacity: 1;
-}
-
-input[type='text'],
-input[type='email'] {
-  appearance: none;
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-  html,
-  body {
-    scroll-behavior: auto;
-  }
-}
-
-/* == Custom Scrollbar Colors == */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--colors-scrollbar-bg) var(--colors-scrollbar-thumb);
-}
-
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 14px;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--colors-scrollbar-thumb);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--colors-scrollbar-bg);
-  border-radius: 20px;
-  border: 3px solid var(--colors-scrollbar-thumb);
 }
 
 figure {
@@ -95,4 +54,56 @@ figure figcaption {
   flex: 1;
   max-width: var(--sizes-max-site-width, 960px);
   margin: 0 auto;
+}
+
+input[type='text'],
+input[type='email'] {
+  appearance: none;
+}
+
+::selection {
+  background-color: rgba(var(--card-base), 0.25);
+}
+
+::placeholder {
+  color: var(--colors-text-tertiary);
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: var(--colors-text-tertiary);
+  opacity: 1;
+}
+::-ms-input-placeholder {
+  color: var(--colors-text-tertiary);
+  opacity: 1;
+}
+
+/* == Custom Scrollbar Colors == */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--colors-scrollbar-bg) var(--colors-scrollbar-thumb);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--colors-scrollbar-thumb);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--colors-scrollbar-bg);
+  border-radius: 20px;
+  border: 3px solid var(--colors-scrollbar-thumb);
+}
+
+@media screen and (min-width: 768px) {
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  *::-webkit-scrollbar-thumb {
+    border-width: 4px;
+  }
 }
