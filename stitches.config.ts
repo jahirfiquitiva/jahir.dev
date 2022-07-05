@@ -38,7 +38,7 @@ export const {
     },
   },
   utils,
-  media: breakpoints,
+  media: { ...breakpoints, hover: '(any-hover: hover)' },
 });
 
 export const darkTheme = createTheme('dark', {

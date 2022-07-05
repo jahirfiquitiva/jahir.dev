@@ -34,12 +34,112 @@ const Container = styled('div', {
   },
 });
 
+// eslint-disable-next-line max-lines-per-function
 export default function Home() {
   return (
     <Layout>
       <Head>
         <title>Use Stitches with Next.js</title>
       </Head>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
+      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+        <StitchesLogo />
+        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text>
+          For full documentation, visit{' '}
+          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+        </Text>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </Container>
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <StitchesLogo />
         <Text as={'h1'}>Hello, from Stitches.</Text>

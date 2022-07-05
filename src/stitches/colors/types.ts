@@ -18,6 +18,8 @@ type TextColor = `text-${TextColorVariants}`;
 type ToolbarColorVariants = 'glow'; // | 'highlight';
 type ToolbarColor = 'toolbar' | `toolbar-${ToolbarColorVariants}`;
 
+type Scrollbar = 'scrollbar-bg' | 'scrollbar-thumb';
+
 export type ThemeColorsNames =
   | 'transparent'
   | 'primary'
@@ -26,4 +28,5 @@ export type ThemeColorsNames =
   | GradientColor
   | ShadowColor
   | TextColor
-  | ToolbarColor;
+  | ToolbarColor
+  | Scrollbar;

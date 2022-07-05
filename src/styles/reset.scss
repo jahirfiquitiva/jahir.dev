@@ -11,7 +11,7 @@
 html,
 body {
   height: 100%;
-  font-size: 105%;
+  font-size: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -62,10 +62,4 @@ h6 {
 #__next {
   min-height: 100%;
   isolation: isolate;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-width: var(--sizes-max-site-width, 960px);
-  margin: 0 auto;
 }

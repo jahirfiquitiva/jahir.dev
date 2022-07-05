@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 // Source: https://github.com/jakejarvis/jarv.is/blob/main/lib/styles/fonts/Inter.ts
 // Legacy
-import manropeLatin500NormalWoff from '@fontsource/manrope/files/manrope-latin-500-normal.woff';
-import manropeLatin500NormalWoff2 from '@fontsource/manrope/files/manrope-latin-500-normal.woff2';
+import manropeLatin800NormalWoff from '@fontsource/manrope/files/manrope-latin-800-normal.woff';
+import manropeLatin800NormalWoff2 from '@fontsource/manrope/files/manrope-latin-800-normal.woff2';
 import manropeLatin600NormalWoff from '@fontsource/manrope/files/manrope-latin-600-normal.woff';
 import manropeLatin600NormalWoff2 from '@fontsource/manrope/files/manrope-latin-600-normal.woff2';
 import manropeLatin700NormalWoff from '@fontsource/manrope/files/manrope-latin-700-normal.woff';
@@ -28,13 +28,6 @@ export const family: AtRule.FontFace[] = [
     fontFamily: name.regular,
     fontStyle: 'normal',
     fontDisplay: 'swap',
-    fontWeight: 500,
-    src: `url(${manropeLatin500NormalWoff2}) format("woff2"), url(${manropeLatin500NormalWoff}) format("woff")`,
-  },
-  {
-    fontFamily: name.regular,
-    fontStyle: 'normal',
-    fontDisplay: 'swap',
     fontWeight: 600,
     src: `url(${manropeLatin600NormalWoff2}) format("woff2"), url(${manropeLatin600NormalWoff}) format("woff")`,
   },
@@ -44,6 +37,13 @@ export const family: AtRule.FontFace[] = [
     fontDisplay: 'swap',
     fontWeight: 700,
     src: `url(${manropeLatin700NormalWoff2}) format("woff2"), url(${manropeLatin700NormalWoff}) format("woff")`,
+  },
+  {
+    fontFamily: name.regular,
+    fontStyle: 'normal',
+    fontDisplay: 'swap',
+    fontWeight: 800,
+    src: `url(${manropeLatin800NormalWoff2}) format("woff2"), url(${manropeLatin800NormalWoff}) format("woff")`,
   },
   {
     fontFamily: name.variable,

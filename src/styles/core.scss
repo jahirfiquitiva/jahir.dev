@@ -26,15 +26,15 @@ a:focus:not(:disabled) {
 }
 
 ::placeholder {
-  color: var(--text-tertiary);
+  color: var(--colors-text-tertiary);
   opacity: 1;
 }
 :-ms-input-placeholder {
-  color: var(--text-tertiary);
+  color: var(--colors-text-tertiary);
   opacity: 1;
 }
 ::-ms-input-placeholder {
-  color: var(--text-tertiary);
+  color: var(--colors-text-tertiary);
   opacity: 1;
 }
 
@@ -53,7 +53,7 @@ input[type='email'] {
 /* == Custom Scrollbar Colors == */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-bg-color) var(--scrollbar-thumb-color);
+  scrollbar-color: var(--colors-scrollbar-bg) var(--colors-scrollbar-thumb);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -62,13 +62,13 @@ input[type='email'] {
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--scrollbar-thumb-color);
+  background: var(--colors-scrollbar-thumb);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-bg-color);
+  background-color: var(--colors-scrollbar-bg);
   border-radius: 20px;
-  border: 3px solid var(--scrollbar-thumb-color);
+  border: 3px solid var(--colors-scrollbar-thumb);
 }
 
 figure {
@@ -83,6 +83,16 @@ figure {
 
 figure figcaption {
   text-align: center;
-  font-size: var(--font-3xs);
+  font-size: var(--fontSizes-3xs);
   margin: 0.6rem 0;
+}
+
+#root,
+#__next {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: var(--sizes-max-site-width, 960px);
+  margin: 0 auto;
 }

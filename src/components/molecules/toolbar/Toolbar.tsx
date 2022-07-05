@@ -110,7 +110,7 @@ export const Toolbar: FC = () => {
         </ToolbarLink>
         <ToolbarLinksContainer links expanded={isExpanded}>
           <li>
-            <ToolbarLink index={0} href={'/about'} title={'About page'}>
+            <ToolbarLink index={0} href={'/about'} title={'About page'} active>
               <span>About</span>
             </ToolbarLink>
           </li>

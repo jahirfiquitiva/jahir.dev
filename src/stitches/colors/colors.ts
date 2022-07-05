@@ -50,6 +50,9 @@ export const colors: ThemeColors = {
   'shadow-orange': '#fcb483',
   'shadow-red': '#f3899c',
   'shadow-purple': '#b898e3',
+
+  'scrollbar-bg': '$accent-light',
+  'scrollbar-thumb': '#f2f5fc',
 };
 
 export const darkThemeColors: ThemeColors = {
@@ -77,4 +80,7 @@ export const darkThemeColors: ThemeColors = {
   'gradient-orange': '$shadow-orange',
   'gradient-red': '$shadow-red',
   'gradient-purple': '$shadow-purple',
+
+  'scrollbar-bg': '$accent',
+  'scrollbar-thumb': '$primary',
 };

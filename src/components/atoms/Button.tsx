@@ -21,7 +21,7 @@ const StyledButton = styled('button', {
   py: '0.4rem',
   px: '0.8rem',
   gap: '0.4rem',
-  fontWeight: 600,
+  fontWeight: 700,
   letterSpacing: '0.03125rem',
   transition: 'all 0.25s ease-in-out',
   ellipsize: true,

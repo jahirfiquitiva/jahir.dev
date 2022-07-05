@@ -9,7 +9,7 @@ export const ToolbarLink = styled(Link, {
   alignItems: 'center',
   verticalAlign: 'middle',
   useFont: 'manrope',
-  fontWeight: 600,
+  fontWeight: 700,
   fontSize: '$2xs',
   color: '$text-secondary',
   borderRadius: '6px',
@@ -34,6 +34,17 @@ export const ToolbarLink = styled(Link, {
   },
 
   variants: {
+    active: {
+      true: {
+        backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+        '& span': {
+          color: '$transparent',
+          background:
+            'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
+          backgroundClip: 'text',
+        },
+      },
+    },
     home: {
       true: {
         alignSelf: 'flex-start',

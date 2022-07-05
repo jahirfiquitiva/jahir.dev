@@ -16,9 +16,6 @@ const visiblityUtils = {
     pointerEvents: 'auto',
     userSelect: 'auto',
   }),
-  hocus: (styles: unknown) => ({
-    '&:hover, &:focus': styles,
-  }),
 };
 
 export default visiblityUtils;
