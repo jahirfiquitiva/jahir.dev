@@ -1,29 +1,17 @@
-type RainbowColors = 'brand' | 'blue' | 'green' | 'yellow' | 'orange' | 'red' | 'purple';
-type GradientColor = `gradient-${RainbowColors}`;
-type ShadowColor = `shadow-${RainbowColors}`;
+import { ThemeColorsNames } from './types';
 
-type AccentVariants = 'light' | 'lighter' | 'dark' | 'darker' | 'animoji';
-type AccentColor = 'accent' | `accent-${AccentVariants}`;
-
-type TextColorVariants = 'primary' | 'secondary' | 'tertiary';
-type TextColor = `text-${TextColorVariants}`;
-
-type ThemeColorsNames =
-  | 'transparent'
-  | 'primary'
-  | 'background'
-  | 'toolbar'
-  | AccentColor
-  | GradientColor
-  | ShadowColor
-  | TextColor;
-
+type RGBValues = `${number} ${number} ${number}`;
 type HexColor = `#${string}`;
-type RGBColor = `rgb(${number} ${number} ${number})`;
-type RGBAColor = `rgba(${number} ${number} ${number} / ${number})`;
+type RGBColor = `rgb(${RGBValues})`;
+type RGBAColor = `rgba(${RGBValues} / ${number})`;
 type StitchesVariable = `$${string}`;
 
-type ThemeColorValue = HexColor | RGBColor | RGBAColor | StitchesVariable;
+type ThemeColorValue =
+  | RGBValues
+  | HexColor
+  | RGBColor
+  | RGBAColor
+  | StitchesVariable;
 
 type ThemeColors = { [Key in ThemeColorsNames]?: ThemeColorValue };
 
@@ -33,6 +21,7 @@ export const colors: ThemeColors = {
   background: '#fff',
 
   toolbar: 'rgba(235 240 251 / .75)',
+  'toolbar-glow': '45 82 171',
 
   'text-primary': 'rgba(9 17 34 / .95)',
   'text-secondary': 'rgba(9 17 34 / .8)',
@@ -67,6 +56,7 @@ export const darkThemeColors: ThemeColors = {
   background: '#0c121e',
 
   toolbar: 'rgba(18 27 44 / .65)',
+  'toolbar-glow': '136 164 230',
 
   'text-primary': '#fff',
   'text-secondary': 'rgba(235 240 251 / .85)',

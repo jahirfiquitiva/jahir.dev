@@ -19,7 +19,7 @@ export const ToolbarLink = styled(Link, {
     color: 'inherit',
   },
   '&:hover': {
-    backgroundColor: 'rgba($$glowColor / 0.08)',
+    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
     '& span': {
       color: '$transparent',
       background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',

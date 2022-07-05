@@ -38,7 +38,7 @@ const Header = styled('header', {
 });
 
 const Nav = styled('nav', {
-  $$glowColor: '45 82 171',
+  zIndex: 3,
   position: 'relative',
   display: 'grid',
   alignItems: 'center',
@@ -46,14 +46,14 @@ const Nav = styled('nav', {
   backgroundColor: '$toolbar',
   backdropFilter: 'blur(6px) saturate(150%)',
   borderRadius: '10px',
-  boxShadow: '0 0 6px 1px rgba($$glowColor / .24)',
-  border: '1px solid rgba($$glowColor / .12)',
+  border: '1px solid rgba($colors$toolbar-glow / .12)',
+  boxShadow: '0 0 6px 1px rgba($colors$toolbar-glow / .16)',
   p: 'calc($$floatingMargin / 1.5)',
   transition: 'box-shadow ease-in-out .2s',
 
   '&:hover': {
-    border: '1px solid rgba($$glowColor / .24)',
-    boxShadow: '0 0 8px 2px rgba($$glowColor / .36)',
+    border: '1px solid rgba($colors$toolbar-glow / .24)',
+    boxShadow: '0 0 8px 2px rgba($colors$toolbar-glow / .28)',
   },
 
   '@tablet-lg': {
@@ -104,7 +104,8 @@ export const Toolbar: FC = () => {
             <Button
               onClick={() => {
                 toggleTheme?.();
-              }}>
+              }}
+            >
               T
             </Button>
           </li>

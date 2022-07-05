@@ -13,7 +13,7 @@
     "no-var": "error",
     "no-console": "error",
     "no-undef": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "no-useless-return": "error",
     "no-useless-concat": "error",
     "no-useless-catch": "error",
@@ -205,10 +205,7 @@
         "indentLogicalExpressions": true
       }
     ],
-    "react/jsx-indent-props": [
-      2,
-      "first"
-    ],
+    "react/jsx-indent-props": [2, "first"],
     "quotes": [
       "error",
       "single",
@@ -250,7 +247,15 @@
     "import/order": [
       "warn",
       {
-        "groups": ["object", "builtin", "external", "internal", "parent", "sibling", "index"],
+        "groups": [
+          "object",
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
@@ -258,6 +263,7 @@
         "newlines-between": "always"
       }
     ],
+    "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/no-inferrable-types": [
       "error",
       {
