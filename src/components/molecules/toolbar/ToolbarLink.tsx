@@ -5,7 +5,7 @@ export const ToolbarLink = styled(Link, {
   $$gradientStart: '$colors$gradient-brand',
   $$gradientEnd: '$colors$gradient-blue',
   height: '100%',
-  display: 'flex',
+  display: 'inline-flex',
   alignItems: 'center',
   verticalAlign: 'middle',
   fontFamily: '$manrope',
@@ -13,12 +13,13 @@ export const ToolbarLink = styled(Link, {
   fontSize: '$xs',
   color: '$text-secondary',
   borderRadius: '6px',
-  p: 'calc($$floatingMargin / 2) $$floatingMargin',
+  p: 'calc($$floatingMargin / $$spaceDivider) $$floatingMargin',
   transition: 'background-color ease-in-out .15s',
+  maxHeight: '42px',
   '& span': {
     color: 'inherit',
   },
-  '&:hover': {
+  hocus: {
     backgroundColor: 'rgba($colors$toolbar-glow / .1)',
     '& span': {
       color: '$transparent',
@@ -30,10 +31,12 @@ export const ToolbarLink = styled(Link, {
   variants: {
     home: {
       true: {
-        gap: 'calc($$floatingMargin / 2)',
+        alignSelf: 'flex-start',
+        gap: 'calc($$floatingMargin / $$spaceDivider)',
         '& span': {
           color: '$transparent',
-          background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
+          background:
+            'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
           backgroundClip: 'text',
         },
       },
@@ -61,14 +64,35 @@ export const ToolbarLink = styled(Link, {
 
 export const ToolbarLinksContainer = styled('ul', {
   height: '100%',
-  display: 'flex',
+  maxHeight: '42px',
+  visible: 'flex',
   alignItems: 'center',
-  gap: 'calc($$floatingMargin / 2)',
   marginInline: 0,
   paddingInline: 0,
   listStyle: 'none',
+  justifyContent: 'flex-end',
+  gap: 'calc($$floatingMargin / $$spaceDivider)',
+
+  '@tablet-sm': {
+    gap: 0,
+    justifyContent: 'flex-start',
+  },
 
   '& li': {
     height: '100%',
+    maxHeight: '42px',
+  },
+
+  variants: {
+    links: {
+      true: {
+        hidden: '',
+        '@tablet-sm': {
+          gap: 'calc($$floatingMargin / $$spaceDivider)',
+          visible: 'flex',
+          justifyContent: 'flex-end',
+        },
+      },
+    },
   },
 });

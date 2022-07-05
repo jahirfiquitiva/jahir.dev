@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
-import { Button, Logo } from '@/components/atoms';
+import { Logo } from '@/components/atoms';
 import { useTheme } from '@/providers/theme';
 import { styled, theme } from '~/stitches';
 
+import { MobileMenu, ThemeToggle } from './ToolbarButton';
 import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
 
 const Header = styled('header', {
@@ -38,6 +39,7 @@ const Header = styled('header', {
 });
 
 const Nav = styled('nav', {
+  $$spaceDivider: 1.5,
   zIndex: 3,
   position: 'relative',
   display: 'grid',
@@ -48,16 +50,18 @@ const Nav = styled('nav', {
   borderRadius: '10px',
   border: '1px solid rgba($colors$toolbar-glow / .12)',
   boxShadow: '0 0 6px 1px rgba($colors$toolbar-glow / .16)',
-  p: 'calc($$floatingMargin / 1.5)',
+  p: 'calc($$floatingMargin / $$spaceDivider)',
   transition: 'box-shadow ease-in-out .2s',
+  gap: '0',
+  gridTemplateColumns: 'auto 1fr',
 
-  '&:hover': {
+  hocus: {
     border: '1px solid rgba($colors$toolbar-glow / .24)',
     boxShadow: '0 0 8px 2px rgba($colors$toolbar-glow / .28)',
   },
 
-  '@tablet-lg': {
-    gap: '$$floatingMargin',
+  '@tablet-sm': {
+    gap: 'calc($$floatingMargin / $$spaceDivider)',
     gridTemplateRows: 'minmax(0px, 1fr)',
     gridTemplateColumns: 'auto 1fr auto',
   },
@@ -77,7 +81,7 @@ export const Toolbar: FC = () => {
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
-        <ToolbarLinksContainer css={{ justifyContent: 'flex-end' }}>
+        <ToolbarLinksContainer links>
           <li>
             <ToolbarLink index={0} href={'/about'} title={'About page'}>
               <span>About</span>
@@ -101,16 +105,16 @@ export const Toolbar: FC = () => {
         </ToolbarLinksContainer>
         <ToolbarLinksContainer>
           <li>
-            <Button
+            <ThemeToggle
               onClick={() => {
                 toggleTheme?.();
               }}
             >
               T
-            </Button>
+            </ThemeToggle>
           </li>
           <li>
-            <Button>M</Button>
+            <MobileMenu>M</MobileMenu>
           </li>
         </ToolbarLinksContainer>
       </Nav>
