@@ -41,13 +41,9 @@ export const MobileMenu = styled(ToolbarButton, {
   '@tablet-sm': {
     hidden: true,
   },
-  variants: {
-    expanded: {
-      true: {
-        '& > svg': {
-          transform: 'rotate(45deg) scale(1.15)',
-        },
-      },
+  '&[aria-expanded="true"]': {
+    '& > svg': {
+      transform: 'rotate(45deg) scale(1.15)',
     },
   },
 });

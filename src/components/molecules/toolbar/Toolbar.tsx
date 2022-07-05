@@ -7,6 +7,7 @@ import { styled, theme } from '~/stitches';
 import { ThemeToggle } from './ThemeToggle';
 import { MobileMenu } from './ToolbarButton';
 import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
+import { ToolbarNavLinks } from './ToolbarNavLinks';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
@@ -108,34 +109,13 @@ export const Toolbar: FC = () => {
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
-        <ToolbarLinksContainer links expanded={isExpanded}>
-          <li>
-            <ToolbarLink index={0} href={'/about'} title={'About page'} active>
-              <span>About</span>
-            </ToolbarLink>
-          </li>
-          <li>
-            <ToolbarLink index={1} href={'/blog'} title={'Blog page'}>
-              <span>Blog</span>
-            </ToolbarLink>
-          </li>
-          <li>
-            <ToolbarLink index={2} href={'/projects'} title={'Projects page'}>
-              <span>Projects</span>
-            </ToolbarLink>
-          </li>
-          <li>
-            <ToolbarLink index={3} href={'/contact'} title={'Contact page'}>
-              <span>Contact</span>
-            </ToolbarLink>
-          </li>
-        </ToolbarLinksContainer>
+        <ToolbarNavLinks expanded={isExpanded} />
         <ToolbarLinksContainer>
           <ThemeToggle />
           <li>
             <MobileMenu
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
-              expanded={isExpanded}
+              aria-expanded={isExpanded}
               iconPath={isExpanded ? mdiPlus : mdiMenu}
               onClick={() => {
                 expand(!isExpanded);

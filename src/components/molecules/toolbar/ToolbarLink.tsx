@@ -1,9 +1,9 @@
 import { Link } from '@/components/atoms';
-import { styled } from '~/stitches';
+import { GradientOption } from '@/stitches/utils/gradient';
+import { styled, StitchesCSS } from '~/stitches';
+import { gradientVariants } from '@/stitches/utils/gradient';
 
 export const ToolbarLink = styled(Link, {
-  $$gradientStart: '$colors$gradient-brand',
-  $$gradientEnd: '$colors$gradient-blue',
   height: '100%',
   display: 'inline-flex',
   alignItems: 'center',
@@ -24,6 +24,14 @@ export const ToolbarLink = styled(Link, {
   '& span': {
     color: 'inherit',
   },
+  '&[aria-current="page"]': {
+    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+    '& span': {
+      color: '$transparent',
+      background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
+      backgroundClip: 'text',
+    },
+  },
   hocus: {
     backgroundColor: 'rgba($colors$toolbar-glow / .1)',
     '& span': {
@@ -34,19 +42,9 @@ export const ToolbarLink = styled(Link, {
   },
 
   variants: {
-    active: {
-      true: {
-        backgroundColor: 'rgba($colors$toolbar-glow / .1)',
-        '& span': {
-          color: '$transparent',
-          background:
-            'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
-          backgroundClip: 'text',
-        },
-      },
-    },
     home: {
       true: {
+        gradient: 'brand-to-blue',
         alignSelf: 'flex-start',
         gap: 'calc($$floatingMargin / $$spaceDivider)',
         '& span': {
@@ -57,24 +55,7 @@ export const ToolbarLink = styled(Link, {
         },
       },
     },
-    index: {
-      0: {
-        $$gradientStart: '$colors$gradient-blue',
-        $$gradientEnd: '$colors$gradient-green',
-      },
-      1: {
-        $$gradientStart: '$colors$gradient-yellow',
-        $$gradientEnd: '$colors$gradient-orange',
-      },
-      2: {
-        $$gradientStart: '$colors$gradient-red',
-        $$gradientEnd: '$colors$gradient-purple',
-      },
-      3: {
-        $$gradientStart: '$colors$gradient-brand',
-        $$gradientEnd: '$colors$gradient-blue',
-      },
-    },
+    gradient: gradientVariants(),
   },
 });
 
