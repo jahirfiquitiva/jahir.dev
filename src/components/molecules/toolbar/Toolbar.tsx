@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { Logo } from '@/components/atoms';
 import { useTheme } from '@/providers/theme';
@@ -9,6 +9,7 @@ import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
+  $$baseActualHeight: 'calc($$toolbarHeight + $$floatingMargin)',
   $$floatingMargin: '8px',
   zIndex: 2,
   position: 'fixed',
@@ -16,9 +17,10 @@ const Header = styled('header', {
   left: '50%',
   transform: 'translateX(-50%)',
   pt: '$$floatingMargin',
-  height: 'calc($$toolbarHeight + $$floatingMargin)',
+  height: '$$baseActualHeight',
   width: 'calc(100% - calc($$floatingMargin * 2))',
   maxWidth: '$max-site-width',
+  transition: 'height ease-in-out .25s',
 
   '@tablet-sm': {
     $$floatingMargin: '12px',
@@ -36,14 +38,24 @@ const Header = styled('header', {
     background: 'linear-gradient(to bottom, $background, transparent)',
     backdropFilter: 'blur(8px) saturate(150%)',
   },
+
+  variants: {
+    expanded: {
+      true: {
+        height: 'calc(calc($$baseActualHeight * 2) - calc($$floatingMargin * 1.75))',
+        '@tablet-sm': {
+          height: 'calc($$toolbarHeight + $$floatingMargin + 4px)',
+        },
+      },
+    },
+  },
 });
 
 const Nav = styled('nav', {
-  $$spaceDivider: 1.5,
+  $$spaceDivider: 1.25,
   zIndex: 3,
   position: 'relative',
   display: 'grid',
-  alignItems: 'center',
   height: '100%',
   backgroundColor: '$toolbar',
   backdropFilter: 'blur(6px) saturate(150%)',
@@ -53,6 +65,7 @@ const Nav = styled('nav', {
   p: 'calc($$floatingMargin / $$spaceDivider)',
   transition: 'box-shadow ease-in-out .2s',
   gap: '0',
+  gridTemplateRows: '1fr',
   gridTemplateColumns: 'auto 1fr',
 
   hocus: {
@@ -61,8 +74,8 @@ const Nav = styled('nav', {
   },
 
   '@tablet-sm': {
+    $$spaceDivider: 1.5,
     gap: 'calc($$floatingMargin / $$spaceDivider)',
-    gridTemplateRows: 'minmax(0px, 1fr)',
     gridTemplateColumns: 'auto 1fr auto',
   },
 
@@ -70,18 +83,31 @@ const Nav = styled('nav', {
     width: '24px',
     height: '24px',
   },
+
+  variants: {
+    expanded: {
+      true: {
+        gridTemplateRows: '1fr minmax(0px, 1fr)',
+        rowGap: 'calc($$floatingMargin / $$spaceDivider)',
+        '@tablet-sm': {
+          gridTemplateRows: 'minmax(0px, 1fr)',
+        },
+      },
+    },
+  },
 });
 
 export const Toolbar: FC = () => {
+  const [isExpanded, expand] = useState(false);
   const { toggleTheme } = useTheme();
   return (
-    <Header>
-      <Nav>
+    <Header expanded={isExpanded}>
+      <Nav expanded={isExpanded}>
         <ToolbarLink home href={'/'} title={'Home page'}>
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
-        <ToolbarLinksContainer links>
+        <ToolbarLinksContainer links expanded={isExpanded}>
           <li>
             <ToolbarLink index={0} href={'/about'} title={'About page'}>
               <span>About</span>
@@ -114,7 +140,13 @@ export const Toolbar: FC = () => {
             </ThemeToggle>
           </li>
           <li>
-            <MobileMenu>M</MobileMenu>
+            <MobileMenu
+              onClick={() => {
+                expand(!isExpanded);
+              }}
+            >
+              M
+            </MobileMenu>
           </li>
         </ToolbarLinksContainer>
       </Nav>
