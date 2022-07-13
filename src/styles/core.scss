@@ -104,3 +104,8 @@ input[type='email'] {
     width: 12px;
   }
 }
+
+*:focus {
+  outline: 2px dashed var(--colors-text-primary);
+  outline-offset: 0.25rem;
+}
