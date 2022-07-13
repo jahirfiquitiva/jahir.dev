@@ -16,8 +16,6 @@ const Header = styled('header', {
   zIndex: 2,
   position: 'fixed',
   top: 0,
-  left: '50%',
-  transform: 'translateX(-50%)',
   pt: '$$floatingMargin',
   height: '$$baseActualHeight',
   width: 'calc(100% - calc($$floatingMargin * 2))',

@@ -1,18 +1,12 @@
 import Head from 'next/head';
 
-import { Button } from '@/components/atoms';
+import { Button, Divider, DotsDivider, Img, Link } from '@/components/atoms';
 import { Layout } from '@/components/elements';
 import StitchesLogo from '@/components/StitchesLogo';
 import { styled } from '~/stitches';
 
 const Text = styled('p', {
   color: '$hiContrast',
-});
-
-const Link = styled('a', {
-  fontFamily: '$system',
-  textDecoration: 'none',
-  color: '$purple600',
 });
 
 const Container = styled('div', {
@@ -43,109 +37,34 @@ export default function Home() {
       </Head>
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text as={'h1'}>Hello, from Jahir.</Text>
         <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+          This is a Work In Progress. View the production website at{' '}
+          <Link href={'https://jahir.dev'}>jahir.dev</Link>.
         </Text>
         <Button>
           <span>Click</span>
         </Button>
       </Container>
+      <Divider />
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Img src={'https://unavatar.io/jahirfiquitiva'} alt={'Jahir photo'} size={120} />
+        <Text as={'h1'}>Hello, from Jahir.</Text>
         <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+          This is a Work In Progress. View the production website at{' '}
+          <Link href={'https://jahir.dev'}>jahir.dev</Link>.
         </Text>
         <Button>
           <span>Click</span>
         </Button>
       </Container>
+      <DotsDivider />
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
+        <Text as={'h1'}>Hello, from Jahir.</Text>
         <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href={'https://stitches.dev'}>stitches.dev</Link>.
+          This is a Work In Progress. View the production website at{' '}
+          <Link href={'https://jahir.dev'}>jahir.dev</Link>.
         </Text>
         <Button>
           <span>Click</span>

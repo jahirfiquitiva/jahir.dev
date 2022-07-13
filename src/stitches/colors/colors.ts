@@ -19,6 +19,7 @@ export const colors: ThemeColors = {
   transparent: 'rgba(0 0 0 / 0)',
   primary: '#f6f9fe',
   background: '#fff',
+  divider: 'rgba(9 17 34 / .12)',
 
   toolbar: 'rgba(235 240 251 / .75)',
   'toolbar-glow': '45 82 171',
@@ -58,6 +59,7 @@ export const colors: ThemeColors = {
 export const darkThemeColors: ThemeColors = {
   primary: '#0c121e',
   background: '#0c121e',
+  divider: 'rgba(235 240 251 / .12)',
 
   toolbar: 'rgba(18 27 44 / .65)',
   'toolbar-glow': '136 164 230',

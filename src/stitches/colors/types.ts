@@ -24,6 +24,7 @@ export type ThemeColorsNames =
   | 'transparent'
   | 'primary'
   | 'background'
+  | 'divider'
   | AccentColor
   | GradientColor
   | ShadowColor
