@@ -28,7 +28,7 @@ export const ThemeProvider: FC = (props) => {
   useEffect(() => setMounted(true), []);
 
   const themeContextValue: ThemeContextValue = {
-    themeReady: mounted,
+    themeReady: mounted || (actualTheme?.length || 0) > 0,
     isDark: actualTheme === 'dark',
     toggleTheme: () => {
       setTheme(actualTheme === 'dark' ? 'light' : 'dark');
