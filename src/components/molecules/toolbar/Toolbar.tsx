@@ -16,6 +16,8 @@ const Header = styled('header', {
   zIndex: 2,
   position: 'fixed',
   top: 0,
+  left: '50%',
+  transform: 'translateX(calc(-50% - calc(var(--size-scrollbar-width) / 2)))',
   pt: '$$floatingMargin',
   height: '$$baseActualHeight',
   width: 'calc(100% - calc($$floatingMargin * 2))',

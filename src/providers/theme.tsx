@@ -1,5 +1,5 @@
 import { useTheme as useNextTheme } from 'next-themes';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 import type { FC } from '@/types';
 
@@ -17,16 +17,21 @@ const defaultContextState: ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider: FC = (props) => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useNextTheme();
+  const { theme, resolvedTheme, setTheme } = useNextTheme();
 
+  const actualTheme = useMemo(
+    () => resolvedTheme || theme,
+    [resolvedTheme, theme],
+  );
+
+  const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   const themeContextValue: ThemeContextValue = {
     themeReady: mounted,
-    isDark: theme === 'dark',
+    isDark: actualTheme === 'dark',
     toggleTheme: () => {
-      setTheme(theme === 'dark' ? 'light' : 'dark');
+      setTheme(actualTheme === 'dark' ? 'light' : 'dark');
     },
   };
 

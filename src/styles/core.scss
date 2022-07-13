@@ -1,3 +1,7 @@
+:root {
+  --size-scrollbar-width: 8px;
+}
+
 html,
 body {
   background-color: var(--colors-background);
@@ -86,7 +90,7 @@ input[type='email'] {
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 8px;
+  width: var(--size-scrollbar-width);
 }
 
 *::-webkit-scrollbar-track {
@@ -100,8 +104,8 @@ input[type='email'] {
 }
 
 @media screen and (min-width: 768px) {
-  *::-webkit-scrollbar {
-    width: 12px;
+  :root {
+    --size-scrollbar-width: 12px;
   }
 }
 
