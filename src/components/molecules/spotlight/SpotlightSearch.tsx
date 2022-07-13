@@ -16,6 +16,8 @@ const StyledSearch = styled(KBarSearch, {
   flex: 1,
   minHeight: '32px',
   borderRadius: '6px',
+  borderBottomLeftRadius: '0px',
+  borderBottomRightRadius: '0px',
   py: '.4rem',
   px: '.8rem',
   pr: '48px',
