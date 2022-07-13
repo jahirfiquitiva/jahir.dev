@@ -22,15 +22,14 @@ export const ThemeToggle = () => {
     return customIconPaths.sunOutline;
   }, [themeReady, isDark]);
 
-  if (!themeReady) return null;
-
   return (
     <li>
       <ToolbarButton
         title={buttonText}
-        iconPath={iconPath}
+        iconPath={themeReady ? iconPath : ''}
         iconSize={0.9}
         onClick={toggleTheme}
+        disabled={!themeReady}
       />
     </li>
   );
