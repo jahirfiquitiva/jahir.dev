@@ -1,6 +1,19 @@
+import type { CSS } from '@stitches/react';
+
 import { Link } from '@/components/atoms';
 import { gradientVariants } from '@/stitches/utils/gradient';
 import { styled } from '~/stitches';
+
+const spanCss: CSS = {
+  color: '$transparent',
+  background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
+  backgroundClip: 'text',
+};
+
+const activeCss: CSS = {
+  backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+  '& span': spanCss,
+};
 
 export const ToolbarLink = styled(Link, {
   height: '100%',
@@ -23,22 +36,8 @@ export const ToolbarLink = styled(Link, {
   '& span': {
     color: 'inherit',
   },
-  '&[aria-current="page"]': {
-    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
-    '& span': {
-      color: '$transparent',
-      background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
-      backgroundClip: 'text',
-    },
-  },
-  hocus: {
-    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
-    '& span': {
-      color: '$transparent',
-      background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
-      backgroundClip: 'text',
-    },
-  },
+  '&[aria-current="page"]': activeCss,
+  hocus: activeCss,
 
   variants: {
     home: {
@@ -46,12 +45,7 @@ export const ToolbarLink = styled(Link, {
         gradient: 'brand-to-blue',
         alignSelf: 'flex-start',
         gap: 'calc($$floatingMargin / $$spaceDivider)',
-        '& span': {
-          color: '$transparent',
-          background:
-            'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
-          backgroundClip: 'text',
-        },
+        '& span': spanCss,
       },
     },
     gradient: gradientVariants(),

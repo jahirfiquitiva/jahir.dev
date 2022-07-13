@@ -1,6 +1,13 @@
 import Head from 'next/head';
 
-import { Button, Divider, DotsDivider, Img, Link } from '@/components/atoms';
+import {
+  Button,
+  Divider,
+  DotsDivider,
+  Img,
+  Link,
+  Heading,
+} from '@/components/atoms';
 import { Layout } from '@/components/elements';
 import StitchesLogo from '@/components/StitchesLogo';
 import { styled } from '~/stitches';
@@ -37,7 +44,9 @@ export default function Home() {
       </Head>
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <StitchesLogo />
-        <Text as={'h1'}>Hello, from Jahir.</Text>
+        <Heading as={'h1'} gradient={'brand-to-blue'} shadow={'red'}>
+          Hello, from Jahir.
+        </Heading>
         <Text>
           This is a Work In Progress. View the production website at{' '}
           <Link href={'https://jahir.dev'}>jahir.dev</Link>.
@@ -48,8 +57,14 @@ export default function Home() {
       </Container>
       <Divider />
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <Img src={'https://unavatar.io/jahirfiquitiva'} alt={'Jahir photo'} size={120} />
-        <Text as={'h1'}>Hello, from Jahir.</Text>
+        <Img
+          src={'https://unavatar.io/jahirfiquitiva'}
+          alt={'Jahir photo'}
+          size={120}
+        />
+        <Heading as={'h2'} gradient={'blue-to-green'} forceGradient>
+          Hello, from Jahir.
+        </Heading>
         <Text>
           This is a Work In Progress. View the production website at{' '}
           <Link href={'https://jahir.dev'}>jahir.dev</Link>.
@@ -61,7 +76,13 @@ export default function Home() {
       <DotsDivider />
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <StitchesLogo />
-        <Text as={'h1'}>Hello, from Jahir.</Text>
+        <Text as={'h1'}>
+          Hello, from{' '}
+          <Heading as={'span'} gradient={'orange-to-red'}>
+            Jahir
+          </Heading>
+          .
+        </Text>
         <Text>
           This is a Work In Progress. View the production website at{' '}
           <Link href={'https://jahir.dev'}>jahir.dev</Link>.

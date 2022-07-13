@@ -3,6 +3,7 @@ import gradient from './gradient';
 import hover from './hover';
 import margin from './margin';
 import padding from './padding';
+import shadow from './shadow';
 import visiblity from './visibility';
 
 export const utils = {
@@ -11,5 +12,6 @@ export const utils = {
   ...hover,
   ...margin,
   ...padding,
+  ...shadow,
   ...visiblity,
 };

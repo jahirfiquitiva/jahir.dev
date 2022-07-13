@@ -103,7 +103,7 @@ export const Toolbar: FC = () => {
   return (
     <Header expanded={isExpanded}>
       <Nav expanded={isExpanded}>
-        <ToolbarLink home href={'/'} title={'Home page'}>
+        <ToolbarLink home href={'/'} title={'Home page'} underline={false}>
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>

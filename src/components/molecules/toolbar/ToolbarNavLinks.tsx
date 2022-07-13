@@ -55,6 +55,7 @@ export const ToolbarNavLinks: FC<{ expanded?: boolean }> = (props) => {
         return (
           <li key={index}>
             <ToolbarLink
+              underline={false}
               gradient={link.gradient}
               title={`${link.title} page`}
               href={link.href}

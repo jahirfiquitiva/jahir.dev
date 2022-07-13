@@ -1,11 +1,14 @@
-type RainbowColors =
-  | 'brand'
-  | 'blue'
-  | 'green'
-  | 'yellow'
-  | 'orange'
-  | 'red'
-  | 'purple';
+export const rainbowColorsArray = [
+  'brand',
+  'blue',
+  'green',
+  'yellow',
+  'orange',
+  'red',
+  'purple',
+] as const;
+
+export type RainbowColors = typeof rainbowColorsArray[number];
 type GradientColor = `gradient-${RainbowColors}`;
 type ShadowColor = `shadow-${RainbowColors}`;
 
