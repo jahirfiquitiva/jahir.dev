@@ -19,13 +19,11 @@ export const pagesOptions: Array<SpotlightOption> = [
     id: 'blog',
     title: 'Blog',
     keywords: 'writing words blogs blog post articles tutorials',
-    url: '/blog',
   },
   {
     id: 'projects',
     title: 'Projects',
     keywords: 'projects work portfolio',
-    url: '/projects',
   },
   {
     id: 'contact',

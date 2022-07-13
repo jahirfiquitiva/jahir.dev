@@ -7,8 +7,7 @@ import { Kbd } from './Kbd';
 
 const ResultsList = styled('div', {
   px: '.4rem',
-  pt: '.3rem',
-  pb: '.5rem',
+  py: '.5rem',
 });
 
 const SectionTitle = styled('div', {
