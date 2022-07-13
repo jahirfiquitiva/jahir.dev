@@ -29,7 +29,7 @@ export const ThemeToggle = () => {
       <ToolbarButton
         title={buttonText}
         iconPath={iconPath}
-        iconSize={0.85}
+        iconSize={0.9}
         onClick={toggleTheme}
       />
     </li>
