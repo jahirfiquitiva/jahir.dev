@@ -29,7 +29,7 @@ const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
 
 export const SpotlightProvider: FC = (props) => {
-  const { toggleTheme } = useTheme();
+  const { setTheme } = useTheme();
   const { push } = useRouter();
 
   const mapSpotlightOptionToAction = (
@@ -81,11 +81,19 @@ export const SpotlightProvider: FC = (props) => {
       ...firstArray,
       ...secondArray,
       {
-        id: 'theme',
-        name: 'Switch theme',
+        id: 'light-theme',
+        name: 'Use light theme',
         section: 'Utilities',
         perform: () => {
-          toggleTheme?.();
+          setTheme?.('light');
+        },
+      },
+      {
+        id: 'dark-theme',
+        name: 'Use dark theme',
+        section: 'Utilities',
+        perform: () => {
+          setTheme?.('dark');
         },
       },
     ].flat();

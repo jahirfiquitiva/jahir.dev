@@ -7,6 +7,7 @@ export interface ThemeContextValue {
   isDark: boolean;
   themeReady: boolean;
   toggleTheme?: () => void;
+  setTheme?: (theme: 'light' | 'dark') => void;
 }
 
 const defaultContextState: ThemeContextValue = {
@@ -33,6 +34,7 @@ export const ThemeProvider: FC = (props) => {
     toggleTheme: () => {
       setTheme(actualTheme === 'dark' ? 'light' : 'dark');
     },
+    setTheme,
   };
 
   return (
