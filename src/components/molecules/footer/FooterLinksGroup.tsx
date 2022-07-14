@@ -16,6 +16,9 @@ const List = styled('ul', {
   '@mobile-md': {
     minWidth: '160px',
   },
+  '@tablet-sm': {
+    minWidth: '172px',
+  },
   variants: {
     meta: {
       true: {

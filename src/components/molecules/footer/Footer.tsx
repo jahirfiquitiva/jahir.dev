@@ -4,13 +4,14 @@ import { styled, theme } from '~/stitches';
 
 import { FooterLink, FooterLinksGroup } from './FooterLinksGroup';
 import type { FooterLinkProps } from './FooterLinksGroup';
+import { SocialLinks } from './SocialLinks';
 
 const StyledFooter = styled('footer', {
   display: 'flex',
   flexDirection: 'column',
-  py: '2rem',
+  py: '2.4rem',
   px: '0.8rem',
-  gap: '2rem',
+  gap: '2.4rem',
   borderTop: '1px solid $divider',
   '@tablet-lg': {
     px: 0,
@@ -19,12 +20,22 @@ const StyledFooter = styled('footer', {
 
 const InnerFooter = styled('div', {
   display: 'flex',
+  flexWrap: 'wrap',
+  gap: '1rem',
+  '@tablet-sm': {
+    justifyContent: 'space-between',
+  },
 });
 
 const BrandLink = styled(FooterLink, {
   display: 'inline-flex',
   alignSelf: 'flex-start',
   gap: '0.4rem',
+  minHeight: '30px',
+  minWidth: '130px',
+  '@mobile-md': {
+    minWidth: '154px',
+  },
   '& > svg': {
     width: '24px',
     height: '24px',
@@ -89,7 +100,7 @@ const secondaryLinks: Array<FooterLinkProps> = [
 const metaLinks: Array<FooterLinkProps> = [
   {
     title: 'RSS',
-    href: '/feed',
+    href: '/feed.xml',
     gradient: 'yellow-to-orange',
   },
   {
@@ -107,6 +118,14 @@ const metaLinks: Array<FooterLinkProps> = [
 export const Footer: FC = () => {
   return (
     <StyledFooter>
+      <LinksContainer>
+        <FooterLinksGroup title={'Primary pages links'} links={primaryLinks} />
+        <FooterLinksGroup
+          title={'Secondary pages links'}
+          links={secondaryLinks}
+        />
+        <FooterLinksGroup meta title={'Meta pages links'} links={metaLinks} />
+      </LinksContainer>
       <InnerFooter>
         <BrandLink
           href={'/'}
@@ -117,15 +136,8 @@ export const Footer: FC = () => {
           <Logo fillColor={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </BrandLink>
+        <SocialLinks />
       </InnerFooter>
-      <LinksContainer>
-        <FooterLinksGroup title={'Primary pages links'} links={primaryLinks} />
-        <FooterLinksGroup
-          title={'Secondary pages links'}
-          links={secondaryLinks}
-        />
-        <FooterLinksGroup meta title={'Meta pages links'} links={metaLinks} />
-      </LinksContainer>
     </StyledFooter>
   );
 };
