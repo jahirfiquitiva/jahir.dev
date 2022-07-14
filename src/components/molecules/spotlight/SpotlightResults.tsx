@@ -18,7 +18,7 @@ const SectionTitle = styled('div', {
   px: '.8rem',
   useFont: 'manrope',
   fontWeight: 700,
-  letterSpacing: '0.035rem',
+  letterSpacing: '0.025rem',
 });
 
 const Result = styled('div', {

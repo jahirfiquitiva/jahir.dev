@@ -9,9 +9,9 @@ export const spotlightOptions: SpotlightOptions = {
     Projects: [
       {
         id: 'all-projects',
-        title: 'All Projects',
+        title: 'View all projects',
         url: '/projects',
-        keywords: 'projects work portfolio',
+        keywords: 'projects work portfolio creations apps repositories',
         shortcuts: ['3'],
       },
       {

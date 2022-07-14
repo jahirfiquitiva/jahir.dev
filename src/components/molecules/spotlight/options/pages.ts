@@ -23,7 +23,7 @@ export const pagesOptions: Array<SpotlightOption> = [
   {
     id: 'projects',
     title: 'Projects',
-    keywords: 'projects work portfolio',
+    keywords: 'projects work portfolio creations apps repositories',
   },
   {
     id: 'contact',
