@@ -7,13 +7,18 @@ import type { FooterLinkProps } from './FooterLinksGroup';
 import { SocialLinks } from './SocialLinks';
 
 const StyledFooter = styled('footer', {
+  $$pf: '1.4rem',
   display: 'flex',
   flexDirection: 'column',
-  py: '2.4rem',
+  py: '$$pf',
   px: '0.8rem',
-  gap: '2.4rem',
+  gap: '$$pf',
   borderTop: '1px solid $divider',
+  '@tablet-sm': {
+    $$pf: '1.8rem',
+  },
   '@tablet-lg': {
+    $$pf: '2.4rem',
     px: 0,
   },
 });
@@ -45,7 +50,7 @@ const BrandLink = styled(FooterLink, {
 const LinksContainer = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '1rem',
+  gap: 'calc($$pf / 2)',
   '@tablet-sm': {
     justifyContent: 'space-between',
   },
