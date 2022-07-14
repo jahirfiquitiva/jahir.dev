@@ -54,6 +54,8 @@ export const colors: ThemeColors = {
 
   'scrollbar-bg': '$accent-light',
   'scrollbar-thumb': '#f2f5fc',
+
+  selection: 'rgba(56 103 214 / .25)',
 };
 
 export const darkThemeColors: ThemeColors = {
@@ -85,4 +87,6 @@ export const darkThemeColors: ThemeColors = {
 
   'scrollbar-bg': '$accent',
   'scrollbar-thumb': '$primary',
+
+  selection: 'rgba(136 164 230 / .25)',
 };

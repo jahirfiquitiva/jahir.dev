@@ -28,6 +28,7 @@ export type ThemeColorsNames =
   | 'primary'
   | 'background'
   | 'divider'
+  | 'selection'
   | AccentColor
   | GradientColor
   | ShadowColor

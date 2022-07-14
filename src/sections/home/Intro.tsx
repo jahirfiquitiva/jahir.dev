@@ -31,6 +31,9 @@ const NameButton = styled(Button, {
   background: 'none',
   color: '$text-primary',
   p: 0,
+  m: 0,
+  ml: '6.4px',
+  borderRadius: 0,
   letterSpacing: 'unset',
   minHeight: 'unset',
   hocus: {
@@ -112,7 +115,7 @@ export const Intro: FC = () => {
       <TextsContainer>
         <WavingHello />
         <Heading as={'h1'} shadow={'blue'} css={{ fontSize: '$xl' }}>
-          I am&nbsp;
+          I am
           <PronunciationButton />
         </Heading>
         <Paragraph>

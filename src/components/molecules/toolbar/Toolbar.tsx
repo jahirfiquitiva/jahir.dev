@@ -38,10 +38,10 @@ const Header = styled('header', {
     position: 'absolute',
     display: 'block',
     top: 0,
-    height: '$$floatingMargin',
+    height: 'calc($$floatingMargin + 4px)',
     width: '100%',
     background: 'linear-gradient(to bottom, $background, transparent)',
-    backdropFilter: 'blur(8px) saturate(150%)',
+    backdropFilter: 'blur(11px) saturate(150%)',
   },
 
   variants: {
@@ -64,7 +64,7 @@ const Nav = styled('nav', {
   display: 'grid',
   height: '100%',
   backgroundColor: '$toolbar',
-  backdropFilter: 'blur(6px) saturate(150%)',
+  backdropFilter: 'blur(10px) saturate(150%)',
   borderRadius: '10px',
   border: '1px solid rgba($colors$toolbar-glow / .12)',
   boxShadow: '0 0 6px 1px rgba($colors$toolbar-glow / .16)',
