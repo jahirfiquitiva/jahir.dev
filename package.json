@@ -23,7 +23,8 @@
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
