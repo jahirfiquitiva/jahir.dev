@@ -1,6 +1,6 @@
 import type { CSS } from '@stitches/react';
 
-const gradientOptionsArray = [
+export const gradientOptionsArray = [
   'brand-to-blue',
   'blue-to-green',
   'green-to-yellow',

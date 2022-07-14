@@ -1,3 +1,5 @@
+import { mdiPlayCircle } from '@mdi/js';
+import Icon from '@mdi/react';
 import Head from 'next/head';
 
 import {
@@ -8,9 +10,30 @@ import {
   Link,
   Heading,
 } from '@/components/atoms';
+import { WavingHello } from '@/components/compounds';
 import { Layout, Section } from '@/components/elements';
 import StitchesLogo from '@/components/StitchesLogo';
 import { styled } from '~/stitches';
+
+const NameButton = styled(Button, {
+  background: 'none',
+  color: '$text-primary',
+  p: 0,
+  letterSpacing: 'unset',
+  minHeight: 'unset',
+  hocus: {
+    background: 'none',
+    transform: 'none',
+  },
+  '& > svg': {
+    filter:
+      'drop-shadow($$textShadowSize $$textShadowSize 0 $$textShadowColor)',
+    dark: {
+      filter: 'none',
+      color: '$gradient-blue',
+    },
+  },
+});
 
 const Text = styled('p', {
   color: '$hiContrast',
@@ -43,9 +66,19 @@ export default function Home() {
         <title>Use Stitches with Next.js</title>
       </Head>
       <Section>
-        <StitchesLogo />
-        <Heading as={'h1'} gradient={'brand-to-blue'} shadow={'red'}>
-          Hello, from Jahir.
+        <WavingHello />
+        <Heading as={'h1'} shadow={'blue'} css={{ fontSize: '$xl' }}>
+          I am&nbsp;
+          <NameButton title={"Press to hear Jahir's name pronunciation"}>
+            <Heading
+              as={'span'}
+              gradient={'brand-to-blue'}
+              css={{ fontSize: 'inherit', fontWeight: 800 }}
+            >
+              Jahir Fiquitiva
+            </Heading>
+            <Icon path={mdiPlayCircle} size={1.25} />
+          </NameButton>
         </Heading>
         <Text>
           This is a Work In Progress. View the production website at{' '}
