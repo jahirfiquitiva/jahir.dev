@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Button, DotsDivider, Img, Link, Heading } from '@/components/atoms';
 import { Layout } from '@/components/elements';
 import StitchesLogo from '@/components/StitchesLogo';
-import { Intro } from '@/sections';
+import { Intro, Skills } from '@/sections';
 import { styled } from '~/stitches';
 
 const Text = styled('p', {
@@ -56,23 +56,7 @@ export default function Home() {
         </Button>
       </Container>
       <DotsDivider />
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
-        <StitchesLogo />
-        <Text as={'h1'}>
-          Hello, from{' '}
-          <Heading as={'span'} gradient={'orange-to-red'}>
-            Jahir
-          </Heading>
-          .
-        </Text>
-        <Text>
-          This is a Work In Progress. View the production website at{' '}
-          <Link href={'https://jahir.dev'}>jahir.dev</Link>.
-        </Text>
-        <Button>
-          <span>Click</span>
-        </Button>
-      </Container>
+      <Skills />
     </Layout>
   );
 }

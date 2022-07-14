@@ -12,6 +12,7 @@ const Main = styled('main', {
   flexDirection: 'column',
   flex: 1,
   pt: 'calc($$totalToolbarHeight + $$verticalContentPadding)',
+  pb: '$$verticalContentPadding',
   '@tablet-sm': {
     pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + 4px)',
   },

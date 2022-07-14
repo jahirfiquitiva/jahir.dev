@@ -2,7 +2,7 @@ import { mdiInstagram } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
-import { customIconPaths } from '@/utils/icon-paths';
+import { icons } from '@/utils';
 import { styled } from '~/stitches';
 
 const SocialLinksContainer = styled('ul', {
@@ -85,7 +85,7 @@ export const SocialLinks = () => {
     <SocialLinksContainer aria-label={'Social links'}>
       <li>
         <GitHubLink title={'GitHub'} href={'https://github.com/jahirfiquitiva'}>
-          <Icon path={customIconPaths.gitHubOutline} size={iconSize} />
+          <Icon path={icons.gitHubOutline} size={iconSize} />
         </GitHubLink>
       </li>
       <li>
@@ -93,7 +93,7 @@ export const SocialLinks = () => {
           title={'LinkedIn'}
           href={'https://linkedin.com/in/jahirfiquitiva'}
         >
-          <Icon path={customIconPaths.linkedInOutline} size={iconSize} />
+          <Icon path={icons.linkedInOutline} size={iconSize} />
         </LinkedInLink>
       </li>
       <li>
@@ -101,7 +101,7 @@ export const SocialLinks = () => {
           title={'Twitter'}
           href={'https://twitter.com/jahirfiquitiva'}
         >
-          <Icon path={customIconPaths.twitterOutline} size={iconSize} />
+          <Icon path={icons.twitterOutline} size={iconSize} />
         </TwitterLink>
       </li>
       <li>
@@ -117,7 +117,7 @@ export const SocialLinks = () => {
           title={'Polywork Timeline'}
           href={'https://timeline.jahir.dev'}
         >
-          <Icon path={customIconPaths.polywork} size={iconSize} />
+          <Icon path={icons.polywork} size={iconSize} />
         </PolyworkLink>
       </li>
     </SocialLinksContainer>

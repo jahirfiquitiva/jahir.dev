@@ -21,7 +21,7 @@ const polywork =
 const nextJs =
   'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.8 0 3.4-.5 4.8-1.2L9.6 10.6v5.7H8.5V8.5h1.1l7.9 11.8c2.7-1.8 4.5-4.9 4.5-8.4C22 6.5 17.5 2 12 2zm3.5 13.2-1.2-1.8V8.5h1.2v6.7z';
 
-export const customIconPaths = {
+export const icons = {
   sunOutline,
   moonOutline,
   gitHubOutline,
