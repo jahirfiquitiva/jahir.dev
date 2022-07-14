@@ -12,7 +12,7 @@ export const Divider = styled('hr', {
 });
 
 export const DotsDivider = styled('hr', {
-  my: '1.8rem',
+  my: '$$verticalContentPadding',
   mx: 0,
   height: '24px',
   border: 'none',
@@ -27,8 +27,5 @@ export const DotsDivider = styled('hr', {
   },
   dark: {
     filter: 'opacity(0.24) invert(1)',
-  },
-  '@desktop': {
-    my: '2.2rem',
   },
 });

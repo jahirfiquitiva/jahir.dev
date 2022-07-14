@@ -1,8 +1,8 @@
-import { mdiPlayCircle } from '@mdi/js';
+import { mdiAccountCircleOutline, mdiPlayCircle } from '@mdi/js';
 import Icon from '@mdi/react';
 import useSound from 'use-sound';
 
-import { Button, Link, Heading, Img } from '@/components/atoms';
+import { Button, Link, LinkButton, Heading, Img } from '@/components/atoms';
 import { WavingHello } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import type { FC } from '@/types';
@@ -11,7 +11,7 @@ import { styled } from '~/stitches';
 const IntroSection = styled(Section, {
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
-  alignItems: 'center',
+  rowGap: '1rem',
   '@tablet-sm': {
     gridTemplateColumns: 'minmax(0, 1fr) auto',
     columnGap: '1.6rem',
@@ -21,6 +21,10 @@ const IntroSection = styled(Section, {
 const TextsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  gridRow: 2,
+  '@tablet-sm': {
+    gridRow: 1,
+  },
 });
 
 const NameButton = styled(Button, {
@@ -66,15 +70,28 @@ const PronunciationButton: FC = () => {
   );
 };
 
+const Paragraph = styled('p', {
+  mt: '0.8rem',
+  mb: '1.2rem',
+  maxWidth: '325px',
+  '@mobile-lg': {
+    maxWidth: '410px',
+  },
+});
+
 const PhotoContainer = styled('div', {
   borderRadius: '50%',
   backgroundColor: '#223e80',
+  width: 168,
+  height: 168,
 });
 
 const Photo = styled(Img, {
   borderRadius: '50%',
   backgroundColor: '$accent-animoji',
   border: '1px solid rgba($toolbar-glow / 0.12)',
+  objectFit: 'cover',
+  objectPosition: 'center',
   canHover: {
     filter: 'grayscale(100%) contrast(.75) brightness(175%)',
     transition: 'all .25s ease-in-out',
@@ -82,6 +99,7 @@ const Photo = styled(Img, {
     opacity: 0.7,
   },
   hocus: {
+    cursor: 'grab',
     filter: 'unset',
     mixBlendMode: 'normal',
     opacity: 1,
@@ -97,7 +115,7 @@ export const Intro: FC = () => {
           I am&nbsp;
           <PronunciationButton />
         </Heading>
-        <p>
+        <Paragraph>
           Passionate and creative full-stack software engineer based in{' '}
           <Link
             title={'Colombia on Google Maps'}
@@ -105,16 +123,17 @@ export const Intro: FC = () => {
           >
             Colombia 🇨🇴
           </Link>
-        </p>
-        <Button>
-          <span>Click</span>
-        </Button>
+        </Paragraph>
+        <LinkButton title={'About page'} href={'/about'} withShadow>
+          <Icon path={mdiAccountCircleOutline} size={1} />
+          More about me
+        </LinkButton>
       </TextsContainer>
       <PhotoContainer>
         <Photo
           src={'/static/images/jahir/jahir-hd.jpg'}
           alt={"Jahir's Photo"}
-          size={180}
+          size={168}
           priority
         />
       </PhotoContainer>

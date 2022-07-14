@@ -1,13 +1,6 @@
 import Head from 'next/head';
 
-import {
-  Button,
-  Divider,
-  DotsDivider,
-  Img,
-  Link,
-  Heading,
-} from '@/components/atoms';
+import { Button, DotsDivider, Img, Link, Heading } from '@/components/atoms';
 import { Layout } from '@/components/elements';
 import StitchesLogo from '@/components/StitchesLogo';
 import { Intro } from '@/sections';
@@ -44,7 +37,7 @@ export default function Home() {
         <title>Use Stitches with Next.js</title>
       </Head>
       <Intro />
-      <Divider />
+      <DotsDivider />
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <Img
           src={'https://unavatar.io/jahirfiquitiva'}
