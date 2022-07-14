@@ -61,7 +61,7 @@ const PronunciationButton: FC = () => {
       <Heading
         as={'span'}
         gradient={'brand-to-blue'}
-        css={{ fontSize: 'inherit', fontWeight: 800 }}
+        css={{ fontSize: 'inherit', fontWeight: 700 }}
       >
         Jahir Fiquitiva
       </Heading>
