@@ -2,11 +2,26 @@ import { mdiPlayCircle } from '@mdi/js';
 import Icon from '@mdi/react';
 import useSound from 'use-sound';
 
-import { Button, Link, Heading } from '@/components/atoms';
+import { Button, Link, Heading, Img } from '@/components/atoms';
 import { WavingHello } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
+
+const IntroSection = styled(Section, {
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 1fr)',
+  alignItems: 'center',
+  '@tablet-sm': {
+    gridTemplateColumns: 'minmax(0, 1fr) auto',
+    columnGap: '1.6rem',
+  },
+});
+
+const TextsContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+});
 
 const NameButton = styled(Button, {
   background: 'none',
@@ -51,26 +66,58 @@ const PronunciationButton: FC = () => {
   );
 };
 
+const PhotoContainer = styled('div', {
+  borderRadius: '50%',
+  backgroundColor: '#223e80',
+});
+
+const Photo = styled(Img, {
+  borderRadius: '50%',
+  backgroundColor: '$accent-animoji',
+  border: '1px solid rgba($toolbar-glow / 0.12)',
+  canHover: {
+    filter: 'grayscale(100%) contrast(.75) brightness(175%)',
+    transition: 'all .25s ease-in-out',
+    mixBlendMode: 'hard-light',
+    opacity: 0.7,
+  },
+  hocus: {
+    filter: 'unset',
+    mixBlendMode: 'normal',
+    opacity: 1,
+  },
+});
+
 export const Intro: FC = () => {
   return (
-    <Section id={'intro'}>
-      <WavingHello />
-      <Heading as={'h1'} shadow={'blue'} css={{ fontSize: '$xl' }}>
-        I am&nbsp;
-        <PronunciationButton />
-      </Heading>
-      <p>
-        Passionate and creative full-stack software engineer based in{' '}
-        <Link
-          title={'Colombia on Google Maps'}
-          href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
-        >
-          Colombia 🇨🇴
-        </Link>
-      </p>
-      <Button>
-        <span>Click</span>
-      </Button>
-    </Section>
+    <IntroSection id={'intro'}>
+      <TextsContainer>
+        <WavingHello />
+        <Heading as={'h1'} shadow={'blue'} css={{ fontSize: '$xl' }}>
+          I am&nbsp;
+          <PronunciationButton />
+        </Heading>
+        <p>
+          Passionate and creative full-stack software engineer based in{' '}
+          <Link
+            title={'Colombia on Google Maps'}
+            href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
+          >
+            Colombia 🇨🇴
+          </Link>
+        </p>
+        <Button>
+          <span>Click</span>
+        </Button>
+      </TextsContainer>
+      <PhotoContainer>
+        <Photo
+          src={'/static/images/jahir/jahir-hd.jpg'}
+          alt={"Jahir's Photo"}
+          size={180}
+          priority
+        />
+      </PhotoContainer>
+    </IntroSection>
   );
 };
