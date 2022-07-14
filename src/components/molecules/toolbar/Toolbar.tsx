@@ -38,10 +38,10 @@ const Header = styled('header', {
     position: 'absolute',
     display: 'block',
     top: 0,
-    height: 'calc($$floatingMargin + 4px)',
+    height: 'calc($$floatingMargin + 6px)',
     width: '100%',
     background: 'linear-gradient(to bottom, $background, transparent)',
-    backdropFilter: 'blur(11px) saturate(150%)',
+    backdropFilter: 'blur(8px) saturate(150%)',
   },
 
   variants: {
