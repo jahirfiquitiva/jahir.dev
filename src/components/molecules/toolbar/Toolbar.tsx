@@ -17,12 +17,16 @@ const Header = styled('header', {
   position: 'fixed',
   top: 0,
   left: '50%',
-  transform: 'translateX(calc(-50% - calc(var(--size-scrollbar-width) / 2)))',
+  transform: 'translateX(-50%)',
   pt: '$$floatingMargin',
   height: '$$baseActualHeight',
   width: 'calc(100% - calc($$floatingMargin * 2))',
   maxWidth: '$max-site-width',
   transition: 'height ease-in-out .25s',
+
+  canHover: {
+    transform: 'translateX(calc(-50% - calc(var(--size-scrollbar-width) / 2)))',
+  },
 
   '@tablet-sm': {
     $$floatingMargin: '12px',

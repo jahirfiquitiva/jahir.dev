@@ -1,18 +1,21 @@
 import type { CSS } from '@stitches/react';
 
 const hoverUtils = {
+  canHover: (styles: CSS) => ({
+    '@hover': styles,
+  }),
   hover: (styles: CSS) => ({
-    '@hover': {
+    canHover: {
       '&:hover': styles,
     },
   }),
   focus: (styles: CSS) => ({
-    '@hover': {
+    canHover: {
       '&:focus': styles,
     },
   }),
   hocus: (styles: CSS) => ({
-    '@hover': {
+    canHover: {
       '&:hover, &:focus': styles,
     },
   }),
