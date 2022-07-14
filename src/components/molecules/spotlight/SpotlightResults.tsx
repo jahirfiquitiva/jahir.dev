@@ -8,6 +8,22 @@ import { Kbd } from './Kbd';
 const ResultsList = styled('div', {
   px: '.4rem',
   py: '.5rem',
+  '& > div > div#kbar-listbox': {
+    '& > [role="option"]': {
+      $$index: 0,
+      transform: 'translateY(calc(47px * $$index)) !important;',
+    },
+    '& > #kbar-listbox-item-1': { $$index: 1 },
+    '& > #kbar-listbox-item-2': { $$index: 2 },
+    '& > #kbar-listbox-item-3': { $$index: 3 },
+    '& > #kbar-listbox-item-4': { $$index: 4 },
+    '& > #kbar-listbox-item-5': { $$index: 5 },
+    '& > #kbar-listbox-item-6': { $$index: 6 },
+    '& > #kbar-listbox-item-7': { $$index: 7 },
+    '& > #kbar-listbox-item-8': { $$index: 8 },
+    '& > #kbar-listbox-item-9': { $$index: 9 },
+    '& > #kbar-listbox-item-10': { $$index: 10 },
+  },
 });
 
 const SectionTitle = styled('div', {

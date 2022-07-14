@@ -11,6 +11,7 @@ import type {
   SpotlightOptionsParentSection,
 } from '@/components/molecules/spotlight/options';
 import { spotlightOptions } from '@/components/molecules/spotlight/options';
+import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
 
 export interface SpotlightContextValue {
@@ -28,6 +29,7 @@ const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
 
 export const SpotlightProvider: FC = (props) => {
+  const { toggleTheme } = useTheme();
   const { push } = useRouter();
 
   const mapSpotlightOptionToAction = (
@@ -75,7 +77,18 @@ export const SpotlightProvider: FC = (props) => {
           .flat();
       })
       .flat();
-    return [...firstArray, ...secondArray].flat();
+    return [
+      ...firstArray,
+      ...secondArray,
+      {
+        id: 'theme',
+        name: 'Switch theme',
+        section: 'Utilities',
+        perform: () => {
+          toggleTheme?.();
+        },
+      },
+    ].flat();
   };
 
   const SpotlightContextValue: SpotlightContextValue = {
