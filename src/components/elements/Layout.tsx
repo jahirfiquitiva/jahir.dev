@@ -1,4 +1,4 @@
-import { Toolbar } from '@/components/molecules';
+import { Toolbar, Footer } from '@/components/molecules';
 import type { FC } from '@/types';
 
 export const Layout: FC = (props) => {
@@ -6,6 +6,7 @@ export const Layout: FC = (props) => {
     <>
       <Toolbar />
       {props.children}
+      <Footer />
     </>
   );
 };

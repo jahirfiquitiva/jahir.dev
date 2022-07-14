@@ -2,7 +2,7 @@ import { gradientVariants } from '@/stitches/utils/gradient';
 import { shadowVariants } from '@/stitches/utils/shadow';
 import { styled } from '~/stitches';
 
-const gradientEnabledCss = {
+export const gradientEnabledCss = {
   textShadow: 'none',
   color: '$transparent',
   background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
