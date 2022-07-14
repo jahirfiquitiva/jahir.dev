@@ -11,8 +11,8 @@ import { ToolbarNavLinks } from './ToolbarNavLinks';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
+  $$floatingMargin: 'calc($$totalToolbarHeight - $$toolbarHeight)',
   $$baseActualHeight: 'calc($$toolbarHeight + $$floatingMargin)',
-  $$floatingMargin: '8px',
   zIndex: 2,
   position: 'fixed',
   top: 0,
@@ -29,8 +29,7 @@ const Header = styled('header', {
   },
 
   '@tablet-sm': {
-    $$floatingMargin: '12px',
-    height: 'calc($$toolbarHeight + $$floatingMargin + 4px)',
+    height: 'calc($$baseActualHeight + 4px)',
   },
 
   '&::before': {
@@ -51,7 +50,7 @@ const Header = styled('header', {
         height:
           'calc(calc($$baseActualHeight * 2) - calc($$floatingMargin * 1.75))',
         '@tablet-sm': {
-          height: 'calc($$toolbarHeight + $$floatingMargin + 4px)',
+          height: 'calc($$baseActualHeight + 4px)',
         },
       },
     },

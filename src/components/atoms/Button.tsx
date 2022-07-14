@@ -7,6 +7,7 @@ const StyledButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+  alignSelf: 'flex-start',
   minHeight: '42px',
   border: 'none',
   borderRadius: '6px',

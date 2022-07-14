@@ -54,6 +54,17 @@ export const globalStyles = globalCss({
   'h1, h2, h3, h4, h5, h6, button': {
     useFont: 'manrope',
   },
+  '#__next': {
+    $$totalToolbarHeight: '64px',
+    $$verticalContentPadding: '1.4rem',
+    '@tablet-sm': {
+      $$totalToolbarHeight: '68px',
+      $$verticalContentPadding: '1.8rem',
+    },
+    '@tablet-lg': {
+      $$verticalContentPadding: '2.4rem',
+    },
+  },
 });
 
 export const preloadFonts = [

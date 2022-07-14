@@ -11,9 +11,9 @@ const Main = styled('main', {
   display: 'flex',
   flexDirection: 'column',
   flex: 1,
-  pt: '64px',
+  pt: 'calc($$totalToolbarHeight + $$verticalContentPadding)',
   '@tablet-sm': {
-    pt: '72px',
+    pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + 4px)',
   },
   '@media (prefers-reduced-motion: no-preference)': {
     animationName: pageTransition,

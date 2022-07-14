@@ -8,7 +8,7 @@ import {
   Link,
   Heading,
 } from '@/components/atoms';
-import { Layout } from '@/components/elements';
+import { Layout, Section } from '@/components/elements';
 import StitchesLogo from '@/components/StitchesLogo';
 import { styled } from '~/stitches';
 
@@ -42,7 +42,7 @@ export default function Home() {
       <Head>
         <title>Use Stitches with Next.js</title>
       </Head>
-      <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
+      <Section>
         <StitchesLogo />
         <Heading as={'h1'} gradient={'brand-to-blue'} shadow={'red'}>
           Hello, from Jahir.
@@ -54,7 +54,7 @@ export default function Home() {
         <Button>
           <span>Click</span>
         </Button>
-      </Container>
+      </Section>
       <Divider />
       <Container size={{ '@initial': '1', '@tablet-md': '2' }}>
         <Img
