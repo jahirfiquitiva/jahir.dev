@@ -48,7 +48,7 @@ const NameButton = styled(Button, {
     },
   },
   '@mobile-md': {
-    ml: '6.4px',
+    ml: '10px',
   },
 });
 

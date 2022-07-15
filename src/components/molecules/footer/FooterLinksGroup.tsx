@@ -10,6 +10,7 @@ import { FooterNowPlaying } from './FooterNowPlaying';
 
 const List = styled('ul', {
   minWidth: '130px',
+  maxWidth: '100%',
   listStyle: 'none',
   display: 'flex',
   flexDirection: 'column',
@@ -17,6 +18,7 @@ const List = styled('ul', {
   marginInline: 0,
   marginBlock: 0,
   paddingInline: 0,
+  overflowX: 'hidden',
   '@mobile-md': {
     minWidth: '160px',
   },

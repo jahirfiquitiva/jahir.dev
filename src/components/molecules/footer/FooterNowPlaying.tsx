@@ -12,6 +12,7 @@ const MusicItem = styled('li', {
   display: 'inline-flex',
   alignItems: 'center',
   width: '100%',
+  maxWidth: '100%',
 });
 
 const baseMusicLinkStyles: StitchesCSS = {
