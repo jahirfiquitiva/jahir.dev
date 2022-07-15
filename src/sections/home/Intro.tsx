@@ -32,7 +32,6 @@ const NameButton = styled(Button, {
   color: '$text-primary',
   p: 0,
   m: 0,
-  ml: '6.4px',
   borderRadius: 0,
   letterSpacing: 'unset',
   minHeight: 'unset',
@@ -47,6 +46,9 @@ const NameButton = styled(Button, {
       filter: 'none',
       color: '$gradient-blue',
     },
+  },
+  '@mobile-md': {
+    ml: '6.4px',
   },
 });
 

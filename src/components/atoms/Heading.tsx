@@ -30,7 +30,7 @@ const mapGradientOptionsToCss = (): Array<GradientCompoundVariantCss> => {
 
 export const Heading = styled('h1', {
   $$textShadowSize: '2px',
-  display: 'inline-flex',
+  display: 'inline-block',
   alignItems: 'center',
   alignSelf: 'flex-start',
   textShadow: '$$textShadowSize $$textShadowSize 0 $$textShadowColor',

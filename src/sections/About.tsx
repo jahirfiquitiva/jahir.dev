@@ -130,7 +130,7 @@ export const About: FC = () => {
 
       <Paragraph>
         Before getting into software development, I wanted to be a mechatronics
-        engineer and build robots 🤖 When I started programming my first robots,
+        engineer and build robots 🤖<br/>When I started programming my first robots,
         I realized what my real passion was and started learning more about
         software development 👨‍💻
       </Paragraph>
@@ -141,7 +141,7 @@ export const About: FC = () => {
         <Link title={'Dashboard page'} href={'/dashboard'}>
           listening to music
         </Link>{' '}
-        most of the time 🎧 According to Spotify Wrapped, I listened to 130437
+        most of the time 🎧<br/>According to Spotify Wrapped, I listened to 130437
         minutes of music in 2021 😱
       </Paragraph>
 

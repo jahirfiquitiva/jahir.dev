@@ -10,7 +10,7 @@ const StyledFooter = styled('footer', {
   display: 'flex',
   flexDirection: 'column',
   py: '$$verticalContentPadding',
-  px: '0.8rem',
+  px: '.875rem',
   gap: '$$verticalContentPadding',
   borderTop: '1px solid $divider',
   '@tablet-lg': {

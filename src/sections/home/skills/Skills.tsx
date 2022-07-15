@@ -12,7 +12,7 @@ export const Skills: FC = () => {
       <Heading as={'h3'} shadow={'blue'} gradient={'blue-to-green'}>
         Skills
       </Heading>
-      <ChipGroup css={{ pb: 0 }}>
+      <ChipGroup css={{ pb: '.4rem' }}>
         {skills
           .filter((skill) => !skill.hide)
           .map((skill, index) => {
