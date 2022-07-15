@@ -1,36 +1,12 @@
 import FutureNextImage from 'next/future/image';
 import type { ImageProps as NextImageProps } from 'next/image';
-import NextImage from 'next/image';
 
 import type { FC } from '@/types';
-import { styled, css } from '~/stitches';
-
-const imageWrapperChildCss = css({
-  objectFit: 'contain',
-  position: 'relative',
-  minHeight: 0,
-  height: 'auto',
-});
-
-const ImageWrapper = styled('div', {
-  position: 'relative',
-  width: '100%',
-  minHeight: 0,
-  maxHeight: '100%',
-  overflow: 'hidden',
-  '& > span:first-of-type': imageWrapperChildCss,
-  '& img': imageWrapperChildCss,
-});
+import { styled } from '~/stitches';
 
 type BaseImageProps = Pick<
   NextImageProps,
-  | 'alt'
-  | 'width'
-  | 'height'
-  | 'className'
-  | 'style'
-  | 'quality'
-  | 'priority'
+  'alt' | 'width' | 'height' | 'className' | 'style' | 'quality' | 'priority'
 >;
 
 export interface ImageProps extends BaseImageProps {
