@@ -1,12 +1,10 @@
-import type { CSS } from '@stitches/react';
-
 import {
   gradientVariants,
   gradientOptionsArray,
   GradientOption,
 } from '@/stitches/utils/gradient';
 import { shadowVariants } from '@/stitches/utils/shadow';
-import { styled } from '~/stitches';
+import { styled, type StitchesCSS } from '~/stitches';
 
 export const gradientEnabledCss = {
   textShadow: 'none',
@@ -15,7 +13,10 @@ export const gradientEnabledCss = {
   backgroundClip: 'text',
 };
 
-type GradientCompoundVariantCss = { gradient: GradientOption; css: CSS };
+type GradientCompoundVariantCss = {
+  gradient: GradientOption;
+  css: StitchesCSS;
+};
 
 const mapGradientOptionsToCss = (): Array<GradientCompoundVariantCss> => {
   return gradientOptionsArray.map((key) => {

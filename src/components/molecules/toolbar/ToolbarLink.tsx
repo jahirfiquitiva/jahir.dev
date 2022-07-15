@@ -1,16 +1,14 @@
-import type { CSS } from '@stitches/react';
-
 import { Link } from '@/components/atoms';
 import { gradientVariants } from '@/stitches/utils/gradient';
-import { styled } from '~/stitches';
+import { styled, type StitchesCSS } from '~/stitches';
 
-const spanCss: CSS = {
+const spanCss: StitchesCSS = {
   color: '$transparent',
   background: 'linear-gradient(to right, $$gradientStart, $$gradientEnd)',
   backgroundClip: 'text',
 };
 
-const activeCss: CSS = {
+const activeCss: StitchesCSS = {
   backgroundColor: 'rgba($colors$toolbar-glow / .1)',
   '& span': spanCss,
 };

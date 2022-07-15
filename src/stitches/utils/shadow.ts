@@ -1,7 +1,6 @@
 import type { CSS } from '@stitches/react';
 
-import { rainbowColorsArray } from '@/stitches/colors';
-import type { RainbowColors } from '@/stitches/colors';
+import { rainbowColorsArray, type RainbowColors } from '@/stitches/colors';
 
 type ShadowVariantsCss = { [Key in RainbowColors]?: CSS };
 

@@ -1,6 +1,8 @@
 import { Link, gradientEnabledCss } from '@/components/atoms';
-import { gradientVariants } from '@/stitches/utils/gradient';
-import type { GradientOption } from '@/stitches/utils/gradient';
+import {
+  gradientVariants,
+  type GradientOption,
+} from '@/stitches/utils/gradient';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 

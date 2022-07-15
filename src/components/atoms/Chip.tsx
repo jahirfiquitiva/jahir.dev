@@ -1,6 +1,5 @@
 import { hexToRGB } from '@/utils';
-import { styled } from '~/stitches';
-import type { StitchesCSS } from '~/stitches';
+import { styled, type StitchesCSS } from '~/stitches';
 
 export const Chip = styled('span', {
   $$bg: '$divider',

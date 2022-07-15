@@ -1,9 +1,10 @@
+import { mdiSpotify } from '@mdi/js';
+import Icon from '@mdi/react';
+
 import { Img, Link } from '@/components/atoms';
 import useRequest from '@/hooks/useRequest';
 import type { TrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
-import { mdiSpotify } from '@mdi/js';
-import Icon from '@mdi/react';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 const MusicItem = styled('li', {

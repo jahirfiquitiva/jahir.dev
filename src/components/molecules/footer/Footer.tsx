@@ -2,8 +2,11 @@ import { Logo } from '@/components/atoms';
 import type { FC } from '@/types';
 import { styled, theme } from '~/stitches';
 
-import { FooterLink, FooterLinksGroup } from './FooterLinksGroup';
-import type { FooterLinkProps } from './FooterLinksGroup';
+import {
+  FooterLink,
+  FooterLinksGroup,
+  type FooterLinkProps,
+} from './FooterLinksGroup';
 import { SocialLinks } from './SocialLinks';
 
 const StyledFooter = styled('footer', {
