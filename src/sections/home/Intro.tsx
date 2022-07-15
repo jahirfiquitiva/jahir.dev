@@ -99,7 +99,10 @@ const Photo = styled(Img, {
     filter: 'grayscale(100%) contrast(.75) brightness(175%)',
     transition: 'all .25s ease-in-out',
     mixBlendMode: 'hard-light',
-    opacity: 0.7,
+    opacity: 0.75,
+    dark: {
+      opacity: 0.55,
+    },
   },
   hocus: {
     cursor: 'grab',
