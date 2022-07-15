@@ -4,7 +4,7 @@ import type { TrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
-import { styled, keyframes } from '~/stitches';
+import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 const MusicItem = styled('li', {
   maxHeight: 28,
@@ -13,15 +13,19 @@ const MusicItem = styled('li', {
   width: '100%',
 });
 
-const MusicLink = styled(Link, {
+const baseMusicLinkStyles: StitchesCSS = {
   maxWidth: 172,
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
   flex: 1,
-  gap: '0.4rem',
+  gap: '0.6rem',
   width: 'fit-content',
   color: '$text-tertiary',
+};
+
+const MusicLink = styled(Link, {
+  ...baseMusicLinkStyles,
   hocus: {
     color: '$text-secondary',
     textDecoration: 'none',
@@ -46,53 +50,82 @@ const RotatingImg = styled(Img, {
   width: 24,
   height: 24,
   borderRadius: '50%',
-  animationName: rotate,
-  animationDuration: '10s',
-  animationTimingFunction: 'linear',
-  animationIterationCount: 'infinite',
   border: '1px solid rgba($colors$toolbar-glow / .12)',
+  canAnimate: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    animationName: rotate,
+    animationDuration: '10s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+  },
 });
 
 const ScrollContainer = styled('div', {
   $$bg: '$colors$background',
+  $$gap: '1rem',
   position: 'relative',
   display: 'flex',
   width: 'fit-content',
   flex: 1,
   maxWidth: '100%',
-  gap: '0.8rem',
+  gap: '$$gap',
   overflowX: 'hidden',
-  '&::before': {
-    background: 'linear-gradient(to right, $$bg, rgba(0 0 0 / 0))',
-    content: '',
-    height: '100%',
-    position: 'absolute',
-    width: 24,
-    zIndex: 1,
+  '& > span:not(:first-of-type)': {
+    hidden: true,
   },
-  '&::after': {
-    top: 0,
-    right: 0,
-    background: 'linear-gradient(to right, $$bg, rgba(0 0 0 / 0))',
-    content: '',
-    height: '100%',
-    position: 'absolute',
-    width: 24,
-    zIndex: 1,
-    transform: 'rotate(180deg)',
+  canAnimate: {
+    '& > span:not(:first-of-type)': {
+      visible: 'inline-block',
+    },
+    '&::before': {
+      background: 'linear-gradient(to right, $$bg, rgba(0 0 0 / 0))',
+      content: '',
+      height: '100%',
+      position: 'absolute',
+      width: 24,
+      zIndex: 1,
+    },
+    '&::after': {
+      top: 0,
+      right: 0,
+      background: 'linear-gradient(to right, $$bg, rgba(0 0 0 / 0))',
+      content: '',
+      height: '100%',
+      position: 'absolute',
+      width: 24,
+      zIndex: 1,
+      transform: 'rotate(180deg)',
+    },
   },
 });
 
 const scroll = keyframes({
-  '0%': { transform: 'translateX(0.8rem)' },
+  '0%': { transform: 'translateX(var(---gap, 1rem))' },
   '100%': { transform: 'translateX(-100%)' },
 });
 
 const ScrollingText = styled('span', {
-  animationName: scroll,
-  animationDuration: '15s',
-  animationTimingFunction: 'linear',
-  animationIterationCount: 'infinite',
+  ellipsize: true,
+  canAnimate: {
+    ellipsize: false,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    animationName: scroll,
+    animationDuration: '15s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+  },
+  variants: {
+    pseudo: {
+      true: { pointerEvents: 'none !important', userSelect: 'none !important' },
+    },
+  },
+});
+
+const NotPlayingContainer = styled('div', {
+  ...baseMusicLinkStyles,
+  userSelect: 'none',
 });
 
 const NotPlayingText = styled('span', {
@@ -108,15 +141,15 @@ export const FooterNowPlaying: FC = () => {
   const renderComponents = () => {
     if (!data || !data.isPlaying) {
       return (
-        <MusicLink as={'div'}>
+        <NotPlayingContainer>
           <Icon path={mdiSpotify} size={0.85} />
           <NotPlayingText>Not playing…</NotPlayingText>
-        </MusicLink>
+        </NotPlayingContainer>
       );
     } else {
       return (
         <MusicLink
-          title={`Listen to "${data.title}" on Spotify`}
+          title={`Listen to "${data.title}" by "${data.artist}" on Spotify`}
           href={data.url || '#'}
         >
           <RotatingImg size={24} src={data.image?.url || ''} />
@@ -124,7 +157,7 @@ export const FooterNowPlaying: FC = () => {
             <ScrollingText>
               {data.title}&nbsp;–&nbsp;{data.artist}
             </ScrollingText>
-            <ScrollingText>
+            <ScrollingText pseudo>
               {data.title}&nbsp;–&nbsp;{data.artist}
             </ScrollingText>
           </ScrollContainer>

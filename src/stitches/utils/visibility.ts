@@ -19,6 +19,9 @@ const visiblityUtils = {
   dark: (styles: CSS) => ({
     '.dark &': styles,
   }),
+  canAnimate: (styles: CSS) => ({
+    '@animations': styles,
+  }),
 };
 
 export default visiblityUtils;

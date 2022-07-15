@@ -13,12 +13,14 @@ const wave = keyframes({
 
 const WaveSpan = styled('span', {
   display: 'inline-block',
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  animationName: wave,
-  animationDuration: '2.5s',
-  animationIterationCount: 'infinite',
-  transformOrigin: '70% 70%',
+  canAnimate: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    animationName: wave,
+    animationDuration: '2.5s',
+    animationIterationCount: 'infinite',
+    transformOrigin: '70% 70%',
+  },
 });
 
 const hellos = [

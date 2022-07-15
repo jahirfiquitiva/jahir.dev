@@ -39,7 +39,11 @@ export const {
     },
   },
   utils,
-  media: { ...breakpoints, hover: '(any-hover: hover)' },
+  media: {
+    ...breakpoints,
+    hover: '(any-hover: hover)',
+    animations: '(prefers-reduced-motion: no-preference)',
+  },
 });
 
 export const darkTheme = createTheme('dark', {

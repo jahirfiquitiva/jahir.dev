@@ -9,7 +9,7 @@ const fontsUtils = {
   ellipsize: (value?: boolean) =>
     value
       ? { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }
-      : {},
+      : { overflow: 'unset', textOverflow: 'unset', whiteSpace: 'unset' },
 };
 
 export default fontsUtils;

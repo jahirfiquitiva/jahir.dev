@@ -17,7 +17,9 @@ const Main = styled('main', {
   '@tablet-sm': {
     pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + 4px)',
   },
-  '@media (prefers-reduced-motion: no-preference)': {
+  canAnimate: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     animationName: pageTransition,
     animationDuration: '300ms',
     animationDelay: '150ms',
