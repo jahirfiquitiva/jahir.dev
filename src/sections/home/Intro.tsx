@@ -1,6 +1,5 @@
 import { mdiAccountCircleOutline, mdiPlayCircle } from '@mdi/js';
 import Icon from '@mdi/react';
-import useSound from 'use-sound';
 
 import { Button, Link, LinkButton, Heading, Img } from '@/components/atoms';
 import { WavingHello } from '@/components/compounds';
@@ -26,54 +25,6 @@ const TextsContainer = styled('div', {
     gridRow: 1,
   },
 });
-
-const NameButton = styled(Button, {
-  background: 'none',
-  color: '$text-primary',
-  p: 0,
-  m: 0,
-  borderRadius: 0,
-  letterSpacing: 'unset',
-  minHeight: 'unset',
-  hocus: {
-    background: 'none',
-    transform: 'none',
-  },
-  '& > svg': {
-    filter:
-      'drop-shadow($$textShadowSize $$textShadowSize 0 $$textShadowColor)',
-    dark: {
-      filter: 'none',
-      color: '$gradient-blue',
-    },
-  },
-  '@mobile-md': {
-    ml: '10px',
-  },
-});
-
-const PronunciationButton: FC = () => {
-  const [playName] = useSound('/static/audio/name-pronunciation.mp3', {
-    interrupt: true,
-  });
-  return (
-    <NameButton
-      title={"Press to hear Jahir's name pronunciation"}
-      onClick={() => {
-        playName();
-      }}
-    >
-      <Heading
-        as={'span'}
-        gradient={'brand-to-blue'}
-        css={{ fontSize: 'inherit', fontWeight: 700 }}
-      >
-        Jahir Fiquitiva
-      </Heading>
-      <Icon path={mdiPlayCircle} size={1.25} />
-    </NameButton>
-  );
-};
 
 const Paragraph = styled('p', {
   mt: '0.8rem',
@@ -120,8 +71,10 @@ export const Intro: FC = () => {
       <TextsContainer>
         <WavingHello />
         <Heading as={'h1'} shadow={'blue'} css={{ fontSize: '$xl' }}>
-          I am
-          <PronunciationButton />
+          I am&nbsp;
+          <Heading as={'span'} gradient={'brand-to-blue'}>
+            Jahir Fiquitiva
+          </Heading>
         </Heading>
         <Paragraph>
           Passionate and creative full-stack software engineer based in{' '}
