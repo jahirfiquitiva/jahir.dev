@@ -1,49 +1,27 @@
-import FutureNextImage from 'next/future/image';
-import type { ImageProps as NextImageProps } from 'next/image';
+import FutureNextImage, { type ImageProps } from 'next/future/image';
 
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-type BaseImageProps = Pick<
-  NextImageProps,
-  'alt' | 'width' | 'height' | 'className' | 'style' | 'quality' | 'priority'
->;
+type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
+type SizeProps = BaseImageProps & { size?: number | string };
+type WidthHeightProps = BaseImageProps & {
+  width?: number | string;
+  height?: number | string;
+};
 
-export interface ImageProps extends BaseImageProps {
-  src: string;
-  size?: number;
-  avoidNextImage?: boolean;
-  loading?: 'lazy' | 'eager';
-  placeholder?: 'blur' | 'empty';
-  blurDataURL?: string;
-  isFourOhFour?: boolean;
-}
+export type ImgProps = SizeProps | WidthHeightProps;
 
-const BaseImg: FC<ImageProps> = (props) => {
-  const {
-    avoidNextImage = false,
-    size,
-    width = size,
-    height = size,
-    className,
-    loading = 'lazy',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isFourOhFour,
-    ...rest
-  } = props;
-
-  if (!avoidNextImage) {
+const BaseImg: FC<ImgProps> = (props) => {
+  const { size = 0, ...otherProps } = props as SizeProps;
+  const { width = size, height = size } = otherProps as WidthHeightProps;
+  return (
     <FutureNextImage
-      {...rest}
+      {...otherProps}
       width={width}
       height={height}
-      className={className}
-      loading={props.priority ? undefined : loading}
-    />;
-  }
-  return (
-    // eslint-disable-next-line
-    <img loading={'lazy'} decoding={'async'} className={className} {...rest} />
+      loading={props.priority ? undefined : props.loading}
+    />
   );
 };
 

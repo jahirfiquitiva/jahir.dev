@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import Image from 'next/future/image';
 
 import { Img, Link, Heading } from '@/components/atoms';
 import { Section } from '@/components/elements';
@@ -81,14 +82,14 @@ export const About: FC = () => {
   const hasMounted = useHasMounted();
 
   const rightImage: AboutPhoto = useMemo<AboutPhoto>(() => {
-    return possibleImages[2]; // getRandomItem(possibleImages);
+    return getRandomItem(possibleImages);
   }, []);
 
   const photoComponent = useMemo(() => {
     if (!hasMounted) return null;
     return (
       <PhotoFigure>
-        <Img
+        <Image
           src={`/static/images/about/ab-${rightImage.key}.jpg`}
           alt={rightImage.alt}
           quality={100}
@@ -130,9 +131,10 @@ export const About: FC = () => {
 
       <Paragraph>
         Before getting into software development, I wanted to be a mechatronics
-        engineer and build robots 🤖<br/>When I started programming my first robots,
-        I realized what my real passion was and started learning more about
-        software development 👨‍💻
+        engineer and build robots 🤖
+        <br />
+        When I started programming my first robots, I realized what my real
+        passion was and started learning more about software development 👨‍💻
       </Paragraph>
 
       <Paragraph>
@@ -141,8 +143,10 @@ export const About: FC = () => {
         <Link title={'Dashboard page'} href={'/dashboard'}>
           listening to music
         </Link>{' '}
-        most of the time 🎧<br/>According to Spotify Wrapped, I listened to 130437
-        minutes of music in 2021 😱
+        most of the time 🎧
+        <br />
+        According to Spotify Wrapped, I listened to 130437 minutes of music in
+        2021 😱
       </Paragraph>
 
       <Paragraph>
