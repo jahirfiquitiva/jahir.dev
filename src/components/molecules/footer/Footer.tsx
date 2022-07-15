@@ -13,7 +13,7 @@ const StyledFooter = styled('footer', {
   px: '.875rem',
   gap: '$$verticalContentPadding',
   borderTop: '1px solid $divider',
-  '@tablet-lg': {
+  '@tablet-md': {
     px: 0,
   },
 });
