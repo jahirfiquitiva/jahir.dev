@@ -1,7 +1,7 @@
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 
-import { SpotlightProvider } from '@/providers/spotlight';
+// import { SpotlightProvider } from '@/providers/spotlight';
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
 import { darkTheme, globalStyles } from '~/stitches';
@@ -20,9 +20,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       disableTransitionOnChange
     >
       <ThemeProvider>
-        <SpotlightProvider>
-          <Component {...pageProps} />
-        </SpotlightProvider>
+        {/* <SpotlightProvider> */}
+        <Component {...pageProps} />
+        {/* </SpotlightProvider> */}
       </ThemeProvider>
     </NextThemeProvider>
   );
