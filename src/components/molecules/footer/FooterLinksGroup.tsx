@@ -4,6 +4,8 @@ import type { GradientOption } from '@/stitches/utils/gradient';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
+import { FooterNowPlaying } from './FooterNowPlaying';
+
 const List = styled('ul', {
   minWidth: '130px',
   listStyle: 'none',
@@ -83,6 +85,7 @@ export const FooterLinksGroup: FC<FooterLinksGroupProps> = (props) => {
           </li>
         );
       })}
+      {meta && <FooterNowPlaying />}
     </List>
   );
 };
