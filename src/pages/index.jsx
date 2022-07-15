@@ -2,7 +2,6 @@ import Head from 'next/head';
 
 import { Button, DotsDivider, Img, Link, Heading } from '@/components/atoms';
 import { Layout } from '@/components/elements';
-import StitchesLogo from '@/components/StitchesLogo';
 import { Intro, Skills } from '@/sections';
 import { styled } from '~/stitches';
 
@@ -29,7 +28,6 @@ const Container = styled('div', {
   },
 });
 
-// eslint-disable-next-line max-lines-per-function
 export default function Home() {
   return (
     <Layout>

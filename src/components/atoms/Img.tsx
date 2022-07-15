@@ -28,9 +28,7 @@ type BaseImageProps = Pick<
   | 'width'
   | 'height'
   | 'className'
-  | 'objectFit'
-  | 'objectPosition'
-  | 'layout'
+  | 'style'
   | 'quality'
   | 'priority'
 >;
@@ -45,13 +43,12 @@ export interface ImageProps extends BaseImageProps {
   isFourOhFour?: boolean;
 }
 
-export const Img: FC<ImageProps> = (props) => {
+const BaseImg: FC<ImageProps> = (props) => {
   const {
     avoidNextImage = false,
     size,
     width = size,
     height = size,
-    layout,
     className,
     loading = 'lazy',
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -60,29 +57,21 @@ export const Img: FC<ImageProps> = (props) => {
   } = props;
 
   if (!avoidNextImage) {
-    if (typeof size !== 'undefined' || typeof layout !== 'undefined') {
-      return (
-        <FutureNextImage
-          {...rest}
-          width={width}
-          height={height}
-          className={className}
-          loading={props.priority ? undefined : loading}
-        />
-      );
-    }
-    return (
-      <ImageWrapper className={className}>
-        <NextImage
-          {...rest}
-          layout={'fill'}
-          loading={props.priority ? undefined : loading}
-        />
-      </ImageWrapper>
-    );
+    <FutureNextImage
+      {...rest}
+      width={width}
+      height={height}
+      className={className}
+      loading={props.priority ? undefined : loading}
+    />;
   }
   return (
     // eslint-disable-next-line
     <img loading={'lazy'} decoding={'async'} className={className} {...rest} />
   );
 };
+
+export const Img = styled(BaseImg, {
+  objectFit: 'cover',
+  objectPosition: 'center',
+});

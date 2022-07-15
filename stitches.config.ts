@@ -27,7 +27,7 @@ export const {
   theme: {
     colors,
     sizes: {
-      'max-site-width': '768px',
+      'max-site-width': '666px',
     },
     fontSizes,
     fonts: {

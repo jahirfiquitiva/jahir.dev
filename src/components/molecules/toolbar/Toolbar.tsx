@@ -20,13 +20,9 @@ const Header = styled('header', {
   transform: 'translateX(-50%)',
   pt: '$$floatingMargin',
   height: '$$baseActualHeight',
-  width: 'calc(100% - calc($$floatingMargin * 2))',
+  width: '100%',
   maxWidth: '$max-site-width',
   transition: 'height ease-in-out .25s',
-
-  canHover: {
-    transform: 'translateX(calc(-50% - calc(var(--size-scrollbar-width) / 2)))',
-  },
 
   '@tablet-sm': {
     height: 'calc($$baseActualHeight + 4px)',
@@ -39,9 +35,16 @@ const Header = styled('header', {
     display: 'block',
     top: 0,
     height: 'calc($$floatingMargin + 6px)',
-    width: '100%',
+    width: 'calc(100% - calc($$floatingMargin * 2))',
+    left: '50%',
+    transform: 'translateX(-50%)',
     background: 'linear-gradient(to bottom, $background, transparent)',
     backdropFilter: 'blur(8px) saturate(150%)',
+  },
+  '@tablet-md': {
+    '&::before': {
+      width: '100%',
+    },
   },
 
   variants: {
@@ -69,6 +72,7 @@ const Nav = styled('nav', {
   border: '1px solid rgba($colors$toolbar-glow / .12)',
   boxShadow: '0 0 6px 1px rgba($colors$toolbar-glow / .16)',
   p: 'calc($$floatingMargin / $$spaceDivider)',
+  mx: '$$floatingMargin',
   transition: 'box-shadow ease-in-out .2s',
   gap: '0',
   gridTemplateRows: '1fr',
@@ -83,6 +87,10 @@ const Nav = styled('nav', {
     $$spaceDivider: 1.5,
     gap: 'calc($$floatingMargin / $$spaceDivider)',
     gridTemplateColumns: 'auto 1fr auto',
+  },
+
+  '@tablet-md': {
+    mx: 0,
   },
 
   '& svg': {
