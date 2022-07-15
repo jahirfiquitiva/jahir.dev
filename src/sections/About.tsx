@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import Image from 'next/future/image';
 
 import { Img, Link, Heading } from '@/components/atoms';
 import { Section } from '@/components/elements';
@@ -89,7 +88,7 @@ export const About: FC = () => {
     if (!hasMounted) return null;
     return (
       <PhotoFigure>
-        <Image
+        <Img
           src={`/static/images/about/ab-${rightImage.key}.jpg`}
           alt={rightImage.alt}
           quality={100}

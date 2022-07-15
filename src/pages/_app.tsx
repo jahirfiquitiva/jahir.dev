@@ -1,14 +1,28 @@
+import type { NextPage } from 'next';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
+import type { ReactElement, ReactNode } from 'react';
 
-// import { SpotlightProvider } from '@/providers/spotlight';
+import { Layout } from '@/components/elements';
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
 import { darkTheme, globalStyles } from '~/stitches';
 import '@/styles/globals.scss';
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const App: FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
+
   globalStyles();
+
   return (
     <NextThemeProvider
       attribute={'class'}
@@ -17,13 +31,8 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         light: 'light',
         dark: darkTheme.className,
       }}
-      disableTransitionOnChange
     >
-      <ThemeProvider>
-        {/* <SpotlightProvider> */}
-        <Component {...pageProps} />
-        {/* </SpotlightProvider> */}
-      </ThemeProvider>
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </NextThemeProvider>
   );
 };
