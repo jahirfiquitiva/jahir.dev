@@ -2,14 +2,12 @@
 import { useMemo } from 'react';
 
 import { Img, Link, Heading } from '@/components/atoms';
+import { InstaFeed } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
 import type { FC } from '@/types';
 import { getRandomItem } from '@/utils';
 import { styled } from '~/stitches';
-import { InstaFeed } from '@/components/compounds';
-import Icon from '@mdi/react';
-import { mdiInstagram } from '@mdi/js';
 
 interface AboutPhoto {
   key?: string | number;
