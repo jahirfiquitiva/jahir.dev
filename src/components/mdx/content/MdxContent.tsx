@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { Button, Divider, Link, LinkButton } from '@/components/atoms';
 import { Section } from '@/components/elements';
 import { useHasMounted, useSafePalette } from '@/hooks';
+import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';
 import {
@@ -20,6 +21,7 @@ import {
   ArticleFooter,
   ArticleImg,
   Intro,
+  MdxReactions,
   ShareAndEdit,
   Title,
 } from './styled';
@@ -75,8 +77,8 @@ interface CommonContent {
 // eslint-disable-next-line max-lines-per-function
 export const MdxContent: FC<CommonContent> = (props) => {
   const hasMounted = useHasMounted();
-  const { backText, backHref, content, /*contentType,*/ children } = props;
-  const { title, hero, date, readingTime, /*slug, devToId,*/ heroMeta } =
+  const { backText, backHref, content, contentType, children } = props;
+  const { title, hero, date, readingTime, slug, /*devToId,*/ heroMeta } =
     getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -107,14 +109,17 @@ export const MdxContent: FC<CommonContent> = (props) => {
         : getColorFromPalette(heroPalette, isDark) || '#fff',
       isDark ? 1 : 0.4,
     );
+    if (!color || color === 'rgba(0 0 0 / 0)') return {};
     return {
       $$textShadowColor: color,
       dark: {
+        $$textShadowColor: color,
         textShadow: 'none',
         color: '$transparent',
         background:
           'linear-gradient(to right, $$textShadowColor, $$textShadowColor)',
         backgroundClip: 'text',
+        transition: 'all .15s ease-in-out',
       },
     };
   }, [themeReady, isDark, heroPalette]);
@@ -152,59 +157,66 @@ export const MdxContent: FC<CommonContent> = (props) => {
           {/* <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} /> */}
         </Intro>
 
-        {/* <ReactionsProvider slug={`${contentType}--${slug}`}> */}
-        {/* <MdxReactions /> */}
+        <ReactionsProvider slug={`${contentType}--${slug}`}>
+          <MdxReactions />
 
-        {hero && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          <ArticleImg
-            src={hero || ''}
-            alt={title}
-            priority
-            width={666}
-            height={375}
-            {...extraHeroProps}
-            quality={100}
-            css={{ my: '$$verticalContentPadding' }}
+          {hero && (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            <ArticleImg
+              src={hero || ''}
+              alt={title}
+              priority
+              width={666}
+              height={375}
+              {...extraHeroProps}
+              quality={100}
+              css={{ my: '$$verticalContentPadding' }}
+            />
+          )}
+          {children}
+          <Divider
+            css={{
+              mx: '-.875rem',
+              '@tablet-md': {
+                mx: 0,
+              },
+            }}
           />
-        )}
-        {children}
-        <Divider />
 
-        <ArticleFooter>
-          <ShareAndEdit>
-            {canShare ? (
-              <Button
-                title={'Share blog post'}
-                onClick={async () => {
-                  try {
-                    await navigator.share(shareData);
-                  } catch (err) {}
-                }}
-              >
-                <Icon path={mdiShareVariantOutline} size={0.9} /> Share
-              </Button>
-            ) : (
+          <ArticleFooter>
+            <ShareAndEdit>
+              {canShare ? (
+                <Button
+                  title={'Share blog post'}
+                  onClick={async () => {
+                    try {
+                      await navigator.share(shareData);
+                    } catch (err) {}
+                  }}
+                >
+                  <Icon path={mdiShareVariantOutline} size={0.9} /> Share
+                </Button>
+              ) : (
+                <LinkButton
+                  href={shareUrl(content)}
+                  title={'Share blog post on Twitter'}
+                >
+                  <Icon path={mdiShareVariantOutline} size={0.9} /> Share on
+                  Twitter
+                </LinkButton>
+              )}
               <LinkButton
-                href={shareUrl(content)}
-                title={'Share blog post on Twitter'}
+                href={editUrl(content)}
+                title={'Edit content on GitHub'}
+                outlined
               >
-                <Icon path={mdiShareVariantOutline} size={0.9} /> Share on
-                Twitter
+                <Icon path={mdiPencilOutline} size={0.9} /> Edit on GitHub
               </LinkButton>
-            )}
-            <LinkButton
-              href={editUrl(content)}
-              title={'Edit content on GitHub'}
-              outlined
-            >
-              <Icon path={mdiPencilOutline} size={0.9} /> Edit on GitHub
-            </LinkButton>
-          </ShareAndEdit>
-          {/* <MdxReactions /> */}
-        </ArticleFooter>
-        {/* </ReactionsProvider> */}
+            </ShareAndEdit>
+            <MdxReactions />
+          </ArticleFooter>
+        </ReactionsProvider>
       </Article>
     </Section>
   );

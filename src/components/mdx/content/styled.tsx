@@ -1,7 +1,11 @@
 import { Heading, Img } from '@/components/atoms';
 import { styled } from '~/stitches';
 
+import { Reactions } from './Reactions';
+
 export const Title = styled(Heading, {
+  $$textShadowColor: '$colors$text-primary',
+  dark: { $$textShadowColor: '$colors$text-primary' },
   mt: '.4rem',
   '@tablet-sm': {
     mt: '.8rem',
@@ -47,15 +51,15 @@ export const ArticleFooter = styled('div', {
 
 export const ArticleImg = styled(Img, {
   width: '100%',
+  height: 'auto',
+  objectFit: 'contain',
   borderRadius: '.5rem',
   border: '1px solid $divider',
 });
 
-/*
-const MdxReactions = styled(Reactions)`
-  order: 1;
-  ${mediaQueries.tablet.lg} {
-    order: 2;
-  }
-`;
- */
+export const MdxReactions = styled(Reactions, {
+  order: 1,
+  '@tablet-lg': {
+    order: 2,
+  },
+});

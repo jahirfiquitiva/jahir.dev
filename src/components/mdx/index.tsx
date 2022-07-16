@@ -1,7 +1,7 @@
 import { type ImgProps } from '@/components/atoms';
 import { Masonry } from '@/components/compounds';
 
-import { ArticleImg } from './content';
+import { ArticleImg, Reactions } from './content';
 import { Grid, GridColumn } from './Grid';
 import { ImageComparison } from './ImageComparison';
 import { MdxLink } from './MdxLink';
@@ -15,7 +15,7 @@ export const mdxComponents = {
   Grid,
   GridColumn,
   Masonry,
-  // Reactions,
+  Reactions,
 };
 
 export * from './content';

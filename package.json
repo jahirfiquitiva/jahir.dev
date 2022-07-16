@@ -18,6 +18,7 @@
     "@mdi/react": "^1.6.0",
     "@prisma/client": "^4.0.0",
     "@stitches/react": "^1.2.8",
+    "canvas-confetti": "^1.5.1",
     "colord": "^2.9.2",
     "contentlayer": "^0.2.6",
     "next": "^12.2.2",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@types/canvas-confetti": "^1.4.3",
     "@types/node": "^18.0.4",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",

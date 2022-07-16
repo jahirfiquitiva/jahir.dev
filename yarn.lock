@@ -624,6 +624,11 @@
   dependencies:
     "@types/estree" "*"
 
+"@types/canvas-confetti@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@types/canvas-confetti/-/canvas-confetti-1.4.3.tgz#2540cda5353b1f7efd581f4950bfc48d165cca89"
+  integrity sha512-UwFPTsW1ZwVyo/ETp4hPSikSD7yl2V42E3VWBF5P/0+DHO4iajyceWv7hfNdZ2AX5tkZnuViiBWOqyCPohU2FQ==
+
 "@types/debug@^4.0.0":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
@@ -1071,6 +1076,11 @@ caniuse-lite@^1.0.30001332:
   version "1.0.30001366"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001366.tgz#c73352c83830a9eaf2dea0ff71fb4b9a4bbaa89c"
   integrity sha512-yy7XLWCubDobokgzudpkKux8e0UOOnLHE6mlNJBzT3lZJz6s5atSEzjoL+fsCPkI0G8MP5uVdDx1ur/fXEWkZA==
+
+canvas-confetti@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.5.1.tgz#bf5b8622ef3bcd347378a972fc4194a89cfe0c9b"
+  integrity sha512-Ncz+oZJP6OvY7ti4E1slxVlyAV/3g7H7oQtcCDXgwGgARxPnwYY9PW5Oe+I8uvspYNtuHviAdgA0LfcKFWJfpg==
 
 ccount@^2.0.0:
   version "2.0.1"
