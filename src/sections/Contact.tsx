@@ -74,8 +74,10 @@ const Grid = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
   gap: '$$verticalContentPadding',
+  my: 'calc($$verticalContentPadding / 2)',
   '@tablet-sm': {
     gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+    alignItems: 'center',
   },
   '& > div:first-of-type': {
     display: 'flex',

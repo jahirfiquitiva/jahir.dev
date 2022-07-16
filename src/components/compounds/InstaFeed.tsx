@@ -8,11 +8,18 @@ import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const Grid = styled('div', {
+  $$gap: '8px',
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, minmax(0, 222px))',
-  gap: '12px',
+  gridTemplateColumns: 'repeat(3, minmax(0, 222px))',
+  gridTemplateRows:
+    'repeat(2, minmax(0, calc(calc(100vw - calc($$gap * 2) - 0.875rem) / 3 - 5px + 0.33px)))',
+  gap: '$$gap',
   '@tablet-sm': {
-    gridTemplateColumns: 'repeat(3, minmax(0, 222px))',
+    $$gap: '12px',
+    gridTemplateColumns: 'repeat(3, minmax(0, 214px))',
+  },
+  '@tablet-md': {
+    gridTemplateRows: 'repeat(2, minmax(0, 214px))',
   },
 });
 
@@ -68,7 +75,11 @@ export const InstaFeed: FC = () => {
               src={post.photoUrl || ''}
               alt={post.caption}
               size={214}
-              css={{ transition: 'all ease-in-out .35s' }}
+              css={{
+                transition: 'all ease-in-out .35s',
+                height: '100%',
+                width: 'auto',
+              }}
             />
             <Icon path={mdiInstagram} size={1.5} />
           </ImgContainer>
