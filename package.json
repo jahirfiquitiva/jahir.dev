@@ -8,8 +8,7 @@
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/blur.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
-    "predev": "yarn clean && contentlayer build --clearCache",
-    "predev--final": "yarn clean && prisma generate && contentlayer build --clearCache",
+    "predev": "yarn clean && prisma generate && contentlayer build --clearCache",
     "prebuild": "yarn predev"
   },
   "dependencies": {
@@ -17,6 +16,7 @@
     "@fontsource/manrope": "^4.5.10",
     "@mdi/js": "^6.9.96",
     "@mdi/react": "^1.6.0",
+    "@prisma/client": "^4.0.0",
     "@stitches/react": "^1.2.8",
     "colord": "^2.9.2",
     "contentlayer": "^0.2.6",
@@ -41,6 +41,7 @@
     "eslint": "^8.19.0",
     "eslint-config-next": "^12.2.2",
     "plaiceholder": "^2.4.0",
+    "prisma": "^4.0.0",
     "reading-time": "^1.5.0",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
