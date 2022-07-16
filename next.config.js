@@ -47,6 +47,7 @@ const defaultNextConfig = {
       'raw.githubusercontent.com',
       'scontent-atl3-1.cdninstagram.com',
       '*.cdninstagram.com',
+      'www.markdownguide.org',
     ],
   },
   webpack(config) {

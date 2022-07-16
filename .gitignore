@@ -42,8 +42,8 @@ public/*.xml
 
 # Contentlayer
 .contentlayer
-data/inspiration/*.js*
 !.env.example
+content/blog/sheet.mdx
 
 .frontmatter
 frontmatter.json
