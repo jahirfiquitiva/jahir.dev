@@ -174,7 +174,7 @@ export const FooterNowPlaying: FC = () => {
       );
     } else {
       const scrollingText = `${data.title} – ${data.artist}`;
-      const animationDuration = scrollingText.length * 0.75;
+      const animationDuration = scrollingText.length * 0.35;
       return (
         <MusicLink
           title={`Listen to "${data.title}" by "${data.artist}" on Spotify`}
