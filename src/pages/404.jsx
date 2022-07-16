@@ -19,7 +19,10 @@ export default function Home() {
             jahir.dev
           </Link>
           .<br />
-          Alternatively, <Link href={'/'}>go back home</Link>
+          Alternatively,{' '}
+          <Link href={'/'} title={'Home page'}>
+            go back home
+          </Link>
         </p>
       </Section>
     </>
