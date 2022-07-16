@@ -1,10 +1,11 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
-// import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 // import { About as AboutSection } from '@/sections';
+import { MdxContent, mdxComponents } from '@/components/mdx';
 import { useHasMounted } from '@/hooks';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
@@ -23,10 +24,10 @@ interface PostPageProps {
 
 const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
   const { post: basePost } = props;
+  const MdxComponent = useMDXComponent(basePost.body.code);
   const hasMounted = useHasMounted();
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
   // const router = useRouter();
-  // const MdxComponent = useMDXComponent(basePost.body.code);
 
   // if (!router.isFallback && !post?.slug) {
   //   return <FourHundredFour />;
@@ -47,7 +48,15 @@ const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
       <Head>
         <title>Blog | Jahir Fiquitiva</title>
       </Head>
-      <p>Specific blog page</p>
+      <MdxContent
+        backText={'Back to blog posts list'}
+        backHref={'/blog'}
+        contentType={'blog'}
+        content={post as Post}
+      >
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <MdxComponent components={{ ...mdxComponents } as any} />
+      </MdxContent>
     </>
   );
 };

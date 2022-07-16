@@ -149,8 +149,8 @@ Here's the [result](/dashboard).
 The previous design had some flaws. Images being positioned absolutely, caused some issues with some specific screen
 sizes. Here's what they used to look like:
 
-<SimpleGrid className={'mb-16'}>
-<SimpleGridColumn>
+<Grid className={'mb-16'}>
+<GridColumn>
 
 <Image
   src={'/static/images/blog/building-website-from-scratch/old-cards-issue-1.png'}
@@ -160,8 +160,8 @@ sizes. Here's what they used to look like:
   layout={'responsive'}
 />
 
-</SimpleGridColumn>
-<SimpleGridColumn>
+</GridColumn>
+<GridColumn>
 
 <Image
   src={'/static/images/blog/building-website-from-scratch/old-cards-issue-2.png'}
@@ -171,8 +171,8 @@ sizes. Here's what they used to look like:
   layout={'responsive'}
 />
 
-</SimpleGridColumn>
-</SimpleGrid>
+</GridColumn>
+</Grid>
 
 And this is how they look now:
 

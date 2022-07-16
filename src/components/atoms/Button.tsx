@@ -69,17 +69,22 @@ const ButtonStyles = css({
 
 const StyledButton = styled('button', ButtonStyles);
 
-const StyledLinkButton = styled(Link, ButtonStyles);
+const BaseLink = styled(Link, ButtonStyles);
+const StyledLinkButton = styled(BaseLink, {
+  hocus: { color: '$on-accent', dark: { color: '$on-accent' } },
+  variants: {
+    outlined: {
+      true: {
+        hocus: { color: '$text-primary', dark: { color: '$text-primary' } },
+      },
+    },
+  },
+});
+
 export const LinkButton: FC<ComponentProps<typeof StyledLinkButton>> = (
   props,
 ) => {
-  return (
-    <StyledLinkButton
-      {...props}
-      underline={false}
-      css={{ hocus: { color: '$on-accent', dark: { color: '$on-accent' } } }}
-    />
-  );
+  return <StyledLinkButton {...props} underline={false} />;
 };
 
 export const Button: FC<ComponentProps<typeof StyledButton>> = (props) => {

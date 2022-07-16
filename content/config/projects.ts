@@ -1,6 +1,6 @@
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 
-import unique from './../../src/utils/unique';
+import unique from '../../src/utils/tools/unique';
 
 const computedFields: ComputedFields = {
   slug: {
