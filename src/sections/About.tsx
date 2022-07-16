@@ -125,27 +125,24 @@ export const About: FC = () => {
 
       <Paragraph>
         I am creative and passionate about design and technology so I always try
-        to craft great-looking software products 🎨
+        to craft great-looking software products.
       </Paragraph>
 
       <Paragraph>
         Before getting into software development, I wanted to be a mechatronics
-        engineer and build robots 🤖
-        <br />
-        When I started programming my first robots, I realized what my real
-        passion was and started learning more about software development 👨‍💻
+        engineer and build robots. When I started programming my first robots, I
+        realized what my real passion was and started learning more about
+        software development.
       </Paragraph>
 
       <Paragraph>
         When not coding, I like to watch TV shows and movies, play some games
-        with friends or hang out with them 🤝 I&apos;m also{' '}
+        with friends or hang out with them. I&apos;m also{' '}
         <Link title={'Dashboard page'} href={'/dashboard'}>
           listening to music
         </Link>{' '}
-        most of the time 🎧
-        <br />
-        According to Spotify Wrapped, I listened to 130437 minutes of music in
-        2021 😱
+        most of the time. According to Spotify Wrapped, I listened to 130437
+        minutes of music in 2021. 😁
       </Paragraph>
 
       <Paragraph>
@@ -155,7 +152,7 @@ export const About: FC = () => {
           side projects
         </Link>
         , try to contribute to open source software and aim to constantly learn
-        something new to improve my skillset 🤓
+        something new to improve my skillset.
       </Paragraph>
 
       <Paragraph>
