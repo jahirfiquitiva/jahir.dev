@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 // import { About as AboutSection } from '@/sections';
-import type { Post } from '@/types/post';
+import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 
 import { type NextPageWithLayout } from './../_app';
@@ -16,7 +16,7 @@ const Blog: NextPageWithLayout<BlogProps> = (props) => {
   return (
     <>
       <Head>
-        <title>About | Jahir Fiquitiva</title>
+        <title>Blog | Jahir Fiquitiva</title>
       </Head>
       <pre>
         <code>{JSON.stringify(posts, null, 2)}</code>

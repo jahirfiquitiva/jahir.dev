@@ -142,7 +142,9 @@ const ScrollingText = styled('span', {
 
 const NotPlayingContainer = styled('div', {
   ...baseMusicLinkStyles,
+  pointerEvents: 'none',
   userSelect: 'none',
+  cursor: 'not-allowed',
 });
 
 const NotPlayingText = styled('span', {
@@ -153,7 +155,7 @@ const NotPlayingText = styled('span', {
 const PseudoLi = styled('li', {
   minWidth: '2.4rem',
   pointerEvents: 'none',
-  userSelect: 'none !important',
+  userSelect: 'none',
   '@mobile-md': {
     minWidth: '3.2rem',
   },

@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 
 // import { About as AboutSection } from '@/sections';
 import { useHasMounted } from '@/hooks';
-import type { Post } from '@/types/post';
+import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
 
