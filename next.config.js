@@ -2,7 +2,8 @@
 // const withBundleAnalyzer = require('@next/bundle-analyzer')({
 //   enabled: process.env.ANALYZE === 'true',
 // });
-// const { withContentlayer } = require('next-contentlayer');
+const { withContentlayer } = require('next-contentlayer');
+
 const appHeaders = require('./headers');
 
 const buildRedirect = (source, destination, permanent = true) => {
@@ -100,5 +101,5 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = defaultNextConfig;
-// module.exports = withBundleAnalyzer(withContentlayer(defaultNextConfig));
+module.exports = withContentlayer(defaultNextConfig);
+// module.exports = withBundleAnalyzer(...);

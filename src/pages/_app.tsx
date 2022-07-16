@@ -9,9 +9,10 @@ import type { FC } from '@/types';
 import { darkTheme, globalStyles } from '~/stitches';
 import '@/styles/globals.scss';
 
-export type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+export type NextPageWithLayout<Props = Record<string, never>> =
+  NextPage<Props> & {
+    getLayout?: (page: ReactElement) => ReactNode;
+  };
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
