@@ -23,6 +23,15 @@ type ToolbarColor = 'toolbar' | `toolbar-${ToolbarColorVariants}`;
 
 type Scrollbar = 'scrollbar-bg' | 'scrollbar-thumb';
 
+type CodeColors =
+  | 'comment'
+  | 'punctuation'
+  | 'selector'
+  | 'property'
+  | 'operator'
+  | 'function';
+type CodeColor = `code-${CodeColors}`;
+
 export type ThemeColorsNames =
   | 'transparent'
   | 'primary'
@@ -34,4 +43,5 @@ export type ThemeColorsNames =
   | ShadowColor
   | TextColor
   | ToolbarColor
-  | Scrollbar;
+  | Scrollbar
+  | CodeColor;

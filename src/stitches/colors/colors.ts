@@ -56,6 +56,13 @@ export const colors: ThemeColors = {
   'scrollbar-thumb': '#f2f5fc',
 
   selection: 'rgba(56 103 214 / .25)',
+
+  'code-comment': '$text-tertiary',
+  'code-punctuation': '$text-secondary',
+  'code-selector': '#178a4d',
+  'code-property': '#7a4cbb',
+  'code-operator': '#c86827',
+  'code-function': '#aa499d',
 };
 
 export const darkThemeColors: ThemeColors = {
@@ -89,4 +96,9 @@ export const darkThemeColors: ThemeColors = {
   'scrollbar-thumb': '$primary',
 
   selection: 'rgba(136 164 230 / .25)',
+
+  'code-selector': '#26de81',
+  'code-property': '#b77eee',
+  'code-operator': '#fed330',
+  'code-function': '#f368e0',
 };

@@ -1,7 +1,8 @@
 import { ComponentProps, useMemo } from 'react';
 
 import { Link } from '@/components/atoms';
-import { FC } from '@/types';
+import type { FC } from '@/types';
+import { styled } from '~/stitches';
 
 const ignoredLinksClasses = ['anchor', 'toc-link'];
 const isIgnoredLinkClassName = (className?: string): boolean => {
@@ -11,14 +12,18 @@ const isIgnoredLinkClassName = (className?: string): boolean => {
   );
 };
 
-// const StyledLink = styled.a`
-//   ${baseLinkStyles}
-
-//   &:hover,
-//   &:focus {
-//     text-decoration: underline;
-//   }
-// `;
+const StyledLink = styled('a', {
+  display: 'inline-block',
+  fontWeight: 500,
+  color: '$accent',
+  hocus: {
+    textDecoration: 'underline',
+    color: '$accent-dark',
+    dark: {
+      color: '$accent-light',
+    },
+  },
+});
 
 export const MdxLink: FC<ComponentProps<typeof Link>> = (props) => {
   const isIgnored = useMemo(
@@ -26,7 +31,7 @@ export const MdxLink: FC<ComponentProps<typeof Link>> = (props) => {
     [props.className],
   );
   if (isIgnored) {
-    return <a {...props} data-type={'ignored'} />;
+    return <StyledLink {...props} />;
   }
   return <Link {...props} />;
 };

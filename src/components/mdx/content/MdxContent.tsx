@@ -88,7 +88,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   const shareData = useMemo(() => {
     return {
       title,
-      text: `${title} by @jahirfiquitiva`,
+      text: `"${title}" by @jahirfiquitiva`,
       url: `https://jahir.dev/${slugPath(content)}`,
     };
   }, [title, content]);
@@ -172,7 +172,6 @@ export const MdxContent: FC<CommonContent> = (props) => {
               height={375}
               {...extraHeroProps}
               quality={100}
-              css={{ my: '$$verticalContentPadding' }}
             />
           )}
           {children}

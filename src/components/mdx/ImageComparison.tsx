@@ -35,9 +35,6 @@ const ImageComparisonContainer = styled('figure', {
     fontSize: '$3xs',
     fontStyle: 'italic',
   },
-  '@floating': {
-    mx: '-.4rem',
-  },
 });
 
 export const ImageComparison: FC<ImageComparisonProps> = (props) => {

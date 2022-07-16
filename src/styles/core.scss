@@ -58,6 +58,14 @@ input[type='email'] {
   appearance: none;
 }
 
+pre,
+code,
+kbd,
+samp {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+}
+
 ::selection {
   background-color: var(--colors-selection);
 }
