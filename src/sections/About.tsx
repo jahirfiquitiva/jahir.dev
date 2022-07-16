@@ -7,6 +7,9 @@ import { useHasMounted } from '@/hooks';
 import type { FC } from '@/types';
 import { getRandomItem } from '@/utils';
 import { styled } from '~/stitches';
+import { InstaFeed } from '@/components/compounds';
+import Icon from '@mdi/react';
+import { mdiInstagram } from '@mdi/js';
 
 interface AboutPhoto {
   key?: string | number;
@@ -71,10 +74,13 @@ const possibleImages: Array<AboutPhoto> = [
   },
 ];
 
-const PhotoFigure = styled('figure', {
+const InstaFigure = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
-  my: '1.2rem',
+  my: '$$verticalContentPadding',
+});
+
+const PhotoFigure = styled(InstaFigure, {
   '& img': {
     width: '100%',
     height: 'auto',
@@ -197,8 +203,12 @@ export const About: FC = () => {
         }}
         src={'/static/images/jahir/animoji.png'}
         alt={'Jahir as an Animoji'}
-        size={92}
+        size={96}
       />
+      <InstaFigure css={{ mb: 0 }}>
+        <InstaFeed />
+        <figcaption>Latest Instagram posts</figcaption>
+      </InstaFigure>
     </Section>
   );
 };
