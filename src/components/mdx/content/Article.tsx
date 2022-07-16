@@ -52,22 +52,37 @@ export const Article = styled('article', {
     listStyle: 'none',
     position: 'relative',
     pl: '1.6rem',
-    ml: '.2rem',
+    ml: '.25rem',
     counterReset: 'start 1',
     '& li:not(:first-of-type)': {
       mt: '.1rem',
     },
-    '& > li::before': {
+    '&:not(.contains-task-list) > li::before': {
       content: "counter(list-item, decimal) '.'",
       position: 'absolute',
       fontWeight: 'inherit',
       color: '#6b7280',
       left: 0,
     },
+    '&.contains-task-list': {
+      listStyle: 'none',
+      pl: 0,
+      '& li': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '.325rem',
+        '& input[type="checkbox"]': {
+          width: '1rem',
+          height: '1rem',
+          color: '$accent',
+        },
+      },
+    },
   },
-  'ol li ol > li::before, ul > li::before': {
-    content: 'counter(list-item, disc)',
-  },
+  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list) > li::before':
+    {
+      content: 'counter(list-item, disc)',
+    },
   '& .toc': {
     my: '1.2rem',
     '& .title': {
@@ -168,5 +183,25 @@ export const Article = styled('article', {
     borderTopLeftRadius: '0',
     borderTopRightRadius: '0',
     borderTopWidth: '0',
+  },
+  '& mark': {
+    p: '.1875rem',
+    color: '$on-accent',
+    backgroundColor: '#5f27cd',
+    dark: {
+      backgroundColor: '#f368e0',
+    },
+  },
+  '& blockquote': {
+    my: '$$verticalContentPadding',
+    backgroundColor: '$primary',
+    borderLeftWidth: '.375rem',
+    borderLeftStyle: 'solid',
+    borderColor: '$divider',
+    pl: '1rem',
+    py: '.5rem',
+    pr: '.75rem',
+    borderRadius: '.125rem',
+    dark: { $colors$primary: '#0b152b' },
   },
 });
