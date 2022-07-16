@@ -7,6 +7,12 @@ import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
+const Figure = styled('figure', {
+  display: 'flex',
+  flexDirection: 'column',
+  mt: '$$verticalContentPadding',
+});
+
 const Grid = styled('div', {
   $$gap: '8px',
   display: 'grid',
@@ -63,28 +69,31 @@ export const InstaFeed: FC = () => {
   );
   if (loading || !data || !data.feed || !data.feed.length) return null;
   return (
-    <Grid>
-      {(data.feed || []).map((post, index) => {
-        return (
-          <ImgContainer
-            key={post.id || index}
-            title={`View photo "${post.caption}" on Instagram`}
-            href={post.postUrl || '#'}
-          >
-            <Img
-              src={post.photoUrl || ''}
-              alt={post.caption}
-              size={214}
-              css={{
-                transition: 'all ease-in-out .35s',
-                height: '100%',
-                width: 'auto',
-              }}
-            />
-            <Icon path={mdiInstagram} size={1.5} />
-          </ImgContainer>
-        );
-      })}
-    </Grid>
+    <Figure>
+      <Grid>
+        {(data.feed || []).map((post, index) => {
+          return (
+            <ImgContainer
+              key={post.id || index}
+              title={`View photo "${post.caption}" on Instagram`}
+              href={post.postUrl || '#'}
+            >
+              <Img
+                src={post.photoUrl || ''}
+                alt={post.caption}
+                size={214}
+                css={{
+                  transition: 'all ease-in-out .35s',
+                  height: '100%',
+                  width: 'auto',
+                }}
+              />
+              <Icon path={mdiInstagram} size={1.5} />
+            </ImgContainer>
+          );
+        })}
+      </Grid>
+      <figcaption>Latest Instagram posts</figcaption>
+    </Figure>
   );
 };

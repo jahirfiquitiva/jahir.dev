@@ -72,13 +72,10 @@ const possibleImages: Array<AboutPhoto> = [
   },
 ];
 
-const InstaFigure = styled('figure', {
+const PhotoFigure = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
-  my: '$$verticalContentPadding',
-});
-
-const PhotoFigure = styled(InstaFigure, {
+  mt: '$$verticalContentPadding',
   '& img': {
     width: '100%',
     height: 'auto',
@@ -203,10 +200,7 @@ export const About: FC = () => {
         alt={'Jahir as an Animoji'}
         size={96}
       />
-      <InstaFigure css={{ mb: 0 }}>
-        <InstaFeed />
-        <figcaption>Latest Instagram posts</figcaption>
-      </InstaFigure>
+      <InstaFeed />
     </Section>
   );
 };
