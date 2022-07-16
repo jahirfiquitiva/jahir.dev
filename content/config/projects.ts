@@ -1,8 +1,10 @@
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
+import readingTime from 'reading-time';
 
 import unique from '../../src/utils/tools/unique';
 
 const computedFields: ComputedFields = {
+  readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
     // eslint-disable-next-line no-underscore-dangle

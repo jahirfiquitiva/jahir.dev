@@ -25,6 +25,7 @@ import {
   ShareAndEdit,
   Title,
 } from './styled';
+import { ViewsCounter } from './ViewsCounter';
 
 type ContentTypes = Post | Project;
 
@@ -78,7 +79,7 @@ interface CommonContent {
 export const MdxContent: FC<CommonContent> = (props) => {
   const hasMounted = useHasMounted();
   const { backText, backHref, content, contentType, children } = props;
-  const { title, hero, date, readingTime, slug, /*devToId,*/ heroMeta } =
+  const { title, hero, date, readingTime, slug, devToId, heroMeta } =
     getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -147,14 +148,14 @@ export const MdxContent: FC<CommonContent> = (props) => {
         <Title css={titleStyles}>{title}</Title>
 
         <Intro>
-          {formatDate(date)}
-          {(readingTime?.length || 0) > 0 && (
+          {date ? (
             <>
+              {formatDate(date)}
               {' • '}
-              {readingTime}
             </>
-          )}
-          {/* <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} /> */}
+          ) : null}
+          {(readingTime?.length || 0) > 0 && <>{readingTime}</>}
+          <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />
         </Intro>
 
         <ReactionsProvider slug={`${contentType}--${slug}`}>
