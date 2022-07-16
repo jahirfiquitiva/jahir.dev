@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Site not found</title>
       </Head>
-      <Section id={'projects'}>
+      <Section id={'projects'} centered css={{ gap: '1rem' }}>
         <Heading as={'h3'} shadow={'red'} gradient={'red-to-purple'}>
           Site not found
         </Heading>
@@ -18,7 +18,9 @@ export default function Home() {
           <Link title={'Jahir production website'} href={'https://jahir.dev'}>
             jahir.dev
           </Link>
-          .<br />
+          .
+        </p>
+        <p>
           Alternatively,{' '}
           <Link href={'/'} title={'Home page'}>
             go back home

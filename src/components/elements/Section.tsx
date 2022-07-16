@@ -8,4 +8,11 @@ export const Section = styled('section', {
   '@tablet-md': {
     px: 0,
   },
+  variants: {
+    centered: {
+      true: {
+        justifyContent: 'center',
+      },
+    },
+  },
 });

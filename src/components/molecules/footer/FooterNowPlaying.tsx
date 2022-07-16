@@ -25,6 +25,8 @@ const baseMusicLinkStyles: StitchesCSS = {
   gap: '0.4rem',
   width: 'fit-content',
   color: '$text-tertiary',
+  fontSize: '$2xs',
+  fontWeight: 500,
   '@mobile-md': {
     maxWidth: 160,
   },
@@ -118,6 +120,8 @@ const scroll = keyframes({
 });
 
 const ScrollingText = styled('span', {
+  fontSize: 'inherit',
+  fontWeight: 'inherit',
   ellipsize: true,
   canAnimate: {
     ellipsize: false,
