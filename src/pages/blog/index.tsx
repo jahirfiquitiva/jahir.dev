@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 // import { About as AboutSection } from '@/sections';
+import { Link } from '@/components/atoms';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 
@@ -18,21 +19,20 @@ const Blog: NextPageWithLayout<BlogProps> = (props) => {
       <Head>
         <title>Blog | Jahir Fiquitiva</title>
       </Head>
-      <pre
-        style={{
-          maxWidth: 'var(--sizes-max-site-width, 960px)',
-          overflowX: 'hidden',
-        }}
-      >
-        <code
-          style={{
-            maxWidth: 'var(--sizes-max-site-width, 960px)',
-            overflowX: 'hidden',
-          }}
-        >
-          {JSON.stringify(posts, null, 2)}
-        </code>
-      </pre>
+      <ul>
+        {(posts || []).map((post) => {
+          return (
+            <li key={post.slug}>
+              <Link
+                title={post.title}
+                href={post.link ? post.link : `/blog/${post.slug}`}
+              >
+                {post.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 };

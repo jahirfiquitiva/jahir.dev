@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 // import { About as AboutSection } from '@/sections';
+import { Link } from '@/components/atoms';
 import type { Project } from '@/types';
 import { pick } from '@/utils';
 import {
@@ -22,21 +23,20 @@ const Blog: NextPageWithLayout<BlogProps> = (props) => {
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
-      <pre
-        style={{
-          maxWidth: 'var(--sizes-max-site-width, 960px)',
-          overflowX: 'hidden',
-        }}
-      >
-        <code
-          style={{
-            maxWidth: 'var(--sizes-max-site-width, 960px)',
-            overflowX: 'hidden',
-          }}
-        >
-          {JSON.stringify(projects, null, 2)}
-        </code>
-      </pre>
+      <ul>
+        {(projects || []).map((project) => {
+          return (
+            <li key={project.slug}>
+              <Link
+                title={project.name}
+                href={project.hide ? project.link : `/projects/${project.slug}`}
+              >
+                {project.name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 };

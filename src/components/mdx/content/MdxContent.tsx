@@ -103,7 +103,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
     if (!themeReady || !heroPalette) return {};
     const color = hexToRGB(
       isDark
-        ? getReadableColor(heroPalette.muted, isDark)
+        ? getReadableColor(heroPalette.vibrant, isDark)
         : getColorFromPalette(heroPalette, isDark) || '#fff',
       isDark ? 1 : 0.4,
     );

@@ -14,7 +14,7 @@ export const getReadableColor = (
   let fgColor = colord(desiredFgColor);
   // Colors from css variables: primary
   const bgColor = isDark ? '#080f1e' : '#f6f9fe';
-  while (!fgColor.isReadable(bgColor)) {
+  while (!fgColor.isReadable(bgColor, { level: isDark ? 'AAA' : 'AA' })) {
     fgColor = isDark ? fgColor.lighten() : fgColor.darken();
   }
   return fgColor.toHex();
