@@ -49,6 +49,10 @@ const LinksContainer = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
   gap: 'calc($$verticalContentPadding / 2)',
+  justifyContent: 'space-between',
+  '@mobile-md': {
+    justifyContent: 'unset',
+  },
   '@tablet-sm': {
     justifyContent: 'space-between',
   },
@@ -110,11 +114,6 @@ const metaLinks: Array<FooterLinkProps> = [
     title: 'Source',
     href: 'https://github.com/jahirfiquitiva/jahir.dev',
     gradient: 'brand-to-blue',
-  },
-  {
-    title: 'Ideas',
-    href: 'https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=ideas',
-    gradient: 'orange-to-red',
   },
 ];
 

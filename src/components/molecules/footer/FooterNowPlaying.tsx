@@ -16,14 +16,21 @@ const MusicItem = styled('li', {
 });
 
 const baseMusicLinkStyles: StitchesCSS = {
-  maxWidth: 172,
+  minWidth: 130,
+  maxWidth: 130,
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
   flex: 1,
-  gap: '0.6rem',
+  gap: '0.4rem',
   width: 'fit-content',
   color: '$text-tertiary',
+  '@mobile-md': {
+    maxWidth: 160,
+  },
+  '@tablet-sm': {
+    maxWidth: 172,
+  },
 };
 
 const MusicLink = styled(Link, {
@@ -49,8 +56,6 @@ const rotate = keyframes({
 
 const RotatingImg = styled(Img, {
   position: 'relative',
-  width: 24,
-  height: 24,
   borderRadius: '50%',
   border: '1px solid rgba($colors$toolbar-glow / .12)',
   canAnimate: {
@@ -64,6 +69,8 @@ const RotatingImg = styled(Img, {
 });
 
 const ScrollContainer = styled('div', {
+  $$animState: 'running',
+  $$animDuration: '15s',
   $$bg: '$colors$background',
   $$gap: '1rem',
   position: 'relative',
@@ -76,6 +83,9 @@ const ScrollContainer = styled('div', {
   '& > span:not(:first-of-type)': {
     hidden: true,
   },
+  hocus: {
+    $$animState: 'paused',
+  },
   canAnimate: {
     '& > span:not(:first-of-type)': {
       visible: 'inline-block',
@@ -85,7 +95,7 @@ const ScrollContainer = styled('div', {
       content: '',
       height: '100%',
       position: 'absolute',
-      width: 24,
+      width: '1.5rem',
       zIndex: 1,
     },
     '&::after': {
@@ -95,7 +105,7 @@ const ScrollContainer = styled('div', {
       content: '',
       height: '100%',
       position: 'absolute',
-      width: 24,
+      width: '1.5rem',
       zIndex: 1,
       transform: 'rotate(180deg)',
     },
@@ -114,9 +124,10 @@ const ScrollingText = styled('span', {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     animationName: scroll,
-    animationDuration: '15s',
+    animationDuration: '$$animDuration',
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
+    animationPlayState: '$$animState',
   },
   variants: {
     pseudo: {
@@ -135,6 +146,15 @@ const NotPlayingText = styled('span', {
   ellipsize: true,
 });
 
+const PseudoLi = styled('li', {
+  minWidth: '2.4rem',
+  pointerEvents: 'none',
+  userSelect: 'none !important',
+  '@mobile-md': {
+    minWidth: '3.2rem',
+  },
+});
+
 export const FooterNowPlaying: FC = () => {
   const { data, loading } = useRequest<TrackData>('/api/now-playing');
 
@@ -149,23 +169,26 @@ export const FooterNowPlaying: FC = () => {
         </NotPlayingContainer>
       );
     } else {
+      const scrollingText = `${data.title} – ${data.artist}`;
+      const animationDuration = scrollingText.length * 0.75;
       return (
         <MusicLink
           title={`Listen to "${data.title}" by "${data.artist}" on Spotify`}
           href={data.url || '#'}
         >
-          <RotatingImg size={24} src={data.image?.url || ''} />
-          <ScrollContainer>
-            <ScrollingText>
-              {data.title}&nbsp;–&nbsp;{data.artist}
-            </ScrollingText>
-            <ScrollingText pseudo>
-              {data.title}&nbsp;–&nbsp;{data.artist}
-            </ScrollingText>
+          <RotatingImg size={26} src={data.image?.url || ''} />
+          <ScrollContainer css={{ $$animDuration: `${animationDuration}s` }}>
+            <ScrollingText>{scrollingText}</ScrollingText>
+            <ScrollingText pseudo>{scrollingText}</ScrollingText>
           </ScrollContainer>
         </MusicLink>
       );
     }
   };
-  return <MusicItem>{renderComponents()}</MusicItem>;
+  return (
+    <>
+      <PseudoLi></PseudoLi>
+      <MusicItem>{renderComponents()}</MusicItem>
+    </>
+  );
 };

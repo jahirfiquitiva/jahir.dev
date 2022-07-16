@@ -20,7 +20,7 @@ const List = styled('ul', {
   paddingInline: 0,
   overflowX: 'hidden',
   '@mobile-md': {
-    minWidth: '160px',
+    minWidth: '164px',
   },
   '@tablet-sm': {
     minWidth: '172px',
