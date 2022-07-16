@@ -3,12 +3,11 @@ import { styled } from '~/stitches';
 
 export const Article = styled('article', {
   p: '.05px',
-  scrollMarginTop: '200px',
+  scrollMarginTop: '$$scrollMargin',
   '& h1, & h2, & h3, & h4, & h5, & h6,': {
     display: 'block',
     position: 'relative',
     scrollMarginTop: '$$scrollMargin',
-    mb: '.4rem',
     hocus: {
       '& > a.anchor': {
         visibility: 'visible',
@@ -107,7 +106,7 @@ export const Article = styled('article', {
     borderRadius: '.5rem',
     border: '1px solid $divider',
     margin: '1.2rem 0',
-    dark: { '$colors$primary': '#0b152b' },
+    dark: { $colors$primary: '#0b152b' },
   },
   '& pre': {
     p: '.8rem',
@@ -153,8 +152,8 @@ export const Article = styled('article', {
   '& .token.punctuation': { color: '$code-punctuation' },
   '& .rehype-code-title': {
     border: '1px solid $divider',
-    borderTopLeftRadius: '8px',
-    borderTopRightRadius: '8px',
+    borderTopLeftRadius: '.5rem',
+    borderTopRightRadius: '.5rem',
     borderBottomLeftRadius: '0',
     borderBottomRightRadius: '0',
     color: '$text-secondary',

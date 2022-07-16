@@ -1,6 +1,3 @@
-import { useHasMounted } from '@/hooks';
-import useRequest from '@/hooks/useRequest';
-import { FC } from '@/types';
 import {
   createContext,
   useContext,
@@ -9,6 +6,10 @@ import {
   useReducer,
   useCallback,
 } from 'react';
+
+import { useHasMounted } from '@/hooks';
+import useRequest from '@/hooks/useRequest';
+import type { FC } from '@/types';
 
 const reactions = ['like', 'love', 'award', 'bookmark'] as const;
 type Reaction = typeof reactions[number];

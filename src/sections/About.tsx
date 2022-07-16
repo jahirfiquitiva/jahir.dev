@@ -79,7 +79,7 @@ const PhotoFigure = styled('figure', {
   '& img': {
     width: '100%',
     height: 'auto',
-    borderRadius: '8px',
+    borderRadius: '.5rem',
     border: '1px solid $divider',
   },
 });

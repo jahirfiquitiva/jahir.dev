@@ -12,7 +12,7 @@ const ButtonStyles = css({
   alignSelf: 'flex-start',
   minHeight: '42px',
   border: 'none',
-  borderRadius: '6px',
+  borderRadius: '.375rem',
   backgroundColor: '$accent',
   color: '$on-accent',
   py: '0.4rem',

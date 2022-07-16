@@ -14,7 +14,7 @@ import { Button } from '@/components/atoms';
 import { useHasMounted, useWindowDimensions } from '@/hooks';
 import { type ReactionType, useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
-import { FC } from '@/types';
+import type { FC } from '@/types';
 import { icons } from '@/utils';
 import { styled } from '~/stitches';
 

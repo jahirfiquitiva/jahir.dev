@@ -1,4 +1,13 @@
-type FontSizeName = '3xl' | '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs' | '3xs';
+type FontSizeName =
+  | '3xl'
+  | '2xl'
+  | 'xl'
+  | 'lg'
+  | 'md'
+  | 'sm'
+  | 'xs'
+  | '2xs'
+  | '3xs';
 type FontSizeValue = `${number}rem`;
 type FontSizesObject = { [Key in FontSizeName]?: FontSizeValue };
 
@@ -12,6 +21,6 @@ export const fontSizes: FontSizesObject = {
   md: `${baseFontSize * 1.5}rem`,
   sm: `${baseFontSize * 1.25}rem`,
   xs: `${baseFontSize}rem`,
-  '2xs': `${baseFontSize * 0.925}rem`,
-  '3xs': `${baseFontSize * 0.85}rem`,
+  '2xs': `${baseFontSize * 0.875}rem`,
+  '3xs': `${baseFontSize * 0.75}rem`,
 };

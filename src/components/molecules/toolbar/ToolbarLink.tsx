@@ -22,7 +22,7 @@ export const ToolbarLink = styled(Link, {
   fontWeight: 700,
   fontSize: '$2xs',
   color: '$text-secondary',
-  borderRadius: '6px',
+  borderRadius: '.375rem',
   p: 'calc($$floatingMargin / $$spaceDivider) $$floatingMargin',
   transition: 'background-color ease-in-out .15s',
   maxHeight: '42px',

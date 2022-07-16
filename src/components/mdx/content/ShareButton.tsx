@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import { Button, LinkButton } from '@/components/atoms';
 import { useHasMounted } from '@/hooks';
-import { FC } from '@/types';
+import type { FC } from '@/types';
 
 const shareUrl = (title: string, slug: string) =>
   `https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -45,13 +45,15 @@ export const ShareButton: FC<ShareButtonProps> = (props) => {
           await navigator.share(shareData);
         } catch (err) {}
       }}
+      withShadow
     >
       <Icon path={mdiShareVariantOutline} size={0.9} /> Share
     </Button>
   ) : (
     <LinkButton
-      href={shareUrl(title, slug)}
       title={'Share blog post on Twitter'}
+      href={shareUrl(title, slug)}
+      withShadow
     >
       <Icon path={mdiShareVariantOutline} size={0.9} /> Share on Twitter
     </LinkButton>

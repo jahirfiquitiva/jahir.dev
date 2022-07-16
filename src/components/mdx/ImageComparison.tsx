@@ -23,7 +23,7 @@ const ImageComparisonContainer = styled('figure', {
   minHeight: '3.2rem',
   '& > div:first-of-type': {
     backgroundColor: '#080f1e',
-    borderRadius: '8px',
+    borderRadius: '.5rem',
     border: '2px solid $divider',
     '& img': {
       objectFit: 'contain !important',
