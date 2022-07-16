@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { MDXOptions } from '@contentlayer/core';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -6,7 +7,16 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
-import { RehypeElement } from './../src/types';
+interface RehypeElement {
+  type: string;
+  tagName?: string;
+  value?: string;
+  properties?: {
+    className?: string;
+  };
+  children?: Array<RehypeElement>;
+}
+
 import imageMetadata from './image-metadata';
 
 const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
