@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useMemo } from 'react';
 
 import { Img, Link, Heading } from '@/components/atoms';
@@ -8,46 +9,65 @@ import { getRandomItem } from '@/utils';
 import { styled } from '~/stitches';
 
 interface AboutPhoto {
-  key: string;
-  alt: string;
+  key?: string | number;
+  alt?: string;
+  blurDataURL?: string;
 }
 
 const possibleImages: Array<AboutPhoto> = [
   {
     key: '0',
     alt: "Visiting Lima, Perú – Oct '19",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAdEAACAgIDAQAAAAAAAAAAAAABAgADBAUHETFx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAWEQADAAAAAAAAAAAAAAAAAAAAAjH/2gAMAwEAAhEDEQA/AKeM9tsrcDa2W7DMd2zFZma5iSTjUEknv0kk/TERKLANT//Z',
   },
   {
     key: '1',
     alt: "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAdEAACAgIDAQAAAAAAAAAAAAABAgADBAUGESRh/8QAFQEBAQAAAAAAAAAAAAAAAAAABAX/xAAYEQADAQEAAAAAAAAAAAAAAAAAATICA//aAAwDAQACEQMRAD8AkqOSbx8Kh33WzZi9/ZOVYSfRb9iIlDnKB7pn/9k=',
   },
   {
     key: '2',
     alt: "Hiking in my hometown – Mar '20",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAACAgEFAQAAAAAAAAAAAAABAgAGBQMEEiFCYv/EABQBAQAAAAAAAAAAAAAAAAAAAAT/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCF5i/XFN+4W2WBRxToZLWHgfUREQG//9k=',
   },
   {
     key: '3',
     alt: "Hanging out with friends at a cafe – Dec '20",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAABBAEFAAAAAAAAAAAAAAABAAIDBgUEEUNRUv/EABQBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQACAwAAAAAAAAAAAAAAAAAAAQIxMv/aAAwDAQACEQMRAD8AjVxudoiybRHZM0wEP3DdfKOaQeugEREdDKF3Z//Z',
   },
   {
     key: '4',
     alt: "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAgEAABBAIBBQAAAAAAAAAAAAABAAIDBAUREgYTQVFx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABcRAAMBAAAAAAAAAAAAAAAAAAABMQL/2gAMAwEAAhEDEQA/AIHqyjUghxPYqwR8o7ZdwjA3rI22jevTWtHwAeERE5gOn//Z',
   },
   {
     key: '5',
     alt: "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAdEAACAgEFAAAAAAAAAAAAAAABAgAEAwUGCBEx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABgRAAMBAQAAAAAAAAAAAAAAAAABMgID/9oADAMBAAIRAxEAPwC9xvvW32Jdd7WdnbU85ZjkJJPSemIiDpbDiUf/2Q==',
   },
   {
     key: '6',
     alt: "Hanging out with friends at a cafe – Feb '22",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAfEAABBAICAwAAAAAAAAAAAAABAAIDBAURBiEHEhP/xAAUAQEAAAAAAAAAAAAAAAAAAAAE/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AtfBuVyNrB8gFq/bmEGctwxCSZzvnGPXTG7PTRs6A6RERiH//2Q==',
   },
   {
     key: '7',
     alt: "Visiting a small town – Dec '22",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAcEAABBQEBAQAAAAAAAAAAAAABAAIDBREEBjH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBf/EABoRAAICAwAAAAAAAAAAAAAAAAACAQQyM3H/2gAMAwEAAhEDEQA/AKC8rTVldVnnr63i5IBK8iOCBsbd37gGIiKTc3v0ZMYP/9k=',
   },
   {
     key: '8',
     alt: "Trip to San Andrés – Dec '22",
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAADAAEEAwAAAAAAAAAAAAABAgMABAUHEQZBUf/EABQBAQAAAAAAAAAAAAAAAAAAAAX/xAAXEQEAAwAAAAAAAAAAAAAAAAAAAQMy/9oADAMBAAIRAxEAPwC1cUqtuN/GrWUUtXbdNSjsO2djFOyT7J+4xjErNSAf/9k=',
   },
 ];
 
@@ -80,7 +100,7 @@ const Paragraph = styled(Intro, {
 export const About: FC = () => {
   const hasMounted = useHasMounted();
 
-  const rightImage: AboutPhoto = useMemo<AboutPhoto>(() => {
+  const rightImage = useMemo<AboutPhoto>(() => {
     return getRandomItem(possibleImages);
   }, []);
 
@@ -94,6 +114,8 @@ export const About: FC = () => {
           quality={100}
           width={768}
           height={320}
+          placeholder={'blur'}
+          blurDataURL={rightImage.blurDataURL}
         />
         <figcaption>📸&nbsp;&nbsp;{rightImage.alt}</figcaption>
       </PhotoFigure>
@@ -166,6 +188,17 @@ export const About: FC = () => {
         </Link>
         !
       </Paragraph>
+      <Img
+        css={{
+          backgroundColor: '$accent-animoji',
+          borderRadius: '50%',
+          mx: 'auto',
+          mt: 'calc($$verticalContentPadding - .6rem)',
+        }}
+        src={'/static/images/jahir/animoji.png'}
+        alt={'Jahir as an Animoji'}
+        size={92}
+      />
     </Section>
   );
 };

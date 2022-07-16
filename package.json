@@ -6,7 +6,8 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
-    "update-deps": "npx --yes npm-check-updates -u && yarn"
+    "update-deps": "npx --yes npm-check-updates -u && yarn",
+    "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/blur.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.11",
@@ -26,8 +27,11 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "cross-env": "^7.0.3",
     "eslint": "^8.19.0",
     "eslint-config-next": "^12.2.2",
+    "plaiceholder": "^2.4.0",
+    "sharp": "^0.30.7",
     "typescript": "^4.7.4"
   },
   "prettier": {

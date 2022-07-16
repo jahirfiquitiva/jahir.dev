@@ -2,7 +2,9 @@ import Head from 'next/head';
 
 import { About as AboutSection } from '@/sections';
 
-export default function About() {
+import { type NextPageWithLayout } from './_app';
+
+const About: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -11,4 +13,6 @@ export default function About() {
       <AboutSection />
     </>
   );
-}
+};
+
+export default About;
