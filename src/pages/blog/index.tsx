@@ -18,8 +18,20 @@ const Blog: NextPageWithLayout<BlogProps> = (props) => {
       <Head>
         <title>Blog | Jahir Fiquitiva</title>
       </Head>
-      <pre>
-        <code>{JSON.stringify(posts, null, 2)}</code>
+      <pre
+        style={{
+          maxWidth: 'var(--sizes-max-site-width, 960px)',
+          overflowX: 'hidden',
+        }}
+      >
+        <code
+          style={{
+            maxWidth: 'var(--sizes-max-site-width, 960px)',
+            overflowX: 'hidden',
+          }}
+        >
+          {JSON.stringify(posts, null, 2)}
+        </code>
       </pre>
     </>
   );

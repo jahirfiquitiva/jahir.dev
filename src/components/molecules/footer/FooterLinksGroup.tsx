@@ -18,7 +18,6 @@ const List = styled('ul', {
   marginInline: 0,
   marginBlock: 0,
   paddingInline: 0,
-  overflowX: 'hidden',
   '@mobile-md': {
     minWidth: '164px',
   },
