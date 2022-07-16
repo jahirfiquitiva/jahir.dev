@@ -58,6 +58,15 @@ export const ArticleImg = styled(Img, {
   my: '$$verticalContentPadding',
 });
 
+export const ArticleHero = styled(ArticleImg, {
+  objectFit: 'cover',
+  maxHeight: 180,
+  '@mobile-md': { maxHeight: 211 },
+  '@mobile-lg': { maxHeight: 239 },
+  '@tablet-sm': { maxHeight: 298 },
+  '@tablet-lg': { maxHeight: 384 },
+});
+
 export const MdxReactions = styled(Reactions, {
   order: 1,
   '@tablet-lg': {

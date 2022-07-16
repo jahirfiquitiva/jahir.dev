@@ -1,10 +1,10 @@
-import { mdiPencilOutline, mdiShareVariantOutline } from '@mdi/js';
+import { mdiPencilOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Button, Divider, Link, LinkButton } from '@/components/atoms';
+import { Divider, Link, LinkButton } from '@/components/atoms';
 import { Section } from '@/components/elements';
-import { useHasMounted, useSafePalette } from '@/hooks';
+import { useSafePalette } from '@/hooks';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';
@@ -17,9 +17,10 @@ import {
 import type { StitchesCSS as CSS } from '~/stitches';
 
 import { Article } from './Article';
+import { ShareButton } from './ShareButton';
 import {
   ArticleFooter,
-  ArticleImg,
+  ArticleHero,
   Intro,
   MdxReactions,
   ShareAndEdit,
@@ -39,11 +40,6 @@ const editUrl = (content: ContentTypes) =>
   `https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${slugPath(
     content,
   )}.mdx`;
-
-const shareUrl = (content: ContentTypes) =>
-  `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-    `https://jahir.dev/${slugPath(content)} by @jahirfiquitiva`,
-  )}`;
 
 interface ContentFields {
   title: string;
@@ -77,30 +73,12 @@ interface CommonContent {
 
 // eslint-disable-next-line max-lines-per-function
 export const MdxContent: FC<CommonContent> = (props) => {
-  const hasMounted = useHasMounted();
   const { backText, backHref, content, contentType, children } = props;
   const { title, hero, date, readingTime, slug, devToId, heroMeta } =
     getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
-
-  const shareData = useMemo(() => {
-    return {
-      title,
-      text: `"${title}" by @jahirfiquitiva`,
-      url: `https://jahir.dev/${slugPath(content)}`,
-    };
-  }, [title, content]);
-
-  const canShare = useMemo<boolean>(() => {
-    try {
-      if (!hasMounted) return false;
-      return navigator.canShare(shareData);
-    } catch (e) {
-      return false;
-    }
-  }, [hasMounted, shareData]);
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
@@ -164,7 +142,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
           {hero && (
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            <ArticleImg
+            <ArticleHero
               src={hero || ''}
               alt={title}
               priority
@@ -186,26 +164,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
           <ArticleFooter>
             <ShareAndEdit>
-              {canShare ? (
-                <Button
-                  title={'Share blog post'}
-                  onClick={async () => {
-                    try {
-                      await navigator.share(shareData);
-                    } catch (err) {}
-                  }}
-                >
-                  <Icon path={mdiShareVariantOutline} size={0.9} /> Share
-                </Button>
-              ) : (
-                <LinkButton
-                  href={shareUrl(content)}
-                  title={'Share blog post on Twitter'}
-                >
-                  <Icon path={mdiShareVariantOutline} size={0.9} /> Share on
-                  Twitter
-                </LinkButton>
-              )}
+              <ShareButton title={title} slug={slugPath(content)} />
               <LinkButton
                 href={editUrl(content)}
                 title={'Edit content on GitHub'}
