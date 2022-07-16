@@ -1,13 +1,13 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
-// import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 // import { About as AboutSection } from '@/sections';
-import { useHasMounted } from '@/hooks';
+import { MdxContent, mdxComponents } from '@/components/mdx';
+// import { useHasMounted } from '@/hooks';
 import type { Project } from '@/types';
-import { getAllPosts } from '@/utils';
 import {
   allProjects,
   type Project as GeneratedProject,
@@ -29,13 +29,13 @@ interface PostPageProps {
 
 const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
   const { project: baseProject } = props;
-  const hasMounted = useHasMounted();
+  const MdxComponent = useMDXComponent(baseProject.body.code);
   const project = useMemo(
     () => mapContentLayerProject(baseProject),
     [baseProject],
   );
+  // const hasMounted = useHasMounted();
   // const router = useRouter();
-  // const MdxComponent = useMDXComponent(basePost.body.code);
 
   // if (!router.isFallback && !project?.slug) {
   //   return <FourHundredFour />;
@@ -50,7 +50,16 @@ const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
-      <p>Specific project page</p>
+      <MdxContent
+        backText={'Back to projects list'}
+        backHref={'/projects'}
+        contentType={'projects'}
+        content={project as Project}
+      >
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <MdxComponent components={{ ...mdxComponents } as any} />
+        {/* <UnderConstruction /> */}
+      </MdxContent>
     </>
   );
 };

@@ -69,6 +69,9 @@ export const globalStyles = globalCss({
       $$verticalContentPadding: '2.4rem',
     },
   },
+  section: {
+    scrollMarginTop: '120px',
+  },
 });
 
 export const preloadFonts = [

@@ -25,8 +25,8 @@ export const MdxLink: FC<ComponentProps<typeof Link>> = (props) => {
     () => isIgnoredLinkClassName(props.className),
     [props.className],
   );
-  // if (isIgnored) {
-  //   return <StyledLink {...props} />;
-  // }
+  if (isIgnored) {
+    return <a {...props} data-type={'ignored'} />;
+  }
   return <Link {...props} />;
 };

@@ -10,7 +10,7 @@
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "predev": "yarn clean && contentlayer build --clearCache",
     "predev--final": "yarn clean && prisma generate && contentlayer build --clearCache",
-    "prebuild": "yarn predev && yarn find:unused"
+    "prebuild": "yarn predev"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.11",

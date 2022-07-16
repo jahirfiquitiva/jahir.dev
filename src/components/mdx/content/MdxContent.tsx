@@ -1,6 +1,8 @@
+import { mdiPencilOutline, mdiShareVariantOutline } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Button, Divider, Img, Link, LinkButton } from '@/components/atoms';
+import { Button, Divider, Link, LinkButton } from '@/components/atoms';
 import { Section } from '@/components/elements';
 import { useHasMounted, useSafePalette } from '@/hooks';
 import { useTheme } from '@/providers/theme';
@@ -13,6 +15,7 @@ import {
 } from '@/utils';
 import type { StitchesCSS as CSS } from '~/stitches';
 
+import { Article } from './Article';
 import {
   ArticleFooter,
   ArticleImg,
@@ -20,13 +23,6 @@ import {
   ShareAndEdit,
   Title,
 } from './styled';
-import Icon from '@mdi/react';
-import {
-  mdiPencilOutline,
-  mdiShare,
-  mdiShareOutline,
-  mdiShareVariantOutline,
-} from '@mdi/js';
 
 type ContentTypes = Post | Project;
 
@@ -79,8 +75,8 @@ interface CommonContent {
 // eslint-disable-next-line max-lines-per-function
 export const MdxContent: FC<CommonContent> = (props) => {
   const hasMounted = useHasMounted();
-  const { backText, backHref, content, contentType, children } = props;
-  const { title, hero, date, readingTime, slug, devToId, heroMeta } =
+  const { backText, backHref, content, /*contentType,*/ children } = props;
+  const { title, hero, date, readingTime, /*slug, devToId,*/ heroMeta } =
     getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -101,7 +97,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
     } catch (e) {
       return false;
     }
-  }, [hasMounted]);
+  }, [hasMounted, shareData]);
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
@@ -142,7 +138,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         </Link>
       )}
 
-      <article>
+      <Article>
         <Title css={titleStyles}>{title}</Title>
 
         <Intro>
@@ -194,7 +190,8 @@ export const MdxContent: FC<CommonContent> = (props) => {
                 href={shareUrl(content)}
                 title={'Share blog post on Twitter'}
               >
-                <Icon path={mdiShareVariantOutline} size={0.9} /> Share on Twitter
+                <Icon path={mdiShareVariantOutline} size={0.9} /> Share on
+                Twitter
               </LinkButton>
             )}
             <LinkButton
@@ -208,7 +205,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
           {/* <MdxReactions /> */}
         </ArticleFooter>
         {/* </ReactionsProvider> */}
-      </article>
+      </Article>
     </Section>
   );
 };

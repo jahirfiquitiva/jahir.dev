@@ -46,6 +46,7 @@ export const ArticleFooter = styled('div', {
 });
 
 export const ArticleImg = styled(Img, {
+  width: '100%',
   borderRadius: '.5rem',
   border: '1px solid $divider',
 });
