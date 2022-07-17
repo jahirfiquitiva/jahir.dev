@@ -2,8 +2,8 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 // import { About as AboutSection } from '@/sections';
-import { Link } from '@/components/atoms';
 import { Layout } from '@/components/elements';
+import { Blog as BlogSection } from '@/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 
@@ -18,20 +18,7 @@ const Blog: NextPage<BlogProps> = (props) => {
       <Head>
         <title>Blog | Jahir Fiquitiva</title>
       </Head>
-      <ul>
-        {(posts || []).map((post) => {
-          return (
-            <li key={post.slug}>
-              <Link
-                title={post.title}
-                href={post.link ? post.link : `/blog/${post.slug}`}
-              >
-                {post.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <BlogSection posts={posts} />
     </Layout>
   );
 };

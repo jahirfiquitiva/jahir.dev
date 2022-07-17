@@ -21,11 +21,11 @@ const mapContentLayerProject = (project?: GeneratedProject): Project | null => {
   } as Project;
 };
 
-interface PostPageProps {
+interface ProjectPageProps {
   project: GeneratedProject;
 }
 
-const PostPage: NextPage<PostPageProps> = (props) => {
+const ProjectPage: NextPage<ProjectPageProps> = (props) => {
   const { project: baseProject } = props;
   const MdxComponent = useMDXComponent(baseProject.body.code);
   const project = useMemo(
@@ -62,7 +62,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   );
 };
 
-export default PostPage;
+export default ProjectPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

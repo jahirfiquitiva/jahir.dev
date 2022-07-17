@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 import { Layout } from '@/components/elements';
-import { Projects } from '@/sections';
+import { Projects as ProjectsSection } from '@/sections';
 import type { Project } from '@/types';
 import { pick } from '@/utils';
 import {
@@ -10,23 +10,23 @@ import {
   type Project as GeneratedProject,
 } from 'contentlayer/generated';
 
-interface BlogProps {
+interface ProjectsProps {
   projects?: Array<Project>;
 }
 
-const Blog: NextPage<BlogProps> = (props) => {
+const Projects: NextPage<ProjectsProps> = (props) => {
   const { projects } = props;
   return (
     <Layout>
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
-      <Projects projects={projects} showFullList />
+      <ProjectsSection projects={projects} showFullList />
     </Layout>
   );
 };
 
-export default Blog;
+export default Projects;
 
 export const getStaticProps: GetStaticProps = async () => {
   const projects = allProjects

@@ -84,7 +84,10 @@ export const Projects: FC<ProjectsProps> = (props) => {
   };
 
   return (
-    <Section css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}>
+    <Section
+      id={'projects'}
+      css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
+    >
       <ProjectsHeader>
         <Heading as={'h3'} shadow={'red'} gradient={'red-to-purple'}>
           {!showFullList ? 'Featured ' : ''}Projects
