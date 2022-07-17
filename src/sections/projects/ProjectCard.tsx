@@ -7,6 +7,7 @@ import { getReadableColor, hexToRGB } from '@/utils';
 import { styled } from '~/stitches';
 import Icon from '@mdi/react';
 import { mdiStar } from '@mdi/js';
+import useRequest from '@/hooks/useRequest';
 
 const StyledProjectCard = styled(Link, {
   $$color: '$colors$toolbar-glow',
@@ -86,8 +87,11 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: FC<ProjectCardProps> = (props) => {
-  const { isDark, themeReady } = useTheme();
   const { project } = props;
+  const { data } = useRequest<{ success?: boolean; stars?: string }>(
+    `/api/stars/${project?.repo}`,
+  );
+  const { isDark, themeReady } = useTheme();
 
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
@@ -106,10 +110,8 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     <StyledProjectCard
       title={`Project: ${project?.name}`}
       href={
-        project.inProgress
+        project.inProgress || project.hide
           ? project.link
-            ? project.link
-            : '#'
           : `/projects/${project.slug}`
       }
       underline={false}
@@ -124,10 +126,12 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         <span>{project.name}</span>
       </TitleContainer>
       <Description>{project.description}</Description>
-      <StarsContainer>
-        <Icon path={mdiStar} size={0.7} />
-        <span>222</span>
-      </StarsContainer>
+      {data && data.stars ? (
+        <StarsContainer>
+          <Icon path={mdiStar} size={0.7} />
+          <span>{data.stars}</span>
+        </StarsContainer>
+      ) : null}
     </StyledProjectCard>
   );
 };
