@@ -86,6 +86,7 @@ export const InstaFeed: FC = () => {
                   transition: 'all ease-in-out .35s',
                   height: '100%',
                   width: 'auto',
+                  backgroundColor: '$toolbar',
                 }}
               />
               <Icon path={mdiInstagram} size={1.5} />
