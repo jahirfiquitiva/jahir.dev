@@ -5,7 +5,7 @@ export const Grid = styled('div', {
   gridTemplateColumns: 'minmax(0, 1fr)',
   '@tablet-sm': {
     gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-    gap: '1rem',
+    gap: '$16',
   },
 });
 

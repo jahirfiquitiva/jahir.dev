@@ -16,8 +16,8 @@ const GroupSection = styled('ul', {
 const GroupHeader = styled('li', {
   display: 'flex',
   alignItems: 'flex-end',
-  my: '1rem',
-  gap: '.5rem',
+  my: '$16',
+  gap: '$8',
   '& > h4': {
     lineHeight: 1,
   },

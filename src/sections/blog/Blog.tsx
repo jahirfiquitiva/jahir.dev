@@ -14,9 +14,9 @@ import { BlogGroup } from './BlogGroup';
 const BlogsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '.75rem',
+  gap: '$12',
   '@tablet-md': {
-    gap: '1rem',
+    gap: '$16',
   },
 });
 
@@ -25,7 +25,7 @@ const BlogHeader = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  gap: '1rem',
+  gap: '$16',
   '@tablet-sm': {
     flexDirection: 'row',
     alignItems: 'center',
@@ -39,7 +39,7 @@ const BlogButtons = styled('div', {
   alignItems: 'center',
   justifyContent: 'flex-start',
   flexWrap: 'wrap',
-  gap: '1rem',
+  gap: '$16',
   '@tablet-sm': {
     flexDirection: 'row',
     alignItems: 'center',
@@ -54,6 +54,10 @@ const RssLink = styled(LinkButton, {
     backgroundColor: '#da5b1f',
     dark: { backgroundColor: '#f26522' },
   },
+});
+
+const NothingFound = styled('p', {
+  p: '$20 0 $40',
 });
 
 interface BlogProps {
@@ -84,7 +88,7 @@ export const Blog: FC<BlogProps> = (props) => {
         />
 
         {(filteredPosts?.length || 0) <= 0 ? (
-          <p style={{ padding: '1.2rem 0 2.4rem' }}>No blog posts found.</p>
+          <NothingFound>No blog posts found.</NothingFound>
         ) : null}
       </>
     );

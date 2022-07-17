@@ -20,7 +20,7 @@ const MasonryColumn = styled(MasonryGrid, {
   justifyContent: 'flex-start',
   flex: 1,
   width: 0,
-  py: '.1rem',
+  py: '$1',
 });
 
 export type MasonryBreakpoints = { [key: string | number]: number };

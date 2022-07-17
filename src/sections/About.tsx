@@ -79,15 +79,15 @@ const PhotoFigure = styled('figure', {
   '& img': {
     width: '100%',
     height: 'auto',
-    borderRadius: '.5rem',
+    borderRadius: '$space$8',
     border: '1px solid $divider',
   },
 });
 
 const Intro = styled('p', {
   color: '$text-primary',
-  mt: '.4rem',
-  mb: '1.2rem',
+  mt: '$6',
+  mb: '$20',
   fontSize: 'calc($xs * 1.15)',
 });
 

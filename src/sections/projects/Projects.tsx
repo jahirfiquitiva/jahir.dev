@@ -7,7 +7,7 @@ import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';
-import { styled } from '~/stitches';
+import { styled, theme } from '~/stitches';
 
 import { ProjectCard } from './ProjectCard';
 
@@ -16,7 +16,7 @@ const ProjectsHeader = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  gap: '1rem',
+  gap: '$16',
   '@tablet-sm': {
     flexDirection: 'row',
     alignItems: 'center',
@@ -30,12 +30,16 @@ const ProjectsButtons = styled('div', {
   alignItems: 'center',
   justifyContent: 'flex-start',
   flexWrap: 'wrap',
-  gap: '1rem',
+  gap: '$16',
   '@tablet-sm': {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
+});
+
+const NothingFound = styled('p', {
+  p: '$20 0 $40',
 });
 
 interface ProjectsProps {
@@ -77,7 +81,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
         />
 
         {(filteredProjects?.length || 0) <= 0 ? (
-          <p style={{ padding: '1.2rem 0 2.4rem' }}>No projects found.</p>
+          <NothingFound>No projects found.</NothingFound>
         ) : null}
       </>
     );
@@ -115,7 +119,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <Masonry breakpoints={masonryBreakpoints} gap={'1.1rem'}>
+      <Masonry breakpoints={masonryBreakpoints} gap={theme.space['18'].value}>
         {(filteredProjects || []).map((project, index) => {
           return (
             <ProjectCard

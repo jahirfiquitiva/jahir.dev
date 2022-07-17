@@ -19,11 +19,11 @@ const ImageComparisonContainer = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  mb: '1.2rem',
-  minHeight: '3.2rem',
+  mb: '$20',
+  minHeight: '$space$52',
   '& > div:first-of-type': {
     backgroundColor: '#080f1e',
-    borderRadius: '.5rem',
+    borderRadius: '$space$8',
     border: '2px solid $divider',
     '& img': {
       objectFit: 'contain !important',

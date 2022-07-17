@@ -15,23 +15,23 @@ const StyledBlogCard = styled(Link, {
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  p: '.625rem',
-  mx: '-.625rem',
-  gap: '.75rem',
-  borderRadius: '.5rem',
+  p: '$10',
+  mx: '-$10',
+  gap: '$12',
+  borderRadius: '$space$8',
   color: '$text-secondary',
   transition: 'all .25s ease-in-out',
   overflow: 'hidden',
   outlineOffset: '0 !important',
   '@tablet-sm': {
-    p: '.75rem',
-    mx: '-.75rem',
+    p: '$12',
+    mx: '-$12',
     flexDirection: 'row',
   },
   '@tablet-md': {
-    p: '1rem',
-    mx: '-1rem',
-    gap: '1rem',
+    p: '$16',
+    mx: '-$16',
+    gap: '$16',
   },
   hocus: {
     transform: 'translateY(-1px)',
@@ -50,7 +50,7 @@ const StyledBlogCard = styled(Link, {
 const BlogCardHero = styled(Img, {
   aspectRatio: '2 / 1',
   height: 'auto',
-  borderRadius: '.25rem',
+  borderRadius: '$space$4',
   '@tablet-sm': {
     minHeight: '100%',
     aspectRatio: '5 / 3',
@@ -61,8 +61,8 @@ const BlogCardHero = styled(Img, {
 const ContentContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '.25rem',
-  py: '.0625rem',
+  gap: '$4',
+  py: '$1',
 });
 
 const Title = styled('span', {
@@ -98,21 +98,21 @@ const Published = styled(Excerpt, {
 const InfoContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  columnGap: '1rem',
-  rowGap: '.375rem',
-  mt: '.25rem',
+  columnGap: '$16',
+  rowGap: '$6',
+  mt: '$4',
   color: '$text-tertiary',
   fontSize: '$3xs',
   flexWrap: 'wrap',
   '@tablet-sm': {
-    columnGap: '1.25rem',
+    columnGap: '1$4',
   },
 });
 
 const InfoSpan = styled('span', {
   display: 'flex',
   alignItems: 'center',
-  gap: '.375rem',
+  gap: '$6',
   lineHeight: 1,
 });
 

@@ -13,7 +13,7 @@ const StyledFooter = styled('footer', {
   display: 'flex',
   flexDirection: 'column',
   py: '$$verticalContentPadding',
-  px: '.875rem',
+  px: '$14',
   gap: '$$verticalContentPadding',
   borderTop: '1px solid $divider',
   '@tablet-md': {
@@ -24,7 +24,7 @@ const StyledFooter = styled('footer', {
 const InnerFooter = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '1rem',
+  gap: '$16',
   '@tablet-sm': {
     justifyContent: 'space-between',
   },

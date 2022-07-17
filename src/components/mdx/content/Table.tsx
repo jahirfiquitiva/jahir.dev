@@ -12,7 +12,7 @@ export const Table = styled('table', {
   borderSpacing: 0,
 
   '& td, & th': {
-    p: '.25rem .5rem',
+    p: '$4 $8',
     border: '1px solid $divider',
     verticalAlign: 'middle',
   },

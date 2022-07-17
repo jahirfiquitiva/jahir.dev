@@ -15,22 +15,22 @@ export const Article = styled('article', {
     },
   },
   '& h1': {
-    mt: '2rem',
+    mt: '$32',
   },
   '& h2': {
-    mt: '1.75rem',
+    mt: '$28',
   },
   '& h3,  & h4': {
-    mt: '1.5rem',
+    mt: '$24',
   },
   '& h5,  & h6': {
-    mt: '1.2rem',
+    mt: '$20',
   },
   '& p': {
     width: '100%',
     marginBlock: 0,
     marginInline: 0,
-    my: '.6rem',
+    my: '$10',
   },
   '& a.anchor': {
     visibility: 'hidden',
@@ -51,11 +51,11 @@ export const Article = styled('article', {
     display: 'block',
     listStyle: 'none',
     position: 'relative',
-    pl: '1.6rem',
-    ml: '.25rem',
+    pl: '$24',
+    ml: '$26',
     counterReset: 'start 1',
     '& li:not(:first-of-type)': {
-      mt: '.1rem',
+      mt: '$2',
     },
     '&:not(.contains-task-list) > li::before': {
       content: "counter(list-item, decimal) '.'",
@@ -72,8 +72,8 @@ export const Article = styled('article', {
         alignItems: 'center',
         gap: '.325rem',
         '& input[type="checkbox"]': {
-          width: '1rem',
-          height: '1rem',
+          width: '$space$16',
+          height: '$space$16',
           color: '$accent',
         },
       },
@@ -84,13 +84,13 @@ export const Article = styled('article', {
       content: 'counter(list-item, disc)',
     },
   '& .toc': {
-    my: '1.2rem',
+    my: '$20',
     '& .title': {
       useFont: 'manrope',
       fontWeight: 700,
       fontSize: '$sm',
       color: '$text-primary',
-      mb: '.2rem',
+      mb: '$4',
     },
     '& .toc-level': {
       display: 'flex',
@@ -102,10 +102,10 @@ export const Article = styled('article', {
   },
   '& code': {
     fontSize: '$2xs',
-    padding: '0.2rem 0.4rem',
+    padding: '$4 $6',
     background: '$primary',
     color: '$text-secondary',
-    borderRadius: '.375rem',
+    borderRadius: '$space$6',
     fontWeight: 'inherit',
   },
   '& p code': {
@@ -118,9 +118,9 @@ export const Article = styled('article', {
     backgroundColor: '$primary',
     color: '$text-primary',
     overflowX: 'auto',
-    borderRadius: '.5rem',
+    borderRadius: '$space$8',
     border: '1px solid $divider',
-    margin: '1.2rem 0',
+    m: '$20 0',
     dark: { $colors$primary: '#0b152b' },
   },
   '& pre': {
@@ -167,16 +167,16 @@ export const Article = styled('article', {
   '& .token.punctuation': { color: '$code-punctuation' },
   '& .rehype-code-title': {
     border: '1px solid $divider',
-    borderTopLeftRadius: '.5rem',
-    borderTopRightRadius: '.5rem',
+    borderTopLeftRadius: '$space$8',
+    borderTopRightRadius: '$space$8',
     borderBottomLeftRadius: '0',
     borderBottomRightRadius: '0',
     color: '$text-secondary',
     background: '$toolbar-glow',
-    marginTop: '1.2rem',
+    marginTop: '$20',
     fontFamily: 'monospace, ui-monospace',
     fontSize: '$2xs',
-    padding: '0.4rem 0.7rem 0.5rem',
+    padding: '0.4rem 0.7rem $space$8',
   },
   '& .rehype-code-title + pre': {
     marginTop: '0',
@@ -185,7 +185,7 @@ export const Article = styled('article', {
     borderTopWidth: '0',
   },
   '& mark': {
-    p: '.1875rem',
+    p: '$3',
     color: '$on-accent',
     backgroundColor: '#5f27cd',
     dark: {
@@ -196,18 +196,18 @@ export const Article = styled('article', {
     my: '$$verticalContentPadding',
     backgroundColor: 'rgba($toolbar-glow / .075)',
     borderWidth: 0,
-    borderLeftWidth: '.375rem',
+    borderLeftWidth: '$6',
     borderStyle: 'solid',
     borderColor: '$divider',
-    pl: '1rem',
-    py: '.5rem',
-    pr: '.75rem',
-    borderRadius: '.25rem',
+    pl: '$16',
+    py: '$8',
+    pr: '$12',
+    borderRadius: '$space$4',
   },
   '& img': {
     width: '100%',
     height: 'auto',
-    borderRadius: '.5rem',
+    borderRadius: '$space$8',
     border: '1px solid $divider',
   },
   '& > img:first-of-type': {

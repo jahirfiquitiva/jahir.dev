@@ -10,7 +10,7 @@ import { styled } from '~/stitches';
 const IntroSection = styled(Section, {
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
-  rowGap: '1rem',
+  rowGap: '$16',
   '@tablet-sm': {
     gridTemplateColumns: 'minmax(0, 1fr) auto',
     columnGap: '1.6rem',
@@ -27,8 +27,8 @@ const TextsContainer = styled('div', {
 });
 
 const Paragraph = styled('p', {
-  mt: '0.8rem',
-  mb: '1.2rem',
+  mt: '$12',
+  mb: '$20',
   maxWidth: '325px',
   '@mobile-lg': {
     maxWidth: '410px',

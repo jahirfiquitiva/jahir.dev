@@ -11,7 +11,7 @@ export const Title = styled(Heading, {
     mt: '.8rem',
   },
   '@tablet-lg': {
-    mt: '1rem',
+    mt: '$16',
   },
 });
 

@@ -18,15 +18,15 @@ const FieldWrapper = styled('div', {
     top: 0,
     right: 0,
     transform: 'translateY(50%)',
-    mr: '.8rem',
+    mr: '$12',
     pointerEvents: 'none',
     color: '$text-tertiary',
   },
 });
 
 const Label = styled('label', {
-  mt: '1rem',
-  mb: '.4rem',
+  mt: '$16',
+  mb: '$6',
   fontWeight: 500,
   variants: {
     hidden: {
@@ -41,7 +41,7 @@ const Input = styled('input', {
   backgroundColor: '$transparent',
   color: '$text-primary',
   border: '1px solid $divider',
-  borderRadius: '.375rem',
+  borderRadius: '$space$6',
   minHeight: 48,
   py: '.4rem',
   px: '.8rem',

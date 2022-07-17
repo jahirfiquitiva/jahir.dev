@@ -170,7 +170,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
           {children}
           <Divider
             css={{
-              mx: '-.875rem',
+              mx: '-$14',
               '@tablet-md': {
                 mx: 0,
               },

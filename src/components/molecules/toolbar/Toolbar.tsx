@@ -68,7 +68,7 @@ const Nav = styled('nav', {
   height: '100%',
   backgroundColor: '$toolbar',
   backdropFilter: 'blur(10px) saturate(150%)',
-  borderRadius: '.625rem',
+  borderRadius: '$space$10',
   border: '1px solid rgba($colors$toolbar-glow / .12)',
   boxShadow: '0 0 6px 1px rgba($colors$toolbar-glow / .16)',
   p: 'calc($$floatingMargin / $$spaceDivider)',

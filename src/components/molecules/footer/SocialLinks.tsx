@@ -24,7 +24,7 @@ const SocialLink = styled(Link, {
   justifyContent: 'center',
   height: '30px',
   width: '30px',
-  borderRadius: '.375rem',
+  borderRadius: '$space$6',
   color: '$text-tertiary',
   textDecoration: 'none',
   hocus: {
