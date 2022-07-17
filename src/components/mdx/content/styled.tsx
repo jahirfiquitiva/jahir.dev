@@ -37,10 +37,10 @@ export const ArticleFooter = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '1.2rem',
-  mt: '2.4rem',
-  mb: '.8rem',
+  mt: '$$verticalContentPadding',
+  mb: 0,
   boxSizing: 'border-box',
-  '@tablet-lg': {
+  '@tablet-md': {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
