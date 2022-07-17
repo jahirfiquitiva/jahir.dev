@@ -19,4 +19,5 @@ export interface Post {
   year?: number;
   devToId?: number;
   heroMeta?: HeroMeta;
+  fullHeightHero?: boolean;
 }

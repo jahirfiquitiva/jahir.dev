@@ -49,6 +49,7 @@ interface ContentFields {
   slug?: string;
   devToId?: number;
   heroMeta?: HeroMeta;
+  fullHeightHero?: boolean;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -61,6 +62,8 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('slug' in content) fields.slug = content.slug;
   if ('devToId' in content) fields.devToId = content.devToId;
   if ('heroMeta' in content) fields.heroMeta = content.heroMeta;
+  if ('fullHeightHero' in content)
+    fields.fullHeightHero = content.fullHeightHero;
   return fields;
 };
 
@@ -74,8 +77,16 @@ interface CommonContent {
 // eslint-disable-next-line max-lines-per-function
 export const MdxContent: FC<CommonContent> = (props) => {
   const { backText, backHref, content, contentType, children } = props;
-  const { title, hero, date, readingTime, slug, devToId, heroMeta } =
-    getContentFields(content);
+  const {
+    title,
+    hero,
+    date,
+    readingTime,
+    slug,
+    devToId,
+    heroMeta,
+    fullHeightHero,
+  } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
@@ -150,6 +161,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
               height={375}
               {...extraHeroProps}
               quality={100}
+              cropHero={!fullHeightHero || !slug?.includes('uses')}
             />
           )}
           {children}

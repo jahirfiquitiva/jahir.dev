@@ -108,7 +108,7 @@ const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'string', required: true },
-    hero: { type: 'string', required: true },
+    hero: { type: 'string' },
     color: { type: 'string' },
     description: { type: 'string' },
     excerpt: { type: 'string' },
@@ -119,6 +119,7 @@ const Blog = defineDocumentType(() => ({
     year: { type: 'number' },
     devToId: { type: 'number' },
     heroMeta: { type: 'json' },
+    fullHeightHero: { type: 'boolean', default: false },
   },
   computedFields,
 }));
