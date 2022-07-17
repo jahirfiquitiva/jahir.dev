@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-import { Link } from '@/components/atoms';
 import { Layout } from '@/components/elements';
 import { Projects } from '@/sections';
 import type { Project } from '@/types';

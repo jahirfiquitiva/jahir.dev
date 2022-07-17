@@ -19,7 +19,7 @@ const ProjectsHeader = styled('div', {
   gap: '1rem',
   '@tablet-sm': {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
 });

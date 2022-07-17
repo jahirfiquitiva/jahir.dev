@@ -10,7 +10,7 @@ const ButtonStyles = css({
   alignItems: 'center',
   justifyContent: 'center',
   alignSelf: 'flex-start',
-  minHeight: '42px',
+  height: '42px',
   border: 'none',
   borderRadius: '.375rem',
   backgroundColor: '$accent',
