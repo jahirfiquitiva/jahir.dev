@@ -45,6 +45,7 @@ interface BlurResult {
 
 export const getBlurData = async (
   imageSrc?: string,
+  placeholderSize: number = 12,
 ): Promise<BlurResult | null> => {
   if (!imageSrc) return null;
   const isExternal = imageSrc.startsWith('http');
@@ -53,7 +54,9 @@ export const getBlurData = async (
 
   if (!isExternal) {
     res = await sizeOf(path.join(process.cwd(), 'public', imageSrc));
-    const plaiceholderResult = await getPlaiceholder(imageSrc, { size: 12 });
+    const plaiceholderResult = await getPlaiceholder(imageSrc, {
+      size: placeholderSize,
+    });
     res = {
       ...res,
       width: plaiceholderResult.img.width,
@@ -66,7 +69,9 @@ export const getBlurData = async (
     const buffer = Buffer.from(arrayBuffer);
 
     res = await imageSize(buffer);
-    const plaiceholderResult = await getPlaiceholder(buffer, { size: 12 });
+    const plaiceholderResult = await getPlaiceholder(buffer, {
+      size: placeholderSize,
+    });
     res = {
       ...res,
       width: plaiceholderResult.img.width,

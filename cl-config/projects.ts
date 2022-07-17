@@ -35,7 +35,7 @@ const computedFields: ComputedFields = {
   iconMeta: {
     type: 'json',
     resolve: async (doc) => {
-      return getBlurData(getIconUrl(doc.icon));
+      return getBlurData(getIconUrl(doc.icon), 6);
     },
   },
 };
