@@ -1,13 +1,42 @@
-import { mdiMagnify } from '@mdi/js';
+import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Field } from '@/components/atoms';
+import { Field, Heading, LinkButton } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';
+import { styled } from '~/stitches';
 
 import { ProjectCard } from './ProjectCard';
+
+const ProjectsHeader = styled('div', {
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: '1rem',
+  '@tablet-sm': {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+  },
+});
+
+const ProjectsButtons = styled('div', {
+  display: 'flex',
+  flexDirection: 'row-reverse',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  flexWrap: 'wrap',
+  gap: '1rem',
+  '@tablet-sm': {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+});
 
 interface ProjectsProps {
   projects?: Array<Project>;
@@ -55,7 +84,32 @@ export const Projects: FC<ProjectsProps> = (props) => {
   };
 
   return (
-    <Section css={{ gap: '$$verticalContentPadding' }}>
+    <Section css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}>
+      <ProjectsHeader>
+        <Heading as={'h3'} shadow={'red'} gradient={'red-to-purple'}>
+          {!showFullList ? 'Featured ' : ''}Projects
+        </Heading>
+        <ProjectsButtons>
+          <LinkButton
+            title={"Jahir's resume pdf file"}
+            href={'/resume'}
+            outlined
+          >
+            <Icon path={mdiFileCodeOutline} size={0.9} />
+            Resume
+          </LinkButton>
+          {!showFullList && (
+            <LinkButton
+              title={'View all projects by Jahir'}
+              href={'/projects'}
+              withShadow
+            >
+              <Icon path={mdiEyeOutline} size={0.9} />
+              View all
+            </LinkButton>
+          )}
+        </ProjectsButtons>
+      </ProjectsHeader>
       {renderSearchComponents()}
       <Masonry breakpoints={masonryBreakpoints} gap={'1.1rem'}>
         {(filteredProjects || []).map((project, index) => {

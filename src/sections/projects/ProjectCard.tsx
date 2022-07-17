@@ -1,13 +1,13 @@
+import { mdiStar } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
+import useRequest from '@/hooks/useRequest';
 import { useTheme } from '@/providers/theme';
 import type { Project, FC } from '@/types';
 import { getReadableColor, hexToRGB } from '@/utils';
 import { styled } from '~/stitches';
-import Icon from '@mdi/react';
-import { mdiStar } from '@mdi/js';
-import useRequest from '@/hooks/useRequest';
 
 const StyledProjectCard = styled(Link, {
   $$color: '$colors$toolbar-glow',

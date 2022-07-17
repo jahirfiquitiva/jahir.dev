@@ -1,13 +1,12 @@
+import Icon from '@mdi/react';
 import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from 'react';
 
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
-import Icon from '@mdi/react';
 
 const LabeledFieldWrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  pt: '.8rem',
 });
 
 const FieldWrapper = styled('div', {
