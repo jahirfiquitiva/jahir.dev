@@ -43,8 +43,8 @@ const Input = styled('input', {
   border: '1px solid $divider',
   borderRadius: '$space$6',
   minHeight: 48,
-  py: '.4rem',
-  px: '.8rem',
+  py: '$6',
+  px: '$12',
   flex: 1,
   hocus: {
     borderColor: '$accent-light',
@@ -56,7 +56,7 @@ const Input = styled('input', {
   variants: {
     withIcon: {
       true: {
-        pr: '2.8rem',
+        pr: '$48',
       },
     },
   },

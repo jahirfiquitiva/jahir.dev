@@ -22,7 +22,7 @@ const baseMusicLinkStyles: StitchesCSS = {
   display: 'inline-flex',
   alignItems: 'center',
   flex: 1,
-  gap: '0.4rem',
+  gap: '$6',
   width: 'fit-content',
   color: '$text-tertiary',
   fontSize: '$2xs',
@@ -153,7 +153,7 @@ const NotPlayingText = styled('span', {
 });
 
 const PseudoLi = styled('li', {
-  minWidth: '$space$38',
+  minWidth: '$space$36',
   pointerEvents: 'none',
   userSelect: 'none',
   '@mobile-md': {

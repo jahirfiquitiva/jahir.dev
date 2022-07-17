@@ -14,7 +14,7 @@ const List = styled('ul', {
   listStyle: 'none',
   display: 'flex',
   flexDirection: 'column',
-  gap: '.8rem',
+  gap: '$12',
   marginInline: 0,
   marginBlock: 0,
   paddingInline: 0,
@@ -28,7 +28,7 @@ const List = styled('ul', {
     meta: {
       true: {
         flexDirection: 'row',
-        marginTop: '.8rem',
+        marginTop: '$12',
         '@tablet-sm': {
           flexDirection: 'column',
           marginTop: 0,

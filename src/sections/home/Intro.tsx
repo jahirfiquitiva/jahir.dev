@@ -13,7 +13,7 @@ const IntroSection = styled(Section, {
   rowGap: '$16',
   '@tablet-sm': {
     gridTemplateColumns: 'minmax(0, 1fr) auto',
-    columnGap: '1.6rem',
+    columnGap: '$26',
   },
 });
 

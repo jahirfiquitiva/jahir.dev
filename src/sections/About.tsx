@@ -93,7 +93,7 @@ const Intro = styled('p', {
 
 const Paragraph = styled(Intro, {
   color: '$text-secondary',
-  my: '.6rem',
+  my: '$10',
   fontSize: '$xs',
 });
 
@@ -194,7 +194,7 @@ export const About: FC = () => {
           backgroundColor: '$accent-animoji',
           borderRadius: '50%',
           mx: 'auto',
-          mt: 'calc($$verticalContentPadding - .6rem)',
+          mt: 'calc($$verticalContentPadding - $10)',
         }}
         src={'/static/images/jahir/animoji.png'}
         alt={'Jahir as an Animoji'}

@@ -70,7 +70,7 @@ export const Article = styled('article', {
       '& li': {
         display: 'flex',
         alignItems: 'center',
-        gap: '.325rem',
+        gap: '$6',
         '& input[type="checkbox"]': {
           width: '$space$16',
           height: '$space$16',
@@ -124,7 +124,7 @@ export const Article = styled('article', {
     dark: { $colors$primary: '#0b152b' },
   },
   '& pre': {
-    p: '.8rem',
+    p: '$12',
     '& pre': {
       p: 0,
       m: 0,

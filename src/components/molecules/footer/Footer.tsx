@@ -33,7 +33,7 @@ const InnerFooter = styled('div', {
 const BrandLink = styled(FooterLink, {
   display: 'inline-flex',
   alignSelf: 'flex-start',
-  gap: '0.4rem',
+  gap: '$6',
   minHeight: '30px',
   minWidth: '130px',
   '@mobile-md': {

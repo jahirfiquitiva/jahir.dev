@@ -82,7 +82,7 @@ const Grid = styled('div', {
   '& > div:first-of-type': {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.6rem',
+    gap: '$10',
   },
 });
 
@@ -182,7 +182,7 @@ export const Contact: FC = () => {
             </Link>
             .
           </Paragraph>
-          <Paragraph css={{ mt: '.8rem' }}>
+          <Paragraph css={{ mt: '$12' }}>
             There&apos;s a few ways you can get it touch:
           </Paragraph>
           <ContactOptions>

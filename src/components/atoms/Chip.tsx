@@ -7,7 +7,7 @@ export const Chip = styled('span', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  p: '0.4rem 0.7rem 0.4rem 0.6rem',
+  p: '$6 $11 $6 $10',
   fontSize: '$3xs',
   borderRadius: '9999px',
   border: '1px solid $$border',
@@ -26,7 +26,7 @@ export const Chip = styled('span', {
 
 export const ImageChip = styled(Chip, {
   lineHeight: 'inherit',
-  p: '0.4rem 0.8rem 0.4rem 0.4rem',
+  p: '$6 $12 $6 $6',
   '& img': {
     borderRadius: '50%',
   },

@@ -21,26 +21,26 @@ import { styled } from '~/stitches';
 const ReactionsGroup = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '.4rem',
+  gap: '$6',
   '@mobile-lg': {
-    gap: '.6rem',
+    gap: '$10',
   },
 });
 
 const ReactionButton = styled(Button, {
   $$reactionColor: '56 103 214',
   order: 2,
-  py: '.6rem',
-  px: '.8rem',
+  py: '$10',
+  px: '$12',
   borderRadius: '9999px',
   fontSize: '$3xs',
   color: '$text-secondary',
   boxShadow: 'none',
   backgroundColor: '$transparent',
-  gap: '.4rem',
+  gap: '$6',
   lineHeight: 1,
   '@mobile-lg': {
-    gap: '.6rem',
+    gap: '$10',
   },
   '& > span': {
     pt: 1,

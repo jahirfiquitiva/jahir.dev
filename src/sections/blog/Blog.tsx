@@ -57,7 +57,7 @@ const RssLink = styled(LinkButton, {
 });
 
 const NothingFound = styled('p', {
-  p: '$20 0 $38',
+  p: '$20 0 $36',
 });
 
 interface BlogProps {

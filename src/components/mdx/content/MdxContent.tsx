@@ -132,7 +132,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         <Link
           title={backText.toLowerCase()}
           href={backHref}
-          css={{ alignSelf: 'flex-start', mx: '.4rem' }}
+          css={{ alignSelf: 'flex-start', mx: '$6' }}
         >
           ← {backText}
         </Link>
