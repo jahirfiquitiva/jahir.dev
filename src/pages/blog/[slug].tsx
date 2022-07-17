@@ -1,17 +1,15 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-// import { About as AboutSection } from '@/sections';
+import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { useHasMounted } from '@/hooks';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
-
-import { type NextPageWithLayout } from './../_app';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
@@ -22,7 +20,7 @@ interface PostPageProps {
   post: Blog;
 }
 
-const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
+const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
   const MdxComponent = useMDXComponent(basePost.body.code);
   const hasMounted = useHasMounted();
@@ -44,7 +42,7 @@ const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Blog | Jahir Fiquitiva</title>
       </Head>
@@ -57,7 +55,7 @@ const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
       </MdxContent>
-    </>
+    </Layout>
   );
 };
 

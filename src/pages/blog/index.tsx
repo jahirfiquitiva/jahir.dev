@@ -1,21 +1,20 @@
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 // import { About as AboutSection } from '@/sections';
 import { Link } from '@/components/atoms';
+import { Layout } from '@/components/elements';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
-
-import { type NextPageWithLayout } from './../_app';
 
 interface BlogProps {
   posts?: Array<Post>;
 }
 
-const Blog: NextPageWithLayout<BlogProps> = (props) => {
+const Blog: NextPage<BlogProps> = (props) => {
   const { posts } = props;
   return (
-    <>
+    <Layout>
       <Head>
         <title>Blog | Jahir Fiquitiva</title>
       </Head>
@@ -33,7 +32,7 @@ const Blog: NextPageWithLayout<BlogProps> = (props) => {
           );
         })}
       </ul>
-    </>
+    </Layout>
   );
 };
 

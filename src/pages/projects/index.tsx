@@ -1,8 +1,8 @@
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-// import { About as AboutSection } from '@/sections';
 import { Link } from '@/components/atoms';
+import { Layout } from '@/components/elements';
 import type { Project } from '@/types';
 import { pick } from '@/utils';
 import {
@@ -10,16 +10,14 @@ import {
   type Project as GeneratedProject,
 } from 'contentlayer/generated';
 
-import { type NextPageWithLayout } from './../_app';
-
 interface BlogProps {
   projects?: Array<Project>;
 }
 
-const Blog: NextPageWithLayout<BlogProps> = (props) => {
+const Blog: NextPage<BlogProps> = (props) => {
   const { projects } = props;
   return (
-    <>
+    <Layout>
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
@@ -37,7 +35,7 @@ const Blog: NextPageWithLayout<BlogProps> = (props) => {
           );
         })}
       </ul>
-    </>
+    </Layout>
   );
 };
 

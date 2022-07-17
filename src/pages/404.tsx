@@ -1,15 +1,16 @@
+import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Link, Heading } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import { Heading, Link } from '@/components/atoms';
+import { Layout, Section } from '@/components/elements';
 
-export default function Home() {
+const FourOhFour: NextPage = () => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Site not found</title>
       </Head>
-      <Section id={'projects'} centered css={{ gap: '1rem' }}>
+      <Section id={'error'} centered css={{ gap: '1rem' }}>
         <Heading as={'h3'} shadow={'red'} gradient={'red-to-purple'}>
           Site not found
         </Heading>
@@ -27,6 +28,8 @@ export default function Home() {
           </Link>
         </p>
       </Section>
-    </>
+    </Layout>
   );
-}
+};
+
+export default FourOhFour;

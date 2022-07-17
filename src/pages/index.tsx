@@ -1,14 +1,13 @@
+import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { Button, DotsDivider, Link, Heading } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import { Layout, Section } from '@/components/elements';
 import { Intro, Skills } from '@/sections';
 
-import { type NextPageWithLayout } from './_app';
-
-const Home: NextPageWithLayout = () => {
+const Home: NextPage = () => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Jahir Fiquitiva</title>
       </Head>
@@ -31,11 +30,8 @@ const Home: NextPageWithLayout = () => {
       </Section>
       <DotsDivider />
       <Skills />
-    </>
+    </Layout>
   );
 };
 
 export default Home;
-
-// For custom layout:
-// ThisComponent.getLayout = (page) => <LayoutComponent>{page}</LayoutComponent>;

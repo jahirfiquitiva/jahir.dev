@@ -1,10 +1,10 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-// import { About as AboutSection } from '@/sections';
+import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 // import { useHasMounted } from '@/hooks';
 import type { Project } from '@/types';
@@ -12,8 +12,6 @@ import {
   allProjects,
   type Project as GeneratedProject,
 } from 'contentlayer/generated';
-
-import { type NextPageWithLayout } from './../_app';
 
 const mapContentLayerProject = (project?: GeneratedProject): Project | null => {
   if (!project) return null;
@@ -27,7 +25,7 @@ interface PostPageProps {
   project: GeneratedProject;
 }
 
-const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
+const PostPage: NextPage<PostPageProps> = (props) => {
   const { project: baseProject } = props;
   const MdxComponent = useMDXComponent(baseProject.body.code);
   const project = useMemo(
@@ -46,7 +44,7 @@ const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
   // }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
@@ -60,7 +58,7 @@ const PostPage: NextPageWithLayout<PostPageProps> = (props) => {
         <MdxComponent components={{ ...mdxComponents } as any} />
         {/* <UnderConstruction /> */}
       </MdxContent>
-    </>
+    </Layout>
   );
 };
 
