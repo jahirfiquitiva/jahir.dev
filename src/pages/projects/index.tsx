@@ -22,7 +22,7 @@ const Blog: NextPage<BlogProps> = (props) => {
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
-      <Projects projects={projects} />
+      <Projects projects={projects} showFullList />
     </Layout>
   );
 };

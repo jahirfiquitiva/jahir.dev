@@ -79,7 +79,8 @@ const StarsContainer = styled('div', {
   borderLeftWidth: '$$borderSize',
   borderBottomWidth: '$$borderSize',
   borderBottomLeftRadius: '.5rem',
-  transition: 'borderColor .15s ease-in-out',
+  transition: 'all .15s ease-in-out',
+  transitionDelay: '.05s',
 });
 
 interface ProjectCardProps {
