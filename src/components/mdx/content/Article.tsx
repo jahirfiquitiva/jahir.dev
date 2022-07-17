@@ -51,8 +51,8 @@ export const Article = styled('article', {
     display: 'block',
     listStyle: 'none',
     position: 'relative',
-    pl: '$24',
-    ml: '$26',
+    pl: '$26',
+    ml: '$4',
     counterReset: 'start 1',
     '& li:not(:first-of-type)': {
       mt: '$2',
@@ -90,7 +90,7 @@ export const Article = styled('article', {
       fontWeight: 700,
       fontSize: '$sm',
       color: '$text-primary',
-      mb: '$4',
+      mb: '$3',
     },
     '& .toc-level': {
       display: 'flex',
@@ -101,8 +101,8 @@ export const Article = styled('article', {
     },
   },
   '& code': {
+    p: '$3 $6',
     fontSize: '$2xs',
-    padding: '$4 $6',
     background: '$primary',
     color: '$text-secondary',
     borderRadius: '$space$6',
@@ -176,7 +176,7 @@ export const Article = styled('article', {
     marginTop: '$20',
     fontFamily: 'monospace, ui-monospace',
     fontSize: '$2xs',
-    padding: '0.4rem 0.7rem $space$8',
+    p: '$6 $11 $8',
   },
   '& .rehype-code-title + pre': {
     marginTop: '0',
@@ -196,7 +196,7 @@ export const Article = styled('article', {
     my: '$$verticalContentPadding',
     backgroundColor: 'rgba($toolbar-glow / .075)',
     borderWidth: 0,
-    borderLeftWidth: '$6',
+    borderLeftWidth: '$space$6',
     borderStyle: 'solid',
     borderColor: '$divider',
     pl: '$16',

@@ -97,7 +97,7 @@ const ScrollContainer = styled('div', {
       content: '',
       height: '100%',
       position: 'absolute',
-      width: '1$8',
+      width: '$space$24',
       zIndex: 1,
     },
     '&::after': {
@@ -107,7 +107,7 @@ const ScrollContainer = styled('div', {
       content: '',
       height: '100%',
       position: 'absolute',
-      width: '1$8',
+      width: '$space$24',
       zIndex: 1,
       transform: 'rotate(180deg)',
     },
@@ -115,7 +115,7 @@ const ScrollContainer = styled('div', {
 });
 
 const scroll = keyframes({
-  '0%': { transform: 'translateX(var(---gap, $16))' },
+  '0%': { transform: 'translateX(var(---gap, $space$16))' },
   '100%': { transform: 'translateX(-100%)' },
 });
 
@@ -153,11 +153,11 @@ const NotPlayingText = styled('span', {
 });
 
 const PseudoLi = styled('li', {
-  minWidth: '2.4rem',
+  minWidth: '$space$38',
   pointerEvents: 'none',
   userSelect: 'none',
   '@mobile-md': {
-    minWidth: '$52',
+    minWidth: '$space$52',
   },
 });
 

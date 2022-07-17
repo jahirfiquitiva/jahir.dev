@@ -39,7 +39,7 @@ const ProjectsButtons = styled('div', {
 });
 
 const NothingFound = styled('p', {
-  p: '$20 0 $40',
+  p: '$20 0 $38',
 });
 
 interface ProjectsProps {

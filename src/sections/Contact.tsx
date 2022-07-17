@@ -94,7 +94,7 @@ const Paragraph = styled('p', {
 const ContactOptions = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '$4',
+  gap: '$3',
   maxWidth: 212,
   '@tablet-sm': {
     maxWidth: '100%',
@@ -104,7 +104,7 @@ const ContactOptions = styled('div', {
 const ContactOption = styled(Link, {
   $$linkColor: '$colors$text-secondary',
   display: 'flex',
-  gap: '$2',
+  gap: '$3',
   color: '$text-secondary',
   justifyContent: 'space-between',
   '@tablet-sm': {

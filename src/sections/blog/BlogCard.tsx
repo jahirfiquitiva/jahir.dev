@@ -105,7 +105,7 @@ const InfoContainer = styled('div', {
   fontSize: '$3xs',
   flexWrap: 'wrap',
   '@tablet-sm': {
-    columnGap: '1$4',
+    columnGap: '$20',
   },
 });
 
