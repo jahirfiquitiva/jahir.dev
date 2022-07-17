@@ -204,4 +204,14 @@ export const Article = styled('article', {
     borderRadius: '.125rem',
     dark: { $colors$primary: '#0b152b' },
   },
+  '& img': {
+    width: '100%',
+    height: 'auto',
+    objectFit: 'contain',
+    borderRadius: '.5rem',
+    border: '1px solid $divider',
+  },
+  '& > img, & > p > img': {
+    my: '$$verticalContentPadding',
+  },
 });

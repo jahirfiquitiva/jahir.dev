@@ -49,17 +49,8 @@ export const ArticleFooter = styled('div', {
   },
 });
 
-export const ArticleImg = styled(Img, {
-  width: '100%',
-  height: 'auto',
-  objectFit: 'contain',
-  borderRadius: '.5rem',
-  border: '1px solid $divider',
-  my: '$$verticalContentPadding',
-});
-
-export const ArticleHero = styled(ArticleImg, {
-  objectFit: 'cover',
+export const ArticleHero = styled(Img, {
+  objectFit: 'cover !important',
   maxHeight: 180,
   '@mobile-md': { maxHeight: 211 },
   '@mobile-lg': { maxHeight: 239 },

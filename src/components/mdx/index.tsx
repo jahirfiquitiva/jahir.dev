@@ -1,19 +1,18 @@
 import type { ComponentProps } from 'react';
 
-import type { ImgProps } from '@/components/atoms';
+import { Img } from '@/components/atoms';
 import { Masonry } from '@/components/compounds';
 import { styled } from '~/stitches';
 
-import { ArticleImg, Reactions, TableContainer, Table } from './content';
+import { Reactions, TableContainer, Table } from './content';
 import { Grid, GridColumn } from './Grid';
 import { ImageComparison } from './ImageComparison';
 import { MdxLink } from './MdxLink';
 
+type ImgProps = ComponentProps<typeof Img>;
+
 export const mdxComponents = {
-  a: MdxLink,
-  img: (props: ImgProps) => <ArticleImg {...props} />,
-  Image: (props: ImgProps) => <ArticleImg {...props} />,
-  Img: (props: ImgProps) => <ArticleImg {...props} />,
+  Image: (props: ImgProps) => <Img {...props} />,
   ImageComparison,
   Grid,
   GridColumn,
@@ -25,6 +24,8 @@ export const mdxComponents = {
       <Table {...props} />
     </TableContainer>
   ),
+  a: MdxLink,
+  img: (props: ImgProps) => <Img {...props} />,
 };
 
 export * from './content';

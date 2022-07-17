@@ -4,22 +4,25 @@ import path from 'path';
 import { promisify } from 'util';
 
 import imageSize from 'image-size';
-import { ISizeCalculationResult } from 'image-size/dist/types/interface';
+import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
 import { getPlaiceholder } from 'plaiceholder';
-import { Node } from 'unist';
+import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
 const sizeOf = promisify(imageSize);
 interface ImageNode {
-  type: 'element';
-  tagName: 'img';
+  type: 'element' | string;
+  tagName: 'img' | string;
   properties: {
     src: string;
     height?: number;
     width?: number;
     blurDataURL?: string;
     placeholder?: 'blur' | 'empty';
+    loading?: 'lazy' | 'eager';
   };
+  children?: Array<ImageNode>;
+  parent?: ImageNode;
 }
 
 const isImageNode = (node: Node): node is ImageNode => {
@@ -33,7 +36,8 @@ const isImageNode = (node: Node): node is ImageNode => {
 };
 
 interface BlurResult {
-  size: { width: number; height: number };
+  width: number;
+  height: number;
   blur64?: string;
 }
 
@@ -41,42 +45,59 @@ export const getBlurData = async (
   imageSrc?: string,
 ): Promise<BlurResult | null> => {
   if (!imageSrc) return null;
+  const isExternal = imageSrc.startsWith('http');
   let res: ISizeCalculationResult | undefined;
   let blur64: string;
-  const isExternal = imageSrc.startsWith('http');
 
   if (!isExternal) {
     res = await sizeOf(path.join(process.cwd(), 'public', imageSrc));
-    blur64 = (await getPlaiceholder(imageSrc)).base64;
+    const plaiceholderResult = await getPlaiceholder(imageSrc);
+    res = {
+      ...res,
+      width: plaiceholderResult.img.width,
+      height: plaiceholderResult.img.height,
+    };
+    blur64 = plaiceholderResult.base64;
   } else {
     const imageRes = await fetch(imageSrc);
     const arrayBuffer = await imageRes.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
     res = await imageSize(buffer);
-    blur64 = (await getPlaiceholder(buffer)).base64;
+    const plaiceholderResult = await getPlaiceholder(buffer);
+    res = {
+      ...res,
+      width: plaiceholderResult.img.width,
+      height: plaiceholderResult.img.height,
+    };
+    blur64 = plaiceholderResult.base64;
   }
 
   if (!res) throw Error(`Invalid image with src "${imageSrc}"`);
   return {
-    size: { width: res.width || 0, height: res.height || 0 },
+    width: res.width || 0,
+    height: res.height || 0,
     blur64,
   };
 };
 
-const addProps = async (node: ImageNode): Promise<void> => {
-  const res = await getBlurData(node.properties.src).catch(() => null);
-  if (!res) return;
-
-  node.properties.width = res.size.width;
-  node.properties.height = res.size.height;
-
-  node.properties.blurDataURL = res.blur64;
-  node.properties.placeholder = 'blur';
+const addProps = async (node: ImageNode): Promise<ImageNode> => {
+  const src = node.properties.src.replace(/["']/g, '').replace(/%22/g, '');
+  const res = await getBlurData(src).catch(() => null);
+  if (!res) return node;
+  node.properties = {
+    ...node.properties,
+    width: res.width,
+    height: res.height,
+    blurDataURL: res.blur64,
+    placeholder: 'blur',
+    loading: 'lazy',
+  };
+  return node;
 };
 
 const imageMetadata = () => {
-  return async function transformer(tree: Node): Promise<Node> {
+  return async (tree: Node) => {
     const images: ImageNode[] = [];
 
     visit(tree, 'element', (node) => {

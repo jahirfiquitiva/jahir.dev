@@ -1,11 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { MDXOptions } from '@contentlayer/core';
 import rehypeToc from '@jsdevtools/rehype-toc';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+
+import imageMetadata from './image-metadata';
 
 interface RehypeElement {
   type: string;
@@ -16,8 +19,6 @@ interface RehypeElement {
   };
   children?: Array<RehypeElement>;
 }
-
-import imageMetadata from './image-metadata';
 
 const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
   try {
@@ -67,6 +68,7 @@ const mdx: MDXOptions = {
         customizeTOC,
       },
     ],
+    rehypeAccessibleEmojis,
   ],
 };
 

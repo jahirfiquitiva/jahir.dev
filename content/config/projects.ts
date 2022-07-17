@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
-import unique from '../../src/utils/tools/unique';
+import unique from './../../src/utils/tools/unique';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },

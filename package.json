@@ -46,6 +46,7 @@
     "prisma": "^4.0.0",
     "reading-time": "^1.5.0",
     "rehype": "^12.0.1",
+    "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.1.0",
     "rehype-prism-plus": "^1.4.2",
