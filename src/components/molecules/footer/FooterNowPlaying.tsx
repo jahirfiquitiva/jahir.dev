@@ -182,7 +182,11 @@ export const FooterNowPlaying: FC = () => {
           title={`Listen to "${data.title}" by "${data.artist}" on Spotify`}
           href={data.url || '#'}
         >
-          <RotatingImg size={26} src={data.image?.url || ''} />
+          <RotatingImg
+            size={26}
+            src={data.image?.url || ''}
+            alt={`Album image for song "${data.title}" by "${data.artist}"`}
+          />
           <ScrollContainer css={{ $$animDuration: `${animationDuration}s` }}>
             <ScrollingText>{scrollingText}</ScrollingText>
             <ScrollingText pseudo>{scrollingText}</ScrollingText>

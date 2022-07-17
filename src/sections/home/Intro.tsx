@@ -70,7 +70,7 @@ export const Intro: FC = () => {
     <IntroSection id={'intro'}>
       <TextsContainer>
         <WavingHello />
-        <Heading as={'h1'} shadow={'blue'} css={{ fontSize: '$xl' }}>
+        <Heading as={'h2'} shadow={'blue'} css={{ fontSize: '$xl' }}>
           I am&nbsp;
           <Heading as={'span'} gradient={'brand-to-blue'}>
             Jahir Fiquitiva
