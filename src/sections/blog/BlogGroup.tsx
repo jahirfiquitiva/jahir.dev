@@ -1,0 +1,67 @@
+import type { FC } from '@/types';
+import type { BlogGroup as BlogGroupProps } from '@/utils';
+import { styled } from '~/stitches';
+
+import { BlogCard } from './BlogCard';
+
+const GroupSection = styled('ul', {
+  display: 'flex',
+  flexDirection: 'column',
+  listStyle: 'none',
+  marginInline: 0,
+  marginBlock: 0,
+  paddingInline: 0,
+});
+
+const GroupHeader = styled('li', {
+  display: 'flex',
+  alignItems: 'flex-end',
+  my: '1rem',
+  gap: '.5rem',
+  '& > h4': {
+    lineHeight: 1,
+  },
+  '& > hr': {
+    border: 'none',
+    m: 0,
+    height: 1,
+    backgroundColor: '$divider',
+    flex: 1,
+  },
+});
+
+const GroupSectionHeader: FC<{ year: number }> = ({ year }) => {
+  return (
+    <GroupHeader>
+      <h4>{year}</h4>
+      <hr />
+    </GroupHeader>
+  );
+};
+
+export const BlogGroup: FC<BlogGroupProps> = (props) => {
+  const { year, posts } = props;
+
+  return (
+    <GroupSection
+      id={`posts-from-${year}`}
+      aria-label={`Posts from ${year}`}
+      title={`Posts from ${year}`}
+    >
+      <GroupSectionHeader year={year} />
+      {(posts || []).map((post, index) => {
+        return (
+          <li
+            key={
+              post.slug ||
+              // eslint-disable-next-line newline-per-chained-call
+              `${post.title.toLowerCase().split(' ').join('-')}-${index}`
+            }
+          >
+            <BlogCard post={post} />
+          </li>
+        );
+      })}
+    </GroupSection>
+  );
+};

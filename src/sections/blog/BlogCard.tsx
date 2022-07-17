@@ -54,11 +54,12 @@ const StyledBlogCard = styled(Link, {
 const ContentContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  gap: '.375rem',
 });
 
 const Title = styled('span', {
   fontSize: '$xs',
-  fontWeight: 600,
+  fontWeight: 700,
   useFont: 'manrope',
   color: '$text-primary',
   transition: 'all .15s ease-in-out',
@@ -84,7 +85,7 @@ const BlogCardHero = styled(Img, {
   height: 'auto',
   borderRadius: '.25rem',
   '@tablet-sm': {
-    aspectRatio: '3 / 2',
+    aspectRatio: '4 / 3',
     maxWidth: 144,
   },
 });

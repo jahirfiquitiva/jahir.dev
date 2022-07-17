@@ -8,6 +8,8 @@ import type { FC, Post } from '@/types';
 import { styled } from '~/stitches';
 
 import { BlogCard } from './BlogCard';
+import { groupBlogPosts } from '@/utils';
+import { BlogGroup } from './BlogGroup';
 
 const BlogsContainer = styled('div', {
   display: 'flex',
@@ -64,11 +66,7 @@ export const Blog: FC<BlogProps> = (props) => {
   const [search, setSearch] = useState('');
 
   const filteredPosts = useMemo(() => {
-    return posts?.filter(
-      (post) =>
-        post?.title.toLowerCase().includes(search.toLowerCase()) ||
-        post?.excerpt?.toLowerCase().includes(search.toLowerCase()),
-    );
+    return groupBlogPosts(posts, search);
   }, [posts, search]);
 
   const renderSearchComponents = () => {
@@ -107,15 +105,12 @@ export const Blog: FC<BlogProps> = (props) => {
       </BlogHeader>
       {renderSearchComponents()}
       <BlogsContainer>
-        {(filteredPosts || []).map((post, index) => {
+        {(filteredPosts || []).map((group, index) => {
           return (
-            <BlogCard
-              key={
-                post.slug ||
-                // eslint-disable-next-line newline-per-chained-call
-                `${post.title.toLowerCase().split(' ').join('-')}-${index}`
-              }
-              post={post}
+            <BlogGroup
+              key={`${index}-${group.year}`}
+              year={group.year}
+              posts={group.posts}
             />
           );
         })}
