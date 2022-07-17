@@ -96,6 +96,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
           <LinkButton
             title={"Jahir's resume pdf file"}
             href={'/resume'}
+            openInNewTab
             outlined
           >
             <Icon path={mdiFileCodeOutline} size={0.9} />
