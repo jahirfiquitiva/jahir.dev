@@ -4,8 +4,11 @@ import { Img, Link } from '@/components/atoms';
 import { useSafePalette } from '@/hooks';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
-import { getReadableColor, hexToRGB } from '@/utils';
+import { formatDate, getReadableColor, hexToRGB, icons } from '@/utils';
 import { styled } from '~/stitches';
+import useRequest from '@/hooks/useRequest';
+import Icon from '@mdi/react';
+import { mdiClockOutline, mdiEyeOutline } from '@mdi/js';
 
 const StyledBlogCard = styled(Link, {
   $$color: '$colors$toolbar-glow',
@@ -30,13 +33,9 @@ const StyledBlogCard = styled(Link, {
     mx: '-1rem',
     gap: '1rem',
   },
-  '& > div:first-of-type > *': {
-    transition: 'color .15s ease-in-out',
-  },
   hocus: {
     transform: 'translateY(-1px)',
     backgroundColor: 'rgba($$color / .065)',
-    borderColor: 'rgba($$color / .5)',
     textDecoration: 'none',
     color: '$text-primary',
     dark: { color: '$text-primary', backgroundColor: 'rgba($$color / .1)' },
@@ -45,16 +44,25 @@ const StyledBlogCard = styled(Link, {
       color: 'rgba($$color / 1)',
       dark: { textDecoration: 'underline', color: 'rgba($$color / 1)' },
     },
-    '& > div:not(:first-of-type)': {
-      borderColor: 'rgba($$color / .5)',
-    },
+  },
+});
+
+const BlogCardHero = styled(Img, {
+  aspectRatio: '2 / 1',
+  height: 'auto',
+  borderRadius: '.25rem',
+  '@tablet-sm': {
+    minHeight: '100%',
+    aspectRatio: '5 / 3',
+    maxWidth: 160,
   },
 });
 
 const ContentContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '.375rem',
+  gap: '.25rem',
+  py: '.0625rem',
 });
 
 const Title = styled('span', {
@@ -80,24 +88,48 @@ const Excerpt = styled('p', {
   },
 });
 
-const BlogCardHero = styled(Img, {
-  aspectRatio: '2 / 1',
-  height: 'auto',
-  borderRadius: '.25rem',
-  '@tablet-sm': {
-    aspectRatio: '4 / 3',
-    maxWidth: 144,
+const Published = styled(Excerpt, {
+  color: '$text-tertiary',
+  '& > span': {
+    textDecoration: 'underline',
   },
 });
 
+const InfoContainer = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  columnGap: '1rem',
+  rowGap: '.375rem',
+  mt: '.25rem',
+  color: '$text-tertiary',
+  fontSize: '$3xs',
+  flexWrap: 'wrap',
+  '@tablet-sm': {
+    columnGap: '1.25rem',
+  },
+});
+
+const InfoSpan = styled('span', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '.375rem',
+  lineHeight: 1,
+});
+
 interface BlogCardProps {
-  post?: Post;
+  post: Post;
 }
 
+// eslint-disable-next-line max-lines-per-function
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
+  const { link, slug, devToId } = post;
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(post?.hero);
+
+  const { data: views } = useRequest<{ total?: string }>(
+    `/api/views/blog--${slug}?devToId=${devToId}`,
+  );
 
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
@@ -109,6 +141,19 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     );
   }, [post?.color, isDark, themeReady, heroPalette]);
 
+  const rightLink = useMemo<string>(() => {
+    return link && link.length > 0 ? link : `/blog/${slug}`;
+  }, [link, slug]);
+
+  const domain = useMemo<string>(() => {
+    try {
+      const url = new URL(rightLink);
+      return url.hostname.replace('www.', '');
+    } catch (e) {
+      return '';
+    }
+  }, [rightLink]);
+
   const extraHeroProps = useMemo(() => {
     if (post?.heroMeta && post?.heroMeta.blur64) {
       return { placeholder: 'blur', blurDataURL: post?.heroMeta.blur64 } as {
@@ -119,11 +164,10 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     return {};
   }, [post?.heroMeta]);
 
-  if (!post) return null;
   return (
     <StyledBlogCard
       title={`Blog post: ${post?.title}`}
-      href={post.link ? post.link : `/blog/${post.slug}`}
+      href={rightLink}
       underline={false}
       css={{ $$color: color || '$colors$toolbar-glow' }}
     >
@@ -133,11 +177,34 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
         width={post?.heroMeta?.size?.width || 144}
         height={post?.heroMeta?.size?.height || 72}
         {...extraHeroProps}
-        css={{ objectPosition: post.slug.includes('uses') ? 'top' : 'center' }}
+        css={{ objectPosition: slug.includes('uses') ? 'top' : 'center' }}
       />
       <ContentContainer>
         <Title>{post.title}</Title>
         <Excerpt>{post.excerpt}</Excerpt>
+        {domain ? (
+          <Published>
+            Published on <span>{domain}</span>
+          </Published>
+        ) : null}
+        <InfoContainer>
+          <InfoSpan>
+            <Icon path={icons.calendarOutline} size={0.73} />
+            {formatDate(post.date, { year: undefined, month: 'short' })}
+          </InfoSpan>
+          {(post.readingTime?.minutes || 0) > 0 ? (
+            <InfoSpan>
+              <Icon path={mdiClockOutline} size={0.73} />
+              {post.readingTime?.text}
+            </InfoSpan>
+          ) : null}
+          {views?.total && +(views?.total || '0') > 2 ? (
+            <InfoSpan>
+              <Icon path={mdiEyeOutline} size={0.73} />
+              {views?.total} views
+            </InfoSpan>
+          ) : null}
+        </InfoContainer>
       </ContentContainer>
     </StyledBlogCard>
   );
