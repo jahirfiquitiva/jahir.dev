@@ -3,13 +3,21 @@ import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
 import { Field, Heading, LinkButton } from '@/components/atoms';
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Post } from '@/types';
 import { styled } from '~/stitches';
 
 import { BlogCard } from './BlogCard';
+
+const BlogsContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '.75rem',
+  '@tablet-md': {
+    gap: '1rem',
+  },
+});
 
 const BlogHeader = styled('div', {
   width: '100%',
@@ -50,10 +58,6 @@ const RssLink = styled(LinkButton, {
 interface BlogProps {
   posts?: Array<Post>;
 }
-
-const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints['0'] = 1;
-masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
 
 // eslint-disable-next-line max-lines-per-function
 export const Blog: FC<BlogProps> = (props) => {
@@ -103,7 +107,7 @@ export const Blog: FC<BlogProps> = (props) => {
         </BlogButtons>
       </BlogHeader>
       {renderSearchComponents()}
-      <Masonry breakpoints={masonryBreakpoints} gap={'1.1rem'}>
+      <BlogsContainer>
         {(filteredPosts || []).map((post, index) => {
           return (
             <BlogCard
@@ -116,7 +120,7 @@ export const Blog: FC<BlogProps> = (props) => {
             />
           );
         })}
-      </Masonry>
+      </BlogsContainer>
     </Section>
   );
 };
