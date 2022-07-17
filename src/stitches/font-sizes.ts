@@ -21,6 +21,6 @@ export const fontSizes: FontSizesObject = {
   md: `${baseFontSize * 1.5}rem`,
   sm: `${baseFontSize * 1.25}rem`,
   xs: `${baseFontSize}rem`,
-  '2xs': `${baseFontSize * 0.875}rem`,
-  '3xs': `${baseFontSize * 0.75}rem`,
+  '2xs': `${baseFontSize * 0.921875}rem`,
+  '3xs': `${baseFontSize * 0.84375}rem`,
 };
