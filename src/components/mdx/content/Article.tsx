@@ -207,7 +207,6 @@ export const Article = styled('article', {
   '& img': {
     width: '100%',
     height: 'auto',
-    objectFit: 'contain',
     borderRadius: '.5rem',
     border: '1px solid $divider',
   },

@@ -49,15 +49,12 @@ export const ArticleFooter = styled('div', {
 });
 
 export const ArticleHero = styled(Img, {
-  objectFit: 'cover !important',
+  overflow: 'hidden',
   variants: {
     cropHero: {
       true: {
-        maxHeight: 180,
-        '@mobile-md': { maxHeight: 211 },
-        '@mobile-lg': { maxHeight: 239 },
-        '@tablet-sm': { maxHeight: 298 },
-        '@tablet-lg': { maxHeight: 384 },
+        aspectRatio: '2 / 1',
+        height: 'auto',
       },
     },
   },

@@ -14,10 +14,14 @@ export type ImgProps = SizeProps | WidthHeightProps;
 
 const BaseImg: FC<ImgProps> = (props) => {
   const { size = 0, ...otherProps } = props as SizeProps;
-  const { width = size, height = size } = otherProps as WidthHeightProps;
+  const {
+    width = size,
+    height = size,
+    ...rest
+  } = otherProps as WidthHeightProps;
   return (
     <FutureNextImage
-      {...otherProps}
+      {...rest}
       width={width}
       height={height}
       loading={props.priority ? undefined : props.loading}

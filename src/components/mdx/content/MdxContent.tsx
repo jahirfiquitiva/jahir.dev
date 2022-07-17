@@ -116,7 +116,12 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
   const extraHeroProps = useMemo(() => {
     if (heroMeta && heroMeta.blur64) {
-      return { placeholder: 'blur', blurDataURL: heroMeta.blur64 };
+      return {
+        placeholder: 'blur',
+        blurDataURL: heroMeta.blur64,
+        width: heroMeta.size.width || 666,
+        height: heroMeta.size.height || 375,
+      };
     }
     return {};
   }, [heroMeta]);
@@ -155,10 +160,8 @@ export const MdxContent: FC<CommonContent> = (props) => {
             // @ts-ignore
             <ArticleHero
               src={hero || ''}
-              alt={title}
+              alt={`Cover image for blog "${title}"`}
               priority
-              width={666}
-              height={375}
               {...extraHeroProps}
               quality={100}
               cropHero={!fullHeightHero || !slug?.includes('uses')}

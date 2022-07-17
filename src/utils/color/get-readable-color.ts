@@ -6,6 +6,7 @@ import a11yPlugin from 'colord/plugins/a11y';
 
 extend([a11yPlugin]);
 
+const bgColor = { dark: '#080f1e', light: '#f6f9fe' };
 export const getReadableColor = (
   desiredFgColor?: string | null,
   isDark?: boolean,
@@ -13,8 +14,11 @@ export const getReadableColor = (
   if (!desiredFgColor) return null;
   let fgColor = colord(desiredFgColor);
   // Colors from css variables: primary
-  const bgColor = isDark ? '#080f1e' : '#f6f9fe';
-  while (!fgColor.isReadable(bgColor, { level: isDark ? 'AAA' : 'AA' })) {
+  while (
+    !fgColor.isReadable(bgColor[isDark ? 'dark' : 'light'], {
+      level: isDark ? 'AAA' : 'AA',
+    })
+  ) {
     fgColor = isDark ? fgColor.lighten() : fgColor.darken();
   }
   return fgColor.toHex();

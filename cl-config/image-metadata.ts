@@ -36,8 +36,10 @@ const isImageNode = (node: Node): node is ImageNode => {
 };
 
 interface BlurResult {
-  width: number;
-  height: number;
+  size: {
+    width: number;
+    height: number;
+  };
   blur64?: string;
 }
 
@@ -75,8 +77,7 @@ export const getBlurData = async (
 
   if (!res) throw Error(`Invalid image with src "${imageSrc}"`);
   return {
-    width: res.width || 0,
-    height: res.height || 0,
+    size: { width: res.width || 0, height: res.height || 0 },
     blur64,
   };
 };
@@ -87,8 +88,8 @@ const addProps = async (node: ImageNode): Promise<ImageNode> => {
   if (!res) return node;
   node.properties = {
     ...node.properties,
-    width: res.width,
-    height: res.height,
+    width: res.size.width,
+    height: res.size.height,
     blurDataURL: res.blur64,
     placeholder: 'blur',
     loading: 'lazy',

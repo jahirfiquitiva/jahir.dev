@@ -1,47 +1,45 @@
 import { useMemo } from 'react';
 
-import { Link } from '@/components/atoms';
+import { Img, Link } from '@/components/atoms';
+import { useSafePalette } from '@/hooks';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
-import { getColorFromPalette, getReadableColor, hexToRGB } from '@/utils';
+import { getReadableColor, hexToRGB } from '@/utils';
 import { styled } from '~/stitches';
-import { useSafePalette } from '@/hooks';
 
 const StyledBlogCard = styled(Link, {
   $$color: '$colors$toolbar-glow',
-  $$borderSize: '1px',
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  py: '1rem',
-  px: '1.2rem',
-  gap: '.6rem',
-  border: '$$borderSize solid $divider',
+  p: '.625rem',
+  mx: '-.625rem',
+  gap: '.75rem',
   borderRadius: '.5rem',
   color: '$text-secondary',
   transition: 'all .25s ease-in-out',
-  '& > div:first-of-type > img': {
-    filter:
-      'saturate(0.95) opacity(0.85) drop-shadow(0 0 1px rgba($$color / .5))',
+  overflow: 'hidden',
+  outlineOffset: '0 !important',
+  '@tablet-sm': {
+    p: '.75rem',
+    mx: '-.75rem',
+    flexDirection: 'row',
+  },
+  '@tablet-md': {
+    p: '1rem',
+    mx: '-1rem',
+    gap: '1rem',
   },
   '& > div:first-of-type > *': {
     transition: 'color .15s ease-in-out',
   },
   hocus: {
-    $$borderSize: '2px',
-    py: 'calc(1rem - 1px)',
-    px: 'calc(1.2rem - 1px)',
-    transform: 'scale(1.0125)',
-    boxShadow: '0 0 8px 2px rgba($$color / .2)',
-    backgroundColor: 'rgba($$color / .035)',
+    transform: 'translateY(-1px)',
+    backgroundColor: 'rgba($$color / .065)',
     borderColor: 'rgba($$color / .5)',
     textDecoration: 'none',
     color: '$text-primary',
-    dark: { color: '$text-primary' },
-    '& > div:first-of-type > img': {
-      filter:
-        'saturate(1) opacity(1) drop-shadow(0 1px 2px rgba($$color / .5))',
-    },
+    dark: { color: '$text-primary', backgroundColor: 'rgba($$color / .1)' },
     '& > div:first-of-type > span': {
       textDecoration: 'underline',
       color: 'rgba($$color / 1)',
@@ -53,23 +51,42 @@ const StyledBlogCard = styled(Link, {
   },
 });
 
-const TitleContainer = styled('div', {
+const ContentContainer = styled('div', {
   display: 'flex',
-  alignItems: 'center',
-  ml: '-.125rem',
-  gap: '.6rem',
-  fontSize: '$sm',
+  flexDirection: 'column',
+});
+
+const Title = styled('span', {
+  fontSize: '$xs',
   fontWeight: 600,
   useFont: 'manrope',
   color: '$text-primary',
   transition: 'all .15s ease-in-out',
-  '& > span': {
-    ellipsize: true,
+});
+
+const Excerpt = styled('p', {
+  display: '-webkit-box',
+  fontSize: '$3xs',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  '-webkit-box-orient': 'vertical',
+  '-webkit-line-clamp': 1,
+  maxLines: 1,
+  '@mobile-lg': {
+    fontSize: '$2xs',
+    '-webkit-line-clamp': 2,
+    maxLines: 2,
   },
 });
 
-const Description = styled('p', {
-  fontSize: '$2xs',
+const BlogCardHero = styled(Img, {
+  aspectRatio: '2 / 1',
+  height: 'auto',
+  borderRadius: '.25rem',
+  '@tablet-sm': {
+    aspectRatio: '3 / 2',
+    maxWidth: 144,
+  },
 });
 
 interface BlogCardProps {
@@ -84,27 +101,43 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
     return hexToRGB(
-      isDark
-        ? getReadableColor(heroPalette.vibrant || post?.color, isDark) ||
-            post?.color
-        : getColorFromPalette(heroPalette, isDark) || post?.color,
+      getReadableColor(heroPalette.vibrant || post?.color, isDark) ||
+        post?.color,
       undefined,
       true,
     );
   }, [post?.color, isDark, themeReady, heroPalette]);
 
+  const extraHeroProps = useMemo(() => {
+    if (post?.heroMeta && post?.heroMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: post?.heroMeta.blur64 } as {
+        placeholder: 'blur' | 'empty';
+        blurDataURL?: string;
+      };
+    }
+    return {};
+  }, [post?.heroMeta]);
+
   if (!post) return null;
   return (
     <StyledBlogCard
       title={`Blog post: ${post?.title}`}
-      href={`/blog/${post.slug}`}
+      href={post.link ? post.link : `/blog/${post.slug}`}
       underline={false}
       css={{ $$color: color || '$colors$toolbar-glow' }}
     >
-      <TitleContainer>
-        <span>{post.title}</span>
-      </TitleContainer>
-      <Description>{post.excerpt}</Description>
+      <BlogCardHero
+        src={post.hero || ''}
+        alt={`Cover image for blog "${post.title}"`}
+        width={post?.heroMeta?.size?.width || 144}
+        height={post?.heroMeta?.size?.height || 72}
+        {...extraHeroProps}
+        css={{ objectPosition: post.slug.includes('uses') ? 'top' : 'center' }}
+      />
+      <ContentContainer>
+        <Title>{post.title}</Title>
+        <Excerpt>{post.excerpt}</Excerpt>
+      </ContentContainer>
     </StyledBlogCard>
   );
 };

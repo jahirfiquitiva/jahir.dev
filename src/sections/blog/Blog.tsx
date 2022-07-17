@@ -1,4 +1,4 @@
-import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify, mdiRss } from '@mdi/js';
+import { mdiMagnify, mdiRss } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
@@ -54,7 +54,6 @@ interface BlogProps {
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
 masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
-masonryBreakpoints[(breakpointsValues['tablet-sm'] || 0).toString()] = 2;
 
 // eslint-disable-next-line max-lines-per-function
 export const Blog: FC<BlogProps> = (props) => {
