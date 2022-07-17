@@ -118,6 +118,16 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     );
   }, [project?.color, project?.darkColor, isDark, themeReady]);
 
+  const extraIconProps = useMemo(() => {
+    if (project?.iconMeta && project?.iconMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: project?.iconMeta.blur64 } as {
+        placeholder: 'blur' | 'empty';
+        blurDataURL?: string;
+      };
+    }
+    return {};
+  }, [project?.iconMeta]);
+
   if (!project) return null;
   return (
     <StyledProjectCard
@@ -135,6 +145,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
           src={`/static/images/projects/${project.icon}`}
           alt={`Icon for project "${project.name}"`}
           size={44}
+          {...extraIconProps}
         />
         <span>{project.name}</span>
       </TitleContainer>

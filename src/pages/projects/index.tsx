@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
         'repo',
         'owner',
         'inProgress',
+        'iconMeta',
       ]),
     );
 

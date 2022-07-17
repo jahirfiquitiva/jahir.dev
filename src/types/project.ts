@@ -1,3 +1,5 @@
+import { HeroMeta } from '@/types';
+
 export interface Project {
   slug: string;
   name: string;
@@ -13,4 +15,5 @@ export interface Project {
   repo?: string;
   owner?: string;
   inProgress?: boolean;
+  iconMeta?: HeroMeta;
 }

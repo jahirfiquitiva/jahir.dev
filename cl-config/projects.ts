@@ -3,6 +3,10 @@ import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
 import unique from './../src/utils/tools/unique';
+import { getBlurData } from './image-metadata';
+
+const getIconUrl = (icon?: string) =>
+  icon ? (icon.startsWith('http') ? icon : `/static/images/projects/${icon}`) : '';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -28,6 +32,12 @@ const computedFields: ComputedFields = {
       );
     },
   },
+  iconMeta: {
+    type: 'json',
+    resolve: async (doc) => {
+      return getBlurData(getIconUrl(doc.icon));
+    },
+  },
 };
 
 const Project = defineDocumentType(() => ({
@@ -48,6 +58,7 @@ const Project = defineDocumentType(() => ({
     repo: { type: 'string' },
     owner: { type: 'string' },
     inProgress: { type: 'boolean' },
+    iconMeta: { type: 'json' },
   },
   computedFields,
 }));

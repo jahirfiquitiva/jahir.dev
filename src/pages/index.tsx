@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
         'repo',
         'owner',
         'inProgress',
+        'iconMeta',
       ]),
     )
     .filter((it) => !it.hide);
