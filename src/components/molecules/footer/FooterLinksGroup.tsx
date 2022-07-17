@@ -28,7 +28,7 @@ const List = styled('ul', {
     meta: {
       true: {
         flexDirection: 'row',
-        marginTop: '$12',
+        marginTop: '$space$12',
         '@tablet-sm': {
           flexDirection: 'column',
           marginTop: 0,
