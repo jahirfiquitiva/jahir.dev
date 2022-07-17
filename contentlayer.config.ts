@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { makeSource } from 'contentlayer/source-files';
 
-import Blog from './content/config/blogs';
-import mdx from './content/config/mdx';
-import Project from './content/config/projects';
+import Blog from './cl-config/blogs';
+import mdx from './cl-config/mdx';
+import Project from './cl-config/projects';
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'content',
