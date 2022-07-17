@@ -9,7 +9,8 @@
     "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/blur.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "predev": "yarn clean && prisma generate && contentlayer build --clearCache",
-    "prebuild": "yarn predev"
+    "prebuild": "yarn predev",
+    "analyze": "cross-env ANALYZE=true NODE_ENV=production next build && node scripts/analyze-bundles.js"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.11",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@next/bundle-analyzer": "^12.2.2",
     "@types/canvas-confetti": "^1.4.3",
     "@types/node": "^18.0.4",
     "@types/react": "^18.0.15",
