@@ -71,7 +71,7 @@ export const globalStyles = globalCss({
       $$verticalContentPadding: '$space$30',
     },
     '@tablet-lg': {
-      $$verticalContentPadding: '$space$40',
+      $$verticalContentPadding: '$space$36',
     },
     '& section': {
       scrollMarginTop: '$$scrollMargin',

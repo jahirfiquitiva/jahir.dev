@@ -3,7 +3,7 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import useRequest from '@/hooks/useRequest';
+import { useRequest } from '@/hooks';
 import { useTheme } from '@/providers/theme';
 import type { Project, FC } from '@/types';
 import { getReadableColor, hexToRGB } from '@/utils';
@@ -16,12 +16,16 @@ const StyledProjectCard = styled(Link, {
   display: 'flex',
   flexDirection: 'column',
   py: '$16',
-  px: '$20',
+  px: '$18',
   gap: '$10',
+  backgroundColor: 'rgba(9 17 34 / 0.006)',
   border: '$$borderSize solid $divider',
   borderRadius: '$space$8',
   color: '$text-secondary',
   transition: 'all .25s ease-in-out',
+  dark: {
+    backgroundColor: 'rgba(235 240 251 / 0.008)',
+  },
   '& > div:first-of-type > img': {
     filter:
       'saturate(0.95) opacity(0.85) drop-shadow(0 0 1px rgba($$color / .5))',
@@ -32,14 +36,14 @@ const StyledProjectCard = styled(Link, {
   hocus: {
     $$borderSize: '2px',
     py: 'calc($16 - 1px)',
-    px: 'calc($20 - 1px)',
+    px: 'calc($18 - 1px)',
     transform: 'scale(1.0125)',
     boxShadow: '0 0 8px 2px rgba($$color / .2)',
     backgroundColor: 'rgba($$color / .035)',
     borderColor: 'rgba($$color / .5)',
     textDecoration: 'none',
     color: '$text-primary',
-    dark: { color: '$text-primary' },
+    dark: { color: '$text-primary', backgroundColor: 'rgba($$color / .04)' },
     '& > div:first-of-type > img': {
       filter:
         'saturate(1) opacity(1) drop-shadow(0 1px 2px rgba($$color / .5))',
@@ -59,7 +63,7 @@ const TitleContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   ml: '-$2',
-  gap: '$10',
+  gap: '$12',
   fontSize: '$sm',
   fontWeight: 600,
   useFont: 'manrope',

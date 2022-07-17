@@ -2,7 +2,7 @@ import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Img, Link } from '@/components/atoms';
-import useRequest from '@/hooks/useRequest';
+import { useRequest } from '@/hooks';
 import type { TrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';

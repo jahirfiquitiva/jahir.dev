@@ -11,13 +11,15 @@ const GroupSection = styled('ul', {
   marginInline: 0,
   marginBlock: 0,
   paddingInline: 0,
+  gap: '$16',
 });
 
 const GroupHeader = styled('li', {
   display: 'flex',
   alignItems: 'flex-end',
-  my: '$16',
-  gap: '$8',
+  gap: '$12',
+  mt: '$6',
+  mb: '$4',
   '& > h4': {
     lineHeight: 1,
   },

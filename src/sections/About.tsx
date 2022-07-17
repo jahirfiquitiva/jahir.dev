@@ -76,6 +76,7 @@ const PhotoFigure = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
   mt: '$$verticalContentPadding',
+  mb: 'calc($$verticalContentPadding / 2)',
   '& img': {
     width: '100%',
     height: 'auto',

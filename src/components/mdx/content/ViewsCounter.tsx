@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import { useHasMounted } from '@/hooks';
-import useRequest from '@/hooks/useRequest';
+import { useHasMounted, useRequest } from '@/hooks';
 import type { FC } from '@/types';
 
 interface ViewsCounterProps {

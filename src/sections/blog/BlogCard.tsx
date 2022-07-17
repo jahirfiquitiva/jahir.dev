@@ -1,14 +1,13 @@
+import { mdiClockOutline, mdiEyeOutline } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { useSafePalette } from '@/hooks';
+import { useSafePalette, useRequest } from '@/hooks';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
 import { formatDate, getReadableColor, hexToRGB, icons } from '@/utils';
 import { styled } from '~/stitches';
-import useRequest from '@/hooks/useRequest';
-import Icon from '@mdi/react';
-import { mdiClockOutline, mdiEyeOutline } from '@mdi/js';
 
 const StyledBlogCard = styled(Link, {
   $$color: '$colors$toolbar-glow',
@@ -18,7 +17,7 @@ const StyledBlogCard = styled(Link, {
   p: '$10',
   mx: '-$10',
   gap: '$12',
-  borderRadius: '$space$8',
+  borderRadius: '$space$10',
   color: '$text-secondary',
   transition: 'all .25s ease-in-out',
   overflow: 'hidden',

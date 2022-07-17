@@ -2,7 +2,7 @@ import { mdiInstagram } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Img, Link } from '@/components/atoms';
-import useRequest from '@/hooks/useRequest';
+import { useRequest } from '@/hooks';
 import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';

@@ -13,7 +13,7 @@ interface SwrData<T = unknown> {
   ) => Promise<T | undefined>;
 }
 
-const useRequest = <T>(url: string): SwrData<T> => {
+export const useRequest = <T>(url: string): SwrData<T> => {
   const { data, error, mutate } = useSWR<T>(url, fetcher);
   return {
     data,
@@ -22,5 +22,3 @@ const useRequest = <T>(url: string): SwrData<T> => {
     loading: !data && !error,
   };
 };
-
-export default useRequest;
