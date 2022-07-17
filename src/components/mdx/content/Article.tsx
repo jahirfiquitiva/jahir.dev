@@ -8,6 +8,7 @@ export const Article = styled('article', {
     display: 'block',
     position: 'relative',
     scrollMarginTop: '$$scrollMargin',
+    mb: '.25rem',
     hocus: {
       '& > a.anchor': {
         visibility: 'visible',
@@ -15,13 +16,13 @@ export const Article = styled('article', {
     },
   },
   '& h1': {
-    mt: '1.8rem',
+    mt: '2rem',
   },
   '& h2': {
-    mt: '1.6rem',
+    mt: '1.75rem',
   },
   '& h3,  & h4': {
-    mt: '1.4rem',
+    mt: '1.5rem',
   },
   '& h5,  & h6': {
     mt: '1.2rem',
@@ -211,7 +212,10 @@ export const Article = styled('article', {
     borderRadius: '.5rem',
     border: '1px solid $divider',
   },
-  '& > img, & > p > img': {
+  '& > img:first-of-type': {
     my: '$$verticalContentPadding',
+  },
+  '& > img, & > p > img': {
+    my: 'calc($$verticalContentPadding / 4)',
   },
 });
