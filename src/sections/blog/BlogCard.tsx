@@ -3,8 +3,9 @@ import { useMemo } from 'react';
 import { Link } from '@/components/atoms';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
-import { getReadableColor, hexToRGB } from '@/utils';
+import { getColorFromPalette, getReadableColor, hexToRGB } from '@/utils';
 import { styled } from '~/stitches';
+import { useSafePalette } from '@/hooks';
 
 const StyledBlogCard = styled(Link, {
   $$color: '$colors$toolbar-glow',
@@ -78,11 +79,19 @@ interface BlogCardProps {
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
   const { isDark, themeReady } = useTheme();
+  const { data: heroPalette } = useSafePalette(post?.hero);
 
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
-    return hexToRGB(getReadableColor(post?.color, isDark), undefined, true);
-  }, [post?.color, isDark, themeReady]);
+    return hexToRGB(
+      isDark
+        ? getReadableColor(heroPalette.vibrant || post?.color, isDark) ||
+            post?.color
+        : getColorFromPalette(heroPalette, isDark) || post?.color,
+      undefined,
+      true,
+    );
+  }, [post?.color, isDark, themeReady, heroPalette]);
 
   if (!post) return null;
   return (
