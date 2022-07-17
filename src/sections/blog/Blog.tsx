@@ -4,7 +4,6 @@ import { useMemo, useState } from 'react';
 
 import { Field, Heading, LinkButton } from '@/components/atoms';
 import { Section } from '@/components/elements';
-import { breakpointsValues } from '@/stitches';
 import type { FC, Post } from '@/types';
 import { styled } from '~/stitches';
 
