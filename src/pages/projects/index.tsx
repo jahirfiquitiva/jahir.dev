@@ -23,20 +23,6 @@ const Blog: NextPage<BlogProps> = (props) => {
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
       <Projects projects={projects} />
-      <ul>
-        {(projects || []).map((project) => {
-          return (
-            <li key={project.slug}>
-              <Link
-                title={project.name}
-                href={project.hide ? project.link : `/projects/${project.slug}`}
-              >
-                {project.name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
     </Layout>
   );
 };

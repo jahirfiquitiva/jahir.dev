@@ -85,7 +85,7 @@ export const Masonry: FC<MasonryProps> = (props) => {
 
     let count = breakpoints.length > 0 ? mappedBreakpoints[breakpoints[0]] : 1;
     breakpoints.forEach((breakpoint) => {
-      if (breakpoint < windowWidth) {
+      if (breakpoint < windowWidth + 1) {
         count = mappedBreakpoints[breakpoint];
       }
     });
