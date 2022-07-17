@@ -63,6 +63,7 @@ export interface FooterLinkProps {
   title: string;
   href: string;
   gradient?: GradientOption;
+  a11yTitle?: string;
 }
 
 interface FooterLinksGroupProps {
@@ -80,7 +81,7 @@ export const FooterLinksGroup: FC<FooterLinksGroupProps> = (props) => {
           <li key={link.title}>
             <FooterLink
               href={link.href}
-              title={`${link.title} page`}
+              title={link.a11yTitle ? link.a11yTitle : `${link.title} page`}
               gradient={link.gradient}
             >
               <span>{link.title}</span>

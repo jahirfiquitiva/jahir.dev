@@ -47,6 +47,7 @@ const Project = defineDocumentType(() => ({
     stack: { type: 'string' },
     repo: { type: 'string' },
     owner: { type: 'string' },
+    inProgress: { type: 'boolean' },
   },
   computedFields,
 }));

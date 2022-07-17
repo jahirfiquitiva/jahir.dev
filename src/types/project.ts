@@ -12,4 +12,5 @@ export interface Project {
   hide?: boolean;
   repo?: string;
   owner?: string;
+  inProgress?: boolean;
 }

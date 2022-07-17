@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { Link } from '@/components/atoms';
 import { Layout } from '@/components/elements';
+import { Projects } from '@/sections';
 import type { Project } from '@/types';
 import { pick } from '@/utils';
 import {
@@ -21,6 +22,7 @@ const Blog: NextPage<BlogProps> = (props) => {
       <Head>
         <title>Projects | Jahir Fiquitiva</title>
       </Head>
+      <Projects projects={projects} />
       <ul>
         {(projects || []).map((project) => {
           return (
@@ -58,6 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
         'hide',
         'repo',
         'owner',
+        'inProgress',
       ]),
     );
 

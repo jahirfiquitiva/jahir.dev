@@ -73,12 +73,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const shouldRedirect = post && post.link && post.link.length > 0;
   if (shouldRedirect) {
     return {
-      props: {
-        post,
-        redirect: {
-          destination: post?.link,
-          permanent: false,
-        },
+      props: { post },
+      redirect: {
+        destination: post?.link,
+        permanent: true,
       },
     };
   }

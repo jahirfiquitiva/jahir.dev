@@ -77,5 +77,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = allProjects.find(
     (post: GeneratedProject) => post.slug === params?.slug,
   );
+  if (project?.inProgress || project?.hide) {
+    return {
+      props: { project },
+      redirect: {
+        destination: project?.link,
+        permanent: true,
+      },
+    };
+  }
   return { props: { project } };
 };
