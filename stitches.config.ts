@@ -45,6 +45,7 @@ export const {
     ...breakpoints,
     hover: '(any-hover: hover)',
     animations: '(prefers-reduced-motion: no-preference)',
+    reduceMotion: '(prefers-reduced-motion: reduce)',
   },
 });
 
@@ -75,6 +76,15 @@ export const globalStyles = globalCss({
     },
     '& section': {
       scrollMarginTop: '$$scrollMargin',
+    },
+  },
+  '@reduceMotion': {
+    '*, *::after, *::before': {
+      animationDuration: '1ms !important',
+      animationDelay: '-1ms !important',
+      animationIterationCount: '1 !important',
+      transitionDuration: '1ms !important',
+      transitionDelay: '-1ms !important',
     },
   },
 });
