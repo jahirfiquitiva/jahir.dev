@@ -62,14 +62,14 @@ export const globalStyles = globalCss({
   '#__next': {
     $$totalToolbarHeight: '64px',
     $$scrollMargin: 'calc($$totalToolbarHeight + .5rem)',
-    $$verticalContentPadding: '1.4rem',
+    $$verticalContentPadding: '1.5rem',
     '@tablet-sm': {
       $$totalToolbarHeight: '68px',
       $$scrollMargin: 'calc($$totalToolbarHeight + 1rem)',
-      $$verticalContentPadding: '1.8rem',
+      $$verticalContentPadding: '1.875rem',
     },
     '@tablet-lg': {
-      $$verticalContentPadding: '2.4rem',
+      $$verticalContentPadding: '2.5rem',
     },
     '& section': {
       scrollMarginTop: '$$scrollMargin',

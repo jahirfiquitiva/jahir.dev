@@ -5,7 +5,7 @@ import { getPlaiceholder } from 'plaiceholder';
 const [filename] = process.argv.slice(2);
 
 try {
-  getPlaiceholder(`/../public/static/images/${filename}`).then(
+  getPlaiceholder(`/../public/static/images/${filename}`, { size: 12 }).then(
     ({ base64, img }) =>
       console.log({
         base64,

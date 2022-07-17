@@ -8,7 +8,6 @@ export const Article = styled('article', {
     display: 'block',
     position: 'relative',
     scrollMarginTop: '$$scrollMargin',
-    mb: '.25rem',
     hocus: {
       '& > a.anchor': {
         visibility: 'visible',

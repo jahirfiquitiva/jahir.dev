@@ -28,7 +28,7 @@ export const ShareAndEdit = styled('div', {
   fontSize: '$2xs',
   color: '$text-tertiary',
   order: 2,
-  '@tablet-lg': {
+  '@tablet-md': {
     order: 1,
   },
 });
@@ -36,7 +36,7 @@ export const ShareAndEdit = styled('div', {
 export const ArticleFooter = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '1.2rem',
+  gap: '$$verticalContentPadding',
   mt: '$$verticalContentPadding',
   mb: 0,
   boxSizing: 'border-box',
@@ -44,7 +44,6 @@ export const ArticleFooter = styled('div', {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    mt: '2rem',
     mb: 0,
   },
 });

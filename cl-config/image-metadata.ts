@@ -51,7 +51,7 @@ export const getBlurData = async (
 
   if (!isExternal) {
     res = await sizeOf(path.join(process.cwd(), 'public', imageSrc));
-    const plaiceholderResult = await getPlaiceholder(imageSrc);
+    const plaiceholderResult = await getPlaiceholder(imageSrc, { size: 12 });
     res = {
       ...res,
       width: plaiceholderResult.img.width,
@@ -64,7 +64,7 @@ export const getBlurData = async (
     const buffer = Buffer.from(arrayBuffer);
 
     res = await imageSize(buffer);
-    const plaiceholderResult = await getPlaiceholder(buffer);
+    const plaiceholderResult = await getPlaiceholder(buffer, { size: 12 });
     res = {
       ...res,
       width: plaiceholderResult.img.width,
