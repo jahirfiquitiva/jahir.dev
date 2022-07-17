@@ -22,7 +22,11 @@ const StyledProjectCard = styled(Link, {
   borderRadius: '.5rem',
   color: '$text-secondary',
   transition: 'all .25s ease-in-out',
-  '& > div:first-of-type > span': {
+  '& > div:first-of-type > img': {
+    filter:
+      'saturate(0.95) opacity(0.85) drop-shadow(0 0 1px rgba($$color / .5))',
+  },
+  '& > div:first-of-type > *': {
     transition: 'color .15s ease-in-out',
   },
   hocus: {
@@ -36,6 +40,10 @@ const StyledProjectCard = styled(Link, {
     textDecoration: 'none',
     color: '$text-primary',
     dark: { color: '$text-primary' },
+    '& > div:first-of-type > img': {
+      filter:
+        'saturate(1) opacity(1) drop-shadow(0 1px 2px rgba($$color / .5))',
+    },
     '& > div:first-of-type > span': {
       textDecoration: 'underline',
       color: 'rgba($$color / 1)',
@@ -55,7 +63,11 @@ const TitleContainer = styled('div', {
   fontSize: '$sm',
   fontWeight: 600,
   useFont: 'manrope',
+  color: '$text-primary',
   transition: 'all .15s ease-in-out',
+  '& > span': {
+    ellipsize: true,
+  },
 });
 
 const Description = styled('p', {
