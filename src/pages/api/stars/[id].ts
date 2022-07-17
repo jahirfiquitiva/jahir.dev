@@ -18,7 +18,7 @@ export const config = {
 
 export default async function handler(req: NextRequest) {
   try {
-    const { searchParams, pathname, search } = new URL(req.nextUrl || '');
+    const { searchParams, pathname } = new URL(req.nextUrl || '');
     const repo = pathname.substring(pathname.lastIndexOf('/') + 1);
     const owner = searchParams.get('owner') || 'jahirfiquitiva';
 

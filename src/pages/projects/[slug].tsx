@@ -79,10 +79,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
   if (project?.inProgress || project?.hide) {
     return {
-      props: { project },
-      redirect: {
-        destination: project?.link,
-        permanent: true,
+      props: {
+        project,
+        redirect: {
+          destination: project?.link,
+          permanent: true,
+        },
       },
     };
   }
