@@ -8,6 +8,7 @@ import {
   colors,
   darkThemeColors,
   breakpoints,
+  spaces,
 } from '@/stitches';
 
 const systemFont =
@@ -37,6 +38,7 @@ export const {
       manrope: `${fonts.Manrope.name.regular}, ${fonts.Inter.name.regular}, ${systemFont}`,
       manropeVar: `${fonts.Manrope.name.variable}, ${fonts.Inter.name.variable}, ${systemFont}`,
     },
+    space: spaces as { [x: string]: string },
   },
   utils,
   media: {
