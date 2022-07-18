@@ -24,10 +24,9 @@ export default async function handler() {
       200,
       {
         success: true,
-        bookmarks: (await Promise.all(bookmarksPromises)
-          .catch(() => []))
+        bookmarks: (await Promise.all(bookmarksPromises).catch(() => []))
           // @ts-ignore
-          .filter((it) => it),
+          .filter((it) => !!it && !!it.link),
       },
       { 'cache-control': 'public, s-maxage=3600, stale-while-revalidate=1800' },
     );

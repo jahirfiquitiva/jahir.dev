@@ -60,10 +60,7 @@ const fetchSinglePageProperty = (pageId: string, propertyId: string) => {
   }).then((response) => response.json());
 };
 
-const fetchPageProperties = (
-  pageId: string,
-  propertiesIds: Array<string>,
-) =>
+const fetchPageProperties = (pageId: string, propertiesIds: Array<string>) =>
   propertiesIds.map((propertyId) =>
     fetchSinglePageProperty(pageId, propertyId),
   );
@@ -83,12 +80,7 @@ interface FileIconProperty {
   };
 }
 
-interface EmojiIconProperty {
-  type: 'emoji';
-  emoji: string;
-}
-
-type IconProperty = ExternalIconProperty | FileIconProperty | EmojiIconProperty;
+type IconProperty = ExternalIconProperty | FileIconProperty;
 
 interface PageProperty {
   id: string;
@@ -104,48 +96,59 @@ interface BookmarkApiResult {
   };
 }
 
-export const fetchBookmarkPromise = (result: BookmarkApiResult) => {
+export interface InspirationItem {
+  title?: string;
+  icon?: string;
+  domain?: string;
+  link?: string;
+}
+
+export const fetchBookmarkPromise = (
+  result: BookmarkApiResult,
+): Promise<InspirationItem> => {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
-    const { id, icon, properties } = result;
-    const { Title, Link, Type } = properties;
+    try {
+      const { id, icon, properties } = result;
+      const { Title, Link, Type } = properties;
 
-    const propertiesResponse = await Promise.all(
-      fetchPageProperties(id, [Title.id, Link.id, Type.id]),
-    ).catch(() => []);
+      const propertiesResponse = await Promise.all(
+        fetchPageProperties(id, [Title.id, Link.id, Type.id]),
+      ).catch(() => []);
 
-    if (!propertiesResponse || !propertiesResponse.length) return null;
+      if (!propertiesResponse || !propertiesResponse.length) return null;
 
-    const [typeObject] = (propertiesResponse || []).filter(
-      (it) => it.id == Type.id,
-    );
-    const isHidden = (typeObject['multi_select'] || [])
+      const [typeObject] = (propertiesResponse || []).filter(
+        (it) => it.id == Type.id,
+      );
+      const isHidden = (typeObject['multi_select'] || [])
+        // @ts-ignore
+        .some((type) => {
+          return hiddenCategories.includes(type.name);
+        });
+      if (isHidden) return null;
+
+      const [titleObject] =
+        propertiesResponse.filter(
+          (it) => it.object == 'list' || it.id == Title.id,
+        )?.[0]?.results || [];
+      const [urlObject] = propertiesResponse.filter((it) => it.id == Link.id);
+
+      const title = titleObject?.title?.text?.content;
       // @ts-ignore
-      .some((type) => {
-        return hiddenCategories.includes(type.name);
+      const iconUrl = icon?.url;
+      const domain = (urlObject?.url || '')
+        .replace(/(^\w+:|^)\/\//, '')
+        .replace(/\//g, '');
+
+      return resolve({
+        link: urlObject?.url,
+        title,
+        icon: iconUrl,
+        domain,
       });
-    if (isHidden) return null;
-
-    const [titleObject] =
-      propertiesResponse.filter(
-        (it) => it.object == 'list' || it.id == Title.id,
-      )?.[0]?.results || [];
-    const [urlObject] = propertiesResponse.filter((it) => it.id == Link.id);
-
-    const title = titleObject?.title?.text?.content;
-    // @ts-ignore
-    const iconUrl = icon?.url;
-    const emoji = (icon as EmojiIconProperty)?.emoji;
-    const domain = (urlObject?.url || '')
-      .replace(/(^\w+:|^)\/\//, '')
-      .replace(/\//g, '');
-
-    return resolve({
-      link: urlObject?.url,
-      title,
-      icon: iconUrl,
-      domain,
-      emoji,
-    });
+    } catch (e) {
+      return resolve({});
+    }
   });
 };

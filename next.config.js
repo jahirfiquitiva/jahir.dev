@@ -48,8 +48,10 @@ const defaultNextConfig = {
       'raw.githubusercontent.com',
       'scontent-atl3-1.cdninstagram.com',
       '*.cdninstagram.com',
-      'www.markdownguide.org',
+      'source.boringavatars.com',
     ],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   webpack(config) {
     config.module.rules.push({
