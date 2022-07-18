@@ -28,8 +28,9 @@ const Grid = styled('ol', {
   backdropFilter: 'blur(10px)',
   boxShadow: '0 0 4px 2px $toolbar-glow',
   borderRadius: '$space$10',
-  gap: '$16',
-  p: '$20 $12',
+  rowGap: '$20',
+  columnGap: '$16',
+  p: '$24 $12',
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: 'rgba(12 18 30 / .3)',
@@ -50,7 +51,7 @@ const Grid = styled('ol', {
     px: '$24',
   },
   '@tablet-lg': {
-    py: '$36',
+    py: '$48',
   },
 });
 

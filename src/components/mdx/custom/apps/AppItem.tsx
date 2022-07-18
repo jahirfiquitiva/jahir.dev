@@ -7,11 +7,14 @@ const AppItemContainer = styled(Link, {
   flexDirection: 'column',
   alignItems: 'center',
   gap: '$2',
-  p: '$2',
+  pb: '$2',
   borderRadius: '$space$8',
   fontSize: '12px',
   transition: 'all .15s ease-in-out',
   color: darkTheme.colors['text-secondary']?.value,
+  outlineColor: `${darkTheme.colors['text-primary']?.value} !important`,
+  maxWidth: 96,
+  mx: 'auto',
   dark: { color: darkTheme.colors['text-secondary']?.value },
   hocus: {
     transform: 'translateY(-1px)',
@@ -25,7 +28,7 @@ const AppItemContainer = styled(Link, {
   },
   '@mobile-lg': {
     gap: '$4',
-    p: '$4',
+    pb: '$4',
   },
 });
 
