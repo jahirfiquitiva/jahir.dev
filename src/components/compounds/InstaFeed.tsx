@@ -14,14 +14,14 @@ const Figure = styled('figure', {
 });
 
 const Grid = styled('div', {
-  $$gap: '$8',
+  $$gap: '$space$8',
   display: 'grid',
   gridTemplateColumns: 'repeat(3, minmax(0, 222px))',
   gridTemplateRows:
     'repeat(2, minmax(0, calc(calc(100vw - calc($$gap * 2) - $space$14) / 3 - 5px + 0.33px)))',
   gap: '$$gap',
   '@tablet-sm': {
-    $$gap: '$12',
+    $$gap: '$space$12',
     gridTemplateColumns: 'repeat(3, minmax(0, 214px))',
   },
   '@tablet-md': {
