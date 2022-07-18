@@ -1,4 +1,4 @@
-import { HeroMeta } from '@/types';
+import type { HeroMeta } from '@/types';
 
 export interface Project {
   slug: string;

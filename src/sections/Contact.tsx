@@ -3,10 +3,10 @@ import { useMemo } from 'react';
 
 import { Img, Link, Heading } from '@/components/atoms';
 import { Section } from '@/components/elements';
+import { useHasMounted } from '@/hooks';
 import type { FC, ImageBlurDataObject } from '@/types';
 import { getRandomItem } from '@/utils';
 import { styled } from '~/stitches';
-import { useHasMounted } from '@/hooks';
 
 interface ContactImage {
   key: number;
