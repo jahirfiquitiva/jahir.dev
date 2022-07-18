@@ -6,7 +6,7 @@
     "start": "next start",
     "lint": "next lint",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
-    "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/blur.mjs",
+    "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node -r @swc-node/register ./scripts/blur.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "predev": "yarn clean && prisma generate && contentlayer build --clearCache && yarn gen-blur",
     "prebuild": "yarn predev",
