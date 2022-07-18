@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import readingTime from 'reading-time';
@@ -43,8 +44,9 @@ const computedFields: ComputedFields = {
       const defaultSlug = doc._raw.sourceFileName.replace(/\.mdx$/, '');
       if (!doc.inProgress) return defaultSlug;
       const secretSlug = `${defaultSlug}-${secretPostsId}`;
-      // eslint-disable-next-line no-console
-      console.log(`Generated secret slug: [${secretSlug}]`);
+      console.error(`===========`);
+      console.error(`Generated secret slug: [${secretSlug}]`);
+      console.error(`===========`);
       return secretSlug;
     },
   },

@@ -161,7 +161,8 @@ const getConfettiColor = (
 
 const iconSize = 0.73;
 // eslint-disable-next-line max-lines-per-function
-export const Reactions: FC = (props) => {
+export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
+  const { inProgress } = props;
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const { reactions, incrementReaction, slug, submitting } = useReactions();
@@ -173,8 +174,8 @@ export const Reactions: FC = (props) => {
     // @ts-ignore
     event?: MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    // Do nothing in SSR
-    if (!hasMounted) return;
+    // Do nothing in SSR or if article is in progress
+    if (!hasMounted || inProgress) return;
 
     const hostname = window?.location?.hostname || 'localhost';
     // Submit reactions in production website only

@@ -6,10 +6,11 @@ import type { FC } from '@/types';
 interface ViewsCounterProps {
   slug: string;
   devToId?: number | string;
+  inProgress?: boolean;
 }
 
 export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
-  const { slug, devToId } = props;
+  const { slug, devToId, inProgress } = props;
 
   const hasMounted = useHasMounted();
   const { data } = useRequest<{ total: number }>(
@@ -18,7 +19,8 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
   const views = Number(data?.total || 0);
 
   useEffect(() => {
-    if (!hasMounted) return;
+    // Do nothing in SSR or if article is in progress
+    if (!hasMounted || inProgress) return;
 
     const hostname = window?.location?.hostname || 'localhost';
     // Count views in production website only
@@ -29,7 +31,7 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
         method: 'POST',
       });
     registerView();
-  }, [hasMounted, slug]);
+  }, [hasMounted, slug, inProgress]);
 
   if (views <= 0) return null;
   return (

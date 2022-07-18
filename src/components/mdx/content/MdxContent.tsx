@@ -50,6 +50,7 @@ interface ContentFields {
   devToId?: number;
   heroMeta?: HeroMeta;
   fullHeightHero?: boolean;
+  inProgress?: boolean;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -64,6 +65,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('heroMeta' in content) fields.heroMeta = content.heroMeta;
   if ('fullHeightHero' in content)
     fields.fullHeightHero = content.fullHeightHero;
+  if ('inProgress' in content) fields.inProgress = content.inProgress;
   return fields;
 };
 
@@ -86,6 +88,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
     devToId,
     heroMeta,
     fullHeightHero,
+    inProgress,
   } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -149,11 +152,15 @@ export const MdxContent: FC<CommonContent> = (props) => {
             </>
           ) : null}
           {(readingTime?.length || 0) > 0 && <>{readingTime}</>}
-          <ViewsCounter slug={`${contentType}--${slug}`} devToId={devToId} />
+          <ViewsCounter
+            slug={`${contentType}--${slug}`}
+            devToId={devToId}
+            inProgress={inProgress}
+          />
         </Intro>
 
         <ReactionsProvider slug={`${contentType}--${slug}`}>
-          <MdxReactions />
+          <MdxReactions inProgress={inProgress} />
 
           {hero && (
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -188,7 +195,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
                 <Icon path={mdiPencilOutline} size={0.9} /> Edit on GitHub
               </LinkButton>
             </ShareAndEdit>
-            <MdxReactions />
+            <MdxReactions inProgress={inProgress} />
           </ArticleFooter>
         </ReactionsProvider>
       </Article>
