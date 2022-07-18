@@ -4,53 +4,8 @@ import { useMemo } from 'react';
 import { Img, Link, Heading } from '@/components/atoms';
 import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
-import type { FC, ImageBlurDataObject } from '@/types';
-import { getRandomItem } from '@/utils';
+import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
-
-interface ContactImage {
-  key: number;
-  alt: string;
-}
-
-const possibleImages: Array<ContactImage> = [
-  {
-    key: 0,
-    alt: 'Person within a box',
-  },
-  {
-    key: 1,
-    alt: 'Person dancing',
-  },
-  {
-    key: 2,
-    alt: 'Person meditating',
-  },
-  {
-    key: 3,
-    alt: 'Person sitting on the floor',
-  },
-  {
-    key: 4,
-    alt: 'Person reading a book',
-  },
-  {
-    key: 5,
-    alt: 'Person listening to music',
-  },
-  {
-    key: 6,
-    alt: 'Person walking',
-  },
-  {
-    key: 7,
-    alt: 'Person walking like a zombie',
-  },
-  {
-    key: 8,
-    alt: 'Person taking a selfie with a t-shirt that says hi',
-  },
-];
 
 const Grid = styled('div', {
   display: 'grid',
@@ -138,28 +93,23 @@ const ContactOption = styled(Link, {
 });
 
 // eslint-disable-next-line max-lines-per-function
-export const Contact: FC<{ blurData?: ImageBlurDataObject }> = (props) => {
-  const { blurData } = props;
+export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
   const hasMounted = useHasMounted();
-  const rightImage = useMemo<ContactImage>(() => {
-    return getRandomItem(possibleImages);
-  }, []);
 
   const imageComponent = useMemo(() => {
     if (!hasMounted) return null;
-    const imageBlurData = blurData?.[rightImage.key];
     return (
       <Img
-        src={`/static/images/contact/${rightImage.key}.png`}
-        alt={rightImage.alt}
-        size={imageBlurData?.width || 384}
+        src={`/static/images/contact/${image.key}.png`}
+        alt={image.alt}
+        size={image.width || 384}
         placeholder={'blur'}
-        blurDataURL={imageBlurData?.base64 || ''}
+        blurDataURL={image?.base64 || ''}
         css={{ width: '100%', height: 'auto', maxWidth: 320, mx: 'auto' }}
         priority
       />
     );
-  }, [hasMounted, rightImage, blurData]);
+  }, [hasMounted, image]);
 
   return (
     <Section id={'contact'} centered>
