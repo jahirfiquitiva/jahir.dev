@@ -32,8 +32,9 @@ const Inspiration: NextPage<InspirationProps> = ({ fallback }) => {
           Inspiration
         </Heading>
         <p>
-          These are some sites that I like and that have somehow inspired part
-          of my website and even some personal projects. 👏
+          These are some people I admire or sites I like that might have even
+          somehow inspired part of my website or helped with some personal
+          projects. 👏
         </p>
         <SWRConfig value={{ fallback }}>
           <InspirationGrid />
