@@ -179,12 +179,15 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
     // Do nothing in SSR or if article is in progress
     if (!hasMounted || inProgress) return;
 
-    const hostname = window?.location?.hostname || 'localhost';
-    // Submit reactions in production website only
-    if (hostname !== 'jahir.dev') return;
+    // Do nothing if data has not loaded
+    if (loading) return;
 
     // Do nothing if being submitted to db or already pressed
     if (submitting || reactions[key]) return;
+
+    // Submit reactions in production website only
+    const hostname = window?.location?.hostname || 'localhost';
+    if (hostname !== 'jahir.dev') return;
 
     if (event) {
       const x = event.clientX / windowWidth;
