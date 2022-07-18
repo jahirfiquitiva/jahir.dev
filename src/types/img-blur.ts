@@ -1,9 +1,14 @@
 interface ImageBlurData {
-  key: number;
   width: number;
   height: number;
   base64: string;
-  page?: string;
 }
+
+interface RandomImage {
+  key: number;
+  alt?: string;
+}
+
+export type RandomPageImage = RandomImage & ImageBlurData;
 
 export type ImageBlurDataObject = Record<number, ImageBlurData>;

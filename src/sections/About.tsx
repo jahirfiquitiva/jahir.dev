@@ -5,53 +5,8 @@ import { Img, Link, Heading } from '@/components/atoms';
 import { InstaFeed } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
-import type { FC, ImageBlurDataObject } from '@/types';
-import { getRandomItem } from '@/utils';
+import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
-
-interface AboutPhoto {
-  key: number;
-  alt: string;
-}
-
-const possibleImages: Array<AboutPhoto> = [
-  {
-    key: 0,
-    alt: "Visiting Lima, Perú – Oct '19",
-  },
-  {
-    key: 1,
-    alt: "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
-  },
-  {
-    key: 2,
-    alt: "Hiking in my hometown – Mar '20",
-  },
-  {
-    key: 3,
-    alt: "Hanging out with friends at a cafe – Dec '20",
-  },
-  {
-    key: 4,
-    alt: "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
-  },
-  {
-    key: 5,
-    alt: "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
-  },
-  {
-    key: 6,
-    alt: "Hanging out with friends at a cafe – Feb '22",
-  },
-  {
-    key: 7,
-    alt: "Visiting a small town – Dec '22",
-  },
-  {
-    key: 8,
-    alt: "Trip to San Andrés – Dec '22",
-  },
-];
 
 const PhotoFigure = styled('figure', {
   display: 'flex',
@@ -80,32 +35,26 @@ const Paragraph = styled(Intro, {
 });
 
 // eslint-disable-next-line max-lines-per-function
-export const About: FC<{ blurData?: ImageBlurDataObject }> = (props) => {
-  const { blurData } = props;
+export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
   const hasMounted = useHasMounted();
-
-  const rightImage = useMemo<AboutPhoto>(() => {
-    return getRandomItem(possibleImages);
-  }, []);
 
   const photoComponent = useMemo(() => {
     if (!hasMounted) return null;
-    const photoBlurData = blurData?.[rightImage.key];
     return (
       <PhotoFigure>
         <Img
-          src={`/static/images/about/${rightImage.key}.jpg`}
-          alt={rightImage.alt}
+          src={`/static/images/about/${image.key}.jpg`}
+          alt={image.alt}
           quality={100}
-          width={photoBlurData?.width || 768}
-          height={photoBlurData?.height || 320}
+          width={image?.width || 768}
+          height={image?.height || 320}
           placeholder={'blur'}
-          blurDataURL={photoBlurData?.base64 || ''}
+          blurDataURL={image?.base64 || ''}
         />
-        <figcaption>📸&nbsp;&nbsp;{rightImage.alt}</figcaption>
+        <figcaption>📸&nbsp;&nbsp;{image.alt}</figcaption>
       </PhotoFigure>
     );
-  }, [hasMounted, rightImage, blurData]);
+  }, [hasMounted, image]);
 
   return (
     <Section id={'about'}>
