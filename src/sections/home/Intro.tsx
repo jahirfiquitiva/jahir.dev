@@ -38,7 +38,7 @@ const Paragraph = styled('p', {
 const PhotoContainer = styled('div', {
   borderRadius: '50%',
   backgroundColor: '#223e80',
-  backgroundImage: "url('/static/images/jahir/jahir-neon.jpg')",
+  backgroundImage: "url('/static/images/jahir/jahir-neon.JPG')",
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'none',
