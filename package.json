@@ -10,7 +10,7 @@
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "predev": "yarn clean && prisma generate && contentlayer build --clearCache && yarn gen-blur",
     "prebuild": "yarn predev",
-    "analyze": "cross-env ANALYZE=true NODE_ENV=production next build && node scripts/analyze-bundles.js",
+    "analyze": "cross-env ANALYZE=true NODE_ENV=production next build && node -r @swc-node/register ./scripts/analyze-bundles.js",
     "gen-blur": "yarn blur about && yarn blur contact"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/bundle-analyzer": "^12.2.2",
+    "@swc-node/register": "^1.5.1",
     "@types/canvas-confetti": "^1.4.3",
     "@types/node": "^18.0.4",
     "@types/react": "^18.0.15",

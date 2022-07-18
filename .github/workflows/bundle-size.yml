@@ -44,7 +44,7 @@ jobs:
             .next/analyze/client.html
             .next/analyze/bundle.json
 
-      - name: Download master JSON
+      - name: Download main JSON
         uses: dawidd6/action-download-artifact@v2
         if: success() && github.event.number
         with:
@@ -65,7 +65,7 @@ jobs:
           body=$(cat .next/analyze/bundle-comparison.txt)
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}" 
+          body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
       # Looks for a comment with <!-- GH BOT --> somewhere in its body.

@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
-const bundle = require('../.next/build-manifest.json');
+const bundle = require('./../.next/build-manifest.json');
 
 const prefix = '.next';
 const outdir = path.join(process.cwd(), prefix, 'analyze');
