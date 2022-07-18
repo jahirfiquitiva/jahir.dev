@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useMemo } from 'react';
 
 import {
   Heading,
@@ -102,12 +103,20 @@ const InspirationItem: Component<InspirationItemProps> = (props) => {
   // @ts-ignore
   const { favicon = '' } = data;
 
+  const iconAlt = useMemo(() => {
+    try {
+      return (title || 'X')?.split('')?.[0] || 'X';
+    } catch (e) {
+      return 'X';
+    }
+  }, [title]);
+
   return (
     <InspirationCard href={link || '#'} title={`${title}'s website`}>
       <Heading size={'4'}>{title}</Heading>
       <FaviconLinkContainer>
         <Image
-          alt={title.split('')[0] || 'F'}
+          alt={iconAlt}
           src={icon || favicon || ''}
           width={24}
           height={24}
@@ -120,8 +129,9 @@ const InspirationItem: Component<InspirationItemProps> = (props) => {
 };
 
 export const Inspiration: Component = () => {
-  const { data, loading } =
-    useRequest<{ bookmarks: Array<InspirationSite> }>('/api/bookmarks');
+  const { data, loading } = useRequest<{ bookmarks: Array<InspirationSite> }>(
+    '/api/bookmarks',
+  );
 
   return (
     <CenteredSection id={'inspiration'}>
