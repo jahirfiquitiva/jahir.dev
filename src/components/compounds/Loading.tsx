@@ -3,7 +3,8 @@ import { Ring } from '@uiball/loaders';
 import { styled } from '~/stitches';
 
 const StyledContainer = styled('div', {
-  m: 'auto',
+  my: '$48',
+  mx: 'auto',
   textAlign: 'center',
 });
 

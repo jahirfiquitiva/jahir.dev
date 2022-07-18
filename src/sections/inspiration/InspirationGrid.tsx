@@ -30,16 +30,16 @@ export const InspirationGrid: FC = () => {
       <Heading as={'h3'} shadow={'brand'} gradient={'brand-to-blue'}>
         Inspiration
       </Heading>
+      <p>
+        These are some sites that I like and that have somehow inspired part of
+        my website and even some personal projects. 👏{' '}
+        <em>(In no particular order).</em>
+      </p>
 
-      {loading ? (
-        <Loading />
-      ) : data && data.bookmarks.length && !error ? (
+      {loading ? <Loading /> : null}
+
+      {data && data.bookmarks.length && !error ? (
         <>
-          <p>
-            These are some sites that I like and that have somehow inspired part
-            of my website and even some personal projects. 👏{' '}
-            <em>(In no particular order).</em>
-          </p>
           <Masonry
             breakpoints={masonryBreakpoints}
             gap={theme.space['24'].value}
@@ -50,13 +50,13 @@ export const InspirationGrid: FC = () => {
             })}
           </Masonry>
         </>
-      ) : (
+      ) : !loading ? (
         <p>
           No inspiration found at this time.
           <br />
           Please come back later
         </p>
-      )}
+      ) : null}
     </Section>
   );
 };
