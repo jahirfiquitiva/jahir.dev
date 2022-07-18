@@ -98,7 +98,6 @@ interface BookmarkApiResult {
 
 export interface InspirationItem {
   title?: string;
-  icon?: string;
   domain?: string;
   link?: string;
 }
@@ -109,7 +108,7 @@ export const fetchBookmarkPromise = (
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
     try {
-      const { id, icon, properties } = result;
+      const { id, properties } = result;
       const { Title, Link, Type } = properties;
 
       const propertiesResponse = await Promise.all(
@@ -135,8 +134,6 @@ export const fetchBookmarkPromise = (
       const [urlObject] = propertiesResponse.filter((it) => it.id == Link.id);
 
       const title = titleObject?.title?.text?.content;
-      // @ts-ignore
-      const iconUrl = icon?.url;
       const domain = (urlObject?.url || '')
         .replace(/(^\w+:|^)\/\//, '')
         .replace(/\//g, '');
@@ -144,7 +141,6 @@ export const fetchBookmarkPromise = (
       return resolve({
         link: urlObject?.url,
         title,
-        icon: iconUrl,
         domain,
       });
     } catch (e) {
