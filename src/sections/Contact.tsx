@@ -3,70 +3,52 @@ import { useMemo } from 'react';
 
 import { Img, Link, Heading } from '@/components/atoms';
 import { Section } from '@/components/elements';
-import type { FC } from '@/types';
+import type { FC, ImageBlurDataObject } from '@/types';
 import { getRandomItem } from '@/utils';
 import { styled } from '~/stitches';
+import { useHasMounted } from '@/hooks';
 
 interface ContactImage {
-  key?: string | number;
-  alt?: string;
-  blurDataURL?: string;
+  key: number;
+  alt: string;
 }
 
 const possibleImages: Array<ContactImage> = [
   {
-    key: '0',
+    key: 0,
     alt: 'Person within a box',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/AAAAAJ2armFebp2ZsgB2b4pJSEhoaG3LyOMAgYaeUmmcZnmqjYifAP38/5+3/3yGtpOLmk7HGexcP20oAAAAAElFTkSuQmCC',
   },
   {
-    key: '1',
+    key: 1,
     alt: 'Person dancing',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/APb2/AMAEC0pNpSLsgCwqsFBRFhOV3eIhJIAl5KhaGZ5Wl1ve3eIAIKBkIuLlP///0VFRVFxF8WBFdp8AAAAAElFTkSuQmCC',
   },
   {
-    key: '2',
+    key: 2,
     alt: 'Person meditating',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/AAAAAIqFlJOOmQAAAADa1uhaW2lYWWza2OwA7+z8iouYjo+b6eb0AOni+9bR3ern8P7+/4BjHtTXJ2pMAAAAAElFTkSuQmCC',
   },
   {
-    key: '3',
+    key: 3,
     alt: 'Person sitting on the floor',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPElEQVQImWNgYGA4fepxb9ccBgiYN2vu4UNH//37z/Dx3f/eKavbZp668eA/w7ETz1Yd+L9wy6v9+y8BAIoHHfx9rJw2AAAAAElFTkSuQmCC',
   },
   {
-    key: '4',
+    key: 4,
     alt: 'Person reading a book',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/AAAAAJeWq6envgAAAAD48vbN1vTBy+bl4OMAvbvK9fX2////2tfmAPPx//Dv+vDv+fDu/yKoJJ3bOWhkAAAAAElFTkSuQmCC',
   },
   {
-    key: '5',
+    key: 5,
     alt: 'Person listening to music',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/AMfC2c3A3cK72fHn/wDRzeDIzN6+vsvKx9gA//r/YYW7dY+01szfAAAAAJacvZifu9zU7ch9IupjEN8AAAAAAElFTkSuQmCC',
   },
   {
-    key: '6',
+    key: 6,
     alt: 'Person walking',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/AMvJ3ubb3dPL2wAAAADHvNCestXL0uf/+/8AAAAAR3m+ZIvDra/FALy735umxWmIxqSqzTTZHv5UkqlmAAAAAElFTkSuQmCC',
   },
   {
-    key: '7',
+    key: 7,
     alt: 'Person walking like a zombie',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQImQE0AMv/AJSSnoqMolZkkXVqhACinKxMVXVKWIF5cYAAsK3DCgcVBAARlJKlAP///2dkdUE+T11dXVQPFgAQM9y2AAAAAElFTkSuQmCC',
   },
   {
-    key: '8',
+    key: 8,
     alt: 'Person taking a selfie with a t-shirt that says hi',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAO0lEQVQImWNYuHD93Pk7D+y99ffPf4a6os6EuLyK8vrc3CYGBgaGnKq1WcUz505cDOLMW3Fm+ZpLQBYAv1sXtlcPQBYAAAAASUVORK5CYII=',
   },
 ];
 
@@ -156,10 +138,28 @@ const ContactOption = styled(Link, {
 });
 
 // eslint-disable-next-line max-lines-per-function
-export const Contact: FC = () => {
+export const Contact: FC<{ blurData?: ImageBlurDataObject }> = (props) => {
+  const { blurData } = props;
+  const hasMounted = useHasMounted();
   const rightImage = useMemo<ContactImage>(() => {
     return getRandomItem(possibleImages);
   }, []);
+
+  const imageComponent = useMemo(() => {
+    if (!hasMounted) return null;
+    const imageBlurData = blurData?.[rightImage.key];
+    return (
+      <Img
+        src={`/static/images/contact/${rightImage.key}.png`}
+        alt={rightImage.alt}
+        size={imageBlurData?.width || 384}
+        placeholder={'blur'}
+        blurDataURL={imageBlurData?.base64 || ''}
+        css={{ width: '100%', height: 'auto', maxWidth: 320, mx: 'auto' }}
+        priority
+      />
+    );
+  }, [hasMounted, rightImage, blurData]);
 
   return (
     <Section id={'contact'} centered>
@@ -222,15 +222,7 @@ export const Contact: FC = () => {
             </ContactOption>
           </ContactOptions>
         </div>
-        <Img
-          src={`/static/images/contact/${rightImage.key}.png`}
-          alt={rightImage.alt}
-          size={384}
-          placeholder={'blur'}
-          blurDataURL={rightImage.blurDataURL}
-          css={{ width: '100%', height: 'auto', maxWidth: 320, mx: 'auto' }}
-          priority
-        />
+        {imageComponent}
       </Grid>
     </Section>
   );

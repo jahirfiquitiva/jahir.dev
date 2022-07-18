@@ -5,70 +5,51 @@ import { Img, Link, Heading } from '@/components/atoms';
 import { InstaFeed } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
-import type { FC } from '@/types';
+import type { FC, ImageBlurDataObject } from '@/types';
 import { getRandomItem } from '@/utils';
 import { styled } from '~/stitches';
 
 interface AboutPhoto {
-  key?: string | number;
-  alt?: string;
-  blurDataURL?: string;
+  key: number;
+  alt: string;
 }
 
 const possibleImages: Array<AboutPhoto> = [
   {
-    key: '0',
+    key: 0,
     alt: "Visiting Lima, Perú – Oct '19",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAdEAACAgIDAQAAAAAAAAAAAAABAgADBAUHETFx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAWEQADAAAAAAAAAAAAAAAAAAAAAjH/2gAMAwEAAhEDEQA/AKeM9tsrcDa2W7DMd2zFZma5iSTjUEknv0kk/TERKLANT//Z',
   },
   {
-    key: '1',
+    key: 1,
     alt: "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAdEAACAgIDAQAAAAAAAAAAAAABAgADBAUGESRh/8QAFQEBAQAAAAAAAAAAAAAAAAAABAX/xAAYEQADAQEAAAAAAAAAAAAAAAAAATICA//aAAwDAQACEQMRAD8AkqOSbx8Kh33WzZi9/ZOVYSfRb9iIlDnKB7pn/9k=',
   },
   {
-    key: '2',
+    key: 2,
     alt: "Hiking in my hometown – Mar '20",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAACAgEFAQAAAAAAAAAAAAABAgAGBQMEEiFCYv/EABQBAQAAAAAAAAAAAAAAAAAAAAT/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCF5i/XFN+4W2WBRxToZLWHgfUREQG//9k=',
   },
   {
-    key: '3',
+    key: 3,
     alt: "Hanging out with friends at a cafe – Dec '20",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAABBAEFAAAAAAAAAAAAAAABAAIDBgUEEUNRUv/EABQBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQACAwAAAAAAAAAAAAAAAAAAAQIxMv/aAAwDAQACEQMRAD8AjVxudoiybRHZM0wEP3DdfKOaQeugEREdDKF3Z//Z',
   },
   {
-    key: '4',
+    key: 4,
     alt: "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAgEAABBAIBBQAAAAAAAAAAAAABAAIDBAUREgYTQVFx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABcRAAMBAAAAAAAAAAAAAAAAAAABMQL/2gAMAwEAAhEDEQA/AIHqyjUghxPYqwR8o7ZdwjA3rI22jevTWtHwAeERE5gOn//Z',
   },
   {
-    key: '5',
+    key: 5,
     alt: "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAdEAACAgEFAAAAAAAAAAAAAAABAgAEAwUGCBEx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABgRAAMBAQAAAAAAAAAAAAAAAAABMgID/9oADAMBAAIRAxEAPwC9xvvW32Jdd7WdnbU85ZjkJJPSemIiDpbDiUf/2Q==',
   },
   {
-    key: '6',
+    key: 6,
     alt: "Hanging out with friends at a cafe – Feb '22",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAfEAABBAICAwAAAAAAAAAAAAABAAIDBAURBiEHEhP/xAAUAQEAAAAAAAAAAAAAAAAAAAAE/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AtfBuVyNrB8gFq/bmEGctwxCSZzvnGPXTG7PTRs6A6RERiH//2Q==',
   },
   {
-    key: '7',
+    key: 7,
     alt: "Visiting a small town – Dec '22",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAcEAABBQEBAQAAAAAAAAAAAAABAAIDBREEBjH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBf/EABoRAAICAwAAAAAAAAAAAAAAAAACAQQyM3H/2gAMAwEAAhEDEQA/AKC8rTVldVnnr63i5IBK8iOCBsbd37gGIiKTc3v0ZMYP/9k=',
   },
   {
-    key: '8',
+    key: 8,
     alt: "Trip to San Andrés – Dec '22",
-    blurDataURL:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAADAAEEAwAAAAAAAAAAAAABAgMABAUHEQZBUf/EABQBAQAAAAAAAAAAAAAAAAAAAAX/xAAXEQEAAwAAAAAAAAAAAAAAAAAAAQMy/9oADAMBAAIRAxEAPwC1cUqtuN/GrWUUtXbdNSjsO2djFOyT7J+4xjErNSAf/9k=',
   },
 ];
 
@@ -99,7 +80,8 @@ const Paragraph = styled(Intro, {
 });
 
 // eslint-disable-next-line max-lines-per-function
-export const About: FC = () => {
+export const About: FC<{ blurData?: ImageBlurDataObject }> = (props) => {
+  const { blurData } = props;
   const hasMounted = useHasMounted();
 
   const rightImage = useMemo<AboutPhoto>(() => {
@@ -108,21 +90,22 @@ export const About: FC = () => {
 
   const photoComponent = useMemo(() => {
     if (!hasMounted) return null;
+    const photoBlurData = blurData?.[rightImage.key];
     return (
       <PhotoFigure>
         <Img
-          src={`/static/images/about/ab-${rightImage.key}.jpg`}
+          src={`/static/images/about/${rightImage.key}.jpg`}
           alt={rightImage.alt}
           quality={100}
-          width={768}
-          height={320}
+          width={photoBlurData?.width || 768}
+          height={photoBlurData?.height || 320}
           placeholder={'blur'}
-          blurDataURL={rightImage.blurDataURL}
+          blurDataURL={photoBlurData?.base64 || ''}
         />
         <figcaption>📸&nbsp;&nbsp;{rightImage.alt}</figcaption>
       </PhotoFigure>
     );
-  }, [hasMounted, rightImage]);
+  }, [hasMounted, rightImage, blurData]);
 
   return (
     <Section id={'about'}>

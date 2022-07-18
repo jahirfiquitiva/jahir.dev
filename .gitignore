@@ -47,3 +47,5 @@ content/blog/sheet.mdx
 
 .frontmatter
 frontmatter.json
+
+src/blur/*.ts

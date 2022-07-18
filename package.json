@@ -8,9 +8,10 @@
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/blur.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
-    "predev": "yarn clean && prisma generate && contentlayer build --clearCache",
+    "predev": "yarn clean && prisma generate && contentlayer build --clearCache && yarn gen-blur",
     "prebuild": "yarn predev",
-    "analyze": "cross-env ANALYZE=true NODE_ENV=production next build && node scripts/analyze-bundles.js"
+    "analyze": "cross-env ANALYZE=true NODE_ENV=production next build && node scripts/analyze-bundles.js",
+    "gen-blur": "yarn blur about && yarn blur contact"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.11",
