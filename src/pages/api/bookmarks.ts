@@ -85,7 +85,7 @@ export default async (
         return { link: Link?.url, title, icon: iconUrl, domain };
       })
       // @ts-ignore
-      .filter((it) => it);
+      .filter((it) => !!it && !!it.link);
 
     res.setHeader(
       'Cache-Control',
