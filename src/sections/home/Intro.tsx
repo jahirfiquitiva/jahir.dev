@@ -38,30 +38,23 @@ const Paragraph = styled('p', {
 const PhotoContainer = styled('div', {
   borderRadius: '50%',
   backgroundColor: '#223e80',
+  backgroundImage: "url('/static/images/jahir/jahir-neon.jpg')",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'none',
   width: 168,
   height: 168,
 });
 
 const Photo = styled(Img, {
   borderRadius: '50%',
-  backgroundColor: '$accent-animoji',
-  border: '1px solid rgba($toolbar-glow / 0.12)',
   objectFit: 'cover',
   objectPosition: 'center',
-  canHover: {
-    filter: 'grayscale(100%) contrast(.75) brightness(175%)',
-    transition: 'all .25s ease-in-out',
-    mixBlendMode: 'hard-light',
-    opacity: 0.75,
-    dark: {
-      opacity: 0.55,
-    },
-  },
+  opacity: 1,
+  transition: 'all .35s ease-in-out',
   hocus: {
+    opacity: 0,
     cursor: 'grab',
-    filter: 'unset',
-    mixBlendMode: 'normal',
-    opacity: 1,
   },
 });
 
