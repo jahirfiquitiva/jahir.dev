@@ -27,6 +27,7 @@ export const colors: ThemeColors = {
   'text-primary': 'rgba(9 17 34 / .95)',
   'text-secondary': 'rgba(9 17 34 / .8)',
   'text-tertiary': 'rgba(9 17 34 / .6)',
+  'img-drop-shadow': 'rgba(9 17 34 / .28)',
 
   'accent-animoji': '#d7e1f7',
   'accent-lighter': '#88a4e6',
@@ -76,6 +77,7 @@ export const darkThemeColors: ThemeColors = {
   'text-primary': '#fff',
   'text-secondary': 'rgba(235 240 251 / .85)',
   'text-tertiary': 'rgba(235 240 251 / .6)',
+  'img-drop-shadow': 'rgba(235 240 251 / .24)',
 
   'accent-animoji': '#162956',
   'accent-lighter': '#d7e1f7',

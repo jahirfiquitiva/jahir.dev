@@ -25,7 +25,7 @@ const Intro = styled('p', {
   color: '$text-primary',
   mt: '$6',
   mb: '$20',
-  fontSize: 'calc($xs * 1.15)',
+  fontSize: '$sm',
 });
 
 const Paragraph = styled(Intro, {
@@ -46,10 +46,11 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
           src={`/static/images/about/${image.key}.jpg`}
           alt={image.alt}
           quality={100}
-          width={image?.width || 768}
-          height={image?.height || 320}
+          width={image?.width || 666}
+          height={image?.height || 278}
           placeholder={'blur'}
           blurDataURL={image?.base64 || ''}
+          css={{ aspectRatio: '21 / 9', width: '100%', height: 'auto' }}
         />
         <figcaption>📸&nbsp;&nbsp;{image.alt}</figcaption>
       </PhotoFigure>

@@ -5,6 +5,7 @@ import { Masonry } from '@/components/compounds';
 import { styled } from '~/stitches';
 
 import { Reactions, TableContainer, Table } from './content';
+import { customComponents } from './custom';
 import { Grid, GridColumn } from './Grid';
 import { ImageComparison } from './ImageComparison';
 import { MdxLink } from './MdxLink';
@@ -26,6 +27,7 @@ export const mdxComponents = {
   ),
   a: MdxLink,
   img: (props: ImgProps) => <Img {...props} />,
+  ...customComponents,
 };
 
 export * from './content';

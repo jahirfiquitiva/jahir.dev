@@ -70,6 +70,7 @@ export const Masonry: FC<MasonryProps> = (props) => {
     children,
     className,
     style,
+    css,
   } = props;
   const childrenCount = Children.count(children);
   const { width: windowWidth } = useWindowDimensions();
@@ -98,7 +99,7 @@ export const Masonry: FC<MasonryProps> = (props) => {
 
   if (!childrenCount) return null;
   return (
-    <MasonryGrid className={className} style={{ ...style, gap }}>
+    <MasonryGrid css={css} className={className} style={{ ...style, gap }}>
       {columns.map((col, index) => {
         return (
           <MasonryColumn key={`col-${index}`} style={{ gap }}>

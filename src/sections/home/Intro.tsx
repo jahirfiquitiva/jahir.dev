@@ -67,7 +67,7 @@ export const Intro: FC = () => {
     <IntroSection id={'intro'}>
       <TextsContainer>
         <WavingHello />
-        <Heading as={'h2'} shadow={'blue'} css={{ fontSize: '$xl' }}>
+        <Heading as={'h2'} shadow={'blue'}>
           I am&nbsp;
           <Heading as={'span'} gradient={'brand-to-blue'}>
             Jahir Fiquitiva
@@ -89,7 +89,7 @@ export const Intro: FC = () => {
       </TextsContainer>
       <PhotoContainer>
         <Photo
-          src={'/static/images/jahir/jahir-neon.jpeg'}
+          src={'/static/images/jahir/jahir.jpg'}
           alt={"Jahir's Photo"}
           size={168}
           priority
