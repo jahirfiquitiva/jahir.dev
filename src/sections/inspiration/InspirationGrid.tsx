@@ -1,7 +1,9 @@
 import { Heading } from '@/components/atoms';
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { Loading } from '@/components/compounds/Loading';
-import { Section } from '@/components/elements';
+import {
+  Loading,
+  Masonry,
+  type MasonryBreakpoints,
+} from '@/components/compounds';
 import { useRequest } from '@/hooks';
 import { InspirationItem as InspirationItemType } from '@/lib/notion';
 import { breakpointsValues } from '@/stitches';
@@ -21,23 +23,9 @@ export const InspirationGrid: FC = () => {
     bookmarks: Array<InspirationItemType>;
   }>('/api/bookmarks');
 
+  if (loading) return <Loading />;
   return (
-    <Section
-      id={'inspiration'}
-      css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
-      centered
-    >
-      <Heading as={'h3'} shadow={'brand'} gradient={'brand-to-blue'}>
-        Inspiration
-      </Heading>
-      <p>
-        These are some sites that I like and that have somehow inspired part of
-        my website and even some personal projects. 👏{' '}
-        <em>(In no particular order).</em>
-      </p>
-
-      {loading ? <Loading /> : null}
-
+    <>
       {data && data.bookmarks.length && !error ? (
         <>
           <Masonry
@@ -50,13 +38,16 @@ export const InspirationGrid: FC = () => {
             })}
           </Masonry>
         </>
-      ) : !loading ? (
+      ) : (
         <p>
+          <Heading as={'span'} gradient={'red-to-purple'}>
+            Oops!
+          </Heading>{' '}
           No inspiration found at this time.
           <br />
-          Please come back later
+          Please come back later 😬
         </p>
-      ) : null}
-    </Section>
+      )}
+    </>
   );
 };

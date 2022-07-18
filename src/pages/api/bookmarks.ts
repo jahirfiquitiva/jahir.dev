@@ -20,14 +20,12 @@ export default async function handler() {
     );
     const { results = [] } = await databaseRequest.json();
     const bookmarksPromises = results.map(fetchBookmarkPromise);
+    const bookmarks = (await Promise.all(bookmarksPromises).catch(() => []))
+      // @ts-ignore
+      .filter((it) => !!it && !!it.link);
     return buildApiResponse(
-      200,
-      {
-        success: true,
-        bookmarks: (await Promise.all(bookmarksPromises).catch(() => []))
-          // @ts-ignore
-          .filter((it) => !!it && !!it.link),
-      },
+      bookmarks.length ? 200 : 400,
+      { success: !!bookmarks.length, bookmarks },
       { 'cache-control': 'public, s-maxage=3600, stale-while-revalidate=1800' },
     );
   } catch (err) {
