@@ -20,6 +20,7 @@
     "@mdi/react": "^1.6.0",
     "@prisma/client": "^4.0.0",
     "@stitches/react": "^1.2.8",
+    "@uiball/loaders": "^1.2.6",
     "canvas-confetti": "^1.5.1",
     "colord": "^2.9.2",
     "contentlayer": "^0.2.6",

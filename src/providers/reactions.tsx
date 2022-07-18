@@ -31,6 +31,7 @@ export interface ReactionsContextValue {
   reactions: ContextReactions;
   incrementReaction?: (reaction: ReactionType) => Promise<boolean>;
   submitting?: boolean;
+  loading?: boolean;
 }
 
 const defaultContextState: ReactionsContextValue = {
@@ -63,7 +64,7 @@ export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
   const [state, setState] = useState<Reactions>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const { data: remoteReactions } = useRequest<{ counters: Reactions }>(
+  const { data: remoteReactions, loading } = useRequest<{ counters: Reactions }>(
     `/api/reactions/${slug}`,
   );
 
@@ -116,6 +117,7 @@ export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
     reactions: { ...lsState, ...state },
     incrementReaction,
     submitting,
+    loading,
   };
 
   return (

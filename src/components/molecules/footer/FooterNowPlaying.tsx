@@ -1,5 +1,6 @@
 import { mdiSpotify } from '@mdi/js';
 import Icon from '@mdi/react';
+import { LineWobble } from '@uiball/loaders';
 
 import { Img, Link } from '@/components/atoms';
 import { useRequest } from '@/hooks';
@@ -8,9 +9,10 @@ import type { FC } from '@/types';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 const MusicItem = styled('li', {
-  maxHeight: 28,
+  height: 28,
   display: 'inline-flex',
   alignItems: 'center',
+  verticalAlign: 'middle',
   width: '100%',
   maxWidth: '100%',
 });
@@ -160,10 +162,15 @@ const PseudoLi = styled('li', {
   },
 });
 
+const LoadingContainer = styled('div', {
+  mx: '$6',
+  '@tablet-sm': {
+    mx: '$2',
+  },
+});
+
 export const FooterNowPlaying: FC = () => {
   const { data, loading } = useRequest<TrackData>('/api/now-playing');
-
-  if (loading) return null;
 
   const renderComponents = () => {
     if (!data || !data.isPlaying) {
@@ -197,7 +204,20 @@ export const FooterNowPlaying: FC = () => {
   return (
     <>
       <PseudoLi></PseudoLi>
-      <MusicItem>{renderComponents()}</MusicItem>
+      <MusicItem>
+        {loading ? (
+          <LoadingContainer>
+            <LineWobble
+              size={84}
+              lineWeight={5}
+              speed={1.75}
+              color={'var(--colors-accent-light)'}
+            />
+          </LoadingContainer>
+        ) : (
+          renderComponents()
+        )}
+      </MusicItem>
     </>
   );
 };

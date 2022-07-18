@@ -7,6 +7,7 @@ import {
   mdiThumbUpOutline,
 } from '@mdi/js';
 import Icon from '@mdi/react';
+import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
@@ -165,7 +166,8 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
   const { inProgress, ...otherProps } = props;
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const { reactions, incrementReaction, slug, submitting } = useReactions();
+  const { reactions, incrementReaction, slug, submitting, loading } =
+    useReactions();
   const { isDark } = useTheme();
 
   const clickReaction = (
@@ -211,7 +213,20 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
     };
   }, []);
 
-  if (!reactions) return null;
+  const renderLoaderOrText = (text: string) => {
+    return loading ? (
+      <Ring
+        size={16}
+        lineWeight={6}
+        speed={2}
+        color={'var(--colors-text-tertiary)'}
+      />
+    ) : (
+      text
+    );
+  };
+
+  if (!reactions && !loading) return null;
   return (
     <ReactionsGroup {...otherProps}>
       <ReactionButton
@@ -227,7 +242,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
           path={reactions?.like ? mdiThumbUp : mdiThumbUpOutline}
           size={iconSize}
         />
-        {reactions.likes || '0'}
+        {renderLoaderOrText(reactions.likes || '0')}
       </ReactionButton>
       <ReactionButton
         outlined
@@ -242,7 +257,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
           path={reactions?.love ? mdiHeart : mdiHeartOutline}
           size={iconSize}
         />
-        {reactions.loves || '0'}
+        {renderLoaderOrText(reactions.loves || '0')}
       </ReactionButton>
       <ReactionButton
         outlined
@@ -257,7 +272,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
           path={reactions?.award ? icons.award : icons.awardOutline}
           size={iconSize}
         />
-        {reactions.awards || '0'}
+        {renderLoaderOrText(reactions.awards || '0')}
       </ReactionButton>
       <ReactionButton
         outlined
@@ -272,7 +287,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
           path={reactions?.bookmark ? mdiBookmark : mdiBookmarkOutline}
           size={iconSize}
         />
-        {reactions.bookmarks || '0'}
+        {renderLoaderOrText(reactions.bookmarks || '0')}
       </ReactionButton>
     </ReactionsGroup>
   );
