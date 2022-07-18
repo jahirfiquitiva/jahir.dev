@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import type { FC } from '@/types';
-import { styled, theme } from '~/stitches';
+import { styled } from '~/stitches';
 
 import { AppItem, type AppItemProps } from './AppItem';
 
@@ -20,8 +20,8 @@ const GridContainer = styled('div', {
   backgroundPosition: 'center',
 });
 
-const Grid = styled('div', {
-  $$columns: 2,
+const Grid = styled('ol', {
+  $$columns: 3,
   m: 0,
   display: 'grid',
   gridTemplateColumns: 'repeat($$columns, minmax(0, 120px))',
@@ -29,17 +29,28 @@ const Grid = styled('div', {
   boxShadow: '0 0 4px 2px $toolbar-glow',
   borderRadius: '$space$10',
   gap: '$16',
-  p: '$16 $12',
+  p: '$20 $12',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: theme.colors.divider?.value || '$divider',
+  backgroundColor: 'rgba(12 18 30 / .3)',
+  listStyle: 'none',
+  '& > li': {
+    display: 'block',
+  },
   '@mobile-md': {
     $$columns: 3,
     gridTemplateColumns: 'repeat($$columns, minmax(0, 108px))',
   },
+  '@mobile-lg': {
+    $$columns: 4,
+  },
   '@tablet-sm': {
     $$columns: 5,
-    p: '$28',
+    py: '$32',
+    px: '$24',
+  },
+  '@tablet-lg': {
+    py: '$36',
   },
 });
 
@@ -60,7 +71,7 @@ export const AppsGrid: FC<AppsGridProps> = ({ items }) => {
 
   return (
     <GridContainer>
-      <Grid>
+      <Grid className={'apps-grid'}>
         {sortedApps.map((item, index) => {
           return <AppItem item={item} key={index} />;
         })}

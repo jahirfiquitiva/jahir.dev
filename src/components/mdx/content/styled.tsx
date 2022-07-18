@@ -6,12 +6,12 @@ import { Reactions } from './Reactions';
 export const Title = styled(Heading, {
   $$textShadowColor: '$colors$text-primary',
   dark: { $$textShadowColor: '$colors$text-primary' },
-  mt: '$6',
+  mt: '$12',
   '@tablet-sm': {
-    mt: '$12',
+    mt: '$16',
   },
   '@tablet-lg': {
-    mt: '$16',
+    mt: '$20',
   },
 });
 

@@ -6,9 +6,8 @@ const AppItemContainer = styled(Link, {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '$4',
-  p: '$4',
-  m: '$4',
+  gap: '$2',
+  p: '$2',
   borderRadius: '$space$8',
   fontSize: '12px',
   transition: 'all .15s ease-in-out',
@@ -24,12 +23,25 @@ const AppItemContainer = styled(Link, {
     ellipsize: true,
     maxWidth: 'calc(100% + $space$4)',
   },
+  '@mobile-lg': {
+    gap: '$4',
+    p: '$4',
+  },
 });
 
 const AppIcon = styled(Img, {
   border: 'none !important',
   filter: 'drop-shadow(0 0 4px $colors$img-drop-shadow)',
-  maxWidth: 84,
+  maxWidth: 48,
+  '@mobile-md': {
+    maxWidth: 56,
+  },
+  '@mobile-lg': {
+    maxWidth: 64,
+  },
+  '@tablet-sm': {
+    maxWidth: 72,
+  },
 });
 
 export interface AppItemProps {
@@ -40,9 +52,15 @@ export interface AppItemProps {
 
 export const AppItem: FC<{ item: AppItemProps }> = ({ item }) => {
   return (
-    <AppItemContainer href={item.link || '#'} title={item.name}>
-      <AppIcon src={`/static/images/${item.image}`} size={72} alt={item.name} />
-      <span>{item.name}</span>
-    </AppItemContainer>
+    <li>
+      <AppItemContainer href={item.link || '#'} title={item.name}>
+        <AppIcon
+          src={`/static/images/${item.image}`}
+          size={72}
+          alt={item.name}
+        />
+        <span>{item.name}</span>
+      </AppItemContainer>
+    </li>
   );
 };

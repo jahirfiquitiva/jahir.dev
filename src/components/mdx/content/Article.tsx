@@ -14,17 +14,21 @@ export const Article = styled('article', {
       },
     },
   },
-  '& h1': {
-    mt: '$40',
+  '& h1:not(:first-of-type)': {
+    mt: '2.5rem',
+    mb: '$16',
   },
   '& h2': {
     mt: '$36',
+    mb: '$12',
   },
   '& h3,  & h4': {
     mt: '$32',
+    mb: '$8',
   },
   '& h5,  & h6': {
     mt: '$28',
+    mb: '$4',
   },
   '& p': {
     width: '100%',
@@ -47,7 +51,7 @@ export const Article = styled('article', {
       color: '$text-tertiary',
     },
   },
-  '& ol, & ul': {
+  '& ol:not(.apps-grid), & ul:not(.apps-grid)': {
     display: 'block',
     listStyle: 'none',
     position: 'relative',
@@ -79,7 +83,7 @@ export const Article = styled('article', {
       },
     },
   },
-  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list) > li::before':
+  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list):not(.apps-grid) > li::before':
     {
       content: 'counter(list-item, disc)',
     },
