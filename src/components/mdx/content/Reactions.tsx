@@ -162,7 +162,7 @@ const getConfettiColor = (
 const iconSize = 0.73;
 // eslint-disable-next-line max-lines-per-function
 export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
-  const { inProgress } = props;
+  const { inProgress, ...otherProps } = props;
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const { reactions, incrementReaction, slug, submitting } = useReactions();
@@ -213,7 +213,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
 
   if (!reactions) return null;
   return (
-    <ReactionsGroup {...props}>
+    <ReactionsGroup {...otherProps}>
       <ReactionButton
         outlined
         thumbsUp
