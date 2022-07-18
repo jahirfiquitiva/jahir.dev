@@ -87,6 +87,11 @@ export const globalStyles = globalCss({
       transitionDelay: '-1ms !important',
     },
   },
+  '@fourK': {
+    ':root': {
+      '$sizes$max-site-width': '720px',
+    },
+  },
 });
 
 export const preloadFonts = [

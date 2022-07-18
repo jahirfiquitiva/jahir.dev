@@ -15,8 +15,8 @@ const StyledProjectCard = styled(Link, {
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  py: '$16',
-  px: '$18',
+  py: '$14',
+  px: '$16',
   gap: '$10',
   backgroundColor: 'rgba(9 17 34 / 0.006)',
   border: '$$borderSize solid $divider',
@@ -35,8 +35,8 @@ const StyledProjectCard = styled(Link, {
   },
   hocus: {
     $$borderSize: '2px',
-    py: 'calc($16 - 1px)',
-    px: 'calc($18 - 1px)',
+    py: 'calc($14 - 1px)',
+    px: 'calc($16 - 1px)',
     transform: 'scale(1.0125)',
     boxShadow: '0 0 8px 2px rgba($$color / .2)',
     backgroundColor: 'rgba($$color / .035)',
@@ -96,7 +96,7 @@ const StarsContainer = styled('div', {
   borderBottomWidth: '$$borderSize',
   borderBottomLeftRadius: '$space$8',
   transition: 'all .15s ease-in-out',
-  transitionDelay: '.05s',
+  transitionDelay: '-.05s',
 });
 
 interface ProjectCardProps {
