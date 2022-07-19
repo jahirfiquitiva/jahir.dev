@@ -37,7 +37,7 @@ const getPlaceholdersForImages = async (page, images) => {
 };
 
 const aboutImagesCount = 9;
-const contactImagesCount = 9;
+const contactImagesCount = 4;
 const images =
   page === 'about'
     ? [...Array(aboutImagesCount).keys()]

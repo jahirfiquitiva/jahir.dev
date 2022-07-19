@@ -6,6 +6,7 @@ import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
+import { OpenDoodle } from '@/components/compounds';
 
 const Grid = styled('div', {
   display: 'grid',
@@ -99,13 +100,12 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
   const imageComponent = useMemo(() => {
     if (!hasMounted) return null;
     return (
-      <Img
+      <OpenDoodle
         src={`/static/images/contact/${image.key}.png`}
         alt={image.alt}
         size={image.width || 384}
-        placeholder={'blur'}
-        blurDataURL={image?.base64 || ''}
         css={{ width: '100%', height: 'auto', maxWidth: 320, mx: 'auto' }}
+        shadowSize={4}
         priority
       />
     );
