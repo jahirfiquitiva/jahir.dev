@@ -25,6 +25,7 @@ const BaseImg: FC<ImgProps> = (props) => {
       width={width}
       height={height}
       loading={props.priority ? undefined : props.loading}
+      decoding={'async'}
     />
   );
 };

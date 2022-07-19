@@ -1,7 +1,7 @@
 import { mdiInstagram } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import { Img, Link } from '@/components/atoms';
+import { Link } from '@/components/atoms';
 import { useRequest } from '@/hooks';
 import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';
@@ -63,6 +63,15 @@ const ImgContainer = styled(Link, {
   },
 });
 
+const InstaPhoto = styled('img', {
+  width: 'auto',
+  height: '100%',
+  backgroundColor: '$toolbar',
+  objectFit: 'cover',
+  objectPosition: 'center',
+  transition: 'all ease-in-out .35s',
+});
+
 export const InstaFeed: FC = () => {
   const { data, loading } = useRequest<{ feed?: Array<InstagramPost> }>(
     '/api/insta-feed',
@@ -78,16 +87,13 @@ export const InstaFeed: FC = () => {
               title={`View photo "${post.caption}" on Instagram`}
               href={post.postUrl || '#'}
             >
-              <Img
+              <InstaPhoto
                 src={post.photoUrl || ''}
                 alt={post.caption}
-                size={214}
-                css={{
-                  transition: 'all ease-in-out .35s',
-                  height: '100%',
-                  width: 'auto',
-                  backgroundColor: '$toolbar',
-                }}
+                loading={'lazy'}
+                decoding={'async'}
+                width={214}
+                height={214}
               />
               <Icon path={mdiInstagram} size={1.5} />
             </ImgContainer>

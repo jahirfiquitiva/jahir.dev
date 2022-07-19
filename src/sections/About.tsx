@@ -51,6 +51,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
           placeholder={'blur'}
           blurDataURL={image?.base64 || ''}
           css={{ aspectRatio: '21 / 9', width: '100%', height: 'auto' }}
+          priority
         />
         <figcaption>📸&nbsp;&nbsp;{image.alt}</figcaption>
       </PhotoFigure>

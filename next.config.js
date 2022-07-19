@@ -46,7 +46,6 @@ const defaultNextConfig = {
       'lh3.googleusercontent.com',
       'cdn.discordapp.com',
       'raw.githubusercontent.com',
-      'scontent-atl3-1.cdninstagram.com',
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
