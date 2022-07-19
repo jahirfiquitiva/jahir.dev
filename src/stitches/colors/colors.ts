@@ -6,7 +6,7 @@ type RGBColor = `rgb(${RGBValues})`;
 type RGBAColor = `rgba(${RGBValues} / ${number})`;
 type StitchesVariable = `$${string}`;
 
-type ThemeColorValue =
+export type ThemeColorValue =
   | RGBValues
   | HexColor
   | RGBColor
@@ -64,6 +64,8 @@ export const colors: ThemeColors = {
   'code-property': '#7a4cbb',
   'code-operator': '#c86827',
   'code-function': '#aa499d',
+
+  'illustrations-shadow': '#c0b4f0',
 };
 
 export const darkThemeColors: ThemeColors = {
@@ -103,4 +105,6 @@ export const darkThemeColors: ThemeColors = {
   'code-property': '#b77eee',
   'code-operator': '#fed330',
   'code-function': '#f368e0',
+
+  'illustrations-shadow': '#d8d1f6',
 };

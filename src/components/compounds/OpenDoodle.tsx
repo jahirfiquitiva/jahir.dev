@@ -1,12 +1,13 @@
 import type { ComponentProps } from 'react';
 
 import { Img } from '@/components/atoms';
+import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const StyledImg = styled(Img, {
   $$shadowSize: 0,
-  $$shadowColor: '#fff',
+  $$shadowColor: '$colors$illustrations-shadow',
   filter:
     'drop-shadow(-$$shadowSize -$$shadowSize calc($$shadowSize / 2) $$shadowColor)' +
     ' drop-shadow($$shadowSize $$shadowSize calc($$shadowSize / 2) $$shadowColor)' +
@@ -23,13 +24,18 @@ const StyledImg = styled(Img, {
 
 interface OpenDoodleProps {
   shadowSize?: number;
-  shadowColor?: string;
+  shadowColor?: ThemeColorValue;
 }
 
 export const OpenDoodle: FC<
   ComponentProps<typeof StyledImg> & OpenDoodleProps
 > = (props) => {
-  const { shadowSize = 6, shadowColor = '#D8D1F6', css, ...otherProps } = props;
+  const {
+    shadowSize = 4,
+    shadowColor = '$colors$illustrations-shadow',
+    css,
+    ...otherProps
+  } = props;
   return (
     <StyledImg
       size={384}

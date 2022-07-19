@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-import { Heading, Img, Link } from '@/components/atoms';
 import { OpenDoodle } from '@/components/compounds';
 import { Layout, Section } from '@/components/elements';
 import type { RandomPageImage } from '@/types';

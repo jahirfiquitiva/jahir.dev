@@ -39,6 +39,7 @@ export type ThemeColorsNames =
   | 'divider'
   | 'selection'
   | 'img-drop-shadow'
+  | 'illustrations-shadow'
   | AccentColor
   | GradientColor
   | ShadowColor

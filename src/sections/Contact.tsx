@@ -105,7 +105,6 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
         alt={image.alt}
         size={image.width || 384}
         css={{ width: '100%', height: 'auto', maxWidth: 320, mx: 'auto' }}
-        shadowSize={4}
         priority
       />
     );
