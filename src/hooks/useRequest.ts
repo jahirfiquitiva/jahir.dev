@@ -6,7 +6,7 @@ import fetcher from '@/lib/fetcher';
 interface SwrData<T = unknown> {
   data?: T | null;
   loading: boolean;
-  error?: string | unknown | null;
+  error?: string | Error | null;
   mutate?: (
     data?: T | Promise<T> | MutatorCallback<T>,
     shouldRevalidate?: boolean,

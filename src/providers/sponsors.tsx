@@ -1,22 +1,21 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useReducer,
-  useCallback,
-} from 'react';
+import { createContext, useContext } from 'react';
 
-import { useHasMounted, useRequest } from '@/hooks';
+import { useRequest } from '@/hooks';
 import { SponsorCategory, SponsorsCategoriesResponse } from '@/lib/sponsors';
 import type { FC } from '@/types';
 
 export interface SponsorsContextValue {
   categories: Array<SponsorCategory>;
+  totalEarningsPerMonth?: number;
+  sponsorsCount?: number;
+  loading?: boolean;
+  error?: string;
 }
 
 const defaultContextState: SponsorsContextValue = {
   categories: [],
+  totalEarningsPerMonth: 0,
+  sponsorsCount: 0,
 };
 
 const SponsorsContext =
@@ -32,6 +31,10 @@ export const SponsorsProvider: FC = (props) => {
 
   const contextValue: SponsorsContextValue = {
     categories: data?.categories || [],
+    totalEarningsPerMonth: data?.totalEarningsPerMonth || 0,
+    sponsorsCount: data?.sponsorsCount || 0,
+    loading,
+    error: data?.error || error?.toString(),
   };
 
   return (

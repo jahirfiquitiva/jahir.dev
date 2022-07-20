@@ -5,6 +5,7 @@ import { LinkStatCard, StatCard } from '@/components/compounds';
 import type { FC } from '@/types';
 import { icons } from '@/utils';
 import { styled } from '~/stitches';
+import { useSponsors } from '@/providers/sponsors';
 
 const StatsContainer = styled('div', {
   display: 'flex',
@@ -25,6 +26,7 @@ const StatsCardsContainer = styled('div', {
 });
 
 export const DonateStats: FC = () => {
+  const { sponsorsCount, totalEarningsPerMonth } = useSponsors();
   return (
     <StatsContainer>
       <Heading as={'h4'}>Stats</Heading>
@@ -34,13 +36,13 @@ export const DonateStats: FC = () => {
           title={'View sponsors'}
           href={'#thanks'}
           text={'sponsors'}
-          value={'4'}
+          value={(sponsorsCount || 0).toString()}
           iconPath={mdiHeartOutline}
           color={'#c94091'}
         />
         <StatCard
           text={'earned per month'}
-          value={'$25'}
+          value={`$${totalEarningsPerMonth || 0}`}
           iconPath={icons.money}
           color={'#26de81'}
         />

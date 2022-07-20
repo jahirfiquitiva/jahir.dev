@@ -121,6 +121,7 @@ export interface SponsorCategory {
   sponsors?: Array<Sponsor>;
   price?: number;
   totalEarningsPerMonth?: number;
+  sponsorsCount?: number;
 }
 
 const getSponsorsGraphQLResponse = async (): Promise<SponsorsResponse> => {
@@ -176,6 +177,7 @@ const mapResponseToSponsorsList = (
       }),
       price: monthlyPriceInDollars,
       totalEarningsPerMonth,
+      sponsorsCount: sponsors?.length || 0,
     };
   }) as Array<SponsorCategory>;
 };
@@ -184,6 +186,7 @@ export interface SponsorsCategoriesResponse {
   categories?: Array<SponsorCategory>;
   error?: string;
   totalEarningsPerMonth?: number;
+  sponsorsCount?: number;
 }
 
 const mergeManualAndGitHubSponsors = (
@@ -235,18 +238,22 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
   try {
     const response = await getSponsorsGraphQLResponse();
     if (response) {
-      const githubCategories = mapResponseToSponsorsList(response).filter(
-        (it) => (it.price || 0) >= 5,
-      );
+      const githubCategories = mapResponseToSponsorsList(response);
       const totalEarningsPerMonth: number = githubCategories.reduce(
         (prev, current) => {
           return prev + (current.totalEarningsPerMonth || 0);
         },
         0,
       );
+      const sponsorsCount: number = githubCategories.reduce((prev, current) => {
+        return prev + (current.sponsorsCount || 0);
+      }, 0);
       return {
-        categories: mergeManualAndGitHubSponsors(githubCategories),
+        categories: mergeManualAndGitHubSponsors(
+          githubCategories.filter((it) => (it.price || 0) >= 5),
+        ),
         totalEarningsPerMonth,
+        sponsorsCount,
       };
     }
     return { error: 'No valid response from GitHub' };
