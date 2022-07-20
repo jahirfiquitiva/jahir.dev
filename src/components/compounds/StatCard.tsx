@@ -7,6 +7,7 @@ import type { ThemeColorValue } from '@/stitches';
 import { FC } from '@/types';
 import { getReadableColor, hexToRGB } from '@/utils';
 import { styled } from '~/stitches';
+import { Ring } from '@uiball/loaders';
 
 const StyledCard = styled('div', {
   $$color: '$colors$toolbar-glow',
@@ -102,11 +103,12 @@ interface StatCardProps {
   value: string;
   iconPath?: string;
   color?: ThemeColorValue;
+  loading?: boolean;
 }
 
 export const StatCard: FC<StatCardProps> = (props) => {
   const { isDark, themeReady } = useTheme();
-  const { text, value, iconPath, color } = props;
+  const { text, value, iconPath, color, loading } = props;
 
   const readableColor = useMemo<ThemeColorValue>(() => {
     if (!themeReady) return '$colors$toolbar-glow';
@@ -121,7 +123,16 @@ export const StatCard: FC<StatCardProps> = (props) => {
 
   return (
     <StyledCard css={{ $$color: readableColor }}>
-      <Value>{value}</Value>
+      {loading ? (
+        <Ring
+          size={24}
+          lineWeight={6}
+          speed={2}
+          color={'var(--colors-accent-light)'}
+        />
+      ) : (
+        <Value>{value}</Value>
+      )}
       <Text>{text}</Text>
       {iconPath ? (
         <IconContainer className={'icon'}>
@@ -139,10 +150,16 @@ const LinkForStatCard = styled(Link, {
 export const LinkStatCard: FC<
   ComponentProps<typeof StatCard> & ComponentProps<typeof LinkForStatCard>
 > = (props) => {
-  const { text, value, iconPath, color, ...otherProps } = props;
+  const { text, value, iconPath, color, loading, ...otherProps } = props;
   return (
     <LinkForStatCard {...otherProps} as={'a'}>
-      <StatCard text={text} value={value} iconPath={iconPath} color={color} />
+      <StatCard
+        text={text}
+        value={value}
+        iconPath={iconPath}
+        color={color}
+        loading={loading}
+      />
     </LinkForStatCard>
   );
 };

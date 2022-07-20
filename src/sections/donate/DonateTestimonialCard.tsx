@@ -91,6 +91,7 @@ export const DonateTestimonialCard: FC<TestimonialCardProps> = (props) => {
             `https://source.boringavatars.com/beam/28?name=${props.author}`
           }
           size={28}
+          css={{ backgroundColor: '$accent-light' }}
         />
         <span>{props.author}&nbsp; ––</span>
       </Sponsor>

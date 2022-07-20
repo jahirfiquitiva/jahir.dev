@@ -26,7 +26,7 @@ const StatsCardsContainer = styled('div', {
 });
 
 export const DonateStats: FC = () => {
-  const { sponsorsCount, totalEarningsPerMonth } = useSponsors();
+  const { sponsorsCount, totalEarningsPerMonth, loading } = useSponsors();
   return (
     <StatsContainer>
       <Heading as={'h4'}>Stats</Heading>
@@ -36,15 +36,17 @@ export const DonateStats: FC = () => {
           title={'View sponsors'}
           href={'#thanks'}
           text={'sponsors'}
-          value={(sponsorsCount || 0).toString()}
+          value={`${sponsorsCount || 'X'}`}
           iconPath={mdiHeartOutline}
           color={'#c94091'}
+          loading={loading}
         />
         <StatCard
           text={'earned per month'}
           value={`$${totalEarningsPerMonth || 0}`}
           iconPath={icons.money}
           color={'#26de81'}
+          loading={loading}
         />
       </StatsCardsContainer>
     </StatsContainer>
