@@ -1,9 +1,16 @@
+export type SponsorsCategoryKey =
+  | 'ball'
+  | 'rocket'
+  | 'lightning'
+  | 'diamond'
+  | 'unicorn';
+
 interface ManualSponsor {
   name: string;
   link?: string;
   photo?: string;
   username?: string;
-  category?: 'ball' | 'rocket' | 'lightning' | 'diamond' | 'unicorn';
+  category?: SponsorsCategoryKey;
 }
 
 export const manualSponsors: Array<ManualSponsor> = [

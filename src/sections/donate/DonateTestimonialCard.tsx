@@ -57,6 +57,7 @@ const Sponsor = styled('p', {
   gap: '$6',
   fontSize: '$2xs',
   lineHeight: 1,
+  color: '$text-tertiary',
   '& > img': {
     borderRadius: '50%',
   },
@@ -85,10 +86,13 @@ export const DonateTestimonialCard: FC<TestimonialCardProps> = (props) => {
       <Testimonial>{props.children || props.content}</Testimonial>
       <Sponsor>
         <Img
-          src={props.photo || 'https://source.boringavatars.com/beam/28'}
+          src={
+            props.photo ||
+            `https://source.boringavatars.com/beam/28?name=${props.author}`
+          }
           size={28}
         />
-        <span>{props.author}</span>
+        <span>{props.author}&nbsp; ––</span>
       </Sponsor>
       <QuoteIcon path={mdiFormatQuoteClose} size={2} />
     </StyledCard>

@@ -1,8 +1,9 @@
-import { mdiCurrencyUsd, mdiHeartOutline } from '@mdi/js';
+import { mdiHeartOutline } from '@mdi/js';
 
 import { Heading } from '@/components/atoms';
 import { LinkStatCard, StatCard } from '@/components/compounds';
 import type { FC } from '@/types';
+import { icons } from '@/utils';
 import { styled } from '~/stitches';
 
 const StatsContainer = styled('div', {
@@ -40,7 +41,7 @@ export const DonateStats: FC = () => {
         <StatCard
           text={'earned per month'}
           value={'$25'}
-          iconPath={mdiCurrencyUsd}
+          iconPath={icons.money}
           color={'#26de81'}
         />
       </StatsCardsContainer>

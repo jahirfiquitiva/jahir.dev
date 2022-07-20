@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-destructuring */
-import { manualSponsors } from './manual-sponsors';
+import { manualSponsors, SponsorsCategoryKey } from './manual-sponsors';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
   githubApiToken && githubApiToken.length > 0
@@ -115,7 +115,7 @@ export interface Sponsor {
 export interface SponsorCategory {
   id?: string;
   name: string;
-  key: string;
+  key: SponsorsCategoryKey;
   sponsors?: Array<Sponsor>;
   price?: number;
 }

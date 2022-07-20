@@ -5,6 +5,7 @@ import { styled } from '~/stitches';
 import { DonateBenefitsAndPurpose } from './DonateBenefitsAndPurpose';
 import { DonateButtons } from './DonateButtons';
 import { DonateIntro } from './DonateIntro';
+import { DonateSponsors } from './DonateSponsors';
 import { DonateStats } from './DonateStats';
 import { DonateTestimonials } from './DonateTestimonials';
 
@@ -23,7 +24,9 @@ export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
         <DonateBenefitsAndPurpose />
         <DonateTestimonials />
       </DonateSection>
-      <DonateSection id={'thanks'}></DonateSection>
+      <DonateSection id={'thanks'} css={{ mt: '$$verticalContentPadding' }}>
+        <DonateSponsors />
+      </DonateSection>
     </>
   );
 };
