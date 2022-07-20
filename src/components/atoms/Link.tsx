@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
 
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
@@ -34,19 +34,20 @@ const StyledLink = styled(NextLink, {
 });
 
 interface LinkProps {
-  title: string;
-  href: string;
   underline?: boolean;
   openInNewTab?: boolean;
 }
 
-export const Link: FC<LinkProps> = (props) => {
+export const Link: FC<ComponentProps<typeof StyledLink> & LinkProps> = (
+  props,
+) => {
+  const { href: url, ...otherProps } = props;
+  const href: string = url.toString();
   const {
-    href,
     openInNewTab = !isLocalLink(href),
     underline = true,
     ...rest
-  } = props;
+  } = otherProps;
   const router = useRouter();
 
   const shouldPrefetch = useMemo<boolean>(() => {

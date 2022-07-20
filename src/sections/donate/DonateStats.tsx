@@ -1,7 +1,7 @@
 import { mdiCurrencyUsd, mdiHeartOutline } from '@mdi/js';
 
 import { Heading } from '@/components/atoms';
-import { StatCard } from '@/components/compounds';
+import { LinkStatCard, StatCard } from '@/components/compounds';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
@@ -29,14 +29,16 @@ export const DonateStats: FC = () => {
       <Heading as={'h4'}>Stats</Heading>
       <p>For transparency, these are the latest stats from GitHub Sponsors:</p>
       <StatsCardsContainer>
-        <StatCard
-          title={'sponsors'}
+        <LinkStatCard
+          title={'View sponsors'}
+          href={'#thanks'}
+          text={'sponsors'}
           value={'4'}
           iconPath={mdiHeartOutline}
           color={'#c94091'}
         />
         <StatCard
-          title={'earned per month'}
+          text={'earned per month'}
           value={'$25'}
           iconPath={mdiCurrencyUsd}
           color={'#26de81'}

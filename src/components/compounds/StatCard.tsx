@@ -1,6 +1,7 @@
 import Icon from '@mdi/react';
-import { useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
 
+import { Link } from '@/components/atoms';
 import { useTheme } from '@/providers/theme';
 import type { ThemeColorValue } from '@/stitches';
 import { FC } from '@/types';
@@ -64,7 +65,7 @@ const Value = styled('span', {
   },
 });
 
-const Title = styled('span', {
+const Text = styled('span', {
   fontSize: '$2xs',
   fontWeight: 600,
   color: '$text-secondary',
@@ -97,7 +98,7 @@ const IconContainer = styled('span', {
 });
 
 interface StatCardProps {
-  title: string;
+  text: string;
   value: string;
   iconPath?: string;
   color?: ThemeColorValue;
@@ -105,7 +106,7 @@ interface StatCardProps {
 
 export const StatCard: FC<StatCardProps> = (props) => {
   const { isDark, themeReady } = useTheme();
-  const { title, value, iconPath, color } = props;
+  const { text, value, iconPath, color } = props;
 
   const readableColor = useMemo<ThemeColorValue>(() => {
     if (!themeReady) return '$colors$toolbar-glow';
@@ -121,12 +122,27 @@ export const StatCard: FC<StatCardProps> = (props) => {
   return (
     <StyledCard css={{ $$color: readableColor }}>
       <Value>{value}</Value>
-      <Title>{title}</Title>
+      <Text>{text}</Text>
       {iconPath ? (
         <IconContainer className={'icon'}>
           <Icon path={iconPath} size={1} />
         </IconContainer>
       ) : null}
     </StyledCard>
+  );
+};
+
+const LinkForStatCard = styled(Link, {
+  borderRadius: '$space$8',
+});
+
+export const LinkStatCard: FC<
+  ComponentProps<typeof StatCard> & ComponentProps<typeof LinkForStatCard>
+> = (props) => {
+  const { text, value, iconPath, color, ...otherProps } = props;
+  return (
+    <LinkForStatCard {...otherProps} underline={false} as={'a'}>
+      <StatCard text={text} value={value} iconPath={iconPath} color={color} />
+    </LinkForStatCard>
   );
 };
