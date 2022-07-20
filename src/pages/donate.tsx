@@ -1,28 +1,23 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import { useMemo } from 'react';
 
-import { OpenDoodle } from '@/components/compounds';
-import { Layout, Section } from '@/components/elements';
+import { Layout } from '@/components/elements';
+import { Donate as DonateSection } from '@/sections';
 import type { RandomPageImage } from '@/types';
+import { getRandomItem } from '@/utils';
 
 const Donate: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
+  const { images } = props;
+  const image = useMemo(() => {
+    return getRandomItem(images);
+  }, [images]);
   return (
     <Layout>
       <Head>
         <title>Donate</title>
       </Head>
-      <Section id={'donate'} centered>
-        {(props.images || []).map((img) => {
-          return (
-            <OpenDoodle
-              key={img.key}
-              src={`/static/images/donate/${img.key}.png`}
-              alt={img.alt}
-              flip={img.key < 3}
-            />
-          );
-        })}
-      </Section>
+      <DonateSection image={image} />
     </Layout>
   );
 };

@@ -8,6 +8,11 @@ import { styled } from '~/stitches';
 const StyledImg = styled(Img, {
   $$shadowSize: 0,
   $$shadowColor: '$colors$illustrations-shadow',
+  width: '100%',
+  height: 'auto',
+  maxWidth: 320,
+  mx: 'auto',
+  aspectRatio: '1 / 1',
   filter:
     'drop-shadow(-$$shadowSize -$$shadowSize calc($$shadowSize / 2) $$shadowColor)' +
     ' drop-shadow($$shadowSize $$shadowSize calc($$shadowSize / 2) $$shadowColor)' +
