@@ -16,6 +16,7 @@ export const Chip = styled('span', {
   transition: 'all .2s ease-in-out',
   lineHeight: '1.65',
   gap: '$6',
+  ellipsize: true,
   hocus: {
     textDecoration: 'none',
     color: '$text-primary',

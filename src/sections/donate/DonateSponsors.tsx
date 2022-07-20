@@ -7,7 +7,7 @@ import { DonateSponsor } from './DonateSponsor';
 
 const SponsorsList = styled('ul', {
   display: 'block',
-  borderRadius: '$space$8',
+  borderRadius: '$space$10',
   border: '1px solid $divider',
   listStyle: 'none',
   p: 0,
@@ -56,8 +56,11 @@ export const DonateSponsors = () => {
               );
             })}
           </SponsorsList>
+          <small style={{ margin: '1rem 0 0', display: 'block' }}>
+            <sup>*</sup> Unicorn sponsors are special one-time supporters.
+          </small>
           <small>
-            <sup>*</sup> Unicorn sponsors are special one-time supporters
+            <sup>**</sup> Star sponsors not listed here.
           </small>
         </div>
       )}
