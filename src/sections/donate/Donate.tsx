@@ -2,6 +2,7 @@ import { Section } from '@/components/elements';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
 
+import { DonateBenefitsAndPurpose } from './DonateBenefitsAndPurpose';
 import { DonateButtons } from './DonateButtons';
 import { DonateIntro } from './DonateIntro';
 import { DonateStats } from './DonateStats';
@@ -18,6 +19,7 @@ export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
         <DonateIntro image={image} />
         <DonateButtons />
         <DonateStats />
+        <DonateBenefitsAndPurpose />
       </DonateSection>
       <DonateSection id={'thanks'}></DonateSection>
     </>

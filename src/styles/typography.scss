@@ -1,7 +1,7 @@
 html,
 body {
   color: var(--colors-text-secondary);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5;
 }
 
@@ -37,14 +37,10 @@ strong {
   font-weight: 600;
 }
 
-p {
+p,
+small {
   font-weight: 500;
   width: fit-content;
-}
-
-body,
-small {
-  font-weight: 400;
 }
 
 h1 {

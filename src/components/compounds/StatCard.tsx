@@ -141,7 +141,7 @@ export const LinkStatCard: FC<
 > = (props) => {
   const { text, value, iconPath, color, ...otherProps } = props;
   return (
-    <LinkForStatCard {...otherProps} underline={false} as={'a'}>
+    <LinkForStatCard {...otherProps} as={'a'}>
       <StatCard text={text} value={value} iconPath={iconPath} color={color} />
     </LinkForStatCard>
   );
