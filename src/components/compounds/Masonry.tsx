@@ -99,10 +99,10 @@ export const Masonry: FC<MasonryProps> = (props) => {
 
   if (!childrenCount) return null;
   return (
-    <MasonryGrid css={css} className={className} style={{ ...style, gap }}>
+    <MasonryGrid style={style} className={className} css={{ ...css, gap }}>
       {columns.map((col, index) => {
         return (
-          <MasonryColumn key={`col-${index}`} style={{ gap }}>
+          <MasonryColumn key={`col-${index}`} css={{ gap }}>
             {col.map((element) => element)}
           </MasonryColumn>
         );

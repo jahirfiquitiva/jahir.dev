@@ -6,6 +6,7 @@ import { DonateBenefitsAndPurpose } from './DonateBenefitsAndPurpose';
 import { DonateButtons } from './DonateButtons';
 import { DonateIntro } from './DonateIntro';
 import { DonateStats } from './DonateStats';
+import { DonateTestimonials } from './DonateTestimonials';
 
 const DonateSection = styled(Section, {
   flex: 'unset',
@@ -20,6 +21,7 @@ export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
         <DonateButtons />
         <DonateStats />
         <DonateBenefitsAndPurpose />
+        <DonateTestimonials />
       </DonateSection>
       <DonateSection id={'thanks'}></DonateSection>
     </>

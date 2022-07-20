@@ -1,6 +1,7 @@
 html,
 body {
   color: var(--colors-text-secondary);
+  font-size: var(--fontSizes-xs);
   font-weight: 500;
   line-height: 1.5;
 }
@@ -67,9 +68,8 @@ h6 {
   font-size: var(--fontSizes-sm);
 }
 
-p,
-body {
-  font-size: var(--fontSizes-xs);
+p {
+  font-size: inherit;
 }
 
 small {
