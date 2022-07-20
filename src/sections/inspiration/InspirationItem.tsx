@@ -35,7 +35,7 @@ export const InspirationItem: FC<{ item: InspoItemType }> = ({ item }) => {
           `https://unavatar.io/microlink/${domain}` +
           `?fallback=https://unavatar.io/duckduckgo/${domain}` +
           `?fallback=https://source.boringavatars.com/beam/24?name=${encodeURI(
-            title,
+            title || domain || '',
           )}`
         }
       />

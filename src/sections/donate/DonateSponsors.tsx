@@ -1,4 +1,5 @@
 import { Heading } from '@/components/atoms';
+import { Loading } from '@/components/compounds';
 import type {
   SponsorCategory,
   SponsorsCategoriesResponse,
@@ -28,27 +29,37 @@ const SponsorsList = styled('ul', {
 });
 
 export const DonateSponsors = () => {
-  const { categories } = useSponsors();
+  const { categories, loading, error } = useSponsors();
   return (
     <>
       <Heading as={'h3'}>Sponsors</Heading>
-      <SponsorsList>
-        {categories.map((category) => {
-          return (
-            <>
-              {category.sponsors?.map((sponsor, index) => {
-                return (
-                  <DonateSponsor
-                    key={sponsor.username || index}
-                    sponsor={sponsor}
-                    tier={category.key}
-                  />
-                );
-              })}
-            </>
-          );
-        })}
-      </SponsorsList>
+      {loading ? (
+        <Loading />
+      ) : error || !categories.length ? (
+        <p>
+          No sponsors found at this time.
+          <br />
+          Please check back later.
+        </p>
+      ) : (
+        <SponsorsList>
+          {categories.map((category) => {
+            return (
+              <>
+                {category.sponsors?.map((sponsor, index) => {
+                  return (
+                    <DonateSponsor
+                      key={sponsor.username || index}
+                      sponsor={sponsor}
+                      tier={category.key}
+                    />
+                  );
+                })}
+              </>
+            );
+          })}
+        </SponsorsList>
+      )}
     </>
   );
 };

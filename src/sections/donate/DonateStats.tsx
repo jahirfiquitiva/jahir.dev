@@ -2,10 +2,10 @@ import { mdiHeartOutline } from '@mdi/js';
 
 import { Heading } from '@/components/atoms';
 import { LinkStatCard, StatCard } from '@/components/compounds';
+import { useSponsors } from '@/providers/sponsors';
 import type { FC } from '@/types';
 import { icons } from '@/utils';
 import { styled } from '~/stitches';
-import { useSponsors } from '@/providers/sponsors';
 
 const StatsContainer = styled('div', {
   display: 'flex',
