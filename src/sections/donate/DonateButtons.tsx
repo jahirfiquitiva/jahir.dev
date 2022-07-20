@@ -51,7 +51,9 @@ const PayPalButton = styled(LinkButton, {
 export const DonateButtons = () => {
   return (
     <ButtonsContainer>
-      <Heading as={'h4'}>Donate using:</Heading>
+      <Heading as={'h4'} css={{ fontSize: '$md' }}>
+        Donate using...
+      </Heading>
       <ButtonsGroup>
         <GitHubSponsorsButton
           href={'https://github.com/sponsors/jahirfiquitiva'}

@@ -30,6 +30,9 @@ const awardOutline =
 const calendarOutline =
   'M8 1a1 1 0 0 1 1 1v1h6V2a1 1 0 1 1 2 0v1h2a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2V2a1 1 0 0 1 1-1ZM7 5H5a1 1 0 0 0-1 1v3h16V6a1 1 0 0 0-1-1h-2v1a1 1 0 1 1-2 0V5H9v1a1 1 0 0 1-2 0V5Zm13 6H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9Z';
 
+const money =
+  'M11 20v3a1 1 0 1 0 2 0v-3h1.5a4.5 4.5 0 1 0 0-9H13V6h4a1 1 0 1 0 0-2h-4V1a1 1 0 1 0-2 0v3H9.5a4.5 4.5 0 0 0 0 9H11v5H6a1 1 0 1 0 0 2h5Zm2-2h1.5a2.5 2.5 0 0 0 0-5H13v5Zm-2-7V6H9.5a2.5 2.5 0 0 0 0 5H11Z';
+
 export const icons = {
   sunOutline,
   moonOutline,
@@ -41,4 +44,5 @@ export const icons = {
   award,
   awardOutline,
   calendarOutline,
+  money,
 };

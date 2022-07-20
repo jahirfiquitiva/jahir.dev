@@ -4,6 +4,7 @@ import { styled } from '~/stitches';
 
 import { DonateButtons } from './DonateButtons';
 import { DonateIntro } from './DonateIntro';
+import { DonateStats } from './DonateStats';
 
 const DonateSection = styled(Section, {
   flex: 'unset',
@@ -15,9 +16,8 @@ export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
     <>
       <DonateSection id={'donate'}>
         <DonateIntro image={image} />
-        <div>
-          <DonateButtons />
-        </div>
+        <DonateButtons />
+        <DonateStats />
       </DonateSection>
       <DonateSection id={'thanks'}></DonateSection>
     </>

@@ -60,14 +60,17 @@ h3 {
 }
 
 h4 {
-  font-size: var(--fontSizes-md);
+  font-size: var(--fontSizes-lg);
 }
 
 h5 {
+  font-size: var(--fontSizes-md);
+}
+
+h6 {
   font-size: var(--fontSizes-sm);
 }
 
-h6,
 p,
 body {
   font-size: var(--fontSizes-xs);
