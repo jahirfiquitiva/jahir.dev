@@ -236,6 +236,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         outlined
         thumbsUp
         reacted={!!reactions?.like}
+        disabled={submitting || loading}
         title={'Like'}
         onClick={(e) => {
           clickReaction('like', e);
@@ -251,6 +252,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         outlined
         love
         reacted={!!reactions?.love}
+        disabled={submitting || loading}
         title={'Love'}
         onClick={(e) => {
           clickReaction('love', e);
@@ -266,6 +268,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         outlined
         award
         reacted={!!reactions?.award}
+        disabled={submitting || loading}
         title={'Award'}
         onClick={(e) => {
           clickReaction('award', e);
@@ -281,6 +284,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         outlined
         bookmark
         reacted={!!reactions?.bookmark}
+        disabled={submitting || loading}
         title={'Bookmark'}
         onClick={(e) => {
           clickReaction('bookmark', e);
