@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-destructuring */
-import { manualSponsors, SponsorsCategoryKey } from './manual-sponsors';
+import { manualSponsors, type SponsorsCategoryKey } from './manual-sponsors';
+import type {
+  SponsorsResponse,
+  SponsorCategory,
+  Sponsor,
+  SponsorsCategoriesResponse,
+} from './types';
+
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
   githubApiToken && githubApiToken.length > 0
@@ -57,72 +64,6 @@ const graphQlQuery = `
   }
 }
 `;
-
-type TimeStamp =
-  `${number}-${number}-${number}T${number}:${number}:${number}.${number}Z`;
-
-interface SponsorEntity {
-  login: string;
-  avatarUrl?: string;
-  name?: string;
-  websiteUrl?: string;
-}
-
-interface Sponsorships {
-  totalRecurringMonthlyPriceInDollars: number;
-  nodes: Array<{
-    sponsorEntity: SponsorEntity;
-    tierSelectedAt: TimeStamp;
-  }>;
-}
-
-interface SponsorsTier {
-  id: string;
-  adminInfo?: {
-    sponsorships: Sponsorships;
-  };
-  monthlyPriceInDollars: number;
-  isOneTime: boolean;
-  isCustomAmount: boolean;
-  name: string;
-  description?: string;
-}
-
-interface SponsorsListing {
-  id: string;
-  tiers: {
-    nodes: Array<SponsorsTier>;
-  };
-}
-
-interface SponsorsResponse {
-  data: {
-    user: {
-      sponsorsListing: SponsorsListing;
-      sponsors: {
-        totalCount: number;
-      };
-    };
-  };
-}
-
-export interface Sponsor {
-  name: string;
-  link?: string;
-  photo: string;
-  username?: string;
-  since?: TimeStamp;
-}
-
-export interface SponsorCategory {
-  id?: string;
-  name: string;
-  key: SponsorsCategoryKey;
-  sponsors?: Array<Sponsor>;
-  price?: number;
-  totalEarningsPerMonth?: number;
-  sponsorsCount?: number;
-}
 
 const getSponsorsGraphQLResponse = async (): Promise<SponsorsResponse> => {
   return fetch('https://api.github.com/graphql', {
@@ -181,18 +122,6 @@ const mapResponseToSponsorsList = (
     };
   }) as Array<SponsorCategory>;
 };
-
-interface Testimonial {
-  content: string;
-  sponsor: Sponsor;
-}
-
-export interface SponsorsCategoriesResponse {
-  categories?: Array<SponsorCategory>;
-  error?: string;
-  totalEarningsPerMonth?: number;
-  sponsorsCount?: number;
-}
 
 export const sizesForTier: Record<SponsorsCategoryKey, number> = {
   unicorn: 24,
