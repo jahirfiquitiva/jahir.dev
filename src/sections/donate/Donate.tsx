@@ -6,9 +6,9 @@ import { styled } from '~/stitches';
 import { DonateBenefitsAndPurpose } from './DonateBenefitsAndPurpose';
 import { DonateButtons } from './DonateButtons';
 import { DonateIntro } from './DonateIntro';
-import { DonateSponsors } from './DonateSponsors';
 import { DonateStats } from './DonateStats';
-import { DonateTestimonials } from './DonateTestimonials';
+import { DonateSponsors } from './sponsors';
+import { DonateTestimonials } from './testimonials';
 
 const DonateSection = styled(Section, {
   flex: 'unset',

@@ -25,8 +25,6 @@ export const SponsorsProvider: FC = (props) => {
   const { data, loading, error } =
     useRequest<SponsorsCategoriesResponse>('/api/sponsors');
 
-  console.error(data);
-
   const { children } = props;
 
   const contextValue: SponsorsContextValue = {
