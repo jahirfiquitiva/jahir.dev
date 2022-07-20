@@ -24,46 +24,57 @@ const SponsorsList = styled('ul', {
   },
 });
 
+const Paragraph = styled('p', {
+  mt: '$8',
+  mb: '$12',
+});
+
 export const DonateSponsors = () => {
   const { categories, loading, error } = useSponsors();
   return (
-    <>
+    <div>
       <Heading as={'h3'}>Sponsors</Heading>
       {loading ? (
         <Loading />
       ) : error || !categories.length ? (
-        <p>
+        <Paragraph>
           No sponsors found at this time.
           <br />
           Please check back later.
-        </p>
+        </Paragraph>
       ) : (
-        <div>
-          <SponsorsList>
-            {categories.map((category) => {
-              return (
-                <>
-                  {category.sponsors?.map((sponsor, index) => {
-                    return (
-                      <DonateSponsor
-                        key={sponsor.username || index}
-                        sponsor={sponsor}
-                        tier={category.key}
-                      />
-                    );
-                  })}
-                </>
-              );
-            })}
-          </SponsorsList>
-          <small style={{ margin: '1rem 0 0', display: 'block' }}>
-            <sup>*</sup> Unicorn sponsors are special one-time supporters.
-          </small>
-          <small>
-            <sup>**</sup> Star sponsors not listed here.
-          </small>
-        </div>
+        <>
+          <Paragraph>
+            I&apos;m forever grateful to all the awesome people that support my
+            work
+          </Paragraph>
+          <div>
+            <SponsorsList>
+              {categories.map((category) => {
+                return (
+                  <>
+                    {category.sponsors?.map((sponsor, index) => {
+                      return (
+                        <DonateSponsor
+                          key={sponsor.username || index}
+                          sponsor={sponsor}
+                          tier={category.key}
+                        />
+                      );
+                    })}
+                  </>
+                );
+              })}
+            </SponsorsList>
+            <small style={{ margin: '1rem 0 0', display: 'block' }}>
+              <sup>*</sup> Unicorn sponsors are special one-time supporters.
+            </small>
+            <small>
+              <sup>**</sup> Star sponsors not listed here.
+            </small>
+          </div>
+        </>
       )}
-    </>
+    </div>
   );
 };

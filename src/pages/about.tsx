@@ -36,8 +36,8 @@ const imagesAlts: Array<string> = [
   "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
   "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
   "Hanging out with friends at a cafe – Feb '22",
-  "Visiting a small town – Dec '22",
-  "Trip to San Andrés – Dec '22",
+  "Visiting a small town – Dec '21",
+  "Trip to San Andrés – Dec '21",
 ];
 
 export const getStaticProps: GetStaticProps = async () => {
