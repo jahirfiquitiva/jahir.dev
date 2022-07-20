@@ -211,7 +211,6 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
     const response = await getSponsorsGraphQLResponse();
     if (response) {
       const githubCategories = mapResponseToSponsorsList(response);
-      const githubSponsors = githubCategories.map((it) => it.sponsors).flat();
       const totalEarningsPerMonth: number = githubCategories.reduce(
         (prev, current) => {
           return prev + (current.totalEarningsPerMonth || 0);
@@ -221,15 +220,17 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
       const sponsorsCount: number = githubCategories.reduce((prev, current) => {
         return prev + (current.sponsorsCount || 0);
       }, 0);
+      const categories = mergeManualAndGitHubSponsors(
+        githubCategories.filter((it) => (it.price || 0) >= 5),
+      );
+      const sponsors = categories.map((it) => it.sponsors).flat();
       return {
-        categories: mergeManualAndGitHubSponsors(
-          githubCategories.filter((it) => (it.price || 0) >= 5),
-        ),
+        categories,
         testimonials: testimonials.map((testimonial) => {
           return {
             content: testimonial.content,
-            sponsor: githubSponsors.find(
-              (it) => it?.username === testimonial.username,
+            sponsor: sponsors.find(
+              (it) => it?.name === testimonial.sponsor.name,
             ) || {
               name: 'Anonymous',
               photo: 'https://source.boringavatars.com/beam/28?name=Anonymous',

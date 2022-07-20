@@ -68,7 +68,10 @@ export interface SponsorCategory {
 
 export interface Testimonial {
   content: string;
-  sponsor: Sponsor;
+  sponsor: {
+    name: string;
+    photo?: string;
+  };
 }
 
 export interface SponsorsCategoriesResponse {

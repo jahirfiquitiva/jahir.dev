@@ -2,7 +2,7 @@ import { mdiFormatQuoteClose } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Img } from '@/components/atoms';
-import type { Sponsor } from '@/lib/sponsors';
+import type { Sponsor, Testimonial } from '@/lib/sponsors';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
@@ -76,19 +76,14 @@ const QuoteIcon = styled(Icon, {
   transition: 'all .15s ease-in-out',
 });
 
-interface TestimonialCardProps {
-  content: string;
-  sponsor: Sponsor;
-}
-
-export const DonateTestimonialCard: FC<TestimonialCardProps> = (props) => {
+export const DonateTestimonialCard: FC<Testimonial> = (props) => {
   if (!props.sponsor) return null;
   return (
     <StyledCard>
       <Testimonial>{props.children || props.content}</Testimonial>
       <Sponsor>
         <Img
-          src={props.sponsor.photo}
+          src={props.sponsor.photo || 'https://source.boringavatars.com/beam/28'}
           size={28}
           css={{ backgroundColor: '$accent-light' }}
         />
