@@ -13,23 +13,20 @@ const StyledCard = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  py: '$14',
-  px: '$16',
+  p: '$16',
   gap: '$8',
   color: '$text-secondary',
   backgroundColor: 'rgba(9 17 34 / 0.006)',
   border: '$$borderSize solid $divider',
   borderRadius: '$space$8',
   transition: 'all .25s ease-in-out',
-  overflow: 'hidden',
   dark: {
     color: '$text-primary',
     backgroundColor: 'rgba(235 240 251 / 0.008)',
   },
   hocus: {
     $$borderSize: '2px',
-    py: 'calc($14 - 1px)',
-    px: 'calc($16 - 1px)',
+    p: 'calc($16 - 1px)',
     transform: 'scale(1.0025)',
     boxShadow: '0 0 8px 2px rgba($$color / .2)',
     backgroundColor: 'rgba($$color / .035)',
@@ -45,6 +42,10 @@ const StyledCard = styled('div', {
 });
 
 const Testimonial = styled('p', {
+  maxWidth: '100%',
+  width: 'fit-content',
+  overflowWrap: 'break-word',
+  overflow: 'hidden',
   '@mobile-lg': {
     mr: '$6',
   },
@@ -83,7 +84,9 @@ export const DonateTestimonialCard: FC<Testimonial> = (props) => {
       <Testimonial>{props.children || props.content}</Testimonial>
       <Sponsor>
         <Img
-          src={props.sponsor.photo || 'https://source.boringavatars.com/beam/28'}
+          src={
+            props.sponsor.photo || 'https://source.boringavatars.com/beam/28'
+          }
           size={28}
           css={{ backgroundColor: '$accent-light' }}
         />
