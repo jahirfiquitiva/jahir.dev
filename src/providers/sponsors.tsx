@@ -1,11 +1,16 @@
 import { createContext, useContext } from 'react';
 
 import { useRequest } from '@/hooks';
-import type { SponsorCategory, SponsorsCategoriesResponse } from '@/lib/sponsors';
+import type {
+  SponsorCategory,
+  SponsorsCategoriesResponse,
+  Testimonial,
+} from '@/lib/sponsors';
 import type { FC } from '@/types';
 
 export interface SponsorsContextValue {
   categories: Array<SponsorCategory>;
+  testimonials?: Array<Testimonial>;
   totalEarningsPerMonth?: number;
   sponsorsCount?: number;
   loading?: boolean;
@@ -29,6 +34,7 @@ export const SponsorsProvider: FC = (props) => {
 
   const contextValue: SponsorsContextValue = {
     categories: data?.categories || [],
+    testimonials: data?.testimonials || [],
     totalEarningsPerMonth: data?.totalEarningsPerMonth || 0,
     sponsorsCount: data?.sponsorsCount || 0,
     loading,

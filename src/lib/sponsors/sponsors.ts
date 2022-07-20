@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-destructuring */
 import { manualSponsors, type SponsorsCategoryKey } from './manual-sponsors';
+import { testimonials } from './testimonials';
 import type {
   SponsorsResponse,
   SponsorCategory,
@@ -210,6 +211,7 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
     const response = await getSponsorsGraphQLResponse();
     if (response) {
       const githubCategories = mapResponseToSponsorsList(response);
+      const githubSponsors = githubCategories.map((it) => it.sponsors).flat();
       const totalEarningsPerMonth: number = githubCategories.reduce(
         (prev, current) => {
           return prev + (current.totalEarningsPerMonth || 0);
@@ -223,6 +225,17 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
         categories: mergeManualAndGitHubSponsors(
           githubCategories.filter((it) => (it.price || 0) >= 5),
         ),
+        testimonials: testimonials.map((testimonial) => {
+          return {
+            content: testimonial.content,
+            sponsor: githubSponsors.find(
+              (it) => it?.username === testimonial.username,
+            ) || {
+              name: 'Anonymous',
+              photo: 'https://source.boringavatars.com/beam/28?name=Anonymous',
+            },
+          };
+        }),
         totalEarningsPerMonth,
         sponsorsCount,
       };

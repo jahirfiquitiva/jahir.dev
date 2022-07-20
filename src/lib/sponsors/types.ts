@@ -66,13 +66,14 @@ export interface SponsorCategory {
   sponsorsCount?: number;
 }
 
-interface Testimonial {
+export interface Testimonial {
   content: string;
   sponsor: Sponsor;
 }
 
 export interface SponsorsCategoriesResponse {
   categories?: Array<SponsorCategory>;
+  testimonials?: Array<Testimonial>;
   error?: string;
   totalEarningsPerMonth?: number;
   sponsorsCount?: number;

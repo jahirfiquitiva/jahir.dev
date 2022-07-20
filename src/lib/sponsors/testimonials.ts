@@ -3,9 +3,4 @@ interface LocalTestimonial {
   username: string;
 }
 
-export const testimonials: Array<LocalTestimonial> = [
-  {
-    content: 'Hola',
-    username: 'drumdestroyer',
-  },
-];
+export const testimonials: Array<LocalTestimonial> = [];
