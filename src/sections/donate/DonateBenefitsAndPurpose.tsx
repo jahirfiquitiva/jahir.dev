@@ -69,9 +69,12 @@ export const DonateBenefitsAndPurpose: FC = () => {
         <p>What are the earnings going to be used for? </p>
 
         <ul>
-          <li>Allow me to craft more open-source side projects</li>
           <li>Pay domain and platform services for different projects</li>
           <li>
+            Allow me to buy courses to keep learning and growing my skillset
+          </li>
+          <li>Allow me to craft more open-source side projects</li>
+          {/* <li>
             Help fund part of the expenses for future versions of{' '}
             <Link
               href={'/projects/boyaconf'}
@@ -79,10 +82,7 @@ export const DonateBenefitsAndPurpose: FC = () => {
             >
               BoyaConf
             </Link>
-          </li>
-          <li>
-            Allow me to buy courses to keep learning and growing my skillset
-          </li>
+          </li> */}
           <li>You name it (?)</li>
         </ul>
       </Texts>

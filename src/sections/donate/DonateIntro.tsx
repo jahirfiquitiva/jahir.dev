@@ -30,6 +30,13 @@ const IntroTexts = styled('div', {
   gap: 'calc($$verticalContentPadding / 4)',
 });
 
+const List = styled('ul', {
+  m: 0,
+  p: 0,
+  ml: '$12',
+  pl: '$4',
+});
+
 interface DonateIntroProps {
   image?: RandomPageImage;
 }
@@ -92,58 +99,65 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
       </IntroGrid>
       <IntroTexts>
         <Heading as={'h4'}>Why donate?</Heading>
-        <p>
-          Since 2015, I&apos;ve been working on open source projects, mostly
-          focused on 3 android dashboards:{' '}
-          <Link title={'Blueprint'} href={'/projects/blueprint'}>
-            Blueprint
-          </Link>
-          ,{' '}
-          <Link title={'Frames'} href={'/projects/frames'}>
-            Frames
-          </Link>{' '}
-          and{' '}
-          <Link title={'Kuper'} href={'/projects/kuper'}>
-            Kuper
-          </Link>
-          . My work with those dashboards has helped tens of
-          designers/developers who have been able to create hundreds – if not
-          thousands – of{' '}
-          <Link
-            title={
-              "Apps on Play Store built using Jahir Fiquitiva's dashboards"
-            }
-            href={
-              'https://play.google.com/store/search?q=Jahir%20Fiquitiva&c=apps'
-            }
-          >
-            apps on Play Store
-          </Link>
-          .
-        </p>
-        <p>
-          I&apos;ve also been maintaining a popular android library named{' '}
-          <Link
-            title={'Piracy Checker'}
-            href={'https://github.com/javiersantos/PiracyChecker'}
-          >
-            Piracy Checker
-          </Link>
-          , translating a few things in{' '}
-          <Link
-            title={'Unicorn Utterances'}
-            href={'https://unicorn-utterances.com'}
-          >
-            Unicorn Utterances
-          </Link>{' '}
-          to Spanish, contributing to other open-source projects every now and
-          then, and making some of my personal{' '}
-          <Link title={'Projects page'} href={'/projects'}>
-            projects
-          </Link>{' '}
-          public, which include android apps, web apps, sites and services and
-          bots.
-        </p>
+        <List>
+          <li>
+            Since 2015, I&apos;ve been making three open-source Android
+            dashboards:{' '}
+            <Link title={'Blueprint'} href={'/projects/blueprint'}>
+              Blueprint
+            </Link>
+            ,{' '}
+            <Link title={'Frames'} href={'/projects/frames'}>
+              Frames
+            </Link>{' '}
+            and{' '}
+            <Link title={'Kuper'} href={'/projects/kuper'}>
+              Kuper
+            </Link>
+            . They have helped countless designers create hundreds – if not
+            thousands – of apps and publish them on{' '}
+            <Link
+              title={
+                "Apps on Play Store built using Jahir Fiquitiva's dashboards"
+              }
+              href={
+                'https://play.google.com/store/search?q=Jahir%20Fiquitiva&c=apps'
+              }
+            >
+              Play Store
+            </Link>
+            .
+          </li>
+          <li>
+            I maintain a popular open-source Android library called{' '}
+            <Link
+              title={'Piracy Checker'}
+              href={'https://github.com/javiersantos/PiracyChecker'}
+            >
+              Piracy Checker
+            </Link>
+            .
+          </li>
+          {/*
+          TODO: uncomment when I translate more articles
+          <li>
+            I occasionally translate articles published on{' '}
+            <Link
+              title={'Unicorn Utterances'}
+              href={'https://unicorn-utterances.com'}
+            >
+              Unicorn Utterances
+            </Link>{' '}
+            into Spanish
+          </li> */}
+          <li>
+            I make some of my personal{' '}
+            <Link title={'Projects page'} href={'/projects'}>
+              projects
+            </Link>{' '}
+            public, including Android apps, web apps, services, and bots.
+          </li>
+        </List>
       </IntroTexts>
     </>
   );
