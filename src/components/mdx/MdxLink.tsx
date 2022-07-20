@@ -31,7 +31,7 @@ export const MdxLink: FC<ComponentProps<typeof Link>> = (props) => {
     [props.className],
   );
   if (isIgnored) {
-    return <StyledLink {...props} />;
+    return <StyledLink {...props} href={props.href.toString()} />;
   }
   return <Link {...props} />;
 };
