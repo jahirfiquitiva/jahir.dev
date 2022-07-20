@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 import { useRequest } from '@/hooks';
-import { SponsorCategory, SponsorsCategoriesResponse } from '@/lib/sponsors';
+import type { SponsorCategory, SponsorsCategoriesResponse } from '@/lib/sponsors';
 import type { FC } from '@/types';
 
 export interface SponsorsContextValue {

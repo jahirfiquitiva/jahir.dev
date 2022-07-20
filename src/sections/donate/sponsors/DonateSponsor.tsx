@@ -2,8 +2,7 @@ import { mdiCrystalBall } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { buildChipStyles, Chip, Img, Link } from '@/components/atoms';
-import type { SponsorsCategoryKey } from '@/lib/manual-sponsors';
-import type { Sponsor } from '@/lib/sponsors';
+import type { Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
 import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';
 import { icons } from '@/utils';

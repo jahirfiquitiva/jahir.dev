@@ -1,7 +1,8 @@
-import { Img } from '@/components/atoms';
-import { FC } from '@/types';
 import { mdiFormatQuoteClose } from '@mdi/js';
 import Icon from '@mdi/react';
+
+import { Img } from '@/components/atoms';
+import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const StyledCard = styled('div', {
