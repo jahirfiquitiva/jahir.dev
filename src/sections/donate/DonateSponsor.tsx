@@ -1,10 +1,4 @@
-import {
-  mdiCrystalBall,
-  mdiDiamondOutline,
-  mdiLightFloodDown,
-  mdiRocket,
-  mdiUnicornVariant,
-} from '@mdi/js';
+import { mdiCrystalBall } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Img, Link } from '@/components/atoms';
@@ -21,7 +15,7 @@ const Container = styled(Link, {
   gap: '$12',
   px: '$14',
   py: '$12',
-  hocus: { backgroundColor: 'rgba($colors$toolbar-glow / .1)' },
+  hocus: { backgroundColor: 'rgba($colors$toolbar-glow / .08)' },
 });
 
 const NameContainer = styled('div', {

@@ -71,7 +71,7 @@ export const DonateButtons = () => {
         </PayPalButton>
       </ButtonsGroup>
       <small>
-        <sup>*</sup> Both options allow custom amounts and single-time or
+        <sup>*</sup> Both options allow custom amounts and one-time or
         monthly donations
       </small>
     </ButtonsContainer>

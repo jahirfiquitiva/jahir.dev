@@ -1,9 +1,5 @@
 import { Heading } from '@/components/atoms';
 import { Loading } from '@/components/compounds';
-import type {
-  SponsorCategory,
-  SponsorsCategoriesResponse,
-} from '@/lib/sponsors';
 import { useSponsors } from '@/providers/sponsors';
 import { styled } from '~/stitches';
 
@@ -42,23 +38,28 @@ export const DonateSponsors = () => {
           Please check back later.
         </p>
       ) : (
-        <SponsorsList>
-          {categories.map((category) => {
-            return (
-              <>
-                {category.sponsors?.map((sponsor, index) => {
-                  return (
-                    <DonateSponsor
-                      key={sponsor.username || index}
-                      sponsor={sponsor}
-                      tier={category.key}
-                    />
-                  );
-                })}
-              </>
-            );
-          })}
-        </SponsorsList>
+        <div>
+          <SponsorsList>
+            {categories.map((category) => {
+              return (
+                <>
+                  {category.sponsors?.map((sponsor, index) => {
+                    return (
+                      <DonateSponsor
+                        key={sponsor.username || index}
+                        sponsor={sponsor}
+                        tier={category.key}
+                      />
+                    );
+                  })}
+                </>
+              );
+            })}
+          </SponsorsList>
+          <small>
+            <sup>*</sup> Unicorn sponsors are special one-time supporters
+          </small>
+        </div>
       )}
     </>
   );
