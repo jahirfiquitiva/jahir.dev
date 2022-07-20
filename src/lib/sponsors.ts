@@ -18,6 +18,7 @@ const graphQlQuery = `
             id
             adminInfo {
               sponsorships(first: 100) {
+                totalRecurringMonthlyPriceInDollars
                 nodes {
                   ... on Sponsorship {
                     sponsorEntity {
@@ -68,6 +69,7 @@ interface SponsorEntity {
 }
 
 interface Sponsorships {
+  totalRecurringMonthlyPriceInDollars: number;
   nodes: Array<{
     sponsorEntity: SponsorEntity;
     tierSelectedAt: TimeStamp;
@@ -118,6 +120,7 @@ export interface SponsorCategory {
   key: SponsorsCategoryKey;
   sponsors?: Array<Sponsor>;
   price?: number;
+  totalEarningsPerMonth?: number;
 }
 
 const getSponsorsGraphQLResponse = async (): Promise<SponsorsResponse> => {
@@ -145,7 +148,10 @@ const mapResponseToSponsorsList = (
   const tiers = user.sponsorsListing.tiers.nodes.filter((it) => !it.isOneTime);
   return tiers.map((tier) => {
     const { description, adminInfo, monthlyPriceInDollars } = tier;
-    const sponsors = adminInfo?.sponsorships.nodes;
+    const {
+      nodes: sponsors,
+      totalRecurringMonthlyPriceInDollars: totalEarningsPerMonth,
+    } = adminInfo?.sponsorships || {};
     let name = '';
     if (description) {
       const [title] = description.split(/\r?\n/);
@@ -169,6 +175,7 @@ const mapResponseToSponsorsList = (
         };
       }),
       price: monthlyPriceInDollars,
+      totalEarningsPerMonth,
     };
   }) as Array<SponsorCategory>;
 };
@@ -176,6 +183,7 @@ const mapResponseToSponsorsList = (
 export interface SponsorsCategoriesResponse {
   categories?: Array<SponsorCategory>;
   error?: string;
+  totalEarningsPerMonth?: number;
 }
 
 const mergeManualAndGitHubSponsors = (
@@ -230,7 +238,16 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
       const githubCategories = mapResponseToSponsorsList(response).filter(
         (it) => (it.price || 0) >= 5,
       );
-      return { categories: mergeManualAndGitHubSponsors(githubCategories) };
+      const totalEarningsPerMonth: number = githubCategories.reduce(
+        (prev, current) => {
+          return prev + (current.totalEarningsPerMonth || 0);
+        },
+        0,
+      );
+      return {
+        categories: mergeManualAndGitHubSponsors(githubCategories),
+        totalEarningsPerMonth,
+      };
     }
     return { error: 'No valid response from GitHub' };
   } catch (err) {

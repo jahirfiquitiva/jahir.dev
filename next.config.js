@@ -46,6 +46,7 @@ const defaultNextConfig = {
       'lh3.googleusercontent.com',
       'cdn.discordapp.com',
       'raw.githubusercontent.com',
+      'avatars.githubusercontent.com',
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

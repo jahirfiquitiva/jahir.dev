@@ -1,6 +1,7 @@
 export type SponsorsCategoryKey =
   | 'ball'
   | 'rocket'
+  | 'robot'
   | 'lightning'
   | 'diamond'
   | 'unicorn';
@@ -33,13 +34,12 @@ export const manualSponsors: Array<ManualSponsor> = [
   {
     name: 'Sherry Sabatine',
     photo:
-      'https://unavatar.io/sherry._.sabatine?fallback=https://s3-img.pixpa.com/com/large/37571/newdo-2-pw69wd.jpg',
+      'https://unavatar.io/Sherry_Sabatine?fallback=https://www.shersphotography.com/assets/public/images/Background%20Images-Me/-53sawq.png',
     link: 'http://www.ssabatinephotography.com/',
   },
   {
     name: 'Travis Hall',
-    photo:
-      'https://unavatar.io/twitter/RippedThemer?fallback=https://source.boringavatars.com/',
+    photo: 'https://unavatar.io/twitter/RippedThemer',
     link: 'https://twitter.com/RippedThemer',
   },
   {
@@ -56,26 +56,27 @@ export const manualSponsors: Array<ManualSponsor> = [
   },
   {
     name: 'Jaden Pleasants',
-    photo:
-      'https://unavatar.io/twitter/YaBoiBurner?fallback=https://source.boringavatars.com/',
+    photo: 'https://unavatar.io/twitter/YaBoiBurner',
     link: 'https://twitter.com/YaBoiBurner',
   },
   {
     name: 'Patryk Michalik',
-    photo:
-      'https://unavatar.io/twitter/patrykmichalik_?fallback=https://source.boringavatars.com/',
+    photo: 'https://unavatar.io/twitter/patrykmichalik_',
     link: 'https://patrykmichalik.com',
   },
   {
     name: 'Eduardo Pratti',
-    photo:
-      'https://unavatar.io/twitter/edpratti?fallback=https://source.boringavatars.com/',
+    photo: 'https://unavatar.io/twitter/edpratti',
     link: 'https://pratti.design/',
   },
   {
+    name: 'Corbin Crutchley',
+    photo: 'https://unavatar.io/twitter/crutchcorn',
+    link: 'https://crutchcorn.dev',
+  },
+  {
     name: 'Dany Gee',
-    photo:
-      'https://unavatar.io/github/DanyGee?fallback=https://source.boringavatars.com/',
+    photo: 'https://unavatar.io/github/DanyGee',
     link: 'https://github.com/DanyGee',
   },
   {

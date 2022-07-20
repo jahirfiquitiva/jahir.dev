@@ -48,34 +48,68 @@ const fontSizesForTier: Record<SponsorsCategoryKey, string> = {
   unicorn: '$2xs',
   ball: '$xs',
   rocket: '$sm',
-  lightning: '$lg',
-  diamond: '$xl',
+  robot: '$lg',
+  lightning: '$xl',
+  diamond: '$2xl',
 };
 
 const sizesForTier: Record<SponsorsCategoryKey, number> = {
   unicorn: 24,
   ball: 28,
   rocket: 32,
-  lightning: 36,
-  diamond: 48,
+  robot: 36,
+  lightning: 48,
+  diamond: 52,
 };
 
 const iconForTier: Record<SponsorsCategoryKey, string> = {
   unicorn: icons.unicorn,
   ball: mdiCrystalBall,
   rocket: icons.rocket,
+  robot: icons.robot,
   lightning: icons.lightning,
   diamond: icons.diamond,
+};
+
+const cleanNameForTier: Record<SponsorsCategoryKey, string> = {
+  unicorn: 'Unicorn',
+  ball: 'Crystal Ball',
+  rocket: 'Rocket',
+  robot: 'Robot',
+  lightning: 'Lightning',
+  diamond: 'Diamond',
+};
+
+const buildPhotoLink = (
+  tier: SponsorsCategoryKey,
+  name: string,
+  photo?: string,
+  username?: string,
+): string => {
+  let photoLink = '';
+  if (!photo) {
+    photoLink = `https://source.boringavatars.com/beam/${
+      sizesForTier[tier]
+    }?name=${encodeURI(name)}`;
+  }
+  if (username) {
+    photoLink = `https://unavatar.io/${username}?fallback=${photoLink}`;
+  }
+  if (photo) {
+    if (photo.includes('unavatar.io') && !photo.includes('fallback')) {
+      photoLink = `${photo}?fallback=${photoLink}`;
+    } else photoLink = photo;
+  }
+  return photoLink;
 };
 
 interface DonateSponsorProps {
   sponsor?: Sponsor;
   tier?: SponsorsCategoryKey;
-  tierName?: string;
 }
 
 export const DonateSponsor: FC<DonateSponsorProps> = (props) => {
-  const { sponsor, tier, tierName } = props;
+  const { sponsor, tier } = props;
   if (!sponsor || !tier) return null;
   return (
     <li>
@@ -87,14 +121,12 @@ export const DonateSponsor: FC<DonateSponsorProps> = (props) => {
       >
         <NameContainer>
           <Img
-            src={
-              sponsor.photo || sponsor.username
-                ? `https://unavatar.io/${sponsor.username}` +
-                  `?fallback=https://source.boringavatars.com/beam/${
-                    sizesForTier[tier]
-                  }?name=${encodeURI(sponsor.name)}`
-                : 'https://source.boringavatars.com/beam'
-            }
+            src={buildPhotoLink(
+              tier,
+              sponsor.name,
+              sponsor.photo,
+              sponsor.username,
+            )}
             alt={sponsor.name}
             size={sizesForTier[tier]}
           />
@@ -102,7 +134,7 @@ export const DonateSponsor: FC<DonateSponsorProps> = (props) => {
         </NameContainer>
         <Tier as={'span'}>
           <Icon path={iconForTier[tier]} size={0.65} />
-          <span>{tierName}</span>
+          <span>{cleanNameForTier[tier]}</span>
         </Tier>
       </Container>
     </li>

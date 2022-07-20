@@ -1,4 +1,5 @@
 import { Section } from '@/components/elements';
+import { SponsorsProvider } from '@/providers/sponsors';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
 
@@ -16,7 +17,7 @@ const DonateSection = styled(Section, {
 
 export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
   return (
-    <>
+    <SponsorsProvider>
       <DonateSection id={'donate'}>
         <DonateIntro image={image} />
         <DonateButtons />
@@ -27,6 +28,6 @@ export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
       <DonateSection id={'thanks'} css={{ mt: '$$verticalContentPadding' }}>
         <DonateSponsors />
       </DonateSection>
-    </>
+    </SponsorsProvider>
   );
 };

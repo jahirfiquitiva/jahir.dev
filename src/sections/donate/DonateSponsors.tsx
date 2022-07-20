@@ -3,62 +3,10 @@ import type {
   SponsorCategory,
   SponsorsCategoriesResponse,
 } from '@/lib/sponsors';
+import { useSponsors } from '@/providers/sponsors';
 import { styled } from '~/stitches';
 
 import { DonateSponsor } from './DonateSponsor';
-
-const categories: Array<SponsorCategory> = [
-  {
-    key: 'ball',
-    name: 'Crystal Ball',
-    sponsors: [
-      {
-        name: 'Jahir',
-        link: 'https://jahir.dev',
-      },
-    ],
-  },
-  {
-    key: 'unicorn',
-    name: 'Unicorn',
-    sponsors: [
-      {
-        name: 'Jahir',
-        link: 'https://jahir.dev',
-      },
-    ],
-  },
-  {
-    key: 'lightning',
-    name: 'Lightning',
-    sponsors: [
-      {
-        name: 'Jahir',
-        link: 'https://jahir.dev',
-      },
-    ],
-  },
-  {
-    key: 'diamond',
-    name: 'Diamond',
-    sponsors: [
-      {
-        name: 'Jahir',
-        link: 'https://jahir.dev',
-      },
-    ],
-  },
-  {
-    key: 'rocket',
-    name: 'Rocket',
-    sponsors: [
-      {
-        name: 'Jahir',
-        link: 'https://jahir.dev',
-      },
-    ],
-  },
-];
 
 const SponsorsList = styled('ul', {
   display: 'block',
@@ -80,6 +28,7 @@ const SponsorsList = styled('ul', {
 });
 
 export const DonateSponsors = () => {
+  const { categories } = useSponsors();
   return (
     <>
       <Heading as={'h3'}>Sponsors</Heading>
@@ -93,7 +42,6 @@ export const DonateSponsors = () => {
                     key={sponsor.username || index}
                     sponsor={sponsor}
                     tier={category.key}
-                    tierName={category.name}
                   />
                 );
               })}
