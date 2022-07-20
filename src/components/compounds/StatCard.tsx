@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import { Ring } from '@uiball/loaders';
 import { ComponentProps, useMemo } from 'react';
 
 import { Link } from '@/components/atoms';
@@ -7,7 +8,6 @@ import type { ThemeColorValue } from '@/stitches';
 import { FC } from '@/types';
 import { getReadableColor, hexToRGB } from '@/utils';
 import { styled } from '~/stitches';
-import { Ring } from '@uiball/loaders';
 
 const StyledCard = styled('div', {
   $$color: '$colors$toolbar-glow',

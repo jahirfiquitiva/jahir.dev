@@ -1,10 +1,5 @@
-/* eslint-disable max-lines-per-function */
-import { useMemo } from 'react';
-
-import { Heading, Link, LinkButton } from '@/components/atoms';
-import { OpenDoodle } from '@/components/compounds';
-import { useHasMounted } from '@/hooks';
-import type { FC, RandomPageImage } from '@/types';
+import { Heading, Link } from '@/components/atoms';
+import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const Container = styled('div', {
