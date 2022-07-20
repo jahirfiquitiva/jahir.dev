@@ -2,7 +2,7 @@ import { mdiCrystalBall } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { buildChipStyles, Chip, Img, Link } from '@/components/atoms';
-import type { Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
+import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
 import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';
 import { icons } from '@/utils';
@@ -63,15 +63,6 @@ const fontSizesForTier: Record<SponsorsCategoryKey, string> = {
   diamond: '$2xl',
 };
 
-const sizesForTier: Record<SponsorsCategoryKey, number> = {
-  unicorn: 24,
-  ball: 28,
-  rocket: 32,
-  robot: 36,
-  lightning: 48,
-  diamond: 52,
-};
-
 const iconForTier: Record<SponsorsCategoryKey, string> = {
   unicorn: icons.unicorn,
   ball: mdiCrystalBall,
@@ -99,29 +90,6 @@ const colorForTier: Record<SponsorsCategoryKey, ThemeColorValue> = {
   diamond: '#00d2d3',
 };
 
-const buildPhotoLink = (
-  tier: SponsorsCategoryKey,
-  name: string,
-  photo?: string,
-  username?: string,
-): string => {
-  let photoLink = '';
-  if (!photo) {
-    photoLink = `https://source.boringavatars.com/beam/${
-      sizesForTier[tier]
-    }?name=${encodeURI(name)}`;
-  }
-  if (username) {
-    photoLink = `https://unavatar.io/${username}?fallback=${photoLink}`;
-  }
-  if (photo) {
-    if (photo.includes('unavatar.io') && !photo.includes('fallback')) {
-      photoLink = `${photo}?fallback=${photoLink}`;
-    } else photoLink = photo;
-  }
-  return photoLink;
-};
-
 interface DonateSponsorProps {
   sponsor?: Sponsor;
   tier?: SponsorsCategoryKey;
@@ -140,12 +108,7 @@ export const DonateSponsor: FC<DonateSponsorProps> = (props) => {
       >
         <NameContainer>
           <Img
-            src={buildPhotoLink(
-              tier,
-              sponsor.name,
-              sponsor.photo,
-              sponsor.username,
-            )}
+            src={sponsor.photo}
             alt={sponsor.name}
             size={sizesForTier[tier]}
             css={{ backgroundColor: '$accent-light' }}

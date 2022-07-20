@@ -109,7 +109,7 @@ interface SponsorsResponse {
 export interface Sponsor {
   name: string;
   link?: string;
-  photo?: string;
+  photo: string;
   username?: string;
   since?: TimeStamp;
 }
@@ -182,12 +182,49 @@ const mapResponseToSponsorsList = (
   }) as Array<SponsorCategory>;
 };
 
+interface Testimonial {
+  content: string;
+  sponsor: Sponsor;
+}
+
 export interface SponsorsCategoriesResponse {
   categories?: Array<SponsorCategory>;
   error?: string;
   totalEarningsPerMonth?: number;
   sponsorsCount?: number;
 }
+
+export const sizesForTier: Record<SponsorsCategoryKey, number> = {
+  unicorn: 24,
+  ball: 28,
+  rocket: 32,
+  robot: 36,
+  lightning: 48,
+  diamond: 52,
+};
+
+const buildPhotoLink = (
+  tier: SponsorsCategoryKey,
+  name: string,
+  photo?: string,
+  username?: string,
+): string => {
+  let photoLink = '';
+  if (!photo) {
+    photoLink = `https://source.boringavatars.com/beam/${
+      sizesForTier[tier]
+    }?name=${encodeURI(name)}`;
+  }
+  if (username) {
+    photoLink = `https://unavatar.io/${username}?fallback=${photoLink}`;
+  }
+  if (photo) {
+    if (photo.includes('unavatar.io') && !photo.includes('fallback')) {
+      photoLink = `${photo}?fallback=${photoLink}`;
+    } else photoLink = photo;
+  }
+  return photoLink;
+};
 
 const mergeManualAndGitHubSponsors = (
   categories: Array<SponsorCategory>,
@@ -216,7 +253,12 @@ const mergeManualAndGitHubSponsors = (
     return {
       ...category,
       sponsors: [...overwrittenSponsors, ...extraSponsors].map((it) => {
-        return { ...it, username: undefined, category: undefined };
+        return {
+          ...it,
+          username: undefined,
+          category: undefined,
+          photo: buildPhotoLink(category.key, it.name, it.photo, it.username),
+        };
       }),
     } as SponsorCategory;
   });
