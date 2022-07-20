@@ -11,7 +11,7 @@ import { styled } from '~/stitches';
 const PhotoFigure = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
-  mt: '$$verticalContentPadding',
+  mt: 'calc($$verticalContentPadding / 1.5)',
   mb: 'calc($$verticalContentPadding / 2)',
   '& img': {
     width: '100%',

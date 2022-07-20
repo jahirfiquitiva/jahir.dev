@@ -1,19 +1,21 @@
 /* eslint-disable max-len */
 import { useMemo } from 'react';
 
-import { Img, Link, Heading } from '@/components/atoms';
+import { Link, Heading } from '@/components/atoms';
+import { OpenDoodle } from '@/components/compounds';
 import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
-import { OpenDoodle } from '@/components/compounds';
 
 const Grid = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
   gap: '$$verticalContentPadding',
-  my: 'calc($$verticalContentPadding / 2)',
+  mt: 'calc($$verticalContentPadding / 1.5)',
+  mb: 'calc($$verticalContentPadding / 2)',
   '@tablet-sm': {
+    mt: 'calc($$verticalContentPadding / 2)',
     gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
     alignItems: 'center',
   },
