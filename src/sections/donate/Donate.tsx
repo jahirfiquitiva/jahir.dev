@@ -21,11 +21,11 @@ export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
       <DonateSection id={'donate'}>
         <DonateIntro image={image} />
         <DonateButtons />
-        <DonateStats />
         <DonateBenefitsAndPurpose />
       </DonateSection>
       <DonateSection id={'thanks'} css={{ mt: '$$verticalContentPadding' }}>
         <DonateSponsors />
+        <DonateStats />
         <DonateTestimonials />
       </DonateSection>
     </SponsorsProvider>
