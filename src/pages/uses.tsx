@@ -44,14 +44,9 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   return (
     <Layout>
       <Head>
-        <title>Blog | Jahir Fiquitiva</title>
+        <title>Uses | Jahir Fiquitiva</title>
       </Head>
-      <MdxContent
-        backText={'Back to blog posts list'}
-        backHref={'/blog'}
-        contentType={'blog'}
-        content={post as Post}
-      >
+      <MdxContent contentType={'blog'} content={post as Post}>
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
       </MdxContent>
@@ -61,30 +56,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
 
 export default PostPage;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: getAllPosts([], true)
-      .filter((it) => it.slug !== 'uses')
-      .map((p) => ({ params: { slug: p.slug } })),
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getAllPosts([], true)
-    .filter((it) => it.slug !== 'uses')
-    .find((post) => post.slug === params?.slug);
-  const shouldRedirect = post && post.link && post.link.length > 0;
-  if (shouldRedirect) {
-    return {
-      props: {
-        post,
-        redirect: {
-          destination: post?.link,
-          permanent: true,
-        },
-      },
-    };
-  }
+export const getStaticProps: GetStaticProps = async () => {
+  const post = getAllPosts([], true).find((post) => post.slug === 'uses');
   return { props: { post } };
 };

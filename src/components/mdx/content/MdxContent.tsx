@@ -94,6 +94,8 @@ export const MdxContent: FC<CommonContent> = (props) => {
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
 
+  const isUsesPage = useMemo<boolean>(() => slug === 'uses', [slug]);
+
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
     const color = hexToRGB(
@@ -104,6 +106,10 @@ export const MdxContent: FC<CommonContent> = (props) => {
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return {};
     return {
+      ...(isUsesPage ? {
+        mt: 0,
+        fontSize: '$2xl',
+      } : {}),
       $$textShadowColor: color,
       dark: {
         $$textShadowColor: color,
@@ -131,7 +137,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
   return (
     <Section>
-      {backText && backHref && (
+      {backText && backHref && !isUsesPage && (
         <Link
           title={backText.toLowerCase()}
           href={backHref}
@@ -145,7 +151,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         <Title css={titleStyles}>{title}</Title>
 
         <Intro>
-          {date ? (
+          {date && !isUsesPage ? (
             <>
               {formatDate(date)}
               {' • '}

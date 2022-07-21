@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
     'year',
     'devToId',
     'heroMeta',
-  ]);
+  ]).filter((it) => it.slug !== 'uses');
   return {
     props: { posts: allPosts },
   };

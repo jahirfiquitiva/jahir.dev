@@ -98,7 +98,7 @@ const defaultNextConfig = {
       buildRedirect('/thanks', '/donate#thanks'),
       buildRedirect('/sponsors', '/donate#thanks'),
       buildRedirect('/supporters', '/donate#thanks'),
-      buildRedirect('/uses', '/blog/uses'),
+      buildRedirect('/blog/uses', '/uses'),
       buildRedirect('/releases', '/gh-releases'),
       buildRedirect('/feed', '/feed.xml'),
       buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
