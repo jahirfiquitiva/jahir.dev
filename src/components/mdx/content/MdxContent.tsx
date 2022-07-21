@@ -178,6 +178,8 @@ export const MdxContent: FC<CommonContent> = (props) => {
           <MdxReactions inProgress={inProgress} />
 
           {hero && (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             <ArticleHero
               src={hero || ''}
               alt={`Cover image for blog "${title}"`}
