@@ -15,8 +15,8 @@ const GridContainer = styled('div', {
   border: 'none',
   backgroundAttachment: 'fixed',
   backgroundImage: "url('/static/images/blog/uses/wallpaper.jpeg')",
-  backgroundSize: 'contain',
-  backgroundRepeat: 'none',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
 });
 
