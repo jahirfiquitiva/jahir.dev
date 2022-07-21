@@ -23,8 +23,8 @@ interface PostPageProps {
 const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
   const MdxComponent = useMDXComponent(basePost.body.code);
-  const hasMounted = useHasMounted();
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
+  const hasMounted = useHasMounted();
   // const router = useRouter();
 
   // if (!router.isFallback && !post?.slug) {

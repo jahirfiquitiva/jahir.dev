@@ -1,12 +1,12 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
-// import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks';
 import type { Project } from '@/types';
 import {
   allProjects,
@@ -32,8 +32,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
     () => mapContentLayerProject(baseProject),
     [baseProject],
   );
-  // const hasMounted = useHasMounted();
-  // const router = useRouter();
+  const hasMounted = useHasMounted();
 
   // if (!router.isFallback && !project?.slug) {
   //   return <FourHundredFour />;
@@ -42,6 +41,14 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
   // if (!project || !MdxComponent) {
   //   return <ErrorPage />;
   // }
+
+  if (project?.inProgress || project?.hide) {
+    if (project.link) {
+      try {
+        if (hasMounted) window.location.href = project.link;
+      } catch (e) {}
+    }
+  }
 
   return (
     <Layout>
