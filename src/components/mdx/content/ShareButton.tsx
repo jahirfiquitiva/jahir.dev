@@ -51,11 +51,11 @@ export const ShareButton: FC<ShareButtonProps> = (props) => {
     </Button>
   ) : (
     <LinkButton
-      title={'Share blog post on Twitter'}
+      title={'Share blog post'}
       href={shareUrl(title, slug)}
       withShadow
     >
-      <Icon path={mdiShareVariantOutline} size={0.9} /> Share on Twitter
+      <Icon path={mdiShareVariantOutline} size={0.9} /> Share
     </LinkButton>
   );
 };
