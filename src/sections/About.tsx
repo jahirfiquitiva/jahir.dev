@@ -114,11 +114,16 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
       </Paragraph>
 
       <Paragraph>
-        Learn even more about me on{' '}
+        Learn about the hardware, software and tools I use, on my{' '}
+        <Link title={'Uses page'} href={'/uses'}>
+          uses page
+        </Link>
+        . Or even more about me on{' '}
         <Link title={'Polywork timeline'} href={'https://timeline.jahir.dev/'}>
           my timeline
-        </Link>{' '}
-        and please don&apos;t hesitate to{' '}
+        </Link>
+        .<br />
+        And last but not least, please don&apos;t hesitate to{' '}
         <Link title={'Contact page'} href={'/contact'}>
           contact me
         </Link>
