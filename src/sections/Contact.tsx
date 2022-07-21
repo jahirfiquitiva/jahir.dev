@@ -119,8 +119,8 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
       <Grid>
         <div>
           <Paragraph>
-            I&apos;m always open for a conversation, so please don&apos;t
-            hesitate contacting me!
+            I&apos;m always open to chat, so please don&apos;t hesitate
+            contacting me!
           </Paragraph>
           <Paragraph>
             Anyways, please{' '}
