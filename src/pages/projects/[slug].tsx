@@ -1,7 +1,7 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
@@ -33,6 +33,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
     [baseProject],
   );
   const hasMounted = useHasMounted();
+  // const router = useRouter();
 
   // if (!router.isFallback && !project?.slug) {
   //   return <FourHundredFour />;

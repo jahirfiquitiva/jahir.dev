@@ -1,4 +1,4 @@
-import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
 // import { useRouter } from 'next/router';
