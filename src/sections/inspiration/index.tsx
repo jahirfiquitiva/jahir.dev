@@ -1,1 +1,1 @@
-export * from './InspirationGrid';
+export * from './Inspiration';

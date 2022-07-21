@@ -2,11 +2,10 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { SWRConfig } from 'swr';
 
-import { Heading } from '@/components/atoms';
-import { Layout, Section } from '@/components/elements';
+import { Layout } from '@/components/elements';
 import fetcher from '@/lib/fetcher';
 import { InspirationItem } from '@/lib/notion';
-import { InspirationGrid } from '@/sections';
+import { Inspiration as InspirationSection } from '@/sections';
 
 interface BookmarksResponse {
   success?: boolean;
@@ -23,23 +22,9 @@ const Inspiration: NextPage<InspirationProps> = ({ fallback }) => {
       <Head>
         <title>Inspiration | Jahir Fiquitiva</title>
       </Head>
-      <Section
-        id={'inspiration'}
-        css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
-        centered
-      >
-        <Heading as={'h2'} shadow={'brand'} gradient={'brand-to-blue'}>
-          Inspiration
-        </Heading>
-        <p>
-          These are some people I admire or sites I like that might have even
-          somehow inspired part of my website or helped with some personal
-          projects. 👏
-        </p>
-        <SWRConfig value={{ fallback }}>
-          <InspirationGrid />
-        </SWRConfig>
-      </Section>
+      <SWRConfig value={{ fallback }}>
+        <InspirationSection />
+      </SWRConfig>
     </Layout>
   );
 };
