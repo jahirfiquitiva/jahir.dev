@@ -125,8 +125,8 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
           <Paragraph>
             Anyways, please{' '}
             <Link
-              title={"Don't just say hello club page"}
-              href={'https://nohello.club/'}
+              title={"Don't just say hello page"}
+              href={'https://nohello.net/'}
             >
               don&apos;t just say hello
             </Link>
