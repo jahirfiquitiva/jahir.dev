@@ -9,7 +9,6 @@ export const Inspiration: FC = () => {
     <Section
       id={'inspiration'}
       css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
-      centered
     >
       <Heading as={'h2'} shadow={'brand'} gradient={'brand-to-blue'}>
         Inspiration

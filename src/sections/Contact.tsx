@@ -112,7 +112,7 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
   }, [hasMounted, image]);
 
   return (
-    <Section id={'contact'} centered>
+    <Section id={'contact'}>
       <Heading as={'h2'} shadow={'brand'} gradient={'brand-to-blue'}>
         Contact
       </Heading>
