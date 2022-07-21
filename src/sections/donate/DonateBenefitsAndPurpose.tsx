@@ -69,6 +69,7 @@ export const DonateBenefitsAndPurpose: FC = () => {
             Allow me to buy courses to keep learning and growing my skillset
           </li>
           <li>Allow me to craft more open-source side projects</li>
+          <li>Allow me to sponsor other people</li>
           {/* <li>
             Help fund part of the expenses for future versions of{' '}
             <Link
