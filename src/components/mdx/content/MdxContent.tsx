@@ -30,7 +30,8 @@ import { ViewsCounter } from './ViewsCounter';
 
 type ContentTypes = Post | Project;
 
-const slugPath = (content: ContentTypes): string => {
+const slugPath = (content: ContentTypes, forShare?: boolean): string => {
+  if (content.slug === 'uses' && forShare) return 'uses';
   if ('icon' in content) return `projects/${content.slug}`;
   if ('hero' in content) return `blog/${content.slug}`;
   return `coding/${content.slug}`;
@@ -106,10 +107,12 @@ export const MdxContent: FC<CommonContent> = (props) => {
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return {};
     return {
-      ...(isUsesPage ? {
-        mt: 0,
-        fontSize: '$2xl',
-      } : {}),
+      ...(isUsesPage
+        ? {
+            mt: 0,
+            fontSize: '$2xl',
+          }
+        : {}),
       $$textShadowColor: color,
       dark: {
         $$textShadowColor: color,
@@ -121,7 +124,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         transition: 'all .15s ease-in-out',
       },
     };
-  }, [themeReady, isDark, heroPalette]);
+  }, [themeReady, isDark, heroPalette, isUsesPage]);
 
   const extraHeroProps = useMemo(() => {
     if (heroMeta && heroMeta.blur64) {
@@ -192,7 +195,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
           <ArticleFooter>
             <ShareAndEdit>
-              <ShareButton title={title} slug={slugPath(content)} />
+              <ShareButton title={title} slug={slugPath(content, true)} />
               <LinkButton
                 href={editUrl(content)}
                 title={'Edit content on GitHub'}
