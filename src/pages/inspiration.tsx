@@ -28,7 +28,7 @@ const Inspiration: NextPage<InspirationProps> = ({ fallback }) => {
         css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
         centered
       >
-        <Heading as={'h3'} shadow={'brand'} gradient={'brand-to-blue'}>
+        <Heading as={'h2'} shadow={'brand'} gradient={'brand-to-blue'}>
           Inspiration
         </Heading>
         <p>

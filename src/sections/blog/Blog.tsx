@@ -5,10 +5,9 @@ import { useMemo, useState } from 'react';
 import { Field, Heading, LinkButton } from '@/components/atoms';
 import { Section } from '@/components/elements';
 import type { FC, Post } from '@/types';
+import { groupBlogPosts } from '@/utils';
 import { styled } from '~/stitches';
 
-import { BlogCard } from './BlogCard';
-import { groupBlogPosts } from '@/utils';
 import { BlogGroup } from './BlogGroup';
 
 const BlogsContainer = styled('div', {
@@ -97,7 +96,7 @@ export const Blog: FC<BlogProps> = (props) => {
   return (
     <Section id={'blog'} css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}>
       <BlogHeader>
-        <Heading as={'h3'} shadow={'yellow'} gradient={'yellow-to-orange'}>
+        <Heading as={'h2'} shadow={'yellow'} gradient={'yellow-to-orange'}>
           Blog
         </Heading>
         <BlogButtons>

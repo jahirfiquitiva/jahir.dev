@@ -60,7 +60,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
 
   return (
     <Section id={'about'}>
-      <Heading as={'h3'} shadow={'blue'} gradient={'blue-to-green'}>
+      <Heading as={'h2'} shadow={'blue'} gradient={'blue-to-green'}>
         About
       </Heading>
 

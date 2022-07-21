@@ -107,12 +107,6 @@ export const MdxContent: FC<CommonContent> = (props) => {
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return {};
     return {
-      ...(isUsesPage
-        ? {
-            mt: 0,
-            fontSize: '$2xl',
-          }
-        : {}),
       $$textShadowColor: color,
       dark: {
         $$textShadowColor: color,
@@ -124,7 +118,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         transition: 'all .15s ease-in-out',
       },
     };
-  }, [themeReady, isDark, heroPalette, isUsesPage]);
+  }, [themeReady, isDark, heroPalette]);
 
   const extraHeroProps = useMemo(() => {
     if (heroMeta && heroMeta.blur64) {
@@ -151,7 +145,19 @@ export const MdxContent: FC<CommonContent> = (props) => {
       )}
 
       <Article>
-        <Title css={titleStyles}>{title}</Title>
+        <Title
+          css={{
+            ...(isUsesPage
+              ? {
+                  mt: 0,
+                  fontSize: '$2xl',
+                }
+              : {}),
+            ...titleStyles,
+          }}
+        >
+          {title}
+        </Title>
 
         <Intro>
           {date && !isUsesPage ? (
@@ -172,8 +178,6 @@ export const MdxContent: FC<CommonContent> = (props) => {
           <MdxReactions inProgress={inProgress} />
 
           {hero && (
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             <ArticleHero
               src={hero || ''}
               alt={`Cover image for blog "${title}"`}

@@ -113,7 +113,7 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
 
   return (
     <Section id={'contact'} centered>
-      <Heading as={'h3'} shadow={'brand'} gradient={'brand-to-blue'}>
+      <Heading as={'h2'} shadow={'brand'} gradient={'brand-to-blue'}>
         Contact
       </Heading>
       <Grid>

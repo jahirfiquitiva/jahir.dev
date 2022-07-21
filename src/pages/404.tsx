@@ -11,7 +11,7 @@ const FourOhFour: NextPage = () => {
         <title>Site not found</title>
       </Head>
       <Section id={'error'} centered css={{ gap: '$16' }}>
-        <Heading as={'h3'} shadow={'red'} gradient={'red-to-purple'}>
+        <Heading as={'h2'} shadow={'red'} gradient={'red-to-purple'}>
           Site not found
         </Heading>
         <p>
