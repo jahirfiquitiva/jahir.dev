@@ -11,6 +11,7 @@ const TextsContainer = styled('div', {
   flexDirection: 'column-reverse',
   '& > img': {
     maxWidth: 48,
+    filter: 'drop-shadow(0 0 2px #fff)',
   },
   '@mobile-lg': {
     flexDirection: 'row',
