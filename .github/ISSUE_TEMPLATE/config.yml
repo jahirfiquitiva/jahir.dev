@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: General Discussions
+    url: https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=general
+    about: Please create a new discussion if you want to share something in general. Issues are meant for bug reports or feature requests.

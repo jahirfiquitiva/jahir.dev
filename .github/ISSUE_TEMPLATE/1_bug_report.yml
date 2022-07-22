@@ -1,0 +1,103 @@
+name: Report a Bug 🐛
+description: File a bug report
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        *Thanks for taking the time to fill out this bug report!*
+        
+        ---
+        
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements
+      description: "Please make sure you have checked all of the following:"
+      options:
+        - label: I have verified there are no duplicate active or recent bugs, questions, or requests
+          required: true
+  - type: markdown
+    attributes:
+      value: |
+        --- 
+        
+        # Website and device information:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: What is the url where the bug is reproducible?
+      placeholder: ex. jahir.dev/about
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: What operating system were you using when the bug occurred?
+      placeholder: ex. MacOS, Windows
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: What browser where you using when the bug occurred?
+      placeholder: ex. Chrome
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Browser Version
+      description: What is version of the previously registered browser?
+      placeholder: ex. 100.0.1
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        --- 
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please describe the bug in detail, clear and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction Steps
+      description: Please share information on how to reproduce the bug or issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Please explain what you consider the expected behavior should be
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or videos
+      description: Please share any screenshots or videos that could help understanding the issue
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Code and/or Logs
+      description: If you have logs for the issue, please share them
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context or info
+      description: Please share any additional details you consider relevant to solve the issue
+    validations:
+      required: false
