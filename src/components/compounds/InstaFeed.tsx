@@ -95,6 +95,7 @@ export const InstaFeed: FC = () => {
                 decoding={'async'}
                 width={214}
                 height={214}
+                crossOrigin={'anonymous'}
               />
               <Icon path={mdiInstagram} size={1.5} />
             </ImgContainer>

@@ -17,7 +17,7 @@ export interface InstagramPost {
   caption?: string;
 }
 
-const fetchSecondaryFeed = async () => {
+const fetchSelfFeed = async () => {
   const response = await fetch(`${instagramApi}/posts`);
   const data: { posts?: Array<RemoteInstagramPost> } = await response.json();
 
@@ -25,7 +25,7 @@ const fetchSecondaryFeed = async () => {
     id: post.id,
     caption: post.caption,
     postUrl: post.permalink,
-    photoUrl: post.photo || post.mediaUrl,
+    photoUrl: `https://sroc.jahir.dev/${post.photo || post.mediaUrl}`,
   }));
 };
 
@@ -47,7 +47,7 @@ const fetchFeedWithKey = async (
 
 export const fetchInstaFeed = async (): Promise<Array<InstagramPost>> => {
   try {
-    const selfFeed = await fetchSecondaryFeed();
+    const selfFeed = await fetchSelfFeed();
     if (selfFeed && selfFeed.length) return selfFeed || [];
 
     const mainFeed = await fetchFeedWithKey(instagramFeedKey);
