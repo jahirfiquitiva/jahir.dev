@@ -71,6 +71,7 @@ export const Link: FC<ComponentProps<typeof StyledLink> & LinkProps> = (
         href={href}
         target={'_blank'}
         rel={'noopener noreferrer'}
+        aria-label={rest.title}
         {...rest}
         underline={underline}
       />
@@ -80,6 +81,7 @@ export const Link: FC<ComponentProps<typeof StyledLink> & LinkProps> = (
   return (
     <StyledLink
       {...{ href, prefetch: shouldPrefetch, ...rest }}
+      aria-label={rest.title}
       underline={underline}
     />
   );
