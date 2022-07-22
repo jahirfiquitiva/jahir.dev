@@ -49,6 +49,8 @@ const ImgContainer = styled(Link, {
     backgroundColor: '$background',
     opacity: 0,
     transition: 'all ease-in-out .35s',
+    pointerEvents: 'none',
+    userSelect: 'none',
   },
   '& > svg': {
     color: '$text-primary',
@@ -60,6 +62,8 @@ const ImgContainer = styled(Link, {
     opacity: 0,
     zIndex: 2,
     transition: 'all ease-in-out .35s',
+    pointerEvents: 'none',
+    userSelect: 'none',
   },
 });
 
