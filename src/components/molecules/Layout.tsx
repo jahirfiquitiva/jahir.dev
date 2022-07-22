@@ -1,6 +1,7 @@
 import type { FC } from '@/types';
 import { styled, keyframes } from '~/stitches';
 
+import { BackToTop } from './BackToTop';
 import { Footer } from './footer';
 import { Toolbar } from './toolbar';
 
@@ -35,6 +36,7 @@ export const Layout: FC = (props) => {
       <Toolbar />
       <Main>{props.children}</Main>
       <Footer />
+      <BackToTop />
     </>
   );
 };
