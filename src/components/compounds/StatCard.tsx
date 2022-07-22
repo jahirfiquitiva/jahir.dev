@@ -15,6 +15,7 @@ const StyledCard = styled('div', {
   position: 'relative',
   display: 'flex',
   width: '100%',
+  height: '100%',
   py: '$14',
   px: '$16',
   gap: '$4',

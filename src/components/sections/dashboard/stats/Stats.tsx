@@ -2,6 +2,7 @@ import { SponsorsProvider } from '@/providers/sponsors';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
+import { GitHubStats } from './GitHubStats';
 import { ReactionsStats } from './ReactionsStats';
 import { SponsorsStats } from './SponsorsStats';
 import { ViewsStats } from './ViewsStats';
@@ -28,6 +29,7 @@ export const Stats: FC = () => {
       <SponsorsProvider>
         <SponsorsStats />
       </SponsorsProvider>
+      <GitHubStats />
     </StatsContainer>
   );
 };
