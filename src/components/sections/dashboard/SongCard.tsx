@@ -10,7 +10,7 @@ import { styled } from '~/stitches';
 
 const Card = styled(Link, {
   $$color: '$colors$toolbar-glow',
-  $$textColor: '$colors$text-secondary',
+  $$textColor: '$colors$text-tertiary',
   $$borderSize: '1px',
   position: 'relative',
   display: 'flex',
