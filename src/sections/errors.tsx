@@ -12,7 +12,7 @@ const Container = styled(Section, {
   alignItems: 'center',
   justifyContent: 'center',
   gap: 'calc($$verticalContentPadding / 2)',
-  maxWidth: '50ch',
+  maxWidth: '45ch',
   mx: 'auto',
   textAlign: 'center',
   flex: 'unset',
@@ -23,7 +23,6 @@ const Container = styled(Section, {
   variants: {
     fourOhFour: {
       true: {
-        maxWidth: '45ch',
         flex: 1,
       },
     },
@@ -106,7 +105,7 @@ export const Error: FC<{ error?: string }> = (props) => {
   return (
     <ErrorSection
       type={'error'}
-      title={'Woops! ~ Something went wrong'}
+      title={'Something went wrong'}
       gif={'/static/images/site/monkey.gif'}
       gifAlt={'Monkey throwing laptop aggressively'}
     >
@@ -120,7 +119,9 @@ export const Error: FC<{ error?: string }> = (props) => {
         Please{' '}
         <Link
           title={'Create issue on GitHub'}
-          href={'https://github.com/jahirfiquitiva/jahir.dev/issues/new?assignees=jahirfiquitiva&labels=bug&template=1_bug_report.yaml'}
+          href={
+            'https://github.com/jahirfiquitiva/jahir.dev/issues/new?assignees=jahirfiquitiva&labels=bug&template=1_bug_report.yaml'
+          }
         >
           let me know
         </Link>{' '}
