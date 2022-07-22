@@ -69,7 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       .map((p: GeneratedProject) => ({
         params: { slug: p.slug },
       })),
-    fallback: false,
+    fallback: true,
   };
 };
 
