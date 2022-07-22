@@ -6,7 +6,8 @@ import { styled } from '~/stitches';
 import { SongCard } from './SongCard';
 
 const Container = styled('div', {
-  my: 'calc($$verticalContentPadding / 2)',
+  mt: 'calc($$verticalContentPadding / 4)',
+  mb: 'calc($$verticalContentPadding / 2)',
 });
 
 const SmallText = styled('small', {
