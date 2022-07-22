@@ -5,6 +5,7 @@ import { styled } from '~/stitches';
 import { GitHubStats } from './GitHubStats';
 import { ReactionsStats } from './ReactionsStats';
 import { SponsorsStats } from './SponsorsStats';
+import { TwitterStats } from './TwitterStats';
 import { ViewsStats } from './ViewsStats';
 
 const StatsContainer = styled('div', {
@@ -30,6 +31,7 @@ export const Stats: FC = () => {
         <SponsorsStats />
       </SponsorsProvider>
       <GitHubStats />
+      <TwitterStats />
     </StatsContainer>
   );
 };
