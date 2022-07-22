@@ -5,4 +5,5 @@ export * from './blog';
 export * from './projects';
 export * from './inspiration';
 export * from './donate';
+export * from './dashboard';
 export * from './errors';

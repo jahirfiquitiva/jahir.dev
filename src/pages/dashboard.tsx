@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { Layout } from '@/components/molecules';
-import { UnderConstruction as UnderConstructionSection } from '@/sections';
+import { Dashboard as DashboardSection } from '@/sections';
 
 const UnderConstruction: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const UnderConstruction: NextPage = () => {
       <Head>
         <title>Dashboard</title>
       </Head>
-      <UnderConstructionSection />
+      <DashboardSection />
     </Layout>
   );
 };

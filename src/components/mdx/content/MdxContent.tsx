@@ -99,9 +99,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
     const color = hexToRGB(
-      isDark
-        ? getReadableColor(heroPalette.vibrant, isDark)
-        : getColorFromPalette(heroPalette, isDark) || '#fff',
+      getReadableColor(getColorFromPalette(heroPalette, isDark), isDark),
       isDark ? 1 : 0.4,
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return {};

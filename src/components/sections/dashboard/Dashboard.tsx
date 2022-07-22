@@ -1,3 +1,9 @@
+import { TopTracks } from './TopTracks';
+
 export const Dashboard = () => {
-  return null;
+  return (
+    <div>
+      <TopTracks />
+    </div>
+  );
 };

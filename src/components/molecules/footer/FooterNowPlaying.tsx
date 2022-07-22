@@ -181,7 +181,7 @@ export const FooterNowPlaying: FC = () => {
         </NotPlayingContainer>
       );
     } else {
-      const scrollingText = `${data.title} – ${data.artist}`;
+      const scrollingText = `${data.title} • ${data.artist}`;
       const animationDuration = scrollingText.length * 0.35;
       return (
         <MusicLink

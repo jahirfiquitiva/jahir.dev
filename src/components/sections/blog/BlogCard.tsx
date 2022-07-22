@@ -6,7 +6,13 @@ import { Img, Link } from '@/components/atoms';
 import { useSafePalette, useRequest } from '@/hooks';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
-import { formatDate, getReadableColor, hexToRGB, icons } from '@/utils';
+import {
+  formatDate,
+  getColorFromPalette,
+  getReadableColor,
+  hexToRGB,
+  icons,
+} from '@/utils';
 import { styled } from '~/stitches';
 
 const StyledBlogCard = styled(Link, {
@@ -133,8 +139,10 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
     return hexToRGB(
-      getReadableColor(heroPalette.vibrant || post?.color, isDark) ||
-        post?.color,
+      getReadableColor(
+        getColorFromPalette(heroPalette, isDark) || post?.color,
+        isDark,
+      ) || post?.color,
       undefined,
       true,
     );
