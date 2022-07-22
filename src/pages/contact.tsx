@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useMemo } from 'react';
 
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { Contact as ContactSection } from '@/sections';
 import type { RandomPageImage } from '@/types';
 import { getRandomItem } from '@/utils';

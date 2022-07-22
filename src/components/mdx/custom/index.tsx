@@ -7,3 +7,5 @@ export const customComponents = {
   AppsGrid,
   Colophon,
 };
+
+export * from './Table';

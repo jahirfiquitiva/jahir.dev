@@ -1,3 +1,1 @@
-export * from './footer';
-// export * from './spotlight';
-export * from './toolbar';
+export * from './Layout';

@@ -4,7 +4,7 @@ import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { useHasMounted } from '@/hooks';
 import type { Post } from '@/types';

@@ -2,8 +2,7 @@ import { mdiPencilOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Divider, Link, LinkButton } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import { Divider, Link, LinkButton, Section } from '@/components/atoms';
 import { useSafePalette } from '@/hooks';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';

@@ -1,13 +1,16 @@
+import { ComponentProps } from 'react';
+
+import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-export const TableContainer = styled('div', {
+const TableContainer = styled('div', {
   WebkitOverflowScrolling: 'touch',
   overflow: 'auto',
   overflowY: 'hidden',
   maxWidth: '100%',
 });
 
-export const Table = styled('table', {
+const RealTable = styled('table', {
   borderCollapse: 'collapse',
   borderSpacing: 0,
 
@@ -33,3 +36,11 @@ export const Table = styled('table', {
     },
   },
 });
+
+export const Table: FC<ComponentProps<typeof RealTable>> = (props) => {
+  return (
+    <TableContainer>
+      <Table {...props} />
+    </TableContainer>
+  );
+};

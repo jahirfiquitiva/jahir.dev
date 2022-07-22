@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useMemo } from 'react';
 
 import imagesBlurData from '@/blur/about';
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { About as AboutSection } from '@/sections';
 import type {
   ImageBlurDataObject,

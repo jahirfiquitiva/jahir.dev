@@ -1,7 +1,12 @@
 import Icon from '@mdi/react';
 
-import { ChipGroup, Chip, Heading, buildChipStyles } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import {
+  ChipGroup,
+  Chip,
+  Heading,
+  buildChipStyles,
+  Section,
+} from '@/components/atoms';
 import type { FC } from '@/types';
 
 import { skills } from './data';

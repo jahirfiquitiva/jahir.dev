@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import type { ErrorProps } from 'next/error';
 import Head from 'next/head';
 
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { Error as ErrorSection } from '@/sections';
 
 const Error: NextPage<ErrorProps> = (props) => {

@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 import { useMemo } from 'react';
 
-import { Link, Heading } from '@/components/atoms';
+import { Link, Heading, Section } from '@/components/atoms';
 import { OpenDoodle } from '@/components/compounds';
-import { Section } from '@/components/elements';
 import { useHasMounted } from '@/hooks';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';

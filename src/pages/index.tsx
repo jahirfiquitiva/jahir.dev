@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 import { DotsDivider } from '@/components/atoms';
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { Intro, Projects, Skills } from '@/sections';
 import type { Project } from '@/types';
 import { pick } from '@/utils';

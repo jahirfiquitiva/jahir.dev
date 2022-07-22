@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { Projects as ProjectsSection } from '@/sections';
 import type { Project } from '@/types';
 import { pick } from '@/utils';

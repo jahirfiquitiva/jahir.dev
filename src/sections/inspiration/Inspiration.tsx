@@ -1,5 +1,4 @@
-import { Heading } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import { Heading, Section } from '@/components/atoms';
 import type { FC } from '@/types';
 
 import { InspirationGrid } from './InspirationGrid';

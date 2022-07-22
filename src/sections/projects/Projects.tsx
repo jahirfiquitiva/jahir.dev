@@ -2,9 +2,8 @@ import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Field, Heading, LinkButton } from '@/components/atoms';
+import { Field, Heading, LinkButton, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { Section } from '@/components/elements';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';
 import { styled, theme } from '~/stitches';

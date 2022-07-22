@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 // import { About as AboutSection } from '@/sections';
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { Blog as BlogSection } from '@/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';

@@ -1,6 +1,8 @@
-import { Toolbar, Footer } from '@/components/molecules';
 import type { FC } from '@/types';
 import { styled, keyframes } from '~/stitches';
+
+import { Footer } from './footer';
+import { Toolbar } from './toolbar';
 
 const pageTransition = keyframes({
   '0%': { transform: 'scale(0.975)', opacity: 0 },

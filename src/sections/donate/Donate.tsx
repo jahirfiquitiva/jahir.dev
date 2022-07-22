@@ -1,4 +1,4 @@
-import { Section } from '@/components/elements';
+import { Section } from '@/components/atoms';
 import { SponsorsProvider } from '@/providers/sponsors';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';

@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useMemo } from 'react';
 
-import { Heading, Link, LinkButton } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import { Heading, Link, LinkButton, Section } from '@/components/atoms';
 import type { RainbowColors } from '@/stitches';
 import type { GradientOption } from '@/stitches/utils/gradient';
 import type { FC } from '@/types';

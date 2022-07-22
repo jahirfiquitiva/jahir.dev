@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Loading } from '@/components/compounds';
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { useMDXComponent } from '@/hooks';
 import { FourOhFour as FourOhFourSection } from '@/sections';

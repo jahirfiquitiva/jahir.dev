@@ -2,8 +2,7 @@ import { mdiMagnify, mdiRss } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Field, Heading, LinkButton } from '@/components/atoms';
-import { Section } from '@/components/elements';
+import { Field, Heading, LinkButton, Section } from '@/components/atoms';
 import type { FC, Post } from '@/types';
 import { groupBlogPosts } from '@/utils';
 import { styled } from '~/stitches';

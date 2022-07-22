@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Layout } from '@/components/elements';
+import { Layout } from '@/components/molecules';
 import { UnderConstruction as UnderConstructionSection } from '@/sections';
 
 const UnderConstruction: NextPage = () => {
