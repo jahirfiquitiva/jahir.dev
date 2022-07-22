@@ -1,11 +1,11 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
+import { useMDXComponent } from '@/hooks';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
@@ -21,7 +21,7 @@ interface PostPageProps {
 
 const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
-  const MdxComponent = useMDXComponent(basePost.body.code);
+  const MdxComponent = useMDXComponent(basePost?.body?.code || '');
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
   // const router = useRouter();
 
@@ -29,9 +29,9 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   //   return <FourHundredFour />;
   // }
 
-  // if (!post || !MdxComponent) {
-  //   return <ErrorPage />;
-  // }
+  if (!post || !MdxComponent) {
+    return null; // <ErrorPage />;
+  }
 
   return (
     <Layout>
@@ -57,8 +57,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: getAllPosts([], true)
       .filter((it) => it.slug !== 'uses')
+      .filter((post) => {
+        const shouldRedirect = post && post.link && post.link.length > 0;
+        return !shouldRedirect;
+      })
       .map((p) => ({ params: { slug: p.slug } })),
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -66,7 +70,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getAllPosts([], true)
     .filter((it) => it.slug !== 'uses')
     .find((post) => post.slug === params?.slug);
-  if (!post) return { props: {} };
+  if (!post) {
+    return {
+      props: {
+        post: {
+          body: {
+            code: 'var Component = () => { return null }; return Component',
+          },
+        },
+      },
+    };
+  }
   const shouldRedirect = post && post.link && post.link.length > 0;
   if (shouldRedirect) {
     return {
