@@ -6,7 +6,6 @@ import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
-import { useHasMounted } from '@/hooks';
 import type { Project } from '@/types';
 import {
   allProjects,
@@ -32,7 +31,6 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
     () => mapContentLayerProject(baseProject),
     [baseProject],
   );
-  const hasMounted = useHasMounted();
   // const router = useRouter();
 
   // if (!router.isFallback && !project?.slug) {
@@ -42,14 +40,6 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
   // if (!project || !MdxComponent) {
   //   return <ErrorPage />;
   // }
-
-  if (project?.inProgress || project?.hide) {
-    if (project.link) {
-      try {
-        if (hasMounted) window.location.href = project.link;
-      } catch (e) {}
-    }
-  }
 
   return (
     <Layout>
@@ -85,14 +75,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = allProjects.find(
     (post: GeneratedProject) => post.slug === params?.slug,
   );
-  if (project?.inProgress || project?.hide) {
+  if (!project) return { props: {} };
+  if (project.inProgress || project.hide) {
     return {
-      props: {
-        project,
-        redirect: {
-          destination: project?.link,
-          permanent: true,
-        },
+      redirect: {
+        destination: project.link,
+        permanent: false,
       },
     };
   }

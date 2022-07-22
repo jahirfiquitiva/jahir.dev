@@ -6,7 +6,6 @@ import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
-import { useHasMounted } from '@/hooks';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
@@ -24,7 +23,6 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
   const MdxComponent = useMDXComponent(basePost.body.code);
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
-  const hasMounted = useHasMounted();
   // const router = useRouter();
 
   // if (!router.isFallback && !post?.slug) {
@@ -34,12 +32,6 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   // if (!post || !MdxComponent) {
   //   return <ErrorPage />;
   // }
-
-  if (post && post.link) {
-    try {
-      if (hasMounted) window.location.href = post.link;
-    } catch (e) {}
-  }
 
   return (
     <Layout>
@@ -74,15 +66,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getAllPosts([], true)
     .filter((it) => it.slug !== 'uses')
     .find((post) => post.slug === params?.slug);
+  if (!post) return { props: {} };
   const shouldRedirect = post && post.link && post.link.length > 0;
   if (shouldRedirect) {
     return {
-      props: {
-        post,
-        redirect: {
-          destination: post?.link,
-          permanent: true,
-        },
+      redirect: {
+        destination: post.link || '/',
+        permanent: true,
       },
     };
   }
