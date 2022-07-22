@@ -51,7 +51,7 @@ export const Article = styled('article', {
       color: '$text-tertiary',
     },
   },
-  '& ol:not(.apps-grid), & ul:not(.apps-grid)': {
+  '& ol:not(.apps-grid):not(.colophon), & ul:not(.apps-grid):not(.colophon)': {
     display: 'block',
     listStyle: 'none',
     position: 'relative',
@@ -83,7 +83,7 @@ export const Article = styled('article', {
       },
     },
   },
-  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list):not(.apps-grid) > li::before':
+  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list):not(.apps-grid):not(.colophon) > li::before':
     {
       content: 'counter(list-item, disc)',
     },

@@ -26,6 +26,7 @@ export const mdxComponents = {
     </TableContainer>
   ),
   a: MdxLink,
+  Link: MdxLink,
   img: (props: ImgProps) => <Img {...props} />,
   ...customComponents,
 };
