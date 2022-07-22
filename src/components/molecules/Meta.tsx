@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import type { FC } from '@/types';
 
-export const Meta: FC = () => {
+export const GlobalMeta: FC = () => {
   return (
     <>
       <meta charSet={'UTF-8'} />
@@ -10,7 +10,13 @@ export const Meta: FC = () => {
         content={'width=device-width, initial-scale=1.0'}
       />
       <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
+    </>
+  );
+};
 
+export const Meta: FC = () => {
+  return (
+    <>
       <meta name={'author'} content={'Jahir Fiquitiva'} />
 
       <meta property={'og:locale'} content={'en_US'} />
