@@ -2,7 +2,6 @@ import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { GlobalMeta } from '@/components/molecules';
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
 import { darkTheme, globalStyles } from '~/stitches';
@@ -13,7 +12,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <GlobalMeta />
+        <meta charSet={'UTF-8'} />
+        <meta
+          name={'viewport'}
+          content={'width=device-width, initial-scale=1.0'}
+        />
+        <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
       </Head>
       <NextThemeProvider
         attribute={'class'}

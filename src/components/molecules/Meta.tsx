@@ -1,19 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import type { FC } from '@/types';
 
-export const GlobalMeta: FC = () => {
-  return (
-    <>
-      <meta charSet={'UTF-8'} />
-      <meta
-        name={'viewport'}
-        content={'width=device-width, initial-scale=1.0'}
-      />
-      <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
-    </>
-  );
-};
-
 export const Meta: FC = () => {
   return (
     <>
