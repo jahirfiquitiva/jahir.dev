@@ -3,12 +3,12 @@ const ContentSecurityPolicy = `
   default-src 'self';
   worker-src 'self' blob:;
   script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io cdn.discordapp.com;
+  child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io cdn.discordapp.com *.cdninstagram.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
-  img-src *.gstatic.com * blob: data:;
+  img-src *.cdninstagram.com *.gstatic.com * blob: data:;
   object-src 'none';
   base-uri 'none';
-  media-src 'self';
+  media-src 'self' *.cdninstagram.com;
   connect-src *;
   font-src 'self' *.gstatic.com;
 `;

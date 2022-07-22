@@ -1,6 +1,6 @@
 import { buildApiResponse } from '@/utils';
 
-const instagramApi = process.env.INSTA_FEED_API || '';
+const instagramApi = process.env.INSTA_API || '';
 
 export const config = {
   runtime: 'experimental-edge',

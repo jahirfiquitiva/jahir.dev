@@ -3,6 +3,7 @@ import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
 import { useRequest } from '@/hooks';
+import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
@@ -70,13 +71,6 @@ const InstaPhoto = styled('img', {
   objectPosition: 'center',
   transition: 'all ease-in-out .35s',
 });
-
-interface InstagramPost {
-  id: number;
-  caption: string;
-  postUrl: string;
-  photoUrl: string;
-}
 
 export const InstaFeed: FC = () => {
   const { data, loading } = useRequest<{ feed?: Array<InstagramPost> }>(
