@@ -3,8 +3,10 @@ import { SponsorsProvider } from '@/providers/sponsors';
 import { styled } from '~/stitches';
 
 import { NowPlaying } from './NowPlaying';
+import { ReactionsStats } from './ReactionsStats';
 import { SponsorsStats } from './SponsorsStats';
 import { TopTracks } from './TopTracks';
+import { ViewsStats } from './ViewsStats';
 
 const CardsContainer = styled('div', {
   display: 'grid',
@@ -27,6 +29,8 @@ export const Dashboard = () => {
       <NowPlaying />
       <CardsContainer>
         <SponsorsProvider>
+          <ViewsStats />
+          <ReactionsStats />
           <SponsorsStats />
         </SponsorsProvider>
       </CardsContainer>

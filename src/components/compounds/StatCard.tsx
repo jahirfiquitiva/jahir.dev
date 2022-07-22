@@ -136,7 +136,7 @@ export const StatCard: FC<StatCardProps> = (props) => {
       <Text>{text}</Text>
       {iconPath ? (
         <IconContainer className={'icon'}>
-          <Icon path={iconPath} size={1} />
+          <Icon path={iconPath} size={0.9} />
         </IconContainer>
       ) : null}
     </StyledCard>
