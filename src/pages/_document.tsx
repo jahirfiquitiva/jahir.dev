@@ -1,15 +1,14 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+import { Meta } from '@/components/molecules';
 import { getCssText, preloadFonts } from '~/stitches';
-
-// import { DefaultMetaTags } from '~/components/blocks';
 
 export default class CustomDocument extends Document {
   render() {
     return (
       <Html lang={'en'}>
         <Head>
-          {/* <DefaultMetaTags /> */}
+          <Meta />
           {preloadFonts.map((font) => (
             <link
               key={`font-${font.key}`}
