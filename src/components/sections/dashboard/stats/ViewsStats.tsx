@@ -12,7 +12,7 @@ export const ViewsStats: FC = () => {
         title={'View blog posts'}
         href={'/blog'}
         text={'all-time views'}
-        value={`${data?.total || 'X'}`}
+        value={`${data?.total || '?'}`}
         iconPath={mdiEyeOutline}
         color={'#0abde3'}
         loading={loading}

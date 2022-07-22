@@ -16,7 +16,7 @@ export const getReadableColor = (
   // Colors from css variables: primary
   while (
     !fgColor.isReadable(bgColor[isDark ? 'dark' : 'light'], {
-      level: isDark ? 'AAA' : 'AA',
+      level: 'AAA',
     })
   ) {
     fgColor = isDark ? fgColor.lighten() : fgColor.darken();

@@ -12,7 +12,7 @@ export const ReactionsStats: FC = () => {
         title={'View blog posts'}
         href={'/blog'}
         text={'all-time reactions'}
-        value={`${data?.total || 'X'}`}
+        value={`${data?.total || '?'}`}
         iconPath={mdiThumbUpOutline}
         color={'#fa8231'}
         loading={loading}

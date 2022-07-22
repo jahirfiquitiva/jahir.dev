@@ -21,14 +21,14 @@ const Card = styled(Link, {
   alignItems: 'center',
   p: '$10',
   gap: '$10',
-  backgroundColor: 'rgba($$color / 0.04)',
+  backgroundColor: 'rgba($$color / .06)',
   border: '$$borderSize solid $divider',
   borderRadius: '$space$8',
   color: 'rgba($$textColor / .85)',
   transition: 'all .25s ease-in-out',
   maxWidth: '100%',
   dark: {
-    backgroundColor: 'rgba($$color / 0.12)',
+    backgroundColor: 'rgba($$color / .1)',
   },
   hocus: {
     $$borderSize: '2px',
@@ -41,7 +41,7 @@ const Card = styled(Link, {
     color: 'rgba($$textColor / 1)',
     dark: {
       color: 'rgba($$textColor / 1)',
-      backgroundColor: 'rgba($$color / .16)',
+      backgroundColor: 'rgba($$color / .14)',
     },
     '& p:first-of-type': {
       textDecoration: 'underline',
@@ -141,7 +141,7 @@ export const SongCard: FC<SongCardProps> = (props) => {
             </Subtitle>{' '}
           </>
         ) : (
-          <p>Silence</p>
+          <p>Not playing…</p>
         )}
       </Texts>
     </Card>

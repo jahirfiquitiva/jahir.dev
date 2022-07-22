@@ -11,7 +11,7 @@ export const TwitterStats: FC = () => {
         title={'Twitter'}
         href={'https://twitter.com/jahirfiquitiva'}
         text={'followers on Twitter'}
-        value={`${data?.followers || 'X'}`}
+        value={`${data?.followers || '?'}`}
         iconPath={icons.twitterOutline}
         color={'#1da1f2'}
         loading={loading}

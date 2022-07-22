@@ -15,7 +15,7 @@ export const GitHubStats: FC = () => {
         title={'GitHub Repositories'}
         href={'https://github.com/jahirfiquitiva?tab=repositories'}
         text={'stars on GitHub'}
-        value={`${data?.stars || 'X'}`}
+        value={`${data?.stars || '?'}`}
         iconPath={mdiStarOutline}
         color={'#f7b731'}
         loading={loading}
@@ -24,7 +24,7 @@ export const GitHubStats: FC = () => {
         title={'GitHub'}
         href={'https://github.com/jahirfiquitiva'}
         text={'followers on GitHub'}
-        value={`${data?.followers || 'X'}`}
+        value={`${data?.followers || '?'}`}
         iconPath={icons.gitHubOutline}
         color={'#4078c0'}
         loading={loading}

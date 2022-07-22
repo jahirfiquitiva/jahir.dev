@@ -24,7 +24,7 @@ export const TopTracks: FC = () => {
       <Heading as={'h4'}>Top Tracks</Heading>
       <Masonry
         breakpoints={masonryBreakpoints}
-        gap={'calc($$verticalContentPadding / 2)'}
+        gap={'calc($$verticalContentPadding / 2.5)'}
       >
         {data?.tracks?.map((song, index) => {
           return <SongCard song={song} key={index} />;

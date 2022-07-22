@@ -18,7 +18,7 @@ export const SponsorsStats: FC<SponsorsStatsProps> = (props) => {
         title={'View sponsors'}
         href={`${props.forSponsorsPage ? '' : '/donate'}#thanks`}
         text={'sponsors'}
-        value={`${sponsorsCount || 'X'}`}
+        value={`${sponsorsCount || '?'}`}
         iconPath={mdiHeartOutline}
         color={'#c94091'}
         loading={loading}

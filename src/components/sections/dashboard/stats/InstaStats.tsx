@@ -14,7 +14,7 @@ export const InstaStats: FC = () => {
         title={'Instagram'}
         href={'https://instagram.com/jahirfiquitiva'}
         text={'followers on Instagram'}
-        value={`${data?.followers || 'X'}`}
+        value={`${data?.followers || '?'}`}
         iconPath={mdiInstagram}
         color={'#c13584'}
         loading={loading}

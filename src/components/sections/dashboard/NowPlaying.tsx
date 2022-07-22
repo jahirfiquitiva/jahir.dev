@@ -6,7 +6,7 @@ import { styled } from '~/stitches';
 import { SongCard } from './SongCard';
 
 const Container = styled('div', {
-  my: 'calc($$verticalContentPadding / 4)',
+  my: 'calc($$verticalContentPadding / 6)',
 });
 
 const SmallText = styled('small', {
@@ -17,17 +17,16 @@ const SmallText = styled('small', {
 const WideSongCard = styled(SongCard, {
   '@tablet-sm': {
     maxWidth:
-      'calc(calc($sizes$max-site-width / 2) - calc($$verticalContentPadding / 4)) !important',
+      'calc(calc($sizes$max-site-width / 2) - calc($$verticalContentPadding / 5)) !important',
   },
 });
 
 export const NowPlaying: FC = () => {
   const { data, loading } = useRequest<TrackData>('/api/now-playing');
   if (!loading && !data) return null;
-  // if (!data?.isPlaying) return null;
   return (
     <Container>
-      <SmallText>Currently listening to…</SmallText>
+      {data?.isPlaying ? <SmallText>Currently listening to…</SmallText> : null}
       <WideSongCard song={data?.isPlaying ? (data as TopTrackData) : {}} />
     </Container>
   );
