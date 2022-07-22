@@ -13,6 +13,16 @@ const MasonryGrid = styled('div', {
   maxWidth: '100%',
   alignContent: 'stretch',
   boxSizing: 'border-box',
+  variants: {
+    noChildren: {
+      true: {
+        visibility: 'hidden',
+        opacity: 0,
+        pointerEvents: 'none',
+        userSelect: 'none',
+      },
+    },
+  },
 });
 
 const MasonryColumn = styled(MasonryGrid, {
@@ -97,9 +107,13 @@ export const Masonry: FC<MasonryProps> = (props) => {
     return buildMasonryColumns(children, columnsCount);
   }, [children, columnsCount]);
 
-  if (!childrenCount) return null;
   return (
-    <MasonryGrid style={style} className={className} css={{ ...css, gap }}>
+    <MasonryGrid
+      style={style}
+      className={className}
+      css={{ ...css, gap }}
+      noChildren={childrenCount <= 0}
+    >
       {columns.map((col, index) => {
         return (
           <MasonryColumn key={`col-${index}`} css={{ gap }}>

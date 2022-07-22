@@ -23,22 +23,19 @@ export const InspirationGrid: FC = () => {
     bookmarks: Array<InspirationItemType>;
   }>('/api/bookmarks');
 
-  if (loading) return <Loading />;
   return (
     <>
-      {data && data.bookmarks.length && !error ? (
-        <>
-          <Masonry
-            breakpoints={masonryBreakpoints}
-            gap={theme.space['24'].value}
-            css={{ my: '$4' }}
-          >
-            {(data?.bookmarks || []).map((bookmark, index) => {
-              return <InspirationItem item={bookmark} key={index} />;
-            })}
-          </Masonry>
-        </>
-      ) : (
+      <Masonry
+        breakpoints={masonryBreakpoints}
+        gap={data?.bookmarks.length ? theme.space['24'].value : 0}
+        css={data?.bookmarks.length ? { my: '$4' } : {}}
+      >
+        {(data?.bookmarks || []).map((bookmark, index) => {
+          return <InspirationItem item={bookmark} key={index} />;
+        })}
+      </Masonry>
+      {loading ? <Loading /> : null}
+      {!loading && (!data?.bookmarks.length || error) ? (
         <p>
           <Heading as={'span'} gradient={'red-to-purple'}>
             Oops!
@@ -47,7 +44,7 @@ export const InspirationGrid: FC = () => {
           <br />
           Please come back later 😬
         </p>
-      )}
+      ) : null}
     </>
   );
 };
