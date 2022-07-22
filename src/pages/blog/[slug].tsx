@@ -3,14 +3,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
+import { Loading } from '@/components/compounds';
 import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { useMDXComponent } from '@/hooks';
+import { FourOhFour as FourOhFourSection } from '@/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
-
-import FourOhFour from '../404';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
@@ -27,19 +27,17 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
   const router = useRouter();
 
-  if (!router.isFallback && !post?.slug) {
-    return <FourOhFour />;
-  }
-
-  if (!post || !MdxComponent) {
-    return <FourOhFour />; // <ErrorPage />;
-  }
-
-  return (
-    <Layout>
-      <Head>
-        <title>Blog | Jahir Fiquitiva</title>
-      </Head>
+  const renderContent = () => {
+    if (!router.isFallback && !post?.slug) {
+      return <FourOhFourSection />;
+    }
+    if (router.isFallback) {
+      return <Loading css={{ m: 'auto' }} />;
+    }
+    if (!post || !MdxComponent) {
+      return <p>error</p>; // <ErrorPage />;
+    }
+    return (
       <MdxContent
         backText={'Back to blog posts list'}
         backHref={'/blog'}
@@ -49,6 +47,15 @@ const PostPage: NextPage<PostPageProps> = (props) => {
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
       </MdxContent>
+    );
+  };
+
+  return (
+    <Layout>
+      <Head>
+        <title>Blog | Jahir Fiquitiva</title>
+      </Head>
+      {renderContent()}
     </Layout>
   );
 };

@@ -3,16 +3,16 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
+import { Loading } from '@/components/compounds';
 import { Layout } from '@/components/elements';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { useMDXComponent } from '@/hooks';
+import { FourOhFour as FourOhFourSection } from '@/sections';
 import type { Project } from '@/types';
 import {
   allProjects,
   type Project as GeneratedProject,
 } from 'contentlayer/generated';
-
-import FourOhFour from '../404';
 
 const mapContentLayerProject = (project?: GeneratedProject): Project | null => {
   if (!project) return null;
@@ -24,6 +24,7 @@ const mapContentLayerProject = (project?: GeneratedProject): Project | null => {
 
 interface ProjectPageProps {
   project: GeneratedProject;
+  redirection?: string;
 }
 
 const ProjectPage: NextPage<ProjectPageProps> = (props) => {
@@ -35,19 +36,17 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
   );
   const router = useRouter();
 
-  if (!router.isFallback && !project?.slug) {
-    return <FourOhFour />;
-  }
-
-  if (!project || !MdxComponent) {
-    return <FourOhFour />; // <ErrorPage />;
-  }
-
-  return (
-    <Layout>
-      <Head>
-        <title>Projects | Jahir Fiquitiva</title>
-      </Head>
+  const renderContent = () => {
+    if (!router.isFallback && !project?.slug) {
+      return <FourOhFourSection />;
+    }
+    if (router.isFallback) {
+      return <Loading css={{ m: 'auto' }} />;
+    }
+    if (!project || !MdxComponent) {
+      return <p>error</p>; // <ErrorPage />;
+    }
+    return (
       <MdxContent
         backText={'Back to projects list'}
         backHref={'/projects'}
@@ -58,6 +57,15 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
         <MdxComponent components={{ ...mdxComponents } as any} />
         {/* <UnderConstruction /> */}
       </MdxContent>
+    );
+  };
+
+  return (
+    <Layout>
+      <Head>
+        <title>Projects | Jahir Fiquitiva</title>
+      </Head>
+      {renderContent()}
     </Layout>
   );
 };
@@ -79,19 +87,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = allProjects.find(
     (post: GeneratedProject) => post.slug === params?.slug,
   );
-  if (!project) {
-    return {
-      props: {
-        project: {
-          body: {
-            code: 'var Component = () => { return null }; return Component',
-          },
-        },
-      },
-    };
-  }
+  if (!project) return { notFound: true };
   if (project.inProgress || project.hide) {
     return {
+      props: {
+        redirection: project.link,
+      },
       redirect: {
         destination: project.link,
         permanent: false,

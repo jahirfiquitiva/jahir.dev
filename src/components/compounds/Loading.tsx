@@ -1,5 +1,6 @@
 import { Ring } from '@uiball/loaders';
 
+import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const StyledContainer = styled('div', {
@@ -8,9 +9,9 @@ const StyledContainer = styled('div', {
   textAlign: 'center',
 });
 
-export const Loading = () => {
+export const Loading: FC = (props) => {
   return (
-    <StyledContainer>
+    <StyledContainer {...props}>
       <Ring size={56} lineWeight={5} speed={2} color={'var(--colors-accent)'} />
     </StyledContainer>
   );
