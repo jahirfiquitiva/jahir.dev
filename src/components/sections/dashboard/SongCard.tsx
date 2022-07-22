@@ -102,7 +102,9 @@ export const SongCard: FC<SongCardProps> = (props) => {
       title={`Listen to "${song.title}" by "${song.artist}" on Spotify`}
       href={song.url || '#'}
       underline={false}
-      css={{ $$color: bgColor, $$textColor: textColor }}
+      css={{ ...props.css, $$color: bgColor, $$textColor: textColor }}
+      style={props.style}
+      className={props.className}
     >
       <Img
         src={song.image?.url || ''}
