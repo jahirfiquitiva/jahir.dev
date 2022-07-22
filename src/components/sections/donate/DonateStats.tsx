@@ -2,7 +2,7 @@ import { Heading } from '@/components/atoms';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-import { SponsorsStats } from '../dashboard/SponsorsStats';
+import { SponsorsStats } from '../dashboard/stats';
 
 const StatsContainer = styled('div', {
   display: 'flex',
