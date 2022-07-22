@@ -1,9 +1,9 @@
 import { mdiHeartOutline } from '@mdi/js';
 
 import { LinkStatCard, StatCard } from '@/components/compounds';
+import { money } from '@/icons';
 import { useSponsors } from '@/providers/sponsors';
 import type { FC } from '@/types';
-import { icons } from '@/utils';
 
 interface SponsorsStatsProps {
   forSponsorsPage?: boolean;
@@ -28,7 +28,7 @@ export const SponsorsStats: FC<SponsorsStatsProps> = (props) => {
         href={'/donate'}
         text={'earned per month'}
         value={`$${totalEarningsPerMonth || 0}`}
-        iconPath={icons.money}
+        iconPath={money}
         color={'#26de81'}
         loading={loading}
       />

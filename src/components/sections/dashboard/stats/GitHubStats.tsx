@@ -2,8 +2,8 @@ import { mdiStarOutline } from '@mdi/js';
 
 import { LinkStatCard } from '@/components/compounds';
 import { useRequest } from '@/hooks';
+import { gitHubOutline } from '@/icons';
 import type { FC } from '@/types';
-import { icons } from '@/utils';
 
 export const GitHubStats: FC = () => {
   const { data, loading } = useRequest<{ followers?: number; stars?: number }>(
@@ -25,7 +25,7 @@ export const GitHubStats: FC = () => {
         href={'https://github.com/jahirfiquitiva'}
         text={'followers on GitHub'}
         value={`${data?.followers || '?'}`}
-        iconPath={icons.gitHubOutline}
+        iconPath={gitHubOutline}
         color={'#4078c0'}
         loading={loading}
       />

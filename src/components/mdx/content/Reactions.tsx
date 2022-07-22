@@ -13,10 +13,10 @@ import { useEffect } from 'react';
 
 import { Button } from '@/components/atoms';
 import { useHasMounted, useWindowDimensions } from '@/hooks';
+import { award, awardOutline } from '@/icons';
 import { type ReactionType, useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
-import { icons } from '@/utils';
 import { styled } from '~/stitches';
 
 const ReactionsGroup = styled('div', {
@@ -274,10 +274,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
           clickReaction('award', e);
         }}
       >
-        <Icon
-          path={reactions?.award ? icons.award : icons.awardOutline}
-          size={iconSize}
-        />
+        <Icon path={reactions?.award ? award : awardOutline} size={iconSize} />
         {renderLoaderOrText(reactions.awards || '0')}
       </ReactionButton>
       <ReactionButton

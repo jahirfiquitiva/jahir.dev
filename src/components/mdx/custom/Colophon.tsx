@@ -2,7 +2,15 @@ import { mdiTriangle } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
-import { icons } from '@/utils';
+import {
+  nextJs,
+  stitches,
+  mdx,
+  contentlayer,
+  notion,
+  railway,
+  prisma,
+} from '@/icons';
 import { styled } from '~/stitches';
 
 const DotsContainer = styled('ul', {
@@ -88,27 +96,27 @@ export const Colophon = () => {
     <DotsContainer className={'colophon'}>
       <IconContainer>
         <Link title={'NextJS'} href={'https://nextjs.org/'}>
-          <Icon path={icons.nextJs} />
+          <Icon path={nextJs} />
         </Link>
       </IconContainer>
       <IconContainer>
         <Link title={'Stitches'} href={'https://www.stitches.dev/'}>
-          <Icon path={icons.stitches} />
+          <Icon path={stitches} />
         </Link>
       </IconContainer>
       <IconContainer mdx>
         <Link title={'MDX'} href={'https://mdxjs.com/'}>
-          <Icon path={icons.mdx} />
+          <Icon path={mdx} />
         </Link>
       </IconContainer>
       <IconContainer>
         <Link title={'Contentlayer'} href={'http://contentlayer.dev/'}>
-          <Icon path={icons.contentlayer} />
+          <Icon path={contentlayer} />
         </Link>
       </IconContainer>
       <IconContainer>
         <Link title={'Notion API'} href={'https://developers.notion.com/'}>
-          <Icon path={icons.notion} />
+          <Icon path={notion} />
         </Link>
       </IconContainer>
       <IconContainer>
@@ -116,12 +124,12 @@ export const Colophon = () => {
           title={'Railway'}
           href={'https://railway.app?referralCode=Ri5XbE'}
         >
-          <Icon path={icons.railway} />
+          <Icon path={railway} />
         </Link>
       </IconContainer>
       <IconContainer>
         <Link title={'Prisma'} href={'https://prisma.io/'}>
-          <Icon path={icons.prisma} />
+          <Icon path={prisma} />
         </Link>
       </IconContainer>
       <IconContainer>

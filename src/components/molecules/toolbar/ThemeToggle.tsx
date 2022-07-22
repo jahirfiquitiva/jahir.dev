@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
+import { moonOutline, sunOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
-import { icons } from '@/utils';
 
 import { ToolbarButton } from './ToolbarButton';
 
@@ -18,8 +18,8 @@ export const ThemeToggle = () => {
   }, [themeText]);
 
   const iconPath = useMemo<string>(() => {
-    if (!themeReady || !isDark) return icons.moonOutline;
-    return icons.sunOutline;
+    if (!themeReady || !isDark) return moonOutline;
+    return sunOutline;
   }, [themeReady, isDark]);
 
   return (

@@ -18,7 +18,7 @@ import {
   mdiTailwind,
 } from '@mdi/js';
 
-import { icons } from '@/utils';
+import { nextJs } from '@/icons';
 
 export interface SkillProps {
   name: string;
@@ -35,7 +35,7 @@ export const skills: SkillProps[] = [
   { name: 'HTML5', iconPath: mdiLanguageHtml5, color: '#e34f26' },
   { name: 'CSS3', iconPath: mdiLanguageCss3, color: '#3572b5' },
   { name: 'React', iconPath: mdiReact, color: '#00c2e6' },
-  { name: 'NextJS', iconPath: icons.nextJs, color: '#0070f3' },
+  { name: 'NextJS', iconPath: nextJs, color: '#0070f3' },
   {
     name: 'Styled Components',
     iconPath: mdiPaletteSwatchOutline,

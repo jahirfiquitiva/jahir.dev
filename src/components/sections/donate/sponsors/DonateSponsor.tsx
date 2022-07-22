@@ -2,10 +2,10 @@ import { mdiCrystalBall } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { buildChipStyles, Chip, Img, Link } from '@/components/atoms';
+import { unicorn, rocket, robot, lightning, diamond } from '@/icons';
 import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
 import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';
-import { icons } from '@/utils';
 import { styled } from '~/stitches';
 
 const Container = styled(Link, {
@@ -64,12 +64,12 @@ const fontSizesForTier: Record<SponsorsCategoryKey, string> = {
 };
 
 const iconForTier: Record<SponsorsCategoryKey, string> = {
-  unicorn: icons.unicorn,
+  unicorn,
   ball: mdiCrystalBall,
-  rocket: icons.rocket,
-  robot: icons.robot,
-  lightning: icons.lightning,
-  diamond: icons.diamond,
+  rocket,
+  robot,
+  lightning,
+  diamond,
 };
 
 const cleanNameForTier: Record<SponsorsCategoryKey, string> = {

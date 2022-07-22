@@ -1,7 +1,7 @@
 import { LinkStatCard } from '@/components/compounds';
 import { useRequest } from '@/hooks';
+import { twitterOutline } from '@/icons';
 import type { FC } from '@/types';
-import { icons } from '@/utils';
 
 export const TwitterStats: FC = () => {
   const { data, loading } = useRequest<{ followers?: number }>('/api/twitter');
@@ -12,7 +12,7 @@ export const TwitterStats: FC = () => {
         href={'https://twitter.com/jahirfiquitiva'}
         text={'followers on Twitter'}
         value={`${data?.followers || '?'}`}
-        iconPath={icons.twitterOutline}
+        iconPath={twitterOutline}
         color={'#1da1f2'}
         loading={loading}
       />

@@ -37,6 +37,7 @@
 
 - **`content/*`** - MDX blog posts and projects
 - **`public/*`** - Static assets including images, fonts, audios and files
+- **`src/icons/*`** - Custom SVG icon paths. Mostly based on [Lucide](https://lucide.dev/)
 - **`src/styles/*`** - Some global styles. Built using tailwind classes
 - **`src/components/atoms/*`** - The simplest components. Most of them are stateless
 - **`src/components/compounds/*`** - Slightly more complex components. Some use or extend atoms

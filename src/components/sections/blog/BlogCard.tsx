@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
 import { useSafePalette, useRequest } from '@/hooks';
+import { calendarOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
 import {
@@ -11,7 +12,6 @@ import {
   getColorFromPalette,
   getReadableColor,
   hexToRGB,
-  icons,
 } from '@/utils';
 import { styled } from '~/stitches';
 
@@ -196,7 +196,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
         ) : null}
         <InfoContainer>
           <InfoSpan>
-            <Icon path={icons.calendarOutline} size={0.73} />
+            <Icon path={calendarOutline} size={0.73} />
             {formatDate(post.date, { year: undefined, month: 'short' })}
           </InfoSpan>
           {(post.readingTime?.minutes || 0) > 0 ? (
