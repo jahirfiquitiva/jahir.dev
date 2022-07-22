@@ -64,6 +64,7 @@ export interface FooterLinkProps {
   href: string;
   gradient?: GradientOption;
   a11yTitle?: string;
+  openInNewTab?: boolean;
 }
 
 interface FooterLinksGroupProps {
@@ -83,6 +84,7 @@ export const FooterLinksGroup: FC<FooterLinksGroupProps> = (props) => {
               href={link.href}
               title={link.a11yTitle ? link.a11yTitle : `${link.title} page`}
               gradient={link.gradient}
+              openInNewTab={link.openInNewTab}
             >
               <span>{link.title}</span>
             </FooterLink>

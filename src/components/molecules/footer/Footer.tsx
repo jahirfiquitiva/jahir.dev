@@ -110,12 +110,14 @@ const metaLinks: Array<FooterLinkProps> = [
     href: '/feed.xml',
     gradient: 'yellow-to-orange',
     a11yTitle: 'RSS Feed',
+    openInNewTab: true,
   },
   {
     title: 'Source',
     href: 'https://github.com/jahirfiquitiva/jahir.dev',
     gradient: 'brand-to-blue',
     a11yTitle: 'View source code on GitHub',
+    openInNewTab: true,
   },
 ];
 

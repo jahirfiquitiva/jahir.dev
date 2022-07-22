@@ -99,7 +99,12 @@ export const Blog: FC<BlogProps> = (props) => {
           Blog
         </Heading>
         <BlogButtons>
-          <RssLink title={'RSS feed'} href={'/feed.xml'} withShadow>
+          <RssLink
+            title={'RSS feed'}
+            href={'/feed.xml'}
+            withShadow
+            openInNewTab
+          >
             <Icon path={mdiRss} size={0.9} />
             RSS Feed
           </RssLink>
