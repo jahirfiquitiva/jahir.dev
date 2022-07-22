@@ -38,3 +38,4 @@ scripts/*.js
 scripts/**.js
 scripts/**/*.js
 public/pwa/*.min.js
+src/blur

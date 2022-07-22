@@ -47,14 +47,14 @@ const fetchFeedWithKey = async (
 
 export const fetchInstaFeed = async (): Promise<Array<InstagramPost>> => {
   try {
-    // const mainFeed = await fetchFeedWithKey(instagramFeedKey);
-    // if (mainFeed && mainFeed.length) return mainFeed;
+    const selfFeed = await fetchSecondaryFeed();
+    if (selfFeed && selfFeed.length) return selfFeed || [];
 
-    // const backupFeed = await fetchFeedWithKey(instagramFeedBackupKey);
-    // if (backupFeed && backupFeed.length) return backupFeed;
+    const mainFeed = await fetchFeedWithKey(instagramFeedKey);
+    if (mainFeed && mainFeed.length) return mainFeed;
 
-    const secondaryFeed = await fetchSecondaryFeed();
-    return secondaryFeed || [];
+    const backupFeed = await fetchFeedWithKey(instagramFeedBackupKey);
+    if (backupFeed && backupFeed.length) return backupFeed;
   } catch (e) {}
   return [];
 };
