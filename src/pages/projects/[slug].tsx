@@ -1,6 +1,6 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Head from 'next/head';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
@@ -11,6 +11,8 @@ import {
   allProjects,
   type Project as GeneratedProject,
 } from 'contentlayer/generated';
+
+import FourOhFour from '../404';
 
 const mapContentLayerProject = (project?: GeneratedProject): Project | null => {
   if (!project) return null;
@@ -31,14 +33,14 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
     () => mapContentLayerProject(baseProject),
     [baseProject],
   );
-  // const router = useRouter();
+  const router = useRouter();
 
-  // if (!router.isFallback && !project?.slug) {
-  //   return <FourHundredFour />;
-  // }
+  if (!router.isFallback && !project?.slug) {
+    return <FourOhFour />;
+  }
 
   if (!project || !MdxComponent) {
-    return null; // <ErrorPage />;
+    return <FourOhFour />; // <ErrorPage />;
   }
 
   return (

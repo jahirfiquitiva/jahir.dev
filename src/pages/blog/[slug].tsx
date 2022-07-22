@@ -1,6 +1,6 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Head from 'next/head';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Layout } from '@/components/elements';
@@ -9,6 +9,8 @@ import { useMDXComponent } from '@/hooks';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
+
+import FourOhFour from '../404';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
@@ -23,14 +25,14 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
   const MdxComponent = useMDXComponent(basePost?.body?.code || '');
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
-  // const router = useRouter();
+  const router = useRouter();
 
-  // if (!router.isFallback && !post?.slug) {
-  //   return <FourHundredFour />;
-  // }
+  if (!router.isFallback && !post?.slug) {
+    return <FourOhFour />;
+  }
 
   if (!post || !MdxComponent) {
-    return null; // <ErrorPage />;
+    return <FourOhFour />; // <ErrorPage />;
   }
 
   return (
