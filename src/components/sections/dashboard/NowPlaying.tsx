@@ -6,11 +6,11 @@ import { styled } from '~/stitches';
 import { SongCard } from './SongCard';
 
 const Container = styled('div', {
-  mt: 'calc($$verticalContentPadding / 4)',
-  mb: 'calc($$verticalContentPadding / 2)',
+  my: 'calc($$verticalContentPadding / 4)',
 });
 
 const SmallText = styled('small', {
+  display: 'block',
   my: 'calc($$verticalContentPadding / 4)',
 });
 
@@ -28,7 +28,7 @@ export const NowPlaying: FC = () => {
   return (
     <Container>
       <SmallText>Currently listening to…</SmallText>
-      <WideSongCard song={data?.isPlaying ? data as TopTrackData : {}} />
+      <WideSongCard song={data?.isPlaying ? (data as TopTrackData) : {}} />
     </Container>
   );
 };

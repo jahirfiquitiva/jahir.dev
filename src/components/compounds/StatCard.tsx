@@ -74,6 +74,7 @@ const Text = styled('span', {
   useFont: 'manrope',
   transition: 'all .2s ease-in-out',
   ellipsize: true,
+  maxWidth: '100%',
   '@mobile-md': {
     mt: 'auto',
   },

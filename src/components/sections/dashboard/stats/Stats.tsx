@@ -13,8 +13,7 @@ const StatsContainer = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
   gap: 'calc($$verticalContentPadding / 2.5)',
-  mt: 'calc($$verticalContentPadding / 4)',
-  mb: '$$verticalContentPadding',
+  my: 'calc($$verticalContentPadding / 4)',
   '@mobile-md': {
     gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
   },
