@@ -86,6 +86,7 @@ export const InstaFeed: FC = () => {
               key={post.id || index}
               title={`View photo "${post.caption}" on Instagram`}
               href={post.postUrl || '#'}
+              underline={false}
             >
               <InstaPhoto
                 src={post.photoUrl || ''}

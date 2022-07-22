@@ -7,7 +7,9 @@ import { TopTracks } from './TopTracks';
 export const Dashboard = () => {
   return (
     <Section id={'dashboard'}>
-      <Heading>Dashboard</Heading>
+      <Heading as={'h2'} shadow={'purple'} gradient={'purple-to-brand'}>
+        Dashboard
+      </Heading>
       <NowPlaying />
       <Stats />
       <TopTracks />

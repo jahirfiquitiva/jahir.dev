@@ -12,21 +12,21 @@ export const GitHubStats: FC = () => {
   return (
     <>
       <LinkStatCard
-        title={'GitHub'}
-        href={'https://github.com/jahirfiquitiva'}
-        text={'followers on GitHub'}
-        value={`${data?.followers || 'X'}`}
-        iconPath={icons.gitHubOutline}
-        color={'#4078c0'}
-        loading={loading}
-      />
-      <LinkStatCard
         title={'GitHub Repositories'}
         href={'https://github.com/jahirfiquitiva?tab=repositories'}
         text={'stars on GitHub'}
         value={`${data?.stars || 'X'}`}
         iconPath={mdiStarOutline}
         color={'#f7b731'}
+        loading={loading}
+      />
+      <LinkStatCard
+        title={'GitHub'}
+        href={'https://github.com/jahirfiquitiva'}
+        text={'followers on GitHub'}
+        value={`${data?.followers || 'X'}`}
+        iconPath={icons.gitHubOutline}
+        color={'#4078c0'}
         loading={loading}
       />
     </>

@@ -28,10 +28,10 @@ export const Stats: FC = () => {
     <StatsContainer>
       <ViewsStats />
       <ReactionsStats />
+      <GitHubStats />
       <SponsorsProvider>
         <SponsorsStats />
       </SponsorsProvider>
-      <GitHubStats />
       <TwitterStats />
       <InstaStats />
     </StatsContainer>

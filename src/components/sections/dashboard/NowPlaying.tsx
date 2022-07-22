@@ -24,10 +24,11 @@ const WideSongCard = styled(SongCard, {
 export const NowPlaying: FC = () => {
   const { data, loading } = useRequest<TrackData>('/api/now-playing');
   if (!loading && !data) return null;
+  // if (!data?.isPlaying) return null;
   return (
     <Container>
       <SmallText>Currently listening to…</SmallText>
-      <WideSongCard song={data as TopTrackData} />
+      <WideSongCard song={data?.isPlaying ? data as TopTrackData : {}} />
     </Container>
   );
 };

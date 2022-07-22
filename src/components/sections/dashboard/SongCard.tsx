@@ -1,3 +1,6 @@
+/* eslint-disable max-lines-per-function */
+import { mdiSpotify } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
@@ -10,17 +13,16 @@ import { styled } from '~/stitches';
 
 const Card = styled(Link, {
   $$color: '$colors$toolbar-glow',
-  $$textColor: '$colors$text-tertiary',
+  $$textColor: '$colors$divider',
   $$borderSize: '1px',
   position: 'relative',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  p: '$12',
+  p: '$10',
   gap: '$10',
   backgroundColor: 'rgba($$color / 0.04)',
   border: '$$borderSize solid $divider',
-  borderColor: 'rgba($$textColor / .16)',
   borderRadius: '$space$8',
   color: 'rgba($$textColor / .85)',
   transition: 'all .25s ease-in-out',
@@ -30,7 +32,7 @@ const Card = styled(Link, {
   },
   hocus: {
     $$borderSize: '2px',
-    p: 'calc($12 - 1px)',
+    p: 'calc($10 - 1px)',
     transform: 'scale(1.0125)',
     boxShadow: '0 0 8px 2px rgba($$color / .2)',
     backgroundColor: 'rgba($$color / .12)',
@@ -43,6 +45,13 @@ const Card = styled(Link, {
     },
     '& p:first-of-type': {
       textDecoration: 'underline',
+    },
+  },
+  variants: {
+    notPlaying: {
+      true: {
+        pointerEvents: 'none',
+      },
     },
   },
 });
@@ -102,22 +111,38 @@ export const SongCard: FC<SongCardProps> = (props) => {
       title={`Listen to "${song.title}" by "${song.artist}" on Spotify`}
       href={song.url || '#'}
       underline={false}
-      css={{ ...props.css, $$color: bgColor, $$textColor: textColor }}
+      css={{
+        ...props.css,
+        $$color: bgColor,
+        $$textColor: textColor,
+        borderColor: song.image ? 'rgba($$textColor / .16)' : undefined,
+      }}
       style={props.style}
       className={props.className}
+      notPlaying={Object.keys(song).length <= 0}
     >
-      <Img
-        src={song.image?.url || ''}
-        alt={`Album image for song "${song.title}" by "${song.artist}"`}
-        width={56}
-        height={56}
-        css={{ borderRadius: '$space$4' }}
-      />
+      {song.image?.url ? (
+        <Img
+          src={song.image?.url || ''}
+          alt={`Album image for song "${song.title}" by "${song.artist}"`}
+          width={56}
+          height={56}
+          css={{ borderRadius: '$space$4' }}
+        />
+      ) : (
+        <Icon path={mdiSpotify} size={1} />
+      )}
       <Texts>
-        <Title>{song.title}</Title>
-        <Subtitle>
-          {song.artist} • {song.album}
-        </Subtitle>
+        {song.title ? (
+          <>
+            <Title>{song.title}</Title>
+            <Subtitle>
+              {song.artist} • {song.album}
+            </Subtitle>{' '}
+          </>
+        ) : (
+          <p>Silence</p>
+        )}
       </Texts>
     </Card>
   );
