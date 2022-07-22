@@ -20,22 +20,22 @@ masonryBreakpoints[(breakpointsValues['tablet-md'] || 0).toString()] = 3;
 export const InspirationGrid: FC = () => {
   const { data, loading, error } = useRequest<{
     success: boolean;
-    bookmarks: Array<InspirationItemType>;
+    bookmarks?: Array<InspirationItemType>;
   }>('/api/bookmarks');
 
   return (
     <>
       <Masonry
         breakpoints={masonryBreakpoints}
-        gap={data?.bookmarks.length ? theme.space['24'].value : 0}
-        css={data?.bookmarks.length ? { my: '$4' } : {}}
+        gap={data?.bookmarks?.length ? theme.space['24'].value : 0}
+        css={data?.bookmarks?.length ? { my: '$4' } : {}}
       >
         {(data?.bookmarks || []).map((bookmark, index) => {
           return <InspirationItem item={bookmark} key={index} />;
         })}
       </Masonry>
       {loading ? <Loading /> : null}
-      {!loading && (!data?.bookmarks.length || error) ? (
+      {!loading && (!data?.bookmarks?.length || error) ? (
         <p>
           <Heading as={'span'} gradient={'red-to-purple'}>
             Oops!

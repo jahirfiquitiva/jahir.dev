@@ -1,13 +1,12 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { useMDXComponent } from '@/hooks';
-import { FourOhFour as FourOhFourSection } from '@/sections';
+import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Project } from '@/types';
 import {
   allProjects,
@@ -44,7 +43,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
       return <Loading css={{ m: 'auto' }} />;
     }
     if (!project || !MdxComponent) {
-      return <p>error</p>; // <ErrorPage />;
+      return <Error />;
     }
     return (
       <MdxContent
@@ -62,9 +61,22 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
 
   return (
     <Layout>
-      <Head>
-        <title>Projects | Jahir Fiquitiva</title>
-      </Head>
+      <Seo
+        title={`${project?.name} – Projects – Jahir Fiquitiva`}
+        description={project?.description || 'Project by Jahir Fiquitiva'}
+        exactUrl={`https://jahir.dev/projects/${project?.slug}`}
+        keywords={[
+          'tech',
+          'software',
+          'development',
+          'project',
+          'portfolio',
+          'app',
+          'programming',
+          'open-source',
+        ]}
+        siteType={'portfolio'}
+      />
       {renderContent()}
     </Layout>
   );

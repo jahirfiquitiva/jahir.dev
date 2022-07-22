@@ -1,8 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import { useMemo } from 'react';
 
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { Donate as DonateSection } from '@/sections';
 import type { RandomPageImage } from '@/types';
 import { getRandomItem } from '@/utils';
@@ -14,9 +13,22 @@ const Donate: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
   }, [images]);
   return (
     <Layout>
-      <Head>
-        <title>Donate</title>
-      </Head>
+      <Seo
+        title={'Donate – Jahir Fiquitiva'}
+        description={
+          // eslint-disable-next-line max-len
+          'Support Jahir Fiquitiva. Donate or sponsor him as a recognition for his work on different projects'
+        }
+        exactUrl={'https://jahir.dev/donate'}
+        keywords={[
+          'donate',
+          'support',
+          'sponsor',
+          'open-source',
+          'supporter',
+          'sponsorship',
+        ]}
+      />
       <DonateSection image={image} />
     </Layout>
   );

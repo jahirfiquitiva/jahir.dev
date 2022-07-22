@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 import { DotsDivider } from '@/components/atoms';
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { Intro, Projects, Skills } from '@/sections';
 import type { Project } from '@/types';
 import { pick } from '@/utils';
@@ -19,9 +19,29 @@ const Home: NextPage<HomeProps> = (props) => {
   const { projects } = props;
   return (
     <Layout>
-      <Head>
-        <title>Jahir Fiquitiva</title>
-      </Head>
+      <Seo
+        title={'Jahir Fiquitiva'}
+        description={
+          // eslint-disable-next-line max-len
+          "I'm a passionate and creative full-stack software engineer based in Colombia 🇨🇴. Visit my website to learn more about me and my projects"
+        }
+        exactUrl={'https://jahir.dev'}
+        keywords={[
+          'jahir',
+          'fiquitiva',
+          'jahirfiquitiva',
+          'open-source',
+          'full-stack',
+          'software engineer',
+          'colombia',
+          'bio',
+          'developer',
+          'portfolio',
+          'development',
+          'android',
+          'web',
+        ]}
+      />
       <Intro />
       <DotsDivider />
       <Projects projects={projects} />

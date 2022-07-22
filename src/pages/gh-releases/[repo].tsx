@@ -1,8 +1,7 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import Head from 'next/head';
 
 import { Heading, Link, Section } from '@/components/atoms';
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { useRequest } from '@/hooks';
 import { FourOhFour as FourOhFourSection } from '@/sections';
 
@@ -53,9 +52,12 @@ const GitHubRelease: NextPage<{ repo?: string }> = ({ repo }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{`${repo} Download ~ Jahir Fiquitiva 💎`}</title>
-      </Head>
+      <Seo
+        title={`${repo} Download – Jahir Fiquitiva`}
+        description={`Download the latest release artifacts from ${repo} repository`}
+        exactUrl={`https://jahir.dev/gh-releases/${repo}`}
+        keywords={['repository', 'artifacts', 'github', 'release', 'download']}
+      />
       <Section id={'github-release'} centered>
         {renderContent()}
       </Section>

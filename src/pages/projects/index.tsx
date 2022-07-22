@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { Projects as ProjectsSection } from '@/sections';
 import type { Project } from '@/types';
 import { pick } from '@/utils';
@@ -18,9 +17,25 @@ const Projects: NextPage<ProjectsProps> = (props) => {
   const { projects } = props;
   return (
     <Layout>
-      <Head>
-        <title>Projects | Jahir Fiquitiva</title>
-      </Head>
+      <Seo
+        title={'Projects – Jahir Fiquitiva'}
+        description={
+          // eslint-disable-next-line max-len
+          "Projects by Jahir Fiquitiva. Get to know the projects I'm most proud of. Many of them are open-source."
+        }
+        exactUrl={'https://jahir.dev/projects'}
+        keywords={[
+          'tech',
+          'software',
+          'development',
+          'project',
+          'portfolio',
+          'app',
+          'programming',
+          'open-source',
+        ]}
+        siteType={'portfolio'}
+      />
       <ProjectsSection projects={projects} showFullList />
     </Layout>
   );

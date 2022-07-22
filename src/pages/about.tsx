@@ -1,14 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import { useMemo } from 'react';
 
 import imagesBlurData from '@/blur/about';
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { About as AboutSection } from '@/sections';
-import type {
-  ImageBlurDataObject,
-  RandomPageImage,
-} from '@/types';
+import type { ImageBlurDataObject, RandomPageImage } from '@/types';
 import { getRandomItem } from '@/utils';
 
 const About: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
@@ -18,9 +14,12 @@ const About: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
   }, [images]);
   return (
     <Layout>
-      <Head>
-        <title>About | Jahir Fiquitiva</title>
-      </Head>
+      <Seo
+        title={'About – Jahir Fiquitiva'}
+        description={'Learn a bit about me, my career and more'}
+        exactUrl={'https://jahir.dev/about'}
+        keywords={['bio', 'biography', 'information', 'about']}
+      />
       <AboutSection image={image} />
     </Layout>
   );

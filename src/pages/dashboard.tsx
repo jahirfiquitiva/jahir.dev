@@ -1,15 +1,25 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { Dashboard as DashboardSection } from '@/sections';
 
 const UnderConstruction: NextPage = () => {
   return (
     <Layout>
-      <Head>
-        <title>Dashboard</title>
-      </Head>
+      <Seo
+        title={'Dashboard – Jahir Fiquitiva'}
+        description={
+          'Get to know the latest stats and my current top listened tracks on Spotify'
+        }
+        keywords={[
+          'dashboard',
+          'stats',
+          'statistics',
+          'music',
+          'top track',
+          'spotify',
+        ]}
+      />
       <DashboardSection />
     </Layout>
   );

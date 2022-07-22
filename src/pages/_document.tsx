@@ -9,6 +9,7 @@ export default class CustomDocument extends Document {
       <Html lang={'en'}>
         <Head>
           <Meta />
+
           {preloadFonts.map((font) => (
             <link
               key={`font-${font.key}`}

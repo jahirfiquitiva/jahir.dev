@@ -1,8 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import { useMemo } from 'react';
 
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { Contact as ContactSection } from '@/sections';
 import type { RandomPageImage } from '@/types';
 import { getRandomItem } from '@/utils';
@@ -14,9 +13,20 @@ const Contact: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
   }, [images]);
   return (
     <Layout>
-      <Head>
-        <title>Contact | Jahir Fiquitiva</title>
-      </Head>
+      <Seo
+        title={'Contact – Jahir Fiquitiva'}
+        description={
+          'Get in touch with Jahir Fiquitiva. Send him a message or email'
+        }
+        exactUrl={'https://jahir.dev/contact'}
+        keywords={[
+          'contact',
+          'message',
+          'form',
+          'contact form',
+          'send message',
+        ]}
+      />
       <ContactSection image={image} />
     </Layout>
   );

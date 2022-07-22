@@ -1,16 +1,17 @@
 import type { NextPage } from 'next';
 import type { ErrorProps } from 'next/error';
-import Head from 'next/head';
 
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { Error as ErrorSection } from '@/sections';
 
 const Error: NextPage<ErrorProps> = (props) => {
   return (
     <Layout>
-      <Head>
-        <title>Error {props.statusCode}!</title>
-      </Head>
+      <Seo
+        title={`Error: ${props.statusCode}! – Jahir Fiquitiva`}
+        description={'An unexpected error occurred.'}
+        exactUrl={'https://jahir.dev'}
+      />
       <ErrorSection error={props.title} />
     </Layout>
   );

@@ -1,13 +1,12 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
-import { Layout } from '@/components/molecules';
+import { Layout, Seo } from '@/components/molecules';
 import { useMDXComponent } from '@/hooks';
-import { FourOhFour as FourOhFourSection } from '@/sections';
+import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
@@ -35,7 +34,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
       return <Loading css={{ m: 'auto' }} />;
     }
     if (!post || !MdxComponent) {
-      return <p>error</p>; // <ErrorPage />;
+      return <Error />;
     }
     return (
       <MdxContent
@@ -52,9 +51,24 @@ const PostPage: NextPage<PostPageProps> = (props) => {
 
   return (
     <Layout>
-      <Head>
-        <title>Blog | Jahir Fiquitiva</title>
-      </Head>
+      <Seo
+        title={`${post?.title} – Blog – Jahir Fiquitiva`}
+        description={post?.excerpt || 'Blog post by Jahir Fiquitiva'}
+        exactUrl={`https://jahir.dev/blog/${post?.slug}`}
+        keywords={[
+          ...(post?.keywords || []),
+          'tech',
+          'software',
+          'development',
+          'thoughts',
+          'blog',
+          'content',
+          'story',
+          'storytelling',
+          'news',
+        ]}
+        siteType={'blog'}
+      />
       {renderContent()}
     </Layout>
   );

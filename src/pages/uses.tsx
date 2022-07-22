@@ -1,12 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import Head from 'next/head';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
+import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
-import { Layout } from '@/components/molecules';
-import { useHasMounted } from '@/hooks';
+import { Layout, Seo } from '@/components/molecules';
+import { Error, FourOhFour as FourOhFourSection } from '@/components/sections';
+import { useMDXComponent } from '@/hooks';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
 import type { Blog } from 'contentlayer/generated';
@@ -23,33 +23,47 @@ interface PostPageProps {
 const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
   const MdxComponent = useMDXComponent(basePost.body.code);
-  const hasMounted = useHasMounted();
+  const router = useRouter();
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
-  // const router = useRouter();
 
-  // if (!router.isFallback && !post?.slug) {
-  //   return <FourHundredFour />;
-  // }
-
-  // if (!post || !MdxComponent) {
-  //   return <ErrorPage />;
-  // }
-
-  if (post && post.link) {
-    try {
-      if (hasMounted) window.location.href = post.link;
-    } catch (e) {}
-  }
-
-  return (
-    <Layout>
-      <Head>
-        <title>Uses | Jahir Fiquitiva</title>
-      </Head>
+  const renderContent = () => {
+    if (!router.isFallback && !post?.slug) {
+      return <FourOhFourSection />;
+    }
+    if (router.isFallback) {
+      return <Loading css={{ m: 'auto' }} />;
+    }
+    if (!post || !MdxComponent) {
+      return <Error />;
+    }
+    return (
       <MdxContent contentType={'blog'} content={post as Post}>
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
       </MdxContent>
+    );
+  };
+
+  return (
+    <Layout>
+      <Seo
+        title={'Uses – Jahir Fiquitiva'}
+        description={
+          'Get to know the hardware, software and tools I use on a daily basis'
+        }
+        exactUrl={'https://jahir.dev/uses'}
+        keywords={[
+          'hardware',
+          'software',
+          'apps',
+          'tools',
+          'extensions',
+          'stack',
+          'website',
+          'tech',
+        ]}
+      />
+      {renderContent()}
     </Layout>
   );
 };

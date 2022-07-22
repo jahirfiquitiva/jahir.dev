@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { useMemo } from 'react';
 
-import type { FC } from '@/types';
 import { useTheme } from '@/providers/theme';
+import type { FC } from '@/types';
+import unique from '@/utils/tools/unique';
 
 const defaultImage = 'https://jahir.dev/static/images/brand/banner.png';
 const defaultLogoImage =
@@ -12,7 +13,7 @@ type MetaImageStyle = 'summary_large_image' | 'summary';
 export interface MetaData {
   title: string;
   description: string;
-  exactUrl: string;
+  exactUrl?: string;
   keywords?: string | Array<string> | null;
   siteType?: 'portfolio' | 'website' | 'blog';
   image?: string;
@@ -22,7 +23,7 @@ export interface MetaData {
 const mapKeywords = (keywords?: string | Array<string> | null): string => {
   if (!keywords) return '';
   if (Array.isArray(keywords)) {
-    return (keywords || []).join(', ');
+    return unique(keywords || []).join(', ');
   }
   return keywords;
 };
@@ -100,8 +101,8 @@ export const Seo: FC<MetaData> = (props) => {
     title,
     description,
     exactUrl = 'https://jahir.dev',
-    keywords: initialKeywords,
-    siteType = 'portfolio',
+    keywords: initialKeywords = [],
+    siteType = 'website',
     image,
     metaImageStyle = 'summary_large_image',
   } = props;
