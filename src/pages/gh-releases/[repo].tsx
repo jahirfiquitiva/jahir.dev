@@ -53,7 +53,7 @@ const GitHubRelease: NextPage<{ repo?: string }> = ({ repo }) => {
   return (
     <Layout>
       <Seo
-        title={`${repo} Download – Jahir Fiquitiva`}
+        title={`${repo} Release Download – Jahir Fiquitiva`}
         description={`Download the latest release artifacts from ${repo} repository`}
         exactUrl={`https://jahir.dev/gh-releases/${repo}`}
         keywords={['repository', 'artifacts', 'github', 'release', 'download']}

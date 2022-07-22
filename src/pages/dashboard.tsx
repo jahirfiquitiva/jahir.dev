@@ -11,6 +11,7 @@ const UnderConstruction: NextPage = () => {
         description={
           'Get to know the latest stats and my current top listened tracks on Spotify'
         }
+        exactUrl={'https://jahir.dev/dashboard'}
         keywords={[
           'dashboard',
           'stats',

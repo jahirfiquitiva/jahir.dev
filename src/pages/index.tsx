@@ -1,5 +1,4 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 
 import { DotsDivider } from '@/components/atoms';
 import { Layout, Seo } from '@/components/molecules';
@@ -20,7 +19,7 @@ const Home: NextPage<HomeProps> = (props) => {
   return (
     <Layout>
       <Seo
-        title={'Jahir Fiquitiva'}
+        title={'Jahir Fiquitiva – Full-stack Software Engineer'}
         description={
           // eslint-disable-next-line max-len
           "I'm a passionate and creative full-stack software engineer based in Colombia 🇨🇴. Visit my website to learn more about me and my projects"
