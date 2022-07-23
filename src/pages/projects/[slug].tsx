@@ -65,6 +65,12 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
         title={`${project?.name} – Projects – Jahir Fiquitiva`}
         description={project?.description || 'Project by Jahir Fiquitiva'}
         exactUrl={`https://jahir.dev/projects/${project?.slug}`}
+        image={`https://jahir.dev${
+          project?.preview
+            ? `/static/images/projects/${project?.preview}`
+            : '/static/images/brand/banner.png'
+        }`}
+        metaImageStyle={'summary_large_image'}
         keywords={[
           'tech',
           'software',

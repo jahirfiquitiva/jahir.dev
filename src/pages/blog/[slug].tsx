@@ -55,6 +55,10 @@ const PostPage: NextPage<PostPageProps> = (props) => {
         title={`${post?.title} – Blog – Jahir Fiquitiva`}
         description={post?.excerpt || 'Blog post by Jahir Fiquitiva'}
         exactUrl={`https://jahir.dev/blog/${post?.slug}`}
+        image={`https://jahir.dev${
+          post?.hero || '/static/images/brand/banner.png'
+        }`}
+        metaImageStyle={'summary_large_image'}
         keywords={[
           ...(post?.keywords || []),
           'tech',
