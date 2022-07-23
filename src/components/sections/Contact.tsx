@@ -43,6 +43,7 @@ const ContactOptions = styled('div', {
 const ContactOption = styled(Link, {
   $$linkColor: '$colors$text-secondary',
   display: 'flex',
+  py: '$2',
   gap: '$3',
   color: '$text-secondary',
   justifyContent: 'space-between',
