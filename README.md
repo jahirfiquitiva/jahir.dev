@@ -16,6 +16,7 @@
 |____content
 |____public
 |____src
+| |____icons
 | |____styles
 | |____components
 | | |____atoms
