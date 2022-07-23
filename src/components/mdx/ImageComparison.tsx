@@ -33,7 +33,6 @@ const ImageComparisonContainer = styled('figure', {
   '& > figcaption': {
     display: 'inline-flex',
     fontSize: '$3xs',
-    fontStyle: 'italic',
   },
 });
 
