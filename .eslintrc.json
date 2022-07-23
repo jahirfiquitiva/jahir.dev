@@ -1,7 +1,6 @@
 {
   "extends": [
     "next/core-web-vitals",
-    // "@bpsmart/react",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
@@ -107,12 +106,12 @@
         "enforceForRenamedProperties": false
       }
     ],
-    "multiline-ternary": ["error", "always-multiline"],
     "quotes": [
       "error",
       "single",
       {
-        "allowTemplateLiterals": false
+        "allowTemplateLiterals": false,
+        "avoidEscape": true
       }
     ],
     "object-shorthand": ["error", "always"],
@@ -153,8 +152,8 @@
     ],
     "max-depth": ["error", 4],
     "max-nested-callbacks": ["error", 3],
-    "max-params": ["error", 4],
-    "max-statements": ["error", 18],
+    "max-params": ["error", 6],
+    "max-statements": "off",
     "arrow-parens": [
       "error",
       "always",
@@ -162,11 +161,10 @@
         "requireForBlockBody": true
       }
     ],
-    "max-statements": "off",
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".jsx", ".tsx"]
       }
     ],
     "react/jsx-curly-brace-presence": [
@@ -194,8 +192,6 @@
     "react/no-string-refs": "error",
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "error",
-    "react/prop-types": "error",
-    "react/react-in-jsx-scope": "error",
     "react/require-render-return": "error",
     "indent": "off",
     "react/jsx-indent": [
@@ -206,14 +202,6 @@
       }
     ],
     "react/jsx-indent-props": [2, "first"],
-    "quotes": [
-      "error",
-      "single",
-      {
-        "avoidEscape": true
-      }
-    ],
-    "max-params": ["error", 6],
     "operator-linebreak": [
       "error",
       "after",
@@ -225,18 +213,9 @@
       }
     ],
     "multiline-ternary": "off",
-    "object-curly-spacing": ["error", "always"],
-    "array-bracket-spacing": ["error", "never"],
     "space-in-parens": ["error", "never"],
-    "template-curly-spacing": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".jsx", ".tsx"]
-      }
-    ],
     "comma-spacing": [
       "error",
       {
