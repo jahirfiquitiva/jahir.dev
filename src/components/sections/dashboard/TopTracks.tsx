@@ -19,7 +19,7 @@ export const TopTracks: FC = () => {
   return (
     <Section
       id={'top-tracks'}
-      css={{ gap: 'calc($$verticalContentPadding / 2)' }}
+      css={{ gap: 'calc($$verticalContentPadding / 2)', px: 0 }}
     >
       <Heading as={'h4'}>Top Tracks</Heading>
       <Masonry
