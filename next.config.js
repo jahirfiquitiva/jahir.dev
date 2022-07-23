@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -22,6 +24,7 @@ const defaultNextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   compress: true,
+  crossOrigin: 'anonymous',
   experimental: {
     images: {
       allowFutureImage: true,
@@ -29,11 +32,15 @@ const defaultNextConfig = {
     newNextLinkBehavior: true,
     legacyBrowsers: false,
     browsersListForSwc: true,
+    optimizeCss: true,
   },
   compiler: {
     removeConsole: {
       exclude: ['error'],
     },
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'src/styles')],
   },
   images: {
     domains: [
