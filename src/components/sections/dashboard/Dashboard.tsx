@@ -1,7 +1,8 @@
-import { DotsDivider, Heading, Section } from '@/components/atoms';
+import { Heading, Section } from '@/components/atoms';
 import { Animoji } from '@/components/compounds';
 
-import { Activity } from './Activity';
+import { ActivityGrid } from './activity/ActivityGrid';
+import { DiscordActivity } from './DiscordActivity';
 import { NowPlaying } from './NowPlaying';
 import { Stats } from './stats';
 import { TopTracks } from './TopTracks';
@@ -21,10 +22,13 @@ export const Dashboard = () => {
       <Heading as={'h2'} shadow={'purple'} gradient={'purple-to-brand'}>
         Dashboard
       </Heading>
-      <NowPlaying />
-      <Activity />
       <Stats />
-      <DotsDivider />
+
+      <ActivityGrid>
+        <NowPlaying />
+        <DiscordActivity />
+      </ActivityGrid>
+
       <TopTracks />
     </Section>
   );

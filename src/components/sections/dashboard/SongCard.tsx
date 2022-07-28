@@ -3,7 +3,7 @@ import { mdiSpotify } from '@mdi/js';
 import { TopTrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
 
-import { ActivityCard } from './ActivityCard';
+import { ActivityCard } from './activity/ActivityCard';
 
 interface SongCardProps {
   song?: TopTrackData;

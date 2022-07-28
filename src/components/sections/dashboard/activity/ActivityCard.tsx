@@ -45,13 +45,6 @@ const Card = styled(Link, {
       textDecoration: 'underline',
     },
   },
-  variants: {
-    empty: {
-      true: {
-        pointerEvents: 'none',
-      },
-    },
-  },
 });
 
 const Texts = styled('div', {
@@ -131,10 +124,10 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
         $$color: bgColor,
         $$textColor: textColor,
         borderColor: image && !empty.is ? 'rgba($$textColor / .16)' : undefined,
+        pointerEvents: href ? 'auto' : 'none',
       }}
       style={props.style}
       className={props.className}
-      empty={empty.is}
     >
       {image && !empty.is ? (
         <Img
