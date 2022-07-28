@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 
 import { Img, Link, Heading, Section } from '@/components/atoms';
-import { InstaFeed } from '@/components/compounds';
+import { Animoji, InstaFeed } from '@/components/compounds';
 import { useHasMounted } from '@/hooks';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
@@ -128,16 +128,11 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
         </Link>
         !
       </Paragraph>
-      <Img
+      <Animoji
         css={{
-          backgroundColor: '$accent-animoji',
-          borderRadius: '50%',
           mx: 'auto',
           mt: 'calc($$verticalContentPadding - $10)',
         }}
-        src={'/static/images/jahir/animoji.png'}
-        alt={'Jahir as an Animoji'}
-        size={96}
       />
       <InstaFeed />
     </Section>

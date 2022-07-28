@@ -1,3 +1,4 @@
+export * from './Animoji';
 export * from './InstaFeed';
 export * from './Loading';
 export * from './Masonry';
