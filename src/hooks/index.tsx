@@ -1,3 +1,4 @@
+export * from './useActivity';
 export * from './useHasMounted';
 export * from './useMDXComponent';
 export * from './useRequest';

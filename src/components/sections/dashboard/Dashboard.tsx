@@ -1,6 +1,7 @@
 import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Animoji } from '@/components/compounds';
 
+import { Activity } from './Activity';
 import { NowPlaying } from './NowPlaying';
 import { Stats } from './stats';
 import { TopTracks } from './TopTracks';
@@ -21,6 +22,7 @@ export const Dashboard = () => {
         Dashboard
       </Heading>
       <NowPlaying />
+      <Activity />
       <Stats />
       <DotsDivider />
       <TopTracks />
