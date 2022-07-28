@@ -69,9 +69,7 @@ const Value = styled('span', {
 
 const Text = styled('span', {
   fontSize: '$2xs',
-  fontWeight: 600,
   color: '$text-secondary',
-  useFont: 'manrope',
   transition: 'all .2s ease-in-out',
   ellipsize: true,
   maxWidth: '100%',
