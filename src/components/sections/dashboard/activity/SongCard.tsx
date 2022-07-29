@@ -7,6 +7,7 @@ import { ActivityCard } from './ActivityCard';
 
 interface SongCardProps {
   song?: TopTrackData;
+  loading?: boolean;
 }
 
 export const SongCard: FC<SongCardProps> = (props) => {

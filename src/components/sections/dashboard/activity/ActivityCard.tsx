@@ -1,5 +1,7 @@
 /* eslint-disable max-lines-per-function */
+import { mdiTimerSandEmpty } from '@mdi/js';
 import Icon from '@mdi/react';
+import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
@@ -89,6 +91,7 @@ interface ActivityCardProps {
     text: string;
     iconPath: string;
   };
+  loading?: boolean;
 }
 
 const isValidColor = (color?: string): boolean => {
@@ -98,7 +101,7 @@ const isValidColor = (color?: string): boolean => {
 };
 
 export const ActivityCard: FC<ActivityCardProps> = (props) => {
-  const { image, title, href, texts, empty } = props;
+  const { image, title, href, texts, empty, loading } = props;
   const { data: palette } = useSafePalette(image?.url);
   const { isDark, themeReady } = useTheme();
 
@@ -126,6 +129,45 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
     return !empty?.is ? 'rgba($$textColor / .16)' : undefined;
   }, [textColor, empty?.is]);
 
+  const renderImageOrIcon = () => {
+    if (loading) {
+      return (
+        <Ring
+          size={24}
+          lineWeight={6}
+          speed={2}
+          color={'var(---textColor, var(--colors-accent-light))'}
+        />
+      );
+    }
+
+    if (empty?.is || !image) {
+      return <Icon path={empty?.iconPath || mdiTimerSandEmpty} size={1} />;
+    }
+
+    return (
+      <Img
+        src={image?.url}
+        alt={image?.alt || ''}
+        width={56}
+        height={56}
+        css={{ borderRadius: '$space$4' }}
+      />
+    );
+  };
+
+  const renderTexts = () => {
+    if (loading) return <p>Loading…</p>;
+    if (empty?.is) return <p>{empty?.text}</p>;
+    return (
+      <>
+        <Title>{texts.first}</Title>
+        <Subtitle>{texts.second}</Subtitle>{' '}
+        {texts.third ? <small>{texts.third}</small> : null}
+      </>
+    );
+  };
+
   return (
     <Card
       title={title}
@@ -143,28 +185,8 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
       disabled={!href}
       tabIndex={!href ? -1 : undefined}
     >
-      {image && !empty?.is ? (
-        <Img
-          src={image?.url}
-          alt={image?.alt || ''}
-          width={56}
-          height={56}
-          css={{ borderRadius: '$space$4' }}
-        />
-      ) : (
-        <Icon path={empty?.iconPath || ''} size={1} />
-      )}
-      <Texts>
-        {!empty?.is ? (
-          <>
-            <Title>{texts.first}</Title>
-            <Subtitle>{texts.second}</Subtitle>{' '}
-            {texts.third ? <small>{texts.third}</small> : null}
-          </>
-        ) : (
-          <p>{empty?.text}</p>
-        )}
-      </Texts>
+      {renderImageOrIcon()}
+      <Texts>{renderTexts()}</Texts>
     </Card>
   );
 };
