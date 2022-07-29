@@ -36,6 +36,8 @@ const StyledLink = styled(NextLink, {
 interface LinkProps {
   underline?: boolean;
   openInNewTab?: boolean;
+  disabled?: boolean;
+  tabIndex?: number;
 }
 
 export const Link: FC<ComponentProps<typeof StyledLink> & LinkProps> = (

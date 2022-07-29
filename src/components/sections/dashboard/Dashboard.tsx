@@ -2,7 +2,7 @@ import { Heading, Section } from '@/components/atoms';
 import { Animoji } from '@/components/compounds';
 
 import { ActivityGrid } from './activity/ActivityGrid';
-import { DiscordActivity } from './DiscordActivity';
+import { DiscordActivity } from './activity/DiscordActivity';
 import { NowPlaying } from './NowPlaying';
 import { Stats } from './stats';
 import { TopTracks } from './TopTracks';

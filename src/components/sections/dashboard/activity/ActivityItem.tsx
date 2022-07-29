@@ -3,7 +3,7 @@ import { styled } from '~/stitches';
 
 const SmallText = styled('small', {
   display: 'block',
-  my: 'calc($$verticalContentPadding / 8)',
+  mb: 'calc($$verticalContentPadding / 8)',
 });
 
 interface ActivityItemProps {

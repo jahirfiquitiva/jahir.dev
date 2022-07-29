@@ -5,7 +5,7 @@ import type { TopTrackData } from '@/lib/spotify';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
 
-import { SongCard } from './SongCard';
+import { SongCard } from './activity/SongCard';
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;

@@ -13,6 +13,7 @@ export interface Activity {
   smallImageText?: string;
   largeImage?: string | null;
   largeImageText?: string;
+  description?: string;
 }
 
 export interface ActivityData {

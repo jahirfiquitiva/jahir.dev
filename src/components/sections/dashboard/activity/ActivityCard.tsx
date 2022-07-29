@@ -84,7 +84,7 @@ interface ActivityCardProps {
     second: string;
     third?: string;
   };
-  empty: {
+  empty?: {
     is: boolean;
     text: string;
     iconPath: string;
@@ -114,6 +114,12 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
     );
   }, [isDark, themeReady, palette]);
 
+  const borderColor = useMemo<string | undefined>(() => {
+    if (!textColor) return undefined;
+    // eslint-disable-next-line consistent-return
+    return !empty?.is ? 'rgba($$textColor / .16)' : undefined;
+  }, [textColor, empty?.is]);
+
   return (
     <Card
       title={title}
@@ -123,13 +129,15 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
         ...props.css,
         $$color: bgColor,
         $$textColor: textColor,
-        borderColor: image && !empty.is ? 'rgba($$textColor / .16)' : undefined,
+        borderColor,
         pointerEvents: href ? 'auto' : 'none',
       }}
       style={props.style}
       className={props.className}
+      disabled={!href}
+      tabIndex={!href ? -1 : undefined}
     >
-      {image && !empty.is ? (
+      {image && !empty?.is ? (
         <Img
           src={image?.url}
           alt={image?.alt || ''}
@@ -138,17 +146,17 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
           css={{ borderRadius: '$space$4' }}
         />
       ) : (
-        <Icon path={empty.iconPath} size={1} />
+        <Icon path={empty?.iconPath || ''} size={1} />
       )}
       <Texts>
-        {!empty.is ? (
+        {!empty?.is ? (
           <>
             <Title>{texts.first}</Title>
             <Subtitle>{texts.second}</Subtitle>{' '}
             {texts.third ? <small>{texts.third}</small> : null}
           </>
         ) : (
-          <p>{empty.text}</p>
+          <p>{empty?.text}</p>
         )}
       </Texts>
     </Card>

@@ -21,10 +21,24 @@ const buildAssetLink = (appId?: string, assetId?: string): string | null => {
   return `https://cdn.discordapp.com/app-assets/${appId}/${assetId}.webp`;
 };
 
+const VSCODE_DISCORD_APP_ID = '782685898163617802';
+const VSCODE_2_DISCORD_APP_ID = '810516608442695700';
+const INTELLIJ_DISCORD_APP_ID = '626050705526095874';
+const ANDROID_STUDIO_DISCORD_APP_ID = '572520807763410954';
+const codingApps = [
+  VSCODE_DISCORD_APP_ID,
+  VSCODE_2_DISCORD_APP_ID,
+  INTELLIJ_DISCORD_APP_ID,
+  ANDROID_STUDIO_DISCORD_APP_ID,
+];
+
 const transformDiscordActivityToActivity = (
   discordActivity?: DiscordActivity,
 ): Activity | null => {
   if (!discordActivity) return null;
+  const isForCodingApp = codingApps.includes(
+    discordActivity.application_id || '',
+  );
   return {
     appId: discordActivity.application_id,
     startedAt: discordActivity.timestamps?.start,
@@ -41,6 +55,7 @@ const transformDiscordActivityToActivity = (
       discordActivity.assets?.large_image,
     ),
     largeImageText: discordActivity.assets?.large_text,
+    description: isForCodingApp ? 'Programming…' : 'Playing…',
   };
 };
 

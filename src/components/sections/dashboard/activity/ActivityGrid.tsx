@@ -1,7 +1,10 @@
 import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
+import { useActivity } from '@/hooks';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
+
+import { DiscordActivity } from './DiscordActivity';
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
@@ -9,7 +12,7 @@ masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
 masonryBreakpoints[(breakpointsValues['tablet-sm'] || 0).toString()] = 2;
 
 export const ActivityGrid: FC = (props) => {
-  if (!props.children) return null;
+  const { data } = useActivity();
   return (
     <>
       <DotsDivider />
@@ -18,8 +21,12 @@ export const ActivityGrid: FC = (props) => {
         <Masonry
           breakpoints={masonryBreakpoints}
           gap={'calc($$verticalContentPadding / 2.5)'}
+          css={{ mt: 'calc($$verticalContentPadding / 4)' }}
         >
           {props.children}
+          {(data?.activities || []).map((activity) => {
+            return <DiscordActivity key={activity.appId} activity={activity} />;
+          })}
         </Masonry>
       </Section>
     </>

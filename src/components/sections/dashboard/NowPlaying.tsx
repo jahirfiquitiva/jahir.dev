@@ -3,7 +3,7 @@ import type { TopTrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
 
 import { ActivityItem } from './activity/ActivityItem';
-import { SongCard } from './SongCard';
+import { SongCard } from './activity/SongCard';
 
 export const NowPlaying: FC = () => {
   const { data, loading } = useNowPlaying();
