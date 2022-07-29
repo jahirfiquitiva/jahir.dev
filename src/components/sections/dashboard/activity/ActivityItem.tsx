@@ -8,12 +8,13 @@ const SmallText = styled('small', {
 
 interface ActivityItemProps {
   title?: string;
+  hideTitle?: boolean;
 }
 
 export const ActivityItem: FC<ActivityItemProps> = (props) => {
   return (
     <>
-      {props.title ? (
+      {props.title && !props.hideTitle ? (
         <div>
           <SmallText>{props.title}</SmallText>
           {props.children}

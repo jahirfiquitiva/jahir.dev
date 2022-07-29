@@ -91,6 +91,12 @@ interface ActivityCardProps {
   };
 }
 
+const isValidColor = (color?: string): boolean => {
+  if (!color) return false;
+  if (color === 'rgba(0 0 0 / 0)') return false;
+  return true;
+};
+
 export const ActivityCard: FC<ActivityCardProps> = (props) => {
   const { image, title, href, texts, empty } = props;
   const { data: palette } = useSafePalette(image?.url);
@@ -115,7 +121,7 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
   }, [isDark, themeReady, palette]);
 
   const borderColor = useMemo<string | undefined>(() => {
-    if (!textColor) return undefined;
+    if (!isValidColor(textColor)) return undefined;
     // eslint-disable-next-line consistent-return
     return !empty?.is ? 'rgba($$textColor / .16)' : undefined;
   }, [textColor, empty?.is]);
@@ -127,8 +133,8 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
       underline={false}
       css={{
         ...props.css,
-        $$color: bgColor,
-        $$textColor: textColor,
+        $$color: isValidColor(bgColor) ? bgColor : undefined,
+        $$textColor: isValidColor(textColor) ? textColor : undefined,
         borderColor,
         pointerEvents: href ? 'auto' : 'none',
       }}
