@@ -5,13 +5,14 @@ import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
 
 import { DiscordActivity } from './DiscordActivity';
+import { NowPlaying } from './NowPlaying';
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;
 masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
 masonryBreakpoints[(breakpointsValues['tablet-sm'] || 0).toString()] = 2;
 
-export const ActivityGrid: FC = (props) => {
+export const ActivityGrid: FC = () => {
   const { data } = useActivity();
   return (
     <>
@@ -23,7 +24,7 @@ export const ActivityGrid: FC = (props) => {
           gap={'calc($$verticalContentPadding / 2.5)'}
           css={{ mt: 'calc($$verticalContentPadding / 4)' }}
         >
-          {props.children}
+          <NowPlaying />
           {(data?.activities || []).map((activity) => {
             return <DiscordActivity key={activity.appId} activity={activity} />;
           })}

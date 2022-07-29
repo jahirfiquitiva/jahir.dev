@@ -2,8 +2,6 @@ import { Heading, Section } from '@/components/atoms';
 import { Animoji } from '@/components/compounds';
 
 import { ActivityGrid } from './activity/ActivityGrid';
-import { DiscordActivity } from './activity/DiscordActivity';
-import { NowPlaying } from './NowPlaying';
 import { Stats } from './stats';
 import { TopTracks } from './TopTracks';
 
@@ -23,12 +21,7 @@ export const Dashboard = () => {
         Dashboard
       </Heading>
       <Stats />
-
-      <ActivityGrid>
-        <NowPlaying />
-        <DiscordActivity />
-      </ActivityGrid>
-
+      <ActivityGrid />
       <TopTracks />
     </Section>
   );

@@ -2,8 +2,8 @@ import { useNowPlaying } from '@/hooks';
 import type { TopTrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
 
-import { ActivityItem } from './activity/ActivityItem';
-import { SongCard } from './activity/SongCard';
+import { ActivityItem } from './ActivityItem';
+import { SongCard } from './SongCard';
 
 export const NowPlaying: FC = () => {
   const { data, loading } = useNowPlaying();
