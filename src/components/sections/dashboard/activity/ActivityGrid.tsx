@@ -1,6 +1,8 @@
+import { useMemo } from 'react';
+
 import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { useActivity } from '@/hooks';
+import { useActivity, useNowPlaying } from '@/hooks';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
 
@@ -13,22 +15,50 @@ masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
 masonryBreakpoints[(breakpointsValues['tablet-sm'] || 0).toString()] = 2;
 
 export const ActivityGrid: FC = () => {
-  const { data } = useActivity();
+  const { data: trackData, loading: trackLoading } = useNowPlaying();
+  const { data, loading } = useActivity();
+
+  const hasActivity = useMemo(() => {
+    if (
+      !loading &&
+      !trackLoading &&
+      !(data?.activities || []).length &&
+      (!trackData || !trackData?.isPlaying)
+    ) {
+      // Make sure there is at least 1 activity or a song playing
+      return false;
+    }
+    return true;
+  }, [data, loading, trackData, trackLoading]);
+
+  const renderContent = () => {
+    if (loading || trackLoading) return <p>Loading…</p>;
+    return (
+      <Masonry
+        breakpoints={masonryBreakpoints}
+        gap={'calc($$verticalContentPadding / 2.5)'}
+        css={{ mt: 'calc($$verticalContentPadding / 4)' }}
+      >
+        <NowPlaying data={trackData} />
+        {(data?.activities || []).map((activity) => {
+          return <DiscordActivity key={activity.appId} activity={activity} />;
+        })}
+      </Masonry>
+    );
+  };
+
   return (
     <>
       <DotsDivider />
-      <Section id={'activity'} css={{ gap: 0, px: 0 }}>
+      <Section
+        id={'activity'}
+        css={{
+          gap: hasActivity ? 0 : 'calc($$verticalContentPadding / 8)',
+          px: 0,
+        }}
+      >
         <Heading as={'h4'}>Activity</Heading>
-        <Masonry
-          breakpoints={masonryBreakpoints}
-          gap={'calc($$verticalContentPadding / 2.5)'}
-          css={{ mt: 'calc($$verticalContentPadding / 4)' }}
-        >
-          <NowPlaying />
-          {(data?.activities || []).map((activity) => {
-            return <DiscordActivity key={activity.appId} activity={activity} />;
-          })}
-        </Masonry>
+        {hasActivity ? renderContent() : <p>No activity found at this time…</p>}
       </Section>
     </>
   );
