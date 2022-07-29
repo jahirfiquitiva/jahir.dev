@@ -55,7 +55,7 @@ const transformDiscordActivityToActivity = (
       discordActivity.assets?.large_image,
     ),
     largeImageText: discordActivity.assets?.large_text,
-    description: isForCodingApp ? 'Programming…' : 'Playing…',
+    description: isForCodingApp ? 'Programming in…' : 'Playing…',
   };
 };
 
