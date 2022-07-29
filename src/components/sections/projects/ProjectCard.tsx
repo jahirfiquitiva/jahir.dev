@@ -15,6 +15,7 @@ const StyledProjectCard = styled(Link, {
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
+  height: '135px',
   py: '$14',
   px: '$16',
   gap: '$10',
