@@ -3,8 +3,7 @@ import Icon from '@mdi/react';
 import { LineWobble } from '@uiball/loaders';
 
 import { Img, Link } from '@/components/atoms';
-import { useRequest } from '@/hooks';
-import type { TrackData } from '@/lib/spotify';
+import { useNowPlaying } from '@/hooks';
 import type { FC } from '@/types';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
@@ -170,7 +169,7 @@ const LoadingContainer = styled('div', {
 });
 
 export const FooterNowPlaying: FC = () => {
-  const { data, loading } = useRequest<TrackData>('/api/now-playing');
+  const { data, loading } = useNowPlaying();
 
   const renderComponents = () => {
     if (!data || !data.isPlaying) {
