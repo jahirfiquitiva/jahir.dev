@@ -105,7 +105,8 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
-    const paletteColor = postColor || getColorFromPalette(heroPalette, isDark);
+    const paletteColor =
+      postColor || (isDark ? heroPalette.vibrant : heroPalette.darkVibrant);
     const color = hexToRGB(
       isDark ? getReadableColor(paletteColor, isDark) : paletteColor,
       isDark ? 1 : 0.36,
