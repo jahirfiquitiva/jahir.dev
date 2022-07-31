@@ -140,9 +140,9 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     if (!themeReady) return '';
     return hexToRGB(
       getReadableColor(
-        getColorFromPalette(heroPalette, isDark) || post?.color,
+        post?.color || getColorFromPalette(heroPalette, isDark),
         isDark,
-      ) || post?.color,
+      ),
       undefined,
       true,
     );

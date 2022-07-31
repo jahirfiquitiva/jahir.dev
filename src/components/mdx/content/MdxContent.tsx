@@ -53,6 +53,7 @@ interface ContentFields {
   heroMeta?: HeroMeta;
   fullHeightHero?: boolean;
   inProgress?: boolean;
+  color?: string;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -69,6 +70,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('fullHeightHero' in content)
     fields.fullHeightHero = content.fullHeightHero;
   if ('inProgress' in content) fields.inProgress = content.inProgress;
+  if ('color' in content) fields.color = content.color;
   return fields;
 };
 
@@ -93,6 +95,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
     heroMeta,
     fullHeightHero,
     inProgress,
+    color: postColor,
   } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -102,9 +105,10 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
+    const paletteColor = postColor || getColorFromPalette(heroPalette, isDark);
     const color = hexToRGB(
-      getReadableColor(getColorFromPalette(heroPalette, isDark), isDark),
-      isDark ? 1 : 0.4,
+      isDark ? getReadableColor(paletteColor, isDark) : paletteColor,
+      isDark ? 1 : 0.36,
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return {};
     return {
@@ -119,7 +123,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         transition: 'all .15s ease-in-out',
       },
     };
-  }, [themeReady, isDark, heroPalette]);
+  }, [themeReady, isDark, heroPalette, postColor]);
 
   const extraHeroProps = useMemo(() => {
     if (heroMeta && heroMeta.blur64) {
