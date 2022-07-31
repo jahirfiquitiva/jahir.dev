@@ -61,12 +61,17 @@ export const Article = styled('article', {
     '& li:not(:first-of-type)': {
       mt: '$2',
     },
-    '&:not(.contains-task-list) > li::before': {
-      content: "counter(list-item, decimal) '.'",
-      position: 'absolute',
-      fontWeight: 'inherit',
-      color: '#6b7280',
-      left: 0,
+    '& > li': {
+      '&::before': {
+        content: "counter(list-item, decimal) '.'",
+        position: 'absolute',
+        fontWeight: 'inherit',
+        color: '#6b7280',
+        left: 0,
+      },
+      '& > ol > li::before, & > ul > li::before': {
+        content: 'counter(list-item, disc)',
+      },
     },
     '&.contains-task-list': {
       listStyle: 'none',
@@ -80,13 +85,20 @@ export const Article = styled('article', {
           height: '$space$16',
           color: '$accent',
         },
+        '&::before': {
+          content: '',
+          display: 'none',
+        },
       },
     },
   },
-  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list):not(.apps-grid):not(.colophon) > li::before':
-    {
-      content: 'counter(list-item, disc)',
+  '& ul:not(.apps-grid):not(.colophon)': {
+    '& > li': {
+      '&::before': {
+        content: 'counter(list-item, disc)',
+      },
     },
+  },
   '& .toc': {
     my: '$20',
     '& .title': {
