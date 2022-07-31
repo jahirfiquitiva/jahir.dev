@@ -138,7 +138,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
 
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
-    return hexToRGB(
+    const color = hexToRGB(
       getReadableColor(
         post?.color || getColorFromPalette(heroPalette, isDark),
         isDark,
@@ -146,6 +146,8 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
       undefined,
       true,
     );
+    if (!color || color === 'rgba(0 0 0 / 0)') return '';
+    return color;
   }, [post?.color, isDark, themeReady, heroPalette]);
 
   const rightLink = useMemo<string>(() => {
