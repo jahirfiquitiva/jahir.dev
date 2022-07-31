@@ -29,7 +29,8 @@ type CodeColors =
   | 'selector'
   | 'property'
   | 'operator'
-  | 'function';
+  | 'function'
+  | 'deleted';
 type CodeColor = `code-${CodeColors}`;
 
 export type ThemeColorsNames =

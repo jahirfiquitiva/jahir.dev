@@ -61,12 +61,17 @@ export const Article = styled('article', {
     '& li:not(:first-of-type)': {
       mt: '$2',
     },
-    '&:not(.contains-task-list) > li::before': {
-      content: "counter(list-item, decimal) '.'",
-      position: 'absolute',
-      fontWeight: 'inherit',
-      color: '#6b7280',
-      left: 0,
+    '& > li': {
+      '&::before': {
+        content: "counter(list-item, decimal) '.'",
+        position: 'absolute',
+        fontWeight: 'inherit',
+        color: '#6b7280',
+        left: 0,
+      },
+      '& > ol > li::before, & > ul > li::before': {
+        content: 'counter(list-item, disc)',
+      },
     },
     '&.contains-task-list': {
       listStyle: 'none',
@@ -80,13 +85,20 @@ export const Article = styled('article', {
           height: '$space$16',
           color: '$accent',
         },
+        '&::before': {
+          content: '',
+          display: 'none',
+        },
       },
     },
   },
-  'ol li ol:not(.contains-task-list) > li::before, ul:not(.contains-task-list):not(.apps-grid):not(.colophon) > li::before':
-    {
-      content: 'counter(list-item, disc)',
+  '& ul:not(.apps-grid):not(.colophon)': {
+    '& > li': {
+      '&::before': {
+        content: 'counter(list-item, disc)',
+      },
     },
+  },
   '& .toc': {
     my: '$20',
     '& .title': {
@@ -120,7 +132,7 @@ export const Article = styled('article', {
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     backgroundColor: '$primary',
-    color: '$text-primary',
+    color: 'inherit',
     overflowX: 'auto',
     borderRadius: '$space$8',
     border: '1px solid $divider',
@@ -136,7 +148,7 @@ export const Article = styled('article', {
     },
     '& code': {
       fontSize: '$2xs',
-      color: '$text-primary',
+      color: 'inherit',
       p: 0,
       border: 'none',
       background: '$transparent',
@@ -146,12 +158,14 @@ export const Article = styled('article', {
   },
   "& code[class*='language-'], & pre[class*='language-'], & pre[class*='language-'] code, & .token.imports, & .token.plain-text":
     {
-      color: '$text-primary',
+      color: 'inherit',
     },
-  '& .token.property, & .token.tag, & .token.constant, & .token.symbol, & .token.deleted':
-    {
-      color: '$code-property',
-    },
+  '& .token.property, & .token.tag, & .token.constant, & .token.symbol': {
+    color: '$code-property',
+  },
+  '& .token.deleted': {
+    color: '$code-deleted',
+  },
   '& .token.selector, & .token.attr-name, & .token.string, & .token.char, & .token.builtin, & .token.inserted, & .token.url':
     {
       color: '$code-selector',
@@ -214,7 +228,7 @@ export const Article = styled('article', {
     borderRadius: '$space$8',
     border: '1px solid $divider',
   },
-  '& > img:first-of-type': {
+  '& > img:first-of-type, & > figure:first-of-type': {
     my: '$$verticalContentPadding',
   },
   '& > img, & > p > img': {

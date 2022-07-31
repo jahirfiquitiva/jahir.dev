@@ -13,6 +13,6 @@ export const getColorFromPalette = (
 ): string | null => {
   if (!palette) return null;
   if (isDark && darkColor) return darkColor;
-  const color = palette[colorVariant.toLowerCase()] || null;
-  return (isDark ? palette[`light${colorVariant}`] : color) || color;
+  const color = palette[`dark${colorVariant}`] || null;
+  return (isDark ? palette[colorVariant.toLowerCase()] : color) || color;
 };

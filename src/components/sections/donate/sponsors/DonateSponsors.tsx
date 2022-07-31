@@ -6,10 +6,15 @@ import { styled } from '~/stitches';
 
 import { DonateSponsor } from './DonateSponsor';
 
-const TextsContainer = styled('div', {
+const Container = styled('div', {
+  maxWidth: '100%',
+});
+
+const TextsContainer = styled(Container, {
   display: 'flex',
   flexDirection: 'column-reverse',
   '& > img': {
+    height: 'auto',
     maxWidth: 48,
     filter: 'drop-shadow(0 0 2px #fff)',
   },
@@ -17,6 +22,7 @@ const TextsContainer = styled('div', {
     flexDirection: 'row',
     mb: '$12',
     gap: '$8',
+    justifyContent: 'space-between',
     '& > div:first-of-type': {
       flex: 1,
       '& > p': { mb: 0 },
@@ -66,7 +72,7 @@ const SponsorsList = styled('ul', {
 export const DonateSponsors = () => {
   const { categories, loading, error } = useSponsors();
   return (
-    <div>
+    <Container>
       <TextsContainer>
         <div>
           <Heading as={'h3'}>Sponsors</Heading>
@@ -118,6 +124,6 @@ export const DonateSponsors = () => {
           </small>
         </div>
       )}
-    </div>
+    </Container>
   );
 };

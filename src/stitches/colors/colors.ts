@@ -64,6 +64,7 @@ export const colors: ThemeColors = {
   'code-property': '#7a4cbb',
   'code-operator': '#c86827',
   'code-function': '#aa499d',
+  'code-deleted': '#d43551',
 
   'illustrations-shadow': '#c0b4f0',
 };
@@ -105,6 +106,7 @@ export const darkThemeColors: ThemeColors = {
   'code-property': '#b77eee',
   'code-operator': '#fed330',
   'code-function': '#f368e0',
+  'code-deleted': '#fc6c74',
 
   'illustrations-shadow': '#d8d1f6',
 };

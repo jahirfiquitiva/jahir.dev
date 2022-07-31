@@ -10,6 +10,7 @@ export interface Post {
   title: string;
   date: string;
   hero?: string;
+  heroSource?: string;
   excerpt?: string;
   color?: string;
   link?: string;

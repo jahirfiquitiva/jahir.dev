@@ -7,12 +7,8 @@ import { useSafePalette } from '@/hooks';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';
-import {
-  formatDate,
-  hexToRGB,
-  getColorFromPalette,
-  getReadableColor,
-} from '@/utils';
+import { getDomainFromUrl } from '@/utils';
+import { formatDate, hexToRGB, getReadableColor } from '@/utils';
 import type { StitchesCSS as CSS } from '~/stitches';
 
 import { Article } from './Article';
@@ -44,6 +40,7 @@ const editUrl = (content: ContentTypes) =>
 interface ContentFields {
   title: string;
   hero?: string;
+  heroSource?: string;
   date?: string;
   readingTime?: string;
   slug?: string;
@@ -51,6 +48,7 @@ interface ContentFields {
   heroMeta?: HeroMeta;
   fullHeightHero?: boolean;
   inProgress?: boolean;
+  color?: string;
 }
 
 const getContentFields = (content: ContentTypes): ContentFields => {
@@ -58,6 +56,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
     title: 'title' in content ? content.title : content.name,
   };
   if ('hero' in content) fields.hero = content.hero;
+  if ('heroSource' in content) fields.heroSource = content.heroSource;
   if ('date' in content) fields.date = content.date;
   if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
   if ('slug' in content) fields.slug = content.slug;
@@ -66,6 +65,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
   if ('fullHeightHero' in content)
     fields.fullHeightHero = content.fullHeightHero;
   if ('inProgress' in content) fields.inProgress = content.inProgress;
+  if ('color' in content) fields.color = content.color;
   return fields;
 };
 
@@ -82,6 +82,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   const {
     title,
     hero,
+    heroSource,
     date,
     readingTime,
     slug,
@@ -89,6 +90,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
     heroMeta,
     fullHeightHero,
     inProgress,
+    color: postColor,
   } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
@@ -98,9 +100,11 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};
+    const paletteColor =
+      postColor || (isDark ? heroPalette.vibrant : heroPalette.darkVibrant);
     const color = hexToRGB(
-      getReadableColor(getColorFromPalette(heroPalette, isDark), isDark),
-      isDark ? 1 : 0.4,
+      isDark ? getReadableColor(paletteColor, isDark) : paletteColor,
+      isDark ? 1 : 0.36,
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return {};
     return {
@@ -115,7 +119,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
         transition: 'all .15s ease-in-out',
       },
     };
-  }, [themeReady, isDark, heroPalette]);
+  }, [themeReady, isDark, heroPalette, postColor]);
 
   const extraHeroProps = useMemo(() => {
     if (heroMeta && heroMeta.blur64) {
@@ -175,16 +179,26 @@ export const MdxContent: FC<CommonContent> = (props) => {
           <MdxReactions inProgress={inProgress} />
 
           {hero && (
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            <ArticleHero
-              src={hero || ''}
-              alt={`Cover image for blog "${title}"`}
-              priority
-              {...extraHeroProps}
-              quality={100}
-              cropHero={!fullHeightHero || !slug?.includes('uses')}
-            />
+            <figure>
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
+              <ArticleHero
+                src={hero || ''}
+                alt={`Cover image for "${title}"`}
+                priority
+                {...extraHeroProps}
+                quality={100}
+                cropHero={!fullHeightHero || !slug?.includes('uses')}
+              />
+              {heroSource && (
+                <figcaption>
+                  Image from:{' '}
+                  <Link href={heroSource} title={heroSource}>
+                    {getDomainFromUrl(heroSource)}
+                  </Link>
+                </figcaption>
+              )}
+            </figure>
           )}
           {children}
           <Divider

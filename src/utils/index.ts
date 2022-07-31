@@ -1,6 +1,7 @@
 export * from './color/get-color-from-palette';
 export * from './color/get-readable-color';
 export * from './color/hex-to-rgb';
+export * from './format/domain';
 export * from './format/format-date';
 export * from './format/format-lanyard';
 export * from './posts/get-posts';

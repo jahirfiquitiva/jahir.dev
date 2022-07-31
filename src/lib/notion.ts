@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { getDomainFromUrl } from '@/utils';
+
 /* eslint-disable camelcase */
 const dbApiUrl = 'https://api.notion.com/v1';
 const {
@@ -134,9 +136,7 @@ export const fetchBookmarkPromise = (
       const [urlObject] = propertiesResponse.filter((it) => it.id == Link.id);
 
       const title = titleObject?.title?.text?.content;
-      const domain = (urlObject?.url || '')
-        .replace(/(^\w+:|^)\/\//, '')
-        .replace(/\//g, '');
+      const domain = getDomainFromUrl(urlObject?.url || '') || '';
 
       return resolve({
         link: urlObject?.url,
