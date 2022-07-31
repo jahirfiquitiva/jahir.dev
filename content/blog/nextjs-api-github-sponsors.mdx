@@ -1,0 +1,536 @@
+---
+title: 'Create a Next.js API Route to retrieve GitHub Sponsors data'
+date: '2022-08-01T00:00:00.000Z'
+keywords: 'nextjs|api|route|edge runtime|github|sponsors|graphql'
+hero: building-website-scratch-22/hero.jpg
+heroSource: 'https://www.tinykat.cafe/github-sponsors'
+excerpt: 'Learn how you can access GitHub Sponsors data building a Next.js API Route'
+---
+
+## Intro
+
+For some time I’ve been wanting to be able to get my current GitHub Sponsors data using an API. The API GitHub offers is currently set for GraphQL only, so it was a bit of a struggle to get the data, because I’m not really much familiar with GraphQL. 
+
+Besides that, setting up GraphQL in a project where only one query would be used, seemed like overkill for me. Anyway, I found out that we could send the GraphQL query in a normal REST API request using the body parameter. I used [this repository](https://github.com/TiagoDanin/Fetch-GitHub-Graphql) for reference.
+
+**TL:DR;** You can find the finalized project code at [https://github.com/jahirfiquitiva/sponsors-edge-api](https://github.com/jahirfiquitiva/sponsors-edge-api)
+
+## The GraphQL Query
+
+It took me quite a while to explore the [GitHub GraphQL API docs](https://docs.github.com/en/graphql/reference/interfaces#sponsorable) and build the query to get all the info needed so I’ll skip the details. I basically used their [GraphQL Explorer](https://docs.github.com/en/graphql/overview/explorer) and went through multiple `Interface`s, `Object`s and other data, while doing a trial-and-error process to get the final query.
+
+Some of the data I used was:
+
+- User
+- Sponsorable
+- SponsorConnection
+- SponsorsListing
+- SponsorsTierConnection
+- SponsorsTier
+- SponsorsTierAdminInfo
+- Sponsorship
+- Sponsor
+
+And the final query is as follows:
+
+```graphql
+{
+  user(login: "jahirfiquitiva") {
+    sponsorsListing {
+      id
+      tiers(first: 20) {
+        nodes {
+          ... on SponsorsTier {
+            id
+            adminInfo {
+              sponsorships(first: 100) {
+                totalRecurringMonthlyPriceInDollars
+                nodes {
+                  ... on Sponsorship {
+                    sponsorEntity {
+                      ... on User {
+                        login
+                        avatarUrl
+                        name
+                        websiteUrl
+                      }
+                      ... on Organization {
+                        login
+                        avatarUrl
+                        name
+                        websiteUrl
+                      }
+                    }
+                    tierSelectedAt
+                  }
+                }
+              }
+            }
+            monthlyPriceInDollars
+            isOneTime
+            isCustomAmount
+            name
+            description
+          }
+        }
+      }
+    }
+    ... on Sponsorable {
+      sponsors {
+        totalCount
+      }
+    }
+  }
+}
+```
+
+### What does this query do?
+
+Basically, it gets the GitHub Sponsors listing data and the sponsors total count for the user defined at the query beginning: `user(login: "jahirfiquitiva")` here I used my GitHub username, but you can replace it with yours.
+
+> I am getting the listing data because I wanted to group my sponsors by their tier, as well as knowing the tier price and other details. If you only wanted to know the sponsors, regardless of their tier, a simpler query might be built using the `sponsors` property at the end of the query above.
+> 
+
+From the Sponsors listing data, I get the different tiers. A tier is basically a donation option, for example, I have [6 monthly tiers](https://github.com/sponsors/jahirfiquitiva): star, crystal ball, rocket, robot, lightning and diamond based on different price. This is because I “named” them although they don’t really have a name by default. This just helps me categorize my sponsors.
+
+`tiers(first: 20)` will return the first 20 tiers from your sponsors listing. As I said, I have 6 monthly tiers, and 3 one-time tiers: 9 tiers in total, so even 20 is more than needed. Also, you can only have a total of 10 published monthly tiers and 10 published one-time tiers.
+
+From each tier, I get the following info:
+
+- `monthlyPriceInDollars`: How much this tier costs per month in USD.
+- `isOneTime`: Whether this tier is only for use with one-time sponsorships.
+- `isCustomAmount`: Whether this tier was chosen at checkout time by the sponsor rather than defined ahead of time by the maintainer who manages the Sponsors listing.
+- `name`: The name of the tier. (iirc this name is just something like `${price} per month`, which might not be very helpful depending on the use case)
+- `description`: The description of the tier. (in MarkDown format)
+- `adminInfo`: Object that contains the `sponsorships` property, which includes:
+    - `totalRecurringMonthlyPriceInDollars`: The total amount in USD of all recurring sponsorships in the connection whose amount you can view. Does not include one-time sponsorships.
+    - `nodes`: Which would correspond to data related to the sponsorship, including the sponsor information using the `sponsorEntity` property. `sponsorEntity` can be a User or Organization, so that’s why we access both.
+        - Additionally, `sponsorEntity` includes `tierSelectedAt` which identifies the date and time when the given tier was chosen for this sponsorship.
+    - `sponsorships(first: 100)` returns the first 100 nodes for this sponsorship tier. I don’t really have many sponsors, so this one is fine for me. If you have more sponsors, you’ll have to look into [pagination](https://docs.github.com/en/graphql/reference/objects#sponsorshipconnection) for this property.
+
+If you need more information about your sponsors or the sponsorships, you can [explore the docs](https://docs.github.com/en/graphql/reference/objects#sponsorconnection).
+
+## Authorization
+
+Before we actually use this query to access this data, we must create a Personal Access Token, as it requires authorization.
+
+To do so, go to your GitHub account Settings, then go to Developer Settings and finally select Personal Access Tokens, or just follow this link: [https://github.com/settings/tokens](https://github.com/settings/tokens)
+
+There, click on the [`Generate new token`](https://github.com/settings/tokens/new) button, give it a specific name, set the expiration period to one you’d like, although this one only reads data, so I think `No expiration` is fine.
+
+The scopes required for this query are:
+
+- [ ]  admin:org
+  - [x]  read:org
+- [ ]  user
+    - [x]  read:user
+
+Then scroll down and click on `Generate token`
+
+> Make sure to save the token in a safe and accessible place, as you **won’t** be able to access its value ever again.
+
+## Project setup
+
+Let’s create a new NextJS project. We’ll use TypeScript in this guide, so we do it with the following command:
+
+```graphql
+npx create-next-app --ts {folder}
+```
+
+Replace `{folder}` with the name of the folder you want the project to be at.
+
+Now, open the project with your favorite editor or IDE.
+
+Create a `.env.local` file with the Personal Access Token previously generated:
+
+```shell:.env.local
+GH_PAT=ghp_XXxxXXxxXX
+```
+
+You can name the variable differently, but be careful when we access it in code later.
+
+## Initial request
+
+Let’s quickly setup the API and the code to make an initial request.
+
+Aiming to keep things organized, let’s create a folder named `lib` on the project root, and another folder named `sponsors` inside.
+
+Create a file named `request.ts` :
+
+```tsx:lib/sponsors/request.ts
+const { GH_PAT: githubPat = '' } = process.env;
+
+const graphQlQuery = `
+...
+`;
+
+export const getSponsorsGraphQLResponse = async () => {
+  return fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${githubPat}` },
+    body: JSON.stringify({ query: graphQlQuery }),
+  }).then((res) => res.json());
+};
+```
+
+> Put the query content from the one showed at the beginning of this post, inside the backticks in `graphQlQuery`
+
+Here we are getting GitHub Personal Access Token (PAT) via the `GH_PAT` environment variable (setup previously in `.env.local`), and creating a function that will do a simple fetch POST request to [`https://api.github.com/graphql`](https://api.github.com/graphql) sending the PAT in an `Authorization` header, then get the JSON body from the response and return it.
+
+Now create a file named `index.ts` :
+
+```tsx:lib/sponsors/index.ts
+export * from './request';
+```
+
+Here we just export everything already exported in the `request.ts` file.
+
+Now, let’s setup the API route. Go to file `pages/api/hello.ts` and rename it to `sponsors.ts`, there, modify it to look like this:
+
+```tsx:pages/api/sponsors.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { getSponsorsGraphQLResponse } from './../../lib/sponsors/request';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const rawResponse = await getSponsorsGraphQLResponse();
+  return res.status(200).json(rawResponse);
+}
+```
+
+Here, we import the function previously created, then we call it using the `async` function `handler` , then we get the JSON body from it and return it as our API response.
+
+### Testing
+
+Let’s test our simple API, in order to do that, run `npm run dev` or `yarn dev` in your Terminal or CMD from the project root.
+
+Once the project is running, you’ll see this:
+
+```bash
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+```
+
+Next, go to `http://localhost:3000/api/sponsors`, if everything was setup correctly, you will see the raw response from the API, which format isn’t really nice to read or use, and looks like this:
+
+```json
+{
+  "data": {
+    "user": {
+      "sponsorsListing": {
+        "id": "MDExxxxxxxxxxxxxxxx==",
+        "tiers": {
+          "nodes": [
+            {
+              "id": "MDExxxxxxxxxxxxxxxx==",
+              "adminInfo": {
+                "sponsorships": {
+                  "totalRecurringMonthlyPriceInDollars": 2,
+                  "nodes": [
+                    {
+                      "sponsorEntity": {
+                        "login": "xxxx",
+                        "avatarUrl": "https://avatars.githubusercontent.com/u/xxxxxx",
+                        "name": "Xxxxx Xxxxx",
+                        "websiteUrl": "https://jahir.dev/"
+                      },
+                      "tierSelectedAt": "2022-03-02T07:59:51Z"
+                    }
+                  ]
+                }
+              },
+              "monthlyPriceInDollars": 2,
+              "isOneTime": false,
+              "isCustomAmount": false,
+              "name": "$2 a month",
+              "description": "Lorem ipsum dolor sit amet."
+            },
+            ...
+          ]
+        }
+      },
+      "sponsors": {
+        "totalCount": 1
+      }
+    }
+  }
+}
+```
+
+> I recommend using the [JSON viewer extension](https://chrome.google.com/webstore/detail/ink-for-google/hmanckoiohnlgdommlcckcflkmllobgj), to read the response more easily
+> 
+
+## Typing raw response
+
+Let’s define interfaces for the raw response from the GitHub GraphQL API. Create a file named `types.ts` under the `lib/sponsors` folder.
+
+We can start with the deepest nested object, which would be the `sponsorEntity`
+
+```tsx:lib/sponsors/types.ts
+export interface SponsorEntity {
+  login: string;
+  name?: string;
+  avatarUrl: string;
+  websiteUrl?: string;
+}
+```
+
+Now we can go one level up to `sponsorships`
+
+```tsx:lib/sponsors/types.ts
+interface Sponsorships {
+  totalRecurringMonthlyPriceInDollars: number;
+  nodes: Array<{
+    sponsorEntity: SponsorEntity;
+    tierSelectedAt?: string; // TimeStamp
+  }>;
+}
+```
+
+Since `adminInfo` only includes the `sponsorships` property, let’s go a couple levels up at a time:
+
+```tsx:lib/sponsors/types.ts
+export interface SponsorsTier {
+  id: string;
+  adminInfo?: {
+    sponsorships: Sponsorships;
+  };
+  monthlyPriceInDollars: number;
+  isOneTime: boolean;
+  isCustomAmount: boolean;
+  name: string;
+  description?: string;
+}
+```
+
+Now let’s go up to `sponsorsListing`
+
+```tsx:lib/sponsors/types.ts
+interface SponsorsListing {
+  id: string;
+  tiers: {
+    nodes: Array<SponsorsTier>;
+  };
+}
+```
+
+And finally the whole response:
+
+```tsx:lib/sponsors/types.ts
+export interface SponsorsResponse {
+  data?: {
+    user: {
+      sponsorsListing: SponsorsListing;
+      sponsors: {
+        totalCount: number;
+      };
+    };
+  };
+  message?: string;
+}
+```
+
+Now, can import the `SponsorsResponse` interface in `request.ts` and type the `getSponsorsGraphQLResponse` function, so it will look like:
+
+```tsx:lib/sponsors/request.ts
+import type { SponsorsResponse } from './types';
+
+...
+
+export const getSponsorsGraphQLResponse = async (): Promise<SponsorsResponse> => {
+  ...
+}
+```
+
+Typing the response won’t affect anything in the API as it is at this point, but will allow us to transform that data into a more readable format in an easy way.
+
+### Transforming the raw response
+
+First, let’s plan the desired object format to make the response easier to read:
+
+```json
+{
+  "tiers": [
+    {
+      "id": "MDExxxxxxxxxxxxxxxx==",
+      "price": 2,
+      "isOneTime": false,
+      "isCustomAmount": false,
+      "name": "$2 a month",
+      "description": "Lorem ipsum dolor sit amet.",
+			"totalEarningsPerMonth": 2,
+      "sponsors": [
+        {
+          "username": "xxxx",
+          "name": "Xxxxx Xxxxx",
+          "avatar": "https://avatars.githubusercontent.com/u/xxxxxx",
+          "website": "https://jahir.dev/",
+          "since": "2022-03-02T07:59:51Z"
+        },
+        ...
+      ]
+    },
+    ...
+  ],
+  "total": 1
+}
+```
+
+With this format, we have an object with 2 properties: `tiers` and `total`. Tiers will have all its corresponding information including a `sponsors` object array with the information for each sponsor. There’s a couple fields renamed from the raw response, to make them a bit simpler:
+
+- `login` → `username`
+- `avatarUrl` → `avatar`
+- `websiteUrl` → `website`
+- `tierSelectedAt` → `since`
+- `totalRecurringMonthlyPriceInDollars` → `totalEarningsPerMonth`
+- `totalCount` → `total`
+
+Let’s create the interfaces for this new object in `lib/sponsors/types.ts`:
+
+```tsx:lib/sponsors/types.ts
+export interface Sponsor {
+  username: string;
+  name?: string;
+  avatar: string;
+  website?: string;
+  since?: string;
+}
+
+export interface Tier {
+  id: string;
+  price: number;
+  isOneTime: boolean;
+  isCustomAmount: boolean;
+  name: string;
+  description?: string;
+  totalEarningsPerMonth: number;
+  sponsors: Array<Sponsor>;
+}
+
+export interface Sponsors {
+  tiers: Array<Tier>;
+  total: number;
+}
+```
+
+Finally, let’s create a function to transform the `SponsorsResponse` object into the `Sponsors` one, in the `lib/sponsors/request.ts` file:
+
+```tsx:lib/sponsors/request.ts
+import type {
+  SponsorsResponse,
+  Sponsors,
+  SponsorEntity,
+  Sponsor,
+  SponsorsTier,
+  Tier,
+} from './types';
+
+...
+
+const transformSponsorEntityIntoSponsor = (
+  entity: SponsorEntity,
+  tierSelectedAt?: string
+): Sponsor => {
+  return {
+    name: entity.name,
+    username: entity.login,
+    avatar: entity.avatarUrl,
+    website: entity.websiteUrl,
+    since: tierSelectedAt,
+  };
+};
+
+const transformRawTierIntoTier = (tier: SponsorsTier): Tier => {
+  return {
+    id: tier.id,
+    price: tier.monthlyPriceInDollars,
+    isOneTime: tier.isOneTime,
+    isCustomAmount: tier.isCustomAmount,
+    name: tier.name,
+    description: tier.description,
+    totalEarningsPerMonth: tier.adminInfo?.sponsorships.totalRecurringMonthlyPriceInDollars || 0,
+    sponsors: (tier.adminInfo?.sponsorships?.nodes || []).map((node) => {
+      // Transform `SponsorEntity` into `Sponsor` using the `transformSponsorEntityIntoSponsor` function
+      // and the `tierSelectedAt` property
+      return transformSponsorEntityIntoSponsor(node.sponsorEntity, node.tierSelectedAt);
+    }),
+  };
+};
+
+export const transformResponseIntoSponsorships = (rawResponse: SponsorsResponse): Sponsors => {
+  // Get the listing and sponsors object from the raw response.
+  // We rename `sponsorsListing` to just `listing` for ease.
+  // This is done locally only and does not modify the `rawResponse` object.const { sponsorsListing: listing, sponsors } = rawResponse.data?.user || {};
+  if (!listing || !sponsors) {
+    return { tiers: [], total: 0 };
+  }
+  return {
+    // Transform `SponsorsTier` into `Tier` using the `transformRawTierIntoTier` function
+    tiers: listing.tiers.nodes.map(transformRawTierIntoTier),
+    total: sponsors.totalCount,
+  };
+};
+```
+
+Finally, let’s update our API to use the new function:
+
+```tsx:pages/api/sponsors.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import {
+  getSponsorsGraphQLResponse,
+  transformResponseIntoSponsorships,
+} from './../../lib/sponsors/request';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const rawResponse = await getSponsorsGraphQLResponse();
+  return res.status(200).json(transformResponseIntoSponsorships(rawResponse));
+}
+```
+
+Now if we go to `http://localhost:3000/api/sponsors`, we will see a response with the format we initially planned for. 🎉
+
+You can try the deployed version of this endpoint at [https://sponsors-edge-api.vercel.app/api/sponsors](https://sponsors-edge-api.vercel.app/api/sponsors)
+
+## Extra: Edge Runtime
+
+Additionally, and this is completely optional, we can modify the API to use the new Edge Runtime.
+
+> The Next.js Edge Runtime is based on standard Web APIs. The [Edge API routes](https://nextjs.org/docs/api-routes/edge-api-routes), enable you to build high performance APIs with Next.js. Using the [Edge Runtime](https://nextjs.org/docs/api-reference/edge-runtime), they are often faster than Node.js-based API Routes.
+> 
+
+To achieve this, we can modify the API to be like:
+
+```diff:pages/api/sponsors.ts
+- import type { NextApiRequest, NextApiResponse } from 'next';
++ import type { NextRequest } from 'next/server';
+import {
+  getSponsorsGraphQLResponse,
+  transformResponseIntoSponsorships,
+} from './../../lib/sponsors/request';
+
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+- export default async function handler(req: NextApiRequest, res: NextApiResponse) {
++ export default async function handler(req: NextRequest) {
+  const rawResponse = await getSponsorsGraphQLResponse();
+-  return res.status(200).json(transformResponseIntoSponsorships(rawResponse));
++  return new Response(JSON.stringify(transformResponseIntoSponsorships(rawResponse)), {
++    status: 200,
++    headers: { 'content-type': 'application/json' },
++  });
+}
+```
+
+As you can see, we change the type `NextApiRequest` for `NextRequest`, remove the `res` parameter from the handler function, and change the way we return the JSON response by using the `Response` object.
+
+You can try the deployed version of this endpoint at [https://sponsors-edge-api.vercel.app/api/sponsors-edge](https://sponsors-edge-api.vercel.app/api/sponsors-edge)
+
+## Closing up
+
+That’s it, now you have an API to get your GitHub sponsors and use that data to anything you’d like.
+
+I have used it to list [my sponsors](https://jahir.dev/donate#thanks) in my [donate page](https://jahir.dev/donate), for example. I hope it’s useful for you too.
+
+You can find the finalized project code at [https://github.com/jahirfiquitiva/sponsors-edge-api](https://github.com/jahirfiquitiva/sponsors-edge-api).
+
+Have a great day! 👋😀

@@ -120,7 +120,7 @@ export const Article = styled('article', {
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     backgroundColor: '$primary',
-    color: '$text-primary',
+    color: 'inherit',
     overflowX: 'auto',
     borderRadius: '$space$8',
     border: '1px solid $divider',
@@ -136,7 +136,7 @@ export const Article = styled('article', {
     },
     '& code': {
       fontSize: '$2xs',
-      color: '$text-primary',
+      color: 'inherit',
       p: 0,
       border: 'none',
       background: '$transparent',
@@ -146,12 +146,14 @@ export const Article = styled('article', {
   },
   "& code[class*='language-'], & pre[class*='language-'], & pre[class*='language-'] code, & .token.imports, & .token.plain-text":
     {
-      color: '$text-primary',
+      color: 'inherit',
     },
-  '& .token.property, & .token.tag, & .token.constant, & .token.symbol, & .token.deleted':
-    {
-      color: '$code-property',
-    },
+  '& .token.property, & .token.tag, & .token.constant, & .token.symbol': {
+    color: '$code-property',
+  },
+  '& .token.deleted': {
+    color: '$code-deleted',
+  },
   '& .token.selector, & .token.attr-name, & .token.string, & .token.char, & .token.builtin, & .token.inserted, & .token.url':
     {
       color: '$code-selector',
