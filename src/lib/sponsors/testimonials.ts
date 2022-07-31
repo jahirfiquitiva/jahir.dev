@@ -23,4 +23,11 @@ export const testimonials: Array<Testimonial> = [
       name: 'Patryk Goworowski',
     },
   },
+  {
+    content:
+      'Jahir has a long-standing history of making substancial contributions to the open-source ecosystem. Whether it be via powerful Android libraries, easy-to-integrate dashboard applications, or amazing web apps, Jahir has you covered.',
+    sponsor: {
+      name: 'Corbin Crutchley',
+    },
+  },
 ];
