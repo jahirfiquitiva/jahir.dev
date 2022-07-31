@@ -8,12 +8,7 @@ import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';
 import { getDomainFromUrl } from '@/utils';
-import {
-  formatDate,
-  hexToRGB,
-  getColorFromPalette,
-  getReadableColor,
-} from '@/utils';
+import { formatDate, hexToRGB, getReadableColor } from '@/utils';
 import type { StitchesCSS as CSS } from '~/stitches';
 
 import { Article } from './Article';
