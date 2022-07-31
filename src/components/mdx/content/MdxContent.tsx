@@ -7,6 +7,7 @@ import { useSafePalette } from '@/hooks';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';
+import { getDomainFromUrl } from '@/utils';
 import {
   formatDate,
   hexToRGB,
@@ -44,6 +45,7 @@ const editUrl = (content: ContentTypes) =>
 interface ContentFields {
   title: string;
   hero?: string;
+  heroSource?: string;
   date?: string;
   readingTime?: string;
   slug?: string;
@@ -58,6 +60,7 @@ const getContentFields = (content: ContentTypes): ContentFields => {
     title: 'title' in content ? content.title : content.name,
   };
   if ('hero' in content) fields.hero = content.hero;
+  if ('heroSource' in content) fields.heroSource = content.heroSource;
   if ('date' in content) fields.date = content.date;
   if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
   if ('slug' in content) fields.slug = content.slug;
@@ -82,6 +85,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   const {
     title,
     hero,
+    heroSource,
     date,
     readingTime,
     slug,
@@ -175,16 +179,26 @@ export const MdxContent: FC<CommonContent> = (props) => {
           <MdxReactions inProgress={inProgress} />
 
           {hero && (
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            <ArticleHero
-              src={hero || ''}
-              alt={`Cover image for blog "${title}"`}
-              priority
-              {...extraHeroProps}
-              quality={100}
-              cropHero={!fullHeightHero || !slug?.includes('uses')}
-            />
+            <figure>
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
+              <ArticleHero
+                src={hero || ''}
+                alt={`Cover image for "${title}"`}
+                priority
+                {...extraHeroProps}
+                quality={100}
+                cropHero={!fullHeightHero || !slug?.includes('uses')}
+              />
+              {heroSource && (
+                <figcaption>
+                  Image from:{' '}
+                  <Link href={heroSource} title={heroSource}>
+                    {getDomainFromUrl(heroSource)}
+                  </Link>
+                </figcaption>
+              )}
+            </figure>
           )}
           {children}
           <Divider

@@ -216,7 +216,7 @@ export const Article = styled('article', {
     borderRadius: '$space$8',
     border: '1px solid $divider',
   },
-  '& > img:first-of-type': {
+  '& > img:first-of-type, & > figure:first-of-type': {
     my: '$$verticalContentPadding',
   },
   '& > img, & > p > img': {

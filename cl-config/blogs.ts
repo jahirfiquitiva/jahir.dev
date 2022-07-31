@@ -44,9 +44,9 @@ const computedFields: ComputedFields = {
       const defaultSlug = doc._raw.sourceFileName.replace(/\.mdx$/, '');
       if (!doc.inProgress) return defaultSlug;
       const secretSlug = `${defaultSlug}-${secretPostsId}`;
-      console.error(`===========`);
+      console.error('===========');
       console.error(`Generated secret slug: [${secretSlug}]`);
-      console.error(`===========`);
+      console.error('===========');
       return secretSlug;
     },
   },
@@ -111,6 +111,7 @@ const Blog = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     date: { type: 'string', required: true },
     hero: { type: 'string' },
+    heroSource: { type: 'string' },
     color: { type: 'string' },
     description: { type: 'string' },
     excerpt: { type: 'string' },
