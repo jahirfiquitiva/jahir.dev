@@ -108,7 +108,8 @@ const defaultNextConfig = {
       buildRedirect('/blog/uses', '/uses'),
       buildRedirect('/releases', '/gh-releases'),
       buildRedirect('/feed', '/feed.xml'),
-      buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
+      buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),      
+      buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
     ];
   },
 };
