@@ -31,10 +31,12 @@ const Card = styled(Link, {
     backgroundColor: 'rgba($$color / .1)',
   },
   hocus: {
-    $$borderSize: '2px',
+    $$borderSize: '1px',
+    my: 2,
     p: 'calc($10 - 1px)',
-    transform: 'scale(1.0125)',
-    boxShadow: '0 0 8px 2px rgba($$color / .2)',
+    transform: 'scale(1.005)',
+    boxShadow:
+      '0 0 8px 2px rgba($$color / .2), 0 0 1px 0 rgba($$color / .36)',
     backgroundColor: 'rgba($$color / .12)',
     borderColor: 'rgba($$textColor / .36)',
     textDecoration: 'none',

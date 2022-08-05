@@ -33,4 +33,5 @@ const BaseImg: FC<ImgProps> = (props) => {
 export const Img = styled(BaseImg, {
   objectFit: 'cover',
   objectPosition: 'center',
+  color: 'rgba(0 0 0 / 0)',
 });

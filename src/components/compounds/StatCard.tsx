@@ -41,7 +41,7 @@ const StyledCard = styled('div', {
     $$borderSize: '2px',
     py: 'calc($14 - 1px)',
     px: 'calc($16 - 1px)',
-    transform: 'scale(1.0125)',
+    transform: 'scale(1.005)',
     boxShadow: '0 0 8px 2px rgba($$color / .2)',
     backgroundColor: 'rgba($$color / .035)',
     borderColor: 'rgba($$color / .5)',

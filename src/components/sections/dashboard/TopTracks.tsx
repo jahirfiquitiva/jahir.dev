@@ -30,7 +30,9 @@ export const TopTracks: FC = () => {
           gap={'calc($$verticalContentPadding / 2.5)'}
         >
           {data?.tracks?.map((song, index) => {
-            return <SongCard song={song} key={index} />;
+            return (
+              <SongCard song={song} key={index} css={{ hocus: { my: 1 } }} />
+            );
           })}
         </Masonry>
       </Section>
