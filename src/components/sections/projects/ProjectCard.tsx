@@ -34,11 +34,12 @@ const StyledProjectCard = styled(Link, {
     transition: 'color .15s ease-in-out',
   },
   hocus: {
-    $$borderSize: '2px',
+    $$borderSize: '1px',
+    my: 1,
     py: 'calc($14 - 1px)',
     px: 'calc($16 - 1px)',
     transform: 'scale(1.0125)',
-    boxShadow: '0 0 8px 2px rgba($$color / .2)',
+    boxShadow: '0 0 8px 2px rgba($$color / .2), 0 0 1px 1px rgba($$color / .5)',
     backgroundColor: 'rgba($$color / .035)',
     borderColor: 'rgba($$color / .5)',
     textDecoration: 'none',
@@ -54,6 +55,7 @@ const StyledProjectCard = styled(Link, {
       dark: { textDecoration: 'underline', color: 'rgba($$color / 1)' },
     },
     '& > div:not(:first-of-type)': {
+      $$borderSize: '2px',
       borderColor: 'rgba($$color / .5)',
     },
   },

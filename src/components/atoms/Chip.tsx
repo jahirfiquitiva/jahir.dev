@@ -10,18 +10,23 @@ export const Chip = styled('span', {
   p: '$6 $11 $6 $10',
   fontSize: '$3xs',
   borderRadius: '9999px',
-  border: '1px solid $$border',
-  background: 'none',
+  border: '1px solid $divider',
+  backgroundColor: 'rgba(9 17 34 / 0.006)',
   color: '$text-secondary',
   transition: 'all .2s ease-in-out',
   lineHeight: '1.65',
   gap: '$6',
   ellipsize: true,
+  dark: {
+    backgroundColor: 'rgba(235 240 251 / 0.008)',
+  },
   hocus: {
     textDecoration: 'none',
     color: '$text-primary',
     backgroundColor: '$$bg',
-    transform: 'scale(1.025)',
+    borderColor: '$$border',
+    transform: 'scale(1.0125)',
+    cursor: 'pointer',
   },
 });
 
@@ -47,7 +52,7 @@ export const ChipGroup = styled('ul', {
 export const buildChipStyles = (color?: string | null): StitchesCSS => {
   if (!color) return {};
   return {
-    $$bg: hexToRGB(color, 0.12),
+    $$bg: hexToRGB(color, 0.08),
     $$border: hexToRGB(color, 0.5),
   };
 };
