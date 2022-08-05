@@ -36,7 +36,7 @@ const Card = styled(Link, {
     p: 'calc($10 - 1px)',
     transform: 'scale(1.005)',
     boxShadow:
-      '0 0 8px 2px rgba($$color / .2), 0 0 1px 0 rgba($$color / .36)',
+      '0 0 8px 2px rgba($$color / .2), 0 0 1px 1px rgba($$color / .36)',
     backgroundColor: 'rgba($$color / .12)',
     borderColor: 'rgba($$textColor / .36)',
     textDecoration: 'none',
