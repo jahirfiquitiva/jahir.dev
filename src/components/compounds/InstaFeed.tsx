@@ -68,7 +68,7 @@ const ImgContainer = styled(Link, {
 });
 
 const InstaPhoto = styled('img', {
-  width: 'auto',
+  width: '100%',
   height: '100%',
   backgroundColor: '$toolbar',
   objectFit: 'cover',

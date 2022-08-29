@@ -8,6 +8,8 @@ interface RemoteInstagramPost {
   permalink?: string;
   caption?: string;
   photo?: string;
+  mediaType?: 'IMAGE' | 'CAROUSEL_ALBUM' | 'VIDEO';
+  thumbnailUrl?: string;
 }
 
 export interface InstagramPost {
@@ -41,7 +43,7 @@ const fetchFeedWithKey = async (
     id: post.id,
     caption: post.caption,
     postUrl: post.permalink,
-    photoUrl: post.mediaUrl,
+    photoUrl: post.thumbnailUrl || post.mediaUrl,
   }));
 };
 
