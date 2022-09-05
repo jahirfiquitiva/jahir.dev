@@ -46,11 +46,13 @@ interface OfficialResponse {
 }
 
 const getFeed = async (): Promise<Array<InstagramPost>> => {
+  let responseContent = '';
   try {
     const offResponse = await fetch(
       'https://www.instagram.com/jahirfiquitiva/?__a=1&__d=1',
     );
-    const { graphql } = (await offResponse.json()) as OfficialResponse;
+    responseContent = await offResponse.text();
+    const { graphql } = JSON.parse(responseContent) as OfficialResponse;
     const posts = graphql.user.edge_owner_to_timeline_media.edges.slice(0, 6);
     return posts.map(({ node }) => {
       const postCaption = node.edge_media_to_caption.edges?.[0]?.node?.text;
@@ -69,6 +71,10 @@ const getFeed = async (): Promise<Array<InstagramPost>> => {
       };
     });
   } catch (e) {
+    // eslint-disable-next-line
+    console.error(responseContent);
+    // eslint-disable-next-line
+    console.error(e);
     return [];
   }
 };

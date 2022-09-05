@@ -16,18 +16,28 @@ interface OfficialResponse {
   };
 }
 
-export default async function handler() {
+const getFollowers = async (): Promise<number> => {
+  let responseContent = '';
   try {
     const offResponse = await fetch(
       'https://www.instagram.com/jahirfiquitiva/?__a=1&__d=1',
     );
-    let responseStatus = offResponse.status;
-    let followers = 0;
-    if (responseStatus >= 200 && responseStatus < 300) {
-      const { graphql } = (await offResponse.json()) as OfficialResponse;
-      followers = graphql.user.edge_followed_by.count;
-    }
+    responseContent = await offResponse.text();
+    const { graphql } = JSON.parse(responseContent) as OfficialResponse;
+    return graphql.user.edge_followed_by.count;
+  } catch (e) {
+    // eslint-disable-next-line
+    console.error(responseContent);
+    // eslint-disable-next-line
+    console.error(e);
+    return 0;
+  }
+};
 
+export default async function handler() {
+  try {
+    let responseStatus = 200;
+    let followers = await getFollowers();
     if (followers <= 0) {
       const response = await fetch(`${instagramApi}/followers`);
       responseStatus = response.status;
