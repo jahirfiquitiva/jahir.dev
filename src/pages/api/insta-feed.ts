@@ -69,7 +69,6 @@ const getFeed = async (): Promise<Array<InstagramPost>> => {
       };
     });
   } catch (e) {
-    console.error(e);
     return [];
   }
 };
