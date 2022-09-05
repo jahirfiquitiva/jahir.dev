@@ -22,8 +22,11 @@ export default async function handler() {
       'https://www.instagram.com/jahirfiquitiva/?__a=1&__d=1',
     );
     let responseStatus = offResponse.status;
-    const { graphql } = (await offResponse.json()) as OfficialResponse;
-    let followers = graphql.user.edge_followed_by.count;
+    let followers = 0;
+    if (responseStatus >= 200 && responseStatus < 300) {
+      const { graphql } = (await offResponse.json()) as OfficialResponse;
+      followers = graphql.user.edge_followed_by.count;
+    }
 
     if (followers <= 0) {
       const response = await fetch(`${instagramApi}/followers`);
