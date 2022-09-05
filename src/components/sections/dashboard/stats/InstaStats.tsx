@@ -6,7 +6,7 @@ import type { FC } from '@/types';
 
 export const InstaStats: FC = () => {
   const { data, loading } = useRequest<{ followers?: number }>(
-    '/api/instagram',
+    '/api/insta-followers',
   );
   return (
     <>
