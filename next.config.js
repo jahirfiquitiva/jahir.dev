@@ -26,9 +26,6 @@ const defaultNextConfig = {
   compress: true,
   crossOrigin: 'anonymous',
   experimental: {
-    images: {
-      allowFutureImage: true,
-    },
     newNextLinkBehavior: true,
     legacyBrowsers: false,
     browsersListForSwc: true,

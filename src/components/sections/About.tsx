@@ -43,7 +43,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
       <PhotoFigure>
         <Img
           src={`/static/images/about/${image.key}.jpg`}
-          alt={image.alt}
+          alt={image.alt || 'Photo including Jahir'}
           quality={100}
           width={image?.width || 666}
           height={image?.height || 278}

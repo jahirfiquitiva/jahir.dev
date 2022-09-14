@@ -52,7 +52,7 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
       <OpenDoodle
         key={img.key}
         src={`/static/images/donate/${img.key}.png`}
-        alt={img.alt}
+        alt={img.alt || 'Doodle'}
         flip={img.key < 3}
         shadowColor={'$colors$shadow-red'}
         css={{

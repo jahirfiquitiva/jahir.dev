@@ -30,7 +30,7 @@ export const InspirationItem: FC<{ item: InspoItemType }> = ({ item }) => {
     <ItemLink title={title || domain || ''} href={link || '#'}>
       <ItemImage
         size={24}
-        alt={title}
+        alt={title || `Favicon for ${title} website`}
         src={
           `https://unavatar.io/microlink/${domain}` +
           `?fallback=https://unavatar.io/duckduckgo/${domain}` +

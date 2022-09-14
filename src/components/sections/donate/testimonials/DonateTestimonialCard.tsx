@@ -87,6 +87,7 @@ export const DonateTestimonialCard: FC<Testimonial> = (props) => {
           src={
             props.sponsor.photo || 'https://source.boringavatars.com/beam/28'
           }
+          alt={`Photo of ${props.sponsor.name}`}
           size={28}
           css={{ backgroundColor: '$accent-light' }}
         />

@@ -104,7 +104,7 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
     return (
       <OpenDoodle
         src={`/static/images/contact/${image.key}.png`}
-        alt={image.alt}
+        alt={image.alt || 'Doodle'}
         size={image.width || 384}
         priority
       />
