@@ -69,6 +69,10 @@ Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquiti
 yarn dev
 ```
 
+## Cloning / Forking
+
+Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/main/LICENSE), do not copy it directly, remove all of my personal information (resume, blog posts, images, etc.) and change the styling and colors to match your personal brand. You are free to use this code as inspiration but this is not a template.
+
 ## Previous versions
 
 All the previous versions of this website can be found at [jahirfiquitiva/prev-websites](https://github.com/jahirfiquitiva/prev-websites)
