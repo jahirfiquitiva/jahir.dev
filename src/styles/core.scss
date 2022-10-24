@@ -113,3 +113,10 @@ samp {
   outline: 2px dashed var(--colors-text-secondary);
   outline-offset: 0.25rem;
 }
+
+/* Fix image border in Safari for lazy loading images. See https://nextjs.org/docs/api-reference/next/future/image#known-browser-bugs */
+@media not all and (min-resolution: 0.001dpcm) {
+  img[loading='lazy'] {
+    clip-path: inset(0.5px);
+  }
+}
