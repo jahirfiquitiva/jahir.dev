@@ -1,4 +1,4 @@
-import FutureNextImage, { type ImageProps } from 'next/future/image';
+import NextImage, { type ImageProps } from 'next/image';
 
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
@@ -20,10 +20,10 @@ const BaseImg: FC<ImgProps> = (props) => {
     ...rest
   } = otherProps as WidthHeightProps;
   return (
-    <FutureNextImage
+    <NextImage
       {...rest}
-      width={width}
-      height={height}
+      width={Number(width)}
+      height={Number(height)}
       loading={props.priority ? undefined : props.loading}
       decoding={'async'}
     />

@@ -25,7 +25,7 @@ export const SongCard: FC<SongCardProps> = (props) => {
         second: `${song?.artist} • ${song?.album}`,
       }}
       empty={{
-        is: song == 'undefined' || song == null || !Object.keys(song).length,
+        is: !song || !Object.keys(song).length,
         text: 'Not playing…',
         iconPath: mdiSpotify,
       }}

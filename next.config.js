@@ -28,7 +28,6 @@ const defaultNextConfig = {
   experimental: {
     newNextLinkBehavior: true,
     legacyBrowsers: false,
-    browsersListForSwc: true,
     optimizeCss: true,
   },
   compiler: {
