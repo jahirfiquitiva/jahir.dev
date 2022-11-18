@@ -7,6 +7,7 @@ import {
   linkedInOutline,
   twitterOutline,
   polywork,
+  mastodon,
 } from '@/icons';
 import { styled } from '~/stitches';
 
@@ -84,6 +85,15 @@ const PolyworkLink = styled(SocialLink, {
   },
 });
 
+const MastodonLink = styled(SocialLink, {
+  hocus: {
+    color: '#563ACC',
+    dark: {
+      color: '#6364FF',
+    },
+  },
+});
+
 const iconSize = 0.9;
 export const SocialLinks = () => {
   return (
@@ -108,6 +118,15 @@ export const SocialLinks = () => {
         >
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
+      </li>
+      <li>
+        <MastodonLink
+          title={'Mastodon'}
+          href={'https://mastodon.social/@jahirfiquitiva'}
+          rel={'me'}
+        >
+          <Icon path={mastodon} size={iconSize} />
+        </MastodonLink>
       </li>
       <li>
         <InstagramLink
