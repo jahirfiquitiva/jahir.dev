@@ -54,23 +54,13 @@ const ImageMeta: FC<{ image?: string; metaImageStyle?: MetaImageStyle }> = (
 ) => {
   const { image, metaImageStyle = 'summary_large_image' } = props;
 
-  const actualDefaultImage = useMemo<string>(
-    () => (metaImageStyle === 'summary' ? defaultLogoImage : defaultImage),
-    [metaImageStyle],
-  );
-
-  const actualImage = useMemo<string>(
-    () => image || actualDefaultImage,
-    [image, actualDefaultImage],
-  );
-
-  const actualMetaImageStyle = useMemo<MetaImageStyle>(
-    () =>
-      actualImage === defaultLogoImage
-        ? 'summary'
-        : metaImageStyle || 'summary_large_image',
-    [actualImage, metaImageStyle],
-  );
+  const actualDefaultImage =
+    metaImageStyle === 'summary' ? defaultLogoImage : defaultImage;
+  const actualImage = image || actualDefaultImage;
+  const actualMetaImageStyle =
+    actualImage === defaultLogoImage
+      ? 'summary'
+      : metaImageStyle || 'summary_large_image';
 
   return (
     <>
@@ -107,9 +97,7 @@ export const Seo: FC<MetaData> = (props) => {
     metaImageStyle = 'summary_large_image',
   } = props;
 
-  const keywords = useMemo<string>(() => {
-    return mapKeywords(initialKeywords);
-  }, [initialKeywords]);
+  const keywords = mapKeywords(initialKeywords);
 
   return (
     <Head>

@@ -85,9 +85,7 @@ export const Masonry: FC<MasonryProps> = (props) => {
   const childrenCount = Children.count(children);
   const { width: windowWidth } = useWindowDimensions();
 
-  const mappedBreakpoints = useMemo<MasonryBreakpoints>(() => {
-    return mapColumnsBreakPoints(breakpoints);
-  }, [breakpoints]);
+  const mappedBreakpoints = mapColumnsBreakPoints(breakpoints);
 
   const columnsCount = useMemo<number>(() => {
     const breakpoints = Object.keys(mappedBreakpoints)

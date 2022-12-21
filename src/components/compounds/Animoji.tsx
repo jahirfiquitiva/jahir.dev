@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
-
 import { Img, Link } from '@/components/atoms';
 import type { FC } from '@/types';
-import { styled, type StitchesCSS as CSS } from '~/stitches';
+import { styled } from '~/stitches';
 
 const AnimojiImg = styled(Img, {
   backgroundColor: '$accent-animoji',
@@ -14,21 +12,12 @@ const AnimojiImg = styled(Img, {
   },
 });
 
-const statusOptionsArray = ['online', 'idle', 'dnd', 'offline'] as const;
-type StatusOption = typeof statusOptionsArray[number];
-
 interface AnimojiProps {
   size?: number;
-  status?: StatusOption;
 }
 
 export const Animoji: FC<AnimojiProps> = (props) => {
-  const { size = 96, status, css } = props;
-
-  const imgStyles = useMemo<CSS>(() => {
-    if (status) return {};
-    return {};
-  }, [status]);
+  const { size = 96, css } = props;
 
   return (
     <Link
@@ -44,9 +33,6 @@ export const Animoji: FC<AnimojiProps> = (props) => {
       }}
     >
       <AnimojiImg
-        css={{
-          ...imgStyles,
-        }}
         src={'/static/images/jahir/animoji.png'}
         alt={'Jahir as an Animoji'}
         size={size}

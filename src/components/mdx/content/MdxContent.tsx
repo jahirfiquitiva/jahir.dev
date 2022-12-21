@@ -96,7 +96,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   const { isDark, themeReady } = useTheme();
   const { data: heroPalette } = useSafePalette(hero);
 
-  const isUsesPage = useMemo<boolean>(() => slug === 'uses', [slug]);
+  const isUsesPage = slug === 'uses';
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};

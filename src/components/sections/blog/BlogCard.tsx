@@ -125,6 +125,16 @@ interface BlogCardProps {
   post: Post;
 }
 
+const getDomainFromLinkUrl = (link?: string): string => {
+  if (!link) return '';
+  try {
+    const url = new URL(link);
+    return url.hostname.replace('www.', '');
+  } catch (e) {
+    return '';
+  }
+};
+
 // eslint-disable-next-line max-lines-per-function
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
@@ -150,18 +160,8 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     return color;
   }, [post?.color, isDark, themeReady, heroPalette]);
 
-  const rightLink = useMemo<string>(() => {
-    return link && link.length > 0 ? link : `/blog/${slug}`;
-  }, [link, slug]);
-
-  const domain = useMemo<string>(() => {
-    try {
-      const url = new URL(rightLink);
-      return url.hostname.replace('www.', '');
-    } catch (e) {
-      return '';
-    }
-  }, [rightLink]);
+  const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
+  const domain = getDomainFromLinkUrl(rightLink);
 
   const extraHeroProps = useMemo(() => {
     if (post?.heroMeta && post?.heroMeta.blur64) {
