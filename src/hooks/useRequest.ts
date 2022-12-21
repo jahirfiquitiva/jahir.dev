@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { MutatorCallback } from 'swr/dist/types';
+import type { MutatorCallback } from 'swr';
 
 import fetcher from '@/lib/fetcher';
 
