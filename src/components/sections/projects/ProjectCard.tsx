@@ -27,8 +27,9 @@ const StyledProjectCard = styled(Link, {
     backgroundColor: 'rgba(235 240 251 / 0.008)',
   },
   '& > div:first-of-type > img': {
+    backgroundImage: 'none !important',
     filter:
-      'saturate(0.95) opacity(0.85) drop-shadow(0 0 1px rgba($$color / .5))',
+      'saturate(0.95) opacity(0.85) drop-shadow(0 1px 2px rgba($$color / .5))',
   },
   '& > div:first-of-type > *': {
     transition: 'color .15s ease-in-out',
