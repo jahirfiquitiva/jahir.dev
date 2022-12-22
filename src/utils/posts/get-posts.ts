@@ -1,4 +1,4 @@
-import { allBlogs, Blog } from 'contentlayer/generated';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 type ConvertUndefined<T> = OrUndefined<{
   [K in keyof T as undefined extends T[K] ? K : never]-?: T[K];

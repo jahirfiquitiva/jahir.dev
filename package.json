@@ -13,8 +13,8 @@
     "gen-blur": "yarn blur about",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
-    "complexity": "npx --no-install code-complexity . --sort score --limit 25",
-    "modules-size": "npx --no-install cost-of-modules"
+    "complexity": "npx --yes --no-install code-complexity . --sort score --limit 25",
+    "modules-size": "npx --yes --no-install cost-of-modules"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.14",
