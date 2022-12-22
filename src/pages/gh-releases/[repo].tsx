@@ -2,7 +2,7 @@ import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
 import { Heading, Link, Section } from '@/components/atoms';
 import { Layout, Seo } from '@/components/molecules';
-import { useRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks';
 import { FourOhFour as FourOhFourSection } from '@/sections';
 
 interface ReleaseData {
@@ -12,7 +12,7 @@ interface ReleaseData {
 }
 
 const GitHubRelease: NextPage<{ repo?: string }> = ({ repo }) => {
-  const { data, loading } = useRequest<ReleaseData>(
+  const { data, loading } = useImmutableRequest<ReleaseData>(
     `/api/release?repo=${repo}`,
   );
 

@@ -2,7 +2,7 @@ import { mdiInstagram } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
-import { useRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks';
 import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
@@ -77,9 +77,9 @@ const InstaPhoto = styled('img', {
 });
 
 export const InstaFeed: FC = () => {
-  const { data, loading } = useRequest<{ feed?: Array<InstagramPost> }>(
-    '/api/insta-feed',
-  );
+  const { data, loading } = useImmutableRequest<{
+    feed?: Array<InstagramPost>;
+  }>('/api/insta-feed');
   if (loading || !data || !data.feed || !data.feed.length) return null;
   return (
     <Figure>

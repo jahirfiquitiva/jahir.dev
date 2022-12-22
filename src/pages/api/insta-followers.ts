@@ -27,9 +27,9 @@ const getFollowers = async (): Promise<number> => {
     return graphql.user.edge_followed_by.count;
   } catch (e) {
     // eslint-disable-next-line
-    console.error(responseContent);
+    console.error('insta-followers', responseContent);
     // eslint-disable-next-line
-    console.error(e);
+    console.error('insta-followers', e);
     return 0;
   }
 };

@@ -1,46 +1,72 @@
+import { DISCORD_ID } from '@/hooks';
 import { getNowPlaying, validateTrack, type TrackData } from '@/lib/spotify';
-import { buildApiResponse } from '@/utils';
+import type { LanyardResponse } from '@/types';
+import { buildApiResponse, transformSpotifyActivity } from '@/utils';
 
 export const config = {
   runtime: 'experimental-edge',
 };
 
+const requestNowPlayingFromLanyard = async () => {
+  try {
+    const req = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+    const { data, success } = (await req.json()) as LanyardResponse;
+    if (!success) return buildApiResponse(200, { isPlaying: false });
+
+    const { spotify } = data || {};
+    const track = transformSpotifyActivity(spotify);
+    if (!track) return buildApiResponse(200, { isPlaying: false });
+
+    if (validateTrack(track)) {
+      return buildApiResponse(200, track, {
+        'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
+      });
+    }
+    return buildApiResponse(200, { isPlaying: false });
+  } catch (e) {
+    return buildApiResponse(200, { isPlaying: false });
+  }
+};
+
 export default async function handler() {
-  const response = await getNowPlaying();
+  try {
+    const response = await getNowPlaying();
+    if (response.status === 204 || response.status > 400) {
+      return requestNowPlayingFromLanyard();
+    }
 
-  if (response.status === 204 || response.status > 400) {
+    const song = await response.json();
+    if (song.item === null) {
+      return requestNowPlayingFromLanyard();
+    }
+
+    const isPlaying = song.is_playing;
+    const title = song.item.name;
+    const artist = song.item.artists
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((_artist: any) => _artist.name)
+      .join(', ');
+    const album = song.item.album.name;
+    const preAlbumImage = song.item.album.images.pop();
+    const albumImage = song.item.album.images.pop() || preAlbumImage;
+    const url = song.item.external_urls.spotify;
+
+    const track: TrackData = {
+      title,
+      artist,
+      album,
+      url,
+      image: albumImage,
+      isPlaying,
+    };
+
+    if (validateTrack(track)) {
+      return buildApiResponse(200, track, {
+        'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
+      });
+    }
     return buildApiResponse(200, { isPlaying: false });
+  } catch (e) {
+    return requestNowPlayingFromLanyard();
   }
-
-  const song = await response.json();
-  if (song.item === null) {
-    return buildApiResponse(200, { isPlaying: false });
-  }
-
-  const isPlaying = song.is_playing;
-  const title = song.item.name;
-  const artist = song.item.artists
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .map((_artist: any) => _artist.name)
-    .join(', ');
-  const album = song.item.album.name;
-  const preAlbumImage = song.item.album.images.pop();
-  const albumImage = song.item.album.images.pop() || preAlbumImage;
-  const url = song.item.external_urls.spotify;
-
-  const track: TrackData = {
-    title,
-    artist,
-    album,
-    url,
-    image: albumImage,
-    isPlaying,
-  };
-
-  if (validateTrack(track)) {
-    return buildApiResponse(200, track, {
-      'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
-    });
-  }
-  return buildApiResponse(200, { isPlaying: false });
 }

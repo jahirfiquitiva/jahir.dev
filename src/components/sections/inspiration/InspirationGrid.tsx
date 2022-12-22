@@ -4,7 +4,7 @@ import {
   Masonry,
   type MasonryBreakpoints,
 } from '@/components/compounds';
-import { useRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks';
 import { InspirationItem as InspirationItemType } from '@/lib/notion';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
@@ -18,7 +18,7 @@ masonryBreakpoints[(breakpointsValues['mobile-lg'] || 0).toString()] = 2;
 masonryBreakpoints[(breakpointsValues['tablet-md'] || 0).toString()] = 3;
 
 export const InspirationGrid: FC = () => {
-  const { data, loading, error } = useRequest<{
+  const { data, loading, error } = useImmutableRequest<{
     success: boolean;
     bookmarks?: Array<InspirationItemType>;
   }>('/api/bookmarks');
