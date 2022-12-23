@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
@@ -21,6 +21,7 @@ interface PostPageProps {
 }
 
 const PostPage: NextPage<PostPageProps> = (props) => {
+  useLiveReload();
   const { post: basePost } = props;
   const MdxComponent = useMDXComponent(basePost.body.code);
   const router = useRouter();

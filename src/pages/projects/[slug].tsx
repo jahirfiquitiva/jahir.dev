@@ -1,5 +1,5 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
@@ -27,6 +27,7 @@ interface ProjectPageProps {
 }
 
 const ProjectPage: NextPage<ProjectPageProps> = (props) => {
+  useLiveReload();
   const { project: baseProject } = props;
   const MdxComponent = useMDXComponent(baseProject.body.code);
   const project = useMemo(
