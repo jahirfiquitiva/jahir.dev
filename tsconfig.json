@@ -25,7 +25,8 @@
     },
     "incremental": true,
     // "jsxImportSource": "@emotion/react",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [".next", ".idea", "node_modules"],
   "include": [

@@ -104,7 +104,7 @@ const isValidColor = (color?: string): boolean => {
 
 export const ActivityCard: FC<ActivityCardProps> = (props) => {
   const { image, title, href, texts, empty, loading } = props;
-  const { data: palette = {} } = useSafePalette(image?.url);
+  const { palette = {} } = useSafePalette(image?.url);
   const { isDark, themeReady } = useTheme();
 
   const bgColor = useMemo<string>(() => {

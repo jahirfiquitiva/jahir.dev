@@ -139,7 +139,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
   const { link, slug, devToId } = post;
   const { isDark, themeReady } = useTheme();
-  const { data: heroPalette = {} } = useSafePalette(post?.hero);
+  const { palette: heroPalette = {} } = useSafePalette(post?.hero);
 
   const { data: views } = useRequest<{ total?: string }>(
     `/api/views/blog--${slug}?devToId=${devToId}`,
