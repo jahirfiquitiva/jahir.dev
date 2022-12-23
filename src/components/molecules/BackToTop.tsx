@@ -1,9 +1,9 @@
-import { mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useState, useEffect, useCallback } from 'react';
 
 import { Button } from '@/components/atoms';
 import { useHasMounted } from '@/hooks';
+import { mdiChevronUp } from '@/icons';
 import { styled } from '~/stitches';
 
 const Fab = styled(Button, {

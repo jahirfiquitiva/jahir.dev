@@ -1,8 +1,8 @@
-import { mdiInstagram } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
 import { useImmutableRequest } from '@/hooks';
+import { mdiInstagram } from '@/icons';
 import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';

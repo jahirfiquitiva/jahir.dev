@@ -1,11 +1,3 @@
-import {
-  mdiBookmark,
-  mdiHeart,
-  mdiBookmarkOutline,
-  mdiHeartOutline,
-  mdiThumbUp,
-  mdiThumbUpOutline,
-} from '@mdi/js';
 import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
@@ -13,7 +5,16 @@ import { useEffect } from 'react';
 
 import { Button } from '@/components/atoms';
 import { useHasMounted, useWindowDimensions } from '@/hooks';
-import { award, awardOutline } from '@/icons';
+import {
+  award,
+  awardOutline,
+  mdiBookmark,
+  mdiHeart,
+  mdiBookmarkOutline,
+  mdiHeartOutline,
+  mdiThumbUp,
+  mdiThumbUpOutline,
+} from '@/icons';
 import { type ReactionType, useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';

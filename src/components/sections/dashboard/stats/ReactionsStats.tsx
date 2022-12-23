@@ -1,7 +1,6 @@
-import { mdiThumbUpOutline } from '@mdi/js';
-
 import { LinkStatCard } from '@/components/compounds';
 import { useRequest } from '@/hooks';
+import { mdiThumbUpOutline } from '@/icons';
 import type { FC } from '@/types';
 
 export const ReactionsStats: FC = () => {

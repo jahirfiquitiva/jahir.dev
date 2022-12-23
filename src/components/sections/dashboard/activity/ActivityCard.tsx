@@ -1,11 +1,11 @@
 /* eslint-disable max-lines-per-function */
-import { mdiTimerSandEmpty } from '@mdi/js';
 import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
 import { useSafePalette } from '@/hooks';
+import { mdiTimerSandEmpty } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
 import { getReadableColor, hexToRGB } from '@/utils';

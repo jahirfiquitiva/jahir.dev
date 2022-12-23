@@ -1,7 +1,7 @@
-import { mdiFormatQuoteClose } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Img } from '@/components/atoms';
+import { mdiFormatQuoteClose } from '@/icons';
 import type { Sponsor, Testimonial } from '@/lib/sponsors';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';

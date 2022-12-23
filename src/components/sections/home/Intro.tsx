@@ -1,8 +1,8 @@
-import { mdiAccountCircleOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link, LinkButton, Heading, Img, Section } from '@/components/atoms';
 import { WavingHello } from '@/components/compounds';
+import { mdiAccountCircleOutline } from '@/icons';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 

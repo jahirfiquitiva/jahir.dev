@@ -1,8 +1,6 @@
-import { mdiStarOutline } from '@mdi/js';
-
 import { LinkStatCard } from '@/components/compounds';
 import { useRequest } from '@/hooks';
-import { gitHubOutline } from '@/icons';
+import { mdiStarOutline, gitHubOutline } from '@/icons';
 import type { FC } from '@/types';
 
 export const GitHubStats: FC = () => {

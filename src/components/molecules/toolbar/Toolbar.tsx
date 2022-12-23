@@ -1,7 +1,7 @@
-import { mdiMenu, mdiPlus } from '@mdi/js';
 import { FC, useState } from 'react';
 
 import { Logo } from '@/components/atoms';
+import { mdiMenu, mdiPlus } from '@/icons';
 import { styled, theme } from '~/stitches';
 
 import { ThemeToggle } from './ThemeToggle';

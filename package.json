@@ -13,13 +13,12 @@
     "gen-blur": "yarn blur about",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
-    "complexity": "npx --yes --no-install code-complexity . --sort score --limit 25",
-    "modules-size": "npx --yes --no-install cost-of-modules"
+    "complexity": "npx --yes --no-install code-complexity ./src --sort score --limit 25",
+    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.14",
     "@fontsource/manrope": "^4.5.12",
-    "@mdi/js": "^7.1.96",
     "@mdi/react": "^1.6.1",
     "@prisma/client": "^4.8.0",
     "@stitches/react": "^1.2.8",
@@ -28,7 +27,7 @@
     "colord": "^2.9.3",
     "contentlayer": "^0.2.9",
     "mdx-bundler": "^9.0.1",
-    "next": "^13.0.7",
+    "next": "^13.1.0",
     "next-contentlayer": "^0.2.9",
     "next-themes": "0.2.1",
     "react": "^18.2.0",
@@ -39,7 +38,7 @@
   },
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@next/bundle-analyzer": "^13.0.7",
+    "@next/bundle-analyzer": "^13.1.0",
     "@swc-node/register": "^1.5.4",
     "@swc/core": "^1.3.24",
     "@types/canvas-confetti": "^1.6.0",
@@ -51,7 +50,7 @@
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "eslint": "^8.30.0",
-    "eslint-config-next": "^13.0.7",
+    "eslint-config-next": "^13.1.0",
     "globby": "^13.1.3",
     "plaiceholder": "^2.5.0",
     "preact": "^10.11.3",

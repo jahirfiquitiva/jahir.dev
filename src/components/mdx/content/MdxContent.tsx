@@ -1,9 +1,9 @@
-import { mdiPencilOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Divider, Link, LinkButton, Section } from '@/components/atoms';
 import { useSafePalette } from '@/hooks';
+import { mdiPencilOutline } from '@/icons';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';

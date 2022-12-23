@@ -1,10 +1,9 @@
-import { mdiClockOutline, mdiEyeOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
 import { useSafePalette, useRequest } from '@/hooks';
-import { calendarOutline } from '@/icons';
+import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
 import {

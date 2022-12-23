@@ -1,8 +1,14 @@
-import { mdiCrystalBall } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { buildChipStyles, Chip, Img, Link } from '@/components/atoms';
-import { unicorn, rocket, robot, lightning, diamond } from '@/icons';
+import {
+  mdiCrystalBall,
+  unicorn,
+  rocket,
+  robot,
+  lightning,
+  diamond,
+} from '@/icons';
 import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
 import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';

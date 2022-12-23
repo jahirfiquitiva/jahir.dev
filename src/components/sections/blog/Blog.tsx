@@ -1,8 +1,8 @@
-import { mdiMagnify, mdiRss } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
 import { Field, Heading, LinkButton, Section } from '@/components/atoms';
+import { mdiMagnify, mdiRss } from '@/icons';
 import type { FC, Post } from '@/types';
 import { groupBlogPosts } from '@/utils';
 import { styled } from '~/stitches';
