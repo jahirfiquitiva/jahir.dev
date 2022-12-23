@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { useSafePalette, useRequest } from '@/hooks';
+import { usePalette, useRequest } from '@/hooks';
 import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
@@ -139,7 +139,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
   const { link, slug, devToId } = post;
   const { isDark, themeReady } = useTheme();
-  const { palette: heroPalette = {} } = useSafePalette(post?.hero);
+  const { palette: heroPalette = {} } = usePalette(post?.hero);
 
   const { data: views } = useRequest<{ total?: string }>(
     `/api/views/blog--${slug}?devToId=${devToId}`,

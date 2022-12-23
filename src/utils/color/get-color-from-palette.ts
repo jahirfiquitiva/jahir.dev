@@ -1,12 +1,7 @@
-import type { PaletteColors } from 'react-palette';
-
-export interface ColorData {
-  vibrant?: string;
-  lightVibrant?: string;
-}
+import type { Palette, SwatchName } from '@/hooks';
 
 export const getColorFromPalette = (
-  palette?: PaletteColors | null,
+  palette?: Palette | null,
   isDark?: boolean,
   darkColor?: string | null,
   colorVariant: 'Vibrant' | 'Muted' = 'Vibrant',
@@ -14,5 +9,8 @@ export const getColorFromPalette = (
   if (!palette) return null;
   if (isDark && darkColor) return darkColor;
   const color = palette[`dark${colorVariant}`] || null;
-  return (isDark ? palette[colorVariant.toLowerCase()] : color) || color;
+  return (
+    (isDark ? palette[colorVariant.toLowerCase() as SwatchName] : color) ||
+    color
+  );
 };

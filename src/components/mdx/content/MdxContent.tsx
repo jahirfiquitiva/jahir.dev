@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Divider, Link, LinkButton, Section } from '@/components/atoms';
-import { useSafePalette } from '@/hooks';
+import { usePalette } from '@/hooks';
 import { mdiPencilOutline } from '@/icons';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
@@ -94,7 +94,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
-  const { palette: heroPalette = {} } = useSafePalette(hero);
+  const { palette: heroPalette = {} } = usePalette(hero);
 
   const isUsesPage = slug === 'uses';
 

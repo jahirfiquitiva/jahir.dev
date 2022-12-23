@@ -1,7 +1,9 @@
 import Vibrant from 'node-vibrant';
 import { useEffect, useState } from 'react';
 
-type SwatchNames =
+import { useHasMounted } from '@/hooks';
+
+export type SwatchName =
   | 'darkMuted'
   | 'darkVibrant'
   | 'lightMuted'
@@ -9,19 +11,20 @@ type SwatchNames =
   | 'muted'
   | 'vibrant';
 
-type Palette = { [name in SwatchNames]?: string };
+export type Palette = { [name in SwatchName]?: string };
 
 interface PaletteState {
   loading?: boolean;
   palette?: Palette;
 }
 
-export const useSafePalette = (imageUrl?: string | null): PaletteState => {
+export const usePalette = (imageUrl?: string | null): PaletteState => {
+  const hasMounted = useHasMounted();
   const [palette, setPalette] = useState<Palette | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!imageUrl) return;
+    if (!imageUrl || !hasMounted) return;
     try {
       Vibrant.from(imageUrl)
         .getPalette()
@@ -34,7 +37,7 @@ export const useSafePalette = (imageUrl?: string | null): PaletteState => {
               const swatchNameInCamelCase = [
                 swatchName[0].toLowerCase(),
                 swatchName.substring(1),
-              ].join('') as SwatchNames;
+              ].join('') as SwatchName;
               parsedPalette[swatchNameInCamelCase] = swatch.hex;
             }
           });
@@ -43,7 +46,7 @@ export const useSafePalette = (imageUrl?: string | null): PaletteState => {
     } catch (e) {
       setLoading(false);
     }
-  }, [imageUrl]);
+  }, [imageUrl, hasMounted]);
 
   return { loading, palette };
 };
