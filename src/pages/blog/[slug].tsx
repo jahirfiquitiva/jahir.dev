@@ -1,11 +1,11 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
-import { useMDXComponent } from '@/hooks';
 import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils';
@@ -22,7 +22,7 @@ interface PostPageProps {
 
 const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
-  const MdxComponent = useMDXComponent(basePost?.body?.code || '');
+  const MdxComponent = useMDXComponent(basePost.body.code);
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
   const router = useRouter();
 

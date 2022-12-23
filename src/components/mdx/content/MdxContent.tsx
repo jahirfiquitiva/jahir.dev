@@ -94,7 +94,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
   } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
-  const { data: heroPalette } = useSafePalette(hero);
+  const { data: heroPalette = {} } = useSafePalette(hero);
 
   const isUsesPage = slug === 'uses';
 

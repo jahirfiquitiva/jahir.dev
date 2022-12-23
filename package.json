@@ -26,7 +26,6 @@
     "canvas-confetti": "^1.6.0",
     "colord": "^2.9.3",
     "contentlayer": "^0.2.9",
-    "mdx-bundler": "^9.0.1",
     "next": "^13.1.0",
     "next-contentlayer": "^0.2.9",
     "next-themes": "0.2.1",

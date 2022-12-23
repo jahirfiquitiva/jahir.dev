@@ -1,11 +1,11 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
-import { useMDXComponent } from '@/hooks';
 import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Project } from '@/types';
 import {
@@ -28,7 +28,7 @@ interface ProjectPageProps {
 
 const ProjectPage: NextPage<ProjectPageProps> = (props) => {
   const { project: baseProject } = props;
-  const MdxComponent = useMDXComponent(baseProject?.body?.code || '');
+  const MdxComponent = useMDXComponent(baseProject.body.code);
   const project = useMemo(
     () => mapContentLayerProject(baseProject),
     [baseProject],
