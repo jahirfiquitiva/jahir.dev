@@ -57,10 +57,6 @@ const defaultNextConfig = {
   },
   webpack(config, { dev, isServer }) {
     config.module.rules.push({
-      test: /\.worker.js$/,
-      loader: 'worker-loader',
-    });
-    config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
       issuer: { and: [/\.(js|ts)x?$/] },
       type: 'asset/resource',

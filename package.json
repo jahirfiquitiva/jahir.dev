@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predev": "yarn clean && prisma generate && yarn gen-blur",
+    "predev": "yarn clean && prisma generate && contentlayer build --clearCache && yarn gen-blur",
     "prebuild": "yarn predev",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "analyze": "cross-env ANALYZE=true NODE_ENV=production next build",
@@ -68,7 +68,6 @@
     "sass": "^1.57.1",
     "sharp": "^0.31.3",
     "typescript": "^4.9.4",
-    "worker-loader": "^3.0.8",
     "xml": "^1.0.1"
   },
   "prettier": {
