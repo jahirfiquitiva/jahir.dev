@@ -2,16 +2,14 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { usePalette, useRequest } from '@/hooks';
+import { usePalette, useRequest, type Palette, type SwatchName } from '@/hooks';
 import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
-import {
-  formatDate,
-  getColorFromPalette,
-  getReadableColor,
-  hexToRGB,
-} from '@/utils';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { getDomainFromUrl } from '@/utils/format/domain';
+import { formatDate } from '@/utils/format/format-date';
 import { styled } from '~/stitches';
 
 const StyledBlogCard = styled(Link, {
@@ -124,14 +122,19 @@ interface BlogCardProps {
   post: Post;
 }
 
-const getDomainFromLinkUrl = (link?: string): string => {
-  if (!link) return '';
-  try {
-    const url = new URL(link);
-    return url.hostname.replace('www.', '');
-  } catch (e) {
-    return '';
-  }
+export const getColorFromPalette = (
+  palette?: Palette | null,
+  isDark?: boolean,
+  darkColor?: string | null,
+  colorVariant: 'Vibrant' | 'Muted' = 'Vibrant',
+): string | null => {
+  if (!palette) return null;
+  if (isDark && darkColor) return darkColor;
+  const color = palette[`dark${colorVariant}`] || null;
+  return (
+    (isDark ? palette[colorVariant.toLowerCase() as SwatchName] : color) ||
+    color
+  );
 };
 
 // eslint-disable-next-line max-lines-per-function
@@ -160,7 +163,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   }, [post?.color, isDark, themeReady, heroPalette]);
 
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
-  const domain = getDomainFromLinkUrl(rightLink);
+  const domain = getDomainFromUrl(rightLink);
 
   const extraHeroProps = useMemo(() => {
     if (post?.heroMeta && post?.heroMeta.blur64) {

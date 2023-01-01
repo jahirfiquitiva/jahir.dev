@@ -1,4 +1,4 @@
-import { buildApiResponse } from '@/utils';
+import { buildApiResponse } from '@/utils/response';
 
 const userApiUrl = 'https://api.github.com/users/jahirfiquitiva';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;

@@ -8,7 +8,8 @@ import { usePalette } from '@/hooks';
 import { mdiTimerSandEmpty } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
-import { getReadableColor, hexToRGB } from '@/utils';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const Card = styled(Link, {

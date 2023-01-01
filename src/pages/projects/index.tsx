@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import { Layout, Seo } from '@/components/molecules';
 import { Projects as ProjectsSection } from '@/sections';
 import type { Project } from '@/types';
-import { pick } from '@/utils';
+import { pick } from '@/utils/posts/get-posts';
 import {
   allProjects,
   type Project as GeneratedProject,

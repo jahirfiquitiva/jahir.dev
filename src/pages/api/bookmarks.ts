@@ -5,7 +5,7 @@ import {
   requestOptions,
   fetchBookmarkPromise,
 } from '@/lib/notion';
-import { buildApiResponse } from '@/utils';
+import { buildApiResponse } from '@/utils/response';
 
 export const config = {
   runtime: 'experimental-edge',

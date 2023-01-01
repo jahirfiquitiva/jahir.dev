@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getTopTracks, validateTrack, type TopTrackData } from '@/lib/spotify';
-import { buildApiResponse } from '@/utils';
+import { buildApiResponse } from '@/utils/response';
 import unique from '@/utils/tools/unique';
 
 export const config = {

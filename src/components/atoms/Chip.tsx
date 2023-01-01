@@ -1,4 +1,4 @@
-import { hexToRGB } from '@/utils';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled, type StitchesCSS } from '~/stitches';
 
 export const Chip = styled('span', {

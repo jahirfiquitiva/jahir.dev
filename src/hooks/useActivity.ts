@@ -1,6 +1,6 @@
 import { useRequest } from '@/hooks';
 import type { ActivityData, LanyardResponse } from '@/types';
-import { transformLanyardData } from '@/utils';
+import { transformLanyardData } from '@/utils/format/format-lanyard';
 
 interface UseActivity {
   data?: ActivityData | null;

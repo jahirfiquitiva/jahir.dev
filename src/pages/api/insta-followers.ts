@@ -1,4 +1,4 @@
-import { buildApiResponse } from '@/utils';
+import { buildApiResponse } from '@/utils/response';
 
 const instagramApi = process.env.INSTA_API || '';
 
