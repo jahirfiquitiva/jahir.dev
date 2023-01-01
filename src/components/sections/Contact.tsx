@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 import { Link, Heading, Section } from '@/components/atoms';
 import { OpenDoodle } from '@/components/compounds';
-import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
 

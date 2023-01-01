@@ -1,16 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { useMemo } from 'react';
 
 import { Layout, Seo } from '@/components/molecules';
+import { useRandomImage } from '@/hooks/useRandomImage';
 import { Contact as ContactSection } from '@/sections';
 import type { RandomPageImage } from '@/types';
-import { getRandomItem } from '@/utils';
 
 const Contact: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
-  const { images } = props;
-  const image = useMemo(() => {
-    return getRandomItem(images);
-  }, [images]);
+  const image = useRandomImage(props.images);
   return (
     <Layout>
       <Seo

@@ -1,4 +1,3 @@
-import { mdiTriangle } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
@@ -6,6 +5,7 @@ import {
   nextJs,
   stitches,
   mdx,
+  mdiTriangle,
   contentlayer,
   notion,
   railway,

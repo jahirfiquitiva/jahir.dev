@@ -7,7 +7,8 @@ import {
   useCallback,
 } from 'react';
 
-import { useHasMounted, useRequest } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
+import { useRequest } from '@/hooks/useRequest';
 import type { FC } from '@/types';
 
 const reactions = ['like', 'love', 'award', 'bookmark'] as const;
@@ -64,9 +65,9 @@ export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
   const [state, setState] = useState<Reactions>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const { data: remoteReactions, loading } = useRequest<{ counters: Reactions }>(
-    `/api/reactions/${slug}`,
-  );
+  const { data: remoteReactions, loading } = useRequest<{
+    counters: Reactions;
+  }>(`/api/reactions/${slug}`);
 
   const incrementReaction = useCallback(
     async (reaction: ReactionType) => {

@@ -1,11 +1,12 @@
-import type {
-  Spotify,
-  Data as LanyardData,
-  Activity as DiscordActivity,
-} from 'use-lanyard';
-
 import { TrackData } from '@/lib/spotify';
-import type { Activity, ActivityData, DiscordStatus } from '@/types';
+import type {
+  Activity,
+  ActivityData,
+  DiscordStatus,
+  Spotify,
+  LanyardData,
+  DiscordActivity,
+} from '@/types';
 
 const ASSET_URL_BASE = 'raw.githubusercontent.com';
 const getAssetUrl = (assetId?: string): string | null => {
@@ -61,7 +62,7 @@ const transformDiscordActivityToActivity = (
   };
 };
 
-const transformSpotifyActivity = (
+export const transformSpotifyActivity = (
   spotify?: Spotify | null,
 ): TrackData | null => {
   if (!spotify) return null;
@@ -82,7 +83,7 @@ const SPOTIFY_ACTIVITY_ID = 'spotify';
 const EXCLUDE_ACTIVITIES_APPS = [CUSTOM_STATUS_ID, SPOTIFY_ACTIVITY_ID];
 
 export const transformLanyardData = (
-  lanyardData?: LanyardData,
+  lanyardData?: LanyardData | null,
 ): ActivityData => {
   if (!lanyardData) return { status: 'offline', activities: [] };
   return {

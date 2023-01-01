@@ -5,10 +5,10 @@ import { useMemo } from 'react';
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
-import { useMDXComponent } from '@/hooks';
+import { useMDXComponent } from '@/hooks/useMDXComponent';
 import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Post } from '@/types';
-import { getAllPosts } from '@/utils';
+import { getAllPosts } from '@/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
@@ -22,7 +22,7 @@ interface PostPageProps {
 
 const PostPage: NextPage<PostPageProps> = (props) => {
   const { post: basePost } = props;
-  const MdxComponent = useMDXComponent(basePost?.body?.code || '');
+  const MdxComponent = useMDXComponent(basePost?.body?.code);
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
   const router = useRouter();
 
@@ -82,7 +82,7 @@ export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getAllPosts([], true)
+    paths: getAllPosts([])
       .filter((it) => it.slug !== 'uses')
       .filter((post) => {
         const shouldRedirect = post && post.link && post.link.length > 0;
@@ -94,7 +94,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getAllPosts([], true)
+  const post = getAllPosts([])
     .filter((it) => it.slug !== 'uses')
     .find((post) => post.slug === params?.slug);
   if (!post) {

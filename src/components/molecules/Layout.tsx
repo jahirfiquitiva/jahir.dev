@@ -1,9 +1,20 @@
-import type { FC } from '@/types';
-import { styled, keyframes } from '~/stitches';
+import dynamic from 'next/dynamic';
 
-import { BackToTop } from './BackToTop';
-import { Footer } from './footer';
+import { useHasMounted } from '@/hooks/useHasMounted';
+import type { FC } from '@/types';
+import { styled, keyframes, type StitchesCSS } from '~/stitches';
+
 import { Toolbar } from './toolbar';
+
+const BackToTop = dynamic(
+  () => import('./BackToTop').then((component) => component.BackToTop),
+  { ssr: false },
+);
+
+const Footer = dynamic(
+  () => import('./footer').then((component) => component.Footer),
+  { ssr: false },
+);
 
 const pageTransition = keyframes({
   '0%': { transform: 'scale(0.975)', opacity: 0 },
@@ -30,13 +41,34 @@ const Main = styled('main', {
   },
 });
 
+const invertedStyles: StitchesCSS = {
+  '&, & *': {
+    pointerEvents: 'none',
+    userSelect: 'none',
+    filter: 'saturate(30) invert(1.5)',
+    '&::before': {
+      zIndex: 9999,
+      content: 'Please change the styling and colors to match your own style',
+    },
+  },
+};
+const allowlist = ['localhost', 'jahir.dev', 'jahirfiquitiva'];
+const hostRegex = new RegExp(allowlist.join('|'));
+const useInvertedStyles = (): StitchesCSS | undefined => {
+  const hasMounted = useHasMounted();
+  if (hasMounted && !hostRegex.test(window?.location?.hostname || ''))
+    return invertedStyles;
+  return {};
+};
+
 export const Layout: FC = (props) => {
+  const invertedStyles = useInvertedStyles();
   return (
     <>
-      <Toolbar />
-      <Main>{props.children}</Main>
-      <Footer />
-      <BackToTop />
+      <Toolbar css={invertedStyles} />
+      <Main css={invertedStyles}>{props.children}</Main>
+      <Footer css={invertedStyles} />
+      <BackToTop css={invertedStyles} />
     </>
   );
 };

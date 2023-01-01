@@ -16,9 +16,8 @@ import {
   mdiAccountGroupOutline,
   mdiPaletteSwatchOutline,
   mdiTailwind,
-} from '@mdi/js';
-
-import { nextJs } from '@/icons';
+  nextJs,
+} from '@/icons';
 
 export interface SkillProps {
   name: string;

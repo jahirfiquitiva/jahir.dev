@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
-import { useLanyard } from 'use-lanyard';
-
-import type { ActivityData } from '@/types';
-import { transformLanyardData } from '@/utils';
+import { useRequest } from '@/hooks/useRequest';
+import type { ActivityData, LanyardResponse } from '@/types';
+import { transformLanyardData } from '@/utils/format/format-lanyard';
 
 interface UseActivity {
   data?: ActivityData | null;
@@ -10,17 +8,14 @@ interface UseActivity {
   error?: Error | string | null;
 }
 
-const DISCORD_ID = '624058364812591104';
+const discordUserId = process.env.DISCORD_USER_ID || '';
 export const useActivity = (): UseActivity => {
-  const { data, error } = useLanyard(DISCORD_ID);
-
-  const activityData = useMemo(() => {
-    return transformLanyardData(data);
-  }, [data]);
-
+  const { data, loading, error } = useRequest<LanyardResponse>(
+    `https://api.lanyard.rest/v1/users/${discordUserId}`,
+  );
   return {
-    data: activityData,
+    data: data?.success ? transformLanyardData(data?.data) : undefined,
     error,
-    loading: !data && !error,
+    loading,
   };
 };

@@ -1,5 +1,5 @@
 import { fetchInstaFeed, type InstagramPost } from '@/lib/instagram';
-import { buildApiResponse } from '@/utils';
+import { buildApiResponse } from '@/utils/response';
 
 export const config = {
   runtime: 'experimental-edge',
@@ -72,9 +72,9 @@ const getFeed = async (): Promise<Array<InstagramPost>> => {
     });
   } catch (e) {
     // eslint-disable-next-line
-    console.error(responseContent);
+    console.error('insta-feed', responseContent);
     // eslint-disable-next-line
-    console.error(e);
+    console.error('insta-feed', e);
     return [];
   }
 };

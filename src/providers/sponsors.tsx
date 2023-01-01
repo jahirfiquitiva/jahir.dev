@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { useRequest } from '@/hooks';
+import { useRequest } from '@/hooks/useRequest';
 import type {
   SponsorCategory,
   SponsorsCategoriesResponse,

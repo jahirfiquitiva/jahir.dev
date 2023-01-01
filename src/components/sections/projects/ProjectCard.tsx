@@ -1,12 +1,13 @@
-import { mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { useRequest } from '@/hooks';
+import { useRequest } from '@/hooks/useRequest';
+import { mdiStar } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { Project, FC } from '@/types';
-import { getReadableColor, hexToRGB } from '@/utils';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const StyledProjectCard = styled(Link, {
@@ -27,8 +28,9 @@ const StyledProjectCard = styled(Link, {
     backgroundColor: 'rgba(235 240 251 / 0.008)',
   },
   '& > div:first-of-type > img': {
+    backgroundImage: 'none !important',
     filter:
-      'saturate(0.95) opacity(0.85) drop-shadow(0 0 1px rgba($$color / .5))',
+      'saturate(0.95) opacity(0.85) drop-shadow(0 1px 2px rgba($$color / .5))',
   },
   '& > div:first-of-type > *': {
     transition: 'color .15s ease-in-out',

@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { MutatorCallback } from 'swr/dist/types';
+import type { MutatorCallback, SWRConfiguration } from 'swr';
 
 import fetcher from '@/lib/fetcher';
 
@@ -13,8 +13,11 @@ interface SwrData<T = unknown> {
   ) => Promise<T | undefined>;
 }
 
-export const useRequest = <T>(url: string): SwrData<T> => {
-  const { data, error, mutate } = useSWR<T>(url, fetcher);
+export const useRequest = <T>(
+  url: string,
+  options?: SWRConfiguration,
+): SwrData<T> => {
+  const { data, error, mutate } = useSWR<T>(url, fetcher, options);
   return {
     data,
     error,
@@ -22,3 +25,14 @@ export const useRequest = <T>(url: string): SwrData<T> => {
     loading: !data && !error,
   };
 };
+
+export const useImmutableRequest = <T>(
+  url: string,
+  options?: SWRConfiguration,
+): SwrData<T> =>
+  useRequest(url, {
+    ...options,
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });

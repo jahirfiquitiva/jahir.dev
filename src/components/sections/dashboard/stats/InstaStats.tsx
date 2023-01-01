@@ -1,11 +1,10 @@
-import { mdiInstagram } from '@mdi/js';
-
 import { LinkStatCard } from '@/components/compounds';
-import { useRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks/useRequest';
+import { mdiInstagram } from '@/icons';
 import type { FC } from '@/types';
 
 export const InstaStats: FC = () => {
-  const { data, loading } = useRequest<{ followers?: number }>(
+  const { data, loading } = useImmutableRequest<{ followers?: number }>(
     '/api/insta-followers',
   );
   return (

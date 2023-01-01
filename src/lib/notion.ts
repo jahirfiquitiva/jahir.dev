@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { getDomainFromUrl } from '@/utils';
+import { getDomainFromUrl } from '@/utils/format/domain';
 
 /* eslint-disable camelcase */
 const dbApiUrl = 'https://api.notion.com/v1';

@@ -1,13 +1,14 @@
-import { mdiMenu, mdiPlus } from '@mdi/js';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { Logo } from '@/components/atoms';
+import { mdiMenu, mdiPlus } from '@/icons';
 import { styled, theme } from '~/stitches';
 
 import { ThemeToggle } from './ThemeToggle';
 import { MobileMenu } from './ToolbarButton';
 import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
 import { ToolbarNavLinks } from './ToolbarNavLinks';
+import type { FC } from '@/types';
 
 const Header = styled('header', {
   $$toolbarHeight: '56px',
@@ -111,10 +112,10 @@ const Nav = styled('nav', {
   },
 });
 
-export const Toolbar: FC = () => {
+export const Toolbar: FC = (props) => {
   const [isExpanded, expand] = useState(false);
   return (
-    <Header expanded={isExpanded}>
+    <Header expanded={isExpanded} css={props.css}>
       <Nav expanded={isExpanded}>
         <ToolbarLink home href={'/'} title={'Home page'} underline={false}>
           <Logo fillColor={theme.colors['gradient-brand']?.value} />

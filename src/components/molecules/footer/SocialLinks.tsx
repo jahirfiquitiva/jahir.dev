@@ -1,4 +1,3 @@
-import { mdiInstagram } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/atoms';
@@ -6,6 +5,7 @@ import {
   gitHubOutline,
   linkedInOutline,
   twitterOutline,
+  mdiInstagram,
   polywork,
   mastodon,
 } from '@/icons';

@@ -1,7 +1,5 @@
-import { mdiHeartOutline } from '@mdi/js';
-
 import { LinkStatCard, StatCard } from '@/components/compounds';
-import { money } from '@/icons';
+import { money, mdiHeartOutline } from '@/icons';
 import { useSponsors } from '@/providers/sponsors';
 import type { FC } from '@/types';
 

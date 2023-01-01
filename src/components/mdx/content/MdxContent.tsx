@@ -1,14 +1,16 @@
-import { mdiPencilOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Divider, Link, LinkButton, Section } from '@/components/atoms';
-import { useSafePalette } from '@/hooks';
+import { usePalette } from '@/hooks/usePalette';
+import { mdiPencilOutline } from '@/icons';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, HeroMeta, Post, Project } from '@/types';
-import { getDomainFromUrl } from '@/utils';
-import { formatDate, hexToRGB, getReadableColor } from '@/utils';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { getDomainFromUrl } from '@/utils/format/domain';
+import { formatDate } from '@/utils/format/format-date';
 import type { StitchesCSS as CSS } from '~/stitches';
 
 import { Article } from './Article';
@@ -94,9 +96,9 @@ export const MdxContent: FC<CommonContent> = (props) => {
   } = getContentFields(content);
 
   const { isDark, themeReady } = useTheme();
-  const { data: heroPalette } = useSafePalette(hero);
+  const { palette: heroPalette = {} } = usePalette(hero);
 
-  const isUsesPage = useMemo<boolean>(() => slug === 'uses', [slug]);
+  const isUsesPage = slug === 'uses';
 
   const titleStyles = useMemo<CSS>(() => {
     if (!themeReady || !heroPalette) return {};

@@ -1,4 +1,4 @@
-import { allBlogs, Blog } from 'contentlayer/generated';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 type ConvertUndefined<T> = OrUndefined<{
   [K in keyof T as undefined extends T[K] ? K : never]-?: T[K];
@@ -20,10 +20,8 @@ export const pick = <Obj, Keys extends keyof Obj>(
   }, {} as any);
 };
 
-export const getAllPosts = (
-  fields: (keyof Blog)[] = [],
-  allowInProgress: boolean = false,
-): Array<Blog> => {
+const allowInProgress = process.env.NODE_ENV === 'development';
+export const getAllPosts = (fields: (keyof Blog)[] = []): Array<Blog> => {
   const filteredPosts = allBlogs
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
     .filter(

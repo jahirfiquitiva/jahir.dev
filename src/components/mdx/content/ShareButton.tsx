@@ -1,9 +1,9 @@
-import { mdiShareVariantOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Button, LinkButton } from '@/components/atoms';
-import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
+import { mdiShareVariantOutline } from '@/icons';
 import type { FC } from '@/types';
 
 const shareUrl = (title: string, slug: string) =>

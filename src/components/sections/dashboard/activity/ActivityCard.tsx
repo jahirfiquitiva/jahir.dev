@@ -1,14 +1,15 @@
 /* eslint-disable max-lines-per-function */
-import { mdiTimerSandEmpty } from '@mdi/js';
 import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { useSafePalette } from '@/hooks';
+import { usePalette } from '@/hooks/usePalette';
+import { mdiTimerSandEmpty } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
-import { getReadableColor, hexToRGB } from '@/utils';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const Card = styled(Link, {
@@ -104,7 +105,7 @@ const isValidColor = (color?: string): boolean => {
 
 export const ActivityCard: FC<ActivityCardProps> = (props) => {
   const { image, title, href, texts, empty, loading } = props;
-  const { data: palette } = useSafePalette(image?.url);
+  const { palette = {} } = usePalette(image?.url);
   const { isDark, themeReady } = useTheme();
 
   const bgColor = useMemo<string>(() => {

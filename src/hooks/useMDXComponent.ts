@@ -1,17 +1,12 @@
-import { getMDXComponent } from 'mdx-bundler/client';
-import { useMemo } from 'react';
+import {
+  useMDXComponent as useContentLayerMDXComponent,
+  useLiveReload,
+} from 'next-contentlayer/hooks';
 
-export const useMDXComponent = (
-  code?: string,
-  globals: Record<string, unknown> = {},
-) => {
-  const Component = useMemo(() => {
-    if (!code) return null;
-    try {
-      return getMDXComponent(code, globals);
-    } catch (e) {
-      return null;
-    }
-  }, [code, globals]);
+export const useMDXComponent = (code?: string) => {
+  useLiveReload();
+  const Component = useContentLayerMDXComponent(
+    code || 'var Component = () => { return null }; return Component',
+  );
   return Component;
 };

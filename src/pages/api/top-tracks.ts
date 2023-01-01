@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getTopTracks, validateTrack, type TopTrackData } from '@/lib/spotify';
-import { buildApiResponse } from '@/utils';
-import unique from '@/utils/tools/unique';
+import { buildApiResponse } from '@/utils/response';
+import { unique } from '@/utils/unique';
 
 export const config = {
   runtime: 'experimental-edge',

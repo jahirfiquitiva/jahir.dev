@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 import { Img, Link, Heading, Section } from '@/components/atoms';
 import { Animoji, InstaFeed } from '@/components/compounds';
-import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
 
@@ -98,8 +98,8 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
         <Link title={'Dashboard page'} href={'/dashboard'}>
           listening to music
         </Link>{' '}
-        most of the time. According to Spotify Wrapped, I listened to 130437
-        minutes of music in 2021. 😁
+        most of the time. According to Spotify Wrapped, I listened to 138774
+        minutes of music in 2022 and 130437 in 2021. 😁
       </Paragraph>
 
       <Paragraph>

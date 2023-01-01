@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import { Layout, Seo } from '@/components/molecules';
 import { Blog as BlogSection } from '@/sections';
 import type { Post } from '@/types';
-import { getAllPosts } from '@/utils';
+import { getAllPosts } from '@/utils/posts/get-posts';
 
 interface BlogProps {
   posts?: Array<Post>;
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
     'year',
     'devToId',
     'heroMeta',
-  ]).filter((it) => it.slug !== 'uses');
+  ]).filter((it: { slug: string }) => it.slug !== 'uses');
   return {
     props: { posts: allPosts },
   };

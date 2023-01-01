@@ -1,7 +1,7 @@
-import { mdiCreditCardChipOutline, mdiHeartOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 
 import { Heading, LinkButton } from '@/components/atoms';
+import { mdiCreditCardChipOutline, mdiHeartOutline } from '@/icons';
 import {
   styled,
   darkTheme as theme,
@@ -71,8 +71,8 @@ export const DonateButtons = () => {
         </PayPalButton>
       </ButtonsGroup>
       <small>
-        <sup>*</sup> Both options allow custom amounts and one-time or
-        monthly donations
+        <sup>*</sup> Both options allow custom amounts and one-time or monthly
+        donations
       </small>
     </ButtonsContainer>
   );

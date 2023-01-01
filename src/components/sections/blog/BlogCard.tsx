@@ -1,18 +1,15 @@
-import { mdiClockOutline, mdiEyeOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { useSafePalette, useRequest } from '@/hooks';
-import { calendarOutline } from '@/icons';
+import { usePalette, type Palette, type SwatchName } from '@/hooks/usePalette';
+import { useRequest } from '@/hooks/useRequest';
+import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
-import {
-  formatDate,
-  getColorFromPalette,
-  getReadableColor,
-  hexToRGB,
-} from '@/utils';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { formatDate } from '@/utils/format/format-date';
 import { styled } from '~/stitches';
 
 const StyledBlogCard = styled(Link, {
@@ -125,12 +122,37 @@ interface BlogCardProps {
   post: Post;
 }
 
+export const getColorFromPalette = (
+  palette?: Palette | null,
+  isDark?: boolean,
+  darkColor?: string | null,
+  colorVariant: 'Vibrant' | 'Muted' = 'Vibrant',
+): string | null => {
+  if (!palette) return null;
+  if (isDark && darkColor) return darkColor;
+  const color = palette[`dark${colorVariant}`] || null;
+  return (
+    (isDark ? palette[colorVariant.toLowerCase() as SwatchName] : color) ||
+    color
+  );
+};
+
+const getShortDomainForBlog = (rightLink?: string) => {
+  if (!rightLink) return '';
+  try {
+    const url = new URL(rightLink);
+    return url.hostname.replace('www.', '');
+  } catch (e) {
+    return '';
+  }
+};
+
 // eslint-disable-next-line max-lines-per-function
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
   const { link, slug, devToId } = post;
   const { isDark, themeReady } = useTheme();
-  const { data: heroPalette } = useSafePalette(post?.hero);
+  const { palette: heroPalette = {} } = usePalette(post?.hero);
 
   const { data: views } = useRequest<{ total?: string }>(
     `/api/views/blog--${slug}?devToId=${devToId}`,
@@ -150,18 +172,8 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     return color;
   }, [post?.color, isDark, themeReady, heroPalette]);
 
-  const rightLink = useMemo<string>(() => {
-    return link && link.length > 0 ? link : `/blog/${slug}`;
-  }, [link, slug]);
-
-  const domain = useMemo<string>(() => {
-    try {
-      const url = new URL(rightLink);
-      return url.hostname.replace('www.', '');
-    } catch (e) {
-      return '';
-    }
-  }, [rightLink]);
+  const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
+  const domain = getShortDomainForBlog(rightLink);
 
   const extraHeroProps = useMemo(() => {
     if (post?.heroMeta && post?.heroMeta.blur64) {

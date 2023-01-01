@@ -1,6 +1,6 @@
 import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { useRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks/useRequest';
 import type { TopTrackData } from '@/lib/spotify';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
@@ -13,7 +13,7 @@ masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
 masonryBreakpoints[(breakpointsValues['tablet-sm'] || 0).toString()] = 2;
 
 export const TopTracks: FC = () => {
-  const { data } = useRequest<{ tracks?: Array<TopTrackData> }>(
+  const { data } = useImmutableRequest<{ tracks?: Array<TopTrackData> }>(
     '/api/top-tracks',
   );
   if (!data?.tracks) return null;
