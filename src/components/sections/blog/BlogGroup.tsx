@@ -1,5 +1,5 @@
 import type { FC } from '@/types';
-import type { BlogGroup as BlogGroupProps } from '@/utils';
+import type { BlogGroup as BlogGroupProps } from '@/utils/posts/group-posts';
 import { styled } from '~/stitches';
 
 import { BlogCard } from './BlogCard';

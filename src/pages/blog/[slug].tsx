@@ -8,7 +8,7 @@ import { Layout, Seo } from '@/components/molecules';
 import { useMDXComponent } from '@/hooks';
 import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Post } from '@/types';
-import { getAllPosts } from '@/utils';
+import { getAllPosts } from '@/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
@@ -82,7 +82,7 @@ export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getAllPosts([], true)
+    paths: getAllPosts([])
       .filter((it) => it.slug !== 'uses')
       .filter((post) => {
         const shouldRedirect = post && post.link && post.link.length > 0;
@@ -94,7 +94,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getAllPosts([], true)
+  const post = getAllPosts([])
     .filter((it) => it.slug !== 'uses')
     .find((post) => post.slug === params?.slug);
   if (!post) {

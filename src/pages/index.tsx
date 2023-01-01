@@ -4,7 +4,7 @@ import { DotsDivider } from '@/components/atoms';
 import { Layout, Seo } from '@/components/molecules';
 import { Intro, Projects, Skills } from '@/sections';
 import type { Project } from '@/types';
-import { pick } from '@/utils';
+import { pick } from '@/utils/posts/get-posts';
 import {
   allProjects,
   type Project as GeneratedProject,

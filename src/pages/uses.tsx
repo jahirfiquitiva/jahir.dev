@@ -8,7 +8,7 @@ import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
 import { Error, FourOhFour as FourOhFourSection } from '@/components/sections';
 import type { Post } from '@/types';
-import { getAllPosts } from '@/utils';
+import { getAllPosts } from '@/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
@@ -72,6 +72,8 @@ const PostPage: NextPage<PostPageProps> = (props) => {
 export default PostPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const post = getAllPosts([], true).find((post) => post.slug === 'uses');
+  const post = getAllPosts([]).find(
+    (post: { slug: string }) => post.slug === 'uses',
+  );
   return { props: { post } };
 };

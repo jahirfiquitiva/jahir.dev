@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { Field, Heading, LinkButton, Section } from '@/components/atoms';
 import { mdiMagnify, mdiRss } from '@/icons';
 import type { FC, Post } from '@/types';
-import { groupBlogPosts } from '@/utils';
+import { groupBlogPosts } from '@/utils/posts/group-posts';
 import { styled } from '~/stitches';
 
 import { BlogGroup } from './BlogGroup';
