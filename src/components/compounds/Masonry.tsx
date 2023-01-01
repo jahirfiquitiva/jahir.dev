@@ -1,7 +1,7 @@
 // Heavily based on https://github.com/cedricdelpoux/react-responsive-masonry
 import { Children, isValidElement, useMemo } from 'react';
 
-import { useWindowDimensions } from '@/hooks';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import type { FC, ComponentChild } from '@/types';
 import { styled } from '~/stitches';
 

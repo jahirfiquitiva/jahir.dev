@@ -4,7 +4,7 @@ import {
   Masonry,
   type MasonryBreakpoints,
 } from '@/components/compounds';
-import { useImmutableRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks/useRequest';
 import { InspirationItem as InspirationItemType } from '@/lib/notion';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';

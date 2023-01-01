@@ -1,7 +1,7 @@
 import { useTheme as useNextTheme } from 'next-themes';
 import { createContext, useContext, useMemo } from 'react';
 
-import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC } from '@/types';
 
 export interface ThemeContextValue {

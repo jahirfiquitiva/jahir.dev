@@ -1,7 +1,8 @@
 import { Ring } from '@uiball/loaders';
 import { useEffect } from 'react';
 
-import { useHasMounted, useRequest } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
+import { useRequest } from '@/hooks/useRequest';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 

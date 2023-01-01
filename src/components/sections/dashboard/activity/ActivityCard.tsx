@@ -4,7 +4,7 @@ import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { usePalette } from '@/hooks';
+import { usePalette } from '@/hooks/usePalette';
 import { mdiTimerSandEmpty } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';

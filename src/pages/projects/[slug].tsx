@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
-import { useMDXComponent } from '@/hooks';
+import { useMDXComponent } from '@/hooks/useMDXComponent';
 import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Project } from '@/types';
 import {

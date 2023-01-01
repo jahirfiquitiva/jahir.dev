@@ -1,12 +1,13 @@
 import { LinkStatCard } from '@/components/compounds';
-import { useRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks/useRequest';
 import { mdiStarOutline, gitHubOutline } from '@/icons';
 import type { FC } from '@/types';
 
 export const GitHubStats: FC = () => {
-  const { data, loading } = useRequest<{ followers?: number; stars?: number }>(
-    '/api/github',
-  );
+  const { data, loading } = useImmutableRequest<{
+    followers?: number;
+    stars?: number;
+  }>('/api/github');
   return (
     <>
       <LinkStatCard

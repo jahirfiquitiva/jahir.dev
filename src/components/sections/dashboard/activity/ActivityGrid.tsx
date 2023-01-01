@@ -2,7 +2,8 @@ import { useMemo } from 'react';
 
 import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { useActivity, useNowPlaying } from '@/hooks';
+import { useActivity } from '@/hooks/useActivity';
+import { useNowPlaying } from '@/hooks/useNowPlaying';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
 

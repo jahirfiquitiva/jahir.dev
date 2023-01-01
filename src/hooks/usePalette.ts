@@ -1,7 +1,7 @@
 import Vibrant from 'node-vibrant';
 import { useEffect, useState } from 'react';
 
-import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
 
 export type SwatchName =
   | 'darkMuted'

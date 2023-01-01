@@ -4,7 +4,8 @@ import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
 import { Button } from '@/components/atoms';
-import { useHasMounted, useWindowDimensions } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
   award,
   awardOutline,

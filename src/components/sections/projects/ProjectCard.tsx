@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
-import { useRequest } from '@/hooks';
+import { useRequest } from '@/hooks/useRequest';
 import { mdiStar } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { Project, FC } from '@/types';

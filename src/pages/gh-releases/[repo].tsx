@@ -2,7 +2,7 @@ import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
 import { Heading, Link, Section } from '@/components/atoms';
 import { Layout, Seo } from '@/components/molecules';
-import { useImmutableRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks/useRequest';
 import { FourOhFour as FourOhFourSection } from '@/sections';
 
 interface ReleaseData {

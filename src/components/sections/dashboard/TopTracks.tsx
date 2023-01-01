@@ -1,6 +1,6 @@
 import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { useImmutableRequest } from '@/hooks';
+import { useImmutableRequest } from '@/hooks/useRequest';
 import type { TopTrackData } from '@/lib/spotify';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';

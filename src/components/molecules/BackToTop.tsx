@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { useState, useEffect, useCallback } from 'react';
 
 import { Button } from '@/components/atoms';
-import { useHasMounted } from '@/hooks';
+import { useHasMounted } from '@/hooks/useHasMounted';
 import { mdiChevronUp } from '@/icons';
 import { styled } from '~/stitches';
 
