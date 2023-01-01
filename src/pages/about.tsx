@@ -1,17 +1,13 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { useMemo } from 'react';
 
 import imagesBlurData from '@/blur/about';
 import { Layout, Seo } from '@/components/molecules';
+import { useRandomImage } from '@/hooks/useRandomImage';
 import { About as AboutSection } from '@/sections';
 import type { ImageBlurDataObject, RandomPageImage } from '@/types';
-import { getRandomItem } from '@/utils';
 
 const About: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
-  const { images } = props;
-  const image = useMemo(() => {
-    return getRandomItem(images);
-  }, [images]);
+  const image = useRandomImage(props.images);
   return (
     <Layout>
       <Seo

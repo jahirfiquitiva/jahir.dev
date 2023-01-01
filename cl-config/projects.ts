@@ -2,7 +2,7 @@
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
-import unique from './../src/utils/tools/unique';
+import unique from '../src/utils/unique';
 import { getBlurData } from './image-metadata';
 
 const getIconUrl = (icon?: string) =>

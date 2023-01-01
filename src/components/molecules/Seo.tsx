@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
-import unique from '@/utils/tools/unique';
+import { unique } from '@/utils/unique';
 
 const defaultImage = 'https://jahir.dev/static/images/brand/banner.png';
 const defaultLogoImage =
