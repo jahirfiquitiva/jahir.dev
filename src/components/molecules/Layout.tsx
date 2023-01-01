@@ -1,10 +1,20 @@
+import dynamic from 'next/dynamic';
+
 import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC } from '@/types';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
-import { BackToTop } from './BackToTop';
-import { Footer } from './footer';
 import { Toolbar } from './toolbar';
+
+const BackToTop = dynamic(
+  () => import('./BackToTop').then((component) => component.BackToTop),
+  { ssr: false },
+);
+
+const Footer = dynamic(
+  () => import('./footer').then((component) => component.Footer),
+  { ssr: false },
+);
 
 const pageTransition = keyframes({
   '0%': { transform: 'scale(0.975)', opacity: 0 },
