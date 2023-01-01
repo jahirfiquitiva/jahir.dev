@@ -4,8 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/atoms';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { mdiChevronUp } from '@/icons';
+import type { FC } from '@/types';
 import { styled } from '~/stitches';
-import { FC } from '@/types';
 
 const Fab = styled(Button, {
   zIndex: 2,

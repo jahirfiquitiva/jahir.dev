@@ -8,8 +8,8 @@ import {
   mdiTriangle,
   contentlayer,
   notion,
-  railway,
   prisma,
+  planetscale,
 } from '@/icons';
 import { styled } from '~/stitches';
 
@@ -120,11 +120,8 @@ export const Colophon = () => {
         </Link>
       </IconContainer>
       <IconContainer>
-        <Link
-          title={'Railway'}
-          href={'https://railway.app?referralCode=Ri5XbE'}
-        >
-          <Icon path={railway} />
+        <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
+          <Icon path={planetscale} />
         </Link>
       </IconContainer>
       <IconContainer>
