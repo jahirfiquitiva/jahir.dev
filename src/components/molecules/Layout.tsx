@@ -43,16 +43,20 @@ const Main = styled('main', {
 
 const invertedStyles: StitchesCSS = {
   '&, & *': {
+    pointerEvents: 'none',
+    userSelect: 'none',
     filter: 'saturate(30) invert(1.5)',
+    '&::before': {
+      zIndex: 9999,
+      content: 'Please change the styling and colors to match your own style',
+    },
   },
 };
-
+const allowlist = ['localhost', 'jahir.dev', 'jahirfiquitiva'];
+const hostRegex = new RegExp(allowlist.join('|'));
 const useInvertedStyles = (): StitchesCSS | undefined => {
   const hasMounted = useHasMounted();
-  if (
-    hasMounted &&
-    !['localhost', 'jahir.dev'].includes(window?.location?.hostname || '')
-  )
+  if (hasMounted && !hostRegex.test(window?.location?.hostname || ''))
     return invertedStyles;
   return {};
 };
