@@ -8,10 +8,10 @@ interface UseActivity {
   error?: Error | string | null;
 }
 
-export const DISCORD_ID = '624058364812591104';
+const discordUserId = process.env.DISCORD_USER_ID || '';
 export const useActivity = (): UseActivity => {
   const { data, loading, error } = useRequest<LanyardResponse>(
-    `https://api.lanyard.rest/v1/users/${DISCORD_ID}`,
+    `https://api.lanyard.rest/v1/users/${discordUserId}`,
   );
   return {
     data: data?.success ? transformLanyardData(data?.data) : undefined,

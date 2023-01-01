@@ -1,7 +1,8 @@
-import { DISCORD_ID } from '@/hooks';
 import { getNowPlaying, validateTrack, type TrackData } from '@/lib/spotify';
 import type { LanyardResponse } from '@/types';
 import { buildApiResponse, transformSpotifyActivity } from '@/utils';
+
+const discordUserId = process.env.DISCORD_USER_ID || '';
 
 export const config = {
   runtime: 'experimental-edge',
@@ -9,7 +10,9 @@ export const config = {
 
 const requestNowPlayingFromLanyard = async () => {
   try {
-    const req = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+    const req = await fetch(
+      `https://api.lanyard.rest/v1/users/${discordUserId}`,
+    );
     const { data, success } = (await req.json()) as LanyardResponse;
     if (!success) return buildApiResponse(200, { isPlaying: false });
 
