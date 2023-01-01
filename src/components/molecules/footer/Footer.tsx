@@ -121,9 +121,9 @@ const metaLinks: Array<FooterLinkProps> = [
   },
 ];
 
-export const Footer: FC = () => {
+export const Footer: FC = (props) => {
   return (
-    <StyledFooter>
+    <StyledFooter css={props.css}>
       <LinksContainer>
         <FooterLinksGroup title={'Primary pages links'} links={primaryLinks} />
         <FooterLinksGroup

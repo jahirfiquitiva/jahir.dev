@@ -9,7 +9,6 @@ import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';
 import { hexToRGB } from '@/utils/color/hex-to-rgb';
-import { getDomainFromUrl } from '@/utils/format/domain';
 import { formatDate } from '@/utils/format/format-date';
 import { styled } from '~/stitches';
 
@@ -138,6 +137,16 @@ export const getColorFromPalette = (
   );
 };
 
+const getShortDomainForBlog = (rightLink?: string) => {
+  if (!rightLink) return '';
+  try {
+    const url = new URL(rightLink);
+    return url.hostname.replace('www.', '');
+  } catch (e) {
+    return '';
+  }
+};
+
 // eslint-disable-next-line max-lines-per-function
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
@@ -164,7 +173,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   }, [post?.color, isDark, themeReady, heroPalette]);
 
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
-  const domain = getDomainFromUrl(rightLink);
+  const domain = getShortDomainForBlog(rightLink);
 
   const extraHeroProps = useMemo(() => {
     if (post?.heroMeta && post?.heroMeta.blur64) {

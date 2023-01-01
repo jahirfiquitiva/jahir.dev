@@ -5,6 +5,7 @@ import { Button } from '@/components/atoms';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { mdiChevronUp } from '@/icons';
 import { styled } from '~/stitches';
+import { FC } from '@/types';
 
 const Fab = styled(Button, {
   zIndex: 2,
@@ -91,7 +92,7 @@ const scrollToTop = () => {
 };
 
 const SCROLL_OFFSET = 287;
-export const BackToTop = () => {
+export const BackToTop: FC = (props) => {
   const [showButton, setShowButton] = useState(false);
   const hasMounted = useHasMounted();
 
@@ -118,7 +119,12 @@ export const BackToTop = () => {
   }, [hasMounted, checkScrollTop]);
 
   return (
-    <Fab title={'Scroll back to top'} onClick={scrollToTop} shown={showButton}>
+    <Fab
+      title={'Scroll back to top'}
+      onClick={scrollToTop}
+      shown={showButton}
+      css={props.css}
+    >
       <Icon path={mdiChevronUp} size={1} />
       <span>Back to top</span>
     </Fab>

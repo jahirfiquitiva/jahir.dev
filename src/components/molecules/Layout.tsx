@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic';
 
+import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC } from '@/types';
-import { styled, keyframes } from '~/stitches';
+import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 import { Toolbar } from './toolbar';
 
@@ -40,13 +41,30 @@ const Main = styled('main', {
   },
 });
 
+const invertedStyles: StitchesCSS = {
+  '&, & *': {
+    filter: 'saturate(30) invert(1.5)',
+  },
+};
+
+const useInvertedStyles = (): StitchesCSS | undefined => {
+  const hasMounted = useHasMounted();
+  if (
+    hasMounted &&
+    !['localhost', 'jahir.dev'].includes(window?.location?.hostname || '')
+  )
+    return invertedStyles;
+  return {};
+};
+
 export const Layout: FC = (props) => {
+  const invertedStyles = useInvertedStyles();
   return (
     <>
-      <Toolbar />
-      <Main>{props.children}</Main>
-      <Footer />
-      <BackToTop />
+      <Toolbar css={invertedStyles} />
+      <Main css={invertedStyles}>{props.children}</Main>
+      <Footer css={invertedStyles} />
+      <BackToTop css={invertedStyles} />
     </>
   );
 };
