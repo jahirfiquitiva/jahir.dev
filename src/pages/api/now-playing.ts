@@ -5,9 +5,7 @@ import { buildApiResponse } from '@/utils/response';
 
 const discordUserId = process.env.DISCORD_USER_ID || '';
 
-export const config = {
-  runtime: 'experimental-edge',
-};
+export const config = { runtime: 'edge' };
 
 const requestNowPlayingFromLanyard = async () => {
   try {

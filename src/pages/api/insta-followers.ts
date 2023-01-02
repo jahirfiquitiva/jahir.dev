@@ -2,9 +2,7 @@ import { buildApiResponse } from '@/utils/response';
 
 const instagramApi = process.env.INSTA_API || '';
 
-export const config = {
-  runtime: 'experimental-edge',
-};
+export const config = { runtime: 'edge' };
 
 interface OfficialResponse {
   graphql: {

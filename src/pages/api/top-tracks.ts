@@ -4,9 +4,7 @@ import { getTopTracks, validateTrack, type TopTrackData } from '@/lib/spotify';
 import { buildApiResponse } from '@/utils/response';
 import { unique } from '@/utils/unique';
 
-export const config = {
-  runtime: 'experimental-edge',
-};
+export const config = { runtime: 'edge' };
 
 export default async function handler() {
   try {

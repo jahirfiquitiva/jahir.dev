@@ -8,9 +8,7 @@ const authHeaders =
     ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
-export const config = {
-  runtime: 'experimental-edge',
-};
+export const config = { runtime: 'edge' };
 
 const fetchRepoData = async (name?: string) => {
   if (!name || !name.length) return null;

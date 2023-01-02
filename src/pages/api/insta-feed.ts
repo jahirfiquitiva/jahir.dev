@@ -1,9 +1,7 @@
 import { fetchInstaFeed, type InstagramPost } from '@/lib/instagram';
 import { buildApiResponse } from '@/utils/response';
 
-export const config = {
-  runtime: 'experimental-edge',
-};
+export const config = { runtime: 'edge' };
 
 interface OfficialResponse {
   graphql: {
