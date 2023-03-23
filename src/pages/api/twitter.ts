@@ -7,14 +7,14 @@ export default async function handler() {
   const { status, error, count } = await getFollowers();
 
   if (error) {
-    return buildApiResponse(+status, {
+    return buildApiResponse(status, {
       success: false,
       error,
     });
   }
 
   return buildApiResponse(
-    +status,
+    status,
     {
       success: status >= 200 && status < 300,
       followers: count,

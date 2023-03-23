@@ -4,7 +4,7 @@ import { serialize } from './serialize';
 export interface TwitterResponse {
   count: number;
   error?: string;
-  status: string | number;
+  status: number;
 }
 
 const twitterUserId = '328125793';
@@ -60,7 +60,7 @@ const internalGetAllFollowers = async (
   if (!meta) {
     return {
       count: lastCount,
-      status: status || request.status || 400,
+      status:  status ? Number(status) : request.status || 400,
       error: detail || 'Unexpected error',
     };
   }
