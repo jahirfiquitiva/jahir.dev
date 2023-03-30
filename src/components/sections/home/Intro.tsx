@@ -37,8 +37,7 @@ const Paragraph = styled('p', {
 
 const PhotoContainer = styled('div', {
   borderRadius: '50%',
-  backgroundColor: 
-    'var(--arc-background-gradient-color1, var(--arc-palette-maxContrastColor, #223e80))',
+  backgroundColor: 'var(--arc-palette-maxContrastColor, #223e80)',
   width: 168,
   height: 168,
 });
