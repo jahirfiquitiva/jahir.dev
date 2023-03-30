@@ -1,27 +1,25 @@
+/* eslint-disable max-len */
 import { ThemeColorsNames } from './types';
 
 type RGBValues = `${number} ${number} ${number}`;
 type HexColor = `#${string}`;
 type RGBColor = `rgb(${RGBValues})`;
 type RGBAColor = `rgba(${RGBValues} / ${number})`;
+type CSSColorOptions = RGBValues | HexColor | RGBColor | RGBAColor;
 type StitchesVariable = `$${string}`;
+type CSSVariable = `var(--${string})` | `var(--${string}, ${CSSColorOptions})`;
 
-export type ThemeColorValue =
-  | RGBValues
-  | HexColor
-  | RGBColor
-  | RGBAColor
-  | StitchesVariable;
+export type ThemeColorValue = CSSColorOptions | CSSVariable | StitchesVariable;
 
 type ThemeColors = { [Key in ThemeColorsNames]?: ThemeColorValue };
 
 export const colors: ThemeColors = {
   transparent: 'rgba(0 0 0 / 0)',
-  primary: '#f6f9fe',
-  background: '#fff',
+  primary: 'var(--arc-palette-minContrastColor, #f6f9fe)',
+  background: 'var(--arc-palette-backgroundExtra, #fff)',
   divider: 'rgba(9 17 34 / .12)',
 
-  toolbar: 'rgba(235 240 251 / .75)',
+  toolbar: 'var(--arc-palette-background, rgba(235 240 251 / .75))',
   'toolbar-glow': '45 82 171',
 
   'text-primary': 'rgba(9 17 34 / .95)',
@@ -29,12 +27,11 @@ export const colors: ThemeColors = {
   'text-tertiary': 'rgba(9 17 34 / .6)',
   'img-drop-shadow': 'rgba(9 17 34 / .28)',
 
-  'accent-animoji': '#d7e1f7',
-  'accent-lighter': '#88a4e6',
-  'accent-light': '#6085de',
-  accent: '#3867d6',
-  'accent-dark': '#2d52ab',
-  'accent-darker': '#223e80',
+  'accent-animoji':
+    'var(--arc-background-gradient-overlay-color1, var(--arc-background-gradient-color1, var(--arc-background-simple-color, #d7e1f7)))',
+  'accent-light': 'var(--arc-palette-foregroundPrimary, #6085de)',
+  accent: 'var(--arc-palette-focus, #3867d6)',
+  'accent-dark': 'var(--arc-palette-maxContrastColor, #2d52ab)',
   'on-accent': '#fff',
 
   'gradient-brand': '$accent',
@@ -45,7 +42,7 @@ export const colors: ThemeColors = {
   'gradient-red': '#bc2f48',
   'gradient-purple': '#7a4cbb',
 
-  'shadow-brand': '$accent-lighter',
+  'shadow-brand': '#88a4e6',
   'shadow-blue': '#81c1e9',
   'shadow-green': '#79d9a6',
   'shadow-yellow': '#fad483',
@@ -66,15 +63,16 @@ export const colors: ThemeColors = {
   'code-function': '#aa499d',
   'code-deleted': '#d43551',
 
-  'illustrations-shadow': '#c0b4f0',
+  'illustrations-shadow':
+    'var(--arc-background-gradient-overlay-color1, var(--arc-background-gradient-color1, var(--arc-background-simple-color, #c0b4f0)))',
 };
 
 export const darkThemeColors: ThemeColors = {
-  primary: '#0c121e',
-  background: '#0c121e',
+  primary: 'var(--arc-palette-maxContrastColor, #0c121e)',
+  background: 'var(--arc-palette-title, #0c121e)',
   divider: 'rgba(235 240 251 / .12)',
 
-  toolbar: 'rgba(18 27 44 / .65)',
+  toolbar: 'var(--arc-palette-maxContrastColor, rgba(18 27 44 / .65))',
   'toolbar-glow': '136 164 230',
 
   'text-primary': '#fff',
@@ -82,13 +80,14 @@ export const darkThemeColors: ThemeColors = {
   'text-tertiary': 'rgba(235 240 251 / .6)',
   'img-drop-shadow': 'rgba(235 240 251 / .24)',
 
-  'accent-animoji': '#162956',
-  'accent-lighter': '#d7e1f7',
-  'accent-light': '#afc2ef',
-  accent: '#88a4e6',
-  'accent-dark': '#6085de',
-  'accent-darker': '#3867d6',
+  'accent-animoji':
+    'var(--arc-background-gradient-overlay-color1, var(--arc-background-gradient-color1, var(--arc-background-simple-color, #162956)))',
+  'accent-light': 'var(--arc-palette-focus, #afc2ef)',
+  accent: 'var(--arc-palette-foregroundPrimary, #88a4e6)',
+  'accent-dark': 'var(--arc-palette-maxContrastColor, #6085de)',
   'on-accent': 'rgba(9 17 34 / .9)',
+
+  'shadow-brand': '#d7e1f7',
 
   'gradient-blue': '$shadow-blue',
   'gradient-green': '$shadow-green',
@@ -108,5 +107,6 @@ export const darkThemeColors: ThemeColors = {
   'code-function': '#f368e0',
   'code-deleted': '#fc6c74',
 
-  'illustrations-shadow': '#d8d1f6',
+  'illustrations-shadow':
+    'var(--arc-background-gradient-overlay-color1, var(--arc-background-gradient-color1, var(--arc-background-simple-color, #d8d1f6)))',
 };
