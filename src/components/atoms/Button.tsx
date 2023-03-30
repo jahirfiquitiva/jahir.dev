@@ -55,7 +55,7 @@ const ButtonStyles = css({
         boxShadow: 'none',
         hocus: {
           boxShadow: '0 0 1px 1px rgb($colors$toolbar-glow / 0.1)',
-          backgroundColor: 'rgba(45 82 171 / .08)',
+          backgroundColor: 'var(--arc-palette-subtitle, rgba(45 82 171 / .08))',
           borderColor: '$accent-dark',
           color: '$text-primary',
           dark: {
