@@ -1,8 +1,6 @@
 export type SponsorsCategoryKey =
   | 'ball'
   | 'rocket'
-  | 'robot'
-  | 'lightning'
   | 'diamond'
   | 'unicorn';
 

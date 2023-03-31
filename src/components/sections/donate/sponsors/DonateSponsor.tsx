@@ -5,8 +5,6 @@ import {
   mdiCrystalBall,
   unicorn,
   rocket,
-  robot,
-  lightning,
   diamond,
 } from '@/icons';
 import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
@@ -65,17 +63,13 @@ const fontSizesForTier: Record<SponsorsCategoryKey, string> = {
   unicorn: '$2xs',
   ball: '$xs',
   rocket: '$sm',
-  robot: '$lg',
-  lightning: '$xl',
-  diamond: '$2xl',
+  diamond: '$xl',
 };
 
 const iconForTier: Record<SponsorsCategoryKey, string> = {
   unicorn,
   ball: mdiCrystalBall,
   rocket,
-  robot,
-  lightning,
   diamond,
 };
 
@@ -83,8 +77,6 @@ const cleanNameForTier: Record<SponsorsCategoryKey, string> = {
   unicorn: 'Unicorn',
   ball: 'Crystal Ball',
   rocket: 'Rocket',
-  robot: 'Robot',
-  lightning: 'Lightning',
   diamond: 'Diamond',
 };
 
@@ -92,8 +84,6 @@ const colorForTier: Record<SponsorsCategoryKey, ThemeColorValue> = {
   unicorn: '#f368e0',
   ball: '#a55eea',
   rocket: '#eb3b5a',
-  robot: '#0abde3',
-  lightning: '#f7b731',
   diamond: '#00d2d3',
 };
 

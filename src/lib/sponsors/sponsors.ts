@@ -77,10 +77,8 @@ const getSponsorsGraphQLResponse = async (): Promise<SponsorsResponse> => {
 
 const priceToTierKey: Record<number, string> = {
   5: '585',
-  10: '586',
-  25: '587',
-  50: '588',
-  100: '589',
+  10: '278096',
+  25: '278099',
 };
 
 const mapResponseToSponsorsList = (
@@ -128,9 +126,7 @@ export const sizesForTier: Record<SponsorsCategoryKey, number> = {
   unicorn: 24,
   ball: 28,
   rocket: 32,
-  robot: 36,
-  lightning: 48,
-  diamond: 52,
+  diamond: 48,
 };
 
 const buildPhotoLink = (
