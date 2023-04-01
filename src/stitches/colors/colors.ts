@@ -30,11 +30,9 @@ export const colors: ThemeColors = {
   'img-drop-shadow': 'rgba(9 17 34 / .28)',
 
   'accent-animoji': '#d7e1f7',
-  'accent-lighter': '#88a4e6',
   'accent-light': '#6085de',
   accent: '#3867d6',
   'accent-dark': '#2d52ab',
-  'accent-darker': '#223e80',
   'on-accent': '#fff',
 
   'gradient-brand': '$accent',
@@ -45,7 +43,7 @@ export const colors: ThemeColors = {
   'gradient-red': '#bc2f48',
   'gradient-purple': '#7a4cbb',
 
-  'shadow-brand': '$accent-lighter',
+  'shadow-brand': '$accent-light',
   'shadow-blue': '#81c1e9',
   'shadow-green': '#79d9a6',
   'shadow-yellow': '#fad483',
@@ -83,11 +81,9 @@ export const darkThemeColors: ThemeColors = {
   'img-drop-shadow': 'rgba(235 240 251 / .24)',
 
   'accent-animoji': '#162956',
-  'accent-lighter': '#d7e1f7',
   'accent-light': '#afc2ef',
   accent: '#88a4e6',
   'accent-dark': '#6085de',
-  'accent-darker': '#3867d6',
   'on-accent': 'rgba(9 17 34 / .9)',
 
   'gradient-blue': '$shadow-blue',
