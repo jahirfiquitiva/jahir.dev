@@ -3,7 +3,7 @@ import type { SponsorsCategoryKey } from './manual-sponsors';
 type TimeStamp =
   `${number}-${number}-${number}T${number}:${number}:${number}.${number}Z`;
 
-interface SponsorEntity {
+export interface SponsorEntity {
   login: string;
   avatarUrl?: string;
   name?: string;
@@ -14,7 +14,7 @@ interface Sponsorships {
   totalRecurringMonthlyPriceInDollars: number;
   nodes: Array<{
     sponsorEntity: SponsorEntity;
-    tierSelectedAt: TimeStamp;
+    tierSelectedAt?: TimeStamp;
   }>;
 }
 
@@ -80,4 +80,5 @@ export interface SponsorsCategoriesResponse {
   error?: string;
   totalEarningsPerMonth?: number;
   sponsorsCount?: number;
+  bmac?: unknown;
 }

@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-destructuring */
-import { manualSponsors, type SponsorsCategoryKey } from './manual-sponsors';
+import { executeBmac } from './bmac';
+import {
+  manualSponsors,
+  type ManualSponsor,
+  type SponsorsCategoryKey,
+} from './manual-sponsors';
 import { testimonials } from './testimonials';
 import type {
   SponsorsResponse,
@@ -154,14 +159,16 @@ const buildPhotoLink = (
 
 const mergeManualAndGitHubSponsors = (
   categories: Array<SponsorCategory>,
+  bmacOneTimeSupporters: Array<ManualSponsor> = [],
 ): Array<SponsorCategory> => {
   if (!categories || !categories.length) return [];
 
-  const gitHubSponsorsToOverwrite = manualSponsors.filter(
+  const allManualSponsors = [...manualSponsors, ...bmacOneTimeSupporters];
+  const gitHubSponsorsToOverwrite = allManualSponsors.filter(
     (it) => !!it.username,
   );
-  const categorifiedSponsors = manualSponsors.filter((it) => !!it.category);
-  const unicornSponsors: Array<Sponsor> = manualSponsors
+  const categorifiedSponsors = allManualSponsors.filter((it) => !!it.category);
+  const unicornSponsors: Array<Sponsor> = allManualSponsors
     .filter((it) => !it.category && !it.username)
     .map((it) => ({ ...it } as Sponsor));
 
@@ -204,6 +211,7 @@ const mergeManualAndGitHubSponsors = (
 
 export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
   try {
+    const { oneTime, members } = await executeBmac();
     const response = await getSponsorsGraphQLResponse();
     if (response) {
       const githubCategories = mapResponseToSponsorsList(response);
@@ -218,6 +226,7 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
       }, 0);
       const categories = mergeManualAndGitHubSponsors(
         githubCategories.filter((it) => (it.price || 0) >= 5),
+        oneTime,
       );
       const sponsors = categories.map((it) => it.sponsors).flat();
       return {
@@ -235,6 +244,7 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
         }),
         totalEarningsPerMonth,
         sponsorsCount,
+        bmac,
       };
     }
     return { error: 'No valid response from GitHub' };

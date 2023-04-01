@@ -1,6 +1,6 @@
 export type SponsorsCategoryKey = 'ball' | 'rocket' | 'diamond' | 'unicorn';
 
-interface ManualSponsor {
+export interface ManualSponsor {
   name: string;
   link?: string;
   photo?: string;
