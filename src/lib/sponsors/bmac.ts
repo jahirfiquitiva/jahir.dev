@@ -1,7 +1,7 @@
 import { groupBy } from '@/utils/posts/group-posts';
 
-import type { ManualSponsor, SponsorsCategoryKey } from './manual-sponsors';
-import type { Sponsor, SponsorEntity, SponsorCategory } from './types';
+import type { ManualSponsor } from './manual-sponsors';
+import type { Sponsor, SponsorCategory } from './types';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 const { BMAC_PAT: bmacPat = '' } = process.env;
