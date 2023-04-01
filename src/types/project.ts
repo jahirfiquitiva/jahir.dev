@@ -4,7 +4,7 @@ export interface HeroMeta {
 }
 
 export interface Project {
-  slug: string;
+  order: number;
   name: string;
   description: string;
   icon: string;

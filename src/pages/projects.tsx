@@ -1,12 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
+import projects from '@/data/projects.json';
 import { Projects as ProjectsSection } from '@/sections';
 import type { Project } from '@/types';
-import {
-  allProjects,
-  type Project as GeneratedProject,
-} from 'contentlayer/generated';
 
 interface ProjectsProps {
   projects?: Array<Project>;
@@ -43,8 +40,6 @@ const Projects: NextPage<ProjectsProps> = (props) => {
 export default Projects;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = allProjects
-    .sort((a: GeneratedProject, b: GeneratedProject) => a.order - b.order);
   return {
     props: { projects },
   };
