@@ -51,6 +51,8 @@ const defaultNextConfig = {
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'avatars.githubusercontent.com' },
       { hostname: '**.cdninstagram.com' },
+      { hostname: 'substackcdn.com' },
+      { hostname: 'substack-post-media.s3.amazonaws.com' },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

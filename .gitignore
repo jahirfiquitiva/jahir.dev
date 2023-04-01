@@ -49,3 +49,4 @@ content/blog/sheet.mdx
 frontmatter.json
 
 src/blur/*.ts
+src/blog/*.json
