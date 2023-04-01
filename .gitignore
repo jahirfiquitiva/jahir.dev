@@ -53,3 +53,4 @@ src/data/*.json
 !src/data/hardware.json
 !src/data/gaming.json
 !src/data/software.json
+!src/data/extensions.json
