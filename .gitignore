@@ -50,3 +50,6 @@ frontmatter.json
 
 src/data/*.json
 !src/data/projects.json
+!src/data/hardware.json
+!src/data/gaming.json
+!src/data/software.json

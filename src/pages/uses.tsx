@@ -1,79 +1,102 @@
-import type { GetStaticProps, NextPage } from 'next';
-import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks';
-import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import type { NextPage } from 'next';
 
-import { Loading } from '@/components/compounds';
-import { MdxContent, mdxComponents } from '@/components/mdx';
+import { Link } from '@/components/atoms';
+import { MdxContent } from '@/components/mdx';
+import { AppsGrid } from '@/components/mdx/custom/apps';
+import { Colophon } from '@/components/mdx/custom/Colophon';
+import { HardwareGrid } from '@/components/mdx/custom/hardware';
+import { Grid, GridColumn } from '@/components/mdx/Grid';
 import { Layout, Seo } from '@/components/molecules';
-import { Error, FourOhFour as FourOhFourSection } from '@/components/sections';
-import type { Post } from '@/types';
-import { getAllPosts } from '@/utils/posts/get-posts';
-import type { Blog } from 'contentlayer/generated';
+import extensions from '@/data/extensions.json';
+import gaming from '@/data/gaming.json';
+import hardware from '@/data/hardware.json';
+import software from '@/data/software.json';
 
-const mapContentLayerBlog = (post?: Blog): Post | null => {
-  if (!post) return null;
-  return { ...post } as Post;
-};
+const extensionsHalfIndex = Math.round(extensions.length / 2);
+const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
+const secondExtensionsHalf = extensions.slice(extensionsHalfIndex);
 
-interface PostPageProps {
-  post: Blog;
-}
+const usesPageKeywords = [
+  'hardware',
+  'software',
+  'apps',
+  'tools',
+  'extensions',
+  'stack',
+  'website',
+  'tech',
+  'uses',
+];
 
-const PostPage: NextPage<PostPageProps> = (props) => {
-  useLiveReload();
-  const { post: basePost } = props;
-  const MdxComponent = useMDXComponent(basePost.body.code);
-  const router = useRouter();
-  const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
+const ExtensionsGrid = () => (
+  <Grid>
+    <GridColumn>
+      <ul>
+        {firstExtensionsHalf.map((ext, index) => (
+          <li key={`f-ext-${index}`}>
+            <Link href={ext.url} title={ext.title}>
+              {ext.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </GridColumn>
+    <GridColumn>
+      <ul>
+        {secondExtensionsHalf.map((ext, index) => (
+          <li key={`s-ext-${index}`}>
+            <Link href={ext.url} title={ext.title}>
+              {ext.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </GridColumn>
+  </Grid>
+);
 
-  const renderContent = () => {
-    if (!router.isFallback) {
-      return <FourOhFourSection />;
-    }
-    if (router.isFallback) {
-      return <Loading css={{ m: 'auto' }} />;
-    }
-    if (!post || !MdxComponent) {
-      return <Error />;
-    }
-    return (
-      <MdxContent content={post as Post}>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <MdxComponent components={{ ...mdxComponents } as any} />
-      </MdxContent>
-    );
-  };
-
-  return (
-    <Layout>
-      <Seo
-        title={'Uses – Jahir Fiquitiva'}
-        description={
-          'Get to know the hardware, software and tools I use on a daily basis'
-        }
-        exactUrl={'https://jahir.dev/uses'}
-        keywords={[
-          'hardware',
-          'software',
-          'apps',
-          'tools',
-          'extensions',
-          'stack',
-          'website',
-          'tech',
-        ]}
-      />
-      {renderContent()}
-    </Layout>
-  );
-};
+const PostPage: NextPage = () => (
+  <Layout>
+    <Seo
+      title={'Uses – Jahir Fiquitiva'}
+      description={
+        'Get to know the hardware, software and tools I use on a daily basis'
+      }
+      exactUrl={'https://jahir.dev/uses'}
+      keywords={usesPageKeywords}
+    />
+    <MdxContent
+      title={'What do I use?'}
+      hero={'/static/images/blog/uses/setup-2022.jpeg'}
+    >
+      <h3 id={'hardware'}>Hardware</h3>
+      <h4 id={'general'}>General</h4>
+      <HardwareGrid items={hardware} />
+      <h4 id={'gaming-pc'}>Gaming PC</h4>
+      <HardwareGrid items={gaming} />
+      <h3 id={'apps'}>Apps</h3>
+      <AppsGrid items={software} />
+      <h3 id={'browser-extensions-arc'}>Browser Extensions (Arc)</h3>
+      <ExtensionsGrid />
+      <h3 id={'colophon'}>Website (colophon)</h3>
+      <p>This website is built using the following tech stack:</p>
+      <Colophon />
+      <small>
+        <Link
+          title={'View website source code on GitHub'}
+          href={'https://github.com/jahirfiquitiva/jahir.dev'}
+        >
+          View source code
+        </Link>
+      </small>
+      <blockquote>
+        This site is inspired and featured on{' '}
+        <Link href={'https://uses.tech'} title={'uses.tech'}>
+          uses.tech
+        </Link>
+      </blockquote>
+    </MdxContent>
+  </Layout>
+);
 
 export default PostPage;
-
-export const getStaticProps: GetStaticProps = async () => {
-  const post = getAllPosts([]).find(
-    (post: { slug: string }) => post.slug === 'uses',
-  );
-  return { props: { post } };
-};

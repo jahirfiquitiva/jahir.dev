@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { Divider, Section } from '@/components/atoms';
 import { usePalette } from '@/hooks/usePalette';
 import { useTheme } from '@/providers/theme';
-import type { FC, Post } from '@/types';
+import type { FC } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';
 import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import type { StitchesCSS as CSS } from '~/stitches';
@@ -13,13 +13,13 @@ import { ShareButton } from './ShareButton';
 import { ArticleFooter, ArticleHero, ShareAndEdit, Title } from './styled';
 
 interface CommonContent {
-  content: Post;
+  title: string;
+  hero: string;
 }
 
 // eslint-disable-next-line max-lines-per-function
 export const MdxContent: FC<CommonContent> = (props) => {
-  const { content, children } = props;
-  const { title, hero } = content;
+  const { title, hero, children } = props;
 
   const { isDark, themeReady } = useTheme();
   const { palette: heroPalette = {} } = usePalette(hero);
@@ -85,7 +85,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
         <ArticleFooter>
           <ShareAndEdit>
-            <ShareButton title={title} slug={'/uses'} />
+            <ShareButton title={title} slug={'uses'} />
           </ShareAndEdit>
         </ArticleFooter>
       </Article>
