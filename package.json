@@ -61,8 +61,7 @@
     "rss-to-json": "^2.1.1",
     "sass": "^1.60.0",
     "sharp": "^0.32.0",
-    "typescript": "^5.0.2",
-    "xml": "^1.0.1"
+    "typescript": "^5.0.2"
   },
   "prettier": {
     "arrowParens": "always",
