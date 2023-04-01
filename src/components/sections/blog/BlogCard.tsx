@@ -141,7 +141,9 @@ const getShortDomainForBlog = (rightLink?: string) => {
   if (!rightLink) return '';
   try {
     const url = new URL(rightLink);
-    return url.hostname.replace('www.', '');
+    const cleanUrl = url.hostname.replace('www.', '');
+    if (cleanUrl.startsWith('jahirfiquitiva.substack.com')) return '';
+    return cleanUrl;
   } catch (e) {
     return '';
   }

@@ -1,4 +1,7 @@
-import type { HeroMeta } from '@/types';
+export interface HeroMeta {
+  size: { width: number; height: number };
+  blur64?: string;
+}
 
 export interface Project {
   slug: string;

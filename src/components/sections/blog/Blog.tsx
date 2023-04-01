@@ -101,7 +101,7 @@ export const Blog: FC<BlogProps> = (props) => {
         <BlogButtons>
           <RssLink
             title={'RSS feed'}
-            href={'/feed.xml'}
+            href={'https://jahirfiquitiva.substack.com/feed'}
             withShadow
             openInNewTab
           >

@@ -1,36 +1,28 @@
-import { allBlogs, type Blog } from 'contentlayer/generated';
+import substackData from '@/blog/blog.json';
+import type { Post } from '@/types';
 
-type ConvertUndefined<T> = OrUndefined<{
-  [K in keyof T as undefined extends T[K] ? K : never]-?: T[K];
-}>;
-type OrUndefined<T> = { [K in keyof T]: T[K] | undefined };
-type PickRequired<T> = {
-  [K in keyof T as undefined extends T[K] ? never : K]: T[K];
-};
-type ConvertPick<T> = ConvertUndefined<T> & PickRequired<T>;
+type SubstackPost = (typeof substackData)['items'][number];
 
-export const pick = <Obj, Keys extends keyof Obj>(
-  obj: Obj,
-  keys: Keys[],
-): ConvertPick<{ [K in Keys]: Obj[K] }> => {
-  return keys.reduce((acc, key) => {
-    acc[key] = obj[key] || null;
-    return acc;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  }, {} as any);
+const substackEnclosureToImage = (enclosure?: string): string | null => {
+  if (!enclosure) return null;
+  if (!enclosure.startsWith('https://substackcdn.com/image/fetch'))
+    return enclosure;
+  const parts = enclosure.split('/');
+  const lastPart = parts[parts.length - 1];
+  return decodeURIComponent(lastPart);
 };
 
-const allowInProgress = process.env.NODE_ENV === 'development';
-export const getAllPosts = (fields: (keyof Blog)[] = []): Array<Blog> => {
-  const filteredPosts = allBlogs
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-    .filter(
-      (it: Blog) =>
-        it.title?.length > 0 &&
-        it.slug?.length > 0 &&
-        (allowInProgress || !it.inProgress),
-    );
-  return fields && fields.length
-    ? filteredPosts.map((post: Blog) => pick(post, fields))
-    : filteredPosts;
+const substackPostToWebsitePost = (post: SubstackPost): Post => {
+  const postDate = new Date(post.published);
+  return {
+    title: post.title,
+    excerpt: post.description || null,
+    date: postDate.toISOString(),
+    hero: substackEnclosureToImage(post.enclosures?.[0]?.url) || null,
+    link: post.link,
+    year: postDate.getFullYear(),
+  };
 };
+
+export const getAllPosts = (): Array<Post> =>
+  substackData?.items?.map(substackPostToWebsitePost || []);
