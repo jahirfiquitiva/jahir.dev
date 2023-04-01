@@ -3,7 +3,8 @@ import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/atoms';
 import { usePalette, type Palette, type SwatchName } from '@/hooks/usePalette';
-import { calendarOutline } from '@/icons';
+import { useRequest } from '@/hooks/useRequest';
+import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';
@@ -140,9 +141,7 @@ const getShortDomainForBlog = (rightLink?: string) => {
   if (!rightLink) return '';
   try {
     const url = new URL(rightLink);
-    const cleanUrl = url.hostname.replace('www.', '');
-    if (cleanUrl.startsWith('jahirfiquitiva.substack.com')) return '';
-    return cleanUrl;
+    return url.hostname.replace('www.', '');
   } catch (e) {
     return '';
   }
@@ -151,36 +150,52 @@ const getShortDomainForBlog = (rightLink?: string) => {
 // eslint-disable-next-line max-lines-per-function
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { post } = props;
-  const { link } = post;
+  const { link, slug, devToId } = post;
   const { isDark, themeReady } = useTheme();
   const { palette: heroPalette = {} } = usePalette(post?.hero);
+
+  const { data: views } = useRequest<{ total?: string }>(
+    `/api/views/blog--${slug}?devToId=${devToId}`,
+  );
 
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
     const color = hexToRGB(
-      getReadableColor(getColorFromPalette(heroPalette, isDark), isDark),
+      getReadableColor(post?.color || getColorFromPalette(heroPalette, isDark), isDark),
       undefined,
       true,
     );
     if (!color || color === 'rgba(0 0 0 / 0)') return '';
     return color;
-  }, [isDark, themeReady, heroPalette]);
+  }, [post?.color, isDark, themeReady, heroPalette]);
 
-  const domain = getShortDomainForBlog(link);
+   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
+  const domain = getShortDomainForBlog(rightLink);
+
+  const extraHeroProps = useMemo(() => {
+    if (post?.heroMeta && post?.heroMeta.blur64) {
+      return { placeholder: 'blur', blurDataURL: post?.heroMeta.blur64 } as {
+        placeholder: 'blur' | 'empty';
+        blurDataURL?: string;
+      };
+    }
+    return {};
+  }, [post?.heroMeta]);
 
   return (
     <StyledBlogCard
       title={`Blog post: ${post?.title}`}
-      href={link}
+      href={rightLink}
       underline={false}
       css={{ $$color: color || '$colors$toolbar-glow' }}
     >
       <BlogCardHero
         src={post.hero || ''}
         alt={`Cover image for blog "${post.title}"`}
-        width={144}
-        height={72}
-        css={{ objectPosition: 'center' }}
+        width={post?.heroMeta?.size?.width || 144}
+        height={post?.heroMeta?.size?.height || 72}
+        {...extraHeroProps}
+        css={{ objectPosition: slug.includes('uses') ? 'top' : 'center' }}
       />
       <ContentContainer>
         <Title>{post.title}</Title>
@@ -195,6 +210,18 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
             <Icon path={calendarOutline} size={0.73} />
             {formatDate(post.date, { year: undefined, month: 'short' })}
           </InfoSpan>
+          {(post.readingTime?.minutes || 0) > 0 ? (
+            <InfoSpan>
+              <Icon path={mdiClockOutline} size={0.73} />
+              {post.readingTime?.text}
+            </InfoSpan>
+          ) : null}
+          {views?.total && +(views?.total || '0') > 2 ? (
+            <InfoSpan>
+              <Icon path={mdiEyeOutline} size={0.73} />
+              {views?.total} views
+            </InfoSpan>
+          ) : null}
         </InfoContainer>
       </ContentContainer>
     </StyledBlogCard>

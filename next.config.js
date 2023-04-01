@@ -5,6 +5,7 @@ const path = require('path');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./headers');
 
@@ -50,8 +51,6 @@ const defaultNextConfig = {
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'avatars.githubusercontent.com' },
       { hostname: '**.cdninstagram.com' },
-      { hostname: 'substackcdn.com' },
-      { hostname: 'substack-post-media.s3.amazonaws.com' },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -105,11 +104,11 @@ const defaultNextConfig = {
       buildRedirect('/supporters', '/donate#thanks'),
       buildRedirect('/blog/uses', '/uses'),
       buildRedirect('/releases', '/gh-releases'),
-      buildRedirect('/feed', 'https://jahirfiquitiva.substack.com/feed'),
+      buildRedirect('/feed', '/feed.xml'),
       buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
       buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
     ];
   },
 };
 
-module.exports = withBundleAnalyzer(defaultNextConfig);
+module.exports = withBundleAnalyzer(withContentlayer(defaultNextConfig));

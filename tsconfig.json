@@ -22,6 +22,9 @@
       "@/*": ["./src/*"],
       "@/sections": [
         "./src/components/sections"
+      ],
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
       ]
     },
     "incremental": true,
@@ -35,6 +38,7 @@
     "global.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "./.contentlayer/generated",
     "next.config.js"
   ]
 }

@@ -15,12 +15,6 @@ const membershipIds: Record<number, BmacMemberTier> = {
   118654: 'rocket',
   118655: 'diamond',
 };
-const membershipPrices: Record<number, number> = {
-  118652: 2,
-  628: 5,
-  118654: 10,
-  118655: 20,
-};
 
 interface BmacSupporter {
   payer_name: string;

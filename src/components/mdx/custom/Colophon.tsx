@@ -4,8 +4,12 @@ import { Link } from '@/components/atoms';
 import {
   nextJs,
   stitches,
-  mdiLanguageTypescript,
+  mdx,
   mdiTriangle,
+  contentlayer,
+  notion,
+  prisma,
+  planetscale,
 } from '@/icons';
 import { styled } from '~/stitches';
 
@@ -102,8 +106,28 @@ export const Colophon = () => {
         </Link>
       </IconContainer>
       <IconContainer mdx>
-        <Link title={'TypeScript'} href={'https://www.typescriptlang.org/'}>
-          <Icon path={mdiLanguageTypescript} />
+        <Link title={'MDX'} href={'https://mdxjs.com/'}>
+          <Icon path={mdx} />
+        </Link>
+      </IconContainer>
+      <IconContainer>
+        <Link title={'Contentlayer'} href={'http://contentlayer.dev/'}>
+          <Icon path={contentlayer} />
+        </Link>
+      </IconContainer>
+      <IconContainer>
+        <Link title={'Notion API'} href={'https://developers.notion.com/'}>
+          <Icon path={notion} />
+        </Link>
+      </IconContainer>
+      <IconContainer>
+        <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
+          <Icon path={planetscale} />
+        </Link>
+      </IconContainer>
+      <IconContainer>
+        <Link title={'Prisma'} href={'https://prisma.io/'}>
+          <Icon path={prisma} />
         </Link>
       </IconContainer>
       <IconContainer>

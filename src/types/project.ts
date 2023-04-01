@@ -1,7 +1,4 @@
-export interface HeroMeta {
-  size: { width: number; height: number };
-  blur64?: string;
-}
+import type { HeroMeta } from './post';
 
 export interface Project {
   order: number;

@@ -59,7 +59,7 @@ export const Meta: FC = () => {
 
       <link
         rel={'alternate'}
-        href={'https://jahirfiquitiva.substack.com/feed'}
+        href={'/feed.xml'}
         type={'application/rss+xml'}
         title={'Jahir Fiquitiva (RSS)'}
       ></link>
