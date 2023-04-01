@@ -13,7 +13,6 @@ export const manualSponsors: Array<ManualSponsor> = [
     name: 'Patryk Goworowski',
     link: 'https://twitter.com/PGoworowski',
     photo: 'https://unavatar.io/twitter/PGoworowski',
-    category: 'ball',
   },
   {
     name: 'RandleP',

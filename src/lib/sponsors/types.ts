@@ -4,7 +4,7 @@ type TimeStamp =
   `${number}-${number}-${number}T${number}:${number}:${number}.${number}Z`;
 
 export interface SponsorEntity {
-  login: string;
+  login?: string;
   avatarUrl?: string;
   name?: string;
   websiteUrl?: string;
@@ -58,7 +58,7 @@ export interface Sponsor {
 
 export interface SponsorCategory {
   id?: string;
-  name: string;
+  name?: string;
   key: SponsorsCategoryKey;
   sponsors?: Array<Sponsor>;
   price?: number;

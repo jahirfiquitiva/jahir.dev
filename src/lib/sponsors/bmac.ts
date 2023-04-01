@@ -1,15 +1,25 @@
+import { groupBy } from '@/utils/posts/group-posts';
+
 import type { ManualSponsor, SponsorsCategoryKey } from './manual-sponsors';
+import type { Sponsor, SponsorEntity, SponsorCategory } from './types';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 const { BMAC_PAT: bmacPat = '' } = process.env;
 const authHeaders =
   bmacPat && bmacPat.length > 0 ? { Authorization: `Bearer ${bmacPat}` } : {};
 
-const membershipIds: Record<number, 'star' | 'ball' | 'rocket' | 'diamond'> = {
+type BmacMemberTier = 'star' | 'ball' | 'rocket' | 'diamond';
+const membershipIds: Record<number, BmacMemberTier> = {
   118652: 'star',
   628: 'ball',
   118654: 'rocket',
   118655: 'diamond',
+};
+const membershipPrices: Record<number, number> = {
+  118652: 2,
+  628: 5,
+  118654: 10,
+  118655: 20,
 };
 
 interface BmacSupporter {
@@ -29,6 +39,9 @@ interface Member extends BmacSupporter {
   membership_level_id: number;
   stripe_status: string | 'active';
   subscription_updated_on: string;
+  subscription_coffee_price: string;
+  subscription_coffee_num: number;
+  subscription_duration_type: 'month' | 'year';
 }
 
 interface BmacResponse<T> {
@@ -71,20 +84,89 @@ const unicornToManualSponsor = (unicorn: OneTimeSupporter): ManualSponsor => ({
   )}`,
 });
 
-export const executeBmac = async () => {
-  const thisYear = new Date().getFullYear();
+const memberToGitHubSponsor = (member: Member): Sponsor => ({
+  name: member.supporter_name || member.payer_name,
+  photo: `https://source.boringavatars.com/beam/96/${encodeURIComponent(
+    member.supporter_name || member.payer_name,
+  )}`,
+});
+
+const calcMembershipMonthlyPrice = (
+  coffees: number,
+  coffeePrice: string,
+  type: 'month' | 'year',
+  monthlyPrice: number,
+) => {
+  const initial = coffees * parseFloat(coffeePrice);
+  if (type === 'month') return initial;
+  return (initial + monthlyPrice) / 12;
+};
+
+const getRightMembers = async (year: number): Promise<Array<Member>> => {
   const members = await recursiveBmacRequest<Member>(
     'https://developers.buymeacoffee.com/api/v1/subscriptions?status=active',
+  ).then((items) =>
+    items.filter(
+      (it) =>
+        it.subscription_updated_on.startsWith(year.toString()) &&
+        it.stripe_status === 'active',
+    ),
   );
-  console.error(members);
+  const rydah = members.find((it) => it.payer_name.includes('@RydahDoesTech'));
+  // eslint-disable-next-line camelcase
+  if (rydah) rydah.membership_level_id = 628;
+  const otherMembers = members.filter(
+    (it) => !it.payer_name.includes('@RydahDoesTech'),
+  );
+  return rydah ? [rydah, ...otherMembers] : otherMembers;
+};
+
+export const executeBmac = async (): Promise<{
+  members: Array<SponsorCategory>;
+  oneTime: Array<ManualSponsor>;
+}> => {
+  const thisYear = new Date().getFullYear();
+  const rightMembers = await getRightMembers(thisYear);
 
   const oneTime = await recursiveBmacRequest<OneTimeSupporter>(
     'https://developers.buymeacoffee.com/api/v1/supporters',
   );
-  console.error(oneTime);
+
+  const membersGroupedBySubId = groupBy(
+    rightMembers,
+    (it) => membershipIds[it.membership_level_id],
+  );
+  const sponsorCategories: Array<SponsorCategory> = Object.keys(
+    membersGroupedBySubId,
+  ).map((key) => {
+    console.error(membersGroupedBySubId[key as BmacMemberTier]);
+    const categorySponsors = membersGroupedBySubId[key as BmacMemberTier].map(
+      memberToGitHubSponsor,
+    );
+    const totalEarningsPerMonth: number = membersGroupedBySubId[
+      key as BmacMemberTier
+    ].reduce(
+      (prev, curr) =>
+        prev +
+        calcMembershipMonthlyPrice(
+          curr.subscription_coffee_num,
+          curr.subscription_coffee_price,
+          curr.subscription_duration_type,
+          membershipPrices[curr.membership_level_id],
+        ),
+      0,
+    );
+
+    return {
+      key,
+      sponsors: categorySponsors,
+      sponsorsCount: categorySponsors.length,
+      totalEarningsPerMonth,
+    } as SponsorCategory;
+  });
 
   return {
-    members,
+    members: sponsorCategories,
     oneTime: getUnicornBmacSupporters(oneTime, thisYear.toString()).map(
       unicornToManualSponsor,
     ),
