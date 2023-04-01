@@ -5,7 +5,6 @@ const path = require('path');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
-const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./headers');
 
@@ -113,4 +112,4 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(withContentlayer(defaultNextConfig));
+module.exports = withBundleAnalyzer(defaultNextConfig);
