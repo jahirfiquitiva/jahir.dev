@@ -129,28 +129,6 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
             .
           </li>
           <li>
-            I maintain a popular open-source Android library called{' '}
-            <Link
-              title={'Piracy Checker'}
-              href={'https://github.com/javiersantos/PiracyChecker'}
-            >
-              Piracy Checker
-            </Link>
-            .
-          </li>
-          {/*
-          TODO: uncomment when I translate more articles
-          <li>
-            I occasionally translate articles published on{' '}
-            <Link
-              title={'Unicorn Utterances'}
-              href={'https://unicorn-utterances.com'}
-            >
-              Unicorn Utterances
-            </Link>{' '}
-            into Spanish
-          </li> */}
-          <li>
             I make some of my personal{' '}
             <Link title={'Projects page'} href={'/projects'}>
               projects
