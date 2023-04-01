@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
 
 import { Link } from '@/components/atoms';
-import { MdxContent } from '@/components/mdx';
-import { AppsGrid } from '@/components/mdx/custom/apps';
-import { Colophon } from '@/components/mdx/custom/Colophon';
-import { HardwareGrid } from '@/components/mdx/custom/hardware';
-import { Grid, GridColumn } from '@/components/mdx/Grid';
+import {
+  MdxContent,
+  AppsGrid,
+  Colophon,
+  HardwareGrid,
+  Grid,
+  GridColumn,
+} from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
 import extensions from '@/data/extensions.json';
 import gaming from '@/data/gaming.json';
@@ -90,10 +93,12 @@ const PostPage: NextPage = () => (
         </Link>
       </small>
       <blockquote>
-        This site is inspired and featured on{' '}
-        <Link href={'https://uses.tech'} title={'uses.tech'}>
-          uses.tech
-        </Link>
+        <p>
+          This site is inspired and featured on{' '}
+          <Link href={'https://uses.tech'} title={'uses.tech'}>
+            uses.tech
+          </Link>
+        </p>
       </blockquote>
     </MdxContent>
   </Layout>

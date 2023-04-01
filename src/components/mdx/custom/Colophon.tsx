@@ -4,12 +4,8 @@ import { Link } from '@/components/atoms';
 import {
   nextJs,
   stitches,
-  mdx,
+  mdiLanguageTypescript,
   mdiTriangle,
-  contentlayer,
-  notion,
-  prisma,
-  planetscale,
 } from '@/icons';
 import { styled } from '~/stitches';
 
@@ -19,7 +15,7 @@ const DotsContainer = styled('ul', {
   overflow: 'hidden',
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
-  p: 'calc($$verticalContentPadding / 2)',
+  p: '$$verticalContentPadding calc($$verticalContentPadding / 2)',
   rowGap: 'calc($$verticalContentPadding / 1.25)',
   alignItems: 'center',
   justifyContent: 'center',
@@ -47,6 +43,7 @@ const IconContainer = styled('li', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'center',
   background: '$background',
   borderRadius: '50%',
   maxWidth: 'calc(calc(1.5rem * $$iconSize) - calc($space$8 * 2))',
@@ -105,28 +102,8 @@ export const Colophon = () => {
         </Link>
       </IconContainer>
       <IconContainer mdx>
-        <Link title={'MDX'} href={'https://mdxjs.com/'}>
-          <Icon path={mdx} />
-        </Link>
-      </IconContainer>
-      <IconContainer>
-        <Link title={'Contentlayer'} href={'http://contentlayer.dev/'}>
-          <Icon path={contentlayer} />
-        </Link>
-      </IconContainer>
-      <IconContainer>
-        <Link title={'Notion API'} href={'https://developers.notion.com/'}>
-          <Icon path={notion} />
-        </Link>
-      </IconContainer>
-      <IconContainer>
-        <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
-          <Icon path={planetscale} />
-        </Link>
-      </IconContainer>
-      <IconContainer>
-        <Link title={'Prisma'} href={'https://prisma.io/'}>
-          <Icon path={prisma} />
+        <Link title={'TypeScript'} href={'https://www.typescriptlang.org/'}>
+          <Icon path={mdiLanguageTypescript} />
         </Link>
       </IconContainer>
       <IconContainer>
