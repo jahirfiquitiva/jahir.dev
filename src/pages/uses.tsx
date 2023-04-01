@@ -28,7 +28,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
 
   const renderContent = () => {
-    if (!router.isFallback && !post?.slug) {
+    if (!router.isFallback) {
       return <FourOhFourSection />;
     }
     if (router.isFallback) {
@@ -38,7 +38,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
       return <Error />;
     }
     return (
-      <MdxContent contentType={'blog'} content={post as Post}>
+      <MdxContent content={post as Post}>
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
       </MdxContent>

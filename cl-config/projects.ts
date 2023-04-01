@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
-import readingTime from 'reading-time';
 
 import { unique } from '../src/utils/unique';
 
@@ -14,7 +13,6 @@ const getIconUrl = (icon?: string) =>
     : '';
 
 const computedFields: ComputedFields = {
-  readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
     // eslint-disable-next-line no-underscore-dangle
