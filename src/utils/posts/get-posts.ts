@@ -1,4 +1,4 @@
-import substackData from '@/blog/blog.json';
+import substackData from '@/data/blog.json';
 import type { Post } from '@/types';
 
 type SubstackPost = (typeof substackData)['items'][number];

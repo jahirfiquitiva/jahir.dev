@@ -52,13 +52,8 @@ if (images.length) {
     results.forEach((result) => {
       obj[result.key] = result;
     });
-    const fileContent = `/* eslint-disable max-len */\nconst imagesBlurData = ${JSON.stringify(
-      obj,
-      null,
-      2,
-    )};\nexport default imagesBlurData;`;
-    const outdir = path.join(process.cwd(), 'src', 'blur');
-    const outfile = path.join(outdir, `${page}.ts`);
-    fs.writeFileSync(outfile, fileContent);
+    const outdir = path.join(process.cwd(), 'src', 'data');
+    const outfile = path.join(outdir, `blur-${page}.json`);
+    fs.writeFileSync(outfile, JSON.stringify(obj, null, 2));
   });
 }

@@ -30,7 +30,7 @@ const { parse } = pkg;
       },
     ],
   });
-  const outdir = path.join(process.cwd(), 'src', 'blog');
+  const outdir = path.join(process.cwd(), 'src', 'data');
   const outfile = path.join(outdir, 'blog.json');
   fs.writeFileSync(outfile, JSON.stringify(rss, null, 2));
 })();
