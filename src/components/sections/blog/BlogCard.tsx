@@ -171,7 +171,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   return (
     <StyledBlogCard
       title={`Blog post: ${post?.title}`}
-      href={domain}
+      href={link}
       underline={false}
       css={{ $$color: color || '$colors$toolbar-glow' }}
     >
