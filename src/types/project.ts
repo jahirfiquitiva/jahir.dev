@@ -1,7 +1,7 @@
-import type { HeroMeta } from '@/types';
+import type { HeroMeta } from './post';
 
 export interface Project {
-  slug: string;
+  order: number;
   name: string;
   description: string;
   icon: string;

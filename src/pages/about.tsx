@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import imagesBlurData from '@/blur/about';
 import { Layout, Seo } from '@/components/molecules';
+import imagesBlurData from '@/data/blur-about.json';
 import { useRandomImage } from '@/hooks/useRandomImage';
 import { About as AboutSection } from '@/sections';
 import type { ImageBlurDataObject, RandomPageImage } from '@/types';

@@ -2,13 +2,9 @@ import type { GetStaticProps, NextPage } from 'next';
 
 import { DotsDivider } from '@/components/atoms';
 import { Layout, Seo } from '@/components/molecules';
+import allProjects from '@/data/projects.json';
 import { Intro, Projects, Skills } from '@/sections';
 import type { Project } from '@/types';
-import { pick } from '@/utils/posts/get-posts';
-import {
-  allProjects,
-  type Project as GeneratedProject,
-} from 'contentlayer/generated';
 
 interface HomeProps {
   projects?: Array<Project>;
@@ -54,27 +50,8 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const projects = allProjects
-    .sort((a: GeneratedProject, b: GeneratedProject) => a.order - b.order)
-    .map((project: GeneratedProject) =>
-      pick(project, [
-        'slug',
-        'name',
-        'description',
-        'icon',
-        'preview',
-        'link',
-        'color',
-        'darkColor',
-        'stack',
-        'hide',
-        'repo',
-        'owner',
-        'inProgress',
-        'iconMeta',
-      ]),
-    )
+    .sort((a, b) => a.order - b.order)
     .filter((it) => !it.hide);
-
   return {
     props: { projects },
   };

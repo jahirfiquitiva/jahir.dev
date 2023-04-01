@@ -3,11 +3,10 @@ import { makeSource } from 'contentlayer/source-files';
 
 import Blog from './cl-config/blogs';
 import mdx from './cl-config/mdx';
-import Project from './cl-config/projects';
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'content',
-  documentTypes: [Blog, Project],
+  documentTypes: [Blog],
   mdx,
 });
 

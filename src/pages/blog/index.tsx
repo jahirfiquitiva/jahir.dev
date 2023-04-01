@@ -25,6 +25,7 @@ const Blog: NextPage<BlogProps> = (props) => {
           'software',
           'development',
           'thoughts',
+          'opinions',
           'blog',
           'content',
           'story',
@@ -41,21 +42,9 @@ const Blog: NextPage<BlogProps> = (props) => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'hero',
-    'excerpt',
-    'color',
-    'link',
-    'readingTime',
-    'inProgress',
-    'year',
-    'devToId',
-    'heroMeta',
-  ]).filter((it: { slug: string }) => it.slug !== 'uses');
   return {
-    props: { posts: allPosts },
+    props: {
+      posts: getAllPosts().filter((it: { slug: string }) => it.slug !== 'uses'),
+    },
   };
 };

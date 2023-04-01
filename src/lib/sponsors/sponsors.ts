@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-destructuring */
-import { manualSponsors, type SponsorsCategoryKey } from './manual-sponsors';
+import { executeBmac } from './bmac';
+import {
+  manualSponsors,
+  type ManualSponsor,
+  type SponsorsCategoryKey,
+} from './manual-sponsors';
 import { testimonials } from './testimonials';
 import type {
   SponsorsResponse,
@@ -83,6 +88,7 @@ const priceToTierKey: Record<number, string> = {
 
 const mapResponseToSponsorsList = (
   response: SponsorsResponse,
+  bmacCategories: Array<SponsorCategory> = [],
 ): Array<SponsorCategory> => {
   const { user } = response.data;
   // const totalCount = user.sponsors.totalCount;
@@ -101,23 +107,32 @@ const mapResponseToSponsorsList = (
     }
     const nameSplit = name.split(' ');
     const key = nameSplit[nameSplit.length - 1].trim().toLowerCase();
+
+    const bmacCategory = bmacCategories.find((it) => it.key === key);
+
     return {
       id: priceToTierKey[monthlyPriceInDollars] || 'x',
       name,
       key,
-      sponsors: (sponsors || []).map((it) => {
-        const { sponsorEntity: sponsor, tierSelectedAt: since } = it;
-        return {
-          name: sponsor.name || sponsor.login,
-          link: sponsor.websiteUrl || `https://github.com/${sponsor.login}`,
-          photo: sponsor.avatarUrl,
-          since,
-          username: sponsor.login,
-        };
-      }),
+      sponsors: [
+        ...(sponsors || []).map((it) => {
+          const { sponsorEntity: sponsor, tierSelectedAt: since } = it;
+          return {
+            name: sponsor.name || sponsor.login,
+            link: sponsor.websiteUrl || `https://github.com/${sponsor.login}`,
+            photo: sponsor.avatarUrl,
+            since,
+            username: sponsor.login,
+          };
+        }),
+        ...(bmacCategory?.sponsors || []),
+      ],
       price: monthlyPriceInDollars,
-      totalEarningsPerMonth,
-      sponsorsCount: sponsors?.length || 0,
+      totalEarningsPerMonth:
+        (totalEarningsPerMonth || 0) +
+        (bmacCategory?.totalEarningsPerMonth || 0),
+      sponsorsCount:
+        (sponsors?.length || 0) + (bmacCategory?.sponsors?.length || 0),
     };
   }) as Array<SponsorCategory>;
 };
@@ -154,14 +169,16 @@ const buildPhotoLink = (
 
 const mergeManualAndGitHubSponsors = (
   categories: Array<SponsorCategory>,
+  bmacOneTimeSupporters: Array<ManualSponsor> = [],
 ): Array<SponsorCategory> => {
   if (!categories || !categories.length) return [];
 
-  const gitHubSponsorsToOverwrite = manualSponsors.filter(
+  const allManualSponsors = [...manualSponsors, ...bmacOneTimeSupporters];
+  const gitHubSponsorsToOverwrite = allManualSponsors.filter(
     (it) => !!it.username,
   );
-  const categorifiedSponsors = manualSponsors.filter((it) => !!it.category);
-  const unicornSponsors: Array<Sponsor> = manualSponsors
+  const categorifiedSponsors = allManualSponsors.filter((it) => !!it.category);
+  const unicornSponsors: Array<Sponsor> = allManualSponsors
     .filter((it) => !it.category && !it.username)
     .map((it) => ({ ...it } as Sponsor));
 
@@ -204,9 +221,10 @@ const mergeManualAndGitHubSponsors = (
 
 export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
   try {
+    const { oneTime, members } = await executeBmac();
     const response = await getSponsorsGraphQLResponse();
     if (response) {
-      const githubCategories = mapResponseToSponsorsList(response);
+      const githubCategories = mapResponseToSponsorsList(response, members);
       const totalEarningsPerMonth: number = githubCategories.reduce(
         (prev, current) => {
           return prev + (current.totalEarningsPerMonth || 0);
@@ -218,6 +236,7 @@ export const fetchSponsors = async (): Promise<SponsorsCategoriesResponse> => {
       }, 0);
       const categories = mergeManualAndGitHubSponsors(
         githubCategories.filter((it) => (it.price || 0) >= 5),
+        oneTime,
       );
       const sponsors = categories.map((it) => it.sponsors).flat();
       return {

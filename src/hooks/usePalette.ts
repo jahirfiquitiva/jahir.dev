@@ -42,6 +42,9 @@ export const usePalette = (imageUrl?: string | null): PaletteState => {
             }
           });
           setPalette(parsedPalette);
+        })
+        .catch(() => {
+          setLoading(false);
         });
     } catch (e) {
       setLoading(false);

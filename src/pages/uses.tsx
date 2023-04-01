@@ -1,3 +1,4 @@
+import type { Blog } from 'contentlayer/generated';
 import type { GetStaticProps, NextPage } from 'next';
 import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
@@ -9,7 +10,6 @@ import { Layout, Seo } from '@/components/molecules';
 import { Error, FourOhFour as FourOhFourSection } from '@/components/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils/posts/get-posts';
-import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
@@ -38,7 +38,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
       return <Error />;
     }
     return (
-      <MdxContent contentType={'blog'} content={post as Post}>
+      <MdxContent content={post as Post}>
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <MdxComponent components={{ ...mdxComponents } as any} />
       </MdxContent>
@@ -62,6 +62,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
           'stack',
           'website',
           'tech',
+          'uses',
         ]}
       />
       {renderContent()}
@@ -72,7 +73,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
 export default PostPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const post = getAllPosts([]).find(
+  const post = getAllPosts().find(
     (post: { slug: string }) => post.slug === 'uses',
   );
   return { props: { post } };

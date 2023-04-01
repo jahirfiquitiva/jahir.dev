@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 
-import { Heading, LinkButton } from '@/components/atoms';
-import { mdiCreditCardChipOutline, mdiHeartOutline } from '@/icons';
+import { Heading, Link, LinkButton } from '@/components/atoms';
+import { mdiCreditCardChipOutline, mdiHeartOutline, mdiPizza } from '@/icons';
 import {
   styled,
   darkTheme as theme,
@@ -11,7 +11,7 @@ import {
 const ButtonsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 'calc($$verticalContentPadding / 4)',
+  gap: 'calc($$verticalContentPadding / 2)',
 });
 
 const ButtonsGroup = styled(ButtonsContainer, {
@@ -52,7 +52,7 @@ export const DonateButtons = () => {
   return (
     <ButtonsContainer>
       <Heading as={'h4'} css={{ fontSize: '$md' }}>
-        Donate using...
+        Donate via...
       </Heading>
       <ButtonsGroup>
         <GitHubSponsorsButton
@@ -62,6 +62,13 @@ export const DonateButtons = () => {
           <Icon path={mdiHeartOutline} size={0.9} />
           GitHub Sponsors
         </GitHubSponsorsButton>
+        <LinkButton
+          href={'https://buymeacoffee.com/jahirfiquitiva'}
+          title={"Jahir Fiquitiva's Buy me a pizza or coffee Page"}
+        >
+          <Icon path={mdiPizza} size={0.9} />
+          <span>Buy me a pizza</span>
+        </LinkButton>
         <PayPalButton
           href={'https://jahir.xyz/DonatePayPal'}
           title={"Jahir Fiquitiva's PayPal Donate Page"}
@@ -71,8 +78,15 @@ export const DonateButtons = () => {
         </PayPalButton>
       </ButtonsGroup>
       <small>
-        <sup>*</sup> Both options allow custom amounts and one-time or monthly
-        donations
+        ... or gift me{' '}
+        <Link
+          href={
+            'https://www.amazon.com/hz/wishlist/ls/IEAGJXCWA83F?ref_=wl_share'
+          }
+          title={"Jahir Fiquitiva's Amazon Wishlist"}
+        >
+          something from my Amazon wishlist
+        </Link>
       </small>
     </ButtonsContainer>
   );

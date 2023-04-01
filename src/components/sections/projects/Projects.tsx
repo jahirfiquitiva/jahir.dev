@@ -123,7 +123,6 @@ export const Projects: FC<ProjectsProps> = (props) => {
           return (
             <ProjectCard
               key={
-                project.slug ||
                 // eslint-disable-next-line newline-per-chained-call
                 `${project.name.toLowerCase().split(' ').join('-')}-${index}`
               }

@@ -6,7 +6,7 @@ import { usePalette } from '@/hooks/usePalette';
 import { mdiPencilOutline } from '@/icons';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
-import type { FC, HeroMeta, Post, Project } from '@/types';
+import type { FC, Post } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';
 import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { getDomainFromUrl } from '@/utils/format/domain';
@@ -25,62 +25,25 @@ import {
 } from './styled';
 import { ViewsCounter } from './ViewsCounter';
 
-type ContentTypes = Post | Project;
-
-const slugPath = (content: ContentTypes, forShare?: boolean): string => {
+const slugPath = (content: Post, forShare?: boolean): string => {
   if (content.slug === 'uses' && forShare) return 'uses';
-  if ('icon' in content) return `projects/${content.slug}`;
-  if ('hero' in content) return `blog/${content.slug}`;
-  return `coding/${content.slug}`;
+  return `blog/${content.slug}`;
 };
 
-const editUrl = (content: ContentTypes) =>
+const editUrl = (content: Post) =>
   `https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${slugPath(
     content,
   )}.mdx`;
 
-interface ContentFields {
-  title: string;
-  hero?: string;
-  heroSource?: string;
-  date?: string;
-  readingTime?: string;
-  slug?: string;
-  devToId?: number;
-  heroMeta?: HeroMeta;
-  fullHeightHero?: boolean;
-  inProgress?: boolean;
-  color?: string;
-}
-
-const getContentFields = (content: ContentTypes): ContentFields => {
-  const fields: ContentFields = {
-    title: 'title' in content ? content.title : content.name,
-  };
-  if ('hero' in content) fields.hero = content.hero;
-  if ('heroSource' in content) fields.heroSource = content.heroSource;
-  if ('date' in content) fields.date = content.date;
-  if ('readingTime' in content) fields.readingTime = content.readingTime?.text;
-  if ('slug' in content) fields.slug = content.slug;
-  if ('devToId' in content) fields.devToId = content.devToId;
-  if ('heroMeta' in content) fields.heroMeta = content.heroMeta;
-  if ('fullHeightHero' in content)
-    fields.fullHeightHero = content.fullHeightHero;
-  if ('inProgress' in content) fields.inProgress = content.inProgress;
-  if ('color' in content) fields.color = content.color;
-  return fields;
-};
-
 interface CommonContent {
   backText?: string;
   backHref?: string;
-  content: ContentTypes;
-  contentType: 'blog' | 'projects';
+  content: Post;
 }
 
 // eslint-disable-next-line max-lines-per-function
 export const MdxContent: FC<CommonContent> = (props) => {
-  const { backText, backHref, content, contentType, children } = props;
+  const { backText, backHref, content, children } = props;
   const {
     title,
     hero,
@@ -93,7 +56,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
     fullHeightHero,
     inProgress,
     color: postColor,
-  } = getContentFields(content);
+  } = content;
 
   const { isDark, themeReady } = useTheme();
   const { palette: heroPalette = {} } = usePalette(hero);
@@ -169,15 +132,15 @@ export const MdxContent: FC<CommonContent> = (props) => {
               {' • '}
             </>
           ) : null}
-          {(readingTime?.length || 0) > 0 && <>{readingTime}</>}
+          {(readingTime?.text?.length || 0) > 0 && <>{readingTime?.text}</>}
           <ViewsCounter
-            slug={`${contentType}--${slug}`}
+            slug={`blog--${slug}`}
             devToId={devToId}
             inProgress={inProgress}
           />
         </Intro>
 
-        <ReactionsProvider slug={`${contentType}--${slug}`}>
+        <ReactionsProvider slug={`blog--${slug}`}>
           <MdxReactions inProgress={inProgress} />
 
           {hero && (

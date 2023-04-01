@@ -1,3 +1,4 @@
+import type { Blog } from 'contentlayer/generated';
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
@@ -9,7 +10,6 @@ import { useMDXComponent } from '@/hooks/useMDXComponent';
 import { Error, FourOhFour as FourOhFourSection } from '@/sections';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils/posts/get-posts';
-import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;
@@ -40,7 +40,6 @@ const PostPage: NextPage<PostPageProps> = (props) => {
       <MdxContent
         backText={'Back to blog posts list'}
         backHref={'/blog'}
-        contentType={'blog'}
         content={post as Post}
       >
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -82,7 +81,7 @@ export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getAllPosts([])
+    paths: getAllPosts()
       .filter((it) => it.slug !== 'uses')
       .filter((post) => {
         const shouldRedirect = post && post.link && post.link.length > 0;
@@ -94,7 +93,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getAllPosts([])
+  const post = getAllPosts()
     .filter((it) => it.slug !== 'uses')
     .find((post) => post.slug === params?.slug);
   if (!post) {

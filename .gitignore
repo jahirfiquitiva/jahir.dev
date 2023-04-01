@@ -48,4 +48,5 @@ content/blog/sheet.mdx
 .frontmatter
 frontmatter.json
 
-src/blur/*.ts
+src/data/*.json
+!src/data/projects.json
