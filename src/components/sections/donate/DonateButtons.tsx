@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 
 import { Heading, Link, LinkButton } from '@/components/atoms';
-import { mdiCreditCardChipOutline, mdiHeartOutline } from '@/icons';
+import { mdiCreditCardChipOutline, mdiHeartOutline, mdiPizza } from '@/icons';
 import {
   styled,
   darkTheme as theme,
@@ -66,7 +66,7 @@ export const DonateButtons = () => {
           href={'https://buymeacoffee.com/jahirfiquitiva'}
           title={"Jahir Fiquitiva's Buy me a pizza or coffee Page"}
         >
-          <span>🍕</span>
+          <Icon path={mdiPizza} size={0.9} />
           <span>Buy me a pizza</span>
         </LinkButton>
         <PayPalButton

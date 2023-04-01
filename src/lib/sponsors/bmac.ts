@@ -139,7 +139,6 @@ export const executeBmac = async (): Promise<{
   const sponsorCategories: Array<SponsorCategory> = Object.keys(
     membersGroupedBySubId,
   ).map((key) => {
-    console.error(membersGroupedBySubId[key as BmacMemberTier]);
     const categorySponsors = membersGroupedBySubId[key as BmacMemberTier].map(
       memberToGitHubSponsor,
     );
