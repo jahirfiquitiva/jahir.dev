@@ -1,8 +1,4 @@
-export type SponsorsCategoryKey =
-  | 'ball'
-  | 'rocket'
-  | 'diamond'
-  | 'unicorn';
+export type SponsorsCategoryKey = 'ball' | 'rocket' | 'diamond' | 'unicorn';
 
 interface ManualSponsor {
   name: string;
@@ -13,11 +9,6 @@ interface ManualSponsor {
 }
 
 export const manualSponsors: Array<ManualSponsor> = [
-  {
-    name: 'Tim Austin',
-    link: 'https://play.google.com/store/apps/dev?id=4682932724915294631',
-    username: 'drumdestroyer',
-  },
   {
     name: 'Patryk Goworowski',
     link: 'https://twitter.com/PGoworowski',
@@ -41,23 +32,6 @@ export const manualSponsors: Array<ManualSponsor> = [
     link: 'https://twitter.com/RippedThemer',
   },
   {
-    name: 'ExtraVital',
-    photo:
-      'https://lh3.googleusercontent.com/O2NP4-dGPk_QiUvAjRSNOLJwIDzghxGeFj0FDqB3dkEW_T3lhMHH1SgTxN7JmU_a_Q=w288-h288-n-rw',
-    link: 'https://play.google.com/store/apps/dev?id=5234901489834236726',
-  },
-  {
-    name: 'Vukašin Anđelković',
-    photo:
-      'https://unavatar.io/twitter/vukkashin?fallback=https://vukashin.xyz/content/Avatar-2.png.webp',
-    link: 'https://vukash.in/',
-  },
-  {
-    name: 'Jaden Pleasants',
-    photo: 'https://unavatar.io/twitter/YaBoiBurner',
-    link: 'https://twitter.com/YaBoiBurner',
-  },
-  {
     name: 'Patryk Michalik',
     photo: 'https://unavatar.io/twitter/patrykmichalik_',
     link: 'https://patrykmichalik.com',
@@ -71,16 +45,5 @@ export const manualSponsors: Array<ManualSponsor> = [
     name: 'Corbin Crutchley',
     photo: 'https://unavatar.io/twitter/crutchcorn',
     link: 'https://crutchcorn.dev',
-  },
-  {
-    name: 'Dany Gee',
-    photo: 'https://unavatar.io/github/DanyGee',
-    link: 'https://github.com/DanyGee',
-  },
-  {
-    name: 'Evelyn Hathaway',
-    photo:
-      'https://unavatar.io/github/evelynhathaway?fallback=https://evelyn.dev/static/bdcd5bb0827ad6143f8e7d1ade45ae20/c1f5f/headshot.webp',
-    link: 'https://evelyn.dev/',
   },
 ];
