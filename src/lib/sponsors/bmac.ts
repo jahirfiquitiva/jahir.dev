@@ -95,11 +95,10 @@ const calcMembershipMonthlyPrice = (
   coffees: number,
   coffeePrice: string,
   type: 'month' | 'year',
-  monthlyPrice: number,
-) => {
+): number => {
   const initial = coffees * parseFloat(coffeePrice);
   if (type === 'month') return initial;
-  return (initial + monthlyPrice) / 12;
+  return +(initial / 12).toFixed(2);
 };
 
 const getRightMembers = async (year: number): Promise<Array<Member>> => {
@@ -151,7 +150,6 @@ export const executeBmac = async (): Promise<{
           curr.subscription_coffee_num,
           curr.subscription_coffee_price,
           curr.subscription_duration_type,
-          membershipPrices[curr.membership_level_id],
         ),
       0,
     );
