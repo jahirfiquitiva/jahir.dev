@@ -44,7 +44,7 @@ export default Blog;
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      posts: getAllPosts(),
+      posts: getAllPosts().filter((it: { slug: string }) => it.slug !== 'uses'),
     },
   };
 };

@@ -20,12 +20,8 @@
     "paths": {
       "~/stitches": ["stitches.config.ts"],
       "@/*": ["./src/*"],
-      "@/sections": [
-        "./src/components/sections"
-      ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
+      "@/sections": ["./src/components/sections"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true,
     // "jsxImportSource": "@emotion/react",

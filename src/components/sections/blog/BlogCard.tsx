@@ -161,7 +161,10 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
     const color = hexToRGB(
-      getReadableColor(post?.color || getColorFromPalette(heroPalette, isDark), isDark),
+      getReadableColor(
+        post?.color || getColorFromPalette(heroPalette, isDark),
+        isDark,
+      ),
       undefined,
       true,
     );
@@ -169,7 +172,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     return color;
   }, [post?.color, isDark, themeReady, heroPalette]);
 
-   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
+  const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
   const domain = getShortDomainForBlog(rightLink);
 
   const extraHeroProps = useMemo(() => {
