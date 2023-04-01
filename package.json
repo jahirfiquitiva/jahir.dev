@@ -7,7 +7,7 @@
     "lint": "next lint",
     "predev": "yarn clean && yarn gen-blur && yarn gen-blog",
     "prebuild": "yarn predev",
-    "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
     "analyze": "cross-env ANALYZE=true NODE_ENV=production next build",
     "blur": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/blur.mjs",
     "gen-blur": "yarn blur about",

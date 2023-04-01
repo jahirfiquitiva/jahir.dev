@@ -54,7 +54,7 @@ module.exports = [
     headers: securityHeaders,
   },
   {
-    source: '/feed.xml',
+    source: '/feed',
     headers: [
       {
         key: 'Content-Type',

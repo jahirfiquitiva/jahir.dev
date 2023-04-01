@@ -105,7 +105,7 @@ const defaultNextConfig = {
       buildRedirect('/supporters', '/donate#thanks'),
       buildRedirect('/blog/uses', '/uses'),
       buildRedirect('/releases', '/gh-releases'),
-      buildRedirect('/feed', '/feed.xml'),
+      buildRedirect('/feed', 'https://jahirfiquitiva.substack.com/feed'),
       buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
       buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
     ];

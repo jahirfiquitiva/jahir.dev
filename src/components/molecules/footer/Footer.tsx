@@ -107,7 +107,7 @@ const secondaryLinks: Array<FooterLinkProps> = [
 const metaLinks: Array<FooterLinkProps> = [
   {
     title: 'RSS',
-    href: '/feed.xml',
+    href: 'https://jahirfiquitiva.substack.com/feed',
     gradient: 'yellow-to-orange',
     a11yTitle: 'RSS Feed',
     openInNewTab: true,
