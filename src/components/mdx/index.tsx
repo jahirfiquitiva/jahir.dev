@@ -4,7 +4,6 @@ import { Img } from '@/components/atoms';
 import { Masonry } from '@/components/compounds';
 import { styled } from '~/stitches';
 
-import { Reactions } from './content';
 import { customComponents, Table } from './custom';
 import { Grid, GridColumn } from './Grid';
 import { ImageComparison } from './ImageComparison';
@@ -18,7 +17,6 @@ export const mdxComponents = {
   Grid,
   GridColumn,
   Masonry,
-  Reactions,
   hr: styled('hr', { borderColor: '$divider' }),
   table: Table,
   a: MdxLink,

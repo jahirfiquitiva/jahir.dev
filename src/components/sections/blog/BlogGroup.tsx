@@ -55,7 +55,6 @@ export const BlogGroup: FC<BlogGroupProps> = (props) => {
         return (
           <li
             key={
-              post.slug ||
               // eslint-disable-next-line newline-per-chained-call
               `${post.title.toLowerCase().split(' ').join('-')}-${index}`
             }

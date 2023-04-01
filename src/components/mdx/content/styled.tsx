@@ -1,8 +1,6 @@
 import { Heading, Img } from '@/components/atoms';
 import { styled } from '~/stitches';
 
-import { Reactions } from './Reactions';
-
 export const Title = styled(Heading, {
   $$textShadowColor: '$colors$accent-animoji',
   dark: { $$textShadowColor: '$colors$accent-animoji' },
@@ -57,12 +55,5 @@ export const ArticleHero = styled(Img, {
         height: 'auto',
       },
     },
-  },
-});
-
-export const MdxReactions = styled(Reactions, {
-  order: 1,
-  '@tablet-lg': {
-    order: 2,
   },
 });
