@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
-import { Blog as BlogSection } from '@/sections';
+import { Blog as BlogSection } from '@/components/views';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils/posts/get-posts';
 

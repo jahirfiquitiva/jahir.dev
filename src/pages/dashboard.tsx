@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
-import { Dashboard as DashboardSection } from '@/sections';
+import { Dashboard as DashboardSection } from '@/components/views';
 
 const UnderConstruction: NextPage = () => {
   return (

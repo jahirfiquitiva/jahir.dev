@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
-import { FourOhFour as FourOhFourSection } from '@/sections';
+import { FourOhFour as FourOhFourSection } from '@/components/views';
 
 const GitHubRelease: NextPage = () => {
   return (

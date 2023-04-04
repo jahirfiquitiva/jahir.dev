@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
 import { useRandomImage } from '@/hooks/useRandomImage';
-import { Contact as ContactSection } from '@/sections';
+import { Contact as ContactSection } from '@/components/views';
 import type { RandomPageImage } from '@/types';
 
 const Contact: NextPage<{ images: Array<RandomPageImage> }> = (props) => {

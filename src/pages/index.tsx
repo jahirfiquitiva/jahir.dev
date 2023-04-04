@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
 import allProjects from '@/data/projects.json';
-import { Intro, Projects, Skills } from '@/sections';
+import { Intro, Projects, Skills } from '@/components/views';
 import type { Project } from '@/types';
 
 interface HomeProps {
