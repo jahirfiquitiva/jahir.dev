@@ -1,11 +1,6 @@
-import type { ComponentProps } from 'react';
+import { css } from '~/stitches';
 
-import type { FC } from '@/types';
-import { styled, css } from '~/stitches';
-
-import { Link } from '../code/link/link';
-
-const ButtonStyles = css({
+export const ButtonStyles = css({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -66,34 +61,3 @@ const ButtonStyles = css({
     },
   },
 });
-
-const StyledButton = styled('button', ButtonStyles);
-
-const BaseLink = styled(Link, ButtonStyles);
-const StyledLinkButton = styled(BaseLink, {
-  hocus: { color: '$on-accent', dark: { color: '$on-accent' } },
-  variants: {
-    outlined: {
-      true: {
-        hocus: { color: '$text-primary', dark: { color: '$text-primary' } },
-      },
-    },
-  },
-});
-
-export const LinkButton: FC<ComponentProps<typeof StyledLinkButton>> = (
-  props,
-) => {
-  return <StyledLinkButton {...props} underline={false} />;
-};
-
-export const Button: FC<ComponentProps<typeof StyledButton>> = (props) => {
-  return (
-    <StyledButton
-      aria-label={props.title}
-      name={props.title}
-      type={props.type || 'button'}
-      {...props}
-    />
-  );
-};
