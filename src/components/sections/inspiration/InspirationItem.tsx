@@ -1,5 +1,4 @@
 import { Img, Link } from '@/components/core';
-import type { InspirationItem as InspoItemType } from '@/lib/notion';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
@@ -23,6 +22,12 @@ const ItemLink = styled(Link, {
 const ItemImage = styled(Img, {
   filter: 'drop-shadow(0 0 1px $colors$img-drop-shadow)',
 });
+
+interface InspoItemType {
+  title: string;
+  link: string;
+  domain?: string;
+}
 
 export const InspirationItem: FC<{ item: InspoItemType }> = ({ item }) => {
   const { title, link, domain } = item;
