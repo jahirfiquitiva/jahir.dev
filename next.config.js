@@ -81,7 +81,7 @@ const defaultNextConfig = {
         'https://stories.uplabs.com/what-google-missed-in-their-guidelines-for-material-design-iconography-daf9f88000ec',
       ),
       buildRedirect('/blog/post-of-fame', '/donate#thanks'),
-      /* Old static assets paths to news */
+      /* Old static assets paths to new ones */
       buildRedirect('/assets/:path*', '/static/:path*'),
       /* Needed for android dashboards */
       buildRedirect(
