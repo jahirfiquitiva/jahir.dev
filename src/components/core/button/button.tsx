@@ -7,8 +7,8 @@ import { Link } from '../link';
 
 import { ButtonStyles } from './button.styles';
 
-const StyledLinkButton = styled(Link, {
-  ...ButtonStyles,
+const BaseLink = styled(Link, ButtonStyles);
+const StyledLinkButton = styled(BaseLink, {
   hocus: { color: '$on-accent', dark: { color: '$on-accent' } },
   variants: {
     outlined: {

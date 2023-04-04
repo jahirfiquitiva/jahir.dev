@@ -12,7 +12,7 @@ export type RainbowColors = typeof rainbowColorsArray[number];
 type GradientColor = `gradient-${RainbowColors}`;
 type ShadowColor = `shadow-${RainbowColors}`;
 
-type AccentColor = 'accent' | 'accent-dark' | 'on-accent';
+type AccentColor = 'accent' | 'accent-dark' | 'accent-shadow' | 'on-accent';
 
 type TextColorVariants = 'primary' | 'secondary' | 'tertiary';
 type TextColor = `text-${TextColorVariants}`;

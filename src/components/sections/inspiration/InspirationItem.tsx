@@ -15,7 +15,7 @@ const ItemLink = styled(Link, {
   color: '$text-secondary',
   dark: { color: '$text-secondary' },
   hocus: {
-    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+    backgroundColor: 'rgba($colors$accent-shadow / .1)',
   },
 });
 

@@ -190,7 +190,7 @@ export const Article = styled('article', {
     borderBottomLeftRadius: '0',
     borderBottomRightRadius: '0',
     color: '$text-secondary',
-    background: '$toolbar-glow',
+    background: '$accent-shadow',
     marginTop: '$20',
     fontFamily: 'monospace, ui-monospace',
     fontSize: '$2xs',
@@ -212,7 +212,7 @@ export const Article = styled('article', {
   },
   '& blockquote': {
     my: '$$verticalContentPadding',
-    backgroundColor: 'rgba($toolbar-glow / .075)',
+    backgroundColor: 'rgba($accent-shadow / .075)',
     borderWidth: 0,
     borderLeftWidth: '$space$6',
     borderStyle: 'solid',

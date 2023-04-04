@@ -7,7 +7,7 @@ import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
 const StyledCard = styled('div', {
-  $$color: '$colors$toolbar-glow',
+  $$color: '$colors$accent-shadow',
   $$borderSize: '1px',
   position: 'relative',
   display: 'flex',

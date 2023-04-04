@@ -18,17 +18,15 @@ export const colors: ThemeColors = {
   divider: 'rgba(9 17 34 / .12)',
 
   toolbar: 'rgba(235 240 251 / .75)',
-  // 'toolbar-glow': '45 82 171', // accent dark
 
   'text-primary': 'rgba(9 17 34 / .95)',
   'text-secondary': 'rgba(9 17 34 / .8)',
   'text-tertiary': 'rgba(9 17 34 / .6)',
   // 'img-drop-shadow': 'rgba(9 17 34 / .28)',
 
-  // 'accent-animoji': '#d7e1f7',
-  // 'accent-light': '#6085de',
   accent: '#3867d6',
-  'accent-dark': '#2d52ab',
+  'accent-shadow' : '45 82 171',
+  'accent-dark': 'rgba($accent-shadow / 1)',
   'on-accent': '#fff',
 
   'gradient-brand': '$accent',
@@ -39,7 +37,7 @@ export const colors: ThemeColors = {
   'gradient-red': '#bc2f48',
   'gradient-purple': '#7a4cbb',
 
-  'shadow-brand': '$accent-light',
+  'shadow-brand': '$accent',
   'shadow-blue': '#81c1e9',
   'shadow-green': '#79d9a6',
   'shadow-yellow': '#fad483',
@@ -76,10 +74,8 @@ export const darkThemeColors: ThemeColors = {
   'text-tertiary': 'rgba(235 240 251 / .6)',
   // 'img-drop-shadow': 'rgba(235 240 251 / .24)',
 
-  // 'accent-animoji': '#162956',
-  // 'accent-light': '#afc2ef',
   accent: '#88a4e6',
-  'accent-dark': '#afc2ef', // 6085de
+  'accent-shadow' : '175 194 239',
   'on-accent': 'rgba(9 17 34 / .9)',
 
   'gradient-blue': '$shadow-blue',

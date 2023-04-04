@@ -35,9 +35,9 @@ export const ButtonStyles = css({
     withShadow: {
       true: {
         canHover: {
-          boxShadow: '0 1px 2px 1px rgb($colors$toolbar-glow / .12)',
+          boxShadow: '0 1px 2px 1px rgb($colors$accent-shadow / .12)',
           hocus: {
-            boxShadow: '0 1px 2px 1px rgb($colors$toolbar-glow / .24)',
+            boxShadow: '0 1px 2px 1px rgb($colors$accent-shadow / .24)',
           },
         },
       },
@@ -49,7 +49,7 @@ export const ButtonStyles = css({
         color: '$text-secondary',
         boxShadow: 'none',
         hocus: {
-          boxShadow: '0 0 1px 1px rgb($colors$toolbar-glow / 0.1)',
+          boxShadow: '0 0 1px 1px rgb($colors$accent-shadow / 0.1)',
           backgroundColor: 'rgba(45 82 171 / .08)',
           borderColor: '$accent-dark',
           color: '$text-primary',

@@ -45,7 +45,7 @@ const PhotoContainer = styled('div', {
 const Photo = styled(Img, {
   borderRadius: '50%',
   backgroundColor: '$accent-animoji',
-  border: '1px solid rgba($toolbar-glow / 0.12)',
+  border: '1px solid rgba($accent-shadow / 0.12)',
   objectFit: 'cover',
   objectPosition: 'center',
   canHover: {

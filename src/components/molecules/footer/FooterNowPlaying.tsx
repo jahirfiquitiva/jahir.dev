@@ -60,7 +60,7 @@ const rotate = keyframes({
 const RotatingImg = styled(Img, {
   position: 'relative',
   borderRadius: '50%',
-  border: '1px solid rgba($colors$toolbar-glow / .12)',
+  border: '1px solid rgba($colors$accent-shadow / .12)',
   canAnimate: {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

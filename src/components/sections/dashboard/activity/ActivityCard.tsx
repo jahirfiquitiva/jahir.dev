@@ -13,7 +13,7 @@ import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const Card = styled(Link, {
-  $$color: '$colors$toolbar-glow',
+  $$color: '$colors$accent-shadow',
   $$textColor: '$colors$divider',
   $$borderSize: '1px',
   position: 'relative',

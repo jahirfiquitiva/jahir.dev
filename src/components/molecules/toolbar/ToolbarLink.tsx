@@ -9,7 +9,7 @@ const spanCss: StitchesCSS = {
 };
 
 const activeCss: StitchesCSS = {
-  backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+  backgroundColor: 'rgba($colors$accent-shadow / .1)',
   '& span': spanCss,
 };
 

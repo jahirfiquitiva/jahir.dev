@@ -69,8 +69,8 @@ const Nav = styled('nav', {
   backgroundColor: '$toolbar',
   backdropFilter: 'blur(10px) saturate(150%)',
   borderRadius: '$space$10',
-  border: '1px solid rgba($colors$toolbar-glow / .12)',
-  boxShadow: '0 0 6px 1px rgba($colors$toolbar-glow / .16)',
+  border: '1px solid rgba($colors$accent-shadow / .12)',
+  boxShadow: '0 0 6px 1px rgba($colors$accent-shadow / .16)',
   p: 'calc($$floatingMargin / $$spaceDivider)',
   mx: '$$floatingMargin',
   transition: 'box-shadow ease-in-out .2s',
@@ -79,8 +79,8 @@ const Nav = styled('nav', {
   gridTemplateColumns: 'auto 1fr',
 
   hocus: {
-    border: '1px solid rgba($colors$toolbar-glow / .24)',
-    boxShadow: '0 0 8px 2px rgba($colors$toolbar-glow / .28)',
+    border: '1px solid rgba($colors$accent-shadow / .24)',
+    boxShadow: '0 0 8px 2px rgba($colors$accent-shadow / .28)',
   },
 
   '@tablet-sm': {

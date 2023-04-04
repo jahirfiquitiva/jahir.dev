@@ -11,7 +11,7 @@ import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const StyledCard = styled('div', {
-  $$color: '$colors$toolbar-glow',
+  $$color: '$colors$accent-shadow',
   $$borderSize: '1px',
   position: 'relative',
   display: 'flex',
@@ -112,13 +112,13 @@ export const StatCard: FC<StatCardProps> = (props) => {
   const { text, value, iconPath, color, loading } = props;
 
   const readableColor = useMemo<ThemeColorValue>(() => {
-    if (!themeReady) return '$colors$toolbar-glow';
+    if (!themeReady) return '$colors$accent-shadow';
     const rgb = hexToRGB(
       getReadableColor(color, isDark) || '#000',
       1,
       true,
     ) as ThemeColorValue;
-    if (rgb === 'rgba(0 0 0 / 0)') return '$colors$toolbar-glow';
+    if (rgb === 'rgba(0 0 0 / 0)') return '$colors$accent-shadow';
     return rgb;
   }, [color, isDark, themeReady]);
 

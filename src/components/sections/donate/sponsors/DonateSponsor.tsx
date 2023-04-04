@@ -23,7 +23,7 @@ const Container = styled(Link, {
   color: '$text-secondary',
   dark: { color: '$text-secondary' },
   hocus: {
-    backgroundColor: 'rgba($colors$toolbar-glow / .08)',
+    backgroundColor: 'rgba($colors$accent-shadow / .08)',
     color: '$text-primary',
     dark: { color: '$text-primary' },
     '& > div:first-of-type > span': {

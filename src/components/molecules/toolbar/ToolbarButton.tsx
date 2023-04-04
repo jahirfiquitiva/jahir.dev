@@ -13,7 +13,7 @@ const StyledToolbarButton = styled(Button, {
   width: '42px',
   backgroundColor: '$transparent',
   hocus: {
-    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+    backgroundColor: 'rgba($colors$accent-shadow / .1)',
     transform: 'translateY(0)',
   },
 });

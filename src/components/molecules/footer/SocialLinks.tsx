@@ -34,7 +34,7 @@ const SocialLink = styled(Link, {
   color: '$text-tertiary',
   textDecoration: 'none',
   hocus: {
-    backgroundColor: 'rgba($colors$toolbar-glow / .1)',
+    backgroundColor: 'rgba($colors$accent-shadow / .1)',
     color: '$text-secondary',
     textDecoration: 'none',
   },

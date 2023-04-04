@@ -13,7 +13,7 @@ import { formatDate } from '@/utils/format/format-date';
 import { styled } from '~/stitches';
 
 const StyledBlogCard = styled(Link, {
-  $$color: '$colors$toolbar-glow',
+  $$color: '$colors$accent-shadow',
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -190,7 +190,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
       title={`Blog post: ${post?.title}`}
       href={rightLink}
       underline={false}
-      css={{ $$color: color || '$colors$toolbar-glow' }}
+      css={{ $$color: color || '$colors$accent-shadow' }}
     >
       <BlogCardHero
         src={post.hero || ''}

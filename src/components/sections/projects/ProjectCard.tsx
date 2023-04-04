@@ -11,7 +11,7 @@ import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const StyledProjectCard = styled(Link, {
-  $$color: '$colors$toolbar-glow',
+  $$color: '$colors$accent-shadow',
   $$borderSize: '1px',
   position: 'relative',
   display: 'flex',
@@ -142,7 +142,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       title={`Project: ${project?.name}`}
       href={project.inProgress || project.hide ? project.link : '#'}
       underline={false}
-      css={{ $$color: color || '$colors$toolbar-glow' }}
+      css={{ $$color: color || '$colors$accent-shadow' }}
     >
       <TitleContainer>
         <Img
