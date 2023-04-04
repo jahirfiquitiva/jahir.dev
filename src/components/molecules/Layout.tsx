@@ -55,6 +55,7 @@ const invertedStyles: StitchesCSS = {
 // eslint-disable-next-line no-useless-escape
 const allowlist = ['localhost', 'jahir\.dev', 'jahirfiquitiva'];
 const hostRegex = new RegExp(allowlist.join('|'));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useInvertedStyles = (): StitchesCSS | undefined => {
   const hasMounted = useHasMounted();
   if (hasMounted && !hostRegex.test(window?.location?.hostname || ''))
