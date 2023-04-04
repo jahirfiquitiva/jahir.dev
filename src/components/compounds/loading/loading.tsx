@@ -9,10 +9,8 @@ const StyledContainer = styled('div', {
   textAlign: 'center',
 });
 
-export const Loading: FC = (props) => {
-  return (
-    <StyledContainer {...props}>
-      <Ring size={56} lineWeight={5} speed={2} color={'var(--colors-accent)'} />
-    </StyledContainer>
+export const Loading: FC = (props) => (
+  <StyledContainer {...props}>
+    <Ring size={56} lineWeight={5} speed={2} color={'var(--colors-accent)'} />
+  </StyledContainer>
   );
-};
