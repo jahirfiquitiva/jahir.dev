@@ -14,9 +14,7 @@ interface LinkProps extends ComponentProps<typeof StyledLink> {
   tabIndex?: number;
 }
 
-export const Link: FC<LinkProps> = (
-  props,
-) => {
+export const Link: FC<LinkProps> = (props) => {
   const { href: url, ...otherProps } = props;
   const href: string = url.toString();
   const {
@@ -28,11 +26,11 @@ export const Link: FC<LinkProps> = (
   if (openInNewTab) {
     return (
       <StyledLink
+        {...rest}
         href={href}
         target={'_blank'}
-        rel={'noopener noreferrer'}
+        rel={`${props.rel || ''} noopener noreferrer`.trim()}
         aria-label={rest.title}
-        {...rest}
         underline={underline}
       />
     );
