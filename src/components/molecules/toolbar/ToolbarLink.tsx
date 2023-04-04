@@ -1,4 +1,4 @@
-import { Link } from '@/components/atoms';
+import { Link } from '@/components/core';
 import { gradientVariants } from '@/stitches/utils/gradient';
 import { styled, type StitchesCSS } from '~/stitches';
 

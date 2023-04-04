@@ -1,6 +1,7 @@
 import Icon from '@mdi/react';
 
-import { buildChipStyles, Chip, Img, Link } from '@/components/atoms';
+import { buildChipStyles, Chip, Img } from '@/components/atoms';
+import { Link } from '@/components/core';
 import {
   mdiCrystalBall,
   unicorn,

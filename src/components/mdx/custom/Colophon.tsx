@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 
-import { Link } from '@/components/atoms';
+import { Link } from '@/components/core';
 import {
   nextJs,
   stitches,

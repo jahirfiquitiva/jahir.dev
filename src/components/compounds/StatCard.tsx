@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import { ComponentProps, useMemo } from 'react';
 
-import { Link } from '@/components/atoms';
+import { Link } from '@/components/core';
 import { useTheme } from '@/providers/theme';
 import type { ThemeColorValue } from '@/stitches';
 import { FC } from '@/types';

@@ -1,6 +1,7 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
-import { Heading, Link, Section } from '@/components/atoms';
+import { Heading, Section } from '@/components/atoms';
+import { Link } from '@/components/core';
 import { Layout, Seo } from '@/components/molecules';
 import { useImmutableRequest } from '@/hooks/useRequest';
 import { FourOhFour as FourOhFourSection } from '@/sections';

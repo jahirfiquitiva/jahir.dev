@@ -1,7 +1,8 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Img, Link } from '@/components/atoms';
+import { Img } from '@/components/atoms';
+import { Link } from '@/components/core';
 import { useRequest } from '@/hooks/useRequest';
 import { mdiStar } from '@/icons';
 import { useTheme } from '@/providers/theme';

@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import type { ComponentProps } from 'react';
 
-import { Button } from '@/components/atoms';
+import { Button } from '@/components/core';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 

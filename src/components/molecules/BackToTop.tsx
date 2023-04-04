@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import { useState, useEffect, useCallback } from 'react';
 
-import { Button } from '@/components/atoms';
+import { Button } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { mdiChevronUp } from '@/icons';
 import type { FC } from '@/types';

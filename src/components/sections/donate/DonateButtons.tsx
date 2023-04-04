@@ -1,6 +1,7 @@
 import Icon from '@mdi/react';
 
-import { Heading, Link, LinkButton } from '@/components/atoms';
+import { Heading } from '@/components/atoms';
+import { Link, LinkButton } from '@/components/core';
 import { mdiCreditCardChipOutline, mdiHeartOutline, mdiPizza } from '@/icons';
 import {
   styled,

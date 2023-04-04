@@ -3,7 +3,7 @@ import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
-import { Button } from '@/components/atoms';
+import { Button } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {

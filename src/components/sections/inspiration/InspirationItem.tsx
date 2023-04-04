@@ -1,4 +1,5 @@
-import { Img, Link } from '@/components/atoms';
+import { Img } from '@/components/atoms';
+import { Link } from '@/components/core';
 import type { InspirationItem as InspoItemType } from '@/lib/notion';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';

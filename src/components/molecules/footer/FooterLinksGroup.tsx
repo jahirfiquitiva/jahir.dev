@@ -1,4 +1,5 @@
-import { Link, gradientEnabledCss } from '@/components/atoms';
+import { gradientEnabledCss } from '@/components/atoms';
+import { Link } from '@/components/core';
 import {
   gradientVariants,
   type GradientOption,

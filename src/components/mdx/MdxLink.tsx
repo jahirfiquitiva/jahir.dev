@@ -1,8 +1,9 @@
 import { ComponentProps, useMemo } from 'react';
 
-import { Link } from '@/components/atoms';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
+
+import { Link } from '../core';
 
 const ignoredLinksClasses = ['anchor', 'toc-link'];
 const isIgnoredLinkClassName = (className?: string): boolean => {

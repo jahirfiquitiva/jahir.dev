@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import { useMemo } from 'react';
 
-import { Img, Link, Heading, Section } from '@/components/atoms';
+import { Img, Heading, Section } from '@/components/atoms';
 import { Animoji, InstaFeed } from '@/components/compounds';
+import { Link } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC, RandomPageImage } from '@/types';
 import { styled } from '~/stitches';
