@@ -74,11 +74,6 @@ const primaryLinks: Array<FooterLinkProps> = [
     href: '/projects',
     gradient: 'red-to-purple',
   },
-  {
-    title: 'Contact',
-    href: '/contact',
-    gradient: 'brand-to-blue',
-  },
 ];
 
 const secondaryLinks: Array<FooterLinkProps> = [
@@ -91,11 +86,6 @@ const secondaryLinks: Array<FooterLinkProps> = [
     title: 'Donate',
     href: '/donate',
     gradient: 'orange-to-red',
-  },
-  {
-    title: 'Inspiration',
-    href: '/inspiration',
-    gradient: 'brand-to-blue',
   },
   {
     title: 'Dashboard',

@@ -152,15 +152,6 @@ const NotPlayingText = styled('span', {
   ellipsize: true,
 });
 
-const PseudoLi = styled('li', {
-  minWidth: '$space$36',
-  pointerEvents: 'none',
-  userSelect: 'none',
-  '@mobile-md': {
-    minWidth: '$space$52',
-  },
-});
-
 const LoadingContainer = styled('div', {
   mx: '$6',
   '@tablet-sm': {
@@ -201,22 +192,19 @@ export const FooterNowPlaying: FC = () => {
     }
   };
   return (
-    <>
-      <PseudoLi></PseudoLi>
-      <MusicItem>
-        {loading ? (
-          <LoadingContainer>
-            <LineWobble
-              size={84}
-              lineWeight={5}
-              speed={1.75}
-              color={'var(--colors-accent)'}
-            />
-          </LoadingContainer>
-        ) : (
-          renderComponents()
-        )}
-      </MusicItem>
-    </>
+    <MusicItem>
+      {loading ? (
+        <LoadingContainer>
+          <LineWobble
+            size={84}
+            lineWeight={5}
+            speed={1.75}
+            color={'var(--colors-accent)'}
+          />
+        </LoadingContainer>
+      ) : (
+        renderComponents()
+      )}
+    </MusicItem>
   );
 };
