@@ -2,12 +2,7 @@ import { Children, isValidElement } from 'react';
 
 import type {  ComponentChild } from '@/types';
 
-export type MasonryBreakpoints = { [key: string | number]: number };
-
-export interface MasonryProps {
-  breakpoints?: MasonryBreakpoints;
-  gap?: string | 0;
-}
+import type { MasonryBreakpoints } from './masonry.types.d';
 
 // Starting from 0px width, show items in 1 column
 export const defaultBreakpoints: MasonryBreakpoints = { 0: 1 };

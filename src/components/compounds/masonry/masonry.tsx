@@ -5,11 +5,11 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import type { FC, ComponentChild } from '@/types';
 
 import { MasonryColumn, MasonryGrid } from './masonry.styled';
+import type  { MasonryProps } from './masonry.types.d';
 import {
   buildMasonryColumns,
   defaultBreakpoints,
   mapColumnsBreakPoints,
-  type MasonryProps,
 } from './masonry.utils';
 
 export const Masonry: FC<MasonryProps> = (props) => {
