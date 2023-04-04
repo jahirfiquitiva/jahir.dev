@@ -4,4 +4,3 @@ export * from './loading';
 export * from './masonry';
 export * from './open-doodle';
 export * from './StatCard';
-export * from './WavingHello';
