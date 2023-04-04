@@ -2,7 +2,7 @@ import { Img } from '@/components/core';
 import { styled } from '~/stitches';
 
 export const AnimojiImg = styled(Img, {
-  backgroundColor: '$accent-animoji',
+  backgroundColor: '$accent-dark',
   borderRadius: '50%',
   transform: 'rotate(1deg)',
   transition: 'transform .1s ease-in-out',

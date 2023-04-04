@@ -4,8 +4,8 @@ import { styled } from '~/stitches';
 import { Reactions } from './Reactions';
 
 export const Title = styled(Heading, {
-  $$textShadowColor: '$colors$accent-animoji',
-  dark: { $$textShadowColor: '$colors$accent-animoji' },
+  $$textShadowColor: '$colors$accent-dark',
+  dark: { $$textShadowColor: '$colors$accent-dark' },
   mt: '$12',
   '@tablet-sm': {
     mt: '$16',

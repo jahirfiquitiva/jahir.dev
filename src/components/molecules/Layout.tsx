@@ -28,9 +28,11 @@ const Main = styled('main', {
   zIndex: 0,
   pt: 'calc($$totalToolbarHeight + $$verticalContentPadding)',
   pb: '$$verticalContentPadding',
+  gap: '$64',
   '@tablet-sm': {
     pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + 4px)',
   },
+
   canAnimate: {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
