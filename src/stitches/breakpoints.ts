@@ -1,4 +1,4 @@
-type BreakPointBaseName = 'default' | 'floating' | 'desktop' | 'fourK';
+type BreakPointBaseName = 'default' | 'desktop' ;
 type MeasuredBreakPoints = 'mobile' | 'tablet';
 type BreakPointExtraName =
   | `${MeasuredBreakPoints}-sm`
@@ -23,9 +23,7 @@ export const breakpointsValues: BreakPointsValues = {
   'tablet-sm': 596,
   'tablet-md': 768,
   'tablet-lg': 792,
-  floating: 840,
   desktop: 960,
-  fourK: 2500,
 };
 
 export const breakpoints: BreakPointsCss = {
@@ -36,7 +34,5 @@ export const breakpoints: BreakPointsCss = {
   'tablet-sm': buildMediaQuery(breakpointsValues['tablet-sm']),
   'tablet-md': buildMediaQuery(breakpointsValues['tablet-md']),
   'tablet-lg': buildMediaQuery(breakpointsValues['tablet-lg']),
-  floating: buildMediaQuery(breakpointsValues.floating),
   desktop: buildMediaQuery(breakpointsValues.desktop),
-  fourK: buildMediaQuery(breakpointsValues.fourK),
 };

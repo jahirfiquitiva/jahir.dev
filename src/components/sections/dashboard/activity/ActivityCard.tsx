@@ -139,7 +139,7 @@ export const ActivityCard: FC<ActivityCardProps> = (props) => {
           size={24}
           lineWeight={6}
           speed={2}
-          color={'var(---textColor, var(--colors-accent-light))'}
+          color={'var(---textColor, var(--colors-accent))'}
         />
       );
     }

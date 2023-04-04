@@ -24,7 +24,7 @@ const Fab = styled(Button, {
   userSelect: 'none',
   opacity: 0,
   transform: 'translateY(72px)',
-  backgroundColor: '$accent-light',
+  backgroundColor: '$accent',
   textTransform: 'uppercase',
   letterSpacing: '0.0625rem',
   fontSize: '$3xs',
@@ -33,15 +33,15 @@ const Fab = styled(Button, {
     '0 0 1px 1px $colors$divider, 0 0 6px 1px rgba($colors$toolbar-glow / .24)',
 
   hocus: {
-    backgroundColor: '$accent',
+    backgroundColor: '$accent-dark',
     border: '1px solid rgba($colors$toolbar-glow / .24)',
     boxShadow:
       '0 0 1px 1px $colors$divider, 0 0 8px 2px rgba($colors$toolbar-glow / .32)',
   },
   dark: {
-    backgroundColor: '$accent-light',
+    backgroundColor: '$accent',
     hocus: {
-      backgroundColor: '$accent',
+      backgroundColor: '$accent-dark',
     },
   },
 

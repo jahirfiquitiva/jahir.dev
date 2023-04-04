@@ -43,7 +43,7 @@ export const Input = styled('input', {
   px: '$12',
   flex: 1,
   hocus: {
-    borderColor: '$accent-light',
+    borderColor: '$accent',
   },
   '&:disabled': {
     opacity: 0.5,

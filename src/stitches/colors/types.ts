@@ -12,14 +12,10 @@ export type RainbowColors = typeof rainbowColorsArray[number];
 type GradientColor = `gradient-${RainbowColors}`;
 type ShadowColor = `shadow-${RainbowColors}`;
 
-type AccentVariants = 'light' | 'dark' | 'animoji';
-type AccentColor = 'accent' | `accent-${AccentVariants}` | 'on-accent';
+type AccentColor = 'accent' | 'accent-dark' | 'on-accent';
 
 type TextColorVariants = 'primary' | 'secondary' | 'tertiary';
 type TextColor = `text-${TextColorVariants}`;
-
-type ToolbarColorVariants = 'glow'; // | 'highlight';
-type ToolbarColor = 'toolbar' | `toolbar-${ToolbarColorVariants}`;
 
 type Scrollbar = 'scrollbar-bg' | 'scrollbar-thumb';
 
@@ -36,15 +32,14 @@ type CodeColor = `code-${CodeColors}`;
 export type ThemeColorsNames =
   | 'transparent'
   | 'primary'
+  | 'toolbar'
   | 'background'
   | 'divider'
   | 'selection'
-  | 'img-drop-shadow'
   | 'illustrations-shadow'
   | AccentColor
   | GradientColor
   | ShadowColor
   | TextColor
-  | ToolbarColor
   | Scrollbar
   | CodeColor;

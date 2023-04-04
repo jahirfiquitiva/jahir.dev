@@ -56,7 +56,7 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
           size={16}
           lineWeight={6}
           speed={2}
-          color={'var(--colors-accent-light)'}
+          color={'var(--colors-accent)'}
         />
       )}
       views

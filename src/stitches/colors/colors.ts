@@ -1,16 +1,12 @@
+import { CSSProperties } from '@stitches/react';
+
 import { ThemeColorsNames } from './types';
 
-type RGBValues = `${number} ${number} ${number}`;
-type HexColor = `#${string}`;
-type RGBColor = `rgb(${RGBValues})`;
-type RGBAColor = `rgba(${RGBValues} / ${number})`;
 type StitchesVariable = `$${string}`;
 
 export type ThemeColorValue =
-  | RGBValues
-  | HexColor
-  | RGBColor
-  | RGBAColor
+  | CSSProperties['color']
+  | CSSProperties['backgroundColor']
   | StitchesVariable;
 
 type ThemeColors = { [Key in ThemeColorsNames]?: ThemeColorValue };
@@ -22,15 +18,15 @@ export const colors: ThemeColors = {
   divider: 'rgba(9 17 34 / .12)',
 
   toolbar: 'rgba(235 240 251 / .75)',
-  'toolbar-glow': '45 82 171', // accent dark
+  // 'toolbar-glow': '45 82 171', // accent dark
 
   'text-primary': 'rgba(9 17 34 / .95)',
   'text-secondary': 'rgba(9 17 34 / .8)',
   'text-tertiary': 'rgba(9 17 34 / .6)',
-  'img-drop-shadow': 'rgba(9 17 34 / .28)',
+  // 'img-drop-shadow': 'rgba(9 17 34 / .28)',
 
-  'accent-animoji': '#d7e1f7',
-  'accent-light': '#6085de',
+  // 'accent-animoji': '#d7e1f7',
+  // 'accent-light': '#6085de',
   accent: '#3867d6',
   'accent-dark': '#2d52ab',
   'on-accent': '#fff',
@@ -73,17 +69,17 @@ export const darkThemeColors: ThemeColors = {
   divider: 'rgba(235 240 251 / .12)',
 
   toolbar: 'rgba(18 27 44 / .65)',
-  'toolbar-glow': '136 164 230',
+  // 'toolbar-glow': '136 164 230', // accent
 
   'text-primary': '#fff',
   'text-secondary': 'rgba(235 240 251 / .85)',
   'text-tertiary': 'rgba(235 240 251 / .6)',
-  'img-drop-shadow': 'rgba(235 240 251 / .24)',
+  // 'img-drop-shadow': 'rgba(235 240 251 / .24)',
 
-  'accent-animoji': '#162956',
-  'accent-light': '#afc2ef',
+  // 'accent-animoji': '#162956',
+  // 'accent-light': '#afc2ef',
   accent: '#88a4e6',
-  'accent-dark': '#6085de',
+  'accent-dark': '#afc2ef', // 6085de
   'on-accent': 'rgba(9 17 34 / .9)',
 
   'gradient-blue': '$shadow-blue',

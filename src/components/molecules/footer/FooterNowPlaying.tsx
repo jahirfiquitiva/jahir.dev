@@ -210,7 +210,7 @@ export const FooterNowPlaying: FC = () => {
               size={84}
               lineWeight={5}
               speed={1.75}
-              color={'var(--colors-accent-light)'}
+              color={'var(--colors-accent)'}
             />
           </LoadingContainer>
         ) : (

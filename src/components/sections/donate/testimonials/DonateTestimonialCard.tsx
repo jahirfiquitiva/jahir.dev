@@ -89,7 +89,7 @@ export const DonateTestimonialCard: FC<Testimonial> = (props) => {
           }
           alt={`Photo of ${props.sponsor.name}`}
           size={28}
-          css={{ backgroundColor: '$accent-light' }}
+          css={{ backgroundColor: '$accent' }}
         />
         <span>{props.sponsor.name}&nbsp; ––</span>
       </Sponsor>

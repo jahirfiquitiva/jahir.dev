@@ -21,7 +21,7 @@ const StyledLink = styled('a', {
     textDecoration: 'underline',
     color: '$accent-dark',
     dark: {
-      color: '$accent-light',
+      color: '$accent-dark',
     },
   },
 });

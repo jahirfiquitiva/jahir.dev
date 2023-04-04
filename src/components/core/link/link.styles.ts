@@ -9,7 +9,7 @@ export const StyledLink = styled(NextLink, {
   hocus: {
     color: '$accent-dark',
     dark: {
-      color: '$accent-light',
+      color: '$accent-dark',
     },
   },
   variants: {

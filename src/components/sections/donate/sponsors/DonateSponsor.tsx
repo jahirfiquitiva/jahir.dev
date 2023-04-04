@@ -108,7 +108,7 @@ export const DonateSponsor: FC<DonateSponsorProps> = (props) => {
             src={sponsor.photo}
             alt={sponsor.name}
             size={sizesForTier[tier]}
-            css={{ backgroundColor: '$accent-light' }}
+            css={{ backgroundColor: '$accent' }}
           />
           <span>{sponsor.name}</span>
         </NameContainer>

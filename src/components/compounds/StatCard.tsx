@@ -129,7 +129,7 @@ export const StatCard: FC<StatCardProps> = (props) => {
           size={24}
           lineWeight={6}
           speed={2}
-          color={'var(--colors-accent-light)'}
+          color={'var(--colors-accent)'}
         />
       ) : (
         <Value>{value}</Value>
