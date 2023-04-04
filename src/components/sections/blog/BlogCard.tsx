@@ -198,7 +198,6 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
         width={post?.heroMeta?.size?.width || 144}
         height={post?.heroMeta?.size?.height || 72}
         {...extraHeroProps}
-        css={{ objectPosition: slug.includes('uses') ? 'top' : 'center' }}
       />
       <ContentContainer>
         <Title>{post.title}</Title>
