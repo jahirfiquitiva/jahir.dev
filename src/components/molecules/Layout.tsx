@@ -63,7 +63,8 @@ const useInvertedStyles = (): StitchesCSS | undefined => {
 };
 
 export const Layout: FC = (props) => {
-  const invertedStyles = useInvertedStyles();
+  // TODO: Enable when ready
+  const invertedStyles = {}; // useInvertedStyles();
   return (
     <>
       <Toolbar css={invertedStyles} />
