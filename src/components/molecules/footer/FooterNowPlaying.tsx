@@ -1,8 +1,7 @@
 import Icon from '@mdi/react';
 import { LineWobble } from '@uiball/loaders';
 
-import { Img } from '@/components/atoms';
-import { Link } from '@/components/core';
+import { Img, Link } from '@/components/core';
 import { useNowPlaying } from '@/hooks/useNowPlaying';
 import { mdiSpotify } from '@/icons';
 import type { FC } from '@/types';

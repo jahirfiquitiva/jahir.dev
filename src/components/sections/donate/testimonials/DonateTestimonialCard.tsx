@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 
-import { Img } from '@/components/atoms';
+import { Img } from '@/components/core';
 import { mdiFormatQuoteClose } from '@/icons';
 import type { Sponsor, Testimonial } from '@/lib/sponsors';
 import type { FC } from '@/types';

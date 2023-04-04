@@ -1,4 +1,4 @@
-import { Logo } from '@/components/atoms';
+import { Logo } from '@/icons';
 import type { FC } from '@/types';
 import { styled, theme } from '~/stitches';
 
@@ -139,7 +139,7 @@ export const Footer: FC = (props) => {
           gradient={'brand-to-blue'}
           forceGradient
         >
-          <Logo fillColor={theme.colors['gradient-brand']?.value} />
+          <Logo fill={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </BrandLink>
         <SocialLinks />

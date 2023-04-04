@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import { DotsDivider } from '@/components/atoms';
 import { Layout, Seo } from '@/components/molecules';
 import allProjects from '@/data/projects.json';
 import { Intro, Projects, Skills } from '@/sections';
@@ -38,9 +37,7 @@ const Home: NextPage<HomeProps> = (props) => {
         ]}
       />
       <Intro />
-      <DotsDivider />
       <Projects projects={projects} />
-      <DotsDivider />
       <Skills />
     </Layout>
   );

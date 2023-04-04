@@ -1,4 +1,4 @@
-import { Heading, Img } from '@/components/atoms';
+import { Heading, Img } from '@/components/core';
 import { styled } from '~/stitches';
 
 import { Reactions } from './Reactions';

@@ -1,8 +1,7 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Img } from '@/components/atoms';
-import { Link } from '@/components/core';
+import { Img, Link } from '@/components/core';
 import { usePalette, type Palette, type SwatchName } from '@/hooks/usePalette';
 import { useRequest } from '@/hooks/useRequest';
 import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';

@@ -1,9 +1,8 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Field, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { LinkButton } from '@/components/core';
+import { Field, Heading, Section, LinkButton } from '@/components/core';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/icons';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';

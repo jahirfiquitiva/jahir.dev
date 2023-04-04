@@ -1,5 +1,5 @@
-import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
+import { Heading, Section } from '@/components/core';
 import { useImmutableRequest } from '@/hooks/useRequest';
 import type { TopTrackData } from '@/lib/spotify';
 import { breakpointsValues } from '@/stitches';
@@ -18,24 +18,21 @@ export const TopTracks: FC = () => {
   );
   if (!data?.tracks) return null;
   return (
-    <>
-      <DotsDivider />
-      <Section
+    <Section
         id={'top-tracks'}
         css={{ gap: 'calc($$verticalContentPadding / 2)', px: 0 }}
       >
-        <Heading as={'h4'}>Top Tracks</Heading>
-        <Masonry
+      <Heading as={'h4'}>Top Tracks</Heading>
+      <Masonry
           breakpoints={masonryBreakpoints}
           gap={'calc($$verticalContentPadding / 2.5)'}
         >
-          {data?.tracks?.map((song, index) => {
+        {data?.tracks?.map((song, index) => {
             return (
               <SongCard song={song} key={index} css={{ hocus: { my: 1 } }} />
             );
           })}
-        </Masonry>
-      </Section>
-    </>
+      </Masonry>
+    </Section>
   );
 };

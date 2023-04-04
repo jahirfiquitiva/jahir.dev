@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { Img } from '@/components/atoms';
+import { Img } from '@/components/core';
 import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';

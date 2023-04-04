@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
-import { Heading, Img } from '@/components/atoms';
 import { Loading } from '@/components/compounds';
+import { Heading, Img } from '@/components/core';
 import { useSponsors } from '@/providers/sponsors';
 import { styled } from '~/stitches';
 

@@ -6,7 +6,7 @@ import {
   Heading,
   buildChipStyles,
   Section,
-} from '@/components/atoms';
+} from '@/components/core';
 import type { FC } from '@/types';
 
 import { skills } from './data';

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Heading } from '@/components/atoms';
+import { Heading } from '@/components/core';
 import type { FC } from '@/types';
 import { styled, keyframes } from '~/stitches';
 

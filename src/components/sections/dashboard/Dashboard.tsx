@@ -1,5 +1,5 @@
-import { Heading, Section } from '@/components/atoms';
 import { Animoji } from '@/components/compounds';
+import { Heading, Section } from '@/components/core';
 
 import { ActivityGrid } from './activity/ActivityGrid';
 import { Stats } from './stats';

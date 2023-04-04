@@ -1,4 +1,4 @@
-import { Heading } from '@/components/atoms';
+import { Heading } from '@/components/core';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 

@@ -22,7 +22,7 @@ export const colors: ThemeColors = {
   divider: 'rgba(9 17 34 / .12)',
 
   toolbar: 'rgba(235 240 251 / .75)',
-  'toolbar-glow': '45 82 171',
+  'toolbar-glow': '45 82 171', // accent dark
 
   'text-primary': 'rgba(9 17 34 / .95)',
   'text-secondary': 'rgba(9 17 34 / .8)',

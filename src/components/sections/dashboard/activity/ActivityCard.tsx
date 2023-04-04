@@ -3,8 +3,7 @@ import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
-import { Img } from '@/components/atoms';
-import { Link } from '@/components/core';
+import { Img, Link } from '@/components/core';
 import { usePalette } from '@/hooks/usePalette';
 import { mdiTimerSandEmpty } from '@/icons';
 import { useTheme } from '@/providers/theme';

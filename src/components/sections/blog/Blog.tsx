@@ -1,8 +1,7 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Field, Heading, Section } from '@/components/atoms';
-import { LinkButton } from '@/components/core';
+import { Field, Heading, Section, LinkButton } from '@/components/core';
 import { mdiMagnify, mdiRss } from '@/icons';
 import type { FC, Post } from '@/types';
 import { groupBlogPosts } from '@/utils/posts/group-posts';

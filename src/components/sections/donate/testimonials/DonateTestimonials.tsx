@@ -1,4 +1,4 @@
-import { Heading } from '@/components/atoms';
+import { Heading } from '@/components/core';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { useSponsors } from '@/providers/sponsors';
 import { breakpointsValues } from '@/stitches';

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { Logo } from '@/components/atoms';
-import { mdiMenu, mdiPlus } from '@/icons';
+import { mdiMenu, mdiPlus, Logo } from '@/icons';
 import type { FC } from '@/types';
 import { styled, theme } from '~/stitches';
 
@@ -118,7 +117,7 @@ export const Toolbar: FC = (props) => {
     <Header expanded={isExpanded} css={props.css}>
       <Nav expanded={isExpanded}>
         <ToolbarLink home href={'/'} title={'Home page'} underline={false}>
-          <Logo fillColor={theme.colors['gradient-brand']?.value} />
+          <Logo fill={theme.colors['gradient-brand']?.value} />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
         <ToolbarNavLinks expanded={isExpanded} />

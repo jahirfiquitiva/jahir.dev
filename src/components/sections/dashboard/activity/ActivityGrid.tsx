@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-import { DotsDivider, Heading, Section } from '@/components/atoms';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
+import { Heading, Section } from '@/components/core';
 import { useActivity } from '@/hooks/useActivity';
 import { useNowPlaying } from '@/hooks/useNowPlaying';
 import { breakpointsValues } from '@/stitches';
@@ -49,18 +49,15 @@ export const ActivityGrid: FC = () => {
   };
 
   return (
-    <>
-      <DotsDivider />
-      <Section
+    <Section
         id={'activity'}
         css={{
           gap: hasActivity ? 0 : 'calc($$verticalContentPadding / 8)',
           px: 0,
         }}
       >
-        <Heading as={'h4'}>Activity</Heading>
-        {hasActivity ? renderContent() : <p>No activity found at this time…</p>}
-      </Section>
-    </>
+      <Heading as={'h4'}>Activity</Heading>
+      {hasActivity ? renderContent() : <p>No activity found at this time…</p>}
+    </Section>
   );
 };

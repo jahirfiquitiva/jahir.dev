@@ -1,9 +1,9 @@
-import { Heading } from '@/components/atoms';
 import {
   Loading,
   Masonry,
   type MasonryBreakpoints,
 } from '@/components/compounds';
+import { Heading } from '@/components/core';
 import { useImmutableRequest } from '@/hooks/useRequest';
 import { InspirationItem as InspirationItemType } from '@/lib/notion';
 import { breakpointsValues } from '@/stitches';
