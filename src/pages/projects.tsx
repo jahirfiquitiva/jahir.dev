@@ -40,8 +40,7 @@ const Projects: NextPage<ProjectsProps> = (props) => {
 export default Projects;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = allProjects
-    .sort((a, b) => a.order - b.order);
+  const projects = allProjects.sort((a, b) => a.order - b.order);
   return {
     props: { projects },
   };

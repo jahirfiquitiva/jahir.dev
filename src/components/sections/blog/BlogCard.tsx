@@ -209,18 +209,25 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
           </Published>
         ) : null}
         <InfoContainer>
-          <InfoSpan>
+          <InfoSpan
+            title={`Published on ${formatDate(post.date, {
+              year: 'numeric',
+              month: 'long',
+            })}`}
+          >
             <Icon path={calendarOutline} size={0.73} />
             {formatDate(post.date, { year: undefined, month: 'short' })}
           </InfoSpan>
           {(post.readingTime?.minutes || 0) > 0 ? (
-            <InfoSpan>
+            <InfoSpan
+              title={`Reading time: ${post.readingTime?.minutes} minutes`}
+            >
               <Icon path={mdiClockOutline} size={0.73} />
               {post.readingTime?.text}
             </InfoSpan>
           ) : null}
           {views?.total && +(views?.total || '0') > 2 ? (
-            <InfoSpan>
+            <InfoSpan title={`Blog post viewed ${views?.total} times`}>
               <Icon path={mdiEyeOutline} size={0.73} />
               {views?.total} views
             </InfoSpan>
