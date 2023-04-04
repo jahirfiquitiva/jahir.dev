@@ -1,5 +1,5 @@
-export * from './Animoji';
-export * from './InstaFeed';
+export * from './animoji';
+export * from './insta-feed';
 export * from './Loading';
 export * from './Masonry';
 export * from './OpenDoodle';

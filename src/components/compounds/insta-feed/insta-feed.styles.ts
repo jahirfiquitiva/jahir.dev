@@ -1,19 +1,13 @@
-import Icon from '@mdi/react';
-
 import { Link } from '@/components/core';
-import { useImmutableRequest } from '@/hooks/useRequest';
-import { mdiInstagram } from '@/icons';
-import type { InstagramPost } from '@/lib/instagram';
-import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-const Figure = styled('figure', {
+export const Figure = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
   mt: '$$verticalContentPadding',
 });
 
-const Grid = styled('div', {
+export const Grid = styled('div', {
   $$gap: '$space$8',
   display: 'grid',
   gridTemplateColumns: 'repeat(3, minmax(0, 222px))',
@@ -29,7 +23,7 @@ const Grid = styled('div', {
   },
 });
 
-const ImgContainer = styled(Link, {
+export const ImgContainer = styled(Link, {
   display: 'block',
   position: 'relative',
   overflow: 'hidden',
@@ -67,7 +61,7 @@ const ImgContainer = styled(Link, {
   },
 });
 
-const InstaPhoto = styled('img', {
+export const InstaPhoto = styled('img', {
   width: '100%',
   height: '100%',
   backgroundColor: '$toolbar',
@@ -76,37 +70,3 @@ const InstaPhoto = styled('img', {
   transition: 'all ease-in-out .35s',
 });
 
-export const InstaFeed: FC = () => {
-  const { data, loading } = useImmutableRequest<{
-    feed?: Array<InstagramPost>;
-  }>('/api/insta-feed');
-  if (loading || !data || !data.feed || !data.feed.length) return null;
-  return (
-    <Figure>
-      <Grid>
-        {(data.feed || []).map((post, index) => {
-          return (
-            <ImgContainer
-              key={post.id || index}
-              title={`View photo "${post.caption}" on Instagram`}
-              href={post.postUrl || '#'}
-              underline={false}
-            >
-              <InstaPhoto
-                src={post.photoUrl || ''}
-                alt={post.caption}
-                loading={'lazy'}
-                decoding={'async'}
-                width={214}
-                height={214}
-                crossOrigin={'anonymous'}
-              />
-              <Icon path={mdiInstagram} size={1.5} />
-            </ImgContainer>
-          );
-        })}
-      </Grid>
-      <figcaption>Latest Instagram posts</figcaption>
-    </Figure>
-  );
-};
