@@ -97,6 +97,7 @@ const defaultNextConfig = {
       buildRedirect('/links', '/'),
       buildRedirect('/music', '/dashboard'),
       buildRedirect('/now', '/dashboard'),
+      buildRedirect('/stats', '/dashboard'),
       buildRedirect('/support', '/donate'),
       buildRedirect('/sponsor', '/donate'),
       buildRedirect('/thanks', '/donate#thanks'),
