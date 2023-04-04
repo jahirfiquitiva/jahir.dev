@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import type { FC } from '@/types';
 import { styled, css } from '~/stitches';
 
-import { Link } from './Link';
+import { Link } from '../code/link/link';
 
 const ButtonStyles = css({
   display: 'inline-flex',
