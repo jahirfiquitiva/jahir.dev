@@ -94,7 +94,8 @@ const defaultNextConfig = {
       buildRedirect('/dashsetup', 'https://dashbud.dev'),
       buildRedirect('/dashsetup/:path*', 'https://dashbud.dev'),
       /* Other redirections */
-      buildRedirect('/links', '/'),
+      buildRedirect('/links', 'https://links.jahir.dev'),
+      buildRedirect('/contact', '/about#contact'),
       buildRedirect('/music', '/dashboard'),
       buildRedirect('/now', '/dashboard'),
       buildRedirect('/stats', '/dashboard'),
