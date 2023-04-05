@@ -94,6 +94,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
       <ListCardsGroup
         id={'projects-list'}
         title={`${!showFullList ? 'Featured ' : ''}Projects List`}
+        css={{ gap: '$12' }}
       >
         {(filteredProjects || []).map((project, index) => {
           return (

@@ -19,10 +19,10 @@ interface ListCardsGroupProps {
 }
 
 export const ListCardsGroup: FC<ListCardsGroupProps> = (props) => {
-  const { id, title, header } = props;
+  const { id, title, header, css } = props;
 
   return (
-    <GroupSection id={id} aria-label={title} title={title}>
+    <GroupSection id={id} aria-label={title} title={title} css={css}>
       <GroupSectionHeader header={header} />
       {props.children}
     </GroupSection>

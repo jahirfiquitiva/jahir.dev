@@ -16,10 +16,10 @@ interface ListCardContentProps {
 }
 
 export const ListCardContent: FC<ListCardContentProps> = (props) => {
-  const { title, description, childrenAside } = props;
+  const { title, description, childrenAside, css } = props;
   return (
     <>
-      <StyledContentContainer>
+      <StyledContentContainer css={css}>
         <StyledTitle>{title}</StyledTitle>
         {Boolean(description) && <StyledExcerpt>{description}</StyledExcerpt>}
         {Boolean(!childrenAside) && <>{props.children}</>}

@@ -49,6 +49,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       href={project.inProgress || project.hide ? project.link : '#'}
       imageUrl={`/static/images/projects/${project.icon}`}
       color={project.color}
+      small
     >
       <Img
         src={`/static/images/projects/${project.icon}`}
@@ -60,6 +61,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         title={project.name}
         description={project.description}
         childrenAside
+        css={{gap:0}}
       >
         {Boolean(+(data?.stars || '0') > 1) && (
           <InfoContainer>
