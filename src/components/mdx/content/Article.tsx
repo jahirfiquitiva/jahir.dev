@@ -34,7 +34,7 @@ export const Article = styled('article', {
     width: '100%',
     marginBlock: 0,
     marginInline: 0,
-    my: '$10',
+    my: '$20',
   },
   '& a.anchor': {
     visibility: 'hidden',
