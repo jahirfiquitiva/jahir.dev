@@ -1,37 +1,43 @@
+import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import {
-  ListCard,
-  ListCardContent,
-  ListCardInfoItem,
-} from '@/components/compounds';
-import { InfoContainer } from '@/components/compounds/list-card/list-card.styles';
 import { Img } from '@/components/core';
 import { useRequest } from '@/hooks/useRequest';
 import { mdiStar } from '@/icons';
+import { useTheme } from '@/providers/theme';
 import type { FC, Project } from '@/types';
-import { skills } from '../../home/skills/data';
+import { getReadableColor } from '@/utils/color/get-readable-color';
+import { hexToRGB } from '@/utils/color/hex-to-rgb';
+
+import {
+  Description,
+  StarsContainer,
+  StyledProjectCard,
+  TitleContainer,
+} from './card.styled';
 
 interface ProjectCardProps {
   project?: Project;
 }
 
-export const getShortDomainForBlog = (rightLink?: string) => {
-  if (!rightLink) return '';
-  try {
-    const url = new URL(rightLink);
-    return url.hostname.replace('www.', '');
-  } catch (e) {
-    return '';
-  }
-};
-
-// eslint-disable-next-line max-lines-per-function
 export const ProjectCard: FC<ProjectCardProps> = (props) => {
   const { project } = props;
   const { data } = useRequest<{ success?: boolean; stars?: string }>(
     `/api/stars/${project?.repo}`,
   );
+  const { isDark, themeReady } = useTheme();
+
+  const color = useMemo<string>(() => {
+    if (!themeReady) return '';
+    return hexToRGB(
+      getReadableColor(
+        isDark ? project?.darkColor || project?.color : project?.color,
+        isDark,
+      ),
+      undefined,
+      true,
+    );
+  }, [project?.color, project?.darkColor, isDark, themeReady]);
 
   const extraIconProps = useMemo(() => {
     if (project?.iconMeta && project?.iconMeta.blur64) {
@@ -43,52 +49,30 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     return {};
   }, [project?.iconMeta]);
 
-  const language = useMemo(() => {
-    const firstLangInStack = project?.stack?.[0];
-    if (!firstLangInStack) return null;
-    return skills.find((skill) =>
-      skill.name.toLowerCase().includes(firstLangInStack.toLowerCase()),
-    );
-  }, [project?.stack]);
-
   if (!project) return null;
   return (
-    <ListCard
+    <StyledProjectCard
       title={`Project: ${project?.name}`}
       href={project.inProgress || project.hide ? project.link : '#'}
-      imageUrl={`/static/images/projects/${project.icon}`}
-      color={project.color}
+      underline={false}
+      css={{ $$color: color || '$colors$accent-shadow' }}
     >
-      <Img
-        src={`/static/images/projects/${project.icon}`}
-        alt={`Icon for project "${project.name}"`}
-        size={44}
-        {...extraIconProps}
-      />
-      <ListCardContent
-        title={project.name}
-        description={project.description}
-        css={{ gap: 0 }}
-      >
-        <InfoContainer>
-          {+(data?.stars || '0') > 1 ? (
-            <ListCardInfoItem
-              title={`${project.name} has ${data?.stars} stars on GitHub`}
-              iconPath={mdiStar}
-            >
-              {data?.stars}
-            </ListCardInfoItem>
-          ) : null}
-          {language ? (
-            <ListCardInfoItem
-              title={`Built primarily with ${language?.name}`}
-              iconPath={language?.iconPath}
-            >
-              {language?.name}
-            </ListCardInfoItem>
-          ) : null}
-        </InfoContainer>
-      </ListCardContent>
-    </ListCard>
+      <TitleContainer>
+        <Img
+          src={`/static/images/projects/${project.icon}`}
+          alt={`Icon for project "${project.name}"`}
+          size={44}
+          {...extraIconProps}
+        />
+        <span>{project.name}</span>
+      </TitleContainer>
+      <Description>{project.description}</Description>
+      {data && data.stars ? (
+        <StarsContainer>
+          <Icon path={mdiStar} size={0.7} />
+          <span>{data.stars}</span>
+        </StarsContainer>
+      ) : null}
+    </StyledProjectCard>
   );
 };

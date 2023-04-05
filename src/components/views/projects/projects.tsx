@@ -1,15 +1,13 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import {
-  ListCardsGroup,
-  type MasonryBreakpoints,
-} from '@/components/compounds';
+import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
 import { Field, Heading, Section, LinkButton } from '@/components/core';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/icons';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';
+import { theme } from '~/stitches';
 
 import { ProjectCard } from './card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styled';
@@ -91,11 +89,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <ListCardsGroup
-        id={'projects-list'}
-        title={`${!showFullList ? 'Featured ' : ''}Projects List`}
-        css={{ gap: '$12' }}
-      >
+      <Masonry breakpoints={masonryBreakpoints} gap={theme.space['18'].value}>
         {(filteredProjects || []).map((project, index) => {
           return (
             <ProjectCard
@@ -107,7 +101,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
             />
           );
         })}
-      </ListCardsGroup>
+      </Masonry>
     </Section>
   );
 };
