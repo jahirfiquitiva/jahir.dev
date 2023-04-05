@@ -64,7 +64,6 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
       <IntroGrid>
         <IntroTexts>
           <Heading
-            as={'h2'}
             shadow={'brand'}
             gradient={'brand-to-blue'}
             css={{ mb: 'calc($$verticalContentPadding / 4)' }}

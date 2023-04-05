@@ -2,9 +2,12 @@
 import { styled } from '~/stitches';
 
 export const Article = styled('article', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$16',
   p: '.05px',
   scrollMarginTop: '$$scrollMargin',
-  '& h1, & h2, & h3, & h4, & h5, & h6,': {
+  '& h1, & h2, & h3, & h4, & h5, & h6': {
     display: 'block',
     position: 'relative',
     scrollMarginTop: '$$scrollMargin',
@@ -15,26 +18,25 @@ export const Article = styled('article', {
     },
   },
   '& h1:not(:first-of-type)': {
-    mt: '2.5rem',
-    mb: '$16',
-  },
-  '& h2': {
-    mt: '$36',
-    mb: '$12',
-  },
-  '& h3,  & h4': {
     mt: '$32',
     mb: '$8',
   },
-  '& h5,  & h6': {
-    mt: '$28',
+  '& h2': {
+    mt: '$24',
     mb: '$4',
+  },
+  '& h3,  & h4': {
+    mt: '$16',
+    mb: '$2',
+  },
+  '& h5,  & h6': {
+    mt: '$8',
   },
   '& p': {
     width: '100%',
     marginBlock: 0,
     marginInline: 0,
-    my: '$20',
+    my: 0,
   },
   '& a.anchor': {
     visibility: 'hidden',
@@ -52,21 +54,20 @@ export const Article = styled('article', {
     },
   },
   '& ol:not(.apps-grid):not(.colophon), & ul:not(.apps-grid):not(.colophon)': {
-    display: 'block',
+    display: 'flex',
+    flexDirection: 'column',
     listStyle: 'none',
     position: 'relative',
     pl: '$26',
     ml: '$4',
+    gap: '$6',
     counterReset: 'start 1',
-    '& li:not(:first-of-type)': {
-      mt: '$2',
-    },
     '& > li': {
       '&::before': {
         content: "counter(list-item, decimal) '.'",
         position: 'absolute',
         fontWeight: 'inherit',
-        color: '#6b7280',
+        color: '$text-tertiary',
         left: 0,
       },
       '& > ol > li::before, & > ul > li::before': {
@@ -100,7 +101,7 @@ export const Article = styled('article', {
     },
   },
   '& .toc': {
-    my: '$20',
+    mb: '$24',
     '& .title': {
       useFont: 'manrope',
       fontWeight: 700,
@@ -111,6 +112,7 @@ export const Article = styled('article', {
     '& .toc-level': {
       display: 'flex',
       flexDirection: 'column',
+      gap: '$2 !important',
     },
     '& .toc-item': {
       alignSelf: 'flex-start',
@@ -122,7 +124,7 @@ export const Article = styled('article', {
     background: '$primary',
     color: '$text-secondary',
     borderRadius: '$space$6',
-    fontWeight: 'inherit',
+    // fontWeight: 'inherit',
   },
   '& p code': {
     fontSize: '$3xs',
@@ -147,7 +149,7 @@ export const Article = styled('article', {
       border: 'none',
     },
     '& code': {
-      fontSize: '$2xs',
+      fontSize: '$3xs',
       color: 'inherit',
       p: 0,
       border: 'none',
@@ -193,11 +195,11 @@ export const Article = styled('article', {
     background: '$accent-shadow',
     marginTop: '$20',
     fontFamily: 'monospace, ui-monospace',
-    fontSize: '$2xs',
+    fontSize: '$3xs',
     p: '$6 $11 $8',
   },
   '& .rehype-code-title + pre': {
-    marginTop: '0',
+    marginTop: '-$16',
     borderTopLeftRadius: '0',
     borderTopRightRadius: '0',
     borderTopWidth: '0',
@@ -211,14 +213,13 @@ export const Article = styled('article', {
     },
   },
   '& blockquote': {
-    my: '$$verticalContentPadding',
-    backgroundColor: 'rgba($accent-shadow / .075)',
+    backgroundColor: 'rgba($accent-shadow / .05)',
     borderWidth: 0,
     borderLeftWidth: '$space$6',
     borderStyle: 'solid',
     borderColor: '$divider',
     pl: '$16',
-    py: '$8',
+    py: '$10',
     pr: '$12',
     borderRadius: '$space$4',
   },
@@ -226,7 +227,6 @@ export const Article = styled('article', {
     width: '100%',
     height: 'auto',
     borderRadius: '$space$8',
-    border: '1px solid $divider',
   },
   '& > img:first-of-type, & > figure:first-of-type': {
     my: '$$verticalContentPadding',

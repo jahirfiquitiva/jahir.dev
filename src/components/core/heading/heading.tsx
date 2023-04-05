@@ -55,8 +55,11 @@ const StyledHeading = styled('h1', {
 
 export const Heading = (
   props: GetComponentProps<typeof StyledHeading> & { as?: ElementType },
-) => (
-  <Balancer>
-    <StyledHeading {...props} />
-  </Balancer>
-);
+) => {
+  const { children, ...otherProps } = props;
+  return (
+    <StyledHeading {...otherProps}>
+      <Balancer>{children}</Balancer>
+    </StyledHeading>
+  );
+};

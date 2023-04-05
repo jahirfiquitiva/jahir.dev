@@ -17,7 +17,7 @@ export const Dashboard = () => {
         }}
         size={120}
       />
-      <Heading as={'h2'} shadow={'purple'} gradient={'purple-to-brand'}>
+      <Heading shadow={'purple'} gradient={'purple-to-brand'}>
         Dashboard
       </Heading>
       <Stats />

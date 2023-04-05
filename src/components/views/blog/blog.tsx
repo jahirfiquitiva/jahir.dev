@@ -80,7 +80,7 @@ export const Blog: FC<BlogProps> = (props) => {
   return (
     <Section id={'blog'} css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}>
       <BlogHeader>
-        <Heading as={'h2'} shadow={'yellow'} gradient={'yellow-to-orange'}>
+        <Heading shadow={'yellow'} gradient={'yellow-to-orange'}>
           Blog
         </Heading>
         <BlogButtons>

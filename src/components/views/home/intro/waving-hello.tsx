@@ -25,7 +25,14 @@ export const WavingHello: FC = () => {
   }, []);
 
   return (
-    <Heading as={'h2'} shadow={'yellow'} css={{ color: '$text-primary' }}>
+    <Heading
+      shadow={'yellow'}
+      css={{
+        color: '$text-primary',
+        // look like h2
+        fontSize: '$2xl',
+      }}
+    >
       <WaveSpan>👋</WaveSpan>
       &nbsp;&nbsp;{hellos[hello]}!
     </Heading>

@@ -2,7 +2,7 @@ html,
 body {
   color: var(--colors-text-secondary);
   font-size: var(--fontSizes-xs);
-  font-weight: 500;
+  font-weight: 450;
   line-height: 1.5;
 }
 
@@ -40,16 +40,18 @@ strong {
 
 p,
 small {
-  font-weight: 500;
+  font-weight: 450;
   width: fit-content;
 }
 
 h1 {
   font-size: var(--fontSizes-3xl);
+  line-height: 1.5;
 }
 
 h2 {
   font-size: var(--fontSizes-2xl);
+  line-height: 1.375;
 }
 
 h3 {

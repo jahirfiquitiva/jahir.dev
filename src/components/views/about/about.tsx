@@ -35,7 +35,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
   return (
     <>
       <Section id={'about'} css={{ gap: '$12' }}>
-        <Heading as={'h2'} shadow={'blue'} gradient={'blue-to-green'}>
+        <Heading shadow={'blue'} gradient={'blue-to-green'}>
           About
         </Heading>
 

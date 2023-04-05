@@ -61,7 +61,6 @@ const ErrorSection: FC<ErrorSectionProps> = (props) => {
     <Section id={'error'} centered css={{ gap: '$$verticalContentPadding' }}>
       <Container as={'div'} fourOhFour={isFourOhFour}>
         <Heading
-          as={'h2'}
           shadow={props.shadow || 'red'}
           gradient={props.gradient || 'orange-to-red'}
         >

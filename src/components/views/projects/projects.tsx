@@ -63,7 +63,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
       css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
     >
       <ProjectsHeader>
-        <Heading as={'h2'} shadow={'red'} gradient={'red-to-purple'}>
+        <Heading shadow={'red'} gradient={'red-to-purple'}>
           {!showFullList ? 'Featured ' : ''}Projects
         </Heading>
         <ProjectsButtons>

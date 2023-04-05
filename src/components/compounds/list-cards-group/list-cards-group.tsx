@@ -1,11 +1,15 @@
+import type { ComponentProps } from 'react';
+
 import type { FC } from '@/types';
 
 import { GroupHeader, GroupSection } from './list-cards-group.styles';
 
-const GroupSectionHeader: FC<{ header?: string }> = ({ header }) => {
+const GroupSectionHeader: FC<
+  ComponentProps<typeof GroupHeader> & { header?: string }
+> = ({ header, ...otherProps }) => {
   if (!header) return null;
   return (
-    <GroupHeader>
+    <GroupHeader {...otherProps}>
       <h4>{header}</h4>
       <hr />
     </GroupHeader>
@@ -23,7 +27,7 @@ export const ListCardsGroup: FC<ListCardsGroupProps> = (props) => {
 
   return (
     <GroupSection id={id} aria-label={title} title={title} css={css}>
-      <GroupSectionHeader header={header} />
+      <GroupSectionHeader header={header} aria-hidden={true} />
       {props.children}
     </GroupSection>
   );
