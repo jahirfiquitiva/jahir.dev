@@ -70,8 +70,8 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
         <IntroTexts>
           <Heading
             as={'h2'}
-            shadow={'orange'}
-            gradient={'orange-to-red'}
+            shadow={'blue'}
+            gradient={'brand-to-blue'}
             css={{ mb: 'calc($$verticalContentPadding / 4)' }}
           >
             Donate

@@ -80,12 +80,12 @@ const secondaryLinks: Array<FooterLinkProps> = [
   {
     title: 'Uses',
     href: '/uses',
-    gradient: 'yellow-to-orange',
+    gradient: 'blue-to-green',
   },
   {
     title: 'Donate',
     href: '/donate',
-    gradient: 'orange-to-red',
+    gradient: 'brand-to-blue',
   },
   {
     title: 'Dashboard',

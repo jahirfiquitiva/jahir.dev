@@ -1,15 +1,15 @@
-import type { Blog } from 'contentlayer/generated';
 import type { GetStaticProps, NextPage } from 'next';
-import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks';
 import { useRouter } from 'next/router';
+import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks';
 import { useMemo } from 'react';
 
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
-import { Error, FourOhFour as FourOhFourSection } from '@/components/sections';
+import { Error, FourOhFour as FourOhFourSection } from '@/components/views';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils/posts/get-posts';
+import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;

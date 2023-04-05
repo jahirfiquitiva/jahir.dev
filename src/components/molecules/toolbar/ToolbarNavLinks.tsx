@@ -29,8 +29,8 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
     gradient: 'red-to-purple',
   },
   {
-    title: 'Contact',
-    href: '/contact',
+    title: 'Donate',
+    href: '/donate',
     gradient: 'brand-to-blue',
   },
 ];
