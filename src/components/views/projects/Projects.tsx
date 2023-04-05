@@ -2,6 +2,7 @@ import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
+import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
 import { Field, Heading, Section, LinkButton } from '@/components/core';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/icons';
 import { breakpointsValues } from '@/stitches';
@@ -35,10 +36,6 @@ const ProjectsButtons = styled('div', {
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
-});
-
-const NothingFound = styled('p', {
-  p: '$20 0 $36',
 });
 
 interface ProjectsProps {

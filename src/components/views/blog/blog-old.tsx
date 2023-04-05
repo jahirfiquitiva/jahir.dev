@@ -1,62 +1,47 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Field, Heading, Section, LinkButton } from '@/components/core';
+import { ListCardsGroup } from '@/components/compounds';
+import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
+import { Field, Heading, Section } from '@/components/core';
 import { mdiMagnify, mdiRss } from '@/icons';
 import type { FC, Post } from '@/types';
 import { groupBlogPosts } from '@/utils/posts/group-posts';
-import { styled } from '~/stitches';
+import type { BlogGroup as BlogGroupProps } from '@/utils/posts/group-posts';
 
-import { BlogGroup } from './BlogGroup';
+import {
+  BlogButtons,
+  BlogHeader,
+  BlogsContainer,
+  RssLink,
+} from './blog.styles';
+import { BlogCard } from './card';
 
-const BlogsContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '$12',
-  '@tablet-md': {
-    gap: '$16',
-  },
-});
+const BlogGroup: FC<BlogGroupProps> = (props) => {
+  const { year, posts } = props;
 
-const BlogHeader = styled('div', {
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  gap: '$16',
-  '@tablet-sm': {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-});
-
-const BlogButtons = styled('div', {
-  display: 'flex',
-  flexDirection: 'row-reverse',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  flexWrap: 'wrap',
-  gap: '$16',
-  '@tablet-sm': {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-});
-
-const RssLink = styled(LinkButton, {
-  backgroundColor: '#f26522',
-  dark: { backgroundColor: '#f37438' },
-  hocus: {
-    backgroundColor: '#da5b1f',
-    dark: { backgroundColor: '#f26522' },
-  },
-});
-
-const NothingFound = styled('p', {
-  p: '$20 0 $36',
-});
+  return (
+    <ListCardsGroup
+      id={`posts-from-${year}`}
+      title={`Posts from ${year}`}
+      header={year.toFixed()}
+    >
+      {(posts || []).map((post, index) => {
+        return (
+          <li
+            key={
+              post.slug ||
+              // eslint-disable-next-line newline-per-chained-call
+              `${post.title.toLowerCase().split(' ').join('-')}-${index}`
+            }
+          >
+            <BlogCard post={post} />
+          </li>
+        );
+      })}
+    </ListCardsGroup>
+  );
+};
 
 interface BlogProps {
   posts?: Array<Post>;
