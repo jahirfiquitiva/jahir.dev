@@ -7,7 +7,7 @@ import type { FC } from '@/types';
 import {
   IntroSection,
   TextsContainer,
-  Paragraph,
+  IntroParagraph,
   PhotoContainer,
   Photo,
 } from './intro.styles';
@@ -24,7 +24,7 @@ export const Intro: FC = () => {
             Jahir Fiquitiva
           </Heading>
         </Heading>
-        <Paragraph>
+        <IntroParagraph>
           Passionate and creative full-stack software engineer based in{' '}
           <Link
             title={'Colombia on Google Maps'}
@@ -32,7 +32,7 @@ export const Intro: FC = () => {
           >
             Colombia 🇨🇴
           </Link>
-        </Paragraph>
+        </IntroParagraph>
         <LinkButton title={'About page'} href={'/about'} withShadow>
           <Icon path={mdiAccountCircleOutline} size={1} />
           More about me

@@ -26,11 +26,6 @@ export const Grid = styled('div', {
   },
 });
 
-export const Paragraph = styled('p', {
-  color: '$text-secondary',
-  fontSize: '$xs',
-});
-
 export const ContactOptions = styled('div', {
   display: 'flex',
   flexDirection: 'row',

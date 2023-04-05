@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 import { useMemo } from 'react';
 
-import { Img, Heading, Section, Link } from '@/components/core';
+import { Img, Heading, Section, Link, Paragraph } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC, RandomPageImage } from '@/types';
 
-import { Intro, Paragraph, PhotoFigure } from './about.styles';
+import { Intro, PhotoFigure } from './about.styles';
 import { Contact } from './contact';
 
 // eslint-disable-next-line max-lines-per-function

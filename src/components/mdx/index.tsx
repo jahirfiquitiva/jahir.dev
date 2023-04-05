@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
 import { Masonry } from '@/components/compounds';
-import { Img } from '@/components/core';
+import { Img, Paragraph } from '@/components/core';
 import { styled } from '~/stitches';
 
 import { Reactions } from './content';
@@ -23,6 +23,7 @@ export const mdxComponents = {
   a: MdxLink,
   Link: MdxLink,
   img: (props: ImgProps) => <Img {...props} />,
+  p: Paragraph,
   ...customComponents,
 };
 

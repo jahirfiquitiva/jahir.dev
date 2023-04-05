@@ -3,13 +3,13 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { OpenDoodle } from '@/components/compounds';
-import { Heading, Section, Link } from '@/components/core';
+import { Heading, Section, Link, Paragraph } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useRandomImage } from '@/hooks/useRandomImage';
 import { mdiEmail, telegram, twitterOutline } from '@/icons';
 import type { FC, RandomPageImage } from '@/types';
 
-import { ContactLink, ContactOptions, Grid, Paragraph } from './contact.styles';
+import { ContactLink, ContactOptions, Grid } from './contact.styles';
 
 const imagesAlts: Array<string> = [
   'Person taking a selfie with a t-shirt that says hi',
@@ -89,7 +89,7 @@ export const Contact: FC = () => {
                 dark: { $$linkColor: '29 161 242' },
               }}
             >
-              <Icon path={twitterOutline} size={0.95} />
+              <Icon path={twitterOutline} size={0.9} />
               Twitter
             </ContactLink>
             <ContactLink
@@ -101,7 +101,7 @@ export const Contact: FC = () => {
                 dark: { $$linkColor: '51 160 214' },
               }}
             >
-              <Icon path={telegram} size={0.95} />
+              <Icon path={telegram} size={0.85} />
               Telegram
             </ContactLink>
           </ContactOptions>
