@@ -89,27 +89,13 @@ const ScrollContainer = styled('div', {
     $$animState: 'paused',
   },
   canAnimate: {
+    maskImage:
+      // eslint-disable-next-line max-len
+      'linear-gradient(90deg, rgba(0 0 0 / 0) 0%, rgba(0 0 0 / 1) 20%, rgba(0 0 0 / 1) 80%, rgba(0 0 0 / 0) 100%)',
+    maskRepeat: 'no-repeat',
+    maskPosition: 'center',
     '& > span:not(:first-of-type)': {
       visible: 'inline-block',
-    },
-    '&::before': {
-      background: 'linear-gradient(to right, $$bg, rgba(0 0 0 / 0))',
-      content: '',
-      height: '100%',
-      position: 'absolute',
-      width: '$space$24',
-      zIndex: 1,
-    },
-    '&::after': {
-      top: 0,
-      right: 0,
-      background: 'linear-gradient(to right, $$bg, rgba(0 0 0 / 0))',
-      content: '',
-      height: '100%',
-      position: 'absolute',
-      width: '$space$24',
-      zIndex: 1,
-      transform: 'rotate(180deg)',
     },
   },
 });
@@ -185,7 +171,9 @@ export const FooterNowPlaying: FC = () => {
           />
           <ScrollContainer css={{ $$animDuration: `${animationDuration}s` }}>
             <ScrollingText>{scrollingText}</ScrollingText>
-            <ScrollingText pseudo>{scrollingText}</ScrollingText>
+            <ScrollingText pseudo aria-hidden={true}>
+              {scrollingText}
+            </ScrollingText>
           </ScrollContainer>
         </MusicLink>
       );
