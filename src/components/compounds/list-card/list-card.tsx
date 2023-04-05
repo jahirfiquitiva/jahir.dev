@@ -28,11 +28,10 @@ interface ListCardProps {
   href: string;
   imageUrl: string;
   color?: string;
-  small?: boolean;
 }
 
 export const ListCard: FC<ListCardProps> = (props) => {
-  const { title, href, imageUrl, color: defaultColor, small } = props;
+  const { title, href, imageUrl, color: defaultColor } = props;
 
   const { isDark, themeReady } = useTheme();
   const { palette: heroPalette = {} } = usePalette(imageUrl);
@@ -57,7 +56,6 @@ export const ListCard: FC<ListCardProps> = (props) => {
       href={href}
       underline={false}
       css={{ $$color: color || '$colors$accent-shadow' }}
-      small={small}
     >
       {props.children}
     </StyledListCard>

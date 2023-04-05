@@ -37,21 +37,6 @@ export const StyledListCard = styled(Link, {
       dark: { textDecoration: 'underline', color: 'rgba($$color / 1)' },
     },
   },
-  variants: {
-    small: {
-      true: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        '@tablet-md': {
-          px: '$12',
-          py: '$8',
-          mx: '-$12',
-          gap: '$12',
-        },
-        '& p': { fontSize: '$3xs' },
-      },
-    },
-  },
 });
 
 export const StyledContentContainer = styled('div', {

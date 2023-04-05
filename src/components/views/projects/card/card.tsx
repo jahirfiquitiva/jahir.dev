@@ -10,6 +10,7 @@ import { Img } from '@/components/core';
 import { useRequest } from '@/hooks/useRequest';
 import { mdiStar } from '@/icons';
 import type { FC, Project } from '@/types';
+import { skills } from '../../home/skills/data';
 
 interface ProjectCardProps {
   project?: Project;
@@ -42,6 +43,14 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     return {};
   }, [project?.iconMeta]);
 
+  const language = useMemo(() => {
+    const firstLangInStack = project?.stack?.[0];
+    if (!firstLangInStack) return null;
+    return skills.find((skill) =>
+      skill.name.toLowerCase().includes(firstLangInStack.toLowerCase()),
+    );
+  }, [project?.stack]);
+
   if (!project) return null;
   return (
     <ListCard
@@ -49,7 +58,6 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       href={project.inProgress || project.hide ? project.link : '#'}
       imageUrl={`/static/images/projects/${project.icon}`}
       color={project.color}
-      small
     >
       <Img
         src={`/static/images/projects/${project.icon}`}
@@ -60,19 +68,26 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       <ListCardContent
         title={project.name}
         description={project.description}
-        childrenAside
-        css={{gap:0}}
+        css={{ gap: 0 }}
       >
-        {Boolean(+(data?.stars || '0') > 1) && (
-          <InfoContainer>
+        <InfoContainer>
+          {+(data?.stars || '0') > 1 ? (
             <ListCardInfoItem
               title={`${project.name} has ${data?.stars} stars on GitHub`}
               iconPath={mdiStar}
             >
               {data?.stars}
             </ListCardInfoItem>
-          </InfoContainer>
-        )}
+          ) : null}
+          {language ? (
+            <ListCardInfoItem
+              title={`Built primarily with ${language?.name}`}
+              iconPath={language?.iconPath}
+            >
+              {language?.name}
+            </ListCardInfoItem>
+          ) : null}
+        </InfoContainer>
       </ListCardContent>
     </ListCard>
   );
