@@ -54,6 +54,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
       title={`Blog post: ${post?.title}`}
       href={rightLink}
       imageUrl={post.hero || ''}
+      color={post.color}
     >
       <BlogCardHero
         src={post.hero || ''}

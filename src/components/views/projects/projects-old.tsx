@@ -1,42 +1,20 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
+import {
+  ListCardsGroup,
+  Masonry,
+  type MasonryBreakpoints,
+} from '@/components/compounds';
 import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
 import { Field, Heading, Section, LinkButton } from '@/components/core';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/icons';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';
-import { styled, theme } from '~/stitches';
+import { theme } from '~/stitches';
 
-import { ProjectCard } from './ProjectCard';
-
-const ProjectsHeader = styled('div', {
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  gap: '$16',
-  '@tablet-sm': {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-});
-
-const ProjectsButtons = styled('div', {
-  display: 'flex',
-  flexDirection: 'row-reverse',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  flexWrap: 'wrap',
-  gap: '$16',
-  '@tablet-sm': {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-});
+import { ProjectCard } from './card';
+import { ProjectsButtons, ProjectsHeader } from './projects.styled';
 
 interface ProjectsProps {
   projects?: Array<Project>;
@@ -115,7 +93,10 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <Masonry breakpoints={masonryBreakpoints} gap={theme.space['18'].value}>
+      <ListCardsGroup
+        id={'projects-list'}
+        title={`${!showFullList ? 'Featured ' : ''}Projects List`}
+      >
         {(filteredProjects || []).map((project, index) => {
           return (
             <ProjectCard
@@ -127,7 +108,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
             />
           );
         })}
-      </Masonry>
+      </ListCardsGroup>
     </Section>
   );
 };
