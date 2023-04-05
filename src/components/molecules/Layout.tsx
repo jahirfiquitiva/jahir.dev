@@ -26,11 +26,11 @@ const Main = styled('main', {
   flexDirection: 'column',
   flex: 1,
   zIndex: 0,
-  pt: 'calc($$totalToolbarHeight + $$verticalContentPadding)',
+  pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + $space$6)',
   pb: '$$verticalContentPadding',
   gap: '$64',
   '@tablet-sm': {
-    pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + 4px)',
+    pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + $space$12)',
   },
 
   canAnimate: {
