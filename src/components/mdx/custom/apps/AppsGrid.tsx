@@ -6,7 +6,6 @@ import { styled } from '~/stitches';
 import { AppItem, type AppItemProps } from './AppItem';
 
 const GridContainer = styled('div', {
-  my: '$16',
   borderRadius: '$space$16',
   overflow: 'hidden',
   boxShadow: '0 0 4px 2px $accent-shadow',

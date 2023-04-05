@@ -18,7 +18,6 @@ export const HardwareGrid: FC<{ items: Array<HardwareItemProps> }> = ({
     <Masonry
       breakpoints={masonryBreakpoints}
       gap={theme.space['16'].value}
-      css={{ my: '$12' }}
     >
       {items.map((item, index) => {
         return <HardwareItem item={item} key={index} />;

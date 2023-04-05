@@ -18,8 +18,7 @@ export const Title = styled(Heading, {
 export const Intro = styled('p', {
   fontSize: '$xs',
   color: '$text-tertiary',
-  mt: '$6 !important',
-  mb: '$26 !important',
+  mb: '$24 !important',
 });
 
 export const ShareAndEdit = styled('div', {

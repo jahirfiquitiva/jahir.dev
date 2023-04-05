@@ -26,7 +26,7 @@ const Main = styled('main', {
   flexDirection: 'column',
   flex: 1,
   zIndex: 0,
-  pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + $space$6)',
+  pt: 'calc($$totalToolbarHeight + $$verticalContentPadding + $space$4)',
   pb: '$$verticalContentPadding',
   gap: '$64',
   '@tablet-sm': {

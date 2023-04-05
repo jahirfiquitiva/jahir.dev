@@ -46,7 +46,7 @@ export const Contact: FC = () => {
   }, [hasMounted, image]);
 
   return (
-    <Section id={'contact'}>
+    <Section id={'contact'} css={{ gap: '$12' }}>
       <Heading as={'h2'} shadow={'brand'} gradient={'brand-to-blue'}>
         Contact
       </Heading>
