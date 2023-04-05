@@ -1,4 +1,3 @@
-import { Paragraph } from '@/components/core';
 import { styled } from '~/stitches';
 
 export const PhotoFigure = styled('figure', {
@@ -13,7 +12,7 @@ export const PhotoFigure = styled('figure', {
   },
 });
 
-export const Intro = styled(Paragraph, {
+export const Intro = styled('p', {
   color: '$text-primary',
   fontSize: '$sm',
 });

@@ -1,4 +1,4 @@
-import { Img, Paragraph, Section } from '@/components/core';
+import { Img, Section } from '@/components/core';
 import { styled, keyframes } from '~/stitches';
 
 export const IntroSection = styled(Section, {
@@ -21,7 +21,7 @@ export const TextsContainer = styled('div', {
   },
 });
 
-export const IntroParagraph = styled(Paragraph, {
+export const IntroParagraph = styled('p', {
   mt: '$12',
   mb: '$20',
   maxWidth: '325px',

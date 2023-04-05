@@ -3,7 +3,7 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { OpenDoodle } from '@/components/compounds';
-import { Heading, Section, Link, Paragraph } from '@/components/core';
+import { Heading, Section, Link } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useRandomImage } from '@/hooks/useRandomImage';
 import { mdiEmail, telegram, twitterOutline } from '@/icons';
@@ -53,7 +53,7 @@ export const Contact: FC = () => {
       <Grid>
         {imageComponent}
         <div>
-          <Paragraph>
+          <p>
             I&apos;m always open to chat, so please don&apos;t hesitate
             contacting me! But please{' '}
             <Link
@@ -63,10 +63,8 @@ export const Contact: FC = () => {
               don&apos;t just say hello
             </Link>
             .
-          </Paragraph>
-          <Paragraph css={{ mt: '$12' }}>
-            There&apos;s a few ways you can get it touch:
-          </Paragraph>
+          </p>
+          <p>There&apos;s a few ways you can get it touch:</p>
           <ContactOptions>
             <ContactLink
               title={'Compose an email to Jahir'}

@@ -5,5 +5,4 @@ export * from './field';
 export * from './heading';
 export * from './img';
 export * from './link';
-export * from './paragraph';
 export * from './section';

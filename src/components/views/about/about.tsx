@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { useMemo } from 'react';
 
-import { Img, Heading, Section, Link, Paragraph } from '@/components/core';
+import { Img, Heading, Section, Link } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import type { FC, RandomPageImage } from '@/types';
 
@@ -56,28 +56,28 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
           .
         </Intro>
 
-        <Paragraph>
+        <p>
           I am creative and passionate about design and technology so I always
           try to craft great-looking software products.
-        </Paragraph>
+        </p>
 
-        <Paragraph>
+        <p>
           Before getting into software development, I wanted to be a
           mechatronics engineer and build robots. When I started programming my
           first robots, I realized what my real passion was and started learning
           more about software development.
-        </Paragraph>
+        </p>
 
-        <Paragraph>
+        <p>
           When not coding, I like to watch TV shows and movies, play some games
           with friends or hang out with them. I&apos;m also{' '}
           <Link title={'Dashboard page'} href={'/dashboard'}>
             listening to music
           </Link>{' '}
           most of the time.
-        </Paragraph>
+        </p>
 
-        <Paragraph>
+        <p>
           I consider myself a curious and inquisitive person, so on my spare
           time I like to work on{' '}
           <Link title={'Projects page'} href={'/projects'}>
@@ -85,9 +85,9 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
           </Link>
           , try to contribute to open source software and aim to constantly
           learn something new to improve my skillset.
-        </Paragraph>
+        </p>
 
-        <Paragraph>
+        <p>
           Learn about the hardware, software and tools I use, on my{' '}
           <Link title={'Uses page'} href={'/uses'}>
             uses page
@@ -101,7 +101,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
             my timeline
           </Link>
           .
-        </Paragraph>
+        </p>
       </Section>
       <Contact />
     </>
