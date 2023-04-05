@@ -18,6 +18,7 @@ export const StyledListCard = styled(Link, {
     p: '$12',
     mx: '-$12',
     flexDirection: 'row',
+    alignItems: 'center',
   },
   '@tablet-md': {
     p: '$16',
@@ -43,6 +44,7 @@ export const StyledContentContainer = styled('div', {
   flexDirection: 'column',
   gap: '$4',
   py: '$1',
+  flex: 1,
 });
 
 export const StyledTitle = styled('span', {

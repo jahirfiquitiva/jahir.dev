@@ -12,16 +12,20 @@ import {
 interface ListCardContentProps {
   title: string;
   description?: string;
+  childrenAside?: boolean;
 }
 
 export const ListCardContent: FC<ListCardContentProps> = (props) => {
-  const { title, description } = props;
+  const { title, description, childrenAside } = props;
   return (
-    <StyledContentContainer>
-      <StyledTitle>{title}</StyledTitle>
-      {Boolean(description) && <StyledExcerpt>{description}</StyledExcerpt>}
-      {props.children}
-    </StyledContentContainer>
+    <>
+      <StyledContentContainer>
+        <StyledTitle>{title}</StyledTitle>
+        {Boolean(description) && <StyledExcerpt>{description}</StyledExcerpt>}
+        {Boolean(!childrenAside) && <>{props.children}</>}
+      </StyledContentContainer>
+      {Boolean(childrenAside) && <>{props.children}</>}
+    </>
   );
 };
 

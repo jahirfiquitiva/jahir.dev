@@ -56,11 +56,15 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         size={44}
         {...extraIconProps}
       />
-      <ListCardContent title={project.name} description={project.description}>
-        {Boolean(data?.stars) && (
+      <ListCardContent
+        title={project.name}
+        description={project.description}
+        childrenAside
+      >
+        {Boolean(+(data?.stars || '0') > 1) && (
           <InfoContainer>
             <ListCardInfoItem
-              title={`${data?.stars} stars on GitHub`}
+              title={`${project.name} has ${data?.stars} stars on GitHub`}
               iconPath={mdiStar}
             >
               {data?.stars}

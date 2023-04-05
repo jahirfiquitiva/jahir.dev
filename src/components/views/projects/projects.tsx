@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react';
 
 import {
   ListCardsGroup,
-  Masonry,
   type MasonryBreakpoints,
 } from '@/components/compounds';
 import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
@@ -11,7 +10,6 @@ import { Field, Heading, Section, LinkButton } from '@/components/core';
 import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/icons';
 import { breakpointsValues } from '@/stitches';
 import type { FC, Project } from '@/types';
-import { theme } from '~/stitches';
 
 import { ProjectCard } from './card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styled';
