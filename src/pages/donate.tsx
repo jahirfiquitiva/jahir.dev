@@ -1,8 +1,8 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
-import { useRandomImage } from '@/hooks/useRandomImage';
 import { Donate as DonateSection } from '@/components/views';
+import { useRandomImage } from '@/hooks/useRandomImage';
 import type { RandomPageImage } from '@/types';
 
 const Donate: NextPage<{ images: Array<RandomPageImage> }> = (props) => {

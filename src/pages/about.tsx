@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
+import { About as AboutSection } from '@/components/views';
 import imagesBlurData from '@/data/blur-about.json';
 import { useRandomImage } from '@/hooks/useRandomImage';
-import { About as AboutSection } from '@/components/views';
 import type { ImageBlurDataObject, RandomPageImage } from '@/types';
 
 const About: NextPage<{ images: Array<RandomPageImage> }> = (props) => {

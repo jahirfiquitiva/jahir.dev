@@ -1,4 +1,4 @@
-import { Link, LinkButton } from '@/components/core';
+import { LinkButton } from '@/components/core';
 import { styled } from '~/stitches';
 
 export const Grid = styled('div', {

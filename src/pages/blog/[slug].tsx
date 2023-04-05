@@ -1,4 +1,3 @@
-import type { Blog } from 'contentlayer/generated';
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
@@ -6,10 +5,11 @@ import { useMemo } from 'react';
 import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
-import { useMDXComponent } from '@/hooks/useMDXComponent';
 import { Error, FourOhFour as FourOhFourSection } from '@/components/views';
+import { useMDXComponent } from '@/hooks/useMDXComponent';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils/posts/get-posts';
+import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {
   if (!post) return null;

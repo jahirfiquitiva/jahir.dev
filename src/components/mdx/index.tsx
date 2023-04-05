@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
-import { Img } from '@/components/core';
 import { Masonry } from '@/components/compounds';
+import { Img } from '@/components/core';
 import { styled } from '~/stitches';
 
 import { Reactions } from './content';

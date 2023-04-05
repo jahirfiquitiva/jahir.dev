@@ -1,5 +1,5 @@
-import { Heading } from '@/components/core';
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
+import { Heading } from '@/components/core';
 import { useSponsors } from '@/providers/sponsors';
 import { breakpointsValues } from '@/stitches';
 

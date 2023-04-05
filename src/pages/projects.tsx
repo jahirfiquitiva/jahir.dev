@@ -1,8 +1,8 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
-import allProjects from '@/data/projects.json';
 import { Projects as ProjectsSection } from '@/components/views';
+import allProjects from '@/data/projects.json';
 import type { Project } from '@/types';
 
 interface ProjectsProps {

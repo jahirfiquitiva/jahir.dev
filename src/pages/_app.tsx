@@ -1,6 +1,6 @@
-import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
 
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
