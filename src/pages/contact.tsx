@@ -39,13 +39,6 @@ const imagesAlts: Array<string> = [
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
-    props: {
-      images: imagesAlts.map((alt, key) => ({
-        key,
-        alt,
-        width: 384,
-        height: 384,
-      })),
-    },
+    props: {},
   };
 };

@@ -4,99 +4,33 @@ import { useMemo } from 'react';
 import { OpenDoodle } from '@/components/compounds';
 import { Heading, Section, Link } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
+import { useRandomImage } from '@/hooks/useRandomImage';
 import type { FC, RandomPageImage } from '@/types';
-import { styled } from '~/stitches';
 
-const Grid = styled('div', {
-  display: 'grid',
-  gridTemplateColumns: 'minmax(0, 1fr)',
-  gap: '$$verticalContentPadding',
-  mt: 'calc($$verticalContentPadding / 1.5)',
-  mb: 'calc($$verticalContentPadding / 2)',
-  '@tablet-sm': {
-    mt: 'calc($$verticalContentPadding / 2)',
-    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-    alignItems: 'center',
-  },
-  '& > div:first-of-type': {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '$10',
-  },
-});
+import {
+  ContactOption,
+  ContactOptions,
+  Grid,
+  Paragraph,
+} from './contact.styles';
 
-const Paragraph = styled('p', {
-  color: '$text-secondary',
-  fontSize: '$xs',
-});
+const imagesAlts: Array<string> = [
+  'Person taking a selfie with a t-shirt that says hi',
+  'Person laying on the floor and checking their phone',
+  'Person reading a book',
+  'Person walking like a zombie',
+];
 
-const ContactOptions = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '$3',
-  maxWidth: 212,
-  '@tablet-sm': {
-    maxWidth: '100%',
-  },
-});
-
-const ContactOption = styled(Link, {
-  $$linkColor: '$colors$text-secondary',
-  display: 'flex',
-  py: '$2',
-  gap: '$3',
-  color: '$text-secondary',
-  justifyContent: 'space-between',
-  '@tablet-sm': {
-    maxWidth: 306,
-    gap: '$$verticalContentPadding',
-  },
-  hocus: {
-    textDecoration: 'none !important',
-    color: '$text-primary',
-    dark: { textDecoration: 'none', color: '$text-primary' },
-    '& > span:last-of-type': {
-      color: '$$linkColor',
-      dark: { color: '$$linkColor' },
-    },
-  },
-  '& > span:last-of-type': {
-    color: '$text-tertiary',
-  },
-  variants: {
-    email: {
-      true: {
-        $$linkColor: '#d33c30',
-        dark: { $$linkColor: '#ec5649' },
-        '& > span:last-of-type': {
-          userSelect: 'none',
-          pointerEvents: 'none',
-        },
-      },
-    },
-    twitter: {
-      true: {
-        $$linkColor: '#1a91da',
-        dark: { $$linkColor: '#1da1f2' },
-      },
-    },
-    telegram: {
-      true: {
-        $$linkColor: '#007ab8',
-        dark: { $$linkColor: '#33a0d6' },
-      },
-    },
-    github: {
-      true: {
-        $$linkColor: '$colors$text-secondary',
-        dark: { $$linkColor: '$colors$text-secondary' },
-      },
-    },
-  },
-});
+const images = imagesAlts.map((alt, key) => ({
+  key,
+  alt,
+  width: 384,
+  height: 384,
+} as RandomPageImage));
 
 // eslint-disable-next-line max-lines-per-function
-export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
+export const Contact: FC = () => {
+  const image = useRandomImage(images);
   const hasMounted = useHasMounted();
 
   const imageComponent = useMemo(() => {
@@ -117,6 +51,7 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
         Contact
       </Heading>
       <Grid>
+        {imageComponent}
         <div>
           <Paragraph>
             I&apos;m always open to chat, so please don&apos;t hesitate
@@ -172,7 +107,6 @@ export const Contact: FC<{ image: RandomPageImage }> = ({ image }) => {
             </ContactOption>
           </ContactOptions>
         </div>
-        {imageComponent}
       </Grid>
     </Section>
   );
