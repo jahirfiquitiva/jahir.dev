@@ -1,4 +1,10 @@
-import { CSSProperties, FC as ReactFunctionalComponent, ReactNode } from 'react';
+import {
+  CSSProperties,
+  FC as ReactFunctionalComponent,
+  ReactNode,
+  Component,
+  ComponentType,
+} from 'react';
 
 import type { StitchesCSS as CSS } from '~/stitches';
 
@@ -11,4 +17,12 @@ export interface ComponentProps {
   css?: CSS;
 }
 
-export type FC<T = Record<string, unknown>> = ReactFunctionalComponent<ComponentProps & T>;
+export type FC<T = Record<string, unknown>> = ReactFunctionalComponent<
+  ComponentProps & T
+>;
+
+export type GetComponentProps<T> = T extends
+  | ComponentType<infer P>
+  | Component<infer P>
+  ? P
+  : never;

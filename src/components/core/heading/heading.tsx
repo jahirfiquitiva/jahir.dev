@@ -1,9 +1,13 @@
+import type { ElementType } from 'react';
+import Balancer from 'react-wrap-balancer';
+
 import {
   gradientVariants,
   gradientOptionsArray,
   GradientOption,
 } from '@/stitches/utils/gradient';
 import { shadowVariants } from '@/stitches/utils/shadow';
+import type { GetComponentProps } from '@/types';
 import { styled, type StitchesCSS } from '~/stitches';
 
 export const gradientEnabledCss = {
@@ -29,7 +33,7 @@ const mapGradientOptionsToCss = (): Array<GradientCompoundVariantCss> => {
   });
 };
 
-export const Heading = styled('h1', {
+const StyledHeading = styled('h1', {
   $$textShadowSize: '2px',
   display: 'inline-block',
   alignItems: 'center',
@@ -48,3 +52,11 @@ export const Heading = styled('h1', {
 
   compoundVariants: mapGradientOptionsToCss(),
 });
+
+export const Heading = (
+  props: GetComponentProps<typeof StyledHeading> & { as?: ElementType },
+) => (
+  <Balancer>
+    <StyledHeading {...props} />
+  </Balancer>
+);
