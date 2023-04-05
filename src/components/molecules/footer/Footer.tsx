@@ -122,7 +122,7 @@ export const Footer: FC = (props) => {
         />
         <FooterLinksGroup meta title={'Meta pages links'} links={metaLinks} />
       </LinksContainer>
-      <InnerFooter>
+      <InnerFooter css={{ mx: '-$2' }}>
         <BrandLink
           href={'/'}
           title={'Home page'}

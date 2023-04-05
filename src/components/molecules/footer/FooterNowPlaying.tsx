@@ -14,6 +14,10 @@ const MusicItem = styled('li', {
   verticalAlign: 'middle',
   width: '100%',
   maxWidth: '100%',
+  ml: 'calc($52 + $12)',
+  '@tablet-sm': {
+    ml: 0,
+  },
 });
 
 const baseMusicLinkStyles: StitchesCSS = {
