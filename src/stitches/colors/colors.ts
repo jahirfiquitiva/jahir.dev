@@ -22,10 +22,9 @@ export const colors: ThemeColors = {
   'text-primary': 'rgba(9 17 34 / .95)',
   'text-secondary': 'rgba(9 17 34 / .8)',
   'text-tertiary': 'rgba(9 17 34 / .6)',
-  // 'img-drop-shadow': 'rgba(9 17 34 / .28)',
 
   accent: '#3867d6',
-  'accent-shadow' : '45 82 171',
+  'accent-shadow': '45 82 171',
   'accent-dark': 'rgba($accent-shadow / 1)',
   'on-accent': '#fff',
 
@@ -37,7 +36,7 @@ export const colors: ThemeColors = {
   'gradient-red': '#bc2f48',
   'gradient-purple': '#7a4cbb',
 
-  'shadow-brand': '$accent',
+  'shadow-brand': '#9CB3EB',
   'shadow-blue': '#81c1e9',
   'shadow-green': '#79d9a6',
   'shadow-yellow': '#fad483',
@@ -45,7 +44,7 @@ export const colors: ThemeColors = {
   'shadow-red': '#f3899c',
   'shadow-purple': '#b898e3',
 
-  'scrollbar-bg': '$accent-light',
+  'scrollbar-bg': '$accent',
   'scrollbar-thumb': '#f2f5fc',
 
   selection: 'rgba(56 103 214 / .25)',
@@ -59,6 +58,7 @@ export const colors: ThemeColors = {
   'code-deleted': '#d43551',
 
   'illustrations-shadow': '#c0b4f0',
+  'img-drop-shadow': 'rgba(9 17 34 / .28)',
 };
 
 export const darkThemeColors: ThemeColors = {
@@ -67,15 +67,13 @@ export const darkThemeColors: ThemeColors = {
   divider: 'rgba(235 240 251 / .12)',
 
   toolbar: 'rgba(18 27 44 / .65)',
-  // 'toolbar-glow': '136 164 230', // accent
 
   'text-primary': '#fff',
   'text-secondary': 'rgba(235 240 251 / .85)',
   'text-tertiary': 'rgba(235 240 251 / .6)',
-  // 'img-drop-shadow': 'rgba(235 240 251 / .24)',
 
   accent: '#88a4e6',
-  'accent-shadow' : '175 194 239',
+  'accent-shadow': '175 194 239',
   'on-accent': 'rgba(9 17 34 / .9)',
 
   'gradient-blue': '$shadow-blue',
@@ -97,4 +95,5 @@ export const darkThemeColors: ThemeColors = {
   'code-deleted': '#fc6c74',
 
   'illustrations-shadow': '#d8d1f6',
+  'img-drop-shadow': 'rgba(235 240 251 / .24)',
 };

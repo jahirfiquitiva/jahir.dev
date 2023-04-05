@@ -8,7 +8,7 @@ export const rainbowColorsArray = [
   'purple',
 ] as const;
 
-export type RainbowColors = typeof rainbowColorsArray[number];
+export type RainbowColors = (typeof rainbowColorsArray)[number];
 type GradientColor = `gradient-${RainbowColors}`;
 type ShadowColor = `shadow-${RainbowColors}`;
 
@@ -37,6 +37,7 @@ export type ThemeColorsNames =
   | 'divider'
   | 'selection'
   | 'illustrations-shadow'
+  | 'img-drop-shadow'
   | AccentColor
   | GradientColor
   | ShadowColor

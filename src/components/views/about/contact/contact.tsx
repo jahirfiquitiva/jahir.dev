@@ -23,8 +23,8 @@ const images = imagesAlts.map(
     ({
       key,
       alt,
-      width: 384,
-      height: 384,
+      width: 220,
+      height: 220,
     } as RandomPageImage),
 );
 
@@ -39,7 +39,7 @@ export const Contact: FC = () => {
       <OpenDoodle
         src={`/static/images/contact/${image.key}.png`}
         alt={image.alt || 'Doodle'}
-        size={image.width || 384}
+        size={image.width || 220}
         priority
       />
     );

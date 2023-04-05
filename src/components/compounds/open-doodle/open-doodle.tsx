@@ -10,7 +10,9 @@ interface OpenDoodleProps {
   shadowColor?: ThemeColorValue;
 }
 
-export const OpenDoodle: FC<ComponentProps<typeof DoodleImg> & OpenDoodleProps> = (props) => {
+export const OpenDoodle: FC<
+  ComponentProps<typeof DoodleImg> & OpenDoodleProps
+> = (props) => {
   const {
     shadowSize = 4,
     shadowColor = '$colors$illustrations-shadow',

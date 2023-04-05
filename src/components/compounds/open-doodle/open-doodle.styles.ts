@@ -6,9 +6,11 @@ export const DoodleImg = styled(Img, {
   $$shadowColor: '$colors$illustrations-shadow',
   width: '100%',
   height: 'auto',
-  maxWidth: 320,
   mx: 'auto',
   aspectRatio: '1 / 1',
+  maxWidth: 192,
+  '@mobile-lg': { maxWidth: 220 },
+  '@tablet-sm': { minWidth: 220 },
   filter:
     'drop-shadow(-$$shadowSize -$$shadowSize calc($$shadowSize / 2) $$shadowColor)' +
     ' drop-shadow($$shadowSize $$shadowSize calc($$shadowSize / 2) $$shadowColor)' +

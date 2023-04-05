@@ -55,11 +55,6 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
         alt={img.alt || 'Doodle'}
         flip={img.key < 3}
         shadowColor={'$colors$shadow-red'}
-        css={{
-          maxWidth: 192,
-          '@mobile-lg': { maxWidth: 220 },
-          '@tablet-sm': { minWidth: 220 },
-        }}
       />
     );
   }, [hasMounted, img]);
@@ -70,7 +65,7 @@ export const DonateIntro: FC<DonateIntroProps> = (props) => {
         <IntroTexts>
           <Heading
             as={'h2'}
-            shadow={'blue'}
+            shadow={'brand'}
             gradient={'brand-to-blue'}
             css={{ mb: 'calc($$verticalContentPadding / 4)' }}
           >
