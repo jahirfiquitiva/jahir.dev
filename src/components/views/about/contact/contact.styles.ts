@@ -13,7 +13,7 @@ export const Grid = styled('div', {
   '@tablet-sm': {
     gap: '$$verticalContentPadding',
     mt: 'calc($$verticalContentPadding / 2)',
-    gridTemplateColumns: 'auto minmax(0, 1fr)',
+    gridTemplateColumns: 'minmax(auto, 192px) minmax(0, 1fr)',
     alignItems: 'center',
     '& > img': {
       gridRow: 1,
