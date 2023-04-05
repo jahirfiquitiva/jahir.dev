@@ -39,7 +39,7 @@ const StyledHeading = styled('h1', {
   alignItems: 'center',
   alignSelf: 'flex-start',
   textShadow: '$$textShadowSize $$textShadowSize 0 $$textShadowColor',
-
+  '& > span': { width: '100%' },
   dark: { textShadow: 'none' },
 
   variants: {

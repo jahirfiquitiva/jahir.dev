@@ -8,8 +8,9 @@ export const Article = styled('article', {
   p: '.05px',
   scrollMarginTop: '$$scrollMargin',
   '& h1, & h2, & h3, & h4, & h5, & h6': {
-    display: 'block',
+    display: 'inline-block',
     position: 'relative',
+    alignSelf: 'flex-start',
     scrollMarginTop: '$$scrollMargin',
     hocus: {
       '& > a.anchor': {
@@ -41,12 +42,12 @@ export const Article = styled('article', {
   '& a.anchor': {
     visibility: 'hidden',
     position: 'absolute',
-    width: '100%',
+    pr: '.75em',
+    marginLeft: '-1.25em',
+    width: 'calc(100% + 1.25em)',
     height: '100%',
     cursor: 'pointer',
     textDecoration: 'none',
-    marginLeft: '-1.25em',
-    pr: '.75em',
     '&::after': {
       textDecoration: 'none',
       content: '#',
@@ -133,13 +134,12 @@ export const Article = styled('article', {
     WebkitOverflowScrolling: 'touch',
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
-    backgroundColor: '$primary',
+    backgroundColor: 'rgba($accent-shadow / .036)',
     color: 'inherit',
     overflowX: 'auto',
     borderRadius: '$space$8',
     border: '1px solid $divider',
-    m: '$20 0',
-    dark: { $colors$primary: '#0b152b' },
+    mb: '$12',
   },
   '& pre': {
     p: '$12',
@@ -219,7 +219,7 @@ export const Article = styled('article', {
     borderStyle: 'solid',
     borderColor: '$divider',
     pl: '$16',
-    py: '$10',
+    py: '$14',
     pr: '$12',
     borderRadius: '$space$4',
   },

@@ -44,8 +44,8 @@ export const colors: ThemeColors = {
   'shadow-red': '#f3899c',
   'shadow-purple': '#b898e3',
 
-  'scrollbar-bg': '$accent',
-  'scrollbar-thumb': '#f2f5fc',
+  'scrollbar-bg': 'rgba($accent-shadow / .5)',
+  'scrollbar-thumb': '$primary',
 
   selection: 'rgba(56 103 214 / .25)',
 

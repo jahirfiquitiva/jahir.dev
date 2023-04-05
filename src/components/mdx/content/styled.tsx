@@ -37,14 +37,12 @@ export const ArticleFooter = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$$verticalContentPadding',
-  mt: '$$verticalContentPadding',
-  mb: 0,
   boxSizing: 'border-box',
+  mt: 'calc(-$$verticalContentPadding + $20)',
   '@tablet-md': {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    mb: 0,
   },
 });
 

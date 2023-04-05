@@ -141,9 +141,10 @@ export const MdxContent: FC<CommonContent> = (props) => {
         </Intro>
 
         <ReactionsProvider slug={`blog--${slug}`}>
-          <div>
-            <MdxReactions inProgress={inProgress} />
-          </div>
+          <MdxReactions
+            inProgress={inProgress}
+            css={{ order: 'unset !important' }}
+          />
 
           {hero && (
             <figure>

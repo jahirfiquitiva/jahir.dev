@@ -13,15 +13,7 @@ import { MdxLink } from './MdxLink';
 type ImgProps = ComponentProps<typeof Img>;
 
 export const mdxComponents = {
-  Image: (props: ImgProps) => (
-    <Img
-      {...props}
-      css={{
-        background:
-          'repeating-conic-gradient($background 0 90deg, $divider 0 180deg) 0 0/24px 24px round',
-      }}
-    />
-  ),
+  Image: (props: ImgProps) => <Img {...props} />,
   ImageComparison,
   Grid,
   GridColumn,
