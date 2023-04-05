@@ -7,6 +7,7 @@ export const BlogCardHero = styled(Img, {
   height: 'auto',
   borderRadius: '$space$4',
   '@tablet-sm': {
+    mt: '$4',
     minHeight: '100%',
     aspectRatio: '5 / 3',
     maxWidth: 160,

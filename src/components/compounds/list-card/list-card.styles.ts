@@ -18,7 +18,6 @@ export const StyledListCard = styled(Link, {
     p: '$12',
     mx: '-$12',
     flexDirection: 'row',
-    alignItems: 'center',
   },
   '@tablet-md': {
     p: '$16',
@@ -42,6 +41,7 @@ export const StyledListCard = styled(Link, {
 export const StyledContentContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  alignSelf: 'center',
   gap: '$4',
   py: '$1',
   flex: 1,
