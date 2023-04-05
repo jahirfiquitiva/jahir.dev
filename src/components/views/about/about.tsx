@@ -34,7 +34,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
 
   return (
     <>
-      <Section id={'about'}>
+      <Section id={'about'} css={{ gap: '$12' }}>
         <Heading as={'h2'} shadow={'blue'} gradient={'blue-to-green'}>
           About
         </Heading>
@@ -74,8 +74,7 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
           <Link title={'Dashboard page'} href={'/dashboard'}>
             listening to music
           </Link>{' '}
-          most of the time. According to Spotify Wrapped, I listened to 138774
-          minutes of music in 2022 and 130437 in 2021. 😁
+          most of the time.
         </Paragraph>
 
         <Paragraph>
@@ -93,19 +92,15 @@ export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
           <Link title={'Uses page'} href={'/uses'}>
             uses page
           </Link>
-          . Or even more about me on{' '}
+          .<br />
+          Or even more about me on{' '}
           <Link
             title={'Polywork timeline'}
             href={'https://timeline.jahir.dev/'}
           >
             my timeline
           </Link>
-          .<br />
-          And last but not least, please don&apos;t hesitate to{' '}
-          <Link title={'Contact page'} href={'/contact'}>
-            contact me
-          </Link>
-          !
+          .
         </Paragraph>
       </Section>
       <Contact />

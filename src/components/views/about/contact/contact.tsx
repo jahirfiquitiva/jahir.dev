@@ -2,17 +2,14 @@
 import { useMemo } from 'react';
 
 import { OpenDoodle } from '@/components/compounds';
-import { Heading, Section, Link } from '@/components/core';
+import { Heading, Section, Link, LinkButton } from '@/components/core';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useRandomImage } from '@/hooks/useRandomImage';
 import type { FC, RandomPageImage } from '@/types';
 
-import {
-  ContactOption,
-  ContactOptions,
-  Grid,
-  Paragraph,
-} from './contact.styles';
+import { ContactLink, ContactOptions, Grid, Paragraph } from './contact.styles';
+import Icon from '@mdi/react';
+import { mdiEmail, telegram, twitterOutline } from '@/icons';
 
 const imagesAlts: Array<string> = [
   'Person taking a selfie with a t-shirt that says hi',
@@ -21,12 +18,15 @@ const imagesAlts: Array<string> = [
   'Person walking like a zombie',
 ];
 
-const images = imagesAlts.map((alt, key) => ({
-  key,
-  alt,
-  width: 384,
-  height: 384,
-} as RandomPageImage));
+const images = imagesAlts.map(
+  (alt, key) =>
+    ({
+      key,
+      alt,
+      width: 384,
+      height: 384,
+    } as RandomPageImage),
+);
 
 // eslint-disable-next-line max-lines-per-function
 export const Contact: FC = () => {
@@ -55,10 +55,7 @@ export const Contact: FC = () => {
         <div>
           <Paragraph>
             I&apos;m always open to chat, so please don&apos;t hesitate
-            contacting me!
-          </Paragraph>
-          <Paragraph>
-            Anyways, please{' '}
+            contacting me! But please{' '}
             <Link
               title={"Don't just say hello page"}
               href={'https://nohello.net/'}
@@ -71,40 +68,42 @@ export const Contact: FC = () => {
             There&apos;s a few ways you can get it touch:
           </Paragraph>
           <ContactOptions>
-            <ContactOption
+            <ContactLink
               title={'Compose an email to Jahir'}
               href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
-              email
+              outlined
+              css={{
+                $$linkColor: '211 60 48',
+                dark: { $$linkColor: '236 86 73' },
+              }}
             >
-              <span>Email</span>
-              <span>hola@jahir.dev</span>
-            </ContactOption>
-            <ContactOption
+              <Icon path={mdiEmail} size={0.95} />
+              Email
+            </ContactLink>
+            <ContactLink
               title={'Compose a Twitter direct message for Jahir'}
               href={'https://jahir.xyz/twitterdm'}
-              twitter
+              outlined
+              css={{
+                $$linkColor: '26 145 218',
+                dark: { $$linkColor: '29 161 242' },
+              }}
             >
-              <span>Twitter</span>
-              <span>@jahirfiquitiva</span>
-            </ContactOption>
-            <ContactOption
+              <Icon path={twitterOutline} size={0.95} />
+              Twitter
+            </ContactLink>
+            <ContactLink
               title={"Jahir's Telegram profile"}
               href={'https://jahir.xyz/tlgrm'}
-              telegram
+              outlined
+              css={{
+                $$linkColor: '0 122 184',
+                dark: { $$linkColor: '51 160 214' },
+              }}
             >
-              <span>Telegram</span>
-              <span>@jahirfiquitiva</span>
-            </ContactOption>
-            <ContactOption
-              title={"Jahir's Ask me Anything on GitHub"}
-              href={
-                'https://github.com/jahirfiquitiva/jahir.dev/discussions/new?category=q-a'
-              }
-              github
-            >
-              <span>Ask me Anything</span>
-              <span>on GitHub</span>
-            </ContactOption>
+              <Icon path={telegram} size={0.95} />
+              Telegram
+            </ContactLink>
           </ContactOptions>
         </div>
       </Grid>

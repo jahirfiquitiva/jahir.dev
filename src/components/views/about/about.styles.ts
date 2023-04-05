@@ -3,8 +3,7 @@ import { styled } from '~/stitches';
 export const PhotoFigure = styled('figure', {
   display: 'flex',
   flexDirection: 'column',
-  mt: 'calc($$verticalContentPadding / 1.5)',
-  mb: 'calc($$verticalContentPadding / 2)',
+  my: 'calc($$verticalContentPadding / 3)',
   '& img': {
     width: '100%',
     height: 'auto',
@@ -15,13 +14,12 @@ export const PhotoFigure = styled('figure', {
 
 export const Intro = styled('p', {
   color: '$text-primary',
-  mt: '$6',
-  mb: '$20',
+  my: 0,
   fontSize: '$sm',
 });
 
 export const Paragraph = styled(Intro, {
   color: '$text-secondary',
-  my: '$10',
+  my: 0,
   fontSize: '$xs',
 });
