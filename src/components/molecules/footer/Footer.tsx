@@ -6,7 +6,7 @@ import {
   FooterLink,
   FooterLinksGroup,
   type FooterLinkProps,
-} from './FooterLinksGroup';
+} from './footer-links-group';
 import { SocialLinks } from './SocialLinks';
 
 const StyledFooter = styled('footer', {
