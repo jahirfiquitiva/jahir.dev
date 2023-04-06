@@ -1,12 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import { getDevToArticles } from '@/lib/devto';
 import { queryBuilder } from '@/lib/planetscale';
+import { buildApiResponse } from '@/utils/response';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export const config = { runtime: 'edge' };
+
+export default async function handler() {
   try {
     const data = await queryBuilder
       .selectFrom('counters')
@@ -34,12 +32,12 @@ export default async function handler(
         );
     }
 
-    return res.status(200).send({
+    return buildApiResponse(200, {
       success: true,
       total: (views + devToViews).toString(),
     });
   } catch (err) {
-    return res.status(500).send({
+    return buildApiResponse(500, {
       success: false,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore

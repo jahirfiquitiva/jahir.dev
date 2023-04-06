@@ -1,16 +1,20 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextRequest } from 'next/server';
 
 import { queryBuilder, type ReactionName } from '@/lib/planetscale';
+import { buildApiResponse } from '@/utils/response';
+
+export const config = { runtime: 'edge' };
 
 // eslint-disable-next-line max-lines-per-function
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextRequest) {
   try {
-    const slug = req.query?.slug as string;
+    const { pathname } = new URL(req.nextUrl || '');
+    const slug = pathname.substring(pathname.lastIndexOf('/') + 1);
     if (!slug) {
-      return res.status(400).json({ message: 'Slug is required.' });
+      return buildApiResponse(400, {
+        success: false,
+        error: 'Slug is required.',
+      });
     }
 
     const data = await queryBuilder
@@ -20,9 +24,13 @@ export default async function handler(
       .execute();
 
     if (req.method === 'POST') {
-      const reaction = req?.body?.reaction as ReactionName;
+      const body = await req.json();
+      const reaction = body?.reaction as ReactionName;
       if (!reaction) {
-        return res.status(400).json({ message: 'Reaction key is required.' });
+        return buildApiResponse(400, {
+          success: false,
+          error: 'Reaction key is required.',
+        });
       }
 
       const reactionCount: number = !data.length
@@ -35,7 +43,7 @@ export default async function handler(
         .onDuplicateKeyUpdate({ [reaction as string]: reactionCount + 1 })
         .execute();
 
-      return res.status(200).send({
+      return buildApiResponse(200, {
         success: true,
         counters: { ...data, [reaction as string]: reactionCount + 1 },
       });
@@ -44,7 +52,7 @@ export default async function handler(
     if (req.method === 'GET') {
       const [counters] = data;
       if (!counters)
-        return res.status(200).send({ success: true, counters, total: 0 });
+        return buildApiResponse(200, { success: true, counters, total: 0 });
 
       const total = Object.keys(counters).reduce(
         // eslint-disable-next-line
@@ -57,19 +65,19 @@ export default async function handler(
         '0',
       );
 
-      return res.status(200).send({
+      return buildApiResponse(200, {
         success: true,
         counters,
         total,
       });
     }
 
-    return res.status(405).send({
+    return buildApiResponse(405, {
       success: false,
       error: 'Method not allowed!',
     });
   } catch (err) {
-    return res.status(500).send({
+    return buildApiResponse(500, {
       success: false,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore

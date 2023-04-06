@@ -1,11 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import { queryBuilder, type CountersReactions } from '@/lib/planetscale';
+import { buildApiResponse } from '@/utils/response';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export const config = { runtime: 'edge' };
+
+export default async function handler() {
   try {
     const data = await queryBuilder
       .selectFrom('counters')
@@ -22,7 +20,7 @@ export default async function handler(
       {} as CountersReactions,
     );
 
-    return res.status(200).send({
+    return buildApiResponse(200, {
       success: true,
       counters,
       total: Object.keys(counters).reduce(
@@ -37,7 +35,7 @@ export default async function handler(
       ),
     });
   } catch (err) {
-    return res.status(500).send({
+    return buildApiResponse(500, {
       success: false,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
