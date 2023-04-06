@@ -6,7 +6,7 @@ import { OpenDoodle } from '@/components/compounds';
 import { Heading, Section, Link } from '@/components/core';
 import { mdiEmail, telegram, twitterOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useRandomImage } from '@/hooks/use-random-image';
+import { useRandomItem } from '@/hooks/use-random-item';
 import type { FC, RandomPageImage } from '@/types';
 
 import { ContactLink, ContactOptions, Grid } from './contact.styles';
@@ -30,11 +30,11 @@ const images = imagesAlts.map(
 
 // eslint-disable-next-line max-lines-per-function
 export const Contact: FC = () => {
-  const image = useRandomImage(images);
+  const image = useRandomItem(images);
   const hasMounted = useHasMounted();
 
   const imageComponent = useMemo(() => {
-    if (!hasMounted) return null;
+    if (!hasMounted || !image) return null;
     return (
       <OpenDoodle
         src={`/static/images/contact/${image.key}.png`}

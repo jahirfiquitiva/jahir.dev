@@ -15,7 +15,7 @@ const DonateSection = styled(Section, {
   gap: 'calc($$verticalContentPadding / 1.5)',
 });
 
-export const Donate: FC<{ image: RandomPageImage }> = ({ image }) => {
+export const Donate: FC<{ image?: RandomPageImage }> = ({ image }) => {
   return (
     <SponsorsProvider>
       <DonateSection id={'donate'}>

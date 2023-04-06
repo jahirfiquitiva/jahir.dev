@@ -3,27 +3,27 @@ import { useMemo } from 'react';
 
 import { Img, Heading, Section, Link } from '@/components/core';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC, RandomPageImage } from '@/types';
+import { useRandomItem } from '@/hooks/use-random-item';
+import type { FC } from '@/types';
 
+import { images } from './about.images';
 import { Intro, PhotoFigure } from './about.styles';
 import { Contact } from './contact';
 
 // eslint-disable-next-line max-lines-per-function
-export const About: FC<{ image: RandomPageImage }> = ({ image }) => {
+export const About: FC = () => {
+  const image = useRandomItem(images);
   const hasMounted = useHasMounted();
 
   const photoComponent = useMemo(() => {
-    if (!hasMounted) return null;
+    if (!hasMounted || !image) return null;
     return (
       <PhotoFigure>
         <Img
-          src={`/static/images/about/${image.key}.jpg`}
+          src={image.src}
           alt={image.alt || 'Photo including Jahir'}
           quality={100}
-          width={image?.width || 666}
-          height={image?.height || 278}
           placeholder={'blur'}
-          blurDataURL={image?.base64 || ''}
           css={{ aspectRatio: '21 / 9', width: '100%', height: 'auto' }}
           priority
         />

@@ -1,13 +1,9 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
 import { About as AboutSection } from '@/components/views';
-import imagesBlurData from '@/data/blur-about.json';
-import { useRandomImage } from '@/hooks/use-random-image';
-import type { ImageBlurDataObject, RandomPageImage } from '@/types';
 
-const About: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
-  const image = useRandomImage(props.images);
+const About: NextPage = () => {
   return (
     <Layout>
       <Seo
@@ -16,34 +12,9 @@ const About: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
         exactUrl={'https://jahir.dev/about'}
         keywords={['bio', 'biography', 'information', 'about']}
       />
-      <AboutSection image={image} />
+      <AboutSection />
     </Layout>
   );
 };
 
 export default About;
-
-const imagesAlts: Array<string> = [
-  "Visiting Lima, Perú – Oct '19",
-  "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
-  "Hiking in my hometown – Mar '20",
-  "Hanging out with friends at a cafe – Dec '20",
-  "Hanging out with friends in Iza, Boyacá, Colombia – Mar '21",
-  "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
-  "Hanging out with friends at a cafe – Feb '22",
-  "Visiting a small town – Dec '21",
-  "Trip to San Andrés – Dec '21",
-];
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      images: Object.keys(imagesBlurData as ImageBlurDataObject).map((key) => ({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        ...(imagesBlurData[key] || {}),
-        alt: imagesAlts[+key],
-      })),
-    },
-  };
-};
