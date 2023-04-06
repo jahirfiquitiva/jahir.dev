@@ -43,10 +43,13 @@ public/*.xml
 # Contentlayer
 .contentlayer
 !.env.example
-content/blog/sheet.mdx
+content/sheet.mdx
+content/hello-world.mdx
 
 .frontmatter
 frontmatter.json
 
 src/data/*.json
 !src/data/projects.json
+
+!.env

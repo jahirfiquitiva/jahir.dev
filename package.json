@@ -12,7 +12,8 @@
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u --reject node-vibrant,worker-loader && yarn",
     "complexity": "npx --yes --no-install code-complexity ./src --sort score --limit 25",
-    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn"
+    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn",
+    "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs"
   },
   "dependencies": {
     "@mdi/react": "^1.6.1",
@@ -47,6 +48,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "eslint": "^8.37.0",
     "eslint-config-next": "^13.2.4",
     "globby": "^13.1.3",
