@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { Inter, Manrope } from 'next/font/google';
 import Head from 'next/head';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
+import { Provider as BalancerProvider } from 'react-wrap-balancer';
 
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
@@ -52,7 +53,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         }}
       >
         <ThemeProvider>
-          <Component {...pageProps} />
+          <BalancerProvider>
+            <Component {...pageProps} />
+          </BalancerProvider>
         </ThemeProvider>
       </NextThemeProvider>
       <Analytics />
