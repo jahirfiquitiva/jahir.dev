@@ -7,7 +7,7 @@ import { NextRequest } from 'next/server';
 export const runtime = 'edge';
 
 const font = fetch(
-  new URL('../../assets/manrope-variable.ttf', import.meta.url),
+  new URL('../../assets/fonts/manrope-variable.ttf', import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
