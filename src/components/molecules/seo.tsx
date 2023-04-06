@@ -5,7 +5,7 @@ import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
 import { unique } from '@/utils/unique';
 
-const defaultImage = 'https://jahir.dev/static/images/brand/banner.png';
+const defaultImage = 'https://jahir.dev/api/og';
 const defaultLogoImage =
   'https://jahir.dev/static/images/brand/logo-full-me.png';
 

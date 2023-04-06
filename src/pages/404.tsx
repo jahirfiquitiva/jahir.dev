@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
 import { FourOhFour as FourOhFourSection } from '@/components/views';
+import { buildOgImageUrl } from '@/utils/og';
 
 const FourOhFour: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const FourOhFour: NextPage = () => {
         }
         exactUrl={'https://jahir.dev/404'}
         keywords={['404', 'not found', 'page not found']}
+        image={buildOgImageUrl('404', 'Page not found')}
       />
       <FourOhFourSection />
     </Layout>

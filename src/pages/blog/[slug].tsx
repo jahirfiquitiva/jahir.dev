@@ -8,6 +8,7 @@ import { Layout, Seo } from '@/components/molecules';
 import { Error, FourOhFour as FourOhFourSection } from '@/components/views';
 import { useMDXComponent } from '@/hooks/use-mdx-component';
 import type { Post } from '@/types';
+import { buildOgImageUrl } from '@/utils/og';
 import { getAllPosts } from '@/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';
 
@@ -18,10 +19,11 @@ const mapContentLayerBlog = (post?: Blog): Post | null => {
 
 interface PostPageProps {
   post: Blog;
+  ogImageUrl?: string;
 }
 
 const PostPage: NextPage<PostPageProps> = (props) => {
-  const { post: basePost } = props;
+  const { post: basePost, ogImageUrl } = props;
   const MdxComponent = useMDXComponent(basePost?.body?.code);
   const post = useMemo(() => mapContentLayerBlog(basePost), [basePost]);
   const router = useRouter();
@@ -54,9 +56,10 @@ const PostPage: NextPage<PostPageProps> = (props) => {
         title={`${post?.title} – Blog – Jahir Fiquitiva`}
         description={post?.excerpt || 'Blog post by Jahir Fiquitiva'}
         exactUrl={`https://jahir.dev/blog/${post?.slug}`}
-        image={`https://jahir.dev${
-          post?.hero || '/static/images/brand/banner.png'
-        }`}
+        image={
+          ogImageUrl ||
+          `https://jahir.dev${post?.hero || '/static/images/brand/banner.png'}`
+        }
         metaImageStyle={'summary_large_image'}
         keywords={[
           ...(post?.keywords || []),
@@ -116,5 +119,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
-  return { props: { post } };
+  return {
+    props: {
+      post,
+      ogImageUrl: buildOgImageUrl('blog', post.title, `blog/${post.hero}`),
+    },
+  };
 };
