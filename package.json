@@ -38,17 +38,17 @@
     "react-compare-image": "^3.3.0",
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^0.4.0",
-    "swr": "^2.1.1"
+    "swr": "^2.1.2"
   },
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/bundle-analyzer": "^13.2.4",
     "@types/canvas-confetti": "^1.6.0",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.31",
+    "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "@types/remove-markdown": "^0.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "eslint": "^8.37.0",

@@ -29,6 +29,7 @@ const defaultNextConfig = {
     newNextLinkBehavior: true,
     legacyBrowsers: false,
     optimizeCss: true,
+    typedRoutes: true,
   },
   compiler: {
     removeConsole: {
