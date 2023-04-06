@@ -20,9 +20,13 @@ const requestNowPlayingFromLanyard = async () => {
     if (!track) return buildApiResponse(200, { isPlaying: false });
 
     if (validateTrack(track)) {
-      return buildApiResponse(200, track, {
-        'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
-      });
+      return buildApiResponse(
+        200,
+        { ...track },
+        {
+          'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
+        },
+      );
     }
     return buildApiResponse(200, { isPlaying: false });
   } catch (e) {
@@ -63,9 +67,13 @@ export default async function handler() {
     };
 
     if (validateTrack(track)) {
-      return buildApiResponse(200, track, {
-        'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
-      });
+      return buildApiResponse(
+        200,
+        { ...track },
+        {
+          'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
+        },
+      );
     }
     return buildApiResponse(200, { isPlaying: false });
   } catch (e) {

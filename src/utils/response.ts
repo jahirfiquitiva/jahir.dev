@@ -1,15 +1,6 @@
-type ApiResponse =
-  | {
-      success: true;
-    }
-  | {
-      success: false;
-      error: string;
-    };
-
 export const buildApiResponse = (
   status: number,
-  response: ApiResponse & Record<string, unknown>,
+  response: Record<string, unknown>,
   headers: Record<string, string> = {},
 ) => {
   return new Response(JSON.stringify(response), {

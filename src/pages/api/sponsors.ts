@@ -10,9 +10,13 @@ export default async function handler() {
     const response = await fetchSponsors().catch((err) => ({
       error: err?.message || err?.stackTrace.toString() || 'Unexpected error',
     }));
-    return buildApiResponse(200, response, {
-      'cache-control': 'public, s-maxage=3600, stale-while-revalidate=1800',
-    });
+    return buildApiResponse(
+      200,
+      { ...response },
+      {
+        'cache-control': 'public, s-maxage=3600, stale-while-revalidate=1800',
+      },
+    );
   } catch (err) {
     return buildApiResponse(400, {
       // @ts-ignore
