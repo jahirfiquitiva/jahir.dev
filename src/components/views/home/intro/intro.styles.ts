@@ -40,7 +40,6 @@ export const PhotoContainer = styled('div', {
 export const Photo = styled(Img, {
   borderRadius: '50%',
   backgroundColor: '$accent-dark',
-  // border: '1px solid rgba($accent-shadow / 0.12)',
   objectFit: 'cover',
   objectPosition: 'center',
   canHover: {
