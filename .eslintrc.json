@@ -1,111 +1,10 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "camelcase": "error",
-    "no-return-await": "error",
-    "no-use-before-define": "error",
-    "no-var": "error",
-    "no-console": "error",
-    "no-undef": "error",
-    "no-unused-vars": "off",
-    "no-useless-return": "error",
-    "no-useless-concat": "error",
-    "no-useless-catch": "error",
-    "no-useless-constructor": "error",
-    "prefer-template": "error",
-    "prefer-object-spread": "error",
-    "no-unneeded-ternary": [
-      "error",
-      {
-        "defaultAssignment": false
-      }
-    ],
-    "no-multiple-empty-lines": [
-      "error",
-      {
-        "max": 1,
-        "maxEOF": 1,
-        "maxBOF": 1
-      }
-    ],
-    "func-style": [
-      "error",
-      "expression",
-      {
-        "allowArrowFunctions": true
-      }
-    ],
-    "import/no-extraneous-dependencies": [
-      "warn",
-      {
-        "devDependencies": ["*.test.js"]
-      }
-    ],
-    "semi": ["error", "always"],
-    "space-before-function-paren": [
-      "error",
-      {
-        "anonymous": "always",
-        "named": "never",
-        "asyncArrow": "always"
-      }
-    ],
-    "comma-dangle": [
-      "error",
-      {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "always-multiline",
-        "exports": "always-multiline",
-        "functions": "always-multiline"
-      }
-    ],
-    "consistent-return": [
-      "error",
-      {
-        "treatUndefinedAsUnspecified": true
-      }
-    ],
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allow": ["_id"],
-        "enforceInMethodNames": true
-      }
-    ],
-    "newline-per-chained-call": [
-      "error",
-      {
-        "ignoreChainWithDepth": 2
-      }
-    ],
-    "object-property-newline": [
-      "error",
-      {
-        "allowAllPropertiesOnSameLine": true
-      }
-    ],
-    "no-empty": [
-      "error",
-      {
-        "allowEmptyCatch": true
-      }
-    ],
-    "prefer-destructuring": [
-      "error",
-      {
-        "array": true,
-        "object": true
-      },
-      {
-        "enforceForRenamedProperties": false
-      }
-    ],
     "quotes": [
       "error",
       "single",
@@ -114,11 +13,12 @@
         "avoidEscape": true
       }
     ],
-    "object-shorthand": ["error", "always"],
-    "object-curly-spacing": ["error", "always"],
-    "array-bracket-spacing": ["error", "never"],
-    "space-before-blocks": "error",
-    "template-curly-spacing": ["error", "never"],
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
     "max-len": [
       "error",
       {
@@ -143,84 +43,11 @@
         "IIFEs": true
       }
     ],
-    "max-classes-per-file": ["error", 1],
-    "max-statements-per-line": [
-      "error",
-      {
-        "max": 1
-      }
-    ],
-    "max-depth": ["error", 4],
-    "max-nested-callbacks": ["error", 3],
-    "max-params": ["error", 6],
-    "max-statements": "off",
     "arrow-parens": [
       "error",
       "always",
       {
         "requireForBlockBody": true
-      }
-    ],
-    "react/jsx-filename-extension": [
-      "warn",
-      {
-        "extensions": [".jsx", ".tsx"]
-      }
-    ],
-    "react/jsx-curly-brace-presence": [
-      "error",
-      {
-        "props": "always"
-      }
-    ],
-    "react/no-unsafe": "off",
-    "react/display-name": "error",
-    "react/jsx-key": "error",
-    "react/jsx-no-comment-textnodes": "error",
-    "react/jsx-no-duplicate-props": "error",
-    "react/jsx-no-target-blank": "warn",
-    "react/jsx-no-undef": "error",
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
-    "react/no-children-prop": "error",
-    "react/no-danger-with-children": "error",
-    "react/no-deprecated": "error",
-    "react/no-direct-mutation-state": "error",
-    "react/no-find-dom-node": "error",
-    "react/no-is-mounted": "error",
-    "react/no-render-return-value": "error",
-    "react/no-string-refs": "error",
-    "react/no-unescaped-entities": "error",
-    "react/no-unknown-property": "error",
-    "react/require-render-return": "error",
-    "indent": "off",
-    "react/jsx-indent": [
-      2,
-      2,
-      {
-        "indentLogicalExpressions": true
-      }
-    ],
-    "react/jsx-indent-props": [2, "first"],
-    "operator-linebreak": [
-      "error",
-      "after",
-      {
-        "overrides": {
-          "?": "before",
-          ":": "before"
-        }
-      }
-    ],
-    "multiline-ternary": "off",
-    "space-in-parens": ["error", "never"],
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "comma-spacing": [
-      "error",
-      {
-        "before": false,
-        "after": true
       }
     ],
     "import/order": [
@@ -242,15 +69,23 @@
         "newlines-between": "always"
       }
     ],
-    "@typescript-eslint/no-unused-vars": ["error"],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "always"
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "error"
+    ],
     "@typescript-eslint/no-inferrable-types": [
       "error",
       {
         "ignoreParameters": true,
         "ignoreProperties": true
       }
-    ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    ]
   }
 }

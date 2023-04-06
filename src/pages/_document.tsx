@@ -9,18 +9,6 @@ export default class CustomDocument extends Document {
       <Html lang={'en'}>
         <Head>
           <Meta />
-
-          {/* {preloadFonts.map((font) => (
-            <link
-              key={`font-${font.key}`}
-              rel={'preload'}
-              as={'font'}
-              type={font.type}
-              href={font.src}
-              crossOrigin={'anonymous'}
-            />
-          ))} */}
-
           <style
             id={'stitches'}
             dangerouslySetInnerHTML={{ __html: getCssText() }}

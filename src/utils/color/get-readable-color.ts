@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
 import { colord, extend } from 'colord';
 import a11yPlugin from 'colord/plugins/a11y';
 
