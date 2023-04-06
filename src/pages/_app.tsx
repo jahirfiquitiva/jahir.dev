@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
+import { useEffect } from 'react';
 
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
@@ -9,12 +10,15 @@ import { darkTheme, globalStyles } from '~/stitches';
 import '@/styles/globals.scss';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  globalStyles();
+  useEffect(() => {
+    globalStyles();
+  }, []);
+  
   return (
     <>
       <Head>
         <meta charSet={'UTF-8'} />
-        <meta
+        <meta   
           name={'viewport'}
           content={'width=device-width, initial-scale=1.0'}
         />

@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { Meta } from '@/components/molecules';
-import { getCssText, preloadFonts } from '~/stitches';
+import { getCssText } from '~/stitches';
 
 export default class CustomDocument extends Document {
   render() {
@@ -10,7 +10,7 @@ export default class CustomDocument extends Document {
         <Head>
           <Meta />
 
-          {preloadFonts.map((font) => (
+          {/* {preloadFonts.map((font) => (
             <link
               key={`font-${font.key}`}
               rel={'preload'}
@@ -19,7 +19,7 @@ export default class CustomDocument extends Document {
               href={font.src}
               crossOrigin={'anonymous'}
             />
-          ))}
+          ))} */}
 
           <style
             id={'stitches'}

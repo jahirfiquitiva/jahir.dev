@@ -17,8 +17,6 @@
     "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn"
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.15",
-    "@fontsource/manrope": "^4.5.13",
     "@mdi/react": "^1.6.1",
     "@planetscale/database": "^1.6.0",
     "@stitches/react": "^1.2.8",

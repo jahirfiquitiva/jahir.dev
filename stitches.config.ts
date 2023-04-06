@@ -33,10 +33,8 @@ export const {
     fontSizes,
     fonts: {
       system: systemFont,
-      inter: `${fonts.Inter.name.regular}, ${systemFont}`,
-      interVar: `${fonts.Inter.name.variable}, ${systemFont}`,
-      manrope: `${fonts.Manrope.name.regular}, ${fonts.Inter.name.regular}, ${systemFont}`,
-      manropeVar: `${fonts.Manrope.name.variable}, ${fonts.Inter.name.variable}, ${systemFont}`,
+      inter: `${fonts.inter.style.fontFamily}, ${systemFont}`,
+      manrope: `${fonts.manrope.style.fontFamily}, ${fonts.inter.style.fontFamily}, ${systemFont}`,
     },
     space: spaces as { [x: string]: string },
   },
@@ -54,7 +52,6 @@ export const darkTheme = createTheme('dark', {
 });
 
 export const globalStyles = globalCss({
-  '@font-face': [...fonts.Inter.family, ...fonts.Manrope.family],
   'html, body': {
     useFont: 'inter',
     accentColor: '$colors$accent',
@@ -88,10 +85,5 @@ export const globalStyles = globalCss({
     },
   },
 });
-
-export const preloadFonts = [
-  ...fonts.Inter.preloadFonts,
-  ...fonts.Manrope.preloadFonts,
-];
 
 export type StitchesCSS = CSS<typeof config>;

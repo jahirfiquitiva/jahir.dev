@@ -89,12 +89,15 @@ export default async function handler(req: NextRequest) {
           </span>
           <span>📄</span>
         </div>
-        <p style={{ fontSize: 48, fontWeight: 700, color: 'white' }}>{postTitle}</p>
+        <p style={{ fontSize: 48, fontWeight: 700, color: 'white' }}>
+          {postTitle}
+        </p>
       </div>
     ),
     {
       width: 1200,
       height: 630,
+      emoji: 'fluent',
       fonts: [
         {
           name: 'Manrope',

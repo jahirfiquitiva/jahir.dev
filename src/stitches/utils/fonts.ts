@@ -2,7 +2,7 @@ const fontsUtils = {
   useFont: (fontName: 'manrope' | 'inter') => ({
     fontFamily: `$${fontName}`,
     '@supports (font-variation-settings: normal)': {
-      fontFamily: `$${fontName}Var`,
+      fontFamily: `$${fontName}`,
       fontOpticalSizing: 'auto',
     },
   }),
