@@ -4,8 +4,6 @@ import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
 import { Button } from '@/components/core';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import {
   award,
   awardOutline,
@@ -15,7 +13,9 @@ import {
   mdiHeartOutline,
   mdiThumbUp,
   mdiThumbUpOutline,
-} from '@/icons';
+} from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import { type ReactionType, useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';

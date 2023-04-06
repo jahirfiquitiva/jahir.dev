@@ -4,9 +4,9 @@ import { useMemo } from 'react';
 
 import { OpenDoodle } from '@/components/compounds';
 import { Heading, Section, Link } from '@/components/core';
+import { mdiEmail, telegram, twitterOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useRandomImage } from '@/hooks/use-random-image';
-import { mdiEmail, telegram, twitterOutline } from '@/icons';
 import type { FC, RandomPageImage } from '@/types';
 
 import { ContactLink, ContactOptions, Grid } from './contact.styles';

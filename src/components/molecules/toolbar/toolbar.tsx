@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { mdiMenu, mdiPlus, Logo } from '@/icons';
+import { mdiMenu, mdiPlus, Logo } from '@/components/icons';
 import type { FC } from '@/types';
 import { theme } from '~/stitches';
 

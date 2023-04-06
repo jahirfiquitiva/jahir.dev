@@ -1,6 +1,6 @@
 import { LinkStatCard } from '@/components/compounds';
+import { mdiInstagram } from '@/components/icons';
 import { useImmutableRequest } from '@/hooks/use-request';
-import { mdiInstagram } from '@/icons';
 import type { FC } from '@/types';
 
 export const InstaStats: FC = () => {

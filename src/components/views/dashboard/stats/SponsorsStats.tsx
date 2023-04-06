@@ -1,5 +1,5 @@
 import { LinkStatCard, StatCard } from '@/components/compounds';
-import { money, mdiHeartOutline } from '@/icons';
+import { money, mdiHeartOutline } from '@/components/icons';
 import { useSponsors } from '@/providers/sponsors';
 import type { FC } from '@/types';
 

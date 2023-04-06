@@ -1,6 +1,6 @@
 import { LinkStatCard } from '@/components/compounds';
+import { twitterOutline } from '@/components/icons';
 import { useImmutableRequest } from '@/hooks/use-request';
-import { twitterOutline } from '@/icons';
 import type { FC } from '@/types';
 
 export const TwitterStats: FC = () => {

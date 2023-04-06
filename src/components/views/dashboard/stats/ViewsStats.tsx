@@ -1,6 +1,6 @@
 import { LinkStatCard } from '@/components/compounds';
+import { mdiEyeOutline } from '@/components/icons';
 import { useRequest } from '@/hooks/use-request';
-import { mdiEyeOutline } from '@/icons';
 import type { FC } from '@/types';
 
 export const ViewsStats: FC = () => {

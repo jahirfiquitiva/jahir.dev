@@ -17,7 +17,7 @@ import {
   mdiPaletteSwatchOutline,
   mdiTailwind,
   nextJs,
-} from '@/icons';
+} from '@/components/icons';
 
 export interface SkillProps {
   name: string;

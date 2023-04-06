@@ -1,8 +1,8 @@
 import Icon from '@mdi/react';
 import { useState, useEffect, useCallback } from 'react';
 
+import { mdiChevronUp } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import { mdiChevronUp } from '@/icons';
 import type { FC } from '@/types';
 
 import { Fab } from './back-to-top.styles';

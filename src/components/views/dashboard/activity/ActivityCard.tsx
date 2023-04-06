@@ -4,8 +4,8 @@ import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
 import { Img, Link } from '@/components/core';
+import { mdiTimerSandEmpty } from '@/components/icons';
 import { usePalette } from '@/hooks/use-palette';
-import { mdiTimerSandEmpty } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';

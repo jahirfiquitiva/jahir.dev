@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 
 import { Img } from '@/components/core';
-import { mdiFormatQuoteClose } from '@/icons';
+import { mdiFormatQuoteClose } from '@/components/icons';
 import type { Sponsor, Testimonial } from '@/lib/sponsors';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';

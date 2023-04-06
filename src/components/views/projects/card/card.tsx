@@ -2,8 +2,8 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Img } from '@/components/core';
+import { mdiStar } from '@/components/icons';
 import { useRequest } from '@/hooks/use-request';
-import { mdiStar } from '@/icons';
 import { useTheme } from '@/providers/theme';
 import type { FC, Project } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';

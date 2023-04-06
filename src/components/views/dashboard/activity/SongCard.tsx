@@ -1,4 +1,4 @@
-import { mdiSpotify } from '@/icons';
+import { mdiSpotify } from '@/components/icons';
 import { TopTrackData } from '@/lib/spotify';
 import type { FC } from '@/types';
 

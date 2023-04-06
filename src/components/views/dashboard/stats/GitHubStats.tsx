@@ -1,6 +1,6 @@
 import { LinkStatCard } from '@/components/compounds';
+import { mdiStarOutline, gitHubOutline } from '@/components/icons';
 import { useImmutableRequest } from '@/hooks/use-request';
-import { mdiStarOutline, gitHubOutline } from '@/icons';
 import type { FC } from '@/types';
 
 export const GitHubStats: FC = () => {

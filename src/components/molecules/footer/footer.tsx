@@ -1,5 +1,5 @@
 import { SocialLinks } from '@/components/compounds';
-import { Logo } from '@/icons';
+import { Logo } from '@/components/icons';
 import type { FC } from '@/types';
 import { theme } from '~/stitches';
 

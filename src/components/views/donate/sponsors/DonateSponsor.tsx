@@ -6,7 +6,7 @@ import {
   unicorn,
   rocket,
   diamond,
-} from '@/icons';
+} from '@/components/icons';
 import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
 import type { ThemeColorValue } from '@/stitches';
 import type { FC } from '@/types';

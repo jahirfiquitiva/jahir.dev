@@ -2,8 +2,8 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Divider, Section, Link, LinkButton } from '@/components/core';
+import { mdiPencilOutline } from '@/components/icons';
 import { usePalette } from '@/hooks/use-palette';
-import { mdiPencilOutline } from '@/icons';
 import { ReactionsProvider } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC, Post } from '@/types';

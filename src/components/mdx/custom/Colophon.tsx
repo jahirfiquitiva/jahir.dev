@@ -10,7 +10,7 @@ import {
   notion,
   prisma,
   planetscale,
-} from '@/icons';
+} from '@/components/icons';
 import { styled } from '~/stitches';
 
 const DotsContainer = styled('ul', {

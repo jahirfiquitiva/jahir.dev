@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 
 import { Heading, Link, LinkButton } from '@/components/core';
-import { mdiAccountCircleOutline } from '@/icons';
+import { mdiAccountCircleOutline } from '@/components/icons';
 import type { FC } from '@/types';
 
 import {
