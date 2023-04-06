@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
 import type { NextRequest } from 'next/server';
 
-import { queryBuilder, type ReactionName } from '@/lib/planetscale';
+import {
+  queryBuilder,
+  reactionsNames,
+  type ReactionName,
+} from '@/lib/planetscale';
 import { buildApiResponse } from '@/utils/response';
 
 export const config = { runtime: 'edge' };
@@ -40,9 +44,9 @@ export default async function handler(req: NextRequest) {
 
       await queryBuilder
         .insertInto('counters')
-        .values({ slug, [reaction as string]: BigInt(1) })
+        .values({ slug, [reaction as string]: 1 })
         .onDuplicateKeyUpdate({
-          [reaction as string]: BigInt(reactionCount + 1),
+          [reaction as string]: reactionCount + 1,
         })
         .execute();
 
@@ -50,7 +54,7 @@ export default async function handler(req: NextRequest) {
         success: true,
         counters: {
           ...data,
-          [reaction as string]: BigInt(reactionCount + 1).toString(),
+          [reaction as string]: reactionCount + 1,
         },
       });
     }
@@ -60,21 +64,23 @@ export default async function handler(req: NextRequest) {
       if (!counters)
         return buildApiResponse(200, { success: true, counters, total: 0 });
 
-      const total = Object.keys(counters).reduce(
-        // eslint-disable-next-line
-        (accumulator: string, key: string): string => {
-          return (
-            Number(accumulator) +
-            Number(counters[key as keyof typeof counters] || 0)
-          ).toString();
+      const total: bigint = Object.keys(counters).reduce(
+        (accumulator: bigint, key: string): bigint => {
+          if (!reactionsNames.includes(key as ReactionName)) return BigInt(0);
+          return BigInt(
+            (
+              Number(accumulator) +
+              Number(counters[key as keyof typeof counters] || 0)
+            ).toString(),
+          );
         },
-        '0',
+        BigInt(0),
       );
 
       return buildApiResponse(200, {
         success: true,
         counters,
-        total,
+        total: total.toString(),
       });
     }
 

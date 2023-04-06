@@ -1,7 +1,14 @@
 import { Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 
-export type ReactionName = 'likes' | 'loves' | 'awards' | 'bookmarks';
+export const reactionsNames = [
+  'likes',
+  'loves',
+  'awards',
+  'bookmarks',
+] as const;
+
+export type ReactionName = typeof reactionsNames[number];
 
 export type CountersReactions = { [Key in ReactionName]?: bigint };
 
