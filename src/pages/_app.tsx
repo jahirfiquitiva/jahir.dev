@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { Inter, Manrope } from 'next/font/google';
 import Head from 'next/head';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 import { ThemeProvider } from '@/providers/theme';
 import type { FC } from '@/types';
@@ -25,9 +25,9 @@ const manrope = Manrope({
 });
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  useEffect(() => {
-    globalStyles();
-  }, []);
+  // useEffect(() => {
+  globalStyles();
+  // }, []);
   
   return (
     <>
