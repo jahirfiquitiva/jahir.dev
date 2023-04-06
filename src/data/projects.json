@@ -10,7 +10,6 @@
     "darkColor": "#4d8af0",
     "stack": ["android", "kotlin", "material design"],
     "repo": "Blueprint",
-    "inProgress": true,
     "iconMeta": {
       "size": {
         "width": 96,
@@ -31,7 +30,6 @@
     "stack": ["community", "html5", "css3", "javascript"],
     "repo": "website",
     "owner": "boyaconf",
-    "inProgress": true,
     "iconMeta": {
       "size": {
         "width": 96,
@@ -91,7 +89,6 @@
     "darkColor": "#9853fd",
     "stack": ["html5", "css3", "javascript", "react"],
     "repo": "dashbud",
-    "inProgress": true,
     "iconMeta": {
       "size": {
         "width": 96,
@@ -131,7 +128,6 @@
     "darkColor": "#35b4ef",
     "stack": ["android", "kotlin", "material design"],
     "repo": "Frames",
-    "inProgress": true,
     "iconMeta": {
       "size": {
         "width": 96,
@@ -151,7 +147,6 @@
     "darkColor": "#6673C0",
     "stack": ["android", "kotlin", "material design"],
     "repo": "Kuper",
-    "inProgress": true,
     "iconMeta": {
       "size": {
         "width": 96,
@@ -288,7 +283,6 @@
     "darkColor": "#79FFE1",
     "stack": ["nextjs", "react", "typescript"],
     "repo": "worldwide-holidays",
-    "inProgress": true,
     "iconMeta": {
       "size": {
         "width": 96,
