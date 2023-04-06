@@ -1,5 +1,5 @@
 import { LinkStatCard } from '@/components/compounds';
-import { useImmutableRequest } from '@/hooks/useRequest';
+import { useImmutableRequest } from '@/hooks/use-request';
 import { mdiInstagram } from '@/icons';
 import type { FC } from '@/types';
 

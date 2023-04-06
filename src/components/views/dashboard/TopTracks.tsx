@@ -1,6 +1,6 @@
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { Heading, Section } from '@/components/core';
-import { useImmutableRequest } from '@/hooks/useRequest';
+import { useImmutableRequest } from '@/hooks/use-request';
 import type { TopTrackData } from '@/lib/spotify';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';

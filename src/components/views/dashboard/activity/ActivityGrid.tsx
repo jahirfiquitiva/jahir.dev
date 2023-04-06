@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 
 import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
 import { Heading, Section } from '@/components/core';
-import { useActivity } from '@/hooks/useActivity';
-import { useNowPlaying } from '@/hooks/useNowPlaying';
+import { useActivity } from '@/hooks/use-activity';
+import { useNowPlaying } from '@/hooks/use-now-playing';
 import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
 

@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 
-import { useImmutableRequest } from '@/hooks/useRequest';
+import { useImmutableRequest } from '@/hooks/use-request';
 import { mdiInstagram } from '@/icons';
 import type { InstagramPost } from '@/lib/instagram';
 import type { FC } from '@/types';

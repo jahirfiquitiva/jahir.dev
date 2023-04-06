@@ -1,4 +1,4 @@
-import { useRequest } from '@/hooks/useRequest';
+import { useRequest } from '@/hooks/use-request';
 import type { ActivityData, LanyardResponse } from '@/types';
 import { transformLanyardData } from '@/utils/format/format-lanyard';
 

@@ -4,8 +4,8 @@ import { useMemo } from 'react';
 
 import { OpenDoodle } from '@/components/compounds';
 import { Heading, Section, Link } from '@/components/core';
-import { useHasMounted } from '@/hooks/useHasMounted';
-import { useRandomImage } from '@/hooks/useRandomImage';
+import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useRandomImage } from '@/hooks/use-random-image';
 import { mdiEmail, telegram, twitterOutline } from '@/icons';
 import type { FC, RandomPageImage } from '@/types';
 

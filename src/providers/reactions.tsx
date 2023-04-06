@@ -7,8 +7,8 @@ import {
   useCallback,
 } from 'react';
 
-import { useHasMounted } from '@/hooks/useHasMounted';
-import { useRequest } from '@/hooks/useRequest';
+import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useRequest } from '@/hooks/use-request';
 import type { FC } from '@/types';
 
 const reactions = ['like', 'love', 'award', 'bookmark'] as const;

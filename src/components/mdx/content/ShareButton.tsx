@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
 import { Button, LinkButton } from '@/components/core';
-import { useHasMounted } from '@/hooks/useHasMounted';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import { mdiShareVariantOutline } from '@/icons';
 import type { FC } from '@/types';
 

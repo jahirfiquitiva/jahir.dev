@@ -1,4 +1,4 @@
-import { useHasMounted } from '@/hooks/useHasMounted';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 const pageTransition = keyframes({

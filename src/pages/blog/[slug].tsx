@@ -6,7 +6,7 @@ import { Loading } from '@/components/compounds';
 import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
 import { Error, FourOhFour as FourOhFourSection } from '@/components/views';
-import { useMDXComponent } from '@/hooks/useMDXComponent';
+import { useMDXComponent } from '@/hooks/use-mdx-component';
 import type { Post } from '@/types';
 import { getAllPosts } from '@/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';

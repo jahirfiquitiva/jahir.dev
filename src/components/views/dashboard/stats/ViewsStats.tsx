@@ -1,5 +1,5 @@
 import { LinkStatCard } from '@/components/compounds';
-import { useRequest } from '@/hooks/useRequest';
+import { useRequest } from '@/hooks/use-request';
 import { mdiEyeOutline } from '@/icons';
 import type { FC } from '@/types';
 

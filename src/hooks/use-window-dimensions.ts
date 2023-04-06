@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 
-import { useHasMounted } from './useHasMounted';
+import { useHasMounted } from './use-has-mounted';
 
 interface WindowDimensions {
   width: number;

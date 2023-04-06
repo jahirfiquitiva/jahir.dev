@@ -1,6 +1,6 @@
 import { TrackData } from '@/lib/spotify';
 
-import { useRequest } from './useRequest';
+import { useRequest } from './use-request';
 
 interface NowPlayingData {
   data?: TrackData | null;

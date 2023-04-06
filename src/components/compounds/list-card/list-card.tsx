@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { usePalette, type Palette, type SwatchName } from '@/hooks/usePalette';
+import { usePalette, type Palette, type SwatchName } from '@/hooks/use-palette';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';

@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { LineWobble } from '@uiball/loaders';
 
 import { Img, Link } from '@/components/core';
-import { useNowPlaying } from '@/hooks/useNowPlaying';
+import { useNowPlaying } from '@/hooks/use-now-playing';
 import { mdiSpotify } from '@/icons';
 import type { FC } from '@/types';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';

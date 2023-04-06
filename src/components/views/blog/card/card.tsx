@@ -6,7 +6,7 @@ import {
   ListCardInfoItem,
 } from '@/components/compounds';
 import { InfoContainer } from '@/components/compounds/list-card/list-card.styles';
-import { useRequest } from '@/hooks/useRequest';
+import { useRequest } from '@/hooks/use-request';
 import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/icons';
 import type { FC, Post } from '@/types';
 import { formatDate } from '@/utils/format/format-date';

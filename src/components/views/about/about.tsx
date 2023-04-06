@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 
 import { Img, Heading, Section, Link } from '@/components/core';
-import { useHasMounted } from '@/hooks/useHasMounted';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { FC, RandomPageImage } from '@/types';
 
 import { Intro, PhotoFigure } from './about.styles';

@@ -1,7 +1,7 @@
 import Vibrant from 'node-vibrant';
 import { useEffect, useState } from 'react';
 
-import { useHasMounted } from '@/hooks/useHasMounted';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 
 export type SwatchName =
   | 'darkMuted'
@@ -29,7 +29,6 @@ export const usePalette = (imageUrl?: string | null): PaletteState => {
       Vibrant.from(imageUrl)
         .getPalette()
         .then((palette) => {
-          setLoading(false);
           const parsedPalette: Palette = {};
           Object.keys(palette).forEach((swatchName) => {
             const swatch = palette[swatchName];
@@ -43,7 +42,7 @@ export const usePalette = (imageUrl?: string | null): PaletteState => {
           });
           setPalette(parsedPalette);
         })
-        .catch(() => {
+        .finally(() => {
           setLoading(false);
         });
     } catch (e) {

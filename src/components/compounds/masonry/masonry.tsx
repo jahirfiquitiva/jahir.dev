@@ -1,7 +1,7 @@
 // Heavily based on https://github.com/cedricdelpoux/react-responsive-masonry
 import { Children, useMemo } from 'react';
 
-import { useWindowDimensions } from '@/hooks/useWindowDimensions';
+import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { FC, ComponentChild } from '@/types';
 
 import { MasonryColumn, MasonryGrid } from './masonry.styled';
