@@ -50,7 +50,6 @@ export const GridItem = styled('div', {
   border: '1px solid $divider',
   width: '100%',
   height: '100%',
-  minHeight: '48px',
   aspectRatio: '1 / 1',
   variants: {
     tall: {

@@ -4,8 +4,7 @@ import { mdiMenu, mdiPlus, Logo } from '@/icons';
 import type { FC } from '@/types';
 import { styled, theme } from '~/stitches';
 
-import { ThemeToggle } from './ThemeToggle';
-import { MobileMenu } from './ToolbarButton';
+import { ThemeToggle, MobileMenuToggle } from './toolbar-button';
 import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
 import { ToolbarNavLinks } from './ToolbarNavLinks';
 
@@ -124,7 +123,7 @@ export const Toolbar: FC = (props) => {
         <ToolbarLinksContainer>
           <ThemeToggle />
           <li>
-            <MobileMenu
+            <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}
               iconPath={isExpanded ? mdiPlus : mdiMenu}
