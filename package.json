@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run setup && next build",
+    "build-only": "next build",
     "start": "next start",
     "lint": "next lint",
     "predev": "yarn clean && contentlayer build --clearCache",

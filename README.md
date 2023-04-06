@@ -57,13 +57,16 @@
 
 ## Running Locally
 
+This application requires Node.js v16.15+.
+
 ```bash
 git clone https://github.com/jahirfiquitiva/jahir.dev.git
 cd jahir.dev
 yarn
+yarn setup # Remove all of my personal files
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
+Fill the variables in the `.env` file. And set the `IS_TEMPLATE` variable to `false`
 
 ```bash
 yarn dev
@@ -71,7 +74,7 @@ yarn dev
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/main/LICENSE), do not copy it directly, remove all of my personal information (resume, blog posts, images, etc.) and change the styling and colors to match your personal brand. You are free to use this code as inspiration or learning reference but this is not a template.
+Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/main/LICENSE), do not copy it directly, remove all of my personal information (resume, blog posts, images, etc.) and change the styling and colors to match your personal brand. You are free to use this code as inspiration or learning reference but this is not really intended to be a template.
 
 ## Previous versions
 
