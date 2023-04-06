@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getDevToArticles } from '@/lib/devto';
@@ -65,6 +63,7 @@ export default async function handler(
   } catch (err) {
     return res.status(500).send({
       success: false,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       error: err?.message || err?.stackTrace.toString() || 'Unexpected error',
     });

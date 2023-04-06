@@ -1,13 +1,13 @@
 import { Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 
-interface CountersTable {
+export type ReactionName = 'likes' | 'loves' | 'awards' | 'bookmarks';
+
+export type CountersReactions = { [Key in ReactionName]?: number };
+
+interface CountersTable extends CountersReactions {
   slug: string;
   views?: number;
-  likes?: number;
-  loves?: number;
-  awards?: number;
-  bookmarks?: number;
 }
 
 interface Database {

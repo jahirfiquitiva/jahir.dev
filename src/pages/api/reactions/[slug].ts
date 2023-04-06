@@ -1,63 +1,58 @@
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import prisma from '@/lib/prisma';
+import { queryBuilder, type ReactionName } from '@/lib/planetscale';
 
-// @ts-ignore
-BigInt.prototype.toJSON = function () {
-  return this.toString();
-};
+// eslint-disable-next-line max-lines-per-function
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   try {
-    const slug: string = (req.query.slug || []).toString();
+    const slug = req.query?.slug as string;
+    if (!slug) {
+      return res.status(400).json({ message: 'Slug is required.' });
+    }
+
+    const data = await queryBuilder
+      .selectFrom('counters')
+      .where('slug', '=', slug)
+      .select(['slug', 'likes', 'loves', 'awards', 'bookmarks'])
+      .execute();
 
     if (req.method === 'POST') {
-      const objectToUpdate = {};
-      const { body } = req;
-      if (body) {
-        const { reaction } = body;
-        if (reaction) {
-          // @ts-ignore
-          objectToUpdate[reaction] = { increment: 1 };
-        }
+      const reaction = req?.body?.reaction as ReactionName;
+      if (!reaction) {
+        return res.status(400).json({ message: 'Reaction key is required.' });
       }
 
-      const newOrUpdatedCounters = await prisma.counters.upsert({
-        where: { slug },
-        create: { slug },
-        update: objectToUpdate,
-      });
+      const reactionCount: number = !data.length
+        ? 0
+        : Number(data[0]?.[reaction] || 0);
+
+      await queryBuilder
+        .insertInto('counters')
+        .values({ slug, [reaction as string]: 1 })
+        .onDuplicateKeyUpdate({ [reaction as string]: reactionCount + 1 })
+        .execute();
 
       return res.status(200).send({
         success: true,
-        counters: newOrUpdatedCounters,
+        counters: { ...data, [reaction as string]: reactionCount + 1 },
       });
     }
 
     if (req.method === 'GET') {
-      const counters = await prisma.counters.findUnique({
-        where: { slug },
-      });
-      const newCounters = { ...counters, slug: undefined, views: undefined };
-      const total = Object.keys(newCounters).reduce(
-        // eslint-disable-next-line
-        (accumulator: string, key: string): string => {
-          return (
-            // @ts-ignore
-            (BigInt(accumulator) + BigInt(newCounters[key] || 0)).toString()
-          );
-        },
-        '0',
-      );
+      // const total = Object.keys(data).reduce((accumulator, key): string => {
+      //   return (
+      //     accumulator +
+      //     Number(newCounters[key as keyof typeof newCounters] || 0)
+      //   );
+      // }, 0);
 
       return res.status(200).send({
         success: true,
-        counters: newCounters,
-        total,
+        counters: data,
+        total: 0,
       });
     }
 
@@ -68,6 +63,7 @@ export default async function handler(
   } catch (err) {
     return res.status(500).send({
       success: false,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       error: err?.message || err?.stackTrace.toString() || 'Unexpected error',
     });
