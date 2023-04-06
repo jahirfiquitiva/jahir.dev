@@ -15,6 +15,7 @@ export const IntroSection = styled(Section, {
 export const TextsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  gap: '$8',
   gridRow: 2,
   '@tablet-sm': {
     gridRow: 1,
@@ -22,8 +23,7 @@ export const TextsContainer = styled('div', {
 });
 
 export const IntroParagraph = styled('p', {
-  mt: '$12',
-  mb: '$20',
+  my: '$12',
   maxWidth: '325px',
   '@mobile-lg': {
     maxWidth: '410px',
