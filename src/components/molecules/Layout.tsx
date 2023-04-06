@@ -7,7 +7,7 @@ import { styled, keyframes, type StitchesCSS } from '~/stitches';
 import { Toolbar } from './toolbar';
 
 const BackToTop = dynamic(
-  () => import('./BackToTop').then((component) => component.BackToTop),
+  () => import('./back-to-top').then((component) => component.BackToTop),
   { ssr: false },
 );
 
