@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import type { GradientOption } from '@/stitches/utils/gradient';
 import type { FC } from '@/types';
 
-import { ToolbarLink, ToolbarLinksContainer } from './ToolbarLink';
+import { ToolbarLink, ToolbarLinksContainer } from './toolbar-nav-links.styles';
 
 interface ToolbarLinkItem {
   title: string;
@@ -42,11 +42,7 @@ export const ToolbarNavLinks: FC<{ expanded?: boolean }> = (props) => {
   useEffect(() => {
     if (!router || !router.isReady) return;
     const { asPath: pathname } = router;
-    if (pathname.includes('/about')) setActiveLink(0);
-    else if (pathname.includes('/blog')) setActiveLink(1);
-    else if (pathname.includes('/projects')) setActiveLink(2);
-    else if (pathname.includes('/contact')) setActiveLink(3);
-    else setActiveLink(-1);
+    setActiveLink(toolbarLinksList.findIndex((link) => link.href === pathname));
   }, [router]);
 
   return (

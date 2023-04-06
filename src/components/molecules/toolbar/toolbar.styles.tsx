@@ -1,14 +1,6 @@
-import { useState } from 'react';
+import { styled } from '~/stitches';
 
-import { mdiMenu, mdiPlus, Logo } from '@/icons';
-import type { FC } from '@/types';
-import { styled, theme } from '~/stitches';
-
-import { ThemeToggle, MobileMenuToggle } from './toolbar-button';
-import { ToolbarLinksContainer, ToolbarLink } from './ToolbarLink';
-import { ToolbarNavLinks } from './ToolbarNavLinks';
-
-const Header = styled('header', {
+export const Header = styled('header', {
   $$toolbarHeight: '56px',
   $$floatingMargin: 'calc($$totalToolbarHeight - $$toolbarHeight)',
   $$baseActualHeight: 'calc($$toolbarHeight + $$floatingMargin)',
@@ -59,7 +51,7 @@ const Header = styled('header', {
   },
 });
 
-const Nav = styled('nav', {
+export const Nav = styled('nav', {
   $$spaceDivider: 1.25,
   zIndex: 3,
   position: 'relative',
@@ -109,31 +101,3 @@ const Nav = styled('nav', {
     },
   },
 });
-
-export const Toolbar: FC = (props) => {
-  const [isExpanded, expand] = useState(false);
-  return (
-    <Header expanded={isExpanded} css={props.css}>
-      <Nav expanded={isExpanded}>
-        <ToolbarLink home href={'/'} title={'Home page'} underline={false}>
-          <Logo fill={theme.colors['gradient-brand']?.value} />
-          <span>Jahir Fiquitiva</span>
-        </ToolbarLink>
-        <ToolbarNavLinks expanded={isExpanded} />
-        <ToolbarLinksContainer>
-          <ThemeToggle />
-          <li>
-            <MobileMenuToggle
-              title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
-              aria-expanded={isExpanded}
-              iconPath={isExpanded ? mdiPlus : mdiMenu}
-              onClick={() => {
-                expand(!isExpanded);
-              }}
-            />
-          </li>
-        </ToolbarLinksContainer>
-      </Nav>
-    </Header>
-  );
-};

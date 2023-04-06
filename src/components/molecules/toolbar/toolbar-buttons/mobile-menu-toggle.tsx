@@ -1,6 +1,6 @@
 import { styled } from '~/stitches';
 
-import { ToolbarButton } from './toolbar-button.styles';
+import { ToolbarButton } from './toolbar-buttons.styles';
 
 export const MobileMenuToggle = styled(ToolbarButton, {
   '& > svg': {
