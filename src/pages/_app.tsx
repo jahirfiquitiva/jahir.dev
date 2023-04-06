@@ -14,12 +14,14 @@ const inter = Inter({
   subsets: ['latin'],
   preload: true,
   variable: '--fonts-inter',
+  display: 'fallback',
 });
 
 const manrope = Manrope({
   subsets: ['latin'],
   preload: true,
   variable: '--fonts-manrope',
+  display: 'fallback',
 });
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
@@ -40,6 +42,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       {/* eslint-disable-next-line */}
       <style jsx global>{`
         :root {
+          font-family: var(--fonts-system);
           --fonts-inter: ${inter.style.fontFamily}, var(--fonts-system);
           --fonts-manrope: ${manrope.style.fontFamily}, var(--fonts-inter);
         }
