@@ -2,12 +2,17 @@ import { Animoji } from '@/components/compounds';
 import { Heading, Section } from '@/components/core';
 
 import { ActivityGrid } from './activity/ActivityGrid';
+import { Grid } from './grid';
 import { Stats } from './stats';
 import { TopTracks } from './TopTracks';
 
 export const Dashboard = () => {
   return (
     <Section id={'dashboard'}>
+      <Heading shadow={'purple'} gradient={'purple-to-brand'}>
+        Dashboard
+      </Heading>
+      <Grid />
       <Animoji
         css={{
           mb: 'calc($$verticalContentPadding / 2)',
@@ -17,9 +22,8 @@ export const Dashboard = () => {
         }}
         size={120}
       />
-      <Heading shadow={'purple'} gradient={'purple-to-brand'}>
-        Dashboard
-      </Heading>
+      <br/>
+      <br/>
       <Stats />
       <ActivityGrid />
       <TopTracks />
