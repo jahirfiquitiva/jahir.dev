@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { queryBuilder, type CountersReactions } from '@/lib/planetscale';
 import { buildApiResponse } from '@/utils/response';
 
@@ -12,10 +13,12 @@ export default async function handler() {
 
     const counters: CountersReactions = data.reduce(
       (acc, curr) => ({
-        likes: Number(acc.likes || 0) + Number(curr.likes || 0),
-        loves: Number(acc.loves || 0) + Number(curr.loves || 0),
-        awards: Number(acc.awards || 0) + Number(curr.awards || 0),
-        bookmarks: Number(acc.bookmarks || 0) + Number(curr.bookmarks || 0),
+        likes: BigInt(Number(acc.likes || 0) + Number(curr.likes || 0)),
+        loves: BigInt(Number(acc.loves || 0) + Number(curr.loves || 0)),
+        awards: BigInt(Number(acc.awards || 0) + Number(curr.awards || 0)),
+        bookmarks: BigInt(
+          Number(acc.bookmarks || 0) + Number(curr.bookmarks || 0),
+        ),
       }),
       {} as CountersReactions,
     );
