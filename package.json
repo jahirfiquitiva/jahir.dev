@@ -8,13 +8,13 @@
     "lint": "next lint",
     "predev": "yarn clean && contentlayer build --clearCache",
     "prebuild": "yarn predev",
-    "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
+    "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs",
     "analyze": "cross-env ANALYZE=true NODE_ENV=production next build",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u --reject node-vibrant,worker-loader && yarn",
     "complexity": "npx --yes --no-install code-complexity ./src --sort score --limit 25",
-    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn",
-    "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs"
+    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn"
   },
   "dependencies": {
     "@mdi/react": "^1.6.1",
