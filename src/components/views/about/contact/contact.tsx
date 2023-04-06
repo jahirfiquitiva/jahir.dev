@@ -7,26 +7,10 @@ import { Heading, Section, Link } from '@/components/core';
 import { mdiEmail, telegram, twitterOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useRandomItem } from '@/hooks/use-random-item';
-import type { FC, RandomPageImage } from '@/types';
+import type { FC } from '@/types';
 
+import { images } from './contact.images';
 import { ContactLink, ContactOptions, Grid } from './contact.styles';
-
-const imagesAlts: Array<string> = [
-  'Person taking a selfie with a t-shirt that says hi',
-  'Person laying on the floor and checking their phone',
-  'Person reading a book',
-  'Person walking like a zombie',
-];
-
-const images = imagesAlts.map(
-  (alt, key) =>
-    ({
-      key,
-      alt,
-      width: 220,
-      height: 220,
-    } as RandomPageImage),
-);
 
 // eslint-disable-next-line max-lines-per-function
 export const Contact: FC = () => {
@@ -37,9 +21,9 @@ export const Contact: FC = () => {
     if (!hasMounted || !image) return null;
     return (
       <OpenDoodle
-        src={`/static/images/contact/${image.key}.png`}
+        src={image.src}
         alt={image.alt || 'Doodle'}
-        size={image.width || 220}
+        placeholder={'blur'}
         priority
       />
     );
