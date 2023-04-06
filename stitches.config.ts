@@ -2,7 +2,6 @@ import { createStitches } from '@stitches/react';
 import type { CSS } from '@stitches/react';
 
 import {
-  fonts,
   fontSizes,
   utils,
   colors,
@@ -33,8 +32,6 @@ export const {
     fontSizes,
     fonts: {
       system: systemFont,
-      inter: `${fonts.inter.style.fontFamily}, ${systemFont}`,
-      manrope: `${fonts.manrope.style.fontFamily}, ${fonts.inter.style.fontFamily}, ${systemFont}`,
     },
     space: spaces as { [x: string]: string },
   },
