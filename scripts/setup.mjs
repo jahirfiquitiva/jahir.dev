@@ -1,3 +1,5 @@
+// This script is based on Lee Rob's setup script:
+// https://github.com/leerob/leerob.io/blob/main/lib/setup.mjs
 import { promises as fs } from 'fs';
 import path from 'path';
 
