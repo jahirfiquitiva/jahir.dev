@@ -1,3 +1,3 @@
-export * from './Layout';
-export * from './meta-old';
-export * from './Seo';
+export * from './layout';
+export * from './meta';
+export * from './seo';
