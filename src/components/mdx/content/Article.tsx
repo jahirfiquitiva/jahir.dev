@@ -125,7 +125,6 @@ export const Article = styled('article', {
     background: '$primary',
     color: '$text-secondary',
     borderRadius: '$space$6',
-    // fontWeight: 'inherit',
   },
   '& p code': {
     fontSize: '$3xs',
