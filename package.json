@@ -20,7 +20,6 @@
     "@fontsource/inter": "^4.5.15",
     "@fontsource/manrope": "^4.5.13",
     "@mdi/react": "^1.6.1",
-    "@octokit/rest": "^19.0.7",
     "@planetscale/database": "^1.6.0",
     "@stitches/react": "^1.2.8",
     "@uiball/loaders": "^1.2.6",
@@ -39,8 +38,6 @@
     "react-compare-image": "^3.3.0",
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^0.4.0",
-    "rehype-pretty-code": "^0.9.4",
-    "shiki": "^0.14.1",
     "swr": "^2.1.1"
   },
   "devDependencies": {
@@ -64,6 +61,7 @@
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.2.0",
+    "rehype-pretty-code": "^0.9.4",
     "rehype-prism-plus": "^1.5.1",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
@@ -71,6 +69,7 @@
     "rimraf": "^4.4.1",
     "sass": "^1.60.0",
     "sharp": "^0.32.0",
+    "shiki": "^0.14.1",
     "typescript": "^5.0.3",
     "xml": "^1.0.1"
   },

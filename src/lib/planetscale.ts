@@ -3,11 +3,11 @@ import { PlanetScaleDialect } from 'kysely-planetscale';
 
 export type ReactionName = 'likes' | 'loves' | 'awards' | 'bookmarks';
 
-export type CountersReactions = { [Key in ReactionName]?: number };
+export type CountersReactions = { [Key in ReactionName]?: bigint };
 
 interface CountersTable extends CountersReactions {
   slug: string;
-  views?: number;
+  views?: bigint;
 }
 
 interface Database {

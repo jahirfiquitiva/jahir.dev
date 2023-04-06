@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import type { NextRequest } from 'next/server';
 
 import { getDevToArticles } from '@/lib/devto';
@@ -28,8 +29,8 @@ export default async function handler(req: NextRequest) {
     if (req.method === 'POST') {
       await queryBuilder
         .insertInto('counters')
-        .values({ slug, views: 1 })
-        .onDuplicateKeyUpdate({ views: views + 1 })
+        .values({ slug, views: BigInt(1) })
+        .onDuplicateKeyUpdate({ views: BigInt(views + 1) })
         .execute();
 
       return buildApiResponse(200, {

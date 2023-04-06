@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import type { NextRequest } from 'next/server';
 
 import { queryBuilder, type ReactionName } from '@/lib/planetscale';
@@ -39,13 +40,18 @@ export default async function handler(req: NextRequest) {
 
       await queryBuilder
         .insertInto('counters')
-        .values({ slug, [reaction as string]: 1 })
-        .onDuplicateKeyUpdate({ [reaction as string]: reactionCount + 1 })
+        .values({ slug, [reaction as string]: BigInt(1) })
+        .onDuplicateKeyUpdate({
+          [reaction as string]: BigInt(reactionCount + 1),
+        })
         .execute();
 
       return buildApiResponse(200, {
         success: true,
-        counters: { ...data, [reaction as string]: reactionCount + 1 },
+        counters: {
+          ...data,
+          [reaction as string]: BigInt(reactionCount + 1).toString(),
+        },
       });
     }
 
