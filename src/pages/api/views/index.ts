@@ -4,6 +4,13 @@ import { buildApiResponse } from '@/utils/response';
 
 export const config = { runtime: 'edge' };
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line no-undef
+BigInt.prototype.toJSON = function () {
+  return this.toString();
+};
+
 export default async function handler() {
   try {
     const data = await queryBuilder

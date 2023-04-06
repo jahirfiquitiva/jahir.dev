@@ -7,6 +7,12 @@ import { buildApiResponse } from '@/utils/response';
 
 export const config = { runtime: 'edge' };
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+BigInt.prototype.toJSON = function () {
+  return this.toString();
+};
+
 export default async function handler(req: NextRequest) {
   try {
     const { searchParams, pathname } = new URL(req.nextUrl || '');
