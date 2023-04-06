@@ -4,6 +4,7 @@ import { Layout, Seo } from '@/components/molecules';
 import { Projects as ProjectsSection } from '@/components/views';
 import allProjects from '@/data/projects.json';
 import type { Project } from '@/types';
+import { buildOgImageUrl } from '@/utils/og';
 
 interface ProjectsProps {
   projects?: Array<Project>;
@@ -31,6 +32,7 @@ const Projects: NextPage<ProjectsProps> = (props) => {
           'open-source',
         ]}
         siteType={'portfolio'}
+        image={buildOgImageUrl('projects', 'Projects')}
       />
       <ProjectsSection projects={projects} showFullList />
     </Layout>

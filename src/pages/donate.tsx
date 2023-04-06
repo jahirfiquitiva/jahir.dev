@@ -4,6 +4,7 @@ import { Layout, Seo } from '@/components/molecules';
 import { Donate as DonateSection } from '@/components/views';
 import { useRandomItem } from '@/hooks/use-random-item';
 import type { RandomPageImage } from '@/types';
+import { buildOgImageUrl } from '@/utils/og';
 
 const Donate: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
   const image = useRandomItem(props.images);
@@ -24,6 +25,7 @@ const Donate: NextPage<{ images: Array<RandomPageImage> }> = (props) => {
           'supporter',
           'sponsorship',
         ]}
+        image={buildOgImageUrl('donate', 'Donate')}
       />
       <DonateSection image={image} />
     </Layout>

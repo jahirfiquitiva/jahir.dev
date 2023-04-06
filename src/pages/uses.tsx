@@ -8,6 +8,7 @@ import { MdxContent, mdxComponents } from '@/components/mdx';
 import { Layout, Seo } from '@/components/molecules';
 import { Error, FourOhFour as FourOhFourSection } from '@/components/views';
 import type { Post } from '@/types';
+import { buildOgImageUrl } from '@/utils/og';
 import { getAllPosts } from '@/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';
 
@@ -64,6 +65,7 @@ const PostPage: NextPage<PostPageProps> = (props) => {
           'tech',
           'uses',
         ]}
+        image={buildOgImageUrl('uses', 'Uses')}
       />
       {renderContent()}
     </Layout>

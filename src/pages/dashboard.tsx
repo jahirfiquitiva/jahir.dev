@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
 import { Dashboard as DashboardSection } from '@/components/views';
+import { buildOgImageUrl } from '@/utils/og';
 
 const UnderConstruction: NextPage = () => {
   return (
@@ -20,6 +21,7 @@ const UnderConstruction: NextPage = () => {
           'top track',
           'spotify',
         ]}
+        image={buildOgImageUrl('dashboard', 'Dashboard')}
       />
       <DashboardSection />
     </Layout>
