@@ -1,10 +1,10 @@
+import { SocialLinks } from '@/components/compounds';
 import { Logo } from '@/icons';
 import type { FC } from '@/types';
 import { theme } from '~/stitches';
 
 import { FooterLinksGroup, type FooterLinkProps } from './footer-links-group';
 import { StyledFooter, LinksContainer, InnerFooter, BrandLink } from './footer.styles';
-import { SocialLinks } from './SocialLinks';
 
 const primaryLinks: Array<FooterLinkProps> = [
   {
