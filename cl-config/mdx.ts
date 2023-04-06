@@ -11,6 +11,14 @@ import remarkGfm from 'remark-gfm';
 
 import imageMetadata from './image-metadata';
 
+const commentsCustomColor = (theme: 'light' | 'dark') => ({
+  name: 'Comment',
+  scope: ['comment', 'string.comment'],
+  settings: {
+    foreground: theme === 'light' ? '#75808F' : '#7E8896',
+  },
+});
+
 const getThemeJson = (theme: 'light' | 'dark'): JSON | string => {
   const defaultTheme = theme === 'light' ? 'min-light' : 'dracula';
   try {
@@ -22,6 +30,7 @@ const getThemeJson = (theme: 'light' | 'dark'): JSON | string => {
         ...parsed.colors,
         'editor.foreground': theme === 'light' ? '#334155' : '#CBD5E1',
       },
+      tokenColors: [...parsed.tokenColors, commentsCustomColor(theme)],
     };
   } catch (e) {
     return defaultTheme;
@@ -34,6 +43,7 @@ interface RehypeElement {
   value?: string;
   properties: {
     className: Array<string>;
+    style?: string;
   };
   children?: Array<RehypeElement>;
 }

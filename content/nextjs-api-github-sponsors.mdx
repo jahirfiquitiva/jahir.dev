@@ -181,7 +181,7 @@ Here we are getting GitHub Personal Access Token (PAT) via the `GH_PAT` environm
 
 Now create a file named `index.ts` :
 
-```tsx:lib/sponsors/index.ts
+```tsx title="lib/sponsors/index.ts"
 export * from './request';
 ```
 
@@ -189,7 +189,7 @@ Here we just export everything already exported in the `request.ts` file.
 
 Now, let’s setup the API route. Go to file `pages/api/hello.ts` and rename it to `sponsors.ts`, there, modify it to look like this:
 
-```tsx:pages/api/sponsors.ts
+```tsx title="pages/api/sponsors.ts"
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSponsorsGraphQLResponse } from './../../lib/sponsors/request';
 
@@ -266,7 +266,7 @@ Let’s define interfaces for the raw response from the GitHub GraphQL API. Crea
 
 We can start with the deepest nested object, which would be the `sponsorEntity`
 
-```tsx:lib/sponsors/types.ts
+```tsx title="lib/sponsors/types.ts"
 export interface SponsorEntity {
   login: string;
   name?: string;
@@ -277,7 +277,7 @@ export interface SponsorEntity {
 
 Now we can go one level up to `sponsorships`
 
-```tsx:lib/sponsors/types.ts
+```tsx title="lib/sponsors/types.ts"
 interface Sponsorships {
   totalRecurringMonthlyPriceInDollars: number;
   nodes: Array<{
@@ -289,7 +289,7 @@ interface Sponsorships {
 
 Since `adminInfo` only includes the `sponsorships` property, let’s go a couple levels up at a time:
 
-```tsx:lib/sponsors/types.ts
+```tsx title="lib/sponsors/types.ts"
 export interface SponsorsTier {
   id: string;
   adminInfo?: {
@@ -305,7 +305,7 @@ export interface SponsorsTier {
 
 Now let’s go up to `sponsorsListing`
 
-```tsx:lib/sponsors/types.ts
+```tsx title="lib/sponsors/types.ts"
 interface SponsorsListing {
   id: string;
   tiers: {
@@ -316,7 +316,7 @@ interface SponsorsListing {
 
 And finally the whole response:
 
-```tsx:lib/sponsors/types.ts
+```tsx title="lib/sponsors/types.ts"
 export interface SponsorsResponse {
   data?: {
     user: {
@@ -332,7 +332,7 @@ export interface SponsorsResponse {
 
 Now, can import the `SponsorsResponse` interface in `request.ts` and type the `getSponsorsGraphQLResponse` function, so it will look like:
 
-```tsx:lib/sponsors/request.ts
+```tsx title="lib/sponsors/request.ts"
 import type { SponsorsResponse } from './types';
 
 ...
@@ -358,7 +358,7 @@ First, let’s plan the desired object format to make the response easier to rea
       "isCustomAmount": false,
       "name": "$2 a month",
       "description": "Lorem ipsum dolor sit amet.",
-			"totalEarningsPerMonth": 2,
+      "totalEarningsPerMonth": 2,
       "sponsors": [
         {
           "username": "xxxx",
@@ -387,7 +387,7 @@ With this format, we have an object with 2 properties: `tiers` and `total`. Tier
 
 Let’s create the interfaces for this new object in `lib/sponsors/types.ts`:
 
-```tsx:lib/sponsors/types.ts
+```tsx title="lib/sponsors/types.ts"
 export interface Sponsor {
   username: string;
   name?: string;
@@ -415,7 +415,7 @@ export interface Sponsors {
 
 Finally, let’s create a function to transform the `SponsorsResponse` object into the `Sponsors` one, in the `lib/sponsors/request.ts` file:
 
-```tsx:lib/sponsors/request.ts
+```tsx title="lib/sponsors/request.ts"
 import type {
   SponsorsResponse,
   Sponsors,
@@ -474,7 +474,7 @@ export const transformResponseIntoSponsorships = (rawResponse: SponsorsResponse)
 
 Finally, let’s update our API to use the new function:
 
-```tsx:pages/api/sponsors.ts
+```tsx title="pages/api/sponsors.ts"
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   getSponsorsGraphQLResponse,
@@ -500,7 +500,7 @@ Additionally, and this is completely optional, we can modify the API to use the 
 
 To achieve this, we can modify the API to be like:
 
-```diff:pages/api/sponsors.ts
+```diff title="pages/api/sponsors.ts"
 - import type { NextApiRequest, NextApiResponse } from 'next';
 + import type { NextRequest } from 'next/server';
 import {

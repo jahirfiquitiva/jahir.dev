@@ -198,6 +198,9 @@ export const Article = styled('article', {
     fontSize: '$3xs',
     p: '$6 $11 $8',
   },
+  '& [data-rehype-pretty-code-title]': {
+    marginTop: 0,
+  },
   '& .rehype-code-title + pre, & [data-rehype-pretty-code-title] + pre': {
     marginTop: '-$16',
     borderTopLeftRadius: '0',
