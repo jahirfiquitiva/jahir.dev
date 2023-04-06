@@ -42,17 +42,25 @@ export default async function handler(
     }
 
     if (req.method === 'GET') {
-      // const total = Object.keys(data).reduce((accumulator, key): string => {
-      //   return (
-      //     accumulator +
-      //     Number(newCounters[key as keyof typeof newCounters] || 0)
-      //   );
-      // }, 0);
+      const [counters] = data;
+      if (!counters)
+        return res.status(200).send({ success: true, counters, total: 0 });
+
+      const total = Object.keys(counters).reduce(
+        // eslint-disable-next-line
+        (accumulator: string, key: string): string => {
+          return (
+            Number(accumulator) +
+            Number(counters[key as keyof typeof counters] || 0)
+          ).toString();
+        },
+        '0',
+      );
 
       return res.status(200).send({
         success: true,
-        counters: data,
-        total: 0,
+        counters,
+        total,
       });
     }
 
