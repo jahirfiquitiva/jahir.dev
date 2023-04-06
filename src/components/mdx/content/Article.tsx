@@ -185,7 +185,7 @@ export const Article = styled('article', {
       color: '$code-comment',
     },
   '& .token.punctuation': { color: '$code-punctuation' },
-  '& .rehype-code-title': {
+  '& .rehype-code-title, & [data-rehype-pretty-code-title]': {
     border: '1px solid $divider',
     borderTopLeftRadius: '$space$8',
     borderTopRightRadius: '$space$8',
@@ -198,11 +198,14 @@ export const Article = styled('article', {
     fontSize: '$3xs',
     p: '$6 $11 $8',
   },
-  '& .rehype-code-title + pre': {
+  '& .rehype-code-title + pre, & [data-rehype-pretty-code-title] + pre': {
     marginTop: '-$16',
     borderTopLeftRadius: '0',
     borderTopRightRadius: '0',
     borderTopWidth: '0',
+  },
+  '& [data-rehype-pretty-code-title] + pre':{
+    marginTop: 0,
   },
   '& mark': {
     p: '$3',

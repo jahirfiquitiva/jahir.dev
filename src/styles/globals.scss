@@ -1,3 +1,25 @@
 @import './reset';
 @import './core';
 @import './typography';
+
+html.light [data-rehype-pretty-code-fragment] {
+  [data-theme='dark'],
+  pre[data-theme='dark'],
+  code[data-theme='dark'] {
+    display: none;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+html.dark [data-rehype-pretty-code-fragment] {
+  [data-theme='light'],
+  pre[data-theme='light'],
+  code[data-theme='light'] {
+    display: none;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+  }
+}

@@ -145,7 +145,7 @@ Now, open the project with your favorite editor or IDE.
 
 Create a `.env.local` file with the Personal Access Token previously generated:
 
-```shell:.env.local
+```shell title=".env.local"
 GH_PAT=ghp_XXxxXXxxXX
 ```
 
@@ -159,7 +159,7 @@ Aiming to keep things organized, let’s create a folder named `lib` on the proj
 
 Create a file named `request.ts` :
 
-```tsx:lib/sponsors/request.ts
+```tsx title="lib/sponsors/request.ts"
 const { GH_PAT: githubPat = '' } = process.env;
 
 const graphQlQuery = `

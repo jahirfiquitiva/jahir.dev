@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predev": "yarn clean && contentlayer build --clearCache",
+    "predev": "yarn clean && yarn themes && contentlayer build --clearCache",
     "prebuild": "yarn predev",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
     "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs",
@@ -13,7 +13,8 @@
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u --reject node-vibrant,worker-loader && yarn",
     "complexity": "npx --yes --no-install code-complexity ./src --sort score --limit 25",
-    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn"
+    "modules-size": "npx --yes --no-install cost-of-modules --no-install --yarn",
+    "themes": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/code-themes.mjs"
   },
   "dependencies": {
     "@mdi/react": "^1.6.1",
@@ -56,9 +57,7 @@
     "rehype": "^12.0.1",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^6.1.1",
-    "rehype-code-titles": "^1.2.0",
     "rehype-pretty-code": "^0.9.4",
-    "rehype-prism-plus": "^1.5.1",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "remove-markdown": "^0.5.0",
