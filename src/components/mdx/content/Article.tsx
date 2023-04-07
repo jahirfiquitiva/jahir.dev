@@ -7,6 +7,9 @@ export const Article = styled('article', {
   gap: '$16',
   p: '.05px',
   scrollMarginTop: '$$scrollMargin',
+  '& > a, & > button': {
+    alignSelf: 'flex-start'
+  },
   '& h1, & h2, & h3, & h4, & h5, & h6': {
     display: 'inline-block',
     position: 'relative',
@@ -227,6 +230,10 @@ export const Article = styled('article', {
     py: '$14',
     pr: '$12',
     borderRadius: '$space$4',
+    '& img': {
+      mt: '$16',
+      mb: '$8'
+    }
   },
   '& img': {
     width: '100%',

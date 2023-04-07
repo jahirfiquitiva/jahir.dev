@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import remarkUnwrapImages from 'remark-unwrap-images';
 
 import imageMetadata from './image-metadata';
 
@@ -77,7 +78,7 @@ const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
 };
 
 const mdx: MDXOptions = {
-  remarkPlugins: [remarkGfm],
+  remarkPlugins: [remarkGfm, remarkUnwrapImages],
   rehypePlugins: [
     imageMetadata,
     rehypeSlug,

@@ -60,6 +60,7 @@
     "rehype-pretty-code": "^0.9.4",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "remark-unwrap-images": "^3.0.1",
     "remove-markdown": "^0.5.0",
     "rimraf": "^4.4.1",
     "sass": "^1.61.0",

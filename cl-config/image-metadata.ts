@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// Code taken from https://github.com/nikolovlazar/nikolovlazar.com/blob/main/src/utils/plugins/image-metadata.ts
+// Code based on https://github.com/nikolovlazar/nikolovlazar.com/blob/main/src/utils/plugins/image-metadata.ts
 import path from 'path';
 import { promisify } from 'util';
 
@@ -11,6 +11,7 @@ import { visit } from 'unist-util-visit';
 
 const sizeOf = promisify(imageSize);
 interface ImageNode {
+  name: string;
   type: 'element' | string;
   tagName: 'img' | string;
   properties: {
@@ -20,7 +21,15 @@ interface ImageNode {
     blurDataURL?: string;
     placeholder?: 'blur' | 'empty';
     loading?: 'lazy' | 'eager';
-  };
+  } & Record<string, unknown>;
+  attributes?: Array<{
+    type: string;
+    name: string;
+    value: {
+      type: string;
+      value: unknown;
+    };
+  }>;
   children?: Array<ImageNode>;
   parent?: ImageNode;
 }
@@ -92,7 +101,7 @@ const addProps = async (node: ImageNode): Promise<ImageNode> => {
   const res = await getBlurData(src).catch(() => null);
   if (!res) return node;
   node.properties = {
-    ...node.properties,
+    ...(node.properties || {}),
     width: res.size.width,
     height: res.size.height,
     blurDataURL: res.blur64,
@@ -102,13 +111,50 @@ const addProps = async (node: ImageNode): Promise<ImageNode> => {
   return node;
 };
 
+const elementsWhereImgCantZoom = ['a', 'button', 'Link', 'GridColumn', 'li'];
+const canZoomImg = (parentTag?: string) => {
+  if (!parentTag) return true;
+  // Images within one of `elementsWhereImgCantZoom`  tag cannot be zoomed.
+  const canZoom = !elementsWhereImgCantZoom.includes(parentTag);
+  if (canZoom && parentTag !== 'p') {
+    console.log(`Found an img within <${parentTag} />. Can it be zoomed?`);
+  }
+  return canZoom;
+};
+
+const addZoomableProp = (node?: ImageNode | null, parentTag?: string) => {
+  if (!node) return;
+  const isJsxImage = node.type === 'mdxJsxFlowElement' && node.name === 'Image';
+  // If node is not an image node, do nothing
+  if (!(isImageNode(node) || isJsxImage)) return;
+
+  const zoomableDefined =
+    node.properties && node.properties.hasOwnProperty('zoomable');
+  // if zoomable property was already set, do nothing
+  if (zoomableDefined) return;
+
+  node.properties = {
+    ...(node.properties || {}),
+    zoomable: canZoomImg(parentTag),
+  };
+};
+
 const imageMetadata = () => {
   return async (tree: Node) => {
     const images: ImageNode[] = [];
 
-    visit(tree, 'element', (node) => {
-      if (isImageNode(node)) {
-        images.push(node);
+    // Traverse elements
+    visit(tree, ['mdxJsxFlowElement', 'element'], (node) => {
+      const typedNode = node as ImageNode;
+      if (typedNode) {
+        const { children = [] } = typedNode;
+        for (const child of children) {
+          addZoomableProp(child, typedNode.tagName || typedNode.name);
+        }
+        addZoomableProp(typedNode);
+        if (isImageNode(typedNode)) {
+          images.push(typedNode);
+        }
       }
     });
 
