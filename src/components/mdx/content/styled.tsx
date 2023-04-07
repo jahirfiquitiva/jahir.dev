@@ -6,19 +6,19 @@ import { Reactions } from './Reactions';
 export const Title = styled(Heading, {
   $$textShadowColor: '$colors$accent-dark',
   dark: { $$textShadowColor: '$colors$accent-dark' },
-  mt: '$12',
+  mt: '$2',
   '@tablet-sm': {
-    mt: '$16',
+    mt: '$4',
   },
   '@tablet-lg': {
-    mt: '$20',
+    mt: '$8',
   },
 });
 
-export const Intro = styled('p', {
+export const PostStats = styled('p', {
   fontSize: '$xs',
   color: '$text-tertiary',
-  mb: '$24 !important',
+  mb: '$12 !important',
 });
 
 export const ShareAndEdit = styled('div', {

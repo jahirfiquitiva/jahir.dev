@@ -105,7 +105,7 @@ export const Article = styled('article', {
     },
   },
   '& .toc': {
-    mb: '$24',
+    mb: '$8',
     '& .title': {
       useFont: 'manrope',
       fontWeight: 700,
@@ -241,7 +241,7 @@ export const Article = styled('article', {
     borderRadius: '$space$8',
   },
   '& > img:first-of-type, & > figure:first-of-type': {
-    my: '$$verticalContentPadding',
+    my: 'calc($$verticalContentPadding / 2)',
   },
   '& > img, & > p > img': {
     my: 'calc($$verticalContentPadding / 4)',

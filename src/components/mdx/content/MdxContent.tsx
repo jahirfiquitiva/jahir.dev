@@ -18,7 +18,7 @@ import { ShareButton } from './ShareButton';
 import {
   ArticleFooter,
   ArticleHero,
-  Intro,
+  PostStats,
   MdxReactions,
   ShareAndEdit,
   Title,
@@ -100,17 +100,17 @@ export const MdxContent: FC<CommonContent> = (props) => {
 
   return (
     <>
-      {backText && backHref && !isUsesPage && (
-        <Link
-          title={backText.toLowerCase()}
-          href={backHref}
-          css={{ alignSelf: 'flex-start', mx: '$6' }}
-        >
-          ← {backText}
-        </Link>
-      )}
-
       <Article>
+        {backText && backHref && !isUsesPage && (
+          <Link
+            title={backText.toLowerCase()}
+            href={backHref}
+            css={{ alignSelf: 'flex-start', mx: '$6' }}
+          >
+            ← {backText}
+          </Link>
+        )}
+
         <Title
           css={{
             ...(isUsesPage
@@ -125,7 +125,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
           {title}
         </Title>
 
-        <Intro>
+        <PostStats>
           {date && !isUsesPage ? (
             <>
               {formatDate(date)}
@@ -143,7 +143,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
             devToId={devToId}
             inProgress={inProgress}
           />
-        </Intro>
+        </PostStats>
 
         <ReactionsProvider slug={`blog--${slug}`}>
           <MdxReactions
