@@ -66,7 +66,7 @@ yarn
 yarn setup # Remove all of my personal files
 ```
 
-Fill the variables in the `.env` file. And set the `IS_TEMPLATE` variable to `false`
+Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
 
 ```bash
 yarn dev
