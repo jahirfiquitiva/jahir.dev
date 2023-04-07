@@ -16,6 +16,7 @@ export const AppItem: FC<{ item: AppItemProps }> = ({ item }) => {
           src={`/static/images/${item.image}`}
           size={72}
           alt={item.name}
+          disableChess
         />
         <span>{item.name}</span>
       </AppItemContainer>

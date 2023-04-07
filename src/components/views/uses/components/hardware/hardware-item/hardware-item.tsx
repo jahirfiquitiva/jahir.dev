@@ -22,6 +22,7 @@ export const HardwareItem: FC<{ item: HardwareItemProps }> = ({ item }) => {
         src={`/static/images/${item.image}`}
         size={222}
         alt={item.name}
+        disableChess
       />
       <TextsContainer>
         <HardwareName href={item.link || '#'} title={item.name}>

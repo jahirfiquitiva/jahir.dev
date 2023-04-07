@@ -6,7 +6,10 @@ import { styled } from '~/stitches';
 
 import { StyledImg } from './img.styles';
 
-type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
+type BaseImageProps = Omit<ImageProps, 'width' | 'height'> & {
+  disableChess?: boolean;
+};
+
 type SizeProps = BaseImageProps & { size?: number | string };
 type WidthHeightProps = BaseImageProps & {
   width?: number | string;
@@ -21,6 +24,7 @@ const BaseImg: FC<ImgProps> = (props) => {
   const {
     width = size,
     height = size,
+    disableChess,
     ...rest
   } = otherProps as WidthHeightProps;
   return (
@@ -33,7 +37,7 @@ const BaseImg: FC<ImgProps> = (props) => {
       onLoadingComplete={() => {
         setLoading(false);
       }}
-      chess={loading && rest.placeholder !== 'blur'}
+      chess={!disableChess && loading && rest.placeholder !== 'blur'}
     />
   );
 };
