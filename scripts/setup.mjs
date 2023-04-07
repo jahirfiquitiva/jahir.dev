@@ -48,6 +48,7 @@ const deleteFolderRecursive = async (path) => {
     path.join(process.cwd(), 'public', 'share'),
     path.join(process.cwd(), 'public', 'static'),
     path.join(process.cwd(), 'src', 'assets', 'images'),
+    path.join(process.cwd(), 'src', 'data'),
   ];
 
   const deletePromises = foldersToDelete.map(deleteFolderRecursive);
