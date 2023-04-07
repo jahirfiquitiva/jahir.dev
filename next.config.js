@@ -95,6 +95,7 @@ const defaultNextConfig = {
       buildRedirect('/sponsors', '/donate#thanks'),
       buildRedirect('/supporters', '/donate#thanks'),
       buildRedirect('/blog/uses', '/uses'),
+      buildRedirect('/gear', '/uses'),
       buildRedirect('/colophon', '/uses#colophon'),
       buildRedirect('/releases', '/gh-releases'),
       buildRedirect('/feed', '/feed.xml'),
