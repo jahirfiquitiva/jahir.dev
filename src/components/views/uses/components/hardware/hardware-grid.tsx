@@ -3,7 +3,7 @@ import { breakpointsValues } from '@/stitches';
 import type { FC } from '@/types';
 import { theme } from '~/stitches';
 
-import { HardwareItem, type HardwareItemProps } from './HardwareItem';
+import { HardwareItem, type HardwareItemProps } from './hardware-item';
 
 const masonryBreakpoints: MasonryBreakpoints = {};
 masonryBreakpoints['0'] = 1;

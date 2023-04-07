@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-import { AppItem, type AppItemProps } from './AppItem';
+import { AppItem, type AppItemProps } from './app-item';
 
 const GridContainer = styled('div', {
   borderRadius: '$space$16',

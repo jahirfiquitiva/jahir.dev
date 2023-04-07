@@ -48,7 +48,6 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
   if (views <= 0 && !loading) return null;
   return (
     <StyledSpan>
-      {' • '}
       {views > 0 ? (
         `${views.toLocaleString()} `
       ) : (

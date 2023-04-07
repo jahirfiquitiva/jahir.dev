@@ -95,11 +95,11 @@ export const MdxContent: FC<CommonContent> = (props) => {
         height: heroMeta.size.height || 375,
       };
     }
-    return {};
+    return { width: 666 };
   }, [heroMeta]);
 
   return (
-    <Section>
+    <>
       {backText && backHref && !isUsesPage && (
         <Link
           title={backText.toLowerCase()}
@@ -132,7 +132,12 @@ export const MdxContent: FC<CommonContent> = (props) => {
               {' • '}
             </>
           ) : null}
-          {(readingTime?.text?.length || 0) > 0 && <>{readingTime?.text}</>}
+          {(readingTime?.text?.length || 0) > 0 && (
+            <>
+              {readingTime?.text}
+              {' • '}
+            </>
+          )}
           <ViewsCounter
             slug={`blog--${slug}`}
             devToId={devToId}
@@ -193,6 +198,6 @@ export const MdxContent: FC<CommonContent> = (props) => {
           </ArticleFooter>
         </ReactionsProvider>
       </Article>
-    </Section>
+    </>
   );
 };
