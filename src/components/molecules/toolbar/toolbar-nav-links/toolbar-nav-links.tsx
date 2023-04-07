@@ -42,7 +42,9 @@ export const ToolbarNavLinks: FC<{ expanded?: boolean }> = (props) => {
   useEffect(() => {
     if (!router || !router.isReady) return;
     const { asPath: pathname } = router;
-    setActiveLink(toolbarLinksList.findIndex((link) => link.href === pathname));
+    setActiveLink(
+      toolbarLinksList.findIndex((link) => pathname.includes(link.href)),
+    );
   }, [router]);
 
   return (
