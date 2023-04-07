@@ -19,16 +19,6 @@ type TextColor = `text-${TextColorVariants}`;
 
 type Scrollbar = 'scrollbar-bg' | 'scrollbar-thumb';
 
-type CodeColors =
-  | 'comment'
-  | 'punctuation'
-  | 'selector'
-  | 'property'
-  | 'operator'
-  | 'function'
-  | 'deleted';
-type CodeColor = `code-${CodeColors}`;
-
 export type ThemeColorsNames =
   | 'transparent'
   | 'primary'
@@ -42,5 +32,4 @@ export type ThemeColorsNames =
   | GradientColor
   | ShadowColor
   | TextColor
-  | Scrollbar
-  | CodeColor;
+  | Scrollbar;
