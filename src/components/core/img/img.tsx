@@ -1,7 +1,10 @@
-import NextImage, { type ImageProps } from 'next/image';
+import type { ImageProps } from 'next/image';
+import { useState } from 'react';
 
 import type { FC } from '@/types';
 import { styled } from '~/stitches';
+
+import { StyledImg } from './img.styles';
 
 type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
 type SizeProps = BaseImageProps & { size?: number | string };
@@ -13,6 +16,7 @@ type WidthHeightProps = BaseImageProps & {
 export type ImgProps = SizeProps | WidthHeightProps;
 
 const BaseImg: FC<ImgProps> = (props) => {
+  const [loading, setLoading] = useState<boolean>(true);
   const { size = 0, ...otherProps } = props as SizeProps;
   const {
     width = size,
@@ -20,12 +24,16 @@ const BaseImg: FC<ImgProps> = (props) => {
     ...rest
   } = otherProps as WidthHeightProps;
   return (
-    <NextImage
+    <StyledImg
       {...rest}
       width={Number(width)}
       height={Number(height)}
       loading={props.priority ? undefined : props.loading}
       decoding={'async'}
+      onLoadingComplete={() => {
+        setLoading(false);
+      }}
+      chess={loading && rest.placeholder !== 'blur'}
     />
   );
 };
