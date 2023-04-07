@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Divider, Section, Link, LinkButton } from '@/components/core';
+import { Divider, Link, LinkButton } from '@/components/core';
 import { mdiPencilOutline } from '@/components/icons';
 import { usePalette } from '@/hooks/use-palette';
 import { ReactionsProvider } from '@/providers/reactions';
