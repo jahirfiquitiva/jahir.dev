@@ -1,8 +1,7 @@
 import { Img, Link } from '@/components/core';
-import type { FC } from '@/types';
 import { styled } from '~/stitches';
 
-const HardwareItemContainer = styled('div', {
+export const HardwareItemContainer = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -19,7 +18,7 @@ const HardwareItemContainer = styled('div', {
   },
 });
 
-const HardwareImage = styled(Img, {
+export const HardwareImage = styled(Img, {
   maxWidth: 72,
   height: 'auto',
   aspectRatio: '1 / 1',
@@ -46,7 +45,7 @@ const HardwareImage = styled(Img, {
   },
 });
 
-const TextsContainer = styled('div', {
+export const TextsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   flex: 1,
@@ -62,7 +61,7 @@ const TextsContainer = styled('div', {
   },
 });
 
-const HardwareName = styled(Link, {
+export const HardwareName = styled(Link, {
   fontWeight: 600,
   fontSize: '$xs',
   useFont: 'manrope',
@@ -71,35 +70,8 @@ const HardwareName = styled(Link, {
   alignSelf: 'flex-start',
 });
 
-const HardwareDescription = styled('p', {
+export const HardwareDescription = styled('p', {
   color: '$text-secondary',
   fontSize: '$3xs',
   m: '0 !important',
 });
-
-export interface HardwareItemProps {
-  image: string;
-  name: string;
-  description?: string;
-  link?: string;
-}
-
-export const HardwareItem: FC<{ item: HardwareItemProps }> = ({ item }) => {
-  return (
-    <HardwareItemContainer>
-      <HardwareImage
-        src={`/static/images/${item.image}`}
-        size={222}
-        alt={item.name}
-      />
-      <TextsContainer>
-        <HardwareName href={item.link || '#'} title={item.name}>
-          {item.name}
-        </HardwareName>
-        {!!item.description && (
-          <HardwareDescription>{item.description}</HardwareDescription>
-        )}
-      </TextsContainer>
-    </HardwareItemContainer>
-  );
-};
