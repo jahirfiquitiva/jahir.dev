@@ -1,8 +1,7 @@
 import { Img, Link } from '@/components/core';
-import type { FC } from '@/types';
 import { styled, darkTheme } from '~/stitches';
 
-const AppItemContainer = styled(Link, {
+export const AppItemContainer = styled(Link, {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -32,7 +31,7 @@ const AppItemContainer = styled(Link, {
   },
 });
 
-const AppIcon = styled(Img, {
+export const AppIcon = styled(Img, {
   border: 'none !important',
   filter: 'drop-shadow(0 0 4px $colors$img-drop-shadow)',
   maxWidth: 48,
@@ -46,24 +45,3 @@ const AppIcon = styled(Img, {
     maxWidth: 72,
   },
 });
-
-export interface AppItemProps {
-  image: string;
-  name: string;
-  link?: string;
-}
-
-export const AppItem: FC<{ item: AppItemProps }> = ({ item }) => {
-  return (
-    <li>
-      <AppItemContainer href={item.link || '#'} title={item.name}>
-        <AppIcon
-          src={`/static/images/${item.image}`}
-          size={72}
-          alt={item.name}
-        />
-        <span>{item.name}</span>
-      </AppItemContainer>
-    </li>
-  );
-};

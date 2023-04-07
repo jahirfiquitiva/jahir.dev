@@ -1,1 +1,1 @@
-export * from './apps-grid/apps-grid';
+export * from './apps-grid';
