@@ -1,11 +1,15 @@
 import { useState } from 'react';
 
-import { mdiMenu, mdiPlus, Logo } from '@/components/icons';
+import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/components/core';
+import { mdiMenu, mdiPlus } from '@/components/icons';
 import type { FC } from '@/types';
-import { theme } from '~/stitches';
 
 import { ThemeToggle, MobileMenuToggle } from './toolbar-buttons';
-import { ToolbarNavLinks, ToolbarLinksContainer, ToolbarLink } from './toolbar-nav-links';
+import {
+  ToolbarNavLinks,
+  ToolbarLinksContainer,
+  ToolbarLink,
+} from './toolbar-nav-links';
 import { Header, Nav } from './toolbar.styles';
 
 export const Toolbar: FC = (props) => {
@@ -13,8 +17,18 @@ export const Toolbar: FC = (props) => {
   return (
     <Header expanded={isExpanded} css={props.css}>
       <Nav expanded={isExpanded}>
-        <ToolbarLink home href={'/'} title={'Home page'} underline={false}>
-          <Logo fill={theme.colors['gradient-brand']?.value} />
+        <ToolbarLink
+          home
+          href={'/'}
+          title={'Home page'}
+          underline={false}
+          css={{
+            hocus: {
+              '& > span:first-of-type': logoAnimojiHoveredStyles,
+            },
+          }}
+        >
+          <LogoAnimoji />
           <span>Jahir Fiquitiva</span>
         </ToolbarLink>
         <ToolbarNavLinks expanded={isExpanded} />

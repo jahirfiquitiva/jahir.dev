@@ -1,10 +1,14 @@
 import { SocialLinks } from '@/components/compounds';
-import { Logo } from '@/components/icons';
+import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/components/core';
 import type { FC } from '@/types';
-import { theme } from '~/stitches';
 
 import { FooterLinksGroup, type FooterLinkProps } from './footer-links-group';
-import { StyledFooter, LinksContainer, InnerFooter, BrandLink } from './footer.styles';
+import {
+  StyledFooter,
+  LinksContainer,
+  InnerFooter,
+  BrandLink,
+} from './footer.styles';
 
 const primaryLinks: Array<FooterLinkProps> = [
   {
@@ -76,8 +80,13 @@ export const Footer: FC = (props) => {
           title={'Home page'}
           gradient={'brand-to-blue'}
           forceGradient
+          css={{
+            hocus: {
+              '& > span:first-of-type': logoAnimojiHoveredStyles,
+            },
+          }}
         >
-          <Logo fill={theme.colors['gradient-brand']?.value} />
+          <LogoAnimoji />
           <span>Jahir Fiquitiva</span>
         </BrandLink>
         <SocialLinks />
