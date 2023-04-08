@@ -2,10 +2,7 @@ import { serialize } from './serialize';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
-const refreshToken =
-  process.env.SPOTIFY_CLIENT_REFRESH_TOKEN ||
-  process.env.SPOTIFY_CLIENT_TOKEN ||
-  '';
+const refreshToken = process.env.SPOTIFY_CLIENT_REFRESH_TOKEN || '';
 
 const basic = btoa(`${clientId}:${clientSecret}`);
 const NOW_PLAYING_ENDPOINT =
