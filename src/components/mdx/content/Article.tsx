@@ -6,6 +6,10 @@ export const Article = styled('article', {
   flexDirection: 'column',
   gap: '$16',
   p: '.05px',
+  px: '$14',
+  '@tablet-md': {
+    p: '.05px',
+  },
   scrollMarginTop: '$$scrollMargin',
   '& > a, & > button': {
     alignSelf: 'flex-start'
