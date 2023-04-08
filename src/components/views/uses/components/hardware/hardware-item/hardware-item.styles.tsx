@@ -8,14 +8,21 @@ export const HardwareItemContainer = styled('div', {
   border: '1px solid $divider',
   borderRadius: '$space$10',
   gap: '$space$6',
+  pt: '$4',
+  py: '$1',
   backgroundColor: 'rgba(9 17 34 / 0.006)',
   dark: { backgroundColor: 'rgba(235 240 251 / 0.008)' },
   overflow: 'hidden',
+  transition: 'all ease-in-out .25s',
   '@tablet-sm': {
     flexDirection: 'column',
     alignItems: 'flex-start',
     gap: 0,
   },
+  hocus:{
+    transform: 'scale(1.025)',
+    borderColor: 'rgba($accent-shadow / 0.56)',
+  }
 });
 
 export const HardwareImage = styled(Img, {
