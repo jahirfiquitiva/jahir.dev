@@ -33,9 +33,16 @@ export const WavingHello: FC<WavingHelloProps> = (props) => {
         fontSize: '$2xl',
       }}
     >
-      <WaveSpan>👋</WaveSpan>
-      &nbsp;&nbsp;{hellos[hello]}{' '}{countryName || worlds[hello]}!
-      {countryEmoji ? <>{' '}<span>{countryEmoji}</span></> : null}
+      <WaveSpan role={'img'} aria-label={'waving hand'}>👋</WaveSpan>
+      &nbsp;&nbsp;{hellos[hello]} {countryName || worlds[hello]}!
+      {countryEmoji ? (
+        <>
+          {' '}
+          <span role={'img'} aria-label={`${countryName} flag`}>
+            {countryEmoji}
+          </span>
+        </>
+      ) : null}
     </Heading>
   );
 };
