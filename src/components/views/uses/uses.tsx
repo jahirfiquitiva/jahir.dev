@@ -17,7 +17,7 @@ export const Uses = () => {
         <HardwareGrid items={gaming} />
       </>
 
-      <AnchorLink as={'h3'} id={'apps'} title={'Apps'} />
+      <AnchorLink as={'h3'} id={'software'} title={'Software'} />
       <AppsGrid items={software} />
 
       <AnchorLink

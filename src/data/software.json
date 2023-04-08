@@ -113,5 +113,10 @@
     "image": "uses/apps/hyper.png",
     "name": "Hyper",
     "link": "https://hyper.is/"
+  },
+  {
+    "image": "uses/apps/monolisa.png",
+    "name": "MonoLisa",
+    "link": "https://monolisa.dev/"
   }
 ]
