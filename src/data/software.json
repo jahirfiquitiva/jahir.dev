@@ -1,122 +1,117 @@
 [
   {
-    "image": "blog/uses/apps/notion.webp",
+    "image": "uses/apps/notion.webp",
     "name": "Notion",
     "link": "https://www.notion.so/"
   },
   {
-    "image": "blog/uses/apps/1password.png",
+    "image": "uses/apps/1password.png",
     "name": "1Password",
     "link": "https://1password.com/"
   },
   {
-    "image": "blog/uses/apps/code.webp",
-    "name": "VS Code",
-    "link": "https://code.visualstudio.com/"
+    "image": "uses/apps/code.webp",
+    "name": "VSCodium",
+    "link": "https://vscodium.com/"
   },
   {
-    "image": "blog/uses/apps/android-studio.png",
+    "image": "uses/apps/android-studio.png",
     "name": "Android Studio",
     "link": "https://developer.android.com/studio"
   },
   {
-    "image": "blog/uses/apps/around.png",
-    "name": "Around",
-    "link": "https://around.co/"
-  },
-  {
-    "image": "blog/uses/apps/good-notes.png",
+    "image": "uses/apps/good-notes.png",
     "name": "Good Notes",
     "link": "https://www.goodnotes.com/"
   },
   {
-    "image": "blog/uses/apps/snapdrop.png",
+    "image": "uses/apps/snapdrop.png",
     "name": "Snapdrop",
     "link": "https://snapdrop.net/"
   },
   {
-    "image": "blog/uses/apps/iina.png",
+    "image": "uses/apps/iina.png",
     "name": "iina",
     "link": "https://iina.io/"
   },
   {
-    "image": "blog/uses/apps/airbuddy.png",
+    "image": "uses/apps/airbuddy.png",
     "name": "AirBuddy",
     "link": "https://airbuddy.app/"
   },
   {
-    "image": "blog/uses/apps/lungo.png",
+    "image": "uses/apps/lungo.png",
     "name": "Lungo",
     "link": "https://sindresorhus.com/lungo"
   },
   {
-    "image": "blog/uses/apps/app-cleaner.webp",
+    "image": "uses/apps/app-cleaner.webp",
     "name": "App Cleaner",
     "link": "https://freemacsoft.net/appcleaner/"
   },
   {
-    "image": "blog/uses/apps/magnet.png",
+    "image": "uses/apps/magnet.png",
     "name": "Magnet",
     "link": "https://magnet.crowdcafe.com/"
   },
   {
-    "image": "blog/uses/apps/fig.png",
+    "image": "uses/apps/fig.png",
     "name": "Fig",
     "link": "https://fig.io/"
   },
   {
-    "image": "blog/uses/apps/top-notch.png",
+    "image": "uses/apps/top-notch.png",
     "name": "Top Notch",
     "link": "https://topnotch.app/"
   },
   {
-    "image": "blog/uses/apps/cleanshot-x.png",
+    "image": "uses/apps/cleanshot-x.png",
     "name": "CleanShot X",
     "link": "https://cleanshot.com/"
   },
   {
-    "image": "blog/uses/apps/raycast.webp",
+    "image": "uses/apps/raycast.webp",
     "name": "Raycast",
     "link": "https://raycast.app/"
   },
   {
-    "image": "blog/uses/apps/bartender.png",
+    "image": "uses/apps/bartender.png",
     "name": "Bartender",
     "link": "https://www.macbartender.com/"
   },
   {
-    "image": "blog/uses/apps/color-picker.png",
-    "name": "Color Picker",
-    "link": "https://sindresorhus.com/system-color-picker"
-  },
-  {
-    "image": "blog/uses/apps/contraste.png",
+    "image": "uses/apps/contraste.png",
     "name": "Contraste",
     "link": "http://contrasteapp.com/"
   },
   {
-    "image": "blog/uses/apps/type-fu.webp",
+    "image": "uses/apps/type-fu.webp",
     "name": "Type Fu",
     "link": "https://type-fu.com/"
   },
   {
-    "image": "blog/uses/apps/icon-champ.png",
+    "image": "uses/apps/icon-champ.png",
     "name": "Icon Champ",
     "link": "https://www.macenhance.com/iconchamp.html"
   },
   {
-    "image": "blog/uses/apps/soundsource.png",
+    "image": "uses/apps/soundsource.png",
     "name": "SoundSource",
     "link": "https://rogueamoeba.com/soundsource/"
   },
   {
-    "image": "blog/uses/apps/arc.png",
+    "image": "uses/apps/arc.png",
     "name": "Arc",
     "link": "https://arc.net/gift/19a9c1b6"
   },
   {
-    "image": "blog/uses/apps/spotify.webp",
+    "image": "uses/apps/spotify.webp",
     "name": "Spotify",
     "link": "https://spotify.com/"
+  },
+  {
+    "image": "uses/apps/hyper.png",
+    "name": "Hyper",
+    "link": "https://hyper.is/"
   }
 ]

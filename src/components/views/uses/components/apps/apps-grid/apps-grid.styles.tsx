@@ -8,7 +8,7 @@ export const GridContainer = styled('div', {
   dark: { backgroundColor: 'rgba(235 240 251 / 0.008)' },
   border: 'none',
   backgroundAttachment: 'fixed',
-  backgroundImage: "url('/static/images/blog/uses/wallpaper.jpg')",
+  backgroundImage: "url('/static/images/uses/wallpaper.jpg')",
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',

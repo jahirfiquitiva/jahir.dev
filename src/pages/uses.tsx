@@ -31,7 +31,7 @@ const UsesPage: NextPage = () => (
     <MdxContent
       content={{
         title: 'What do I use?',
-        hero: '/static/images/blog/uses/setup-2022.jpeg',
+        hero: '/static/images/uses/setup-2022.jpeg',
         slug: 'uses',
         date: '',
         fullHeightHero: true,
