@@ -68,7 +68,7 @@
     "color": "#003893",
     "darkColor": "#fcd116",
     "hide": true,
-    "stack": ["nextjs", "react", "typescript"],
+    "stack": ["next.js", "react", "typescript"],
     "repo": "col-holidays",
     "iconMeta": {
       "size": {
@@ -281,7 +281,7 @@
     "link": "https://world-holidays.info",
     "color": "#5360D2",
     "darkColor": "#79FFE1",
-    "stack": ["nextjs", "react", "typescript"],
+    "stack": ["next.js", "react", "typescript"],
     "repo": "worldwide-holidays",
     "iconMeta": {
       "size": {

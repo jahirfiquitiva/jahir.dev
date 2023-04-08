@@ -94,7 +94,7 @@ export const Colophon = () => {
   return (
     <DotsContainer className={'colophon'}>
       <IconContainer>
-        <Link title={'NextJS'} href={'https://nextjs.org/'}>
+        <Link title={'Next.js'} href={'https://nextjs.org/'}>
           <Icon path={nextJs} />
         </Link>
       </IconContainer>
