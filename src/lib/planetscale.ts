@@ -17,8 +17,16 @@ interface CountersTable extends CountersReactions {
   views?: bigint;
 }
 
+interface VisitsTable {
+  id: string;
+  city: string;
+  country: string;
+  hits?: bigint;
+}
+
 interface Database {
   counters: CountersTable;
+  visits: VisitsTable;
 }
 
 export const queryBuilder = new Kysely<Database>({
