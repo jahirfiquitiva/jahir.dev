@@ -18,25 +18,16 @@ export const Fab = styled(Button, {
   userSelect: 'none',
   opacity: 0,
   transform: 'translateY(72px)',
-  backgroundColor: '$accent',
   textTransform: 'uppercase',
   letterSpacing: '0.0625rem',
   fontSize: '$3xs',
   border: '1px solid rgba($colors$accent-shadow / .12)',
   boxShadow:
     '0 0 1px 1px $colors$divider, 0 0 6px 1px rgba($colors$accent-shadow / .24)',
-
   hocus: {
-    backgroundColor: '$accent-dark',
     border: '1px solid rgba($colors$accent-shadow / .24)',
     boxShadow:
       '0 0 1px 1px $colors$divider, 0 0 8px 2px rgba($colors$accent-shadow / .32)',
-  },
-  dark: {
-    backgroundColor: '$accent',
-    hocus: {
-      backgroundColor: '$accent-dark',
-    },
   },
 
   '& span': {
