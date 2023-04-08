@@ -23,7 +23,6 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
     return NextResponse.next();
   }
 
-  console.log('is dev?', dev);
   event.waitUntil(
     (async () => {
       if (!agent.isBot && validEngine && !dev) {
@@ -36,7 +35,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
           .select(['hits'])
           .execute();
 
-        console.log(
+        console.error(
           `New visit from ${city}, ${country} [${currentData[0]?.hits || 0}]`,
         );
         await queryBuilder
