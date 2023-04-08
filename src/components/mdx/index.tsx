@@ -1,6 +1,5 @@
 import type { ComponentProps } from 'react';
 
-import { Masonry } from '@/components/compounds';
 import { styled } from '~/stitches';
 
 import { Reactions } from './content';
@@ -17,7 +16,6 @@ export const mdxComponents = {
   ImageComparison,
   Grid,
   GridColumn,
-  Masonry,
   Reactions,
   hr: styled('hr', { borderColor: '$divider' }),
   a: MdxLink,

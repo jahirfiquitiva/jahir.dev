@@ -5,7 +5,7 @@ export const Article = styled('article', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$16',
-  p: '.05px',
+  py: '.05px',
   px: '$14',
   '@tablet-md': {
     p: '.05px',
