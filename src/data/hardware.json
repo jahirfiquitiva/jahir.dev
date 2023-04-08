@@ -48,7 +48,8 @@
   },
   {
     "image": "uses/hardware/airpods.png",
-    "name": "AirPods Pro (2nd Gen)",
+    "name": "AirPods Pro",
+    "description": "2nd Gen",
     "link": "https://www.apple.com/airpods-pro/"
   },
   {

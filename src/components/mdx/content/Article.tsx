@@ -12,7 +12,7 @@ export const Article = styled('article', {
   },
   scrollMarginTop: '$$scrollMargin',
   '& > a, & > button': {
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   '& h1, & h2, & h3, & h4, & h5, & h6': {
     position: 'relative',
@@ -115,6 +115,7 @@ export const Article = styled('article', {
       fontSize: '$sm',
       color: '$text-primary',
       mb: '$3',
+      cursor: 'pointer',
     },
     '& .toc-level': {
       display: 'flex',
@@ -212,7 +213,7 @@ export const Article = styled('article', {
     borderTopRightRadius: '0',
     borderTopWidth: '0',
   },
-  '& [data-rehype-pretty-code-title] + pre':{
+  '& [data-rehype-pretty-code-title] + pre': {
     marginTop: 0,
   },
   '& mark': {
@@ -235,8 +236,8 @@ export const Article = styled('article', {
     borderRadius: '$space$4',
     '& img': {
       mt: '$16',
-      mb: '$8'
-    }
+      mb: '$8',
+    },
   },
   '& img': {
     width: '100%',

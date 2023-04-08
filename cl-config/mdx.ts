@@ -45,7 +45,7 @@ interface RehypeElement {
   properties: {
     className: Array<string>;
     style?: string;
-  };
+  } & Record<string, unknown>;
   children?: Array<RehypeElement>;
 }
 
@@ -57,12 +57,12 @@ const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
   } catch (e) {}
   return {
     type: 'element',
-    tagName: 'div',
-    properties: { className: ['toc'] },
+    tagName: 'details',
+    properties: { className: ['toc'], open: true },
     children: [
       {
         type: 'element',
-        tagName: 'p',
+        tagName: 'summary',
         properties: { className: ['title'] },
         children: [
           {
