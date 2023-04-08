@@ -121,6 +121,7 @@ export const MdxContent: FC<CommonContent> = (props) => {
               : {}),
             ...titleStyles,
           }}
+          balancerRatio={slug.includes('uses') ? 1 : 0.45}
         >
           {title}
         </Title>

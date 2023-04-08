@@ -54,12 +54,15 @@ const StyledHeading = styled('h1', {
 });
 
 export const Heading = (
-  props: GetComponentProps<typeof StyledHeading> & { as?: ElementType },
+  props: GetComponentProps<typeof StyledHeading> & {
+    as?: ElementType;
+    balancerRatio?: number;
+  },
 ) => {
-  const { children, ...otherProps } = props;
+  const { children, balancerRatio, ...otherProps } = props;
   return (
     <StyledHeading {...otherProps}>
-      <Balancer>{children}</Balancer>
+      <Balancer ratio={balancerRatio}>{children}</Balancer>
     </StyledHeading>
   );
 };

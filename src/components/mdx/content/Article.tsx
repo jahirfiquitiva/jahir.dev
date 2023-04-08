@@ -15,7 +15,6 @@ export const Article = styled('article', {
     alignSelf: 'flex-start'
   },
   '& h1, & h2, & h3, & h4, & h5, & h6': {
-    display: 'inline-block',
     position: 'relative',
     alignSelf: 'flex-start',
     scrollMarginTop: '$$scrollMargin',
