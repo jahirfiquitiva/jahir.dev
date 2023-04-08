@@ -8,8 +8,6 @@ const refreshToken =
   '';
 
 const basic = btoa(`${clientId}:${clientSecret}`);
-const TOP_TRACKS_ENDPOINT =
-  'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50';
 const NOW_PLAYING_ENDPOINT =
   'https://api.spotify.com/v1/me/player/currently-playing';
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
@@ -30,15 +28,6 @@ const getAccessToken = async () => {
   });
 
   return response.json();
-};
-
-export const getTopTracks = async () => {
-  const { access_token: accessToken } = await getAccessToken();
-  return fetch(TOP_TRACKS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
 };
 
 export const getNowPlaying = async () => {
