@@ -7,8 +7,6 @@ import {
   mdx,
   mdiTriangle,
   contentlayer,
-  notion,
-  prisma,
   planetscale,
 } from '@/components/icons';
 import { styled } from '~/stitches';
@@ -18,7 +16,7 @@ const DotsContainer = styled('ul', {
   '$$dot-size': '2px',
   overflow: 'hidden',
   display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
+  gridTemplateColumns: 'repeat(3, 1fr)',
   p: '$$verticalContentPadding calc($$verticalContentPadding / 2)',
   rowGap: 'calc($$verticalContentPadding / 1.25)',
   alignItems: 'center',
@@ -116,18 +114,8 @@ export const Colophon = () => {
         </Link>
       </IconContainer>
       <IconContainer>
-        <Link title={'Notion API'} href={'https://developers.notion.com/'}>
-          <Icon path={notion} />
-        </Link>
-      </IconContainer>
-      <IconContainer>
         <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
           <Icon path={planetscale} />
-        </Link>
-      </IconContainer>
-      <IconContainer>
-        <Link title={'Prisma'} href={'https://prisma.io/'}>
-          <Icon path={prisma} />
         </Link>
       </IconContainer>
       <IconContainer>
