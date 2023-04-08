@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import type { ComponentProps } from 'react';
 
 import { Heading, Link, LinkButton } from '@/components/core';
 import { mdiAccountCircleOutline } from '@/components/icons';
@@ -13,11 +14,11 @@ import {
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
 
-export const Intro: FC = () => {
+export const Intro: FC<ComponentProps<typeof WavingHello>> = (props) => {
   return (
     <IntroSection id={'intro'}>
       <TextsContainer>
-        <WavingHello />
+        <WavingHello {...props} />
         <Heading as={'h2'} shadow={'blue'}>
           I am&nbsp;
           <Heading as={'span'} gradient={'brand-to-blue'}>

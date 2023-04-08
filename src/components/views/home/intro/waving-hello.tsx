@@ -5,16 +5,16 @@ import type { FC } from '@/types';
 
 import { WaveSpan } from './intro.styles';
 
-const hellos = [
-  'Hello, world',
-  'Hola, mundo',
-  'Ciao, mondo',
-  'Hallo, Welt',
-  'Salut, monde',
-  'Olá, mundo',
-];
+const hellos = ['Hello,', 'Hola,', 'Ciao,', 'Hallo,', 'Salut,', 'Olá,'];
+const worlds = ['world', 'mundo', 'mondo', 'Welt', 'monde', 'mundo'];
 
-export const WavingHello: FC = () => {
+interface WavingHelloProps {
+  countryName?: string;
+  countryEmoji?: string;
+}
+
+export const WavingHello: FC<WavingHelloProps> = (props) => {
+  const { countryName, countryEmoji } = props;
   const [hello, setHello] = useState(0);
 
   useEffect(() => {
@@ -34,7 +34,8 @@ export const WavingHello: FC = () => {
       }}
     >
       <WaveSpan>👋</WaveSpan>
-      &nbsp;&nbsp;{hellos[hello]}!
+      &nbsp;&nbsp;{hellos[hello]}{' '}{countryName || worlds[hello]}!
+      {countryEmoji ? <>{' '}<span>{countryEmoji}</span></> : null}
     </Heading>
   );
 };

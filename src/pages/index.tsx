@@ -1,4 +1,5 @@
-import type { GetStaticProps, NextPage } from 'next';
+import { getCountryByAlpha2 } from 'country-locale-map';
+import type { GetServerSideProps, NextPage } from 'next';
 
 import { Layout, Seo } from '@/components/molecules';
 import { Intro, Projects, Skills } from '@/components/views';
@@ -7,10 +8,12 @@ import type { Project } from '@/types';
 
 interface HomeProps {
   projects?: Array<Project>;
+  countryName?: string;
+  countryEmoji?: string;
 }
 
 const Home: NextPage<HomeProps> = (props) => {
-  const { projects } = props;
+  const { projects, countryName, countryEmoji } = props;
   return (
     <Layout>
       <Seo
@@ -36,7 +39,10 @@ const Home: NextPage<HomeProps> = (props) => {
           'web',
         ]}
       />
-      <Intro />
+      <Intro
+        countryName={decodeURIComponent(countryName || '')}
+        countryEmoji={decodeURIComponent(countryEmoji || '')}
+      />
       <Projects projects={projects} />
       <Skills />
     </Layout>
@@ -45,11 +51,20 @@ const Home: NextPage<HomeProps> = (props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const countryCode = query.country as string;
+  let country = null;
+  if (countryCode) country = getCountryByAlpha2(countryCode);
+
   const projects = allProjects
     .sort((a, b) => a.order - b.order)
     .filter((it) => !it.hide);
+    
   return {
-    props: { projects },
+    props: {
+      projects,
+      countryName: country?.name,
+      countryEmoji: country?.emoji,
+    },
   };
 };

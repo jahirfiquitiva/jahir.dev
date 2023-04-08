@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, userAgent } from 'next/server';
 import type { NextFetchEvent, NextRequest } from 'next/server';
 
 const stringToId = (text: string) => {
@@ -11,6 +11,8 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
   const { pathname } = url;
   const country = geo?.country || 'US';
   const city = geo?.city || 'San Francisco';
+  const agent = userAgent(request);
+  console.error(agent);
 
   // Ignore files and API calls
   if (pathname.includes('.') || pathname.startsWith('/api')) {
@@ -19,11 +21,13 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
 
   event.waitUntil(
     (async () => {
-      // Add view to your database
-      // ...
-      const cityAndCountry = `${city}, ${country}`;
-      console.error(`New visit from ${cityAndCountry}`);
-      console.error(`entry id: ${stringToId(cityAndCountry)}`);
+      if (!agent.isBot) {
+        // Add view to your database
+        // ...
+        const cityAndCountry = `${city}, ${country}`;
+        const entryId = stringToId(cityAndCountry);
+        console.log(`New visit from ${cityAndCountry} [${entryId}]`);
+      }
     })(),
   );
 
