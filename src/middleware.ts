@@ -12,7 +12,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
   const country = geo?.country || 'US';
   const city = geo?.city || 'San Francisco';
   const agent = userAgent(request);
-  console.error(agent);
+  const validEngine = Boolean(agent.engine?.name);
 
   // Ignore files and API calls
   if (pathname.includes('.') || pathname.startsWith('/api')) {
@@ -21,7 +21,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
 
   event.waitUntil(
     (async () => {
-      if (!agent.isBot) {
+      if (!agent.isBot || !validEngine) {
         // Add view to your database
         // ...
         const cityAndCountry = `${city}, ${country}`;
