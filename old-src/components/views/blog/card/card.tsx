@@ -4,12 +4,16 @@ import {
   ListCard,
   ListCardContent,
   ListCardInfoItem,
-} from '@/components/compounds';
-import { InfoContainer } from '@/components/compounds/list-card/list-card.styles';
-import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/components/icons';
-import { useRequest } from '@/hooks/use-request';
-import type { FC, Post } from '@/types';
-import { formatDate } from '@/utils/format/format-date';
+} from '@/old/components/compounds';
+import { InfoContainer } from '@/old/components/compounds/list-card/list-card.styles';
+import {
+  mdiClockOutline,
+  mdiEyeOutline,
+  calendarOutline,
+} from '@/old/components/icons';
+import { useRequest } from '@/old/hooks/use-request';
+import type { FC, Post } from '@/old/types';
+import { formatDate } from '@/old/utils/format/format-date';
 
 import { BlogCardHero, Published } from './card.styled';
 

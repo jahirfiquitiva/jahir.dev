@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 
-import { Layout, Seo } from '@/components/molecules';
-import { About as AboutSection } from '@/components/views';
-import { buildOgImageUrl } from '@/utils/og';
+import { Layout, Seo } from '@/old/components/molecules';
+import { About as AboutSection } from '@/old/components/views';
+import { buildOgImageUrl } from '@/old/utils/og';
 
 const About: NextPage = () => {
   return (

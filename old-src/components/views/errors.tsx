@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { useMemo } from 'react';
 
-import { Heading, Section, Link, LinkButton } from '@/components/core';
-import type { RainbowColors } from '@/stitches';
-import type { GradientOption } from '@/stitches/utils/gradient';
-import type { FC } from '@/types';
+import { Heading, Section, Link, LinkButton } from '@/old/components/core';
+import type { RainbowColors } from '@/old/stitches';
+import type { GradientOption } from '@/old/stitches/utils/gradient';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const Container = styled(Section, {

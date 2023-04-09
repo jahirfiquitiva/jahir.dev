@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import { Layout, Seo } from '@/components/molecules';
-import { Projects as ProjectsSection } from '@/components/views';
-import allProjects from '@/data/projects.json';
-import type { Project } from '@/types';
-import { buildOgImageUrl } from '@/utils/og';
+import { Layout, Seo } from '@/old/components/molecules';
+import { Projects as ProjectsSection } from '@/old/components/views';
+import allProjects from '@/old/data/projects.json';
+import type { Project } from '@/old/types';
+import { buildOgImageUrl } from '@/old/utils/og';
 
 interface ProjectsProps {
   projects?: Array<Project>;

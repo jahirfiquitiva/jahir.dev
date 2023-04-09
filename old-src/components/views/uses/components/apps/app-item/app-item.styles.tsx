@@ -1,4 +1,4 @@
-import { Img, Link } from '@/components/core';
+import { Img, Link } from '@/old/components/core';
 import { styled, darkTheme } from '~/stitches';
 
 export const AppItemContainer = styled(Link, {

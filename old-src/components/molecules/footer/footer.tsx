@@ -1,6 +1,6 @@
-import { SocialLinks } from '@/components/compounds';
-import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/components/core';
-import type { FC } from '@/types';
+import { SocialLinks } from '@/old/components/compounds';
+import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/old/components/core';
+import type { FC } from '@/old/types';
 
 import { FooterLinksGroup, type FooterLinkProps } from './footer-links-group';
 import {

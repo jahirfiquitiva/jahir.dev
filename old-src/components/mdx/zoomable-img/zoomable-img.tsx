@@ -1,6 +1,6 @@
 import { type ComponentProps, useState, useMemo, useCallback } from 'react';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 
 import { StyledImg } from './zoomable-img.styles';
 

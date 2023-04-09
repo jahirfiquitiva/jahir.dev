@@ -1,4 +1,4 @@
-import { groupBy } from '@/utils/posts/group-posts';
+import { groupBy } from '@/old/utils/posts/group-posts';
 
 import type { ManualSponsor } from './manual-sponsors';
 import type { Sponsor, SponsorCategory } from './types';

@@ -1,10 +1,12 @@
-import { LinkStatCard } from '@/components/compounds';
-import { twitterOutline } from '@/components/icons';
-import { useImmutableRequest } from '@/hooks/use-request';
-import type { FC } from '@/types';
+import { LinkStatCard } from '@/old/components/compounds';
+import { twitterOutline } from '@/old/components/icons';
+import { useImmutableRequest } from '@/old/hooks/use-request';
+import type { FC } from '@/old/types';
 
 export const TwitterStats: FC = () => {
-  const { data, loading } = useImmutableRequest<{ followers?: number }>('/api/twitter');
+  const { data, loading } = useImmutableRequest<{ followers?: number }>(
+    '/api/twitter',
+  );
   return (
     <>
       <LinkStatCard

@@ -1,4 +1,4 @@
-import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 const pageTransition = keyframes({
@@ -41,7 +41,7 @@ const invertedStyles: StitchesCSS = {
 };
 
 // eslint-disable-next-line no-useless-escape
-const allowlist = ['localhost', 'jahir\.dev', 'jahirfiquitiva'];
+const allowlist = ['localhost', 'jahir.dev', 'jahirfiquitiva'];
 const hostRegex = new RegExp(allowlist.join('|'));
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useInvertedStyles = (): StitchesCSS | undefined => {

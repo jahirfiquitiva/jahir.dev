@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 
 export const Meta: FC = () => {
   return (

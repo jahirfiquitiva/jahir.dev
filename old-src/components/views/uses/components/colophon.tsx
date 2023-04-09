@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 
-import { Link } from '@/components/core';
+import { Link } from '@/old/components/core';
 import {
   nextJs,
   stitches,
@@ -8,7 +8,7 @@ import {
   mdiTriangle,
   contentlayer,
   planetscale,
-} from '@/components/icons';
+} from '@/old/components/icons';
 import { styled } from '~/stitches';
 
 const DotsContainer = styled('ul', {

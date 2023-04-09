@@ -2,12 +2,12 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { OpenDoodle } from '@/components/compounds';
-import { Heading, Section, Link } from '@/components/core';
-import { mdiEmail, telegram, twitterOutline } from '@/components/icons';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useRandomItem } from '@/hooks/use-random-item';
-import type { FC } from '@/types';
+import { OpenDoodle } from '@/old/components/compounds';
+import { Heading, Section, Link } from '@/old/components/core';
+import { mdiEmail, telegram, twitterOutline } from '@/old/components/icons';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import { useRandomItem } from '@/old/hooks/use-random-item';
+import type { FC } from '@/old/types';
 
 import { images } from './contact.images';
 import { ContactLink, ContactOptions, Grid } from './contact.styles';

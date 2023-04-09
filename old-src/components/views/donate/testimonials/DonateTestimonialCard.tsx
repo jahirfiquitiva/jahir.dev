@@ -1,9 +1,9 @@
 import Icon from '@mdi/react';
 
-import { Img } from '@/components/core';
-import { mdiFormatQuoteClose } from '@/components/icons';
-import type { Sponsor, Testimonial } from '@/lib/sponsors';
-import type { FC } from '@/types';
+import { Img } from '@/old/components/core';
+import { mdiFormatQuoteClose } from '@/old/components/icons';
+import type { Sponsor, Testimonial } from '@/old/lib/sponsors';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const StyledCard = styled('div', {

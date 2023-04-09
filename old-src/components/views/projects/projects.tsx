@@ -1,12 +1,16 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
-import { Field, Heading, Section, LinkButton } from '@/components/core';
-import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/components/icons';
-import { breakpointsValues } from '@/stitches';
-import type { FC, Project } from '@/types';
+import { Masonry, type MasonryBreakpoints } from '@/old/components/compounds';
+import { NothingFound } from '@/old/components/compounds/list-cards-group/list-cards-group.styles';
+import { Field, Heading, Section, LinkButton } from '@/old/components/core';
+import {
+  mdiEyeOutline,
+  mdiFileCodeOutline,
+  mdiMagnify,
+} from '@/old/components/icons';
+import { breakpointsValues } from '@/old/stitches';
+import type { FC, Project } from '@/old/types';
 import { theme } from '~/stitches';
 
 import { ProjectCard } from './card';

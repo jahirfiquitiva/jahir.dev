@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 
-import { Layout, Seo } from '@/components/molecules';
-import { FourOhFour as FourOhFourSection } from '@/components/views';
-import { buildOgImageUrl } from '@/utils/og';
+import { Layout, Seo } from '@/old/components/molecules';
+import { FourOhFour as FourOhFourSection } from '@/old/components/views';
+import { buildOgImageUrl } from '@/old/utils/og';
 
 const FourOhFour: NextPage = () => {
   return (

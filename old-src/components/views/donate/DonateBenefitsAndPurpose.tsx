@@ -1,5 +1,5 @@
-import { Heading, Link } from '@/components/core';
-import type { FC } from '@/types';
+import { Heading, Link } from '@/old/components/core';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const Container = styled('div', {

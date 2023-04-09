@@ -1,7 +1,7 @@
 import type { ElementType } from 'react';
 
-import { Link } from '@/components/core';
-import type { FC } from '@/types';
+import { Link } from '@/old/components/core';
+import type { FC } from '@/old/types';
 
 interface AnchorLinkProps {
   id: string;

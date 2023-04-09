@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable camelcase */
-import { fetchSponsors } from '@/lib/sponsors';
-import { buildApiResponse } from '@/utils/response';
+import { fetchSponsors } from '@/old/lib/sponsors';
+import { buildApiResponse } from '@/old/utils/response';
 
 export const config = { runtime: 'edge' };
 

@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { Heading, Section } from '@/components/core';
-import { useActivity } from '@/hooks/use-activity';
-import { useNowPlaying } from '@/hooks/use-now-playing';
-import { breakpointsValues } from '@/stitches';
-import type { FC } from '@/types';
+import { Masonry, type MasonryBreakpoints } from '@/old/components/compounds';
+import { Heading, Section } from '@/old/components/core';
+import { useActivity } from '@/old/hooks/use-activity';
+import { useNowPlaying } from '@/old/hooks/use-now-playing';
+import { breakpointsValues } from '@/old/stitches';
+import type { FC } from '@/old/types';
 
 import { DiscordActivity } from './DiscordActivity';
 import { NowPlaying } from './NowPlaying';

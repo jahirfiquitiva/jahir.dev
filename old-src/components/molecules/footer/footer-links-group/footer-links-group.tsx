@@ -1,6 +1,5 @@
-import type{ GradientOption,
-} from '@/stitches/utils/gradient';
-import type { FC } from '@/types';
+import type { GradientOption } from '@/old/stitches/utils/gradient';
+import type { FC } from '@/old/types';
 
 import { FooterNowPlaying } from './../footer-now-playing';
 import { FooterLink, List } from './footer-links-group.styles';

@@ -1,7 +1,7 @@
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { Heading } from '@/components/core';
-import { useSponsors } from '@/providers/sponsors';
-import { breakpointsValues } from '@/stitches';
+import { Masonry, type MasonryBreakpoints } from '@/old/components/compounds';
+import { Heading } from '@/old/components/core';
+import { useSponsors } from '@/old/providers/sponsors';
+import { breakpointsValues } from '@/old/stitches';
 
 import { DonateTestimonialCard } from './DonateTestimonialCard';
 

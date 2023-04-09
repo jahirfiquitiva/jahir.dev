@@ -1,4 +1,4 @@
-import type { Activity, FC } from '@/types';
+import type { Activity, FC } from '@/old/types';
 
 import { ActivityCard } from './ActivityCard';
 import { ActivityItem } from './ActivityItem';

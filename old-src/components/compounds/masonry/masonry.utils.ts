@@ -1,6 +1,6 @@
 import { Children, isValidElement } from 'react';
 
-import type {  ComponentChild } from '@/types';
+import type { ComponentChild } from '@/old/types';
 
 import type { MasonryBreakpoints } from './masonry.types.d';
 

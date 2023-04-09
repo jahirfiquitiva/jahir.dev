@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import { queryBuilder, type CountersReactions } from '@/lib/planetscale';
-import { buildApiResponse } from '@/utils/response';
+import { queryBuilder, type CountersReactions } from '@/old/lib/planetscale';
+import { buildApiResponse } from '@/old/utils/response';
 
 export const config = { runtime: 'edge' };
 

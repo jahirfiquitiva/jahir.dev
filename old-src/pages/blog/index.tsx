@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import { Layout, Seo } from '@/components/molecules';
-import { Blog as BlogSection } from '@/components/views';
-import type { Post } from '@/types';
-import { buildOgImageUrl } from '@/utils/og';
-import { getAllPosts } from '@/utils/posts/get-posts';
+import { Layout, Seo } from '@/old/components/molecules';
+import { Blog as BlogSection } from '@/old/components/views';
+import type { Post } from '@/old/types';
+import { buildOgImageUrl } from '@/old/utils/og';
+import { getAllPosts } from '@/old/utils/posts/get-posts';
 
 interface BlogProps {
   posts?: Array<Post>;

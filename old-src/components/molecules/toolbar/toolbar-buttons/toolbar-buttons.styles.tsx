@@ -1,8 +1,8 @@
 import Icon from '@mdi/react';
 import type { ComponentProps } from 'react';
 
-import { Button } from '@/components/core';
-import type { FC } from '@/types';
+import { Button } from '@/old/components/core';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const StyledToolbarButton = styled(Button, {

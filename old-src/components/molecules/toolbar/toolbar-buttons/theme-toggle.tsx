@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-import { moonOutline, sunOutline } from '@/components/icons';
-import { useTheme } from '@/providers/theme';
+import { moonOutline, sunOutline } from '@/old/components/icons';
+import { useTheme } from '@/old/providers/theme';
 
 import { ToolbarButton } from './toolbar-buttons.styles';
 

@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
-import type { ThemeColorValue } from '@/stitches';
-import type { FC } from '@/types';
+import type { ThemeColorValue } from '@/old/stitches';
+import type { FC } from '@/old/types';
 
 import { DoodleImg } from './open-doodle.styles';
 

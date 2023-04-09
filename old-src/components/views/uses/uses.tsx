@@ -1,7 +1,7 @@
-import { Link } from '@/components/core';
-import gaming from '@/data/gaming.json';
-import hardware from '@/data/hardware.json';
-import software from '@/data/software.json';
+import { Link } from '@/old/components/core';
+import gaming from '@/old/data/gaming.json';
+import hardware from '@/old/data/hardware.json';
+import software from '@/old/data/software.json';
 
 import { AnchorLink, HardwareGrid, AppsGrid, Colophon } from './components';
 import { ExtensionsGrid } from './uses.extensions';

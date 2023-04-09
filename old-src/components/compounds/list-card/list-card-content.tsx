@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 
 import {
   StyledContentContainer,

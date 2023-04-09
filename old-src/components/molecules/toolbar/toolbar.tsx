@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/components/core';
-import { mdiMenu, mdiPlus } from '@/components/icons';
-import type { FC } from '@/types';
+import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/old/components/core';
+import { mdiMenu, mdiPlus } from '@/old/components/icons';
+import type { FC } from '@/old/types';
 
 import { ThemeToggle, MobileMenuToggle } from './toolbar-buttons';
 import {

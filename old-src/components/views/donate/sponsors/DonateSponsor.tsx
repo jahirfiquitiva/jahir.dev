@@ -1,15 +1,15 @@
 import Icon from '@mdi/react';
 
-import { buildChipStyles, Chip, Img, Link } from '@/components/core';
+import { buildChipStyles, Chip, Img, Link } from '@/old/components/core';
 import {
   mdiCrystalBall,
   unicorn,
   rocket,
   diamond,
-} from '@/components/icons';
-import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/lib/sponsors';
-import type { ThemeColorValue } from '@/stitches';
-import type { FC } from '@/types';
+} from '@/old/components/icons';
+import { sizesForTier, Sponsor, SponsorsCategoryKey } from '@/old/lib/sponsors';
+import type { ThemeColorValue } from '@/old/stitches';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const Container = styled(Link, {

@@ -5,10 +5,10 @@ import Head from 'next/head';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { Provider as BalancerProvider } from 'react-wrap-balancer';
 
-import { ThemeProvider } from '@/providers/theme';
-import type { FC } from '@/types';
+import { ThemeProvider } from '@/old/providers/theme';
+import type { FC } from '@/old/types';
 import { darkTheme, globalStyles } from '~/stitches';
-import '@/styles/globals.scss';
+import '@/old/styles/globals.scss';
 
 const inter = Inter({
   subsets: ['latin'],

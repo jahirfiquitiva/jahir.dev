@@ -1,7 +1,11 @@
-import { getNowPlaying, validateTrack, type TrackData } from '@/lib/spotify';
-import type { LanyardResponse } from '@/types';
-import { transformSpotifyActivity } from '@/utils/format/format-lanyard';
-import { buildApiResponse } from '@/utils/response';
+import {
+  getNowPlaying,
+  validateTrack,
+  type TrackData,
+} from '@/old/lib/spotify';
+import type { LanyardResponse } from '@/old/types';
+import { transformSpotifyActivity } from '@/old/utils/format/format-lanyard';
+import { buildApiResponse } from '@/old/utils/response';
 
 const discordUserId = process.env.DISCORD_USER_ID || '';
 

@@ -1,5 +1,5 @@
-import { fetchInstaFeed, type InstagramPost } from '@/lib/instagram';
-import { buildApiResponse } from '@/utils/response';
+import { fetchInstaFeed, type InstagramPost } from '@/old/lib/instagram';
+import { buildApiResponse } from '@/old/utils/response';
 
 export const config = { runtime: 'edge' };
 

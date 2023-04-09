@@ -1,7 +1,11 @@
 import Icon from '@mdi/react';
 
-import { Heading, Link, LinkButton } from '@/components/core';
-import { mdiCreditCardChipOutline, mdiHeartOutline, mdiPizza } from '@/components/icons';
+import { Heading, Link, LinkButton } from '@/old/components/core';
+import {
+  mdiCreditCardChipOutline,
+  mdiHeartOutline,
+  mdiPizza,
+} from '@/old/components/icons';
 import {
   styled,
   darkTheme as theme,

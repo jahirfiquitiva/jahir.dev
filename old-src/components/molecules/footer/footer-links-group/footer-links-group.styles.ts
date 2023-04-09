@@ -1,5 +1,5 @@
-import { gradientEnabledCss, Link } from '@/components/core';
-import { gradientVariants } from '@/stitches/utils/gradient';
+import { gradientEnabledCss, Link } from '@/old/components/core';
+import { gradientVariants } from '@/old/stitches/utils/gradient';
 import { styled } from '~/stitches';
 
 export const List = styled('ul', {

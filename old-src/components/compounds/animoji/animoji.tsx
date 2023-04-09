@@ -1,5 +1,5 @@
-import { Link } from '@/components/core';
-import type { FC } from '@/types';
+import { Link } from '@/old/components/core';
+import type { FC } from '@/old/types';
 
 import { AnimojiImg } from './animoji.styles';
 

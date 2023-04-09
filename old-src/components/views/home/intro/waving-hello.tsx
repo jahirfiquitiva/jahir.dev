@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { Heading } from '@/components/core';
-import type { FC } from '@/types';
+import { Heading } from '@/old/components/core';
+import type { FC } from '@/old/types';
 
 import { WaveSpan } from './intro.styles';
 

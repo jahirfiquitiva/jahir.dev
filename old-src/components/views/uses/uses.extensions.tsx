@@ -1,6 +1,6 @@
-import { Link } from '@/components/core';
-import { Grid, GridColumn } from '@/components/mdx';
-import extensions from '@/data/extensions.json';
+import { Link } from '@/old/components/core';
+import { Grid, GridColumn } from '@/old/components/mdx';
+import extensions from '@/old/data/extensions.json';
 
 const extensionsHalfIndex = Math.round(extensions.length / 2);
 const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);

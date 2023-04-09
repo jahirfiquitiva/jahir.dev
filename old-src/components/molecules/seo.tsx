@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { useMemo } from 'react';
 
-import { useTheme } from '@/providers/theme';
-import type { FC } from '@/types';
-import { unique } from '@/utils/unique';
+import { useTheme } from '@/old/providers/theme';
+import type { FC } from '@/old/types';
+import { unique } from '@/old/utils/unique';
 
 const defaultImage = 'https://jahir.dev/api/og';
 const defaultLogoImage =

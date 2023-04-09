@@ -1,9 +1,9 @@
 import Icon from '@mdi/react';
 import type { ComponentProps } from 'react';
 
-import { Heading, Link, LinkButton } from '@/components/core';
-import { mdiAccountCircleOutline } from '@/components/icons';
-import type { FC } from '@/types';
+import { Heading, Link, LinkButton } from '@/old/components/core';
+import { mdiAccountCircleOutline } from '@/old/components/icons';
+import type { FC } from '@/old/types';
 
 import {
   IntroSection,

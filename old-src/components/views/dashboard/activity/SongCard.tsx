@@ -1,6 +1,6 @@
-import { mdiSpotify } from '@/components/icons';
-import { TopTrackData } from '@/lib/spotify';
-import type { FC } from '@/types';
+import { mdiSpotify } from '@/old/components/icons';
+import { TopTrackData } from '@/old/lib/spotify';
+import type { FC } from '@/old/types';
 
 import { ActivityCard } from './ActivityCard';
 

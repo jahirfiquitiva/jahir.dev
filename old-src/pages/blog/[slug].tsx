@@ -2,14 +2,14 @@ import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { Loading } from '@/components/compounds';
-import { MdxContent, mdxComponents } from '@/components/mdx';
-import { Layout, Seo } from '@/components/molecules';
-import { Error, FourOhFour as FourOhFourSection } from '@/components/views';
-import { useMDXComponent } from '@/hooks/use-mdx-component';
-import type { Post } from '@/types';
-import { buildOgImageUrl } from '@/utils/og';
-import { getAllPosts } from '@/utils/posts/get-posts';
+import { Loading } from '@/old/components/compounds';
+import { MdxContent, mdxComponents } from '@/old/components/mdx';
+import { Layout, Seo } from '@/old/components/molecules';
+import { Error, FourOhFour as FourOhFourSection } from '@/old/components/views';
+import { useMDXComponent } from '@/old/hooks/use-mdx-component';
+import type { Post } from '@/old/types';
+import { buildOgImageUrl } from '@/old/utils/og';
+import { getAllPosts } from '@/old/utils/posts/get-posts';
 import type { Blog } from 'contentlayer/generated';
 
 const mapContentLayerBlog = (post?: Blog): Post | null => {

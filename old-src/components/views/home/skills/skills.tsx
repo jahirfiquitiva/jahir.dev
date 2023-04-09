@@ -6,8 +6,8 @@ import {
   Heading,
   buildChipStyles,
   Section,
-} from '@/components/core';
-import type { FC } from '@/types';
+} from '@/old/components/core';
+import type { FC } from '@/old/types';
 
 import { skills } from './data';
 

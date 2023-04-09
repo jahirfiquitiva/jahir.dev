@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { Meta } from '@/components/molecules';
+import { Meta } from '@/old/components/molecules';
 import { getCssText } from '~/stitches';
 
 export default class CustomDocument extends Document {

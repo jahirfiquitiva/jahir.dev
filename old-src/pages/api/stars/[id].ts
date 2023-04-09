@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 
-import { buildApiResponse } from '@/utils/response';
+import { buildApiResponse } from '@/old/utils/response';
 
 const repoApiUrl = 'https://api.github.com/repos';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;

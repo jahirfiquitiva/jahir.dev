@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 
 import { AppItem, type AppItemProps } from '../app-item';
 

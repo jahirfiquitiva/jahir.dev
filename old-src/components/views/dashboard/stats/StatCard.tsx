@@ -2,12 +2,12 @@ import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import { ComponentProps, useMemo } from 'react';
 
-import { Link } from '@/components/core';
-import { useTheme } from '@/providers/theme';
-import type { ThemeColorValue } from '@/stitches';
-import { FC } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { Link } from '@/old/components/core';
+import { useTheme } from '@/old/providers/theme';
+import type { ThemeColorValue } from '@/old/stitches';
+import { FC } from '@/old/types';
+import { getReadableColor } from '@/old/utils/color/get-readable-color';
+import { hexToRGB } from '@/old/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const StyledCard = styled('div', {

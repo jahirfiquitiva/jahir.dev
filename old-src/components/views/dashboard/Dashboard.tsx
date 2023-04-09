@@ -1,5 +1,5 @@
-import { Animoji } from '@/components/compounds';
-import { Heading, Section } from '@/components/core';
+import { Animoji } from '@/old/components/compounds';
+import { Heading, Section } from '@/old/components/core';
 
 import { ActivityGrid } from './activity/ActivityGrid';
 import { Grid } from './grid';
@@ -22,8 +22,8 @@ export const Dashboard = () => {
         }}
         size={120}
       />
-      <br/>
-      <br/>
+      <br />
+      <br />
       <Stats />
       <ActivityGrid />
       <TopTracks />

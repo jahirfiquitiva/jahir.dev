@@ -1,10 +1,10 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Button, LinkButton } from '@/components/core';
-import { mdiShareVariantOutline } from '@/components/icons';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC } from '@/types';
+import { Button, LinkButton } from '@/old/components/core';
+import { mdiShareVariantOutline } from '@/old/components/icons';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import type { FC } from '@/old/types';
 
 const shareUrl = (title: string, slug: string) =>
   `https://twitter.com/intent/tweet?text=${encodeURIComponent(

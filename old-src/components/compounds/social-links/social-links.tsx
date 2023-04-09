@@ -7,7 +7,7 @@ import {
   mdiInstagram,
   polywork,
   mastodon,
-} from '@/components/icons';
+} from '@/old/components/icons';
 
 import {
   SocialLinksContainer,

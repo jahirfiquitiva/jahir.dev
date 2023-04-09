@@ -1,5 +1,5 @@
-import { Link } from '@/components/core';
-import { gradientVariants } from '@/stitches/utils/gradient';
+import { Link } from '@/old/components/core';
+import { gradientVariants } from '@/old/stitches/utils/gradient';
 import { styled, type StitchesCSS } from '~/stitches';
 
 const spanCss: StitchesCSS = {

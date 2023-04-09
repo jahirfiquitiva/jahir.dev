@@ -1,6 +1,6 @@
 import { Ring } from '@uiball/loaders';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const StyledContainer = styled('div', {

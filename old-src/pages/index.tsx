@@ -1,11 +1,11 @@
 import { getCountryByAlpha2 } from 'country-locale-map';
 import type { GetServerSideProps, NextPage } from 'next';
 
-import { Layout, Seo } from '@/components/molecules';
-import { Intro, Projects, Skills } from '@/components/views';
-import allProjects from '@/data/projects.json';
-import type { Project } from '@/types';
-import { Button } from '@/v2/components/core/button/button';
+import { Layout, Seo } from '@/old/components/molecules';
+import { Intro, Projects, Skills } from '@/old/components/views';
+import allProjects from '@/old/data/projects.json';
+import type { Project } from '@/old/types';
+import { Button } from '@/old/v2/components/core/button/button';
 
 interface HomeProps {
   projects?: Array<Project>;

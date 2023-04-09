@@ -1,4 +1,4 @@
-import { Heading, Img } from '@/components/core';
+import { Heading, Img } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 import { Reactions } from './Reactions';

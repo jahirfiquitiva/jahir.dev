@@ -1,7 +1,7 @@
-import { LinkStatCard } from '@/components/compounds';
-import { mdiThumbUpOutline } from '@/components/icons';
-import { useRequest } from '@/hooks/use-request';
-import type { FC } from '@/types';
+import { LinkStatCard } from '@/old/components/compounds';
+import { mdiThumbUpOutline } from '@/old/components/icons';
+import { useRequest } from '@/old/hooks/use-request';
+import type { FC } from '@/old/types';
 
 export const ReactionsStats: FC = () => {
   const { data, loading } = useRequest<{ total?: string }>('/api/reactions');

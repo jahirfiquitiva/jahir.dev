@@ -1,12 +1,12 @@
 import { createContext, useContext } from 'react';
 
-import { useRequest } from '@/hooks/use-request';
+import { useRequest } from '@/old/hooks/use-request';
 import type {
   SponsorCategory,
   SponsorsCategoriesResponse,
   Testimonial,
-} from '@/lib/sponsors';
-import type { FC } from '@/types';
+} from '@/old/lib/sponsors';
+import type { FC } from '@/old/types';
 
 export interface SponsorsContextValue {
   categories: Array<SponsorCategory>;

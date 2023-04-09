@@ -3,13 +3,13 @@ import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import { useMemo } from 'react';
 
-import { Img, Link } from '@/components/core';
-import { mdiTimerSandEmpty } from '@/components/icons';
-import { usePalette } from '@/hooks/use-palette';
-import { useTheme } from '@/providers/theme';
-import type { FC } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { Img, Link } from '@/old/components/core';
+import { mdiTimerSandEmpty } from '@/old/components/icons';
+import { usePalette } from '@/old/hooks/use-palette';
+import { useTheme } from '@/old/providers/theme';
+import type { FC } from '@/old/types';
+import { getReadableColor } from '@/old/utils/color/get-readable-color';
+import { hexToRGB } from '@/old/utils/color/hex-to-rgb';
 import { styled } from '~/stitches';
 
 const Card = styled(Link, {

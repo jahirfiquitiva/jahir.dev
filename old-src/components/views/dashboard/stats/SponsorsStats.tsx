@@ -1,7 +1,7 @@
-import { LinkStatCard, StatCard } from '@/components/compounds';
-import { money, mdiHeartOutline } from '@/components/icons';
-import { useSponsors } from '@/providers/sponsors';
-import type { FC } from '@/types';
+import { LinkStatCard, StatCard } from '@/old/components/compounds';
+import { money, mdiHeartOutline } from '@/old/components/icons';
+import { useSponsors } from '@/old/providers/sponsors';
+import type { FC } from '@/old/types';
 
 interface SponsorsStatsProps {
   forSponsorsPage?: boolean;

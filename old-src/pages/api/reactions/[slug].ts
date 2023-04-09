@@ -5,8 +5,8 @@ import {
   queryBuilder,
   reactionsNames,
   type ReactionName,
-} from '@/lib/planetscale';
-import { buildApiResponse } from '@/utils/response';
+} from '@/old/lib/planetscale';
+import { buildApiResponse } from '@/old/utils/response';
 
 export const config = { runtime: 'edge' };
 

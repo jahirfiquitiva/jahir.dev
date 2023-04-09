@@ -1,10 +1,10 @@
 /* eslint-disable max-lines-per-function */
 import { useMemo } from 'react';
 
-import { OpenDoodle } from '@/components/compounds';
-import { Heading, Link } from '@/components/core';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC, RandomPageImage } from '@/types';
+import { OpenDoodle } from '@/old/components/compounds';
+import { Heading, Link } from '@/old/components/core';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import type { FC, RandomPageImage } from '@/old/types';
 import { styled } from '~/stitches';
 
 const IntroGrid = styled('div', {

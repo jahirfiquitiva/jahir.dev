@@ -1,7 +1,7 @@
-import { LinkStatCard } from '@/components/compounds';
-import { mdiStarOutline, gitHubOutline } from '@/components/icons';
-import { useImmutableRequest } from '@/hooks/use-request';
-import type { FC } from '@/types';
+import { LinkStatCard } from '@/old/components/compounds';
+import { mdiStarOutline, gitHubOutline } from '@/old/components/icons';
+import { useImmutableRequest } from '@/old/hooks/use-request';
+import type { FC } from '@/old/types';
 
 export const GitHubStats: FC = () => {
   const { data, loading } = useImmutableRequest<{

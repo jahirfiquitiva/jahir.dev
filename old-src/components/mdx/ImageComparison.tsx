@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 interface ImageComparisonProps {

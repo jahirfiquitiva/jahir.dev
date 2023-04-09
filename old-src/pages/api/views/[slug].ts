@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import type { NextRequest } from 'next/server';
 
-import { getDevToArticles } from '@/lib/devto';
-import { queryBuilder } from '@/lib/planetscale';
-import { buildApiResponse } from '@/utils/response';
+import { getDevToArticles } from '@/old/lib/devto';
+import { queryBuilder } from '@/old/lib/planetscale';
+import { buildApiResponse } from '@/old/utils/response';
 
 export const config = { runtime: 'edge' };
 

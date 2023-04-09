@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
-import { Loading } from '@/components/compounds';
-import { Heading, Img } from '@/components/core';
-import { useSponsors } from '@/providers/sponsors';
+import { Loading } from '@/old/components/compounds';
+import { Heading, Img } from '@/old/components/core';
+import { useSponsors } from '@/old/providers/sponsors';
 import { styled } from '~/stitches';
 
 import { DonateSponsor } from './DonateSponsor';

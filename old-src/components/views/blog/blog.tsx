@@ -1,13 +1,13 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { ListCardsGroup } from '@/components/compounds';
-import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
-import { Field, Heading, Section } from '@/components/core';
-import { mdiMagnify, mdiRss } from '@/components/icons';
-import type { FC, Post } from '@/types';
-import { groupBlogPosts } from '@/utils/posts/group-posts';
-import type { BlogGroup as BlogGroupProps } from '@/utils/posts/group-posts';
+import { ListCardsGroup } from '@/old/components/compounds';
+import { NothingFound } from '@/old/components/compounds/list-cards-group/list-cards-group.styles';
+import { Field, Heading, Section } from '@/old/components/core';
+import { mdiMagnify, mdiRss } from '@/old/components/icons';
+import type { FC, Post } from '@/old/types';
+import { groupBlogPosts } from '@/old/utils/posts/group-posts';
+import type { BlogGroup as BlogGroupProps } from '@/old/utils/posts/group-posts';
 
 import {
   BlogButtons,

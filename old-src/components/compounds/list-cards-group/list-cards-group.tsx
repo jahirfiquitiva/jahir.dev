@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 
 import { GroupHeader, GroupSection } from './list-cards-group.styles';
 

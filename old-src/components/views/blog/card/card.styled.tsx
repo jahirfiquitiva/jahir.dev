@@ -1,5 +1,5 @@
-import { StyledExcerpt } from '@/components/compounds/list-card/list-card.styles';
-import { Img } from '@/components/core';
+import { StyledExcerpt } from '@/old/components/compounds/list-card/list-card.styles';
+import { Img } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 export const BlogCardHero = styled(Img, {

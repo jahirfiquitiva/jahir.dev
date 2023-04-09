@@ -1,7 +1,7 @@
-import { LinkStatCard } from '@/components/compounds';
-import { mdiInstagram } from '@/components/icons';
-import { useImmutableRequest } from '@/hooks/use-request';
-import type { FC } from '@/types';
+import { LinkStatCard } from '@/old/components/compounds';
+import { mdiInstagram } from '@/old/components/icons';
+import { useImmutableRequest } from '@/old/hooks/use-request';
+import type { FC } from '@/old/types';
 
 export const InstaStats: FC = () => {
   const { data, loading } = useImmutableRequest<{ followers?: number }>(

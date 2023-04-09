@@ -1,6 +1,6 @@
 import { ComponentProps, useMemo } from 'react';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 import { Link } from '../core';

@@ -1,9 +1,9 @@
 import Icon from '@mdi/react';
 
-import { mdiInstagram } from '@/components/icons';
-import { useImmutableRequest } from '@/hooks/use-request';
-import type { InstagramPost } from '@/lib/instagram';
-import type { FC } from '@/types';
+import { mdiInstagram } from '@/old/components/icons';
+import { useImmutableRequest } from '@/old/hooks/use-request';
+import type { InstagramPost } from '@/old/lib/instagram';
+import type { FC } from '@/old/types';
 
 import { Figure, Grid, ImgContainer, InstaPhoto } from './insta-feed.styles';
 

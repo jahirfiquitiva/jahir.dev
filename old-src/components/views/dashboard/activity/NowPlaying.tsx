@@ -1,5 +1,5 @@
-import type { TopTrackData, TrackData } from '@/lib/spotify';
-import type { FC } from '@/types';
+import type { TopTrackData, TrackData } from '@/old/lib/spotify';
+import type { FC } from '@/old/types';
 
 import { ActivityItem } from './ActivityItem';
 import { SongCard } from './SongCard';

@@ -1,4 +1,4 @@
-import { Img, Link } from '@/components/core';
+import { Img, Link } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 export const HardwareItemContainer = styled('div', {
@@ -19,10 +19,10 @@ export const HardwareItemContainer = styled('div', {
     alignItems: 'flex-start',
     gap: 0,
   },
-  hocus:{
+  hocus: {
     transform: 'scale(1.025)',
     borderColor: 'rgba($accent-shadow / 0.56)',
-  }
+  },
 });
 
 export const HardwareImage = styled(Img, {

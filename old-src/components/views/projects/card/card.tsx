@@ -1,13 +1,13 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Img } from '@/components/core';
-import { mdiStar } from '@/components/icons';
-import { useRequest } from '@/hooks/use-request';
-import { useTheme } from '@/providers/theme';
-import type { FC, Project } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { Img } from '@/old/components/core';
+import { mdiStar } from '@/old/components/icons';
+import { useRequest } from '@/old/hooks/use-request';
+import { useTheme } from '@/old/providers/theme';
+import type { FC, Project } from '@/old/types';
+import { getReadableColor } from '@/old/utils/color/get-readable-color';
+import { hexToRGB } from '@/old/utils/color/hex-to-rgb';
 
 import {
   Description,

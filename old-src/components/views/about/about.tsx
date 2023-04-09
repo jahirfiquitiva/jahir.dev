@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import { useMemo } from 'react';
 
-import { Img, Heading, Section, Link } from '@/components/core';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useRandomItem } from '@/hooks/use-random-item';
-import type { FC } from '@/types';
+import { Img, Heading, Section, Link } from '@/old/components/core';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import { useRandomItem } from '@/old/hooks/use-random-item';
+import type { FC } from '@/old/types';
 
 import { images } from './about.images';
 import { Intro, PhotoFigure } from './about.styles';

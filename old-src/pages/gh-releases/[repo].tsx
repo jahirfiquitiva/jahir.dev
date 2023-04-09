@@ -1,9 +1,9 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
-import { Heading, Section, Link } from '@/components/core';
-import { Layout, Seo } from '@/components/molecules';
-import { FourOhFour as FourOhFourSection } from '@/components/views';
-import { useImmutableRequest } from '@/hooks/use-request';
+import { Heading, Section, Link } from '@/old/components/core';
+import { Layout, Seo } from '@/old/components/molecules';
+import { FourOhFour as FourOhFourSection } from '@/old/components/views';
+import { useImmutableRequest } from '@/old/hooks/use-request';
 
 interface ReleaseData {
   success?: boolean;

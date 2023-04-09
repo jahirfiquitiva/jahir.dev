@@ -1,5 +1,5 @@
-import { SponsorsProvider } from '@/providers/sponsors';
-import type { FC } from '@/types';
+import { SponsorsProvider } from '@/old/providers/sponsors';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 import { GitHubStats } from './GitHubStats';

@@ -1,10 +1,10 @@
 import Icon from '@mdi/react';
 import { LineWobble } from '@uiball/loaders';
 
-import { Img, Link } from '@/components/core';
-import { mdiSpotify } from '@/components/icons';
-import { useNowPlaying } from '@/hooks/use-now-playing';
-import type { FC } from '@/types';
+import { Img, Link } from '@/old/components/core';
+import { mdiSpotify } from '@/old/components/icons';
+import { useNowPlaying } from '@/old/hooks/use-now-playing';
+import type { FC } from '@/old/types';
 import { styled, keyframes, type StitchesCSS } from '~/stitches';
 
 const MusicItem = styled('li', {

@@ -1,4 +1,4 @@
-import { TrackData } from '@/lib/spotify';
+import { TrackData } from '@/old/lib/spotify';
 
 import { useRequest } from './use-request';
 

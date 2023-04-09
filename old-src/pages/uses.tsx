@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 
-import { MdxContent } from '@/components/mdx';
-import { Layout, Seo } from '@/components/molecules';
-import { Uses } from '@/components/views';
-import { buildOgImageUrl } from '@/utils/og';
+import { MdxContent } from '@/old/components/mdx';
+import { Layout, Seo } from '@/old/components/molecules';
+import { Uses } from '@/old/components/views';
+import { buildOgImageUrl } from '@/old/utils/og';
 
 const usesPageKeywords = [
   'hardware',

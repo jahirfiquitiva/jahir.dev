@@ -1,4 +1,4 @@
-import { Img } from '@/components/core';
+import { Img } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 export const DoodleImg = styled(Img, {

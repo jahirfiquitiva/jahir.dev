@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-import type { FC } from '@/types';
+import type { FC } from '@/old/types';
 
 import { Toolbar } from './../toolbar';
 import { Main } from './layout.styles';

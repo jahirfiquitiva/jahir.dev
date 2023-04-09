@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import type { GradientOption } from '@/stitches/utils/gradient';
-import type { FC } from '@/types';
+import type { GradientOption } from '@/old/stitches/utils/gradient';
+import type { FC } from '@/old/types';
 
 import { ToolbarLink, ToolbarLinksContainer } from './toolbar-nav-links.styles';
 

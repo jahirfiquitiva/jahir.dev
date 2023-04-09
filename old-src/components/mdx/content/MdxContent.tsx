@@ -1,16 +1,16 @@
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 
-import { Divider, Link, LinkButton } from '@/components/core';
-import { mdiPencilOutline } from '@/components/icons';
-import { usePalette } from '@/hooks/use-palette';
-import { ReactionsProvider } from '@/providers/reactions';
-import { useTheme } from '@/providers/theme';
-import type { FC, Post } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
-import { getDomainFromUrl } from '@/utils/format/domain';
-import { formatDate } from '@/utils/format/format-date';
+import { Divider, Link, LinkButton } from '@/old/components/core';
+import { mdiPencilOutline } from '@/old/components/icons';
+import { usePalette } from '@/old/hooks/use-palette';
+import { ReactionsProvider } from '@/old/providers/reactions';
+import { useTheme } from '@/old/providers/theme';
+import type { FC, Post } from '@/old/types';
+import { getReadableColor } from '@/old/utils/color/get-readable-color';
+import { hexToRGB } from '@/old/utils/color/hex-to-rgb';
+import { getDomainFromUrl } from '@/old/utils/format/domain';
+import { formatDate } from '@/old/utils/format/format-date';
 import type { StitchesCSS as CSS } from '~/stitches';
 
 import { Article } from './Article';

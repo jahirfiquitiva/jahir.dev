@@ -1,4 +1,4 @@
-import { Button } from '@/components/core';
+import { Button } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 export const Fab = styled(Button, {

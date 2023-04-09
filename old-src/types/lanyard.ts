@@ -1,4 +1,4 @@
-import type { TrackData } from '@/lib/spotify';
+import type { TrackData } from '@/old/lib/spotify';
 
 interface Timestamps {
   start: number;

@@ -1,4 +1,4 @@
-import { Img, Section } from '@/components/core';
+import { Img, Section } from '@/old/components/core';
 import { styled, keyframes } from '~/stitches';
 
 export const IntroSection = styled(Section, {

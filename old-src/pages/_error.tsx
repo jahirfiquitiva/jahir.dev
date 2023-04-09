@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import type { ErrorProps } from 'next/error';
 
-import { Layout, Seo } from '@/components/molecules';
-import { Error as ErrorSection } from '@/components/views';
+import { Layout, Seo } from '@/old/components/molecules';
+import { Error as ErrorSection } from '@/old/components/views';
 
 const Error: NextPage<ErrorProps> = (props) => {
   return (

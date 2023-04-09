@@ -1,6 +1,6 @@
-import { Section } from '@/components/core';
-import { SponsorsProvider } from '@/providers/sponsors';
-import type { FC, RandomPageImage } from '@/types';
+import { Section } from '@/old/components/core';
+import { SponsorsProvider } from '@/old/providers/sponsors';
+import type { FC, RandomPageImage } from '@/old/types';
 import { styled } from '~/stitches';
 
 import { DonateBenefitsAndPurpose } from './DonateBenefitsAndPurpose';

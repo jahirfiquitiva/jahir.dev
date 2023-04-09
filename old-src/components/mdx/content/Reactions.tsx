@@ -3,7 +3,7 @@ import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
-import { Button } from '@/components/core';
+import { Button } from '@/old/components/core';
 import {
   award,
   awardOutline,
@@ -13,12 +13,12 @@ import {
   mdiHeartOutline,
   mdiThumbUp,
   mdiThumbUpOutline,
-} from '@/components/icons';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useWindowDimensions } from '@/hooks/use-window-dimensions';
-import { type ReactionType, useReactions } from '@/providers/reactions';
-import { useTheme } from '@/providers/theme';
-import type { FC } from '@/types';
+} from '@/old/components/icons';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import { useWindowDimensions } from '@/old/hooks/use-window-dimensions';
+import { type ReactionType, useReactions } from '@/old/providers/reactions';
+import { useTheme } from '@/old/providers/theme';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 const ReactionsGroup = styled('div', {

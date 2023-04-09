@@ -1,5 +1,5 @@
-import { Heading } from '@/components/core';
-import type { FC } from '@/types';
+import { Heading } from '@/old/components/core';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 import { SponsorsStats } from '../dashboard/stats';

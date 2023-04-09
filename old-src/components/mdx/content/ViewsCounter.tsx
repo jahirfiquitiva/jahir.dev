@@ -1,9 +1,9 @@
 import { Ring } from '@uiball/loaders';
 import { useEffect } from 'react';
 
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useRequest } from '@/hooks/use-request';
-import type { FC } from '@/types';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import { useRequest } from '@/old/hooks/use-request';
+import type { FC } from '@/old/types';
 import { styled } from '~/stitches';
 
 interface ViewsCounterProps {

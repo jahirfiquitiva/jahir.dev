@@ -1,4 +1,4 @@
-import { Link } from '@/components/core';
+import { Link } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 export const SocialLinksContainer = styled('ul', {

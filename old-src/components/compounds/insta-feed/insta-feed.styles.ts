@@ -1,4 +1,4 @@
-import { Link } from '@/components/core';
+import { Link } from '@/old/components/core';
 import { styled } from '~/stitches';
 
 export const Figure = styled('figure', {
@@ -69,4 +69,3 @@ export const InstaPhoto = styled('img', {
   objectPosition: 'center',
   transition: 'all ease-in-out .35s',
 });
-

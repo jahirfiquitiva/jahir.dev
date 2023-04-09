@@ -1,10 +1,14 @@
 import { useMemo } from 'react';
 
-import { usePalette, type Palette, type SwatchName } from '@/hooks/use-palette';
-import { useTheme } from '@/providers/theme';
-import type { FC } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import {
+  usePalette,
+  type Palette,
+  type SwatchName,
+} from '@/old/hooks/use-palette';
+import { useTheme } from '@/old/providers/theme';
+import type { FC } from '@/old/types';
+import { getReadableColor } from '@/old/utils/color/get-readable-color';
+import { hexToRGB } from '@/old/utils/color/hex-to-rgb';
 
 import { StyledListCard } from './list-card.styles';
 

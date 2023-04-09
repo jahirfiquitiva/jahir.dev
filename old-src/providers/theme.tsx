@@ -1,8 +1,8 @@
 import { useTheme as useNextTheme } from 'next-themes';
 import { createContext, useContext, useMemo } from 'react';
 
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC } from '@/types';
+import { useHasMounted } from '@/old/hooks/use-has-mounted';
+import type { FC } from '@/old/types';
 
 export interface ThemeContextValue {
   isDark: boolean;

@@ -1,6 +1,6 @@
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { breakpointsValues } from '@/stitches';
-import type { FC } from '@/types';
+import { Masonry, type MasonryBreakpoints } from '@/old/components/compounds';
+import { breakpointsValues } from '@/old/stitches';
+import type { FC } from '@/old/types';
 import { theme } from '~/stitches';
 
 import { HardwareItem, type HardwareItemProps } from './hardware-item';
@@ -15,10 +15,7 @@ export const HardwareGrid: FC<{ items: Array<HardwareItemProps> }> = ({
   items,
 }) => {
   return (
-    <Masonry
-      breakpoints={masonryBreakpoints}
-      gap={theme.space['16'].value}
-    >
+    <Masonry breakpoints={masonryBreakpoints} gap={theme.space['16'].value}>
       {items.map((item, index) => {
         return <HardwareItem item={item} key={index} />;
       })}
