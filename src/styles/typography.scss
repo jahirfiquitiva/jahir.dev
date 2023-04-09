@@ -1,0 +1,75 @@
+html,
+body {
+  @apply text-xs text-secondary-txt font-normal;
+  line-height: 1.5;
+}
+
+@media (min-width: 425px) {
+  html,
+  body {
+    line-height: 1.75;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply inline-block text-primary-txt;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+}
+
+b,
+strong {
+  @apply font-semibold text-primary-txt;
+}
+
+p,
+small {
+  @apply font-normal;
+  width: fit-content;
+}
+
+h1 {
+  @apply text-3xl;
+  line-height: 1.5;
+}
+
+h2 {
+  @apply text-2xl;
+  line-height: 1.375;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+}
+
+h5 {
+  @apply text-md;
+}
+
+h6 {
+  @apply text-sm;
+}
+
+p {
+  @apply text-xs;
+}
+
+small {
+  @apply text-2xs;
+}

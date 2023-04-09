@@ -1,6 +1,7 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
 import { colors } from './colors';
+import { fontSizes as fontSize } from './font-sizes';
 import { spaces as spacing } from './spacing';
 
 const sansFontFamily = ['var(--font-inter)', ...fontFamily.sans];
@@ -18,10 +19,14 @@ module.exports = {
     spacing,
     borderRadius: { ...spacing, none: 0, half: '50%', full: '9999px' },
     colors,
+    fontSize,
     extend: {
       fontFamily: {
         sans: sansFontFamily,
         manrope: ['var(--font-manrope)', ...sansFontFamily],
+      },
+      fontWeight: {
+        normal: '450',
       },
     },
   },
