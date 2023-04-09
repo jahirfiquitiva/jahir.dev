@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { Button } from '@/components/core/button';
 import { Link } from '@/components/core/link';
+import Icon from '@mdi/react';
+import { mdiAccountCircleOutline } from 'old-src/components/icons';
 
 const inter = { className: 'inter' };
 
@@ -12,6 +14,10 @@ export default function Home() {
       className={'flex min-h-screen flex-col items-center justify-between p-24'}
     >
       <Button title={'test'}>Hola button</Button>
+      <Button title={'test'}>
+        <Icon path={mdiAccountCircleOutline} size={2} />
+      </Button>
+      <Button title={'test'} outlined>Outlined Button</Button>
       <Link href={'#test'}>Test</Link>
 
       <div
