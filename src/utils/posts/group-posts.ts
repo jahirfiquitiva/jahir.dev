@@ -1,4 +1,4 @@
-import type { Post } from '@/old/types';
+import type { Post } from '@/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const groupBy = <T, K extends keyof any>(
