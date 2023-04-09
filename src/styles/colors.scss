@@ -36,8 +36,7 @@
   --color-shadow-purple: #b898e3;
 }
 
-/* todo: replace with html.dark */
-@media (prefers-color-scheme: dark) {
+html.dark {
   :root {
     --color-inverse: 235 240 251;
     --color-background: #0c121e;
