@@ -6,11 +6,14 @@ import { Divider } from '@/components/core/divider';
 import { Field } from '@/components/core/field';
 import { Heading } from '@/components/core/heading';
 import { Link, ButtonLink } from '@/components/core/link';
-import { mdiAccountCircleOutline, mdiMagnify } from 'old-src/components/icons';
+import { LogoAnimoji } from '@/components/core/logo-animoji';
+import { mdiAccountCircleOutline, mdiMagnify } from '@/components/icons';
 
 export default function Home() {
   return (
     <main className={'flex min-h-screen flex-col items-center p-24 gap-24'}>
+      <LogoAnimoji />
+      <Divider />
       <Button title={'test'}>Button</Button>
       <Button title={'test'}>
         <Icon path={mdiAccountCircleOutline} size={1} />

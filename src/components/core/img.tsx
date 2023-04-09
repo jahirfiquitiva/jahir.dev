@@ -28,8 +28,8 @@ export const Img: FC<ImgProps> = (props) => {
   return (
     <StyledImg
       {...rest}
-      width={Number(width)}
-      height={Number(height)}
+      width={width}
+      height={height}
       loading={props.priority ? undefined : props.loading || 'lazy'}
       decoding={'async'}
     />

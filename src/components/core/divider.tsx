@@ -1,4 +1,4 @@
-import { tw } from '@/tw';
+import tw from '@/tw';
 
 export const Divider = tw.hr`
   my-20
