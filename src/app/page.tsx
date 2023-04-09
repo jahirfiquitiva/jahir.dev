@@ -1,6 +1,7 @@
 import Icon from '@mdi/react';
 
 import { Button } from '@/components/core/button';
+import { Divider } from '@/components/core/divider';
 import { Link, ButtonLink } from '@/components/core/link';
 import { mdiAccountCircleOutline } from 'old-src/components/icons';
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Button title={'test'} className={'rounded-full'}>
         Custom Button
       </Button>
+      <Divider />
       <Link href={'#test'} title={'Test link'}>
         Link
       </Link>
