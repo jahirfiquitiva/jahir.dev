@@ -1,6 +1,6 @@
-import { tw } from '@/tw';
+import { twx } from '@/tw';
 
-export const buttonClasses = tw`
+export const buttonClasses = twx`
   inline-flex
   items-center
   justify-center
@@ -31,7 +31,7 @@ export const buttonClasses = tw`
   [&>svg:only-child]:my-0
 `;
 
-export const outlinedButtonClasses = tw`
+export const outlinedButtonClasses = twx`
   bg-transparent
   border
   !border-solid

@@ -1,6 +1,6 @@
-import { tw } from '@/tw';
+import { twx } from '@/tw';
 
-export const linkClasses = tw`
+export const linkClasses = twx`
   inline-block
   font-medium
   text-accent

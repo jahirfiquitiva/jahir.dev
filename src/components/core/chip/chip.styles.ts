@@ -1,6 +1,6 @@
-import { tw } from '@/tw';
+import { tw, twx } from '@/tw';
 
-export const chipClasses = tw`
+export const Chip = tw.span`
   flex
   items-center
   justify-center
@@ -27,15 +27,15 @@ export const chipClasses = tw`
   hover:cursor-pointer
 `;
 
-export const imageChipClasses  =tw`
+export const imageChipClasses = twx`
   leading-[inherit]
   pl-6
   [&>img]:rounded-half
-`
+`;
 
-export const chipGroupClasses = tw`
+export const ChipGroup = tw.ul`
   flex
   flex-wrap
   py-16
   gap-10
-`
+`;

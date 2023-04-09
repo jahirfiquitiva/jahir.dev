@@ -33,7 +33,8 @@ export default function Home() {
       <ButtonLink href={'#test'} title={'Test link'} outlined>
         Outlined button link
       </ButtonLink>
-      <Divider />
+      <Divider as={'button'} />
+      <Chip className={'self-start'}>Chip</Chip>
       <Chip className={'self-start'}>Chip</Chip>
       <ImageChip className={'self-start'}>
         <img src={'https://unavatar.io'} />

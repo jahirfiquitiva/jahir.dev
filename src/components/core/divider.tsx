@@ -1,8 +1,6 @@
-import { cx } from 'classix';
+import { tw } from '@/tw';
 
-import { type ComponentProps, tw } from '@/tw';
-
-const dividerClasses = tw`
+export const Divider = tw.hr`
   my-20
   mx-0
   h-1
@@ -11,7 +9,3 @@ const dividerClasses = tw`
   bg-divider
   desktop:my-28
 `;
-
-export const Divider = (props: ComponentProps<'hr'>) => {
-  return <hr {...props} className={cx(dividerClasses, props.className)} />;
-};
