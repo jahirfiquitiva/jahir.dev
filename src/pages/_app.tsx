@@ -42,6 +42,8 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           font-family: var(--fonts-system);
           --fonts-inter: ${inter.style.fontFamily}, var(--fonts-system);
           --fonts-manrope: ${manrope.style.fontFamily}, var(--fonts-inter);
+          --font-inter: ${inter.style.fontFamily}, var(--fonts-system);
+          --font-manrope: ${manrope.style.fontFamily}, var(--fonts-inter);
         }
       `}</style>
       <NextThemeProvider
