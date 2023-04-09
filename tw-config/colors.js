@@ -45,10 +45,6 @@ const shadowColors = rainbowColors.map((it) => `shadow-${it}`);
 export const colors = {
   ...reduceObjArray(transparencyColors.map(colorToTransparencyTailwindVar)),
   ...reduceObjArray(normalColors.map(colorToTailwindVar)),
-  gradient: {
-    ...reduceObjArray(gradientColors.map(colorToTailwindVar)),
-  },
-  shadow: {
-    ...reduceObjArray(shadowColors.map(colorToTailwindVar)),
-  },
+  ...reduceObjArray(gradientColors.map(colorToTailwindVar)),
+  ...reduceObjArray(shadowColors.map(colorToTailwindVar)),
 };
