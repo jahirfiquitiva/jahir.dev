@@ -1,7 +1,8 @@
-import type { ComponentProps, ElementType } from 'react';
+import type { ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
 
 import tw, { cx } from '@/tw';
+import type { ComponentProps, FC } from '@/types';
 
 const StyledHeading = tw.h1`
   inline-block
@@ -41,7 +42,6 @@ export const Heading = (
   props: ComponentProps<typeof StyledHeading> & HeadingProps,
 ) => {
   const { children, balancerRatio, shadow, from, to, ...otherProps } = props;
-  console.error(props);
   return (
     <StyledHeading
       {...otherProps}

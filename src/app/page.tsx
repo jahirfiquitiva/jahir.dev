@@ -91,7 +91,9 @@ export default function Home() {
       <Heading as={'h5'} shadow={'red'}>
         Heading 5
       </Heading>
-      <Heading as={'h6'}>Heading 6</Heading>
+      <Heading as={'h6'} to={'green'}>
+        Heading 6
+      </Heading>
     </main>
   );
 }

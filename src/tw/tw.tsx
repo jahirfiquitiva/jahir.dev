@@ -1,6 +1,8 @@
 import { cx as classix } from 'classix';
-import React, { type ElementType, ComponentProps } from 'react';
+import React, { type ElementType } from 'react';
 import { twMerge } from 'tailwind-merge';
+
+import type { ComponentProps, FC } from '@/types';
 
 import { tags as possibleElements } from './tags';
 import type { WebTarget } from './tw.types';
@@ -20,7 +22,7 @@ export const twx = (classes: TemplateStringsArray): string => {
 };
 
 function baseStyled<T>(tag: WebTarget) {
-  return (classes: TemplateStringsArray | string) => {
+  return (classes: TemplateStringsArray | string): FC => {
     const Component = tag;
     // eslint-disable-next-line react/display-name
     return (
