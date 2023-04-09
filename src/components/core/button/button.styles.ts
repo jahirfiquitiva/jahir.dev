@@ -37,8 +37,8 @@ export const outlinedClasses = tw`
   !border-solid
   border-divider
   text-secondary-txt
-  shadow-none
-  hover:shadow-sm
+  shadow-sm
+  hover:shadow
   hover:bg-accent-dark/[0.16]
   hover:border-accent-dark
   hover:text-primary

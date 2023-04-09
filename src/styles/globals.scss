@@ -1,0 +1,8 @@
+@import 'tailwindcss/base';
+@import './reset.scss';
+@import './custom-reset.scss';
+
+@tailwind components;
+@tailwind utilities;
+
+@import './colors.scss';
