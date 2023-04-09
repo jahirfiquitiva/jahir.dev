@@ -18,13 +18,12 @@ export const buttonClasses = tw`
   tracking-wide
   transition-all
   truncate
-  shadow-sm
+  shadow
   hover:bg-accent-dark
   hover:transform
-  hover:-translate-y-px
+  hover:-translate-y-1
   hover:no-underline
-  hover:shadow
-  hover:shadow-accent
+  hover:shadow-md
   disabled:opacity-50
   disabled:pointer-events-none
   disabled:cursor-not-allowed
@@ -35,8 +34,9 @@ export const buttonClasses = tw`
 export const outlinedClasses = tw`
   bg-transparent
   border
+  !border-solid
   border-divider
-  text-secondary
+  text-secondary-txt
   shadow-none
   hover:shadow-sm
   hover:bg-accent-dark/[0.16]

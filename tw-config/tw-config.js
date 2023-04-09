@@ -1,6 +1,7 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
-import { spaces } from './spacing';
+import { colors } from './colors';
+import { spaces as spacing } from './spacing';
 
 const sansFontFamily = ['var(--font-inter)', ...fontFamily.sans];
 
@@ -14,12 +15,10 @@ module.exports = {
     './content/**/*.mdx',
   ],
   theme: {
-    spacing: spaces,
-    borderRadius: { ...spaces, none: 0, half: '50%', full: '9999px' },
+    spacing,
+    borderRadius: { ...spacing, none: 0, half: '50%', full: '9999px' },
+    colors,
     extend: {
-      colors: {
-        accent: 'rgba(var(--color-accent) / <alpha-value>)',
-      },
       fontFamily: {
         sans: sansFontFamily,
         manrope: ['var(--font-manrope)', ...sansFontFamily],
