@@ -1,4 +1,4 @@
-import { twx } from '@/tw';
+import { tw, twx } from '@/tw';
 
 export const buttonClasses = twx`
   inline-flex
@@ -30,6 +30,8 @@ export const buttonClasses = twx`
   [&>svg:only-child]:mx-auto
   [&>svg:only-child]:my-0
 `;
+
+export const Button = tw.button(buttonClasses);
 
 export const outlinedButtonClasses = twx`
   bg-transparent
