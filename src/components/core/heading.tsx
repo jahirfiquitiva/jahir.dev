@@ -2,7 +2,7 @@ import type { ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
 
 import tw, { cx } from '@/tw';
-import type { ComponentProps, FC } from '@/types';
+import type { ComponentProps } from '@/types';
 
 const StyledHeading = tw.h1`
   inline-block

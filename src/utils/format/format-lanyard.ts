@@ -1,4 +1,4 @@
-import { TrackData } from '@/lib/spotify';
+import { TrackData } from '@/old/lib/spotify';
 import type {
   Activity,
   ActivityData,
@@ -6,7 +6,7 @@ import type {
   Spotify,
   LanyardData,
   DiscordActivity,
-} from '@/types';
+} from '@/old/types';
 
 const ASSET_URL_BASE = 'raw.githubusercontent.com';
 const getAssetUrl = (assetId?: string): string | null => {
