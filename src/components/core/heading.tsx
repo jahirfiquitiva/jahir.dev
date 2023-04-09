@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
 
-import tw from '@/tw';
+import tw, { cx } from '@/tw';
 
 const StyledHeading = tw.h1`
   inline-block
@@ -33,15 +33,23 @@ interface HeadingProps {
   as?: ElementType;
   balancerRatio?: number;
   shadow?: RainbowColor;
+  from?: RainbowColor;
+  to?: RainbowColor;
 }
 
 export const Heading = (
   props: ComponentProps<typeof StyledHeading> & HeadingProps,
 ) => {
-  const { children, balancerRatio, shadow, ...otherProps } = props;
+  const { children, balancerRatio, shadow, from, to, ...otherProps } = props;
+  console.error(props);
   return (
     <StyledHeading
       {...otherProps}
+      className={cx(
+        otherProps.className,
+        from ? `dark:from-gradient-${from}` : null,
+        to ? `dark:to-gradient-${to}` : null,
+      )}
       style={{
         ...otherProps.style,
         ...(shadow

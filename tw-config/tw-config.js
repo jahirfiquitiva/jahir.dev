@@ -44,4 +44,10 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
   plugins: [require('@tailwindcss/typography')],
+  safelist: [
+    {
+      pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
+      variants: ['dark'],
+    },
+  ],
 };

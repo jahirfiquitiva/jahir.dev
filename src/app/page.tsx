@@ -82,9 +82,15 @@ export default function Home() {
       >
         Heading 2
       </Heading>
-      <Heading as={'h3'}>Heading 3</Heading>
-      <Heading as={'h4'}>Heading 4</Heading>
-      <Heading as={'h5'}>Heading 5</Heading>
+      <Heading as={'h3'} from={'blue'} to={'orange'}>
+        Heading 3
+      </Heading>
+      <Heading as={'h4'} from={'purple'}>
+        Heading 4
+      </Heading>
+      <Heading as={'h5'} shadow={'red'}>
+        Heading 5
+      </Heading>
       <Heading as={'h6'}>Heading 6</Heading>
     </main>
   );
