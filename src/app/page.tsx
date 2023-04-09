@@ -17,7 +17,12 @@ export default function Home() {
       <Button title={'test'}>
         <Icon path={mdiAccountCircleOutline} size={2} />
       </Button>
-      <Button title={'test'} outlined>Outlined Button</Button>
+      <Button title={'test'} outlined>
+        Outlined Button
+      </Button>
+      <Button title={'test'} className={'rounded-full'}>
+        Custom Button
+      </Button>
       <Link href={'#test'}>Test</Link>
 
       <div

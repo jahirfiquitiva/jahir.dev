@@ -5,9 +5,9 @@ export const buttonClasses = tw`
   items-center
   justify-center
   self-start
-  h-[2.625rem]
+  min-h-[2.625rem]
   border-none
-  border-6
+  rounded-6
   bg-accent
   text-on-accent
   py-6
