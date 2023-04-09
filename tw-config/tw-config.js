@@ -20,6 +20,16 @@ module.exports = {
     borderRadius: { ...spacing, none: 0, half: '50%', full: '9999px' },
     colors,
     fontSize,
+    screens: {
+      default: '0px',
+      'mobile-sm': '320px',
+      'mobile-md': '375px',
+      'mobile-lg': '425px',
+      'tablet-sm': '596px',
+      'tablet-md': '768px',
+      'tablet-lg': '792px',
+      desktop: '960px',
+    },
     extend: {
       fontFamily: {
         sans: sansFontFamily,

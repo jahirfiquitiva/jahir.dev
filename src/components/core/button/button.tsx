@@ -13,7 +13,7 @@ export const Button = (props: ButtonProps) => {
   const { outlined, ...otherProps } = props;
   return (
     <button
-      {...props}
+      {...otherProps}
       aria-label={props.title}
       name={props.title}
       type={props.type || 'button'}

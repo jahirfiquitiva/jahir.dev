@@ -39,7 +39,6 @@ const defaultNextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
-    includePaths: [path.join(__dirname, 'old-src/styles')],
   },
   images: {
     remotePatterns: [
