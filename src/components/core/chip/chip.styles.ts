@@ -1,4 +1,4 @@
-import { tw, twx } from '@/tw';
+import { tw, twc } from '@/tw';
 
 export const Chip = tw.span`
   flex
@@ -27,7 +27,7 @@ export const Chip = tw.span`
   hover:cursor-pointer
 `;
 
-export const imageChipClasses = twx`
+export const ImageChip = twc(Chip)`
   leading-[inherit]
   pl-6
   [&>img]:rounded-half

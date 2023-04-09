@@ -39,6 +39,7 @@
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^0.4.0",
     "swr": "^2.1.2",
+    "tailwind-merge": "^1.12.0",
     "tailwindest": "^1.0.5"
   },
   "devDependencies": {

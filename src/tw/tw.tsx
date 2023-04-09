@@ -1,58 +1,40 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { cx } from 'classix';
 import {
   type ElementType,
   ComponentProps,
-  ReactNode,
   ReactElement,
-  ReactComponentElement,
   cloneElement,
 } from 'react';
+import { twMerge } from 'tailwind-merge';
 
+import { tags as possibleElements } from './tags';
 import type { TailwindClass } from './tw.types';
 
-const possibleElements: Array<ElementType> = [
-  'a',
-  'button',
-  'div',
-  'p',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'strong',
-  'em',
-  'section',
-  'article',
-  'hr',
-  'input',
-  'ul',
-  'ol',
-  'li',
-  'span',
-];
-
 export const twx = (classes: TemplateStringsArray): string => {
-  return (classes || '')
-    .join(' ')
-    .split(/\r?\n/)
-    .map((it) => it.trim() as TailwindClass)
-    .join(' ')
-    .trim();
+  return twMerge(
+    (classes || '')
+      .join(' ')
+      .split(/\r?\n/)
+      .map((it) => it.trim() as TailwindClass)
+      .join(' ')
+      .trim(),
+  );
 };
 
 const componentBuilder =
   (tag: ElementType) => (classes: TemplateStringsArray) => {
     const Component = tag;
     // eslint-disable-next-line react/display-name
-    return (props: ComponentProps<typeof Component> & { as?: ElementType }) => {
-      const { as, ...otherProps } = props;
-      const FinalComponentTag = as || Component;
+    return (
+      props?: ComponentProps<typeof Component> & { as?: ElementType },
+    ) => {
+      const { as: asTag, ...otherProps } = props || {};
+      const FinalComponentTag = asTag || Component;
       return (
         <FinalComponentTag
           {...otherProps}
-          className={cx(twx(classes), otherProps.className)}
+          className={twMerge(cx(twx(classes), otherProps.className))}
         />
       );
     };
@@ -69,9 +51,16 @@ const twCreatorBuilder = () => {
 export const tw = twCreatorBuilder();
 
 export const twc =
-  (
-    element: (props?: unknown) => ReactElement | JSX.Element,
-    classes: TemplateStringsArray,
-  ) =>
-  () =>
-    cloneElement(element(), { className: twx(classes) });
+  (element: (props?: unknown) => ReactElement | JSX.Element) =>
+  (classes: TemplateStringsArray) => {
+    const Component = element();
+    const componentProps = Component.props;
+    return (props: typeof componentProps & { as?: ElementType }) => {
+      return cloneElement(Component, {
+        ...{ ...componentProps, ...props },
+        className: twMerge(
+          cx(componentProps.className, props.className, twx(classes)),
+        ),
+      });
+    };
+  };
