@@ -35,14 +35,6 @@
         "skipBlankLines": true
       }
     ],
-    "max-lines-per-function": [
-      "error",
-      {
-        "max": 60,
-        "skipBlankLines": true,
-        "IIFEs": true
-      }
-    ],
     "arrow-parens": [
       "error",
       "always",

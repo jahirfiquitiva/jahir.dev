@@ -1,35 +1,30 @@
-import type { ComponentProps } from 'react';
+import cx from 'classix';
 
-import type { FC } from '@/types';
-import { styled } from '~/stitches';
+import { tw, type ComponentProps } from '@/tw';
 
-import { Link } from '../link';
+const buttonClasses = tw`
+  inline-flex
+  items-center
+  justify-center
+  self-start
+  border-none
+  px-3
+  bg-blue-500
+  font-manrope
+` as string;
 
-import { ButtonStyles } from './button.styles';
+interface ButtonProps extends ComponentProps<'button'> {
+  title: string;
+}
 
-const BaseLink = styled(Link, ButtonStyles);
-const StyledLinkButton = styled(BaseLink, {
-  hocus: { color: '$on-accent', dark: { color: '$on-accent' } },
-  variants: {
-    outlined: {
-      true: {
-        hocus: { color: '$text-primary', dark: { color: '$text-primary' } },
-      },
-    },
-  },
-});
-export const LinkButton: FC<ComponentProps<typeof StyledLinkButton>> = (
-  props,
-) => (<StyledLinkButton {...props} underline={false} />);
-
-const StyledButton = styled('button', ButtonStyles);
-export const Button: FC<ComponentProps<typeof StyledButton>> = (props) => {
+export const Button = (props: ButtonProps) => {
   return (
-    <StyledButton
+    <button
+      {...props}
       aria-label={props.title}
       name={props.title}
       type={props.type || 'button'}
-      {...props}
+      className={cx(buttonClasses, props.className as string)}
     />
   );
 };

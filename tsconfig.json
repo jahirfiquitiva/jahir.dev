@@ -20,12 +20,19 @@
     "paths": {
       "~/stitches": ["stitches.config.ts"],
       "@/*": ["./src/*"],
+      "@/v2/*": [
+        "./v2/*"
+      ],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true,
-    // "jsxImportSource": "@emotion/react",
     "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
   },
   "exclude": [".next", ".idea", "node_modules"],
   "include": [
@@ -34,6 +41,7 @@
     "**/*.ts",
     "**/*.tsx",
     "./.contentlayer/generated",
-    "next.config.js"
+    "next.config.js",
+    ".next/types/**/*.ts",
   ]
 }

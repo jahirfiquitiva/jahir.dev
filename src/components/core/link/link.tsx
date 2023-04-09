@@ -1,46 +1,45 @@
-import { type ComponentProps } from 'react';
+import NextLink from 'next/link';
 
-import type { FC } from '@/types';
-
-import { StyledLink } from './link.styles';
+import { tw } from '@/tw';
+import { ComponentProps } from 'react';
+import { cx } from 'classix';
 
 const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
 
-interface LinkProps extends ComponentProps<typeof StyledLink> {
-  underline?: boolean;
+const linkStyles = tw`
+  inline-block
+  font-medium
+  text-accent
+` as string;
+
+interface LinkProps extends ComponentProps<typeof NextLink> {
   openInNewTab?: boolean;
-  disabled?: boolean;
-  tabIndex?: number;
 }
 
-export const Link: FC<LinkProps> = (props) => {
+export const Link = (props: LinkProps) => {
   const { href: url, ...otherProps } = props;
   const href: string = url.toString();
-  const {
-    openInNewTab = !isLocalLink(href),
-    underline = true,
-    ...rest
-  } = otherProps;
+  const { openInNewTab = !isLocalLink(href), ...rest } = otherProps;
 
   if (openInNewTab) {
     return (
-      <StyledLink
+      <NextLink
         {...rest}
+        className={cx(rest.className, linkStyles)}
         href={href}
         target={'_blank'}
         rel={`${props.rel || ''} noopener noreferrer`.trim()}
         aria-label={rest.title}
-        underline={underline}
       />
     );
   }
 
   return (
-    <StyledLink
+    <NextLink
       {...{ href, ...rest }}
+      className={cx(rest.className, linkStyles)}
       aria-label={rest.title}
-      underline={underline}
     />
   );
 };

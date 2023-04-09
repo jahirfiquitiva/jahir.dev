@@ -2,6 +2,10 @@
 @import './core';
 @import './typography';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html.light [data-rehype-pretty-code-fragment] {
   [data-theme='dark'],
   pre[data-theme='dark'],

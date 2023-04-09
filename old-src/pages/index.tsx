@@ -5,6 +5,7 @@ import { Layout, Seo } from '@/components/molecules';
 import { Intro, Projects, Skills } from '@/components/views';
 import allProjects from '@/data/projects.json';
 import type { Project } from '@/types';
+import { Button } from '@/v2/components/core/button/button';
 
 interface HomeProps {
   projects?: Array<Project>;
@@ -39,6 +40,7 @@ const Home: NextPage<HomeProps> = (props) => {
           'web',
         ]}
       />
+      <Button title={'button'}> This is a new button</Button>
       <Intro
         countryName={decodeURIComponent(countryName || '')}
         countryEmoji={decodeURIComponent(countryEmoji || '')}
@@ -59,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const projects = allProjects
     .sort((a, b) => a.order - b.order)
     .filter((it) => !it.hide);
-    
+
   return {
     props: {
       projects,

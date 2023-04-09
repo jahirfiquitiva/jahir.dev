@@ -30,6 +30,7 @@ const defaultNextConfig = {
     legacyBrowsers: false,
     optimizeCss: true,
     typedRoutes: true,
+    appDir: true,
   },
   compiler: {
     removeConsole: {
@@ -38,6 +39,7 @@ const defaultNextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
+    includePaths: [path.join(__dirname, 'old-src/styles')],
   },
   images: {
     remotePatterns: [

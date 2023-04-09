@@ -1,18 +1,21 @@
-import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const sansFontFamily = ['var(--font-inter)', ...fontFamily.sans];
 
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: 'class',
   content: [
-    './app/**/*.{ts,tsx}',
-    './src/components/**/*.{ts,tsx}',
-    './src/pages/**/*.{ts,tsx}',
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
     './content/**/*.mdx',
   ],
   theme: {
     extend: {
+      colors: {
+        accent: 'rgba(var(--color-accent) / <alpha-value>)',
+      },
       fontFamily: {
         sans: sansFontFamily,
         manrope: ['var(--font-manrope)', ...sansFontFamily],
@@ -23,4 +26,4 @@ export default {
     hoverOnlyWhenSupported: true,
   },
   plugins: [require('@tailwindcss/typography')],
-} satisfies Config;
+} 
