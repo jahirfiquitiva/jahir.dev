@@ -9,6 +9,7 @@ const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
 
 interface LinkProps extends ComponentProps<typeof NextLink> {
+  title: string;
   openInNewTab?: boolean;
 }
 

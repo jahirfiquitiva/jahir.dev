@@ -1,4 +1,3 @@
-
 import Icon from '@mdi/react';
 
 import { Button } from '@/components/core/button';
@@ -22,9 +21,13 @@ export default function Home() {
       <Button title={'test'} className={'rounded-full'}>
         Custom Button
       </Button>
-      <Link href={'#test'}>Link</Link>
-      <ButtonLink href={'#test'}>Button link</ButtonLink>
-      <ButtonLink href={'#test'} outlined>
+      <Link href={'#test'} title={'Test link'}>
+        Link
+      </Link>
+      <ButtonLink href={'#test'} title={'Test link'}>
+        Button link
+      </ButtonLink>
+      <ButtonLink href={'#test'} title={'Test link'} outlined>
         Outlined button link
       </ButtonLink>
     </main>
