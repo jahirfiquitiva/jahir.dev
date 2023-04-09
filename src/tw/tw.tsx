@@ -1,14 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { cx as classix } from 'classix';
-import React, {
-  type ElementType,
-  ComponentProps,
-  ReactElement,
-  cloneElement,
-  ExoticComponent,
-  ComponentType,
-  PropsWithChildren,
-} from 'react';
+import React, { type ElementType, ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { tags as possibleElements } from './tags';
@@ -28,23 +19,19 @@ export const twx = (classes: TemplateStringsArray): string => {
   );
 };
 
-function componentBuilder<T>(tag: WebTarget) {
+function baseStyled<T>(tag: WebTarget) {
   return (classes: TemplateStringsArray | string) => {
     const Component = tag;
     // eslint-disable-next-line react/display-name
-    return (
-      props?: ComponentProps<typeof Component> & { as?: ElementType } & T,
-    ) => {
-      const { as: asTag, ...otherProps } = props || {};
-      const FinalComponentTag = asTag || Component;
+    return (props?: ComponentProps<typeof Component> & T) => {
       return (
-        <FinalComponentTag
-          {...otherProps}
+        <Component
+          {...props}
           className={cx(
             Array.isArray(classes)
               ? twx(classes as TemplateStringsArray)
               : (classes as string),
-            otherProps.className,
+            props.className,
           )}
         />
       );
@@ -52,36 +39,15 @@ function componentBuilder<T>(tag: WebTarget) {
   };
 }
 
-function twc<T>(element: (props?: unknown) => ReactElement | JSX.Element) {
-  return (classes: TemplateStringsArray | string) => {
-    const Component = element();
-    const componentProps = Component.props;
-    return (props: typeof componentProps & { as?: ElementType } & T) => {
-      return cloneElement(Component, {
-        ...{ ...componentProps, ...props },
-        className: cx(
-          componentProps.className,
-          props.className,
-          Array.isArray(classes)
-            ? twx(classes as TemplateStringsArray)
-            : (classes as string),
-        ),
-      });
-    };
-  };
-}
-
-const baseStyled = <Target extends WebTarget>(tag: Target) =>
-  componentBuilder(tag);
-
 const tw = baseStyled as typeof baseStyled & {
-  [E in keyof JSX.IntrinsicElements]: typeof componentBuilder;
+  [E in keyof JSX.IntrinsicElements]: ReturnType<typeof baseStyled>;
 } & { tw: typeof twx };
 
 // Shorthands for all valid HTML Elements
 possibleElements.forEach((domElement) => {
   // @ts-expect-error someday they'll handle imperative assignment properly
-  tw[domElement] = baseStyled(domElement);
+  tw[domElement] = (classes: TemplateStringsArray | string) =>
+    baseStyled(domElement)(classes);
 });
 tw.tw = twx;
 

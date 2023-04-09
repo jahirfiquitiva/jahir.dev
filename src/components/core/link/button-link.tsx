@@ -1,6 +1,4 @@
-import { cx } from 'classix';
-
-import type { ComponentProps } from '@/tw';
+import { type ComponentProps, cx } from '@/tw';
 
 import {
   buttonClasses,

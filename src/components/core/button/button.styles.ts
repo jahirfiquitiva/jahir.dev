@@ -32,7 +32,7 @@ export const buttonClasses = tw.tw`
   [&>svg:only-child]:my-0
 `;
 
-// export const Button = tw.button('button')(buttonClasses);
+export const StyledButton = tw.button(buttonClasses);
 
 export const outlinedButtonClasses = tw.tw`
   bg-transparent
