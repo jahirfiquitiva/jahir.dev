@@ -14,12 +14,12 @@ export const buttonClasses = tw`
   px-12
   gap-6
   font-bold
-  font-manrope
   tracking-wide
   transition-all
   truncate
   shadow
   hover:bg-accent-dark
+  hover:text-on-accent
   hover:transform
   hover:-translate-y-1
   hover:no-underline
@@ -29,9 +29,9 @@ export const buttonClasses = tw`
   disabled:cursor-not-allowed
   [&>svg:only-child]:mx-auto
   [&>svg:only-child]:my-0
-` as string;
+`;
 
-export const outlinedClasses = tw`
+export const outlinedButtonClasses = tw`
   bg-transparent
   border
   !border-solid
@@ -41,5 +41,5 @@ export const outlinedClasses = tw`
   hover:shadow
   hover:bg-accent-dark/[0.16]
   hover:border-accent-dark
-  hover:text-primary
-` as string;
+  hover:text-primary-txt
+`;

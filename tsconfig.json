@@ -20,9 +20,6 @@
     "paths": {
       "~/stitches": ["stitches.config.ts"],
       "@/*": ["./src/*"],
-      "@/v2/*": [
-        "./v2/*"
-      ],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true,
@@ -34,7 +31,7 @@
       }
     ],
   },
-  "exclude": [".next", ".idea", "node_modules"],
+  "exclude": [".next", ".idea", "node_modules", "old-src"],
   "include": [
     "next-env.d.ts",
     "global.d.ts",

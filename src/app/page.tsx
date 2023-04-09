@@ -2,17 +2,19 @@
 import Icon from '@mdi/react';
 
 import { Button } from '@/components/core/button';
-import { Link } from '@/components/core/link';
+import { Link, ButtonLink } from '@/components/core/link';
 import { mdiAccountCircleOutline } from 'old-src/components/icons';
 
 export default function Home() {
   return (
-    <main
-      className={'flex min-h-screen flex-col items-center justify-between p-24'}
-    >
-      <Button title={'test'}>Hola button</Button>
+    <main className={'flex min-h-screen flex-col items-center p-24 gap-24'}>
+      <Button title={'test'}>Button</Button>
       <Button title={'test'}>
-        <Icon path={mdiAccountCircleOutline} size={2} />
+        <Icon path={mdiAccountCircleOutline} size={1} />
+      </Button>
+      <Button title={'test'}>
+        <Icon path={mdiAccountCircleOutline} size={1} />
+        <span>Icon button</span>
       </Button>
       <Button title={'test'} outlined>
         Outlined Button
@@ -20,7 +22,11 @@ export default function Home() {
       <Button title={'test'} className={'rounded-full'}>
         Custom Button
       </Button>
-      <Link href={'#test'}>Test</Link>
+      <Link href={'#test'}>Link</Link>
+      <ButtonLink href={'#test'}>Button link</ButtonLink>
+      <ButtonLink href={'#test'} outlined>
+        Outlined button link
+      </ButtonLink>
     </main>
   );
 }

@@ -1,16 +1,34 @@
 :root {
   --size-scrollbar-width: 8px;
+  --totalToolbarHeight: 64px;
+  --scrollMargin: calc(var(--totalToolbarHeight) + 0.5rem); // 8px
+  --verticalContentPadding: 1.5rem;
+}
+
+@media screen and (min-width: 596px) {
+  :root {
+    --totalToolbarHeight: 68px;
+    --scrollMargin: calc(var(--totalToolbarHeight) + 1rem); // 16px
+    --verticalContentPadding: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --size-scrollbar-width: 12px;
+    --verticalContentPadding: 2.25rem;
+  }
 }
 
 html,
 body {
   background-color: var(--color-background);
   scroll-behavior: smooth;
+  accent-color: var(--color-accent);
 }
 
 a {
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
+  @apply decoration-2 underline-offset-2;
 }
 
 a,
@@ -103,12 +121,6 @@ samp {
   border: 3px solid var(--color-scrollbar-thumb);
 }
 
-@media screen and (min-width: 768px) {
-  :root {
-    --size-scrollbar-width: 12px;
-  }
-}
-
 *:focus {
   outline: 2px dashed var(--color-secondary-txt);
   outline-offset: 0.25rem;
@@ -118,5 +130,21 @@ samp {
 @media not all and (min-resolution: 0.001dpcm) {
   img[loading='lazy'] {
     clip-path: inset(0.5px);
+  }
+}
+
+section {
+  scroll-margin-top: var(--scrollMargin);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after,
+  *::before {
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: -1ms !important;
   }
 }

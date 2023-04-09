@@ -2,7 +2,7 @@ import cx from 'classix';
 
 import type { ComponentProps } from '@/tw';
 
-import { buttonClasses, outlinedClasses } from './button.styles';
+import { buttonClasses, outlinedButtonClasses } from './button.styles';
 
 interface ButtonProps extends ComponentProps<'button'> {
   title: string;
@@ -19,7 +19,7 @@ export const Button = (props: ButtonProps) => {
       type={props.type || 'button'}
       className={cx(
         buttonClasses,
-        outlined && outlinedClasses,
+        outlined && outlinedButtonClasses,
         props.className as string,
       )}
     />

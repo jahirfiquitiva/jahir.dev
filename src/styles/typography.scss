@@ -1,6 +1,6 @@
 html,
 body {
-  @apply text-xs text-secondary-txt font-normal;
+  @apply font-sans text-xs text-secondary-txt font-normal;
   line-height: 1.5;
 }
 
@@ -17,16 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply inline-block text-primary-txt;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-bold;
+  @apply inline-block text-primary-txt font-bold font-manrope;
 }
 
 b,
@@ -72,4 +63,8 @@ p {
 
 small {
   @apply text-2xs;
+}
+
+button {
+  @apply font-manrope;
 }

@@ -42,11 +42,5 @@
   #__next {
     isolation: isolate;
   }
-
-  :root,
-  html,
-  body {
-    @apply font-sans;
-  }
 }
 
