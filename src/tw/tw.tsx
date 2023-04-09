@@ -1,5 +1,5 @@
 import { cx as classix } from 'classix';
-import React, { type ComponentProps } from 'react';
+import React, { type ElementType, ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { tags as possibleElements } from './tags';
@@ -23,15 +23,19 @@ function baseStyled<T>(tag: WebTarget) {
   return (classes: TemplateStringsArray | string) => {
     const Component = tag;
     // eslint-disable-next-line react/display-name
-    return (props?: ComponentProps<typeof Component> & T) => {
+    return (
+      props?: ComponentProps<typeof Component> & { as?: ElementType } & T,
+    ) => {
+      const { as: asTag, ...otherProps } = props || {};
+      const FinalComponentTag = asTag || Component;
       return (
-        <Component
-          {...props}
+        <FinalComponentTag
+          {...otherProps}
           className={cx(
             Array.isArray(classes)
               ? twx(classes as TemplateStringsArray)
               : (classes as string),
-            props.className,
+            otherProps.className,
           )}
         />
       );

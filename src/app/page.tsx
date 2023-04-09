@@ -3,9 +3,10 @@ import Icon from '@mdi/react';
 import { Button } from '@/components/core/button';
 import { Chip, ImageChip, ChipGroup } from '@/components/core/chip';
 import { Divider } from '@/components/core/divider';
+import { Field } from '@/components/core/field';
+import { Heading } from '@/components/core/heading';
 import { Link, ButtonLink } from '@/components/core/link';
 import { mdiAccountCircleOutline, mdiMagnify } from 'old-src/components/icons';
-import { Field } from '@/components/core/field';
 
 export default function Home() {
   return (
@@ -72,6 +73,19 @@ export default function Home() {
         type={'text'}
         iconPath={mdiMagnify}
       />
+      <Divider />
+      <Heading>Heading 1</Heading>
+      <Heading
+        as={'h2'}
+        shadow={'blue'}
+        className={'dark:from-gradient-green dark:to-gradient-red'}
+      >
+        Heading 2
+      </Heading>
+      <Heading as={'h3'}>Heading 3</Heading>
+      <Heading as={'h4'}>Heading 4</Heading>
+      <Heading as={'h5'}>Heading 5</Heading>
+      <Heading as={'h6'}>Heading 6</Heading>
     </main>
   );
 }
