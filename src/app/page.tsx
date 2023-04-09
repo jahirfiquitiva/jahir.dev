@@ -1,6 +1,7 @@
 import Icon from '@mdi/react';
 
 import { Button } from '@/components/core/button';
+import { Chip, ImageChip, ChipGroup } from '@/components/core/chip';
 import { Divider } from '@/components/core/divider';
 import { Link, ButtonLink } from '@/components/core/link';
 import { mdiAccountCircleOutline } from 'old-src/components/icons';
@@ -32,6 +33,28 @@ export default function Home() {
       <ButtonLink href={'#test'} title={'Test link'} outlined>
         Outlined button link
       </ButtonLink>
+      <Divider />
+      <Chip className={'self-start'}>Chip</Chip>
+      <ImageChip className={'self-start'}>
+        <img src={'https://unavatar.io'} />
+        <span>Chip</span>
+      </ImageChip>
+      <ChipGroup className={'self-start'}>
+        <Chip>Chip</Chip>
+        <Chip
+          className={
+            'hover:bg-[rgba(125_34_68/0.08)] hover:border-[rgba(125_34_68/0.5)]'
+          }
+        >
+          Chip
+        </Chip>
+        <Chip>Chip</Chip>
+        <Chip>Chip</Chip>
+        <Chip>Chip</Chip>
+        <Chip>Chip</Chip>
+        <Chip>Chip</Chip>
+        <Chip>Chip</Chip>
+      </ChipGroup>
     </main>
   );
 }
