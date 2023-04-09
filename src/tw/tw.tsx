@@ -1,5 +1,12 @@
 import { cx } from 'classix';
-import { type ElementType, ComponentProps } from 'react';
+import {
+  type ElementType,
+  ComponentProps,
+  ReactNode,
+  ReactElement,
+  ReactComponentElement,
+  cloneElement,
+} from 'react';
 
 import type { TailwindClass } from './tw.types';
 
@@ -26,8 +33,8 @@ const possibleElements: Array<ElementType> = [
   'span',
 ];
 
-export const twx = (strings: TemplateStringsArray): string => {
-  return strings
+export const twx = (classes: TemplateStringsArray): string => {
+  return (classes || '')
     .join(' ')
     .split(/\r?\n/)
     .map((it) => it.trim() as TailwindClass)
@@ -60,3 +67,11 @@ const twCreatorBuilder = () => {
 };
 
 export const tw = twCreatorBuilder();
+
+export const twc =
+  (
+    element: (props?: unknown) => ReactElement | JSX.Element,
+    classes: TemplateStringsArray,
+  ) =>
+  () =>
+    cloneElement(element(), { className: twx(classes) });
