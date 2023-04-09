@@ -5,7 +5,7 @@ const pixelsOptions = [
 ];
 
 const getSpaces = () => {
-  const obj = {};
+  const obj = { 0: 0 };
   pixelsOptions.forEach((pixels) => {
     obj[pixels] = `${pixels / baseRemSize}rem`;
   });

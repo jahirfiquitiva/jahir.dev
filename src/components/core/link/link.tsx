@@ -1,6 +1,5 @@
 import NextLink from 'next/link';
-
-import type { ComponentProps } from '@/tw';
+import type { ComponentProps } from 'react';
 
 import { StyledLink } from './link.styles';
 

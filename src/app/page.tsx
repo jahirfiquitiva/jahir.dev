@@ -4,7 +4,8 @@ import { Button } from '@/components/core/button';
 import { Chip, ImageChip, ChipGroup } from '@/components/core/chip';
 import { Divider } from '@/components/core/divider';
 import { Link, ButtonLink } from '@/components/core/link';
-import { mdiAccountCircleOutline } from 'old-src/components/icons';
+import { mdiAccountCircleOutline, mdiMagnify } from 'old-src/components/icons';
+import { Field } from '@/components/core/field';
 
 export default function Home() {
   return (
@@ -56,6 +57,21 @@ export default function Home() {
         <Chip>Chip</Chip>
         <Chip>Chip</Chip>
       </ChipGroup>
+      <Divider />
+      <Field name={'search-wo-icon'} label={'Search'} type={'text'} />
+      <Field
+        name={'search-wo-label'}
+        label={'Search'}
+        type={'text'}
+        iconPath={mdiMagnify}
+        hideLabel
+      />
+      <Field
+        name={'search'}
+        label={'Search'}
+        type={'text'}
+        iconPath={mdiMagnify}
+      />
     </main>
   );
 }

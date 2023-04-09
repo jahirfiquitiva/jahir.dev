@@ -1,4 +1,6 @@
-import { type ComponentProps, cx } from '@/tw';
+import type { ComponentProps } from 'react';
+
+import { cx } from '@/tw';
 
 import { StyledButton, outlinedButtonClasses } from './button.styles';
 
