@@ -1,9 +1,9 @@
 import { cx as classix } from 'classix';
-import React, { type ElementType, ComponentProps } from 'react';
+import React, { type ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { tags as possibleElements } from './tags';
-import type { TailwindClass, WebTarget } from './tw.types';
+import type { WebTarget } from './tw.types';
 
 type Argument = string | boolean | null | undefined;
 export const cx = (...args: Argument[]): string => twMerge(classix(...args));
@@ -13,7 +13,7 @@ export const twx = (classes: TemplateStringsArray): string => {
     classes
       .join(' ')
       .split(/\r?\n/)
-      .map((it) => it.trim() as TailwindClass)
+      .map((it) => it.trim())
       .join(' ')
       .trim(),
   );

@@ -5854,11 +5854,6 @@ tailwindcss@^3.3.1:
     resolve "^1.22.1"
     sucrase "^3.29.0"
 
-tailwindest@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/tailwindest/-/tailwindest-1.0.5.tgz#be33b9c0b5c44bae30be20253f0c8e34a268592a"
-  integrity sha512-jwC3DmNsO7JwfCyLylECtsjV7Uav4zUM5ZdHrYCFJu6zel2fTvxenl8V90bI2vxk+NYxn8mbxAJOZxmQV+vMgw==
-
 tapable@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.1.tgz#1967a73ef4060a82f12ab96af86d52fdb76eeca0"
