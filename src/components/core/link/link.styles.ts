@@ -1,6 +1,8 @@
-import { twx } from '@/tw';
+import NextLink from 'next/link';
 
-export const linkClasses = twx`
+import tw from '@/tw';
+
+export const StyledLink = tw(NextLink)`
   inline-block
   font-medium
   text-accent

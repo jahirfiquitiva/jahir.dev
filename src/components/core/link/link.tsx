@@ -1,9 +1,8 @@
-import { cx } from 'classix';
 import NextLink from 'next/link';
 
 import type { ComponentProps } from '@/tw';
 
-import { linkClasses } from './link.styles';
+import { StyledLink } from './link.styles';
 
 const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
@@ -19,9 +18,8 @@ export const Link = (props: LinkProps) => {
   const { openInNewTab = !isLocalLink(href), ...rest } = otherProps;
 
   return (
-    <NextLink
+    <StyledLink
       {...{ href, ...rest }}
-      className={cx(linkClasses, rest.className)}
       aria-label={rest.title}
       {...(openInNewTab
         ? {

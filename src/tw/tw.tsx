@@ -1,22 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { cx as classix } from 'classix';
-import {
+import React, {
   type ElementType,
   ComponentProps,
   ReactElement,
   cloneElement,
+  ExoticComponent,
+  ComponentType,
+  PropsWithChildren,
 } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { tags as possibleElements } from './tags';
-import type { TailwindClass } from './tw.types';
+import type { TailwindClass, WebTarget } from './tw.types';
 
 type Argument = string | boolean | null | undefined;
 export const cx = (...args: Argument[]): string => twMerge(classix(...args));
 
 export const twx = (classes: TemplateStringsArray): string => {
   return cx(
-    (classes || '')
+    classes
       .join(' ')
       .split(/\r?\n/)
       .map((it) => it.trim() as TailwindClass)
@@ -25,7 +28,7 @@ export const twx = (classes: TemplateStringsArray): string => {
   );
 };
 
-function componentBuilder<T>(tag: ElementType) {
+function componentBuilder<T>(tag: WebTarget) {
   return (classes: TemplateStringsArray | string) => {
     const Component = tag;
     // eslint-disable-next-line react/display-name
@@ -49,19 +52,7 @@ function componentBuilder<T>(tag: ElementType) {
   };
 }
 
-const twCreatorBuilder = () => {
-  const options: Record<string, ReturnType<typeof componentBuilder>> = {};
-  for (const tag of possibleElements) {
-    options[tag as string] = componentBuilder(tag);
-  }
-  return options;
-};
-
-export const tw = twCreatorBuilder();
-
-export function twc<T>(
-  element: (props?: unknown) => ReactElement | JSX.Element,
-) {
+function twc<T>(element: (props?: unknown) => ReactElement | JSX.Element) {
   return (classes: TemplateStringsArray | string) => {
     const Component = element();
     const componentProps = Component.props;
@@ -79,3 +70,19 @@ export function twc<T>(
     };
   };
 }
+
+const baseStyled = <Target extends WebTarget>(tag: Target) =>
+  componentBuilder(tag);
+
+const tw = baseStyled as typeof baseStyled & {
+  [E in keyof JSX.IntrinsicElements]: typeof componentBuilder;
+} & { tw: typeof twx };
+
+// Shorthands for all valid HTML Elements
+possibleElements.forEach((domElement) => {
+  // @ts-expect-error someday they'll handle imperative assignment properly
+  tw[domElement] = baseStyled(domElement);
+});
+tw.tw = twx;
+
+export { tw, tw as default };

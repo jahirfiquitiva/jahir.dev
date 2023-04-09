@@ -8,3 +8,9 @@ export type TailwindClass = Tailwindest<{
 export type ComponentProps<T> = ReactComponentProps<T> & {
   className?: TailwindClass | string;
 };
+
+type AnyComponent<P = unknown> = ExoticComponent<P> | ComponentType<P>;
+
+type KnownTarget = keyof JSX.IntrinsicElements | AnyComponent;
+
+export type WebTarget = string | KnownTarget;

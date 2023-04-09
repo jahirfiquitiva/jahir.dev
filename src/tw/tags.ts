@@ -1,7 +1,7 @@
-import type { ElementType } from 'react';
+import type { WebTarget } from './tw.types';
 // Taken from https://github.com/emotion-js/emotion/blob/main/packages/styled/src/tags.js
 // @flow
-export const tags: Array<ElementType> = [
+export const tags: Array<WebTarget> = [
   'a',
   'abbr',
   'address',
