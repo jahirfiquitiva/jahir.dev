@@ -21,6 +21,22 @@ export const Header = tw.header`
   tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
   [&[data-expanded="true"]]:h-[calc(calc(var(--baseActualHeight)_*_2.0625)_-_calc(var(--floatingMargin)_*_1.75))]
   [&[data-expanded="true"]]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
+
+  before:z-[1]
+  before:content-['']
+  before:absolute
+  before:block
+  before:top-0
+  before:h-[calc(var(--floatingMargin)_+_6px)]
+  before:w-full
+  before:left-1/2
+  before:transform
+  before:-translate-x-1/2
+  before:bg-gradient-to-t
+  before:from-background
+  before:to-transparent
+  before:backdrop-blur-[8px]
+  before:backdrop-saturate-150
 `;
 
 export const Nav = tw.nav`
