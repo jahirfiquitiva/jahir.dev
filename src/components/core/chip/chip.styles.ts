@@ -28,6 +28,7 @@ export const Chip = tw.span`
 `;
 
 export const ImageChip = tw(Chip)`
+  pl-6
   leading-[inherit]
   [&>img]:rounded-half
 `;
