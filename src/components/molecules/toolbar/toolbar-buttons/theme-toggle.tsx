@@ -2,12 +2,10 @@
 
 import { useMemo } from 'react';
 
-import { Button } from '@/components/core/button';
 import { moonOutline, sunOutline } from '@/components/icons';
 import { useTheme } from '@/providers/theme';
-import tw from '@/tw';
 
-const ToolbarButton = tw(Button)``
+import { ToolbarButton } from './toolbar-buttons.styles';
 
 export const ThemeToggle = () => {
   const { isDark, themeReady, toggleTheme } = useTheme();
