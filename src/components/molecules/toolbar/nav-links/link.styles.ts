@@ -3,7 +3,6 @@ import tw from '@/tw';
 
 export const ToolbarLink = tw(Link)`
   no-underline
-  hover:no-underline
   h-full
   inline-flex
   items-center
@@ -17,6 +16,8 @@ export const ToolbarLink = tw(Link)`
   transition-colors
   min-h-[2.625rem]
   max-h-[2.625rem]
+  hocus:no-underline
+  hocus:bg-accent-dark/[0.1]
   mobile-md:text-xs
   [&>span]:text-[inherit]
   [&>span]:h-full
@@ -26,7 +27,12 @@ export const ToolbarLink = tw(Link)`
   [&>span]:p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
   [&>span]:transform
   [&[aria-current="page"]]:bg-accent-dark/[0.1]
-  hover:bg-accent-dark/[0.1]
+`;
+
+export const PageLinkSpan = tw.span`
+  group-hocus/link:bg-gradient-to-r
+  group-hocus/link:bg-clip-text
+  group-hocus/link:text-transparent
 `;
 
 export const PageLink = tw(ToolbarLink)`

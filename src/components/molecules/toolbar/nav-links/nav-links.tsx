@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { cx } from '@/tw';
 import type { FC, GradientClass } from '@/types';
 
-import { PageLink } from './link.styles';
+import { PageLink, PageLinkSpan } from './link.styles';
 import { PagesLinksContainer, LinkItem } from './links-container.styles';
 
 interface ToolbarLinkItem {
@@ -48,17 +48,18 @@ export const ToolbarNavLinks: FC = () => {
               title={`${link.title} page`}
               href={link.href}
               aria-current={pathname.includes(link.href) ? 'page' : undefined}
-              className={cx(
-                'hover:[&>span]:bg-gradient-to-r',
-                'hover:[&>span]:bg-clip-text',
-                'hover:[&>span]:text-transparent',
-                (link.className || '')
-                  .split(' ')
-                  .map((it) => `hover:[&>span]:${it}`)
-                  .join(' ') as string,
-              )}
+              className={'group/link'}
             >
-              <span>{link.title}</span>
+              <PageLinkSpan
+                className={cx(
+                  (link.className || '')
+                    .split(' ')
+                    .map((it) => `group-hocus/link:${it}`)
+                    .join(' ') as string,
+                )}
+              >
+                {link.title}
+              </PageLinkSpan>
             </PageLink>
           </LinkItem>
         );
