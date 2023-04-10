@@ -36,8 +36,8 @@
   --color-shadow-purple: #b898e3;
 }
 
-html.dark {
-  
+html.dark,
+html.dark-inverted, {
     --color-inverse: 235 240 251;
     --color-background: #0c121e;
     --color-toolbar: rgba(18 27 44 / 0.65);

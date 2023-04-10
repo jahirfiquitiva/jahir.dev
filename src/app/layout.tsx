@@ -3,8 +3,8 @@ import '@/styles/globals.scss';
 import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
-import { Toolbar } from '@/components/molecules/toolbar';
 import { Main } from '@/components/molecules/main';
+import { Toolbar } from '@/components/molecules/toolbar';
 import { Providers } from '@/providers';
 
 const inter = Inter({

@@ -19,6 +19,7 @@ const StyledToolbarButton = tw(Button)`
 `;
 
 export const ToolbarButtonIcon = tw(Icon)`
+  fill-accent
   transition-transform
   transform
   rotate-0

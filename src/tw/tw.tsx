@@ -15,11 +15,6 @@ export const twx = (classes: TemplateStringsArray): string => {
     .join(' ')
     .split(/\r?\n/)
     .map((it) => it.trim());
-  for (const classItem of cleanClasses) {
-    if (classItem.includes('&')) {
-      console.error(`Class using & -> ${classItem}`);
-    }
-  }
   return cx(cleanClasses.join(' ').trim());
 };
 

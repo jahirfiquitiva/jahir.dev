@@ -8,6 +8,7 @@ import { Heading } from '@/components/core/heading';
 import { Link, ButtonLink } from '@/components/core/link';
 import { mdiAccountCircleOutline, mdiMagnify } from '@/components/icons';
 import { cx } from '@/tw';
+import { Img } from '@/components/core/img';
 
 export default function Home() {
   return (
@@ -40,7 +41,7 @@ export default function Home() {
       <Chip className={'self-start'}>Chip</Chip>
       <Chip className={'self-start'}>Chip</Chip>
       <ImageChip className={'self-start'}>
-        <img src={'https://unavatar.io'} />
+        <Img alt={'unavatar'} src={'https://unavatar.io/jahirfiquitiva'} size={24} />
         <span>Chip</span>
       </ImageChip>
       <ChipGroup className={'self-start'}>
