@@ -3,12 +3,7 @@ import tw from '@/tw';
 export const LabeledFieldWrapper = tw.div`
   flex
   flex-col
-`;
-
-export const Label = tw.label`
-  mt-16
-  mb-6
-  font-normal
+  gap-6
 `;
 
 export const FieldWrapper = tw.div`

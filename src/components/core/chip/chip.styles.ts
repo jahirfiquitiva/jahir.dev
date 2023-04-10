@@ -5,8 +5,7 @@ export const Chip = tw.span`
   items-center
   justify-center
   py-6
-  pr-12
-  pl-10
+  px-12
   text-3xs
   rounded-full
   border
@@ -22,6 +21,7 @@ export const Chip = tw.span`
   hover:underline-none
   hover:text-primary-txt
   hover:bg-divider
+  dark:hover:bg-divider
   hover:transform
   hover:scale-[1.0125]
   hover:cursor-pointer
@@ -29,7 +29,6 @@ export const Chip = tw.span`
 
 export const ImageChip = tw(Chip)`
   leading-[inherit]
-  pl-6
   [&>img]:rounded-half
 `;
 

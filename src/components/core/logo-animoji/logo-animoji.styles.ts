@@ -17,6 +17,7 @@ export const Container = tw.span`
 `;
 
 export const StyledLogo = tw(Logo)`
+  fill-accent
   group-hover/animoji:invisible
   group-hover/animoji:opacity-0
   group-hover/animoji:transform

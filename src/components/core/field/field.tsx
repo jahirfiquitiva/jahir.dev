@@ -3,12 +3,7 @@ import { type ComponentProps } from 'react';
 
 import { cx } from '@/tw';
 
-import {
-  LabeledFieldWrapper,
-  Label,
-  FieldWrapper,
-  Input,
-} from './field.styles';
+import { LabeledFieldWrapper, FieldWrapper, Input } from './field.styles';
 
 interface FieldProps extends ComponentProps<'input'> {
   name: string;
@@ -22,12 +17,14 @@ export const Field = (props: FieldProps) => {
 
   return (
     <LabeledFieldWrapper>
-      <Label htmlFor={name} className={cx(hideLabel && 'hidden')}>
+      <label htmlFor={name} className={cx(hideLabel && 'hidden')}>
         {label || otherProps.placeholder}
-      </Label>
+      </label>
       <FieldWrapper>
         <Input {...otherProps} />
-        {iconPath ? <Icon path={iconPath} size={1} /> : null}
+        {iconPath ? (
+          <Icon path={iconPath} size={1} className={'fill-tertiary-txt'} />
+        ) : null}
       </FieldWrapper>
     </LabeledFieldWrapper>
   );

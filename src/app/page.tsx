@@ -8,11 +8,14 @@ import { Heading } from '@/components/core/heading';
 import { Link, ButtonLink } from '@/components/core/link';
 import { LogoAnimoji } from '@/components/core/logo-animoji';
 import { mdiAccountCircleOutline, mdiMagnify } from '@/components/icons';
+import { ThemeToggle } from '@/components/molecules/toolbar/toolbar-buttons/theme-toggle';
+import { cx } from '@/tw';
 
 export default function Home() {
   return (
     <main className={'flex min-h-screen flex-col items-center p-24 gap-24'}>
       <LogoAnimoji />
+      <ThemeToggle />
       <Divider />
       <Button title={'test'}>Button</Button>
       <Button title={'test'}>
@@ -48,9 +51,10 @@ export default function Home() {
       <ChipGroup className={'self-start'}>
         <Chip>Chip</Chip>
         <Chip
-          className={
-            'hover:bg-[rgba(125_34_68/0.08)] hover:border-[rgba(125_34_68/0.5)]'
-          }
+          className={cx(
+            'hover:bg-[rgba(125_34_68/0.08)] hover:border-[rgba(125_34_68/0.5)]',
+            'dark:hover:bg-[rgba(125_34_68/0.12)] dark:hover:border-[rgba(125_34_68/0.75)]',
+          )}
         >
           Chip
         </Chip>
