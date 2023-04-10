@@ -4,8 +4,8 @@ import { usePathname } from 'next/navigation';
 import { cx } from '@/tw';
 import type { FC, GradientClass } from '@/types';
 
-import { ToolbarLink } from './link.styles';
-import { PagesLinksContainer } from './links-container.styles';
+import { PageLink, ToolbarLink } from './link.styles';
+import { PagesLinksContainer, LinkItem } from './links-container.styles';
 
 interface ToolbarLinkItem {
   title: string;
@@ -43,8 +43,8 @@ export const ToolbarNavLinks: FC = () => {
     <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
         return (
-          <li key={index}>
-            <ToolbarLink
+          <LinkItem key={`page-link-${index}`}>
+            <PageLink
               title={`${link.title} page`}
               href={link.href}
               aria-current={pathname.includes(link.href) ? 'page' : undefined}
@@ -59,8 +59,8 @@ export const ToolbarNavLinks: FC = () => {
               )}
             >
               <span>{link.title}</span>
-            </ToolbarLink>
-          </li>
+            </PageLink>
+          </LinkItem>
         );
       })}
     </PagesLinksContainer>

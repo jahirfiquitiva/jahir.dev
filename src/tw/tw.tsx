@@ -11,6 +11,8 @@ type Argument = string | boolean | null | undefined;
 export const cx = (...args: Argument[]): string => twMerge(classix(...args));
 
 export const twx = (classes: TemplateStringsArray): string => {
+  if (classes.join('').includes('&'))
+    console.error(`Class using & -> ${classes}`)
   return cx(
     classes
       .join(' ')

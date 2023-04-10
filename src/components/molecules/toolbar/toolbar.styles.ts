@@ -18,13 +18,10 @@ export const Header = tw.header`
   
   w-full
   max-w-[666px]
-  tablet-sm:h-[calc(--baseActualHeight_+_4px)]
+  tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
   [&[data-expanded="true"]]:h-[calc(calc(var(--baseActualHeight)_*_2.0625)_-_calc(var(--floatingMargin)_*_1.75))]
   [&[data-expanded="true"]]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
 
-  delay-[0.5s]
-  tablet-sm:delay-0
-  [&[data-expanded="true"]]:delay-0
 `;
 
 export const Nav = tw.nav`
