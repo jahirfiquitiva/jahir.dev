@@ -38,6 +38,7 @@ module.exports = {
       fontWeight: {
         normal: '450',
       },
+      transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
     },
   },
   future: {

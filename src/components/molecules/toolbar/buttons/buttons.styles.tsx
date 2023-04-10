@@ -29,7 +29,7 @@ export const ToolbarButton: FC<
   const { iconPath, iconSize, ...rest } = props;
   return (
     <StyledToolbarButton {...rest}>
-      <Icon path={iconPath} size={iconSize} />
+      <Icon path={iconPath} size={iconSize || 1} />
     </StyledToolbarButton>
   );
 };

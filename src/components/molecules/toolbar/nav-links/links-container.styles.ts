@@ -2,8 +2,7 @@ import tw from '@/tw';
 
 export const ToolbarLinksContainer = tw.ul`
   h-full
-  min-h-[42px]
-  max-h-[42px]
+  max-h-[2.625rem]
   flex
   visible
   pointer-events-auto
@@ -17,9 +16,12 @@ export const ToolbarLinksContainer = tw.ul`
   tablet-sm:gap-0
   tablet-sm:justify-start
   tablet-sm:[grid-column:3/4]
+  tablet-sm:max-h-[2.625rem]
 
   [&>li]:h-full
-  [&>li]:max-h-[42px]
+  [&>li]:max-h-[2.625rem]
+  [.expanded_&]:min-h-[2.625rem]
+  [.expanded_&]:tablet-sm:min-h-[2.625rem]
 `;
 
 export const PagesLinksContainer = tw(ToolbarLinksContainer)`
@@ -45,9 +47,10 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   [&.expanded]:flex
   [&.expanded]:visible
   [&.expanded]:pointer-events-auto
-  [&.expanded]:justify-end
+  [&.expanded]:justify-start
   [&.expanded]:max-h-[unset]
   [&.expanded]:opacity-100
   [&.expanded]:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
-  [&.expanded]:delay-[.1s]
+  [&.expanded]:-delay-[.1s]
+  [&.expanded]:tablet-sm:justify-end
 `;

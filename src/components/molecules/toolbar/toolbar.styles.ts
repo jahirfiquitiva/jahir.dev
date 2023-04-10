@@ -8,16 +8,18 @@ export const Header = tw.header`
   fixed
   top-0
   left-1/2
+  transition-[height]
+  duration-[0.25s]
+  ease-eio
   transform
   -translate-x-1/2
   pt-[var(--floatingMargin)]
-  h-[var(--baseActualHeight)]
+  
   w-full
   max-w-[666px]
-  transition-all
   tablet-sm:h-[calc(--baseActualHeight_+_4px)]
-  [&.expanded]:h-[calc(calc(--baseActualHeight_*_2)_-_calc(--floatingMargin_*_1.75))]
-  [&.expanded]:tablet-sm:h-[calc(--baseActualHeight_+_4px)]
+  [&.expanded]:h-[calc(calc(var(--baseActualHeight)_*_2)_-_calc(var(--floatingMargin)_*_1.75))]
+  [&.expanded]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
 `;
 
 export const Nav = tw.nav`
@@ -37,7 +39,7 @@ export const Nav = tw.nav`
   [box-shadow:0_0_6px_1px_rgba(var(--color-accent-dark)/0.16)]
   p-[calc(var(--floatingMargin)/var(--spaceDivider))]
   mx-[var(--floatingMargin)]
-  transition-shadow
+  transition-all
   gap-0
   grid-rows-1
   [grid-template-columns:auto_1fr]
