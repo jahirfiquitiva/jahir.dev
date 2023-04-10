@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { cx } from '@/tw';
 import type { FC, GradientClass } from '@/types';
 
-import { PageLink, ToolbarLink } from './link.styles';
+import { PageLink } from './link.styles';
 import { PagesLinksContainer, LinkItem } from './links-container.styles';
 
 interface ToolbarLinkItem {
