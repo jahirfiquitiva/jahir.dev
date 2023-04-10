@@ -18,10 +18,10 @@ export const Container = tw.span`
 
 export const StyledLogo = tw(Logo)`
   fill-accent
-  group-hover/animoji:invisible
-  group-hover/animoji:opacity-0
-  group-hover/animoji:transform
-  group-hover/animoji:scale-0
+  group-hocus/animoji:invisible
+  group-hocus/animoji:opacity-0
+  group-hocus/animoji:transform
+  group-hocus/animoji:scale-0
 `;
 
 export const StyledImg = tw(Img)`
@@ -33,9 +33,9 @@ export const StyledImg = tw(Img)`
   select-none
   pointer-events-none
   
-  group-hover/animoji:visible
-  group-hover/animoji:opacity-100
-  group-hover/animoji:transform
-  group-hover/animoji:-rotate-[8deg]
-  group-hover/animoji:scale-[1.66]
+  group-hocus/animoji:visible
+  group-hocus/animoji:opacity-100
+  group-hocus/animoji:transform
+  group-hocus/animoji:-rotate-[8deg]
+  group-hocus/animoji:scale-[1.66]
 `;
