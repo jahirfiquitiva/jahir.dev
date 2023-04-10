@@ -7,7 +7,12 @@ import { mdiMenu, mdiPlus } from '@/components/icons';
 import type { FC } from '@/types';
 
 import { ThemeToggle, MobileMenuToggle } from './buttons';
-import { HomeLink, ToolbarLinksContainer, ToolbarNavLinks } from './nav-links';
+import {
+  HomeLink,
+  HomeLinkSpan,
+  ToolbarLinksContainer,
+  ToolbarNavLinks,
+} from './nav-links';
 import { Header, Nav } from './toolbar.styles';
 
 export const Toolbar: FC = () => {
@@ -17,7 +22,7 @@ export const Toolbar: FC = () => {
       <Nav>
         <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
           <LogoAnimoji />
-          <span>Jahir Fiquitiva</span>
+          <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
         </HomeLink>
         <ToolbarNavLinks />
         <ToolbarLinksContainer>

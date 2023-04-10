@@ -19,38 +19,43 @@ export const ToolbarLink = tw(Link)`
   hocus:no-underline
   hocus:bg-accent-dark/[0.1]
   mobile-md:text-xs
-  [&>span]:text-[inherit]
-  [&>span]:h-full
-  [&>span]:inline-flex
-  [&>span]:items-center
-  [&>span]:align-middle
-  [&>span]:p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
-  [&>span]:transform
   [&[aria-current="page"]]:bg-accent-dark/[0.1]
 `;
 
-export const PageLinkSpan = tw.span`
+const LinkSpan = tw.span`
+  text-[inherit]
+  h-full
+  inline-flex
+  items-center
+  align-middle
+  transform
+`;
+
+export const PageLinkSpan = tw(LinkSpan)`
+  p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
+
   group-hocus/link:bg-gradient-to-r
   group-hocus/link:bg-clip-text
   group-hocus/link:text-transparent
+
+  scale-y-0
+  tablet-md:scale-y-100
+  [[data-expanded="true"]_&]:scale-y-100
 `;
 
-export const PageLink = tw(ToolbarLink)`
-  [&>span]:scale-y-0
-  tablet-md:[&>span]:scale-y-100
-  [[data-expanded="true"]_&]:[&>span]:scale-y-100
+export const HomeLinkSpan = tw(LinkSpan)`
+  p-0
+  text-transparent
+  bg-gradient-to-r
+  from-gradient-brand
+  to-gradient-blue
+  bg-clip-text
 `;
 
 export const HomeLink = tw(ToolbarLink)`
   self-start
   p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
   gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
-  [&_span]:p-0
-  [&_span]:text-transparent
-  [&_span]:bg-gradient-to-r
-  [&_span]:from-gradient-brand
-  [&_span]:to-gradient-blue
-  [&_span]:bg-clip-text
   tablet-md:self-center
   [[data-expanded="true"]_&]:tablet-md:self-center
 `;
