@@ -56,6 +56,6 @@ export const HomeLink = tw(ToolbarLink)`
   self-start
   p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
   gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
-  tablet-md:self-center
-  [[data-expanded="true"]_&]:tablet-md:self-center
+  tablet-sm:self-center
+  [[data-expanded="true"]_&]:tablet-sm:self-center
 `;

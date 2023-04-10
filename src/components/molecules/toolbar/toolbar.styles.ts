@@ -21,7 +21,6 @@ export const Header = tw.header`
   tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
   [&[data-expanded="true"]]:h-[calc(calc(var(--baseActualHeight)_*_2.0625)_-_calc(var(--floatingMargin)_*_1.75))]
   [&[data-expanded="true"]]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
-
 `;
 
 export const Nav = tw.nav`
