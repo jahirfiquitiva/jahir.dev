@@ -32,7 +32,7 @@ export const Input = tw.input`
   py-6
   px-12
   flex-1
-  hover:border-accent
+  hocus:border-accent
   disabled:opacity-50
   disabled:cursor-not-allowed
 `;

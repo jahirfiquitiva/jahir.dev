@@ -7,8 +7,8 @@ export const StyledLink = tw(NextLink)`
   font-medium
   text-accent
   self-start
-  hover:text-accent-dark
-  hover:underline
-  hover:underline-offset-2
-  hover:decoration-2
+  hocus:text-accent-dark
+  hocus:underline
+  hocus:underline-offset-2
+  hocus:decoration-2
 `;

@@ -12,10 +12,10 @@ const StyledToolbarButton = tw(Button)`
   w-[2.625rem]
   bg-transparent
   shadow-none
-  hover:bg-accent-dark/[0.1]
-  hover:translate-y-0
-  hover:text-accent
-  hover:shadow-none
+  hocus:bg-accent-dark/[0.1]
+  hocus:translate-y-0
+  hocus:text-accent
+  hocus:shadow-none
 `;
 
 export const ToolbarButtonIcon = tw(Icon)`

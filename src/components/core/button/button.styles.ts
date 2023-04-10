@@ -19,12 +19,12 @@ export const buttonClasses = tw.tw`
   transition-all
   truncate
   shadow
-  hover:bg-accent-dark
-  hover:text-on-accent
-  hover:transform
-  hover:-translate-y-1
-  hover:no-underline
-  hover:shadow-md
+  hocus:bg-accent-dark
+  hocus:text-on-accent
+  hocus:transform
+  hocus:-translate-y-1
+  hocus:no-underline
+  hocus:shadow-md
   disabled:opacity-50
   disabled:pointer-events-none
   disabled:cursor-not-allowed
@@ -41,8 +41,8 @@ export const outlinedButtonClasses = tw.tw`
   border-divider
   text-secondary-txt
   shadow-sm
-  hover:shadow
-  hover:bg-accent-dark/[0.16]
-  hover:border-accent-dark
-  hover:text-primary-txt
+  hocus:shadow
+  hocus:bg-accent-dark/[0.16]
+  hocus:border-accent-dark
+  hocus:text-primary-txt
 `;
