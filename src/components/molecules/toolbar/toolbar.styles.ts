@@ -1,16 +1,17 @@
+/* eslint-disable max-len */
 import tw from '@/tw';
 
 export const Header = tw.header`
   [--toolbarHeight:56px]
   [--floatingMargin:calc(var(--totalToolbarHeight)_-_var(--toolbarHeight))]
   [--baseActualHeight:calc(var(--toolbarHeight)+var(--floatingMargin))]
+  h-[var(--baseActualHeight)]
   z-[2]
   fixed
   top-0
   left-1/2
   transition-[height]
   duration-[0.25s]
-  ease-eio
   transform
   -translate-x-1/2
   pt-[var(--floatingMargin)]
@@ -18,8 +19,12 @@ export const Header = tw.header`
   w-full
   max-w-[666px]
   tablet-sm:h-[calc(--baseActualHeight_+_4px)]
-  [&.expanded]:h-[calc(calc(var(--baseActualHeight)_*_2)_-_calc(var(--floatingMargin)_*_1.75))]
-  [&.expanded]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
+  [&[data-expanded="true"]]:h-[calc(calc(var(--baseActualHeight)_*_2.0625)_-_calc(var(--floatingMargin)_*_1.75))]
+  [&[data-expanded="true"]]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
+
+  delay-[0.5s]
+  tablet-sm:delay-0
+  [&[data-expanded="true"]]:delay-0
 `;
 
 export const Nav = tw.nav`
@@ -27,7 +32,7 @@ export const Nav = tw.nav`
   z-[3]
   relative
   grid
-  items-center
+  items-start
   h-full
   bg-toolbar
   backdrop-blur-[10px]
@@ -53,7 +58,7 @@ export const Nav = tw.nav`
 
   tablet-md:mx-0
 
-  [&.expanded]:[grid-template-rows:1fr_minmax(0px,_1fr)]
-  [&.expanded]:row-gap-[calc(var(--floatingMargin)/var(--spaceDivider))]
-  [&.expanded]:tablet-sm:[grid-template-rows:minmax(0px,_1fr)]
+  [[data-expanded="true"]>&]:[grid-template-rows:1fr_minmax(0px,_1fr)]
+  [[data-expanded="true"]>&]:[row-gap:calc(calc(var(--floatingMargin)/var(--spaceDivider))*1.5)]
+  [[data-expanded="true"]>&]:tablet-sm:[grid-template-rows:minmax(0px,_1fr)]
 `;

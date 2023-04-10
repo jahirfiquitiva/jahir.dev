@@ -10,6 +10,7 @@ export const ToolbarLinksContainer = tw.ul`
   justify-end
   list-none
   gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
+  transition-all
   [grid-row:1]
   [grid-column:2]
 
@@ -20,8 +21,9 @@ export const ToolbarLinksContainer = tw.ul`
 
   [&>li]:h-full
   [&>li]:max-h-[2.625rem]
-  [.expanded_&]:min-h-[2.625rem]
-  [.expanded_&]:tablet-sm:min-h-[2.625rem]
+  [[data-expanded="true"]_&]:h-[2.625rem]
+  [[data-expanded="true"]_&]:max-h-[2.625rem]
+  [[data-expanded="true"]_&]:tablet-sm:max-h-[2.625rem]
 `;
 
 export const PagesLinksContainer = tw(ToolbarLinksContainer)`
@@ -34,6 +36,7 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   pointer-events-none
   justify-start
   transition-all
+  delay-0
   tablet-sm:max-h-[unset]
   tablet-sm:opacity-100
   tablet-sm:[grid-row:1]
@@ -43,14 +46,14 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   tablet-sm:pointer-events-auto
   tablet-sm:justify-end
   tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
-  tablet-sm:delay-0
-  [&.expanded]:flex
-  [&.expanded]:visible
-  [&.expanded]:pointer-events-auto
-  [&.expanded]:justify-start
-  [&.expanded]:max-h-[unset]
-  [&.expanded]:opacity-100
-  [&.expanded]:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
-  [&.expanded]:-delay-[.1s]
-  [&.expanded]:tablet-sm:justify-end
+  tablet-sm:delay-[0.25s]
+  [[data-expanded="true"]_&]:delay-[0.25s]
+  [[data-expanded="true"]_&]:flex
+  [[data-expanded="true"]_&]:visible
+  [[data-expanded="true"]_&]:pointer-events-auto
+  [[data-expanded="true"]_&]:justify-start
+  [[data-expanded="true"]_&]:max-h-[unset]
+  [[data-expanded="true"]_&]:opacity-100
+  [[data-expanded="true"]_&]:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
+  [[data-expanded="true"]_&]:tablet-sm:justify-end
 `;

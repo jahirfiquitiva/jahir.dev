@@ -36,11 +36,11 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
   },
 ];
 
-export const ToolbarNavLinks: FC<{ expanded?: boolean }> = (props) => {
+export const ToolbarNavLinks: FC = () => {
   const pathname = usePathname();
 
   return (
-    <PagesLinksContainer className={cx(props.expanded && 'expanded')}>
+    <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
         return (
           <li key={index}>

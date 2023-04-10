@@ -13,8 +13,8 @@ import { Header, Nav } from './toolbar.styles';
 export const Toolbar: FC = () => {
   const [isExpanded, expand] = useState(false);
   return (
-    <Header className={isExpanded ? 'expanded' : ''}>
-      <Nav className={isExpanded ? 'expanded' : ''}>
+    <Header data-expanded={isExpanded}>
+      <Nav>
         <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
           <LogoAnimoji />
           <span>Jahir Fiquitiva</span>

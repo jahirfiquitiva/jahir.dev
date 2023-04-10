@@ -32,7 +32,6 @@ export const ToolbarLink = tw(Link)`
 
 export const HomeLink = tw(ToolbarLink)`
   p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
-  self-center
   gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
   [&_span]:p-0
   [&_span]:text-transparent
