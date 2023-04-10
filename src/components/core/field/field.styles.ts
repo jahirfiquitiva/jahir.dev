@@ -1,3 +1,5 @@
+import Icon from '@mdi/react';
+
 import tw from '@/tw';
 
 export const LabeledFieldWrapper = tw.div`
@@ -10,14 +12,6 @@ export const FieldWrapper = tw.div`
   relative
   flex
   align-center
-  [&>svg]:absolute
-  [&>svg]:top-0
-  [&>svg]:right-0
-  [&>svg]:transform
-  [&>svg]:translate-y-1/2
-  [&>svg]:mr-12
-  [&>svg]:pointer-events-none
-  [&>svg]:text-tertiary-txt
   [&:has(svg)>input]:pr-48
 `;
 
@@ -35,4 +29,15 @@ export const Input = tw.input`
   hocus:border-accent
   disabled:opacity-50
   disabled:cursor-not-allowed
+`;
+
+export const FieldIcon = tw(Icon)`
+  absolute
+  top-0
+  right-0
+  transform
+  translate-y-1/2
+  mr-12
+  pointer-events-none
+  text-tertiary-txt
 `;

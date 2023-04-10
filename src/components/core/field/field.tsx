@@ -1,9 +1,13 @@
-import Icon from '@mdi/react';
 import { type ComponentProps } from 'react';
 
 import { cx } from '@/tw';
 
-import { LabeledFieldWrapper, FieldWrapper, Input } from './field.styles';
+import {
+  LabeledFieldWrapper,
+  FieldWrapper,
+  Input,
+  FieldIcon,
+} from './field.styles';
 
 interface FieldProps extends ComponentProps<'input'> {
   name: string;
@@ -23,7 +27,7 @@ export const Field = (props: FieldProps) => {
       <FieldWrapper>
         <Input {...otherProps} />
         {iconPath ? (
-          <Icon path={iconPath} size={1} className={'fill-tertiary-txt'} />
+          <FieldIcon path={iconPath} size={1} className={'fill-tertiary-txt'} />
         ) : null}
       </FieldWrapper>
     </LabeledFieldWrapper>
