@@ -4,6 +4,7 @@ import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
 import { Toolbar } from '@/components/molecules/toolbar';
+import { Main } from '@/components/molecules/main';
 import { Providers } from '@/providers';
 
 const inter = Inter({
@@ -35,7 +36,7 @@ export default function RootLayout(props: PropsWithChildren) {
       <body>
         <Providers>
           <Toolbar />
-          <main>{props.children}</main>
+          <Main>{props.children}</Main>
         </Providers>
       </body>
     </html>

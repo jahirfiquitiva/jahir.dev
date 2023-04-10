@@ -39,6 +39,15 @@ module.exports = {
         normal: '450',
       },
       transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
+      keyframes: {
+        'page-transition': {
+          '0%': { transform: 'scale(0.975)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
+      },
+      animation: {
+        'page-transition': 'page-transition 300ms ease-in-out backwards',
+      },
     },
   },
   future: {
@@ -48,11 +57,7 @@ module.exports = {
   safelist: [
     {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
-      variants: [
-        'dark',
-        'hocus',
-        'group-hocus/link',
-      ],
+      variants: ['dark', 'hocus', 'group-hocus/link'],
     },
   ],
 };

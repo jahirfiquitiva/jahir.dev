@@ -11,7 +11,7 @@ import { cx } from '@/tw';
 
 export default function Home() {
   return (
-    <main className={'flex min-h-screen flex-col items-center p-24 gap-24'}>
+    <>
       <Button title={'test'}>Button</Button>
       <Button title={'test'}>
         <Icon path={mdiAccountCircleOutline} size={1} />
@@ -96,6 +96,6 @@ export default function Home() {
       <Heading as={'h6'} to={'green'}>
         Heading 6
       </Heading>
-    </main>
+    </>
   );
 }
