@@ -11,16 +11,16 @@ type Argument = string | boolean | null | undefined;
 export const cx = (...args: Argument[]): string => twMerge(classix(...args));
 
 export const twx = (classes: TemplateStringsArray): string => {
-  if (classes.join('').includes('&'))
-    console.error(`Class using & -> ${classes}`)
-  return cx(
-    classes
-      .join(' ')
-      .split(/\r?\n/)
-      .map((it) => it.trim())
-      .join(' ')
-      .trim(),
-  );
+  const cleanClasses = classes
+    .join(' ')
+    .split(/\r?\n/)
+    .map((it) => it.trim());
+  for (const classItem of cleanClasses) {
+    if (classItem.includes('&')) {
+      console.error(`Class using & -> ${classItem}`);
+    }
+  }
+  return cx(cleanClasses.join(' ').trim());
 };
 
 function baseStyled<T>(tag: WebTarget) {
