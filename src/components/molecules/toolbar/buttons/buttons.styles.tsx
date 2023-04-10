@@ -18,6 +18,15 @@ const StyledToolbarButton = tw(Button)`
   hover:shadow-none
 `;
 
+export const ToolbarButtonIcon = tw(Icon)`
+  transition-transform
+  transform
+  rotate-0
+  scale-100
+  [[aria-expanded="true"]>&]:rotate-45
+  [[aria-expanded="true"]>&]:scale-[1.15]
+`;
+
 interface ToolbarButtonProps {
   iconPath: string;
   iconSize?: number;
@@ -29,7 +38,7 @@ export const ToolbarButton: FC<
   const { iconPath, iconSize, ...rest } = props;
   return (
     <StyledToolbarButton {...rest}>
-      <Icon path={iconPath} size={iconSize || 1} />
+      <ToolbarButtonIcon path={iconPath} size={iconSize || 1} />
     </StyledToolbarButton>
   );
 };

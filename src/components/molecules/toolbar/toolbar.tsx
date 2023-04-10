@@ -13,19 +13,20 @@ import { Header, Nav } from './toolbar.styles';
 export const Toolbar: FC = () => {
   const [isExpanded, expand] = useState(false);
   return (
-    <Header data-expanded={isExpanded}>
+    <Header data-expanded={isExpanded} id={'header'}>
       <Nav>
         <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
           <LogoAnimoji />
           <span>Jahir Fiquitiva</span>
         </HomeLink>
-        <ToolbarNavLinks expanded={isExpanded} />
+        <ToolbarNavLinks />
         <ToolbarLinksContainer>
           <ThemeToggle />
           <li>
             <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}
+              aria-controls={'header'}
               iconPath={isExpanded ? mdiPlus : mdiMenu}
               onClick={() => {
                 expand(!isExpanded);
