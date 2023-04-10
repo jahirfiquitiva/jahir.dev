@@ -2,7 +2,7 @@ import type { ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
 
 import tw, { cx } from '@/tw';
-import type { ComponentProps } from '@/types';
+import type { ComponentProps, RainbowColor } from '@/types';
 
 const StyledHeading = tw.h1`
   inline-block
@@ -18,17 +18,6 @@ const StyledHeading = tw.h1`
   dark:to-primary-txt
   dark:bg-clip-text
 `;
-
-const rainbowColors = [
-  'brand',
-  'blue',
-  'green',
-  'yellow',
-  'orange',
-  'red',
-  'purple',
-] as const;
-type RainbowColor = typeof rainbowColors[number];
 
 interface HeadingProps {
   as?: ElementType;

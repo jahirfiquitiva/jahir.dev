@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import { moonOutline, sunOutline } from '@/components/icons';
 import { useTheme } from '@/providers/theme';
 
-import { ToolbarButton } from './toolbar-buttons.styles';
+import { ToolbarButton } from './buttons.styles';
 
 export const ThemeToggle = () => {
   const { isDark, themeReady, toggleTheme } = useTheme();

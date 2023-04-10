@@ -8,7 +8,7 @@ import { Heading } from '@/components/core/heading';
 import { Link, ButtonLink } from '@/components/core/link';
 import { LogoAnimoji } from '@/components/core/logo-animoji';
 import { mdiAccountCircleOutline, mdiMagnify } from '@/components/icons';
-import { ThemeToggle } from '@/components/molecules/toolbar/toolbar-buttons/theme-toggle';
+import { ThemeToggle } from '@/components/molecules/toolbar/buttons/theme-toggle';
 import { cx } from '@/tw';
 
 export default function Home() {

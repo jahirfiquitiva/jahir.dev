@@ -4,6 +4,7 @@ import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
 import { Providers } from '@/providers';
+import { ToolbarNavLinks } from '@/components/molecules/toolbar/nav-links/nav-links';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,7 +33,10 @@ export default function RootLayout(props: PropsWithChildren) {
       suppressHydrationWarning
     >
       <body>
-        <Providers>{props.children}</Providers>
+        <Providers>
+          <ToolbarNavLinks />
+          <main>{props.children}</main>
+        </Providers>
       </body>
     </html>
   );

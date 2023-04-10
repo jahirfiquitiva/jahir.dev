@@ -1,6 +1,6 @@
 import tw from '@/tw';
 
-import { ToolbarButton } from './toolbar-buttons.styles';
+import { ToolbarButton } from './buttons.styles';
 
 export const MobileMenuToggle = tw(ToolbarButton)`
   tablet-sm:hidden

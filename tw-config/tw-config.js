@@ -47,7 +47,7 @@ module.exports = {
   safelist: [
     {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
-      variants: ['dark'],
+      variants: ['dark', 'hover', 'hover:[&>span]'],
     },
   ],
 };
