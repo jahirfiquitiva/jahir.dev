@@ -59,5 +59,10 @@ module.exports = {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
       variants: ['dark', 'hocus', 'group-hocus/link'],
     },
+    {
+      pattern:
+        /decoration-gradient-(brand|blue|green|yellow|orange|red|purple)/,
+      variants: ['hocus'],
+    },
   ],
 };

@@ -17,13 +17,13 @@ export interface FooterLinkProps {
   underlineColor?: RainbowColor;
 }
 
-interface FooterLinksGroupProps {
+interface FooterLinksListProps {
   title?: string;
   links?: Array<FooterLinkProps>;
   meta?: boolean;
 }
 
-export const FooterLinksGroup: FC<FooterLinksGroupProps> = (props) => {
+export const FooterLinksList: FC<FooterLinksListProps> = (props) => {
   const { title, links, meta } = props;
   const ListComponent = meta ? MetaList : List;
   return (
@@ -35,10 +35,7 @@ export const FooterLinksGroup: FC<FooterLinksGroupProps> = (props) => {
               href={link.href}
               title={link.a11yTitle ? link.a11yTitle : `${link.title} page`}
               openInNewTab={link.openInNewTab}
-              className={cx(
-                `decoration-gradient-${link.underlineColor}`,
-                'group/link',
-              )}
+              className={cx(`hocus:decoration-gradient-${link.underlineColor}`)}
             >
               <FooterLinkSpan
                 className={cx(
