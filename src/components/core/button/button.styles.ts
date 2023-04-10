@@ -1,15 +1,12 @@
-import tw from '@/tw';
+import tw from 'tailwind-styled-components';
 
-export const buttonClasses = tw.tw`
+export const StyledButton = tw.button<{ $outlined?: boolean }>`
   inline-flex
   items-center
   justify-center
   self-start
   min-h-[2.625rem]
-  border-none
   rounded-6
-  bg-accent
-  text-on-accent
   py-6
   px-12
   gap-6
@@ -18,31 +15,21 @@ export const buttonClasses = tw.tw`
   tracking-wide
   transition-all
   truncate
-  shadow
-  hocus:bg-accent-dark
-  hocus:text-on-accent
+  ${(p) => (p.$outlined ? 'bg-transparent' : 'bg-accent')}
+  ${(p) => (p.$outlined ? 'border border-solid border-divider' : 'border-none')}
+  ${(p) => (p.$outlined ? 'text-secondary-txt' : 'text-on-accent')}
+  ${(p) => (p.$outlined ? 'shadow-sm' : 'shadow')}
   hocus:transform
   hocus:-translate-y-1
   hocus:no-underline
-  hocus:shadow-md
+  ${(p) => (p.$outlined ? 'hocus:shadow' : 'hocus:shadow-md')}
+  ${(p) =>
+    p.$outlined ? 'hocus:bg-accent-dark/[0.12]' : 'hocus:bg-accent-dark'}
+  ${(p) => (p.$outlined ? 'hocus:border-accent-dark' : '')}
+  ${(p) => (p.$outlined ? 'hocus:text-primary-txt' : 'hocus:text-on-accent')}
   disabled:opacity-50
   disabled:pointer-events-none
   disabled:cursor-not-allowed
   [&>svg:only-child]:mx-auto
   [&>svg:only-child]:my-0
-`;
-
-export const StyledButton = tw.button(buttonClasses);
-
-export const outlinedButtonClasses = tw.tw`
-  bg-transparent
-  border
-  !border-solid
-  border-divider
-  text-secondary-txt
-  shadow-sm
-  hocus:shadow
-  hocus:bg-accent-dark/[0.16]
-  hocus:border-accent-dark
-  hocus:text-primary-txt
 `;

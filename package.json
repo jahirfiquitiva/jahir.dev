@@ -38,8 +38,7 @@
     "react-compare-image": "^3.3.0",
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^0.4.0",
-    "swr": "^2.1.2",
-    "tailwind-merge": "^1.12.0"
+    "swr": "^2.1.2"
   },
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
@@ -73,6 +72,8 @@
     "sass": "^1.61.0",
     "sharp": "^0.32.0",
     "shiki": "^0.14.1",
+    "tailwind-merge": "^1.12.0",
+    "tailwind-styled-components": "^2.2.0",
     "tailwindcss": "^3.3.1",
     "tailwindcss-hocus": "^0.0.7",
     "typescript": "^5.0.3",

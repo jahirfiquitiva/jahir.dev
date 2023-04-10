@@ -1,11 +1,11 @@
+import { cx } from 'classix';
 import type { ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
+import tw from 'tailwind-styled-components';
 
-import tw, { cx } from '@/tw';
 import type { ComponentProps, RainbowColor } from '@/types';
 
 const StyledHeading = tw.h1`
-  inline-block
   items-center
   self-start
   [--text-shadow-color:var(--color-transparent)]
@@ -30,10 +30,19 @@ interface HeadingProps {
 export const Heading = (
   props: ComponentProps<typeof StyledHeading> & HeadingProps,
 ) => {
-  const { children, balancerRatio, shadow, from, to, ...otherProps } = props;
+  const {
+    as: asElement,
+    children,
+    balancerRatio,
+    shadow,
+    from,
+    to,
+    ...otherProps
+  } = props;
   return (
     <StyledHeading
       {...otherProps}
+      $as={asElement}
       className={cx(
         otherProps.className,
         from ? `dark:from-gradient-${from}` : null,

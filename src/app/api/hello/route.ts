@@ -1,3 +1,3 @@
 export async function GET(request: Request) {
-  return new Response(`Hello, Next.js! ${request.method}`)
+  return new Response(`Hello, Next.js! ${request.method}`);
 }

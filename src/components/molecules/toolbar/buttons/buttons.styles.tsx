@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
+import tw from 'tailwind-styled-components';
 
 import { Button } from '@/components/core/button';
-import tw from '@/tw';
 import type { ComponentProps, FC } from '@/types';
 
 const StyledToolbarButton = tw(Button)`
@@ -19,6 +19,7 @@ const StyledToolbarButton = tw(Button)`
 `;
 
 export const ToolbarButtonIcon = tw(Icon)`
+  text-accent
   fill-accent
   transition-transform
   transform

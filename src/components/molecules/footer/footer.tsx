@@ -1,5 +1,6 @@
+import { cx } from 'classix';
+
 import { LogoAnimoji } from '@/components/core/logo-animoji';
-import { cx } from '@/tw';
 // import { SocialLinks } from '@/old/components/compounds';
 
 import {
@@ -87,7 +88,9 @@ export const Footer = () => {
         <BrandLink
           href={'/'}
           title={'Home page'}
-          className={cx('hocus:decoration-gradient-brand group/link group/animoji')}
+          className={cx(
+            'hocus:decoration-gradient-brand group/link group/animoji',
+          )}
         >
           <LogoAnimoji />
           <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>

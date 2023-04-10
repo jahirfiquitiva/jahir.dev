@@ -1,4 +1,5 @@
-import { cx } from '@/tw';
+import { cx } from 'classix';
+
 import type { FC, GradientClass, RainbowColor } from '@/types';
 
 import {

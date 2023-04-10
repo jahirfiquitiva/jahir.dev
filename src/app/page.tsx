@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import { cx } from 'classix';
 
 import { Button } from '@/components/core/button';
 import { Chip, ImageChip, ChipGroup } from '@/components/core/chip';
@@ -9,7 +10,6 @@ import { Img } from '@/components/core/img';
 import { Link, ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { mdiAccountCircleOutline, mdiMagnify } from '@/components/icons';
-import { cx } from '@/tw';
 
 export default function Home() {
   return (
@@ -42,7 +42,7 @@ export default function Home() {
           Outlined button link
         </ButtonLink>
       </Section>
-      <Divider as={'button'} />
+      <Divider $as={'button'} />
       <Section className={'gap-16'}>
         <Chip className={'self-start'}>Chip</Chip>
         <Chip className={'self-start'}>Chip</Chip>

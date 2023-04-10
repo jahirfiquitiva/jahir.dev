@@ -1,7 +1,8 @@
 'use client';
+
+import { cx } from 'classix';
 import { usePathname } from 'next/navigation';
 
-import { cx } from '@/tw';
 import type { FC, GradientClass } from '@/types';
 
 import { ToolbarLink, PageLinkSpan } from './link.styles';

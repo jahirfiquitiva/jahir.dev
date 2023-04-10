@@ -1,11 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { cx } from '@/tw';
-
-import {
-  buttonClasses,
-  outlinedButtonClasses,
-} from './../button/button.styles';
+import { StyledButton } from './../button/button.styles';
 import { Link } from './link';
 
 interface ButtonLinkProps extends ComponentProps<typeof Link> {
@@ -14,14 +9,7 @@ interface ButtonLinkProps extends ComponentProps<typeof Link> {
 
 export const ButtonLink = (props: ButtonLinkProps) => {
   const { outlined, ...otherProps } = props;
-  return (
-    <Link
-      {...otherProps}
-      className={cx(
-        buttonClasses,
-        outlined && outlinedButtonClasses,
-        props.className,
-      )}
-    />
-  );
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore (tw expects otherProps to be of type StyledButton.props)
+  return <StyledButton $as={Link} $outlined={outlined} {...otherProps} />;
 };

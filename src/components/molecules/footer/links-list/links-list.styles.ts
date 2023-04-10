@@ -1,5 +1,6 @@
-import { Link } from '@/components/core/link'
-import tw from '@/tw'
+import tw from 'tailwind-styled-components';
+
+import { Link } from '@/components/core/link';
 
 export const List = tw.ul`
   min-w-[130px]
@@ -10,14 +11,14 @@ export const List = tw.ul`
   gap-12
   mobile-md:min-w-[164px]
   tablet-sm:min-w-[172px]
-`
+`;
 
 export const MetaList = tw(List)`
   flex-row
   mt-12
   tablet-sm:flex-col
   tablet-sm:mt-0
-`
+`;
 
 export const FooterLink = tw(Link)`
   inline-flex
@@ -25,7 +26,7 @@ export const FooterLink = tw(Link)`
   self-start
   text-tertiary-txt
   group/link
-`
+`;
 
 export const FooterLinkSpan = tw.span`
   bg-gradient-to-r
@@ -33,4 +34,4 @@ export const FooterLinkSpan = tw.span`
   to-tertiary-txt
   text-transparent
   bg-clip-text
-`
+`;

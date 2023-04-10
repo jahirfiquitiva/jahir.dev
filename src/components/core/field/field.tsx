@@ -1,6 +1,5 @@
+import { cx } from 'classix';
 import { type ComponentProps } from 'react';
-
-import { cx } from '@/tw';
 
 import {
   LabeledFieldWrapper,
@@ -18,7 +17,6 @@ interface FieldProps extends ComponentProps<'input'> {
 
 export const Field = (props: FieldProps) => {
   const { name, label, iconPath, hideLabel, ...otherProps } = props;
-
   return (
     <LabeledFieldWrapper>
       <label htmlFor={name} className={cx(hideLabel && 'hidden')}>
@@ -26,9 +24,7 @@ export const Field = (props: FieldProps) => {
       </label>
       <FieldWrapper>
         <Input {...otherProps} />
-        {iconPath ? (
-          <FieldIcon path={iconPath} size={1} className={'fill-tertiary-txt'} />
-        ) : null}
+        {iconPath ? <FieldIcon path={iconPath} size={1} /> : null}
       </FieldWrapper>
     </LabeledFieldWrapper>
   );

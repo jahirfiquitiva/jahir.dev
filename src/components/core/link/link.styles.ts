@@ -1,6 +1,5 @@
 import NextLink from 'next/link';
-
-import tw from '@/tw';
+import tw from 'tailwind-styled-components';
 
 export const StyledLink = tw(NextLink)`
   inline-block

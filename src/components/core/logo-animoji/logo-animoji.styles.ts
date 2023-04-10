@@ -1,5 +1,6 @@
+import tw from 'tailwind-styled-components';
+
 import { Logo } from '@/components/icons';
-import tw from '@/tw';
 
 import { Img } from '../img';
 

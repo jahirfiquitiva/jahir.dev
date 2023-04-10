@@ -1,4 +1,4 @@
-import tw from '@/tw';
+import tw from 'tailwind-styled-components';
 
 export const LinkItem = tw.li`block`;
 

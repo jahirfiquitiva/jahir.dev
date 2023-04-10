@@ -1,5 +1,6 @@
+import tw from 'tailwind-styled-components';
+
 import { Link } from '@/components/core/link';
-import tw from '@/tw';
 
 export const ToolbarLink = tw(Link)`
   no-underline

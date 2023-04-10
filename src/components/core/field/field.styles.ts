@@ -1,6 +1,5 @@
 import Icon from '@mdi/react';
-
-import tw from '@/tw';
+import tw from 'tailwind-styled-components';
 
 export const LabeledFieldWrapper = tw.div`
   flex
@@ -40,4 +39,5 @@ export const FieldIcon = tw(Icon)`
   mr-12
   pointer-events-none
   text-tertiary-txt
+  fill-tertiary-txt
 `;
