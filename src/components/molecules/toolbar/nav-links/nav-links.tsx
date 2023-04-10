@@ -1,11 +1,11 @@
 'use client';
 import { usePathname } from 'next/navigation';
 
+import { cx } from '@/tw';
 import type { FC, GradientClass } from '@/types';
 
 import { ToolbarLink } from './link.styles';
 import { PagesLinksContainer } from './links-container.styles';
-import { cx } from '@/tw';
 
 interface ToolbarLinkItem {
   title: string;

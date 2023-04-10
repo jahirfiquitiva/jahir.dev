@@ -3,8 +3,8 @@ import '@/styles/globals.scss';
 import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
+import { Toolbar } from '@/components/molecules/toolbar';
 import { Providers } from '@/providers';
-import { ToolbarNavLinks } from '@/components/molecules/toolbar/nav-links/nav-links';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,7 +34,7 @@ export default function RootLayout(props: PropsWithChildren) {
     >
       <body>
         <Providers>
-          <ToolbarNavLinks />
+          <Toolbar />
           <main>{props.children}</main>
         </Providers>
       </body>

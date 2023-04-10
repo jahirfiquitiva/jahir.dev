@@ -15,6 +15,7 @@ export const ToolbarLink = tw(Link)`
   text-secondary-txt
   rounded-6
   transition-colors
+  min-h-[42px]
   max-h-[42px]
   [grid-row:1]
   [grid-column:1]
@@ -24,14 +25,14 @@ export const ToolbarLink = tw(Link)`
   [&>span]:inline-flex
   [&>span]:items-center
   [&>span]:align-middle
-  [&>span]:p-[calc(var(--floatingMargin, 0) / var(--spaceDivider, 1))]
+  [&>span]:p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
   [&[aria-current="page"]]:bg-accent-dark/[0.1]
   hover:bg-accent-dark/[0.1]
 `;
 
 export const HomeLink = tw(ToolbarLink)`
-  self-start
-  gap-[calc(var(--floatingMargin, 0) / var(--spaceDivider, 1))]
+  self-center
+  gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
   [&_span]:text-transparent
   [&_span]:bg-gradient-to-r
   [&_span]:from-gradient-brand

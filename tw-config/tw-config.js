@@ -45,6 +45,9 @@ module.exports = {
   },
   plugins: [require('@tailwindcss/typography')],
   safelist: [
+    // 'calc(var(--floatingMargin, 0) / var(--spaceDivider, 1))',
+    // 'p-[calc(var(--floatingMargin, 0) / var(--spaceDivider, 1))]',
+    // 'gap-[calc(var(--floatingMargin, 0) / var(--spaceDivider, 1))]',
     {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
       variants: ['dark', 'hover', 'hover:[&>span]'],

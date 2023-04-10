@@ -14,9 +14,6 @@ import { cx } from '@/tw';
 export default function Home() {
   return (
     <main className={'flex min-h-screen flex-col items-center p-24 gap-24'}>
-      <LogoAnimoji />
-      <ThemeToggle />
-      <Divider />
       <Button title={'test'}>Button</Button>
       <Button title={'test'}>
         <Icon path={mdiAccountCircleOutline} size={1} />
