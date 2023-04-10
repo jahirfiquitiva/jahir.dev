@@ -17,7 +17,6 @@ const inter = Inter({
 
 const manrope = Manrope({
   subsets: ['latin'],
-  preload: true,
   variable: '--font-manrope',
   display: 'fallback',
 });
