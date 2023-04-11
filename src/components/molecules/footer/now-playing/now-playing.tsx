@@ -1,49 +1,28 @@
-import { cx } from 'classix';
+'use client';
 
-import type { FC } from '@/types';
+import { useRequest } from '@/hooks/use-request';
 import type { ReadableTrack } from '@/types/spotify';
 
-import {
-  MusicLink,
-  PseudoScrollingText,
-  RotatingImg,
-  ScrollingContainer,
-  ScrollingText,
-} from './now-playing.styles';
+import { NowPlayingLoading } from './now-playing.loading';
+import { MusicItem } from './now-playing.styles';
+import { NowPlayingTrack } from './now-playing.track';
 
-interface FooterNowPlayingProps {
+interface ApiResponse {
   track?: ReadableTrack | null;
   isPlaying?: boolean;
 }
 
-export const FooterNowPlaying: FC<FooterNowPlayingProps> = (props) => {
-  const { track, isPlaying = false } = props;
+export const FooterNowPlaying = () => {
+  const { data, loading } = useRequest<ApiResponse>('/api/spotify');
+  const { track, isPlaying } = data || { isPlaying: false };
 
-  if (!track) return null;
-  const scrollingText = `${track.name} • ${track.artist}`;
-  const animationDuration = scrollingText.length * 0.375;
   return (
-    <MusicLink
-      title={`Jahir ${isPlaying ? 'is listening' : 'recently listened'} to "${
-        track.name
-      }" by "${track.artist}" on Spotify`}
-      href={'/dashboard'}
-    >
-      <RotatingImg
-        size={26}
-        src={track.image?.url || ''}
-        alt={`Image for album: "${track.album}" by "${track.artist}"`}
-        className={cx(!isPlaying && 'motion-safe:animate-none')}
-      />
-      <ScrollingContainer
-        $playing={isPlaying}
-        style={{ animationDuration: `${animationDuration}s` }}
-      >
-        <ScrollingText $playing={isPlaying}>{scrollingText}</ScrollingText>
-        <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
-          {scrollingText}
-        </PseudoScrollingText>
-      </ScrollingContainer>
-    </MusicLink>
+    <MusicItem>
+      {loading ? (
+        <NowPlayingLoading />
+      ) : (
+        <NowPlayingTrack track={track} isPlaying={isPlaying} />
+      )}
+    </MusicItem>
   );
 };

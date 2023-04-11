@@ -8,8 +8,6 @@ import { Main } from '@/components/molecules/main';
 import { Toolbar } from '@/components/molecules/toolbar';
 import { Providers } from '@/providers';
 
-import ServerNowPlaying from './server-now-playing';
-
 const inter = Inter({
   subsets: ['latin'],
   preload: true,
@@ -39,10 +37,7 @@ export default function RootLayout(props: PropsWithChildren) {
         <Providers>
           <Toolbar />
           <Main>{props.children}</Main>
-          <Footer>
-            {/* @ts-expect-error Server Component */}
-            <ServerNowPlaying />
-          </Footer>
+          <Footer />
         </Providers>
       </body>
     </html>

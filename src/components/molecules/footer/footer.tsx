@@ -2,7 +2,6 @@ import { cx } from 'classix';
 
 import { SocialLinks } from '@/components/compounds/social-links';
 import { LogoAnimoji } from '@/components/core/logo-animoji';
-import type { FC } from '@/types';
 
 import {
   StyledFooter,
@@ -74,7 +73,7 @@ const metaLinks: Array<FooterLinkProps> = [
   },
 ];
 
-export const Footer: FC = (props) => {
+export const Footer = () => {
   return (
     <StyledFooter>
       <LinksContainer>
@@ -83,9 +82,7 @@ export const Footer: FC = (props) => {
           title={'Secondary pages links'}
           links={secondaryLinks}
         />
-        <FooterLinksList meta title={'Meta pages links'} links={metaLinks}>
-          {props.children}
-        </FooterLinksList>
+        <FooterLinksList meta title={'Meta pages links'} links={metaLinks} />
       </LinksContainer>
       <InnerFooter>
         <BrandLink

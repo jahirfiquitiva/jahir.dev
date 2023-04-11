@@ -2,6 +2,8 @@ import { cx } from 'classix';
 
 import type { FC, GradientClass, RainbowColor } from '@/types';
 
+import { FooterNowPlaying } from '../now-playing';
+
 import {
   FooterLink,
   FooterLinkSpan,
@@ -52,7 +54,7 @@ export const FooterLinksList: FC<FooterLinksListProps> = (props) => {
           </li>
         );
       })}
-      {meta ? props.children : null}
+      {meta && <FooterNowPlaying />}
     </ListComponent>
   );
 };
