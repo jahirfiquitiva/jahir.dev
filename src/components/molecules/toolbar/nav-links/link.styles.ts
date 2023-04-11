@@ -42,7 +42,7 @@ export const PageLinkSpan = tw(LinkSpan)`
   dark:group-hocus/link:saturate-150
 
   scale-y-0
-  tablet-md:scale-y-100
+  tablet-sm:scale-y-100
   [[data-expanded="true"]_&]:scale-y-100
 `;
 
