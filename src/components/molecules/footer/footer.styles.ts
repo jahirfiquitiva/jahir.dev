@@ -30,6 +30,7 @@ export const BrandLink = tw(FooterLink)`
   self-start
   gap-6
   min-h-[30]
+  font-bold
   mobile-md:min-w-[154px]
 `;
 

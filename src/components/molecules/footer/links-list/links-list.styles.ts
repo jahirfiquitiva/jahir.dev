@@ -28,6 +28,8 @@ export const FooterLink = tw(Link)`
   items-center
   self-start
   text-tertiary-txt
+  font-manrope
+  font-semibold
   group/link
 `;
 
