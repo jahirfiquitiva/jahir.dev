@@ -7,16 +7,20 @@ export const runtime = 'edge';
 
 const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
   if (!track) return null;
-  const preAlbumImage = track.album.images.pop();
-  const albumImage = track.album.images.pop() || preAlbumImage;
-  return {
-    name: track.name,
-    artist: track.artists.map((_artist) => _artist.name).join(', '),
-    album: track.album.name,
-    previewUrl: track.preview_url,
-    url: track.external_urls.spotify,
-    image: albumImage,
-  };
+  try {
+    const preAlbumImage = track.album.images.pop();
+    const albumImage = track.album.images.pop() || preAlbumImage;
+    return {
+      name: track.name,
+      artist: track.artists.map((_artist) => _artist.name).join(', '),
+      album: track.album.name,
+      previewUrl: track.preview_url,
+      url: track.external_urls.spotify,
+      image: albumImage,
+    };
+  } catch (e) {
+    return null;
+  }
 };
 
 export async function GET() {
@@ -39,8 +43,8 @@ export async function GET() {
   // Otherwise, get the most recently played track
   const recentlyPlayed = await getRecentlyPlayed().catch(null);
   let lastPlayed: Track | null = null;
-  if (!('error' in recentlyPlayed)) [lastPlayed] = recentlyPlayed.items;
-
+  if (!('error' in recentlyPlayed))
+    lastPlayed = recentlyPlayed.items?.[0]?.track;
   return NextResponse.json({
     track: trackToReadableTrack(lastPlayed),
     isPlaying: false,

@@ -1,7 +1,7 @@
 import { Track } from './entities';
 import type { SpotifyEntity } from './entity.d';
 
-export interface SpotifyResponse<T extends SpotifyEntity> {
+export interface SpotifyResponse<T extends SpotifyEntity | PlayHistoryObject> {
   href: string;
   next?: string | null;
   previous?: string | null;
@@ -25,4 +25,10 @@ export interface PostDeleteResponse {
 export interface NowPlayingResponse {
   is_playing: boolean;
   item: Track;
+}
+
+export interface PlayHistoryObject {
+  track: Track;
+  played_at?: string;
+  context?: unknown | null;
 }

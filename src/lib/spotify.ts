@@ -1,5 +1,5 @@
 import type {
-  Track,
+  PlayHistoryObject,
   SpotifyResponse,
   ErrorResponse,
   NowPlayingResponse,
@@ -30,9 +30,18 @@ const buildSpotifyRequest = async <T>(
     method,
     body: body && method !== 'GET' ? JSON.stringify(body) : undefined,
   });
-  const json = await response.json();
-  if (response.ok) return json as T;
-  return json as ErrorResponse;
+  try {
+    const json = await response.json();
+    if (response.ok) return json as T;
+    return json as ErrorResponse;
+  } catch (e) {
+    return {
+      error: {
+        message: response.statusText || 'Server error',
+        status: response.status || 500,
+      },
+    };
+  }
 };
 
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
@@ -68,4 +77,6 @@ export const getNowPlaying = async () =>
 const RECENTLY_PLAYED_ENDPOINT =
   'https://api.spotify.com/v1/me/player/recently-played?limit=1';
 export const getRecentlyPlayed = async () =>
-  buildSpotifyRequest<SpotifyResponse<Track>>(RECENTLY_PLAYED_ENDPOINT);
+  buildSpotifyRequest<SpotifyResponse<PlayHistoryObject>>(
+    RECENTLY_PLAYED_ENDPOINT,
+  );
