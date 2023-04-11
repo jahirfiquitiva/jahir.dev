@@ -25,8 +25,12 @@ export const MusicLink = tw(Link)`
   text-tertiary-txt
   text-2xs
   font-normal
+  truncate
   hocus:text-secondary-txt
   hocus:no-underline
+  max-w-[130px]
+  mobile-md:max-w-[160px]
+  tablet-sm:max-w-[172px]
 `;
 
 export const RotatingImg = tw(Img)`
@@ -35,28 +39,34 @@ export const RotatingImg = tw(Img)`
   border-solid
   border-accent-dark/[0.12]
   motion-safe:animate-spin
-  [animation-duration:10s]
+  motion-safe:[animation-duration:8s]
 `;
 
-export const ScrollingContainer = tw.div`
+export const ScrollingContainer = tw.div<{ $playing: boolean }>`
   group/music
   flex
   flex-1
   max-w-full
-  gap-16
+  gap-24
   overflow-x-hidden
-  [mask-image:linear-gradient(90deg,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
+  ${(p) =>
+    p.$playing
+      ? '[mask-image:linear-gradient(90deg,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]'
+      : '[mask-image:none]'}
   [mask-repeat:no-repeat]
   [mask-position:center]
 `;
 
-export const ScrollingText = tw.span`
-  motion-safe:animate-scroll
-  [animation-play-state:running]
-  group-hocus/music:[animation-play-state:paused]
+export const ScrollingText = tw.span<{ $playing: boolean }>`
+  ${(p) => (p.$playing ? '' : 'truncate')}
+  ${(p) =>
+    p.$playing ? 'motion-safe:animate-scroll' : 'motion-safe:animate-none'}  
+  motion-safe:[animation-play-state:running]
+  group-hocus/music:motion-safe:[animation-play-state:paused]
 `;
 
 export const PseudoScrollingText = tw(ScrollingText)`
+  ${(p) => (p.$playing ? '' : 'hidden invisible')}
   pointer-events-none
   select-none
 `;

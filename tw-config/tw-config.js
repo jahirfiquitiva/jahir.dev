@@ -45,7 +45,7 @@ module.exports = {
           '100%': { transform: 'scale(1)', opacity: 1 },
         },
         scroll: {
-          '0%': { transform: 'translateX(1rem)' },
+          '0%': { transform: 'translateX(1.5rem)' },
           '100%': { transform: 'translateX(-100%)' },
         },
       },
