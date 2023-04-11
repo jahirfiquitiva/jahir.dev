@@ -9,6 +9,8 @@ import { Main } from '@/components/molecules/main';
 import { Toolbar } from '@/components/molecules/toolbar';
 import { Providers } from '@/providers';
 
+import { Meta } from './meta';
+
 const inter = Inter({
   subsets: ['latin'],
   preload: true,
@@ -34,6 +36,9 @@ export default function RootLayout(props: PropsWithChildren) {
       className={`${inter.variable} ${manrope.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <Meta />
+      </head>
       <body>
         <Providers>
           <Toolbar />

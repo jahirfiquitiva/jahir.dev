@@ -1,11 +1,7 @@
-/* eslint-disable max-lines-per-function */
-import type { FC } from '@/old/types';
-
-export const Meta: FC = () => {
+export const Meta = () => {
   return (
     <>
       <meta name={'author'} content={'Jahir Fiquitiva'} />
-
       <meta property={'og:locale'} content={'en_US'} />
 
       <meta
