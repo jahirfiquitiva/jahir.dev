@@ -21,7 +21,8 @@ export const ThemeToggle = () => {
   }, [themeText]);
 
   const iconPath = useMemo<string>(() => {
-    if (!themeReady || !isDark) return moonOutline;
+    if (!themeReady) return mdiLoading;
+    if (!isDark) return moonOutline;
     return sunOutline;
   }, [themeReady, isDark]);
 
@@ -32,7 +33,7 @@ export const ThemeToggle = () => {
       disabled={!themeReady}
     >
       <ToolbarButtonIcon
-        path={themeReady ? iconPath : mdiLoading}
+        path={iconPath}
         size={0.9}
         className={cx(!themeReady && 'motion-safe:animate-spin')}
       />
