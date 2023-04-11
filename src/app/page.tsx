@@ -91,7 +91,7 @@ export default function Home() {
       </Section>
       <Divider />
       <Section className={'gap-16'}>
-        <Heading>Heading 1</Heading>
+        <Heading shadow={'yellow'}>Heading 1</Heading>
         <Heading
           as={'h2'}
           shadow={'blue'}
@@ -99,17 +99,26 @@ export default function Home() {
         >
           Heading 2
         </Heading>
-        <Heading as={'h3'} from={'blue'} to={'orange'}>
+        <Heading as={'h3'} shadow={'green'} from={'blue'} to={'orange'}>
           Heading 3
         </Heading>
-        <Heading as={'h4'} from={'purple'}>
+        <Heading as={'h4'} shadow={'purple'} from={'purple'}>
           Heading 4
         </Heading>
         <Heading as={'h5'} shadow={'red'} from={'yellow'} to={'red'}>
           Heading 5
         </Heading>
-        <Heading as={'h6'} to={'green'}>
+        <Heading as={'h6'} to={'green'} shadow={'brand'}>
           Heading 6
+        </Heading>
+        <Heading
+          as={'p'}
+          from={'red'}
+          to={'purple'}
+          shadow={'orange'}
+          className={'font-semibold'}
+        >
+          Not a heading
         </Heading>
       </Section>
     </>
