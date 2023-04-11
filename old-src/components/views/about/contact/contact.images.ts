@@ -1,7 +1,7 @@
-import a from '@/old/assets/images/contact/0.png';
-import b from '@/old/assets/images/contact/1.png';
-import c from '@/old/assets/images/contact/2.png';
-import d from '@/old/assets/images/contact/3.png';
+import a from '@/src/assets/images/contact/0.png';
+import b from '@/src/assets/images/contact/1.png';
+import c from '@/src/assets/images/contact/2.png';
+import d from '@/src/assets/images/contact/3.png';
 
 const imagesAlts: Array<string> = [
   'Person taking a selfie with a t-shirt that says hi',
