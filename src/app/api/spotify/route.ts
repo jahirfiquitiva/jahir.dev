@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
 import type { Track, ReadableTrack } from '@/types/spotify';
 
+export const runtime = 'edge';
+
 const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
   if (!track) return null;
   const preAlbumImage = track.album.images.pop();

@@ -2,13 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable max-lines-per-function */
 import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
 import type { CSSProperties } from 'react';
 
 export const runtime = 'edge';
 
 const font = fetch(
-  new URL('../../assets/fonts/manrope-bold.ttf', import.meta.url),
+  new URL('../../../assets/fonts/manrope-bold.ttf', import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const pathEmojiMap = {
@@ -113,9 +112,9 @@ const baseUrl =
     ? 'http://localhost:3000'
     : 'https://jahir.dev';
 
-export default async function handler(req: NextRequest) {
-  const { searchParams } = req.nextUrl;
-  const path = searchParams.get('path') as PathName;
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const path = (searchParams.get('path') as string).toLowerCase() as PathName;
   const title = searchParams.get('title');
   const postHero = searchParams.get('hero') || 'site/default-og.png';
   const fontData = await font;

@@ -31,7 +31,6 @@ const buildSpotifyRequest = async <T>(
     body: body && method !== 'GET' ? JSON.stringify(body) : undefined,
   });
   const json = await response.json();
-  console.error(json);
   if (response.ok) return json as T;
   return json as ErrorResponse;
 };
