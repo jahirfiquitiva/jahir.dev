@@ -55,22 +55,3 @@ export const Photo = styled(Img, {
     opacity: 1,
   },
 });
-
-const wave = keyframes({
-  'from, 50%, to': { transform: 'rotate(0deg)' },
-  '10%, 30%': { transform: 'rotate(-10deg)' },
-  '20%': { transform: 'rotate(12deg)' },
-  '40%': { transform: 'rotate(9deg)' },
-});
-
-export const WaveSpan = styled('span', {
-  display: 'inline-block',
-  canAnimate: {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    animationName: wave,
-    animationDuration: '2.5s',
-    animationIterationCount: 'infinite',
-    transformOrigin: '70% 70%',
-  },
-});

@@ -61,13 +61,11 @@ figure figcaption {
   margin: 0.625rem 0;
 }
 
-#root,
-#__next {
+body {
   position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-width: 666px; // 😈
   margin: 0 auto;
 }
 
@@ -134,7 +132,7 @@ samp {
   }
 }
 
-section {
+body section {
   scroll-margin-top: var(--scrollMargin);
 }
 

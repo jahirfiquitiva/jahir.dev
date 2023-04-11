@@ -41,6 +41,9 @@ module.exports = {
       saturate: {
         125: '1.25',
       },
+      transformOrigin: {
+        'waving': '70% 70%',
+      },
       transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
       keyframes: {
         'page-transition': {
@@ -51,10 +54,17 @@ module.exports = {
           '0%': { transform: 'translateX(1.5rem)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+        wave: {
+          'from, 50%, to': { transform: 'rotate(0deg)' },
+          '10%, 30%': { transform: 'rotate(-10deg)' },
+          '20%': { transform: 'rotate(12deg)' },
+          '40%': { transform: 'rotate(9deg)' },
+        },
       },
       animation: {
         'page-transition': 'page-transition 300ms ease-in-out backwards',
         scroll: 'scroll 15s linear infinite',
+        wave: 'wave 2.5s infinite',
       },
     },
   },

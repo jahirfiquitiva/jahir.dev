@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Icon from '@mdi/react';
 import tw from 'tailwind-styled-components';
 
@@ -27,9 +28,9 @@ export const Fab = tw(Button)<{ $shown: boolean }>`
   border
   border-solid
   border-accent-dark/[0.12]
-  [box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)/.24)]
+  [box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)_/_.24)]
   hocus:border-accent-dark/[0.24]
-  hocus:[box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)/.32)]
+  hocus:[box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)_/_.32)]
 
   tablet-sm:m-24
   desktop:h-[unset]

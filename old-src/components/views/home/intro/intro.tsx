@@ -12,7 +12,6 @@ import {
   PhotoContainer,
   Photo,
 } from './intro.styles';
-import { WavingHello } from './waving-hello';
 
 export const Intro: FC<ComponentProps<typeof WavingHello>> = (props) => {
   return (
