@@ -37,25 +37,25 @@ export const GitHubLink = tw(SocialLink)`
 
 export const LinkedInLink = tw(SocialLink)`
   hocus:text-[#0077b5]
-  hocus:dark:text-[#0077b5]
+  hocus:dark:text-[#1a85bc]
 `;
 
 export const TwitterLink = tw(SocialLink)`
-  hocus:text-[#1da1f2]
-  hocus:dark:text-[#1da1f2]
+  hocus:text-[#1881C2]
+  hocus:dark:text-[#34aaf3]
 `;
 
 export const InstagramLink = tw(SocialLink)`
   hocus:text-[#d6249f]
-  hocus:dark:text-[#d6249f]
+  hocus:dark:text-[#da3aa9]
 `;
 
 export const PolyworkLink = tw(SocialLink)`
   hocus:text-[#6959fc]
-  hocus:dark:text-[#6959fc]
+  hocus:dark:text-[#786afc]
 `;
 
 export const MastodonLink = tw(SocialLink)`
   hocus:text-[#563ACC]
-  hocus:dark:text-[#6364FF]
+  hocus:dark:text-[#7374ff]
 `;
