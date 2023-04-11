@@ -6,6 +6,17 @@ import { spaces as spacing } from './tw-config/spacing';
 
 const sansFontFamily = ['var(--font-inter)', ...fontFamily.sans];
 
+const breakpoints = {
+  default: '0px',
+  'mobile-sm': '320px',
+  'mobile-md': '375px',
+  'mobile-lg': '425px',
+  'tablet-sm': '596px',
+  'tablet-md': '768px',
+  'tablet-lg': '792px',
+  desktop: '960px',
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
@@ -20,16 +31,7 @@ module.exports = {
     borderRadius: { ...spacing, none: 0, half: '50%', full: '9999px' },
     colors,
     fontSize,
-    screens: {
-      default: '0px',
-      'mobile-sm': '320px',
-      'mobile-md': '375px',
-      'mobile-lg': '425px',
-      'tablet-sm': '596px',
-      'tablet-md': '768px',
-      'tablet-lg': '792px',
-      desktop: '960px',
-    },
+    screens: breakpoints,
     extend: {
       fontFamily: {
         sans: sansFontFamily,
@@ -42,7 +44,7 @@ module.exports = {
         125: '1.25',
       },
       transformOrigin: {
-        'waving': '70% 70%',
+        waving: '70% 70%',
       },
       transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
       keyframes: {
@@ -84,6 +86,10 @@ module.exports = {
       pattern:
         /decoration-gradient-(brand|blue|green|yellow|orange|red|purple)/,
       variants: ['hocus'],
+    },
+    {
+      pattern: /grid-cols-.*/,
+      variants: Object.keys(breakpoints),
     },
   ],
 };

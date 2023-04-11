@@ -7,8 +7,12 @@ import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { FC, ComponentChild } from '@/types';
 
 import { MasonryColumn, MasonryGrid } from './masonry.styles';
-import { MasonryBreakpoints, breakpointsAndMinWidth } from './masonry.types';
-import { buildMasonryColumns, defaultBreakpoints } from './masonry.utils';
+import { type MasonryBreakpoints } from './masonry.types.d';
+import {
+  buildMasonryColumns,
+  defaultBreakpoints,
+  mapBreakpointsAndColumns,
+} from './masonry.utils';
 
 interface MasonryProps {
   breakpoints?: MasonryBreakpoints;
@@ -21,7 +25,7 @@ export const Masonry: FC<MasonryProps> = (props) => {
   const childrenCount = Children.count(children);
   const { width: windowWidth } = useWindowDimensions();
 
-  const breakpoints = useMemo<MasonryBreakpoints>(
+  const allBreakpoints = useMemo<MasonryBreakpoints>(
     () => ({
       ...defaultBreakpoints,
       ...(customBreakpoints || {}),
@@ -29,19 +33,24 @@ export const Masonry: FC<MasonryProps> = (props) => {
     [customBreakpoints],
   );
 
+  const mappedBreakpoints = useMemo<Record<number, number>>(
+    () => mapBreakpointsAndColumns(allBreakpoints),
+    [allBreakpoints],
+  );
+
   const columnsCount = useMemo<number>(() => {
-    const breakpoint = Object.keys(breakpointsAndMinWidth).find(
-      (breakpoint) => {
-        return (
-          breakpointsAndMinWidth[
-            breakpoint as keyof typeof breakpointsAndMinWidth
-          ] <
-          windowWidth + 1
-        );
-      },
-    ) as keyof typeof breakpointsAndMinWidth;
-    return breakpoints[breakpoint] || 1;
-  }, [windowWidth, breakpoints]);
+    const breakpoints = Object.keys(mappedBreakpoints)
+      .sort((a, b) => Number(a) - Number(b))
+      .map((breakpoint) => Number(breakpoint));
+
+    let count = breakpoints.length > 0 ? mappedBreakpoints[breakpoints[0]] : 1;
+    breakpoints.forEach((breakpoint) => {
+      if (breakpoint < windowWidth + 1) {
+        count = mappedBreakpoints[breakpoint];
+      }
+    });
+    return count || 1;
+  }, [windowWidth, mappedBreakpoints]);
 
   const columns = useMemo<Array<Array<ComponentChild>>>(() => {
     return buildMasonryColumns(children, columnsCount);
@@ -49,30 +58,28 @@ export const Masonry: FC<MasonryProps> = (props) => {
 
   const className = useMemo<string>(() => {
     const classes: Array<string> = [];
-    Object.keys(breakpoints).forEach((breakpoint) => {
-      const bp = breakpoint as keyof typeof breakpoints;
+    Object.keys(allBreakpoints).forEach((breakpoint) => {
+      const bp = breakpoint as keyof typeof allBreakpoints;
       classes.push(
-        `${bp === 'default' ? '' : `${bp}:`}grid-cols-${breakpoints[bp]}`,
+        `${bp === 'default' ? '' : `${bp}:`}grid-cols-${allBreakpoints[bp]}`,
       );
     });
     return classes.join(' ');
-  }, [breakpoints]);
+  }, [allBreakpoints]);
 
+  console.error('rendered masonry');
   return (
     <MasonryGrid
       className={cx(
         className,
-        `gap-[${gap / 16}rem]`,
         childrenCount <= 0 &&
           'hidden invisible pointer-events-none select-none',
       )}
+      style={{ gap: `${gap / 16}rem` }}
     >
       {columns.map((col, index) => {
         return (
-          <MasonryColumn
-            key={`col-${index}`}
-            className={`gap-[${gap / 16}rem]`}
-          >
+          <MasonryColumn key={`col-${index}`} style={{ gap: `${gap / 16}rem` }}>
             {col.map((element) => element)}
           </MasonryColumn>
         );
