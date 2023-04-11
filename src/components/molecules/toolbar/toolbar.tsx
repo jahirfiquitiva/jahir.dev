@@ -6,7 +6,7 @@ import { LogoAnimoji } from '@/components/core/logo-animoji';
 import { mdiMenu, mdiPlus } from '@/components/icons';
 import type { FC } from '@/types';
 
-import { ThemeToggle, MobileMenuToggle } from './buttons';
+import { ThemeToggle, MobileMenuToggle, MobileMenuIcon } from './buttons';
 import {
   HomeLink,
   HomeLinkSpan,
@@ -26,17 +26,20 @@ export const Toolbar: FC = () => {
         </HomeLink>
         <ToolbarNavLinks />
         <ToolbarLinksContainer>
-          <ThemeToggle />
+          <li>
+            <ThemeToggle />
+          </li>
           <li>
             <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}
               aria-controls={'header'}
-              iconPath={isExpanded ? mdiPlus : mdiMenu}
               onClick={() => {
                 expand(!isExpanded);
               }}
-            />
+            >
+              <MobileMenuIcon path={isExpanded ? mdiPlus : mdiMenu} size={1} />
+            </MobileMenuToggle>
           </li>
         </ToolbarLinksContainer>
       </Nav>

@@ -1,11 +1,12 @@
 'use client';
 
+import { cx } from 'classix';
 import { useMemo } from 'react';
 
-import { moonOutline, sunOutline } from '@/components/icons';
+import { mdiLoading, moonOutline, sunOutline } from '@/components/icons';
 import { useTheme } from '@/providers/theme';
 
-import { ToolbarButton } from './buttons.styles';
+import { ToolbarButton, ToolbarButtonIcon } from './buttons.styles';
 
 export const ThemeToggle = () => {
   const { isDark, themeReady, toggleTheme } = useTheme();
@@ -25,14 +26,16 @@ export const ThemeToggle = () => {
   }, [themeReady, isDark]);
 
   return (
-    <li>
-      <ToolbarButton
-        title={buttonText}
-        iconPath={themeReady ? iconPath : ''}
-        iconSize={0.9}
-        onClick={toggleTheme}
-        disabled={!themeReady}
+    <ToolbarButton
+      title={buttonText}
+      onClick={toggleTheme}
+      disabled={!themeReady}
+    >
+      <ToolbarButtonIcon
+        path={themeReady ? iconPath : mdiLoading}
+        size={0.9}
+        className={cx(!themeReady && 'motion-safe:animate-spin')}
       />
-    </li>
+    </ToolbarButton>
   );
 };

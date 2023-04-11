@@ -2,9 +2,8 @@ import Icon from '@mdi/react';
 import tw from 'tailwind-styled-components';
 
 import { Button } from '@/components/core/button';
-import type { ComponentProps, FC } from '@/types';
 
-const StyledToolbarButton = tw(Button)`
+export const ToolbarButton = tw(Button)`
   p-0
   gap-0
   text-accent
@@ -21,26 +20,4 @@ const StyledToolbarButton = tw(Button)`
 export const ToolbarButtonIcon = tw(Icon)`
   text-accent
   fill-accent
-  transition-transform
-  transform
-  rotate-0
-  scale-100
-  [[aria-expanded="true"]>&]:rotate-45
-  [[aria-expanded="true"]>&]:scale-[1.15]
 `;
-
-interface ToolbarButtonProps {
-  iconPath: string;
-  iconSize?: number;
-}
-
-export const ToolbarButton: FC<
-  ComponentProps<typeof StyledToolbarButton> & ToolbarButtonProps
-> = (props) => {
-  const { iconPath, iconSize, ...rest } = props;
-  return (
-    <StyledToolbarButton {...rest}>
-      <ToolbarButtonIcon path={iconPath} size={iconSize || 1} />
-    </StyledToolbarButton>
-  );
-};
