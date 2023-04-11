@@ -7,10 +7,11 @@ import {
   mdiInstagram,
   polywork,
   mastodon,
-} from '@/old/components/icons';
+} from '@/components/icons';
 
 import {
   SocialLinksContainer,
+  SocialLinkItem,
   GitHubLink,
   LinkedInLink,
   TwitterLink,
@@ -23,28 +24,28 @@ const iconSize = 0.9;
 export const SocialLinks = () => {
   return (
     <SocialLinksContainer aria-label={'Social links'}>
-      <li>
+      <SocialLinkItem>
         <GitHubLink title={'GitHub'} href={'https://github.com/jahirfiquitiva'}>
           <Icon path={gitHubOutline} size={iconSize} />
         </GitHubLink>
-      </li>
-      <li>
+      </SocialLinkItem>
+      <SocialLinkItem>
         <LinkedInLink
           title={'LinkedIn'}
           href={'https://linkedin.com/in/jahirfiquitiva'}
         >
           <Icon path={linkedInOutline} size={iconSize} />
         </LinkedInLink>
-      </li>
-      <li>
+      </SocialLinkItem>
+      <SocialLinkItem>
         <TwitterLink
           title={'Twitter'}
           href={'https://twitter.com/jahirfiquitiva'}
         >
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
-      </li>
-      <li>
+      </SocialLinkItem>
+      <SocialLinkItem>
         <MastodonLink
           title={'Mastodon'}
           href={'https://mastodon.social/@jahirfiquitiva'}
@@ -52,23 +53,23 @@ export const SocialLinks = () => {
         >
           <Icon path={mastodon} size={iconSize} />
         </MastodonLink>
-      </li>
-      <li>
+      </SocialLinkItem>
+      <SocialLinkItem>
         <InstagramLink
           title={'Instagram'}
           href={'https://instagram.com/jahirfiquitiva'}
         >
           <Icon path={mdiInstagram} size={iconSize} />
         </InstagramLink>
-      </li>
-      <li>
+      </SocialLinkItem>
+      <SocialLinkItem>
         <PolyworkLink
           title={'Polywork Timeline'}
           href={'https://timeline.jahir.dev'}
         >
           <Icon path={polywork} size={iconSize} />
         </PolyworkLink>
-      </li>
+      </SocialLinkItem>
     </SocialLinksContainer>
   );
 };

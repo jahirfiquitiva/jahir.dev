@@ -1,7 +1,7 @@
 import { cx } from 'classix';
 
+import { SocialLinks } from '@/components/compounds/social-links';
 import { LogoAnimoji } from '@/components/core/logo-animoji';
-// import { SocialLinks } from '@/old/components/compounds';
 import type { FC } from '@/types';
 
 import {
@@ -98,7 +98,7 @@ export const Footer: FC = (props) => {
           <LogoAnimoji />
           <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>
         </BrandLink>
-        {/* <SocialLinks /> */}
+        <SocialLinks />
       </InnerFooter>
     </StyledFooter>
   );
