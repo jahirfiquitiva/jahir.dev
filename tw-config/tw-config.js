@@ -44,9 +44,14 @@ module.exports = {
           '0%': { transform: 'scale(0.975)', opacity: 0 },
           '100%': { transform: 'scale(1)', opacity: 1 },
         },
+        scroll: {
+          '0%': { transform: 'translateX(1rem)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
       animation: {
         'page-transition': 'page-transition 300ms ease-in-out backwards',
+        scroll: 'scroll 15s linear infinite',
       },
     },
   },
