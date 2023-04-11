@@ -1,4 +1,4 @@
-import type { SpotifyEntity } from './entity';
+import type { SpotifyEntity, Image } from './entity';
 
 export interface Album extends SpotifyEntity {
   type: 'album';
@@ -30,4 +30,13 @@ export interface Playlist extends SpotifyEntity {
     total: number;
     items: Array<{ added_at: string; track: Track }>;
   };
+}
+
+export interface ReadableTrack {
+  name: string;
+  artist: string;
+  album: string;
+  previewUrl: string;
+  url: string;
+  image?: Image;
 }

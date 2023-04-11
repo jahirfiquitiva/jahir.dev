@@ -1,3 +1,4 @@
+import { Track } from './entities';
 import type { SpotifyEntity } from './entity.d';
 
 export interface SpotifyResponse<T extends SpotifyEntity> {
@@ -19,4 +20,9 @@ export interface ErrorResponse {
 
 export interface PostDeleteResponse {
   snapshot_id: string;
+}
+
+export interface NowPlayingResponse {
+  is_playing: boolean;
+  item: Track;
 }
