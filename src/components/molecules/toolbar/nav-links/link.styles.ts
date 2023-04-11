@@ -38,6 +38,8 @@ export const PageLinkSpan = tw(LinkSpan)`
   group-hocus/link:bg-gradient-to-r
   group-hocus/link:bg-clip-text
   group-hocus/link:text-transparent
+  group-hocus/link:saturate-125
+  dark:group-hocus/link:saturate-150
 
   scale-y-0
   tablet-md:scale-y-100
@@ -51,6 +53,8 @@ export const HomeLinkSpan = tw(LinkSpan)`
   from-gradient-brand
   to-gradient-blue
   bg-clip-text
+  saturate-125
+  dark:saturate-150
 `;
 
 export const HomeLink = tw(ToolbarLink)`

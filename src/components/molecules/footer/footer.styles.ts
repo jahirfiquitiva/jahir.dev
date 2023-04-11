@@ -36,6 +36,8 @@ export const BrandLink = tw(FooterLink)`
 export const BrandLinkSpan = tw(FooterLinkSpan)`
   from-gradient-brand
   to-gradient-blue
+  saturate-125
+  dark:saturate-150
 `;
 
 export const LinksContainer = tw.div`

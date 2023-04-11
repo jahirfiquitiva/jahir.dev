@@ -38,6 +38,9 @@ module.exports = {
       fontWeight: {
         normal: '450',
       },
+      saturate: {
+        125: '1.25',
+      },
       transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
       keyframes: {
         'page-transition': {

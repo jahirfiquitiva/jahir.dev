@@ -17,6 +17,7 @@ const StyledHeading = tw.h1`
   dark:from-primary-txt
   dark:to-primary-txt
   dark:bg-clip-text
+  dark:saturate-150
 `;
 
 interface HeadingProps {

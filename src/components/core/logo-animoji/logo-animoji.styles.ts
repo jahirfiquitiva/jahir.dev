@@ -19,6 +19,8 @@ export const Container = tw.span`
 
 export const StyledLogo = tw(Logo)`
   fill-accent
+  saturate-125
+  dark:saturate-150
   group-hocus/animoji:invisible
   group-hocus/animoji:opacity-0
   group-hocus/animoji:transform

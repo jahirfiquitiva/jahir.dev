@@ -37,4 +37,6 @@ export const FooterLinkSpan = tw.span`
   to-tertiary-txt
   text-transparent
   bg-clip-text
+  group-hocus/link:saturate-125
+  dark:group-hocus/link:saturate-150
 `;
