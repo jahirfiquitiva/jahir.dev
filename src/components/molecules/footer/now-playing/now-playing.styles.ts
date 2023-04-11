@@ -5,18 +5,19 @@ import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link';
 
 export const MusicItem = tw.li`
-  h-[1.75rem]
+  min-h-[1.75rem]
+  h-full
   inline-flex
   items-center
   align-middle
   w-full
   max-w-full
-  ml-[3.25rem]
-  mobile-md:ml-64
-  tablet-sm:ml-0
+  justify-end
+  tablet-sm:justify-start
 `;
 
 export const MusicLink = tw(Link)`
+  h-full
   w-full
   inline-flex
   items-center
@@ -29,7 +30,7 @@ export const MusicLink = tw(Link)`
   hocus:text-secondary-txt
   hocus:no-underline
   max-w-[130px]
-  mobile-md:max-w-[160px]
+  mobile-md:max-w-[164px]
   tablet-sm:max-w-[172px]
 `;
 

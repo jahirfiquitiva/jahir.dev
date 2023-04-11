@@ -16,11 +16,14 @@ export const List = tw.ul`
 export const MetaList = tw(List)`
   flex-row
   mt-12
+  w-full
+  tablet-sm:w-[unset]
   tablet-sm:flex-col
   tablet-sm:mt-0
 `;
 
 export const FooterLink = tw(Link)`
+  h-full
   inline-flex
   items-center
   self-start
