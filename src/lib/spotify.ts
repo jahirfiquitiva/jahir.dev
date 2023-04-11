@@ -3,6 +3,7 @@ import type {
   SpotifyResponse,
   ErrorResponse,
   NowPlayingResponse,
+  ReadableTrack,
 } from '@/types/spotify';
 
 export const serialize = (
@@ -69,3 +70,45 @@ const RECENTLY_PLAYED_ENDPOINT =
   'https://api.spotify.com/v1/me/player/recently-played?limit=1';
 export const getRecentlyPlayed = async () =>
   buildSpotifyRequest<SpotifyResponse<Track>>(RECENTLY_PLAYED_ENDPOINT);
+
+const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
+  if (!track) return null;
+  const preAlbumImage = track.album.images.pop();
+  const albumImage = track.album.images.pop() || preAlbumImage;
+  return {
+    name: track.name,
+    artist: track.artists.map((_artist) => _artist.name).join(', '),
+    album: track.album.name,
+    previewUrl: track.preview_url,
+    url: track.external_urls.spotify,
+    image: albumImage,
+  };
+};
+
+export const getLatestPlayedTrack = async () => {
+  const nowPlaying = await getNowPlaying().catch(null);
+  let isPlaying = false;
+  let nowPlayingTrack: Track | null = null;
+  if (!('error' in nowPlaying)) {
+    nowPlayingTrack = nowPlaying.item;
+    isPlaying = nowPlaying.is_playing || false;
+  }
+
+  // If found a defined track from the now playing api
+  if (nowPlayingTrack) {
+    return {
+      track: trackToReadableTrack(nowPlayingTrack),
+      isPlaying,
+    };
+  }
+
+  // Otherwise, get the most recently played track
+  const recentlyPlayed = await getRecentlyPlayed().catch(null);
+  let lastPlayed: Track | null = null;
+  if (!('error' in recentlyPlayed)) [lastPlayed] = recentlyPlayed.items;
+
+  return {
+    track: trackToReadableTrack(lastPlayed),
+    isPlaying: false,
+  };
+};

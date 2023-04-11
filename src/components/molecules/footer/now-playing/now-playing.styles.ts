@@ -51,7 +51,7 @@ export const ScrollingContainer = tw.div<{ $playing: boolean }>`
   overflow-x-hidden
   ${(p) =>
     p.$playing
-      ? '[mask-image:linear-gradient(90deg,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]'
+      ? '[mask-image:linear-gradient(90deg,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_25%,rgba(0,0,0,1)_75%,rgba(0,0,0,0)_100%)]'
       : '[mask-image:none]'}
   [mask-repeat:no-repeat]
   [mask-position:center]

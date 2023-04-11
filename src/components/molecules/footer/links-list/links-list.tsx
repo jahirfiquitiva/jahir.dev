@@ -54,7 +54,7 @@ export const FooterLinksList: FC<FooterLinksListProps> = (props) => {
           </li>
         );
       })}
-      {meta && <FooterNowPlaying />}
+      {meta ? props.children : null}
     </ListComponent>
   );
 };
