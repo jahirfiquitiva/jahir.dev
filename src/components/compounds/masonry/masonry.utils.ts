@@ -21,6 +21,7 @@ export const defaultBreakpoints: MasonryBreakpoints = {
   // tablet-sm
   'tablet-sm': 2,
 };
+
 export const mapBreakpointsAndColumns = (
   breakpoints: MasonryBreakpoints,
 ): Record<number, number> => {
@@ -28,8 +29,7 @@ export const mapBreakpointsAndColumns = (
   Object.keys(breakpoints).forEach((breakpoint) => {
     const bp = breakpoint as BreakpointName;
     const minWidth = breakpointsAndMinWidth[bp];
-    if (typeof minWidth !== 'undefined')
-      minWidthAndColumns[minWidth] = breakpoints[bp] || 1;
+    minWidthAndColumns[minWidth] = breakpoints[bp] || 1;
   });
   return minWidthAndColumns;
 };

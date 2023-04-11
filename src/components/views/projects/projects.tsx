@@ -28,12 +28,13 @@ export const Projects: FC<ProjectsProps> = (props) => {
   const [search, setSearch] = useState('');
 
   const filteredProjects = useMemo(() => {
+    if (!showFullList) return projects;
     return projects?.filter(
       (project) =>
         project?.name.toLowerCase().includes(search.toLowerCase()) ||
         project?.description?.toLowerCase().includes(search.toLowerCase()),
     );
-  }, [projects, search]);
+  }, [projects, search, showFullList]);
 
   const renderSearchComponents = () => {
     if (!showFullList) return null;
@@ -87,7 +88,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <Masonry gap={18}>
+      <Masonry key={'projects'} gap={18}>
         {(filteredProjects || []).map((project, index) => {
           return (
             <div
