@@ -26,6 +26,7 @@ interface HeadingProps {
   shadow?: RainbowColor;
   from?: RainbowColor;
   to?: RainbowColor;
+  dontBalance?: boolean;
 }
 
 export const Heading = (

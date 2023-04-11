@@ -19,7 +19,6 @@
   "dependencies": {
     "@mdi/react": "^1.6.1",
     "@planetscale/database": "^1.7.0",
-    "@stitches/react": "^1.2.8",
     "@uiball/loaders": "^1.2.6",
     "@vercel/analytics": "^0.1.11",
     "@vercel/og": "^0.5.0",
