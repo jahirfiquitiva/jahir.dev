@@ -1,6 +1,13 @@
 export const Meta = () => {
   return (
     <>
+      <meta charSet={'UTF-8'} />
+      <meta
+        name={'viewport'}
+        content={'width=device-width, initial-scale=1.0'}
+      />
+      <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
+
       <meta name={'author'} content={'Jahir Fiquitiva'} />
       <meta property={'og:locale'} content={'en_US'} />
 
