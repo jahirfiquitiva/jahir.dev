@@ -2,8 +2,6 @@ import { cx } from 'classix';
 
 import type { FC, GradientClass, RainbowColor } from '@/types';
 
-import { FooterNowPlaying } from '../now-playing';
-
 import {
   FooterLink,
   FooterLinkSpan,
