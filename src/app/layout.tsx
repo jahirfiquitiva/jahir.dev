@@ -3,6 +3,7 @@ import '@/styles/globals.scss';
 import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
+import { BackToTop } from '@/components/molecules/back-to-top';
 import { Footer } from '@/components/molecules/footer';
 import { Main } from '@/components/molecules/main';
 import { Toolbar } from '@/components/molecules/toolbar';
@@ -38,6 +39,7 @@ export default function RootLayout(props: PropsWithChildren) {
           <Toolbar />
           <Main>{props.children}</Main>
           <Footer />
+          <BackToTop />
         </Providers>
       </body>
     </html>
