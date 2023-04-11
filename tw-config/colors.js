@@ -9,7 +9,7 @@ const colorToTailwindVar = (colorName) => ({
 const reduceObjArray = (objs) => objs.reduce((r, c) => Object.assign(r, c), {});
 
 // Must be defined like r g b in CSS
-const transparencyColors = ['accent-dark'];
+const transparencyColors = ['inverse', 'accent-dark'];
 
 const normalColors = [
   'transparent',

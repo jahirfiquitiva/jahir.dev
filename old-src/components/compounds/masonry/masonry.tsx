@@ -5,7 +5,7 @@ import { useWindowDimensions } from '@/old/hooks/use-window-dimensions';
 import type { FC, ComponentChild } from '@/old/types';
 
 import { MasonryColumn, MasonryGrid } from './masonry.styled';
-import type  { MasonryProps } from './masonry.types.d';
+import type { MasonryProps } from '../../../../src/components/compounds/masonry/masonry.types';
 import {
   buildMasonryColumns,
   defaultBreakpoints,

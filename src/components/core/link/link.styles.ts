@@ -6,6 +6,7 @@ export const StyledLink = tw(NextLink)`
   font-medium
   text-accent
   self-start
+  transition-colors
   hocus:text-accent-dark
   hocus:underline
   hocus:underline-offset-2
