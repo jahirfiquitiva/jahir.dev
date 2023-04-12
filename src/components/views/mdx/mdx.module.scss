@@ -89,8 +89,11 @@
       @apply ml-8;
     }
   }
+  & > ol {
+    @apply mt-4;
+  }
   & ol {
-    @apply flex flex-col gap-2 mt-4;
+    @apply flex flex-col gap-2;
   }
   & li {
     @apply self-start;
