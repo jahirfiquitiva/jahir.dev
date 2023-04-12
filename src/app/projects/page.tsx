@@ -24,6 +24,6 @@ export const metadata = getStaticMetadata({
   image: buildOgImageUrl('projects', 'Projects'),
 });
 
-export default function Home() {
-  return <Projects projects={sortedProjects} showFullList />;
+export default function ProjectsPage() {
+  return <Projects projects={sortedProjects} withSearch />;
 }

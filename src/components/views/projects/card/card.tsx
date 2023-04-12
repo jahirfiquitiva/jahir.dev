@@ -16,7 +16,6 @@ import {
   TitleContainer,
   StarsContainer,
   ProjectIcon,
-  ProjectCardBackground,
 } from './card.styles';
 
 interface ProjectCardProps {

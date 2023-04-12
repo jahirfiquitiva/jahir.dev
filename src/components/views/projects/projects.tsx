@@ -19,25 +19,25 @@ import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 
 interface ProjectsProps {
   projects?: Array<Project>;
-  showFullList?: boolean;
+  withSearch?: boolean;
 }
 
 // eslint-disable-next-line max-lines-per-function
 export const Projects: FC<ProjectsProps> = (props) => {
-  const { projects, showFullList } = props;
+  const { projects, withSearch } = props;
   const [search, setSearch] = useState('');
 
   const filteredProjects = useMemo(() => {
-    if (!showFullList) return projects;
+    if (!withSearch) return projects;
     return projects?.filter(
       (project) =>
         project?.name.toLowerCase().includes(search.toLowerCase()) ||
         project?.description?.toLowerCase().includes(search.toLowerCase()),
     );
-  }, [projects, search, showFullList]);
+  }, [projects, search, withSearch]);
 
   const renderSearchComponents = () => {
-    if (!showFullList) return null;
+    if (!withSearch) return null;
     return (
       <>
         <Field
@@ -67,7 +67,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
     >
       <ProjectsHeader>
         <Heading shadow={'red'} from={'red'} to={'purple'}>
-          {!showFullList ? 'Featured ' : ''}Projects
+          {!withSearch ? 'Featured ' : ''}Projects
         </Heading>
         <ProjectsButtons>
           <ButtonLink
@@ -79,7 +79,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
             <Icon path={mdiFileCodeOutline} size={0.9} />
             Resume
           </ButtonLink>
-          {!showFullList && (
+          {!withSearch && (
             <ButtonLink title={'View all projects by Jahir'} href={'/projects'}>
               <Icon path={mdiEyeOutline} size={0.9} />
               View all
