@@ -9,11 +9,15 @@ export const StyledProjectCard = tw(Link)`
   relative
   flex
   items-center
-  p-12
-  -ml-12
   gap-14
   rounded-10
-  w-[calc(100%+1.5rem)]
+  py-10
+  px-8
+  -ml-8
+  w-[calc(100%+1rem)]
+  tablet-md:p-12
+  tablet-md:-ml-12
+  tablet-md:w-[calc(100%+1.5rem)]
   text-secondary-txt
   transition-all
   group/project
@@ -21,7 +25,7 @@ export const StyledProjectCard = tw(Link)`
   hocus:no-underline
   hocus:text-primary-txt
   hocus:bg-[rgba(var(--project-color)_/_0.056)]
-  hocus:dark:bg-[rgba(var(--project-color)_/_0.072)]
+  hocus:dark:bg-[rgba(var(--project-color)_/_0.12)]
 `;
 
 export const ProjectIcon = tw(Img)`
@@ -33,7 +37,7 @@ export const ProjectIcon = tw(Img)`
   p-6
   rounded-10
   bg-[rgba(var(--project-color)_/_0.056)]
-  dark:bg-[rgba(var(--project-color)_/_0.072)]
+  dark:bg-[rgba(var(--project-color)_/_0.12)]
   drop-shadow-[0_1px_2px_rgba(var(--project-color)/0.5)]
   group-hocus/project:p-4
   group-hocus/project:saturate-125
@@ -53,8 +57,8 @@ export const TitleContainer = tw.div`
 `;
 
 export const StarsCounter = tw(Chip)`
-  py-0
-  px-4
+  py-1
+  px-[0.3125rem]
   gap-4
   !rounded-6
   text-[0.75rem]
@@ -62,8 +66,9 @@ export const StarsCounter = tw(Chip)`
   font-semibold
   transition-all
   border-transparent
-  bg-[rgba(var(--project-color)/0.032)]
-  dark:bg-[rgba(var(--project-color)/0.072)]
+  bg-[rgba(var(--project-color)/0.042)]
+  dark:bg-[rgba(var(--project-color)/0.09)]
+  hocus:transform-none
   group-hocus/project:text-primary-txt
   group-hocus/project:border
   group-hocus/project:border-[rgba(var(--project-color)/0.24)]

@@ -69,7 +69,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         {...extraIconProps}
       />
       <TitleContainer>
-        <p className={'flex items-center gap-8'}>
+        <p className={'flex items-center gap-10'}>
           <span
             className={cx(
               'font-manrope font-semibold',
