@@ -33,7 +33,8 @@ export const MusicLink = tw(Link)`
   max-w-[130px]
   mobile-md:max-w-[164px]
   tablet-sm:max-w-[206px]
-`; 
+  group/music
+`;
 // ↑ for max width...
 // Use the same values as List min-w
 // which is found at @/components/molecules/footer/links-list/links-list.styles.ts
@@ -45,10 +46,10 @@ export const RotatingImg = tw(Img)`
   border-accent-dark/[0.12]
   motion-safe:animate-spin
   motion-safe:[animation-duration:8s]
+  group-hocus/music:motion-safe:[animation-play-state:paused]
 `;
 
 export const ScrollingContainer = tw.div<{ $playing: boolean }>`
-  group/music
   flex
   flex-1
   max-w-full
@@ -67,6 +68,7 @@ export const ScrollingText = tw.span<{ $playing: boolean }>`
   ${(p) =>
     p.$playing ? 'motion-safe:animate-scroll' : 'motion-safe:animate-none'}  
   motion-safe:[animation-play-state:running]
+  group-hocus/music:underline
   group-hocus/music:motion-safe:[animation-play-state:paused]
 `;
 

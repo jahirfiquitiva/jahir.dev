@@ -19,15 +19,13 @@ interface FooterNowPlayingProps {
 export const NowPlayingTrack: FC<FooterNowPlayingProps> = (props) => {
   const { track, isPlaying = false } = props;
 
-  if (!track) return null;
+  if (!track || !isPlaying) return null;
   const scrollingText = `${track.name} • ${track.artist}`;
-  const animationDuration = scrollingText.length * 0.375;
+  const animationDuration = scrollingText.length * 0.325;
   return (
     <MusicLink
-      title={`Jahir ${isPlaying ? 'is listening' : 'recently listened'} to "${
-        track.name
-      }" by "${track.artist}" on Spotify`}
-      href={'/dashboard'}
+      title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
+      href={isPlaying ? track.url : '/dashboard'}
     >
       <RotatingImg
         size={26}
@@ -40,12 +38,16 @@ export const NowPlayingTrack: FC<FooterNowPlayingProps> = (props) => {
         style={{ animationDuration: `${animationDuration}s` }}
       >
         <ScrollingText $playing={isPlaying}>{scrollingText}</ScrollingText>
-        <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
-          {scrollingText}
-        </PseudoScrollingText>
-        <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
-          {scrollingText}
-        </PseudoScrollingText>
+        {Boolean(isPlaying) && (
+          <>
+            <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
+              {scrollingText}
+            </PseudoScrollingText>
+            <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
+              {scrollingText}
+            </PseudoScrollingText>
+          </>
+        )}
       </ScrollingContainer>
     </MusicLink>
   );

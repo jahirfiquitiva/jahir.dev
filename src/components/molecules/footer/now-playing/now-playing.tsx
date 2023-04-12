@@ -17,7 +17,7 @@ export const FooterNowPlaying = () => {
   const { track, isPlaying } = data || { isPlaying: false };
 
   return (
-    <MusicItem>
+    <MusicItem aria-hidden={!isPlaying}>
       {loading ? (
         <NowPlayingLoading />
       ) : (
