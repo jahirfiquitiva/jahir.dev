@@ -32,7 +32,7 @@ export const MusicLink = tw(Link)`
   hocus:no-underline
   max-w-[130px]
   mobile-md:max-w-[164px]
-  tablet-sm:max-w-[172px]
+  tablet-sm:max-w-[206px]
 `;
 
 export const RotatingImg = tw(Img)`

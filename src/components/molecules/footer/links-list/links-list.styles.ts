@@ -10,7 +10,7 @@ export const List = tw.ul`
   flex-col
   gap-12
   mobile-md:min-w-[164px]
-  tablet-sm:min-w-[172px]
+  tablet-sm:min-w-[unset]
 `;
 
 export const MetaList = tw(List)`

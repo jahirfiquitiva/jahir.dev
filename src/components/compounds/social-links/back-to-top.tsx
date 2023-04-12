@@ -16,6 +16,7 @@ export const BackToTopLink = () => {
         title={'Scroll back to top'}
         aria-label={'Scroll back to top'}
         onClick={scrollToTop}
+        className={'hocus:text-accent'}
       >
         <Icon path={squaredChevronUp} size={0.9} />
       </SocialLink>

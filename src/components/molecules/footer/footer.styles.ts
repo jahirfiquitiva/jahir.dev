@@ -14,6 +14,7 @@ export const StyledFooter = tw.footer`
   border-t
   border-solid
   border-divider
+  tablet-sm:px-16
   tablet-md:px-0
 `;
 
@@ -49,6 +50,9 @@ export const LinksContainer = tw.div`
   flex-wrap
   gap-[calc(var(--verticalContentPadding)/2)]
   justify-between
+  max-w-full
   mobile-md:justify-start
   tablet-sm:justify-between
+  tablet-sm:flex-nowrap
+  tablet-sm:gap-0
 `;
