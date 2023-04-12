@@ -89,19 +89,20 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <div className={'flex flex-col gap-8'}>
+      <ul className={'list-none flex flex-col gap-6'}>
         {(filteredProjects || []).map((project, index) => {
           return (
-            <ProjectCard
+            <li
               key={
                 // eslint-disable-next-line newline-per-chained-call
                 `${project.name.toLowerCase().split(' ').join('-')}-${index}`
               }
-              project={project}
-            />
+            >
+              <ProjectCard project={project} />
+            </li>
           );
         })}
-      </div>
+      </ul>
     </Section>
   );
 };

@@ -16,6 +16,7 @@ import {
   TitleContainer,
   StarsContainer,
   ProjectIcon,
+  ProjectCardBackground,
 } from './card.styles';
 
 interface ProjectCardProps {
@@ -62,6 +63,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         } as CSSProperties
       }
     >
+      <ProjectCardBackground />
       <ProjectIcon
         src={`/static/images/projects/${project.icon}`}
         alt={`Icon for project "${project.name}"`}
@@ -83,7 +85,9 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         </p>
       </TitleContainer>
       {data && data.stars ? (
-        <StarsContainer>
+        <StarsContainer
+          title={`Project "${project.name}" has ${data.stars} stars on GitHub`}
+        >
           <Icon path={mdiStar} size={0.7} />
           <span>{data.stars}</span>
         </StarsContainer>
