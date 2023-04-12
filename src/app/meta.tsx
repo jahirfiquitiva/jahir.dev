@@ -8,29 +8,6 @@ export const Meta = () => {
       />
       <meta httpEquiv={'x-ua-compatible'} content={'ie=edge'} />
 
-      <meta name={'author'} content={'Jahir Fiquitiva'} />
-      <meta property={'og:locale'} content={'en_US'} />
-
-      <meta
-        property={'twitter:creator'}
-        name={'twitter:creator'}
-        content={'@jahirfiquitiva'}
-      />
-      <meta
-        property={'twitter:site'}
-        name={'twitter:site'}
-        content={'@jahirfiquitiva'}
-      />
-
-      <link
-        href={'https://plus.google.com/+JahirFiquitivaR/'}
-        rel={'publisher'}
-      />
-      <meta
-        name={'google-site-verification'}
-        content={'lJwL3cKpjX_Eqp6yEY4hsydJazQl85xv29ZUmEg4oEE'}
-      />
-
       <link rel={'shortcut icon'} href={'/static/images/brand/favicon32.png'} />
       <link
         rel={'apple-touch-icon'}
@@ -65,7 +42,7 @@ export const Meta = () => {
         href={'/feed.xml'}
         type={'application/rss+xml'}
         title={'Jahir Fiquitiva (RSS)'}
-      ></link>
+      />
     </>
   );
 };
