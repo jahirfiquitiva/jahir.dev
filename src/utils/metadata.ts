@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 
+import { buildOgImageUrl } from './og';
+
 type MetaImageStyle = 'summary_large_image' | 'summary';
 
-const defaultImage = 'https://jahir.dev/api/og';
 const defaultLogoImage =
   'https://jahir.dev/static/images/brand/logo-full-me.png';
 
@@ -18,7 +19,7 @@ export const getStaticMetadata = (data: {
     data;
 
   const actualDefaultImage =
-    metaImageStyle === 'summary' ? defaultLogoImage : defaultImage;
+    metaImageStyle === 'summary' ? defaultLogoImage : buildOgImageUrl();
   const actualImage = image || actualDefaultImage;
   const actualMetaImageStyle =
     actualImage === defaultLogoImage
