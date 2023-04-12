@@ -25,7 +25,6 @@ interface HeadingProps {
   shadow?: RainbowColor;
   from?: RainbowColor;
   to?: RainbowColor;
-  dontBalance?: boolean;
 }
 
 export const Heading = (
@@ -38,7 +37,6 @@ export const Heading = (
     shadow,
     from,
     to,
-    dontBalance,
     ...otherProps
   } = props;
   return (
@@ -57,11 +55,7 @@ export const Heading = (
           : {}),
       }}
     >
-      {dontBalance ? (
-        <>{children}</>
-      ) : (
-        <Balancer ratio={balancerRatio}>{children}</Balancer>
-      )}
+      <Balancer ratio={balancerRatio}>{children}</Balancer>
     </StyledHeading>
   );
 };

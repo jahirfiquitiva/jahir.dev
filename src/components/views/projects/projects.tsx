@@ -71,7 +71,6 @@ export const Projects: FC<ProjectsProps> = (props) => {
           from={'red'}
           to={'purple'}
           as={withSearch ? 'h1' : 'h2'}
-          dontBalance={withSearch}
         >
           {!withSearch ? 'Featured ' : ''}Projects
         </Heading>
