@@ -21,6 +21,16 @@ const pathEmojiMap = {
 };
 type PathName = keyof typeof pathEmojiMap | null;
 
+const pathTitleMap = {
+  '404': 'Page not found',
+  about: 'About',
+  dashboard: 'Dashboard',
+  donate: 'Donate',
+  projects: 'Projects',
+  uses: 'Uses',
+  blog: 'Blog',
+};
+
 const LogoSvg = (props: { style?: CSSProperties }) => {
   return (
     <svg
@@ -42,27 +52,31 @@ const LogoSvg = (props: { style?: CSSProperties }) => {
   );
 };
 
+const titleFontSize = 72;
 const LogoOrEmoji = (props: { path?: PathName }) => {
   const emoji = props.path ? pathEmojiMap[props.path] : null;
   if (!emoji) {
     return (
       <LogoSvg
         style={{
-          width: 96,
-          height: 96,
+          width: titleFontSize * 2,
+          height: titleFontSize * 2,
+          filter: 'saturate(150%)',
         }}
       />
     );
   }
-  return <span style={{ fontSize: 56 }}>{emoji}</span>;
+  return <span style={{ fontSize: titleFontSize }}>{emoji}</span>;
 };
 
 const PageTitle = (props: { path?: PathName; title?: string | null }) => {
   const { path, title } = props;
+  const pathTitle = path ? pathTitleMap[path] : null;
   return (
     <p
       style={{
-        fontSize: 56,
+        alignSelf: 'flex-start',
+        fontSize: titleFontSize,
         fontWeight: 700,
         maxWidth: 900,
         color: path ? 'white' : 'rgba(0, 0, 0, 0)',
@@ -71,34 +85,42 @@ const PageTitle = (props: { path?: PathName; title?: string | null }) => {
           : {
               backgroundImage: 'linear-gradient(to right, #88a4e6, #81c1e9)',
               backgroundClip: 'text',
+              filter: 'saturate(150%)',
             }),
       }}
     >
-      {title || 'Jahir Fiquitiva'}
+      {title || pathTitle || 'Jahir Fiquitiva'}
     </p>
   );
 };
 
 const Name = (props: { path?: PathName }) => {
   if (!props.path) return null;
+  const fontSize = 40;
   return (
     <div
       style={{
         display: 'flex',
         alignItems: 'center',
         gap: 12,
-        fontSize: 32,
+        fontSize,
       }}
     >
-      <span>
-        <LogoSvg />
-      </span>
+      <LogoSvg
+        style={{
+          width: fontSize,
+          height: fontSize,
+          filter: 'saturate(150%)',
+        }}
+      />
       <p
         style={{
+          alignSelf: 'flex-start',
           fontWeight: 700,
           color: 'rgba(0, 0, 0, 0)',
           backgroundImage: 'linear-gradient(to right, #88a4e6, #81c1e9)',
           backgroundClip: 'text',
+          filter: 'saturate(150%)',
         }}
       >
         Jahir Fiquitiva
@@ -110,6 +132,10 @@ const Name = (props: { path?: PathName }) => {
 const baseUrl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
+    : process.env.VERCEL_ENV === 'preview'
+    ? process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'https://jahir.dev'
     : 'https://jahir.dev';
 
 export async function GET(req: Request) {
@@ -130,9 +156,10 @@ export async function GET(req: Request) {
           height: '100%',
           width: '100%',
           padding: '48px 72px',
+          alignItems: 'flex-start',
           justifyContent: 'flex-end',
+          gap: 12,
           fontFamily: 'Manrope',
-          fontSize: 28,
           color: 'white',
           textShadow: '0px 2px 4px rgba(8 15 30 / 0.5)',
           backgroundColor: 'rgb(8, 15, 30)',
@@ -169,7 +196,7 @@ export async function GET(req: Request) {
         <div
           style={{
             backgroundImage:
-              'linear-gradient(68deg, rgba(8, 15, 30, 1) 0%, rgba(8, 15, 30, 0.5) 55%, rgba(8, 15, 30, 0) 100%)',
+              'linear-gradient(65deg, rgba(8, 15, 30, 1) 0%, rgba(8, 15, 30, 0.5) 60%, rgba(8, 15, 30, 0) 100%)',
             position: 'absolute',
             top: 0,
             right: 0,
