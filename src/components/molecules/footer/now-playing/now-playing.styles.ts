@@ -12,8 +12,9 @@ export const MusicItem = tw.li`
   align-middle
   w-full
   max-w-full
-  justify-end
-  tablet-sm:justify-start
+  ml-[3.25rem]
+  mobile-md:ml-64
+  tablet-sm:ml-0
 `;
 
 export const MusicLink = tw(Link)`

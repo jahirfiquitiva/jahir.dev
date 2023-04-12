@@ -95,7 +95,7 @@ export const Footer = () => {
           <LogoAnimoji />
           <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>
         </BrandLink>
-        <SocialLinks />
+        <SocialLinks withBackToTop />
       </InnerFooter>
     </StyledFooter>
   );

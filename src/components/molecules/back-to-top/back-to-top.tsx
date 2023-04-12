@@ -7,7 +7,7 @@ import { useHasMounted } from '@/hooks/use-has-mounted';
 
 import { Fab, FabIcon, FabText } from './back-to-top.styles';
 
-const scrollToTop = () => {
+export const scrollToTop = () => {
   try {
     window.scroll({
       top: 0,

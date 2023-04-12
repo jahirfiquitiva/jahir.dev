@@ -30,8 +30,11 @@ export const BrandLink = tw(FooterLink)`
   self-start
   gap-6
   min-h-[30]
+  h-[unset]
   font-bold
-  mobile-md:min-w-[154px]
+  min-w-[130px]
+  mobile-md:min-w-[164px]
+  tablet-sm:min-w-[172px]
 `;
 
 export const BrandLinkSpan = tw(FooterLinkSpan)`
@@ -46,6 +49,6 @@ export const LinksContainer = tw.div`
   flex-wrap
   gap-[calc(var(--verticalContentPadding)/2)]
   justify-between
-  mobile-md:justify-[unset]
+  mobile-md:justify-start
   tablet-sm:justify-between
 `;

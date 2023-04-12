@@ -9,6 +9,7 @@ import {
   mastodon,
 } from '@/components/icons';
 
+import { BackToTopLink } from './back-to-top';
 import {
   SocialLinksContainer,
   SocialLinkItem,
@@ -20,8 +21,13 @@ import {
   PolyworkLink,
 } from './social-links.styles';
 
+interface SocialLinksProps {
+  withBackToTop?: boolean;
+}
+
 const iconSize = 0.9;
-export const SocialLinks = () => {
+export const SocialLinks = (props: SocialLinksProps) => {
+  const { withBackToTop } = props;
   return (
     <SocialLinksContainer aria-label={'Social links'}>
       <SocialLinkItem>
@@ -45,7 +51,7 @@ export const SocialLinks = () => {
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
       </SocialLinkItem>
-      <SocialLinkItem>
+      {/* <SocialLinkItem>
         <MastodonLink
           title={'Mastodon'}
           href={'https://mastodon.social/@jahirfiquitiva'}
@@ -53,7 +59,7 @@ export const SocialLinks = () => {
         >
           <Icon path={mastodon} size={iconSize} />
         </MastodonLink>
-      </SocialLinkItem>
+      </SocialLinkItem> */}
       <SocialLinkItem>
         <InstagramLink
           title={'Instagram'}
@@ -70,6 +76,7 @@ export const SocialLinks = () => {
           <Icon path={polywork} size={iconSize} />
         </PolyworkLink>
       </SocialLinkItem>
+      {Boolean(withBackToTop) && <BackToTopLink />}
     </SocialLinksContainer>
   );
 };

@@ -8,6 +8,8 @@ export const SocialLinksContainer = tw.ul`
   items-center
   gap-6
   -ml-6
+  w-full
+  mobile-lg:w-[unset]
 `;
 
 export const SocialLinkItem = tw.li`
