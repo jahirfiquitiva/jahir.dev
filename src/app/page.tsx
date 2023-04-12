@@ -1,4 +1,5 @@
-import { Intro } from '@/components/views/home';
+import { Intro } from '@/components/views/home/intro';
+import { Skills } from '@/components/views/home/skills';
 import { Projects } from '@/components/views/projects/projects';
 import projects from '@/data/projects.json';
 
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Intro />
       <Projects projects={sortedProjects} />
+      <Skills />
     </>
   );
 }

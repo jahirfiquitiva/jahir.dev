@@ -17,7 +17,7 @@ import {
   mdiPaletteSwatchOutline,
   mdiTailwind,
   nextJs,
-} from '@/old/components/icons';
+} from '@/components/icons';
 
 export interface SkillProps {
   name: string;
@@ -44,8 +44,6 @@ export const skills: SkillProps[] = [
   { name: 'Node.js', iconPath: mdiNodejs, color: '#61af43' },
   { name: 'Mongo DB', iconPath: mdiLeaf, color: '#69a14a' },
   { name: 'Express', iconPath: mdiPuzzleOutline, color: '#888888' },
-  { name: 'Java', iconPath: mdiLanguageJava, color: '#ea2e2f' },
-  { name: 'Python', iconPath: mdiLanguagePython, color: '#3a74a5' },
   { name: 'Git', iconPath: mdiGit, color: '#fc6d26' },
   { name: 'Material Design', iconPath: mdiMaterialDesign, color: '#888888' },
   {

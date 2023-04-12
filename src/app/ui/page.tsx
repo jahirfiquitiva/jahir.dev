@@ -58,8 +58,8 @@ export default function Home() {
           <Chip>Chip</Chip>
           <Chip
             className={cx(
-              'hover:bg-[rgba(125_34_68/0.08)] hover:border-[rgba(125_34_68/0.5)]',
-              'dark:hover:bg-[rgba(125_34_68/0.12)] dark:hover:border-[rgba(125_34_68/0.75)]',
+              'hocus:bg-[rgba(125_34_68/0.08)] hocus:border-[rgba(125_34_68/0.5)]',
+              'dark:hocus:bg-[rgba(125_34_68/0.12)] dark:hocus:border-[rgba(125_34_68/0.75)]',
             )}
           >
             Chip
