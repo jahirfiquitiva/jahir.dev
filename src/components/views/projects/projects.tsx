@@ -70,7 +70,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
           shadow={'red'}
           from={'red'}
           to={'purple'}
-          as={withSearch ? 'h1' : 'h2'}
+          as={'h2'}
         >
           {!withSearch ? 'Featured ' : ''}Projects
         </Heading>
