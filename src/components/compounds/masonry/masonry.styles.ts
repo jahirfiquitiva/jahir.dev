@@ -6,6 +6,7 @@ export const MasonryGrid = tw.div`
   tablet-sm:grid-cols-2
   w-full
   max-w-full
+  [place-content:stretch_center]
 `;
 
 export const MasonryColumn = tw.div`
@@ -13,4 +14,5 @@ export const MasonryColumn = tw.div`
   flex-col
   justify-start
   flex-1
+  py-2
 `;

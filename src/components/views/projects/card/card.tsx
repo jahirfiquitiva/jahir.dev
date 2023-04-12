@@ -1,11 +1,11 @@
 'use client';
 
 import Icon from '@mdi/react';
-import { useMemo } from 'react';
+import { cx } from 'classix';
+import { type CSSProperties, useMemo } from 'react';
 
-import { Img } from '@/components/core/img';
 import { mdiStar } from '@/components/icons';
-import { useRequest } from '@/hooks/use-request';
+import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme';
 import type { FC, Project } from '@/types';
 import { getReadableColor } from '@/utils/color/get-readable-color';
@@ -15,6 +15,7 @@ import {
   StyledProjectCard,
   TitleContainer,
   StarsContainer,
+  ProjectIcon,
 } from './card.styles';
 
 interface ProjectCardProps {
@@ -23,7 +24,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: FC<ProjectCardProps> = (props) => {
   const { project } = props;
-  const { data } = useRequest<{ success?: boolean; stars?: string }>(
+  const { data } = useImmutableRequest<{ success?: boolean; stars?: string }>(
     `/api/stars/${project?.repo}`,
   );
   const { isDark, themeReady } = useTheme();
@@ -55,18 +56,31 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     <StyledProjectCard
       title={`Project: ${project?.name}`}
       href={project.link}
-      // css={{ $$color: color || '$colors$accent-shadow' }}
+      style={
+        {
+          '--project-color': color || 'var(--color-accent-shadow)',
+        } as CSSProperties
+      }
     >
       <TitleContainer>
-        <Img
+        <ProjectIcon
           src={`/static/images/projects/${project.icon}`}
           alt={`Icon for project "${project.name}"`}
           size={44}
           {...extraIconProps}
         />
-        <span className={'group-hocus/project:underline'}>{project.name}</span>
+        <span
+          className={cx(
+            'group-hocus/project:underline',
+            'group-hocus/project:text-[rgb(var(--project-color))]',
+          )}
+        >
+          {project.name}
+        </span>
       </TitleContainer>
-      <p className={'text-3xs'}>{project.description}</p>
+      <p className={'text-3xs group-hocus/project:text-primary-txt'}>
+        {project.description}
+      </p>
       {data && data.stars ? (
         <StarsContainer>
           <Icon path={mdiStar} size={0.7} />

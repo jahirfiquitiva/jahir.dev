@@ -15,8 +15,8 @@ import {
 } from '@/components/icons';
 import type { FC, Project } from '@/types';
 
-import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 import { ProjectCard } from './card';
+import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 
 interface ProjectsProps {
   projects?: Array<Project>;
