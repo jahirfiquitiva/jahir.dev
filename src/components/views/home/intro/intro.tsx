@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import { cx } from 'classix';
 
 import { Heading } from '@/components/core/heading';
 import { ButtonLink, Link } from '@/components/core/link';
@@ -18,8 +19,14 @@ export const Intro = () => {
     <IntroSection id={'intro'}>
       <TextsContainer>
         <WavingHello />
-        <Heading as={'h2'} shadow={'blue'}>
-          I am&nbsp;
+        <h2
+          className={cx(
+            'inline-flex items-center gap-8',
+            '[text-shadow:0.125rem_0.125rem_0_var(--color-shadow-blue)]',
+            'dark:[text-shadow:none]',
+          )}
+        >
+          <span>I am </span>
           <Heading
             as={'span'}
             shadow={'blue'}
@@ -29,7 +36,7 @@ export const Intro = () => {
           >
             Jahir Fiquitiva
           </Heading>
-        </Heading>
+        </h2>
         <IntroParagraph>
           Passionate and creative full-stack software engineer based in{' '}
           <Link
