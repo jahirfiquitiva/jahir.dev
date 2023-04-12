@@ -21,7 +21,7 @@ export const metadata = getStaticMetadata({
     'programming',
     'open-source',
   ],
-  image: buildOgImageUrl('projects', 'Projects'),
+  image: buildOgImageUrl('projects'),
 });
 
 export default function ProjectsPage() {

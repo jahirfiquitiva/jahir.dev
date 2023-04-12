@@ -10,9 +10,10 @@ import { allBlogs } from 'contentlayer/generated';
 type BlogPageData = RequestData<{ slug?: string }>;
 
 export default async function Blog(data: BlogPageData) {
+  if (data.params.slug === 'about') return redirect('/about');
   const post = allBlogs.find((post) => post.slug === data.params.slug);
-  if (!post) notFound();
-  if (post.link) redirect(post.link);
+  if (!post) return notFound();
+  if (post.link) return redirect(post.link);
 
   return (
     <div>
@@ -38,7 +39,7 @@ export async function generateMetadata(
 
   const ogImage =
     buildOgImageUrl('blog', title, `blog/${hero}`) ||
-    `https://jahir.dev${post?.hero || '/static/images/brand/banner.png'}`;
+    `https://jahir.dev${hero || '/static/images/brand/banner.png'}`;
 
   const metadata = getStaticMetadata({
     title,
