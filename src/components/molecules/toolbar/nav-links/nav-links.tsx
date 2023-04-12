@@ -55,7 +55,10 @@ export const ToolbarNavLinks: FC = () => {
                 className={cx(
                   (link.className || '')
                     .split(' ')
-                    .map((it) => `group-hocus/link:${it}`)
+                    .map(
+                      (it) =>
+                        `group-hocus/link:${it} [[aria-current="page"]_&]:${it}`,
+                    )
                     .join(' ') as string,
                 )}
               >

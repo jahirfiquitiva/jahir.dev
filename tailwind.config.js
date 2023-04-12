@@ -80,7 +80,12 @@ module.exports = {
   safelist: [
     {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
-      variants: ['dark', 'hocus', 'group-hocus/link'],
+      variants: [
+        'dark',
+        'hocus',
+        'group-hocus/link',
+        '[[aria-current="page"]_&]',
+      ],
     },
     {
       pattern:

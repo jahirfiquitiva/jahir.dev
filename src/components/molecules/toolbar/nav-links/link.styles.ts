@@ -41,6 +41,12 @@ export const PageLinkSpan = tw(LinkSpan)`
   group-hocus/link:saturate-125
   dark:group-hocus/link:saturate-150
 
+  [[aria-current="page"]_&]:bg-gradient-to-r
+  [[aria-current="page"]_&]:bg-clip-text
+  [[aria-current="page"]_&]:text-transparent
+  [[aria-current="page"]_&]:saturate-125
+  dark:[[aria-current="page"]_&]:saturate-150
+
   scale-y-0
   tablet-sm:scale-y-100
   [[data-expanded="true"]_&]:scale-y-100
