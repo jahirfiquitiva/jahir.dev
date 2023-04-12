@@ -16,12 +16,6 @@
   & h6 {
     @apply relative inline-block self-start;
     scroll-margin-top: var(--scrollMargin);
-    &:hover,
-    &:focus {
-      & > a.anchor {
-        @apply visible;
-      }
-    }
   }
 }
 
@@ -59,36 +53,6 @@
   }
 }
 
-/* Anchor links for titles */
-.article a.anchor {
-  @apply block invisible absolute;
-  @apply h-full cursor-pointer no-underline;
-  --margin: 1.25em;
-  padding-right: 0.75em;
-  margin-left: calc(var(--margin) * -1);
-  width: calc(100% + var(--margin));
-  background-color: red;
-  &::after {
-    @apply no-underline text-tertiary-txt;
-    content: '#';
-  }
-}
-.article h2 > a.anchor::after {
-  content: '##';
-}
-.article h3 > a.anchor::after {
-  content: '###';
-}
-.article h4 > a.anchor::after {
-  content: '####';
-}
-.article h5 > a.anchor::after {
-  content: '#####';
-}
-.article h6 > a.anchor::after {
-  content: '######';
-}
-
 .article ul,
 .article ol {
   @apply flex flex-col list-none relative;
@@ -113,38 +77,22 @@
   }
 }
 
-.article ul.contains-task-list,
-.article ol.contains-task-list {
-  list-style: none;
-  @apply pl-0;
-  & li {
-    @apply flex items-center gap-6;
-    & input[type="checkbox"] {
-      @apply w-16 h-16 text-accent;
-    }
-    &::before {
-      content: "";
-      @apply hidden;
-    }
-  }
-}
-
 .article ul > li::before {
   content: counter(list-item, disc);
 }
 
-.article .toc {
+.article details[data-type='toc'] {
   @apply mb-8;
-  & .title {
-    @apply font-manrope font-bold text-sm text-primary-txt cursor-pointer mb-2;
+  & summary {
+    @apply font-manrope font-bold text-sm text-primary-txt cursor-pointer;
     & > span {
       @apply ml-8;
     }
   }
-  & .toc-level {
-    @apply flex flex-col gap-2;
+  & ol {
+    @apply flex flex-col gap-2 mt-4;
   }
-  & .toc-item {
+  & li {
     @apply self-start;
   }
 }
@@ -199,7 +147,7 @@
 
 .article blockquote {
   @apply bg-accent-dark/[0.036] border-0 border-l-[0.25rem] border-solid border-divider;
-  @apply pt-16 py-14 pr-12 rounded-4;
+  @apply pt-16 py-14 pr-12 rounded-4 my-4;
   & img {
     @apply mt-16 mb-8;
   }

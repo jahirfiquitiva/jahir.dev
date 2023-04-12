@@ -42,8 +42,9 @@ interface RehypeElement {
   type: string;
   tagName?: string;
   value?: string;
+  attributes?: Record<string, unknown>;
   properties: {
-    className: Array<string>;
+    className?: Array<string>;
     style?: string;
   } & Record<string, unknown>;
   children?: Array<RehypeElement>;
@@ -58,12 +59,12 @@ const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
   return {
     type: 'element',
     tagName: 'details',
-    properties: { className: ['toc'], open: true },
+    properties: { className: ['toc'], open: true, 'data-type': 'toc' },
     children: [
       {
         type: 'element',
         tagName: 'summary',
-        properties: { className: ['title'] },
+        properties: { className: ['title'], 'data-type': 'toc-title' },
         children: [
           {
             type: 'element',
@@ -108,7 +109,7 @@ const mdx: MDXOptions = {
         },
         onVisitHighlightedLine(node?: RehypeElement | null) {
           if (!node) return;
-          node.properties?.className.push('line--highlighted');
+          node.properties?.className?.push('line--highlighted');
         },
         onVisitHighlightedWord(node?: RehypeElement | null) {
           if (!node) return;

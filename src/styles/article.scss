@@ -1,0 +1,52 @@
+/* created because css modules change the class name */
+
+article.mdx-article {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    &:hover,
+    &:focus {
+      & > a.anchor {
+        @apply visible;
+      }
+    }
+  }
+
+  /* Anchor links for titles */
+  a.anchor {
+    @apply block invisible absolute;
+    @apply h-full cursor-pointer no-underline;
+    --margin: 1.25em;
+    padding-right: 0.75em;
+    margin-left: calc(var(--margin) * -1);
+    width: calc(100% + var(--margin));
+    &::after {
+      @apply no-underline text-tertiary-txt;
+      text-align: end;
+      content: '#';
+    }
+  }
+
+  /* List with [] or [x] */
+  ul.contains-task-list,
+  ol.contains-task-list {
+    list-style: none;
+    @apply pl-0;
+    & li {
+      @apply flex items-center gap-6;
+      & input[type='checkbox'] {
+        @apply w-16 h-16 text-accent;
+      }
+      &::before {
+        content: '';
+        @apply hidden;
+      }
+    }
+    & ul, & ol {
+      @apply m-0 ml-12;
+    }
+  }
+}
