@@ -19,6 +19,8 @@ export const StyledProjectCard = tw(Link)`
   no-underline
   hocus:no-underline
   hocus:text-primary-txt
+  hocus:bg-[rgba(var(--project-color)_/_0.048)]
+  hocus:dark:bg-[rgba(var(--project-color)_/_0.072)]
 `;
 
 export const ProjectIcon = tw(Img)`
@@ -29,11 +31,14 @@ export const ProjectIcon = tw(Img)`
   opacity-[.85]
   p-6
   rounded-10
+  bg-[rgba(var(--project-color)_/_0.048)]
+  dark:bg-[rgba(var(--project-color)_/_0.072)]
   drop-shadow-[0_1px_2px_rgba(var(--project-color)/0.5)]
   group-hocus/project:p-4
   group-hocus/project:saturate-100
   group-hocus/project:opacity-100
   group-hocus/project:bg-transparent
+  group-hocus/project:dark:bg-transparent
 `;
 
 export const TitleContainer = tw.div`
@@ -67,25 +72,4 @@ export const StarsContainer = tw.div`
   group-hocus/project:opacity-100
   group-hocus/project:border-[rgba(var(--project-color)/0.36)]
   group-hocus/project:dark:border-[rgba(var(--project-color)/0.48)]
-`;
-
-export const ProjectCardBackground = tw.div`
-  z-0
-  absolute
-  top-12
-  left-12
-  bottom-12
-  w-56
-  h-56
-  rounded-8
-  bg-[rgba(var(--project-color)_/_0.048)]
-  dark:bg-[rgba(var(--project-color)_/_0.072)]
-  transition-all
-  group-hocus/project:rounded-10
-  group-hocus/project:top-0
-  group-hocus/project:left-0
-  group-hocus/project:bottom-0
-  group-hocus/project:right-0
-  group-hocus/project:w-full
-  group-hocus/project:h-full
 `;

@@ -63,7 +63,6 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         } as CSSProperties
       }
     >
-      <ProjectCardBackground />
       <ProjectIcon
         src={`/static/images/projects/${project.icon}`}
         alt={`Icon for project "${project.name}"`}
