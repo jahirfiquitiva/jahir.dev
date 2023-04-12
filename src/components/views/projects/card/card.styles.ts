@@ -3,6 +3,7 @@ import tw from 'tailwind-styled-components';
 
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link';
+import { Chip } from '@/components/core/chip';
 
 export const StyledProjectCard = tw(Link)`
   relative
@@ -19,7 +20,7 @@ export const StyledProjectCard = tw(Link)`
   no-underline
   hocus:no-underline
   hocus:text-primary-txt
-  hocus:bg-[rgba(var(--project-color)_/_0.048)]
+  hocus:bg-[rgba(var(--project-color)_/_0.056)]
   hocus:dark:bg-[rgba(var(--project-color)_/_0.072)]
 `;
 
@@ -31,11 +32,11 @@ export const ProjectIcon = tw(Img)`
   opacity-[.85]
   p-6
   rounded-10
-  bg-[rgba(var(--project-color)_/_0.048)]
+  bg-[rgba(var(--project-color)_/_0.056)]
   dark:bg-[rgba(var(--project-color)_/_0.072)]
   drop-shadow-[0_1px_2px_rgba(var(--project-color)/0.5)]
   group-hocus/project:p-4
-  group-hocus/project:saturate-100
+  group-hocus/project:saturate-125
   group-hocus/project:opacity-100
   group-hocus/project:bg-transparent
   group-hocus/project:dark:bg-transparent
@@ -45,31 +46,28 @@ export const TitleContainer = tw.div`
   flex
   flex-col
   flex-1
+  gap-4
   text-xs
   text-primary-txt
   transition-all
 `;
 
-export const StarsContainer = tw.div`
-  flex
-  items-center
-  text-3xs
-  py-3
-  px-8
-  mr-8
-  gap-3
-  border
-  border-solid
-  border-divider
-  rounded-full
-  invisible
-  opacity-0
-  transform
-  scale-0
+export const StarsCounter = tw(Chip)`
+  py-0
+  px-4
+  gap-4
+  !rounded-6
+  text-[0.75rem]
+  font-manrope
+  font-semibold
   transition-all
-  group-hocus/project:scale-100
-  group-hocus/project:visible
-  group-hocus/project:opacity-100
-  group-hocus/project:border-[rgba(var(--project-color)/0.36)]
+  border-transparent
+  bg-[rgba(var(--project-color)/0.032)]
+  dark:bg-[rgba(var(--project-color)/0.072)]
+  group-hocus/project:text-primary-txt
+  group-hocus/project:border
+  group-hocus/project:border-[rgba(var(--project-color)/0.24)]
   group-hocus/project:dark:border-[rgba(var(--project-color)/0.48)]
+  group-hocus/project:bg-transparent
+  group-hocus/project:dark:bg-transparent
 `;

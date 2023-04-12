@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { cx } from 'classix';
 import { type CSSProperties, useMemo } from 'react';
 
-import { mdiStar } from '@/components/icons';
+import { star } from '@/components/icons';
 import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme';
 import type { FC, Project } from '@/types';
@@ -13,9 +13,9 @@ import { hexToRGB } from '@/utils/color/hex-to-rgb';
 
 import {
   StyledProjectCard,
-  TitleContainer,
-  StarsContainer,
   ProjectIcon,
+  TitleContainer,
+  StarsCounter,
 } from './card.styles';
 
 interface ProjectCardProps {
@@ -69,27 +69,29 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         {...extraIconProps}
       />
       <TitleContainer>
-        <span
-          className={cx(
-            'font-manrope font-semibold',
-            'group-hocus/project:underline',
-            'group-hocus/project:text-[rgb(var(--project-color))]',
-          )}
-        >
-          {project.name}
-        </span>
-        <p className={'text-3xs group-hocus/project:text-primary-txt'}>
+        <p className={'flex items-center gap-8'}>
+          <span
+            className={cx(
+              'font-manrope font-semibold',
+              'group-hocus/project:underline',
+              'group-hocus/project:text-[rgb(var(--project-color))]',
+            )}
+          >
+            {project.name}
+          </span>
+          {data && data.stars ? (
+            <StarsCounter
+              title={`Project "${project.name}" has ${data.stars} stars on GitHub`}
+            >
+              <Icon path={star} size={0.5} />
+              <span>{data.stars}</span>
+            </StarsCounter>
+          ) : null}
+        </p>
+        <p className={'text-3xs mr-4 group-hocus/project:text-primary-txt'}>
           {project.description}
         </p>
       </TitleContainer>
-      {data && data.stars ? (
-        <StarsContainer
-          title={`Project "${project.name}" has ${data.stars} stars on GitHub`}
-        >
-          <Icon path={mdiStar} size={0.7} />
-          <span>{data.stars}</span>
-        </StarsContainer>
-      ) : null}
     </StyledProjectCard>
   );
 };
