@@ -134,7 +134,7 @@ export async function GET(req: Request) {
           fontFamily: 'Manrope',
           fontSize: 28,
           color: 'white',
-          textShadow: '0 2px 4px rgba(8, 15, 30, 0.5)',
+          textShadow: '0px 2px 4px rgba(8 15 30 / 0.5)',
           backgroundColor: 'rgb(8, 15, 30)',
         }}
       >
