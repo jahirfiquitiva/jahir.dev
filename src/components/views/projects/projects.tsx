@@ -3,7 +3,6 @@
 import Icon from '@mdi/react';
 import { useMemo, useState } from 'react';
 
-import { Masonry } from '@/components/compounds/masonry';
 import { Field } from '@/components/core/field';
 import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link';
