@@ -1,4 +1,6 @@
-import { buildApiResponse } from '@/old/utils/response';
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
 
 const userApiUrl = 'https://api.github.com/users/jahirfiquitiva';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
@@ -7,9 +9,7 @@ const authHeaders =
     ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
-export const config = { runtime: 'edge' };
-
-export default async function handler() {
+export async function GET() {
   try {
     const userRequest = await fetch(userApiUrl, authHeaders);
     const userReposRequest = await fetch(`${userApiUrl}/repos`, authHeaders);
@@ -27,23 +27,14 @@ export default async function handler() {
       0,
     );
 
-    return buildApiResponse(
-      200,
-      {
-        success: true,
-        followers: user.followers,
-        stars,
-      },
-      {
-        'cache-control': 'public, s-maxage=3600, stale-while-revalidate=1800',
-      },
-    );
+    return NextResponse.json({
+      followers: user.followers,
+      stars,
+    });
   } catch (err) {
-    return buildApiResponse(400, {
-      success: false,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      error: err?.message || err?.stackTrace.toString() || 'Unexpected error',
+    return NextResponse.json({
+      followers: -1,
+      stars: -1,
     });
   }
 }
