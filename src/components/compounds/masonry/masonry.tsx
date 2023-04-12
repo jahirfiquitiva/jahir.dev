@@ -12,7 +12,7 @@ import { defaultBreakpoints, mapBreakpointsAndColumns } from './masonry.utils';
 interface MasonryProps {
   breakpoints?: MasonryBreakpoints;
   gap?: number;
-  key: string;
+  itemKey: string;
 }
 
 const breakpointsToClassName = (breakpoints: MasonryBreakpoints): string => {
@@ -27,7 +27,7 @@ const breakpointsToClassName = (breakpoints: MasonryBreakpoints): string => {
 };
 
 export const Masonry: FC<MasonryProps> = (props) => {
-  const { breakpoints: customBreakpoints, gap = 0, children, key } = props;
+  const { breakpoints: customBreakpoints, gap = 0, children, itemKey } = props;
   const childrenCount = Children.count(children);
 
   const allBreakpoints = {
@@ -47,7 +47,7 @@ export const Masonry: FC<MasonryProps> = (props) => {
       style={{ gap: `${gap / 16}rem` }}
     >
       <MasonryColumns
-        key={key}
+        itemKey={itemKey}
         widthAndColumns={mappedBreakpoints}
         style={{ gap: `${gap / 16}rem` }}
       >

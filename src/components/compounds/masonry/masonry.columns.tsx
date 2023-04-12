@@ -10,11 +10,16 @@ import { buildMasonryColumns } from './masonry.utils';
 
 interface MasonryColumnsProps {
   widthAndColumns: Record<number, number>;
-  key: string;
+  itemKey: string;
 }
 
 export const MasonryColumns: FC<MasonryColumnsProps> = (props) => {
-  const { widthAndColumns: mappedBreakpoints, children, style, key } = props;
+  const {
+    widthAndColumns: mappedBreakpoints,
+    children,
+    style,
+    itemKey,
+  } = props;
   const { width: windowWidth } = useWindowDimensions();
 
   const columnsCount = useMemo<number>(() => {
@@ -39,7 +44,7 @@ export const MasonryColumns: FC<MasonryColumnsProps> = (props) => {
     <>
       {columns.map((col, index) => {
         return (
-          <MasonryColumn key={`${key}-col-${index}`} style={style}>
+          <MasonryColumn key={`${itemKey}-col-${index}`} style={style}>
             {col.map((element) => element)}
           </MasonryColumn>
         );
