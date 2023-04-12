@@ -3,12 +3,12 @@ import tw from 'tailwind-styled-components';
 import { Link } from '@/components/core/link';
 
 export const List = tw.ul`
-  min-w-[130px]
   max-w-full
   list-none
   flex
   flex-col
   gap-12
+  min-w-[130px]
   mobile-md:min-w-[164px]
   tablet-sm:min-w-[unset]
 `;

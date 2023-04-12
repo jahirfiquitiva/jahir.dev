@@ -33,7 +33,10 @@ export const MusicLink = tw(Link)`
   max-w-[130px]
   mobile-md:max-w-[164px]
   tablet-sm:max-w-[206px]
-`;
+`; 
+// ↑ for max width...
+// Use the same values as List min-w
+// which is found at @/components/molecules/footer/links-list/links-list.styles.ts
 
 export const RotatingImg = tw(Img)`
   rounded-half

@@ -43,6 +43,9 @@ export const NowPlayingTrack: FC<FooterNowPlayingProps> = (props) => {
         <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
           {scrollingText}
         </PseudoScrollingText>
+        <PseudoScrollingText aria-hidden={true} $playing={isPlaying}>
+          {scrollingText}
+        </PseudoScrollingText>
       </ScrollingContainer>
     </MusicLink>
   );
