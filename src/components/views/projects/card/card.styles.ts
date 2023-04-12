@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import tw from 'tailwind-styled-components';
 
+import { Chip } from '@/components/core/chip';
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link';
-import { Chip } from '@/components/core/chip';
 
 export const StyledProjectCard = tw(Link)`
   relative
@@ -32,8 +32,6 @@ export const ProjectIcon = tw(Img)`
   transition-all
   bg-none
   filter
-  saturate-[.95]
-  opacity-[.85]
   p-6
   rounded-10
   bg-[rgba(var(--project-color)_/_0.056)]
@@ -71,8 +69,8 @@ export const StarsCounter = tw(Chip)`
   hocus:transform-none
   group-hocus/project:text-primary-txt
   group-hocus/project:border
-  group-hocus/project:border-[rgba(var(--project-color)/0.24)]
-  group-hocus/project:dark:border-[rgba(var(--project-color)/0.48)]
+  group-hocus/project:border-[rgba(var(--project-text-color)/0.24)]
+  group-hocus/project:dark:border-[rgba(var(--project-text-color)/0.48)]
   group-hocus/project:bg-transparent
   group-hocus/project:dark:bg-transparent
 `;

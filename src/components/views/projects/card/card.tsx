@@ -28,18 +28,14 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     `/api/stars/${project?.repo}`,
   );
   const { isDark, themeReady } = useTheme();
+  const projectColor = isDark
+    ? project?.darkColor || project?.color
+    : project?.color;
 
   const color = useMemo<string>(() => {
     if (!themeReady) return '';
-    return hexToRGB(
-      getReadableColor(
-        isDark ? project?.darkColor || project?.color : project?.color,
-        isDark,
-      ),
-      undefined,
-      true,
-    );
-  }, [project?.color, project?.darkColor, isDark, themeReady]);
+    return hexToRGB(getReadableColor(projectColor, isDark), undefined, true);
+  }, [projectColor, isDark, themeReady]);
 
   const extraIconProps = useMemo(() => {
     if (project?.iconMeta && project?.iconMeta.blur64) {
@@ -58,7 +54,9 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       href={project.link}
       style={
         {
-          '--project-color': color || 'var(--color-accent-shadow)',
+          '--project-color':
+            hexToRGB(projectColor, 0, true) || 'var(--color-accent-shadow)',
+          '--project-text-color': color || 'var(--color-accent-shadow)',
         } as CSSProperties
       }
     >
@@ -74,7 +72,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
             className={cx(
               'font-manrope font-semibold',
               'group-hocus/project:underline',
-              'group-hocus/project:text-[rgb(var(--project-color))]',
+              'group-hocus/project:text-[rgb(var(--project-text-color))]',
             )}
           >
             {project.name}
