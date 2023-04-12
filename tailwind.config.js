@@ -33,9 +33,19 @@ module.exports = {
     fontSize,
     screens: breakpoints,
     extend: {
+      typography: {
+        quoteless: {
+          css: {
+            blockquote: { 'font-style': 'normal' },
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:first-of-type::after': { content: 'none' },
+          },
+        },
+      },
       fontFamily: {
         sans: sansFontFamily,
         manrope: ['var(--font-manrope)', ...sansFontFamily],
+        mono: ['monospace', ...fontFamily.mono],
       },
       fontWeight: {
         normal: '450',
