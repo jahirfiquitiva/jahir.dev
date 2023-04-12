@@ -89,7 +89,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <Masonry key={'projects'} gap={18}>
+      <Masonry itemKey={'projects'} gap={18}>
         {(filteredProjects || []).map((project, index) => {
           return (
             <ProjectCard
