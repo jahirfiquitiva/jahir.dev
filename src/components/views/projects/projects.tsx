@@ -89,7 +89,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
         </ProjectsButtons>
       </ProjectsHeader>
       {renderSearchComponents()}
-      <Masonry itemKey={'projects'} gap={18}>
+      <div className={'flex flex-col gap-8'}>
         {(filteredProjects || []).map((project, index) => {
           return (
             <ProjectCard
@@ -101,7 +101,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
             />
           );
         })}
-      </Masonry>
+      </div>
     </Section>
   );
 };

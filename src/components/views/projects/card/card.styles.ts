@@ -7,31 +7,19 @@ import { Link } from '@/components/core/link';
 export const StyledProjectCard = tw(Link)`
   relative
   flex
-  flex-col
-  py-12
-  px-14
-  gap-10
-  w-full
-  bg-inverse/[0.006]
-  border
-  border-solid
-  border-divider
-  rounded-8
+  items-center
+  p-12
+  -ml-12
+  gap-12
+  rounded-10
+  w-[calc(100%+1.5rem)]
   text-secondary-txt
   transition-all
-  dark:bg-inverse/[0.008]
   group/project
   no-underline
   hocus:no-underline
   hocus:text-primary-txt
-  hocus:my-1
-  hocus:py-[11px]
-  hocus:px-[13px]
-  hocus:transform
-  hocus:scale-[1.0125]
-  hocus:[box-shadow:0_0_8px_2px_rgba(var(--project-color)_/_0.2),_0_0_1px_1px_rgba(var(--project-color)_/_0.5)]
-  hocus:bg-[rgba(var(--project-color)_/_0.035)]
-  hocus:border-[rgba(var(--project-color)_/_0.5)]
+  hocus:bg-[rgba(var(--project-color)_/_0.06)]
 `;
 
 export const ProjectIcon = tw(Img)`
@@ -40,19 +28,21 @@ export const ProjectIcon = tw(Img)`
   filter
   saturate-[.95]
   opacity-[.85]
+  bg-[rgba(var(--project-color)_/_0.06)]
+  p-6
+  rounded-10
   drop-shadow-[0_1px_2px_rgba(var(--project-color)/0.5)]
+  group-hocus/project:p-4
   group-hocus/project:saturate-100
   group-hocus/project:opacity-100
+  group-hocus/project:bg-transparent
 `;
 
 export const TitleContainer = tw.div`
   flex
-  items-center
-  -ml-2
-  gap-12
-  text-sm
-  font-semibold
-  font-manrope
+  flex-col
+  flex-1
+  text-xs
   text-primary-txt
   transition-all
 `;
@@ -60,25 +50,22 @@ export const TitleContainer = tw.div`
 export const StarsContainer = tw.div`
   flex
   items-center
-  absolute
-  top-0
-  right-0
   text-3xs
   py-3
-  px-6
+  px-8
+  mr-8
   gap-3
+  border
   border-solid
   border-divider
-  border-t-0
-  border-r-0
-  border-l
-  border-b
-  rounded-bl-8
-  text-tertiary-txt
-  group-hocus/project:border-l-2
-  group-hocus/project:border-b-2
-  group-hocus/project:text-secondary-txt
-  group-hocus/project:border-[rgba(var(--project-color)_/_0.5)]
+  rounded-full
+  invisible
+  opacity-0
+  transform
+  scale-0
   transition-all
-  delay-[-50ms]
+  group-hocus/project:scale-100
+  group-hocus/project:visible
+  group-hocus/project:opacity-100
+  group-hocus/project:border-[rgba(var(--project-color)/0.36)]
 `;

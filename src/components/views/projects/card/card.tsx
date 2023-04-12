@@ -62,25 +62,26 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
         } as CSSProperties
       }
     >
+      <ProjectIcon
+        src={`/static/images/projects/${project.icon}`}
+        alt={`Icon for project "${project.name}"`}
+        size={56}
+        {...extraIconProps}
+      />
       <TitleContainer>
-        <ProjectIcon
-          src={`/static/images/projects/${project.icon}`}
-          alt={`Icon for project "${project.name}"`}
-          size={44}
-          {...extraIconProps}
-        />
         <span
           className={cx(
+            'font-manrope font-semibold',
             'group-hocus/project:underline',
             'group-hocus/project:text-[rgb(var(--project-color))]',
           )}
         >
           {project.name}
         </span>
+        <p className={'text-3xs group-hocus/project:text-primary-txt'}>
+          {project.description}
+        </p>
       </TitleContainer>
-      <p className={'text-3xs group-hocus/project:text-primary-txt'}>
-        {project.description}
-      </p>
       {data && data.stars ? (
         <StarsContainer>
           <Icon path={mdiStar} size={0.7} />
