@@ -6,11 +6,10 @@ import tw from 'tailwind-styled-components';
 import type { ComponentProps, RainbowColor } from '@/types';
 
 const StyledHeading = tw.h1`
-  items-center
+  inline-block
   self-start
   [--text-shadow-color:var(--color-transparent)]
   [text-shadow:0.125rem_0.125rem_0_var(--text-shadow-color)]
-  [&>span]:w-full
   dark:[text-shadow:none]
   dark:text-transparent
   dark:bg-gradient-to-r
@@ -39,6 +38,7 @@ export const Heading = (
     shadow,
     from,
     to,
+    dontBalance,
     ...otherProps
   } = props;
   return (
@@ -57,7 +57,11 @@ export const Heading = (
           : {}),
       }}
     >
-      <Balancer ratio={balancerRatio}>{children}</Balancer>
+      {dontBalance ? (
+        <>{children}</>
+      ) : (
+        <Balancer ratio={balancerRatio}>{children}</Balancer>
+      )}
     </StyledHeading>
   );
 };

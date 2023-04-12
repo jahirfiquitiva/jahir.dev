@@ -66,7 +66,12 @@ export const Projects: FC<ProjectsProps> = (props) => {
       className={'gap-[calc(var(--verticalContentPadding)/1.5)]'}
     >
       <ProjectsHeader>
-        <Heading shadow={'red'} from={'red'} to={'purple'}>
+        <Heading
+          shadow={'red'}
+          from={'red'}
+          to={'purple'}
+          as={withSearch ? 'h1' : 'h2'}
+        >
           {!withSearch ? 'Featured ' : ''}Projects
         </Heading>
         <ProjectsButtons>
