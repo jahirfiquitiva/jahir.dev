@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
+import { Mdx } from '@/components/views/mdx/mdx';
 import { RequestData } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -11,10 +12,12 @@ type BlogPageData = RequestData<{ slug?: string }>;
 export default async function Blog(data: BlogPageData) {
   const post = allBlogs.find((post) => post.slug === data.params.slug);
   if (!post) notFound();
+  if (post.link) redirect(post.link);
 
   return (
     <div>
       <h1>{post.title}</h1>
+      <Mdx code={post?.body?.code} />
     </div>
   );
 }

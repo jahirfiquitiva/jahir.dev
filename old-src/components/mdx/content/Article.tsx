@@ -2,64 +2,6 @@
 import { styled } from '~/stitches';
 
 export const Article = styled('article', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '$16',
-  py: '.05px',
-  px: '$14',
-  '@tablet-md': {
-    p: '.05px',
-  },
-  scrollMarginTop: '$$scrollMargin',
-  '& > a, & > button': {
-    alignSelf: 'flex-start',
-  },
-  '& h1, & h2, & h3, & h4, & h5, & h6': {
-    position: 'relative',
-    alignSelf: 'flex-start',
-    scrollMarginTop: '$$scrollMargin',
-    hocus: {
-      '& > a.anchor': {
-        visibility: 'visible',
-      },
-    },
-  },
-  '& h1:not(:first-of-type)': {
-    mt: '$32',
-    mb: '$8',
-  },
-  '& h2': {
-    mt: '$24',
-    mb: '$4',
-  },
-  '& h3,  & h4': {
-    mt: '$16',
-    mb: '$2',
-  },
-  '& h5,  & h6': {
-    mt: '$8',
-  },
-  '& p': {
-    width: '100%',
-    marginBlock: 0,
-    marginInline: 0,
-    my: 0,
-  },
-  '& a.anchor': {
-    visibility: 'hidden',
-    position: 'absolute',
-    pr: '.75em',
-    marginLeft: '-1.25em',
-    width: 'calc(100% + 1.25em)',
-    height: '100%',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    '&::after': {
-      textDecoration: 'none',
-      content: '#',
-      color: '$text-tertiary',
-    },
-  },
   '& ol:not(.apps-grid):not(.colophon), & ul:not(.apps-grid):not(.colophon)': {
     display: 'flex',
     flexDirection: 'column',

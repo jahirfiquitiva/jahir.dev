@@ -1,0 +1,92 @@
+.article {}
+
+/* Basic layout definition */
+.article {
+  @apply flex flex-col gap-16 prose;
+  @apply px-14 tablet-md:p-0 w-full;
+
+  & > a,
+  & > button {
+    @apply self-start;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply relative inline-block self-start;
+    scroll-margin-top: var(--scrollMargin);
+    &:hover,
+    &:focus {
+      & > a.anchor {
+        @apply visible;
+      }
+    }
+  }
+}
+
+/* Headings and paragraphs margin */
+.article {
+  & h1:not(:first-of-type) {
+    @apply mt-32 mb-8;
+  }
+
+  & h2 {
+    @apply mt-24 mb-4;
+  }
+
+  & h3,
+  & h4 {
+    @apply mt-16 mb-2;
+  }
+
+  & h5,
+  & h6 {
+    @apply mt-8;
+  }
+
+  & p {
+    @apply w-full m-0;
+  }
+}
+
+/* Default styles for links */
+.article a {
+  @apply text-accent no-underline;
+  &:hover,
+  &:focus {
+    @apply text-accent-dark underline;
+  }
+}
+
+/* Anchor links for titles */
+.article a.anchor {
+  @apply block invisible absolute;
+  @apply h-full cursor-pointer no-underline;
+  --margin: 1.25em;
+  padding-right: 0.75em;
+  margin-left: calc(var(--margin) * -1);
+  width: calc(100% + var(--margin));
+  background-color: red;
+  &::after {
+    @apply no-underline text-tertiary-txt;
+    content: '#';
+  }
+}
+.article h2 > a.anchor::after {
+  content: '##';
+}
+.article h3 > a.anchor::after {
+  content: '###';
+}
+.article h4 > a.anchor::after {
+  content: '####';
+}
+.article h5 > a.anchor::after {
+  content: '#####';
+}
+.article h6 > a.anchor::after {
+  content: '######';
+}

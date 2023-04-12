@@ -66,9 +66,16 @@ const customizeTOC = (toc: RehypeElement): RehypeElement | null => {
         properties: { className: ['title'] },
         children: [
           {
-            type: 'text',
-            value: 'Table of Contents',
+            type: 'element',
+            tagName: 'span',
             properties: { className: [] },
+            children: [
+              {
+                type: 'text',
+                value: 'Table of Contents',
+                properties: { className: [] },
+              },
+            ],
           },
         ],
       },

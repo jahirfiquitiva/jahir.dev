@@ -132,7 +132,8 @@ samp {
   }
 }
 
-body section {
+body section,
+body article {
   scroll-margin-top: var(--scrollMargin);
 }
 
