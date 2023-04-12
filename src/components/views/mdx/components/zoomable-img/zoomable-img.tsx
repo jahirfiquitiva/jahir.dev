@@ -1,10 +1,14 @@
+'use client';
+
+import { cx } from 'classix';
 import { type ComponentProps, useState, useMemo, useCallback } from 'react';
 
-import type { FC } from '@/old/types';
+import { Img } from '@/components/core/img';
+import type { FC } from '@/types';
 
-import { StyledImg } from './zoomable-img.styles';
+import styles from './zoomable-img.module.scss';
 
-type ImgProps = ComponentProps<typeof StyledImg>;
+type ImgProps = ComponentProps<typeof Img>;
 
 type ZoomableImgProps = ImgProps & {
   zoomable?: boolean;
@@ -30,13 +34,10 @@ export const ZoomableImg: FC<ZoomableImgProps> = (props) => {
   );
 
   return (
-    <StyledImg
+    <Img
       {...otherProps}
       {...zoomableProps}
-      className={[
-        otherProps.className || '',
-        zoomed ? 'zoomed' : '',
-      ].join(' ')}
+      className={cx(styles.zimg, otherProps.className, zoomed && styles.zoomed)}
       data-zoomable={zoomable}
     />
   );

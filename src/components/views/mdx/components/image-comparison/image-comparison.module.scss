@@ -1,0 +1,15 @@
+figure.imgComparison {
+  @apply flex flex-col items-center;
+  @apply mb-20 min-h-[52px];
+
+  & > div:first-of-type {
+    @apply rounded-8 border border-solid border-divider;
+    & img {
+      @apply rounded-8 object-contain m-0;
+    }
+  }
+
+  & > figcaption {
+    @apply inline-flex text-3xs;
+  }
+}

@@ -1,8 +1,11 @@
+'use client';
+
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import type { FC } from '@/old/types';
-import { styled } from '~/stitches';
+import type { FC } from '@/types';
+
+import styles from './image-comparison.module.scss';
 
 interface ImageComparisonProps {
   firstImage: string;
@@ -15,32 +18,11 @@ interface ImageComparisonProps {
   vertical?: boolean;
 }
 
-const ImageComparisonContainer = styled('figure', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  mb: '$20',
-  minHeight: '$space$52',
-  '& > div:first-of-type': {
-    borderRadius: '$space$8',
-    border: '1px solid $divider',
-    '& img': {
-      borderRadius: '$space$8',
-      objectFit: 'contain !important',
-      m: 0,
-    },
-  },
-  '& > figcaption': {
-    display: 'inline-flex',
-    fontSize: '$3xs',
-  },
-});
-
 export const ImageComparison: FC<ImageComparisonProps> = (props) => {
   const { hover = true, vertical = false } = props;
 
   return (
-    <ImageComparisonContainer>
+    <figure className={styles.imgComparison}>
       <ReactCompareImage
         hover={hover}
         vertical={vertical}
@@ -69,6 +51,6 @@ export const ImageComparison: FC<ImageComparisonProps> = (props) => {
         }
       />
       {props.description && <figcaption>{props.description}</figcaption>}
-    </ImageComparisonContainer>
+    </figure>
   );
 };
