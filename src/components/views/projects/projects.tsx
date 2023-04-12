@@ -16,6 +16,7 @@ import {
 import type { FC, Project } from '@/types';
 
 import { ProjectsButtons, ProjectsHeader } from './projects.styles';
+import { ProjectCard } from './card';
 
 interface ProjectsProps {
   projects?: Array<Project>;
@@ -91,14 +92,13 @@ export const Projects: FC<ProjectsProps> = (props) => {
       <Masonry key={'projects'} gap={18}>
         {(filteredProjects || []).map((project, index) => {
           return (
-            <div
+            <ProjectCard
               key={
                 // eslint-disable-next-line newline-per-chained-call
                 `${project.name.toLowerCase().split(' ').join('-')}-${index}`
               }
-            >
-              {project.name}
-            </div>
+              project={project}
+            />
           );
         })}
       </Masonry>
