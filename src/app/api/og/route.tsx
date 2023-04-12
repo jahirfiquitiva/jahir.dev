@@ -114,7 +114,9 @@ const baseUrl =
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const path = (searchParams.get('path') as string).toLowerCase() as PathName;
+  const path = (
+    (searchParams.get('path') as string) || ''
+  ).toLowerCase() as PathName;
   const title = searchParams.get('title');
   const postHero = searchParams.get('hero') || 'site/default-og.png';
   const fontData = await font;
