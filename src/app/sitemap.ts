@@ -23,5 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route ? 0.8 : 1,
   }));
 
-  return [...routes, ...blogs];
+  return [...routes, ...blogs].sort(
+    (a, b) => (b.priority || 0) - (a.priority || 0),
+  );
 }
