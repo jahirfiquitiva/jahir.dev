@@ -35,7 +35,7 @@ export default async function Doodle() {
       alt={photo.alt}
       className={cx(
         'aspect-square max-w-[192px] mobile-lg:max-w-[220px]',
-        'filter drop-shadow-doodle mx-auto',
+        'filter drop-shadow-doodle mx-auto my-16',
       )}
     />
   );

@@ -31,18 +31,24 @@ export default async function AboutPage() {
         <Heading $as={'h2'} shadow={'brand'} from={'brand'} to={'blue'}>
           Contact
         </Heading>
+        <p>
+          I&apos;m always open to chat, connect with new people and explore new
+          opportunities.
+        </p>
         <div
           className={cx(
-            'flex flex-col-reverse gap-48 my-16',
-            'tablet-sm:flex-row tablet-sm:items-center',
+            'flex flex-col-reverse gap-48',
+            'tablet-sm:flex-row tablet-sm:items-start',
           )}
         >
           {/* @ts-expect-error Server Component */}
           <Doodle />
           <div className={cx('flex flex-col gap-12')}>
             <p>
-              I&apos;m always open to chat, so please don&apos;t hesitate
-              contacting me! But please{' '}
+              If you have a project or idea in mind where I can contribute,
+              don&apos;t hesitate contacting me!
+              <br />
+              But please{' '}
               <Link
                 title={"Don't just say hello page"}
                 href={'https://nohello.net/'}
