@@ -13,6 +13,12 @@ import { allBlogs as generatedBlogs } from 'contentlayer/generated';
 import Header from './header';
 import Hero from './hero';
 import Stats from './stats';
+import { ShareButton } from '@/components/views/mdx/ui/share-button';
+import { ButtonLink } from '@/components/core/link';
+import Icon from '@mdi/react';
+import { mdiPencilOutline } from '@/components/icons';
+import { cx } from 'classix';
+import { Divider } from '@/components/core/divider';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
@@ -24,7 +30,7 @@ export default async function Blog(data: BlogPageData) {
   if (post.link) return redirect(post.link);
 
   return (
-    <Section className={'gap-16'}>
+    <Section className={'gap-16 px-0'}>
       <Header title={post.title} color={post.color} />
       <Stats
         slug={post.slug}
@@ -34,7 +40,7 @@ export default async function Blog(data: BlogPageData) {
         inProgress={post.inProgress}
       />
       <ReactionsProvider slug={post.slug} inProgress={post.inProgress}>
-        <Reactions />
+        <Reactions inProgress={post.inProgress} />
         <Hero
           title={post.title}
           hero={post.hero}
@@ -42,6 +48,29 @@ export default async function Blog(data: BlogPageData) {
           source={post.heroSource}
         />
         <Mdx code={post?.body?.code} />
+        <Divider />
+        <div
+          className={cx(
+            'flex flex-col-reverse',
+            'gap-24',
+            'mb-16 tablet-md:mb-8 tablet-md:pt-4',
+            'tablet-md:flex-row tablet-md:items-center',
+            'tablet-md:justify-between',
+          )}
+        >
+          <div className={'flex gap-12'}>
+            <ShareButton title={post.title} slug={post.slug} />
+            <ButtonLink
+              outlined
+              title={'Edit blog post content on GitHub'}
+              href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${post.slug}.mdx`}
+            >
+              <Icon path={mdiPencilOutline} size={0.9} />
+              <span>Edit on GitHub</span>
+            </ButtonLink>
+          </div>
+          <Reactions inProgress={post.inProgress} />
+        </div>
       </ReactionsProvider>
     </Section>
   );

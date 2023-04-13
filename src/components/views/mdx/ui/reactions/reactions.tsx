@@ -82,8 +82,8 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
     if (submitting || reactions[key]) return;
 
     // Submit reactions in production website only
-    // const hostname = window?.location?.hostname || 'localhost';
-    // if (hostname !== 'jahir.dev') return;
+    const hostname = window?.location?.hostname || 'localhost';
+    if (hostname !== 'jahir.dev') return;
 
     if (event) {
       const x = event.clientX / windowWidth;
@@ -95,8 +95,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       });
     }
 
-    // TODO: Enable
-    // incrementReaction?.(key);
+    incrementReaction?.(key);
   };
 
   useEffect(() => {

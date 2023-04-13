@@ -1,3 +1,5 @@
+'use client';
+
 import Icon from '@mdi/react';
 import { useMemo } from 'react';
 

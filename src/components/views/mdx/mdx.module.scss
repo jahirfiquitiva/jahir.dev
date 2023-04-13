@@ -1,7 +1,7 @@
 /* Basic layout definition */
 .article {
-  @apply flex flex-col gap-16 prose prose-quoteless;
-  @apply px-14 tablet-md:p-0 w-full text-secondary-txt;
+  @apply flex flex-col gap-16 prose prose-quoteless max-w-full;
+  @apply px-8 tablet-sm:px-12 tablet-md:p-0 w-full text-secondary-txt;
 
   & > a,
   & > button {
