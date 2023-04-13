@@ -5,7 +5,6 @@ import { notFound, redirect } from 'next/navigation';
 
 import { Divider } from '@/components/core/divider';
 import { ButtonLink } from '@/components/core/link';
-import { Section } from '@/components/core/section';
 import { mdiPencilOutline } from '@/components/icons';
 import { Mdx } from '@/components/views/mdx/mdx';
 import { Reactions } from '@/components/views/mdx/ui/reactions';
@@ -30,7 +29,7 @@ export default function Blog(data: BlogPageData) {
   if (post.link) return redirect(post.link);
 
   return (
-    <Section id={'blog-post'}>
+    <>
       <Header title={post.title} color={post.color} />
       <Stats
         slug={post.slug}
@@ -81,7 +80,7 @@ export default function Blog(data: BlogPageData) {
           <Reactions inProgress={post.inProgress} />
         </div>
       </ReactionsProvider>
-    </Section>
+    </>
   );
 }
 
