@@ -33,7 +33,7 @@ export default async function Blog(data: BlogPageData) {
         devToId={post.devToId}
         inProgress={post.inProgress}
       />
-      <ReactionsProvider slug={post.slug}>
+      <ReactionsProvider slug={post.slug} inProgress={post.inProgress}>
         <Reactions />
         <Hero
           title={post.title}

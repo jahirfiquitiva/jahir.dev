@@ -10,7 +10,7 @@ import {
 } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useRequest } from '@/hooks/use-request';
+import { useImmutableRequest } from '@/hooks/use-request';
 import type { FC } from '@/types';
 
 const reactions = ['like', 'love', 'award', 'bookmark'] as const;
@@ -57,6 +57,7 @@ const reactionsReducer = (
 
 interface ReactionsProviderProps {
   slug: string;
+  inProgress?: boolean;
 }
 
 export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
@@ -67,12 +68,13 @@ export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
   const [state, setState] = useState<Reactions>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const { data: remoteReactions, loading } = useRequest<{
+  const { data: remoteReactions, loading } = useImmutableRequest<{
     counters: Reactions;
   }>(`/api/reactions/${slug}`);
 
   const incrementReaction = useCallback(
     async (reaction: ReactionType) => {
+      if (props.inProgress) return;
       setSubmitting(true);
 
       const newState = { ...state };
