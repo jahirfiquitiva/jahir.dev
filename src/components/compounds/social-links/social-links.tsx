@@ -6,7 +6,7 @@ import {
   twitterOutline,
   mdiInstagram,
   polywork,
-  mastodon,
+  // mastodon,
 } from '@/components/icons';
 
 import { BackToTopLink } from './back-to-top';
@@ -16,7 +16,7 @@ import {
   GitHubLink,
   LinkedInLink,
   TwitterLink,
-  MastodonLink,
+  // MastodonLink,
   InstagramLink,
   PolyworkLink,
 } from './social-links.styles';
