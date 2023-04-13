@@ -33,14 +33,15 @@ module.exports = {
     fontSize,
     screens: breakpoints,
     extend: {
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
+            color: theme('colors.secondary-txt'),
             a: {
-              color: 'var(--color-accent)',
+              color: theme('colors.accent'),
               textDecoration: 'none',
               '&:hover,&:focus': {
-                color: 'rgba(var(--color-accent-dark))',
+                color: theme('colors.accent-dark'),
               },
             },
           },
@@ -52,7 +53,7 @@ module.exports = {
             'blockquote p:first-of-type::after': { content: 'none' },
           },
         },
-      },
+      }),
       fontFamily: {
         sans: sansFontFamily,
         manrope: ['var(--font-manrope)', ...sansFontFamily],
