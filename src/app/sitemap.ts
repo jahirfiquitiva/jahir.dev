@@ -2,7 +2,9 @@ import { MetadataRoute } from 'next';
 
 import { allBlogs as generatedBlogs } from 'contentlayer/generated';
 
-const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
+const allBlogs = generatedBlogs.filter(
+  (it) => it.slug !== 'about' && !Boolean(it.link),
+);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = allBlogs.map((post) => ({
