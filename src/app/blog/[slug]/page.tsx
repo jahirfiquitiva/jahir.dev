@@ -5,12 +5,13 @@ import { Mdx } from '@/components/views/mdx/mdx';
 import { RequestData } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs } from 'contentlayer/generated';
+import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+
+const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
 type BlogPageData = RequestData<{ slug?: string }>;
 
 export default async function Blog(data: BlogPageData) {
-  if (data.params.slug === 'about') return redirect('/about');
   const post = allBlogs.find((post) => post.slug === data.params.slug);
   if (!post) return notFound();
   if (post.link) return redirect(post.link);
