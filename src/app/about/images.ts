@@ -1,12 +1,12 @@
-import lima from '@/src/assets/images/about/0.jpg';
-import sativa from '@/src/assets/images/about/1.jpg';
-import hike from '@/src/assets/images/about/2.jpg';
-import cafe from '@/src/assets/images/about/3.jpg';
-import iza from '@/src/assets/images/about/4.jpg';
-import playaBlanca from '@/src/assets/images/about/5.jpg';
-import cafe2 from '@/src/assets/images/about/6.jpg';
-import town from '@/src/assets/images/about/7.jpg';
-import sanAndresIsland from '@/src/assets/images/about/8.jpg';
+import lima from '@/assets/images/about/0.jpg';
+import sativa from '@/assets/images/about/1.jpg';
+import hike from '@/assets/images/about/2.jpg';
+import cafe from '@/assets/images/about/3.jpg';
+import iza from '@/assets/images/about/4.jpg';
+import playaBlanca from '@/assets/images/about/5.jpg';
+import cafe2 from '@/assets/images/about/6.jpg';
+import town from '@/assets/images/about/7.jpg';
+import sanAndresIsland from '@/assets/images/about/8.jpg';
 
 const imagesAlts: Array<string> = [
   "Visiting Lima, Perú – Oct '19",

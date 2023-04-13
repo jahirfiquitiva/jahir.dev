@@ -61,16 +61,14 @@ export const Projects: FC<ProjectsProps> = (props) => {
   };
 
   return (
-    <Section
-      id={'projects'}
-      className={'gap-[calc(var(--verticalContentPadding)/1.5)]'}
-    >
+    <Section id={'projects'}>
       <ProjectsHeader>
         <Heading
           shadow={'red'}
           from={'red'}
           to={'purple'}
           as={withSearch ? 'h1' : 'h2'}
+          className={'w-[unset]'}
         >
           {!withSearch ? 'Featured ' : ''}Projects
         </Heading>

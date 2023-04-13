@@ -6,7 +6,7 @@ import { useHasMounted } from '@/old/hooks/use-has-mounted';
 import { useRandomItem } from '@/old/hooks/use-random-item';
 import type { FC } from '@/old/types';
 
-import { images } from './about.images';
+import { images } from '../../../../src/app/about/images';
 import { Intro, PhotoFigure } from './about.styles';
 import { Contact } from './contact';
 

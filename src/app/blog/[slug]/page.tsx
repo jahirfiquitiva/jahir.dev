@@ -30,7 +30,7 @@ export default function Blog(data: BlogPageData) {
   if (post.link) return redirect(post.link);
 
   return (
-    <Section className={'gap-16'}>
+    <Section id={'blog-post'}>
       <Header title={post.title} color={post.color} />
       <Stats
         slug={post.slug}
