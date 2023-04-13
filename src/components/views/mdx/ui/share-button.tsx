@@ -11,7 +11,7 @@ import type { FC } from '@/types';
 
 const shareUrl = (title: string, slug: string) =>
   `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-    `"${title}" by @jahirfiquitiva\nhttps://jahir.dev/${slug}`,
+    `"${title}" by @jahirfiquitiva\nhttps://jahir.dev/blog/${slug}`,
   )}`;
 
 interface ShareButtonProps {
@@ -37,7 +37,7 @@ export const ShareButton: FC<ShareButtonProps> = (props) => {
     return {
       title,
       text: `"${title}" by @jahirfiquitiva`,
-      url: `https://jahir.dev/${slug}`,
+      url: `https://jahir.dev/blog/${slug}`,
     };
   }, [title, slug]);
 
