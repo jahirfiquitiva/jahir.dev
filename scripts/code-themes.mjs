@@ -12,7 +12,7 @@ const downloadThemeFile = async (light) => {
     const response = await fetch(light ? lightThemeUrl : darkThemeUrl);
     const json = await response.json();
     writeFileSync(
-      `./cl-config/themes/${light ? 'light' : 'dark'}.json`,
+      `./config/contentlayer/themes/${light ? 'light' : 'dark'}.json`,
       JSON.stringify(json, null, 2),
     );
   } catch (e) {

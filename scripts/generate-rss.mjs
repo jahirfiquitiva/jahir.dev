@@ -4,7 +4,9 @@ import { writeFileSync } from 'fs';
 
 import xml from 'xml';
 
-import { allBlogs } from './../.contentlayer/generated/index.mjs';
+import { allBlogs as generatedBlogs } from './../.contentlayer/generated/index.mjs';
+
+const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
 const formatImageUrl = (url) => {
   if (!url) return '';
@@ -106,11 +108,11 @@ const defaultChannel = {
   link: 'https://jahir.dev',
   title: 'Jahir Fiquitiva',
   description: 'Passionate and creative full-stack developer from Colombia',
-  image_url: 'https://jahir.dev/static/images/brand/logo-def.png',
+  image_url: 'https://jahir.dev/api/og',
   image: {
     title: 'Jahir Fiquitiva',
     link: 'https://jahir.dev',
-    url: 'https://jahir.dev/static/images/brand/logo-def.png',
+    url: 'https://jahir.dev/api/og',
   },
   copyright: `All rights reserved ${new Date().getFullYear()}, Jahir Fiquitiva`,
 };
