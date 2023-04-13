@@ -112,7 +112,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         size={16}
         lineWeight={6}
         speed={2}
-        color={'var(--colors-text-tertiary)'}
+        color={'var(--color-tertiary-txt)'}
       />
     ) : (
       text
