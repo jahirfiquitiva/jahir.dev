@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 
-import { allBlogs } from 'contentlayer/generated';
+import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+
+const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = allBlogs.map((post) => ({
@@ -18,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'projects',
     'uses',
   ].map((route) => ({
-    url: `https://jahir.dev${route}`,
+    url: `https://jahir.dev/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
     priority: route ? 0.8 : 1,
   }));
