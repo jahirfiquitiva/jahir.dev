@@ -1,27 +1,28 @@
-/* eslint-disable camelcase */
-/* eslint-disable import/no-extraneous-dependencies */
-import { writeFileSync } from 'fs';
-
 import xml from 'xml';
 
-import { allBlogs as generatedBlogs } from './../.contentlayer/generated/index.mjs';
+import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
-const formatImageUrl = (url) => {
+const formatImageUrl = (url?: string) => {
   if (!url) return '';
   if (url.startsWith('/')) return `https://jahir.dev${url}`;
   return url;
 };
 
-const buildDescriptionHtml = (post) => {
+const buildDescriptionHtml = (post: Blog): string => {
   let description = '';
   if (post.longExcerpt) {
     description += `<p>${post.longExcerpt}</p><br/>`;
   } else if (post.excerpt) {
     description += `<p>${post.excerpt}</p><br/>`;
   }
-  description += `<b><a href="https://jahir.dev/blog/${post.slug}">Read more...</a></b><br/><br/>`;
+
+  if (post.link)
+    description += `<b><a href="${post.link}">Read more...</a></b><br/><br/>`;
+  else
+    description += `<b><a href="https://jahir.dev/blog/${post.slug}">Read more...</a></b><br/><br/>`;
+
   if (post.hero) {
     description += `<p><img src="${formatImageUrl(post.hero)}" `;
     description += `alt="${post.title}"></p>`;
@@ -29,7 +30,7 @@ const buildDescriptionHtml = (post) => {
   return description;
 };
 
-const getAllPostRssData = async (post) => {
+const getAllPostRssData = (post: Blog) => {
   const descriptionHtml = buildDescriptionHtml(post);
   return {
     title: post.title,
@@ -42,9 +43,13 @@ const getAllPostRssData = async (post) => {
   };
 };
 
-const buildItemForFeed = (elem, parentKey = null) => {
+const buildItemForFeed = (
+  elem: Record<string, string | Record<string, unknown> | object> | object,
+  parentKey?: string,
+) => {
   const newArray = [];
-  for (const key of Object.keys(elem)) {
+  for (const k of Object.keys(elem)) {
+    const key = k as keyof typeof elem;
     const value = elem[key];
     if (key === parentKey) {
       newArray.push(value);
@@ -53,16 +58,20 @@ const buildItemForFeed = (elem, parentKey = null) => {
 
     const newObject = {};
     if (typeof value === 'object' && Object.keys(value).length > 1) {
-      newObject[key] = buildItemForFeed(value, key);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      newObject[k] = buildItemForFeed(value, k);
     } else {
-      newObject[key] = elem[key];
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      newObject[k] = elem[k];
     }
     newArray.push(newObject);
   }
   return newArray;
 };
 
-const buildFeed = (posts) => {
+const buildFeed = (posts: Array<ReturnType<typeof getAllPostRssData>>) => {
   const sortedPosts = posts.sort(function (first, second) {
     return new Date(second.date).getTime() - new Date(first.date).getTime();
   });
@@ -71,14 +80,13 @@ const buildFeed = (posts) => {
   feedItems.push(
     ...sortedPosts.map(function (post) {
       const description = post.html ? post.html : { _cdata: post.description };
-
       const actualItem = {
         title: post.title,
         pubDate: new Date(post.date).toUTCString(),
-        url: `https://jahir.dev/blog/${post.slug}`,
+        url: post.url,
         guid: {
           _attr: { isPermaLink: true },
-          guid: `https://jahir.dev/blog/${post.slug}`,
+          guid: post.url,
         },
         description: { _attr: { type: 'html' }, description },
         featured_image: formatImageUrl(post.hero),
@@ -117,7 +125,7 @@ const defaultChannel = {
   copyright: `All rights reserved ${new Date().getFullYear()}, Jahir Fiquitiva`,
 };
 
-(async () => {
+export async function GET() {
   const feedItems = await Promise.all(
     allBlogs.filter((it) => !it.inProgress).map(getAllPostRssData),
   );
@@ -138,8 +146,9 @@ const defaultChannel = {
     ],
   };
 
-  const feed = `<?xml version="1.0" encoding="UTF-8"?>\n${xml(feedObject, {
-    indent: '  ',
-  })}`;
-  writeFileSync('./public/feed.xml', feed);
-})();
+  return new Response(
+    `<?xml version="1.0" encoding="UTF-8"?>\n${xml(feedObject, {
+      indent: '  ',
+    })}`,
+  );
+}
