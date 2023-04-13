@@ -14,6 +14,7 @@ interface ViewsCounterProps {
   devToId?: number | string;
   inProgress?: boolean;
 }
+
 export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
   const { slug, devToId, inProgress } = props;
 
