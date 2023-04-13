@@ -39,7 +39,10 @@ export default function Blog(data: BlogPageData) {
         devToId={post.devToId}
         inProgress={post.inProgress}
       />
-      <ReactionsProvider slug={post.slug} inProgress={post.inProgress}>
+      <ReactionsProvider
+        slug={`blog--${post.slug}`}
+        inProgress={post.inProgress}
+      >
         <Reactions inProgress={post.inProgress} />
         <Hero
           title={post.title}
