@@ -9,7 +9,7 @@ export const Header = tw.header`
   z-[2]
   fixed
   top-0
-  left-1/2
+  left-[calc(50%+calc(calc(100vw-100%)/2))]
   transition-[height]
   duration-[0.25s]
   transform

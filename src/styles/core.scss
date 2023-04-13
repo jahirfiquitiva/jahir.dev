@@ -26,6 +26,7 @@ body {
   background-color: var(--color-background);
   scroll-behavior: smooth;
   accent-color: var(--color-accent);
+  margin-left: calc(100vw - 100%);
 }
 
 a {
