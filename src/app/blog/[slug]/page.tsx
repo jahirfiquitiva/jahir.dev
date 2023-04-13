@@ -14,6 +14,7 @@ import { hexToRGB } from '@/utils/color/hex-to-rgb';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+import { Img } from '@/components/core/img';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
@@ -49,6 +50,24 @@ export default async function Blog(data: BlogPageData) {
       </Heading>
       <ReactionsProvider slug={post.slug}>
         <Reactions />
+        <figure className={'my-20'}>
+          <Img
+            src={post.hero || ''}
+            alt={`Hero image for blog post "${post.title}"`}
+            className={'aspect-[2/1] h-auto rounded-8'}
+            quality={100}
+            priority
+            {...(post.heroMeta
+              ? {
+                  placeholder: 'blur',
+                  blurDataURL: post.heroMeta.blur64,
+                  width: post.heroMeta.size.width || 666,
+                  height: post.heroMeta.size.height || 375,
+                }
+              : {})}
+          />
+          {post.heroSource ? <figcaption>{post.heroSource}</figcaption> : null}
+        </figure>
         <Mdx code={post?.body?.code} />
       </ReactionsProvider>
     </Section>
