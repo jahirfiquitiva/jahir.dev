@@ -24,7 +24,7 @@ const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
 type BlogPageData = RequestData<{ slug?: string }>;
 
-export default async function Blog(data: BlogPageData) {
+export default function Blog(data: BlogPageData) {
   const post = allBlogs.find((post) => post.slug === data.params.slug);
   if (!post) return notFound();
   if (post.link) return redirect(post.link);

@@ -144,7 +144,7 @@ export async function GET(req: Request) {
     (searchParams.get('path') as string) || ''
   ).toLowerCase() as PathName;
   const title = searchParams.get('title');
-  let postHero = searchParams.get('hero') || 'site/default-og.png';
+  let postHero = searchParams.get('hero') || '/static/images/site/default-og.png';
   if (postHero.startsWith('/')) postHero = postHero.substring(1);
   console.error({ postHero });
   const fontData = await font;
