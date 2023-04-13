@@ -42,7 +42,7 @@ export default function Home() {
           Outlined button link
         </ButtonLink>
       </Section>
-      <Divider $$as={'button'} />
+      <Divider $as={'button'} />
       <Section className={'gap-16'}>
         <Chip className={'self-start'}>Chip</Chip>
         <Chip className={'self-start'}>Chip</Chip>

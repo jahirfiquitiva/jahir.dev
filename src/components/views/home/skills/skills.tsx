@@ -12,7 +12,7 @@ import { skills } from './data';
 export const Skills = () => {
   return (
     <Section id={'skills'} className={'gap-2'}>
-      <Heading as={'h3'} shadow={'blue'} from={'blue'} to={'green'}>
+      <Heading $as={'h3'} shadow={'blue'} from={'blue'} to={'green'}>
         Skills
       </Heading>
       <ChipGroup className={'pb-4'}>

@@ -18,10 +18,10 @@ export const Intro = () => {
     <IntroSection id={'intro'}>
       <TextsContainer>
         <WavingHello />
-        <Heading as={'h2'} shadow={'blue'}>
+        <Heading $as={'h2'} shadow={'blue'}>
           I am&nbsp;
           <Heading
-            as={'span'}
+            $as={'span'}
             shadow={'blue'}
             from={'brand'}
             to={'blue'}

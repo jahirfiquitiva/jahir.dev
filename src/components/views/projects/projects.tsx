@@ -67,7 +67,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
           shadow={'red'}
           from={'red'}
           to={'purple'}
-          as={withSearch ? 'h1' : 'h2'}
+          $as={withSearch ? 'h1' : 'h2'}
           className={'w-[unset]'}
         >
           {!withSearch ? 'Featured ' : ''}Projects
