@@ -42,7 +42,7 @@ export default function Home() {
           Outlined button link
         </ButtonLink>
       </Section>
-      <Divider $as={'button'} />
+      <Divider $$as={'button'} />
       <Section className={'gap-16'}>
         <Chip className={'self-start'}>Chip</Chip>
         <Chip className={'self-start'}>Chip</Chip>
@@ -93,26 +93,26 @@ export default function Home() {
       <Section className={'gap-16'}>
         <Heading shadow={'yellow'}>Heading 1</Heading>
         <Heading
-          as={'h2'}
+          $as={'h2'}
           shadow={'blue'}
           className={'dark:from-gradient-green dark:to-gradient-red'}
         >
           Heading 2
         </Heading>
-        <Heading as={'h3'} shadow={'green'} from={'blue'} to={'orange'}>
+        <Heading $as={'h3'} shadow={'green'} from={'blue'} to={'orange'}>
           Heading 3
         </Heading>
-        <Heading as={'h4'} shadow={'purple'} from={'purple'}>
+        <Heading $as={'h4'} shadow={'purple'} from={'purple'}>
           Heading 4
         </Heading>
-        <Heading as={'h5'} shadow={'red'} from={'yellow'} to={'red'}>
+        <Heading $as={'h5'} shadow={'red'} from={'yellow'} to={'red'}>
           Heading 5
         </Heading>
-        <Heading as={'h6'} to={'green'} shadow={'brand'}>
+        <Heading $as={'h6'} to={'green'} shadow={'brand'}>
           Heading 6
         </Heading>
         <Heading
-          as={'p'}
+          $as={'p'}
           from={'red'}
           to={'purple'}
           shadow={'orange'}

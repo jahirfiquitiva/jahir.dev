@@ -1,7 +1,7 @@
 html,
 body {
   @apply font-sans text-xs text-secondary-txt font-normal;
-  line-height: 1.5;
+  @apply leading-normal mobile-lg:leading-relaxed;
 }
 
 @media (min-width: 425px) {
@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply block w-full text-primary-txt font-bold font-manrope;
+  @apply inline-block text-primary-txt font-bold font-manrope;
 }
 
 b,

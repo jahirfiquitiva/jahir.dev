@@ -50,8 +50,19 @@ module.exports = {
       fontWeight: {
         normal: '450',
       },
+      lineHeight: {
+        relaxed: '1.75',
+      },
       saturate: {
         125: '1.25',
+      },
+      dropShadow: {
+        doodle: [
+          '-4px -4px 2px var(--color-illustrations-shadow)',
+          '4px 4px 2px var(--color-illustrations-shadow)',
+          '4px -4px 2px var(--color-illustrations-shadow)',
+          '-4px 4px 2px var(--color-illustrations-shadow)',
+        ],
       },
       transformOrigin: {
         waving: '70% 70%',

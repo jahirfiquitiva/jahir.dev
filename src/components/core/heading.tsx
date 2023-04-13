@@ -20,7 +20,7 @@ const StyledHeading = tw.h1`
 `;
 
 interface HeadingProps {
-  as?: ElementType;
+  $as?: ElementType;
   balancerRatio?: number;
   shadow?: RainbowColor;
   from?: RainbowColor;
@@ -31,7 +31,7 @@ export const Heading = (
   props: ComponentProps<typeof StyledHeading> & HeadingProps,
 ) => {
   const {
-    as: asElement,
+    $as: asElement,
     children,
     balancerRatio,
     shadow,
