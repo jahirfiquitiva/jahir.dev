@@ -1,11 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "contentlayer dev & next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predev": "contentlayer build",
     "prebuild": "yarn clean && yarn themes && contentlayer build --clearCache",
     "postbuild": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
     "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs",

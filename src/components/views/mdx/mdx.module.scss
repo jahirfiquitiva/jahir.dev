@@ -52,15 +52,20 @@
 
 /* Default styles for links */
 .article a {
-  @apply text-accent no-underline;
+  @apply no-underline;
   &:hover,
   &:focus {
-    @apply text-accent-dark underline;
+    @apply underline;
   }
 }
 
 .article ul,
 .article ol {
+  @apply my-0;
+}
+
+.article ul:not([aria-label="Social links"]),
+.article ol:not([aria-label="Social links"]) {
   @apply flex flex-col list-none relative;
   @apply pl-24 ml-4 -mt-2 mb-12 gap-6;
   counter-reset: start 1;
@@ -83,8 +88,15 @@
   }
 }
 
-.article ul > li::before {
+.article ul:not([aria-label="Social links"]) > li::before {
   content: counter(list-item, disc);
+}
+
+.article ul[aria-label="Social links"] {
+  @apply p-0;
+  & > li {
+    @apply p-0 m-0 text-tertiary-txt;
+  }
 }
 
 .article details[data-type='toc'] {

@@ -9,6 +9,7 @@ export const SocialLinksContainer = tw.ul`
   gap-6
   -ml-6
   w-full
+  not-prose
   mobile-lg:w-[unset]
 `;
 

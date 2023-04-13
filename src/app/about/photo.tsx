@@ -11,7 +11,7 @@ export default async function Photo() {
   const photo = await getRandomImage();
 
   return (
-    <figure>
+    <figure className={'mt-12 mb-8'}>
       <ZoomableImg
         src={photo.src}
         alt={photo.alt}

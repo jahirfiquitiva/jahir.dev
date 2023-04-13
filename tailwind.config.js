@@ -34,6 +34,17 @@ module.exports = {
     screens: breakpoints,
     extend: {
       typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              color: 'var(--color-accent)',
+              textDecoration: 'none',
+              '&:hover,&:focus': {
+                color: 'rgba(var(--color-accent-dark))',
+              },
+            },
+          },
+        },
         quoteless: {
           css: {
             blockquote: { 'font-style': 'normal' },

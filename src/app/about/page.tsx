@@ -9,9 +9,9 @@ import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { allBlogs } from 'contentlayer/generated';
 
+import ContactButtons from './contact-buttons';
 import Doodle from './doodle';
 import Photo from './photo';
-import ContactButtons from './contact-buttons';
 
 const about = allBlogs.find((post) => post.slug === 'about');
 

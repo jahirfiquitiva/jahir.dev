@@ -49,4 +49,9 @@ article.mdx-article {
       @apply m-0 ml-12;
     }
   }
+
+  /* Social Links component */
+  ul[aria-label="Social links"] {
+    @apply list-none flex items-center text-secondary-txt;
+  }
 }

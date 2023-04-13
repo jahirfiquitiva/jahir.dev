@@ -5,6 +5,8 @@ import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import tw from 'tailwind-styled-components';
 
+import { SocialLinks } from '@/components/compounds/social-links';
+
 import { Grid, GridColumn, MdxLink } from './components';
 import { ImageComparison } from './components/image-comparison';
 import { ZoomableImg } from './components/zoomable-img';
@@ -23,6 +25,7 @@ const components = {
   Link: MdxLink,
   img: ZoomableImg,
   Image: ZoomableImg,
+  SocialLinks,
 };
 
 export const Mdx = (props: MdxProps) => {
