@@ -12,6 +12,7 @@ import { allBlogs as generatedBlogs } from 'contentlayer/generated';
 
 import Header from './header';
 import Hero from './hero';
+import Stats from './stats';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
@@ -25,6 +26,13 @@ export default async function Blog(data: BlogPageData) {
   return (
     <Section className={'gap-16'}>
       <Header title={post.title} color={post.color} />
+      <Stats
+        slug={post.slug}
+        date={post.date}
+        readingTime={post.readingTime}
+        devToId={post.devToId}
+        inProgress={post.inProgress}
+      />
       <ReactionsProvider slug={post.slug}>
         <Reactions />
         <Hero
