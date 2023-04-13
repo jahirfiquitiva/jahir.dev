@@ -150,5 +150,12 @@ export async function GET() {
     `<?xml version="1.0" encoding="UTF-8"?>\n${xml(feedObject, {
       indent: '  ',
     })}`,
+    {
+      status: 200,
+      statusText: 'SuperSmashingGreat!',
+      headers: {
+        'Content-Type': 'application/rss+xml;charset=utf-8',
+      },
+    },
   );
 }
