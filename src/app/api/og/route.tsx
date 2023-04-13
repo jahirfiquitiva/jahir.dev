@@ -18,6 +18,7 @@ const pathEmojiMap = {
   projects: '💼',
   uses: '💻',
   blog: '📄',
+  error: '🚨',
 };
 type PathName = keyof typeof pathEmojiMap | null;
 
@@ -29,6 +30,7 @@ const pathTitleMap = {
   projects: 'Projects',
   uses: 'Uses',
   blog: 'Blog',
+  error: 'Error'
 };
 
 const LogoSvg = (props: { style?: CSSProperties }) => {
