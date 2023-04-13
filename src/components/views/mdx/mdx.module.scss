@@ -1,7 +1,7 @@
 /* Basic layout definition */
 .article {
   @apply flex flex-col gap-16 prose prose-quoteless;
-  @apply px-14 tablet-md:p-0 w-full;
+  @apply px-14 tablet-md:p-0 w-full text-secondary-txt;
 
   & > a,
   & > button {
@@ -14,8 +14,12 @@
   & h4,
   & h5,
   & h6 {
-    @apply relative inline-block self-start;
+    @apply relative inline-block self-start text-primary-txt;
     scroll-margin-top: var(--scrollMargin);
+  }
+
+  strong, b {
+    @apply text-primary-txt;
   }
 }
 
@@ -150,7 +154,7 @@
 
 .article blockquote {
   @apply bg-accent-dark/[0.036] border-0 border-l-[0.25rem] border-solid border-divider;
-  @apply pt-16 py-14 pr-12 rounded-4 my-4;
+  @apply pt-16 py-14 pr-12 rounded-4 my-4 text-secondary-txt;
   & img {
     @apply mt-16 mb-8;
   }

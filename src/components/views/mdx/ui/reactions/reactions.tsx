@@ -1,9 +1,10 @@
+'use client';
+
 import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
-import { Button } from '@/old/components/core';
 import {
   award,
   awardOutline,
@@ -13,100 +14,14 @@ import {
   mdiHeartOutline,
   mdiThumbUp,
   mdiThumbUpOutline,
-} from '@/old/components/icons';
-import { useHasMounted } from '@/old/hooks/use-has-mounted';
-import { useWindowDimensions } from '@/old/hooks/use-window-dimensions';
-import { type ReactionType, useReactions } from '@/old/providers/reactions';
-import { useTheme } from '@/old/providers/theme';
-import type { FC } from '@/old/types';
-import { styled } from '~/stitches';
+} from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useWindowDimensions } from '@/hooks/use-window-dimensions';
+import { type ReactionType, useReactions } from '@/providers/reactions';
+import { useTheme } from '@/providers/theme';
+import type { FC } from '@/types';
 
-const ReactionsGroup = styled('div', {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '$6',
-  '@mobile-lg': {
-    gap: '$10',
-  },
-});
-
-const ReactionButton = styled(Button, {
-  $$reactionColor: '56 103 214',
-  order: 2,
-  '& > span': {
-    pt: 1,
-  },
-  '& > svg': {
-    transition: 'all .15s ease-in-out',
-  },
-  hocus: {
-    '& > svg': {
-      color: 'rgba($$reactionColor / 1)',
-      fill: 'rgba($$reactionColor / 1)',
-      transform: 'scale(1.1)',
-    },
-    dark: {
-      backgroundColor: '$transparent',
-      borderColor: 'rgba($$reactionColor / .45)',
-    },
-  },
-  variants: {
-    outlined: {
-      true: {
-        border: '1px solid $divider',
-        backgroundColor: '$transparent',
-        dark: {
-          backgroundColor: '$transparent',
-        },
-      },
-    },
-    reacted: {
-      true: {
-        backgroundColor: 'rgba($$reactionColor / .08)',
-        color: '$text-primary',
-        borderColor: 'rgba($$reactionColor / .45)',
-        dark: {
-          backgroundColor: 'rgba($$reactionColor / .08)',
-        },
-        hocus: {
-          backgroundColor: 'rgba($$reactionColor / .08)',
-          dark: {
-            backgroundColor: 'rgba($$reactionColor / .08)',
-          },
-        },
-        '& > svg': {
-          color: 'rgba($$reactionColor / 1)',
-          fill: 'rgba($$reactionColor / 1)',
-          transform: 'scale(1.05)',
-        },
-      },
-    },
-    thumbsUp: {
-      true: {
-        $$reactionColor: '26 153 86',
-        dark: { $$reactionColor: '32 191 107' },
-      },
-    },
-    love: {
-      true: {
-        $$reactionColor: '212 53 81',
-        dark: { $$reactionColor: '235 59 90' },
-      },
-    },
-    award: {
-      true: {
-        $$reactionColor: '225 117 44',
-        dark: { $$reactionColor: '247 183 49' },
-      },
-    },
-    bookmark: {
-      true: {
-        $$reactionColor: '136 84 208',
-        dark: { $$reactionColor: '160 118 217' },
-      },
-    },
-  },
-});
+import { ReactionButton, ReactionsGroup } from './reactions.styles';
 
 const confettiOptions = {
   particleCount: 50,
@@ -148,8 +63,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
   const { inProgress, ...otherProps } = props;
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const { reactions, incrementReaction, slug, submitting, loading } =
-    useReactions();
+  const { reactions, incrementReaction, submitting, loading } = useReactions();
   const { isDark } = useTheme();
 
   const clickReaction = (
@@ -168,8 +82,8 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
     if (submitting || reactions[key]) return;
 
     // Submit reactions in production website only
-    const hostname = window?.location?.hostname || 'localhost';
-    if (hostname !== 'jahir.dev') return;
+    // const hostname = window?.location?.hostname || 'localhost';
+    // if (hostname !== 'jahir.dev') return;
 
     if (event) {
       const x = event.clientX / windowWidth;
@@ -181,14 +95,9 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       });
     }
 
-    if (incrementReaction) incrementReaction(key);
+    // TODO: Enable
+    // incrementReaction?.(key);
   };
-
-  useEffect(() => {
-    fetch(`/api/reactions/${slug}`, {
-      method: 'POST',
-    });
-  }, [slug]);
 
   useEffect(() => {
     return () => {
@@ -216,8 +125,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
     <ReactionsGroup {...otherProps}>
       <ReactionButton
         outlined
-        thumbsUp
-        reacted={!!reactions?.like}
+        $reacted={!!reactions?.like}
         disabled={submitting || loading}
         title={'Like'}
         onClick={(e) => {
@@ -232,8 +140,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       </ReactionButton>
       <ReactionButton
         outlined
-        love
-        reacted={!!reactions?.love}
+        $reacted={!!reactions?.love}
         disabled={submitting || loading}
         title={'Love'}
         onClick={(e) => {
@@ -248,8 +155,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       </ReactionButton>
       <ReactionButton
         outlined
-        award
-        reacted={!!reactions?.award}
+        $reacted={!!reactions?.award}
         disabled={submitting || loading}
         title={'Award'}
         onClick={(e) => {
@@ -261,8 +167,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       </ReactionButton>
       <ReactionButton
         outlined
-        bookmark
-        reacted={!!reactions?.bookmark}
+        $reacted={!!reactions?.bookmark}
         disabled={submitting || loading}
         title={'Bookmark'}
         onClick={(e) => {
