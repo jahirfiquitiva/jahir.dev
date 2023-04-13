@@ -144,7 +144,9 @@ export async function GET(req: Request) {
     (searchParams.get('path') as string) || ''
   ).toLowerCase() as PathName;
   const title = searchParams.get('title');
-  const postHero = searchParams.get('hero') || 'site/default-og.png';
+  let postHero = searchParams.get('hero') || 'site/default-og.png';
+  if (postHero.startsWith('/')) postHero = postHero.substring(1);
+  console.error({ postHero });
   const fontData = await font;
 
   return new ImageResponse(
@@ -166,7 +168,7 @@ export async function GET(req: Request) {
         }}
       >
         <img
-          src={`${baseUrl}/static/images/${postHero}`}
+          src={`${baseUrl}/${postHero}`}
           alt={title || 'Hero image'}
           width={1200}
           height={630}
@@ -185,7 +187,7 @@ export async function GET(req: Request) {
         />
         <div
           style={{
-            backgroundColor: 'rgba(8, 15, 30, 0.25)',
+            backgroundColor: 'rgba(8, 15, 30, 0.36)',
             position: 'absolute',
             top: 0,
             right: 0,

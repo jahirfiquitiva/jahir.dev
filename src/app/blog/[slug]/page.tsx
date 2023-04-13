@@ -53,7 +53,7 @@ export async function generateMetadata(
 
   const { title, date, excerpt, hero, slug } = post;
 
-  const ogImage = buildOgImageUrl('blog', title, `blog/${hero}`);
+  const ogImage = buildOgImageUrl('blog', title, hero);
 
   const metadata = getStaticMetadata({
     title,
