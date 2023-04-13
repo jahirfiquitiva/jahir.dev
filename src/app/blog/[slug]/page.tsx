@@ -1,7 +1,6 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
 
 import { Divider } from '@/components/core/divider';
 import { ButtonLink } from '@/components/core/link';
@@ -15,9 +14,7 @@ import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { allBlogs as generatedBlogs } from 'contentlayer/generated';
 
-import Header from './header';
 import Hero from './hero';
-import Stats from './stats';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
@@ -25,19 +22,9 @@ type BlogPageData = RequestData<{ slug?: string }>;
 
 export default function Blog(data: BlogPageData) {
   const post = allBlogs.find((post) => post.slug === data.params.slug);
-  if (!post) return notFound();
-  if (post.link) return redirect(post.link);
-
+  if (!post) return null;
   return (
     <>
-      <Header title={post.title} color={post.color} />
-      <Stats
-        slug={post.slug}
-        date={post.date}
-        readingTime={post.readingTime}
-        devToId={post.devToId}
-        inProgress={post.inProgress}
-      />
       <ReactionsProvider
         slug={`blog--${post.slug}`}
         inProgress={post.inProgress}
