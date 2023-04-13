@@ -102,9 +102,5 @@ module.exports = {
         /decoration-gradient-(brand|blue|green|yellow|orange|red|purple)/,
       variants: ['hocus'],
     },
-    {
-      pattern: /grid-cols-.*/,
-      variants: Object.keys(breakpoints),
-    },
   ],
 };

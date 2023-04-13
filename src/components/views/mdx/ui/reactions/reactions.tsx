@@ -1,8 +1,8 @@
 'use client';
 
-import Icon from '@mdi/react';
 import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
+import { cx } from 'classix';
 import { useEffect } from 'react';
 
 import {
@@ -21,7 +21,11 @@ import { type ReactionType, useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 import type { FC } from '@/types';
 
-import { ReactionButton, ReactionsGroup } from './reactions.styles';
+import {
+  ReactionButton,
+  ReactionsGroup,
+  ReactionIcon as Icon,
+} from './reactions.styles';
 
 const confettiOptions = {
   particleCount: 50,
@@ -125,11 +129,16 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       <ReactionButton
         outlined
         $reacted={!!reactions?.like}
+        data-reacted={!!reactions?.like}
         disabled={submitting || loading}
         title={'Like'}
         onClick={(e) => {
           clickReaction('like', e);
         }}
+        className={cx(
+          '[--reaction-color:26_153_86]',
+          'dark:[--reaction-color:32_191_107]',
+        )}
       >
         <Icon
           path={reactions?.like ? mdiThumbUp : mdiThumbUpOutline}
@@ -140,11 +149,16 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       <ReactionButton
         outlined
         $reacted={!!reactions?.love}
+        data-reacted={!!reactions?.love}
         disabled={submitting || loading}
         title={'Love'}
         onClick={(e) => {
           clickReaction('love', e);
         }}
+        className={cx(
+          '[--reaction-color:212_53_81]',
+          'dark:[--reaction-color:235_59_90]',
+        )}
       >
         <Icon
           path={reactions?.love ? mdiHeart : mdiHeartOutline}
@@ -155,11 +169,16 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       <ReactionButton
         outlined
         $reacted={!!reactions?.award}
+        data-reacted={!!reactions?.award}
         disabled={submitting || loading}
         title={'Award'}
         onClick={(e) => {
           clickReaction('award', e);
         }}
+        className={cx(
+          '[--reaction-color:225_117_44]',
+          'dark:[--reaction-color:247_183_49]',
+        )}
       >
         <Icon path={reactions?.award ? award : awardOutline} size={iconSize} />
         {renderLoaderOrText(reactions.awards || '0')}
@@ -167,11 +186,16 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
       <ReactionButton
         outlined
         $reacted={!!reactions?.bookmark}
+        data-reacted={!!reactions?.bookmark}
         disabled={submitting || loading}
         title={'Bookmark'}
         onClick={(e) => {
           clickReaction('bookmark', e);
         }}
+        className={cx(
+          '[--reaction-color:136_84_208]',
+          'dark:[--reaction-color:160_118_217]',
+        )}
       >
         <Icon
           path={reactions?.bookmark ? mdiBookmark : mdiBookmarkOutline}
