@@ -1,7 +1,7 @@
 /* Basic layout definition */
 .article {
   @apply flex flex-col gap-16 prose prose-quoteless max-w-full;
-  @apply p-0 w-full text-secondary-txt;
+  @apply p-0 w-full text-secondary-txt break-words;
 
   & > a,
   & > button {
@@ -14,7 +14,7 @@
   & h4,
   & h5,
   & h6 {
-    @apply relative inline-block self-start text-primary-txt;
+    @apply relative block w-full self-start text-primary-txt;
     scroll-margin-top: var(--scrollMargin);
   }
 

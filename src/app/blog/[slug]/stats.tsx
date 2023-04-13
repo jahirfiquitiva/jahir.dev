@@ -1,4 +1,5 @@
 import { Stat } from '@/components/views/mdx/ui/stat';
+import { ViewsCounter } from '@/components/views/mdx/ui/views-counter';
 import type { Post } from '@/types';
 import { formatDate } from '@/utils/format/format-date';
 
@@ -11,27 +12,32 @@ interface StatsProps {
 }
 
 const Stats = (props: StatsProps) => {
-  const { date, readingTime } = props;
+  const { slug, date, readingTime, devToId, inProgress } = props;
   const readableDate = formatDate(date);
   return (
-    <p className={'flex flex-wrap items-center gap-12 mt-8 mb-20'}>
+    <div className={'flex flex-wrap items-center gap-12 mt-8 mb-20'}>
       {Boolean(readableDate) && (
         <Stat
-          title={`Blog post published on ${readableDate}`}
-          aria-label={`Blog post published on ${readableDate}`}
+          title={`This blog post was published on ${readableDate}`}
+          aria-label={`This blog post was published on ${readableDate}`}
         >
           {readableDate}
         </Stat>
       )}
       {Boolean(readingTime?.text?.length) && (
         <Stat
-          title={`Blog post takes ${readingTime?.minutes} minutes to read`}
-          aria-label={`Blog post takes ${readingTime?.minutes} minutes to read`}
+          title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
+          aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
         >
           {readingTime?.text}
         </Stat>
       )}
-    </p>
+      <ViewsCounter
+        slug={`blog--${slug}`}
+        devToId={devToId}
+        inProgress={inProgress}
+      />
+    </div>
   );
 };
 

@@ -1,5 +1,7 @@
+import { Link } from '@/components/core/link';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import type { Post } from '@/types';
+import { getDomainFromUrl } from '@/utils/format/domain';
 
 interface HeroProps {
   title: Post['title'];
@@ -31,7 +33,14 @@ const Hero = (props: HeroProps) => {
         zoomable
         {...extraProps}
       />
-      {source ? <figcaption>{source}</figcaption> : null}
+      {source ? (
+        <figcaption>
+          Image from{' '}
+          <Link href={source} title={source}>
+            {getDomainFromUrl(source)}
+          </Link>
+        </figcaption>
+      ) : null}
     </figure>
   );
 };
