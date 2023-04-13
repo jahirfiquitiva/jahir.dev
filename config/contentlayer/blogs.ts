@@ -3,8 +3,7 @@ import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import readingTime from 'reading-time';
 
-import { unique } from '../src/utils/unique';
-
+import { unique } from './../../src/utils/unique';
 import { getBlurData } from './image-metadata';
 import { getPostDescription } from './utils/get-post-desc';
 

@@ -20,7 +20,6 @@
     "paths": {
       "~/stitches": ["stitches.config.ts"],
       "@/*": ["./src/*"],
-      "@/old/*": ["./old-src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true,

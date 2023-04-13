@@ -1,8 +1,8 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
-import { colors } from './tw-config/colors';
-import { fontSizes as fontSize } from './tw-config/font-sizes';
-import { spaces as spacing } from './tw-config/spacing';
+import { colors } from './config/tailwind/colors';
+import { fontSizes as fontSize } from './config/tailwind/font-sizes';
+import { spaces as spacing } from './config/tailwind/spacing';
 
 const sansFontFamily = ['var(--font-inter)', ...fontFamily.sans];
 
