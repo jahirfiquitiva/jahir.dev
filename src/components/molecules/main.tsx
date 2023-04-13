@@ -12,6 +12,6 @@ export const Main = tw.main`
   max-w-[666px]
   mx-auto
   tablet-sm:pt-[calc(var(--totalToolbarHeight)_+_var(--verticalContentPadding)_+_0.75rem)]
-  animate-page-transition
-  [animation-delay:150ms]
+  motion-safe:animate-page-transition
+  motion-safe:[animation-delay:150ms]
 `;
