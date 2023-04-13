@@ -1,9 +1,15 @@
+import Icon from '@mdi/react';
+import { cx } from 'classix';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
+import { Divider } from '@/components/core/divider';
+import { ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
+import { mdiPencilOutline } from '@/components/icons';
 import { Mdx } from '@/components/views/mdx/mdx';
 import { Reactions } from '@/components/views/mdx/ui/reactions';
+import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions';
 import { RequestData } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
@@ -13,12 +19,6 @@ import { allBlogs as generatedBlogs } from 'contentlayer/generated';
 import Header from './header';
 import Hero from './hero';
 import Stats from './stats';
-import { ShareButton } from '@/components/views/mdx/ui/share-button';
-import { ButtonLink } from '@/components/core/link';
-import Icon from '@mdi/react';
-import { mdiPencilOutline } from '@/components/icons';
-import { cx } from 'classix';
-import { Divider } from '@/components/core/divider';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
@@ -30,7 +30,7 @@ export default async function Blog(data: BlogPageData) {
   if (post.link) return redirect(post.link);
 
   return (
-    <Section className={'gap-16 px-0'}>
+    <Section className={'gap-16'}>
       <Header title={post.title} color={post.color} />
       <Stats
         slug={post.slug}
@@ -48,12 +48,18 @@ export default async function Blog(data: BlogPageData) {
           source={post.heroSource}
         />
         <Mdx code={post?.body?.code} />
-        <Divider />
+        <Divider
+          className={cx(
+            '-mx-14 w-[calc(100%+1.75rem)]',
+            'tablet-md:mx-0 tablet-md:w-full',
+          )}
+        />
         <div
           className={cx(
             'flex flex-col-reverse',
             'gap-24',
-            'mb-16 tablet-md:mb-8 tablet-md:pt-4',
+            'mt-0 mb-16',
+            'tablet-md:mt-2 tablet-md:mb-8',
             'tablet-md:flex-row tablet-md:items-center',
             'tablet-md:justify-between',
           )}

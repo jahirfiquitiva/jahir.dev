@@ -12,7 +12,7 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   const { title, color } = props;
-  const shadowColor = hexToRGB(color, 0.36);
+  const shadowColor = color ? hexToRGB(color, 0.36) : null;
   const readableColor = getReadableColor(color, true);
 
   return (
@@ -26,7 +26,7 @@ const Header = (props: HeaderProps) => {
         <span>Back to blog posts</span>
       </Link>
       <Heading
-        className={'tracking-wide dark:text-[var(--text-color)]'}
+        className={'dark:text-[var(--text-color)]'}
         style={
           {
             '--text-color': readableColor || 'var(--color-primary-txt)',

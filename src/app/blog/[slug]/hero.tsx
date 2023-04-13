@@ -1,4 +1,4 @@
-import { Img } from '@/components/core/img';
+import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import type { Post } from '@/types';
 
 interface HeroProps {
@@ -21,13 +21,14 @@ const Hero = (props: HeroProps) => {
 
   return (
     <figure className={'my-20'}>
-      <Img
+      <ZoomableImg
         src={hero || ''}
         alt={`Hero image for blog post "${title}"`}
         className={'aspect-[2/1] h-auto rounded-8'}
         quality={100}
         placeholder={'blur'}
         priority
+        zoomable
         {...extraProps}
       />
       {source ? <figcaption>{source}</figcaption> : null}
