@@ -1,11 +1,14 @@
 'use client';
 
+import Icon from '@mdi/react';
 import { type CSSProperties, useMemo } from 'react';
 
+import { calendarOutline, mdiClockOutline } from '@/components/icons';
 import { useTheme } from '@/providers/theme';
 import type { Post } from '@/types';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
+import { getUrlDomain } from '@/utils/domain';
 
 import { Stat } from '../../mdx/ui/stat';
 import { ViewsCounter } from '../../mdx/ui/views-counter';
@@ -18,8 +21,6 @@ import {
   PostDescription,
   PostStatsContainer,
 } from './card.styles';
-import Icon from '@mdi/react';
-import { calendarOutline, mdiClockOutline } from '@/components/icons';
 
 interface PostCardProps {
   post: Post;
@@ -31,6 +32,7 @@ export const BlogPostCard = (props: PostCardProps) => {
   const { post } = props;
   const { link, slug, devToId, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
+  const domain = getUrlDomain(rightLink);
 
   const textColor = useMemo<string | null>(() => {
     if (!themeReady) return null;
@@ -63,6 +65,11 @@ export const BlogPostCard = (props: PostCardProps) => {
       <PostCardContent>
         <PostTitle>{post.title}</PostTitle>
         <PostDescription>{post.excerpt}</PostDescription>
+        {domain ? (
+          <span className={'text-3xs text-tertiary-txt'}>
+            Published on <span className={'underline'}>{domain}</span>
+          </span>
+        ) : null}
         <PostStatsContainer>
           {Boolean(readableDate) && (
             <Stat

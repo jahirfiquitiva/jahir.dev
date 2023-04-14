@@ -3,9 +3,11 @@ export const getUrlDomain = (
   short?: boolean,
 ): string | null => {
   if (!url) return null;
-  const inx = url.lastIndexOf('/');
-  let cleanUrl = url.substring(0, inx + 1);
-  cleanUrl = cleanUrl.replace(/(^\w+:|^)\/\//, '').replace(/\//g, '');
-  if (short) return cleanUrl.replace('www.', '');
-  return cleanUrl;
+  try {
+    const urlObj = new URL(url);
+    if (short) return urlObj.hostname.replace('www.', '');
+    return urlObj.hostname;
+  } catch (e) {
+    return '';
+  }
 };

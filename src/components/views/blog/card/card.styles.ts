@@ -13,7 +13,6 @@ export const PostCard = tw(Link)`
   text-secondary-txt
   transition-all
   overflow-hidden
-  outline-offset-0
   transform
   group/post
   tablet-sm:p-12
@@ -23,6 +22,7 @@ export const PostCard = tw(Link)`
   tablet-lg:-mx-16
   tablet-lg:gap-16
   hocus:-translate-y-1
+  hocus:outline-offset-0
   hocus:bg-[rgba(var(--post-color)/0.06)]
   hocus:no-underline
   hocus:text-primary-txt

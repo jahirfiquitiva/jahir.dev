@@ -50,9 +50,20 @@ export const BlogPosts: FC<BlogPostsProps> = (props) => {
       {renderSearchComponents()}
       {groupedPosts.map((group) => {
         return (
-          <div key={`posts-for-${group.year}`}>
-            <p>{group.year}</p>
-            <ul className={'list-none flex flex-col gap-6'}>
+          <section
+            key={`posts-from-${group.year}`}
+            id={`posts-from-${group.year}`}
+            title={`Posts from ${group.year}`}
+            aria-label={`Posts from ${group.year}`}
+            className={'flex flex-col my-28 gap-16 tablet-md:gap-20'}
+          >
+            <div
+              className={'flex items-end gap-16 mt-6 mb-4 leading-none w-full'}
+            >
+              <h4>{group.year}</h4>
+              <hr className={'w-full border-none m-0 h-1 bg-divider flex-1'} />
+            </div>
+            <ul className={'list-none flex flex-col gap-16'}>
               {(group.posts || []).map((post, index) => {
                 return (
                   <li
@@ -70,7 +81,7 @@ export const BlogPosts: FC<BlogPostsProps> = (props) => {
                 );
               })}
             </ul>
-          </div>
+          </section>
         );
       })}
     </>

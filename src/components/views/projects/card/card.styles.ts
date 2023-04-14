@@ -24,6 +24,7 @@ export const StyledProjectCard = tw(Link)`
   no-underline
   hocus:no-underline
   hocus:text-primary-txt
+  hocus:outline-offset-0
   hocus:bg-[rgba(var(--project-color)_/_0.056)]
   hocus:dark:bg-[rgba(var(--project-color)_/_0.12)]
 `;
