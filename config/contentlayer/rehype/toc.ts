@@ -36,6 +36,7 @@ const customizeToc = (toc: RehypeElement): RehypeElement | null => {
       {
         type: 'element',
         tagName: 'nav',
+        properties: {},
         children: toc.children || [],
       },
     ],

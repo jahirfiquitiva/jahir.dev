@@ -3,7 +3,7 @@ export interface RehypeElement {
   tagName?: string;
   value?: string;
   attributes?: Record<string, unknown>;
-  properties?: {
+  properties: {
     className?: Array<string>;
     style?: string;
   } & Record<string, unknown>;
