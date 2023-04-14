@@ -8,16 +8,20 @@ import { useImmutableRequest } from '@/hooks/use-request';
 import type { FC } from '@/types';
 
 import { Stat } from './stat';
+import { cx } from 'classix';
+import Icon from '@mdi/react';
+import { mdiEyeOutline } from '@/components/icons';
 
 interface ViewsCounterProps {
   slug: string;
   devToId?: number | string;
   inProgress?: boolean;
   trackView?: boolean;
+  $sm?: boolean;
 }
 
 export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
-  const { slug, devToId, inProgress, trackView } = props;
+  const { slug, devToId, inProgress, trackView, $sm } = props;
 
   const hasMounted = useHasMounted();
   const { data, loading } = useImmutableRequest<{ total: number }>(
@@ -43,10 +47,13 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
 
   if (loading) {
     return (
-      <Stat className={'min-w-[68px]'}>
+      <Stat
+        $sm={$sm}
+        className={cx($sm ? 'min-w-[58px]' : 'min-w-[64px]', 'h-full')}
+      >
         <LineWobble
-          size={64}
-          lineWeight={4}
+          size={$sm ? 58 : 64}
+          lineWeight={$sm ? 2 : 4}
           speed={1.5}
           color={'var(--color-accent)'}
         />
@@ -57,10 +64,13 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
   if (views <= 0) return null;
   return (
     <Stat
+      $sm={$sm}
+      className={cx($sm ? 'min-w-[58px]' : 'min-w-[64px]', 'h-full')}
       title={`This blog post has been viewed ${views.toLocaleString()} times`}
       aria-label={`This blog post has been viewed ${views.toLocaleString()} times`}
     >
-      {`${views.toLocaleString()} views`}
+      <Icon path={mdiEyeOutline} size={$sm ? 0.5 : 0.625} />
+      <span>{`${views.toLocaleString()} views`}</span>
     </Stat>
   );
 };

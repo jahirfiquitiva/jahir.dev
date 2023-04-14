@@ -36,12 +36,13 @@ export const ProjectIcon = tw(Img)`
   rounded-10
   bg-[rgba(var(--project-color)_/_0.056)]
   dark:bg-[rgba(var(--project-color)_/_0.12)]
-  drop-shadow-[0_1px_2px_rgba(var(--project-color)/0.5)]
+  drop-shadow-none
   group-hocus/project:p-4
   group-hocus/project:saturate-125
   group-hocus/project:opacity-100
   group-hocus/project:bg-transparent
   group-hocus/project:dark:bg-transparent
+  group-hocus/project:drop-shadow-[0_1px_2px_rgba(var(--project-color)/0.5)]
 `;
 
 export const TitleContainer = tw.div`

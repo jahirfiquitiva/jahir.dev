@@ -18,6 +18,8 @@ import {
   PostDescription,
   PostStatsContainer,
 } from './card.styles';
+import Icon from '@mdi/react';
+import { calendarOutline, mdiClockOutline } from '@/components/icons';
 
 interface PostCardProps {
   post: Post;
@@ -31,7 +33,7 @@ export const BlogPostCard = (props: PostCardProps) => {
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
 
   const textColor = useMemo<string | null>(() => {
-    if (!themeReady) return '';
+    if (!themeReady) return null;
     return hexToRgb(getReadableColor(post.color, isDark), undefined, true);
   }, [isDark, themeReady, post.color]);
 
@@ -66,22 +68,27 @@ export const BlogPostCard = (props: PostCardProps) => {
             <Stat
               title={`This blog post was published on ${a11yDate}`}
               aria-label={`This blog post was published on ${a11yDate}`}
+              $sm
             >
-              {readableDate}
+              <Icon path={calendarOutline} size={0.5} />
+              <span>{readableDate}</span>
             </Stat>
           )}
           {Boolean(readingTime?.minutes) && (
             <Stat
               title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
               aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
+              $sm
             >
-              {readingTime?.text}
+              <Icon path={mdiClockOutline} size={0.5} />
+              <span>{readingTime?.text}</span>
             </Stat>
           )}
           <ViewsCounter
             slug={`blog--${slug}`}
             devToId={devToId}
             inProgress={post.inProgress}
+            $sm
           />
         </PostStatsContainer>
       </PostCardContent>

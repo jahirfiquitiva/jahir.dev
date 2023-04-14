@@ -32,7 +32,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     : project?.color;
 
   const color = useMemo<string | null>(() => {
-    if (!themeReady) return '';
+    if (!themeReady) return null;
     return hexToRgb(getReadableColor(projectColor, isDark), undefined, true);
   }, [projectColor, isDark, themeReady]);
 
