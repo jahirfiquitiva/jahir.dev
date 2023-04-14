@@ -1,27 +1,22 @@
-import { Link } from '@/components/core/link';
+import { BlogPosts } from '@/components/views/blog/posts';
+import type { Post } from '@/types';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { allBlogs as generatedBlogs } from 'contentlayer/generated';
 
 import Header from './header';
 
-const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
+const allowInProgress = process.env.NODE_ENV === 'development';
+const allBlogs: Array<Post> = generatedBlogs
+  .filter((it) => it.slug !== 'about' && (allowInProgress || !it.inProgress))
+  .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+  .map((blog) => ({ ...blog } as Post));
 
 export default function BlogPage() {
   return (
     <>
       <Header />
-      <ul>
-        {allBlogs.map((blog) => {
-          return (
-            <li key={blog.slug}>
-              <Link title={blog.title} href={`/blog/${blog.slug}`}>
-                {blog.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <BlogPosts posts={allBlogs} />
     </>
   );
 }

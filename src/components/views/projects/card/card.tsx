@@ -8,8 +8,7 @@ import { star } from '@/components/icons';
 import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme';
 import type { FC, Project } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { getReadableColor, hexToRgb } from '@/utils/color';
 
 import {
   StyledProjectCard,
@@ -32,9 +31,9 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     ? project?.darkColor || project?.color
     : project?.color;
 
-  const color = useMemo<string>(() => {
+  const color = useMemo<string | null>(() => {
     if (!themeReady) return '';
-    return hexToRGB(getReadableColor(projectColor, isDark), undefined, true);
+    return hexToRgb(getReadableColor(projectColor, isDark), undefined, true);
   }, [projectColor, isDark, themeReady]);
 
   const extraIconProps = useMemo(() => {
@@ -55,7 +54,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       style={
         {
           '--project-color':
-            hexToRGB(projectColor, 0, true) || 'var(--color-accent-shadow)',
+            hexToRgb(projectColor, 0, true) || 'var(--color-accent-shadow)',
           '--project-text-color': color || 'var(--color-accent-shadow)',
         } as CSSProperties
       }

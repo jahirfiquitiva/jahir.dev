@@ -1,8 +1,7 @@
 import type { CSSProperties } from 'react';
 
 import { Heading } from '@/components/core/heading';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { getReadableColor, hexToRgb } from '@/utils/color';
 
 interface HeaderProps {
   title: string;
@@ -11,7 +10,7 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   const { title, color } = props;
-  const shadowColor = color ? hexToRGB(color, 0.36) : null;
+  const shadowColor = color ? hexToRgb(color, 0.36) : null;
   const readableColor = getReadableColor(color, true);
 
   return (

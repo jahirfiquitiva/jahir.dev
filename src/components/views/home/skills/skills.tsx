@@ -5,7 +5,7 @@ import type { CSSProperties } from 'react';
 import { Chip, ChipGroup } from '@/components/core/chip';
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import { hexToRgb } from '@/utils/color';
 
 import { skills } from './data';
 
@@ -19,7 +19,7 @@ export const Skills = () => {
         {skills
           .filter((skill) => !skill.hide)
           .map((skill, index) => {
-            const color = hexToRGB(skill.color, 0, true);
+            const color = hexToRgb(skill.color, 0, true);
             return (
               <li key={index}>
                 <Chip

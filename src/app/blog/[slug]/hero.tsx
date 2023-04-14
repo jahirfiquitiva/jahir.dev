@@ -1,7 +1,7 @@
 import { Link } from '@/components/core/link';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import type { Post } from '@/types';
-import { getDomainFromUrl } from '@/utils/format/domain';
+import { getUrlDomain } from '@/utils/domain';
 
 interface HeroProps {
   title: Post['title'];
@@ -26,7 +26,7 @@ const Hero = (props: HeroProps) => {
       <ZoomableImg
         src={hero || ''}
         alt={`Hero image for blog post "${title}"`}
-        className={'aspect-[2/1] h-auto rounded-8'}
+        className={'aspect-[2/1] h-auto rounded-8 w-full'}
         quality={100}
         placeholder={'blur'}
         priority
@@ -37,7 +37,7 @@ const Hero = (props: HeroProps) => {
         <figcaption>
           Image from{' '}
           <Link href={source} title={source}>
-            {getDomainFromUrl(source)}
+            {getUrlDomain(source, true)}
           </Link>
         </figcaption>
       ) : null}
