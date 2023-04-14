@@ -71,11 +71,11 @@ export const BlogDescription = tw.p`
 export const BlogStatsContainer = tw.div`
   flex
   items-center
-  gap-x-16
+  gap-x-8
   gap-y-6
   mt-4
   text-tertiary-txt
   text-3xs
   flex-wrap
-  tablet-sm:gap-x-20
+  tablet-sm:gap-x-12
 `;

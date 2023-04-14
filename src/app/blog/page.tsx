@@ -1,3 +1,4 @@
+import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
 import type { Post } from '@/types';
 import { getStaticMetadata } from '@/utils/metadata';
@@ -14,10 +15,10 @@ const allBlogs: Array<Post> = generatedBlogs
 
 export default function BlogPage() {
   return (
-    <>
+    <Section id={'blog'}>
       <Header />
       <BlogPosts posts={allBlogs} />
-    </>
+    </Section>
   );
 }
 
