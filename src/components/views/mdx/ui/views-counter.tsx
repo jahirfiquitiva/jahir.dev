@@ -1,16 +1,16 @@
 'use client';
 
+import Icon from '@mdi/react';
 import { LineWobble } from '@uiball/loaders';
+import { cx } from 'classix';
 import { useEffect } from 'react';
 
+import { mdiEyeOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 import type { FC } from '@/types';
 
 import { Stat } from './stat';
-import { cx } from 'classix';
-import Icon from '@mdi/react';
-import { mdiEyeOutline } from '@/components/icons';
 
 interface ViewsCounterProps {
   slug: string;
