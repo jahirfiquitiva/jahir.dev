@@ -33,10 +33,17 @@ const customizeToc = (toc: RehypeElement): RehypeElement | null => {
           },
         ],
       },
-      ...(toc.children || []),
+      {
+        type: 'element',
+        tagName: 'nav',
+        children: toc.children || [],
+      },
     ],
   };
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const toc: Pluggable<Array<any>> = [rehypeToc, customizeToc];
+export const toc: Pluggable<Array<any>> = [
+  rehypeToc,
+  { customizeTOC: customizeToc },
+];
