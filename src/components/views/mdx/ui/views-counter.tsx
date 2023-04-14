@@ -13,10 +13,11 @@ interface ViewsCounterProps {
   slug: string;
   devToId?: number | string;
   inProgress?: boolean;
+  trackView?: boolean;
 }
 
 export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
-  const { slug, devToId, inProgress } = props;
+  const { slug, devToId, inProgress, trackView } = props;
 
   const hasMounted = useHasMounted();
   const { data, loading } = useImmutableRequest<{ total: number }>(
@@ -26,7 +27,8 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
 
   useEffect(() => {
     // Do nothing in SSR or if article is in progress
-    if (!hasMounted || inProgress) return;
+    // or the component should not track view
+    if (!hasMounted || inProgress || !trackView) return;
 
     const hostname = window?.location?.hostname || 'localhost';
     // Count views in production website only
@@ -35,9 +37,9 @@ export const ViewsCounter: FC<ViewsCounterProps> = (props) => {
     const registerView = () =>
       fetch(`/api/views/${slug}`, {
         method: 'POST',
-      });
+      }).catch();
     registerView();
-  }, [hasMounted, slug, inProgress]);
+  }, [hasMounted, slug, inProgress, trackView]);
 
   if (loading) {
     return (

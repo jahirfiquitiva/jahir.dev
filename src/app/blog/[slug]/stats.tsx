@@ -36,6 +36,7 @@ const Stats = (props: StatsProps) => {
         slug={`blog--${slug}`}
         devToId={devToId}
         inProgress={inProgress}
+        trackView
       />
     </div>
   );
