@@ -15,11 +15,6 @@ const ErrorComponent = (props: { error: Error }) => {
         Something went wrong
       </Heading>
       <p>Unfortunately an unexpected error occurred.</p>
-      {error ? (
-        <pre>
-          <code>{JSON.stringify(error, null, 2)}</code>
-        </pre>
-      ) : null}
       <p>
         Please{' '}
         <Link
@@ -32,6 +27,34 @@ const ErrorComponent = (props: { error: Error }) => {
         </Link>{' '}
         about this issue, so that I can fix it.
       </p>
+      {error ? (
+        <details className={'rounded-8 border border-solid border-divider'}>
+          <summary className={'select-none p-8'}>Error logs</summary>
+          <div
+            data-rehype-pretty-code-fragment
+            className={'border-t border-divider p-12 max-w-full break-words'}
+          >
+            <pre data-language={'json'} className={'overflow-x-auto'}>
+              <code
+                data-language={'json'}
+                className={'text-3xs font-mono max-w-full whitespace-pre-line'}
+              >
+                {JSON.stringify(
+                  {
+                    ...error,
+                    message: error.message,
+                    name: error.name,
+                    cause: error.cause,
+                    stack: error.stack,
+                  },
+                  null,
+                  2,
+                )}
+              </code>
+            </pre>
+          </div>
+        </details>
+      ) : null}
       <ButtonLink href={'/'} title={'Home page'} className={'mt-32'}>
         Go back home
       </ButtonLink>
