@@ -20,10 +20,10 @@ const getData = (slug: string) =>
     .select(['views'])
     .execute();
 
-export async function GET(req: Request, reqData?: RequestContext<{ slug?: string }>) {
+export async function GET(req: Request, context?: RequestContext<{ slug?: string }>) {
   try {
     const { searchParams } = new URL(req.url);
-    const slug = reqData?.params?.slug;
+    const slug = context?.params?.slug;
     if (!slug) {
       return NextResponse.json({ total: '-1' });
     }

@@ -18,10 +18,10 @@ import Hero from './hero';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
-type BlogPageData = RequestContext<{ slug?: string }>;
+type BlogPageContext = RequestContext<{ slug?: string }>;
 
-export default function Blog(data: BlogPageData) {
-  const post = allBlogs.find((post) => post.slug === data.params.slug);
+export default function Blog(context: BlogPageContext) {
+  const post = allBlogs.find((post) => post.slug === context.params.slug);
   if (!post) return null;
   return (
     <>
@@ -78,9 +78,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  data: BlogPageData,
+  context: BlogPageContext,
 ): Promise<Metadata | undefined> {
-  const post = allBlogs.find((post) => post.slug === data.params.slug);
+  const post = allBlogs.find((post) => post.slug === context.params.slug);
   if (!post) return undefined;
 
   const { title, date, excerpt, hero, slug } = post;

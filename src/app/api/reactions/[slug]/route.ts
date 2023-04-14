@@ -23,9 +23,12 @@ const getData = (slug: string) =>
     .select(['slug', 'likes', 'loves', 'awards', 'bookmarks'])
     .execute();
 
-export async function GET(req: Request, reqData?: RequestContext<{ slug?: string }>) {
+export async function GET(
+  req: Request,
+  context?: RequestContext<{ slug?: string }>,
+) {
   try {
-    const slug = reqData?.params?.slug;
+    const slug = context?.params?.slug;
     if (!slug) {
       return NextResponse.json({
         counters: {},
@@ -67,7 +70,10 @@ export async function GET(req: Request, reqData?: RequestContext<{ slug?: string
   }
 }
 
-export async function POST(req: Request, reqData?: RequestContext<{ slug?: string }>) {
+export async function POST(
+  req: Request,
+  reqData?: RequestContext<{ slug?: string }>,
+) {
   try {
     const slug = reqData?.params?.slug;
     if (!slug) {

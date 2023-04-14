@@ -14,13 +14,10 @@ const authHeaders =
 const oneMillion = 1000000;
 const oneThousand = 1000;
 
-export async function GET(
-  req: Request,
-  data?: RequestContext<{ repo?: string }>,
-) {
+export async function GET(req: Request, context?: RequestContext<{ repo?: string }>) {
   try {
     const { searchParams } = new URL(req.url);
-    const repo = data?.params?.repo;
+    const repo = context?.params?.repo;
     if (!repo) return NextResponse.json({ stars: null });
 
     const owner = searchParams.get('owner') || 'jahirfiquitiva';
