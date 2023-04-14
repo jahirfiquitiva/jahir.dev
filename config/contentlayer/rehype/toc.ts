@@ -1,7 +1,7 @@
 import rehypeToc from '@jsdevtools/rehype-toc';
 import type { Pluggable } from 'unified';
 
-import type { RehypeElement } from './types.d';
+import type { RehypeElement } from '../types.d';
 
 const customizeToc = (toc: RehypeElement): RehypeElement | null => {
   try {

@@ -7,9 +7,9 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { prettyCode } from './code';
-import imageMetadata from './image-metadata';
-import { toc } from './toc';
+import { prettyCode } from './rehype/code';
+import imageMetadata from './rehype/image-metadata';
+import { toc } from './rehype/toc';
 
 const mdx: MDXOptions = {
   remarkPlugins: [remarkGfm, remarkUnwrapImages],
