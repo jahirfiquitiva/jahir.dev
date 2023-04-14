@@ -9,7 +9,8 @@
     "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
-    "themes": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/code-themes.mjs"
+    "themes": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/code-themes.mjs",
+    "postinstall": "is-ci || husky install"
   },
   "dependencies": {
     "@mdi/react": "^1.6.1",
@@ -33,6 +34,8 @@
     "swr": "^2.1.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.0",
+    "@commitlint/config-conventional": "^17.6.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/canvas-confetti": "^1.6.0",
@@ -49,6 +52,8 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.38.0",
     "eslint-config-next": "^13.3.0",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
     "plaiceholder": "^2.5.0",
     "postcss": "^8.4.21",
     "reading-time": "^1.5.0",
