@@ -11,8 +11,10 @@ import { ViewsCounter } from '../../mdx/ui/views-counter';
 import {
   BlogCard,
   BlogCardHero,
+  BlogCardContent,
   BlogTitle,
   BlogDescription,
+  BlogStatsContainer,
 } from './card.styles';
 
 interface PostCardProps {
@@ -38,8 +40,8 @@ export const BlogPostCard = (props: PostCardProps) => {
       style={
         {
           '--post-color':
-            hexToRgb(post.color, 1, true) || 'var(--color-accent-shadow)',
-          '--post-text-color': textColor || 'var(--color-accent-shadow)',
+            hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)',
+          '--post-text-color': textColor || 'var(--color-accent-dark)',
         } as CSSProperties
       }
     >
@@ -51,17 +53,17 @@ export const BlogPostCard = (props: PostCardProps) => {
         placeholder={'blur'}
         blurDataURL={post?.heroMeta?.blur64}
       />
-      <div className={'flex flex-col'}>
+      <BlogCardContent>
         <BlogTitle>{post.title}</BlogTitle>
         <BlogDescription>{post.excerpt}</BlogDescription>
-        <div className={'text-3xs text-tertiary-txt'}>
+        <BlogStatsContainer>
           <ViewsCounter
             slug={`blog--${slug}`}
             devToId={devToId}
             inProgress={post.inProgress}
           />
-        </div>
-      </div>
+        </BlogStatsContainer>
+      </BlogCardContent>
     </BlogCard>
   );
 };

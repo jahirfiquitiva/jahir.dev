@@ -54,8 +54,8 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
       style={
         {
           '--project-color':
-            hexToRgb(projectColor, 0, true) || 'var(--color-accent-shadow)',
-          '--project-text-color': color || 'var(--color-accent-shadow)',
+            hexToRgb(projectColor, 0, true) || 'var(--color-accent-dark)',
+          '--project-text-color': color || 'var(--color-accent-dark)',
         } as CSSProperties
       }
     >

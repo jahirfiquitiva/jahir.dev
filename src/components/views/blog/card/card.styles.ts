@@ -33,20 +33,49 @@ export const BlogCardHero = tw(Img)`
   aspect-[2/1]
   h-auto
   rounded-4
-  tablet-sm:mt-4
+  tablet-sm:mt-2
   tablet-sm:min-h-full
   tablet-sm:aspect-[5/3]
   tablet-sm:max-w-[160px]
 `;
 
+export const BlogCardContent = tw.div`
+  flex flex-col
+  self-center
+  gap-4 flex-1
+`;
+
 export const BlogTitle = tw.p`
   text-xs
+  font-bold
+  font-manrope
   text-primary-txt
+  transition-all
   group-hocus/post:underline
   group-hocus/post:text-[rgba(var(--post-text-color))]
 `;
 
 export const BlogDescription = tw.p`
+  [display:-webkit-box]
   text-2xs
   text-secondary-txt
+  overflow-hidden
+  overflow-ellipsis
+  [-webkit-box-orient:vertical]
+  [-webkit-line-clamp:1]
+  [max-lines:1]
+  mobile-lg:[-webkit-line-clamp:2]
+  mobile-lg:[max-lines:2]
+`;
+
+export const BlogStatsContainer = tw.div`
+  flex
+  items-center
+  gap-x-16
+  gap-y-6
+  mt-4
+  text-tertiary-txt
+  text-3xs
+  flex-wrap
+  tablet-sm:gap-x-20
 `;
