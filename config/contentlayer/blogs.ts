@@ -73,7 +73,7 @@ const Blog = defineDocumentType(() => ({
     date: { type: 'string', required: true },
     hero: { type: 'string' },
     heroSource: { type: 'string' },
-    color: { type: 'string' },
+    color: { type: 'string', required: true },
     description: { type: 'string' },
     excerpt: { type: 'string' },
     longExcerpt: { type: 'string' },

@@ -25,8 +25,8 @@ export const StyledProjectCard = tw(Link)`
   hocus:no-underline
   hocus:text-primary-txt
   hocus:outline-offset-0
-  hocus:bg-[rgba(var(--project-color)_/_0.056)]
-  hocus:dark:bg-[rgba(var(--project-color)_/_0.12)]
+  hocus:bg-[rgba(var(--project-color)/0.07)]
+  hocus:dark:bg-[rgba(var(--project-color)/0.14)]
 `;
 
 export const ProjectIcon = tw(Img)`
@@ -35,8 +35,8 @@ export const ProjectIcon = tw(Img)`
   filter
   p-6
   rounded-10
-  bg-[rgba(var(--project-color)_/_0.056)]
-  dark:bg-[rgba(var(--project-color)_/_0.12)]
+  bg-[rgba(var(--project-color)/0.07)]
+  dark:bg-[rgba(var(--project-color)/0.14)]
   drop-shadow-none
   group-hocus/project:p-4
   group-hocus/project:saturate-125

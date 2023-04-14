@@ -23,10 +23,10 @@ export const PostCard = tw(Link)`
   tablet-lg:gap-16
   hocus:-translate-y-1
   hocus:outline-offset-0
-  hocus:bg-[rgba(var(--post-color)/0.06)]
+  hocus:bg-[rgba(var(--post-color)/0.07)]
   hocus:no-underline
   hocus:text-primary-txt
-  dark:hocus:bg-[rgba(var(--post-color)/0.12)]
+  dark:hocus:bg-[rgba(var(--post-color)/0.14)]
 `;
 
 export const PostCardHero = tw(Img)`
