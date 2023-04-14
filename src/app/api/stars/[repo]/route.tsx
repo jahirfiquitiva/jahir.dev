@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import type { RequestData } from '@/types/request';
+import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
 
@@ -14,7 +14,10 @@ const authHeaders =
 const oneMillion = 1000000;
 const oneThousand = 1000;
 
-export async function GET(req: Request, data?: RequestData<{ repo?: string }>) {
+export async function GET(
+  req: Request,
+  data?: RequestContext<{ repo?: string }>,
+) {
   try {
     const { searchParams } = new URL(req.url);
     const repo = data?.params?.repo;

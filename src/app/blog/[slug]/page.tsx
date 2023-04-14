@@ -9,7 +9,7 @@ import { Mdx } from '@/components/views/mdx/mdx';
 import { Reactions } from '@/components/views/mdx/ui/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions';
-import { RequestData } from '@/types/request';
+import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { allBlogs as generatedBlogs } from 'contentlayer/generated';
@@ -18,7 +18,7 @@ import Hero from './hero';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
-type BlogPageData = RequestData<{ slug?: string }>;
+type BlogPageData = RequestContext<{ slug?: string }>;
 
 export default function Blog(data: BlogPageData) {
   const post = allBlogs.find((post) => post.slug === data.params.slug);

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 import { getDevToArticles } from '@/lib/devto';
 import { queryBuilder } from '@/lib/planetscale';
-import type { RequestData } from '@/types/request';
+import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
 
@@ -20,10 +20,7 @@ const getData = (slug: string) =>
     .select(['views'])
     .execute();
 
-export async function GET(
-  req: Request,
-  reqData?: RequestData<{ slug?: string }>,
-) {
+export async function GET(req: Request, reqData?: RequestContext<{ slug?: string }>) {
   try {
     const { searchParams } = new URL(req.url);
     const slug = reqData?.params?.slug;
@@ -54,10 +51,7 @@ export async function GET(
   }
 }
 
-export async function POST(
-  req: Request,
-  reqData?: RequestData<{ slug?: string }>,
-) {
+export async function POST(req: Request, reqData?: RequestContext<{ slug?: string }>) {
   try {
     const slug = reqData?.params?.slug;
     if (!slug) {

@@ -1,3 +1,3 @@
-export interface RequestData<T> {
+export interface RequestContext<T> {
   params: T;
 }

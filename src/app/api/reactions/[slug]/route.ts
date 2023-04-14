@@ -6,7 +6,7 @@ import {
   reactionsNames,
   type ReactionName,
 } from '@/lib/planetscale';
-import type { RequestData } from '@/types/request';
+import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
 
@@ -23,10 +23,7 @@ const getData = (slug: string) =>
     .select(['slug', 'likes', 'loves', 'awards', 'bookmarks'])
     .execute();
 
-export async function GET(
-  req: Request,
-  reqData?: RequestData<{ slug?: string }>,
-) {
+export async function GET(req: Request, reqData?: RequestContext<{ slug?: string }>) {
   try {
     const slug = reqData?.params?.slug;
     if (!slug) {
@@ -70,10 +67,7 @@ export async function GET(
   }
 }
 
-export async function POST(
-  req: Request,
-  reqData?: RequestData<{ slug?: string }>,
-) {
+export async function POST(req: Request, reqData?: RequestContext<{ slug?: string }>) {
   try {
     const slug = reqData?.params?.slug;
     if (!slug) {
