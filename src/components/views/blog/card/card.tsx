@@ -11,12 +11,12 @@ import { Stat } from '../../mdx/ui/stat';
 import { ViewsCounter } from '../../mdx/ui/views-counter';
 
 import {
-  BlogCard,
-  BlogCardHero,
-  BlogCardContent,
-  BlogTitle,
-  BlogDescription,
-  BlogStatsContainer,
+  PostCard,
+  PostCardHero,
+  PostCardContent,
+  PostTitle,
+  PostDescription,
+  PostStatsContainer,
 } from './card.styles';
 
 interface PostCardProps {
@@ -39,7 +39,7 @@ export const BlogPostCard = (props: PostCardProps) => {
   const readableDate = formatDate(post.date, { year: undefined });
 
   return (
-    <BlogCard
+    <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink}
       style={
@@ -50,7 +50,7 @@ export const BlogPostCard = (props: PostCardProps) => {
         } as CSSProperties
       }
     >
-      <BlogCardHero
+      <PostCardHero
         src={post.hero || ''}
         alt={`Hero image for blog post "${post.title}"`}
         width={post?.heroMeta?.size?.width || 144}
@@ -58,10 +58,10 @@ export const BlogPostCard = (props: PostCardProps) => {
         placeholder={'blur'}
         blurDataURL={post?.heroMeta?.blur64}
       />
-      <BlogCardContent>
-        <BlogTitle>{post.title}</BlogTitle>
-        <BlogDescription>{post.excerpt}</BlogDescription>
-        <BlogStatsContainer>
+      <PostCardContent>
+        <PostTitle>{post.title}</PostTitle>
+        <PostDescription>{post.excerpt}</PostDescription>
+        <PostStatsContainer>
           {Boolean(readableDate) && (
             <Stat
               title={`This blog post was published on ${a11yDate}`}
@@ -83,8 +83,8 @@ export const BlogPostCard = (props: PostCardProps) => {
             devToId={devToId}
             inProgress={post.inProgress}
           />
-        </BlogStatsContainer>
-      </BlogCardContent>
-    </BlogCard>
+        </PostStatsContainer>
+      </PostCardContent>
+    </PostCard>
   );
 };

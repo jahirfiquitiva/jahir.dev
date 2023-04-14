@@ -3,7 +3,7 @@ import tw from 'tailwind-styled-components';
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link';
 
-export const BlogCard = tw(Link)`
+export const PostCard = tw(Link)`
   flex
   flex-col
   p-10
@@ -29,7 +29,7 @@ export const BlogCard = tw(Link)`
   dark:hocus:bg-[rgba(var(--post-color)/0.12)]
 `;
 
-export const BlogCardHero = tw(Img)`
+export const PostCardHero = tw(Img)`
   aspect-[2/1]
   h-auto
   rounded-4
@@ -39,13 +39,13 @@ export const BlogCardHero = tw(Img)`
   tablet-sm:max-w-[160px]
 `;
 
-export const BlogCardContent = tw.div`
+export const PostCardContent = tw.div`
   flex flex-col
   self-center
   gap-4 flex-1
 `;
 
-export const BlogTitle = tw.p`
+export const PostTitle = tw.p`
   text-xs
   font-bold
   font-manrope
@@ -55,7 +55,7 @@ export const BlogTitle = tw.p`
   group-hocus/post:text-[rgba(var(--post-text-color))]
 `;
 
-export const BlogDescription = tw.p`
+export const PostDescription = tw.p`
   [display:-webkit-box]
   text-2xs
   text-secondary-txt
@@ -68,7 +68,7 @@ export const BlogDescription = tw.p`
   mobile-lg:[max-lines:2]
 `;
 
-export const BlogStatsContainer = tw.div`
+export const PostStatsContainer = tw.div`
   flex
   items-center
   gap-x-8
