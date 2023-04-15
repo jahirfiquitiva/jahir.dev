@@ -1,9 +1,10 @@
 'use client';
 
-import { Children, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 
 import { ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { FC } from '@/types';
 
 import { TabPanel, TabsList } from './tabs.styles';
@@ -16,10 +17,20 @@ export interface TabsProps {
 }
 
 export const Tabs: FC<TabsProps> = (props) => {
+  const hasMounted = useHasMounted();
   const [currentTab, setCurrentTab] = useState(0);
   const { tabsNames: extraTabsNames, children } = props;
   const tabsNames = ['All', ...extraTabsNames];
   const tabsIds = tabsNames.map(getIdForName);
+
+  useEffect(() => {
+    if (hasMounted) {
+      try {
+        const tabId = (window?.location?.hash || '#').substring(1);
+        setCurrentTab(tabsIds.indexOf(tabId));
+      } catch (e) {}
+    }
+  }, [hasMounted, tabsIds]);
 
   return (
     <Section $as={'div'} className={'gap-32 my-12 flex-1'}>
