@@ -3,8 +3,10 @@
 import { cx } from 'classix';
 import { Children, useEffect, useState } from 'react';
 
+import image from '@/assets/images/setup-2022.jpeg';
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
+import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { FC } from '@/types';
 
@@ -60,6 +62,16 @@ export const Tabs: FC<TabsProps> = (props) => {
       <div
         className={cx('flex flex-col', currentTab === 0 ? 'gap-32' : 'gap-0')}
       >
+        {currentTab === 0 && (
+          <ZoomableImg
+            src={image}
+            alt={"Jahir's desk setup in 2022"}
+            className={'h-auto rounded-8 w-full'}
+            quality={100}
+            priority
+            zoomable
+          />
+        )}
         {Children.map(children, (child, index) => {
           return (
             <TabPanel
