@@ -62,12 +62,12 @@ export const HardwareImage = tw(Img)`
   tablet-sm:max-w-full
   tablet-sm:aspect-[7/6]
   tablet-sm:object-contain
-  tablet-sm:object-center
   tablet-sm:absolute
   tablet-sm:m-auto
   tablet-sm:mt-0
   tablet-sm:p-12
   group-hocus/hardware:tablet-sm:opacity-25
+  group-hocus/hardware:dark:tablet-sm:opacity-75
   tablet-sm:[mask-image:linear-gradient(to_bottom,rgba(0_0_0/1)_0%,rgba(0_0_0/.9)_50%,rgba(0_0_0/.55)_75%,rgba(0_0_0/.15)_100%)]
 `;
 
@@ -89,11 +89,13 @@ export const TextsContainer = tw.div`
 
 export const HardwareName = tw.p`
   font-semibold
-  text-2xs
   font-manrope
+  text-primary-txt
+  text-2xs
   m-0
   transition-all
   group-hocus/hardware:underline
+  group-hocus/hardware:text-accent-dark
 `;
 
 export const HardwareDescription = tw.span`
