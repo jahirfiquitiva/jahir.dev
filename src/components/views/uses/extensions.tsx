@@ -1,15 +1,16 @@
-import { Link } from '@/old/components/core';
-import { Grid, GridColumn } from '@/old/components/mdx';
-import extensions from '@/old/data/extensions.json';
+import { Link } from '@/components/core/link';
+import extensions from '@/data/extensions.json';
+
+import { Grid, GridColumn } from '../mdx/components';
 
 const extensionsHalfIndex = Math.round(extensions.length / 2);
 const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
 const secondExtensionsHalf = extensions.slice(extensionsHalfIndex);
 
 export const ExtensionsGrid = () => (
-  <Grid>
+  <Grid className={'mdx-article'}>
     <GridColumn>
-      <ul>
+      <ul className={'list-disc ml-16'}>
         {firstExtensionsHalf.map((ext, index) => (
           <li key={`f-ext-${index}`}>
             <Link href={ext.url} title={ext.title}>
@@ -20,7 +21,7 @@ export const ExtensionsGrid = () => (
       </ul>
     </GridColumn>
     <GridColumn>
-      <ul>
+      <ul className={'list-disc ml-16'}>
         {secondExtensionsHalf.map((ext, index) => (
           <li key={`s-ext-${index}`}>
             <Link href={ext.url} title={ext.title}>

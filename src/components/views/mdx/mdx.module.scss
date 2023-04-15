@@ -59,39 +59,6 @@
   }
 }
 
-.article ul,
-.article ol {
-  @apply my-0;
-}
-
-.article ul:not([aria-label="Social links"]),
-.article ol:not([aria-label="Social links"]) {
-  @apply flex flex-col list-none relative;
-  @apply pl-24 ml-4 -mt-2 mb-12 gap-6;
-  counter-reset: start 1;
-  & > li {
-    @apply m-0 pl-0;
-    &::before {
-      content: counter(list-item, decimal) '.';
-      position: absolute;
-      font-weight: inherit;
-      @apply text-tertiary-txt left-0;
-    }
-    & > ol {
-      @apply m-0;
-    }
-    & > ol > li::before,
-    & > ul > li::before {
-      content: counter(list-item, disc);
-      @apply m-0;
-    }
-  }
-}
-
-.article ul:not([aria-label="Social links"]) > li::before {
-  content: counter(list-item, disc);
-}
-
 .article ul[aria-label="Social links"] {
   @apply p-0;
   & > li {
