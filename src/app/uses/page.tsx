@@ -1,6 +1,7 @@
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { Reactions } from '@/components/views/mdx/ui/reactions';
+import { Everyday, GamingPc } from '@/components/views/uses/hardware';
 import { Software } from '@/components/views/uses/software';
 import { Tabs } from '@/components/views/uses/tabs';
 import { ReactionsProvider } from '@/providers/reactions';
@@ -24,8 +25,8 @@ export default function UsesPage() {
           'Website',
         ]}
       >
-        <div>Everyday</div>
-        <div>Gaming PC</div>
+        <Everyday />
+        <GamingPc />
         <Software />
         <div>Extensions</div>
         <div>Coding</div>

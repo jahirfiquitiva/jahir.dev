@@ -25,12 +25,14 @@ export const TabsList = tw.div`
 
 export const TabPanel = tw(Section)`
   px-0 mobile-lg:px-0
+  gap-24
+  mb-16
   transition-all
-  ${(p) => p.hidden ? 'hidden' : 'flex'}
-  ${(p) => p.hidden ? 'invisible' : 'visible'}
-  ${(p) => p.hidden ? 'opacity-0' : 'opacity-100'}
-  ${(p) => p.hidden ? 'pointer-events-none' : 'pointer-events-auto'}
-  ${(p) => p.hidden ? 'select-none' : 'select-auto'}
+  ${(p) => (p.hidden ? 'hidden' : 'flex')}
+  ${(p) => (p.hidden ? 'invisible' : 'visible')}
+  ${(p) => (p.hidden ? 'opacity-0' : 'opacity-100')}
+  ${(p) => (p.hidden ? 'pointer-events-none' : 'pointer-events-auto')}
+  ${(p) => (p.hidden ? 'select-none' : 'select-auto')}
 `;
 
 export const TabButton = tw.a`

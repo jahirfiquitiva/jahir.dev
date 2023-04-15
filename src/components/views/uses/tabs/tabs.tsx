@@ -35,7 +35,6 @@ export const Tabs: FC<TabsProps> = (props) => {
     }
   }, [hasMounted, tabsIds]);
 
-  console.error({ currentTab });
   return (
     <Section $as={'div'} className={'gap-32 my-12 flex-1 px-0 mobile-lg:px-0'}>
       <TabsList role={'tablist'}>
