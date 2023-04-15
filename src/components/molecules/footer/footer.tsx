@@ -37,8 +37,8 @@ const secondaryLinks: Array<FooterLinkProps> = [
   {
     title: 'Uses',
     href: '/uses',
-    className: 'from-gradient-blue to-gradient-green',
-    underlineColor: 'blue',
+    className: 'from-gradient-purple to-gradient-brand',
+    underlineColor: 'purple',
   },
   {
     title: 'Donate',
@@ -49,8 +49,8 @@ const secondaryLinks: Array<FooterLinkProps> = [
   {
     title: 'Dashboard',
     href: '/dashboard',
-    className: 'from-gradient-purple to-gradient-brand',
-    underlineColor: 'purple',
+    className: 'from-gradient-blue to-gradient-green',
+    underlineColor: 'blue',
   },
 ];
 

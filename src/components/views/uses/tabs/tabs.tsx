@@ -1,5 +1,6 @@
 'use client';
 
+import { cx } from 'classix';
 import { Children, useEffect, useState } from 'react';
 
 import { ButtonLink } from '@/components/core/link';
@@ -8,6 +9,7 @@ import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { FC } from '@/types';
 
 import { TabPanel, TabsList } from './tabs.styles';
+import { Heading } from '@/components/core/heading';
 
 const getIdForName = (name: string) =>
   name.split(' ').join('-').toLowerCase().trim();
@@ -57,7 +59,9 @@ export const Tabs: FC<TabsProps> = (props) => {
           );
         })}
       </TabsList>
-      <div>
+      <div
+        className={cx('flex flex-col', currentTab === 0 ? 'gap-32' : 'gap-0')}
+      >
         {Children.map(children, (child, index) => {
           return (
             <TabPanel
@@ -67,6 +71,14 @@ export const Tabs: FC<TabsProps> = (props) => {
               aria-hidden={currentTab !== 0 && currentTab !== index + 1}
               hidden={currentTab !== 0 && currentTab !== index + 1}
             >
+              <a
+                href={`#${tabsIds[index + 1]}`}
+                onClick={() => {
+                  setCurrentTab(index + 1);
+                }}
+              >
+                <Heading $as={'h2'}>{tabsNames[index + 1]}</Heading>
+              </a>
               {child}
             </TabPanel>
           );
