@@ -3,13 +3,13 @@
 import { cx } from 'classix';
 import { Children, useEffect, useState } from 'react';
 
+import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { FC } from '@/types';
 
 import { TabPanel, TabsList } from './tabs.styles';
-import { Heading } from '@/components/core/heading';
 
 const getIdForName = (name: string) =>
   name.split(' ').join('-').toLowerCase().trim();
