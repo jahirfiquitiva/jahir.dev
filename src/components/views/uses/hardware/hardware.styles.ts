@@ -60,11 +60,15 @@ export const HardwareImage = tw(Img)`
   mobile-md:max-w-[5rem]
   mobile-lg:max-w-[5.5rem]
   tablet-sm:max-w-full
+  tablet-sm:aspect-[7/6]
+  tablet-sm:object-contain
+  tablet-sm:object-center
   tablet-sm:absolute
   tablet-sm:m-auto
+  tablet-sm:mt-0
   tablet-sm:p-12
-  tablet-sm:[mask-image:linear-gradient(to_bottom,rgba(0_0_0/1)_0%,rgba(0_0_0/1)_20%,rgba(0_0_0/.5)_55%,rgba(0_0_0/0)_80%,rgba(0_0_0/0)_100%)]
   group-hocus/hardware:tablet-sm:opacity-25
+  tablet-sm:[mask-image:linear-gradient(to_bottom,rgba(0_0_0/1)_0%,rgba(0_0_0/.9)_50%,rgba(0_0_0/.55)_75%,rgba(0_0_0/.15)_100%)]
 `;
 
 export const TextsContainer = tw.div`
@@ -72,8 +76,8 @@ export const TextsContainer = tw.div`
   py-2
   gap-2
   z-[1]
-  [text-shadow:0_0_4px_rgba(235_240_251/0.72)]
-  dark:[text-shadow:0_0_4px_rgba(9_17_34/0.72)]
+  [text-shadow:0_1px_4px_rgba(235_240_251/1)]
+  dark:[text-shadow:0_1px_4px_rgba(9_17_34/1)]
   tablet-sm:py-4
   tablet-sm:px-8
   tablet-sm:h-full
@@ -81,8 +85,6 @@ export const TextsContainer = tw.div`
   tablet-sm:justify-end
   group-hocus/hardware:tablet-sm:backdrop-blur-[1px]
   group-hocus/hardware:tablet-sm:backdrop-saturate-0
-  group-hocus/hardware:[text-shadow:0_0_4px_rgba(235_240_251/1)]
-  group-hocus/hardware:dark:[text-shadow:0_0_4px_rgba(9_17_34/1)]
 `;
 
 export const HardwareName = tw.p`
