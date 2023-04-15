@@ -68,7 +68,7 @@ export default async function AboutPage() {
 }
 
 export const metadata = getStaticMetadata({
-  title: 'About',
+  title: 'About – Jahir Fiquitiva',
   description: 'Learn more about me (Jahir Fiquitiva), my career and more',
   exactUrl: 'https://jahir.dev/about',
   keywords: ['bio', 'biography', 'information', 'about', 'career'],

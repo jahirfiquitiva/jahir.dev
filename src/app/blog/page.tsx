@@ -23,7 +23,7 @@ export default function BlogPage() {
 }
 
 export const metadata = getStaticMetadata({
-  title: 'Blog',
+  title: 'Blog – Jahir Fiquitiva',
   description:
     // eslint-disable-next-line max-len
     'Blog posts by Jahir Fiquitiva. Here I share some thoughts, stories, information and more about software development, programming, tech or my personal life',

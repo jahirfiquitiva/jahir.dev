@@ -88,7 +88,7 @@ export async function generateMetadata(
   const ogImage = buildOgImageUrl('blog', title, hero);
 
   const metadata = getStaticMetadata({
-    title,
+    title: `${title} | Blog – Jahir Fiquitiva`,
     description: excerpt || 'Blog post by Jahir Fiquitiva',
     image: ogImage,
     exactUrl: `https://jahir.dev/blog/${slug}`,

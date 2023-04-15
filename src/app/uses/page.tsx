@@ -39,7 +39,7 @@ export default function UsesPage() {
 }
 
 export const metadata = getStaticMetadata({
-  title: 'Uses',
+  title: 'Uses – Jahir Fiquitiva',
   description:
     'Get to know the hardware, software and tools I use on a daily basis',
   exactUrl: 'https://jahir.dev/uses',
