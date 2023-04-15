@@ -41,8 +41,8 @@ export const PostCardHero = tw(Img)`
 
 export const PostCardContent = tw.div`
   flex flex-col
-  self-center
   gap-4 flex-1
+  tablet-sm:self-center
 `;
 
 export const PostTitle = tw.p`

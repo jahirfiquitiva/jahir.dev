@@ -192,4 +192,7 @@
 
 .article figure {
   @apply mt-0;
+  figcaption {
+    @apply text-tertiary-txt;
+  }
 }
