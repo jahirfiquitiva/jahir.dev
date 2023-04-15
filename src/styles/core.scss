@@ -29,6 +29,10 @@ body {
   margin-left: calc(100vw - 100%);
 }
 
+body {
+  @apply overflow-x-hidden;
+}
+
 a {
   @apply decoration-2 underline-offset-2;
 }

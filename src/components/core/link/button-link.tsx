@@ -1,15 +1,18 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ElementType } from 'react';
 
 import { StyledButton } from './../button/button.styles';
 import { Link } from './link';
 
 interface ButtonLinkProps extends ComponentProps<typeof Link> {
   outlined?: boolean;
+  $as?: ElementType;
 }
 
 export const ButtonLink = (props: ButtonLinkProps) => {
-  const { outlined, ...otherProps } = props;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore (tw expects otherProps to be of type StyledButton.props)
-  return <StyledButton $as={Link} $outlined={outlined} {...otherProps} />;
+  const { $as, outlined, ...otherProps } = props;
+  return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore (tw expects otherProps to be of type StyledButton.props)
+    <StyledButton $as={$as || Link} $outlined={outlined} {...otherProps} />
+  );
 };
