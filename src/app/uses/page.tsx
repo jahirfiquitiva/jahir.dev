@@ -5,6 +5,8 @@ import { Everyday, GamingPc } from '@/components/views/uses/hardware';
 import { Software } from '@/components/views/uses/software';
 import { Tabs } from '@/components/views/uses/tabs';
 import { ReactionsProvider } from '@/providers/reactions';
+import { getStaticMetadata } from '@/utils/metadata';
+import { buildOgImageUrl } from '@/utils/og';
 
 export default function UsesPage() {
   return (
@@ -35,3 +37,22 @@ export default function UsesPage() {
     </Section>
   );
 }
+
+export const metadata = getStaticMetadata({
+  title: 'Uses',
+  description:
+    'Get to know the hardware, software and tools I use on a daily basis',
+  exactUrl: 'https://jahir.dev/uses',
+  keywords: [
+    'hardware',
+    'software',
+    'apps',
+    'tools',
+    'extensions',
+    'stack',
+    'website',
+    'tech',
+    'uses',
+  ],
+  image: buildOgImageUrl('uses'),
+});
