@@ -19,7 +19,7 @@ const sortedSoftware = software.sort((a, b) => {
 
 export const Software = () => {
   return (
-    <Section $as={'div'}>
+    <Section $as={'div'} className={'px-0 mobile-lg:px-0'}>
       <GridContainer>
         <SoftwareGrid>
           {sortedSoftware.map((item, index) => {
