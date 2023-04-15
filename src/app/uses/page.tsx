@@ -1,6 +1,7 @@
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { Reactions } from '@/components/views/mdx/ui/reactions';
+import { Coding } from '@/components/views/uses/coding';
 import { ExtensionsGrid } from '@/components/views/uses/extensions';
 import { Everyday, GamingPc } from '@/components/views/uses/hardware';
 import { Software } from '@/components/views/uses/software';
@@ -32,7 +33,7 @@ export default function UsesPage() {
         <GamingPc />
         <Software />
         <ExtensionsGrid />
-        <div>Coding</div>
+        <Coding />
         <div>Website</div>
       </Tabs>
     </Section>
