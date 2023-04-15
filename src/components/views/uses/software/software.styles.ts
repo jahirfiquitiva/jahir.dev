@@ -29,8 +29,8 @@ export const SoftwareGrid = tw.ol`
   py-24 px-12
   items-center
   justify-center
-  [background-color:rgba(235_240_251/0.24)]
-  dark:[background-color:rgba(9_17_34/0.24)]
+  [background-color:rgba(235_240_251/0.36)]
+  dark:[background-color:rgba(9_17_34/0.36)]
   list-none
   mobile-md:grid-cols-[repeat(3,minmax(0,108px))]
   mobile-lg:grid-cols-[repeat(4,minmax(0,108px))]
@@ -71,6 +71,6 @@ export const AppName = tw.span`
   text-3xs
   truncate
   max-w-[calc(100%-0.25rem)]
-  [text-shadow:0_0_4px_rgba(235_240_251/0.12)]
-  dark:[text-shadow:0_0_4px_rgba(9_17_34/0.24)]
+  [text-shadow:0_0_4px_rgba(235_240_251/0.72)]
+  dark:[text-shadow:0_0_4px_rgba(9_17_34/0.72)]
 `;

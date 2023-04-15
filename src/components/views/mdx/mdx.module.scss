@@ -131,7 +131,7 @@
 .article code {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
-  scrollbar-width: none;
+  scrollbar-width: var(--size-scrollbar-width);
   color: inherit;
   @apply bg-accent-dark/[0.036] overflow-x-auto mb-12;
   @apply rounded-8 border border-solid border-divider;

@@ -4,12 +4,11 @@ import { cx } from 'classix';
 import { Children, useEffect, useState } from 'react';
 
 import { Heading } from '@/components/core/heading';
-import { ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { FC } from '@/types';
 
-import { TabPanel, TabsList } from './tabs.styles';
+import { TabPanel, TabsList, TabButton, TabButtonText } from './tabs.styles';
 
 const getIdForName = (name: string) =>
   name.split(' ').join('-').toLowerCase().trim();
@@ -29,33 +28,33 @@ export const Tabs: FC<TabsProps> = (props) => {
     if (hasMounted) {
       try {
         const tabId = (window?.location?.hash || '#').substring(1);
-        setCurrentTab(tabsIds.indexOf(tabId));
+        if (!tabId) return;
+        const index = tabsIds.indexOf(tabId);
+        setCurrentTab(index < 0 ? 0 : index);
       } catch (e) {}
     }
   }, [hasMounted, tabsIds]);
 
+  console.error({ currentTab });
   return (
-    <Section $as={'div'} className={'gap-32 my-12 flex-1'}>
+    <Section $as={'div'} className={'gap-32 my-12 flex-1 px-0 mobile-lg:px-0'}>
       <TabsList role={'tablist'}>
         {tabsNames.map((tabName, index) => {
           return (
-            <ButtonLink
-              $as={'a'}
+            <TabButton
               role={'tab'}
               key={`tab-${tabsIds[index]}`}
               id={`tab-${tabsIds[index]}`}
               title={`Select tab: "${tabName}"`}
               href={`#${tabsIds[index]}`}
-              outlined={!(currentTab === index)}
               aria-selected={currentTab === index}
               aria-controls={`tab-${tabsIds[index]}-content`}
-              className={'px-16 min-w-fit block'}
               onClick={() => {
                 setCurrentTab(index);
               }}
             >
-              <span className={'block w-full'}>{tabName}</span>
-            </ButtonLink>
+              <TabButtonText>{tabName}</TabButtonText>
+            </TabButton>
           );
         })}
       </TabsList>
@@ -71,14 +70,7 @@ export const Tabs: FC<TabsProps> = (props) => {
               aria-hidden={currentTab !== 0 && currentTab !== index + 1}
               hidden={currentTab !== 0 && currentTab !== index + 1}
             >
-              <a
-                href={`#${tabsIds[index + 1]}`}
-                onClick={() => {
-                  setCurrentTab(index + 1);
-                }}
-              >
-                <Heading $as={'h2'}>{tabsNames[index + 1]}</Heading>
-              </a>
+              <Heading $as={'h2'}>{tabsNames[index + 1]}</Heading>
               {child}
             </TabPanel>
           );
