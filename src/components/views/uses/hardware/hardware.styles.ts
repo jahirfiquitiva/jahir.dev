@@ -28,8 +28,8 @@ export const HardwareItem = tw(Link)`
   min-h-[6rem]
   group/hardware
   text-secondary-txt
-  bg-inverse/[0.006]
-  dark:bg-inverse/[0.008]
+  bg-inverse/[0.018]
+  dark:bg-inverse/[0.064]
   overflow-hidden
   transition-all
   no-underline
@@ -57,6 +57,7 @@ export const HardwareImage = tw(Img)`
   drop-shadow-[0_0_4px_var(--color-img-drop-shadow)]
   transition-all
   max-w-[4.5rem]
+  dark:drop-shadow-[0_2px_6px_var(--color-img-drop-shadow)]
   mobile-md:max-w-[5rem]
   mobile-lg:max-w-[5.5rem]
   tablet-sm:max-w-full
@@ -68,7 +69,7 @@ export const HardwareImage = tw(Img)`
   tablet-sm:p-12
   group-hocus/hardware:tablet-sm:opacity-25
   group-hocus/hardware:dark:tablet-sm:opacity-75
-  tablet-sm:[mask-image:linear-gradient(to_bottom,rgba(0_0_0/1)_0%,rgba(0_0_0/.9)_50%,rgba(0_0_0/.55)_75%,rgba(0_0_0/.15)_100%)]
+  tablet-sm:[mask-image:linear-gradient(to_bottom,rgba(0_0_0/1)_0%,rgba(0_0_0/.9)_50%,rgba(0_0_0/.55)_70%,rgba(0_0_0/.15)_100%)]
 `;
 
 export const TextsContainer = tw.div`
