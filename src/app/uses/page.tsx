@@ -6,6 +6,7 @@ import { ExtensionsGrid } from '@/components/views/uses/extensions';
 import { Everyday, GamingPc } from '@/components/views/uses/hardware';
 import { Software } from '@/components/views/uses/software';
 import { Tabs } from '@/components/views/uses/tabs';
+import { Website } from '@/components/views/uses/website';
 import { ReactionsProvider } from '@/providers/reactions';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -34,7 +35,7 @@ export default function UsesPage() {
         <Software />
         <ExtensionsGrid />
         <Coding />
-        <div>Website</div>
+        <Website />
       </Tabs>
     </Section>
   );

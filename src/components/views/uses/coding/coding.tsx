@@ -5,7 +5,7 @@ import { CodeImage } from './code.image';
 
 export const Coding = () => {
   return (
-    <Section $as={'div'}>
+    <Section $as={'div'} className={'px-0 mobile-lg:px-0'}>
       <p>
         I use{' '}
         <Link title={'VSCodium'} href={'https://vscodium.com/'}>
