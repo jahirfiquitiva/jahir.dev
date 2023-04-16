@@ -1,6 +1,6 @@
 import { cx } from 'classix';
 
-import { SocialLinks } from '@/components/compounds/social-links';
+import { SocialLinks } from '@/components/molecules/social-links';
 import { LogoAnimoji } from '@/components/core/logo-animoji';
 
 import {

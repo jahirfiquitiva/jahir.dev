@@ -5,7 +5,7 @@ import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import tw from 'tailwind-styled-components';
 
-import { SocialLinks } from '@/components/compounds/social-links';
+import { SocialLinks } from '@/components/molecules/social-links';
 import type { ComponentChild } from '@/types';
 
 import { Grid, GridColumn, MdxLink } from './components';

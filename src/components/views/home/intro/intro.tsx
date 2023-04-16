@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
 
-import { SocialLinks } from '@/components/compounds/social-links';
+import { SocialLinks } from '@/components/molecules/social-links';
 import { Heading } from '@/components/core/heading';
 import { ButtonLink, Link } from '@/components/core/link';
 import { mdiAccountCircleOutline } from '@/components/icons';
@@ -48,7 +48,7 @@ export const Intro = () => {
           </ButtonLink>
           <div
             className={cx(
-              'flex items-center',
+              'flex items-center transition-colors',
               'border border-divider rounded-6',
               'py-4 pl-14 pr-10 min-h-[2.625rem]',
               'hover:border-accent-dark',

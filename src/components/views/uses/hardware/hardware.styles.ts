@@ -69,6 +69,7 @@ export const HardwareImage = tw(Img)`
   tablet-sm:p-12
   group-hocus/hardware:tablet-sm:opacity-25
   group-hocus/hardware:dark:tablet-sm:opacity-75
+  group-hocus/hardware:tablet-sm:saturate-0
   tablet-sm:[mask-image:linear-gradient(to_bottom,rgba(0_0_0/1)_0%,rgba(0_0_0/.9)_50%,rgba(0_0_0/.55)_70%,rgba(0_0_0/.15)_100%)]
 `;
 
@@ -85,7 +86,6 @@ export const TextsContainer = tw.div`
   tablet-sm:flex-1
   tablet-sm:justify-end
   group-hocus/hardware:tablet-sm:backdrop-blur-[1px]
-  group-hocus/hardware:tablet-sm:backdrop-saturate-0
 `;
 
 export const HardwareName = tw.p`
