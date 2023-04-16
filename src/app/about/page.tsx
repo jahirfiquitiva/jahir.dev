@@ -58,7 +58,6 @@ export default async function AboutPage() {
               .
             </p>
             <p>There&apos;s a few ways you can get it touch:</p>
-            {/* @ts-expect-error Server Component */}
             <ContactButtons />
           </div>
         </div>
