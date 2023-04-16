@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { type CSSProperties, useMemo } from 'react';
 
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme';
 import type { Post } from '@/types';
 import { getReadableColor, hexToRgb } from '@/utils/color';
@@ -27,6 +28,7 @@ interface PostCardProps {
 }
 
 export const BlogPostCard = (props: PostCardProps) => {
+  const hasMounted = useHasMounted();
   const { isDark, themeReady } = useTheme();
 
   const { post } = props;
@@ -35,9 +37,9 @@ export const BlogPostCard = (props: PostCardProps) => {
   const domain = getUrlDomain(rightLink);
 
   const textColor = useMemo<string | null>(() => {
-    if (!themeReady) return null;
+    if (!themeReady || !hasMounted) return null;
     return hexToRgb(getReadableColor(post.color, isDark), undefined, true);
-  }, [isDark, themeReady, post.color]);
+  }, [isDark, themeReady, post.color, hasMounted]);
 
   const a11yDate = formatDate(post.date);
   const readableDate = formatDate(post.date, { year: undefined });

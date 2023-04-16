@@ -124,10 +124,6 @@ module.exports = {
       pattern:
         /decoration-gradient-(brand|blue|green|yellow|orange|red|purple)/,
       variants: ['hocus'],
-    },
-    {
-      pattern: /drop-shadow-.*/,
-      variants: ['group-hocus/project'],
-    },
+    }
   ],
 };

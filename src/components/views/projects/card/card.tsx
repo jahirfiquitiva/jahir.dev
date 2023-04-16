@@ -5,6 +5,7 @@ import { cx } from 'classix';
 import { type CSSProperties, useMemo } from 'react';
 
 import { star } from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme';
 import type { FC, Project } from '@/types';
@@ -26,15 +27,18 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
   const { data } = useImmutableRequest<{ success?: boolean; stars?: string }>(
     `/api/stars/${project?.repo}`,
   );
+  const hasMounted = useHasMounted();
   const { isDark, themeReady } = useTheme();
-  const projectColor = isDark
-    ? project?.darkColor || project?.color
-    : project?.color;
+
+  const projectColor = useMemo<string | null | undefined>(() => {
+    if (!themeReady || !hasMounted) return null;
+    return isDark ? project?.darkColor || project?.color : project?.color;
+  }, [isDark, themeReady, hasMounted, project?.darkColor, project?.color]);
 
   const color = useMemo<string | null>(() => {
-    if (!themeReady) return null;
+    if (!themeReady || !hasMounted || !projectColor) return null;
     return hexToRgb(getReadableColor(projectColor, isDark), undefined, true);
-  }, [projectColor, isDark, themeReady]);
+  }, [projectColor, isDark, themeReady, hasMounted]);
 
   const extraIconProps = useMemo(() => {
     if (project?.iconMeta && project?.iconMeta.blur64) {
