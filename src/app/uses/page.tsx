@@ -25,7 +25,7 @@ export default function UsesPage() {
           'Everyday',
           'Gaming PC',
           'Software',
-          'Extensions',
+          'Browser',
           'Coding',
           'Website',
         ]}
