@@ -1,5 +1,6 @@
 import Icon from '@mdi/react';
 
+import { SocialLinks } from '@/components/compounds/social-links';
 import { Heading } from '@/components/core/heading';
 import { ButtonLink, Link } from '@/components/core/link';
 import { mdiAccountCircleOutline } from '@/components/icons';
@@ -12,6 +13,7 @@ import {
   Photo,
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
+import { cx } from 'classix';
 
 export const Intro = () => {
   return (
@@ -39,10 +41,22 @@ export const Intro = () => {
             Colombia 🇨🇴
           </Link>
         </IntroParagraph>
-        <ButtonLink title={'About page'} href={'/about'}>
-          <Icon path={mdiAccountCircleOutline} size={1} />
-          More about me
-        </ButtonLink>
+        <div className={'flex items-center gap-16 flex-wrap'}>
+          <ButtonLink title={'About page'} href={'/about'}>
+            <Icon path={mdiAccountCircleOutline} size={1} />
+            More about me
+          </ButtonLink>
+          <div
+            className={cx(
+              'flex items-center',
+              'border border-divider rounded-6',
+              'py-4 pl-14 pr-10 min-h-[2.625rem]',
+              'hover:border-accent-dark',
+            )}
+          >
+            <SocialLinks />
+          </div>
+        </div>
       </TextsContainer>
       <PhotoContainer>
         <Photo
