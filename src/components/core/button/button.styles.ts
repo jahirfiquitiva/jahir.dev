@@ -13,7 +13,7 @@ export const StyledButton = tw.button<{ $outlined?: boolean }>`
   font-bold
   font-manrope
   tracking-wide
-  transition-all
+  transition
   truncate
   ${(p) => (p.$outlined ? 'bg-transparent' : 'bg-accent')}
   ${(p) => (p.$outlined ? 'border border-solid border-divider' : 'border-none')}

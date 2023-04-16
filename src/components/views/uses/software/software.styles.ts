@@ -47,7 +47,7 @@ export const SoftwareItem = tw(Link)`
   gap-2
   pb-2
   rounded-8
-  transition-all
+  transition
   text-secondary-txt
   hocus:text-primary-txt
   outline-primary-txt

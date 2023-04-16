@@ -14,7 +14,7 @@ export const Container = tw.span`
   [&>*]:left-0
   [&>*]:transform
   [&>*]:-translate-y-1/2
-  [&>*]:transition-all
+  [&>*]:transition
 `;
 
 export const StyledLogo = tw(Logo)`

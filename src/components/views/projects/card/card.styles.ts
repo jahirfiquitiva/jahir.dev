@@ -19,7 +19,7 @@ export const StyledProjectCard = tw(Link)`
   tablet-md:-ml-12
   tablet-md:w-[calc(100%+1.5rem)]
   text-secondary-txt
-  transition-all
+  transition
   group/project
   no-underline
   hocus:no-underline
@@ -30,7 +30,7 @@ export const StyledProjectCard = tw(Link)`
 `;
 
 export const ProjectIcon = tw(Img)`
-  transition-all
+  transition
   bg-none
   filter
   p-6
@@ -53,7 +53,7 @@ export const TitleContainer = tw.div`
   gap-4
   text-xs
   text-primary-txt
-  transition-all
+  transition
 `;
 
 export const StarsCounter = tw(Chip)`
@@ -64,7 +64,7 @@ export const StarsCounter = tw(Chip)`
   text-[0.75rem]
   font-manrope
   font-semibold
-  transition-all
+  transition
   border-transparent
   bg-[rgba(var(--project-color)/0.042)]
   dark:bg-[rgba(var(--project-color)/0.09)]

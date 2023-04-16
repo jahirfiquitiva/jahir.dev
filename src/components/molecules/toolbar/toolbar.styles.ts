@@ -56,7 +56,7 @@ export const Nav = tw.nav`
   [box-shadow:0_0_6px_1px_rgba(var(--color-accent-dark)/0.16)]
   p-[calc(var(--floatingMargin)/var(--spaceDivider))]
   mx-[var(--floatingMargin)]
-  transition-all
+  transition
   gap-0
   grid-rows-1
   [grid-template-columns:auto_1fr]

@@ -27,7 +27,7 @@ export const TabPanel = tw(Section)`
   px-0 mobile-lg:px-0
   gap-24
   mb-16
-  transition-all
+  transition
   ${(p) => (p.hidden ? 'hidden' : 'flex')}
   ${(p) => (p.hidden ? 'invisible' : 'visible')}
   ${(p) => (p.hidden ? 'opacity-0' : 'opacity-100')}
@@ -57,7 +57,7 @@ export const TabButtonText = tw.span`
   w-full
   px-8 py-2
   rounded-4
-  transition-all
+  transition
   tracking-wide
   group-hover/tab:bg-accent-dark/[0.08]
   group-hover/tab:dark:bg-accent-dark/[0.16]

@@ -31,7 +31,7 @@ export const HardwareItem = tw(Link)`
   bg-inverse/[0.018]
   dark:bg-inverse/[0.064]
   overflow-hidden
-  transition-all
+  transition
   no-underline
   tablet-sm:flex-col
   tablet-sm:items-start
@@ -55,7 +55,7 @@ export const HardwareImage = tw(Img)`
   p-8
   filter
   drop-shadow-[0_0_4px_var(--color-img-drop-shadow)]
-  transition-all
+  transition
   max-w-[4.5rem]
   dark:drop-shadow-[0_2px_6px_var(--color-img-drop-shadow)]
   mobile-md:max-w-[5rem]
@@ -94,13 +94,13 @@ export const HardwareName = tw.p`
   text-primary-txt
   text-2xs
   m-0
-  transition-all
+  transition
   group-hocus/hardware:underline
   group-hocus/hardware:text-accent-dark
 `;
 
 export const HardwareDescription = tw.span`
-  transition-all
+  transition
   text-secondary-txt
   text-3xs
   transform

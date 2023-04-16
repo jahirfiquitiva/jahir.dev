@@ -11,7 +11,7 @@ export const PostCard = tw(Link)`
   gap-12
   rounded-10
   text-secondary-txt
-  transition-all
+  transition
   overflow-hidden
   transform
   group/post
@@ -50,7 +50,7 @@ export const PostTitle = tw.p`
   font-bold
   font-manrope
   text-primary-txt
-  transition-all
+  transition
   group-hocus/post:underline
   group-hocus/post:text-[rgba(var(--post-text-color))]
 `;

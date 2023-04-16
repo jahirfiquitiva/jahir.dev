@@ -1,7 +1,7 @@
 import { cx } from 'classix';
 
-import { SocialLinks } from '@/components/molecules/social-links';
 import { LogoAnimoji } from '@/components/core/logo-animoji';
+import { SocialLinks } from '@/components/molecules/social-links';
 
 import {
   StyledFooter,

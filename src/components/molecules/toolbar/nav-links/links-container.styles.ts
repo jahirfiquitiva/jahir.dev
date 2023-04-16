@@ -12,7 +12,7 @@ export const ToolbarLinksContainer = tw.ul`
   justify-end
   list-none
   gap-[calc(calc(var(--floatingMargin,0)/var(--spaceDivider,1))*1.5)]
-  transition-all
+  transition
   [grid-row:1]
   [grid-column:2]
 
@@ -34,7 +34,7 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   invisible
   pointer-events-none
   justify-start
-  transition-all
+  transition
   delay-0
 
   tablet-sm:[grid-row:1]

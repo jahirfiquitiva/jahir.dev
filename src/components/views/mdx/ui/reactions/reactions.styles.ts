@@ -39,7 +39,7 @@ export const ReactionButton = tw(Button)<{ $reacted?: boolean }>`
 
 export const ReactionIcon = tw(Icon)`
   transform
-  transition-all
+  transition
   group-hocus/reaction:text-[rgb(var(--reaction-color))]
   group-hocus/reaction:fill-[rgb(var(--reaction-color))]
   group-hocus/reaction:scale-110

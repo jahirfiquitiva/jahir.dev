@@ -13,7 +13,7 @@ export const Chip = tw.span`
   border-divider
   bg-accent-dark/[0.012]
   text-secondary-txt
-  transition-all
+  transition
   leading-[1.65]
   gap-6
   truncate
