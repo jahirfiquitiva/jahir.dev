@@ -41,7 +41,7 @@ export const HardwareItem = tw(Link)`
   tablet-sm:aspect-square
   hocus:no-underline
   hocus:transform
-  hocus:scale-[1.025]
+  hocus:-translate-y-1
   hocus:border-accent-dark/[0.56]
 `;
 
@@ -78,6 +78,7 @@ export const TextsContainer = tw.div`
   py-2
   gap-2
   z-[1]
+  transition
   [text-shadow:0_1px_4px_rgba(235_240_251/1)]
   dark:[text-shadow:0_1px_4px_rgba(9_17_34/1)]
   tablet-sm:py-4
@@ -100,14 +101,12 @@ export const HardwareName = tw.p`
 `;
 
 export const HardwareDescription = tw.span`
-  transition
+  transition-all
   text-secondary-txt
   text-3xs
   transform
   tablet-sm:max-h-0
-  tablet-sm:scale-y-0
   tablet-sm:opacity-0
   tablet-sm:group-hocus/hardware:max-h-[unset]
-  tablet-sm:group-hocus/hardware:scale-y-100
   tablet-sm:group-hocus/hardware:opacity-100
 `;

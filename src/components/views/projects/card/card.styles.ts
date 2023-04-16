@@ -30,7 +30,7 @@ export const StyledProjectCard = tw(Link)`
 `;
 
 export const ProjectIcon = tw(Img)`
-  transition
+  transition-all
   bg-none
   filter
   p-6
