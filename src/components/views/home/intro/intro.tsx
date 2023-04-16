@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import { cx } from 'classix';
 
 import { SocialLinks } from '@/components/compounds/social-links';
 import { Heading } from '@/components/core/heading';
@@ -13,7 +14,6 @@ import {
   Photo,
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
-import { cx } from 'classix';
 
 export const Intro = () => {
   return (
