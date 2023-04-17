@@ -54,7 +54,7 @@ export async function POST(
     if (!reaction) return NextResponse.json({ counters: {} });
 
     const data = await getData(slug).catch(() => [{} as CountersReactions]);
-    const counters = data?.[0];
+    const [counters] = data;
     const reactionCount = Number(counters?.[reaction] || 0);
 
     await db
@@ -66,7 +66,7 @@ export async function POST(
       .execute();
 
     return NextResponse.json({
-      counters: { ...data, [reaction]: reactionCount + 1 },
+      counters: { ...counters, [reaction]: reactionCount + 1 },
     });
   } catch (err) {
     return NextResponse.json({ counters: {} });

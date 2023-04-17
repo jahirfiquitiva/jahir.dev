@@ -104,8 +104,6 @@ export const Reactions = () => {
     };
   }, []);
 
-  console.error({ reactions, reacted });
-
   return (
     <ReactionsGroup>
       <ReactionButton
