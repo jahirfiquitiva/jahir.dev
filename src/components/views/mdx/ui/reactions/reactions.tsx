@@ -15,9 +15,9 @@ import {
   mdiThumbUp,
   mdiThumbUpOutline,
 } from '@/components/icons';
-import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
-import { type ReactionType, useReactions } from '@/providers/reactions';
+import type { ReactionName } from '@/lib/planetscale';
+import { useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 
 import {
@@ -38,7 +38,7 @@ const confettiOptions = {
 };
 
 const getConfettiColor = (
-  key: ReactionType,
+  key: ReactionName,
   isDark: boolean,
 ): Array<`#${string}`> => {
   switch (key) {
@@ -62,33 +62,34 @@ const getConfettiColor = (
 
 const iconSize = 0.73;
 // eslint-disable-next-line max-lines-per-function
-export const Reactions = (props: { inProgress?: boolean }) => {
-  const { inProgress, ...otherProps } = props;
-  const hasMounted = useHasMounted();
+export const Reactions = () => {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const { reactions, incrementReaction, submitting, loading } = useReactions();
+  const {
+    counters: reactions,
+    incrementReaction,
+    submitting,
+    loading,
+  } = useReactions();
   const { isDark } = useTheme();
 
-  const clickReaction = (
-    key: ReactionType,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+  const clickReaction = async (
+    key: ReactionName,
+    // @ts-expect-error Unknown type
     event?: MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    // Do nothing in SSR or if article is in progress
-    if (!hasMounted || inProgress) return;
-
     // Do nothing if data has not loaded
     if (loading) return;
 
-    // Do nothing if being submitted to db or already pressed
-    if (submitting || reactions[key]) return;
+    // Do nothing if being submitted to db
+    if (submitting) return;
 
     // Submit reactions in production website only
     const hostname = window?.location?.hostname || 'localhost';
     if (hostname !== 'jahir.dev') return;
 
-    if (event) {
+    const reacted = await incrementReaction?.(key);
+    // If reaction was submitted successfully
+    if (event && reacted) {
       const x = event.clientX / windowWidth;
       const y = event.clientY / windowHeight;
       confetti({
@@ -97,8 +98,6 @@ export const Reactions = (props: { inProgress?: boolean }) => {
         colors: getConfettiColor(key, isDark),
       });
     }
-
-    incrementReaction?.(key);
   };
 
   useEffect(() => {
@@ -109,7 +108,7 @@ export const Reactions = (props: { inProgress?: boolean }) => {
     };
   }, []);
 
-  const renderLoaderOrText = (text: string) => {
+  const renderLoaderOrText = (count: number = 0) => {
     return loading ? (
       <Ring
         size={16}
@@ -118,13 +117,13 @@ export const Reactions = (props: { inProgress?: boolean }) => {
         color={'var(--color-tertiary-txt)'}
       />
     ) : (
-      text
+      <span>{count}</span>
     );
   };
 
-  if (!reactions && !loading) return null;
+  // if (!reactions && !loading) return null;
   return (
-    <ReactionsGroup {...otherProps}>
+    <ReactionsGroup>
       <ReactionButton
         outlined
         $reacted={!!reactions?.likes}
@@ -143,7 +142,7 @@ export const Reactions = (props: { inProgress?: boolean }) => {
           path={reactions?.likes ? mdiThumbUp : mdiThumbUpOutline}
           size={iconSize}
         />
-        {renderLoaderOrText(reactions.likes || '0')}
+        {renderLoaderOrText(reactions.likes)}
       </ReactionButton>
       <ReactionButton
         outlined
@@ -163,7 +162,7 @@ export const Reactions = (props: { inProgress?: boolean }) => {
           path={reactions?.loves ? mdiHeart : mdiHeartOutline}
           size={iconSize}
         />
-        {renderLoaderOrText(reactions.loves || '0')}
+        {renderLoaderOrText(reactions.loves)}
       </ReactionButton>
       <ReactionButton
         outlined
@@ -180,7 +179,7 @@ export const Reactions = (props: { inProgress?: boolean }) => {
         )}
       >
         <Icon path={reactions?.awards ? award : awardOutline} size={iconSize} />
-        {renderLoaderOrText(reactions.awards || '0')}
+        {renderLoaderOrText(reactions.awards)}
       </ReactionButton>
       <ReactionButton
         outlined
@@ -200,7 +199,7 @@ export const Reactions = (props: { inProgress?: boolean }) => {
           path={reactions?.bookmarks ? mdiBookmark : mdiBookmarkOutline}
           size={iconSize}
         />
-        {renderLoaderOrText(reactions.bookmarks || '0')}
+        {renderLoaderOrText(reactions.bookmarks)}
       </ReactionButton>
     </ReactionsGroup>
   );

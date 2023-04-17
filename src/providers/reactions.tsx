@@ -5,52 +5,29 @@ import {
   useContext,
   useState,
   useEffect,
-  useReducer,
   useCallback,
   type PropsWithChildren,
 } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useImmutableRequest } from '@/hooks/use-request';
 import type { CountersReactions, ReactionName } from '@/lib/planetscale';
 
-export type ReactionLocalStorage = { [Key in ReactionName]?: boolean };
-
-export type ReactionType = keyof ReactionLocalStorage;
-type InternalReactionType = ReactionType | 'ls';
-
-interface ReactionAction {
-  type: InternalReactionType;
-  payload: ReactionLocalStorage;
-}
-
-export type ContextReactions = ReactionLocalStorage & CountersReactions;
+type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 
 export interface ReactionsContextValue {
-  slug: string;
-  reactions: ContextReactions;
-  incrementReaction?: (reaction: ReactionType) => Promise<boolean>;
+  counters: CountersReactions;
+  reacted?: ReactedLocalStorage;
+  incrementReaction?: (reaction: ReactionName) => Promise<boolean>;
   submitting?: boolean;
   loading?: boolean;
 }
 
 const defaultContextState: ReactionsContextValue = {
-  slug: '',
-  reactions: {},
+  counters: {},
 };
 
 const ReactionsContext =
   createContext<ReactionsContextValue>(defaultContextState);
-
-const reactionsReducer = (
-  state: ReactionLocalStorage,
-  action: ReactionAction,
-) => {
-  if (action.type === 'ls') return { ...state, ...action.payload };
-  const copy = { ...state };
-  copy[action.type] = true;
-  return copy;
-};
 
 interface ReactionsProviderProps {
   slug: string;
@@ -62,23 +39,33 @@ export const ReactionsProvider = (
 ) => {
   const { slug, inProgress } = props;
   const hasMounted = useHasMounted();
-  const [lsState, dispatch] = useReducer(reactionsReducer, {});
 
-  const [state, setState] = useState<CountersReactions>({});
+  const [counters, setCounters] = useState<CountersReactions>({});
+  const [reacted, setReacted] = useState<ReactedLocalStorage>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const { data: remoteReactions, loading } = useImmutableRequest<{
-    counters: CountersReactions;
-  }>(`/api/reactions/${slug}`);
+  useEffect(() => {
+    fetch(`/api/reactions/${slug}`)
+      .then((req) => req.json())
+      .then((res: { counters?: CountersReactions }) => {
+        setCounters((previousCounters) => ({
+          ...previousCounters,
+          ...res.counters,
+        }));
+      })
+      .catch()
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [slug]);
 
   const incrementReaction = useCallback(
-    async (reaction: ReactionType) => {
-      if (inProgress) return;
+    async (reaction: ReactionName) => {
+      // Do nothing in SSR or if article is in progress
+      // or a reaction has been already submitted
+      if (!hasMounted || inProgress || reacted[reaction]) return false;
       setSubmitting(true);
-
-      const newState = { ...state };
-      newState[reaction] = (state[reaction] || 0) + 1;
-      setState(newState);
 
       const request = await fetch(`/api/reactions/${slug}`, {
         method: 'POST',
@@ -86,36 +73,38 @@ export const ReactionsProvider = (
         headers: { 'Content-Type': 'application/json' },
       });
       const response = await request.json();
+      const responseCounters = response.counters as CountersReactions;
 
-      setState(response.counters);
+      if (Object.keys(responseCounters).length) {
+        setCounters((previousCounters) => ({
+          ...previousCounters,
+          ...response.counters,
+        }));
 
-      const newLsState: ReactionLocalStorage = { ...lsState };
-      newLsState[reaction] = response?.success || false;
-      window.localStorage.setItem(slug, JSON.stringify(newLsState));
-      dispatch({ type: 'ls', payload: newLsState });
-      setSubmitting(false);
-      return response?.success || false;
+        const newLsState: ReactedLocalStorage = {
+          ...reacted,
+          [reaction]: true,
+        };
+        window.localStorage.setItem(slug, JSON.stringify(newLsState));
+        setSubmitting(false);
+        return true;
+      }
+      return false;
     },
-    [slug, lsState, state, inProgress],
+    [slug, hasMounted, inProgress, reacted],
   );
-
-  useEffect(() => {
-    if (remoteReactions) setState(remoteReactions.counters);
-  }, [remoteReactions]);
 
   useEffect(() => {
     if (!hasMounted) return;
     const stickyValue = window.localStorage.getItem(slug);
-    if (stickyValue !== null) {
-      dispatch({ type: 'ls', payload: JSON.parse(stickyValue) });
-    }
+    if (stickyValue !== null) setReacted(JSON.parse(stickyValue));
   }, [hasMounted, slug]);
 
   const { children } = props;
 
   const contextValue: ReactionsContextValue = {
-    slug,
-    reactions: { ...lsState, ...state },
+    counters,
+    reacted,
     incrementReaction,
     submitting,
     loading,
