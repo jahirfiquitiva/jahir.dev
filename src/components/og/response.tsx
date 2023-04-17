@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/server';
 
-import type { RequestContext } from '@/types/request';
-
 import type { PathName } from './logo-title';
 import { OgImage } from './og';
 
@@ -13,6 +11,8 @@ export const config = {
   },
   contentType: 'image/png',
 };
+
+export const runtime = config.runtime;
 
 export const getOgImage = async (
   path?: string | null,
@@ -42,9 +42,4 @@ export const getOgImage = async (
       ],
     },
   );
-};
-
-export const handler = (context: RequestContext) => {
-  console.error(context);
-  return getOgImage('404');
 };

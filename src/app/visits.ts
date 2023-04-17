@@ -36,6 +36,10 @@ export const trackVisit = async (headers: ReturnType<typeof nextHeaders>) => {
   try {
     const platform = headers.get('sec-ch-ua-platform');
     if (!platform) return;
+    const host = headers.get('host');
+    console.error({ host });
+    // Only track visit in production site
+    if (!host || !host.includes('jahir.dev')) return;
     const city = headers.get('x-vercel-ip-city');
     const country = headers.get('x-vercel-ip-country');
     await recordVisitInDb(city, country);
