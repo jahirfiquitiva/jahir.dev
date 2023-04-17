@@ -34,20 +34,7 @@ body {
 }
 
 a {
-  @apply decoration-2 underline-offset-2;
-}
-
-a,
-a:visited {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-button:hover:not(:disabled),
-button:focus:not(:disabled),
-a:hover:not(:disabled),
-a:focus:not(:disabled) {
-  cursor: pointer;
+  @apply decoration-2 underline-offset-2 cursor-pointer;
 }
 
 figure {

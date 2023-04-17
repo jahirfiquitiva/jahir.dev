@@ -1,6 +1,7 @@
 'use client';
 
 import { Ring } from '@uiball/loaders';
+import { cx } from 'classix';
 import type { ComponentProps } from 'react';
 
 import type { ReactionName } from '@/lib/planetscale';
@@ -52,7 +53,7 @@ export const ReactionButton = (props: ReactionButtonProps) => {
       disabled={disabled || reacted}
       title={titles[type]}
       onClick={props.onClick}
-      className={props.className}
+      className={cx(props.className, loading && 'cursor-progress')}
     >
       <Icon path={reacted ? props.reactedIcon : props.normalIcon} size={0.75} />
       {renderLoaderOrCount(disabled, count)}
