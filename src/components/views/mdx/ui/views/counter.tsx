@@ -37,7 +37,6 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
   const { slug, devToId, inProgress, trackView, $sm } = props;
   const views = await getViews(slug, devToId);
 
-  // if (!views) return null;
   return (
     <>
       {trackView && !inProgress ? (

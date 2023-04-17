@@ -36,7 +36,8 @@ const blogPostStructuredData = (post: Blog): string =>
     },
   });
 
-export default function Blog(context: BlogPageContext) {
+export const dynamic = 'force-dynamic';
+export default function BlogPostPage(context: BlogPageContext) {
   const post = allBlogs.find((post) => post.slug === context.params.slug);
   if (!post) return null;
   return (
