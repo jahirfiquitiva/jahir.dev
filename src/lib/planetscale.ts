@@ -10,18 +10,18 @@ export const reactionsNames = [
 
 export type ReactionName = typeof reactionsNames[number];
 
-export type CountersReactions = { [Key in ReactionName]?: bigint };
+export type CountersReactions = { [Key in ReactionName]?: number };
 
 interface CountersTable extends CountersReactions {
   slug: string;
-  views?: bigint;
+  views?: number;
 }
 
 interface VisitsTable {
   id: string;
   city: string;
   country: string;
-  hits?: bigint;
+  hits?: number;
 }
 
 interface Database {

@@ -6,13 +6,12 @@ import { type CSSProperties, useMemo } from 'react';
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme';
-import type { Post } from '@/types';
+import type { ComponentChild, Post } from '@/types';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 
 import { Stat } from '../../mdx/ui/stat';
-import { ViewsCounter } from '../../mdx/ui/views-counter';
 
 import {
   PostCard,
@@ -25,14 +24,15 @@ import {
 
 interface PostCardProps {
   post: Post;
+  viewsCounter?: ComponentChild;
 }
 
 export const BlogPostCard = (props: PostCardProps) => {
   const hasMounted = useHasMounted();
   const { isDark, themeReady } = useTheme();
 
-  const { post } = props;
-  const { link, slug, devToId, readingTime } = post;
+  const { post, viewsCounter } = props;
+  const { link, slug, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
   const domain = getUrlDomain(rightLink);
 
@@ -93,12 +93,7 @@ export const BlogPostCard = (props: PostCardProps) => {
               <span>{readingTime?.text}</span>
             </Stat>
           )}
-          <ViewsCounter
-            slug={`blog--${slug}`}
-            devToId={devToId}
-            inProgress={post.inProgress}
-            $sm
-          />
+          {viewsCounter}
         </PostStatsContainer>
       </PostCardContent>
     </PostCard>

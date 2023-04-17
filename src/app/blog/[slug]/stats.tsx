@@ -1,8 +1,9 @@
+import 'server-only';
 import Icon from '@mdi/react';
 
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
 import { Stat } from '@/components/views/mdx/ui/stat';
-import { ViewsCounter } from '@/components/views/mdx/ui/views-counter';
+import { ViewsCounter } from '@/components/views/mdx/ui/views';
 import type { Post } from '@/types';
 import { formatDate } from '@/utils/date';
 
@@ -37,9 +38,10 @@ const Stats = (props: StatsProps) => {
           {readingTime?.text}
         </Stat>
       )}
+      {/* @ts-expect-error Server Component */}
       <ViewsCounter
         slug={`blog--${slug}`}
-        devToId={devToId}
+        devToId={devToId ? devToId.toString() : undefined}
         inProgress={inProgress}
         trackView
       />

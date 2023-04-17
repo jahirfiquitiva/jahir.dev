@@ -2,19 +2,13 @@
 import { NextResponse } from 'next/server';
 
 import {
-  queryBuilder,
+  db as queryBuilder,
   reactionsNames,
   type ReactionName,
 } from '@/lib/planetscale';
 import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-BigInt.prototype.toJSON = function () {
-  return this.toString();
-};
 
 const getData = (slug: string) =>
   queryBuilder

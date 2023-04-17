@@ -1,10 +1,8 @@
-'use client';
+import 'server-only';
 
-import { useMemo, useState } from 'react';
+import type { Post } from '@/types';
 
-import { Field } from '@/components/core/field';
-import { mdiMagnify } from '@/components/icons';
-import type { FC, Post } from '@/types';
+import { ViewsCounter } from '../mdx/ui/views';
 
 import { BlogPostCard } from './card';
 import { groupBlogPosts } from './posts.utils';
@@ -13,41 +11,12 @@ interface BlogPostsProps {
   posts?: Array<Post>;
 }
 
-// eslint-disable-next-line max-lines-per-function
-export const BlogPosts: FC<BlogPostsProps> = (props) => {
+export const BlogPosts = (props: BlogPostsProps) => {
   const { posts } = props;
-  const [search, setSearch] = useState('');
-
-  const groupedPosts = useMemo(() => {
-    return groupBlogPosts(posts, search);
-  }, [posts, search]);
-
-  const renderSearchComponents = () => {
-    return (
-      <>
-        <Field
-          iconPath={mdiMagnify}
-          type={'text'}
-          name={'search-input'}
-          label={'Search blog posts'}
-          placeholder={'Search blog posts...'}
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-          hideLabel
-        />
-
-        {(groupedPosts?.length || 0) <= 0 ? (
-          <p className={'mt-20 mb-36'}>No blog posts found.</p>
-        ) : null}
-      </>
-    );
-  };
+  const groupedPosts = groupBlogPosts(posts);
 
   return (
     <>
-      {renderSearchComponents()}
       {groupedPosts.map((group) => {
         return (
           <section
@@ -76,7 +45,22 @@ export const BlogPosts: FC<BlogPostsProps> = (props) => {
                         .join('-')}-${index}`
                     }
                   >
-                    <BlogPostCard post={post} />
+                    <BlogPostCard
+                      post={post}
+                      viewsCounter={
+                        !post.link ? (
+                          // @ts-expect-error Server Component
+                          <ViewsCounter
+                            slug={`blog--${post.slug}`}
+                            devToId={
+                              post.devToId ? post.devToId.toString() : undefined
+                            }
+                            inProgress={post.inProgress}
+                            $sm
+                          />
+                        ) : null
+                      }
+                    />
                   </li>
                 );
               })}

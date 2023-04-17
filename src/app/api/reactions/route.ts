@@ -1,15 +1,9 @@
 /* eslint-disable no-undef */
 import { NextResponse } from 'next/server';
 
-import { queryBuilder, type CountersReactions } from '@/lib/planetscale';
+import { db as queryBuilder, type CountersReactions } from '@/lib/planetscale';
 
 export const runtime = 'edge';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-BigInt.prototype.toJSON = function () {
-  return this.toString();
-};
 
 export async function GET() {
   try {
@@ -20,12 +14,10 @@ export async function GET() {
 
     const counters: CountersReactions = data.reduce(
       (acc, curr) => ({
-        likes: BigInt(Number(acc.likes || 0) + Number(curr.likes || 0)),
-        loves: BigInt(Number(acc.loves || 0) + Number(curr.loves || 0)),
-        awards: BigInt(Number(acc.awards || 0) + Number(curr.awards || 0)),
-        bookmarks: BigInt(
-          Number(acc.bookmarks || 0) + Number(curr.bookmarks || 0),
-        ),
+        likes: Number(acc.likes || 0) + Number(curr.likes || 0),
+        loves: Number(acc.loves || 0) + Number(curr.loves || 0),
+        awards: Number(acc.awards || 0) + Number(curr.awards || 0),
+        bookmarks: Number(acc.bookmarks || 0) + Number(curr.bookmarks || 0),
       }),
       {} as CountersReactions,
     );
