@@ -12,16 +12,20 @@ const sortedProjects = projects
   .filter((it) => !it.hide)
   .sort((a, b) => a.order - b.order);
 
-const getCountryName = (countryCode?: string | null): string | null => {
+const getCountry = (countryCode?: string | null) => {
   if (!countryCode) return null;
-  return getCountryByAlpha2(countryCode)?.name || null;
+  return getCountryByAlpha2(countryCode) || null;
 };
 
 export default function Home() {
-  const country = getCountryName(headers().get('x-vercel-ip-country'));
+  const country = getCountry(headers().get('x-vercel-ip-country'));
   return (
     <>
-      <Intro country={country} />
+      <Intro
+        country={country?.name}
+        lang={country?.languages?.[0]}
+        emoji={country?.emoji}
+      />
       <Projects projects={sortedProjects} />
       <Skills />
     </>

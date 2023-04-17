@@ -1,5 +1,6 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
+import type { ComponentProps } from 'react';
 
 import { Heading } from '@/components/core/heading';
 import { ButtonLink, Link } from '@/components/core/link';
@@ -15,11 +16,11 @@ import {
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
 
-export const Intro = (props: { country?: string | null }) => {
+export const Intro = (props: ComponentProps<typeof WavingHello>) => {
   return (
     <IntroSection id={'intro'}>
       <TextsContainer>
-        <WavingHello country={props.country} />
+        <WavingHello {...props} />
         <Heading $as={'h2'} shadow={'blue'}>
           I am&nbsp;
           <Heading
