@@ -1,3 +1,4 @@
+import 'server-only';
 /* eslint-disable @next/next/no-img-element */
 
 import { LogoOrEmoji, PageTitle, PathName } from './logo-title';

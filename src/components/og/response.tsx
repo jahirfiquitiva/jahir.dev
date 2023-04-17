@@ -5,10 +5,6 @@ import type { RequestContext } from '@/types/request';
 import type { PathName } from './logo-title';
 import { OgImage } from './og';
 
-const font = fetch(
-  new URL('../../assets/fonts/manrope-bold.ttf', import.meta.url),
-).then((res) => res.arrayBuffer());
-
 export const config = {
   runtime: 'edge',
   size: {
@@ -23,7 +19,10 @@ export const getOgImage = async (
   title?: string | null,
   hero?: string | null,
 ) => {
-  const fontData = await font;
+  const fontData = await fetch(
+    new URL('../../assets/fonts/manrope-bold.ttf', import.meta.url),
+  ).then((res) => res.arrayBuffer());
+
   const actualPath = (path || '').toLowerCase() as PathName;
   let actualHero = hero || '/static/images/site/default-og.png';
   if (actualHero.startsWith('/')) actualHero = actualHero.substring(1);
