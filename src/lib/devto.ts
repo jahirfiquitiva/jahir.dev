@@ -1,3 +1,5 @@
+import 'server-only';
+
 const devToEndpoint = 'https://dev.to/api/articles/me';
 const { DEV_TO_API_KEY: devToApiKey = '' } = process.env;
 const authHeaders =

@@ -106,8 +106,6 @@ export const ReactionsProvider = (
     if (stickyValue !== null) setReacted(JSON.parse(stickyValue));
   }, [hasMounted, slug]);
 
-  const { children } = props;
-
   const contextValue: ReactionsContextValue = {
     counters,
     reacted,
@@ -118,7 +116,7 @@ export const ReactionsProvider = (
 
   return (
     <ReactionsContext.Provider value={contextValue}>
-      {children}
+      {props.children}
     </ReactionsContext.Provider>
   );
 };

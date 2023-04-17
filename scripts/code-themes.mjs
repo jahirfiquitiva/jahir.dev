@@ -15,8 +15,7 @@ const downloadThemeFile = async (light) => {
       `./config/contentlayer/themes/${light ? 'light' : 'dark'}.json`,
       JSON.stringify(json, null, 2),
     );
-  } catch (e) {
-  }
+  } catch (e) {}
 };
 
 (async () => {
