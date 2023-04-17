@@ -12,13 +12,29 @@ import { ReactionsProvider } from '@/providers/reactions';
 import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
 
 import Hero from './hero';
 
 const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
 type BlogPageContext = RequestContext<{ slug?: string }>;
+
+const blogPostStructuredData = (post: Blog): string =>
+  JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt,
+    image: buildOgImageUrl('blog', post.title, post.hero),
+    url: `https://jahir.dev/blog/${post.slug}`,
+    author: {
+      '@type': 'Person',
+      name: 'Jahir Fiquitiva',
+    },
+  });
 
 export default function Blog(context: BlogPageContext) {
   const post = allBlogs.find((post) => post.slug === context.params.slug);
@@ -67,6 +83,9 @@ export default function Blog(context: BlogPageContext) {
           <Reactions inProgress={post.inProgress} />
         </div>
       </ReactionsProvider>
+      <script type={'application/ld+json'} suppressHydrationWarning>
+        {blogPostStructuredData(post)}
+      </script>
     </>
   );
 }

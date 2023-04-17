@@ -29,7 +29,7 @@ interface Database {
   visits: VisitsTable;
 }
 
-export const queryBuilder = new Kysely<Database>({
+export const db = new Kysely<Database>({
   dialect: new PlanetScaleDialect({
     url: process.env.DATABASE_URL,
   }),
