@@ -18,7 +18,7 @@ export interface ReactionsContextValue {
   counters: CountersReactions;
   reacted?: ReactedLocalStorage;
   incrementReaction?: (reaction: ReactionName) => Promise<boolean>;
-  submitting?: boolean;
+  submitting?: ReactionName;
   loading?: boolean;
 }
 
@@ -42,10 +42,13 @@ export const ReactionsProvider = (
 
   const [counters, setCounters] = useState<CountersReactions>({});
   const [reacted, setReacted] = useState<ReactedLocalStorage>({});
-  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [submitting, setSubmitting] = useState<ReactionName | undefined>(
+    undefined,
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!hasMounted) return;
     fetch(`/api/reactions/${slug}`)
       .then((req) => req.json())
       .then((res: { counters?: CountersReactions }) => {
@@ -58,37 +61,40 @@ export const ReactionsProvider = (
       .finally(() => {
         setLoading(false);
       });
-  }, [slug]);
+  }, [slug, hasMounted]);
 
   const incrementReaction = useCallback(
     async (reaction: ReactionName) => {
       // Do nothing in SSR or if article is in progress
       // or a reaction has been already submitted
       if (!hasMounted || inProgress || reacted[reaction]) return false;
-      setSubmitting(true);
+      setSubmitting(reaction);
 
-      const request = await fetch(`/api/reactions/${slug}`, {
-        method: 'POST',
-        body: JSON.stringify({ reaction }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const response = await request.json();
-      const responseCounters = response.counters as CountersReactions;
+      try {
+        const request = await fetch(`/api/reactions/${slug}`, {
+          method: 'POST',
+          body: JSON.stringify({ reaction }),
+          headers: { 'Content-Type': 'application/json' },
+        }).catch();
+        const response = await request.json();
+        const responseCounters = response.counters as CountersReactions;
 
-      if (Object.keys(responseCounters).length) {
-        setCounters((previousCounters) => ({
-          ...previousCounters,
-          ...response.counters,
-        }));
+        if (Object.keys(responseCounters).length) {
+          setCounters((previousCounters) => ({
+            ...previousCounters,
+            ...response.counters,
+          }));
 
-        const newLsState: ReactedLocalStorage = {
-          ...reacted,
-          [reaction]: true,
-        };
-        window.localStorage.setItem(slug, JSON.stringify(newLsState));
-        setSubmitting(false);
-        return true;
-      }
+          const newLsState: ReactedLocalStorage = {
+            ...reacted,
+            [reaction]: true,
+          };
+          window.localStorage.setItem(slug, JSON.stringify(newLsState));
+          setReacted(newLsState);
+          setSubmitting(undefined);
+          return true;
+        }
+      } catch (e) {}
       return false;
     },
     [slug, hasMounted, inProgress, reacted],

@@ -21,7 +21,7 @@ interface ReactionButtonProps {
   count?: number;
   reacted?: boolean;
   loading?: boolean;
-  submitting?: boolean;
+  submitting?: ReactionName;
   className?: ComponentProps<typeof StyledReactionButton>['className'];
   onClick?: ComponentProps<typeof StyledReactionButton>['onClick'];
 }
@@ -41,20 +41,21 @@ const renderLoaderOrCount = (loading?: boolean, count: number = 0) => {
 };
 
 export const ReactionButton = (props: ReactionButtonProps) => {
-  const { type, count = 0, reacted, loading } = props;
+  const { type, count = 0, reacted, loading, submitting } = props;
+  const disabled = loading || submitting === type;
 
   return (
     <StyledReactionButton
       outlined
       $reacted={reacted}
       data-reacted={reacted}
-      disabled={props.submitting || loading}
+      disabled={disabled}
       title={titles[type]}
       onClick={props.onClick}
       className={props.className}
     >
       <Icon path={reacted ? props.reactedIcon : props.normalIcon} size={0.75} />
-      {renderLoaderOrCount(loading, count)}
+      {renderLoaderOrCount(disabled, count)}
     </StyledReactionButton>
   );
 };

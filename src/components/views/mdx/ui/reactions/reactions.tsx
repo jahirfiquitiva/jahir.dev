@@ -80,8 +80,8 @@ export const Reactions = () => {
     if (submitting) return;
 
     // Submit reactions in production website only
-    const hostname = window?.location?.hostname || 'localhost';
-    if (hostname !== 'jahir.dev') return;
+    // const hostname = window?.location?.hostname || 'localhost';
+    // if (hostname !== 'jahir.dev') return;
 
     const reacted = await incrementReaction?.(key);
     // If reaction was submitted successfully
@@ -103,6 +103,8 @@ export const Reactions = () => {
       } catch (e) {}
     };
   }, []);
+
+  console.error({ reactions, reacted });
 
   return (
     <ReactionsGroup>
