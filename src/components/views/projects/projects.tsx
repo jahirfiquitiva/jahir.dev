@@ -14,7 +14,6 @@ interface ProjectsProps {
   full?: boolean;
 }
 
-// eslint-disable-next-line max-lines-per-function
 export const Projects: FC<ProjectsProps> = (props) => {
   const { projects, full } = props;
 
@@ -52,10 +51,10 @@ export const Projects: FC<ProjectsProps> = (props) => {
         {(projects || []).map((project, index) => {
           return (
             <li
-              key={
-                // eslint-disable-next-line newline-per-chained-call
-                `${project.name.toLowerCase().split(' ').join('-')}-${index}`
-              }
+              key={`${project.name
+                .toLowerCase()
+                .split(' ')
+                .join('-')}-${index}`}
             >
               <ProjectCard project={project} />
             </li>

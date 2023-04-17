@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import tw from 'tailwind-styled-components';
 
 import { Link } from '@/components/core/link';

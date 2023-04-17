@@ -59,9 +59,7 @@ export const getAccessToken = async () => {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: serialize({
-      // eslint-disable-next-line camelcase
       grant_type: 'refresh_token',
-      // eslint-disable-next-line camelcase
       refresh_token: refreshToken,
     }),
   });

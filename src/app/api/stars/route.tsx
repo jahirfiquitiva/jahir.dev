@@ -19,7 +19,6 @@ export async function GET() {
 
     const mine = repositories.filter((repo: { fork: boolean }) => !repo.fork);
     const stars = mine.reduce(
-      // eslint-disable-next-line
       (accumulator: number, repository: { stargazers_count: number }) => {
         const { stargazers_count: stargazers = 0 } = repository;
         return accumulator + stargazers;

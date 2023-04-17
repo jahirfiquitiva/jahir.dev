@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import tw from 'tailwind-styled-components';
 
 import { Chip } from '@/components/core/chip';

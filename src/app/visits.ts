@@ -22,9 +22,6 @@ const recordVisitInDb = async (
       .select(['hits'])
       .execute();
 
-    console.error(
-      `New visit from ${city}, ${country} [${currentData[0]?.hits || 0}]`,
-    );
     await db
       .insertInto('visits')
       .values({ id: entryId, city, country, hits: 1 })

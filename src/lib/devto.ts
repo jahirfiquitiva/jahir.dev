@@ -20,7 +20,6 @@ export const getSingleDevToArticleViews = async (
       const article = devArticles.filter(
         (it: { id: number }) => it.id.toString() === devToArticleId,
       )?.[0];
-      // eslint-disable-next-line max-depth
       return Number(article.page_views_count || 0);
     }
     return 0;

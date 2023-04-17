@@ -61,12 +61,10 @@ const buildItemForFeed = (
 
     const newObject = {};
     if (typeof value === 'object' && Object.keys(value).length > 1) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error No specific key
       newObject[k] = buildItemForFeed(value, k);
     } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error No specific key
       newObject[k] = elem[k];
     }
     newArray.push(newObject);

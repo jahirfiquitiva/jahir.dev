@@ -11,13 +11,10 @@ import {
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
+import type { CountersReactions, ReactionName } from '@/lib/planetscale';
 import type { FC } from '@/types';
 
-const reactions = ['like', 'love', 'award', 'bookmark'] as const;
-type Reaction = typeof reactions[number];
-export type ReactionLocalStorage = { [Key in Reaction]?: boolean };
-type ReactionsProp = `${Reaction}s`;
-export type Reactions = { [Key in ReactionsProp]?: string };
+export type ReactionLocalStorage = { [Key in ReactionName]?: boolean };
 
 export type ReactionType = keyof ReactionLocalStorage;
 type InternalReactionType = ReactionType | 'ls';
@@ -27,7 +24,7 @@ interface ReactionAction {
   payload: ReactionLocalStorage;
 }
 
-export type ContextReactions = ReactionLocalStorage & Reactions;
+export type ContextReactions = ReactionLocalStorage & CountersReactions;
 
 export interface ReactionsContextValue {
   slug: string;
@@ -61,31 +58,29 @@ interface ReactionsProviderProps {
 }
 
 export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
-  const { slug } = props;
+  const { slug, inProgress } = props;
   const hasMounted = useHasMounted();
   const [lsState, dispatch] = useReducer(reactionsReducer, {});
 
-  const [state, setState] = useState<Reactions>({});
+  const [state, setState] = useState<CountersReactions>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
 
   const { data: remoteReactions, loading } = useImmutableRequest<{
-    counters: Reactions;
+    counters: CountersReactions;
   }>(`/api/reactions/${slug}`);
 
   const incrementReaction = useCallback(
     async (reaction: ReactionType) => {
-      if (props.inProgress) return;
+      if (inProgress) return;
       setSubmitting(true);
 
       const newState = { ...state };
-      // eslint-disable-next-line no-undef
-      const newReactionsCount = BigInt(state[`${reaction}s`] || 0) + BigInt(1);
-      newState[`${reaction}s`] = newReactionsCount.toString();
+      newState[reaction] = (state[reaction] || 0) + 1;
       setState(newState);
 
       const request = await fetch(`/api/reactions/${slug}`, {
         method: 'POST',
-        body: JSON.stringify({ reaction: `${reaction}s` }),
+        body: JSON.stringify({ reaction }),
         headers: { 'Content-Type': 'application/json' },
       });
       const response = await request.json();
@@ -99,8 +94,7 @@ export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
       setSubmitting(false);
       return response?.success || false;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [slug, lsState, state, hasMounted, submitting],
+    [slug, lsState, state, inProgress],
   );
 
   useEffect(() => {

@@ -11,8 +11,7 @@ interface ButtonLinkProps extends ComponentProps<typeof Link> {
 export const ButtonLink = (props: ButtonLinkProps) => {
   const { $as, outlined, ...otherProps } = props;
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore (tw expects otherProps to be of type StyledButton.props)
+    // @ts-expect-error (tw expects otherProps to be of type StyledButton.props)
     <StyledButton $as={$as || Link} $outlined={outlined} {...otherProps} />
   );
 };

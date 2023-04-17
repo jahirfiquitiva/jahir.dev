@@ -6,7 +6,6 @@ import {
   twitterOutline,
   mdiInstagram,
   polywork,
-  // mastodon,
 } from '@/components/icons';
 
 import { BackToTopLink } from './back-to-top';
@@ -16,7 +15,6 @@ import {
   GitHubLink,
   LinkedInLink,
   TwitterLink,
-  // MastodonLink,
   InstagramLink,
   PolyworkLink,
 } from './social-links.styles';
@@ -51,15 +49,6 @@ export const SocialLinks = (props: SocialLinksProps) => {
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
       </SocialLinkItem>
-      {/* <SocialLinkItem>
-        <MastodonLink
-          title={'Mastodon'}
-          href={'https://mastodon.social/@jahirfiquitiva'}
-          rel={'me'}
-        >
-          <Icon path={mastodon} size={iconSize} />
-        </MastodonLink>
-      </SocialLinkItem> */}
       <SocialLinkItem>
         <InstagramLink
           title={'Instagram'}
