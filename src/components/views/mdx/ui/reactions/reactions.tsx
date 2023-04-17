@@ -43,16 +43,16 @@ const getConfettiColor = (
   isDark: boolean,
 ): Array<`#${string}`> => {
   switch (key) {
-    case 'like': {
+    case 'likes': {
       return [isDark ? '#20BF6B' : '#1A9956'];
     }
-    case 'love': {
+    case 'loves': {
       return [isDark ? '#EB3B5A' : '#D43551'];
     }
-    case 'award': {
+    case 'awards': {
       return [isDark ? '#F7B731' : '#E1752C'];
     }
-    case 'bookmark': {
+    case 'bookmarks': {
       return [isDark ? '#A076D9' : '#8854D0'];
     }
     default: {
@@ -128,12 +128,12 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
     <ReactionsGroup {...otherProps}>
       <ReactionButton
         outlined
-        $reacted={!!reactions?.like}
-        data-reacted={!!reactions?.like}
+        $reacted={!!reactions?.likes}
+        data-reacted={!!reactions?.likes}
         disabled={submitting || loading}
         title={'Like'}
         onClick={(e) => {
-          clickReaction('like', e);
+          clickReaction('likes', e);
         }}
         className={cx(
           '[--reaction-color:26_153_86]',
@@ -141,19 +141,19 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         )}
       >
         <Icon
-          path={reactions?.like ? mdiThumbUp : mdiThumbUpOutline}
+          path={reactions?.likes ? mdiThumbUp : mdiThumbUpOutline}
           size={iconSize}
         />
         {renderLoaderOrText(reactions.likes || '0')}
       </ReactionButton>
       <ReactionButton
         outlined
-        $reacted={!!reactions?.love}
-        data-reacted={!!reactions?.love}
+        $reacted={!!reactions?.loves}
+        data-reacted={!!reactions?.loves}
         disabled={submitting || loading}
         title={'Love'}
         onClick={(e) => {
-          clickReaction('love', e);
+          clickReaction('loves', e);
         }}
         className={cx(
           '[--reaction-color:212_53_81]',
@@ -161,36 +161,36 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         )}
       >
         <Icon
-          path={reactions?.love ? mdiHeart : mdiHeartOutline}
+          path={reactions?.loves ? mdiHeart : mdiHeartOutline}
           size={iconSize}
         />
         {renderLoaderOrText(reactions.loves || '0')}
       </ReactionButton>
       <ReactionButton
         outlined
-        $reacted={!!reactions?.award}
-        data-reacted={!!reactions?.award}
+        $reacted={!!reactions?.awards}
+        data-reacted={!!reactions?.awards}
         disabled={submitting || loading}
         title={'Award'}
         onClick={(e) => {
-          clickReaction('award', e);
+          clickReaction('awards', e);
         }}
         className={cx(
           '[--reaction-color:225_117_44]',
           'dark:[--reaction-color:247_183_49]',
         )}
       >
-        <Icon path={reactions?.award ? award : awardOutline} size={iconSize} />
+        <Icon path={reactions?.awards ? award : awardOutline} size={iconSize} />
         {renderLoaderOrText(reactions.awards || '0')}
       </ReactionButton>
       <ReactionButton
         outlined
-        $reacted={!!reactions?.bookmark}
-        data-reacted={!!reactions?.bookmark}
+        $reacted={!!reactions?.bookmarks}
+        data-reacted={!!reactions?.bookmarks}
         disabled={submitting || loading}
         title={'Bookmark'}
         onClick={(e) => {
-          clickReaction('bookmark', e);
+          clickReaction('bookmarks', e);
         }}
         className={cx(
           '[--reaction-color:136_84_208]',
@@ -198,7 +198,7 @@ export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
         )}
       >
         <Icon
-          path={reactions?.bookmark ? mdiBookmark : mdiBookmarkOutline}
+          path={reactions?.bookmarks ? mdiBookmark : mdiBookmarkOutline}
           size={iconSize}
         />
         {renderLoaderOrText(reactions.bookmarks || '0')}
