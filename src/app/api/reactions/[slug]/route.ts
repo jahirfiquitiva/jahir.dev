@@ -2,19 +2,19 @@
 import { NextResponse } from 'next/server';
 
 import {
-  db as queryBuilder,
-  reactionsNames,
+  db,
   type ReactionName,
+  type CountersReactions,
 } from '@/lib/planetscale';
 import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
 
 const getData = (slug: string) =>
-  queryBuilder
+  db
     .selectFrom('counters')
     .where('slug', '=', slug)
-    .select(['slug', 'likes', 'loves', 'awards', 'bookmarks'])
+    .select(['likes', 'loves', 'awards', 'bookmarks'])
     .execute();
 
 export async function GET(
@@ -23,44 +23,21 @@ export async function GET(
 ) {
   try {
     const slug = context?.params?.slug;
-    if (!slug) {
-      return NextResponse.json({
-        counters: {},
-        total: '-1',
-      });
-    }
+    if (!slug) return NextResponse.json({ counters: {}, total: -1 });
 
     const data = await getData(slug);
     const [counters] = data;
-    if (!counters) {
-      return NextResponse.json({
-        counters: {},
-        total: '-1',
-      });
-    }
+    if (!counters) return NextResponse.json({ counters: {}, total: -1 });
 
-    const total: bigint = Object.keys(counters).reduce(
-      (accumulator: bigint, key: string): bigint => {
-        if (!reactionsNames.includes(key as ReactionName)) return BigInt(0);
-        return BigInt(
-          (
-            Number(accumulator) +
-            Number(counters[key as keyof typeof counters] || 0)
-          ).toString(),
-        );
-      },
-      BigInt(0),
+    const total = Object.keys(counters).reduce(
+      (accumulator, key): number =>
+        accumulator + (counters[key as keyof typeof counters] || 0),
+      0,
     );
 
-    return NextResponse.json({
-      counters,
-      total: total.toString(),
-    });
+    return NextResponse.json({ counters, total });
   } catch (err) {
-    return NextResponse.json({
-      counters: {},
-      total: '-1',
-    });
+    return NextResponse.json({ counters: {}, total: -1 });
   }
 }
 
@@ -70,45 +47,28 @@ export async function POST(
 ) {
   try {
     const slug = reqData?.params?.slug;
-    if (!slug) {
-      return NextResponse.json({
-        counters: {},
-        total: '-1',
-      });
-    }
+    if (!slug) return NextResponse.json({ counters: {} });
 
-    const data = await getData(slug);
     const body = await req.json();
     const reaction = body?.reaction as ReactionName;
-    if (!reaction) {
-      return NextResponse.json({
-        counters: {},
-        total: '-1',
-      });
-    }
+    if (!reaction) return NextResponse.json({ counters: {} });
 
-    const reactionCount: number = !data.length
-      ? 0
-      : Number(data[0]?.[reaction] || 0);
+    const data = await getData(slug).catch(() => [{} as CountersReactions]);
+    const counters = data?.[0];
+    const reactionCount = Number(counters?.[reaction] || 0);
 
-    await queryBuilder
+    await db
       .insertInto('counters')
-      .values({ slug, [reaction as string]: 1 })
+      .values({ slug, [reaction]: 1 })
       .onDuplicateKeyUpdate({
-        [reaction as string]: reactionCount + 1,
+        [reaction]: reactionCount + 1,
       })
       .execute();
 
     return NextResponse.json({
-      counters: {
-        ...data,
-        [reaction as string]: reactionCount + 1,
-      },
+      counters: { ...data, [reaction]: reactionCount + 1 },
     });
   } catch (err) {
-    return NextResponse.json({
-      counters: {},
-      total: '-1',
-    });
+    return NextResponse.json({ counters: {} });
   }
 }
