@@ -49,7 +49,7 @@ export const ReactionButton = (props: ReactionButtonProps) => {
       outlined
       $reacted={reacted}
       data-reacted={reacted}
-      disabled={disabled}
+      disabled={disabled || reacted}
       title={titles[type]}
       onClick={props.onClick}
       className={props.className}

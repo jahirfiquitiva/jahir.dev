@@ -28,7 +28,6 @@ export const StyledButton = tw.button<{ $outlined?: boolean }>`
   ${(p) => (p.$outlined ? 'hocus:border-accent-dark' : '')}
   ${(p) => (p.$outlined ? 'hocus:text-primary-txt' : 'hocus:text-on-accent')}
   disabled:opacity-50
-  disabled:pointer-events-none
   disabled:cursor-not-allowed
   [&>svg:only-child]:mx-auto
   [&>svg:only-child]:my-0

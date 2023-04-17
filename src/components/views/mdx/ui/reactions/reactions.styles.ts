@@ -23,6 +23,8 @@ export const StyledReactionButton = tw(Button)<{ $reacted?: boolean }>`
   hocus:transform-none
   hocus:text-primary-txt
   hocus:border-[rgba(var(--reaction-color)/0.45)]
+  disabled:cursor-default
+  ${(p) => (p.$reacted ? 'disabled:opacity-100' : 'disabled:opacity-50')}
   ${(p) =>
     p.$reacted ? 'border-[rgba(var(--reaction-color)/0.45)]' : 'border-divider'}
   ${(p) =>
