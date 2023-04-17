@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 
-import { useTheme } from '@/providers/theme';
+import { useTheme } from '@/providers/theme-provider';
 
 export const ColorMeta = () => {
   const { isDark, themeReady } = useTheme();

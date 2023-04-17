@@ -5,7 +5,7 @@ import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useTheme } from '@/providers/theme';
+import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';

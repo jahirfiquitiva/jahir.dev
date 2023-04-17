@@ -4,7 +4,7 @@ import { cx } from 'classix';
 import { useMemo } from 'react';
 
 import { mdiLoading, moonOutline, sunOutline } from '@/components/icons';
-import { useTheme } from '@/providers/theme';
+import { useTheme } from '@/providers/theme-provider';
 
 import { ToolbarButton, ToolbarButtonIcon } from './buttons.styles';
 

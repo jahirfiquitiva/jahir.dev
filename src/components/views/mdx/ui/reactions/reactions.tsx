@@ -16,8 +16,8 @@ import {
 } from '@/components/icons';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName } from '@/lib/planetscale';
-import { useReactions } from '@/providers/reactions';
-import { useTheme } from '@/providers/theme';
+import { useReactions } from '@/providers/reactions-provider';
+import { useTheme } from '@/providers/theme-provider';
 
 import { ReactionButton } from './reaction-button';
 import { ReactionsGroup } from './reactions.styles';

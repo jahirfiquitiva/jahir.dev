@@ -7,7 +7,7 @@ import { type CSSProperties, useMemo } from 'react';
 import { star } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
-import { useTheme } from '@/providers/theme';
+import { useTheme } from '@/providers/theme-provider';
 import type { Project } from '@/types/project';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 

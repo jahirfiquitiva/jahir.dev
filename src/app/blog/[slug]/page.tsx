@@ -8,7 +8,7 @@ import { mdiPencilOutline } from '@/components/icons';
 import { Mdx } from '@/components/views/mdx/mdx';
 import { Reactions } from '@/components/views/mdx/ui/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
-import { ReactionsProvider } from '@/providers/reactions';
+import { ReactionsProvider } from '@/providers/reactions-provider';
 import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -45,7 +45,7 @@ export default function Blog(context: BlogPageContext) {
         slug={`blog--${post.slug}`}
         inProgress={post.inProgress}
       >
-        <Reactions inProgress={post.inProgress} />
+        <Reactions />
         <Hero
           title={post.title}
           hero={post.hero}
@@ -80,7 +80,7 @@ export default function Blog(context: BlogPageContext) {
               <span>Edit on GitHub</span>
             </ButtonLink>
           </div>
-          <Reactions inProgress={post.inProgress} />
+          <Reactions />
         </div>
       </ReactionsProvider>
       <script type={'application/ld+json'} suppressHydrationWarning>

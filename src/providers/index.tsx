@@ -4,7 +4,7 @@ import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { type PropsWithChildren } from 'react';
 import { Provider as BalancerProvider } from 'react-wrap-balancer';
 
-import { ThemeProvider } from './theme';
+import { ThemeProvider } from './theme-provider';
 
 const themes =
   process.env.IS_TEMPLATE === 'true'

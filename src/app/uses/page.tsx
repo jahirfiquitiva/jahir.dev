@@ -7,7 +7,7 @@ import { Everyday, GamingPc } from '@/components/views/uses/hardware';
 import { Software } from '@/components/views/uses/software';
 import { Tabs } from '@/components/views/uses/tabs';
 import { Website } from '@/components/views/uses/website';
-import { ReactionsProvider } from '@/providers/reactions';
+import { ReactionsProvider } from '@/providers/reactions-provider';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
