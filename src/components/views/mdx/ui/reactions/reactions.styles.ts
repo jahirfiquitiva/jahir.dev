@@ -7,7 +7,7 @@ export const ReactionsGroup = tw.div`
   flex flex-wrap gap-6 mobile-lg:gap-10
 `;
 
-export const ReactionButton = tw(Button)<{ $reacted?: boolean }>`
+export const StyledReactionButton = tw(Button)<{ $reacted?: boolean }>`
   group/reaction
   py-10 px-12
   rounded-full

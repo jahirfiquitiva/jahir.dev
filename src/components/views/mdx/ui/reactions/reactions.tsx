@@ -1,6 +1,5 @@
 'use client';
 
-import { Ring } from '@uiball/loaders';
 import confetti from 'canvas-confetti';
 import { cx } from 'classix';
 import { useEffect } from 'react';
@@ -20,11 +19,8 @@ import type { ReactionName } from '@/lib/planetscale';
 import { useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
 
-import {
-  ReactionButton,
-  ReactionsGroup,
-  ReactionIcon as Icon,
-} from './reactions.styles';
+import { ReactionButton } from './reaction-button';
+import { ReactionsGroup } from './reactions.styles';
 
 const confettiOptions = {
   particleCount: 50,
@@ -60,12 +56,12 @@ const getConfettiColor = (
   }
 };
 
-const iconSize = 0.73;
 // eslint-disable-next-line max-lines-per-function
 export const Reactions = () => {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const {
     counters: reactions,
+    reacted,
     incrementReaction,
     submitting,
     loading,
@@ -108,28 +104,14 @@ export const Reactions = () => {
     };
   }, []);
 
-  const renderLoaderOrText = (count: number = 0) => {
-    return loading ? (
-      <Ring
-        size={16}
-        lineWeight={6}
-        speed={2}
-        color={'var(--color-tertiary-txt)'}
-      />
-    ) : (
-      <span>{count}</span>
-    );
-  };
-
-  // if (!reactions && !loading) return null;
   return (
     <ReactionsGroup>
       <ReactionButton
-        outlined
-        $reacted={!!reactions?.likes}
-        data-reacted={!!reactions?.likes}
-        disabled={submitting || loading}
-        title={'Like'}
+        type={'likes'}
+        count={reactions?.['likes']}
+        reacted={reacted?.['likes']}
+        normalIcon={mdiThumbUpOutline}
+        reactedIcon={mdiThumbUp}
         onClick={(e) => {
           clickReaction('likes', e);
         }}
@@ -137,19 +119,15 @@ export const Reactions = () => {
           '[--reaction-color:26_153_86]',
           'dark:[--reaction-color:32_191_107]',
         )}
-      >
-        <Icon
-          path={reactions?.likes ? mdiThumbUp : mdiThumbUpOutline}
-          size={iconSize}
-        />
-        {renderLoaderOrText(reactions.likes)}
-      </ReactionButton>
+        submitting={submitting}
+        loading={loading}
+      />
       <ReactionButton
-        outlined
-        $reacted={!!reactions?.loves}
-        data-reacted={!!reactions?.loves}
-        disabled={submitting || loading}
-        title={'Love'}
+        type={'loves'}
+        count={reactions?.['loves']}
+        reacted={reacted?.['loves']}
+        normalIcon={mdiHeartOutline}
+        reactedIcon={mdiHeart}
         onClick={(e) => {
           clickReaction('loves', e);
         }}
@@ -157,19 +135,15 @@ export const Reactions = () => {
           '[--reaction-color:212_53_81]',
           'dark:[--reaction-color:235_59_90]',
         )}
-      >
-        <Icon
-          path={reactions?.loves ? mdiHeart : mdiHeartOutline}
-          size={iconSize}
-        />
-        {renderLoaderOrText(reactions.loves)}
-      </ReactionButton>
+        submitting={submitting}
+        loading={loading}
+      />
       <ReactionButton
-        outlined
-        $reacted={!!reactions?.awards}
-        data-reacted={!!reactions?.awards}
-        disabled={submitting || loading}
-        title={'Award'}
+        type={'awards'}
+        count={reactions?.['awards']}
+        reacted={reacted?.['awards']}
+        normalIcon={awardOutline}
+        reactedIcon={award}
         onClick={(e) => {
           clickReaction('awards', e);
         }}
@@ -177,16 +151,15 @@ export const Reactions = () => {
           '[--reaction-color:225_117_44]',
           'dark:[--reaction-color:247_183_49]',
         )}
-      >
-        <Icon path={reactions?.awards ? award : awardOutline} size={iconSize} />
-        {renderLoaderOrText(reactions.awards)}
-      </ReactionButton>
+        submitting={submitting}
+        loading={loading}
+      />
       <ReactionButton
-        outlined
-        $reacted={!!reactions?.bookmarks}
-        data-reacted={!!reactions?.bookmarks}
-        disabled={submitting || loading}
-        title={'Bookmark'}
+        type={'bookmarks'}
+        count={reactions?.['bookmarks']}
+        reacted={reacted?.['bookmarks']}
+        normalIcon={mdiBookmarkOutline}
+        reactedIcon={mdiBookmark}
         onClick={(e) => {
           clickReaction('bookmarks', e);
         }}
@@ -194,13 +167,9 @@ export const Reactions = () => {
           '[--reaction-color:136_84_208]',
           'dark:[--reaction-color:160_118_217]',
         )}
-      >
-        <Icon
-          path={reactions?.bookmarks ? mdiBookmark : mdiBookmarkOutline}
-          size={iconSize}
-        />
-        {renderLoaderOrText(reactions.bookmarks)}
-      </ReactionButton>
+        submitting={submitting}
+        loading={loading}
+      />
     </ReactionsGroup>
   );
 };
