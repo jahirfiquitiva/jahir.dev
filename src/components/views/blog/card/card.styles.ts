@@ -56,16 +56,11 @@ export const PostTitle = tw.p`
 `;
 
 export const PostDescription = tw.p`
-  [display:-webkit-box]
   text-2xs
   text-secondary-txt
-  overflow-hidden
   overflow-ellipsis
-  [-webkit-box-orient:vertical]
-  [-webkit-line-clamp:1]
-  [max-lines:1]
-  mobile-lg:[-webkit-line-clamp:2]
-  mobile-lg:[max-lines:2]
+  line-clamp-1
+  mobile-lg:line-clamp-2
 `;
 
 export const PostStatsContainer = tw.div`
