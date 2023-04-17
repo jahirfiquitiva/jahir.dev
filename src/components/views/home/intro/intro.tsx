@@ -15,11 +15,11 @@ import {
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
 
-export const Intro = () => {
+export const Intro = (props: { country?: string | null }) => {
   return (
     <IntroSection id={'intro'}>
       <TextsContainer>
-        <WavingHello />
+        <WavingHello country={props.country} />
         <Heading $as={'h2'} shadow={'blue'}>
           I am&nbsp;
           <Heading

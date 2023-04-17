@@ -21,7 +21,17 @@ const greetings = [
   'Olá, mundo',
 ];
 
-export const WavingHello = () => {
+const getHelloWithCountry = (
+  helloIndex: number,
+  country?: string | null,
+): string => {
+  const hello = greetings[helloIndex];
+  if (!country) return hello;
+  return `${hello.substring(0, hello.indexOf(',') + 1)} ${country}`;
+};
+
+export const WavingHello = (props: { country?: string | null }) => {
+  const { country } = props;
   const [hello, setHello] = useState(0);
 
   useEffect(() => {
@@ -40,7 +50,7 @@ export const WavingHello = () => {
       <WavingSpan role={'img'} aria-label={'waving hand'}>
         👋
       </WavingSpan>
-      &nbsp;&nbsp;{greetings[hello]}!
+      &nbsp;&nbsp;{getHelloWithCountry(hello, country)}!
     </Heading>
   );
 };
