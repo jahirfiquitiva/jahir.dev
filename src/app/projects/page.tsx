@@ -25,5 +25,5 @@ export const metadata = getStaticMetadata({
 });
 
 export default function ProjectsPage() {
-  return <Projects projects={sortedProjects} withSearch />;
+  return <Projects projects={sortedProjects} full />;
 }

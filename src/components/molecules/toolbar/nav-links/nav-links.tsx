@@ -39,7 +39,6 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
 
 export const ToolbarNavLinks: FC = () => {
   const pathname = usePathname();
-
   return (
     <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
