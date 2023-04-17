@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import { LogoAnimoji } from '@/components/core/logo-animoji';
 import { mdiMenu, mdiPlus } from '@/components/icons';
-import type { FC } from '@/types';
 
 import { ThemeToggle, MobileMenuToggle, MobileMenuIcon } from './buttons';
 import {
@@ -15,7 +14,7 @@ import {
 } from './nav-links';
 import { Header, Nav } from './toolbar.styles';
 
-export const Toolbar: FC = () => {
+export const Toolbar = () => {
   const [isExpanded, expand] = useState(false);
   return (
     <Header data-expanded={isExpanded} id={'header'}>

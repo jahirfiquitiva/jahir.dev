@@ -3,7 +3,7 @@
 import { cx } from 'classix';
 import { usePathname } from 'next/navigation';
 
-import type { FC, GradientClass } from '@/types';
+import type { GradientClass } from '@/types/gradient';
 
 import { ToolbarLink, PageLinkSpan } from './link.styles';
 import { PagesLinksContainer, LinkItem } from './links-container.styles';
@@ -37,7 +37,7 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
   },
 ];
 
-export const ToolbarNavLinks: FC = () => {
+export const ToolbarNavLinks = () => {
   const pathname = usePathname();
   return (
     <PagesLinksContainer>

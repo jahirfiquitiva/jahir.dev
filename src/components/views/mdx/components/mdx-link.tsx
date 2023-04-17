@@ -2,7 +2,6 @@ import type { ComponentProps } from 'react';
 import tw from 'tailwind-styled-components';
 
 import { Link } from '@/components/core/link';
-import type { FC } from '@/types';
 
 const ignoredLinksClasses = ['anchor', 'toc-link'];
 const shouldIgnoreNextLink = (className?: string): boolean => {
@@ -20,7 +19,7 @@ const StyledLink = tw.a`
   hocus:text-accent-dark
 `;
 
-export const MdxLink: FC<ComponentProps<typeof Link>> = (props) => {
+export const MdxLink = (props: ComponentProps<typeof Link>) => {
   const ignoredNextLink = shouldIgnoreNextLink(props.className);
   if (ignoredNextLink)
     return <StyledLink {...props} href={props.href.toString()} />;

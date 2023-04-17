@@ -7,12 +7,12 @@ import {
   useEffect,
   useReducer,
   useCallback,
+  type PropsWithChildren,
 } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 import type { CountersReactions, ReactionName } from '@/lib/planetscale';
-import type { FC } from '@/types';
 
 export type ReactionLocalStorage = { [Key in ReactionName]?: boolean };
 
@@ -57,7 +57,9 @@ interface ReactionsProviderProps {
   inProgress?: boolean;
 }
 
-export const ReactionsProvider: FC<ReactionsProviderProps> = (props) => {
+export const ReactionsProvider = (
+  props: PropsWithChildren & ReactionsProviderProps,
+) => {
   const { slug, inProgress } = props;
   const hasMounted = useHasMounted();
   const [lsState, dispatch] = useReducer(reactionsReducer, {});

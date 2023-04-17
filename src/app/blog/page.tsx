@@ -1,23 +1,22 @@
 import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
-import type { Post } from '@/types';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
 
 import Header from './header';
+import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const allBlogs: Array<Post> = generatedBlogs
+const allBlogs: Array<Blog> = generatedBlogs
   .filter((it) => it.slug !== 'about' && (allowInProgress || !it.inProgress))
-  .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-  .map((blog) => ({ ...blog } as Post));
+  .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
 export default function BlogPage() {
   return (
     <Section id={'blog'}>
       <Header />
-      <BlogPosts posts={allBlogs} />
+      <BlogPosts posts={groupBlogPosts(allBlogs)} />
     </Section>
   );
 }

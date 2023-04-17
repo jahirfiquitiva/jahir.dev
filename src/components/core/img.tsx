@@ -1,8 +1,6 @@
 import { cx } from 'classix';
 import Image, { type ImageProps } from 'next/image';
 
-import type { FC } from '@/types';
-
 type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
 type SizeProps = BaseImageProps & { size?: number | string };
 type WidthHeightProps = BaseImageProps & {
@@ -12,7 +10,7 @@ type WidthHeightProps = BaseImageProps & {
 
 export type ImgProps = SizeProps | WidthHeightProps;
 
-export const Img: FC<ImgProps> = (props) => {
+export const Img = (props: ImgProps) => {
   const { size = 0, ...otherProps } = props as SizeProps;
   const {
     width = size,

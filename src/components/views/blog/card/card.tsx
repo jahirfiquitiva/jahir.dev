@@ -1,15 +1,15 @@
 'use client';
 
 import Icon from '@mdi/react';
-import { type CSSProperties, useMemo } from 'react';
+import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme';
-import type { ComponentChild, Post } from '@/types';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
+import type { Blog } from 'contentlayer/generated';
 
 import { Stat } from '../../mdx/ui/stat';
 
@@ -23,8 +23,8 @@ import {
 } from './card.styles';
 
 interface PostCardProps {
-  post: Post;
-  viewsCounter?: ComponentChild;
+  post: Blog;
+  viewsCounter?: PropsWithChildren['children'];
 }
 
 export const BlogPostCard = (props: PostCardProps) => {

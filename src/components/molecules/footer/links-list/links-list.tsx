@@ -1,6 +1,6 @@
 import { cx } from 'classix';
 
-import type { FC, GradientClass, RainbowColor } from '@/types';
+import type { GradientClass, RainbowColor } from '@/types/gradient';
 
 import { FooterNowPlaying } from '../now-playing';
 
@@ -26,7 +26,7 @@ interface FooterLinksListProps {
   meta?: boolean;
 }
 
-export const FooterLinksList: FC<FooterLinksListProps> = (props) => {
+export const FooterLinksList = (props: FooterLinksListProps) => {
   const { title, links, meta } = props;
   const ListComponent = meta ? MetaList : List;
   return (

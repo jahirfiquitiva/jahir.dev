@@ -4,7 +4,6 @@ import { cx } from 'classix';
 import { type ComponentProps, useState, useMemo, useCallback } from 'react';
 
 import { Img } from '@/components/core/img';
-import type { FC } from '@/types';
 
 import styles from './zoomable-img.module.scss';
 
@@ -14,7 +13,7 @@ type ZoomableImgProps = ImgProps & {
   zoomable?: boolean;
 };
 
-export const ZoomableImg: FC<ZoomableImgProps> = (props) => {
+export const ZoomableImg = (props: ZoomableImgProps) => {
   const { zoomable = false, ...otherProps } = props;
   const [zoomed, setZoomed] = useState<boolean>(false);
 

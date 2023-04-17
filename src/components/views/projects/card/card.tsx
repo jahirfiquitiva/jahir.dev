@@ -8,7 +8,7 @@ import { star } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme';
-import type { FC, Project } from '@/types';
+import type { Project } from '@/types/project';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 
 import {
@@ -22,7 +22,7 @@ interface ProjectCardProps {
   project?: Project;
 }
 
-export const ProjectCard: FC<ProjectCardProps> = (props) => {
+export const ProjectCard = (props: ProjectCardProps) => {
   const { project } = props;
   const { data } = useImmutableRequest<{ success?: boolean; stars?: string }>(
     `/api/stars/${project?.repo}`,

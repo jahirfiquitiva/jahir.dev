@@ -1,14 +1,13 @@
 'use client';
 
 import { cx } from 'classix';
-import { Children, useEffect, useState } from 'react';
+import { type PropsWithChildren, Children, useEffect, useState } from 'react';
 
 import image from '@/assets/images/setup-2022.jpeg';
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC } from '@/types';
 
 import { TabPanel, TabsList, TabButton, TabButtonText } from './tabs.styles';
 
@@ -19,7 +18,7 @@ export interface TabsProps {
   tabsNames: Array<string>;
 }
 
-export const Tabs: FC<TabsProps> = (props) => {
+export const Tabs = (props: PropsWithChildren & TabsProps) => {
   const hasMounted = useHasMounted();
   const [currentTab, setCurrentTab] = useState(0);
   const { tabsNames: extraTabsNames, children } = props;

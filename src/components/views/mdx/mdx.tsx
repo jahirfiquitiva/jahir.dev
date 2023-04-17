@@ -6,7 +6,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import tw from 'tailwind-styled-components';
 
 import { SocialLinks } from '@/components/molecules/social-links';
-import type { ComponentChild } from '@/types';
 
 import { Grid, GridColumn, MdxLink } from './components';
 import { ImageComparison } from './components/image-comparison';
@@ -38,7 +37,3 @@ export const Mdx = (props: MdxProps) => {
     </article>
   );
 };
-
-export const withArticle = (children: ComponentChild) => (
-  <article className={`mdx-article ${styles.article}`}>{children}</article>
-);

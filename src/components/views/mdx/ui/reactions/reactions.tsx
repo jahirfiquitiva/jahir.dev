@@ -19,7 +19,6 @@ import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import { type ReactionType, useReactions } from '@/providers/reactions';
 import { useTheme } from '@/providers/theme';
-import type { FC } from '@/types';
 
 import {
   ReactionButton,
@@ -63,7 +62,7 @@ const getConfettiColor = (
 
 const iconSize = 0.73;
 // eslint-disable-next-line max-lines-per-function
-export const Reactions: FC<{ inProgress?: boolean }> = (props) => {
+export const Reactions = (props: { inProgress?: boolean }) => {
   const { inProgress, ...otherProps } = props;
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();

@@ -1,18 +1,17 @@
-import 'server-only';
 import Icon from '@mdi/react';
 
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
 import { Stat } from '@/components/views/mdx/ui/stat';
 import { ViewsCounter } from '@/components/views/mdx/ui/views';
-import type { Post } from '@/types';
 import { formatDate } from '@/utils/date';
+import type { Blog } from 'contentlayer/generated';
 
 interface StatsProps {
-  slug: Post['slug'];
-  date?: Post['date'];
-  readingTime?: Post['readingTime'];
-  devToId?: Post['devToId'];
-  inProgress?: Post['inProgress'];
+  slug: Blog['slug'];
+  date?: Blog['date'];
+  readingTime?: Blog['readingTime'];
+  devToId?: Blog['devToId'];
+  inProgress?: Blog['inProgress'];
 }
 
 const Stats = (props: StatsProps) => {

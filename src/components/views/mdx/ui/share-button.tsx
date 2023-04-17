@@ -7,7 +7,6 @@ import { Button } from '@/components/core/button';
 import { ButtonLink } from '@/components/core/link';
 import { mdiShareVariantOutline } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC } from '@/types';
 
 const shareUrl = (title: string, slug: string) =>
   `https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -29,7 +28,7 @@ const Child = () => {
   );
 };
 
-export const ShareButton: FC<ShareButtonProps> = (props) => {
+export const ShareButton = (props: ShareButtonProps) => {
   const hasMounted = useHasMounted();
   const { title, slug } = props;
 

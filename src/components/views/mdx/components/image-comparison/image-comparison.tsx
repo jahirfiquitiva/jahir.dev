@@ -3,8 +3,6 @@
 import { Fragment } from 'react';
 import ReactCompareImage from 'react-compare-image';
 
-import type { FC } from '@/types';
-
 import styles from './image-comparison.module.scss';
 
 interface ImageComparisonProps {
@@ -18,7 +16,7 @@ interface ImageComparisonProps {
   vertical?: boolean;
 }
 
-export const ImageComparison: FC<ImageComparisonProps> = (props) => {
+export const ImageComparison = (props: ImageComparisonProps) => {
   const { hover = true, vertical = false } = props;
 
   return (

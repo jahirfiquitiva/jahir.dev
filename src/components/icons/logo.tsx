@@ -1,9 +1,7 @@
 /* eslint-disable max-len */
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
-import type { FC } from '@/types';
-
-export const Logo: FC<ComponentProps<'svg'> & { fill?: string }> = (props) => {
+export const Logo = (props: ComponentProps<'svg'> & { fill?: string }) => {
   return (
     <svg
       className={'logo'}

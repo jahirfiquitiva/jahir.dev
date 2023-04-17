@@ -1,13 +1,13 @@
 import { Link } from '@/components/core/link';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
-import type { Post } from '@/types';
 import { getUrlDomain } from '@/utils/domain';
+import type { Blog } from 'contentlayer/generated';
 
 interface HeroProps {
-  title: Post['title'];
-  hero?: Post['hero'];
-  meta?: Post['heroMeta'];
-  source?: Post['heroSource'];
+  title: Blog['title'];
+  hero?: Blog['hero'];
+  meta?: Blog['heroMeta'];
+  source?: Blog['heroSource'];
 }
 
 const Hero = (props: HeroProps) => {

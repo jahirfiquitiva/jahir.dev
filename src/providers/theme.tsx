@@ -1,10 +1,14 @@
 'use client';
 
 import { useTheme as useNextTheme } from 'next-themes';
-import { createContext, useContext, useMemo } from 'react';
+import {
+  type PropsWithChildren,
+  createContext,
+  useContext,
+  useMemo,
+} from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC } from '@/types';
 
 export interface ThemeContextValue {
   isDark: boolean;
@@ -20,7 +24,7 @@ const defaultContextState: ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
-export const ThemeProvider: FC = (props) => {
+export const ThemeProvider = (props: PropsWithChildren) => {
   const mounted = useHasMounted();
   const { theme, resolvedTheme, setTheme } = useNextTheme();
 

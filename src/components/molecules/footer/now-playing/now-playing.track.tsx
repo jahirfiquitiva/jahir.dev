@@ -1,6 +1,5 @@
 import { cx } from 'classix';
 
-import type { FC } from '@/types';
 import type { ReadableTrack } from '@/types/spotify';
 
 import {
@@ -16,7 +15,7 @@ interface FooterNowPlayingProps {
   isPlaying?: boolean;
 }
 
-export const NowPlayingTrack: FC<FooterNowPlayingProps> = (props) => {
+export const NowPlayingTrack = (props: FooterNowPlayingProps) => {
   const { track, isPlaying = false } = props;
 
   if (!track || !isPlaying) return null;

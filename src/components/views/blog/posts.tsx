@@ -1,20 +1,18 @@
-import 'server-only';
-
-import type { Post } from '@/types';
+import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../mdx/ui/views';
 
 import { BlogPostCard } from './card';
-import { groupBlogPosts } from './posts.utils';
 
 interface BlogPostsProps {
-  posts?: Array<Post>;
+  posts: Array<{
+    year: number;
+    posts: Array<Blog>;
+  }>;
 }
 
 export const BlogPosts = (props: BlogPostsProps) => {
-  const { posts } = props;
-  const groupedPosts = groupBlogPosts(posts);
-
+  const { posts: groupedPosts } = props;
   return (
     <>
       {groupedPosts.map((group) => {

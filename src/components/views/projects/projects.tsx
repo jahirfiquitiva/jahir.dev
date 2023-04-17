@@ -4,7 +4,7 @@ import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { mdiEyeOutline, mdiFileCodeOutline } from '@/components/icons';
-import type { FC, Project } from '@/types';
+import type { Project } from '@/types/project';
 
 import { ProjectCard } from './card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styles';
@@ -14,7 +14,7 @@ interface ProjectsProps {
   full?: boolean;
 }
 
-export const Projects: FC<ProjectsProps> = (props) => {
+export const Projects = (props: ProjectsProps) => {
   const { projects, full } = props;
 
   return (

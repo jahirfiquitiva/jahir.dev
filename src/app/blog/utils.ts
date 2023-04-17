@@ -1,8 +1,8 @@
-import type { Post } from '@/types';
+import type { Blog } from 'contentlayer/generated';
 
-export interface BlogGroup {
+interface BlogGroup {
   year: number;
-  posts: Array<Post>;
+  posts: Array<Blog>;
 }
 
 const groupBy = <T, K extends keyof never>(
@@ -17,7 +17,7 @@ const groupBy = <T, K extends keyof never>(
   }, {} as Record<K, T[]>);
 
 export const groupBlogPosts = (
-  blogPosts: Array<Post> | undefined,
+  blogPosts: Array<Blog> | undefined,
   query: string | undefined | null = null,
 ): Array<BlogGroup> => {
   if (!blogPosts) return [];
