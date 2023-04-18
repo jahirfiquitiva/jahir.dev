@@ -1,3 +1,5 @@
+import { groupBy } from '@/utils/group-by';
+
 const { BMAC_PAT: bmacPat = '' } = process.env;
 const authHeaders =
   bmacPat && bmacPat.length > 0 ? { Authorization: `Bearer ${bmacPat}` } : {};
@@ -68,8 +70,25 @@ const getOneTimeSupporters = async (): Promise<Array<ReadableSupporter>> =>
       }),
     )
     .then((supporters) =>
-      supporters.filter((person) => Boolean(person.name) && person.amount >= 50),
-    );
+      // Group because the same person can donate multiple times
+      groupBy(
+        supporters.filter((person) => Boolean(person.name)),
+        (it) => it.name,
+      ),
+    )
+    .then((groups) => {
+      // Sum all donations done by the given person
+      return Object.keys(groups).map((name) => {
+        const donations = groups[name];
+        const firstDonation = donations[0];
+        return {
+          ...firstDonation,
+          amount: donations.reduce((p, c) => p + c.amount, 0),
+        };
+      });
+    })
+    // Filter the people that have donated at least $50 in total (unicorns)
+    .then((supporters) => supporters.filter((person) => person.amount >= 50));
 
 const calculateMembershipMonthlyPrice = (
   coffees: number,

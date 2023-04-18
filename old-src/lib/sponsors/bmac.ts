@@ -4,6 +4,9 @@ import type { ManualSponsor } from './manual-sponsors';
 import type { Sponsor, SponsorCategory } from './types';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+const { BMAC_PAT: bmacPat = '' } = process.env;
+const authHeaders =
+  bmacPat && bmacPat.length > 0 ? { Authorization: `Bearer ${bmacPat}` } : {};
 
 type BmacMemberTier = 'star' | 'ball' | 'rocket' | 'diamond';
 const membershipIds: Record<number, BmacMemberTier> = {
@@ -13,6 +16,33 @@ const membershipIds: Record<number, BmacMemberTier> = {
   118655: 'diamond',
 };
 
+interface BmacSupporter {
+  payer_name: string;
+  payer_email: string;
+  is_refunded?: boolean | null;
+  supporter_name?: string;
+}
+
+interface OneTimeSupporter extends BmacSupporter {
+  support_coffee_price: string;
+  support_coffees: number;
+  support_updated_on: string;
+}
+
+interface Member extends BmacSupporter {
+  membership_level_id: number;
+  stripe_status: string | 'active';
+  subscription_updated_on: string;
+  subscription_coffee_price: string;
+  subscription_coffee_num: number;
+  subscription_duration_type: 'month' | 'year';
+}
+
+interface BmacResponse<T> {
+  current_page: number;
+  data?: Array<T>;
+  next_page_url?: string | null;
+}
 
 const recursiveBmacRequest = async <T = unknown>(
   endpoint?: string,

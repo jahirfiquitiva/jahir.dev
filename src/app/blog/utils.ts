@@ -1,20 +1,10 @@
+import { groupBy } from '@/utils/group-by';
 import type { Blog } from 'contentlayer/generated';
 
 interface BlogGroup {
   year: number;
   posts: Array<Blog>;
 }
-
-const groupBy = <T, K extends keyof never>(
-  list: Array<T> | T[],
-  getKey: (item: T) => K,
-) =>
-  list.reduce((previous, currentItem) => {
-    const group = getKey(currentItem);
-    if (!previous[group]) previous[group] = [];
-    previous[group].push(currentItem);
-    return previous;
-  }, {} as Record<K, T[]>);
 
 export const groupBlogPosts = (
   blogPosts: Array<Blog> | undefined,
