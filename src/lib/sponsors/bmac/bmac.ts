@@ -103,5 +103,5 @@ const calculateMembershipMonthlyPrice = (
 export const getBmacData = async () => {
   const members = await getMembers();
   const oneTime = await getOneTimeSupporters();
-  return { bmac: { members, oneTime } };
+  return { members, oneTime };
 };

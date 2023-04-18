@@ -1,6 +1,6 @@
 import { getSponsorsGraphQLResponse } from './query';
 
-const getGitHubSponsors = async (): Promise<{
+export const getGitHubSponsors = async (): Promise<{
   sponsors: Array<ReadableSupporter>;
   oneTime: Array<ReadableSupporter>;
 }> => {
@@ -41,9 +41,4 @@ const getGitHubSponsors = async (): Promise<{
     sponsors: monthlySponsors,
     oneTime: oneTimeSponsors,
   };
-};
-
-export const fetchSponsors = async () => {
-  const sponsors = await getGitHubSponsors();
-  return { github: sponsors };
 };
