@@ -2,6 +2,7 @@ import { groupBy } from '@/utils/group-by';
 
 import { getBmacData } from './bmac/bmac';
 import { getGitHubSponsors } from './github/sponsors';
+import { unicorns } from './unicorns';
 
 const categoriesPriceAndKey: Record<number, CategoryKey> = {
   2: 'star',
@@ -51,7 +52,20 @@ export const getSponsorsAndCategories = async () => {
 
   return {
     categories: allMonthly,
-    unicorns: [...bmacOneTime, ...githubOneTime],
+    unicorns: [
+      ...bmacOneTime,
+      ...githubOneTime,
+      ...unicorns.map((it) => ({
+        ...it,
+        photo: it.photo?.includes('unavatar')
+          ? `${
+              it.photo
+            }?fallback=https://source.boringavatars.com/beam/96/${encodeURIComponent(
+              it.name,
+            )}`
+          : it.photo,
+      })),
+    ],
     totalEarningsPerMonth,
     sponsorsCount,
   };
