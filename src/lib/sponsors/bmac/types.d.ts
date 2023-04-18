@@ -31,7 +31,7 @@ interface BmacResponse<T> {
 
 interface ReadableSupporter {
   name: string;
-  link?: string;
+  link?: string | null;
   photo?: string;
   amount: number; // monthly
   message?: string | null;
