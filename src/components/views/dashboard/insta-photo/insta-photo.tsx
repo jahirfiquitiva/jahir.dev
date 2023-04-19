@@ -1,5 +1,5 @@
 import { mdiInstagram } from '@/components/icons';
-import type { InstagramPost } from '@/lib/instagram/instagram';
+import type { InstagramPost } from '@/lib/instagram/types.d';
 
 import {
   InstaIcon,
