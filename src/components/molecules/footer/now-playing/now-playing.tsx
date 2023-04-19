@@ -7,13 +7,13 @@ import { NowPlayingLoading } from './now-playing.loading';
 import { MusicItem } from './now-playing.styles';
 import { NowPlayingTrack } from './now-playing.track';
 
-interface ApiResponse {
+export interface NowPlayingResponse {
   track?: ReadableTrack | null;
   isPlaying?: boolean;
 }
 
 export const FooterNowPlaying = () => {
-  const { data, loading } = useRequest<ApiResponse>('/api/spotify');
+  const { data, loading } = useRequest<NowPlayingResponse>('/api/spotify');
   const { track, isPlaying } = data || { isPlaying: false };
 
   return (

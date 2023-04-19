@@ -6,7 +6,7 @@ export const NowPlayingLoading = () => (
       size={84}
       lineWeight={5}
       speed={1.75}
-      color={'var(--color-accent)'}
+      color={'var(--color-accent, #88a4e6)'}
     />
   </div>
 );

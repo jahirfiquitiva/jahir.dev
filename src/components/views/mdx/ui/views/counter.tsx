@@ -54,7 +54,7 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
               size={$sm ? 58 : 64}
               lineWeight={$sm ? 2 : 4}
               speed={1.5}
-              color={'var(--color-accent)'}
+              color={'var(--color-accent, #88a4e6)'}
             />
           }
         >

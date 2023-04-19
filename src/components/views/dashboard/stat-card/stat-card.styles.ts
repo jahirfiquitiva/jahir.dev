@@ -28,6 +28,8 @@ export const StyledStatCard = tw(Link)`
   mobile-md:items-start
   mobile-md:py-14
   mobile-md:px-16
+  tablet-sm:col-span-4
+  tablet-sm:aspect-video
   hocus:no-underline
   hocus:transform
   hocus:-translate-y-1

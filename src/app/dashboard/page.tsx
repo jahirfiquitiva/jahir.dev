@@ -9,6 +9,7 @@ import {
   money,
   star,
 } from '@/components/icons';
+import { NowPlaying } from '@/components/views/dashboard/now-playing';
 import { ReactionsStats } from '@/components/views/dashboard/reactions';
 import { StatCard } from '@/components/views/dashboard/stat-card';
 import { db } from '@/lib/planetscale';
@@ -46,9 +47,10 @@ export default async function DashboardPage() {
       </Heading>
       <div
         className={cx(
-          'grid grid-cols-1 gap-10',
+          'max-w-full truncate',
+          'grid grid-cols-1 gap-8',
           'mobile-md:grid-cols-2 mobile-md:gap-12',
-          'tablet-sm:grid-cols-3 tablet-sm:gap-16',
+          'tablet-sm:grid-cols-12 tablet-sm:gap-16',
         )}
       >
         <StatCard
@@ -97,6 +99,7 @@ export default async function DashboardPage() {
           iconPath={money}
           color={'#26de81'}
         />
+        <NowPlaying />
       </div>
     </Section>
   );
