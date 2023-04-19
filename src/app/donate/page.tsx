@@ -1,20 +1,28 @@
+import { notFound } from 'next/navigation';
+
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { SponsorsList } from '@/components/views/donate/sponsors-list';
+import { Mdx } from '@/components/views/mdx';
 import { getSponsorsAndCategories } from '@/lib/sponsors/all';
+import { getBlog } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 // Update sponsors once per hour
 export const revalidate = 3600;
 
+const donate = getBlog('donate');
+
 export default async function DonatePage() {
+  if (!donate) return notFound();
   const sponsorsCategories = await getSponsorsAndCategories().catch(null);
   return (
     <Section id={'donate'}>
       <Heading shadow={'brand'} from={'brand'} to={'blue'}>
         Donate
       </Heading>
+      <Mdx code={donate?.body?.code} className={'gap-8 mb-16'} />
       <SponsorsList
         categories={sponsorsCategories?.categories || []}
         unicorns={sponsorsCategories?.unicorns || []}

@@ -16,10 +16,12 @@ interface SponsorsListProps {
 export const SponsorsList = (props: SponsorsListProps) => {
   const { categories, unicorns } = props;
   return (
-    <NoPaddingSection $as={'div'}>
+    <NoPaddingSection $as={'div'} id={'thanks'}>
       <Header>
         <div className={'flex flex-col flex-1 gap-8'}>
-          <Heading $as={'h3'}>Sponsors</Heading>
+          <Heading $as={'h2'} className={'text-xl'}>
+            Sponsors
+          </Heading>
           <p>
             I&apos;m forever grateful to all the awesome people that support my
             work
