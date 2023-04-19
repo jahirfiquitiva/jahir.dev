@@ -35,11 +35,12 @@ export const Header = tw.header`
   before:bg-gradient-to-t
   before:from-background
   before:to-transparent
-  before:backdrop-blur-[8px]
+  before:backdrop-blur-md
   before:backdrop-saturate-150
+  before:backdrop-grayscale
 `;
 
-export const Nav = tw.nav`
+export const Nav = tw.nav<{ $elevated?: boolean }>`
   [--spaceDivider:1.25]
   z-[3]
   relative
@@ -53,10 +54,14 @@ export const Nav = tw.nav`
   border
   border-solid
   border-accent-dark/[0.12]
-  [box-shadow:0_0_6px_1px_rgba(var(--color-accent-dark)/0.16)]
+  ${(p) =>
+    p.$elevated
+      ? '[box-shadow:0_0_6px_1px_rgba(var(--color-accent-dark)/0.16)]'
+      : ''}
   p-[calc(var(--floatingMargin)/var(--spaceDivider))]
   mx-[var(--floatingMargin)]
   transition
+  duration-200
   gap-0
   grid-rows-1
   [grid-template-columns:auto_1fr]
