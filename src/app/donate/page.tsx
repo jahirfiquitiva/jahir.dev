@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
+import { DonateButtons } from '@/components/views/donate/buttons';
 import { SponsorsList } from '@/components/views/donate/sponsors-list';
 import { Mdx } from '@/components/views/mdx';
 import { getSponsorsAndCategories } from '@/lib/sponsors/all';
@@ -22,7 +23,8 @@ export default async function DonatePage() {
       <Heading shadow={'brand'} from={'brand'} to={'blue'}>
         Donate
       </Heading>
-      <Mdx code={donate?.body?.code} className={'gap-8 mb-16'} />
+      <Mdx code={donate?.body?.code} className={'gap-8'} />
+      <DonateButtons />
       <SponsorsList
         categories={sponsorsCategories?.categories || []}
         unicorns={sponsorsCategories?.unicorns || []}

@@ -15,7 +15,7 @@ interface LinkProps extends ComponentProps<typeof NextLink> {
 
 export const Link = (props: LinkProps) => {
   const { href: url, ...otherProps } = props;
-  const href: string = url.toString();
+  const href: string = url?.toString();
   const { openInNewTab = !isLocalLink(href), ...rest } = otherProps;
 
   return (
