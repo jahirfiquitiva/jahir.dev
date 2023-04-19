@@ -4,17 +4,15 @@ import type { PropsWithChildren } from 'react';
 import { Link } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { RequestContext } from '@/types/request';
-import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+import { getBlog } from '@/utils/blogs';
 
 import Header from './header';
 import Stats from './stats';
 
-const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
-
 export default function BlogPostLayout(
   props: PropsWithChildren & RequestContext<{ slug?: string }>,
 ) {
-  const post = allBlogs.find((post) => post.slug === props.params.slug);
+  const post = getBlog(props.params.slug);
   if (!post) return notFound();
   if (post.link) return redirect(post.link);
 

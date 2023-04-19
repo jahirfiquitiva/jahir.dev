@@ -10,13 +10,12 @@ import { Reactions } from '@/components/views/mdx/ui/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
 import { RequestContext } from '@/types/request';
+import { allReadableBlogs, getBlog } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
+import { type Blog } from 'contentlayer/generated';
 
 import Hero from './hero';
-
-const allBlogs = generatedBlogs.filter((it) => it.slug !== 'about');
 
 type BlogPageContext = RequestContext<{ slug?: string }>;
 
@@ -37,7 +36,7 @@ const blogPostStructuredData = (post: Blog): string =>
   });
 
 export default function BlogPostPage(context: BlogPageContext) {
-  const post = allBlogs.find((post) => post.slug === context.params.slug);
+  const post = getBlog(context.params.slug);
   if (!post) return null;
   return (
     <>
@@ -91,7 +90,7 @@ export default function BlogPostPage(context: BlogPageContext) {
 }
 
 export async function generateStaticParams() {
-  return allBlogs.map((post) => ({
+  return allReadableBlogs.map((post) => ({
     slug: post.slug,
   }));
 }
@@ -99,7 +98,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   context: BlogPageContext,
 ): Promise<Metadata | undefined> {
-  const post = allBlogs.find((post) => post.slug === context.params.slug);
+  const post = getBlog(context.params.slug);
   if (!post) return undefined;
 
   const { title, date, excerpt, hero, slug } = post;

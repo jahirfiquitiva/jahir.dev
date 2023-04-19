@@ -1,10 +1,8 @@
 import { MetadataRoute } from 'next';
 
-import { allBlogs as generatedBlogs } from 'contentlayer/generated';
+import { allReadableBlogs } from '@/utils/blogs';
 
-const allBlogs = generatedBlogs.filter(
-  (it) => it.slug !== 'about' && !Boolean(it.link),
-);
+const allBlogs = allReadableBlogs.filter((it) =>  !Boolean(it.link));
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = allBlogs.map((post) => ({

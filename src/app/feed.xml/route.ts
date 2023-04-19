@@ -1,10 +1,11 @@
 import xml from 'xml';
 
-import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
+import { allReadableBlogs } from '@/utils/blogs';
+import { type Blog } from 'contentlayer/generated';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const allBlogs = generatedBlogs
-  .filter((it) => it.slug !== 'about' && (allowInProgress || !it.inProgress))
+const allBlogs = allReadableBlogs
+  .filter((it) => allowInProgress || !it.inProgress)
   .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
 const formatImageUrl = (url?: string) => {

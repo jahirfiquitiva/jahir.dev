@@ -1,15 +1,15 @@
 import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
+import { allReadableBlogs } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
 
 import Header from './header';
 import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const allBlogs: Array<Blog> = generatedBlogs
-  .filter((it) => it.slug !== 'about' && (allowInProgress || !it.inProgress))
+const allBlogs = allReadableBlogs
+  .filter((it) => allowInProgress || !it.inProgress)
   .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
 export default function BlogPage() {

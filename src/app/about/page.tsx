@@ -5,15 +5,15 @@ import { Heading } from '@/components/core/heading';
 import { Link } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { Mdx } from '@/components/views/mdx/mdx';
+import { getBlog } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs } from 'contentlayer/generated';
 
 import ContactButtons from './contact-buttons';
 import Doodle from './doodle';
 import Photo from './photo';
 
-const about = allBlogs.find((post) => post.slug === 'about');
+const about = getBlog('about');
 
 export default async function AboutPage() {
   if (!about) return notFound();
