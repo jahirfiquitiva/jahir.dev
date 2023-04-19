@@ -39,7 +39,7 @@ interface ViewsCounterProps {
 
 export const ViewsCounter = async (props: ViewsCounterProps) => {
   const { slug, devToId, inProgress, trackView, $sm } = props;
-  const views = await getViews(slug, devToId);
+  const views = await getViews(slug, devToId).catch(() => 0);
 
   return (
     <>
