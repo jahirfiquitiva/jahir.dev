@@ -1,4 +1,4 @@
-import { Section } from '@/components/core/section';
+import { NoPaddingSection } from '@/components/core/section';
 import software from '@/data/software.json';
 
 import {
@@ -19,7 +19,7 @@ const sortedSoftware = software.sort((a, b) => {
 
 export const Software = () => {
   return (
-    <Section $as={'div'} className={'px-0 mobile-lg:px-0'}>
+    <NoPaddingSection $as={'div'}>
       <GridContainer>
         <SoftwareGrid>
           {sortedSoftware.map((item, index) => {
@@ -38,6 +38,6 @@ export const Software = () => {
           })}
         </SoftwareGrid>
       </GridContainer>
-    </Section>
+    </NoPaddingSection>
   );
 };

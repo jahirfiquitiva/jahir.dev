@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 
-import { Section } from '@/components/core/section';
+import { NoPaddingSection } from '@/components/core/section';
 
 export const TabsList = tw.div`
   flex
@@ -23,8 +23,7 @@ export const TabsList = tw.div`
   tablet-md:[mask-image:none]
 `;
 
-export const TabPanel = tw(Section)`
-  px-0 mobile-lg:px-0
+export const TabPanel = tw(NoPaddingSection)`
   gap-24
   mb-16
   transition

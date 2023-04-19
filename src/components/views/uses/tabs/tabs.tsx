@@ -5,7 +5,7 @@ import { type PropsWithChildren, Children, useEffect, useState } from 'react';
 
 import image from '@/assets/images/setup-2022.jpeg';
 import { Heading } from '@/components/core/heading';
-import { Section } from '@/components/core/section';
+import { NoPaddingSection } from '@/components/core/section';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 
@@ -37,7 +37,7 @@ export const Tabs = (props: PropsWithChildren & TabsProps) => {
   }, [hasMounted, tabsIds]);
 
   return (
-    <Section $as={'div'} className={'gap-32 my-12 flex-1 px-0 mobile-lg:px-0'}>
+    <NoPaddingSection $as={'div'} className={'gap-32 my-12 flex-1'}>
       <TabsList role={'tablist'}>
         {tabsNames.map((tabName, index) => {
           return (
@@ -86,6 +86,6 @@ export const Tabs = (props: PropsWithChildren & TabsProps) => {
           );
         })}
       </div>
-    </Section>
+    </NoPaddingSection>
   );
 };

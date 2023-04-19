@@ -80,11 +80,11 @@ export const SponsorItem = (props: SponsorProps) => {
         </NameAndPhotoContainer>
         <Tier
           className={cx(
-            'bg-[rgba(var(--sponsor-color)/0.12)]',
-            'hocus:bg-[rgba(var(--sponsor-color)/0.12)]',
-            'dark:bg-[rgba(var(--sponsor-color)/0.18)]',
-            'dark:hocus:bg-[rgba(var(--sponsor-color)/0.18)]',
-            'hocus:border-[rgba(var(--sponsor-color)/0.56)]',
+            'bg-[rgba(var(--sponsor-color)/0.06)]',
+            'group-hocus/sponsor:bg-[rgba(var(--sponsor-color)/0.12)]',
+            'dark:bg-[rgba(var(--sponsor-color)/0.12)]',
+            'dark:group-hocus/sponsor:bg-[rgba(var(--sponsor-color)/0.18)]',
+            'group-hocus/sponsor:border-[rgba(var(--sponsor-color)/0.56)]',
           )}
           style={{ '--sponsor-color': color } as CSSProperties}
         >

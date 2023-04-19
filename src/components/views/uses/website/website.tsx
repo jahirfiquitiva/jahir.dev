@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 
 import { Link } from '@/components/core/link';
-import { Section } from '@/components/core/section';
+import { NoPaddingSection } from '@/components/core/section';
 import {
   contentlayer,
   mdiTailwind,
@@ -52,7 +52,7 @@ const Colophon = () => {
 
 export const Website = () => {
   return (
-    <Section $as={'div'} className={'px-0 mobile-lg:px-0'}>
+    <NoPaddingSection $as={'div'}>
       <p>
         This website is built using{' '}
         <Link title={'Next.js'} href={'https://nextjs.org/'}>
@@ -88,6 +88,6 @@ export const Website = () => {
         on GitHub.
       </p>
       <Colophon />
-    </Section>
+    </NoPaddingSection>
   );
 };

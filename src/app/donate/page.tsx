@@ -9,7 +9,9 @@ export default async function DonatePage() {
   const sponsorsCategories = await getSponsorsAndCategories().catch(null);
   return (
     <Section id={'donate'}>
-      <Heading>Donate</Heading>
+      <Heading shadow={'brand'} from={'brand'} to={'blue'}>
+        Donate
+      </Heading>
       <SponsorsList
         categories={sponsorsCategories?.categories || []}
         unicorns={sponsorsCategories?.unicorns || []}

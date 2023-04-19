@@ -1,5 +1,5 @@
 import { Link } from '@/components/core/link';
-import { Section } from '@/components/core/section';
+import { NoPaddingSection } from '@/components/core/section';
 import extensions from '@/data/extensions.json';
 
 import { Grid, GridColumn } from '../mdx/components';
@@ -9,7 +9,7 @@ const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
 const secondExtensionsHalf = extensions.slice(extensionsHalfIndex);
 
 export const ExtensionsGrid = () => (
-  <Section $as={'div'} className={'px-0 mobile-lg:px-0'}>
+  <NoPaddingSection $as={'div'}>
     <p>
       I use the{' '}
       <Link title={'Arc browser'} href={'https://arc.net/gift/92a237df'}>
@@ -41,5 +41,5 @@ export const ExtensionsGrid = () => (
         </ul>
       </GridColumn>
     </Grid>
-  </Section>
+  </NoPaddingSection>
 );
