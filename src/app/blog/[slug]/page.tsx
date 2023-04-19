@@ -89,11 +89,8 @@ export default function BlogPostPage(context: BlogPageContext) {
   );
 }
 
-export async function generateStaticParams() {
-  return allReadableBlogs.map((post) => ({
-    slug: post.slug,
-  }));
-}
+export const generateStaticParams = () =>
+  allReadableBlogs.map((post) => ({ slug: post.slug }));
 
 export async function generateMetadata(
   context: BlogPageContext,

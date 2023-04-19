@@ -1,8 +1,3 @@
-import { fetchInstaFeed, type InstagramPost } from '@/old/lib/instagram';
-import { buildApiResponse } from '@/old/utils/response';
-
-export const config = { runtime: 'edge' };
-
 interface OfficialResponse {
   graphql: {
     user: {
@@ -43,13 +38,12 @@ interface OfficialResponse {
   };
 }
 
-const getFeed = async (): Promise<Array<InstagramPost>> => {
-  let responseContent = '';
+export const getPublicFeed = async (): Promise<Array<InstagramPost>> => {
   try {
     const offResponse = await fetch(
       'https://www.instagram.com/jahirfiquitiva/?__a=1&__d=1',
     );
-    responseContent = await offResponse.text();
+    const responseContent = await offResponse.text();
     const { graphql } = JSON.parse(responseContent) as OfficialResponse;
     const posts = graphql.user.edge_owner_to_timeline_media.edges.slice(0, 6);
     return posts.map(({ node }) => {
@@ -69,22 +63,6 @@ const getFeed = async (): Promise<Array<InstagramPost>> => {
       };
     });
   } catch (e) {
-    // eslint-disable-next-line
-    console.error('insta-feed', responseContent);
-    // eslint-disable-next-line
-    console.error('insta-feed', e);
     return [];
   }
 };
-
-export default async function handler() {
-  let feed: Array<InstagramPost> = await getFeed();
-  if (!feed || !feed.length) feed = await fetchInstaFeed();
-  return buildApiResponse(
-    200,
-    { feed },
-    {
-      'cache-control': 'public, s-maxage=86400, stale-while-revalidate=43200',
-    },
-  );
-}

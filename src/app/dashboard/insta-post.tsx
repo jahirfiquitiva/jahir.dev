@@ -1,5 +1,5 @@
 import { InstaPhoto } from '@/components/views/dashboard/insta-photo';
-import { fetchInstaFeed } from '@/lib/instagram';
+import { fetchInstaFeed } from '@/lib/instagram/instagram';
 
 // Update data once every 12 hours
 export const revalidate = 43200;
