@@ -5,6 +5,9 @@ import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
+// Update sponsors once per hour
+export const revalidate = 3600;
+
 export default async function DonatePage() {
   const sponsorsCategories = await getSponsorsAndCategories().catch(null);
   return (
