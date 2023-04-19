@@ -10,7 +10,10 @@ export default async function DonatePage() {
   return (
     <Section id={'donate'}>
       <Heading>Donate</Heading>
-      <SponsorsList categories={sponsorsCategories?.categories || []} />
+      <SponsorsList
+        categories={sponsorsCategories?.categories || []}
+        unicorns={sponsorsCategories?.unicorns || []}
+      />
     </Section>
   );
 }

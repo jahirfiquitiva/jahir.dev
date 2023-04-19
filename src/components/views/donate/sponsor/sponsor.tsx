@@ -73,7 +73,8 @@ export const SponsorItem = (props: SponsorProps) => {
             }
             alt={sponsor.name}
             size={imgSizesForTier[tier]}
-            className={'rounded-half'}
+            className={'rounded-half h-full'}
+            style={{ minHeight: imgSizesForTier[tier] }}
           />
           <span className={fontSizesForTier[tier]}>{sponsor.name}</span>
         </NameAndPhotoContainer>

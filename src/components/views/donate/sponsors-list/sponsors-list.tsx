@@ -6,10 +6,11 @@ import { StyledList } from './sponsors-list.styles';
 
 interface SponsorsListProps {
   categories: Array<SponsorsCategory>;
+  unicorns: Array<ReadableSupporter>;
 }
 
 export const SponsorsList = (props: SponsorsListProps) => {
-  const { categories } = props;
+  const { categories, unicorns } = props;
   return (
     <StyledList>
       {categories.map((category) => {
@@ -27,6 +28,16 @@ export const SponsorsList = (props: SponsorsListProps) => {
               );
             })}
           </Fragment>
+        );
+      })}
+      {unicorns.map((sponsor) => {
+        return (
+          <SponsorItem
+            key={sponsor.name}
+            sponsor={sponsor}
+            category={'Unicorn'}
+            tier={'unicorn'}
+          />
         );
       })}
     </StyledList>

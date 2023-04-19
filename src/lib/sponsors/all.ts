@@ -57,16 +57,20 @@ export const getSponsorsAndCategories = async () => {
     unicorns: [
       ...bmacOneTime,
       ...githubOneTime,
-      ...unicorns.map((it) => ({
-        ...it,
-        photo: it.photo?.includes('unavatar')
-          ? `${
-              it.photo
-            }?fallback=https://source.boringavatars.com/beam/96/${encodeURIComponent(
-              it.name,
-            )}`
-          : it.photo,
-      })),
+      ...unicorns.map(
+        (it) =>
+          ({
+            ...it,
+            photo: it.photo?.includes('unavatar')
+              ? `${
+                  it.photo
+                }?fallback=https://source.boringavatars.com/beam/96/${encodeURIComponent(
+                  it.name,
+                )}`
+              : it.photo,
+            amount: 0,
+          } as ReadableSupporter),
+      ),
     ],
     totalEarningsPerMonth,
     sponsorsCount,
