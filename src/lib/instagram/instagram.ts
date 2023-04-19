@@ -1,4 +1,5 @@
 import { getPublicFeed } from './public';
+import type { InstagramPost } from './types.d';
 
 const instagramApi = process.env.INSTA_API || '';
 const instagramFeedKey = process.env.INSTA_FEED_KEY || '';

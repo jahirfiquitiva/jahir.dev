@@ -1,3 +1,5 @@
+import type { InstagramPost } from './types.d';
+
 interface OfficialResponse {
   graphql: {
     user: {
