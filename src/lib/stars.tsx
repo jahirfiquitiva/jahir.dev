@@ -1,7 +1,3 @@
-import { NextResponse } from 'next/server';
-
-export const runtime = 'edge';
-
 const userApiUrl = 'https://api.github.com/users/jahirfiquitiva';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
@@ -9,7 +5,7 @@ const authHeaders =
     ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
-export async function GET() {
+export const getGitHubStats = async () => {
   try {
     const userRequest = await fetch(userApiUrl, authHeaders);
     const userReposRequest = await fetch(`${userApiUrl}/repos`, authHeaders);
@@ -26,14 +22,8 @@ export async function GET() {
       0,
     );
 
-    return NextResponse.json({
-      followers: user.followers,
-      stars,
-    });
+    return { followers: user.followers, stars };
   } catch (err) {
-    return NextResponse.json({
-      followers: -1,
-      stars: -1,
-    });
+    return { followers: -1, stars: -1 };
   }
-}
+};
