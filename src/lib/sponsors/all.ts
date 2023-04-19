@@ -22,18 +22,20 @@ const getAllMonthlySponsors = (
   sponsors: Array<ReadableSupporter>,
 ): Array<SponsorsCategory> => {
   const grouped = groupBy(sponsors, (it) => it.amount);
-  return Object.keys(grouped).map((amount) => {
-    const sponsors = grouped[Number(amount) as keyof typeof grouped];
-    const totalEarningsPerMonth = sponsors.reduce((p, c) => p + c.amount, 0);
-    return {
-      key: categoriesPriceAndKey[Number(amount)],
-      name: categoriesPriceAndName[Number(amount)],
-      price: Number(amount),
-      totalEarningsPerMonth,
-      sponsorsCount: sponsors.length,
-      sponsors,
-    };
-  });
+  return Object.keys(grouped)
+    .map((amount) => {
+      const sponsors = grouped[Number(amount) as keyof typeof grouped];
+      const totalEarningsPerMonth = sponsors.reduce((p, c) => p + c.amount, 0);
+      return {
+        key: categoriesPriceAndKey[Number(amount)],
+        name: categoriesPriceAndName[Number(amount)],
+        price: Number(amount),
+        totalEarningsPerMonth,
+        sponsorsCount: sponsors.length,
+        sponsors,
+      };
+    })
+    .sort((a, b) => b.price - a.price);
 };
 
 export const getSponsorsAndCategories = async () => {

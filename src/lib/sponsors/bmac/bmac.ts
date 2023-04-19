@@ -21,6 +21,17 @@ const recursiveBmacRequest = async <T = unknown>(
   return allItems;
 };
 
+const getPhotoUrl = (name: string): string => {
+  let url = '';
+  if (name.startsWith('@')) {
+    url += `https://unavatar.io/${encodeURIComponent(
+      name.substring(1),
+    )}?fallback=`;
+  }
+  url += `https://source.boringavatars.com/beam/96/${encodeURIComponent(name)}`;
+  return url;
+};
+
 const getMembers = async (): Promise<Array<ReadableSupporter>> =>
   recursiveBmacRequest<Member>(
     'https://developers.buymeacoffee.com/api/v1/subscriptions?status=active',
@@ -35,9 +46,7 @@ const getMembers = async (): Promise<Array<ReadableSupporter>> =>
         const name = member.supporter_name || member.payer_name;
         return {
           name,
-          photo: `https://source.boringavatars.com/beam/96/${encodeURIComponent(
-            name,
-          )}`,
+          photo: getPhotoUrl(name),
           amount: calculateMembershipMonthlyPrice(
             member.subscription_coffee_num,
             member.subscription_coffee_price,
@@ -59,9 +68,7 @@ const getOneTimeSupporters = async (): Promise<Array<ReadableSupporter>> =>
         const name = supporter.supporter_name || supporter.payer_name;
         return {
           name,
-          photo: `https://source.boringavatars.com/beam/96/${encodeURIComponent(
-            name,
-          )}`,
+          photo: getPhotoUrl(name),
           amount:
             supporter.support_coffees *
             parseFloat(supporter.support_coffee_price),
