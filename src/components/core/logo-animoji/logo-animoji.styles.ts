@@ -31,7 +31,7 @@ export const StyledImg = tw(Img)`
   invisible
   opacity-0
   transform
-  -rotate-[1deg]
+  -rotate-1
   scale-0
   select-none
   pointer-events-none

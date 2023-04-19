@@ -24,10 +24,12 @@ export const StyledStatCard = tw(Link)`
   transition
   overflow-hidden
   group/stat
+  col-span-2
   mobile-md:flex-col
   mobile-md:items-start
   mobile-md:py-14
   mobile-md:px-16
+  mobile-md:col-span-1
   tablet-sm:col-span-4
   tablet-sm:aspect-video
   hocus:no-underline

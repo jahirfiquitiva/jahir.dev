@@ -9,15 +9,20 @@ import {
   money,
   star,
 } from '@/components/icons';
+import { InstaPhoto } from '@/components/views/dashboard/insta-photo';
 import { NowPlaying } from '@/components/views/dashboard/now-playing';
 import { ReactionsStats } from '@/components/views/dashboard/reactions';
 import { StatCard } from '@/components/views/dashboard/stat-card';
+import { fetchInstaFeed } from '@/lib/instagram';
 import { db } from '@/lib/planetscale';
 import { getPostsReactions } from '@/lib/reactions';
 import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 import { getGitHubStats } from '@/lib/stars';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
+import { Img } from '@/components/core/img';
+import animoji from '@/assets/images/animoji.png';
+import { StyledStatCard } from '@/components/views/dashboard/stat-card/stat-card.styles';
 
 // Update data once per hour
 export const revalidate = 3600;
@@ -33,12 +38,14 @@ const getPostsViews = async (): Promise<number> => {
 };
 
 export default async function DashboardPage() {
-  const [views, reactions, sponsors, githubStats] = await Promise.all([
-    getPostsViews(),
-    getPostsReactions(),
-    getSponsorsAndCategories(),
-    getGitHubStats(),
-  ]);
+  const [views, reactions, sponsors, githubStats, instagram] =
+    await Promise.all([
+      getPostsViews(),
+      getPostsReactions(),
+      getSponsorsAndCategories(),
+      getGitHubStats(),
+      fetchInstaFeed(),
+    ]);
 
   return (
     <Section id={'dashboard'}>
@@ -47,9 +54,8 @@ export default async function DashboardPage() {
       </Heading>
       <div
         className={cx(
-          'max-w-full truncate',
-          'grid grid-cols-1 gap-8',
-          'mobile-md:grid-cols-2 mobile-md:gap-12',
+          'max-w-full',
+          'grid grid-cols-2 gap-12',
           'tablet-sm:grid-cols-12 tablet-sm:gap-16',
         )}
       >
@@ -100,6 +106,26 @@ export default async function DashboardPage() {
           color={'#26de81'}
         />
         <NowPlaying />
+        <InstaPhoto post={instagram[0]} />
+        <StyledStatCard
+          title={'More links'}
+          href={'https://links.jahir.dev'}
+          className={cx(
+            'col-span-1',
+            'aspect-square tablet-sm:col-span-3',
+            'mobile-md:max-w-full group/animoji',
+          )}
+        >
+          <Img
+            src={animoji}
+            alt={'Animoji of Jahir'}
+            className={cx(
+              'transition',
+              '-rotate-2 -translate-x-2 translate-y-1 m-auto',
+              'group-hocus/animoji:transform group-hocus/animoji:-rotate-[8deg]',
+            )}
+          />
+        </StyledStatCard>
       </div>
     </Section>
   );

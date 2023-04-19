@@ -15,14 +15,15 @@ export const NowPlayingCard = tw(Link)`
   group/track
   transition-colors
   truncate
-  max-h-[212px]
-  mobile-md:col-span-2
+  max-h-[154.5px]
+  col-span-2
   tablet-sm:aspect-video
   tablet-sm:col-span-6
   hocus:no-underline
   hocus:transform
   hocus:-translate-y-1
   hocus:border-accent-dark/[0.56]
+  hocus:shadow-sm
 `;
 
 export const NowPlayingContent = tw.div`
@@ -36,7 +37,7 @@ export const NowPlayingContent = tw.div`
   max-w-full
   truncate
   mobile-md:p-16
-  mobile-md:max-h-full  
+  mobile-md:max-h-[154.5px]
   items-center
   backdrop-blur-lg
   backdrop-saturate-200
@@ -94,7 +95,6 @@ export const TrackArtist = tw.span`
   text-secondary-txt
   transition-colors
   max-w-full
-  -mt-2
   group-hocus/track:text-primary-txt
 `;
 
