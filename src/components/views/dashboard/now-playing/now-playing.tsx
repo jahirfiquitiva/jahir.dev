@@ -1,6 +1,6 @@
 'use client';
 
-import { LineWobble } from '@uiball/loaders';
+import { Ring } from '@uiball/loaders';
 import type { CSSProperties } from 'react';
 
 import type { NowPlayingResponse } from '@/components/molecules/footer/now-playing';
@@ -28,12 +28,18 @@ export const NowPlaying = () => {
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
     >
       {loading ? (
-        <LineWobble
-          size={84}
-          lineWeight={5}
-          speed={1.75}
-          color={'rgb(var(--stat-color))'}
-        />
+        <div
+          className={
+            'flex flex-row items-center self-center justify-center h-full w-full'
+          }
+        >
+          <Ring
+            size={56}
+            lineWeight={4}
+            speed={1.75}
+            color={'rgb(var(--stat-color))'}
+          />
+        </div>
       ) : (
         <>
           <BackgroundImage

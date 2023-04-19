@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 
+import monaGifFile from '@/assets/images/donate/pixel-mona-heart.gif';
 import { Heading } from '@/components/core/heading';
 import { NoPaddingSection } from '@/components/core/section';
 
@@ -25,7 +26,7 @@ export const SponsorsList = (props: SponsorsListProps) => {
           </p>
         </div>
         <MonaGif
-          src={'/static/images/donate/pixel-mona-heart.gif'}
+          src={monaGifFile}
           alt={'GitHub Mona pixelated animation with hearts'}
           size={72}
         />
