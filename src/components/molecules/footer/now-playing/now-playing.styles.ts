@@ -42,7 +42,6 @@ export const MusicLink = tw(Link)`
 export const RotatingImg = tw(Img)`
   rounded-half
   border
-  border-solid
   border-accent-dark/[0.12]
   motion-safe:animate-spin
   motion-safe:[animation-duration:8s]

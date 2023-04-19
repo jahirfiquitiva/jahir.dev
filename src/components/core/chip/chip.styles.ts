@@ -9,7 +9,6 @@ export const Chip = tw.span`
   text-3xs
   rounded-full
   border
-  border-solid
   border-divider
   bg-accent-dark/[0.012]
   text-secondary-txt

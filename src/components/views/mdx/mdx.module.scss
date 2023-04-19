@@ -87,7 +87,7 @@
 
 .article code {
   @apply py-2 px-4 text-2xs bg-accent-dark/[0.036];
-  @apply border border-solid border-divider rounded-6;
+  @apply border border-divider rounded-6;
   @apply font-normal;
 }
 .article p code {
@@ -101,7 +101,7 @@
   scrollbar-width: var(--size-scrollbar-width);
   color: inherit;
   @apply bg-accent-dark/[0.036] overflow-x-auto mb-12;
-  @apply rounded-8 border border-solid border-divider;
+  @apply rounded-8 border border-divider;
 }
 
 .article pre {
@@ -118,7 +118,7 @@
 }
 
 .article [data-rehype-pretty-code-title] {
-  @apply border border-solid border-divider;
+  @apply border border-divider;
   @apply rounded-tl-8 rounded-tr-8;
   @apply text-secondary-txt bg-background;
   @apply mt-2 font-mono text-3xs py-8 px-12;
@@ -134,7 +134,7 @@
 }
 
 .article blockquote {
-  @apply bg-accent-dark/[0.036] border-0 border-l-[0.25rem] border-solid border-divider;
+  @apply bg-accent-dark/[0.036] border-0 border-l-[0.25rem] border-divider;
   @apply pt-16 py-14 pr-12 rounded-4 my-4 text-secondary-txt;
   & img {
     @apply mt-16 mb-8;

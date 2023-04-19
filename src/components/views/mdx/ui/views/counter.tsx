@@ -16,12 +16,16 @@ import { ViewTracker } from './tracker';
 export const getViews = cache(
   async (slug: string, devToId?: string): Promise<number> => {
     const devToCount = await getSingleDevToArticleViews(devToId).catch(() => 0);
-    const data = await db
-      .selectFrom('counters')
-      .where('slug', '=', slug)
-      .select(['slug', 'views'])
-      .execute();
-    return Number(data?.[0]?.views || 0) + devToCount;
+    try {
+      const data = await db
+        .selectFrom('counters')
+        .where('slug', '=', slug)
+        .select(['slug', 'views'])
+        .execute();
+      return Number(data?.[0]?.views || 0) + devToCount;
+    } catch (e) {
+      return devToCount;
+    }
   },
 );
 

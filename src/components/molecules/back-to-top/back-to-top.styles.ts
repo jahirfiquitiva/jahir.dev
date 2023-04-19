@@ -26,7 +26,6 @@ export const Fab = tw(Button)<{ $shown: boolean }>`
   tracking-wider
   text-3xs
   border
-  border-solid
   border-accent-dark/[0.12]
   [box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)_/_.24)]
   hocus:border-accent-dark/[0.24]

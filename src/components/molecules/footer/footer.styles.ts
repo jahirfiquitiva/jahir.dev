@@ -12,7 +12,6 @@ export const StyledFooter = tw.footer`
   px-14
   gap-[var(--verticalContentPadding)]
   border-t
-  border-solid
   border-divider
   tablet-sm:px-16
   tablet-md:px-0

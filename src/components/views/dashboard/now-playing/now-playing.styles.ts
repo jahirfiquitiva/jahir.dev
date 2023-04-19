@@ -63,7 +63,7 @@ export const BackgroundImage = tw(Img)`
 export const NowPlayingTexts = tw.div`
   flex
   flex-col
-  gap-12
+  gap-12 tablet-sm:gap-16
   truncate
   mix-blend-hard-light
 `;
@@ -90,6 +90,7 @@ export const TrackName = tw.p`
 `;
 
 export const TrackArtist = tw.span`
+  mt-2 tablet-sm:mt-4
   text-3xs
   truncate
   text-secondary-txt

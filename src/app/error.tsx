@@ -28,7 +28,7 @@ const ErrorComponent = (props: { error: Error }) => {
         about this issue, so that I can fix it.
       </p>
       {error ? (
-        <details className={'rounded-8 border border-solid border-divider'}>
+        <details className={'rounded-8 border border-divider'}>
           <summary className={'select-none p-8'}>Error logs</summary>
           <div
             data-rehype-pretty-code-fragment

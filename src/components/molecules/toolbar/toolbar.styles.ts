@@ -52,7 +52,6 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
   backdrop-saturate-150
   rounded-10
   border
-  border-solid
   border-accent-dark/[0.12]
   ${(p) =>
     p.$elevated
