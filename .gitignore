@@ -57,5 +57,4 @@ src/data/*.json
 !src/data/extensions.json
 
 !.env
-static
-!public/static
+./static
