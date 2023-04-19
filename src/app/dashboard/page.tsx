@@ -1,6 +1,8 @@
 import { cx } from 'classix';
 
+import animoji from '@/assets/images/animoji.png';
 import { Heading } from '@/components/core/heading';
+import { Img } from '@/components/core/img';
 import { Section } from '@/components/core/section';
 import {
   gitHubOutline,
@@ -13,6 +15,7 @@ import { InstaPhoto } from '@/components/views/dashboard/insta-photo';
 import { NowPlaying } from '@/components/views/dashboard/now-playing';
 import { ReactionsStats } from '@/components/views/dashboard/reactions';
 import { StatCard } from '@/components/views/dashboard/stat-card';
+import { StyledStatCard } from '@/components/views/dashboard/stat-card/stat-card.styles';
 import { fetchInstaFeed } from '@/lib/instagram';
 import { db } from '@/lib/planetscale';
 import { getPostsReactions } from '@/lib/reactions';
@@ -20,9 +23,6 @@ import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 import { getGitHubStats } from '@/lib/stars';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { Img } from '@/components/core/img';
-import animoji from '@/assets/images/animoji.png';
-import { StyledStatCard } from '@/components/views/dashboard/stat-card/stat-card.styles';
 
 // Update data once per hour
 export const revalidate = 3600;
@@ -142,9 +142,10 @@ export const metadata = getStaticMetadata({
     'stats',
     'statistics',
     'music',
-    'top track',
+    'top tracks',
     'spotify',
     'now playing',
+    'instagram post',
   ],
   image: buildOgImageUrl('dashboard'),
 });
