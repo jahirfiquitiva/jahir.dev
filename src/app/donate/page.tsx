@@ -23,7 +23,7 @@ export default async function DonatePage() {
       <Heading shadow={'brand'} from={'brand'} to={'blue'}>
         Donate
       </Heading>
-      <Mdx code={donate?.body?.code} className={'gap-8'} />
+      <Mdx code={donate?.body?.code} className={'gap-8 tablet-sm:-mt-16'} />
       <DonateButtons />
       <SponsorsList
         categories={sponsorsCategories?.categories || []}
