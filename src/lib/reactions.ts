@@ -1,11 +1,6 @@
-/* eslint-disable no-undef */
-import { NextResponse } from 'next/server';
-
 import { db, type CountersReactions } from '@/lib/planetscale';
 
-export const runtime = 'edge';
-
-export async function GET() {
+export const getPostsReactions = async () => {
   try {
     const data = await db
       .selectFrom('counters')
@@ -14,23 +9,23 @@ export async function GET() {
 
     const counters: CountersReactions = data.reduce(
       (acc, curr) => ({
-        likes: (acc.likes || 0) + (curr.likes || 0),
-        loves: (acc.loves || 0) + (curr.loves || 0),
-        awards: (acc.awards || 0) + (curr.awards || 0),
-        bookmarks: (acc.bookmarks || 0) + (curr.bookmarks || 0),
+        likes: Number(acc.likes || 0) + Number(curr.likes || 0),
+        loves: Number(acc.loves || 0) + Number(curr.loves || 0),
+        awards: Number(acc.awards || 0) + Number(curr.awards || 0),
+        bookmarks: Number(acc.bookmarks || 0) + Number(curr.bookmarks || 0),
       }),
       {} as CountersReactions,
     );
 
-    return NextResponse.json({
+    return {
       counters,
       total: Object.keys(counters).reduce(
         (accumulator, key): number =>
           accumulator + (counters[key as keyof typeof counters] || 0),
         0,
       ),
-    });
+    };
   } catch (err) {
-    return NextResponse.json({ counters: {}, total: -1 });
+    return { counters: {}, total: -1 };
   }
-}
+};

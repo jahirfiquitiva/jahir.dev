@@ -10,15 +10,27 @@ const recursiveBmacRequest = async <T = unknown>(
   items?: Array<T>,
 ): Promise<Array<T>> => {
   if (!endpoint) return items || [];
-  const response: BmacResponse<T> = await fetch(endpoint, {
-    // @ts-ignore
-    headers: { 'Content-Type': 'application/json', ...authHeaders },
-  }).then((res) => res.json());
+  try {
+    const request = await fetch(endpoint, {
+      // @ts-ignore
+      headers: { 'Content-Type': 'application/json', ...authHeaders },
+    });
 
-  const allItems = [...(items || []), ...(response.data || [])];
-  if (response.next_page_url)
-    return recursiveBmacRequest(response.next_page_url, allItems);
-  return allItems;
+    if (!request.ok) {
+      // console.error(await request.text());
+      return [...(items || [])];
+    }
+
+    const response: BmacResponse<T> = await request.json();
+    if (!response) return [...(items || [])];
+
+    const allItems = [...(items || []), ...(response.data || [])];
+    if (response.next_page_url)
+      return recursiveBmacRequest(response.next_page_url, allItems);
+    return allItems;
+  } catch (e) {
+    return [...(items || [])];
+  }
 };
 
 const getPhotoUrl = (name: string): string => {

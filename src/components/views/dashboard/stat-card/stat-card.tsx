@@ -13,7 +13,7 @@ import {
   StyledIcon,
 } from './stat-card.styles';
 
-interface StatCardProps {
+export interface StatCardProps {
   title: string;
   href: string;
   value: string | number;

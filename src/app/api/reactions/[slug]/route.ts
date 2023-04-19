@@ -31,7 +31,7 @@ export async function GET(
 
     const total = Object.keys(counters).reduce(
       (accumulator, key): number =>
-        accumulator + (counters[key as keyof typeof counters] || 0),
+        accumulator + Number(counters[key as keyof typeof counters] || 0),
       0,
     );
 
