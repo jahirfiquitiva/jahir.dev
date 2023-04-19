@@ -21,7 +21,7 @@ const StyledLink = tw.a`
 
 export const MdxLink = (props: ComponentProps<typeof Link>) => {
   const ignoredNextLink = shouldIgnoreNextLink(props.className);
-  if (ignoredNextLink)
+  if (ignoredNextLink || props.href.toString().startsWith('#'))
     return <StyledLink {...props} href={props.href.toString()} />;
   return <Link {...props} />;
 };
