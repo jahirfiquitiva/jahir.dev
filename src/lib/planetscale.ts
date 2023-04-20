@@ -10,26 +10,18 @@ export const reactionsNames = [
 
 export type ReactionName = typeof reactionsNames[number];
 
-export type CountersReactions = { [Key in ReactionName]?: bigint };
+export type CountersReactions = { [Key in ReactionName]?: number };
 
 interface CountersTable extends CountersReactions {
   slug: string;
-  views?: bigint;
-}
-
-interface VisitsTable {
-  id: string;
-  city: string;
-  country: string;
-  hits?: bigint;
+  views?: number;
 }
 
 interface Database {
   counters: CountersTable;
-  visits: VisitsTable;
 }
 
-export const queryBuilder = new Kysely<Database>({
+export const db = new Kysely<Database>({
   dialect: new PlanetScaleDialect({
     url: process.env.DATABASE_URL,
   }),

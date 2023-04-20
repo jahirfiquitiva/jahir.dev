@@ -1,73 +1,36 @@
 import Icon from '@mdi/react';
-import { useMemo, useState } from 'react';
 
-import { Masonry, type MasonryBreakpoints } from '@/components/compounds';
-import { NothingFound } from '@/components/compounds/list-cards-group/list-cards-group.styles';
-import { Field, Heading, Section, LinkButton } from '@/components/core';
-import { mdiEyeOutline, mdiFileCodeOutline, mdiMagnify } from '@/components/icons';
-import { breakpointsValues } from '@/stitches';
-import type { FC, Project } from '@/types';
-import { theme } from '~/stitches';
+import { Heading } from '@/components/core/heading';
+import { ButtonLink } from '@/components/core/link';
+import { Section } from '@/components/core/section';
+import { mdiEyeOutline, mdiFileCodeOutline } from '@/components/icons';
+import type { Project } from '@/types/project';
 
 import { ProjectCard } from './card';
-import { ProjectsButtons, ProjectsHeader } from './projects.styled';
+import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 
 interface ProjectsProps {
-  projects?: Array<Project>;
-  showFullList?: boolean;
+  projects: Array<Project>;
+  full?: boolean;
 }
 
-const masonryBreakpoints: MasonryBreakpoints = {};
-masonryBreakpoints['0'] = 1;
-masonryBreakpoints[(breakpointsValues['mobile-sm'] || 0).toString()] = 1;
-masonryBreakpoints[(breakpointsValues['tablet-sm'] || 0).toString()] = 2;
-
-// eslint-disable-next-line max-lines-per-function
-export const Projects: FC<ProjectsProps> = (props) => {
-  const { projects, showFullList } = props;
-  const [search, setSearch] = useState('');
-
-  const filteredProjects = useMemo(() => {
-    return projects?.filter(
-      (project) =>
-        project?.name.toLowerCase().includes(search.toLowerCase()) ||
-        project?.description?.toLowerCase().includes(search.toLowerCase()),
-    );
-  }, [projects, search]);
-
-  const renderSearchComponents = () => {
-    if (!showFullList) return null;
-    return (
-      <>
-        <Field
-          iconPath={mdiMagnify}
-          type={'text'}
-          name={'search-input'}
-          label={'Search projects'}
-          placeholder={'Search projects...'}
-          value={search}
-          onChange={setSearch}
-          hideLabel
-        />
-
-        {(filteredProjects?.length || 0) <= 0 ? (
-          <NothingFound>No projects found.</NothingFound>
-        ) : null}
-      </>
-    );
-  };
+export const Projects = (props: ProjectsProps) => {
+  const { projects, full } = props;
 
   return (
-    <Section
-      id={'projects'}
-      css={{ gap: 'calc($$verticalContentPadding / 1.5)' }}
-    >
+    <Section id={'projects'}>
       <ProjectsHeader>
-        <Heading shadow={'red'} gradient={'red-to-purple'}>
-          {!showFullList ? 'Featured ' : ''}Projects
+        <Heading
+          shadow={'red'}
+          from={'red'}
+          to={'purple'}
+          $as={full ? 'h1' : 'h2'}
+          className={'w-[unset]'}
+        >
+          {!full ? 'Featured ' : ''}Projects
         </Heading>
         <ProjectsButtons>
-          <LinkButton
+          <ButtonLink
             title={"Jahir's resume pdf file"}
             href={'/resume'}
             openInNewTab
@@ -75,33 +38,29 @@ export const Projects: FC<ProjectsProps> = (props) => {
           >
             <Icon path={mdiFileCodeOutline} size={0.9} />
             Resume
-          </LinkButton>
-          {!showFullList && (
-            <LinkButton
-              title={'View all projects by Jahir'}
-              href={'/projects'}
-              withShadow
-            >
+          </ButtonLink>
+          {!full && (
+            <ButtonLink title={'View all projects by Jahir'} href={'/projects'}>
               <Icon path={mdiEyeOutline} size={0.9} />
               View all
-            </LinkButton>
+            </ButtonLink>
           )}
         </ProjectsButtons>
       </ProjectsHeader>
-      {renderSearchComponents()}
-      <Masonry breakpoints={masonryBreakpoints} gap={theme.space['18'].value}>
-        {(filteredProjects || []).map((project, index) => {
+      <ul className={'list-none flex flex-col gap-6'}>
+        {(projects || []).map((project, index) => {
           return (
-            <ProjectCard
-              key={
-                // eslint-disable-next-line newline-per-chained-call
-                `${project.name.toLowerCase().split(' ').join('-')}-${index}`
-              }
-              project={project}
-            />
+            <li
+              key={`${project.name
+                .toLowerCase()
+                .split(' ')
+                .join('-')}-${index}`}
+            >
+              <ProjectCard project={project} />
+            </li>
           );
         })}
-      </Masonry>
+      </ul>
     </Section>
   );
 };

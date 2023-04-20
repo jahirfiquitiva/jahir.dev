@@ -1,30 +1,35 @@
-import { SocialLinks } from '@/components/compounds';
-import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/components/core';
-import type { FC } from '@/types';
+import { cx } from 'classix';
 
-import { FooterLinksGroup, type FooterLinkProps } from './footer-links-group';
+import { LogoAnimoji } from '@/components/core/logo-animoji';
+import { SocialLinks } from '@/components/molecules/social-links';
+
 import {
   StyledFooter,
-  LinksContainer,
   InnerFooter,
   BrandLink,
+  BrandLinkSpan,
+  LinksContainer,
 } from './footer.styles';
+import { FooterLinksList, type FooterLinkProps } from './links-list';
 
 const primaryLinks: Array<FooterLinkProps> = [
   {
     title: 'About',
     href: '/about',
-    gradient: 'blue-to-green',
+    className: 'from-gradient-blue to-gradient-green',
+    underlineColor: 'blue',
   },
   {
     title: 'Blog',
     href: '/blog',
-    gradient: 'yellow-to-orange',
+    className: 'from-gradient-yellow to-gradient-orange',
+    underlineColor: 'yellow',
   },
   {
     title: 'Projects',
     href: '/projects',
-    gradient: 'red-to-purple',
+    className: 'from-gradient-red to-gradient-purple',
+    underlineColor: 'red',
   },
 ];
 
@@ -32,17 +37,20 @@ const secondaryLinks: Array<FooterLinkProps> = [
   {
     title: 'Uses',
     href: '/uses',
-    gradient: 'blue-to-green',
+    className: 'from-gradient-purple to-gradient-brand',
+    underlineColor: 'purple',
   },
   {
     title: 'Donate',
     href: '/donate',
-    gradient: 'brand-to-blue',
+    className: 'from-gradient-brand to-gradient-blue',
+    underlineColor: 'brand',
   },
   {
     title: 'Dashboard',
     href: '/dashboard',
-    gradient: 'purple-to-brand',
+    className: 'from-gradient-blue to-gradient-green',
+    underlineColor: 'blue',
   },
 ];
 
@@ -50,46 +58,44 @@ const metaLinks: Array<FooterLinkProps> = [
   {
     title: 'RSS',
     href: '/feed.xml',
-    gradient: 'yellow-to-orange',
+    className: 'from-gradient-yellow to-gradient-orange',
+    underlineColor: 'yellow',
     a11yTitle: 'RSS Feed',
     openInNewTab: true,
   },
   {
     title: 'Source',
     href: 'https://github.com/jahirfiquitiva/jahir.dev',
-    gradient: 'brand-to-blue',
+    className: 'from-gradient-brand to-gradient-blue',
+    underlineColor: 'brand',
     a11yTitle: 'View source code on GitHub',
     openInNewTab: true,
   },
 ];
 
-export const Footer: FC = (props) => {
+export const Footer = () => {
   return (
-    <StyledFooter css={props.css}>
+    <StyledFooter>
       <LinksContainer>
-        <FooterLinksGroup title={'Primary pages links'} links={primaryLinks} />
-        <FooterLinksGroup
+        <FooterLinksList title={'Primary pages links'} links={primaryLinks} />
+        <FooterLinksList
           title={'Secondary pages links'}
           links={secondaryLinks}
         />
-        <FooterLinksGroup meta title={'Meta pages links'} links={metaLinks} />
+        <FooterLinksList meta title={'Meta pages links'} links={metaLinks} />
       </LinksContainer>
-      <InnerFooter css={{ mx: '-$2' }}>
+      <InnerFooter>
         <BrandLink
           href={'/'}
           title={'Home page'}
-          gradient={'brand-to-blue'}
-          forceGradient
-          css={{
-            hocus: {
-              '& > span:first-of-type': logoAnimojiHoveredStyles,
-            },
-          }}
+          className={cx(
+            'hocus:decoration-gradient-brand group/link group/animoji',
+          )}
         >
           <LogoAnimoji />
-          <span>Jahir Fiquitiva</span>
+          <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>
         </BrandLink>
-        <SocialLinks />
+        <SocialLinks withBackToTop />
       </InnerFooter>
     </StyledFooter>
   );

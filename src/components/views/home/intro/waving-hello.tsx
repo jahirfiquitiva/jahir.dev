@@ -1,50 +1,78 @@
-import { useEffect, useState } from 'react';
+'use client';
 
-import { Heading } from '@/components/core';
-import type { FC } from '@/types';
+import { useState, useEffect } from 'react';
+import tw from 'tailwind-styled-components';
 
-import { WaveSpan } from './intro.styles';
+import { Heading } from '@/components/core/heading';
 
-const hellos = ['Hello,', 'Hola,', 'Ciao,', 'Hallo,', 'Salut,', 'Olá,'];
-const worlds = ['world', 'mundo', 'mondo', 'Welt', 'monde', 'mundo'];
+const WavingSpan = tw.span`
+  inline-block
+  text-primary-txt
+  motion-safe:animate-wave
+  motion-safe:origin-waving
+`;
+
+const greetings = {
+  en: 'Hello, world',
+  es: 'Hola, mundo',
+  it: 'Ciao, mondo',
+  de: 'Hallo, Welt',
+  fr: 'Salut, monde',
+  pt: 'Olá, mundo',
+};
+
+const allGreetings = Object.keys(greetings).map(
+  (key) => greetings[key as keyof typeof greetings],
+);
+
+const getHelloForCountry = (
+  country?: string | null,
+  lang?: string | null,
+): string | null => {
+  if (!country || !lang) return null;
+  const hello = greetings[lang as keyof typeof greetings];
+  return `${hello.substring(0, hello.indexOf(',') + 1)} ${country}`;
+};
 
 interface WavingHelloProps {
-  countryName?: string;
-  countryEmoji?: string;
+  country?: string | null;
+  lang?: string | null;
+  emoji?: string | null;
 }
 
-export const WavingHello: FC<WavingHelloProps> = (props) => {
-  const { countryName, countryEmoji } = props;
+export const WavingHello = (props: WavingHelloProps) => {
+  const { country, lang, emoji } = props;
+  const countryHello = getHelloForCountry(country, lang);
   const [hello, setHello] = useState(0);
 
   useEffect(() => {
+    if (countryHello) return;
     const changeHello = setInterval(() => {
-      setHello((helloo) => (helloo >= hellos.length - 1 ? 0 : helloo + 1));
+      setHello((helloo) =>
+        helloo >= allGreetings.length - 1 ? 0 : helloo + 1,
+      );
     }, 2500);
     return () => clearInterval(changeHello);
-  }, []);
+  }, [countryHello]);
 
   return (
     <Heading
       shadow={'yellow'}
-      css={{
-        color: '$text-primary',
-        // look like h2
-        fontSize: '$2xl',
-      }}
+      // look like h2
+      className={'text-2xl'}
     >
-      <WaveSpan role={'img'} aria-label={'waving hand'}>
+      <WavingSpan role={'img'} aria-label={'waving hand'}>
         👋
-      </WaveSpan>
-      &nbsp;&nbsp;{hellos[hello]} {countryName || worlds[hello]}!
-      {countryEmoji ? (
-        <>
-          {' '}
-          <span role={'img'} aria-label={`${countryName} flag`}>
-            {countryEmoji}
-          </span>
-        </>
-      ) : null}
+      </WavingSpan>
+      &nbsp;&nbsp;{countryHello || allGreetings[hello]}&nbsp;
+      <span
+        className={'text-secondary-txt'}
+        role={'img'}
+        aria-label={country ? `flag for country: "${country}"` : 'world map'}
+      >
+        {emoji || '🗺️'}
+      </span>
+      !
     </Heading>
   );
 };

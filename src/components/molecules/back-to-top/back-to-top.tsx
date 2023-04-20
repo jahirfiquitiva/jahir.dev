@@ -1,13 +1,13 @@
-import Icon from '@mdi/react';
+'use client';
+
 import { useState, useEffect, useCallback } from 'react';
 
 import { mdiChevronUp } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { FC } from '@/types';
 
-import { Fab } from './back-to-top.styles';
+import { Fab, FabIcon, FabText } from './back-to-top.styles';
 
-const scrollToTop = () => {
+export const scrollToTop = () => {
   try {
     window.scroll({
       top: 0,
@@ -20,7 +20,7 @@ const scrollToTop = () => {
 };
 
 const SCROLL_OFFSET = 287;
-export const BackToTop: FC = (props) => {
+export const BackToTop = () => {
   const [showButton, setShowButton] = useState(false);
   const hasMounted = useHasMounted();
 
@@ -30,7 +30,7 @@ export const BackToTop: FC = (props) => {
     const screenHeight = document.body.scrollHeight - window.screen.availHeight;
     try {
       setShowButton(
-        scrolledDistance / screenHeight > 0.3 &&
+        scrolledDistance / screenHeight > 0.25 &&
           scrolledDistance < screenHeight - Math.ceil(SCROLL_OFFSET / 2.5),
       );
     } catch (e) {}
@@ -47,14 +47,9 @@ export const BackToTop: FC = (props) => {
   }, [hasMounted, checkScrollTop]);
 
   return (
-    <Fab
-      title={'Scroll back to top'}
-      onClick={scrollToTop}
-      shown={showButton}
-      css={props.css}
-    >
-      <Icon path={mdiChevronUp} size={1} />
-      <span>Back to top</span>
+    <Fab title={'Scroll back to top'} onClick={scrollToTop} $shown={showButton}>
+      <FabIcon path={mdiChevronUp} size={1} />
+      <FabText>Back to top</FabText>
     </Fab>
   );
 };

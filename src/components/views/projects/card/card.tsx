@@ -1,43 +1,44 @@
-import Icon from '@mdi/react';
-import { useMemo } from 'react';
+'use client';
 
-import { Img } from '@/components/core';
-import { mdiStar } from '@/components/icons';
-import { useRequest } from '@/hooks/use-request';
-import { useTheme } from '@/providers/theme';
-import type { FC, Project } from '@/types';
-import { getReadableColor } from '@/utils/color/get-readable-color';
-import { hexToRGB } from '@/utils/color/hex-to-rgb';
+import Icon from '@mdi/react';
+import { cx } from 'classix';
+import { type CSSProperties, useMemo } from 'react';
+
+import { star } from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useImmutableRequest } from '@/hooks/use-request';
+import { useTheme } from '@/providers/theme-provider';
+import type { Project } from '@/types/project';
+import { getReadableColor, hexToRgb } from '@/utils/color';
 
 import {
-  Description,
-  StarsContainer,
   StyledProjectCard,
+  ProjectIcon,
   TitleContainer,
-} from './card.styled';
+  StarsCounter,
+} from './card.styles';
 
 interface ProjectCardProps {
   project?: Project;
 }
 
-export const ProjectCard: FC<ProjectCardProps> = (props) => {
+export const ProjectCard = (props: ProjectCardProps) => {
   const { project } = props;
-  const { data } = useRequest<{ success?: boolean; stars?: string }>(
+  const { data } = useImmutableRequest<{ success?: boolean; stars?: string }>(
     `/api/stars/${project?.repo}`,
   );
+  const hasMounted = useHasMounted();
   const { isDark, themeReady } = useTheme();
 
-  const color = useMemo<string>(() => {
-    if (!themeReady) return '';
-    return hexToRGB(
-      getReadableColor(
-        isDark ? project?.darkColor || project?.color : project?.color,
-        isDark,
-      ),
-      undefined,
-      true,
-    );
-  }, [project?.color, project?.darkColor, isDark, themeReady]);
+  const projectColor = useMemo<string | null | undefined>(() => {
+    if (!themeReady || !hasMounted) return null;
+    return isDark ? project?.darkColor || project?.color : project?.color;
+  }, [isDark, themeReady, hasMounted, project?.darkColor, project?.color]);
+
+  const color = useMemo<string | null>(() => {
+    if (!themeReady || !hasMounted || !projectColor) return null;
+    return hexToRgb(getReadableColor(projectColor, isDark), undefined, true);
+  }, [projectColor, isDark, themeReady, hasMounted]);
 
   const extraIconProps = useMemo(() => {
     if (project?.iconMeta && project?.iconMeta.blur64) {
@@ -54,25 +55,44 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
     <StyledProjectCard
       title={`Project: ${project?.name}`}
       href={project.link}
-      underline={false}
-      css={{ $$color: color || '$colors$accent-shadow' }}
+      style={
+        {
+          '--project-color':
+            hexToRgb(projectColor, 0, true) || 'var(--color-accent-dark)',
+          '--project-text-color': color || 'var(--color-accent-dark)',
+        } as CSSProperties
+      }
     >
+      <ProjectIcon
+        src={`/static/images/projects/${project.icon}`}
+        alt={`Icon for project "${project.name}"`}
+        size={56}
+        {...extraIconProps}
+      />
       <TitleContainer>
-        <Img
-          src={`/static/images/projects/${project.icon}`}
-          alt={`Icon for project "${project.name}"`}
-          size={44}
-          {...extraIconProps}
-        />
-        <span>{project.name}</span>
+        <p className={'flex items-center gap-10'}>
+          <span
+            className={cx(
+              'font-manrope font-semibold',
+              'group-hocus/project:underline',
+              'group-hocus/project:text-[rgb(var(--project-text-color))]',
+            )}
+          >
+            {project.name}
+          </span>
+          {data && data.stars ? (
+            <StarsCounter
+              title={`Project "${project.name}" has ${data.stars} stars on GitHub`}
+            >
+              <Icon path={star} size={0.5} />
+              <span>{data.stars}</span>
+            </StarsCounter>
+          ) : null}
+        </p>
+        <p className={'text-3xs mr-4 group-hocus/project:text-primary-txt'}>
+          {project.description}
+        </p>
       </TitleContainer>
-      <Description>{project.description}</Description>
-      {data && data.stars ? (
-        <StarsContainer>
-          <Icon path={mdiStar} size={0.7} />
-          <span>{data.stars}</span>
-        </StarsContainer>
-      ) : null}
     </StyledProjectCard>
   );
 };

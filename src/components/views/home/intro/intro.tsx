@@ -1,9 +1,11 @@
 import Icon from '@mdi/react';
+import { cx } from 'classix';
 import type { ComponentProps } from 'react';
 
-import { Heading, Link, LinkButton } from '@/components/core';
+import { Heading } from '@/components/core/heading';
+import { ButtonLink, Link } from '@/components/core/link';
 import { mdiAccountCircleOutline } from '@/components/icons';
-import type { FC } from '@/types';
+import { SocialLinks } from '@/components/molecules/social-links';
 
 import {
   IntroSection,
@@ -14,14 +16,20 @@ import {
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
 
-export const Intro: FC<ComponentProps<typeof WavingHello>> = (props) => {
+export const Intro = (props: ComponentProps<typeof WavingHello>) => {
   return (
     <IntroSection id={'intro'}>
       <TextsContainer>
         <WavingHello {...props} />
-        <Heading as={'h2'} shadow={'blue'}>
+        <Heading $as={'h2'} shadow={'blue'}>
           I am&nbsp;
-          <Heading as={'span'} gradient={'brand-to-blue'}>
+          <Heading
+            $as={'span'}
+            shadow={'blue'}
+            from={'brand'}
+            to={'blue'}
+            className={'[&>span]:w-[unset]'}
+          >
             Jahir Fiquitiva
           </Heading>
         </Heading>
@@ -34,10 +42,22 @@ export const Intro: FC<ComponentProps<typeof WavingHello>> = (props) => {
             Colombia 🇨🇴
           </Link>
         </IntroParagraph>
-        <LinkButton title={'About page'} href={'/about'} withShadow>
-          <Icon path={mdiAccountCircleOutline} size={1} />
-          More about me
-        </LinkButton>
+        <div className={'flex items-center gap-16 flex-wrap'}>
+          <ButtonLink title={'About page'} href={'/about'}>
+            <Icon path={mdiAccountCircleOutline} size={1} />
+            More about me
+          </ButtonLink>
+          <div
+            className={cx(
+              'flex items-center transition-colors',
+              'border border-divider rounded-6',
+              'py-4 pl-14 pr-10 min-h-[2.625rem]',
+              'hover:border-accent-dark',
+            )}
+          >
+            <SocialLinks />
+          </div>
+        </div>
       </TextsContainer>
       <PhotoContainer>
         <Photo

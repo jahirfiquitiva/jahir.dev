@@ -5,6 +5,10 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
     "quotes": [
       "error",
       "single",
@@ -33,14 +37,6 @@
       {
         "max": 300,
         "skipBlankLines": true
-      }
-    ],
-    "max-lines-per-function": [
-      "error",
-      {
-        "max": 60,
-        "skipBlankLines": true,
-        "IIFEs": true
       }
     ],
     "arrow-parens": [

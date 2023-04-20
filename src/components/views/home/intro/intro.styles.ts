@@ -1,76 +1,50 @@
-import { Img, Section } from '@/components/core';
-import { styled, keyframes } from '~/stitches';
+import tw from 'tailwind-styled-components';
 
-export const IntroSection = styled(Section, {
-  display: 'grid',
-  gridTemplateColumns: 'minmax(0, 1fr)',
-  rowGap: '$16',
-  '@tablet-sm': {
-    gridTemplateColumns: 'minmax(0, 1fr) auto',
-    gridTemplateRows: 'minmax(0, 1fr)',
-    columnGap: '$26',
-  },
-});
+import { Img } from '@/components/core/img';
+import { Section } from '@/components/core/section';
 
-export const TextsContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '$8',
-  gridRow: 2,
-  '@tablet-sm': {
-    gridRow: 1,
-  },
-});
+export const IntroSection = tw(Section)`
+  grid
+  grid-cols-1
+  gap-y-16
+  tablet-sm:grid-cols-[minmax(0,1fr)_auto]
+  tablet-sm:grid-rows-1
+  tablet-sm:gap-x-28
+`;
 
-export const IntroParagraph = styled('p', {
-  my: '$12',
-  maxWidth: '325px',
-  '@mobile-lg': {
-    maxWidth: '410px',
-  },
-});
+export const TextsContainer = tw.div`
+  flex
+  flex-col
+  gap-8
+  [grid-row:2]
+  tablet-sm:[grid-row:1]
+`;
 
-export const PhotoContainer = styled('div', {
-  borderRadius: '50%',
-  backgroundColor: '#223e80',
-  width: 168,
-  height: 168,
-});
+export const IntroParagraph = tw.p`
+  my-12
+  max-w-[325px]
+  mobile-lg:max-w-[410px]
+`;
 
-export const Photo = styled(Img, {
-  borderRadius: '50%',
-  backgroundColor: '$accent-dark',
-  objectFit: 'cover',
-  objectPosition: 'center',
-  canHover: {
-    filter: 'grayscale(100%) contrast(.75) brightness(150%)',
-    transition: 'all .35s ease-in-out',
-    mixBlendMode: 'hard-light',
-    opacity: 0.75,
-  },
-  hocus: {
-    cursor: 'grab',
-    filter: 'unset',
-    mixBlendMode: 'normal',
-    opacity: 1,
-  },
-});
+export const PhotoContainer = tw.div`
+  rounded-half
+  bg-[#38518d]
+  w-[168px]
+  h-[168px]
+`;
 
-const wave = keyframes({
-  'from, 50%, to': { transform: 'rotate(0deg)' },
-  '10%, 30%': { transform: 'rotate(-10deg)' },
-  '20%': { transform: 'rotate(12deg)' },
-  '40%': { transform: 'rotate(9deg)' },
-});
-
-export const WaveSpan = styled('span', {
-  display: 'inline-block',
-  canAnimate: {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    animationName: wave,
-    animationDuration: '2.5s',
-    animationIterationCount: 'infinite',
-    transformOrigin: '70% 70%',
-  },
-});
+export const Photo = tw(Img)`
+  rounded-half
+  [@media(hover:hover)]:filter
+  [@media(hover:hover)]:grayscale
+  [@media(hover:hover)]:contrast-75
+  [@media(hover:hover)]:brightness-150
+  [@media(hover:hover)]:transition
+  [@media(hover:hover)]:[transition-duration:.25s]
+  [@media(hover:hover)]:mix-blend-hard-light
+  [@media(hover:hover)]:opacity-75
+  hocus:cursor-grab
+  hocus:filter-none
+  hocus:mix-blend-normal
+  hocus:opacity-100
+`;

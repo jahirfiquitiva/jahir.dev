@@ -1,102 +1,101 @@
-import { useMemo } from 'react';
+'use client';
+
+import Icon from '@mdi/react';
+import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
+
+import { calendarOutline, mdiClockOutline } from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
+import { useTheme } from '@/providers/theme-provider';
+import { getReadableColor, hexToRgb } from '@/utils/color';
+import { formatDate } from '@/utils/date';
+import { getUrlDomain } from '@/utils/domain';
+import type { Blog } from 'contentlayer/generated';
+
+import { Stat } from '../../mdx/ui/stat';
 
 import {
-  ListCard,
-  ListCardContent,
-  ListCardInfoItem,
-} from '@/components/compounds';
-import { InfoContainer } from '@/components/compounds/list-card/list-card.styles';
-import { mdiClockOutline, mdiEyeOutline, calendarOutline } from '@/components/icons';
-import { useRequest } from '@/hooks/use-request';
-import type { FC, Post } from '@/types';
-import { formatDate } from '@/utils/format/format-date';
+  PostCard,
+  PostCardHero,
+  PostCardContent,
+  PostTitle,
+  PostDescription,
+  PostStatsContainer,
+} from './card.styles';
 
-import { BlogCardHero, Published } from './card.styled';
-
-interface BlogCardProps {
-  post: Post;
+interface PostCardProps {
+  post: Blog;
+  viewsCounter?: PropsWithChildren['children'];
 }
 
-export const getShortDomainForBlog = (rightLink?: string) => {
-  if (!rightLink) return '';
-  try {
-    const url = new URL(rightLink);
-    return url.hostname.replace('www.', '');
-  } catch (e) {
-    return '';
-  }
-};
+export const BlogPostCard = (props: PostCardProps) => {
+  const hasMounted = useHasMounted();
+  const { isDark, themeReady } = useTheme();
 
-// eslint-disable-next-line max-lines-per-function
-export const BlogCard: FC<BlogCardProps> = (props) => {
-  const { post } = props;
-  const { link, slug, devToId } = post;
-
-  const { data: views } = useRequest<{ total?: string }>(
-    `/api/views/blog--${slug}?devToId=${devToId}`,
-  );
-
+  const { post, viewsCounter } = props;
+  const { link, slug, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
-  const domain = getShortDomainForBlog(rightLink);
+  const domain = getUrlDomain(rightLink);
 
-  const extraHeroProps = useMemo(() => {
-    if (post?.heroMeta && post?.heroMeta.blur64) {
-      return { placeholder: 'blur', blurDataURL: post?.heroMeta.blur64 } as {
-        placeholder: 'blur' | 'empty';
-        blurDataURL?: string;
-      };
-    }
-    return {};
-  }, [post?.heroMeta]);
+  const textColor = useMemo<string | null>(() => {
+    if (!themeReady || !hasMounted) return null;
+    return hexToRgb(getReadableColor(post.color, isDark), undefined, true);
+  }, [isDark, themeReady, post.color, hasMounted]);
+
+  const a11yDate = formatDate(post.date);
+  const readableDate = formatDate(post.date, { year: undefined });
 
   return (
-    <ListCard
+    <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink}
-      imageUrl={post.hero || ''}
-      color={post.color}
+      style={
+        {
+          '--post-color':
+            hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)',
+          '--post-text-color': textColor || 'var(--color-accent-dark)',
+        } as CSSProperties
+      }
     >
-      <BlogCardHero
+      <PostCardHero
         src={post.hero || ''}
-        alt={`Cover image for blog "${post.title}"`}
+        alt={`Hero image for blog post "${post.title}"`}
         width={post?.heroMeta?.size?.width || 144}
         height={post?.heroMeta?.size?.height || 72}
-        {...extraHeroProps}
+        placeholder={'blur'}
+        blurDataURL={post?.heroMeta?.blur64}
       />
-      <ListCardContent title={post.title} description={post.excerpt}>
+      <PostCardContent>
+        <PostTitle>{post.title}</PostTitle>
+        <PostDescription>{post.excerpt}</PostDescription>
         {domain ? (
-          <Published>
-            Published on <span>{domain}</span>
-          </Published>
+          <span className={'text-3xs text-tertiary-txt'}>
+            Published on <span className={'underline'}>{domain}</span>
+          </span>
         ) : null}
-        <InfoContainer>
-          <ListCardInfoItem
-            title={`Published on ${formatDate(post.date, {
-              year: 'numeric',
-              month: 'long',
-            })}`}
-            iconPath={calendarOutline}
-          >
-            {formatDate(post.date, { year: undefined, month: 'short' })}
-          </ListCardInfoItem>
-          {(post.readingTime?.minutes || 0) > 0 ? (
-            <ListCardInfoItem
-              title={`Reading time: ${post.readingTime?.minutes} minutes`}
-              iconPath={mdiClockOutline}
+        <PostStatsContainer>
+          {Boolean(readableDate) && (
+            <Stat
+              title={`This blog post was published on ${a11yDate}`}
+              aria-label={`This blog post was published on ${a11yDate}`}
+              $sm
             >
-              {post.readingTime?.text}
-            </ListCardInfoItem>
-          ) : null}
-          {views?.total && +(views?.total || '0') > 2 ? (
-            <ListCardInfoItem
-              title={`Blog post viewed ${views?.total} times`}
-              iconPath={mdiEyeOutline}
+              <Icon path={calendarOutline} size={0.5} />
+              <span>{readableDate}</span>
+            </Stat>
+          )}
+          {Boolean(readingTime?.minutes) && (
+            <Stat
+              title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
+              aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
+              $sm
             >
-              {views?.total} views
-            </ListCardInfoItem>
-          ) : null}
-        </InfoContainer>
-      </ListCardContent>
-    </ListCard>
+              <Icon path={mdiClockOutline} size={0.5} />
+              <span>{readingTime?.text}</span>
+            </Stat>
+          )}
+          {viewsCounter}
+        </PostStatsContainer>
+      </PostCardContent>
+    </PostCard>
   );
 };

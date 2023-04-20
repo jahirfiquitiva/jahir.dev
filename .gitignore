@@ -44,7 +44,7 @@ public/*.xml
 !.env.example
 content/sheet.mdx
 content/hello-world.mdx
-cl-config/themes/*.json
+config/contentlayer/themes/*.json
 
 .frontmatter
 frontmatter.json
@@ -57,3 +57,4 @@ src/data/*.json
 !src/data/extensions.json
 
 !.env
+static/media/*.png

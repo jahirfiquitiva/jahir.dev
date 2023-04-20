@@ -1,48 +1,67 @@
-import { useState } from 'react';
+'use client';
 
-import { LogoAnimoji, logoAnimojiHoveredStyles } from '@/components/core';
+import { useState, useCallback, useEffect } from 'react';
+
+import { LogoAnimoji } from '@/components/core/logo-animoji';
 import { mdiMenu, mdiPlus } from '@/components/icons';
-import type { FC } from '@/types';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 
-import { ThemeToggle, MobileMenuToggle } from './toolbar-buttons';
+import { ThemeToggle, MobileMenuToggle, MobileMenuIcon } from './buttons';
 import {
-  ToolbarNavLinks,
+  HomeLink,
+  HomeLinkSpan,
   ToolbarLinksContainer,
-  ToolbarLink,
-} from './toolbar-nav-links';
+  ToolbarNavLinks,
+} from './nav-links';
 import { Header, Nav } from './toolbar.styles';
 
-export const Toolbar: FC = (props) => {
+const scrollThreshold = 40; //px
+export const Toolbar = () => {
   const [isExpanded, expand] = useState(false);
+  const [elevated, setElevated] = useState(false);
+  const hasMounted = useHasMounted();
+
+  const checkScrolledDistance = useCallback(() => {
+    if (!hasMounted) return;
+    const scrolledDistance = window.scrollY || window.pageYOffset;
+    try {
+      setElevated(scrolledDistance >= scrollThreshold);
+    } catch (e) {}
+  }, [hasMounted]);
+
+  useEffect(() => {
+    if (!hasMounted) return;
+    window.addEventListener('scroll', checkScrolledDistance);
+    checkScrolledDistance();
+    // eslint-disable-next-line consistent-return
+    return () => {
+      window.removeEventListener('scroll', checkScrolledDistance);
+    };
+  }, [hasMounted, checkScrolledDistance]);
+
   return (
-    <Header expanded={isExpanded} css={props.css}>
-      <Nav expanded={isExpanded}>
-        <ToolbarLink
-          home
-          href={'/'}
-          title={'Home page'}
-          underline={false}
-          css={{
-            hocus: {
-              '& > span:first-of-type': logoAnimojiHoveredStyles,
-            },
-          }}
-        >
+    <Header data-expanded={isExpanded} id={'header'}>
+      <Nav $elevated={elevated}>
+        <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
           <LogoAnimoji />
-          <span>Jahir Fiquitiva</span>
-        </ToolbarLink>
-        <ToolbarNavLinks expanded={isExpanded} />
-        <ToolbarLinksContainer>
-          <ThemeToggle />
+          <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
+        </HomeLink>
+        <ToolbarNavLinks />
+        <ToolbarLinksContainer className={'self-start tablet-md:self-center'}>
+          <li>
+            <ThemeToggle />
+          </li>
           <li>
             <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}
-              iconPath={isExpanded ? mdiPlus : mdiMenu}
+              aria-controls={'header'}
               onClick={() => {
                 expand(!isExpanded);
               }}
-            />
+            >
+              <MobileMenuIcon path={isExpanded ? mdiPlus : mdiMenu} size={1} />
+            </MobileMenuToggle>
           </li>
         </ToolbarLinksContainer>
       </Nav>

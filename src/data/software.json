@@ -90,11 +90,6 @@
     "link": "https://type-fu.com/"
   },
   {
-    "image": "uses/apps/icon-champ.png",
-    "name": "Icon Champ",
-    "link": "https://www.macenhance.com/iconchamp.html"
-  },
-  {
     "image": "uses/apps/soundsource.png",
     "name": "SoundSource",
     "link": "https://rogueamoeba.com/soundsource/"
@@ -118,5 +113,15 @@
     "image": "uses/apps/monolisa.png",
     "name": "MonoLisa",
     "link": "https://monolisa.dev/"
+  },
+  {
+    "image": "uses/apps/dato.png",
+    "name": "Dato",
+    "link": "https://sindresorhus.com/dato"
+  },
+  {
+    "image": "uses/apps/pace-theme.png",
+    "name": "Pace Theme",
+    "link": "https://github.com/fabian-hiller/vscode-pace-theme"
   }
 ]

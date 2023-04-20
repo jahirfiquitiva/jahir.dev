@@ -1,46 +1,34 @@
-import { type ComponentProps } from 'react';
-
-import type { FC } from '@/types';
+import { cx } from 'classix';
+import NextLink from 'next/link';
+import type { ComponentProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { StyledLink } from './link.styles';
 
 const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
 
-interface LinkProps extends ComponentProps<typeof StyledLink> {
-  underline?: boolean;
+interface LinkProps extends ComponentProps<typeof NextLink> {
+  title: string;
   openInNewTab?: boolean;
-  disabled?: boolean;
-  tabIndex?: number;
 }
 
-export const Link: FC<LinkProps> = (props) => {
+export const Link = (props: LinkProps) => {
   const { href: url, ...otherProps } = props;
-  const href: string = url.toString();
-  const {
-    openInNewTab = !isLocalLink(href),
-    underline = true,
-    ...rest
-  } = otherProps;
-
-  if (openInNewTab) {
-    return (
-      <StyledLink
-        {...rest}
-        href={href}
-        target={'_blank'}
-        rel={`${props.rel || ''} noopener noreferrer`.trim()}
-        aria-label={rest.title}
-        underline={underline}
-      />
-    );
-  }
+  const href: string = url?.toString();
+  const { openInNewTab = !isLocalLink(href), ...rest } = otherProps;
 
   return (
     <StyledLink
       {...{ href, ...rest }}
       aria-label={rest.title}
-      underline={underline}
+      {...(openInNewTab
+        ? {
+            target: '_blank',
+            rel: `${props.rel || ''} noopener noreferrer`.trim(),
+            className: twMerge(cx(props.className, 'cursor-alias')),
+          }
+        : {})}
     />
   );
 };
