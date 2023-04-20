@@ -50,9 +50,6 @@ export const BlogPosts = (props: BlogPostsProps) => {
                           // @ts-expect-error Server Component
                           <ViewsCounter
                             slug={`blog--${post.slug}`}
-                            devToId={
-                              post.devToId ? post.devToId.toString() : undefined
-                            }
                             inProgress={post.inProgress}
                             $sm
                           />

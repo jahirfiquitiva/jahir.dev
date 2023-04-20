@@ -81,9 +81,8 @@ const Blog = defineDocumentType(() => ({
     inProgress: { type: 'boolean' },
     keywords: { type: 'string' },
     year: { type: 'number' },
-    devToId: { type: 'number' },
+    // devToId: { type: 'number' },
     heroMeta: { type: 'json' },
-    fullHeightHero: { type: 'boolean', default: false },
   },
   computedFields,
 }));

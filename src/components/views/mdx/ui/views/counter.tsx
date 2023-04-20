@@ -6,40 +6,35 @@ import { cx } from 'classix';
 import { Suspense, cache } from 'react';
 
 import { mdiEyeOutline } from '@/components/icons';
-import { getSingleDevToArticleViews } from '@/lib/devto';
 import { db } from '@/lib/planetscale';
 
 import { Stat } from './../stat';
 import { trackView as trackViewFunc } from './actions';
 import { ViewTracker } from './tracker';
 
-export const getViews = cache(
-  async (slug: string, devToId?: string): Promise<number> => {
-    const devToCount = await getSingleDevToArticleViews(devToId).catch(() => 0);
-    try {
-      const data = await db
-        .selectFrom('counters')
-        .where('slug', '=', slug)
-        .select(['slug', 'views'])
-        .execute();
-      return Number(data?.[0]?.views || 0) + devToCount;
-    } catch (e) {
-      return devToCount;
-    }
-  },
-);
+export const getViews = cache(async (slug: string): Promise<number> => {
+  try {
+    const data = await db
+      .selectFrom('counters')
+      .where('slug', '=', slug)
+      .select(['slug', 'views'])
+      .execute();
+    return Number(data?.[0]?.views || 0);
+  } catch (e) {
+    return 0;
+  }
+});
 
 interface ViewsCounterProps {
   slug: string;
-  devToId?: string;
   inProgress?: boolean;
   trackView?: boolean;
   $sm?: boolean;
 }
 
 export const ViewsCounter = async (props: ViewsCounterProps) => {
-  const { slug, devToId, inProgress, trackView, $sm } = props;
-  const views = await getViews(slug, devToId).catch(() => 0);
+  const { slug, inProgress, trackView, $sm } = props;
+  const views = await getViews(slug).catch(() => 0);
 
   return (
     <>

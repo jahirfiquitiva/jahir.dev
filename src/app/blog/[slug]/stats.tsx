@@ -10,12 +10,11 @@ interface StatsProps {
   slug: Blog['slug'];
   date?: Blog['date'];
   readingTime?: Blog['readingTime'];
-  devToId?: Blog['devToId'];
   inProgress?: Blog['inProgress'];
 }
 
 const Stats = (props: StatsProps) => {
-  const { slug, date, readingTime, devToId, inProgress } = props;
+  const { slug, date, readingTime, inProgress } = props;
   const readableDate = formatDate(date);
   return (
     <div className={'flex flex-wrap items-center gap-12 mt-8 mb-20 text-3xs'}>
@@ -38,12 +37,7 @@ const Stats = (props: StatsProps) => {
         </Stat>
       )}
       {/* @ts-expect-error Server Component */}
-      <ViewsCounter
-        slug={`blog--${slug}`}
-        devToId={devToId ? devToId.toString() : undefined}
-        inProgress={inProgress}
-        trackView
-      />
+      <ViewsCounter slug={`blog--${slug}`} inProgress={inProgress} trackView />
     </div>
   );
 };

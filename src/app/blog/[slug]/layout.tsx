@@ -31,7 +31,6 @@ export default function BlogPostLayout(
         slug={post.slug}
         date={post.date}
         readingTime={post.readingTime}
-        devToId={post.devToId}
         inProgress={post.inProgress}
       />
       {props.children}
