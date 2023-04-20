@@ -43,6 +43,7 @@ const defaultNextConfig = {
       { hostname: 'avatars.githubusercontent.com' },
       { hostname: '**.cdninstagram.com' },
       { hostname: '**.pixpa.com' },
+      { hostname: '**.fbcdn.net' },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

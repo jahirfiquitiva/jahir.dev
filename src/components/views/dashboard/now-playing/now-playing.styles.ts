@@ -17,7 +17,7 @@ export const NowPlayingCard = tw(Link)`
   truncate
   max-h-[154.5px]
   col-span-2
-  tablet-sm:aspect-video
+  aspect-video
   tablet-sm:col-span-6
   hocus:no-underline
   hocus:transform

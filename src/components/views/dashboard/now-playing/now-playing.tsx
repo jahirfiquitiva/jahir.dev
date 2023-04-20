@@ -34,9 +34,9 @@ export const NowPlaying = () => {
           }
         >
           <Ring
-            size={56}
-            lineWeight={4}
-            speed={1.75}
+            size={48}
+            lineWeight={6}
+            speed={2}
             color={'rgb(var(--stat-color))'}
           />
         </div>
