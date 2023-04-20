@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 import { allReadableBlogs } from '@/utils/blogs';
 
-const allBlogs = allReadableBlogs.filter((it) =>  !Boolean(it.link));
+const allBlogs = allReadableBlogs.filter((it) => !Boolean(it.link));
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = allBlogs.map((post) => ({

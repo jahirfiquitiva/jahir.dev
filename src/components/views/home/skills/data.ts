@@ -53,4 +53,4 @@ export const skills: SkillProps[] = [
 ];
 
 const skillsKeys = [...skills.map((it) => it.name.toLowerCase())] as const;
-export type SkillKey = typeof skillsKeys[number];
+export type SkillKey = (typeof skillsKeys)[number];

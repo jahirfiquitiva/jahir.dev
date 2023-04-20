@@ -22,10 +22,7 @@ const getComponentForSponsor = (
         <Icon
           path={mdiFormatQuoteClose}
           size={2}
-          className={cx(
-            'text-divider',
-            'absolute top-6 right-8',
-          )}
+          className={cx('text-divider', 'absolute top-6 right-8')}
         />
         <p className={'transition-colors mr-28'}>
           <Balancer ratio={0.5}>{sponsor.message}</Balancer>

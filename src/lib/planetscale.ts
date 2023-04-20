@@ -8,7 +8,7 @@ export const reactionsNames = [
   'bookmarks',
 ] as const;
 
-export type ReactionName = typeof reactionsNames[number];
+export type ReactionName = (typeof reactionsNames)[number];
 
 export type CountersReactions = { [Key in ReactionName]?: number };
 

@@ -14,7 +14,10 @@ const authHeaders =
 const oneMillion = 1000000;
 const oneThousand = 1000;
 
-export async function GET(req: Request, context?: RequestContext<{ repo?: string }>) {
+export async function GET(
+  req: Request,
+  context?: RequestContext<{ repo?: string }>,
+) {
   try {
     const { searchParams } = new URL(req.url);
     const repo = context?.params?.repo;

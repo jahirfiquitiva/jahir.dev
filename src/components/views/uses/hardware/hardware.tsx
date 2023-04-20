@@ -10,7 +10,7 @@ import {
   TextsContainer,
 } from './hardware.styles';
 
-type Item = typeof hardware[number] | typeof gaming[number];
+type Item = (typeof hardware)[number] | (typeof gaming)[number];
 
 interface HardwareGridProps {
   items: Array<Item>;

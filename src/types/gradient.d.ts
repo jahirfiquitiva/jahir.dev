@@ -8,7 +8,7 @@ const rainbowColors = [
   'purple',
 ] as const;
 
-export type RainbowColor = typeof rainbowColors[number];
+export type RainbowColor = (typeof rainbowColors)[number];
 
 type FromGradientClass = `from-gradient-${RainbowColor}`;
 type ToGradientClass = `to-gradient-${RainbowColor}`;

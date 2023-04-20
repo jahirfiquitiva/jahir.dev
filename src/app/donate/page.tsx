@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import { Heading } from '@/components/core/heading';
-import {  Section } from '@/components/core/section';
+import { Section } from '@/components/core/section';
 import { DonateButtons } from '@/components/views/donate/buttons';
 import { Mdx } from '@/components/views/mdx';
 import { getBlog } from '@/utils/blogs';

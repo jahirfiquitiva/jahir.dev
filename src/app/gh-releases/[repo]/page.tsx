@@ -47,7 +47,7 @@ export default async function ReleasePage(context: ReleasePageContext) {
   );
 }
 
-export const generateStaticParams = () => 
+export const generateStaticParams = () =>
   releasesRepos.map((it) => ({ repo: it.toLowerCase() }));
 
 export async function generateMetadata(
