@@ -4,8 +4,8 @@ export const Chip = tw.span`
   flex
   items-center
   justify-center
-  py-8
-  px-12
+  py-[0.4375rem]
+  px-[0.6875rem]
   text-3xs
   rounded-full
   border
@@ -24,12 +24,6 @@ export const Chip = tw.span`
   hocus:transform
   hocus:scale-[1.015]
   hocus:cursor-pointer
-`;
-
-export const ImageChip = tw(Chip)`
-  pl-6
-  leading-[inherit]
-  [&>img]:rounded-half
 `;
 
 export const ChipGroup = tw.ul`

@@ -29,6 +29,7 @@ export const NameAndPhotoContainer = tw.div`
 `;
 
 export const Tier = tw(Chip)`
+  gap-4
   text-3xs
   [color:inherit]
   py-4 px-8
