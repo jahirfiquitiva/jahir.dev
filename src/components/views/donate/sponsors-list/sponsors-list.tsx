@@ -8,7 +8,7 @@ import { SponsorItem } from '../sponsor';
 
 import { Header, MonaGif, StyledList } from './sponsors-list.styles';
 
-interface SponsorsListProps {
+export interface SponsorsListProps {
   categories: Array<SponsorsCategory>;
   unicorns: Array<ReadableSupporter>;
 }

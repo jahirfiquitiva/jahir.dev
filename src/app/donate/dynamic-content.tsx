@@ -4,6 +4,7 @@ import { Heading } from '@/components/core/heading';
 import { Link } from '@/components/core/link';
 import { NoPaddingSection } from '@/components/core/section';
 import { SponsorsList } from '@/components/views/donate/sponsors-list';
+import { Testimonials } from '@/components/views/donate/testimonials';
 import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 
 import { SimpleSponsorsStats } from './sponsors-stats';
@@ -53,6 +54,10 @@ export default async function DynamicDonateContent() {
           />
         </div>
       </NoPaddingSection>
+      <Testimonials
+        categories={sponsors?.categories || []}
+        unicorns={sponsors?.unicorns || []}
+      />
     </>
   );
 }
