@@ -1,6 +1,7 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
 import type { Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
 
 import { ButtonLink } from '@/components/core/link';
 import { mdiPencilOutline } from '@/components/icons';
@@ -36,7 +37,10 @@ const blogPostStructuredData = (post: Blog): string =>
 
 export default function BlogPostPage(context: BlogPageContext) {
   const post = getBlog(context.params.slug);
-  if (!post) return null;
+
+  if (!post) return notFound();
+  if (post.link) return redirect(post.link);
+
   return (
     <>
       <ReactionsProvider

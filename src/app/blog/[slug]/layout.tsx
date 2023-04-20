@@ -1,4 +1,3 @@
-import { notFound, redirect } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 
 import { Link } from '@/components/core/link';
@@ -13,9 +12,6 @@ export default function BlogPostLayout(
   props: PropsWithChildren & RequestContext<{ slug?: string }>,
 ) {
   const post = getBlog(props.params.slug);
-  if (!post) return notFound();
-  if (post.link) return redirect(post.link);
-
   return (
     <Section id={'blog-post'}>
       <Link
@@ -26,13 +22,17 @@ export default function BlogPostLayout(
         <span className={'font-manrope font-bold mb-1'}>{'<-'}</span>
         <span>Back to blog posts</span>
       </Link>
-      <Header title={post.title} color={post.color} />
-      <Stats
-        slug={post.slug}
-        date={post.date}
-        readingTime={post.readingTime}
-        inProgress={post.inProgress}
-      />
+      {post ? (
+        <>
+          <Header title={post.title} color={post.color} />
+          <Stats
+            slug={post.slug}
+            date={post.date}
+            readingTime={post.readingTime}
+            inProgress={post.inProgress}
+          />
+        </>
+      ) : null}
       {props.children}
     </Section>
   );
