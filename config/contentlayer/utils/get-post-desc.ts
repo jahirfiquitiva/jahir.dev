@@ -1,4 +1,3 @@
-/* eslint-disable */
 import removeMd from 'remove-markdown';
 
 const minCharacters = 70;

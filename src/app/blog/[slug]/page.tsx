@@ -2,7 +2,6 @@ import Icon from '@mdi/react';
 import { cx } from 'classix';
 import type { Metadata } from 'next';
 
-import { Divider } from '@/components/core/divider';
 import { ButtonLink } from '@/components/core/link';
 import { mdiPencilOutline } from '@/components/icons';
 import { Mdx } from '@/components/views/mdx/mdx';
@@ -52,8 +51,11 @@ export default function BlogPostPage(context: BlogPageContext) {
           source={post.heroSource}
         />
         <Mdx code={post?.body?.code} />
-        <Divider
+        <hr
           className={cx(
+            'my-20 mx-0 h-1 w-full',
+            'border-none border-0 bg-divider',
+            'overflow-hidden desktop:my-28',
             '-mx-14 w-[calc(100%+1.75rem)]',
             'tablet-md:mx-0 tablet-md:w-full',
           )}

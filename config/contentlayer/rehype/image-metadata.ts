@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 // Code based on https://github.com/nikolovlazar/nikolovlazar.com/blob/main/src/utils/plugins/image-metadata.ts
 import path from 'path';
 import { promisify } from 'util';

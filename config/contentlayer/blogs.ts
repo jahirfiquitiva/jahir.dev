@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
 import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import readingTime from 'reading-time';
 
 import { getBlurData } from './rehype/image-metadata';
@@ -14,7 +12,6 @@ const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
-    // eslint-disable-next-line no-underscore-dangle
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
   },
   hero: {

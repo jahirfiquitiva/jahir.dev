@@ -88,3 +88,19 @@ article.mdx-article {
     @apply list-none flex items-center text-secondary-txt;
   }
 }
+
+html.light [data-rehype-pretty-code-fragment] {
+  [data-theme='dark'],
+  pre[data-theme='dark'],
+  code[data-theme='dark'] {
+    @apply hidden invisible select-none pointer-events-none;
+  }
+}
+
+html.dark [data-rehype-pretty-code-fragment] {
+  [data-theme='light'],
+  pre[data-theme='light'],
+  code[data-theme='light'] {
+    @apply hidden invisible select-none pointer-events-none;
+  }
+}

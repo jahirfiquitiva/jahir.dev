@@ -1,6 +1,6 @@
 import { gitHubOutline, star } from '@/components/icons';
 import { StatCard } from '@/components/views/dashboard/stat-card';
-import { getGitHubStats } from '@/lib/stars';
+import { getGitHubStats } from '@/lib/github';
 
 export const revalidate = 3600;
 
