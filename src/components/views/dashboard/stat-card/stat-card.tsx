@@ -20,6 +20,7 @@ export interface StatCardProps {
   text: string;
   iconPath?: string;
   color?: string;
+  className?: string;
 }
 
 export const StatCard = (props: StatCardProps) => {
@@ -36,6 +37,7 @@ export const StatCard = (props: StatCardProps) => {
     <StyledStatCard
       title={title}
       href={href || '#'}
+      className={props.className}
       style={
         {
           '--stat-color': statColor || 'var(--accent-dark)',

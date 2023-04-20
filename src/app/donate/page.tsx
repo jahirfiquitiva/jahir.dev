@@ -1,23 +1,19 @@
 import { notFound } from 'next/navigation';
 
 import { Heading } from '@/components/core/heading';
-import { Section } from '@/components/core/section';
+import {  Section } from '@/components/core/section';
 import { DonateButtons } from '@/components/views/donate/buttons';
-import { SponsorsList } from '@/components/views/donate/sponsors-list';
 import { Mdx } from '@/components/views/mdx';
-import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 import { getBlog } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-// Update sponsors once per hour
-export const revalidate = 3600;
+import DynamicDonateContent from './dynamic-content';
 
 const donate = getBlog('donate');
 
 export default async function DonatePage() {
   if (!donate) return notFound();
-  const sponsorsCategories = await getSponsorsAndCategories().catch(null);
   return (
     <Section id={'donate'}>
       <Heading shadow={'brand'} from={'brand'} to={'blue'}>
@@ -25,10 +21,8 @@ export default async function DonatePage() {
       </Heading>
       <Mdx code={donate?.body?.code} className={'gap-8 tablet-sm:-mt-16'} />
       <DonateButtons />
-      <SponsorsList
-        categories={sponsorsCategories?.categories || []}
-        unicorns={sponsorsCategories?.unicorns || []}
-      />
+      {/* @ts-expect-error Server Component */}
+      <DynamicDonateContent />
     </Section>
   );
 }
