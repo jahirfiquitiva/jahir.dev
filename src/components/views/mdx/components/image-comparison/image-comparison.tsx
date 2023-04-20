@@ -26,8 +26,10 @@ export const ImageComparison = (props: ImageComparisonProps) => {
         vertical={vertical}
         leftImage={props.firstImage}
         leftImageAlt={props.firstImageAlt}
+        leftImageCss={{ objectFit: 'contain !important' }}
         rightImage={props.secondImage}
         rightImageAlt={props.secondImageAlt}
+        rightImageCss={{ objectFit: 'contain !important' }}
         aspectRatio={'taller'}
         handle={<Fragment />}
         sliderLineWidth={8}
