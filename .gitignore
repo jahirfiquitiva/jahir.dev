@@ -57,4 +57,4 @@ src/data/*.json
 !src/data/extensions.json
 
 !.env
-./static
+static/media/*.png
