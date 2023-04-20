@@ -21,13 +21,8 @@ export const images = [
   { src: d, alt: imagesAlts[3] },
 ];
 
-const getRandomImage = async () => {
-  return getRandomItem(images);
-};
-
-export default async function Doodle() {
-  const photo = await getRandomImage();
-
+export default function Doodle() {
+  const photo = getRandomItem(images);
   return (
     <Img
       size={384}

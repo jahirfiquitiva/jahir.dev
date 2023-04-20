@@ -15,7 +15,7 @@ import Photo from './photo';
 
 const about = getBlog('about');
 
-export default async function AboutPage() {
+export default function AboutPage() {
   if (!about) return notFound();
   return (
     <>
@@ -41,7 +41,6 @@ export default async function AboutPage() {
             'tablet-sm:flex-row tablet-sm:items-start',
           )}
         >
-          {/* @ts-expect-error Server Component */}
           <Doodle />
           <div className={cx('flex flex-col gap-12')}>
             <p>

@@ -1,10 +1,12 @@
+import { cache } from 'react';
+
 import { mdiEyeOutline } from '@/components/icons';
 import { StatCard } from '@/components/views/dashboard/stat-card';
 import { db } from '@/lib/planetscale';
 
 export const revalidate = 3600;
 
-const getPostsViews = async (): Promise<number> => {
+const getPostsViews = cache(async (): Promise<number> => {
   try {
     const data =
       (await db.selectFrom('counters').select(['views']).execute()) || [];
@@ -12,7 +14,7 @@ const getPostsViews = async (): Promise<number> => {
   } catch (e) {
     return 0;
   }
-};
+});
 
 export const ViewsStats = async () => {
   const views = await getPostsViews();

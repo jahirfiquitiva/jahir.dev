@@ -1,6 +1,8 @@
+import { cache } from 'react';
+
 import { db, type CountersReactions } from '@/lib/planetscale';
 
-export const getPostsReactions = async () => {
+export const getPostsReactions = cache(async () => {
   try {
     const data = await db
       .selectFrom('counters')
@@ -28,4 +30,4 @@ export const getPostsReactions = async () => {
   } catch (err) {
     return { counters: {}, total: -1 };
   }
-};
+});

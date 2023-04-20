@@ -3,13 +3,8 @@ import { getRandomItem } from '@/utils/random';
 
 import { images } from './images';
 
-const getRandomImage = async () => {
-  return getRandomItem(images);
-};
-
-export default async function Photo() {
-  const photo = await getRandomImage();
-
+export default function Photo() {
+  const photo = getRandomItem(images);
   return (
     <figure className={'mt-12 mb-8'}>
       <ZoomableImg
