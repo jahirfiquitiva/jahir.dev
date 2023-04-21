@@ -45,7 +45,11 @@ export const StatCard = (props: StatCardProps) => {
       }
     >
       <Value>{value}</Value>
-      <span className={'text-2xs transition-colors truncate max-w-full'}>
+      <span
+        className={
+          'text-2xs transition-colors truncate max-w-full mobile-md:leading-tight'
+        }
+      >
         {text}
       </span>
       {Boolean(iconPath) && (

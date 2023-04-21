@@ -12,9 +12,8 @@ export const StyledStatCard = tw(Link)`
   flex-row
   items-end
   w-full
-  py-14
-  px-12
-  gap-4
+  p-12
+  gap-8
   text-secondary-txt
   bg-[rgba(var(--color-inverse)/0.006)]
   dark:bg-[rgba(var(--color-inverse)/0.008)]
@@ -26,9 +25,9 @@ export const StyledStatCard = tw(Link)`
   col-span-2
   mobile-md:flex-col
   mobile-md:items-start
-  mobile-md:py-14
-  mobile-md:px-16
+  mobile-md:p-12
   mobile-md:col-span-1
+  tablet-sm:p-14
   tablet-sm:col-span-4
   tablet-sm:aspect-video
   hocus:no-underline
@@ -56,8 +55,8 @@ export const Value = tw.span`
 export const IconContainer = tw.span`
   inline-flex
   absolute
-  top-10
-  right-10
+  top-8
+  right-8
   w-[2.25rem]
   h-[2.25rem]
   p-2
@@ -65,7 +64,10 @@ export const IconContainer = tw.span`
   justify-center
   items-center
   transition
-  mobile-md:right-12
+  mobile-md:top-10
+  mobile-md:right-10
+  tablet-sm:top-12
+  tablet-sm:right-12
   bg-[rgba(var(--stat-color)/0.12)]
 `;
 
