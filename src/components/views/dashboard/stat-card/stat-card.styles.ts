@@ -12,7 +12,6 @@ export const StyledStatCard = tw(Link)`
   flex-row
   items-end
   w-full
-  h-full
   py-14
   px-12
   gap-4

@@ -1,5 +1,6 @@
 import { cx } from 'classix';
 import Image, { type ImageProps } from 'next/image';
+import { twMerge } from 'tailwind-merge';
 
 type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
 type SizeProps = BaseImageProps & { size?: number | string };
@@ -25,7 +26,7 @@ export const Img = (props: ImgProps) => {
       height={Number(height)}
       loading={rest.priority ? undefined : rest.loading || 'lazy'}
       decoding={'async'}
-      className={cx('object-cover object-center', rest.className)}
+      className={twMerge(cx('object-cover object-center', rest.className))}
     />
   );
 };

@@ -27,6 +27,7 @@ export const InstaPhoto = (props: InstaPhotoProps) => {
         width={214}
         height={214}
         crossOrigin={'anonymous'}
+        style={{ objectPosition: 'bottom' }}
       />
       <InstaIcon path={mdiInstagram} size={1.5} />
     </InstaPhotoContainer>

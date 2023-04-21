@@ -43,8 +43,8 @@ export default async function DashboardPage() {
           title={'More links'}
           href={'https://links.jahir.dev'}
           className={cx(
-            'col-span-1',
-            'aspect-square tablet-sm:col-span-3',
+            'col-span-1 aspect-square',
+            'tablet-sm:aspect-square tablet-sm:col-span-3',
             'mobile-md:max-w-full group/animoji',
           )}
         >

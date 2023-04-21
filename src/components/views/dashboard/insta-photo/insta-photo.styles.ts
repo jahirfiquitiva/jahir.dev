@@ -34,8 +34,8 @@ export const InstaPhotoContainer = tw(Link)`
 
 export const StyledPhoto = tw(Img)`
   transition
-  max-h-full
-  object-bottom
+  h-full
+  w-full
   group-hocus/insta:transform
   group-hocus/insta:scale-105
 `;
