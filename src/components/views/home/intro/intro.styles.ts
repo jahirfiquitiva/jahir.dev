@@ -43,7 +43,6 @@ export const Photo = tw(Img)`
   [@media(hover:hover)]:[transition-duration:.25s]
   [@media(hover:hover)]:mix-blend-hard-light
   [@media(hover:hover)]:opacity-75
-  hocus:cursor-grab
   hocus:filter-none
   hocus:mix-blend-normal
   hocus:opacity-100

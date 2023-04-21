@@ -23,7 +23,6 @@ export const Chip = tw.span`
   dark:hocus:bg-divider
   hocus:transform
   hocus:scale-[1.015]
-  hocus:cursor-pointer
 `;
 
 export const ChipGroup = tw.ul`

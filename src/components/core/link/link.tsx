@@ -1,7 +1,5 @@
-import { cx } from 'classix';
 import NextLink from 'next/link';
 import type { ComponentProps } from 'react';
-import { twMerge } from 'tailwind-merge';
 
 import { StyledLink } from './link.styles';
 
@@ -26,7 +24,6 @@ export const Link = (props: LinkProps) => {
         ? {
             target: '_blank',
             rel: `${props.rel || ''} noopener noreferrer`.trim(),
-            className: twMerge(cx(props.className, 'cursor-alias')),
           }
         : {})}
     />
