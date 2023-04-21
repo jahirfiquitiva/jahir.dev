@@ -41,8 +41,8 @@ export const NowPlayingContent = tw.div`
   items-center
   backdrop-blur-lg
   backdrop-saturate-200
-  bg-[rgba(255,255,255,0.42)]
-  dark:bg-[rgba(9,17,34,0.32)]
+  bg-[rgba(255,255,255,0.5)]
+  dark:bg-[rgba(9,17,34,0.35)]
 `;
 
 export const BackgroundImage = tw(Img)`
