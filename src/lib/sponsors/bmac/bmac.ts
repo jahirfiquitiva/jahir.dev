@@ -16,10 +16,7 @@ const recursiveBmacRequest = async <T = unknown>(
       headers: { 'Content-Type': 'application/json', ...authHeaders },
     });
 
-    if (!request.ok) {
-      // console.error(await request.text());
-      return [...(items || [])];
-    }
+    if (!request.ok) return [...(items || [])];
 
     const response: BmacResponse<T> = await request.json();
     if (!response) return [...(items || [])];
