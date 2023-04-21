@@ -77,11 +77,12 @@ yarn dev
 Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/main/LICENSE), do not copy it directly, remove all of my personal content and files (resume, blog posts, images, etc.) by running `yarn setup` and please change the styling and colors to match your personal brand. You are free to use this code as inspiration or learning reference but this is not really intended to be a template.
 
 <details>
-  <summary>Additional changes</summary>
-  <p>
-    Make sure to set the `IS_TEMPLATE` environment variable to false.
-    Otherwise, the colors in the website might be inverted. (See `src/styles/globals.scss`).
-  </p>
+
+<summary>Additional changes</summary>
+
+Make sure to set the `IS_TEMPLATE` environment variable to false.
+Otherwise, the colors in the website might be inverted. (See `src/styles/globals.scss`)
+
 </details>
 
 ## Previous versions
