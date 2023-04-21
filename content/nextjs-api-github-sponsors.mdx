@@ -500,7 +500,7 @@ Additionally, and this is completely optional, we can modify the API to use the 
 
 To achieve this, we can modify the API to be like:
 
-```diff title="pages/api/sponsors.ts"
+```diff title="pages/api/sponsors.ts" {2,8-10,13,16-19}
 - import type { NextApiRequest, NextApiResponse } from 'next';
 + import type { NextRequest } from 'next/server';
 import {
