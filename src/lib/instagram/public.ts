@@ -1,4 +1,4 @@
-import type { InstagramPost } from './types.d';
+import type { RemoteInstagramPost } from './types.d';
 
 interface OfficialResponse {
   graphql: {
@@ -40,7 +40,7 @@ interface OfficialResponse {
   };
 }
 
-export const getPublicFeed = async (): Promise<Array<InstagramPost>> => {
+export const getPublicFeed = async (): Promise<Array<RemoteInstagramPost>> => {
   try {
     const offResponse = await fetch(
       'https://www.instagram.com/jahirfiquitiva/?__a=1&__d=1',

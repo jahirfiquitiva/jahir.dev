@@ -18,14 +18,19 @@ export const InstaPhoto = (props: InstaPhotoProps) => {
     <InstaPhotoContainer
       title={`View photo "${post.caption}" on Instagram`}
       href={post.postUrl || '#'}
+      style={{
+        backgroundColor: `rgb(${
+          post.colorPalette?.muted || post.colorPalette?.vibrant
+        })`,
+      }}
     >
       <StyledPhoto
         src={post.photoUrl || ''}
         alt={post.caption || ''}
         loading={'lazy'}
         decoding={'async'}
-        width={214}
-        height={214}
+        width={post.dimensions?.width || 214}
+        height={post.dimensions?.height || 214}
         crossOrigin={'anonymous'}
         style={{ objectPosition: 'bottom' }}
       />
