@@ -23,7 +23,6 @@ export default function AboutPage() {
         <Heading shadow={'blue'} from={'blue'} to={'green'}>
           About
         </Heading>
-        {/* @ts-expect-error Server Component */}
         <Photo />
         <Mdx code={about?.body?.code} />
       </Section>

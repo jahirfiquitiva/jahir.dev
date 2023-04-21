@@ -63,7 +63,9 @@ export const Testimonials = (props: TestimonialsProps) => {
         {allSponsors.map((sponsor, index) =>
           getComponentForSponsor(
             sponsor,
-            Math.ceil(allSponsors.length / 2) === index ? '!mt-0' : '',
+            Math.ceil(allSponsors.length / 2) === index
+              ? 'tablet-sm:[margin-top:0_!important]'
+              : '',
           ),
         )}
       </ul>
