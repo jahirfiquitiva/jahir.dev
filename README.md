@@ -4,7 +4,7 @@
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://github.com/contentlayerdev/contentlayer)
+- **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://contentlayer.dev)
 - **Database**: [PlanetScale](https://planetscale.com/)
 - **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
 - **Deployment**: [Vercel](https://vercel.com)
@@ -13,47 +13,46 @@
 
 ```bash
 .
+|____config
 |____content
 |____public
-|____src
-| |____icons
-| |____styles
-| |____components
-| | |____atoms
-| | |____compounds
-| | |____molecules
-| | |____sections
-| | |____mdx
-| |____hooks
-| |____providers
-| |____pages
-| | |____api
-| | |____blog
-| |____lib
-| |____utils
-| |____types
 |____scripts
-|____tailwind
+|____src
+| |____app
+| |____assets
+| |____components
+| | |____core
+| | |____icons
+| | |____molecules
+| | |____og
+| | |____views
+| |____data
+| |____hooks
+| |____lib
+| |____providers
+| |____styles
+| |____types
+| |____utils
 ```
 
-- **`content/*`** - MDX blog posts and projects
-- **`public/*`** - Static assets including images, fonts, audios and files
-- **`src/icons/*`** - Custom SVG icon paths. Mostly based on [Lucide](https://lucide.dev/)
-- **`src/styles/*`** - Some global styles. Built using tailwind classes
-- **`src/components/atoms/*`** - The simplest components. Most of them are stateless
-- **`src/components/compounds/*`** - Slightly more complex components. Some use or extend atoms
-- **`src/components/molecules/*`** - The main blocks for the website: `metatags`, `toolbar`, `footer` and `Layout`
-- **`src/components/sections/*`** - The different sections or pages of my website. _(They're here to keep `src/pages/` as clean as possible)_
-- **`src/components/mdx/*`** - Components built specifically for MDX content
+- **`config/*`** - Includes all the custom configuration for [contentlayer](https://contentlayer.dev), [Tailwind CSS](https://tailwindcss.com/) and [Next.js](https://nextjs.org/)
+- **`content/*`** - MDX blog posts and the content for the `about` and `donate` pages
+- **`public/*`** - Static assets including images, fonts, audios, files, etc.
+- **`scripts/*`** - Utilities to setup the project
+- **`src/app/*`** - Every page and api route in the website. Uses the new [App Router](https://beta.nextjs.org/docs/getting-started#introducing-the-app-router) from [Next.js](https://nextjs.org/) `13.+`
+- **`src/assets/*`** - Fonts and static images used in different components
+- **`src/components/core/*`** - The simplest components. Most of them are stateless
+- **`src/components/icons/*`** - SVG icon paths. Icons come from [Material Design Icons](https://pictogrammers.com/library/mdi/) [Lucide](https://lucide.dev/)
+- **`src/components/molecules/*`** - The main blocks for the website: `toolbar`, `footer`, `main` layout, `back-to-top` button and `social links`
+- **`src/components/og/*`** - The code that powers dynamic open-graph images generation
+- **`src/components/views/*`** - More complex components to build the different pages of my website. _(They're here to keep `src/app/` as clean as possible)_
+- **`src/data/*`** - JSON files containing data for projects and the [`uses`](https://jahir.dev/uses) page
 - **`src/hooks/*`** - A couple hooks used throughout the app
-- **`src/providers/*`** - React Contexts for different purposes such as: current theme, blog post reactions, sponsors data.
-- **`src/pages/api/*`** - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://jahir.dev/dashboard), blog post reactions and views, and a page to download github releases assets
-- **`src/pages/blog/*`** - Static pre-rendered blog pages using MDX
-- **`src/pages/projects/*`** - Static pre-rendered projects pages using MDX
-- **`src/pages/*`** - All other static pages
 - **`src/lib/*`** - Short for "library", a collection of helpful utilities or code for external services
-- **`src/utils/*`** - Almost the same as `lib` just with code built to be used in components
-- **`src/stitches/*`** - Setup for stitches themes including colors, spaces, fonts and more
+- **`src/providers/*`** - React Contexts for storing the current theme and blog post reactions
+- **`src/styles/*`** - Global styles with `scss`. Mostly use tailwind classes
+- **`src/types/*`** - Some types definitions
+- **`src/utils/*`** - More utilities functions but less complex than the ones in `lib`
 
 ## Running Locally
 
@@ -71,6 +70,15 @@ Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquiti
 ```bash
 yarn dev
 ```
+
+<details>
+
+<summary>Note</summary>
+
+Some things might be broken or not found because the `yarn setup` script will remove many files.
+Please double check the code and implementations.
+
+</details>
 
 ## Cloning / Forking
 
