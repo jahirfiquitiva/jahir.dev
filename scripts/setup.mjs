@@ -12,12 +12,13 @@ excerpt: 'This is an excerpt or description'
 date: '${new Date().toISOString()}'
 keywords: 'hello|world|keyword'
 hero: hello-world/hero.jpg
+color: #123
 ---
 
 Hello, World!`;
 
 const deleteFolderRecursive = async (path) => {
-  const stat = await fs.stat(path).catch(() => (null));
+  const stat = await fs.stat(path).catch(() => null);
   if (!stat) return;
   if (stat.isDirectory()) {
     const files = await fs.readdir(path);
@@ -55,5 +56,7 @@ const deleteFolderRecursive = async (path) => {
   // eslint-disable-next-line no-console
   await Promise.all(deletePromises).catch(console.error);
   await fs.mkdir(contentDir).catch();
-  await fs.writeFile(path.join(contentDir, 'hello-world.mdx'), template).catch();
+  await fs
+    .writeFile(path.join(contentDir, 'hello-world.mdx'), template)
+    .catch();
 })();
