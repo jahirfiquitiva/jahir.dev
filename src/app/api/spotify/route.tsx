@@ -4,7 +4,7 @@ import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
 import type { Track, ReadableTrack } from '@/types/spotify';
 
 export const runtime = 'edge';
-export const revalidate = 30;
+export const fetchCache = 'force-no-store';
 
 const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
   if (!track) return null;
