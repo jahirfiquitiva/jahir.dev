@@ -25,7 +25,6 @@ export const StyledStatCard = tw(Link)`
   col-span-2
   mobile-md:flex-col
   mobile-md:items-start
-  mobile-md:p-12
   mobile-md:col-span-1
   tablet-sm:p-14
   tablet-sm:col-span-4

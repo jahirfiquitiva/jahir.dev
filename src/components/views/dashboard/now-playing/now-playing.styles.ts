@@ -36,8 +36,8 @@ export const NowPlayingContent = tw.div`
   p-12
   max-w-full
   truncate
-  mobile-md:p-16
   mobile-md:max-h-[154.5px]
+  tablet-sm:p-14
   items-center
   backdrop-blur-lg
   backdrop-saturate-200
@@ -78,9 +78,9 @@ export const NowPlayingHeader = tw.span`
 `;
 
 export const TrackName = tw.p`
-  text-2xs
+  text-xs
   truncate
-  font-semibold
+  font-bold
   font-manrope
   text-secondary-txt
   transition-colors
@@ -90,8 +90,7 @@ export const TrackName = tw.p`
 `;
 
 export const TrackArtist = tw.span`
-  mt-2 tablet-sm:mt-4
-  text-3xs
+  text-2xs
   truncate
   text-secondary-txt
   transition-colors
