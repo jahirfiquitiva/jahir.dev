@@ -11,10 +11,14 @@ interface ViewTrackerProps {
 
 export const ViewTracker = (props: ViewTrackerProps) => {
   const hasMounted = useHasMounted();
-  const { slug, trackView } = props;
+  const { slug } = props;
   useEffect(() => {
     if (!hasMounted) return;
-    trackView?.(slug);
-  }, [hasMounted, slug, trackView]);
+    const hostname = window?.location?.hostname || 'localhost';
+    if (hostname === 'jahir.dev')
+      fetch(`/api/views/${slug}`, { method: 'POST' }).catch();
+    // trackView?.(slug);
+    // TODO: Update to use the function above and delete route
+  }, [hasMounted, slug]);
   return null;
 };
