@@ -23,6 +23,13 @@ const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
   }
 };
 
+const spotifyResponse = (data: unknown) =>
+  NextResponse.json(data, {
+    headers: {
+      'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
+    },
+  });
+
 export async function GET() {
   const nowPlaying = await getNowPlaying().catch(null);
   let isPlaying = false;
@@ -34,7 +41,7 @@ export async function GET() {
 
   // If found a defined track from the now playing api
   if (nowPlayingTrack) {
-    return NextResponse.json({
+    return spotifyResponse({
       track: trackToReadableTrack(nowPlayingTrack),
       isPlaying,
     });
@@ -45,7 +52,7 @@ export async function GET() {
   let lastPlayed: Track | null = null;
   if (!('error' in recentlyPlayed))
     lastPlayed = recentlyPlayed.items?.[0]?.track;
-  return NextResponse.json({
+  return spotifyResponse({
     track: trackToReadableTrack(lastPlayed),
     isPlaying: false,
   });
