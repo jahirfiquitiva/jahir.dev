@@ -22,7 +22,7 @@ export const BlogPosts = (props: BlogPostsProps) => {
             id={`posts-from-${group.year}`}
             title={`Posts from ${group.year}`}
             aria-label={`Posts from ${group.year}`}
-            className={'flex flex-col my-28 gap-16 tablet-md:gap-20'}
+            className={'flex flex-col mt-12 mb-8 gap-16 tablet-md:gap-20'}
           >
             <div
               className={'flex items-end gap-16 mt-6 mb-4 leading-none w-full'}

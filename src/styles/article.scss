@@ -16,7 +16,7 @@
       content: counter(list-item, decimal) '.';
       position: absolute;
       font-weight: inherit;
-      @apply text-tertiary-txt left-0;
+      @apply text-tertiary-txt left-0 -ml-4;
     }
     & > ol {
       @apply m-0;
