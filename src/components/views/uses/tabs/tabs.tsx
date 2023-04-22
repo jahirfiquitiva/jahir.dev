@@ -65,8 +65,9 @@ export const Tabs = (props: PropsWithChildren & TabsProps) => {
           <ZoomableImg
             src={image}
             alt={"Jahir's desk setup in 2022"}
-            className={'h-auto rounded-8 w-full'}
+            className={'h-auto rounded-8 w-full bg-[#C0BBB2]'}
             quality={100}
+            placeholder={'blur'}
             priority
             zoomable
           />

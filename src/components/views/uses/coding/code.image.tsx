@@ -25,11 +25,12 @@ export const CodeImage = () => {
       alt={"Preview of Jahir's VSCodium configuration"}
       className={cx(
         'filter transition-colors',
-        'rounded-8',
+        'rounded-8 bg-[#4474BE]',
         themeReady ? '' : 'motion-safe:animate-pulse',
         themeReady ? 'saturate-100' : 'saturate-0',
         themeReady ? 'opacity-100' : 'opacity-50',
       )}
+      placeholder={'blur'}
       zoomable
     />
   );
