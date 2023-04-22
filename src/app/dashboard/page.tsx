@@ -51,6 +51,7 @@ export default async function DashboardPage() {
           <Img
             src={animoji}
             alt={'Animoji of Jahir'}
+            placeholder={'blur'}
             className={cx(
               'transition',
               '-rotate-2 -translate-x-2 translate-y-1 m-auto',
