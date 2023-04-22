@@ -1,29 +1,40 @@
 :root {
   --size-scrollbar-width: 8px;
+  --totalToolbarHeight: 64px;
+  --scrollMargin: calc(var(--totalToolbarHeight) + 0.5rem); // 8px
+  --verticalContentPadding: 1.5rem;
+}
+
+@media screen and (min-width: 596px) {
+  :root {
+    --totalToolbarHeight: 68px;
+    --scrollMargin: calc(var(--totalToolbarHeight) + 1rem); // 16px
+    --verticalContentPadding: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --totalToolbarHeight: 68px;
+    --size-scrollbar-width: 12px;
+    --verticalContentPadding: 2.25rem;
+  }
 }
 
 html,
 body {
-  background-color: var(--colors-background);
+  background-color: var(--color-background);
   scroll-behavior: smooth;
+  accent-color: var(--color-accent);
+  margin-left: calc(100vw - 100%);
+}
+
+body {
+  @apply overflow-x-hidden;
 }
 
 a {
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
-}
-
-a,
-a:visited {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-button:hover:not(:disabled),
-button:focus:not(:disabled),
-a:hover:not(:disabled),
-a:focus:not(:disabled) {
-  cursor: pointer;
+  @apply decoration-2 underline-offset-2 cursor-pointer;
 }
 
 figure {
@@ -37,18 +48,16 @@ figure {
 }
 
 figure figcaption {
+  @apply text-3xs;
   text-align: center;
-  font-size: var(--fontSizes-3xs);
   margin: 0.625rem 0;
 }
 
-#root,
-#__next {
+body {
   position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-width: var(--sizes-max-site-width, 960px);
   margin: 0 auto;
 }
 
@@ -66,26 +75,26 @@ samp {
 }
 
 ::selection {
-  background-color: var(--colors-selection);
+  background-color: var(--color-selection);
 }
 
 ::placeholder {
-  color: var(--colors-text-tertiary);
+  color: var(--color-tertiary-txt);
   opacity: 1;
 }
 :-ms-input-placeholder {
-  color: var(--colors-text-tertiary);
+  color: var(--color-tertiary-txt);
   opacity: 1;
 }
 ::-ms-input-placeholder {
-  color: var(--colors-text-tertiary);
+  color: var(--color-tertiary-txt);
   opacity: 1;
 }
 
 /* == Custom Scrollbar Colors == */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--colors-scrollbar-bg) var(--colors-scrollbar-thumb);
+  scrollbar-color: var(--color-scrollbar-bg) var(--color-scrollbar-thumb);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -94,23 +103,17 @@ samp {
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--colors-scrollbar-thumb);
+  background: var(--color-scrollbar-thumb);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--colors-scrollbar-bg);
+  background-color: var(--color-scrollbar-bg);
   border-radius: 20px;
-  border: 3px solid var(--colors-scrollbar-thumb);
-}
-
-@media screen and (min-width: 768px) {
-  :root {
-    --size-scrollbar-width: 12px;
-  }
+  border: 3px solid var(--color-scrollbar-thumb);
 }
 
 *:focus {
-  outline: 2px dashed var(--colors-text-secondary);
+  outline: 2px dashed var(--color-secondary-txt);
   outline-offset: 0.25rem;
 }
 
@@ -118,5 +121,22 @@ samp {
 @media not all and (min-resolution: 0.001dpcm) {
   img[loading='lazy'] {
     clip-path: inset(0.5px);
+  }
+}
+
+body section,
+body article {
+  scroll-margin-top: var(--scrollMargin);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after,
+  *::before {
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: -1ms !important;
   }
 }

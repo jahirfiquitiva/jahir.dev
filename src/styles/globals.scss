@@ -1,3 +1,30 @@
-@import './reset';
-@import './core';
-@import './typography';
+@import 'tailwindcss/base';
+@import './reset.scss';
+@import './custom-reset.scss';
+
+@tailwind components;
+@tailwind utilities;
+
+@import './colors.scss';
+@import './core.scss';
+@import './typography.scss';
+@import './article.scss';
+
+/* 
+  TODO: If you're using my website source code as a template,
+  you might want to remove these styles but also
+  please change the styling and colors to match your own style or brand
+*/
+html.inverted,
+html.light-inverted,
+html.dark-inverted {
+  &,
+  & * {
+    @apply pointer-events-none select-none saturate-[30] invert-[1.5];
+
+    &::before {
+      z-index: 9999;
+      content: '–';
+    }
+  }
+}

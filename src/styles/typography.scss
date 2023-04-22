@@ -1,9 +1,7 @@
 html,
 body {
-  color: var(--colors-text-secondary);
-  font-size: var(--fontSizes-xs);
-  font-weight: 500;
-  line-height: 1.5;
+  @apply font-sans text-xs text-secondary-txt font-normal;
+  @apply leading-normal mobile-lg:leading-relaxed;
 }
 
 @media (min-width: 425px) {
@@ -19,53 +17,44 @@ h3,
 h4,
 h5,
 h6 {
-  display: inline-block;
-  color: var(--colors-text-primary);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
+  @apply inline-block text-primary-txt font-bold font-manrope;
 }
 
 b,
 strong {
-  color: var(--colors-text-primary);
-  font-weight: 600;
+  @apply font-semibold text-primary-txt;
 }
 
 p,
 small {
-  font-weight: 500;
+  @apply font-normal;
   width: fit-content;
 }
 
 h1 {
-  font-size: var(--fontSizes-3xl);
+  @apply text-3xl;
+  line-height: 1.5;
 }
 
 h2 {
-  font-size: var(--fontSizes-2xl);
+  @apply text-2xl;
+  line-height: 1.375;
 }
 
 h3 {
-  font-size: var(--fontSizes-xl);
+  @apply text-xl;
 }
 
 h4 {
-  font-size: var(--fontSizes-lg);
+  @apply text-lg;
 }
 
 h5 {
-  font-size: var(--fontSizes-md);
+  @apply text-md;
 }
 
 h6 {
-  font-size: var(--fontSizes-sm);
+  @apply text-sm;
 }
 
 p {
@@ -73,5 +62,9 @@ p {
 }
 
 small {
-  font-size: var(--fontSizes-3xs);
+  @apply text-2xs;
+}
+
+button {
+  @apply font-manrope;
 }

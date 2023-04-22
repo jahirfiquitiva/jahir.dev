@@ -1,20 +1,57 @@
-import { serialize } from './serialize';
+import type {
+  PlayHistoryObject,
+  SpotifyResponse,
+  ErrorResponse,
+  NowPlayingResponse,
+} from '@/types/spotify';
+
+export const serialize = (
+  obj: Record<string | number, string | number | boolean>,
+) => {
+  const str = [];
+  for (const p in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, p)) {
+      str.push(`${encodeURIComponent(p)}=${encodeURIComponent(obj[p])}`);
+    }
+  }
+  return str.join('&');
+};
+
+const buildSpotifyRequest = async <T>(
+  endpoint: string,
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
+  body?: Record<string, unknown>,
+): Promise<T | ErrorResponse> => {
+  const { access_token: accessToken } = await getAccessToken();
+  const response = await fetch(endpoint, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    method,
+    body: body && method !== 'GET' ? JSON.stringify(body) : undefined,
+  });
+  try {
+    const json = await response.json();
+    if (response.ok) return json as T;
+    return json as ErrorResponse;
+  } catch (e) {
+    return {
+      error: {
+        message: response.statusText || 'Server error',
+        status: response.status || 500,
+      },
+    };
+  }
+};
 
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
-const refreshToken =
-  process.env.SPOTIFY_CLIENT_REFRESH_TOKEN ||
-  process.env.SPOTIFY_CLIENT_TOKEN ||
-  '';
+const refreshToken = process.env.SPOTIFY_CLIENT_REFRESH_TOKEN || '';
 
 const basic = btoa(`${clientId}:${clientSecret}`);
-const TOP_TRACKS_ENDPOINT =
-  'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50';
-const NOW_PLAYING_ENDPOINT =
-  'https://api.spotify.com/v1/me/player/currently-playing';
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 
-const getAccessToken = async () => {
+export const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -22,9 +59,7 @@ const getAccessToken = async () => {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: serialize({
-      // eslint-disable-next-line camelcase
       grant_type: 'refresh_token',
-      // eslint-disable-next-line camelcase
       refresh_token: refreshToken,
     }),
   });
@@ -32,46 +67,14 @@ const getAccessToken = async () => {
   return response.json();
 };
 
-export const getTopTracks = async () => {
-  const { access_token: accessToken } = await getAccessToken();
-  return fetch(TOP_TRACKS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-};
+const NOW_PLAYING_ENDPOINT =
+  'https://api.spotify.com/v1/me/player/currently-playing';
+export const getNowPlaying = async () =>
+  buildSpotifyRequest<NowPlayingResponse>(NOW_PLAYING_ENDPOINT);
 
-export const getNowPlaying = async () => {
-  const { access_token: accessToken } = await getAccessToken();
-  return fetch(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-};
-
-const forbiddenKeywords = ['netflix', 'disney', 'musical'];
-
-export interface TopTrackData {
-  title?: string;
-  artist?: string;
-  album?: string;
-  url?: string;
-  image?: {
-    height?: number;
-    width?: number;
-    url?: string;
-  };
-}
-
-export interface TrackData extends TopTrackData {
-  isPlaying?: boolean;
-}
-
-export const validateTrack = (track: TopTrackData): boolean => {
-  return !forbiddenKeywords.some(
-    (it) =>
-      track?.title?.toLowerCase().includes(it) ||
-      track?.album?.toLowerCase().includes(it),
+const RECENTLY_PLAYED_ENDPOINT =
+  'https://api.spotify.com/v1/me/player/recently-played?limit=1';
+export const getRecentlyPlayed = async () =>
+  buildSpotifyRequest<SpotifyResponse<PlayHistoryObject>>(
+    RECENTLY_PLAYED_ENDPOINT,
   );
-};

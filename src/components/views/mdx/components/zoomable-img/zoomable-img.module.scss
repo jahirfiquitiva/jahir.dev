@@ -1,0 +1,11 @@
+.zimg {
+  &[data-zoomable='true'] {
+    @media (hover: hover) {
+      @apply pointer-events-none tablet-lg:cursor-zoom-in tablet-lg:pointer-events-auto;
+      &.zoomed {
+        @apply tablet-lg:cursor-zoom-out tablet-lg:-mx-64;
+        @apply tablet-lg:min-w-[calc(100%+8rem)];
+      }
+    }
+  }
+}

@@ -25,7 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env
 .env.local
 .env.development.local
 .env.test.local
@@ -43,10 +42,19 @@ public/*.xml
 # Contentlayer
 .contentlayer
 !.env.example
-content/blog/sheet.mdx
+content/sheet.mdx
+content/hello-world.mdx
+config/contentlayer/themes/*.json
 
 .frontmatter
 frontmatter.json
 
 src/data/*.json
 !src/data/projects.json
+!src/data/hardware.json
+!src/data/gaming.json
+!src/data/software.json
+!src/data/extensions.json
+
+!.env
+static/media/*.png

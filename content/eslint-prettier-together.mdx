@@ -1,0 +1,62 @@
+---
+title: Configure ESLint and Prettier to work together
+date: '2023-04-21T00:00:00.000Z'
+color: '#8E2673'
+hero: eslint-prettier-together/hero.jpg
+---
+
+### Introduction
+
+[`ESLint`](https://eslint.org/) and [`Prettier`](https://prettier.io/) are both useful tools to keep your code clean and to enforce a standard coding style in your projects.
+
+They both provide some rules and formatting to achieve that, and they work fine when separate, but together, it can be tricky to make them work correctly.
+
+### The problem
+
+I recently came across a small but slightly annoying issue with my development workflow, specifically while working on an update for my personal website, but also working on a client project and switching between the two projects during the day.
+
+Both were TypeScript and React projects. The client project had defined rules for `ESLint` to work with `Prettier`, although it didn’t include a specific `.prettierrc` file.
+
+### The findings
+
+Eventually, I found my workflow requiring two steps when formatting files in VS Code: format with `ESLint` and then format with `Prettier`. Each option applied different changes, but using both just made my code look the way I wanted it to.
+
+So, I double checked the configuration in the client project, as it was not necessary to use both formatters in it, and it worked just fine with just `ESLint`.
+
+Here’s the changes done in order to get both `ESLint` and `Prettier` working together, with a single formatter:
+
+1. Install the dependencies
+
+   ```bash
+   yarn add -D eslint-config-prettier eslint-plugin-prettier prettier
+   ```
+
+   These dependencies are for development only, so that’s why they’re installed with the `-D` flag.
+
+2. Update your config file to use the plugin
+
+   ```json title=".eslintrc | .eslintrc.json" {4,9}
+   {
+     "extends": [
+       ...
+       "plugin:prettier/recommended"
+     ],
+     ...
+     "plugins": [
+       ...
+       "prettier"
+     ],
+     ...
+   }
+   ```
+
+3. 🎉 Enjoy!
+
+### Conclusion
+
+After doing these changes I can finally format my code with a single formatter (`ESLint`) but applying the rules from both `ESLint` and `Prettier`, which was exactly what I was looking for.
+
+If it does not work right away, try restarting the TypeScript server from VS Code’s command palette or restart VS Code.
+
+> I wrote this as a note to my future self, in case I find myself in a similar situation 😅
+> Anyway, I decided to share it in case it could help someone else too.

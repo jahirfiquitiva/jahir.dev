@@ -3,6 +3,7 @@ title: 'Building my website from scratch'
 date: '2021-11-15T00:00:00.000Z'
 keywords: 'Design| website| Website Redesign|Design update|Redesign|Portfolio| spotify |typescript|tailwind'
 hero: building-website-from-scratch/hero.jpg
+color: '#E12017'
 ---
 
 Just a couple months ago I gave my website a redesign, and since then I've been silently pushing updates to it while also building it from scratch.
@@ -43,7 +44,7 @@ is as clean as it can be.
 
 Here's an example for a styled link with `twin.macro`:
 
-```typescript:src/components/link.tsx
+```typescript title="src/components/link.tsx"
 import tw from 'twin.macro';
 
 const StyledLink = tw.a`
@@ -67,7 +68,7 @@ You can check a [recent Pull Request](https://github.com/jahirfiquitiva/jahir.de
   alt={'Image showing the git differences between my previous website and the new one'}
   width={324}
   height={78}
-  layout={'responsive'}
+  zoomable={true}
 />
 
 Additionally, I'd like to mention I was planning on creating some kind of design system for this website, and have docs with Storybook. I did it
@@ -118,7 +119,7 @@ way. And it also includes beautiful illustrations from [open doodles](https://ww
   alt={'Image showing new contact page design'}
   width={960}
   height={577}
-  layout={'responsive'}
+  zoomable={true}
 />
 
 ## What's new?
@@ -157,7 +158,6 @@ sizes. Here's what they used to look like:
   alt={'Image of previous website cards design'}
   width={780}
   height={904}
-  layout={'responsive'}
 />
 
 </GridColumn>
@@ -168,7 +168,6 @@ sizes. Here's what they used to look like:
   alt={'Second image of previous website cards design'}
   width={1158}
   height={912}
-  layout={'responsive'}
 />
 
 </GridColumn>
@@ -181,7 +180,7 @@ And this is how they look now:
   alt={'Image showing new projects cards design'}
   width={960}
   height={242}
-  layout={'responsive'}
+  zoomable={true}
 />
 
 #### New blog posts cards
