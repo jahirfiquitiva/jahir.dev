@@ -15,7 +15,7 @@ They both provide some rules and formatting to achieve that, and they work fine 
 
 I recently came across a small but slightly annoying issue with my development workflow, specifically while working on an update for my personal website, but also working on a client project and switching between the two projects during the day.
 
-Both were TypeScript and React projects. The client project had defined rules for `ESLint` to work with `Prettier`, although it didn’t include a specific `.prettierrc` file.
+Both were TypeScript and React projects. The client project had defined rules for `ESLint` to work with `Prettier`, although it didn't include a specific `.prettierrc` file.
 
 ### The findings
 
@@ -23,7 +23,7 @@ Eventually, I found my workflow requiring two steps when formatting files in VS 
 
 So, I double checked the configuration in the client project, as it was not necessary to use both formatters in it, and it worked just fine with just `ESLint`.
 
-Here’s the changes done in order to get both `ESLint` and `Prettier` working together, with a single formatter:
+Here's the changes done in order to get both `ESLint` and `Prettier` working together, with a single formatter:
 
 1. Install the dependencies
 
@@ -31,7 +31,7 @@ Here’s the changes done in order to get both `ESLint` and `Prettier` working t
    yarn add -D eslint-config-prettier eslint-plugin-prettier prettier
    ```
 
-   These dependencies are for development only, so that’s why they’re installed with the `-D` flag.
+   These dependencies are for development only, so that's why they're installed with the `-D` flag.
 
 2. Update your config file to use the plugin
 
@@ -56,7 +56,7 @@ Here’s the changes done in order to get both `ESLint` and `Prettier` working t
 
 After doing these changes I can finally format my code with a single formatter (`ESLint`) but applying the rules from both `ESLint` and `Prettier`, which was exactly what I was looking for.
 
-If it does not work right away, try restarting the TypeScript server from VS Code’s command palette or restart VS Code.
+If it does not work right away, try restarting the TypeScript server from VS Code's command palette or restart VS Code.
 
 > I wrote this as a note to my future self, in case I find myself in a similar situation 😅
 > Anyway, I decided to share it in case it could help someone else too.
