@@ -30,8 +30,14 @@ const getHelloForCountry = (
   lang?: string | null,
 ): string | null => {
   if (!country || !lang) return null;
-  const hello = greetings[lang as keyof typeof greetings];
-  return `${hello.substring(0, hello.indexOf(',') + 1)} ${country}`;
+  try {
+    const hello = greetings[lang as keyof typeof greetings];
+    if (!hello) return null;
+    return `${hello.substring(0, hello.indexOf(',') + 1)} ${country}`;
+  } catch (e) {
+    console.error({ country, lang });
+    return null;
+  }
 };
 
 interface WavingHelloProps {
