@@ -13,7 +13,7 @@ import { AmazonLink, GitHubSponsorsLink, PayPalLink } from './buttons.styles';
 
 export const DonateButtons = () => {
   return (
-    <div className={'flex flex-col gap-12 mb-32'}>
+    <div className={'flex flex-col gap-12 mt-16 mb-24'}>
       <Heading $as={'h2'} className={'text-lg'}>
         Donate via
       </Heading>

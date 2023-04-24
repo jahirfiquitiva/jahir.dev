@@ -5,7 +5,7 @@ export const unicorns: Array<Omit<ReadableSupporter, 'amount'>> = [
     photo: 'https://unavatar.io/twitter/PGoworowski',
     link: 'https://twitter.com/PGoworowski',
     message:
-      "I've been using Jahir’s dashboards to create and publish five icon packs before I seriously got into Android apps development.",
+      "I've been using Jahir's dashboards to create and publish five icon packs before I seriously got into Android apps development.",
   },
   {
     name: 'RandleP',

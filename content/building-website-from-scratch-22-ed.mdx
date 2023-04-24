@@ -6,9 +6,10 @@ hero: building-website-scratch-22/hero.jpg
 excerpt: 'It was about time for doing it all over again'
 color: '#8ac295'
 ---
+
 ## Intro
 
-It’s been a few months since I gave my website a design update. I’ve been noticing a few things I wanted
+It's been a few months since I gave my website a design update. I've been noticing a few things I wanted
 to change in my site since then and also considering some alternatives to the tech stack I had built
 my website with.
 
@@ -17,48 +18,56 @@ to create styled components, I already had given it a try a couple months ago, b
 I think it was mostly because of how I wanted to build my components and make them extend from one another,
 which caused a lot of dependency.
 
-That’s also another reason why I decided to build the website from scratch. I think they way I created and
+That's also another reason why I decided to build the website from scratch. I think they way I created and
 organized components before was not the best and caused it to be a bit complex to be updated or maintained.
+
 <br />
-<video width="100%" autoPlay="autoplay" loop muted style={{ pointerEvents: 'none' }}>
-  <source src="/static/images/blog/building-website-scratch-22/same-same.mp4" type="video/mp4" />
+<video
+  width="100%"
+  autoPlay="autoplay"
+  loop
+  muted
+  style={{ pointerEvents: 'none' }}
+>
+  <source
+    src="/static/images/blog/building-website-scratch-22/same-same.mp4"
+    type="video/mp4"
+  />
 </video>
 
 ## Same same, but different
 
-Yeah, I didn’t give the website a huge redesign, as there were just few things I thought needed improvement
+Yeah, I didn't give the website a huge redesign, as there were just few things I thought needed improvement
 in terms of UI. Instead, I tried to focus on writing less code but making it more useful, less dependent on
 other components and organizing it a bit better, so that it could be easier to maintain, not just by me, but
-anyone who would like to contribute to the project, as it’s open-source.
+anyone who would like to contribute to the project, as it's open-source.
 
-That said, I didn’t reduce the code in a huge amount, according to the pull request, the diff was
-**`+11,615 −12,326`** so that’s 711 lines of code less. Anyway, I added more features and content
-to different pages that I’ll mention later in this post, so I guess it was a win overall.
+That said, I didn't reduce the code in a huge amount, according to the pull request, the diff was
+**`+11,615 −12,326`** so that's 711 lines of code less. Anyway, I added more features and content
+to different pages that I'll mention later in this post, so I guess it was a win overall.
 
-Let’s go through the different components and pages updated. I like doing a side by side comparison
+Let's go through the different components and pages updated. I like doing a side by side comparison
 because it also helps me recognize and be aware of the improvements done. I hope you like them. 😅
 
-Let’s start with the site-wide components:
+Let's start with the site-wide components:
 
 #### Content
 
-I’ve reduced the content width to make everything even easier to read and more visually appealing
+I've reduced the content width to make everything even easier to read and more visually appealing
 (in my opinion). I took reference from a few sites I really like, including [Lee Rob](https://leerob.io/):
 `672px` wide, [Brian Lovin](https://brianlovin.com/): `655px`, [Delba](https://delba.dev/): `640px`,
-then aimed for the average which is `656px`, but decided to go with the more *interesting* value
+then aimed for the average which is `656px`, but decided to go with the more _interesting_ value
 of `666px` 😅😈
 
 #### Toolbar
 
 Here I decided to not make it wider than the content, plus reducing the padding and spacing between links
-a bit. Additionally changed the drop shadow for a glow-like one, which you’ll also see in more components.
+a bit. Additionally changed the drop shadow for a glow-like one, which you'll also see in more components.
 
 <ImageComparison
   sliderPosition={0.35}
   firstImageAlt={'Previous website toolbar design'}
-  firstImage={
-    '/static/images/blog/building-website-scratch-22/toolbar-old.png'
-  }
+  firstImage={'/static/images/blog/building-website-scratch-22/toolbar-old.png'}
   secondImageAlt={'New website toolbar design'}
   secondImage={
     '/static/images/blog/building-website-scratch-22/toolbar-new.png'
@@ -76,23 +85,28 @@ bottom right. Although it takes a bit more vertical space, I feel it looks more 
 <ImageComparison
   sliderPosition={0.35}
   firstImageAlt={'Previous website footer design'}
-  firstImage={
-    '/static/images/blog/building-website-scratch-22/footer-old.png'
-  }
+  firstImage={'/static/images/blog/building-website-scratch-22/footer-old.png'}
   secondImageAlt={'New website footer design'}
-  secondImage={
-    '/static/images/blog/building-website-scratch-22/footer-new.png'
-  }
+  secondImage={'/static/images/blog/building-website-scratch-22/footer-new.png'}
   description={
     'Previous website footer design (left) vs New website footer design (right).'
   }
 />
 
-Also, as you can see, I added an item to show the song that I’m currently listening to on Spotify, and it even has
+Also, as you can see, I added an item to show the song that I'm currently listening to on Spotify, and it even has
 a cool animation while the song is playing.
 
-<video width="100%" autoPlay="autoplay" loop muted style={{ pointerEvents: 'none' }}>
-  <source src="/static/images/blog/building-website-scratch-22/footer-now-playing.mp4" type="video/mp4" />
+<video
+  width="100%"
+  autoPlay="autoplay"
+  loop
+  muted
+  style={{ pointerEvents: 'none' }}
+>
+  <source
+    src="/static/images/blog/building-website-scratch-22/footer-now-playing.mp4"
+    type="video/mp4"
+  />
 </video>
 
 #### Focusable elements
@@ -102,44 +116,43 @@ and other few. This was based on the styles used by [Alistair Shepherd](https://
 I think/hope they improve the accessibility of my website.
 
 <Grid>
-<GridColumn>
-  ![Link with focus state](/static/images/blog/building-website-scratch-22/focused-link.png)
-</GridColumn>
-<GridColumn>
-  ![Button with focus state](/static/images/blog/building-website-scratch-22/focused-button.png)
-</GridColumn>
+  <GridColumn>
+    ![Link with focus
+    state](/static/images/blog/building-website-scratch-22/focused-link.png)
+  </GridColumn>
+  <GridColumn>
+    ![Button with focus
+    state](/static/images/blog/building-website-scratch-22/focused-button.png)
+  </GridColumn>
 </Grid>
 
-<br/>
+<br />
 
 ## Pages
+
 Time to go through the different pages:
 
 #### About
 
 This page was updated to not use so many emojis, make it easier to read. Plus I added a cool feed
-with the latest 6 photos from my Instagram profile. It’s made using the [Behold API](https://behold.so/);
-let’s hope it doesn’t pass the rate limit 🤞😅
+with the latest 6 photos from my Instagram profile. It's made using the [Behold API](https://behold.so/);
+let's hope it doesn't pass the rate limit 🤞😅
 
 ![Instagram Feed](/static/images/blog/building-website-scratch-22/insta-feed.png)
 
 #### Blog post
 
-The biggest change here are the share and edit actions. I’ve updated them to look like buttons, plus the
+The biggest change here are the share and edit actions. I've updated them to look like buttons, plus the
 share option will use the native [Web Share API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API)
-if it’s available, which brings up more options of sites to share the content, instead of limiting it to
+if it's available, which brings up more options of sites to share the content, instead of limiting it to
 just Twitter.
 
 <ImageComparison
   sliderPosition={0.35}
   firstImageAlt={'Previous website share actions'}
-  firstImage={
-    '/static/images/blog/building-website-scratch-22/share-old.png'
-  }
+  firstImage={'/static/images/blog/building-website-scratch-22/share-old.png'}
   secondImageAlt={'New website share action'}
-  secondImage={
-    '/static/images/blog/building-website-scratch-22/share-new.png'
-  }
+  secondImage={'/static/images/blog/building-website-scratch-22/share-new.png'}
   description={
     'Previous blog post actions (left) vs New blog post actions (right).'
   }
@@ -220,9 +233,7 @@ more stats.
   secondImage={
     '/static/images/blog/building-website-scratch-22/dashboard-new.png'
   }
-  description={
-    'Previous dashboard grid (left) vs New dashboard grid (right).'
-  }
+  description={'Previous dashboard grid (left) vs New dashboard grid (right).'}
 />
 
 #### The rest
@@ -240,13 +251,13 @@ different types of projects. I already deployed 5 that are built with NodeJS and
 and pretty straightforward experience.
 
 Those projects were previously deployed to Heroku but they would be “put to sleep” if not used for a while,
-while in [Railway](https://railway.app/?referralCode=Ri5XbE) they stay alive, and I’m only charged based on
+while in [Railway](https://railway.app/?referralCode=Ri5XbE) they stay alive, and I'm only charged based on
 their usage, plus they offer $5 quota for free every month.
 
 ![Railway database usage stats](/static/images/blog/building-website-scratch-22/railway-usage.png)
 
-Although the database is the one that costs the most 😬 , the other projects don’t cost more than $0,65 each,
-but I’m getting closer to the limit… If you’d like to help me out with those costs, you can follow this
+Although the database is the one that costs the most 😬 , the other projects don't cost more than $0,65 each,
+but I'm getting closer to the limit… If you'd like to help me out with those costs, you can follow this
 referral link for [Railway](https://railway.app/?referralCode=Ri5XbE), or even [sponsor me](/donate).
 Thanks in advance!
 
@@ -266,10 +277,10 @@ engine optimization based on LightHouse tests.
 
 ![LightHouse results scoring 100 points in all categories](/static/images/blog/building-website-scratch-22/lighthouse.gif)
 
-## What’s next?
+## What's next?
 
-At this time, I don’t really have plans to start from scratch for my website 😅 It definitely takes a lot of time and effort.
-Anyway, now I’m much more happy with the tech stack, the project structure and the design, so I hope that future updates
+At this time, I don't really have plans to start from scratch for my website 😅 It definitely takes a lot of time and effort.
+Anyway, now I'm much more happy with the tech stack, the project structure and the design, so I hope that future updates
 are much easier to work on.
 
 I hope you enjoyed this post and the different updates; if so, please click on those reaction buttons and share it
@@ -277,4 +288,3 @@ with your friends! 😁
 
 > Special thanks to [Patryk Michalik](https://patrykmichalik.com/) who was really kind and helpful providing
 > feedback and ideas while I worked on this update.
-

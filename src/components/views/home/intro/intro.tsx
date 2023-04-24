@@ -34,7 +34,7 @@ export const Intro = (props: ComponentProps<typeof WavingHello>) => {
           </Heading>
         </Heading>
         <IntroParagraph>
-          Passionate and creative full-stack software engineer based in{' '}
+          Passionate and creative full-stack software engineer from{' '}
           <Link
             title={'Colombia on Google Maps'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}

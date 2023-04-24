@@ -27,7 +27,7 @@ const telegramButtonClasses = cx(
 
 export default function ContactButtons() {
   return (
-    <div className={cx('flex flex-wrap items-center gap-16')}>
+    <div className={'flex flex-wrap items-center gap-16'}>
       <ButtonLink
         title={'Compose an email to Jahir'}
         href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}

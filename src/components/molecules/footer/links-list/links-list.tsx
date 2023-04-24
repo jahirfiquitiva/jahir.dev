@@ -38,7 +38,7 @@ export const FooterLinksList = (props: FooterLinksListProps) => {
               href={link.href}
               title={link.a11yTitle ? link.a11yTitle : `${link.title} page`}
               openInNewTab={link.openInNewTab}
-              className={cx(`hocus:decoration-gradient-${link.underlineColor}`)}
+              className={`hocus:decoration-gradient-${link.underlineColor}`}
             >
               <FooterLinkSpan
                 className={cx(
