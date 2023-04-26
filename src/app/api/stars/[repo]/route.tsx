@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
+export const revalidate = 43200;
 
 const repoApiUrl = 'https://api.github.com/repos';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;

@@ -8,7 +8,7 @@ import { Suspense, cache } from 'react';
 import { mdiEyeOutline } from '@/components/icons';
 import { db } from '@/lib/planetscale';
 
-import { Stat } from './../stat';
+import { Stat, StatBase } from './../stat';
 import { trackView as trackViewFunc } from './actions';
 import { ViewTracker } from './tracker';
 
@@ -32,35 +32,45 @@ interface ViewsCounterProps {
   $sm?: boolean;
 }
 
+// Separated so Suspense actually renders the fallback
+const InternalCounter = async (props: { slug: string; $sm?: boolean }) => {
+  const views = (await getViews(props.slug).catch(() => 0)) || 1;
+  return (
+    <StatBase
+      $sm={props.$sm}
+      className={cx('bg-transparent dark:bg-transparent')}
+      title={`This blog post has been viewed ${views.toLocaleString()} times`}
+      aria-label={`This blog post has been viewed ${views.toLocaleString()} times`}
+    >
+      <Icon path={mdiEyeOutline} size={props.$sm ? 0.5 : 0.625} />
+      <span>{`${views.toLocaleString()} views`}</span>
+    </StatBase>
+  );
+};
+
 export const ViewsCounter = async (props: ViewsCounterProps) => {
   const { slug, inProgress, trackView, $sm } = props;
-  const views = await getViews(slug).catch(() => 0);
 
   return (
     <>
       {trackView && !inProgress ? (
         <ViewTracker slug={slug} trackView={trackViewFunc} />
       ) : null}
-      <Stat
-        $sm={$sm}
-        className={cx($sm ? 'min-w-[58px]' : 'min-w-[64px]', 'h-full')}
-        title={`This blog post has been viewed ${views.toLocaleString()} times`}
-        aria-label={`This blog post has been viewed ${views.toLocaleString()} times`}
-      >
+      <Stat $sm={$sm} className={'p-0'}>
         <Suspense
           fallback={
-            <LineWobble
-              size={$sm ? 58 : 64}
-              lineWeight={$sm ? 2 : 4}
-              speed={1.5}
-              color={'var(--color-accent, #88a4e6)'}
-            />
+            <StatBase $sm={$sm}>
+              <LineWobble
+                size={$sm ? 56 : 70}
+                lineWeight={$sm ? 2 : 4}
+                speed={1.5}
+                color={'var(--color-accent, #88a4e6)'}
+              />
+            </StatBase>
           }
         >
-          <>
-            <Icon path={mdiEyeOutline} size={$sm ? 0.5 : 0.625} />
-            <span>{`${views.toLocaleString()} views`}</span>
-          </>
+          {/* @ts-expect-error Server Component */}
+          <InternalCounter slug={slug} $sm={$sm} />
         </Suspense>
       </Stat>
     </>

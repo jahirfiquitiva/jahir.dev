@@ -9,6 +9,7 @@ import {
 import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
+export const revalidate = 3600;
 
 const getData = (slug: string) =>
   db
