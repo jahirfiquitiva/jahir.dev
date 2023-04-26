@@ -38,7 +38,7 @@ const renderLoaderOrCount = (loading?: boolean, count: number = 0) => {
       />
     );
   }
-  return <span>{count}</span>;
+  return <span>{count || 1}</span>;
 };
 
 export const ReactionButton = (props: ReactionButtonProps) => {
