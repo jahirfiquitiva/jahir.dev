@@ -110,7 +110,7 @@ const addProps = async (node: ImageNode): Promise<ImageNode> => {
   return node;
 };
 
-const elementsWhereImgCantZoom = ['a', 'button', 'Link', 'GridColumn', 'li'];
+const elementsWhereImgCantZoom = ['a', 'button', 'Link', 'GridColumn'];
 const canZoomImg = (parentTag?: string) => {
   if (!parentTag) return true;
   // Images within one of `elementsWhereImgCantZoom`  tag cannot be zoomed.
