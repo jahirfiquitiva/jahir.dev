@@ -41,7 +41,7 @@ module.exports = {
               color: theme('colors.accent'),
               textDecoration: 'none',
               '&:hover,&:focus': {
-                color: theme('colors.accent-dark'),
+                color: theme('colors.accent-dark/1'),
               },
             },
           },
