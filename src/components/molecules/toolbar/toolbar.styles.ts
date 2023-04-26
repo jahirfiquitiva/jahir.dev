@@ -37,7 +37,6 @@ export const Header = tw.header`
   before:to-transparent
   before:backdrop-blur-md
   before:backdrop-saturate-150
-  before:backdrop-grayscale
 `;
 
 export const Nav = tw.nav<{ $elevated?: boolean }>`
