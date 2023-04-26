@@ -27,7 +27,7 @@ export const Header = tw.header`
   before:absolute
   before:block
   before:top-0
-  before:h-[calc(var(--floatingMargin)_+_6px)]
+  before:h-[calc(var(--floatingMargin)_+_10px)]
   before:w-full
   before:left-1/2
   before:transform
