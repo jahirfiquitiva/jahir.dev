@@ -30,7 +30,6 @@ strong {
 
 p,
 small {
-  @apply font-normal;
   width: fit-content;
 }
 
@@ -61,6 +60,7 @@ h6 {
 }
 
 p {
+  font-weight: inherit;
   font-size: inherit;
 }
 

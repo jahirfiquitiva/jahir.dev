@@ -47,6 +47,7 @@
 
   & p {
     @apply w-full m-0;
+    max-width: 69ch; // nice
   }
 }
 

@@ -9,10 +9,6 @@ const buildRedirect = (source, destination, permanent = true) => {
 module.exports = [
   /* Blog posts redirections */
   buildRedirect(
-    '/blog/a-priori-care',
-    'https://medium.com/@jahirfiquitiva/taking-a-priori-care-of-your-future-job-7ed24cf18ed2',
-  ),
-  buildRedirect(
     '/blog/md-iconography-guidelines',
     'https://stories.uplabs.com/what-google-missed-in-their-guidelines-for-material-design-iconography-daf9f88000ec',
   ),
