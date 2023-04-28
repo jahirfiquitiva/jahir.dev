@@ -13,6 +13,7 @@ module.exports = [
     'https://stories.uplabs.com/what-google-missed-in-their-guidelines-for-material-design-iconography-daf9f88000ec',
   ),
   buildRedirect('/blog/post-of-fame', '/donate#thanks'),
+  buildRedirect('/inspiration', '/blog/people-websites-that-inspire'),
   /* Old static assets paths to new ones */
   buildRedirect('/assets/:path*', '/static/:path*'),
   /* Needed for android dashboards */

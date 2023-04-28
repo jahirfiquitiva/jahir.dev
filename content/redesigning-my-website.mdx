@@ -43,13 +43,16 @@ Anyways, I still liked that, and thought it was fine to keep, but then I also wa
 to keep gradients in titles while using the dark theme only. They look better with a dark background anyways.
 
 Here's a quick comparison:
+
 <ImageComparison
   sliderPosition={0.35}
   firstImageAlt={'Toolbar before'}
   firstImage={'/static/images/blog/website-redesign/toolbar-before.png'}
   secondImageAlt={'Toolbar now'}
   secondImage={'/static/images/blog/website-redesign/toolbar-after.png'}
-  description={'Toolbar before (left) and now (right). Slide over the image to view the differences'}
+  description={
+    'Toolbar before (left) and now (right). Slide over the image to view the differences'
+  }
 />
 
 If you're wondering how to apply a gradient to text, you can do so like this:
@@ -118,7 +121,9 @@ Comparison:
   firstImage={'/static/images/blog/website-redesign/projects-before.png'}
   secondImageAlt={'Projects cards now'}
   secondImage={'/static/images/blog/website-redesign/projects-after.png'}
-  description={'Projects cards before (left) and now (right). Slide over the image to view the differences'}
+  description={
+    'Projects cards before (left) and now (right). Slide over the image to view the differences'
+  }
 />
 
 Finally, I added a link to my resume in the projects section, because even though I'm not actively looking for new job
@@ -148,7 +153,9 @@ Here's the comparison:
   firstImage={'/static/images/blog/website-redesign/blog-before.png'}
   secondImageAlt={'Blog now'}
   secondImage={'/static/images/blog/website-redesign/blog-after.png'}
-  description={'Blog before (left) and now (right). Slide over the image to view the differences'}
+  description={
+    'Blog before (left) and now (right). Slide over the image to view the differences'
+  }
 />
 
 <ImageComparison
@@ -157,7 +164,9 @@ Here's the comparison:
   firstImage={'/static/images/blog/website-redesign/blog-footer-before.png'}
   secondImageAlt={'Blog footer now'}
   secondImage={'/static/images/blog/website-redesign/blog-footer-after.png'}
-  description={'Blog footer before (left) and now (right). Slide over the image to view the differences'}
+  description={
+    'Blog footer before (left) and now (right). Slide over the image to view the differences'
+  }
 />
 
 #### Footer
@@ -176,7 +185,9 @@ Comparison:
   firstImage={'/static/images/blog/website-redesign/footer-before.png'}
   secondImageAlt={'Footer now'}
   secondImage={'/static/images/blog/website-redesign/footer-after.png'}
-  description={'Footer before (left) and now (right). Slide over the image to view the differences'}
+  description={
+    'Footer before (left) and now (right). Slide over the image to view the differences'
+  }
 />
 
 ## New Features
@@ -242,7 +253,7 @@ started looking into how to implement that.
 
 I used [React Syntax Highligther](https://github.com/react-syntax-highlighter/react-syntax-highlighter) along
 with [React Markdown](https://github.com/remarkjs/react-markdown/) and a custom syntax theme to achieve that, although
-is based on [Lee Robinson's one](https://github.com/leerob/leerob.io/blob/main/styles/global.css).
+is based on [Lee Robinson's one](https://github.com/leerob/leerob.io/blob/main/app/global.css).
 
 ### Security headers
 
@@ -253,7 +264,7 @@ I just followed [Lee Robinson's guide](https://twitter.com/leeerob/status/138160
 Following [Lee Robinson's guide and suggestions](https://leerob.io/blog/fonts) I have now set my website to host the
 fonts files itself, aiming to improve their performance.
 
-I used this [Google WebFonts Helper](https://google-webfonts-helper.herokuapp.com/) tool to download only the font files
+I used this [Google WebFonts Helper](https://gwfh.mranftl.com/fonts) tool to download only the font files
 and config I needed.
 
 ### Music dashboard
