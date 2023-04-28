@@ -125,7 +125,7 @@
 
 .article blockquote {
   @apply bg-accent-dark/[0.036] border-0 border-l-[0.25rem] border-divider;
-  @apply pt-16 py-14 pr-12 rounded-4 my-4 text-secondary-txt;
+  @apply pt-16 py-14 pr-12 rounded-4 my-4 text-secondary-txt font-normal;
   & img {
     @apply mt-16 mb-8;
   }
