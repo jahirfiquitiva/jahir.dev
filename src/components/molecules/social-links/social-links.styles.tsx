@@ -58,7 +58,7 @@ export const PolyworkLink = tw(SocialLink)`
   hocus:dark:text-[#786afc]
 `;
 
-export const MastodonLink = tw(SocialLink)`
-  hocus:text-[#563ACC]
-  hocus:dark:text-[#7374ff]
+export const BlueskyLink = tw(SocialLink)`
+  hocus:text-[#0078e6]
+  hocus:dark:text-[#0085ff]
 `;
