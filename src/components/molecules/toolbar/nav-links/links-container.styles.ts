@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 
-export const LinkItem = tw.li`block self-start tablet-sm:self-center`;
+export const LinkItem = tw.li`block self-start w-full tablet-sm:w-[unset] tablet-sm:self-center`;
 
 export const ToolbarLinksContainer = tw.ul`
   h-full
