@@ -6,7 +6,10 @@ import {
   createContext,
   useContext,
   useMemo,
+  useEffect,
 } from 'react';
+
+import { colorMetaTags } from '@/utils/metadata';
 
 export interface ThemeContextValue {
   isDark: boolean;
@@ -33,6 +36,17 @@ export const ThemeProvider = (props: PropsWithChildren) => {
       setTheme(actualTheme === 'dark' ? 'light' : 'dark');
     },
   };
+
+  useEffect(() => {
+    colorMetaTags.forEach((tag) => {
+      document.head
+        .querySelector(`meta[name="${tag}"]`)
+        ?.setAttribute(
+          'content',
+          actualTheme === 'dark' ? '#080f1e' : '#ffffff',
+        );
+    });
+  }, [actualTheme]);
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
