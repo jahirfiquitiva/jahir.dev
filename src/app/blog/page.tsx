@@ -1,22 +1,32 @@
+import { Suspense } from 'react';
+
 import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
 import { allReadableBlogs } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
+import Loading from '../loading';
+
 import Header from './header';
 import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const allBlogs = allReadableBlogs
-  .filter((it) => allowInProgress || !it.inProgress)
-  .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+
+const BlogList = () => {
+  const allBlogs = allReadableBlogs
+    .filter((it) => allowInProgress || !it.inProgress)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+  return <BlogPosts posts={groupBlogPosts(allBlogs)} />;
+};
 
 export default function BlogPage() {
   return (
     <Section id={'blog'}>
       <Header />
-      <BlogPosts posts={groupBlogPosts(allBlogs)} />
+      <Suspense fallback={<Loading />}>
+        <BlogList />
+      </Suspense>
     </Section>
   );
 }
