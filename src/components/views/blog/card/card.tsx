@@ -29,7 +29,7 @@ interface PostCardProps {
 
 export const BlogPostCard = (props: PostCardProps) => {
   const hasMounted = useHasMounted();
-  const { isDark, themeReady } = useTheme();
+  const { isDark } = useTheme();
 
   const { post, viewsCounter } = props;
   const { link, slug, readingTime } = post;
@@ -37,9 +37,9 @@ export const BlogPostCard = (props: PostCardProps) => {
   const domain = getUrlDomain(rightLink);
 
   const textColor = useMemo<string | null>(() => {
-    if (!themeReady || !hasMounted) return null;
+    if (!hasMounted) return null;
     return hexToRgb(getReadableColor(post.color, isDark), undefined, true);
-  }, [isDark, themeReady, post.color, hasMounted]);
+  }, [isDark, post.color, hasMounted]);
 
   const a11yDate = formatDate(post.date);
   const readableDate = formatDate(post.date, { year: undefined });

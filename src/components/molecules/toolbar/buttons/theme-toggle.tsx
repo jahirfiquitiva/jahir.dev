@@ -4,38 +4,36 @@ import { cx } from 'classix';
 import { useMemo } from 'react';
 
 import { mdiLoading, moonOutline, sunOutline } from '@/components/icons';
+import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 
 import { ToolbarButton, ToolbarButtonIcon } from './buttons.styles';
 
 export const ThemeToggle = () => {
-  const { isDark, themeReady, toggleTheme } = useTheme();
+  const hasMounted = useHasMounted();
+  const { isDark, toggleTheme } = useTheme();
 
   const themeText = useMemo<string>(() => {
-    if (!themeReady || !isDark) return 'dark';
+    if (!isDark) return 'dark';
     return 'light';
-  }, [themeReady, isDark]);
-
-  const buttonText = useMemo<string>(() => {
-    return ['Enable', themeText, 'theme'].join(' ');
-  }, [themeText]);
+  }, [isDark]);
 
   const iconPath = useMemo<string>(() => {
-    if (!themeReady) return mdiLoading;
+    if (!hasMounted) return mdiLoading;
     if (!isDark) return moonOutline;
     return sunOutline;
-  }, [themeReady, isDark]);
+  }, [hasMounted, isDark]);
 
   return (
     <ToolbarButton
-      title={buttonText}
+      title={`Enable ${themeText} theme`}
       onClick={toggleTheme}
-      disabled={!themeReady}
+      disabled={!hasMounted}
     >
       <ToolbarButtonIcon
         path={iconPath}
         size={0.9}
-        className={cx(!themeReady && 'motion-safe:animate-spin')}
+        className={cx(!hasMounted && 'motion-safe:animate-spin')}
       />
     </ToolbarButton>
   );

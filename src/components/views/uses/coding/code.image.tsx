@@ -12,12 +12,12 @@ import { ZoomableImg } from '../../mdx/components/zoomable-img';
 
 export const CodeImage = () => {
   const hasMounted = useHasMounted();
-  const { themeReady, isDark } = useTheme();
+  const { isDark } = useTheme();
 
   const image = useMemo(() => {
-    if (!themeReady || !hasMounted) darkCode;
+    if (!hasMounted) darkCode;
     return isDark ? darkCode : lightCode;
-  }, [themeReady, hasMounted, isDark]);
+  }, [hasMounted, isDark]);
 
   return (
     <ZoomableImg
@@ -26,9 +26,9 @@ export const CodeImage = () => {
       className={cx(
         'filter transition-colors',
         'rounded-8 bg-[#4474BE]',
-        themeReady ? '' : 'motion-safe:animate-pulse',
-        themeReady ? 'saturate-100' : 'saturate-0',
-        themeReady ? 'opacity-100' : 'opacity-50',
+        hasMounted ? '' : 'motion-safe:animate-pulse',
+        hasMounted ? 'saturate-100' : 'saturate-0',
+        hasMounted ? 'opacity-100' : 'opacity-50',
       )}
       placeholder={'blur'}
       zoomable

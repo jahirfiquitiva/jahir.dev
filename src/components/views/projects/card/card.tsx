@@ -28,17 +28,17 @@ export const ProjectCard = (props: ProjectCardProps) => {
     `/api/stars/${project?.repo}`,
   );
   const hasMounted = useHasMounted();
-  const { isDark, themeReady } = useTheme();
+  const { isDark } = useTheme();
 
   const projectColor = useMemo<string | null | undefined>(() => {
-    if (!themeReady || !hasMounted) return null;
+    if (!hasMounted) return null;
     return isDark ? project?.darkColor || project?.color : project?.color;
-  }, [isDark, themeReady, hasMounted, project?.darkColor, project?.color]);
+  }, [isDark, hasMounted, project?.darkColor, project?.color]);
 
   const color = useMemo<string | null>(() => {
-    if (!themeReady || !hasMounted || !projectColor) return null;
+    if (!hasMounted || !projectColor) return null;
     return hexToRgb(getReadableColor(projectColor, isDark), undefined, true);
-  }, [projectColor, isDark, themeReady, hasMounted]);
+  }, [projectColor, isDark, hasMounted]);
 
   const extraIconProps = useMemo(() => {
     if (project?.iconMeta && project?.iconMeta.blur64) {

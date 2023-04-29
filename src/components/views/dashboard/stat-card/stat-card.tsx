@@ -25,13 +25,13 @@ export interface StatCardProps {
 
 export const StatCard = (props: StatCardProps) => {
   const hasMounted = useHasMounted();
-  const { isDark, themeReady } = useTheme();
+  const { isDark } = useTheme();
   const { title, href, value, text, iconPath, color } = props;
 
   const statColor = useMemo<string | null>(() => {
-    if (!themeReady || !hasMounted) return null;
+    if (!hasMounted) return null;
     return hexToRgb(getReadableColor(color, isDark), undefined, true);
-  }, [isDark, themeReady, color, hasMounted]);
+  }, [isDark, color, hasMounted]);
 
   return (
     <StyledStatCard

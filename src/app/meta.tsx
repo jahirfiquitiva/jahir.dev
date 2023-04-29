@@ -1,3 +1,5 @@
+import { colorMetaTags } from '@/utils/metadata';
+
 export const Meta = () => {
   return (
     <>
@@ -43,6 +45,10 @@ export const Meta = () => {
         type={'application/rss+xml'}
         title={'Jahir Fiquitiva (RSS)'}
       />
+
+      {colorMetaTags.map((tag) => (
+        <meta key={tag} name={tag} content={'transparent'} />
+      ))}
     </>
   );
 };

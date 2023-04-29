@@ -8,24 +8,18 @@ import {
   useMemo,
 } from 'react';
 
-import { useHasMounted } from '@/hooks/use-has-mounted';
-
 export interface ThemeContextValue {
   isDark: boolean;
-  themeReady: boolean;
   toggleTheme?: () => void;
-  setTheme?: (theme: 'light' | 'dark') => void;
 }
 
 const defaultContextState: ThemeContextValue = {
   isDark: false,
-  themeReady: false,
 };
 
 const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider = (props: PropsWithChildren) => {
-  const mounted = useHasMounted();
   const { theme, resolvedTheme, setTheme } = useNextTheme();
 
   const actualTheme = useMemo(
@@ -34,12 +28,10 @@ export const ThemeProvider = (props: PropsWithChildren) => {
   );
 
   const themeContextValue: ThemeContextValue = {
-    themeReady: mounted,
     isDark: actualTheme === 'dark',
     toggleTheme: () => {
       setTheme(actualTheme === 'dark' ? 'light' : 'dark');
     },
-    setTheme,
   };
 
   return (
