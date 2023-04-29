@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useState, useCallback, useEffect } from 'react';
 
 import { LogoAnimoji } from '@/components/core/logo-animoji';
@@ -17,7 +18,8 @@ import { Header, Nav } from './toolbar.styles';
 
 const scrollThreshold = 40; //px
 export const Toolbar = () => {
-  const [isExpanded, expand] = useState(false);
+  const pathname = usePathname();
+  const [isExpanded, setExpanded] = useState(false);
   const [elevated, setElevated] = useState(false);
   const hasMounted = useHasMounted();
 
@@ -45,6 +47,10 @@ export const Toolbar = () => {
     else document.body.classList.remove('overflow-hidden');
   }, [isExpanded, hasMounted]);
 
+  useEffect(() => {
+    setExpanded(false);
+  }, [pathname]);
+
   return (
     <Header data-expanded={isExpanded} id={'header'}>
       <Nav $elevated={elevated}>
@@ -52,7 +58,7 @@ export const Toolbar = () => {
           <LogoAnimoji />
           <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
         </HomeLink>
-        <ToolbarNavLinks />
+        <ToolbarNavLinks pathname={pathname} />
         <ToolbarLinksContainer className={'self-start tablet-md:self-center'}>
           <li className={'self-start'}>
             <ThemeToggle />
@@ -63,7 +69,7 @@ export const Toolbar = () => {
               aria-expanded={isExpanded}
               aria-controls={'header'}
               onClick={() => {
-                expand(!isExpanded);
+                setExpanded(!isExpanded);
               }}
             >
               <MobileMenuIcon path={isExpanded ? mdiPlus : mdiMenu} size={1} />

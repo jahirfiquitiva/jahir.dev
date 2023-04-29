@@ -60,7 +60,7 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
   mx-[var(--floatingMargin)]
   transition
   duration-200
-  gap-0
+  gap-[calc(calc(var(--floatingMargin)/var(--spaceDivider))*1.5)]
   grid-rows-1
   [grid-template-columns:auto_1fr]
   
@@ -73,7 +73,7 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
 
   tablet-md:mx-0
 
+  [[data-expanded="true"]>&]:backdrop-saturate-0
   [[data-expanded="true"]>&]:[grid-template-rows:auto_1fr]
-  [[data-expanded="true"]>&]:[row-gap:calc(calc(var(--floatingMargin)/var(--spaceDivider))*1.5)]
   [[data-expanded="true"]>&]:tablet-sm:[grid-template-rows:minmax(0px,_1fr)]
 `;

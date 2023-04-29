@@ -1,7 +1,4 @@
-'use client';
-
 import { cx } from 'classix';
-import { usePathname } from 'next/navigation';
 
 import type { GradientClass } from '@/types/gradient';
 
@@ -37,8 +34,8 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
   },
 ];
 
-export const ToolbarNavLinks = () => {
-  const pathname = usePathname();
+export const ToolbarNavLinks = (props: { pathname?: string }) => {
+  const { pathname } = props;
   return (
     <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
@@ -47,7 +44,7 @@ export const ToolbarNavLinks = () => {
             <ToolbarLink
               title={`${link.title} page`}
               href={link.href}
-              aria-current={pathname.includes(link.href) ? 'page' : undefined}
+              aria-current={pathname?.includes(link.href) ? 'page' : undefined}
               className={'group/link'}
             >
               <PageLinkSpan

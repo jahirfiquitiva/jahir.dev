@@ -7,6 +7,7 @@ import { Img } from '../img';
 export const Container = tw.span`
   block
   relative
+  min-w-[1.5rem]
   w-[1.5rem]
   h-[1.5rem]
   [&>*]:absolute

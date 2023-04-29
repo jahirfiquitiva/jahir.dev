@@ -49,12 +49,10 @@ export const metadata = {
       'web',
     ],
   }),
-  /*
   title: {
     default: 'Jahir Fiquitiva – Full-stack Software Engineer',
     template: '%s – Jahir Fiquitiva',
   },
-  */
 };
 
 export default function RootLayout(props: PropsWithChildren) {
@@ -67,7 +65,7 @@ export default function RootLayout(props: PropsWithChildren) {
       <head>
         <Meta />
       </head>
-      <body>
+      <body className={'tablet-sm:overflow-y-auto'}>
         <Providers>
           <Toolbar />
           <Main>{props.children}</Main>

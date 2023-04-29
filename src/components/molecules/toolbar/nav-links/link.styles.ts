@@ -8,7 +8,7 @@ export const ToolbarLink = tw(Link)`
   w-full
   inline-flex
   items-center
-  justify-center
+  justify-start
   align-middle
   font-manrope
   font-bold
@@ -22,13 +22,12 @@ export const ToolbarLink = tw(Link)`
   hocus:bg-accent-dark/[0.1]
   mobile-md:text-xs
   tablet-sm:w-auto
-  [&[aria-current="page"]]:bg-accent-dark/[0.1]
+  [&[aria-current="page"]]:tablet-sm:bg-accent-dark/[0.1]
 `;
 
 const LinkSpan = tw.span`
   text-[inherit]
   h-full
-  w-full
   inline-flex
   items-center
   align-middle
@@ -36,6 +35,7 @@ const LinkSpan = tw.span`
 `;
 
 export const PageLinkSpan = tw(LinkSpan)`
+  self-start
   p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
 
   group-hocus/link:bg-gradient-to-r
@@ -69,7 +69,7 @@ export const HomeLinkSpan = tw(LinkSpan)`
 export const HomeLink = tw(ToolbarLink)`
   self-start
   p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_var(--floatingMargin,0)]
-  gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
+  gap-[var(--floatingMargin,0)]
   tablet-sm:self-center
   [[data-expanded="true"]_&]:tablet-sm:self-center
 `;
