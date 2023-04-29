@@ -52,6 +52,7 @@ export const PageLinkSpan = tw(LinkSpan)`
 
   scale-y-0
   tablet-sm:scale-y-100
+  tablet-sm:self-center
   [[data-expanded="true"]_&]:scale-y-100
 `;
 
