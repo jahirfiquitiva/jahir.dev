@@ -6,7 +6,7 @@ export const Header = tw.header`
   [--floatingMargin:calc(var(--totalToolbarHeight)_-_var(--toolbarHeight))]
   [--baseActualHeight:calc(var(--toolbarHeight)+var(--floatingMargin))]
   h-[var(--baseActualHeight)]
-  z-[2]
+  z-[3]
   fixed
   top-0
   left-[calc(50%+calc(calc(100vw-100%)/2))]
@@ -72,8 +72,6 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
   tablet-sm:gap-[calc(var(--floatingMargin)/var(--spaceDivider))]
 
   tablet-md:mx-0
-
-  [[data-expanded="true"]>&]:backdrop-saturate-0
   [[data-expanded="true"]>&]:[grid-template-rows:auto_1fr]
   [[data-expanded="true"]>&]:tablet-sm:[grid-template-rows:minmax(0px,_1fr)]
 `;
