@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 
-export const LinkItem = tw.li`block`;
+export const LinkItem = tw.li`block w-full`;
 
 export const ToolbarLinksContainer = tw.ul`
   h-full
@@ -48,14 +48,17 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   tablet-sm:justify-end
   tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
 
-  [[data-expanded="true"]_&]:max-h-[unset]
+  [[data-expanded="true"]_&]:h-full
+  [[data-expanded="true"]_&]:max-h-full
   [[data-expanded="true"]_&]:opacity-100
   [[data-expanded="true"]_&]:delay-[0.15s]
   [[data-expanded="true"]_&]:flex
+  [[data-expanded="true"]_&]:flex-col
   [[data-expanded="true"]_&]:visible
   [[data-expanded="true"]_&]:pointer-events-auto
   [[data-expanded="true"]_&]:justify-start
   [[data-expanded="true"]_&]:gap-[calc(calc(var(--floatingMargin,0)/var(--spaceDivider,1))*1.5)]
   [[data-expanded="true"]_&]:tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
   [[data-expanded="true"]_&]:tablet-sm:justify-end
+  [[data-expanded="true"]_&]:tablet-sm:flex-row
 `;

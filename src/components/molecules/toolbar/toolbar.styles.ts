@@ -19,7 +19,7 @@ export const Header = tw.header`
   w-full
   max-w-[666px]
   tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
-  [&[data-expanded="true"]]:h-[calc(calc(var(--baseActualHeight)_*_2.0625)_-_calc(var(--floatingMargin)_*_1.75))]
+  [&[data-expanded="true"]]:h-[calc(100%-var(--floatingMargin))]
   [&[data-expanded="true"]]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
 
   before:z-[1]
@@ -73,7 +73,7 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
 
   tablet-md:mx-0
 
-  [[data-expanded="true"]>&]:[grid-template-rows:1fr_minmax(0px,_1fr)]
+  [[data-expanded="true"]>&]:[grid-template-rows:auto_1fr]
   [[data-expanded="true"]>&]:[row-gap:calc(calc(var(--floatingMargin)/var(--spaceDivider))*1.5)]
   [[data-expanded="true"]>&]:tablet-sm:[grid-template-rows:minmax(0px,_1fr)]
 `;

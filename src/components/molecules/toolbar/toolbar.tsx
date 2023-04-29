@@ -39,6 +39,12 @@ export const Toolbar = () => {
     };
   }, [hasMounted, checkScrolledDistance]);
 
+  useEffect(() => {
+    if (!hasMounted) return;
+    if (isExpanded) document.body.classList.add('overflow-hidden');
+    else document.body.classList.remove('overflow-hidden');
+  }, [isExpanded, hasMounted]);
+
   return (
     <Header data-expanded={isExpanded} id={'header'}>
       <Nav $elevated={elevated}>
@@ -48,10 +54,10 @@ export const Toolbar = () => {
         </HomeLink>
         <ToolbarNavLinks />
         <ToolbarLinksContainer className={'self-start tablet-md:self-center'}>
-          <li>
+          <li className={'self-start'}>
             <ThemeToggle />
           </li>
-          <li>
+          <li className={'self-start'}>
             <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}

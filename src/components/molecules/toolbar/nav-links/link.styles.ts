@@ -5,6 +5,7 @@ import { Link } from '@/components/core/link';
 export const ToolbarLink = tw(Link)`
   no-underline
   h-full
+  w-full
   inline-flex
   items-center
   justify-center
@@ -20,12 +21,14 @@ export const ToolbarLink = tw(Link)`
   hocus:no-underline
   hocus:bg-accent-dark/[0.1]
   mobile-md:text-xs
+  tablet-sm:w-auto
   [&[aria-current="page"]]:bg-accent-dark/[0.1]
 `;
 
 const LinkSpan = tw.span`
   text-[inherit]
   h-full
+  w-full
   inline-flex
   items-center
   align-middle
