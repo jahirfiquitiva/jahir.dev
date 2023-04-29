@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
@@ -8,21 +9,28 @@ import { getBlog } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
+import Loading from '../loading';
+
 import DynamicDonateContent from './dynamic-content';
 
-const donate = getBlog('donate');
+const DonatePageContent = () => {
+  const donate = getBlog('donate');
+  if (!donate) return notFound();
+  return <Mdx code={donate?.body?.code} className={'gap-8 tablet-sm:-mt-16'} />;
+};
 
 export default async function DonatePage() {
-  if (!donate) return notFound();
   return (
     <Section id={'donate'}>
       <Heading shadow={'brand'} from={'brand'} to={'blue'}>
         Donate
       </Heading>
-      <Mdx code={donate?.body?.code} className={'gap-8 tablet-sm:-mt-16'} />
+      <DonatePageContent />
       <DonateButtons />
-      {/* @ts-expect-error Server Component */}
-      <DynamicDonateContent />
+      <Suspense fallback={<Loading />}>
+        {/* @ts-expect-error Server Component */}
+        <DynamicDonateContent />
+      </Suspense>
     </Section>
   );
 }

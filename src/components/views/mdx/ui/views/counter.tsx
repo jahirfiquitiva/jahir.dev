@@ -1,10 +1,10 @@
 import 'server-only';
 
 import Icon from '@mdi/react';
-import { LineWobble } from '@uiball/loaders';
 import { cx } from 'classix';
 import { Suspense, cache } from 'react';
 
+import { LineWobble } from '@/components/core/loaders';
 import { mdiEyeOutline } from '@/components/icons';
 import { db } from '@/lib/planetscale';
 

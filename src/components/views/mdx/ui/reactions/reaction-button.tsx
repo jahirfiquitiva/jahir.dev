@@ -1,9 +1,9 @@
 'use client';
 
-import { Ring } from '@uiball/loaders';
 import { cx } from 'classix';
 import type { ComponentProps } from 'react';
 
+import { Ring } from '@/components/core/loaders';
 import type { ReactionName } from '@/lib/planetscale';
 
 import { StyledReactionButton, ReactionIcon as Icon } from './reactions.styles';

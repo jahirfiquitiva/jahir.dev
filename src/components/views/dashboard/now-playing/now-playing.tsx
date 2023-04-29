@@ -1,8 +1,8 @@
 'use client';
 
-import { Ring } from '@uiball/loaders';
 import type { CSSProperties } from 'react';
 
+import { Ring } from '@/components/core/loaders';
 import type { NowPlayingResponse } from '@/components/molecules/footer/now-playing';
 import { useRequest } from '@/hooks/use-request';
 

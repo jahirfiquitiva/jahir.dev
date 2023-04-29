@@ -1,4 +1,4 @@
-import { LineWobble } from '@uiball/loaders';
+import { LineWobble } from '@/components/core/loaders';
 
 export const NowPlayingLoading = () => (
   <div className={'mx-6 tablet-sm:mx-2'}>

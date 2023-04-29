@@ -1,4 +1,4 @@
-import { Ring } from '@uiball/loaders';
+import { Ring } from '@/components/core/loaders';
 
 const Loading = () => {
   return (
