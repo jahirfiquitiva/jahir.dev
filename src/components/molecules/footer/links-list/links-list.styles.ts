@@ -20,6 +20,7 @@ export const MetaList = tw(List)`
   tablet-sm:w-[unset]
   tablet-sm:flex-col
   tablet-sm:mt-0
+  tablet-md:min-w-[242px]
 `;
 
 export const FooterLink = tw(Link)`

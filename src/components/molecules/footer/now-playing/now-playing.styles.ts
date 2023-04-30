@@ -31,8 +31,9 @@ export const MusicLink = tw(Link)`
   hocus:text-secondary-txt
   hocus:no-underline
   max-w-[130px]
-  mobile-md:max-w-[164px]
-  tablet-sm:max-w-[206px]
+  mobile-md:max-w-[172px]
+  mobile-lg:max-w-[222px]
+  tablet-sm:max-w-[242px]
   group/music
 `;
 // ↑ for max width...

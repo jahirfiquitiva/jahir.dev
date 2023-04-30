@@ -10,7 +10,7 @@ export const SocialLinksContainer = tw.ul`
   -ml-6
   w-full
   not-prose
-  mobile-lg:w-[unset]
+  tablet-sm:w-[unset]
 `;
 
 export const SocialLinkItem = tw.li`

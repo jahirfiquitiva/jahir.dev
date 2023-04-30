@@ -47,6 +47,7 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   tablet-sm:visible
   tablet-sm:pointer-events-auto
   tablet-sm:justify-end
+  tablet-sm:ml-0
   tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
 
   [[data-expanded="true"]_&]:h-full

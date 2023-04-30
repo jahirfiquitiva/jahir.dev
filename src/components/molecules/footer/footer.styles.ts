@@ -34,7 +34,7 @@ export const BrandLink = tw(FooterLink)`
   font-bold
   min-w-[130px]
   mobile-md:min-w-[164px]
-  tablet-sm:min-w-[172px]
+  tablet-md:min-w-[210px]
 `;
 
 export const BrandLinkSpan = tw(FooterLinkSpan)`
