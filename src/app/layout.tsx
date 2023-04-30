@@ -49,10 +49,6 @@ export const metadata = {
       'web',
     ],
   }),
-  title: {
-    default: 'Jahir Fiquitiva – Full-stack Software Engineer',
-    template: '%s – Jahir Fiquitiva',
-  },
 };
 
 export default function RootLayout(props: PropsWithChildren) {
