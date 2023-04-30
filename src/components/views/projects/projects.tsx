@@ -1,22 +1,45 @@
 import Icon from '@mdi/react';
+import { Suspense } from 'react';
 
+import Loading from '@/app/loading';
 import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link';
 import { Section } from '@/components/core/section';
 import { mdiEyeOutline, mdiFileCodeOutline } from '@/components/icons';
-import type { Project } from '@/types/project';
+import projects from '@/data/projects.json';
 
 import { ProjectCard } from './card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 
+const getSortedProjects = async (hide?: boolean) => {
+  const sortedProjects = projects.sort((a, b) => a.order - b.order);
+  if (hide) return sortedProjects.filter((it) => !it.hide);
+  return sortedProjects;
+};
+
 interface ProjectsProps {
-  projects: Array<Project>;
   full?: boolean;
 }
 
-export const Projects = (props: ProjectsProps) => {
-  const { projects, full } = props;
+const AsyncProjectsList = async (props: ProjectsProps) => {
+  const projects = await getSortedProjects(!props.full);
+  return (
+    <ul className={'list-none flex flex-col gap-6'}>
+      {(projects || []).map((project, index) => {
+        return (
+          <li
+            key={`${project.name.toLowerCase().split(' ').join('-')}-${index}`}
+          >
+            <ProjectCard project={project} />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
+export const Projects = async (props: ProjectsProps) => {
+  const { full } = props;
   return (
     <Section id={'projects'}>
       <ProjectsHeader>
@@ -47,20 +70,10 @@ export const Projects = (props: ProjectsProps) => {
           )}
         </ProjectsButtons>
       </ProjectsHeader>
-      <ul className={'list-none flex flex-col gap-6'}>
-        {(projects || []).map((project, index) => {
-          return (
-            <li
-              key={`${project.name
-                .toLowerCase()
-                .split(' ')
-                .join('-')}-${index}`}
-            >
-              <ProjectCard project={project} />
-            </li>
-          );
-        })}
-      </ul>
+      <Suspense fallback={<Loading />}>
+        {/* @ts-expect-error Server Component */}
+        <AsyncProjectsList full={full} />
+      </Suspense>
     </Section>
   );
 };

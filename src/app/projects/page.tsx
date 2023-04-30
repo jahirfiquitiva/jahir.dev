@@ -1,9 +1,6 @@
 import { Projects } from '@/components/views/projects/projects';
-import projects from '@/data/projects.json';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-
-const sortedProjects = projects.sort((a, b) => a.order - b.order);
 
 export const metadata = getStaticMetadata({
   title: 'Projects – Jahir Fiquitiva',
@@ -25,5 +22,6 @@ export const metadata = getStaticMetadata({
 });
 
 export default function ProjectsPage() {
-  return <Projects projects={sortedProjects} full />;
+  // @ts-expect-error Server Component
+  return <Projects full />;
 }
