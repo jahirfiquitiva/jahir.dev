@@ -19,7 +19,7 @@ const defaultNextConfig = {
     legacyBrowsers: false,
     optimizeCss: true,
     typedRoutes: true,
-    appDir: true,
+    serverActions: true,
   },
   compiler: {
     removeConsole: {
