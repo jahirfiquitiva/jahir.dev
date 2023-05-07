@@ -15,5 +15,7 @@ export async function trackView(slug: string) {
       .values({ slug, views: 1 })
       .onDuplicateKeyUpdate({ views: views + 1 })
       .execute();
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+  }
 }
