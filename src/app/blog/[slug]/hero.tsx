@@ -18,6 +18,7 @@ const Hero = (props: HeroProps) => {
         blurDataURL: meta.blur64,
         width: meta.size.width || 666,
         height: meta.size.height || 375,
+        placeholder: 'blur' as const,
       }
     : {};
 
@@ -28,7 +29,6 @@ const Hero = (props: HeroProps) => {
         alt={`Hero image for blog post "${title}"`}
         className={'aspect-[2/1] h-auto rounded-8 w-full'}
         quality={100}
-        placeholder={'blur'}
         priority
         zoomable
         {...extraProps}

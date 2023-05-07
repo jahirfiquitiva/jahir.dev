@@ -36,7 +36,7 @@ const blogPostStructuredData = (post: Blog): string =>
   });
 
 export default function BlogPostPage(context: BlogPageContext) {
-  const post = getBlog(context.params.slug);
+  const post = getBlog(context.params.slug, true);
 
   if (!post) return notFound();
   if (post.link) return redirect(post.link);
@@ -101,7 +101,7 @@ export const generateStaticParams = () =>
 export async function generateMetadata(
   context: BlogPageContext,
 ): Promise<Metadata | undefined> {
-  const post = getBlog(context.params.slug);
+  const post = getBlog(context.params.slug, true);
   if (!post) return undefined;
 
   const { title, date, excerpt, hero, slug } = post;

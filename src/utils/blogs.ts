@@ -6,5 +6,12 @@ export const allReadableBlogs = generatedBlogs.filter(
   (it) => !hiddenBlogs.includes(it.slug),
 );
 
-export const getBlog = (slug?: string | null): Blog | undefined =>
-  slug ? generatedBlogs.find((it) => it.slug === slug) : undefined;
+export const getBlog = (
+  slug?: string | null,
+  readableOnly?: boolean,
+): Blog | undefined =>
+  slug
+    ? (readableOnly ? allReadableBlogs : generatedBlogs).find(
+        (it) => it.slug === slug,
+      )
+    : undefined;

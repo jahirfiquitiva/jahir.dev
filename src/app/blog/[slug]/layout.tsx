@@ -11,7 +11,7 @@ import Stats from './stats';
 export default function BlogPostLayout(
   props: PropsWithChildren & RequestContext<{ slug?: string }>,
 ) {
-  const post = getBlog(props.params.slug);
+  const post = getBlog(props.params.slug, true);
   return (
     <Section id={'blog-post'}>
       <Link
