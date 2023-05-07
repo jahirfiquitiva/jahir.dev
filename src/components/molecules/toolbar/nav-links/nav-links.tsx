@@ -44,7 +44,9 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
             <ToolbarLink
               title={`${link.title} page`}
               href={link.href}
-              aria-current={pathname?.includes(link.href) ? 'page' : undefined}
+              aria-current={
+                pathname?.startsWith(link.href) ? 'page' : undefined
+              }
               className={'group/link'}
             >
               <PageLinkSpan

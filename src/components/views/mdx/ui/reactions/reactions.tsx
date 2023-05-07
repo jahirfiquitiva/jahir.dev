@@ -56,8 +56,12 @@ const getConfettiColor = (
   }
 };
 
+interface ReactionsProps {
+  slug: string;
+}
+
 // eslint-disable-next-line max-lines-per-function
-export const Reactions = () => {
+export const Reactions = (props: ReactionsProps) => {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const {
     counters: reactions,
@@ -107,6 +111,7 @@ export const Reactions = () => {
   return (
     <ReactionsGroup>
       <ReactionButton
+        slug={props.slug}
         type={'likes'}
         count={reactions?.['likes']}
         reacted={reacted?.['likes']}
@@ -123,6 +128,7 @@ export const Reactions = () => {
         loading={loading}
       />
       <ReactionButton
+        slug={props.slug}
         type={'loves'}
         count={reactions?.['loves']}
         reacted={reacted?.['loves']}
@@ -139,6 +145,7 @@ export const Reactions = () => {
         loading={loading}
       />
       <ReactionButton
+        slug={props.slug}
         type={'awards'}
         count={reactions?.['awards']}
         reacted={reacted?.['awards']}
@@ -155,6 +162,7 @@ export const Reactions = () => {
         loading={loading}
       />
       <ReactionButton
+        slug={props.slug}
         type={'bookmarks'}
         count={reactions?.['bookmarks']}
         reacted={reacted?.['bookmarks']}

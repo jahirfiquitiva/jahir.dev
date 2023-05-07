@@ -36,7 +36,7 @@ const blogPostStructuredData = (post: Blog): string =>
   });
 
 export default function BlogPostPage(context: BlogPageContext) {
-  const post = getBlog(context.params.slug);
+  const post = getBlog(context.params.slug, true);
 
   if (!post) return notFound();
   if (post.link) return redirect(post.link);
@@ -47,7 +47,7 @@ export default function BlogPostPage(context: BlogPageContext) {
         slug={`blog--${post.slug}`}
         inProgress={post.inProgress}
       >
-        <Reactions />
+        <Reactions slug={`blog--${post.slug}`} />
         <Hero
           title={post.title}
           hero={post.hero}
@@ -85,7 +85,7 @@ export default function BlogPostPage(context: BlogPageContext) {
               <span>Edit on GitHub</span>
             </ButtonLink>
           </div>
-          <Reactions />
+          <Reactions slug={`blog--${post.slug}`} />
         </div>
       </ReactionsProvider>
       <script type={'application/ld+json'} suppressHydrationWarning>

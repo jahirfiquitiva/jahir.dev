@@ -2,10 +2,12 @@
 
 import { cx } from 'classix';
 import type { ComponentProps } from 'react';
+import { useZact } from 'zact/client';
 
 import { Ring } from '@/components/core/loaders';
 import type { ReactionName } from '@/lib/planetscale';
 
+import { incrementReaction } from './action';
 import { StyledReactionButton, ReactionIcon as Icon } from './reactions.styles';
 
 const titles: Record<ReactionName, string> = {
@@ -16,6 +18,7 @@ const titles: Record<ReactionName, string> = {
 };
 
 interface ReactionButtonProps {
+  slug: string;
   type: ReactionName;
   normalIcon: string;
   reactedIcon: string;
@@ -42,9 +45,16 @@ const renderLoaderOrCount = (loading?: boolean, count: number = 0) => {
 };
 
 export const ReactionButton = (props: ReactionButtonProps) => {
+  const {
+    mutate: increment,
+    data,
+    isLoading: actionRunning,
+  } = useZact(incrementReaction);
   const { type, count = 0, reacted, loading, submitting } = props;
-  const disabled = loading || submitting === type;
+  const isLoading = loading && actionRunning;
+  const disabled = isLoading || submitting === type;
 
+  console.error(data);
   return (
     <StyledReactionButton
       outlined
@@ -52,8 +62,14 @@ export const ReactionButton = (props: ReactionButtonProps) => {
       data-reacted={reacted}
       disabled={disabled || reacted}
       title={titles[type]}
-      onClick={props.onClick}
-      className={cx(props.className, loading && 'cursor-progress')}
+      onClick={() => {
+        increment({ slug: props.slug, reaction: type })
+          .then((data) => {
+            console.error({ result: data });
+          })
+          .catch(console.error);
+      }}
+      className={cx(props.className, isLoading && 'cursor-progress')}
     >
       <Icon path={reacted ? props.reactedIcon : props.normalIcon} size={0.75} />
       {renderLoaderOrCount(disabled, count)}
