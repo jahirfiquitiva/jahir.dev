@@ -5,7 +5,6 @@ import {
   linkedInOutline,
   twitterOutline,
   mdiInstagram,
-  polywork,
   bluesky,
 } from '@/components/icons';
 
@@ -17,7 +16,6 @@ import {
   LinkedInLink,
   TwitterLink,
   InstagramLink,
-  PolyworkLink,
   BlueskyLink,
 } from './social-links.styles';
 
@@ -63,14 +61,6 @@ export const SocialLinks = (props: SocialLinksProps) => {
         >
           <Icon path={mdiInstagram} size={iconSize} />
         </InstagramLink>
-      </SocialLinkItem>
-      <SocialLinkItem>
-        <PolyworkLink
-          title={'Polywork Timeline'}
-          href={'https://timeline.jahir.dev'}
-        >
-          <Icon path={polywork} size={iconSize} />
-        </PolyworkLink>
       </SocialLinkItem>
       {Boolean(withBackToTop) && <BackToTopLink />}
     </SocialLinksContainer>

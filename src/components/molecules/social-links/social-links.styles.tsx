@@ -53,11 +53,6 @@ export const InstagramLink = tw(SocialLink)`
   hocus:dark:text-[#da3aa9]
 `;
 
-export const PolyworkLink = tw(SocialLink)`
-  hocus:text-[#6959fc]
-  hocus:dark:text-[#786afc]
-`;
-
 export const BlueskyLink = tw(SocialLink)`
   hocus:text-[#0078e6]
   hocus:dark:text-[#0085ff]
