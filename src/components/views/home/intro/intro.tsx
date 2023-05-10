@@ -57,7 +57,7 @@ export const Intro = () => {
             className={cx(
               'flex items-center transition-colors',
               'border border-divider rounded-6',
-              'py-4 pl-14 pr-10 min-h-[2.625rem]',
+              'py-4 pl-12 pr-8 min-h-[2.625rem]',
               'hover:border-accent-dark',
             )}
           >
