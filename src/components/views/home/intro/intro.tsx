@@ -9,6 +9,7 @@ import { SocialLinks } from '@/components/molecules/social-links';
 import {
   IntroSection,
   TextsContainer,
+  TitlesContainer,
   IntroParagraph,
   PhotoContainer,
   Photo,
@@ -19,19 +20,25 @@ export const Intro = () => {
   return (
     <IntroSection id={'intro'}>
       <TextsContainer>
-        <WavingHello />
-        <Heading $as={'h2'} shadow={'blue'}>
-          I am&nbsp;
+        <TitlesContainer>
           <Heading
-            $as={'span'}
             shadow={'blue'}
-            from={'brand'}
-            to={'blue'}
-            className={'[&>span]:w-[unset]'}
+            // look like h2
+            className={'text-2xl'}
           >
-            Jahir Fiquitiva
+            I am&nbsp;
+            <Heading
+              $as={'span'}
+              shadow={'blue'}
+              from={'brand'}
+              to={'blue'}
+              className={'[&>span]:w-[unset]'}
+            >
+              Jahir Fiquitiva
+            </Heading>
           </Heading>
-        </Heading>
+          <WavingHello />
+        </TitlesContainer>
         <IntroParagraph>
           Passionate and creative full-stack software engineer from{' '}
           <Link

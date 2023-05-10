@@ -32,11 +32,7 @@ export const WavingHello = () => {
   }, []);
 
   return (
-    <Heading
-      shadow={'yellow'}
-      // look like h2
-      className={'text-2xl'}
-    >
+    <Heading $as={'h2'} shadow={'yellow'}>
       <WavingSpan role={'img'} aria-label={'waving hand'}>
         👋
       </WavingSpan>
