@@ -12,7 +12,7 @@ export const MusicItem = tw.li`
   align-middle
   w-full
   max-w-full
-  ml-[3.25rem]
+  ml-[2.5rem]
   mobile-md:ml-64
   tablet-sm:ml-0
 `;
@@ -30,10 +30,9 @@ export const MusicLink = tw(Link)`
   truncate
   hocus:text-secondary-txt
   hocus:no-underline
-  max-w-[130px]
+  max-w-[144px]
   mobile-md:max-w-[172px]
-  mobile-lg:max-w-[222px]
-  tablet-sm:max-w-[242px]
+  mobile-lg:max-w-[204px]
   group/music
 `;
 // ↑ for max width...
