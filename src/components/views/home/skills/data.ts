@@ -17,14 +17,14 @@ import {
   nextJs,
 } from '@/components/icons';
 
-export interface SkillProps {
+interface Skill {
   name: string;
   iconPath: string;
   color: string;
   hide?: boolean;
 }
 
-export const skills: SkillProps[] = [
+export const skills: Skill[] = [
   { name: 'TypeScript', iconPath: mdiLanguageTypescript, color: '#3178c6' },
   { name: 'JavaScript', iconPath: mdiLanguageJavascript, color: '#f7df1e' },
   { name: 'React', iconPath: mdiReact, color: '#00c2e6' },
@@ -51,6 +51,3 @@ export const skills: SkillProps[] = [
     hide: true,
   },
 ];
-
-const skillsKeys = [...skills.map((it) => it.name.toLowerCase())] as const;
-export type SkillKey = (typeof skillsKeys)[number];

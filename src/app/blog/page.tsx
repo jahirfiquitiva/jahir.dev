@@ -51,3 +51,5 @@ export const metadata = getStaticMetadata({
   ],
   image: buildOgImageUrl('blog'),
 });
+
+export const runtime = 'edge';

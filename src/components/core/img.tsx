@@ -9,7 +9,7 @@ type WidthHeightProps = BaseImageProps & {
   height?: number | string;
 };
 
-export type ImgProps = SizeProps | WidthHeightProps;
+type ImgProps = SizeProps | WidthHeightProps;
 
 export const Img = (props: ImgProps) => {
   const { size = 0, ...otherProps } = props as SizeProps;

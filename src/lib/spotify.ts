@@ -5,9 +5,7 @@ import type {
   NowPlayingResponse,
 } from '@/types/spotify';
 
-export const serialize = (
-  obj: Record<string | number, string | number | boolean>,
-) => {
+const serialize = (obj: Record<string | number, string | number | boolean>) => {
   const str = [];
   for (const p in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, p)) {
@@ -51,7 +49,7 @@ const refreshToken = process.env.SPOTIFY_CLIENT_REFRESH_TOKEN || '';
 const basic = btoa(`${clientId}:${clientSecret}`);
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 
-export const getAccessToken = async () => {
+const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {

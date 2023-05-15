@@ -6,7 +6,7 @@ import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link';
 import { mdiRss } from '@/components/icons';
 
-export const BlogHeader = tw.div`
+const BlogHeader = tw.div`
   w-full
   flex
   flex-col

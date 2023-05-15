@@ -12,7 +12,7 @@ import { Stat, StatBase } from './../stat';
 import { trackView as trackViewFunc } from './actions';
 import { ViewTracker } from './tracker';
 
-export const getViews = cache(async (slug: string): Promise<number> => {
+const getViews = cache(async (slug: string): Promise<number> => {
   try {
     const data = await db
       .selectFrom('counters')
