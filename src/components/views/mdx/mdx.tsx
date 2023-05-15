@@ -3,7 +3,7 @@
 
 import { cx } from 'classix';
 import type { MDXComponents } from 'mdx/types';
-import { getMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
 
@@ -34,14 +34,11 @@ const components = {
 };
 
 export const Mdx = (props: MdxProps) => {
-  const MdxComponent = getMDXComponent(props.code);
+  const MdxComponent = useMDXComponent(props.code);
   return (
     <article
       className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
     >
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      {/* @ts-expect-error issue with contentlayer */}
       <MdxComponent components={{ ...components } as MDXComponents} />
     </article>
   );
