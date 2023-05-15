@@ -39,6 +39,8 @@ export const Mdx = (props: MdxProps) => {
     <article
       className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
     >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       {/* @ts-expect-error issue with contentlayer */}
       <MdxComponent components={{ ...components } as MDXComponents} />
     </article>
