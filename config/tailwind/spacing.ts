@@ -5,7 +5,7 @@ const pixelsOptions = [
 ];
 
 const getSpaces = () => {
-  const obj = { 0: 0 };
+  const obj: Record<string, string> = {};
   pixelsOptions.forEach((pixels) => {
     obj[pixels] = `${pixels / baseRemSize}rem`;
   });

@@ -115,7 +115,7 @@
 }
 
 .article [data-rehype-pretty-code-title] + pre {
-  @apply mt-0 rounded-tl-0 rounded-tr-0 border-t-0;
+  @apply mt-0 rounded-tl-none rounded-tr-none border-t-0;
 }
 
 .article mark {

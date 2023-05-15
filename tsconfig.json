@@ -16,11 +16,12 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "removeComments": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "~/stitches": ["stitches.config.ts"],
       "@/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "react": ["./node_modules/@types/react"]
     },
     "incremental": true,
     "downlevelIteration": true,
@@ -29,9 +30,9 @@
       {
         "name": "next"
       }
-    ],
+    ]
   },
-  "exclude": [".next", ".idea", "node_modules", "old-src"],
+  "exclude": [".idea", "node_modules", "old-src"],
   "include": [
     "next-env.d.ts",
     "global.d.ts",
@@ -39,6 +40,6 @@
     "**/*.tsx",
     "./.contentlayer/generated",
     "next.config.js",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts"
   ]
 }

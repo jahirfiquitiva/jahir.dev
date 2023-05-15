@@ -1,4 +1,7 @@
+import typography from '@tailwindcss/typography';
+import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import hocus from 'tailwindcss-hocus';
 
 import { colors } from './config/tailwind/colors';
 import { fontSizes as fontSize } from './config/tailwind/font-sizes';
@@ -17,7 +20,6 @@ const breakpoints = {
   desktop: '960px',
 };
 
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -27,13 +29,15 @@ module.exports = {
     './content/**/*.mdx',
   ],
   theme: {
-    spacing,
-    borderRadius: { ...spacing, none: 0, half: '50%', full: '9999px' },
+    spacing: { ...spacing, '0': '0rem' },
+    borderRadius: { ...spacing, none: '0rem', half: '50%', full: '9999px' },
     colors,
     fontSize,
     screens: breakpoints,
     extend: {
-      typography: (theme) => ({
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore Missing types from Typography plugin
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
             color: theme('colors.secondary-txt'),
@@ -82,8 +86,8 @@ module.exports = {
       transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
       keyframes: {
         'page-transition': {
-          '0%': { transform: 'scale(0.975)', opacity: 0 },
-          '100%': { transform: 'scale(1)', opacity: 1 },
+          '0%': { transform: 'scale(0.975)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
         },
         scroll: {
           '0%': { transform: 'translateX(1.5rem)' },
@@ -109,7 +113,7 @@ module.exports = {
   corePlugins: {
     float: false,
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-hocus')],
+  plugins: [typography, hocus],
   safelist: [
     {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
@@ -124,6 +128,6 @@ module.exports = {
       pattern:
         /decoration-gradient-(brand|blue|green|yellow|orange|red|purple)/,
       variants: ['hocus'],
-    }
+    },
   ],
-};
+} satisfies Config;
