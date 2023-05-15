@@ -1,3 +1,4 @@
+import type { Route } from 'next';
 import NextLink from 'next/link';
 import type { ComponentProps } from 'react';
 
@@ -6,19 +7,26 @@ import { StyledLink } from './link.styles';
 const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
 
-interface LinkProps extends ComponentProps<typeof NextLink> {
+type NextLinkProps = ComponentProps<typeof NextLink>;
+
+interface LinkProps extends Omit<NextLinkProps, 'href'> {
   title: string;
+  href: string | NextLinkProps['href'];
   openInNewTab?: boolean;
 }
 
 export const Link = (props: LinkProps) => {
-  const { href: url, ...otherProps } = props;
-  const href: string = url?.toString();
-  const { openInNewTab = !isLocalLink(href), ...rest } = otherProps;
+  const { href, ...otherProps } = props;
+  const {
+    openInNewTab = !isLocalLink(
+      typeof href !== 'string' ? href.toString() : href,
+    ),
+    ...rest
+  } = otherProps;
 
   return (
     <StyledLink
-      {...{ href, ...rest }}
+      {...{ href: href as Route, ...rest }}
       aria-label={rest.title}
       {...(openInNewTab
         ? {
