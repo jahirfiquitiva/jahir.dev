@@ -42,7 +42,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         </LinkedInLink>
       </SocialLinkItem>
       <SocialLinkItem>
-        <BlueskyLink title={'Bluesky'} href={'https://jahir.blue'}>
+        <BlueskyLink title={'Bluesky'} href={'https://bsky.jahir.dev'}>
           <Icon path={bluesky} size={iconSize} />
         </BlueskyLink>
       </SocialLinkItem>
