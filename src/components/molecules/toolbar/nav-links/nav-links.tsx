@@ -1,4 +1,5 @@
 import { cx } from 'classix';
+import type { Route } from 'next';
 
 import type { GradientClass } from '@/types/gradient';
 
@@ -43,7 +44,7 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
           <LinkItem key={`page-link-${index}`}>
             <ToolbarLink
               title={`${link.title} page`}
-              href={link.href}
+              href={link.href as Route}
               aria-current={
                 pathname?.startsWith(link.href) ? 'page' : undefined
               }

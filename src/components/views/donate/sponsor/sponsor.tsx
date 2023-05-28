@@ -1,5 +1,6 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
+import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
 import { Img } from '@/components/core/img';
@@ -64,7 +65,7 @@ export const SponsorItem = (props: SponsorProps) => {
   const color = hexToRgb(colorForTier[tier], 1, true);
   return (
     <ListItem>
-      <Container title={sponsor.name} href={sponsor.link || '#'}>
+      <Container title={sponsor.name} href={(sponsor.link || '#') as Route}>
         <NameAndPhotoContainer>
           <Img
             src={

@@ -1,4 +1,5 @@
 import { cx } from 'classix';
+import type { Route } from 'next';
 
 import type { GradientClass, RainbowColor } from '@/types/gradient';
 
@@ -35,7 +36,7 @@ export const FooterLinksList = (props: FooterLinksListProps) => {
         return (
           <li key={link.title}>
             <FooterLink
-              href={link.href}
+              href={link.href as Route}
               title={link.a11yTitle ? link.a11yTitle : `${link.title} page`}
               openInNewTab={link.openInNewTab}
               className={`hocus:decoration-gradient-${link.underlineColor}`}

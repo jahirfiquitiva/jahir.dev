@@ -2,6 +2,7 @@
 
 import Icon from '@mdi/react';
 import { cx } from 'classix';
+import type { Route } from 'next';
 import { type CSSProperties, useMemo } from 'react';
 
 import { star } from '@/components/icons';
@@ -54,7 +55,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <StyledProjectCard
       title={`Project: ${project?.name}`}
-      href={project.link}
+      href={project.link as Route}
       style={
         {
           '--project-color':

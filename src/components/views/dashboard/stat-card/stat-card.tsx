@@ -1,5 +1,6 @@
 'use client';
 
+import type { Route } from 'next';
 import { type CSSProperties, useMemo } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
@@ -36,7 +37,7 @@ export const StatCard = (props: StatCardProps) => {
   return (
     <StyledStatCard
       title={title}
-      href={href || '#'}
+      href={(href || '#') as Route}
       className={props.className}
       style={
         {

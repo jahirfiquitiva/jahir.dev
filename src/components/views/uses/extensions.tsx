@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { Link } from '@/components/core/link';
 import { NoPaddingSection } from '@/components/core/section';
 import extensions from '@/data/extensions.json';
@@ -22,7 +24,7 @@ export const ExtensionsGrid = () => (
         <ul className={'list-disc !mb-0'}>
           {firstExtensionsHalf.map((ext, index) => (
             <li key={`f-ext-${index}`}>
-              <Link href={ext.url} title={ext.title}>
+              <Link href={ext.url as Route} title={ext.title}>
                 {ext.title}
               </Link>
             </li>
@@ -33,7 +35,7 @@ export const ExtensionsGrid = () => (
         <ul className={'list-disc !mb-0'}>
           {secondExtensionsHalf.map((ext, index) => (
             <li key={`s-ext-${index}`}>
-              <Link href={ext.url} title={ext.title}>
+              <Link href={ext.url as Route} title={ext.title}>
                 {ext.title}
               </Link>
             </li>
