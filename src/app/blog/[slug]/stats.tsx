@@ -36,7 +36,6 @@ const Stats = (props: StatsProps) => {
           {readingTime?.text}
         </Stat>
       )}
-      {/* @ts-expect-error Server Component */}
       <ViewsCounter slug={`blog--${slug}`} inProgress={inProgress} trackView />
     </div>
   );

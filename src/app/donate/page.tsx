@@ -28,7 +28,6 @@ export default async function DonatePage() {
       <DonatePageContent />
       <DonateButtons />
       <Suspense fallback={<Loading />}>
-        {/* @ts-expect-error Server Component */}
         <DynamicDonateContent />
       </Suspense>
     </Section>

@@ -28,16 +28,11 @@ export default async function DashboardPage() {
           'tablet-sm:grid-cols-12 tablet-sm:gap-16',
         )}
       >
-        {/* @ts-expect-error Server Component */}
         <ViewsStats />
-        {/* @ts-expect-error Server Component */}
         <ReactionsStats />
-        {/* @ts-expect-error Server Component */}
         <GitHubStats />
-        {/* @ts-expect-error Server Component */}
         <SponsorsStats />
         <NowPlaying />
-        {/* @ts-expect-error Server Component */}
         <InstaPost />
         <StyledStatCard
           title={'More links'}

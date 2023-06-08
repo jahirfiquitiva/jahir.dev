@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <>
       <Intro />
-      {/* @ts-expect-error Server Component */}
       <Projects />
       <Skills />
     </>

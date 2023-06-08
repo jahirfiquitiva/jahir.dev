@@ -1,6 +1,7 @@
 import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import type { PluginAPI } from 'tailwindcss/types/config';
 import hocus from 'tailwindcss-hocus';
 
 import { colors } from './config/tailwind/colors';
@@ -35,9 +36,7 @@ module.exports = {
     fontSize,
     screens: breakpoints,
     extend: {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore Missing types from Typography plugin
-      typography: ({ theme }) => ({
+      typography: ({ theme }: PluginAPI) => ({
         DEFAULT: {
           css: {
             color: theme('colors.secondary-txt'),

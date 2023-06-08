@@ -69,7 +69,6 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
             </StatBase>
           }
         >
-          {/* @ts-expect-error Server Component */}
           <InternalCounter slug={slug} $sm={$sm} />
         </Suspense>
       </Stat>
