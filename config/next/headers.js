@@ -10,7 +10,7 @@ const ContentSecurityPolicy = `
   base-uri 'none';
   media-src 'self' *.cdninstagram.com;
   connect-src *;
-  font-src 'self' *.gstatic.com;
+  font-src 'self' *.gstatic.com data:;
 `;
 
 const securityHeaders = [
