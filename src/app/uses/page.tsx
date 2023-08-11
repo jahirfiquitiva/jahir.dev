@@ -18,7 +18,7 @@ export default function UsesPage() {
         What do I use?
       </Heading>
       <ReactionsProvider slug={'blog--uses'}>
-        <Reactions />
+        <Reactions slug={'blog--uses'} />
       </ReactionsProvider>
       <Tabs
         tabsNames={[
