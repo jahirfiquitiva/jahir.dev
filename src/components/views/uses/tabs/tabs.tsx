@@ -8,6 +8,7 @@ import { Heading } from '@/components/core/heading';
 import { NoPaddingSection } from '@/components/core/section';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
+import { ThemeContext, useTheme } from '@/providers/theme-provider';
 
 import { TabPanel, TabsList, TabButton, TabButtonText } from './tabs.styles';
 
@@ -18,8 +19,9 @@ interface TabsProps {
   tabsNames: Array<string>;
 }
 
-export const Tabs = (props: PropsWithChildren & TabsProps) => {
+export const Tabs = (props: PropsWithChildren<TabsProps>) => {
   const hasMounted = useHasMounted();
+  const themeData = useTheme();
   const [currentTab, setCurrentTab] = useState(0);
   const { tabsNames: extraTabsNames, children } = props;
   const tabsNames = ['All', ...extraTabsNames];
@@ -82,7 +84,9 @@ export const Tabs = (props: PropsWithChildren & TabsProps) => {
               hidden={currentTab !== 0 && currentTab !== index + 1}
             >
               <Heading $as={'h2'}>{tabsNames[index + 1]}</Heading>
-              {child}
+              <ThemeContext.Provider value={themeData}>
+                {child}
+              </ThemeContext.Provider>
             </TabPanel>
           );
         })}
