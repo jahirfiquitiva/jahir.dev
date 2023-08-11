@@ -17,7 +17,7 @@ interface ImageComparisonProps {
 }
 
 export const ImageComparison = (props: ImageComparisonProps) => {
-  const { hover = true, vertical = false } = props;
+  const { hover = true, vertical = false, description = '' } = props;
 
   return (
     <figure className={styles.imgComparison}>
@@ -50,7 +50,7 @@ export const ImageComparison = (props: ImageComparisonProps) => {
           />
         }
       />
-      {props.description && <figcaption>{props.description}</figcaption>}
+      <figcaption>{description}</figcaption>
     </figure>
   );
 };
