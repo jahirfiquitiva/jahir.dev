@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
+const million = require('million/compiler');
 const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./config/next/headers');
@@ -55,4 +56,11 @@ const defaultNextConfig = {
   },
 };
 
-module.exports = withContentlayer(defaultNextConfig);
+const millionConfig = {
+  auto: { rsc: true },
+};
+
+module.exports = million.next(
+  withContentlayer(defaultNextConfig),
+  millionConfig,
+);
