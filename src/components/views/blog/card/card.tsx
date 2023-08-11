@@ -1,6 +1,7 @@
 'use client';
 
 import Icon from '@mdi/react';
+import type { Route } from 'next';
 import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
 import { calendarOutline, mdiClockOutline } from '@/components/icons';
@@ -47,7 +48,7 @@ export const BlogPostCard = (props: PostCardProps) => {
   return (
     <PostCard
       title={`Blog post: ${post?.title}`}
-      href={rightLink}
+      href={rightLink as Route}
       style={
         {
           '--post-color':

@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { NoPaddingSection } from '@/components/core/section';
 import software from '@/data/software.json';
 
@@ -25,7 +27,10 @@ export const Software = () => {
           {sortedSoftware.map((item, index) => {
             return (
               <li key={index}>
-                <SoftwareItem href={item.link || '#'} title={item.name}>
+                <SoftwareItem
+                  href={(item.link || '#') as Route}
+                  title={item.name}
+                >
                   <AppIcon
                     src={`/static/images/${item.image}`}
                     size={72}

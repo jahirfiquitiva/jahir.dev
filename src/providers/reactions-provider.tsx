@@ -14,7 +14,7 @@ import type { CountersReactions, ReactionName } from '@/lib/planetscale';
 
 type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 
-export interface ReactionsContextValue {
+interface ReactionsContextValue {
   counters: CountersReactions;
   reacted?: ReactedLocalStorage;
   incrementReaction?: (reaction: ReactionName) => Promise<boolean>;

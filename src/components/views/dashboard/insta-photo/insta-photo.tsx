@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { mdiInstagram } from '@/components/icons';
 import type { InstagramPost } from '@/lib/instagram/types.d';
 
@@ -17,7 +19,7 @@ export const InstaPhoto = (props: InstaPhotoProps) => {
   return (
     <InstaPhotoContainer
       title={`View photo "${post.caption}" on Instagram`}
-      href={post.postUrl || '#'}
+      href={(post.postUrl || '#') as Route}
       style={{
         backgroundColor: `rgb(${
           post.colorPalette?.muted || post.colorPalette?.vibrant

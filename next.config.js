@@ -17,7 +17,6 @@ const defaultNextConfig = {
   experimental: {
     newNextLinkBehavior: true,
     legacyBrowsers: false,
-    optimizeCss: true,
     typedRoutes: true,
     serverActions: true,
   },

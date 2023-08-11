@@ -14,7 +14,7 @@ const imagesAlts: Array<string> = [
   'Person walking like a zombie',
 ];
 
-export const images = [
+const images = [
   { src: a, alt: imagesAlts[0] },
   { src: b, alt: imagesAlts[1] },
   { src: c, alt: imagesAlts[2] },

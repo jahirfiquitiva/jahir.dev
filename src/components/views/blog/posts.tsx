@@ -47,7 +47,6 @@ export const BlogPosts = (props: BlogPostsProps) => {
                       post={post}
                       viewsCounter={
                         !post.link ? (
-                          // @ts-expect-error Server Component
                           <ViewsCounter
                             slug={`blog--${post.slug}`}
                             inProgress={post.inProgress}

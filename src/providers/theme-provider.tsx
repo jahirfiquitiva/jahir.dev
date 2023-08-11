@@ -11,7 +11,7 @@ import {
 
 import { colorMetaTags } from '@/utils/metadata';
 
-export interface ThemeContextValue {
+interface ThemeContextValue {
   isDark: boolean;
   toggleTheme?: () => void;
 }

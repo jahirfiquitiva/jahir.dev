@@ -15,7 +15,7 @@ const fetchSelfFeed = async (): Promise<Array<InstagramPost>> => {
         caption: post.caption,
         postUrl: post.permalink,
         photoUrl: `https://sroc.jahir.dev/${post.photo || post.mediaUrl}`,
-      } as InstagramPost),
+      }) as InstagramPost,
   );
 };
 
@@ -33,7 +33,7 @@ const fetchBeholdFeed = async (key?: string): Promise<Array<InstagramPost>> => {
           photoUrl: post.thumbnailUrl || post.mediaUrl,
           colorPalette: post.colorPalette,
           dimensions: post.dimensions,
-        } as InstagramPost),
+        }) as InstagramPost,
     );
   } catch (e) {
     return [];

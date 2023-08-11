@@ -1,4 +1,5 @@
 import { cx } from 'classix';
+import type { Route } from 'next';
 
 import type { ReadableTrack } from '@/types/spotify';
 
@@ -24,7 +25,7 @@ export const NowPlayingTrack = (props: FooterNowPlayingProps) => {
   return (
     <MusicLink
       title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
-      href={isPlaying ? track.url : '/dashboard'}
+      href={(isPlaying ? track.url : '/dashboard') as Route}
     >
       <RotatingImg
         size={26}

@@ -20,6 +20,10 @@ export const TextsContainer = tw.div`
   tablet-sm:[grid-row:1]
 `;
 
+export const TitlesContainer = tw.div`
+  flex flex-col-reverse gap-8
+`;
+
 export const IntroParagraph = tw.p`
   my-12
   max-w-[325px]

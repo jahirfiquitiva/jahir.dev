@@ -35,7 +35,6 @@ const components = {
 
 export const Mdx = (props: MdxProps) => {
   const MdxComponent = useMDXComponent(props.code);
-
   return (
     <article
       className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}

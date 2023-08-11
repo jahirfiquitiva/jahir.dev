@@ -18,10 +18,6 @@ export interface ErrorResponse {
   };
 }
 
-export interface PostDeleteResponse {
-  snapshot_id: string;
-}
-
 export interface NowPlayingResponse {
   is_playing: boolean;
   item: Track;

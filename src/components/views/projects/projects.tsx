@@ -71,7 +71,6 @@ export const Projects = async (props: ProjectsProps) => {
         </ProjectsButtons>
       </ProjectsHeader>
       <Suspense fallback={<Loading />}>
-        {/* @ts-expect-error Server Component */}
         <AsyncProjectsList full={full} />
       </Suspense>
     </Section>

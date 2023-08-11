@@ -32,7 +32,7 @@ export const BrandLink = tw(FooterLink)`
   min-h-[30]
   !h-[unset]
   font-bold
-  min-w-[130px]
+  min-w-[140px]
   mobile-md:min-w-[164px]
   tablet-md:min-w-[210px]
 `;

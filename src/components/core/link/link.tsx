@@ -12,9 +12,13 @@ interface LinkProps extends ComponentProps<typeof NextLink> {
 }
 
 export const Link = (props: LinkProps) => {
-  const { href: url, ...otherProps } = props;
-  const href: string = url?.toString();
-  const { openInNewTab = !isLocalLink(href), ...rest } = otherProps;
+  const { href, ...otherProps } = props;
+  const {
+    openInNewTab = !isLocalLink(
+      typeof href !== 'string' ? href.toString() : href,
+    ),
+    ...rest
+  } = otherProps;
 
   return (
     <StyledLink

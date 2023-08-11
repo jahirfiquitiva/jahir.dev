@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { Link } from '@/components/core/link';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
 import { getUrlDomain } from '@/utils/domain';
@@ -36,7 +38,7 @@ const Hero = (props: HeroProps) => {
       {source ? (
         <figcaption>
           Image from{' '}
-          <Link href={source} title={source}>
+          <Link href={source as Route} title={source}>
             {getUrlDomain(source, true)}
           </Link>
         </figcaption>

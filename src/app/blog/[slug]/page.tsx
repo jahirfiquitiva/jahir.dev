@@ -101,7 +101,7 @@ export const generateStaticParams = () =>
 export async function generateMetadata(
   context: BlogPageContext,
 ): Promise<Metadata | undefined> {
-  const post = getBlog(context.params.slug);
+  const post = getBlog(context.params.slug, true);
   if (!post) return undefined;
 
   const { title, date, excerpt, hero, slug } = post;

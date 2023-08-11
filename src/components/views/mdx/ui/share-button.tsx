@@ -1,6 +1,7 @@
 'use client';
 
 import Icon from '@mdi/react';
+import type { Route } from 'next';
 import { useMemo } from 'react';
 
 import { Button } from '@/components/core/button';
@@ -61,7 +62,7 @@ export const ShareButton = (props: ShareButtonProps) => {
       <Child />
     </Button>
   ) : (
-    <ButtonLink title={buttonTitle} href={shareUrl(title, slug)}>
+    <ButtonLink title={buttonTitle} href={shareUrl(title, slug) as Route}>
       <Child />
     </ButtonLink>
   );

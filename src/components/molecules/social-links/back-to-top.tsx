@@ -9,7 +9,7 @@ import { SocialLinkItem, SocialLink } from './social-links.styles';
 
 export const BackToTopLink = () => {
   return (
-    <SocialLinkItem className={'self-end ml-auto'}>
+    <SocialLinkItem className={'self-end ml-auto mobile-lg:ml-0'}>
       {/* @ts-expect-error Renders a button, not a link */}
       <SocialLink
         $as={'button'}

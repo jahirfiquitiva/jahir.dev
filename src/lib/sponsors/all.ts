@@ -69,7 +69,7 @@ export const getSponsorsAndCategories = async () => {
                 )}`
               : it.photo,
             amount: 0,
-          } as ReadableSupporter),
+          }) as ReadableSupporter,
       ),
     ],
     totalEarningsPerMonth,

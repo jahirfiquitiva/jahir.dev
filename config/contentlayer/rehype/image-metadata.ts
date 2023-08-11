@@ -1,4 +1,5 @@
 // Code based on https://github.com/nikolovlazar/nikolovlazar.com/blob/main/src/utils/plugins/image-metadata.ts
+import { readFile } from 'node:fs/promises';
 import path from 'path';
 import { promisify } from 'util';
 
@@ -61,14 +62,16 @@ export const getBlurData = async (
   let blur64: string;
 
   if (!isExternal) {
-    res = await sizeOf(path.join(process.cwd(), 'public', imageSrc));
-    const plaiceholderResult = await getPlaiceholder(imageSrc, {
+    const filePath = path.join(process.cwd(), 'public', imageSrc);
+    res = await sizeOf(filePath);
+    const imgBuffer = await readFile(filePath);
+    const plaiceholderResult = await getPlaiceholder(imgBuffer, {
       size: placeholderSize,
     });
     res = {
       ...res,
-      width: plaiceholderResult.img.width,
-      height: plaiceholderResult.img.height,
+      width: plaiceholderResult.metadata.width,
+      height: plaiceholderResult.metadata.height,
     };
     blur64 = plaiceholderResult.base64;
   } else {
@@ -82,8 +85,8 @@ export const getBlurData = async (
     });
     res = {
       ...res,
-      width: plaiceholderResult.img.width,
-      height: plaiceholderResult.img.height,
+      width: plaiceholderResult.metadata.width,
+      height: plaiceholderResult.metadata.height,
     };
     blur64 = plaiceholderResult.base64;
   }

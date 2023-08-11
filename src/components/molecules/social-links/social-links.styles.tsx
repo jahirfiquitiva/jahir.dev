@@ -5,12 +5,16 @@ import { Link } from '@/components/core/link';
 export const SocialLinksContainer = tw.ul`
   list-none
   flex
+  flex-1
   items-center
   gap-6
-  -ml-6
+  -mx-4
   w-full
   not-prose
-  tablet-sm:w-[unset]
+  mobile-lg:-mx-6
+  mobile-lg:flex-[unset]
+  mobile-lg:w-[unset]
+  tablet-sm:-mr-2
 `;
 
 export const SocialLinkItem = tw.li`
@@ -51,11 +55,6 @@ export const TwitterLink = tw(SocialLink)`
 export const InstagramLink = tw(SocialLink)`
   hocus:text-[#d6249f]
   hocus:dark:text-[#da3aa9]
-`;
-
-export const PolyworkLink = tw(SocialLink)`
-  hocus:text-[#6959fc]
-  hocus:dark:text-[#786afc]
 `;
 
 export const BlueskyLink = tw(SocialLink)`

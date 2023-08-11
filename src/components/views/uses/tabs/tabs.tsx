@@ -14,7 +14,7 @@ import { TabPanel, TabsList, TabButton, TabButtonText } from './tabs.styles';
 const getIdForName = (name: string) =>
   name.split(' ').join('-').toLowerCase().trim();
 
-export interface TabsProps {
+interface TabsProps {
   tabsNames: Array<string>;
 }
 

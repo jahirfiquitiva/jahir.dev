@@ -1,12 +1,7 @@
 import { Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 
-export const reactionsNames = [
-  'likes',
-  'loves',
-  'awards',
-  'bookmarks',
-] as const;
+const reactionsNames = ['likes', 'loves', 'awards', 'bookmarks'] as const;
 
 export type ReactionName = (typeof reactionsNames)[number];
 

@@ -22,6 +22,5 @@ export const metadata = getStaticMetadata({
 });
 
 export default function ProjectsPage() {
-  // @ts-expect-error Server Component
   return <Projects full />;
 }

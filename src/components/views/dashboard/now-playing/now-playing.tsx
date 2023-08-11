@@ -1,5 +1,6 @@
 'use client';
 
+import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
 import { Ring } from '@/components/core/loaders';
@@ -24,7 +25,7 @@ export const NowPlaying = () => {
   return (
     <NowPlayingCard
       title={`Listen to "${track?.name}" by "${track?.artist}" on Spotify`}
-      href={track?.url || '#'}
+      href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
     >
       {loading ? (
