@@ -90,37 +90,56 @@ article.mdx-article {
   }
 }
 
-[data-rehype-pretty-code-fragment] .line {
+[data-rehype-pretty-code-fragment] .line,
+[data-rehype-pretty-code-fragment] [data-line] {
   @apply px-14 border-l-2 border-transparent;
 }
-[data-rehype-pretty-code-fragment] .line--highlighted {
+
+[data-rehype-pretty-code-fragment] .line--highlighted,
+[data-rehype-pretty-code-fragment] [data-highlighted-line] {
   @apply bg-accent-dark/[0.06] dark:bg-accent-dark/[0.12];
   @apply border-[#5f27cd] dark:border-[#f368e0];
+  & span {
+    @apply relative;
+  }
 }
-[data-rehype-pretty-code-fragment] .line-highlighted span {
-  @apply relative;
-}
-[data-rehype-pretty-code-fragment] .word--highlighted {
+
+[data-rehype-pretty-code-fragment] .word--highlighted,
+[data-rehype-pretty-code-fragment] [data-highlighted-chars] {
   @apply rounded-4 py-4 px-8 bg-accent-dark/[0.056] dark:bg-accent-dark/[0.096];
 }
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 1rem;
-  margin-right: 1rem;
-  text-align: right;
-  color: var(--color-tertiary-txt);
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line,
+[data-rehype-pretty-code-fragment] [data-line-numbers] > [data-line] {
+  &::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: var(--color-tertiary-txt);
+  }
 }
+
+[data-rehype-pretty-code-fragment] [data-line-numbers-max-digits='2'] > .line,
 [data-rehype-pretty-code-fragment]
   [data-line-numbers-max-digits='2']
-  > .line::before {
-  width: 2rem;
+  > [data-line] {
+  @apply pl-6;
+  &::before {
+    width: 1.5rem;
+  }
 }
+
+[data-rehype-pretty-code-fragment] [data-line-numbers-max-digits='3'] > .line,
 [data-rehype-pretty-code-fragment]
   [data-line-numbers-max-digits='3']
-  > .line::before {
-  width: 3rem;
+  > [data-line] {
+  @apply pl-8;
+  &::before {
+    width: 2rem;
+  }
 }
 
 html.light [data-rehype-pretty-code-fragment] {

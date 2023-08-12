@@ -20,7 +20,7 @@ import {
 } from './card.styles';
 
 interface ProjectCardProps {
-  project?: Project;
+  project: Project;
 }
 
 export const ProjectCard = (props: ProjectCardProps) => {
@@ -51,7 +51,6 @@ export const ProjectCard = (props: ProjectCardProps) => {
     return {};
   }, [project?.iconMeta]);
 
-  if (!project) return null;
   return (
     <StyledProjectCard
       title={`Project: ${project?.name}`}

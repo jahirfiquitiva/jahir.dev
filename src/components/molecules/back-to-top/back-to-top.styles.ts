@@ -13,10 +13,9 @@ export const Fab = tw(Button)<{ $shown: boolean }>`
   m-16
   p-12
   rounded-half
-  h-[50]
-  w-[50]
+  h-48
+  w-48
   gap-0
-  ${(p) => (p.$shown ? 'visible' : 'invisible')}
   ${(p) => (p.$shown ? 'pointer-events-auto' : 'pointer-events-none')}
   ${(p) => (p.$shown ? 'select-auto' : 'select-none')}
   ${(p) => (p.$shown ? 'opacity-1' : 'opacity-0')}

@@ -42,6 +42,7 @@ export const prettyCode: Pluggable<Array<any>> = [
       light: getThemeJson('light'),
       dark: getThemeJson('dark'),
     },
+    keepBackground: false,
     onVisitLine(node?: RehypeElement | null) {
       if (!node) return;
       // Prevent lines from collapsing in `display: grid` mode, and allow empty

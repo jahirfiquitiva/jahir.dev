@@ -20,7 +20,8 @@ const defaultContextState: ThemeContextValue = {
   isDark: false,
 };
 
-const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
+export const ThemeContext =
+  createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider = (props: PropsWithChildren) => {
   const { theme, resolvedTheme, setTheme } = useNextTheme();
