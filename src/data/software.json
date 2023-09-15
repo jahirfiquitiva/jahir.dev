@@ -21,13 +21,8 @@
   },
   {
     "image": "uses/apps/good-notes.png",
-    "name": "Good Notes",
+    "name": "Goodnotes",
     "link": "https://www.goodnotes.com/"
-  },
-  {
-    "image": "uses/apps/snapdrop.png",
-    "name": "Snapdrop",
-    "link": "https://snapdrop.net/"
   },
   {
     "image": "uses/apps/iina.png",
@@ -48,11 +43,6 @@
     "image": "uses/apps/app-cleaner.webp",
     "name": "App Cleaner",
     "link": "https://freemacsoft.net/appcleaner/"
-  },
-  {
-    "image": "uses/apps/magnet.png",
-    "name": "Magnet",
-    "link": "https://magnet.crowdcafe.com/"
   },
   {
     "image": "uses/apps/fig.png",
@@ -83,11 +73,6 @@
     "image": "uses/apps/contraste.png",
     "name": "Contraste",
     "link": "http://contrasteapp.com/"
-  },
-  {
-    "image": "uses/apps/type-fu.webp",
-    "name": "Type Fu",
-    "link": "https://type-fu.com/"
   },
   {
     "image": "uses/apps/soundsource.png",
