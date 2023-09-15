@@ -25,11 +25,6 @@
     "link": "https://www.goodnotes.com/"
   },
   {
-    "image": "uses/apps/snapdrop.png",
-    "name": "Snapdrop",
-    "link": "https://snapdrop.net/"
-  },
-  {
     "image": "uses/apps/iina.png",
     "name": "iina",
     "link": "https://iina.io/"
@@ -78,11 +73,6 @@
     "image": "uses/apps/contraste.png",
     "name": "Contraste",
     "link": "http://contrasteapp.com/"
-  },
-  {
-    "image": "uses/apps/type-fu.webp",
-    "name": "Type Fu",
-    "link": "https://type-fu.com/"
   },
   {
     "image": "uses/apps/soundsource.png",
