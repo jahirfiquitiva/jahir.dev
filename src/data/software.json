@@ -21,7 +21,7 @@
   },
   {
     "image": "uses/apps/good-notes.png",
-    "name": "Good Notes",
+    "name": "Goodnotes",
     "link": "https://www.goodnotes.com/"
   },
   {
@@ -48,11 +48,6 @@
     "image": "uses/apps/app-cleaner.webp",
     "name": "App Cleaner",
     "link": "https://freemacsoft.net/appcleaner/"
-  },
-  {
-    "image": "uses/apps/magnet.png",
-    "name": "Magnet",
-    "link": "https://magnet.crowdcafe.com/"
   },
   {
     "image": "uses/apps/fig.png",
