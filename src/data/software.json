@@ -108,5 +108,10 @@
     "image": "uses/apps/pace-theme.png",
     "name": "Pace Theme",
     "link": "https://github.com/fabian-hiller/vscode-pace-theme"
-  }
+  },
+  {
+    "image": "uses/apps/magnet.png",
+    "name": "Magnet",
+    "link": "https://magnet.crowdcafe.com/"
+  },
 ]
