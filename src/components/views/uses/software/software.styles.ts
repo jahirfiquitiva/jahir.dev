@@ -10,18 +10,17 @@ export const GridContainer = tw.div`
   [box-shadow:0_0_4px_2px_var(--color-accent-dark)]
   [background-color:rgba(var(--color-inverse)/0.006)]
   dark:[background-color:rgba(var(--color-inverse)/0.012)]
-  bg-fixed
   bg-cover
   bg-no-repeat
   bg-center
-  bg-[url('/static/images/uses/wallpaper.jpg')]
+  bg-[url('/static/images/uses/wallpaper.png')]
+  dark:bg-[url('/static/images/uses/wallpaper-dark.png')]
 `;
 
 export const SoftwareGrid = tw.ol`
   m-0
   grid
   grid-cols-[repeat(3,minmax(0,120px))]
-  backdrop-blur
   [box-shadow:0_0_4px_2px_var(--color-accent-dark)]
   rounded-10
   gap-x-20
@@ -29,8 +28,8 @@ export const SoftwareGrid = tw.ol`
   py-24 px-12
   items-center
   justify-center
-  [background-color:rgba(235_240_251/0.36)]
-  dark:[background-color:rgba(9_17_34/0.36)]
+  [background-color:rgba(235_240_251/0.06)]
+  dark:[background-color:rgba(9_17_34/0.06)]
   list-none
   mobile-md:grid-cols-[repeat(3,minmax(0,108px))]
   mobile-lg:grid-cols-[repeat(4,minmax(0,108px))]
@@ -68,9 +67,9 @@ export const AppIcon = tw(Img)`
 `;
 
 export const AppName = tw.span`
+  text-[#fff]
   text-3xs
   truncate
   max-w-[calc(100%-0.25rem)]
-  [text-shadow:0_0_4px_rgba(235_240_251/0.72)]
-  dark:[text-shadow:0_0_4px_rgba(9_17_34/0.72)]
+  [text-shadow:0_0_2px_rgba(9_17_34/0.72)]
 `;
