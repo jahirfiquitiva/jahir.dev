@@ -8,15 +8,18 @@ export const Coding = () => {
     <NoPaddingSection $as={'div'}>
       <p>
         I use{' '}
-        <Link title={'VSCodium'} href={'https://vscodium.com/'}>
-          VSCodium
+        <Link
+          title={'Visual Studio Code'}
+          href={'https://code.visualstudio.com/'}
+        >
+          Visual Studio Code
         </Link>{' '}
         as my primary editor, with a custom layout using the{' '}
         <Link
-          title={'Customize UI Extension'}
-          href={'https://github.com/lehni/customize-ui'}
+          title={'Apc Customize UI++ Extension'}
+          href={'https://github.com/drcika/apc-extension'}
         >
-          Customize UI
+          Apc Customize UI++
         </Link>{' '}
         extension. I also use the{' '}
         <Link
