@@ -16,8 +16,6 @@ const defaultNextConfig = {
   compress: true,
   crossOrigin: 'anonymous',
   experimental: {
-    newNextLinkBehavior: true,
-    legacyBrowsers: false,
     typedRoutes: true,
     serverActions: true,
   },
