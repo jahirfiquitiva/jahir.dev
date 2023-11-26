@@ -8,7 +8,7 @@
     "prebuild": "yarn clean && yarn themes && contentlayer build --clearCache",
     "setup": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
-    "update-deps": "npx --yes npm-check-updates -u && yarn",
+    "update-deps": "npx --yes npm-check-updates -u !remark-* && yarn",
     "themes": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/code-themes.mjs",
     "prune-code": "ts-prune -i '.contentlayer|src/app'",
     "postinstall": "is-ci || husky install"
