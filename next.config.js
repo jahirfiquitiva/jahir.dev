@@ -17,7 +17,6 @@ const defaultNextConfig = {
   crossOrigin: 'anonymous',
   experimental: {
     typedRoutes: true,
-    serverActions: true,
   },
   compiler: {
     removeConsole: {
