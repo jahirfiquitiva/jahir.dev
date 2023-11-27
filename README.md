@@ -38,7 +38,7 @@
 ```
 
 - **`config/*`** - Includes all the custom configuration for [contentlayer](https://contentlayer.dev), [Tailwind CSS](https://tailwindcss.com/) and [Next.js](https://nextjs.org/)
-- **`content/*`** - MDX blog posts and the content for the `about` and `donate` pages
+- **`content/*`** - MDX blog posts and the content for the `donate` pages
 - **`public/*`** - Static assets including images, fonts, audios, files, etc.
 - **`scripts/*`** - Utilities to setup the project
 - **`src/app/*`** - Every page and api route in the website. Uses the new [App Router](https://beta.nextjs.org/docs/getting-started#introducing-the-app-router) from [Next.js](https://nextjs.org/) `13.+`

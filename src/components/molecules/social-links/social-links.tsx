@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import type { CSSProperties } from 'react';
 
 import {
   gitHubOutline,
@@ -21,13 +22,19 @@ import {
 
 interface SocialLinksProps {
   withBackToTop?: boolean;
+  className?: string;
+  style?: CSSProperties;
 }
 
 const iconSize = 0.9;
 export const SocialLinks = (props: SocialLinksProps) => {
-  const { withBackToTop } = props;
+  const { withBackToTop, className, style } = props;
   return (
-    <SocialLinksContainer aria-label={'Social links'}>
+    <SocialLinksContainer
+      aria-label={'Social links'}
+      className={className}
+      style={style}
+    >
       <SocialLinkItem>
         <GitHubLink title={'GitHub'} href={'https://github.com/jahirfiquitiva'}>
           <Icon path={gitHubOutline} size={iconSize} />
