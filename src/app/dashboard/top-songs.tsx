@@ -3,16 +3,26 @@ import type { Route } from 'next';
 
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link';
-import { getTopTracks, mapTrackData } from '@/lib/spotify';
+import { getTopTracks } from '@/lib/spotify';
 
-export const TopSongs = async () => {
-  const response = await getTopTracks().catch(null);
-  if ('error' in response) return <p>NO TOP SONGS: {response.error.message}</p>;
+const TopSongsTable = async () => {
+  const topTracks = await getTopTracks();
+  if (!topTracks || !topTracks.length) return null;
   return (
-    <div className={cx('flex flex-col')}>
-      <p className={cx('text-3xs text-secondary-txt')}>Top 5 tracks</p>
-      <ol className={cx('list-none flex flex-col')}>
-        {response.items.map(mapTrackData).map((track, index) => {
+    <>
+      <p
+        className={cx(
+          'text-2xs text-secondary-txt px-12 py-8 font-semibold font-manrope',
+        )}
+      >
+        Top five (5) recently played songs
+      </p>
+      <ol
+        title={'List of top five (5) recently played songs'}
+        className={cx('list-none flex flex-col')}
+      >
+        {topTracks.map((track, index) => {
+          if (!track) return null;
           return (
             <li key={`track-${index}`}>
               <Link
@@ -20,16 +30,16 @@ export const TopSongs = async () => {
                 href={(track?.url || '#') as Route}
                 className={cx(
                   'group/track',
-                  'px-8 py-6 block',
+                  'p-12 block',
                   'w-full no-underline text-inherit',
                   'hocus:!no-underline hocus:!text-secondary-txt',
                   index % 2 === 0
                     ? // eslint-disable-next-line max-len
-                      'bg-[rgba(var(--color-inverse)/0.024)] dark:bg-[rgba(var(--color-inverse)/0.032)]'
+                      'bg-[rgba(var(--color-inverse)/0.024)] dark:bg-[rgba(var(--color-inverse)/0.064)]'
                     : '',
                 )}
               >
-                <div className={cx('flex items-center gap-16')}>
+                <div className={cx('flex items-center gap-12')}>
                   <Img
                     src={track?.image?.url || ''}
                     alt={''}
@@ -43,7 +53,7 @@ export const TopSongs = async () => {
                     <p
                       className={cx(
                         'text-2xs text-primary-txt line-clamp-1',
-                        'group-hover/track:underline group-hover/track:decoration-wavy',
+                        'group-hocus/track:underline group-hocus/track:decoration-wavy',
                       )}
                     >
                       {track?.name}
@@ -59,6 +69,21 @@ export const TopSongs = async () => {
           );
         })}
       </ol>
-    </div>
+    </>
   );
 };
+
+export const TopSongs = () => (
+  <div className={cx('flex flex-col')}>
+    <TopSongsTable />
+    <Link
+      title={"Check my playlist 'tunez' on Spotify"}
+      href={'https://tunez.jahir.dev'}
+      className={cx(
+        'text-3xs text-secondary-txt px-12 py-8 hocus:decoration-wavy',
+      )}
+    >
+      Check my playlist &quot;tunez&quot; on Spotify
+    </Link>
+  </div>
+);
