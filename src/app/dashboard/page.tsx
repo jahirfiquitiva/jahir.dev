@@ -10,14 +10,14 @@ import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 import { GitHubStats } from './github-stats';
-import { InstaPost } from './insta-post';
+import { InstagramFeed } from './insta-feed';
 import { ReactionsStats } from './reactions-stats';
 import { SponsorsStats } from './sponsors-stats';
 import { ViewsStats } from './views-stats';
 
 export default async function DashboardPage() {
   return (
-    <Section id={'dashboard'}>
+    <Section id={'dashboard'} className={cx('gap-28')}>
       <Heading shadow={'blue'} from={'blue'} to={'green'}>
         Dashboard
       </Heading>
@@ -33,7 +33,6 @@ export default async function DashboardPage() {
         <GitHubStats />
         <SponsorsStats />
         <NowPlaying />
-        <InstaPost />
         <StyledStatCard
           title={'More links'}
           href={'https://links.jahir.dev'}
@@ -55,6 +54,7 @@ export default async function DashboardPage() {
           />
         </StyledStatCard>
       </div>
+      <InstagramFeed />
     </Section>
   );
 }
