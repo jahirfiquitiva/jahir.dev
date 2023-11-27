@@ -11,7 +11,7 @@ import { Statistics } from './statistics';
 
 export default async function DashboardPage() {
   return (
-    <Section id={'dashboard'} className={cx('gap-32 py-8')}>
+    <Section id={'dashboard'} className={cx('gap-32')}>
       <Heading shadow={'blue'} from={'blue'} to={'green'}>
         Dashboard
       </Heading>
