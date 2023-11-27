@@ -80,7 +80,7 @@ export const getRecentlyPlayed = async () =>
   );
 
 const TOP_TRACKS_ENDPOINT =
-  'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10';
+  'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5';
 export const getTopTracks = async () =>
   buildSpotifyRequest<SpotifyResponse<Track>>(TOP_TRACKS_ENDPOINT);
 
@@ -96,6 +96,7 @@ export const mapTrackData = (track?: Track | null): ReadableTrack | null => {
       previewUrl: track.preview_url,
       url: track.external_urls.spotify,
       image: albumImage,
+      duration: track.duration_ms || 0,
     };
   } catch (e) {
     return null;
