@@ -1,5 +1,6 @@
 'use client';
 
+import { cx } from 'classix';
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
@@ -48,8 +49,14 @@ export const NowPlaying = () => {
             width={track?.image?.width || 128}
             height={track?.image?.height || 128}
             alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
+            className={cx(isPlaying ? 'motion-safe:animate-now-playing' : '')}
           />
           <NowPlayingContent>
+            <AlbumImg
+              src={track?.image?.url || ''}
+              size={track?.image?.height || 72}
+              alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
+            />
             <NowPlayingTexts>
               <NowPlayingHeader>
                 {isPlaying ? 'Now Playing' : 'Last Played'}
@@ -59,11 +66,6 @@ export const NowPlaying = () => {
                 <TrackArtist>{track?.artist}</TrackArtist>
               </div>
             </NowPlayingTexts>
-            <AlbumImg
-              src={track?.image?.url || ''}
-              size={track?.image?.height || 72}
-              alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
-            />
           </NowPlayingContent>
         </>
       )}

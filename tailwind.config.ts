@@ -98,11 +98,18 @@ module.exports = {
           '20%': { transform: 'rotate(12deg)' },
           '40%': { transform: 'rotate(9deg)' },
         },
+        'now-playing': {
+          'from, to': { transform: 'scale(1) rotate(0deg) translateY(-50%)' },
+          '25%': { transform: 'scale(1.25) rotate(-5deg) translateY(-50%)' },
+          '50%': { transform: 'scale(1.5) rotate(0deg) translateY(-50%)' },
+          '75%': { transform: 'scale(1.25) rotate(5deg) translateY(-50%)' },
+        },
       },
       animation: {
         'page-transition': 'page-transition 300ms ease-in-out backwards',
         scroll: 'scroll 15s linear infinite',
         wave: 'wave 2.5s infinite',
+        'now-playing': 'now-playing 25s linear infinite',
       },
     },
   },
