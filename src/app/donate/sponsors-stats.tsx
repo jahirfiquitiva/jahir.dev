@@ -14,7 +14,7 @@ export const SimpleSponsorsStats = (props: SimpleSponsorsStatsProps) => {
       <StatCard
         title={'View sponsors'}
         href={'/donate#thanks'}
-        text={'sponsors'}
+        text={sponsorsCount <= 1 ? 'sponsor' : 'sponsors'}
         value={sponsorsCount || 0}
         iconPath={mdiHeartOutline}
         color={'#c94091'}

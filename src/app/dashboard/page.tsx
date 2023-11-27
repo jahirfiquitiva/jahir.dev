@@ -13,6 +13,7 @@ import { GitHubStats } from './github-stats';
 import { InstagramFeed } from './insta-feed';
 import { ReactionsStats } from './reactions-stats';
 import { SponsorsStats } from './sponsors-stats';
+import { Statistics } from './statistics';
 import { ViewsStats } from './views-stats';
 
 export default async function DashboardPage() {
@@ -28,10 +29,6 @@ export default async function DashboardPage() {
           'tablet-sm:grid-cols-12 tablet-sm:gap-16',
         )}
       >
-        <ViewsStats />
-        <ReactionsStats />
-        <GitHubStats />
-        <SponsorsStats />
         <NowPlaying />
         <StyledStatCard
           title={'More links'}
@@ -54,6 +51,7 @@ export default async function DashboardPage() {
           />
         </StyledStatCard>
       </div>
+      <Statistics />
       <InstagramFeed />
     </Section>
   );
