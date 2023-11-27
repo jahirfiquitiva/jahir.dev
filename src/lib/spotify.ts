@@ -4,6 +4,7 @@ import type {
   ErrorResponse,
   NowPlayingResponse,
   Track,
+  ReadableTrack,
 } from '@/types/spotify';
 
 const serialize = (obj: Record<string | number, string | number | boolean>) => {
@@ -82,3 +83,21 @@ const TOP_TRACKS_ENDPOINT =
   'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10';
 export const getTopTracks = async () =>
   buildSpotifyRequest<SpotifyResponse<Track>>(TOP_TRACKS_ENDPOINT);
+
+export const mapTrackData = (track?: Track | null): ReadableTrack | null => {
+  if (!track) return null;
+  try {
+    const preAlbumImage = track.album.images.pop();
+    const albumImage = track.album.images.pop() || preAlbumImage;
+    return {
+      name: track.name,
+      artist: track.artists.map((_artist) => _artist.name).join(', '),
+      album: track.album.name,
+      previewUrl: track.preview_url,
+      url: track.external_urls.spotify,
+      image: albumImage,
+    };
+  } catch (e) {
+    return null;
+  }
+};

@@ -1,28 +1,10 @@
 import { NextResponse } from 'next/server';
 
-import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
-import type { Track, ReadableTrack } from '@/types/spotify';
+import { getNowPlaying, getRecentlyPlayed, mapTrackData } from '@/lib/spotify';
+import type { Track } from '@/types/spotify';
 
 export const runtime = 'edge';
 export const fetchCache = 'force-no-store';
-
-const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
-  if (!track) return null;
-  try {
-    const preAlbumImage = track.album.images.pop();
-    const albumImage = track.album.images.pop() || preAlbumImage;
-    return {
-      name: track.name,
-      artist: track.artists.map((_artist) => _artist.name).join(', '),
-      album: track.album.name,
-      previewUrl: track.preview_url,
-      url: track.external_urls.spotify,
-      image: albumImage,
-    };
-  } catch (e) {
-    return null;
-  }
-};
 
 const spotifyResponse = (data: unknown) =>
   NextResponse.json(data, {
@@ -43,7 +25,7 @@ export async function GET() {
   // If found a defined track from the now playing api
   if (nowPlayingTrack) {
     return spotifyResponse({
-      track: trackToReadableTrack(nowPlayingTrack),
+      track: mapTrackData(nowPlayingTrack),
       isPlaying,
     });
   }
@@ -54,7 +36,7 @@ export async function GET() {
   if (!('error' in recentlyPlayed))
     lastPlayed = recentlyPlayed.items?.[0]?.track;
   return spotifyResponse({
-    track: trackToReadableTrack(lastPlayed),
+    track: mapTrackData(lastPlayed),
     isPlaying: false,
   });
 }

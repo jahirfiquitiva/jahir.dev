@@ -1,27 +1,8 @@
 import { NextResponse } from 'next/server';
 
-import { getTopTracks } from '@/lib/spotify';
-import type { Track, ReadableTrack } from '@/types/spotify';
+import { getTopTracks, mapTrackData } from '@/lib/spotify';
 
 export const runtime = 'edge';
-
-const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
-  if (!track) return null;
-  try {
-    const preAlbumImage = track.album.images.pop();
-    const albumImage = track.album.images.pop() || preAlbumImage;
-    return {
-      name: track.name,
-      artist: track.artists.map((_artist) => _artist.name).join(', '),
-      album: track.album.name,
-      previewUrl: track.preview_url,
-      url: track.external_urls.spotify,
-      image: albumImage,
-    };
-  } catch (e) {
-    return null;
-  }
-};
 
 const spotifyResponse = (data: unknown) =>
   NextResponse.json(data, {
@@ -37,6 +18,6 @@ export async function GET() {
   }
 
   return spotifyResponse({
-    tracks: topTracksRequest.items.map(trackToReadableTrack),
+    tracks: topTracksRequest.items.map(mapTrackData),
   });
 }
