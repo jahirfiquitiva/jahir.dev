@@ -12,7 +12,7 @@ export const NowPlayingCard = tw(Link)`
   group/track
   transition-colors
   truncate
-  max-h-[8rem]
+  max-h-[7rem]
   col-span-2
   aspect-video
   tablet-sm:col-span-6
@@ -27,11 +27,11 @@ export const NowPlayingContent = tw.div`
   w-full
   flex
   flex-row
-  gap-20
+  gap-16
   p-12
   max-w-full
   truncate
-  mobile-md:max-h-[8rem]
+  mobile-md:max-h-[7rem]
   items-center
   backdrop-blur-xl
   backdrop-saturate-200
@@ -57,7 +57,7 @@ export const BackgroundImage = tw(Img)`
 export const NowPlayingTexts = tw.div`
   flex
   flex-col
-  gap-12
+  gap-4
   truncate
   mix-blend-hard-light
 `;
@@ -72,7 +72,7 @@ export const NowPlayingHeader = tw.span`
 `;
 
 export const TrackName = tw.p`
-  text-xs
+  text-2xs
   truncate
   font-bold
   font-manrope
@@ -85,7 +85,8 @@ export const TrackName = tw.p`
 `;
 
 export const TrackArtist = tw.span`
-  text-2xs
+  -mt-2
+  text-3xs
   truncate
   text-secondary-txt
   transition-colors
