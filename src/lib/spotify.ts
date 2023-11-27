@@ -3,6 +3,7 @@ import type {
   SpotifyResponse,
   ErrorResponse,
   NowPlayingResponse,
+  Track,
 } from '@/types/spotify';
 
 const serialize = (obj: Record<string | number, string | number | boolean>) => {
@@ -76,3 +77,8 @@ export const getRecentlyPlayed = async () =>
   buildSpotifyRequest<SpotifyResponse<PlayHistoryObject>>(
     RECENTLY_PLAYED_ENDPOINT,
   );
+
+const TOP_TRACKS_ENDPOINT =
+  'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10';
+export const getTopTracks = async () =>
+  buildSpotifyRequest<SpotifyResponse<Track>>(TOP_TRACKS_ENDPOINT);
