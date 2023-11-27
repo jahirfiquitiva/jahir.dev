@@ -15,6 +15,7 @@ import { ReactionsStats } from './reactions-stats';
 import { SponsorsStats } from './sponsors-stats';
 import { Statistics } from './statistics';
 import { ViewsStats } from './views-stats';
+import { TopSongs } from './top-songs';
 
 export default async function DashboardPage() {
   return (
@@ -52,6 +53,7 @@ export default async function DashboardPage() {
         </StyledStatCard>
       </div>
       <Statistics />
+      <TopSongs />
       <InstagramFeed />
     </Section>
   );
