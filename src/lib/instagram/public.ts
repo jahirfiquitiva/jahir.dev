@@ -59,8 +59,9 @@ export const getPublicFeed = async (): Promise<Array<RemoteInstagramPost>> => {
       const caption = a11yCaption || postCaption;
       return {
         id: node.id,
-        photoUrl,
-        postUrl: `https://www.instagram.com/p/${node.shortcode}`,
+        mediaUrl: photoUrl || '',
+        mediaType: 'IMAGE',
+        permalink: `https://www.instagram.com/p/${node.shortcode}`,
         caption: location ? `${caption} at ${location}` : caption,
       };
     });
