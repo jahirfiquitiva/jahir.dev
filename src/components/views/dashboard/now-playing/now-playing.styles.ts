@@ -5,23 +5,19 @@ import { Link } from '@/components/core/link';
 
 export const NowPlayingCard = tw(Link)`
   relative
-  border
-  border-divider
   !w-full
   h-full
   text-secondary-txt
   no-underline
-  rounded-8
   group/track
   transition-colors
   truncate
-  max-h-[154.5px]
+  max-h-[7rem]
   col-span-2
   aspect-video
   tablet-sm:col-span-6
   hocus:no-underline
   hocus:transform
-  hocus:-translate-y-1
   hocus:border-accent-dark/[0.56]
   hocus:shadow-sm
 `;
@@ -32,38 +28,36 @@ export const NowPlayingContent = tw.div`
   flex
   flex-row
   gap-16
-  justify-between
   p-12
   max-w-full
   truncate
-  mobile-md:max-h-[154.5px]
-  tablet-sm:p-14
+  mobile-md:max-h-[7rem]
   items-center
-  backdrop-blur-lg
+  backdrop-blur-xl
   backdrop-saturate-200
-  bg-[rgba(255,255,255,0.5)]
-  dark:bg-[rgba(9,17,34,0.35)]
+  bg-[rgba(255,255,255,0.6)]
+  dark:bg-[rgba(9,17,34,0.3)]
 `;
 
 export const BackgroundImage = tw(Img)`
   absolute
-  top-0
+  top-1/2
   left-0
   right-0
-  bottom-0
   w-full
-  h-auto
-  max-h-full
   z-0
   opacity-50
+  saturate-125
   pointer-events-none
   select-none
+  transform
+  -translate-y-1/2
 `;
 
 export const NowPlayingTexts = tw.div`
   flex
   flex-col
-  gap-12 tablet-sm:gap-16
+  gap-4
   truncate
   mix-blend-hard-light
 `;
@@ -78,7 +72,7 @@ export const NowPlayingHeader = tw.span`
 `;
 
 export const TrackName = tw.p`
-  text-xs
+  text-2xs
   truncate
   font-bold
   font-manrope
@@ -87,10 +81,12 @@ export const TrackName = tw.p`
   max-w-full
   group-hocus/track:text-primary-txt
   group-hocus/track:underline
+  group-hocus/track:decoration-wavy
 `;
 
 export const TrackArtist = tw.span`
-  text-2xs
+  -mt-2
+  text-3xs
   truncate
   text-secondary-txt
   transition-colors

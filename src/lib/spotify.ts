@@ -3,7 +3,28 @@ import type {
   SpotifyResponse,
   ErrorResponse,
   NowPlayingResponse,
+  Track,
+  ReadableTrack,
 } from '@/types/spotify';
+
+export const mapTrackData = (track?: Track | null): ReadableTrack | null => {
+  if (!track) return null;
+  try {
+    const preAlbumImage = track.album.images.pop();
+    const albumImage = track.album.images.pop() || preAlbumImage;
+    return {
+      name: track.name,
+      artist: track.artists.map((_artist) => _artist.name).join(', '),
+      album: track.album.name,
+      previewUrl: track.preview_url,
+      url: track.external_urls.spotify,
+      image: albumImage,
+      duration: track.duration_ms || 0,
+    };
+  } catch (e) {
+    return null;
+  }
+};
 
 const serialize = (obj: Record<string | number, string | number | boolean>) => {
   const str = [];
@@ -76,3 +97,14 @@ export const getRecentlyPlayed = async () =>
   buildSpotifyRequest<SpotifyResponse<PlayHistoryObject>>(
     RECENTLY_PLAYED_ENDPOINT,
   );
+
+const TOP_TRACKS_ENDPOINT =
+  'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5';
+export const getTopTracks = async () => {
+  const response =
+    await buildSpotifyRequest<SpotifyResponse<Track>>(
+      TOP_TRACKS_ENDPOINT,
+    ).catch(null);
+  if (!response || 'error' in response) return [];
+  return response.items.map(mapTrackData);
+};

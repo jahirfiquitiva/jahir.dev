@@ -79,3 +79,8 @@ export const mdiEmail =
   'M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z';
 
 export const mdiLoading = 'M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8Z';
+
+export const mdiCarousel =
+  'M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2m-11-4 2 2.7 3-3.7 4 5H8M2 6v14c0 1.1.9 2 2 2h14v-2H4V6';
+export const mdiVideo =
+  'M15 8v8H5V8h10m1-2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4V7a1 1 0 0 0-1-1Z';

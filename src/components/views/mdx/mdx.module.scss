@@ -84,6 +84,9 @@
   & li {
     @apply self-start;
   }
+  & > nav {
+    @apply my-8;
+  }
 }
 
 .article code {

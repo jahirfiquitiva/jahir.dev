@@ -43,8 +43,9 @@ export default async function DynamicDonateContent() {
         <div
           className={cx(
             'max-w-full my-8',
-            'grid grid-cols-2 gap-12',
-            'tablet-sm:grid-cols-12 tablet-sm:gap-16',
+            'grid grid-cols-1 gap-12',
+            'mobile-md:grid-cols-2',
+            'tablet-sm:grid-cols-3 tablet-sm:gap-16',
           )}
         >
           <SimpleSponsorsStats

@@ -1,10 +1,9 @@
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
-import { getRandomItem } from '@/utils/random';
 
-import { images } from './images';
+import { getAboutImage } from './images';
 
-export default function Photo() {
-  const photo = getRandomItem(images);
+export default async function Photo() {
+  const photo = await getAboutImage();
   return (
     <figure className={'mt-12 mb-8'}>
       <ZoomableImg

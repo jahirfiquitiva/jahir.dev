@@ -8,12 +8,8 @@ export const InstaPhotoContainer = tw(Link)`
   block
   aspect-square
   relative
-  rounded-10
   group/insta
   overflow-hidden
-  border
-  border-transparent
-  tablet-sm:col-span-3
   after:absolute
   after:[content:'']
   after:top-0
@@ -27,17 +23,31 @@ export const InstaPhotoContainer = tw(Link)`
   after:select-none
   hocus:transform
   hocus:-translate-y-1
-  hocus:border-accent-dark/[0.56]
   hocus:shadow-sm
-  hocus:after:opacity-50
+  hocus:after:opacity-60
 `;
 
 export const StyledPhoto = tw(Img)`
   transition
+  duration-300
   h-full
   w-full
   group-hocus/insta:transform
   group-hocus/insta:scale-105
+  group-hocus/insta:opacity-90
+`;
+
+export const InstaVideo = tw.video`
+  block
+  object-cover
+  object-center
+  transition
+  duration-300
+  h-full
+  w-full
+  group-hocus/insta:transform
+  group-hocus/insta:scale-105
+  group-hocus/insta:opacity-90
 `;
 
 export const InstaIcon = tw(Icon)`

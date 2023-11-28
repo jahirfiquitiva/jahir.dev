@@ -1,17 +1,26 @@
+type PostType = 'IMAGE' | 'CAROUSEL_ALBUM' | 'VIDEO';
+
 interface RemoteInstagramPost {
-  id?: string;
-  mediaUrl?: string;
-  permalink?: string;
+  id: string;
+  mediaUrl: string;
+  mediaType: PostType;
+  permalink: string;
   caption?: string;
-  photo?: string;
-  mediaType?: 'IMAGE' | 'CAROUSEL_ALBUM' | 'VIDEO';
+  prunedCaption?: string;
+  accessibilityCaption?: string;
   thumbnailUrl?: string;
+  children?: Array<{
+    mediaUrl: string;
+    mediaType: PostType;
+  }>;
+  dimensions?: { width: number; height: number };
 }
 
 type BeholdColor = `${number},${number},${number}`;
 
 interface ExtraBeholdData {
   colorPalette?: {
+    dominant: BeholdColor;
     muted: BeholdColor;
     mutedLight: BeholdColor;
     mutedDark: BeholdColor;
@@ -19,16 +28,6 @@ interface ExtraBeholdData {
     vibrantLight: BeholdColor;
     vibrantDark: BeholdColor;
   };
-  dimensions?: { width: number; height: number };
 }
 
-interface BeholdPost extends RemoteInstagramPost, ExtraBeholdData {
-  prunedCaption?: string;
-}
-
-export interface InstagramPost extends ExtraBeholdData {
-  id?: string;
-  photoUrl?: string;
-  postUrl?: string;
-  caption?: string;
-}
+export type InstagramPost = RemoteInstagramPost & ExtraBeholdData;
