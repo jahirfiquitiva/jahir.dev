@@ -27,7 +27,8 @@ const getMediaFromPost = (post: InstagramPost): MediaItem => {
 const getPostTitle = (post: InstagramPost): string => {
   let title = '';
   if (post.mediaType === 'VIDEO') title = 'Watch video';
-  else title = `View photo${post.children?.length ? 's' : ''}`;
+  else if (post.mediaType === 'CAROUSEL_ALBUM') title = 'View photos carousel';
+  else title = 'View photo';
   return `${title} "${post.prunedCaption}" on Instagram`;
 };
 

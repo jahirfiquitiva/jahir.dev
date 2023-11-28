@@ -9,7 +9,13 @@ import { fetchInstaFeed } from '@/lib/instagram';
 export const revalidate = 43200;
 
 const LoadingInstagramFeed = () => (
-  <div className={cx('grid grid-cols-3 gap-2 motion-safe:animate-pulse')}>
+  <div
+    className={cx(
+      'grid grid-cols-3 gap-2',
+      'grid-rows-[min-content] auto-rows-min',
+      'motion-safe:animate-pulse',
+    )}
+  >
     {[...Array(6)].map((_, index) => (
       <div
         key={`placeholder-${index}`}
@@ -22,7 +28,12 @@ const LoadingInstagramFeed = () => (
 const AsyncInstagramFeed = async () => {
   const instagramPosts = await fetchInstaFeed().catch(() => []);
   return (
-    <div className={cx('grid grid-cols-3 gap-2')}>
+    <div
+      className={cx(
+        'grid grid-cols-3 gap-2',
+        'grid-rows-[min-content] auto-rows-min',
+      )}
+    >
       {instagramPosts.map((post) => (
         <InstaPhoto key={post.id} post={post} />
       ))}
