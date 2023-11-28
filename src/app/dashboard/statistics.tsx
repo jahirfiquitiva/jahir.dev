@@ -10,7 +10,7 @@ import { ViewsStats } from './views-stats';
 export const Statistics = async () => (
   <div className={cx('flex flex-col gap-16')}>
     <Heading $as={'h2'} className={cx('text-xl')}>
-      Statistics
+      Stats
     </Heading>
     <div
       className={cx(
