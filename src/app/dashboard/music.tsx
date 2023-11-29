@@ -11,11 +11,7 @@ export const MusicData = () => {
       <Heading $as={'h2'} className={cx('text-xl')}>
         Music
       </Heading>
-      <div
-        className={cx(
-          'flex flex-col rounded-8 overflow-hidden border border-divider',
-        )}
-      >
+      <div className={cx('flex flex-col rounded-8 border border-divider')}>
         <NowPlaying />
         <TopSongs />
       </div>

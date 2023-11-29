@@ -80,7 +80,9 @@ export const TopSongs = () => (
       title={"Check my playlist 'tunez' on Spotify"}
       href={'https://tunez.jahir.dev'}
       className={cx(
-        'text-3xs text-secondary-txt px-12 py-8 hocus:decoration-wavy',
+        'px-12 py-8',
+        'text-3xs text-secondary-txt hocus:decoration-wavy',
+        'rounded-b-8',
       )}
     >
       Check my playlist &quot;tunez&quot; on Spotify

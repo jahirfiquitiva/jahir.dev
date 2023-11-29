@@ -15,6 +15,7 @@ export const NowPlayingCard = tw(Link)`
   max-h-[7rem]
   col-span-2
   aspect-video
+  rounded-t-8
   tablet-sm:col-span-6
   hocus:no-underline
   hocus:transform
