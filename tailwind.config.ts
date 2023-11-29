@@ -109,7 +109,7 @@ module.exports = {
         'page-transition': 'page-transition 300ms ease-in-out backwards',
         scroll: 'scroll 15s linear infinite',
         wave: 'wave 2.5s infinite',
-        'now-playing': 'now-playing 25s linear infinite',
+        'now-playing': 'now-playing 15s linear infinite',
       },
     },
   },
