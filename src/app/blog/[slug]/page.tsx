@@ -57,7 +57,7 @@ export default async function BlogPostPage(context: BlogPageContext) {
           source={post.heroSource}
         />
         <Suspense fallback={<Loading />}>
-          <Mdx source={post?.mdxSource} />
+          <Mdx source={post?.content} />
         </Suspense>
         <hr
           className={cx(

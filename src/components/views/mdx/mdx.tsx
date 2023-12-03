@@ -1,13 +1,15 @@
 // Required because some MDX components are client components :c
-'use client';
+// 'use client';
 
 import { cx } from 'classix';
 import type { MDXComponents } from 'mdx/types';
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
+// import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
+import mdx from 'config/blog/mdx';
 
 import { Grid, GridColumn } from './components/components.styles';
 import { ImageComparison } from './components/image-comparison/image-comparison';
@@ -16,7 +18,7 @@ import { ZoomableImg } from './components/zoomable-img/zoomable-img';
 import styles from './mdx.module.scss';
 
 interface MdxProps {
-  source: MDXRemoteSerializeResult | undefined;
+  source: string;
   className?: string;
 }
 
@@ -38,7 +40,11 @@ export const Mdx = (props: MdxProps) => {
     <article
       className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
     >
-      <MDXRemote {...props.source} components={components as MDXComponents} />
+      <MDXRemote
+        source={props.source}
+        components={components as MDXComponents}
+        options={{ mdxOptions: mdx }}
+      />
     </article>
   );
 };

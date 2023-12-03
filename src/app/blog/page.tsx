@@ -14,7 +14,7 @@ import { groupBlogPosts } from './utils';
 const allowInProgress = process.env.NODE_ENV === 'development';
 
 const BlogList = async () => {
-  const allBlogs = (await getBlogPosts({ ignoreMDX: true }))
+  const allBlogs = (await getBlogPosts())
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   return <BlogPosts posts={groupBlogPosts(allBlogs)} />;

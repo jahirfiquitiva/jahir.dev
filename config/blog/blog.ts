@@ -1,11 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
 import type { ReadTimeResults } from 'reading-time';
-
-import mdx from 'config/blog/mdx';
 
 import { getBlurData } from './rehype/image-metadata';
 import { getPostDescription } from './utils/get-post-desc';
@@ -97,23 +94,11 @@ const readMDXFile = (filePath: string) => {
   return fs.readFileSync(filePath, 'utf-8');
 };
 
-interface MDXBlogOptions {
-  checkHidden?: boolean;
-  ignoreMDX?: boolean;
-}
-
-const parseMDX = async (
-  dir: string,
-  file: string,
-  options?: MDXBlogOptions,
-) => {
+const parseMDX = async (dir: string, file: string) => {
   const { frontmatter: defaultFrontmatter, content } = getFrontmatterAndContent(
     readMDXFile(path.join(dir, file)),
   );
   const slug = path.basename(file, path.extname(file));
-  const mdxSource = Boolean(options?.ignoreMDX)
-    ? undefined
-    : await serialize(content, { mdxOptions: mdx });
   const parsedFrontmatter = await parseFrontmatter(defaultFrontmatter, content);
   const frontmatter: ParsedFrontmatter = {
     ...parsedFrontmatter,
@@ -122,15 +107,14 @@ const parseMDX = async (
   return {
     ...frontmatter,
     content,
-    mdxSource,
   };
 };
 
 export type Blog = Awaited<ReturnType<typeof parseMDX>>;
 
-const getMDXData = async (dir: string, options?: MDXBlogOptions) => {
+const getMDXData = async (dir: string) => {
   const mdxFiles = getMDXFiles(dir);
-  const promises = mdxFiles.map((file) => parseMDX(dir, file, options));
+  const promises = mdxFiles.map((file) => parseMDX(dir, file));
   const settledPromises = await Promise.allSettled(promises);
   // settledPromises
   //   .filter((it) => it.status === 'rejected')
@@ -148,8 +132,12 @@ const getMDXData = async (dir: string, options?: MDXBlogOptions) => {
 
 const hiddenBlogs = ['about', 'donate', 'uses'];
 
+interface MDXBlogOptions {
+  checkHidden?: boolean;
+}
+
 export const getBlogPosts = async (options?: MDXBlogOptions) => {
-  const blogs = await getMDXData(path.join(process.cwd(), 'content'), options);
+  const blogs = await getMDXData(path.join(process.cwd(), 'content'));
   if (options?.checkHidden) return blogs;
   return blogs.filter((it) => !hiddenBlogs.includes(it.slug));
 };
