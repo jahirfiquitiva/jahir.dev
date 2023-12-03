@@ -49,7 +49,7 @@ const defaultNextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   headers: () => appHeaders,
-  redirects,
+  redirects: () => redirects,
 };
 
 const millionConfig = {
