@@ -88,5 +88,6 @@
     "tabWidth": 2,
     "trailingComma": "all",
     "semi": true
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
