@@ -14,7 +14,7 @@ import Loading from '../loading';
 import DynamicDonateContent from './dynamic-content';
 
 const DonatePageContent = async () => {
-  const donate = await getBlogPost('donate', true);
+  const donate = await getBlogPost('donate', { checkHidden: true });
   if (!donate) return notFound();
   return <Mdx source={donate.mdxSource} className={'gap-8 tablet-sm:-mt-16'} />;
 };

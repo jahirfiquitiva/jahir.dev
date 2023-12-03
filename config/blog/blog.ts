@@ -97,12 +97,23 @@ const readMDXFile = (filePath: string) => {
   return fs.readFileSync(filePath, 'utf-8');
 };
 
-const parseMDX = async (dir: string, file: string) => {
+interface MDXBlogOptions {
+  checkHidden?: boolean;
+  ignoreMDX?: boolean;
+}
+
+const parseMDX = async (
+  dir: string,
+  file: string,
+  options?: MDXBlogOptions,
+) => {
   const { frontmatter: defaultFrontmatter, content } = getFrontmatterAndContent(
     readMDXFile(path.join(dir, file)),
   );
   const slug = path.basename(file, path.extname(file));
-  const mdxSource = await serialize(content, { mdxOptions: mdx });
+  const mdxSource = Boolean(options?.ignoreMDX)
+    ? undefined
+    : await serialize(content, { mdxOptions: mdx });
   const parsedFrontmatter = await parseFrontmatter(defaultFrontmatter, content);
   const frontmatter: ParsedFrontmatter = {
     ...parsedFrontmatter,
@@ -117,13 +128,19 @@ const parseMDX = async (dir: string, file: string) => {
 
 export type Blog = Awaited<ReturnType<typeof parseMDX>>;
 
-const getMDXData = async (dir: string) => {
+const getMDXData = async (dir: string, options?: MDXBlogOptions) => {
   const mdxFiles = getMDXFiles(dir);
-  const promises = mdxFiles.map((file) => parseMDX(dir, file));
+  const promises = mdxFiles.map((file) => parseMDX(dir, file, options));
+  const settledPromises = await Promise.allSettled(promises);
+  // settledPromises
+  //   .filter((it) => it.status === 'rejected')
+  //   .forEach((rej) => {
+  //     console.error(rej);
+  //   });
   return (
-    (await Promise.allSettled(promises)).filter(
-      (it) => it.status === 'fulfilled',
-    ) as Array<PromiseFulfilledResult<Blog> | undefined>
+    settledPromises.filter((it) => it.status === 'fulfilled') as Array<
+      PromiseFulfilledResult<Blog> | undefined
+    >
   )
     .map((it) => it?.value)
     .filter(Boolean) as Array<Blog>;
@@ -131,17 +148,17 @@ const getMDXData = async (dir: string) => {
 
 const hiddenBlogs = ['about', 'donate', 'uses'];
 
-export const getBlogPosts = async (checkHidden?: boolean) => {
-  const blogs = await getMDXData(path.join(process.cwd(), 'content'));
-  if (checkHidden) return blogs;
+export const getBlogPosts = async (options?: MDXBlogOptions) => {
+  const blogs = await getMDXData(path.join(process.cwd(), 'content'), options);
+  if (options?.checkHidden) return blogs;
   return blogs.filter((it) => !hiddenBlogs.includes(it.slug));
 };
 
 export const getBlogPost = async (
   slug: string | undefined,
-  checkHidden?: boolean,
+  options?: MDXBlogOptions,
 ): Promise<Blog | undefined> => {
-  const allBlogPosts = await getBlogPosts(checkHidden);
+  const allBlogPosts = await getBlogPosts(options);
   const post = allBlogPosts.find((it) => it.slug === slug);
   if (post?.inProgress) return undefined;
   return post;

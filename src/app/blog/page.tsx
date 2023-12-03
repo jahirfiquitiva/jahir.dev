@@ -14,10 +14,10 @@ import { groupBlogPosts } from './utils';
 const allowInProgress = process.env.NODE_ENV === 'development';
 
 const BlogList = async () => {
-  const newBlogs = (await getBlogPosts())
+  const allBlogs = (await getBlogPosts({ ignoreMDX: true }))
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
-  return <BlogPosts posts={groupBlogPosts(newBlogs)} />;
+  return <BlogPosts posts={groupBlogPosts(allBlogs)} />;
 };
 
 export default function BlogPage() {

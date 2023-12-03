@@ -16,7 +16,7 @@ import { ZoomableImg } from './components/zoomable-img/zoomable-img';
 import styles from './mdx.module.scss';
 
 interface MdxProps {
-  source: MDXRemoteSerializeResult;
+  source: MDXRemoteSerializeResult | undefined;
   className?: string;
 }
 
@@ -33,6 +33,7 @@ const components = {
 };
 
 export const Mdx = (props: MdxProps) => {
+  if (!props.source) return null;
   return (
     <article
       className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}

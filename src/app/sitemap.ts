@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 import { getBlogPosts } from 'config/blog/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = (await getBlogPosts())
+  const blogs = (await getBlogPosts({ ignoreMDX: true }))
     .filter((it) => !Boolean(it.link))
     .map((post) => ({
       url: `https://jahir.dev/blog/${post.slug}`,

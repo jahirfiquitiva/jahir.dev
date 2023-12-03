@@ -2,6 +2,7 @@ import Icon from '@mdi/react';
 import { cx } from 'classix';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
 import { ButtonLink } from '@/components/core/link/button-link';
 import { mdiPencilOutline } from '@/components/icons/mdi';
@@ -13,6 +14,8 @@ import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { type Blog, getBlogPost, getBlogPosts } from 'config/blog/blog';
+
+import Loading from '../../loading';
 
 import Hero from './hero';
 
@@ -53,7 +56,9 @@ export default async function BlogPostPage(context: BlogPageContext) {
           meta={post.heroMeta}
           source={post.heroSource}
         />
-        <Mdx source={post?.mdxSource} />
+        <Suspense fallback={<Loading />}>
+          <Mdx source={post?.mdxSource} />
+        </Suspense>
         <hr
           className={cx(
             'my-20 mx-0 h-1 w-full',

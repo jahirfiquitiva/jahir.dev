@@ -124,7 +124,7 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allBlogs = (await getBlogPosts())
+  const allBlogs = (await getBlogPosts({ ignoreMDX: true }))
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(
