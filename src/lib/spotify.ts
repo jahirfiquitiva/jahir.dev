@@ -1,11 +1,10 @@
+import type { Track, ReadableTrack } from '@/types/spotify/entities.d';
 import type {
   PlayHistoryObject,
   SpotifyResponse,
   ErrorResponse,
   NowPlayingResponse,
-  Track,
-  ReadableTrack,
-} from '@/types/spotify';
+} from '@/types/spotify/request.d';
 
 export const mapTrackData = (track?: Track | null): ReadableTrack | null => {
   if (!track) return null;

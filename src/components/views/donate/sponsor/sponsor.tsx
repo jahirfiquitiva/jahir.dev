@@ -4,13 +4,8 @@ import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
 import { Img } from '@/components/core/img';
-import {
-  mdiCrystalBall,
-  unicorn,
-  rocket,
-  diamond,
-  star,
-} from '@/components/icons';
+import { mdiCrystalBall } from '@/components/icons/mdi';
+import { unicorn, rocket, diamond, star } from '@/components/icons/paths';
 import { hexToRgb } from '@/utils/color';
 
 import {

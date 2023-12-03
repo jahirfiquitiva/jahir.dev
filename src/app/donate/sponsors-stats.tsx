@@ -1,5 +1,6 @@
-import { mdiHeartOutline, money } from '@/components/icons';
-import { StatCard } from '@/components/views/dashboard/stat-card';
+import { mdiHeartOutline } from '@/components/icons/mdi';
+import { money } from '@/components/icons/paths';
+import { StatCard } from '@/components/views/dashboard/stat-card/stat-card';
 
 interface SimpleSponsorsStatsProps {
   sponsorsCount?: number;

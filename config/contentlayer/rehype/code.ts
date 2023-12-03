@@ -34,8 +34,7 @@ const getThemeJson = (theme: 'light' | 'dark'): JSON | string => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const prettyCode: Pluggable<Array<any>> = [
+export const prettyCode = [
   rehypePrettyCode,
   {
     theme: {

@@ -6,7 +6,7 @@ import { type PropsWithChildren, Children, useEffect, useState } from 'react';
 import image from '@/assets/images/setup-2023.jpg';
 import { Heading } from '@/components/core/heading';
 import { NoPaddingSection } from '@/components/core/section';
-import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
+import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { ThemeContext, useTheme } from '@/providers/theme-provider';
 

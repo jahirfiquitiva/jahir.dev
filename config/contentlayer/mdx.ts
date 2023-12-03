@@ -14,6 +14,7 @@ const mdx: MDXOptions = {
   rehypePlugins: [
     imageMetadata,
     rehypeSlug,
+    // @ts-expect-error MDX
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
     toc,

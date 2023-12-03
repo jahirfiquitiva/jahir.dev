@@ -8,11 +8,11 @@ import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
-import { SocialLinks } from '@/components/molecules/social-links';
 
-import { Grid, GridColumn, MdxLink } from './components';
-import { ImageComparison } from './components/image-comparison';
-import { ZoomableImg } from './components/zoomable-img';
+import { Grid, GridColumn } from './components/components.styles';
+import { ImageComparison } from './components/image-comparison/image-comparison';
+import { MdxLink } from './components/mdx-link';
+import { ZoomableImg } from './components/zoomable-img/zoomable-img';
 import styles from './mdx.module.scss';
 
 interface MdxProps {
@@ -29,7 +29,6 @@ const components = {
   Link: MdxLink,
   img: ZoomableImg,
   Image: ZoomableImg,
-  SocialLinks,
   Heading,
 };
 

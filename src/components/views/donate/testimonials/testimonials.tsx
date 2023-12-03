@@ -5,9 +5,9 @@ import Balancer from 'react-wrap-balancer';
 import { Heading } from '@/components/core/heading';
 import { Img } from '@/components/core/img';
 import { NoPaddingSection } from '@/components/core/section';
-import { mdiFormatQuoteClose } from '@/components/icons';
+import { mdiFormatQuoteClose } from '@/components/icons/mdi';
 
-import type { SponsorsListProps as TestimonialsProps } from '../sponsors-list';
+import type { SponsorsListProps as TestimonialsProps } from '../sponsors-list/sponsors-list';
 
 import { SponsorName, TestimonialCard } from './testimonials.styles';
 

@@ -3,10 +3,10 @@ import { cx } from 'classix';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-import { ButtonLink } from '@/components/core/link';
-import { mdiPencilOutline } from '@/components/icons';
+import { ButtonLink } from '@/components/core/link/button-link';
+import { mdiPencilOutline } from '@/components/icons/mdi';
 import { Mdx } from '@/components/views/mdx/mdx';
-import { Reactions } from '@/components/views/mdx/ui/reactions';
+import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
 import { RequestContext } from '@/types/request';

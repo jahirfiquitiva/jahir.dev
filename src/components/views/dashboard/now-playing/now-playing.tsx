@@ -4,8 +4,8 @@ import { cx } from 'classix';
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
-import { Ring } from '@/components/core/loaders';
-import type { NowPlayingResponse } from '@/components/molecules/footer/now-playing';
+import { Ring } from '@/components/core/loaders/ring/ring';
+import type { NowPlayingResponse } from '@/components/molecules/footer/now-playing/now-playing';
 import { useRequest } from '@/hooks/use-request';
 
 import {

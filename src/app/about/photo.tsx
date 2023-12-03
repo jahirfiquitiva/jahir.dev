@@ -1,4 +1,4 @@
-import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
+import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoomable-img';
 
 import { getAboutImage } from './images';
 

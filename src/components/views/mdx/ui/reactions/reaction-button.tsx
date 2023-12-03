@@ -3,7 +3,7 @@
 import { cx } from 'classix';
 import type { ComponentProps } from 'react';
 
-import { Ring } from '@/components/core/loaders';
+import { Ring } from '@/components/core/loaders/ring/ring';
 import type { ReactionName } from '@/lib/planetscale';
 
 import { StyledReactionButton, ReactionIcon as Icon } from './reactions.styles';

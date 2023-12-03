@@ -3,7 +3,8 @@
 import { cx } from 'classix';
 import { useMemo } from 'react';
 
-import { mdiLoading, moonOutline, sunOutline } from '@/components/icons';
+import { mdiLoading } from '@/components/icons/mdi';
+import { moonOutline, sunOutline } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 

@@ -4,8 +4,8 @@ import Icon from '@mdi/react';
 import { cx } from 'classix';
 import { Suspense, cache } from 'react';
 
-import { LineWobble } from '@/components/core/loaders';
-import { mdiEyeOutline } from '@/components/icons';
+import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';
+import { mdiEyeOutline } from '@/components/icons/mdi';
 import { db } from '@/lib/planetscale';
 
 import { Stat, StatBase } from './../stat';

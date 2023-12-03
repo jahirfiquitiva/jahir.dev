@@ -14,8 +14,8 @@ import {
   mdiAccountGroupOutline,
   mdiPaletteSwatchOutline,
   mdiTailwind,
-  nextJs,
-} from '@/components/icons';
+} from '@/components/icons/mdi';
+import { nextJs } from '@/components/icons/paths';
 
 interface Skill {
   name: string;

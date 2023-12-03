@@ -1,13 +1,13 @@
 import Icon from '@mdi/react';
 
 import { Heading } from '@/components/core/heading';
-import { ButtonLink } from '@/components/core/link';
+import { ButtonLink } from '@/components/core/link/button-link';
 import {
-  gift,
   mdiCreditCardChipOutline,
   mdiHeartOutline,
   mdiPizza,
-} from '@/components/icons';
+} from '@/components/icons/mdi';
+import { gift } from '@/components/icons/paths';
 
 import { AmazonLink, GitHubSponsorsLink, PayPalLink } from './buttons.styles';
 

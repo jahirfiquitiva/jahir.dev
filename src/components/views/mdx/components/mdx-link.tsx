@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import tw from 'tailwind-styled-components';
 
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 
 const ignoredLinksClasses = ['anchor', 'toc-link'];
 const shouldIgnoreNextLink = (className?: string): boolean => {

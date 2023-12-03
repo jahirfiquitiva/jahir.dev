@@ -2,9 +2,10 @@ import Icon from '@mdi/react';
 import { cx } from 'classix';
 
 import { Heading } from '@/components/core/heading';
-import { ButtonLink, Link } from '@/components/core/link';
-import { mdiAccountCircleOutline } from '@/components/icons';
-import { SocialLinks } from '@/components/molecules/social-links';
+import { ButtonLink } from '@/components/core/link/button-link';
+import { Link } from '@/components/core/link/link';
+import { mdiAccountCircleOutline } from '@/components/icons/mdi';
+import { SocialLinks } from '@/components/molecules/social-links/social-links';
 
 import {
   IntroSection,

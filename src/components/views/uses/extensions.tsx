@@ -1,10 +1,10 @@
 import type { Route } from 'next';
 
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { NoPaddingSection } from '@/components/core/section';
 import extensions from '@/data/extensions.json';
 
-import { Grid, GridColumn } from '../mdx/components';
+import { Grid, GridColumn } from '../mdx/components/components.styles';
 
 const extensionsHalfIndex = Math.round(extensions.length / 2);
 const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);

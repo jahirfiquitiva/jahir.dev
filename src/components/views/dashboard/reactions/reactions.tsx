@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 
 import {
-  awardOutline,
   mdiBookmarkOutline,
   mdiHeartOutline,
   mdiThumbUpOutline,
-} from '@/components/icons';
+} from '@/components/icons/mdi';
+import { awardOutline } from '@/components/icons/paths';
 
-import { StatCard, StatCardProps } from '../stat-card';
+import { StatCard, StatCardProps } from '../stat-card/stat-card';
 
 const icons = [
   mdiThumbUpOutline,

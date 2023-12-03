@@ -4,10 +4,10 @@ import { Analytics } from '@vercel/analytics/react';
 import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
-import { BackToTop } from '@/components/molecules/back-to-top';
-import { Footer } from '@/components/molecules/footer';
+import { BackToTop } from '@/components/molecules/back-to-top/back-to-top';
+import { Footer } from '@/components/molecules/footer/footer';
 import { Main } from '@/components/molecules/main';
-import { Toolbar } from '@/components/molecules/toolbar';
+import { Toolbar } from '@/components/molecules/toolbar/toolbar';
 import { Providers } from '@/providers';
 import { getStaticMetadata } from '@/utils/metadata';
 

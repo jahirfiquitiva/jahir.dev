@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 
 import { Img } from '@/components/core/img';
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 
 export const PostCard = tw(Link)`
   flex

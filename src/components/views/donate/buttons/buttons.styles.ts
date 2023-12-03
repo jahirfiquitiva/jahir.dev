@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 
-import { ButtonLink } from '@/components/core/link';
+import { ButtonLink } from '@/components/core/link/button-link';
 
 export const GitHubSponsorsLink = tw(ButtonLink)`
   bg-[#c94091]

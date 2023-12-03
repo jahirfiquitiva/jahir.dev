@@ -1,8 +1,8 @@
 import type { Blog } from 'contentlayer/generated';
 
-import { ViewsCounter } from '../mdx/ui/views';
+import { ViewsCounter } from '../mdx/ui/views/counter';
 
-import { BlogPostCard } from './card';
+import { BlogPostCard } from './card/card';
 
 interface BlogPostsProps {
   posts: Array<{

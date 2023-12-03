@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import { getNowPlaying, getRecentlyPlayed, mapTrackData } from '@/lib/spotify';
-import type { Track } from '@/types/spotify';
+import type { Track } from '@/types/spotify/entities.d';
 
 export const runtime = 'edge';
 export const fetchCache = 'force-no-store';

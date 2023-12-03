@@ -2,7 +2,7 @@ import { cx } from 'classix';
 import type { Route } from 'next';
 
 import { Img } from '@/components/core/img';
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { getTopTracks } from '@/lib/spotify';
 
 const TopSongsTable = async () => {

@@ -5,7 +5,7 @@ import { cx } from 'classix';
 import type { Route } from 'next';
 import { type CSSProperties, useMemo } from 'react';
 
-import { star } from '@/components/icons';
+import { star } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme-provider';

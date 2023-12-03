@@ -1,7 +1,7 @@
 import { cache } from 'react';
 
-import { mdiEyeOutline } from '@/components/icons';
-import { StatCard } from '@/components/views/dashboard/stat-card';
+import { mdiEyeOutline } from '@/components/icons/mdi';
+import { StatCard } from '@/components/views/dashboard/stat-card/stat-card';
 import { db } from '@/lib/planetscale';
 
 export const revalidate = 3600;

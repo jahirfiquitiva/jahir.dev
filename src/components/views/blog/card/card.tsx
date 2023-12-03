@@ -4,7 +4,8 @@ import Icon from '@mdi/react';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
-import { calendarOutline, mdiClockOutline } from '@/components/icons';
+import { mdiClockOutline } from '@/components/icons/mdi';
+import { calendarOutline } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';

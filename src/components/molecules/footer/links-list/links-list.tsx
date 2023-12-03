@@ -3,7 +3,7 @@ import type { Route } from 'next';
 
 import type { GradientClass, RainbowColor } from '@/types/gradient';
 
-import { FooterNowPlaying } from '../now-playing';
+import { FooterNowPlaying } from '../now-playing/now-playing';
 
 import {
   FooterLink,

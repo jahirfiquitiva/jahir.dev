@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 
-import { Chip } from '@/components/core/chip';
-import { Link } from '@/components/core/link';
+import { Chip } from '@/components/core/chip/chip.styles';
+import { Link } from '@/components/core/link/link';
 
 export const Container = tw(Link)`
   flex

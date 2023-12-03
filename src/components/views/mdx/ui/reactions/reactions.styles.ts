@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import tw from 'tailwind-styled-components';
 
-import { Button } from '@/components/core/button';
+import { Button } from '@/components/core/button/button';
 
 export const ReactionsGroup = tw.div`
   flex flex-wrap gap-6 mobile-lg:gap-10

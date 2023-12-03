@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { RequestContext } from '@/types/request';
 import { getBlog } from '@/utils/blogs';

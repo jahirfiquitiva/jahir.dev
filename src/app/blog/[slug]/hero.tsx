@@ -1,7 +1,7 @@
 import type { Route } from 'next';
 
-import { Link } from '@/components/core/link';
-import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img';
+import { Link } from '@/components/core/link/link';
+import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoomable-img';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
 

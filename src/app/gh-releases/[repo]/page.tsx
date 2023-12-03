@@ -2,7 +2,7 @@ import type { Metadata, Route } from 'next';
 import { notFound } from 'next/navigation';
 
 import { Heading } from '@/components/core/heading';
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';

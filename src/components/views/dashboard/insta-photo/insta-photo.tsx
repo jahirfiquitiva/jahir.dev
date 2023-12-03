@@ -1,6 +1,6 @@
 import type { Route } from 'next';
 
-import { mdiCarousel, mdiInstagram, mdiVideo } from '@/components/icons';
+import { mdiCarousel, mdiInstagram, mdiVideo } from '@/components/icons/mdi';
 import type { InstagramPost } from '@/lib/instagram/types.d';
 import { getRandomItem } from '@/utils/random';
 

@@ -1,13 +1,13 @@
 import Icon from '@mdi/react';
 import type { CSSProperties } from 'react';
 
+import { mdiInstagram } from '@/components/icons/mdi';
 import {
   gitHubOutline,
   linkedInOutline,
   twitterOutline,
-  mdiInstagram,
   bluesky,
-} from '@/components/icons';
+} from '@/components/icons/paths';
 
 import { BackToTopLink } from './back-to-top';
 import {

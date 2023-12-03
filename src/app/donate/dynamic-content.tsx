@@ -1,10 +1,10 @@
 import { cx } from 'classix';
 
 import { Heading } from '@/components/core/heading';
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { NoPaddingSection } from '@/components/core/section';
-import { SponsorsList } from '@/components/views/donate/sponsors-list';
-import { Testimonials } from '@/components/views/donate/testimonials';
+import { SponsorsList } from '@/components/views/donate/sponsors-list/sponsors-list';
+import { Testimonials } from '@/components/views/donate/testimonials/testimonials';
 import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 
 import { SimpleSponsorsStats } from './sponsors-stats';
