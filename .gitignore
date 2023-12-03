@@ -59,4 +59,3 @@ src/data/*.json
 
 !.env
 static/media/*.png
-.yarnrc
