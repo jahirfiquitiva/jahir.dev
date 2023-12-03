@@ -3,15 +3,15 @@ import type { PropsWithChildren } from 'react';
 import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { RequestContext } from '@/types/request';
-import { getBlog } from '@/utils/blogs';
+import { getBlogPost } from 'config/blog/blog';
 
 import Header from './header';
 import Stats from './stats';
 
-export default function BlogPostLayout(
+export default async function BlogPostLayout(
   props: PropsWithChildren & RequestContext<{ slug?: string }>,
 ) {
-  const post = getBlog(props.params.slug, true);
+  const post = await getBlogPost(props.params.slug);
   return (
     <Section id={'blog-post'}>
       <Link

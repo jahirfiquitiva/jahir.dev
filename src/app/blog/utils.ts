@@ -1,5 +1,5 @@
 import { groupBy } from '@/utils/group-by';
-import type { Blog } from 'contentlayer/generated';
+import type { Blog } from 'config/blog/blog';
 
 interface BlogGroup {
   year: number;

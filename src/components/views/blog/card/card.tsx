@@ -11,7 +11,7 @@ import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
-import type { Blog } from 'contentlayer/generated';
+import type { Blog } from 'config/blog/blog';
 
 import { Stat } from '../../mdx/ui/stat';
 
@@ -63,7 +63,7 @@ export const BlogPostCard = (props: PostCardProps) => {
         alt={`Hero image for blog post "${post.title}"`}
         width={post?.heroMeta?.size?.width || 144}
         height={post?.heroMeta?.size?.height || 72}
-        placeholder={'blur'}
+        placeholder={Boolean(post?.heroMeta?.blur64) ? 'blur' : undefined}
         blurDataURL={post?.heroMeta?.blur64}
       />
       <PostCardContent>

@@ -3,7 +3,7 @@
 
 import { cx } from 'classix';
 import type { MDXComponents } from 'mdx/types';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
 
@@ -16,7 +16,7 @@ import { ZoomableImg } from './components/zoomable-img/zoomable-img';
 import styles from './mdx.module.scss';
 
 interface MdxProps {
-  code: string;
+  source: MDXRemoteSerializeResult;
   className?: string;
 }
 
@@ -33,12 +33,11 @@ const components = {
 };
 
 export const Mdx = (props: MdxProps) => {
-  const MdxComponent = useMDXComponent(props.code);
   return (
     <article
       className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
     >
-      <MdxComponent components={{ ...components } as MDXComponents} />
+      <MDXRemote {...props.source} components={components as MDXComponents} />
     </article>
   );
 };

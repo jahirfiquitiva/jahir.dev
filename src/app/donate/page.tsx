@@ -5,18 +5,18 @@ import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { DonateButtons } from '@/components/views/donate/buttons/buttons';
 import { Mdx } from '@/components/views/mdx/mdx';
-import { getBlog } from '@/utils/blogs';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
+import { getBlogPost } from 'config/blog/blog';
 
 import Loading from '../loading';
 
 import DynamicDonateContent from './dynamic-content';
 
-const DonatePageContent = () => {
-  const donate = getBlog('donate');
+const DonatePageContent = async () => {
+  const donate = await getBlogPost('donate', true);
   if (!donate) return notFound();
-  return <Mdx code={donate?.body?.code} className={'gap-8 tablet-sm:-mt-16'} />;
+  return <Mdx source={donate.mdxSource} className={'gap-8 tablet-sm:-mt-16'} />;
 };
 
 export default async function DonatePage() {

@@ -3,12 +3,7 @@ import Icon from '@mdi/react';
 import { Link } from '@/components/core/link/link';
 import { NoPaddingSection } from '@/components/core/section';
 import { mdiTailwind, mdiTriangle } from '@/components/icons/mdi';
-import {
-  contentlayer,
-  mdx,
-  nextJs,
-  planetscale,
-} from '@/components/icons/paths';
+import { mdx, nextJs, planetscale } from '@/components/icons/paths';
 
 import { DotsContainer, IconContainer, IconLink } from './website.styles';
 
@@ -28,11 +23,6 @@ const Colophon = () => {
       <IconContainer>
         <IconLink title={'MDX'} href={'https://mdxjs.com/'}>
           <Icon path={mdx} size={3} />
-        </IconLink>
-      </IconContainer>
-      <IconContainer>
-        <IconLink title={'Contentlayer'} href={'http://contentlayer.dev/'}>
-          <Icon path={contentlayer} size={3} />
         </IconLink>
       </IconContainer>
       <IconContainer>
@@ -65,11 +55,7 @@ export const Website = () => {
         <Link title={'MDX'} href={'https://mdxjs.com/'}>
           MDX
         </Link>
-        ,{' '}
-        <Link title={'Contentlayer'} href={'http://contentlayer.dev/'}>
-          Contentlayer
-        </Link>{' '}
-        and{' '}
+        , and{' '}
         <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
           PlanetScale
         </Link>

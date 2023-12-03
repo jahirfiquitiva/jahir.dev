@@ -1,4 +1,4 @@
-import type { Blog } from 'contentlayer/generated';
+import type { Blog } from 'config/blog/blog';
 
 import { ViewsCounter } from '../mdx/ui/views/counter';
 

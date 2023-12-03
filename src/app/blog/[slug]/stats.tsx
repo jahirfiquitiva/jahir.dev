@@ -5,7 +5,7 @@ import { calendarOutline } from '@/components/icons/paths';
 import { Stat } from '@/components/views/mdx/ui/stat';
 import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
 import { formatDate } from '@/utils/date';
-import type { Blog } from 'contentlayer/generated';
+import type { Blog } from 'config/blog/blog';
 
 interface StatsProps {
   slug: Blog['slug'];

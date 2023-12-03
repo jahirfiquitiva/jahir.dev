@@ -1,12 +1,8 @@
 import xml from 'xml';
 
-import { allReadableBlogs } from '@/utils/blogs';
-import { type Blog } from 'contentlayer/generated';
+import { getBlogPosts, type Blog } from 'config/blog/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const allBlogs = allReadableBlogs
-  .filter((it) => allowInProgress || !it.inProgress)
-  .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
 const formatImageUrl = (url?: string) => {
   if (!url) return '';
@@ -128,6 +124,9 @@ const defaultChannel = {
 };
 
 export async function GET() {
+  const allBlogs = (await getBlogPosts())
+    .filter((it) => allowInProgress || !it.inProgress)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(
     allBlogs.filter((it) => !it.inProgress).map(getAllPostRssData),
   );

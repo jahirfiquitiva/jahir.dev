@@ -16,10 +16,7 @@ const commentsCustomColor = (theme: 'light' | 'dark') => ({
 const getThemeJson = (theme: 'light' | 'dark'): JSON | string => {
   const defaultTheme = theme === 'light' ? 'min-light' : 'dracula';
   try {
-    const json = readFileSync(
-      `./config/contentlayer/themes/${theme}.json`,
-      'utf-8',
-    );
+    const json = readFileSync(`./config/blog/themes/${theme}.json`, 'utf-8');
     const parsed = JSON.parse(json);
     return {
       ...parsed,
