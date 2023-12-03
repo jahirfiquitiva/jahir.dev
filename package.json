@@ -71,7 +71,7 @@
     "remove-markdown": "^0.5.0",
     "rimraf": "^5.0.5",
     "sass": "^1.69.5",
-    "sharp": "^0.33.0",
+    "sharp": "^0.32.6",
     "shiki": "^0.14.5",
     "tailwind-merge": "^2.1.0",
     "tailwind-styled-components": "^2.2.0",
