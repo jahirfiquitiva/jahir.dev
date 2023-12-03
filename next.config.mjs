@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const million = require('million/compiler');
+import million from 'million/compiler';
 
-const appHeaders = require('./config/next/headers');
-const redirects = require('./config/next/redirects');
+import appHeaders from './config/next/headers.mjs';
+import redirects from './config/next/redirects.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * @type {import('next').NextConfig}
@@ -44,16 +48,12 @@ const defaultNextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  async headers() {
-    return appHeaders;
-  },
-  async redirects() {
-    return redirects;
-  },
+  headers: () => appHeaders,
+  redirects,
 };
 
 const millionConfig = {
   auto: { rsc: true },
 };
 
-module.exports = million.next(defaultNextConfig, millionConfig);
+export default million.next(defaultNextConfig, millionConfig);

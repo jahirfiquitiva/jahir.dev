@@ -44,7 +44,7 @@ const securityHeaders = [
   },
 ];
 
-module.exports = [
+const headers = [
   {
     source: '/(.*)',
     headers: securityHeaders,
@@ -59,3 +59,5 @@ module.exports = [
     ],
   },
 ];
+
+export default headers;

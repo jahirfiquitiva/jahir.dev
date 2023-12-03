@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import type { Route } from 'next';
 import { Suspense } from 'react';
 
 import Loading from '@/app/loading';
@@ -55,7 +56,7 @@ export const Projects = async (props: ProjectsProps) => {
         <ProjectsButtons>
           <ButtonLink
             title={"Jahir's resume pdf file"}
-            href={'/resume'}
+            href={'/resume' as Route}
             openInNewTab
             outlined
           >
