@@ -1,9 +1,5 @@
-// Required because some MDX components are client components :c
-// 'use client';
-
 import { cx } from 'classix';
 import type { MDXComponents } from 'mdx/types';
-// import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
@@ -34,17 +30,14 @@ const components = {
   Heading,
 };
 
-export const Mdx = (props: MdxProps) => {
-  if (!props.source) return null;
-  return (
-    <article
-      className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
-    >
-      <MDXRemote
-        source={props.source}
-        components={components as MDXComponents}
-        options={{ mdxOptions: mdx }}
-      />
-    </article>
-  );
-};
+export const Mdx = (props: MdxProps) => (
+  <article
+    className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
+  >
+    <MDXRemote
+      source={props.source}
+      components={components as MDXComponents}
+      options={{ mdxOptions: mdx }}
+    />
+  </article>
+);

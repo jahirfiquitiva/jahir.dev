@@ -80,9 +80,11 @@ export const Reactions = () => {
 
     // Submit reactions in production website only
     const hostname = window?.location?.hostname || 'localhost';
-    if (hostname !== 'jahir.dev') return;
+    const shouldRecordReaction = hostname === 'jahir.dev';
 
-    const reacted = await incrementReaction?.(key);
+    const reacted = shouldRecordReaction
+      ? await incrementReaction?.(key)
+      : true;
     // If reaction was submitted successfully
     if (event && reacted) {
       const x = event.clientX / windowWidth;
