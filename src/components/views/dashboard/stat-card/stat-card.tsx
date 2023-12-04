@@ -16,18 +16,19 @@ import {
 
 export interface StatCardProps {
   title: string;
-  href: string;
   value: string | number;
   text: string;
+  href?: string;
   iconPath?: string;
   color?: string;
   className?: string;
+  style?: CSSProperties;
 }
 
 export const StatCard = (props: StatCardProps) => {
   const hasMounted = useHasMounted();
   const { isDark } = useTheme();
-  const { title, href, value, text, iconPath, color } = props;
+  const { title, href = '#', value, text, iconPath, color, style } = props;
 
   const statColor = useMemo<string | null>(() => {
     if (!hasMounted) return null;
@@ -41,6 +42,7 @@ export const StatCard = (props: StatCardProps) => {
       className={props.className}
       style={
         {
+          ...style,
           '--stat-color': statColor || 'var(--accent-dark)',
         } as CSSProperties
       }

@@ -21,6 +21,8 @@ export default function BlogPostPage(context: BlogPostPageContext) {
 export const generateStaticParams = () =>
   allReadableBlogs.map((post) => ({ slug: post.slug }));
 
+export const dynamicParams = false;
+
 export function generateMetadata(
   context: BlogPostPageContext,
 ): Metadata | undefined {

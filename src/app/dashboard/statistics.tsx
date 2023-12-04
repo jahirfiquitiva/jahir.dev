@@ -1,11 +1,24 @@
 import { cx } from 'classix';
+import { Suspense } from 'react';
 
 import { Heading } from '@/components/core/heading';
+import { StatCard } from '@/components/views/dashboard/stat-card/stat-card';
 
 import { GitHubStats } from './github-stats';
 import { ReactionsStats } from './reactions-stats';
 import { SponsorsStats } from './sponsors-stats';
 import { ViewsStats } from './views-stats';
+
+const LoadingStatCard = (props: { title?: string }) => {
+  return (
+    <StatCard
+      title={props.title || ''}
+      text={'loading…'}
+      value={'?'}
+      className={'motion-safe:animate-pulse'}
+    />
+  );
+};
 
 export const Statistics = () => (
   <article id={'statistics'} className={cx('flex flex-col gap-16')}>
@@ -22,8 +35,17 @@ export const Statistics = () => (
     >
       <ViewsStats />
       <ReactionsStats />
-      <GitHubStats />
-      <SponsorsStats />
+      <Suspense
+        fallback={
+          <>
+            <LoadingStatCard title={'GitHub'} />
+            <LoadingStatCard title={'Sponsors'} />
+          </>
+        }
+      >
+        <GitHubStats />
+        <SponsorsStats />
+      </Suspense>
     </div>
   </article>
 );
