@@ -20,7 +20,6 @@ const mdx: MDXOptions = {
     toc,
     rehypeAccessibleEmojis,
   ],
-  format: 'mdx',
 };
 
 export default mdx;
