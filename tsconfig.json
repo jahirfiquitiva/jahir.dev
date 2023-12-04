@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,18 +18,10 @@
     "removeComments": true,
     "baseUrl": ".",
     "paths": {
-      "~/stitches": [
-        "stitches.config.ts"
-      ],
-      "@/*": [
-        "./src/*"
-      ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ],
-      "react": [
-        "./node_modules/@types/react"
-      ]
+      "~/stitches": ["stitches.config.ts"],
+      "@/*": ["./src/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "react": ["./node_modules/@types/react"]
     },
     "incremental": true,
     "downlevelIteration": true,
@@ -44,11 +32,7 @@
       }
     ]
   },
-  "exclude": [
-    ".idea",
-    "node_modules",
-    "old-src"
-  ],
+  "exclude": [".idea", "node_modules", "old-src"],
   "include": [
     "next-env.d.ts",
     "global.d.ts",

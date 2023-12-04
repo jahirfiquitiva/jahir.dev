@@ -1,38 +1,24 @@
-import type { Blog } from 'contentlayer/generated';
-import { Suspense } from 'react';
-
 import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
 import { allReadableBlogs } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-// import Loading from '../loading';
-
 import Header from './header';
 import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const loadingBlogPostsGroups = [
-  { year: new Date().getFullYear(), posts: [{}, {}] as Array<Blog> },
-];
-
-const BlogList = async () => {
-  const allBlogs = allReadableBlogs
-    .filter((it) => allowInProgress || !it.inProgress)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
-  return (
-    <Suspense fallback={<BlogPosts groupedPosts={loadingBlogPostsGroups} />}>
-      <BlogPosts groupedPosts={groupBlogPosts(allBlogs)} />
-    </Suspense>
-  );
-};
 
 export default function BlogPage() {
+  const groupedBlogPosts = groupBlogPosts(
+    allReadableBlogs
+      .filter((it) => allowInProgress || !it.inProgress)
+      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
+  );
   return (
     <Section id={'blog'}>
       <Header />
-      <BlogList />
+      <BlogPosts groupedPosts={groupedBlogPosts} />
     </Section>
   );
 }

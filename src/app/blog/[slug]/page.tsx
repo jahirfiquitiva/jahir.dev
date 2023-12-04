@@ -11,9 +11,9 @@ import Loading from '../../loading';
 
 import type { BlogPostPageContext } from './types';
 
-export default async function BlogPostPage(context: BlogPostPageContext) {
+export default function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
-  const post = await getBlog(slug);
+  const post = getBlog(slug);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);

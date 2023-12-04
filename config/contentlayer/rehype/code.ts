@@ -1,7 +1,6 @@
 import { readFileSync } from 'fs';
 
 import rehypePrettyCode from 'rehype-pretty-code';
-import type { Pluggable } from 'unified';
 
 import type { RehypeElement } from './types';
 

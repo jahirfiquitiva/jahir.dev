@@ -43,5 +43,4 @@ const customizeToc = (toc: RehypeElement): RehypeElement | null => {
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const toc: Pluggable = [rehypeToc, { customizeTOC: customizeToc }];
