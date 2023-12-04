@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
 
-import { getBlogPosts } from 'config/blog/blog';
+import { allReadableBlogs } from '@/utils/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = (await getBlogPosts())
+  const blogs = allReadableBlogs
     .filter((it) => !Boolean(it.link))
     .map((post) => ({
       url: `https://jahir.dev/blog/${post.slug}`,

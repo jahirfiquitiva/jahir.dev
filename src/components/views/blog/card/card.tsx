@@ -1,6 +1,7 @@
 'use client';
 
 import Icon from '@mdi/react';
+import type { Blog } from 'contentlayer/generated';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
@@ -11,7 +12,6 @@ import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
-import type { Blog } from 'config/blog/blog';
 
 import { Stat } from '../../mdx/ui/stat';
 

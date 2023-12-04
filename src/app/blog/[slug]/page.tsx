@@ -1,5 +1,6 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
+import { type Blog } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
@@ -10,9 +11,9 @@ import { Mdx } from '@/components/views/mdx/mdx';
 import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
+import { allReadableBlogs, getBlog } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { type Blog, getBlogPost, getBlogPosts } from 'config/blog/blog';
 
 import Loading from '../../loading';
 
@@ -36,12 +37,12 @@ const blogPostStructuredData = (post: Blog): string =>
   });
 
 const BlogPostContent = async (props: { slug: string }) => {
-  const post = await getBlogPost(props.slug, { withContent: true });
+  const post = await getBlog(props.slug);
   if (!post) return notFound();
   if (post.link) return redirect(post.link);
   return (
     <Suspense fallback={<Loading />}>
-      <Mdx source={post.content || ''} />
+      <Mdx code={post.body.code} />
     </Suspense>
   );
 };
@@ -106,8 +107,8 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
   );
 }
 
-export const generateStaticParams = async () =>
-  (await getBlogPosts()).map((post) => ({ slug: post.slug, post }));
+export const generateStaticParams = () =>
+  allReadableBlogs.map((post) => ({ slug: post.slug, post }));
 
 export async function generateMetadata(
   context: BlogPostPageContext,

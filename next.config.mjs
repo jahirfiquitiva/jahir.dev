@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import million from 'million/compiler';
+import { withContentlayer } from 'next-contentlayer';
 
 import appHeaders from './config/next/headers.mjs';
 import redirects from './config/next/redirects.mjs';
@@ -56,4 +57,4 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-export default million.next(defaultNextConfig, millionConfig);
+export default million.next(withContentlayer(defaultNextConfig), millionConfig);

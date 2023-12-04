@@ -1,11 +1,12 @@
+'use client';
+
 import { cx } from 'classix';
 import type { MDXComponents } from 'mdx/types';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
-import mdx from 'config/blog/mdx';
 
 import { Grid, GridColumn } from './components/components.styles';
 import { ImageComparison } from './components/image-comparison/image-comparison';
@@ -14,7 +15,7 @@ import { ZoomableImg } from './components/zoomable-img/zoomable-img';
 import styles from './mdx.module.scss';
 
 interface MdxProps {
-  source: string;
+  code: string;
   className?: string;
 }
 
@@ -30,14 +31,13 @@ const components = {
   Heading,
 };
 
-export const Mdx = (props: MdxProps) => (
-  <article
-    className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
-  >
-    <MDXRemote
-      source={props.source}
-      components={components as MDXComponents}
-      options={{ mdxOptions: mdx }}
-    />
-  </article>
-);
+export const Mdx = (props: MdxProps) => {
+  const MdxComponent = useMDXComponent(props.code);
+  return (
+    <article
+      className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
+    >
+      <MdxComponent components={components as MDXComponents} />
+    </article>
+  );
+};

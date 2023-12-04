@@ -1,10 +1,11 @@
+import type { Blog } from 'contentlayer/generated';
 import { Suspense } from 'react';
 
 import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
+import { allReadableBlogs } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { type Blog, getBlogPosts } from 'config/blog/blog';
 
 // import Loading from '../loading';
 
@@ -17,12 +18,12 @@ const loadingBlogPostsGroups = [
 ];
 
 const BlogList = async () => {
-  const allBlogs = (await getBlogPosts())
+  const allBlogs = allReadableBlogs
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   return (
-    <Suspense fallback={<BlogPosts posts={loadingBlogPostsGroups} />}>
-      <BlogPosts posts={groupBlogPosts(allBlogs)} />
+    <Suspense fallback={<BlogPosts groupedPosts={loadingBlogPostsGroups} />}>
+      <BlogPosts groupedPosts={groupBlogPosts(allBlogs)} />
     </Suspense>
   );
 };

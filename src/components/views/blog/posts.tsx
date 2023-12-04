@@ -1,13 +1,12 @@
 import { cx } from 'classix';
-
-import type { Blog } from 'config/blog/blog';
+import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../mdx/ui/views/counter';
 
 import { BlogPostCard } from './card/card';
 
 interface BlogPostsProps {
-  posts: Array<{
+  groupedPosts: Array<{
     year: number;
     posts: Array<Blog>;
   }>;
@@ -15,7 +14,7 @@ interface BlogPostsProps {
 }
 
 export const BlogPosts = (props: BlogPostsProps) => {
-  const { posts: groupedPosts, loading } = props;
+  const { groupedPosts, loading } = props;
   return (
     <>
       {groupedPosts.map((group) => {
