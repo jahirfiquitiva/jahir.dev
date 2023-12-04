@@ -1,3 +1,5 @@
+import { cx } from 'classix';
+
 import type { Blog } from 'config/blog/blog';
 
 import { ViewsCounter } from '../mdx/ui/views/counter';
@@ -9,10 +11,11 @@ interface BlogPostsProps {
     year: number;
     posts: Array<Blog>;
   }>;
+  loading?: boolean;
 }
 
 export const BlogPosts = (props: BlogPostsProps) => {
-  const { posts: groupedPosts } = props;
+  const { posts: groupedPosts, loading } = props;
   return (
     <>
       {groupedPosts.map((group) => {
@@ -38,15 +41,16 @@ export const BlogPosts = (props: BlogPostsProps) => {
                       post.slug ||
                       // eslint-disable-next-line newline-per-chained-call
                       `${post.title
-                        .toLowerCase()
+                        ?.toLowerCase()
                         .split(' ')
                         .join('-')}-${index}`
                     }
                   >
                     <BlogPostCard
                       post={post}
+                      className={cx(loading ? 'motion-safe:animate-pulse' : '')}
                       viewsCounter={
-                        !post.link ? (
+                        !post.link && !loading ? (
                           <ViewsCounter
                             slug={`blog--${post.slug}`}
                             inProgress={post.inProgress}

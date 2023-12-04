@@ -27,13 +27,15 @@ import {
 interface PostCardProps {
   post: Blog;
   viewsCounter?: PropsWithChildren['children'];
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const BlogPostCard = (props: PostCardProps) => {
   const hasMounted = useHasMounted();
   const { isDark } = useTheme();
 
-  const { post, viewsCounter } = props;
+  const { post, viewsCounter, className, style } = props;
   const { link, slug, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
   const domain = getUrlDomain(rightLink);
@@ -50,8 +52,10 @@ export const BlogPostCard = (props: PostCardProps) => {
     <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink as Route}
+      className={className}
       style={
         {
+          ...style,
           '--post-color':
             hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)',
           '--post-text-color': textColor || 'var(--color-accent-dark)',

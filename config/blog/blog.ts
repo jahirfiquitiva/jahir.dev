@@ -94,7 +94,7 @@ const readMDXFile = (filePath: string) => {
   return fs.readFileSync(filePath, 'utf-8');
 };
 
-const parseMDX = async (dir: string, file: string) => {
+const parseMDX = async (dir: string, file: string, withContent?: boolean) => {
   const { frontmatter: defaultFrontmatter, content } = getFrontmatterAndContent(
     readMDXFile(path.join(dir, file)),
   );
@@ -106,15 +106,15 @@ const parseMDX = async (dir: string, file: string) => {
   };
   return {
     ...frontmatter,
-    content,
+    content: withContent ? content : undefined,
   };
 };
 
 export type Blog = Awaited<ReturnType<typeof parseMDX>>;
 
-const getMDXData = async (dir: string) => {
+const getMDXData = async (dir: string, withContent?: boolean) => {
   const mdxFiles = getMDXFiles(dir);
-  const promises = mdxFiles.map((file) => parseMDX(dir, file));
+  const promises = mdxFiles.map((file) => parseMDX(dir, file, withContent));
   const settledPromises = await Promise.allSettled(promises);
   // settledPromises
   //   .filter((it) => it.status === 'rejected')
@@ -134,10 +134,14 @@ const hiddenBlogs = ['about', 'donate', 'uses'];
 
 interface MDXBlogOptions {
   checkHidden?: boolean;
+  withContent?: boolean;
 }
 
 export const getBlogPosts = async (options?: MDXBlogOptions) => {
-  const blogs = await getMDXData(path.join(process.cwd(), 'content'));
+  const blogs = await getMDXData(
+    path.join(process.cwd(), 'content'),
+    options?.withContent,
+  );
   if (options?.checkHidden) return blogs;
   return blogs.filter((it) => !hiddenBlogs.includes(it.slug));
 };

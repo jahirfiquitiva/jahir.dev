@@ -10,7 +10,6 @@ import { Mdx } from '@/components/views/mdx/mdx';
 import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
-import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { type Blog, getBlogPost, getBlogPosts } from 'config/blog/blog';
@@ -18,8 +17,7 @@ import { type Blog, getBlogPost, getBlogPosts } from 'config/blog/blog';
 import Loading from '../../loading';
 
 import Hero from './hero';
-
-type BlogPageContext = RequestContext<{ slug?: string }>;
+import type { BlogPostPageContext } from './types';
 
 const blogPostStructuredData = (post: Blog): string =>
   JSON.stringify({
@@ -37,10 +35,21 @@ const blogPostStructuredData = (post: Blog): string =>
     },
   });
 
-export default async function BlogPostPage(context: BlogPageContext) {
-  const post = await getBlogPost(context.params.slug);
-
+const BlogPostContent = async (props: { slug: string }) => {
+  const post = await getBlogPost(props.slug, { withContent: true });
   if (!post) return notFound();
+  if (post.link) return redirect(post.link);
+  return (
+    <Suspense fallback={<Loading />}>
+      <Mdx source={post.content || ''} />
+    </Suspense>
+  );
+};
+
+export default async function BlogPostPage(context: BlogPostPageContext) {
+  const { slug, post } = context.params;
+
+  if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
 
   return (
@@ -56,9 +65,7 @@ export default async function BlogPostPage(context: BlogPageContext) {
           meta={post.heroMeta}
           source={post.heroSource}
         />
-        <Suspense fallback={<Loading />}>
-          <Mdx source={post.content} />
-        </Suspense>
+        <BlogPostContent slug={slug} />
         <hr
           className={cx(
             'my-20 mx-0 h-1 w-full',
@@ -100,15 +107,15 @@ export default async function BlogPostPage(context: BlogPageContext) {
 }
 
 export const generateStaticParams = async () =>
-  (await getBlogPosts()).map((post) => ({ slug: post.slug }));
+  (await getBlogPosts()).map((post) => ({ slug: post.slug, post }));
 
 export async function generateMetadata(
-  context: BlogPageContext,
+  context: BlogPostPageContext,
 ): Promise<Metadata | undefined> {
-  const post = await getBlogPost(context.params.slug);
-  if (!post) return undefined;
+  const { slug, post } = context.params;
+  if (!slug || !post) return undefined;
 
-  const { title, date, excerpt, hero, slug } = post;
+  const { title, date, excerpt, hero } = post;
 
   const ogImage = buildOgImageUrl('blog', title, hero);
 
