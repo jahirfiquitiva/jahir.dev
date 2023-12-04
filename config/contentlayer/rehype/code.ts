@@ -29,6 +29,7 @@ const getThemeJson = (theme: 'light' | 'dark'): JSON | string => {
       tokenColors: [...parsed.tokenColors, commentsCustomColor(theme)],
     };
   } catch (e) {
+    console.error(e);
     return defaultTheme;
   }
 };

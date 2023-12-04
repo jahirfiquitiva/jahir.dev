@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import path from 'path';
-import { fileURLToPath } from 'url';
+const path = require('path');
 
-import million from 'million/compiler';
-import { withContentlayer } from 'next-contentlayer';
+const million = require('million/compiler');
+const { withContentlayer } = require('next-contentlayer');
 
-import appHeaders from './config/next/headers.mjs';
-import redirects from './config/next/redirects.mjs';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const appHeaders = require('./config/next/headers');
+const redirects = require('./config/next/redirects');
 
 /**
  * @type {import('next').NextConfig}
@@ -57,4 +53,7 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-export default million.next(withContentlayer(defaultNextConfig), millionConfig);
+module.exports = million.next(
+  withContentlayer(defaultNextConfig),
+  millionConfig,
+);

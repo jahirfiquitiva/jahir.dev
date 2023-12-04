@@ -6,7 +6,7 @@ const buildRedirect = (source, destination, permanent = true) => {
   };
 };
 
-const redirects = [
+module.exports = [
   /* Blog posts redirections */
   buildRedirect(
     '/blog/md-iconography-guidelines',
@@ -46,5 +46,3 @@ const redirects = [
   buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
   buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
 ];
-
-export default redirects;
