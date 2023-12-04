@@ -70,7 +70,7 @@ export default function AboutPage() {
           className={cx(
             'flex items-center transition-colors',
             'border border-divider rounded-6',
-            'py-4 pl-12 pr-8 min-h-[2.625rem]',
+            'py-4 px-6 min-h-[2.625rem]',
             'hover:border-accent-dark self-start',
             'mx-auto my-8',
           )}
