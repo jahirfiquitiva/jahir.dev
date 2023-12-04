@@ -9,7 +9,7 @@ import { InstagramFeed } from './insta-feed';
 import { MusicData } from './music';
 import { Statistics } from './statistics';
 
-export default async function DashboardPage() {
+export default function DashboardPage() {
   return (
     <Section id={'dashboard'} className={cx('gap-32')}>
       <Heading shadow={'blue'} from={'blue'} to={'green'}>

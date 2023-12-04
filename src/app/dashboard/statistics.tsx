@@ -7,7 +7,7 @@ import { ReactionsStats } from './reactions-stats';
 import { SponsorsStats } from './sponsors-stats';
 import { ViewsStats } from './views-stats';
 
-export const Statistics = async () => (
+export const Statistics = () => (
   <article id={'statistics'} className={cx('flex flex-col gap-16')}>
     <Heading $as={'h2'} className={cx('text-xl')}>
       Stats
