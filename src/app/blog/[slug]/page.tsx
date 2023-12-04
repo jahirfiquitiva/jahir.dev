@@ -19,12 +19,13 @@ export default function BlogPostPage(context: BlogPostPageContext) {
 }
 
 export const generateStaticParams = () =>
-  allReadableBlogs.map((post) => ({ slug: post.slug, post }));
+  allReadableBlogs.map((post) => ({ slug: post.slug }));
 
 export function generateMetadata(
   context: BlogPostPageContext,
 ): Metadata | undefined {
-  const { slug, post } = context.params;
+  const { slug } = context.params;
+  const post = getBlog(slug);
   if (!slug || !post) return undefined;
 
   const { title, date, excerpt, hero } = post;

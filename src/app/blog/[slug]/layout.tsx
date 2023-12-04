@@ -1,5 +1,6 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
+import type { Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { ButtonLink } from '@/components/core/link/button-link';
@@ -9,6 +10,7 @@ import { mdiPencilOutline } from '@/components/icons/mdi';
 import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
+import { getBlog } from '@/utils/blog';
 import { buildOgImageUrl } from '@/utils/og';
 
 import Header from './header';
@@ -16,9 +18,7 @@ import Hero from './hero';
 import Stats from './stats';
 import type { BlogPostPageContext } from './types';
 
-const blogPostStructuredData = (
-  post: BlogPostPageContext['params']['post'],
-): string =>
+const blogPostStructuredData = (post: Blog): string =>
   post
     ? JSON.stringify({
         '@context': 'https://schema.org',
@@ -39,7 +39,8 @@ const blogPostStructuredData = (
 export default async function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
-  const { post } = props.params;
+  const { slug } = props.params;
+  const post = getBlog(slug);
   return (
     <Section id={'blog-post'}>
       <Link
