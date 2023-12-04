@@ -1,10 +1,14 @@
+import { Suspense } from 'react';
+
 import { Section } from '@/components/core/section';
 import { BlogPosts } from '@/components/views/blog/posts';
 import { allReadableBlogs } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-import Header from './header';
+import Loading from '../loading';
+
+import { Header } from './header';
 import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
@@ -18,7 +22,9 @@ export default function BlogPage() {
   return (
     <Section id={'blog'}>
       <Header />
-      <BlogPosts groupedPosts={groupedBlogPosts} />
+      <Suspense fallback={<Loading />}>
+        <BlogPosts groupedPosts={groupedBlogPosts} />
+      </Suspense>
     </Section>
   );
 }
