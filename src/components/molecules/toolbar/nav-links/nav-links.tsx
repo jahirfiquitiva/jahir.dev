@@ -1,10 +1,10 @@
-import { cx } from 'classix';
+import cx from 'classix';
 import type { Route } from 'next';
 
 import type { GradientClass } from '@/types/gradient';
 
-import { ToolbarLink, PageLinkSpan } from './link.styles';
-import { PagesLinksContainer, LinkItem } from './links-container.styles';
+import { PageLinkSpan, ToolbarLink } from './link.styles';
+import { LinkItem, PagesLinksContainer } from './links-container.styles';
 
 interface ToolbarLinkItem {
   title: string;

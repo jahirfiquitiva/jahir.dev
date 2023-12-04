@@ -1,7 +1,7 @@
 'use client';
 
-import { cx } from 'classix';
-import { type PropsWithChildren, Children, useEffect, useState } from 'react';
+import cx from 'classix';
+import { Children, useEffect, useState, type PropsWithChildren } from 'react';
 
 import image from '@/assets/images/setup-2023.jpg';
 import { Heading } from '@/components/core/heading';
@@ -10,7 +10,7 @@ import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoom
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { ThemeContext, useTheme } from '@/providers/theme-provider';
 
-import { TabPanel, TabsList, TabButton, TabButtonText } from './tabs.styles';
+import { TabButton, TabButtonText, TabPanel, TabsList } from './tabs.styles';
 
 const getIdForName = (name: string) =>
   name.split(' ').join('-').toLowerCase().trim();

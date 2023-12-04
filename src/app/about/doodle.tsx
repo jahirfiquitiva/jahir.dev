@@ -1,4 +1,4 @@
-import { cx } from 'classix';
+import cx from 'classix';
 
 import a from '@/assets/images/contact/0.png';
 import b from '@/assets/images/contact/1.png';

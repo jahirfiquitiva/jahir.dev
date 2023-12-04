@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'classix';
+import cx from 'classix';
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
@@ -9,14 +9,14 @@ import type { NowPlayingResponse } from '@/components/molecules/footer/now-playi
 import { useRequest } from '@/hooks/use-request';
 
 import {
+  AlbumImg,
   BackgroundImage,
   NowPlayingCard,
   NowPlayingContent,
   NowPlayingHeader,
   NowPlayingTexts,
-  TrackName,
   TrackArtist,
-  AlbumImg,
+  TrackName,
 } from './now-playing.styles';
 
 export const NowPlaying = () => {

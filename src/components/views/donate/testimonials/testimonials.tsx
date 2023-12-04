@@ -1,5 +1,5 @@
 import Icon from '@mdi/react';
-import { cx } from 'classix';
+import cx from 'classix';
 import Balancer from 'react-wrap-balancer';
 
 import { Heading } from '@/components/core/heading';

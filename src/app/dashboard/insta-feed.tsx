@@ -1,4 +1,4 @@
-import { cx } from 'classix';
+import cx from 'classix';
 import { Suspense } from 'react';
 
 import { Heading } from '@/components/core/heading';

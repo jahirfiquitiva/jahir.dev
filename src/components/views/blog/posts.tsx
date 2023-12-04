@@ -1,4 +1,4 @@
-import { cx } from 'classix';
+import cx from 'classix';
 
 import type { Blog } from 'contentlayer/generated';
 

@@ -1,13 +1,13 @@
 'use client';
 
 import confetti from 'canvas-confetti';
-import { cx } from 'classix';
+import cx from 'classix';
 import { useEffect } from 'react';
 
 import {
   mdiBookmark,
-  mdiHeart,
   mdiBookmarkOutline,
+  mdiHeart,
   mdiHeartOutline,
   mdiThumbUp,
   mdiThumbUpOutline,

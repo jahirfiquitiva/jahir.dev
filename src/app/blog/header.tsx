@@ -1,5 +1,5 @@
 import Icon from '@mdi/react';
-import { cx } from 'classix';
+import cx from 'classix';
 import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';

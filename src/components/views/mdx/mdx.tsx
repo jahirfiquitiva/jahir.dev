@@ -1,4 +1,4 @@
-import { cx } from 'classix';
+import cx from 'classix';
 import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 import { twMerge } from 'tailwind-merge';

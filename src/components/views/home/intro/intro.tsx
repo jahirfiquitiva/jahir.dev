@@ -1,5 +1,5 @@
 import Icon from '@mdi/react';
-import { cx } from 'classix';
+import cx from 'classix';
 
 import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link/button-link';
@@ -8,12 +8,12 @@ import { mdiAccountCircleOutline } from '@/components/icons/mdi';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
 
 import {
+  IntroParagraph,
   IntroSection,
+  Photo,
+  PhotoContainer,
   TextsContainer,
   TitlesContainer,
-  IntroParagraph,
-  PhotoContainer,
-  Photo,
 } from './intro.styles';
 import { WavingHello } from './waving-hello';
 

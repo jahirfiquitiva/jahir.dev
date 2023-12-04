@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'classix';
+import cx from 'classix';
 import { useMemo } from 'react';
 
 import darkCode from '@/assets/images/code/code-dark.png';

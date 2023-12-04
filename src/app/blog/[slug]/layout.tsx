@@ -1,5 +1,5 @@
 import Icon from '@mdi/react';
-import { cx } from 'classix';
+import cx from 'classix';
 import type { PropsWithChildren } from 'react';
 
 import { ButtonLink } from '@/components/core/link/button-link';

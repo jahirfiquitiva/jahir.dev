@@ -1,4 +1,4 @@
-import { cx } from 'classix';
+import cx from 'classix';
 
 import { Heading } from '@/components/core/heading';
 import { NowPlaying } from '@/components/views/dashboard/now-playing/now-playing';

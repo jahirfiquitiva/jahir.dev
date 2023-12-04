@@ -1,7 +1,7 @@
 import 'server-only';
 
 import Icon from '@mdi/react';
-import { cx } from 'classix';
+import cx from 'classix';
 import { Suspense, cache } from 'react';
 
 import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';

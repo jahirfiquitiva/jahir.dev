@@ -1,9 +1,9 @@
 'use client';
 
 import Icon from '@mdi/react';
-import { cx } from 'classix';
+import cx from 'classix';
 import type { Route } from 'next';
-import { type CSSProperties, useMemo } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 
 import { star } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
@@ -13,10 +13,10 @@ import type { Project } from '@/types/project';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 
 import {
-  StyledProjectCard,
   ProjectIcon,
-  TitleContainer,
   StarsCounter,
+  StyledProjectCard,
+  TitleContainer,
 } from './card.styles';
 
 interface ProjectCardProps {

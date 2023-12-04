@@ -1,4 +1,4 @@
-import { cx } from 'classix';
+import cx from 'classix';
 import type { Route } from 'next';
 
 import { Img } from '@/components/core/img';

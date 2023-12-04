@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'classix';
+import cx from 'classix';
 import { useMemo } from 'react';
 
 import { mdiLoading } from '@/components/icons/mdi';
