@@ -1,6 +1,5 @@
 import Icon from '@mdi/react';
 import { cx } from 'classix';
-import type { Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { ButtonLink } from '@/components/core/link/button-link';
@@ -12,6 +11,7 @@ import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
 import { getBlog } from '@/utils/blog';
 import { buildOgImageUrl } from '@/utils/og';
+import type { Blog } from 'contentlayer/generated';
 
 import Header from './header';
 import Hero from './hero';

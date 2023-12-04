@@ -1,4 +1,5 @@
 import { cx } from 'classix';
+
 import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../mdx/ui/views/counter';
@@ -38,7 +39,6 @@ export const BlogPosts = (props: BlogPostsProps) => {
                   <li
                     key={
                       post.slug ||
-                      // eslint-disable-next-line newline-per-chained-call
                       `${post.title
                         ?.toLowerCase()
                         .split(' ')

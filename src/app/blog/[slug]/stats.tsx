@@ -1,11 +1,11 @@
 import Icon from '@mdi/react';
-import type { Blog } from 'contentlayer/generated';
 
 import { mdiClockOutline } from '@/components/icons/mdi';
 import { calendarOutline } from '@/components/icons/paths';
 import { Stat } from '@/components/views/mdx/ui/stat';
 import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
 import { formatDate } from '@/utils/date';
+import type { Blog } from 'contentlayer/generated';
 
 interface StatsProps {
   slug: Blog['slug'];
