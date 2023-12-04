@@ -2,14 +2,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn clean && yarn download-themes && next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "yarn clean && yarn themes",
     "setup": "node ./scripts/setup.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u !remark-* && yarn",
-    "themes": "node ./scripts/code-themes.mjs",
+    "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.contentlayer|src/app'",
     "postinstall": "is-ci || husky install"
   },

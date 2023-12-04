@@ -9,10 +9,10 @@ const darkThemeUrl =
 
 const downloadThemeFile = async (light) => {
   try {
-    console.error('Downloading code themes json files from GitHub');
     const response = await fetch(light ? lightThemeUrl : darkThemeUrl);
     const json = await response.json();
-    console.error(`Status: ${response.status} <>= Error ${response.error}`);
+    if (!response.ok)
+      console.error(`Status: ${response.status} <=> Error ${response.error}`);
     writeFileSync(
       `./config/contentlayer/themes/${light ? 'light' : 'dark'}.json`,
       JSON.stringify(json, null, 2),
@@ -23,6 +23,7 @@ const downloadThemeFile = async (light) => {
   }
 };
 
-(async () => {
-  await Promise.all([downloadThemeFile(true), downloadThemeFile()]);
-})();
+console.log('Downloading theme json files…');
+Promise.all([downloadThemeFile(true), downloadThemeFile()]).then(() => {
+  console.log('Theme files downloaded successfully!');
+});
