@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
 import { Mdx } from '@/components/views/mdx/mdx';
 import { allReadableBlogs, getBlog } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
+
+import Loading from '../../loading';
 
 import type { BlogPostPageContext } from './types';
 
@@ -15,7 +18,11 @@ export default function BlogPostPage(context: BlogPostPageContext) {
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
 
-  return <Mdx code={post.body.code} />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <Mdx code={post.body.code} />
+    </Suspense>
+  );
 }
 
 export const generateStaticParams = () =>

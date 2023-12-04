@@ -14,7 +14,7 @@ interface StatsProps {
   inProgress?: Blog['inProgress'];
 }
 
-const Stats = (props: StatsProps) => {
+export const Stats = (props: StatsProps) => {
   const { slug, date, readingTime, inProgress } = props;
   const readableDate = formatDate(date);
   return (
@@ -41,5 +41,3 @@ const Stats = (props: StatsProps) => {
     </div>
   );
 };
-
-export default Stats;

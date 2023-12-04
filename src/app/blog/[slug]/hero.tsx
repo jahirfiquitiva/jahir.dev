@@ -12,7 +12,7 @@ interface HeroProps {
   source?: Blog['heroSource'];
 }
 
-const Hero = (props: HeroProps) => {
+export const Hero = (props: HeroProps) => {
   const { title, hero, meta, source } = props;
 
   const extraProps = meta
@@ -46,5 +46,3 @@ const Hero = (props: HeroProps) => {
     </figure>
   );
 };
-
-export default Hero;
