@@ -36,28 +36,32 @@ export const NowPlayingContent = tw.div`
   items-center
   backdrop-blur-xl
   backdrop-saturate-200
-  bg-[rgba(255,255,255,0.6)]
-  dark:bg-[rgba(9,17,34,0.3)]
+  bg-[rgba(255,255,255,0.65)]
+  dark:bg-[rgba(9,17,34,0.35)]
 `;
 
 export const BackgroundImage = tw(Img)`
   absolute
-  top-1/2
-  left-0
-  right-0
-  w-full
-  z-0
+  w-[110%]
+  -left-[5%]
+  -top-[100%]
+  mobile-md:-top-[125%]
+  mobile-lg:-top-[150%]
+  tablet-sm:-top-[230%]
+  -z-[1]
   opacity-50
   saturate-125
   pointer-events-none
   select-none
-  transform
-  -translate-y-1/2
+  rounded-8
+  max-w-[unset]
+  ![animation-duration:15s]
 `;
 
 export const NowPlayingTexts = tw.div`
   flex
   flex-col
+  flex-1
   gap-4
   truncate
   mix-blend-hard-light
@@ -106,4 +110,23 @@ export const AlbumImg = tw(Img)`
   border
   border-[rgba(9,17,34,0.12)]
   dark:border-[rgba(255,255,255,0.12)]
+`;
+
+export const NowPlayingBarsGroup = tw.div`
+  relative
+  flex
+  justify-between
+  w-16
+  h-16
+  m-16
+`;
+
+export const NowPlayingBar = tw.span`
+  w-4
+  h-full
+  bg-accent-dark
+  rounded-3
+  content-['']
+  animate-music-bars
+  [transform-origin:bottom]
 `;

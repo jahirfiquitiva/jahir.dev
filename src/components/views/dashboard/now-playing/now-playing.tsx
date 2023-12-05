@@ -11,6 +11,8 @@ import { useRequest } from '@/hooks/use-request';
 import {
   AlbumImg,
   BackgroundImage,
+  NowPlayingBar,
+  NowPlayingBarsGroup,
   NowPlayingCard,
   NowPlayingContent,
   NowPlayingHeader,
@@ -49,7 +51,7 @@ export const NowPlaying = () => {
             width={track?.image?.width || 128}
             height={track?.image?.height || 128}
             alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
-            className={cx(isPlaying ? 'motion-safe:animate-now-playing' : '')}
+            className={cx(isPlaying ? 'motion-safe:animate-spin' : '')}
           />
           <NowPlayingContent>
             <AlbumImg
@@ -66,6 +68,13 @@ export const NowPlaying = () => {
                 <TrackArtist>{track?.artist}</TrackArtist>
               </div>
             </NowPlayingTexts>
+            {isPlaying ? (
+              <NowPlayingBarsGroup>
+                <NowPlayingBar />
+                <NowPlayingBar className={'[animation-delay:-2.2s]'} />
+                <NowPlayingBar className={'[animation-delay:-3.7s]'} />
+              </NowPlayingBarsGroup>
+            ) : null}
           </NowPlayingContent>
         </>
       )}

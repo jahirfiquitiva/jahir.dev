@@ -104,10 +104,6 @@ export const getTopTracks = async () => {
     await buildSpotifyRequest<SpotifyResponse<Track>>(
       TOP_TRACKS_ENDPOINT,
     ).catch(null);
-  if (!response || 'error' in response) {
-    console.error(response.error);
-    console.error(response);
-    return [];
-  }
+  if (!response || 'error' in response) return [];
   return response.items.map(mapTrackData);
 };
