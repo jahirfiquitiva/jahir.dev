@@ -14,6 +14,7 @@ export const NowPlayingCard = tw(Link)`
   transition-colors
   truncate
   max-h-[7rem]
+  aspect-video
   rounded-t-8
   hocus:no-underline
   hocus:transform
