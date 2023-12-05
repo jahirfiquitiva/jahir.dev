@@ -45,8 +45,8 @@ const secondaryLinks: Array<FooterLinkProps> = [
     underlineColor: 'brand',
   },
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: 'Now',
+    href: '/now',
     className: 'from-gradient-blue to-gradient-green',
     underlineColor: 'blue',
   },

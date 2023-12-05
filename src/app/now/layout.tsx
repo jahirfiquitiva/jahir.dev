@@ -6,9 +6,9 @@ import { Section } from '@/components/core/section';
 
 export default function DashboardLayout(props: PropsWithChildren) {
   return (
-    <Section id={'dashboard'} className={cx('gap-32')}>
+    <Section id={'now'} className={cx('gap-32')}>
       <Heading shadow={'blue'} from={'blue'} to={'green'}>
-        Dashboard
+        Now
       </Heading>
       {props.children}
     </Section>

@@ -41,8 +41,8 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
     mobileOnly: true,
   },
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: 'Now',
+    href: '/now',
     className: 'from-gradient-blue to-gradient-green',
     mobileOnly: true,
   },
