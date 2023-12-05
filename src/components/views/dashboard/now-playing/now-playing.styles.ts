@@ -4,6 +4,7 @@ import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link/link';
 
 export const NowPlayingCard = tw(Link)`
+  block
   relative
   !w-full
   h-full
@@ -13,10 +14,7 @@ export const NowPlayingCard = tw(Link)`
   transition-colors
   truncate
   max-h-[7rem]
-  col-span-2
-  aspect-video
   rounded-t-8
-  tablet-sm:col-span-6
   hocus:no-underline
   hocus:transform
   hocus:border-accent-dark/[0.56]
@@ -32,6 +30,7 @@ export const NowPlayingContent = tw.div`
   p-12
   max-w-full
   truncate
+  rounded-t-8
   mobile-md:max-h-[7rem]
   items-center
   backdrop-blur-xl
