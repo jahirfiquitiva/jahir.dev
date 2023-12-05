@@ -1,7 +1,7 @@
 'use client';
 
-import { cx } from 'classix';
-import { type ComponentProps, useState, useMemo, useCallback } from 'react';
+import cx from 'classix';
+import { useCallback, useMemo, useState, type ComponentProps } from 'react';
 
 import { Img } from '@/components/core/img';
 

@@ -1,6 +1,6 @@
 import type { Route } from 'next';
 
-import { mdiCarousel, mdiInstagram, mdiVideo } from '@/components/icons';
+import { mdiCarousel, mdiInstagram, mdiVideo } from '@/components/icons/mdi';
 import type { InstagramPost } from '@/lib/instagram/types.d';
 import { getRandomItem } from '@/utils/random';
 
@@ -8,6 +8,7 @@ import {
   InstaIcon,
   InstaPhotoContainer,
   InstaVideo,
+  PostDate,
   StyledPhoto,
 } from './insta-photo.styles';
 
@@ -32,9 +33,25 @@ const getPostTitle = (post: InstagramPost): string => {
   return `${title} "${post.prunedCaption}" on Instagram`;
 };
 
+const formatDate = (date?: string): string | null => {
+  if (!date) return null;
+  try {
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric',
+      timeZone: 'America/Bogota',
+    }).format(new Date(date));
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+};
+
 export const InstaPhoto = (props: InstaPhotoProps) => {
   const { post } = props;
   const media = getMediaFromPost(post);
+  const date = formatDate(post.timestamp);
 
   return (
     <InstaPhotoContainer
@@ -79,8 +96,9 @@ export const InstaPhoto = (props: InstaPhotoProps) => {
               ? mdiVideo
               : mdiInstagram
         }
-        size={1.75}
+        size={1}
       />
+      {date ? <PostDate>{date}</PostDate> : null}
     </InstaPhotoContainer>
   );
 };

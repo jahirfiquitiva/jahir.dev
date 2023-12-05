@@ -21,6 +21,9 @@ export const Header = tw.header`
   tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
   [&[data-expanded="true"]]:h-[calc(100%-var(--floatingMargin))]
   [&[data-expanded="true"]]:tablet-sm:h-[calc(var(--baseActualHeight)_+_4px)]
+  [&[data-expanded="true"]]:shadow-background
+  [&[data-expanded="true"]]:shadow-xl
+  [&[data-expanded="true"]]:tablet-sm:shadow-none
 
   before:z-[1]
   before:content-['']

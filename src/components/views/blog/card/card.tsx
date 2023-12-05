@@ -4,7 +4,8 @@ import Icon from '@mdi/react';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
-import { calendarOutline, mdiClockOutline } from '@/components/icons';
+import { mdiClockOutline } from '@/components/icons/mdi';
+import { calendarOutline } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
@@ -26,13 +27,15 @@ import {
 interface PostCardProps {
   post: Blog;
   viewsCounter?: PropsWithChildren['children'];
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const BlogPostCard = (props: PostCardProps) => {
   const hasMounted = useHasMounted();
   const { isDark } = useTheme();
 
-  const { post, viewsCounter } = props;
+  const { post, viewsCounter, className, style } = props;
   const { link, slug, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
   const domain = getUrlDomain(rightLink);
@@ -49,8 +52,10 @@ export const BlogPostCard = (props: PostCardProps) => {
     <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink as Route}
+      className={className}
       style={
         {
+          ...style,
           '--post-color':
             hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)',
           '--post-text-color': textColor || 'var(--color-accent-dark)',
@@ -62,7 +67,7 @@ export const BlogPostCard = (props: PostCardProps) => {
         alt={`Hero image for blog post "${post.title}"`}
         width={post?.heroMeta?.size?.width || 144}
         height={post?.heroMeta?.size?.height || 72}
-        placeholder={'blur'}
+        placeholder={Boolean(post?.heroMeta?.blur64) ? 'blur' : undefined}
         blurDataURL={post?.heroMeta?.blur64}
       />
       <PostCardContent>

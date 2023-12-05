@@ -1,4 +1,4 @@
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { NoPaddingSection } from '@/components/core/section';
 
 import { CodeImage } from './code.image';

@@ -8,11 +8,12 @@ export const getPostDescription = (
   defaultDescription?: string | null,
   trimLength?: boolean | null,
 ): string => {
-  if (defaultDescription) return defaultDescription;
+  if (defaultDescription) return defaultDescription || '';
   if (!content) return defaultDescription || '';
 
   const allTexts = content
     ?.split(/[\r\n]+/gm)
+    ?.filter(Boolean)
     ?.filter((it: string) => !it.startsWith('#'))
     ?.join('\n')
     ?.split('\n')

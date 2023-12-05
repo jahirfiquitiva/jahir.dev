@@ -4,9 +4,9 @@ import Icon from '@mdi/react';
 import type { Route } from 'next';
 import { useMemo } from 'react';
 
-import { Button } from '@/components/core/button';
-import { ButtonLink } from '@/components/core/link';
-import { mdiShareVariantOutline } from '@/components/icons';
+import { Button } from '@/components/core/button/button';
+import { ButtonLink } from '@/components/core/link/button-link';
+import { mdiShareVariantOutline } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 
 const shareUrl = (title: string, slug: string) =>

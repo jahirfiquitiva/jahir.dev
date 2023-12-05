@@ -1,4 +1,4 @@
-import { LineWobble } from '@/components/core/loaders';
+import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';
 
 export const NowPlayingLoading = () => (
   <div className={'mx-6 tablet-sm:mx-2'}>

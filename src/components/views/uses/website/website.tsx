@@ -1,15 +1,14 @@
 import Icon from '@mdi/react';
 
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { NoPaddingSection } from '@/components/core/section';
+import { mdiTailwind, mdiTriangle } from '@/components/icons/mdi';
 import {
   contentlayer,
-  mdiTailwind,
-  mdiTriangle,
   mdx,
   nextJs,
   planetscale,
-} from '@/components/icons';
+} from '@/components/icons/paths';
 
 import { DotsContainer, IconContainer, IconLink } from './website.styles';
 

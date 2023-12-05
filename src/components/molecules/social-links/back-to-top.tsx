@@ -2,8 +2,8 @@
 
 import Icon from '@mdi/react';
 
-import { squaredChevronUp } from '@/components/icons';
-import { scrollToTop } from '@/components/molecules/back-to-top';
+import { squaredChevronUp } from '@/components/icons/paths';
+import { scrollToTop } from '@/components/molecules/back-to-top/back-to-top';
 
 import { SocialLinkItem, SocialLink } from './social-links.styles';
 

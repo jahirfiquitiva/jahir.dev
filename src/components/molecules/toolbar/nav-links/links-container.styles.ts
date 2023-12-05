@@ -37,13 +37,14 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   transition
   delay-0
   ml-32
+  flex-col
 
   tablet-sm:[grid-row:1]
   tablet-sm:[grid-column:2/3]
   tablet-sm:max-h-[unset]
   tablet-sm:opacity-100
   tablet-sm:delay-[0.15s]
-  tablet-sm:flex
+  tablet-sm:flex-row
   tablet-sm:visible
   tablet-sm:pointer-events-auto
   tablet-sm:justify-end
@@ -54,8 +55,6 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   [[data-expanded="true"]_&]:max-h-full
   [[data-expanded="true"]_&]:opacity-100
   [[data-expanded="true"]_&]:delay-[0.15s]
-  [[data-expanded="true"]_&]:flex
-  [[data-expanded="true"]_&]:flex-col
   [[data-expanded="true"]_&]:visible
   [[data-expanded="true"]_&]:pointer-events-auto
   [[data-expanded="true"]_&]:justify-center

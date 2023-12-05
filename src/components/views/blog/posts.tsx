@@ -1,18 +1,21 @@
+import cx from 'classix';
+
 import type { Blog } from 'contentlayer/generated';
 
-import { ViewsCounter } from '../mdx/ui/views';
+import { ViewsCounter } from '../mdx/ui/views/counter';
 
-import { BlogPostCard } from './card';
+import { BlogPostCard } from './card/card';
 
 interface BlogPostsProps {
-  posts: Array<{
+  groupedPosts: Array<{
     year: number;
     posts: Array<Blog>;
   }>;
+  loading?: boolean;
 }
 
 export const BlogPosts = (props: BlogPostsProps) => {
-  const { posts: groupedPosts } = props;
+  const { groupedPosts, loading } = props;
   return (
     <>
       {groupedPosts.map((group) => {
@@ -36,17 +39,17 @@ export const BlogPosts = (props: BlogPostsProps) => {
                   <li
                     key={
                       post.slug ||
-                      // eslint-disable-next-line newline-per-chained-call
                       `${post.title
-                        .toLowerCase()
+                        ?.toLowerCase()
                         .split(' ')
                         .join('-')}-${index}`
                     }
                   >
                     <BlogPostCard
                       post={post}
+                      className={cx(loading ? 'motion-safe:animate-pulse' : '')}
                       viewsCounter={
-                        !post.link ? (
+                        !post.link && !loading ? (
                           <ViewsCounter
                             slug={`blog--${post.slug}`}
                             inProgress={post.inProgress}

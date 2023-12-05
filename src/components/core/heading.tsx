@@ -1,5 +1,5 @@
-import { cx } from 'classix';
-import type { ElementType, ComponentProps } from 'react';
+import cx from 'classix';
+import type { ComponentProps, ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
 import tw from 'tailwind-styled-components';
 

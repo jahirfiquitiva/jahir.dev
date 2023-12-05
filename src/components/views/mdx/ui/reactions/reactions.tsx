@@ -1,19 +1,18 @@
 'use client';
 
 import confetti from 'canvas-confetti';
-import { cx } from 'classix';
+import cx from 'classix';
 import { useEffect } from 'react';
 
 import {
-  award,
-  awardOutline,
   mdiBookmark,
-  mdiHeart,
   mdiBookmarkOutline,
+  mdiHeart,
   mdiHeartOutline,
   mdiThumbUp,
   mdiThumbUpOutline,
-} from '@/components/icons';
+} from '@/components/icons/mdi';
+import { award, awardOutline } from '@/components/icons/paths';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName } from '@/lib/planetscale';
 import { useReactions } from '@/providers/reactions-provider';
@@ -81,9 +80,11 @@ export const Reactions = () => {
 
     // Submit reactions in production website only
     const hostname = window?.location?.hostname || 'localhost';
-    if (hostname !== 'jahir.dev') return;
+    const shouldRecordReaction = hostname === 'jahir.dev';
 
-    const reacted = await incrementReaction?.(key);
+    const reacted = shouldRecordReaction
+      ? await incrementReaction?.(key)
+      : true;
     // If reaction was submitted successfully
     if (event && reacted) {
       const x = event.clientX / windowWidth;

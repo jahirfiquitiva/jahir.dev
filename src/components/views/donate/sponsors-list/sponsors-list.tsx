@@ -4,7 +4,7 @@ import monaGifFile from '@/assets/images/donate/pixel-mona-heart.gif';
 import { Heading } from '@/components/core/heading';
 import { NoPaddingSection } from '@/components/core/section';
 
-import { SponsorItem } from '../sponsor';
+import { SponsorItem } from '../sponsor/sponsor';
 
 import { Header, MonaGif, StyledList } from './sponsors-list.styles';
 

@@ -1,24 +1,21 @@
-import { cx } from 'classix';
+import { Suspense } from 'react';
 
-import { Heading } from '@/components/core/heading';
-import { Section } from '@/components/core/section';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
+
+import Loading from '../loading';
 
 import { InstagramFeed } from './insta-feed';
 import { MusicData } from './music';
 import { Statistics } from './statistics';
 
-export default async function DashboardPage() {
+export default function DashboardPage() {
   return (
-    <Section id={'dashboard'} className={cx('gap-32')}>
-      <Heading shadow={'blue'} from={'blue'} to={'green'}>
-        Dashboard
-      </Heading>
+    <Suspense fallback={<Loading />}>
       <Statistics />
       <MusicData />
       <InstagramFeed />
-    </Section>
+    </Suspense>
   );
 }
 

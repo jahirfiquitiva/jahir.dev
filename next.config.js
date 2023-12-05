@@ -45,12 +45,8 @@ const defaultNextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  async headers() {
-    return appHeaders;
-  },
-  async redirects() {
-    return redirects;
-  },
+  headers: () => appHeaders,
+  redirects: () => redirects,
 };
 
 const millionConfig = {

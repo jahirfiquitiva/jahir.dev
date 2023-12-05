@@ -2,7 +2,7 @@
 import Icon from '@mdi/react';
 import tw from 'tailwind-styled-components';
 
-import { Button } from '@/components/core/button';
+import { Button } from '@/components/core/button/button';
 
 export const Fab = tw(Button)<{ $shown: boolean }>`
   flex

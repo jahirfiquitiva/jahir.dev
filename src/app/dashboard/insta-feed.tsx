@@ -1,9 +1,9 @@
-import { cx } from 'classix';
+import cx from 'classix';
 import { Suspense } from 'react';
 
 import { Heading } from '@/components/core/heading';
-import { InstaPhoto } from '@/components/views/dashboard/insta-photo';
-import { fetchInstaFeed } from '@/lib/instagram';
+import { InstaPhoto } from '@/components/views/dashboard/insta-photo/insta-photo';
+import { fetchInstaFeed } from '@/lib/instagram/instagram';
 
 // Update data once every 12 hours
 export const revalidate = 43200;
@@ -30,7 +30,7 @@ const AsyncInstagramFeed = async () => {
   return (
     <div
       className={cx(
-        'grid grid-cols-3 gap-2',
+        'grid grid-cols-3 gap-4',
         'grid-rows-[min-content] auto-rows-min',
       )}
     >

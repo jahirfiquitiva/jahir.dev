@@ -1,4 +1,4 @@
-import { MDXOptions } from '@contentlayer/core';
+import type { MDXOptions } from 'contentlayer/core';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -14,6 +14,7 @@ const mdx: MDXOptions = {
   rehypePlugins: [
     imageMetadata,
     rehypeSlug,
+    // @ts-expect-error MDX IDK
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
     toc,

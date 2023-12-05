@@ -1,9 +1,9 @@
-import { cx } from 'classix';
+import cx from 'classix';
 
 import { Heading } from '@/components/core/heading';
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
-import { SocialLinks } from '@/components/molecules/social-links';
+import { SocialLinks } from '@/components/molecules/social-links/social-links';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
@@ -70,7 +70,7 @@ export default function AboutPage() {
           className={cx(
             'flex items-center transition-colors',
             'border border-divider rounded-6',
-            'py-4 pl-12 pr-8 min-h-[2.625rem]',
+            'py-4 px-6 min-h-[2.625rem]',
             'hover:border-accent-dark self-start',
             'mx-auto my-8',
           )}

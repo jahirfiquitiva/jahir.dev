@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-import { mdiChevronUp } from '@/components/icons';
+import { mdiChevronUp } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 
 import { Fab, FabIcon, FabText } from './back-to-top.styles';

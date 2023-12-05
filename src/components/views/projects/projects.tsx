@@ -1,14 +1,15 @@
 import Icon from '@mdi/react';
+import type { Route } from 'next';
 import { Suspense } from 'react';
 
 import Loading from '@/app/loading';
 import { Heading } from '@/components/core/heading';
-import { ButtonLink } from '@/components/core/link';
+import { ButtonLink } from '@/components/core/link/button-link';
 import { Section } from '@/components/core/section';
-import { mdiEyeOutline, mdiFileCodeOutline } from '@/components/icons';
+import { mdiEyeOutline, mdiFileCodeOutline } from '@/components/icons/mdi';
 import projects from '@/data/projects.json';
 
-import { ProjectCard } from './card';
+import { ProjectCard } from './card/card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 
 const getSortedProjects = async (hide?: boolean) => {
@@ -55,7 +56,7 @@ export const Projects = async (props: ProjectsProps) => {
         <ProjectsButtons>
           <ButtonLink
             title={"Jahir's resume pdf file"}
-            href={'/resume'}
+            href={'/resume' as Route}
             openInNewTab
             outlined
           >

@@ -3,17 +3,15 @@
 import { usePathname } from 'next/navigation';
 import { useState, useCallback, useEffect } from 'react';
 
-import { LogoAnimoji } from '@/components/core/logo-animoji';
-import { mdiMenu, mdiPlus } from '@/components/icons';
+import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
+import { mdiMenu, mdiPlus } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 
-import { ThemeToggle, MobileMenuToggle, MobileMenuIcon } from './buttons';
-import {
-  HomeLink,
-  HomeLinkSpan,
-  ToolbarLinksContainer,
-  ToolbarNavLinks,
-} from './nav-links';
+import { MobileMenuToggle, MobileMenuIcon } from './buttons/mobile-menu-toggle';
+import { ThemeToggle } from './buttons/theme-toggle';
+import { HomeLink, HomeLinkSpan } from './nav-links/link.styles';
+import { ToolbarLinksContainer } from './nav-links/links-container.styles';
+import { ToolbarNavLinks } from './nav-links/nav-links';
 import { Header, Nav } from './toolbar.styles';
 
 const scrollThreshold = 40; //px

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRequest } from '@/hooks/use-request';
-import type { ReadableTrack } from '@/types/spotify';
+import type { ReadableTrack } from '@/types/spotify/entities.d';
 
 import { NowPlayingLoading } from './now-playing.loading';
 import { MusicItem } from './now-playing.styles';

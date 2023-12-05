@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'classix';
+import cx from 'classix';
 import { useMemo } from 'react';
 
 import darkCode from '@/assets/images/code/code-dark.png';
@@ -8,7 +8,7 @@ import lightCode from '@/assets/images/code/code-light.png';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 
-import { ZoomableImg } from '../../mdx/components/zoomable-img';
+import { ZoomableImg } from '../../mdx/components/zoomable-img/zoomable-img';
 
 export const CodeImage = () => {
   const hasMounted = useHasMounted();

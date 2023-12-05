@@ -1,15 +1,16 @@
-import { cx } from 'classix';
+import cx from 'classix';
 import type { Route } from 'next';
 
 import type { GradientClass } from '@/types/gradient';
 
-import { ToolbarLink, PageLinkSpan } from './link.styles';
-import { PagesLinksContainer, LinkItem } from './links-container.styles';
+import { PageLinkSpan, ToolbarLink } from './link.styles';
+import { LinkItem, PagesLinksContainer } from './links-container.styles';
 
 interface ToolbarLinkItem {
   title: string;
   href: string;
   className?: GradientClass;
+  mobileOnly?: boolean;
 }
 
 const toolbarLinksList: Array<ToolbarLinkItem> = [
@@ -33,6 +34,18 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
     href: '/donate',
     className: 'from-gradient-brand to-gradient-blue',
   },
+  {
+    title: 'Uses',
+    href: '/uses',
+    className: 'from-gradient-purple to-gradient-brand',
+    mobileOnly: true,
+  },
+  {
+    title: 'Dashboard',
+    href: '/dashboard',
+    className: 'from-gradient-blue to-gradient-green',
+    mobileOnly: true,
+  },
 ];
 
 export const ToolbarNavLinks = (props: { pathname?: string }) => {
@@ -41,7 +54,17 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
     <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
         return (
-          <LinkItem key={`page-link-${index}`}>
+          <LinkItem
+            key={`page-link-${index}`}
+            className={
+              link.mobileOnly
+                ? cx(
+                    'tablet-sm:hidden tablet-sm:invisible',
+                    'tablet-sm:pointer-events-none tablet-sm:select-none',
+                  )
+                : ''
+            }
+          >
             <ToolbarLink
               title={`${link.title} page`}
               href={link.href as Route}

@@ -2,7 +2,8 @@
 'use client';
 
 import { Heading } from '@/components/core/heading';
-import { ButtonLink, Link } from '@/components/core/link';
+import { ButtonLink } from '@/components/core/link/button-link';
+import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';

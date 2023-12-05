@@ -1,15 +1,15 @@
 import { MetadataRoute } from 'next';
 
-import { allReadableBlogs } from '@/utils/blogs';
+import { allReadableBlogs } from '@/utils/blog';
 
-const allBlogs = allReadableBlogs.filter((it) => !Boolean(it.link));
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogs = allBlogs.map((post) => ({
-    url: `https://jahir.dev/blog/${post.slug}`,
-    lastModified: post.date.split('T')[0],
-    priority: 0.6,
-  }));
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const blogs = allReadableBlogs
+    .filter((it) => !Boolean(it.link))
+    .map((post) => ({
+      url: `https://jahir.dev/blog/${post.slug}`,
+      lastModified: post.date.split('T')[0],
+      priority: 0.6,
+    }));
 
   const routes = [
     '',

@@ -1,8 +1,8 @@
 import tw from 'tailwind-styled-components';
 
-import { Chip } from '@/components/core/chip';
+import { Chip } from '@/components/core/chip/chip.styles';
 import { Img } from '@/components/core/img';
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 
 export const StyledProjectCard = tw(Link)`
   relative

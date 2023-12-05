@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import tw from 'tailwind-styled-components';
 
-import { Link } from '@/components/core/link';
+import { Link } from '@/components/core/link/link';
 
 export const StyledStatCard = tw(Link)`
   [--stat-color:var(--color-accent-dark)]

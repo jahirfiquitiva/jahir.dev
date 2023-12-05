@@ -39,7 +39,7 @@
     "**/*.ts",
     "**/*.tsx",
     "./.contentlayer/generated",
-    "next.config.js",
+    "next.config.mjs",
     ".next/types/**/*.ts"
   ]
 }

@@ -1,12 +1,12 @@
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
-import { Reactions } from '@/components/views/mdx/ui/reactions';
-import { Coding } from '@/components/views/uses/coding';
+import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
+import { Coding } from '@/components/views/uses/coding/coding';
 import { ExtensionsGrid } from '@/components/views/uses/extensions';
-import { Everyday, GamingPc } from '@/components/views/uses/hardware';
-import { Software } from '@/components/views/uses/software';
-import { Tabs } from '@/components/views/uses/tabs';
-import { Website } from '@/components/views/uses/website';
+import { Everyday, GamingPc } from '@/components/views/uses/hardware/hardware';
+import { Software } from '@/components/views/uses/software/software';
+import { Tabs } from '@/components/views/uses/tabs/tabs';
+import { Website } from '@/components/views/uses/website/website';
 import { ReactionsProvider } from '@/providers/reactions-provider';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
