@@ -47,7 +47,7 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   tablet-sm:flex-row
   tablet-sm:visible
   tablet-sm:pointer-events-auto
-  tablet-sm:justify-end
+  tablet-sm:justify-center
   tablet-sm:ml-0
   tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
 
@@ -60,6 +60,6 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   [[data-expanded="true"]_&]:justify-center
   [[data-expanded="true"]_&]:gap-[calc(calc(var(--floatingMargin,0)/var(--spaceDivider,1))*1.5)]
   [[data-expanded="true"]_&]:tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
-  [[data-expanded="true"]_&]:tablet-sm:justify-end
+  [[data-expanded="true"]_&]:tablet-sm:justify-center
   [[data-expanded="true"]_&]:tablet-sm:flex-row
 `;

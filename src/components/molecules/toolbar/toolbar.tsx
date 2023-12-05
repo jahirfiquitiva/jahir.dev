@@ -1,5 +1,6 @@
 'use client';
 
+import cx from 'classix';
 import { usePathname } from 'next/navigation';
 import { useState, useCallback, useEffect } from 'react';
 
@@ -54,7 +55,14 @@ export const Toolbar = () => {
       <Nav $elevated={elevated}>
         <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
           <LogoAnimoji />
-          <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
+          <HomeLinkSpan
+            className={cx(
+              'tablet-sm:hidden tablet-sm:invisible',
+              'tablet-sm:pointer-events-none tablet-sm:select-none',
+            )}
+          >
+            Jahir Fiquitiva
+          </HomeLinkSpan>
         </HomeLink>
         <ToolbarNavLinks pathname={pathname} />
         <ToolbarLinksContainer className={'self-start tablet-md:self-center'}>

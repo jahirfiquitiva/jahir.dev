@@ -54,17 +54,7 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
     <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
         return (
-          <LinkItem
-            key={`page-link-${index}`}
-            className={
-              link.mobileOnly
-                ? cx(
-                    'tablet-sm:hidden tablet-sm:invisible',
-                    'tablet-sm:pointer-events-none tablet-sm:select-none',
-                  )
-                : ''
-            }
-          >
+          <LinkItem key={`page-link-${index}`}>
             <ToolbarLink
               title={`${link.title} page`}
               href={link.href as Route}
