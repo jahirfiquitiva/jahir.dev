@@ -30,7 +30,7 @@ const AsyncInstagramFeed = async () => {
   return (
     <div
       className={cx(
-        'grid grid-cols-3 gap-2',
+        'grid grid-cols-3 gap-4',
         'grid-rows-[min-content] auto-rows-min',
       )}
     >

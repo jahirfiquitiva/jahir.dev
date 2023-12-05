@@ -14,6 +14,7 @@ interface RemoteInstagramPost {
     mediaType: PostType;
   }>;
   dimensions?: { width: number; height: number };
+  timestamp?: string;
 }
 
 type BeholdColor = `${number},${number},${number}`;
