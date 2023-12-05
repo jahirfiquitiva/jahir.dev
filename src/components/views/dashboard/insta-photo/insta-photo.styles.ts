@@ -25,6 +25,7 @@ export const InstaPhotoContainer = tw(Link)`
   hocus:transform
   hocus:-translate-y-1
   hocus:shadow-sm
+  hocus:no-underline
   hocus:after:opacity-75
 `;
 
@@ -33,6 +34,7 @@ export const StyledPhoto = tw(Img)`
   duration-300
   h-full
   w-full
+  text-transparent
   group-hocus/insta:transform
   group-hocus/insta:scale-105
   group-hocus/insta:opacity-90
