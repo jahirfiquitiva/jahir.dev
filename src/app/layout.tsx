@@ -1,6 +1,7 @@
 import '@/styles/globals.scss';
 
 import { Inter, Manrope } from 'next/font/google';
+import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
 import { BackToTop } from '@/components/molecules/back-to-top/back-to-top';
@@ -60,13 +61,11 @@ export default function RootLayout(props: PropsWithChildren) {
     >
       <head>
         <Meta />
-        <script
+        <Script
           async
           defer
           src={'https://umami.jahir.dev/script.js'}
           data-website-id={umamiWebsiteId}
-          data-do-not-track={'true'}
-          data-domains={'jahir.dev'}
         />
       </head>
       <body className={'tablet-sm:overflow-y-auto'}>
