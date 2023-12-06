@@ -1,6 +1,5 @@
 import '@/styles/globals.scss';
 
-import { Analytics } from '@vercel/analytics/react';
 import { Inter, Manrope } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
@@ -51,6 +50,7 @@ export const metadata = {
   }),
 };
 
+const { UMAMI_WEBSITE_ID: umamiWebsiteId = '' } = process.env;
 export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
@@ -60,6 +60,14 @@ export default function RootLayout(props: PropsWithChildren) {
     >
       <head>
         <Meta />
+        <script
+          async
+          defer
+          src={'https://umami.jahir.dev/script.js'}
+          data-website-id={umamiWebsiteId}
+          data-do-not-track={'true'}
+          data-domains={'jahir.dev'}
+        />
       </head>
       <body className={'tablet-sm:overflow-y-auto'}>
         <Providers>
@@ -68,7 +76,6 @@ export default function RootLayout(props: PropsWithChildren) {
           <Footer />
           <BackToTop />
         </Providers>
-        <Analytics />
       </body>
     </html>
   );
