@@ -61,20 +61,20 @@ export const NowPlaying = () => {
             />
             <NowPlayingTexts>
               <NowPlayingHeader>
-                {isPlaying ? 'Now Playing' : 'Last Played'}
+                <span>{isPlaying ? 'Now Playing' : 'Last Played'}</span>
+                {isPlaying ? (
+                  <NowPlayingBarsGroup>
+                    <NowPlayingBar />
+                    <NowPlayingBar className={'[animation-delay:-2.2s]'} />
+                    <NowPlayingBar className={'[animation-delay:-3.7s]'} />
+                  </NowPlayingBarsGroup>
+                ) : null}
               </NowPlayingHeader>
               <div className={'flex flex-col'}>
                 <TrackName>{track?.name}</TrackName>
                 <TrackArtist>{track?.artist}</TrackArtist>
               </div>
             </NowPlayingTexts>
-            {isPlaying ? (
-              <NowPlayingBarsGroup>
-                <NowPlayingBar />
-                <NowPlayingBar className={'[animation-delay:-2.2s]'} />
-                <NowPlayingBar className={'[animation-delay:-3.7s]'} />
-              </NowPlayingBarsGroup>
-            ) : null}
           </NowPlayingContent>
         </>
       )}
