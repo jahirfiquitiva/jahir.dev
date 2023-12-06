@@ -34,9 +34,11 @@ export const NowPlaying = () => {
     >
       {loading ? (
         <div
-          className={
-            'flex flex-row items-center self-center justify-center h-full w-full'
-          }
+          className={cx(
+            'flex flex-row',
+            'items-center self-center justify-center',
+            'h-full mx-12 my-16',
+          )}
         >
           <Ring
             size={48}
@@ -71,7 +73,7 @@ export const NowPlaying = () => {
                   </NowPlayingBarsGroup>
                 ) : null}
               </NowPlayingHeader>
-              <div className={'flex flex-col'}>
+              <div className={'flex flex-col gap-2'}>
                 <TrackName>{track?.name}</TrackName>
                 <TrackArtist>{track?.artist}</TrackArtist>
               </div>
