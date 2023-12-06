@@ -5,7 +5,8 @@ import { Link } from '@/components/core/link/link';
 export const DotsContainer = tw.ul`
   overflow-hidden
   grid
-  grid-cols-3
+  grid-cols-4
+  grid-flow-dense
   py-32
   px-16
   gap-y-32
