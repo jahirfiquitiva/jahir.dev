@@ -51,7 +51,11 @@ export const Intro = () => {
           </Link>
         </IntroParagraph>
         <div className={'flex items-center gap-16 flex-wrap'}>
-          <ButtonLink title={'About page'} href={'/about'}>
+          <ButtonLink
+            title={'About page'}
+            href={'/about'}
+            data-umami-event={'More about me'}
+          >
             <Icon path={mdiAccountCircleOutline} size={1} />
             <span>More about me</span>
           </ButtonLink>

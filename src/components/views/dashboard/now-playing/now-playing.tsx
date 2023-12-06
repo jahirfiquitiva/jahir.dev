@@ -30,6 +30,7 @@ export const NowPlaying = () => {
       title={`Listen to "${track?.name}" by "${track?.artist}" on Spotify`}
       href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
+      data-umami-event={'Clicked now playing'}
     >
       {loading ? (
         <div

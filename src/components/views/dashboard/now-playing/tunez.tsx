@@ -15,6 +15,7 @@ export const TunezCard = () => {
     <NowPlayingCard
       title={'Check the "tunez" playlist on Spotify'}
       href={'https://tunez.jahir.dev'}
+      data-umami-event={'Checked tunez playlist'}
     >
       <NowPlayingContent>
         <AlbumImg

@@ -87,7 +87,9 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
               aria-hidden={currentTab !== 0 && currentTab !== index + 1}
               hidden={currentTab !== 0 && currentTab !== index + 1}
             >
-              <Heading $as={'h2'}>{tabsNames[index + 1]}</Heading>
+              <Heading $as={'h2'} className={'text-xl'}>
+                {tabsNames[index + 1]}
+              </Heading>
               <ThemeContext.Provider value={themeData}>
                 {child}
               </ThemeContext.Provider>
