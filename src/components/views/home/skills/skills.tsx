@@ -12,7 +12,13 @@ import { skills } from './data';
 export const Skills = () => {
   return (
     <Section id={'skills'} className={'gap-2'}>
-      <Heading $as={'h3'} shadow={'blue'} from={'blue'} to={'green'}>
+      <Heading
+        $as={'h2'}
+        className={'text-xl'}
+        shadow={'blue'}
+        from={'blue'}
+        to={'green'}
+      >
         Skills
       </Heading>
       <ChipGroup className={'pb-4'}>
@@ -29,6 +35,7 @@ export const Skills = () => {
                     'hocus:border-[rgba(var(--skill-color)/0.56)]',
                   )}
                   style={{ '--skill-color': color } as CSSProperties}
+                  data-umami-event={`Chip: ${skill.name}`}
                 >
                   <Icon path={skill.iconPath} size={0.8} />
                   <span className={'font-[500]'}>{skill.name}</span>

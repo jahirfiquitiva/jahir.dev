@@ -2,13 +2,14 @@ import Icon from '@mdi/react';
 
 import { Link } from '@/components/core/link/link';
 import { NoPaddingSection } from '@/components/core/section';
-import { mdiTailwind, mdiTriangle } from '@/components/icons/mdi';
 import {
   contentlayer,
   mdx,
   nextJs,
   planetscale,
-} from '@/components/icons/paths';
+  umami,
+} from '@/components/icons/icons';
+import { mdiTailwind, mdiTriangle } from '@/components/icons/mdi';
 
 import { DotsContainer, IconContainer, IconLink } from './website.styles';
 
@@ -33,6 +34,14 @@ const Colophon = () => {
       <IconContainer>
         <IconLink title={'Contentlayer'} href={'http://contentlayer.dev/'}>
           <Icon path={contentlayer} size={3} />
+        </IconLink>
+      </IconContainer>
+      <IconContainer>
+        <IconLink
+          title={'Umami Analytics'}
+          href={'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev'}
+        >
+          <Icon path={umami} size={3} />
         </IconLink>
       </IconContainer>
       <IconContainer>
@@ -68,6 +77,13 @@ export const Website = () => {
         ,{' '}
         <Link title={'Contentlayer'} href={'http://contentlayer.dev/'}>
           Contentlayer
+        </Link>
+        ,{' '}
+        <Link
+          title={'Umami Analytics'}
+          href={'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev'}
+        >
+          Umami
         </Link>{' '}
         and{' '}
         <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
@@ -77,14 +93,14 @@ export const Website = () => {
         <Link title={'Vercel'} href={'https://vercel.com/'}>
           Vercel
         </Link>{' '}
-        and you can check out the{' '}
+        and you can check out the source code{' '}
         <Link
           title={'View source code on GitHub'}
           href={'https://github.com/jahirfiquitiva/jahir.dev'}
         >
-          source code
-        </Link>{' '}
-        on GitHub.
+          on GitHub
+        </Link>
+        .
       </p>
       <Colophon />
     </NoPaddingSection>

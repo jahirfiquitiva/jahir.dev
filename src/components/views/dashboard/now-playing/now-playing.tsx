@@ -30,6 +30,7 @@ export const NowPlaying = () => {
       title={`Listen to "${track?.name}" by "${track?.artist}" on Spotify`}
       href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
+      data-umami-event={'Clicked now playing'}
     >
       {loading ? (
         <div
@@ -61,20 +62,20 @@ export const NowPlaying = () => {
             />
             <NowPlayingTexts>
               <NowPlayingHeader>
-                {isPlaying ? 'Now Playing' : 'Last Played'}
+                <span>{isPlaying ? 'Now Playing' : 'Last Played'}</span>
+                {isPlaying ? (
+                  <NowPlayingBarsGroup>
+                    <NowPlayingBar />
+                    <NowPlayingBar className={'[animation-delay:-2.2s]'} />
+                    <NowPlayingBar className={'[animation-delay:-3.7s]'} />
+                  </NowPlayingBarsGroup>
+                ) : null}
               </NowPlayingHeader>
               <div className={'flex flex-col'}>
                 <TrackName>{track?.name}</TrackName>
                 <TrackArtist>{track?.artist}</TrackArtist>
               </div>
             </NowPlayingTexts>
-            {isPlaying ? (
-              <NowPlayingBarsGroup>
-                <NowPlayingBar />
-                <NowPlayingBar className={'[animation-delay:-2.2s]'} />
-                <NowPlayingBar className={'[animation-delay:-3.7s]'} />
-              </NowPlayingBarsGroup>
-            ) : null}
           </NowPlayingContent>
         </>
       )}

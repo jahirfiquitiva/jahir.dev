@@ -1,23 +1,23 @@
 import Icon from '@mdi/react';
 import type { CSSProperties } from 'react';
 
-import { mdiInstagram } from '@/components/icons/mdi';
 import {
+  bluesky,
   gitHubOutline,
   linkedInOutline,
   twitterOutline,
-  bluesky,
-} from '@/components/icons/paths';
+} from '@/components/icons/icons';
+import { mdiInstagram } from '@/components/icons/mdi';
 
 import { BackToTopLink } from './back-to-top';
 import {
-  SocialLinksContainer,
-  SocialLinkItem,
-  GitHubLink,
-  LinkedInLink,
-  TwitterLink,
-  InstagramLink,
   BlueskyLink,
+  GitHubLink,
+  InstagramLink,
+  LinkedInLink,
+  SocialLinkItem,
+  SocialLinksContainer,
+  TwitterLink,
 } from './social-links.styles';
 
 interface SocialLinksProps {
@@ -36,7 +36,11 @@ export const SocialLinks = (props: SocialLinksProps) => {
       style={style}
     >
       <SocialLinkItem>
-        <GitHubLink title={'GitHub'} href={'https://github.com/jahirfiquitiva'}>
+        <GitHubLink
+          title={'GitHub'}
+          href={'https://github.com/jahirfiquitiva'}
+          data-umami-event={'GitHub social link'}
+        >
           <Icon path={gitHubOutline} size={iconSize} />
         </GitHubLink>
       </SocialLinkItem>
@@ -44,12 +48,17 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <LinkedInLink
           title={'LinkedIn'}
           href={'https://linkedin.com/in/jahirfiquitiva'}
+          data-umami-event={'LinkedIn social link'}
         >
           <Icon path={linkedInOutline} size={iconSize} />
         </LinkedInLink>
       </SocialLinkItem>
       <SocialLinkItem>
-        <BlueskyLink title={'Bluesky'} href={'https://bsky.jahir.dev'}>
+        <BlueskyLink
+          title={'Bluesky'}
+          href={'https://bsky.jahir.dev'}
+          data-umami-event={'Bluesky social link'}
+        >
           <Icon path={bluesky} size={iconSize} />
         </BlueskyLink>
       </SocialLinkItem>
@@ -57,6 +66,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <TwitterLink
           title={'Twitter'}
           href={'https://twitter.com/jahirfiquitiva'}
+          data-umami-event={'Twitter social link'}
         >
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
@@ -65,6 +75,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <InstagramLink
           title={'Instagram'}
           href={'https://instagram.com/jahirfiquitiva'}
+          data-umami-event={'Instagram social link'}
         >
           <Icon path={mdiInstagram} size={iconSize} />
         </InstagramLink>

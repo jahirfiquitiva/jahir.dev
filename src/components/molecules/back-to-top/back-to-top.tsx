@@ -47,7 +47,12 @@ export const BackToTop = () => {
   }, [hasMounted, checkScrollTop]);
 
   return (
-    <Fab title={'Scroll back to top'} onClick={scrollToTop} $shown={showButton}>
+    <Fab
+      title={'Scroll back to top'}
+      onClick={scrollToTop}
+      $shown={showButton}
+      data-umami-event={'Back to top FAB'}
+    >
       <FabIcon path={mdiChevronUp} size={1} />
       <FabText>Back to top</FabText>
     </Fab>

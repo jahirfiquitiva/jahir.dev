@@ -14,6 +14,7 @@ export default async function Photo() {
         className={'aspect-[21/9] rounded-8'}
         priority
         zoomable
+        data-umami-event={'Zoomed about page photo'}
       />
       <figcaption>📸&nbsp;&nbsp;{photo.alt}</figcaption>
     </figure>

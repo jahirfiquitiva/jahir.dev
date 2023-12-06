@@ -64,6 +64,7 @@ export const InstaPhoto = (props: InstaPhotoProps) => {
           post.colorPalette?.vibrant
         })`,
       }}
+      data-umami-event={`Checked instagram post: ${post.id}`}
     >
       {media.mediaType === 'IMAGE' ? (
         <StyledPhoto

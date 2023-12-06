@@ -14,10 +14,12 @@ export const NowPlayingCard = tw(Link)`
   transition-colors
   truncate
   max-h-[7rem]
-  aspect-video
-  rounded-t-8
+  rounded-8
+  border
+  border-divider
   hocus:no-underline
   hocus:transform
+  hocus:-translate-y-1
   hocus:border-accent-dark/[0.56]
   hocus:shadow-sm
 `;
@@ -27,12 +29,13 @@ export const NowPlayingContent = tw.div`
   w-full
   flex
   flex-row
-  gap-16
-  p-12
+  gap-14
+  px-12 py-12
   max-w-full
   truncate
-  rounded-t-8
+  rounded-8
   mobile-md:max-h-[7rem]
+  tablet-lg:py-10
   items-center
   backdrop-blur-xl
   backdrop-saturate-200
@@ -46,8 +49,6 @@ export const BackgroundImage = tw(Img)`
   -left-[5%]
   -top-[100%]
   mobile-md:-top-[125%]
-  mobile-lg:-top-[150%]
-  tablet-sm:-top-[230%]
   -z-[1]
   opacity-50
   saturate-125
@@ -67,7 +68,10 @@ export const NowPlayingTexts = tw.div`
   mix-blend-hard-light
 `;
 
-export const NowPlayingHeader = tw.span`
+export const NowPlayingHeader = tw.p`
+  flex
+  items-start
+  gap-12
   text-[0.75rem]
   font-bold
   font-manrope
@@ -105,20 +109,20 @@ export const AlbumImg = tw(Img)`
   aspect-square
   w-auto
   h-auto
-  max-h-full
+  max-h-[72px]
   max-w-full
   border
   border-[rgba(9,17,34,0.12)]
   dark:border-[rgba(255,255,255,0.12)]
+  tablet-sm:max-h-[84px]
 `;
 
-export const NowPlayingBarsGroup = tw.div`
+export const NowPlayingBarsGroup = tw.span`
   relative
   flex
   justify-between
   w-16
   h-16
-  m-16
 `;
 
 export const NowPlayingBar = tw.span`

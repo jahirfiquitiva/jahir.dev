@@ -46,6 +46,7 @@ export const StatCard = (props: StatCardProps) => {
           '--stat-color': statColor || 'var(--accent-dark)',
         } as CSSProperties
       }
+      data-umami-event={`Clicked stat: ${title}`}
     >
       <Value>{value}</Value>
       <span

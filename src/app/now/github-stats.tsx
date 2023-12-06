@@ -1,4 +1,4 @@
-import { gitHubOutline, star } from '@/components/icons/paths';
+import { gitHubOutline, star } from '@/components/icons/icons';
 import { StatCard } from '@/components/views/dashboard/stat-card/stat-card';
 import { getGitHubStats } from '@/lib/github';
 

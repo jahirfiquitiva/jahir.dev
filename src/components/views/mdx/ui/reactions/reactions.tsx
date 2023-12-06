@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 import cx from 'classix';
 import { useEffect } from 'react';
 
+import { award, awardOutline } from '@/components/icons/icons';
 import {
   mdiBookmark,
   mdiBookmarkOutline,
@@ -12,7 +13,6 @@ import {
   mdiThumbUp,
   mdiThumbUpOutline,
 } from '@/components/icons/mdi';
-import { award, awardOutline } from '@/components/icons/paths';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName } from '@/lib/planetscale';
 import { useReactions } from '@/providers/reactions-provider';

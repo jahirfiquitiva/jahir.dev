@@ -3,8 +3,8 @@
 import cx from 'classix';
 import { useMemo } from 'react';
 
+import { moonOutline, sunOutline } from '@/components/icons/icons';
 import { mdiLoading } from '@/components/icons/mdi';
-import { moonOutline, sunOutline } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 
@@ -28,6 +28,7 @@ export const ThemeToggle = () => {
   return (
     <ToolbarButton
       title={`Enable ${themeText} theme`}
+      data-umami-event={`Enable ${themeText} theme`}
       onClick={toggleTheme}
       disabled={!hasMounted}
     >

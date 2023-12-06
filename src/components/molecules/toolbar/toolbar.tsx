@@ -1,5 +1,6 @@
 'use client';
 
+import cx from 'classix';
 import { usePathname } from 'next/navigation';
 import { useState, useCallback, useEffect } from 'react';
 
@@ -52,9 +53,21 @@ export const Toolbar = () => {
   return (
     <Header data-expanded={isExpanded} id={'header'}>
       <Nav $elevated={elevated}>
-        <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
+        <HomeLink
+          href={'/'}
+          title={'Home page'}
+          className={'group/animoji'}
+          data-umami-event={'Home page from toolbar'}
+        >
           <LogoAnimoji />
-          <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
+          <HomeLinkSpan
+            className={cx(
+              'tablet-sm:hidden tablet-sm:invisible',
+              'tablet-sm:pointer-events-none tablet-sm:select-none',
+            )}
+          >
+            Jahir Fiquitiva
+          </HomeLinkSpan>
         </HomeLink>
         <ToolbarNavLinks pathname={pathname} />
         <ToolbarLinksContainer className={'self-start tablet-md:self-center'}>
@@ -64,6 +77,7 @@ export const Toolbar = () => {
           <li className={'self-start'}>
             <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
+              data-umami-event={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}
               aria-controls={'header'}
               onClick={() => {

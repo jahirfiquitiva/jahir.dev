@@ -30,6 +30,7 @@ export const Header = () => (
         'bg-[#f26522] dark:bg-[#f37438]',
         'hocus:bg-[#da5b1f] dark:hocus:bg-[#f26522]',
       )}
+      data-umami-event={'RSS feed'}
     >
       <Icon path={mdiRss} size={0.9} />
       <span>RSS Feed</span>

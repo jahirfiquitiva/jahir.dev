@@ -41,8 +41,8 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
     mobileOnly: true,
   },
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: 'Now',
+    href: '/now',
     className: 'from-gradient-blue to-gradient-green',
     mobileOnly: true,
   },
@@ -54,17 +54,7 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
     <PagesLinksContainer>
       {toolbarLinksList.map((link, index) => {
         return (
-          <LinkItem
-            key={`page-link-${index}`}
-            className={
-              link.mobileOnly
-                ? cx(
-                    'tablet-sm:hidden tablet-sm:invisible',
-                    'tablet-sm:pointer-events-none tablet-sm:select-none',
-                  )
-                : ''
-            }
-          >
+          <LinkItem key={`page-link-${index}`}>
             <ToolbarLink
               title={`${link.title} page`}
               href={link.href as Route}
@@ -72,6 +62,7 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
                 pathname?.startsWith(link.href) ? 'page' : undefined
               }
               className={'group/link'}
+              data-umami-event={`${link.title} page from toolbar`}
             >
               <PageLinkSpan
                 className={cx(

@@ -20,11 +20,9 @@ export default function DashboardPage() {
 }
 
 export const metadata = getStaticMetadata({
-  title: 'Dashboard – Jahir Fiquitiva',
-  description:
-    // eslint-disable-next-line max-len
-    "Get to know the latest stats and what I'm currently listening to on Spotify",
-  exactUrl: 'https://jahir.dev/dashboard',
+  title: 'Now – Jahir Fiquitiva',
+  description: "A simple place to share what's been happening recently",
+  exactUrl: 'https://jahir.dev/now',
   keywords: [
     'dashboard',
     'stats',
@@ -34,6 +32,7 @@ export const metadata = getStaticMetadata({
     'spotify',
     'now playing',
     'instagram post',
+    'now',
   ],
-  image: buildOgImageUrl('dashboard'),
+  image: buildOgImageUrl('now'),
 });

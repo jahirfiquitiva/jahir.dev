@@ -1,10 +1,29 @@
 import { NextResponse } from 'next/server';
 
-import { getNowPlaying, getRecentlyPlayed, mapTrackData } from '@/lib/spotify';
-import type { Track } from '@/types/spotify/entities.d';
+import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
+import type { Track, ReadableTrack } from '@/types/spotify/entities.d';
 
 export const runtime = 'edge';
 export const fetchCache = 'force-no-store';
+
+const mapTrackData = (track?: Track | null): ReadableTrack | null => {
+  if (!track) return null;
+  try {
+    const preAlbumImage = track.album.images.pop();
+    const albumImage = track.album.images.pop() || preAlbumImage;
+    return {
+      name: track.name,
+      artist: track.artists.map((_artist) => _artist.name).join(', '),
+      album: track.album.name,
+      previewUrl: track.preview_url,
+      url: track.external_urls.spotify,
+      image: albumImage,
+      duration: track.duration_ms || 0,
+    };
+  } catch (e) {
+    return null;
+  }
+};
 
 const spotifyResponse = (data: unknown) =>
   NextResponse.json(data, {

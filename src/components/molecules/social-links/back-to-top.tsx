@@ -2,14 +2,17 @@
 
 import Icon from '@mdi/react';
 
-import { squaredChevronUp } from '@/components/icons/paths';
+import { squaredChevronUp } from '@/components/icons/icons';
 import { scrollToTop } from '@/components/molecules/back-to-top/back-to-top';
 
-import { SocialLinkItem, SocialLink } from './social-links.styles';
+import { SocialLink, SocialLinkItem } from './social-links.styles';
 
 export const BackToTopLink = () => {
   return (
-    <SocialLinkItem className={'self-end ml-auto mobile-lg:ml-0'}>
+    <SocialLinkItem
+      className={'self-end ml-auto mobile-lg:ml-0'}
+      data-umami-event={'Back to top'}
+    >
       {/* @ts-expect-error Renders a button, not a link */}
       <SocialLink
         $as={'button'}

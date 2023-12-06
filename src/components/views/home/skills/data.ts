@@ -1,4 +1,6 @@
+import { nextJs } from '@/components/icons/icons';
 import {
+  mdiAccountGroupOutline,
   mdiAndroid,
   mdiGit,
   mdiLanguageCss3,
@@ -9,13 +11,11 @@ import {
   mdiLeaf,
   mdiMaterialDesign,
   mdiNodejs,
+  mdiPaletteSwatchOutline,
   mdiPuzzleOutline,
   mdiReact,
-  mdiAccountGroupOutline,
-  mdiPaletteSwatchOutline,
   mdiTailwind,
 } from '@/components/icons/mdi';
-import { nextJs } from '@/components/icons/paths';
 
 interface Skill {
   name: string;

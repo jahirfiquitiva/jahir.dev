@@ -51,6 +51,7 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
               href={`#${tabsIds[index]}`}
               aria-selected={currentTab === index}
               aria-controls={`tab-${tabsIds[index]}-content`}
+              data-umami-event={`Uses page tab: ${tabName}`}
               onClick={() => {
                 setCurrentTab(index);
               }}
@@ -67,7 +68,10 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
           <ZoomableImg
             src={image}
             alt={"Jahir's desk setup in 2022"}
-            className={'h-auto rounded-8 w-full bg-[#C0BBB2]'}
+            className={cx(
+              'h-auto rounded-8 w-full bg-[#C0BBB2]',
+              'aspect-video object-top',
+            )}
             quality={100}
             placeholder={'blur'}
             priority
@@ -83,7 +87,9 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
               aria-hidden={currentTab !== 0 && currentTab !== index + 1}
               hidden={currentTab !== 0 && currentTab !== index + 1}
             >
-              <Heading $as={'h2'}>{tabsNames[index + 1]}</Heading>
+              <Heading $as={'h2'} className={'text-xl'}>
+                {tabsNames[index + 1]}
+              </Heading>
               <ThemeContext.Provider value={themeData}>
                 {child}
               </ThemeContext.Provider>

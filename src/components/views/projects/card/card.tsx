@@ -5,7 +5,7 @@ import cx from 'classix';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties } from 'react';
 
-import { star } from '@/components/icons/paths';
+import { star } from '@/components/icons/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme-provider';
@@ -54,6 +54,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <StyledProjectCard
       title={`Project: ${project?.name}`}
+      data-umami-event={`View project: ${project?.name}`}
       href={project.link as Route}
       style={
         {

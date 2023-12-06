@@ -33,20 +33,20 @@ const primaryLinks: Array<FooterLinkProps> = [
 
 const secondaryLinks: Array<FooterLinkProps> = [
   {
-    title: 'Uses',
-    href: '/uses',
-    className: 'from-gradient-purple to-gradient-brand',
-    underlineColor: 'purple',
-  },
-  {
     title: 'Donate',
     href: '/donate',
     className: 'from-gradient-brand to-gradient-blue',
     underlineColor: 'brand',
   },
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: 'Uses',
+    href: '/uses',
+    className: 'from-gradient-purple to-gradient-brand',
+    underlineColor: 'purple',
+  },
+  {
+    title: 'Now',
+    href: '/now',
     className: 'from-gradient-blue to-gradient-green',
     underlineColor: 'blue',
   },
@@ -87,6 +87,7 @@ export const Footer = () => {
           href={'/'}
           title={'Home page'}
           className={'hocus:decoration-gradient-brand group/link group/animoji'}
+          data-umami-event={'Home page from footer'}
         >
           <LogoAnimoji />
           <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>

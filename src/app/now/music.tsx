@@ -2,8 +2,7 @@ import cx from 'classix';
 
 import { Heading } from '@/components/core/heading';
 import { NowPlaying } from '@/components/views/dashboard/now-playing/now-playing';
-
-import { TopSongs } from './top-songs';
+import { TunezCard } from '@/components/views/dashboard/now-playing/tunez';
 
 export const MusicData = () => {
   return (
@@ -11,9 +10,14 @@ export const MusicData = () => {
       <Heading $as={'h2'} className={cx('text-xl')}>
         Music
       </Heading>
-      <div className={cx('flex flex-col rounded-8 border border-divider')}>
+      <div
+        className={cx(
+          'grid grid-cols-1 gap-12',
+          'tablet-sm:grid-cols-2 tablet-sm:gap-16',
+        )}
+      >
         <NowPlaying />
-        <TopSongs />
+        <TunezCard />
       </div>
     </article>
   );
