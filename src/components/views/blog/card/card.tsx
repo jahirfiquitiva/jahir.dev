@@ -29,13 +29,14 @@ interface PostCardProps {
   viewsCounter?: PropsWithChildren['children'];
   className?: string;
   style?: CSSProperties;
+  showYear?: boolean;
 }
 
 export const BlogPostCard = (props: PostCardProps) => {
   const hasMounted = useHasMounted();
   const { isDark } = useTheme();
 
-  const { post, viewsCounter, className, style } = props;
+  const { post, viewsCounter, className, style, showYear } = props;
   const { link, slug, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
   const domain = getUrlDomain(rightLink);
@@ -46,7 +47,9 @@ export const BlogPostCard = (props: PostCardProps) => {
   }, [isDark, post.color, hasMounted]);
 
   const a11yDate = formatDate(post.date);
-  const readableDate = formatDate(post.date, { year: undefined });
+  const readableDate = formatDate(post.date, {
+    year: showYear ? 'numeric' : undefined,
+  });
 
   return (
     <PostCard

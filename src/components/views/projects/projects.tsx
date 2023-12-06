@@ -1,4 +1,5 @@
 import Icon from '@mdi/react';
+import cx from 'classix';
 import type { Route } from 'next';
 import { Suspense } from 'react';
 
@@ -49,7 +50,10 @@ export const Projects = async (props: ProjectsProps) => {
           from={'red'}
           to={'purple'}
           $as={full ? 'h1' : 'h2'}
-          className={'w-[unset]'}
+          className={cx(
+            'w-[unset]',
+            full ? '' : 'text-xl [line-height:inherit]',
+          )}
         >
           {!full ? 'Featured ' : ''}Projects
         </Heading>
@@ -61,12 +65,12 @@ export const Projects = async (props: ProjectsProps) => {
             outlined
           >
             <Icon path={mdiFileCodeOutline} size={0.9} />
-            Resume
+            <span>Resume</span>
           </ButtonLink>
           {!full && (
             <ButtonLink title={'View all projects by Jahir'} href={'/projects'}>
               <Icon path={mdiEyeOutline} size={0.9} />
-              View all
+              <span>View all</span>
             </ButtonLink>
           )}
         </ProjectsButtons>

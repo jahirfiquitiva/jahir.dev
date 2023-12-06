@@ -41,6 +41,7 @@ html.dark-inverted {
   --color-inverse: 235 240 251;
   --color-background: #0c121e;
   --color-toolbar: rgba(18 27 44 / 0.65);
+  --color-divider: rgba(var(--color-inverse) / 0.18);
 
   --color-primary-txt: #fff;
   --color-secondary-txt: rgba(var(--color-inverse) / 0.85);
