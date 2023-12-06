@@ -66,7 +66,6 @@ export default function RootLayout(props: PropsWithChildren) {
           defer
           src={'https://umami.jahir.dev/script.js'}
           data-website-id={umamiWebsiteId}
-          data-do-not-track={'true'}
           data-domains={'jahir.dev'}
         />
       </head>
