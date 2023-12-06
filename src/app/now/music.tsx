@@ -2,6 +2,7 @@ import cx from 'classix';
 
 import { Heading } from '@/components/core/heading';
 import { NowPlaying } from '@/components/views/dashboard/now-playing/now-playing';
+import { TunezCard } from '@/components/views/dashboard/now-playing/tunez';
 
 export const MusicData = () => {
   return (
@@ -9,9 +10,14 @@ export const MusicData = () => {
       <Heading $as={'h2'} className={cx('text-xl')}>
         Music
       </Heading>
-      <div className={cx('grid grid-cols-1 gap-12 mobile-md:grid-cols-2')}>
+      <div
+        className={cx(
+          'grid grid-cols-1 gap-12',
+          'tablet-sm:grid-cols-2 tablet-sm:gap-16',
+        )}
+      >
         <NowPlaying />
-        <NowPlaying />
+        <TunezCard />
       </div>
     </article>
   );

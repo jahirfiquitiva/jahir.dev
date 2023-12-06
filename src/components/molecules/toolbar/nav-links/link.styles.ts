@@ -36,7 +36,7 @@ const LinkSpan = tw.span`
 
 export const PageLinkSpan = tw(LinkSpan)`
   self-start
-  p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_calc(var(--floatingMargin,0)/1.5)]
+  p-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))_calc(var(--floatingMargin,0)/1.2)]
 
   group-hocus/link:bg-gradient-to-r
   group-hocus/link:bg-clip-text
