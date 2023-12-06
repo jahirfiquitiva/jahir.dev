@@ -25,7 +25,7 @@ export const NowPlayingTrack = (props: FooterNowPlayingProps) => {
   return (
     <MusicLink
       title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
-      href={(isPlaying ? track.url : '/dashboard') as Route}
+      href={(isPlaying ? track.url : '/now') as Route}
     >
       <RotatingImg
         size={26}

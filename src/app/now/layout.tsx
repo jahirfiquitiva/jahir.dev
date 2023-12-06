@@ -16,7 +16,7 @@ export default function DashboardLayout(props: PropsWithChildren) {
         <Link title={'Now page'} href={'https://nownownow.com/about'}>
           now page
         </Link>
-        . A simple place to share what&apos;s happening recently.
+        . A simple place to share what&apos;s been happening recently.
       </p>
       {props.children}
     </Section>
