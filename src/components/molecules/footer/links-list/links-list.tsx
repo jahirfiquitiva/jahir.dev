@@ -40,7 +40,6 @@ export const FooterLinksList = (props: FooterLinksListProps) => {
               title={link.a11yTitle ? link.a11yTitle : `${link.title} page`}
               openInNewTab={link.openInNewTab}
               className={`hocus:decoration-gradient-${link.underlineColor}`}
-              data-umami-event={`${link.title} page from footer`}
             >
               <FooterLinkSpan
                 className={cx(

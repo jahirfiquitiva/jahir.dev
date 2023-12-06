@@ -56,12 +56,7 @@ const ErrorComponent = (props: { error: Error }) => {
           </div>
         </details>
       ) : null}
-      <ButtonLink
-        href={'/'}
-        title={'Home page'}
-        className={'mt-32'}
-        data-umami-event={'Home from error'}
-      >
+      <ButtonLink href={'/'} title={'Home page'} className={'mt-32'}>
         Go back home
       </ButtonLink>
       <img
