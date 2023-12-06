@@ -33,16 +33,16 @@ const primaryLinks: Array<FooterLinkProps> = [
 
 const secondaryLinks: Array<FooterLinkProps> = [
   {
-    title: 'Uses',
-    href: '/uses',
-    className: 'from-gradient-purple to-gradient-brand',
-    underlineColor: 'purple',
-  },
-  {
     title: 'Donate',
     href: '/donate',
     className: 'from-gradient-brand to-gradient-blue',
     underlineColor: 'brand',
+  },
+  {
+    title: 'Uses',
+    href: '/uses',
+    className: 'from-gradient-purple to-gradient-brand',
+    underlineColor: 'purple',
   },
   {
     title: 'Now',
