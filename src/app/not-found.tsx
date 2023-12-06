@@ -22,7 +22,7 @@ const NotFound = () => {
         href={'/'}
         title={'Home page'}
         className={'mt-32'}
-        data-umami-event={'back-home-from-not-found'}
+        data-umami-event={'Home page from 404'}
       >
         Go back home
       </ButtonLink>

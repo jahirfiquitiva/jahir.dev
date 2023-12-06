@@ -45,7 +45,7 @@ export const Intro = () => {
           <Link
             title={'Colombia on Google Maps'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
-            data-umami-event={'colombia-maps-link'}
+            data-umami-event={'Link to Colombia map'}
           >
             Colombia 🇨🇴
           </Link>

@@ -11,7 +11,7 @@ export const BackToTopLink = () => {
   return (
     <SocialLinkItem
       className={'self-end ml-auto mobile-lg:ml-0'}
-      data-umami-event={'back-to-top'}
+      data-umami-event={'Back to top'}
     >
       {/* @ts-expect-error Renders a button, not a link */}
       <SocialLink

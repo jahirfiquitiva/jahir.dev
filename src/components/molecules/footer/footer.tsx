@@ -87,7 +87,7 @@ export const Footer = () => {
           href={'/'}
           title={'Home page'}
           className={'hocus:decoration-gradient-brand group/link group/animoji'}
-          data-umami-event={'home-from-footer'}
+          data-umami-event={'Home page from footer'}
         >
           <LogoAnimoji />
           <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>

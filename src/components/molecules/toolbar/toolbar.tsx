@@ -57,7 +57,7 @@ export const Toolbar = () => {
           href={'/'}
           title={'Home page'}
           className={'group/animoji'}
-          data-umami-event={'home-from-toolbar'}
+          data-umami-event={'Home page from toolbar'}
         >
           <LogoAnimoji />
           <HomeLinkSpan
@@ -77,12 +77,12 @@ export const Toolbar = () => {
           <li className={'self-start'}>
             <MobileMenuToggle
               title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
+              data-umami-event={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
               aria-expanded={isExpanded}
               aria-controls={'header'}
               onClick={() => {
                 setExpanded(!isExpanded);
               }}
-              data-umami-event={`${isExpanded ? 'collapse' : 'expand'}-menu`}
             >
               <MobileMenuIcon path={isExpanded ? mdiPlus : mdiMenu} size={1} />
             </MobileMenuToggle>

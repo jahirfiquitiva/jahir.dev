@@ -51,7 +51,7 @@ export const BackToTop = () => {
       title={'Scroll back to top'}
       onClick={scrollToTop}
       $shown={showButton}
-      data-umami-event={'back-to-top-fab'}
+      data-umami-event={'Back to top FAB'}
     >
       <FabIcon path={mdiChevronUp} size={1} />
       <FabText>Back to top</FabText>

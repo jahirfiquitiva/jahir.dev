@@ -34,7 +34,7 @@ export const LatestBlogPost = async (props: PropsWithChildren) => (
             'dark:hocus:bg-[rgba(242,101,34,0.18)]',
             'dark:border-[rgba(242,101,34,0.48)] hocus:border-[#f26522]',
           )}
-          data-umami-event={'rss-feed-link-from-home'}
+          data-umami-event={'RSS feed from home page'}
         >
           <Icon path={mdiRss} size={0.9} />
           <span>RSS Feed</span>

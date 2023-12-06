@@ -39,7 +39,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <GitHubLink
           title={'GitHub'}
           href={'https://github.com/jahirfiquitiva'}
-          data-umami-event={'github-link'}
+          data-umami-event={'GitHub social link'}
         >
           <Icon path={gitHubOutline} size={iconSize} />
         </GitHubLink>
@@ -48,7 +48,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <LinkedInLink
           title={'LinkedIn'}
           href={'https://linkedin.com/in/jahirfiquitiva'}
-          data-umami-event={'linkedin-link'}
+          data-umami-event={'LinkedIn social link'}
         >
           <Icon path={linkedInOutline} size={iconSize} />
         </LinkedInLink>
@@ -57,7 +57,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <BlueskyLink
           title={'Bluesky'}
           href={'https://bsky.jahir.dev'}
-          data-umami-event={'bsky-link'}
+          data-umami-event={'Bluesky social link'}
         >
           <Icon path={bluesky} size={iconSize} />
         </BlueskyLink>
@@ -66,7 +66,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <TwitterLink
           title={'Twitter'}
           href={'https://twitter.com/jahirfiquitiva'}
-          data-umami-event={'twitter-link'}
+          data-umami-event={'Twitter social link'}
         >
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
@@ -75,7 +75,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <InstagramLink
           title={'Instagram'}
           href={'https://instagram.com/jahirfiquitiva'}
-          data-umami-event={'instagram-link'}
+          data-umami-event={'Instagram social link'}
         >
           <Icon path={mdiInstagram} size={iconSize} />
         </InstagramLink>
