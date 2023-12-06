@@ -64,7 +64,7 @@ export default function RootLayout(props: PropsWithChildren) {
         <Script
           async
           defer
-          src={'https://umami.jahir.dev/script.js'}
+          src={'https://us.umami.is/script.js'}
           data-website-id={umamiWebsiteId}
         />
       </head>
