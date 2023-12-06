@@ -54,7 +54,8 @@ export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <StyledProjectCard
       title={`Project: ${project?.name}`}
-      data-umami-event={`View project: ${project?.name}`}
+      data-umami-event={'View project'}
+      data-umami-event-project={project?.name}
       href={project.link as Route}
       style={
         {

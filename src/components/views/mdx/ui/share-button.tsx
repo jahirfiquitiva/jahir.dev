@@ -58,7 +58,8 @@ export const ShareButton = (props: ShareButtonProps) => {
           await navigator.share(shareData);
         } catch (err) {}
       }}
-      data-umami-event={`Share blog post: ${title}`}
+      data-umami-event={'Share blog post'}
+      data-umami-event-title={title}
     >
       <Child />
     </Button>
@@ -66,7 +67,8 @@ export const ShareButton = (props: ShareButtonProps) => {
     <ButtonLink
       title={buttonTitle}
       href={shareUrl(title, slug) as Route}
-      data-umami-event={`Share blog post link: ${title}`}
+      data-umami-event={'Share blog post link'}
+      data-umami-event-title={title}
     >
       <Child />
     </ButtonLink>

@@ -39,7 +39,8 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <GitHubLink
           title={'GitHub'}
           href={'https://github.com/jahirfiquitiva'}
-          data-umami-event={'GitHub social link'}
+          data-umami-event={'Social link'}
+          data-umami-event-site={'GitHub'}
         >
           <Icon path={gitHubOutline} size={iconSize} />
         </GitHubLink>
@@ -48,7 +49,8 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <LinkedInLink
           title={'LinkedIn'}
           href={'https://linkedin.com/in/jahirfiquitiva'}
-          data-umami-event={'LinkedIn social link'}
+          data-umami-event={'Social link'}
+          data-umami-event-site={'LinkedIn'}
         >
           <Icon path={linkedInOutline} size={iconSize} />
         </LinkedInLink>
@@ -57,7 +59,8 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <BlueskyLink
           title={'Bluesky'}
           href={'https://bsky.jahir.dev'}
-          data-umami-event={'Bluesky social link'}
+          data-umami-event={'Social link'}
+          data-umami-event-site={'Bluesky'}
         >
           <Icon path={bluesky} size={iconSize} />
         </BlueskyLink>
@@ -66,7 +69,8 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <TwitterLink
           title={'Twitter'}
           href={'https://twitter.com/jahirfiquitiva'}
-          data-umami-event={'Twitter social link'}
+          data-umami-event={'Social link'}
+          data-umami-event-site={'Twitter'}
         >
           <Icon path={twitterOutline} size={iconSize} />
         </TwitterLink>
@@ -75,7 +79,8 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <InstagramLink
           title={'Instagram'}
           href={'https://instagram.com/jahirfiquitiva'}
-          data-umami-event={'Instagram social link'}
+          data-umami-event={'Social link'}
+          data-umami-event-site={'Instagram'}
         >
           <Icon path={mdiInstagram} size={iconSize} />
         </InstagramLink>

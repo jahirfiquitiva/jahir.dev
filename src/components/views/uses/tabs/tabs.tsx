@@ -51,7 +51,8 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
               href={`#${tabsIds[index]}`}
               aria-selected={currentTab === index}
               aria-controls={`tab-${tabsIds[index]}-content`}
-              data-umami-event={`Uses page tab: ${tabName}`}
+              data-umami-event={'View uses page tab'}
+              data-umami-event-tab={tabName}
               onClick={() => {
                 setCurrentTab(index);
               }}

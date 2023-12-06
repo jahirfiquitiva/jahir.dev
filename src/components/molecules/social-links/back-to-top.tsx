@@ -9,10 +9,7 @@ import { SocialLink, SocialLinkItem } from './social-links.styles';
 
 export const BackToTopLink = () => {
   return (
-    <SocialLinkItem
-      className={'self-end ml-auto mobile-lg:ml-0'}
-      data-umami-event={'Back to top'}
-    >
+    <SocialLinkItem className={'self-end ml-auto mobile-lg:ml-0'}>
       {/* @ts-expect-error Renders a button, not a link */}
       <SocialLink
         $as={'button'}
@@ -20,6 +17,8 @@ export const BackToTopLink = () => {
         aria-label={'Scroll back to top'}
         onClick={scrollToTop}
         className={'hocus:text-accent'}
+        data-umami-event={'Back to top'}
+        data-umami-event-src={'Footer'}
       >
         <Icon path={squaredChevronUp} size={0.9} />
       </SocialLink>

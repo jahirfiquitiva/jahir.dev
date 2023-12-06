@@ -26,7 +26,8 @@ export const NowPlayingTrack = (props: FooterNowPlayingProps) => {
     <MusicLink
       title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
       href={(isPlaying ? track.url : '/now') as Route}
-      data-umami-event={'Clicked now playing from footer'}
+      data-umami-event={'Click Now Playing'}
+      data-umami-event-src={'Footer'}
     >
       <RotatingImg
         size={26}

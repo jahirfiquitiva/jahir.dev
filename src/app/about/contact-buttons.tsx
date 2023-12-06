@@ -34,7 +34,8 @@ export default function ContactButtons() {
         href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
         outlined
         className={emailButtonClasses}
-        data-umami-event={'Contact via Email'}
+        data-umami-event={'Contact'}
+        data-umami-event-via={'Email'}
       >
         <Icon path={mdiEmail} size={0.95} />
         <span>Email</span>
@@ -44,7 +45,8 @@ export default function ContactButtons() {
         href={'https://jahir.xyz/twitterdm'}
         outlined
         className={twitterButtonClasses}
-        data-umami-event={'Contact via Twitter'}
+        data-umami-event={'Contact'}
+        data-umami-event-via={'Twitter'}
       >
         <Icon path={twitterOutline} size={0.9} />
         <span>Twitter</span>
@@ -54,7 +56,8 @@ export default function ContactButtons() {
         href={'https://jahir.xyz/tlgrm'}
         outlined
         className={telegramButtonClasses}
-        data-umami-event={'Contact via Telegram'}
+        data-umami-event={'Contact'}
+        data-umami-event-via={'Telegram'}
       >
         <Icon path={telegram} size={0.85} />
         <span>Telegram</span>
