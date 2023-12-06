@@ -52,7 +52,7 @@ export const Intro = () => {
         </IntroParagraph>
         <div className={'flex items-center gap-16 flex-wrap'}>
           <ButtonLink
-            title={'About page'}
+            title={'More about me'}
             href={'/about'}
             data-umami-event={'More about me'}
           >

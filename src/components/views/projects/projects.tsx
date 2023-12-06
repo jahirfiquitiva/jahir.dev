@@ -13,7 +13,7 @@ import projects from '@/data/projects.json';
 import { ProjectCard } from './card/card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styles';
 
-const getSortedProjects = async (hide?: boolean) => {
+const getSortedProjects = (hide?: boolean) => {
   const sortedProjects = projects.sort((a, b) => a.order - b.order);
   if (hide) return sortedProjects.filter((it) => !it.hide);
   return sortedProjects;
@@ -23,8 +23,8 @@ interface ProjectsProps {
   full?: boolean;
 }
 
-const AsyncProjectsList = async (props: ProjectsProps) => {
-  const projects = await getSortedProjects(!props.full);
+const ProjectsList = (props: ProjectsProps) => {
+  const projects = getSortedProjects(!props.full);
   return (
     <ul className={'list-none flex flex-col gap-6'}>
       {(projects || []).map((project, index) => {
@@ -40,45 +40,39 @@ const AsyncProjectsList = async (props: ProjectsProps) => {
   );
 };
 
-export const Projects = async (props: ProjectsProps) => {
-  const { full } = props;
-  return (
-    <Section id={'projects'}>
-      <ProjectsHeader>
-        <Heading
-          shadow={'red'}
-          from={'red'}
-          to={'purple'}
-          $as={full ? 'h1' : 'h2'}
-          className={cx(
-            'w-[unset]',
-            full ? '' : 'text-xl [line-height:inherit]',
-          )}
+export const Projects = async ({ full }: ProjectsProps) => (
+  <Section id={'projects'}>
+    <ProjectsHeader>
+      <Heading
+        shadow={'red'}
+        from={'red'}
+        to={'purple'}
+        $as={full ? 'h1' : 'h2'}
+        className={cx('w-[unset]', full ? '' : 'text-xl [line-height:inherit]')}
+      >
+        {!full ? 'Featured ' : ''}Projects
+      </Heading>
+      <ProjectsButtons>
+        <ButtonLink
+          title={"Jahir's resume pdf file"}
+          href={'/resume' as Route}
+          openInNewTab
+          outlined
+          data-umami-event={'Link to Resume'}
         >
-          {!full ? 'Featured ' : ''}Projects
-        </Heading>
-        <ProjectsButtons>
-          <ButtonLink
-            title={"Jahir's resume pdf file"}
-            href={'/resume' as Route}
-            openInNewTab
-            outlined
-            data-umami-event={'Link to Resume'}
-          >
-            <Icon path={mdiFileCodeOutline} size={0.9} />
-            <span>Resume</span>
+          <Icon path={mdiFileCodeOutline} size={0.9} />
+          <span>Resume</span>
+        </ButtonLink>
+        {!full && (
+          <ButtonLink title={'View all projects by Jahir'} href={'/projects'}>
+            <Icon path={mdiEyeOutline} size={0.9} />
+            <span>View all</span>
           </ButtonLink>
-          {!full && (
-            <ButtonLink title={'View all projects by Jahir'} href={'/projects'}>
-              <Icon path={mdiEyeOutline} size={0.9} />
-              <span>View all</span>
-            </ButtonLink>
-          )}
-        </ProjectsButtons>
-      </ProjectsHeader>
-      <Suspense fallback={<Loading />}>
-        <AsyncProjectsList full={full} />
-      </Suspense>
-    </Section>
-  );
-};
+        )}
+      </ProjectsButtons>
+    </ProjectsHeader>
+    <Suspense fallback={<Loading />}>
+      <ProjectsList full={full} />
+    </Suspense>
+  </Section>
+);
