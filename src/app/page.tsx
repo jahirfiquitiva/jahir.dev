@@ -7,11 +7,11 @@ import { Projects } from '@/components/views/projects/projects';
 import { allReadableBlogs } from '@/utils/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
+const [latestBlogPost] = allReadableBlogs
+  .filter((it) => allowInProgress || !it.inProgress)
+  .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
 export default function Home() {
-  const [latestBlogPost] = allReadableBlogs
-    .filter((it) => allowInProgress || !it.inProgress)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   return (
     <>
       <Intro />

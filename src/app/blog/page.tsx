@@ -12,13 +12,13 @@ import { Header } from './header';
 import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
+const groupedBlogPosts = groupBlogPosts(
+  allReadableBlogs
+    .filter((it) => allowInProgress || !it.inProgress)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
+);
 
 export default function BlogPage() {
-  const groupedBlogPosts = groupBlogPosts(
-    allReadableBlogs
-      .filter((it) => allowInProgress || !it.inProgress)
-      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
-  );
   return (
     <Section id={'blog'}>
       <Header />
