@@ -39,7 +39,7 @@ const Colophon = () => {
       <IconContainer>
         <IconLink
           title={'Umami Analytics'}
-          href={'https://us.umami.is/share/C1Y3tWuauaduZa6W/jahir.dev'}
+          href={'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev'}
         >
           <Icon path={umami} size={3} />
         </IconLink>
@@ -81,7 +81,7 @@ export const Website = () => {
         ,{' '}
         <Link
           title={'Umami Analytics'}
-          href={'https://us.umami.is/share/C1Y3tWuauaduZa6W/jahir.dev'}
+          href={'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev'}
         >
           Umami
         </Link>{' '}
