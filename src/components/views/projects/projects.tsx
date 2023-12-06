@@ -1,9 +1,7 @@
 import Icon from '@mdi/react';
 import cx from 'classix';
 import type { Route } from 'next';
-import { Suspense } from 'react';
 
-import Loading from '@/app/loading';
 import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link/button-link';
 import { Section } from '@/components/core/section';
@@ -40,7 +38,7 @@ const ProjectsList = (props: ProjectsProps) => {
   );
 };
 
-export const Projects = async ({ full }: ProjectsProps) => (
+export const Projects = ({ full }: ProjectsProps) => (
   <Section id={'projects'}>
     <ProjectsHeader>
       <Heading
@@ -71,8 +69,6 @@ export const Projects = async ({ full }: ProjectsProps) => (
         )}
       </ProjectsButtons>
     </ProjectsHeader>
-    <Suspense fallback={<Loading />}>
-      <ProjectsList full={full} />
-    </Suspense>
+    <ProjectsList full={full} />
   </Section>
 );
