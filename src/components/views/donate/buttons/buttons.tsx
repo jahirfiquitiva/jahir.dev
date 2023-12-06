@@ -21,6 +21,7 @@ export const DonateButtons = () => {
         <GitHubSponsorsLink
           href={'https://github.com/sponsors/jahirfiquitiva'}
           title={'Sponsor Jahir on GitHub'}
+          data-umami-event={'donate-option-github'}
         >
           <Icon path={mdiHeartOutline} size={0.9} />
           <span>GitHub Sponsors</span>
@@ -28,6 +29,7 @@ export const DonateButtons = () => {
         <ButtonLink
           href={'https://buymeacoffee.com/jahirfiquitiva'}
           title={'Buy Jahir a Pizza'}
+          data-umami-event={'donate-option-bmac'}
         >
           <Icon path={mdiPizza} size={0.9} className={'-rotate-12'} />
           <span>Buy me a Pizza</span>
@@ -35,6 +37,7 @@ export const DonateButtons = () => {
         <PayPalLink
           href={'https://jahir.xyz/DonatePayPal'}
           title={'Donate to Jahir via PayPal'}
+          data-umami-event={'donate-option-paypal'}
         >
           <Icon path={mdiCreditCardChipOutline} size={0.9} />
           <span>PayPal</span>
@@ -44,6 +47,7 @@ export const DonateButtons = () => {
             'https://www.amazon.com/hz/wishlist/ls/IEAGJXCWA83F?ref_=wl_share'
           }
           title={'Buy Jahir a gift from his Amazon Wishlist'}
+          data-umami-event={'donate-option-amazon'}
         >
           <Icon path={gift} size={0.85} />
           <span>Buy gift</span>

@@ -30,6 +30,7 @@ export const ThemeToggle = () => {
       title={`Enable ${themeText} theme`}
       onClick={toggleTheme}
       disabled={!hasMounted}
+      data-umami-event={`enable-${themeText}-theme`}
     >
       <ToolbarButtonIcon
         path={iconPath}

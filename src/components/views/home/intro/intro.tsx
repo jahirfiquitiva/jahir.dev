@@ -45,6 +45,7 @@ export const Intro = () => {
           <Link
             title={'Colombia on Google Maps'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
+            data-umami-event={'colombia-maps-link'}
           >
             Colombia 🇨🇴
           </Link>
@@ -52,7 +53,7 @@ export const Intro = () => {
         <div className={'flex items-center gap-16 flex-wrap'}>
           <ButtonLink title={'About page'} href={'/about'}>
             <Icon path={mdiAccountCircleOutline} size={1} />
-            More about me
+            <span>More about me</span>
           </ButtonLink>
           <div
             className={cx(

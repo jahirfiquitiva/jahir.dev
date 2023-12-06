@@ -53,7 +53,12 @@ export const Toolbar = () => {
   return (
     <Header data-expanded={isExpanded} id={'header'}>
       <Nav $elevated={elevated}>
-        <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
+        <HomeLink
+          href={'/'}
+          title={'Home page'}
+          className={'group/animoji'}
+          data-umami-event={'home-from-toolbar'}
+        >
           <LogoAnimoji />
           <HomeLinkSpan
             className={cx(
@@ -77,6 +82,7 @@ export const Toolbar = () => {
               onClick={() => {
                 setExpanded(!isExpanded);
               }}
+              data-umami-event={`${isExpanded ? 'collapse' : 'expand'}-menu`}
             >
               <MobileMenuIcon path={isExpanded ? mdiPlus : mdiMenu} size={1} />
             </MobileMenuToggle>

@@ -63,6 +63,7 @@ export const Projects = async (props: ProjectsProps) => {
             href={'/resume' as Route}
             openInNewTab
             outlined
+            data-umami-event={'resume-link'}
           >
             <Icon path={mdiFileCodeOutline} size={0.9} />
             <span>Resume</span>

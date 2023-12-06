@@ -18,7 +18,12 @@ const NotFound = () => {
         has been moved.
       </p>
       <p>Please double check the URL for typos. Otherwise,</p>
-      <ButtonLink href={'/'} title={'Home page'} className={'mt-32'}>
+      <ButtonLink
+        href={'/'}
+        title={'Home page'}
+        className={'mt-32'}
+        data-umami-event={'back-home-from-not-found'}
+      >
         Go back home
       </ButtonLink>
       <img

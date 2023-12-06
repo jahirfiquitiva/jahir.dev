@@ -62,6 +62,7 @@ export const ToolbarNavLinks = (props: { pathname?: string }) => {
                 pathname?.startsWith(link.href) ? 'page' : undefined
               }
               className={'group/link'}
+              data-umami-event={`${link.title}-from-toolbar`}
             >
               <PageLinkSpan
                 className={cx(
