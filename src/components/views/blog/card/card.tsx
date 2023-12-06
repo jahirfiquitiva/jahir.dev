@@ -4,8 +4,8 @@ import Icon from '@mdi/react';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 
+import { calendarOutline } from '@/components/icons/icons';
 import { mdiClockOutline } from '@/components/icons/mdi';
-import { calendarOutline } from '@/components/icons/paths';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
@@ -17,11 +17,11 @@ import { Stat } from '../../mdx/ui/stat';
 
 import {
   PostCard,
-  PostCardHero,
   PostCardContent,
-  PostTitle,
+  PostCardHero,
   PostDescription,
   PostStatsContainer,
+  PostTitle,
 } from './card.styles';
 
 interface PostCardProps {

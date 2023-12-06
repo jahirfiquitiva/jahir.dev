@@ -2,10 +2,10 @@
 
 import Icon from '@mdi/react';
 
-import { squaredChevronUp } from '@/components/icons/paths';
+import { squaredChevronUp } from '@/components/icons/icons';
 import { scrollToTop } from '@/components/molecules/back-to-top/back-to-top';
 
-import { SocialLinkItem, SocialLink } from './social-links.styles';
+import { SocialLink, SocialLinkItem } from './social-links.styles';
 
 export const BackToTopLink = () => {
   return (

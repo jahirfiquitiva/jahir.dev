@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 
+import { calendarOutline } from '@/components/icons/icons';
 import { mdiClockOutline } from '@/components/icons/mdi';
-import { calendarOutline } from '@/components/icons/paths';
 import { Stat } from '@/components/views/mdx/ui/stat';
 import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
 import { formatDate } from '@/utils/date';

@@ -1,23 +1,23 @@
 import Icon from '@mdi/react';
 import type { CSSProperties } from 'react';
 
-import { mdiInstagram } from '@/components/icons/mdi';
 import {
+  bluesky,
   gitHubOutline,
   linkedInOutline,
   twitterOutline,
-  bluesky,
-} from '@/components/icons/paths';
+} from '@/components/icons/icons';
+import { mdiInstagram } from '@/components/icons/mdi';
 
 import { BackToTopLink } from './back-to-top';
 import {
-  SocialLinksContainer,
-  SocialLinkItem,
-  GitHubLink,
-  LinkedInLink,
-  TwitterLink,
-  InstagramLink,
   BlueskyLink,
+  GitHubLink,
+  InstagramLink,
+  LinkedInLink,
+  SocialLinkItem,
+  SocialLinksContainer,
+  TwitterLink,
 } from './social-links.styles';
 
 interface SocialLinksProps {
