@@ -94,6 +94,7 @@
   @apply border border-divider rounded-6;
   @apply font-normal;
   color: inherit;
+  box-decoration-break: clone;
 }
 
 .article pre {
@@ -102,7 +103,7 @@
   color: inherit;
 }
 
-.article [data-rehype-pretty-code-fragment] code {
+.article [data-rehype-pretty-code-figure] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent;
   @apply p-0 text-3xs font-normal;
   line-height: 2;
@@ -114,7 +115,7 @@
   @apply border border-divider;
   @apply rounded-tl-8 rounded-tr-8;
   @apply text-secondary-txt bg-background;
-  @apply mt-2 font-mono text-3xs py-8 px-12;
+  @apply mt-2 font-mono text-3xs py-8 px-12 text-start;
 }
 
 .article [data-rehype-pretty-code-title] + pre {
