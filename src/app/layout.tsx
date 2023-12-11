@@ -1,5 +1,6 @@
 import '@/styles/globals.scss';
 
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter, Manrope } from 'next/font/google';
 import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
@@ -76,6 +77,7 @@ export default function RootLayout(props: PropsWithChildren) {
           <Footer />
           <BackToTop />
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
