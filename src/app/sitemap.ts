@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
 
-  const routes = ['', 'about', 'blog', 'now', 'donate', 'projects', 'uses'].map(
+  const routes = ['', 'about', 'blog', 'donate', 'projects', 'uses'].map(
     (route) => ({
       url: `https://jahir.dev/${route}`,
       lastModified: new Date().toISOString().split('T')[0],

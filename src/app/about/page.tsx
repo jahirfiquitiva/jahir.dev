@@ -1,9 +1,9 @@
 import { Heading } from '@/components/core/heading';
 import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
+import { NowPlaying } from '@/components/molecules/now-playing/now-playing';
+import { TunezCard } from '@/components/molecules/now-playing/tunez';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
-import { NowPlaying } from '@/components/views/dashboard/now-playing/now-playing';
-import { TunezCard } from '@/components/views/dashboard/now-playing/tunez';
 import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';

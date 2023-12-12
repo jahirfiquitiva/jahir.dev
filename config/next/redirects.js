@@ -27,9 +27,10 @@ module.exports = [
   buildRedirect('/links', 'https://links.jahir.dev'),
   buildRedirect('/contact', '/about#contact'),
   /* Dashboard aliases */
-  buildRedirect('/music', '/now'),
-  buildRedirect('/dashboard', '/now'),
-  buildRedirect('/stats', '/now'),
+  buildRedirect('/music', '/about#activity'),
+  buildRedirect('/dashboard', '/about#activity'),
+  buildRedirect('/stats', '/about#activity'),
+  buildRedirect('/now', '/about#activity'),
   /* Donate aliases */
   buildRedirect('/support', '/donate'),
   buildRedirect('/sponsor', '/donate'),
