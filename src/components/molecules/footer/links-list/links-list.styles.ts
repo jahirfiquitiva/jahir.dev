@@ -7,7 +7,7 @@ export const List = tw.ul`
   list-none
   flex
   flex-col
-  gap-12
+  gap-8
   min-w-[140px]
   mobile-md:min-w-[164px]
 `;
@@ -27,6 +27,7 @@ export const FooterLink = tw(Link)`
   inline-flex
   items-center
   self-start
+  text-2xs
   text-tertiary-txt
   font-manrope
   font-semibold

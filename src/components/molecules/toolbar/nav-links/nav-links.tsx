@@ -40,12 +40,6 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
     className: 'from-gradient-purple to-gradient-brand',
     mobileOnly: true,
   },
-  {
-    title: 'Now',
-    href: '/now',
-    className: 'from-gradient-blue to-gradient-green',
-    mobileOnly: true,
-  },
 ];
 
 export const ToolbarNavLinks = (props: { pathname?: string }) => {

@@ -53,5 +53,6 @@ export const LinksContainer = tw.div`
   mobile-md:justify-start
   tablet-sm:justify-between
   tablet-sm:flex-nowrap
-  tablet-sm:gap-0
+  tablet-sm:grid
+  tablet-sm:grid-cols-3
 `;
