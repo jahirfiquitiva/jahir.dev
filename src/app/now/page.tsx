@@ -5,16 +5,12 @@ import { buildOgImageUrl } from '@/utils/og';
 
 import Loading from '../loading';
 
-import { InstagramFeed } from './insta-feed';
-import { MusicData } from './music';
 import { Statistics } from './statistics';
 
 export default function DashboardPage() {
   return (
     <Suspense fallback={<Loading />}>
       <Statistics />
-      <MusicData />
-      <InstagramFeed />
     </Suspense>
   );
 }

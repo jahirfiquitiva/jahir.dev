@@ -4,6 +4,8 @@ import { Heading } from '@/components/core/heading';
 import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
+import { NowPlaying } from '@/components/views/dashboard/now-playing/now-playing';
+import { TunezCard } from '@/components/views/dashboard/now-playing/tunez';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
@@ -110,6 +112,20 @@ export default function AboutPage() {
             <p>There&apos;s a few ways you can get it touch:</p>
             <ContactButtons />
           </div>
+        </div>
+      </Section>
+      <Section id={'activity'}>
+        <Heading $as={'h2'} className={cx('text-xl')}>
+          Activity
+        </Heading>
+        <div
+          className={cx(
+            'grid grid-cols-1 gap-12',
+            'tablet-sm:grid-cols-2 tablet-sm:gap-16',
+          )}
+        >
+          <NowPlaying />
+          <TunezCard />
         </div>
       </Section>
     </>

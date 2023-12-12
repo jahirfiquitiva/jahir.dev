@@ -38,7 +38,7 @@ export const NowPlaying = () => {
           className={cx(
             'flex flex-row',
             'items-center self-center justify-center',
-            'h-full mx-12 my-16',
+            'h-full mx-12 my-28',
           )}
         >
           <Ring
