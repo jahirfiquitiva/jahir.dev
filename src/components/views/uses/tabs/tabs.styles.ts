@@ -54,7 +54,7 @@ export const TabButton = tw.a`
 export const TabButtonText = tw.span`
   block
   w-full
-  px-8 py-2
+  px-8 py-4
   rounded-4
   transition
   tracking-wide

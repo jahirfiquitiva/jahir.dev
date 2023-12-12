@@ -83,7 +83,7 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
           return (
             <TabPanel
               role={'tabpanel'}
-              id={`tab-${tabsIds[index + 1]}-content`}
+              id={tabsIds[index + 1]}
               aria-labelledby={`tab-${tabsIds[index + 1]}`}
               aria-hidden={currentTab !== 0 && currentTab !== index + 1}
               hidden={currentTab !== 0 && currentTab !== index + 1}
