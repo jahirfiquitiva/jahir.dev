@@ -1,6 +1,5 @@
 'use client';
 
-import cx from 'classix';
 import { Children, useEffect, useState, type PropsWithChildren } from 'react';
 
 import image from '@/assets/images/setup-2023.jpg';
@@ -9,6 +8,7 @@ import { NoPaddingSection } from '@/components/core/section';
 import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { ThemeContext, useTheme } from '@/providers/theme-provider';
+import cx from '@/utils/cx';
 
 import { TabButton, TabButtonText, TabPanel, TabsList } from './tabs.styles';
 

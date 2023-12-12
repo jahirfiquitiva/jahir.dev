@@ -1,10 +1,9 @@
-import cx from 'classix';
-
 import a from '@/assets/images/contact/0.png';
 import b from '@/assets/images/contact/1.png';
 import c from '@/assets/images/contact/2.png';
 import d from '@/assets/images/contact/3.png';
 import { Img } from '@/components/core/img';
+import cx from '@/utils/cx';
 import { getRandomItem } from '@/utils/random';
 
 const imagesAlts: Array<string> = [

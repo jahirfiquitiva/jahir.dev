@@ -1,5 +1,6 @@
-import cx from 'classix';
 import type { CSSProperties } from 'react';
+
+import cx from '@/utils/cx';
 
 import styles from './line-wobble.module.scss';
 

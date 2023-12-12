@@ -1,14 +1,14 @@
 'use client';
 
-import cx from 'classix';
 import { usePathname } from 'next/navigation';
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { mdiMenu, mdiPlus } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
+import cx from '@/utils/cx';
 
-import { MobileMenuToggle, MobileMenuIcon } from './buttons/mobile-menu-toggle';
+import { MobileMenuIcon, MobileMenuToggle } from './buttons/mobile-menu-toggle';
 import { ThemeToggle } from './buttons/theme-toggle';
 import { HomeLink, HomeLinkSpan } from './nav-links/link.styles';
 import { ToolbarLinksContainer } from './nav-links/links-container.styles';

@@ -1,9 +1,9 @@
-import cx from 'classix';
 import type { PropsWithChildren } from 'react';
 
 import { Heading } from '@/components/core/heading';
 import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
+import cx from '@/utils/cx';
 
 export default function DashboardLayout(props: PropsWithChildren) {
   return (

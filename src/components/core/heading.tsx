@@ -1,9 +1,9 @@
-import cx from 'classix';
 import type { ComponentProps, ElementType } from 'react';
 import Balancer from 'react-wrap-balancer';
 import tw from 'tailwind-styled-components';
 
 import type { RainbowColor } from '@/types/gradient';
+import cx from '@/utils/cx';
 
 const StyledHeading = tw.h1`
   inline-block

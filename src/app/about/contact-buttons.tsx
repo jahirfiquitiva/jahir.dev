@@ -1,9 +1,9 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 
 import { ButtonLink } from '@/components/core/link/button-link';
 import { telegram, twitterOutline } from '@/components/icons/icons';
 import { mdiEmail } from '@/components/icons/mdi';
+import cx from '@/utils/cx';
 
 const emailButtonClasses = cx(
   'hocus:bg-[rgba(211_60_48/0.08)]',

@@ -1,10 +1,9 @@
-import cx from 'classix';
 import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
-import { twMerge } from 'tailwind-merge';
 import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
+import cx from '@/utils/cx';
 
 import { Grid, GridColumn } from './components/components.styles';
 import { ImageComparison } from './components/image-comparison/image-comparison';
@@ -32,9 +31,7 @@ const components = {
 export const Mdx = (props: MdxProps) => {
   const MdxComponent = getMDXComponent(props.code);
   return (
-    <article
-      className={twMerge(cx(`mdx-article ${styles.article}`, props.className))}
-    >
+    <article className={cx(`mdx-article ${styles.article}`, props.className)}>
       <MdxComponent components={components as MDXComponents} />
     </article>
   );

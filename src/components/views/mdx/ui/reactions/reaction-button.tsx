@@ -1,10 +1,10 @@
 'use client';
 
-import cx from 'classix';
 import type { ComponentProps } from 'react';
 
 import { Ring } from '@/components/core/loaders/ring/ring';
 import type { ReactionName } from '@/lib/planetscale';
+import cx from '@/utils/cx';
 
 import { ReactionIcon as Icon, StyledReactionButton } from './reactions.styles';
 

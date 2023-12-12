@@ -1,9 +1,9 @@
 'use client';
 
-import cx from 'classix';
 import { useCallback, useMemo, useState, type ComponentProps } from 'react';
 
 import { Img } from '@/components/core/img';
+import cx from '@/utils/cx';
 
 import styles from './zoomable-img.module.scss';
 

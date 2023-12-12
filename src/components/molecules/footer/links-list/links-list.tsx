@@ -1,7 +1,7 @@
-import cx from 'classix';
 import type { Route } from 'next';
 
 import type { GradientClass, RainbowColor } from '@/types/gradient';
+import cx from '@/utils/cx';
 
 import { FooterNowPlaying } from '../now-playing/now-playing';
 

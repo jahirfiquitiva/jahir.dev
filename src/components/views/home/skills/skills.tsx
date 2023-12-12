@@ -1,11 +1,11 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 import type { CSSProperties } from 'react';
 
 import { Chip, ChipGroup } from '@/components/core/chip/chip.styles';
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 
 import { skills } from './data';
 

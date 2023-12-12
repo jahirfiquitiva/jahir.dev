@@ -1,7 +1,7 @@
-import cx from 'classix';
 import type { Route } from 'next';
 
 import type { ReadableTrack } from '@/types/spotify/entities.d';
+import cx from '@/utils/cx';
 
 import {
   MusicLink,

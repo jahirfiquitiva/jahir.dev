@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import cx from 'classix';
 
 import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link/button-link';
 import { Section } from '@/components/core/section';
+import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 

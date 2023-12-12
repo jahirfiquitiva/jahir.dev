@@ -1,7 +1,7 @@
-import cx from 'classix';
 import type { Route } from 'next';
 
 import type { GradientClass } from '@/types/gradient';
+import cx from '@/utils/cx';
 
 import { PageLinkSpan, ToolbarLink } from './link.styles';
 import { LinkItem, PagesLinksContainer } from './links-container.styles';

@@ -1,8 +1,8 @@
-import cx from 'classix';
 import { Suspense } from 'react';
 
 import { Heading } from '@/components/core/heading';
 import { StatCard } from '@/components/views/dashboard/stat-card/stat-card';
+import cx from '@/utils/cx';
 
 import { GitHubStats } from './github-stats';
 import { ReactionsStats } from './reactions-stats';

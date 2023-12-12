@@ -1,5 +1,4 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 import type { PropsWithChildren } from 'react';
 
 import { ButtonLink } from '@/components/core/link/button-link';
@@ -10,6 +9,7 @@ import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
 import { ReactionsProvider } from '@/providers/reactions-provider';
 import { getBlog } from '@/utils/blog';
+import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
 import type { Blog } from 'contentlayer/generated';
 

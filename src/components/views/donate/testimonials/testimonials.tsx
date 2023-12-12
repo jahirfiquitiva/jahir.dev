@@ -1,11 +1,11 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 import Balancer from 'react-wrap-balancer';
 
 import { Heading } from '@/components/core/heading';
 import { Img } from '@/components/core/img';
 import { NoPaddingSection } from '@/components/core/section';
 import { mdiFormatQuoteClose } from '@/components/icons/mdi';
+import cx from '@/utils/cx';
 
 import type { SponsorsListProps as TestimonialsProps } from '../sponsors-list/sponsors-list';
 
