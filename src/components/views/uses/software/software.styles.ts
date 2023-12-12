@@ -47,8 +47,9 @@ export const SoftwareItem = tw(Link)`
   pb-2
   rounded-8
   transition
-  text-secondary-txt
-  hocus:text-primary-txt
+  text-[#fff]
+  hocus:text-[#fff]
+  decoration-[#fff]
   outline-primary-txt
   hocus:-translate-y-1
   hocus:translate-x-0
