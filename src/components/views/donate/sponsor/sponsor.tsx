@@ -26,11 +26,11 @@ const imgSizesForTier: Record<AllCategoriesKey, number> = {
 };
 
 const fontSizesForTier: Record<AllCategoriesKey, string> = {
-  unicorn: 'text-2xs',
-  star: 'text-xs',
-  ball: 'text-sm',
-  rocket: 'text-md',
-  diamond: 'text-lg',
+  unicorn: 'text-3xs',
+  star: 'text-2xs',
+  ball: 'text-xs',
+  rocket: 'text-sm',
+  diamond: 'text-md',
 };
 
 const iconForTier: Record<AllCategoriesKey, string> = {
