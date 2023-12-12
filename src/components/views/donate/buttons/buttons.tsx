@@ -1,15 +1,19 @@
 import Icon from '@mdi/react';
 
 import { Heading } from '@/components/core/heading';
-import { ButtonLink } from '@/components/core/link/button-link';
 import { gift } from '@/components/icons/icons';
+import { coffee } from '@/components/icons/icons';
 import {
   mdiCreditCardChipOutline,
   mdiHeartOutline,
-  mdiPizza,
 } from '@/components/icons/mdi';
 
-import { AmazonLink, GitHubSponsorsLink, PayPalLink } from './buttons.styles';
+import {
+  AmazonLink,
+  GitHubSponsorsLink,
+  PayPalLink,
+  BuyMeACoffeeLink,
+} from './buttons.styles';
 
 export const DonateButtons = () => {
   return (
@@ -27,15 +31,15 @@ export const DonateButtons = () => {
           <Icon path={mdiHeartOutline} size={0.9} />
           <span>GitHub Sponsors</span>
         </GitHubSponsorsLink>
-        <ButtonLink
+        <BuyMeACoffeeLink
           href={'https://buymeacoffee.com/jahirfiquitiva'}
-          title={'Buy Jahir a Pizza'}
+          title={'Buy Jahir a Coffee'}
           data-umami-event={'Donate'}
           data-umami-event-via={'Buy me a Coffee'}
         >
-          <Icon path={mdiPizza} size={0.9} className={'-rotate-12'} />
-          <span>Buy me a Pizza</span>
-        </ButtonLink>
+          <Icon path={coffee} size={0.9} />
+          <span>Buy me a Coffee</span>
+        </BuyMeACoffeeLink>
         <PayPalLink
           href={'https://jahir.xyz/DonatePayPal'}
           title={'Donate to Jahir via PayPal'}
