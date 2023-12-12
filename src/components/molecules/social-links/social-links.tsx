@@ -2,7 +2,6 @@ import Icon from '@mdi/react';
 import type { CSSProperties } from 'react';
 
 import {
-  bluesky,
   gitHubOutline,
   linkedInOutline,
   twitterOutline,
@@ -11,7 +10,6 @@ import { mdiInstagram } from '@/components/icons/mdi';
 
 import { BackToTopLink } from './back-to-top';
 import {
-  BlueskyLink,
   GitHubLink,
   InstagramLink,
   LinkedInLink,
@@ -26,7 +24,7 @@ interface SocialLinksProps {
   style?: CSSProperties;
 }
 
-const iconSize = 0.9;
+const iconSize = 0.95;
 export const SocialLinks = (props: SocialLinksProps) => {
   const { withBackToTop, className, style } = props;
   return (
@@ -54,16 +52,6 @@ export const SocialLinks = (props: SocialLinksProps) => {
         >
           <Icon path={linkedInOutline} size={iconSize} />
         </LinkedInLink>
-      </SocialLinkItem>
-      <SocialLinkItem>
-        <BlueskyLink
-          title={'Bluesky'}
-          href={'https://bsky.jahir.dev'}
-          data-umami-event={'Social link'}
-          data-umami-event-site={'Bluesky'}
-        >
-          <Icon path={bluesky} size={iconSize} />
-        </BlueskyLink>
       </SocialLinkItem>
       <SocialLinkItem>
         <TwitterLink

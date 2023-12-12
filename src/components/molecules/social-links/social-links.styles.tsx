@@ -19,8 +19,8 @@ export const SocialLinksContainer = tw.ul`
 
 export const SocialLinkItem = tw.li`
   block
-  h-[30px]
-  w-[30px]
+  h-[33px]
+  w-[33px]
 `;
 
 export const SocialLink = tw(Link)`
@@ -55,9 +55,4 @@ export const TwitterLink = tw(SocialLink)`
 export const InstagramLink = tw(SocialLink)`
   hocus:text-[#d6249f]
   hocus:dark:text-[#da3aa9]
-`;
-
-export const BlueskyLink = tw(SocialLink)`
-  hocus:text-[#0078e6]
-  hocus:dark:text-[#0085ff]
 `;
