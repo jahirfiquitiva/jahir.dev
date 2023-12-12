@@ -9,6 +9,7 @@ import {
   BrandLink,
   BrandLinkSpan,
   LinksContainer,
+  LinksGroupTitle,
 } from './footer.styles';
 import { FooterLinksList, type FooterLinkProps } from './links-list/links-list';
 
@@ -97,37 +98,18 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <LinksContainer>
-        <details title={'Index pages links'} className={'w-full'} open>
-          <summary
-            className={cx(
-              'font-manrope font-bold text-primary-txt',
-              '-py-2 mb-12 cursor-pointer',
-              '[&::marker]:block [&::marker]:mr-12',
-              "[&::marker]:content-['']",
-              "[details[open]_&::marker]:content-['']",
-              "after:content-['↘'] after:ml-6",
-              "[details[open]_&::after]:content-['↖']",
-            )}
-          >
-            Index
-          </summary>
-          <FooterLinksList title={'Primary pages links'} links={primaryLinks} />
+        <details title={'Website pages links'} className={'w-full'} open>
+          <LinksGroupTitle>Index</LinksGroupTitle>
+          <FooterLinksList title={'Website pages links'} links={primaryLinks} />
         </details>
-        <div className={'flex flex-col gap-12'}>
-          <Heading $as={'p'} className={'font-manrope font-bold'}>
-            Social
-          </Heading>
-          <FooterLinksList
-            title={'Secondary pages links'}
-            links={secondaryLinks}
-          />
-        </div>
-        <div className={'flex flex-col gap-12'}>
-          <Heading $as={'p'} className={'font-manrope font-bold'}>
-            Meta
-          </Heading>
+        <details title={'Social links'} className={'w-full'} open>
+          <LinksGroupTitle>Social</LinksGroupTitle>
+          <FooterLinksList title={'Social links'} links={secondaryLinks} />
+        </details>
+        <details title={'Meta links'} className={'w-full'} open>
+          <LinksGroupTitle>Meta</LinksGroupTitle>
           <FooterLinksList meta title={'Meta pages links'} links={metaLinks} />
-        </div>
+        </details>
       </LinksContainer>
       <InnerFooter>
         <BrandLink

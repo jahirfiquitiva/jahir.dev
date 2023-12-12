@@ -22,19 +22,18 @@ export const InnerFooter = tw.div`
   flex-wrap
   gap-16
   -mx-2
-  tablet-sm:justify-between
+  items-center
+  mobile-lg:justify-between
 `;
 
 export const BrandLink = tw(FooterLink)`
   inline-flex
   self-start
+  p-4
   gap-6
   min-h-[30]
   !h-[unset]
   font-bold
-  min-w-[140px]
-  mobile-md:min-w-[164px]
-  tablet-md:min-w-[210px]
 `;
 
 export const BrandLinkSpan = tw(FooterLinkSpan)`
@@ -45,14 +44,23 @@ export const BrandLinkSpan = tw(FooterLinkSpan)`
 `;
 
 export const LinksContainer = tw.div`
-  flex
-  flex-wrap
-  gap-[calc(var(--verticalContentPadding)/2)]
+  grid
+  grid-cols-3
+  gap-x-[calc(var(--verticalContentPadding)/2)]
+  gap-y-[var(--verticalContentPadding)]
   justify-between
   max-w-full
   mobile-md:justify-start
   tablet-sm:justify-between
-  tablet-sm:flex-nowrap
-  tablet-sm:grid
   tablet-sm:grid-cols-3
+`;
+
+export const LinksGroupTitle = tw.summary`
+  font-manrope font-bold text-primary-txt
+  -py-2 mb-12 cursor-pointer
+  [&::marker]:block [&::marker]:mr-12
+  [&::marker]:content-['']
+  [details[open]_&::marker]:content-['']
+  after:content-['↘'] after:ml-6
+  [details[open]_&::after]:content-['↖']
 `;

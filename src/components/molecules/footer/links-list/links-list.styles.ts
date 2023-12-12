@@ -8,18 +8,6 @@ export const List = tw.ul`
   flex
   flex-col
   gap-8
-  min-w-[140px]
-  mobile-md:min-w-[164px]
-`;
-
-export const MetaList = tw(List)`
-  flex-row
-  mt-12
-  w-full
-  tablet-sm:w-[unset]
-  tablet-sm:flex-col
-  tablet-sm:mt-0
-  tablet-sm:min-w-[204px]
 `;
 
 export const FooterLink = tw(Link)`

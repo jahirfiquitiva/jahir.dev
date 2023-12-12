@@ -5,12 +5,7 @@ import cx from '@/utils/cx';
 
 import { FooterNowPlaying } from '../now-playing/now-playing';
 
-import {
-  FooterLink,
-  FooterLinkSpan,
-  List,
-  MetaList,
-} from './links-list.styles';
+import { FooterLink, FooterLinkSpan, List } from './links-list.styles';
 
 export interface FooterLinkProps {
   title: string;
@@ -29,9 +24,8 @@ interface FooterLinksListProps {
 
 export const FooterLinksList = (props: FooterLinksListProps) => {
   const { title, links, meta } = props;
-  const ListComponent = meta ? MetaList : List;
   return (
-    <ListComponent aria-label={title}>
+    <List aria-label={title}>
       {links?.map((link) => {
         return (
           <li key={link.title}>
@@ -56,6 +50,6 @@ export const FooterLinksList = (props: FooterLinksListProps) => {
         );
       })}
       {meta && <FooterNowPlaying />}
-    </ListComponent>
+    </List>
   );
 };

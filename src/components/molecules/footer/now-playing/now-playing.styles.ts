@@ -7,14 +7,13 @@ import { Link } from '@/components/core/link/link';
 export const MusicItem = tw.li`
   min-h-[1.75rem]
   h-full
-  inline-flex
   items-center
   align-middle
   w-full
   max-w-full
-  ml-[2.5rem]
-  mobile-md:ml-64
-  tablet-sm:ml-0
+  hidden
+  tablet-sm:inline-flex
+  tablet-sm:mt-8
 `;
 
 export const MusicLink = tw(Link)`
