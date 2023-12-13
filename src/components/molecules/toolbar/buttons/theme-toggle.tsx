@@ -27,8 +27,6 @@ export const ThemeToggle = () => {
 
   return (
     <ToolbarButton
-      data-umami-event={'Switch theme'}
-      data-umami-event-theme={themeText}
       onClick={toggleTheme}
       disabled={!hasMounted}
       title={`Enable ${themeText} theme`}
