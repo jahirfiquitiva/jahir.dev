@@ -47,7 +47,7 @@ export const PagesLinksContainer = tw(ToolbarLinksContainer)`
   tablet-sm:flex-row
   tablet-sm:visible
   tablet-sm:pointer-events-auto
-  tablet-sm:justify-center
+  tablet-sm:justify-end
   tablet-sm:ml-0
   tablet-sm:gap-[calc(var(--floatingMargin,0)/var(--spaceDivider,1))]
 

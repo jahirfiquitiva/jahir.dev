@@ -28,7 +28,7 @@ export const ToolbarLink = tw(Link)`
 const LinkSpan = tw.span`
   text-[inherit]
   h-full
-  inline-flex
+  inline-block
   items-center
   align-middle
   transform
