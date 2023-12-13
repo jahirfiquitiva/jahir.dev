@@ -3,8 +3,6 @@ import type { Route } from 'next';
 import type { GradientClass, RainbowColor } from '@/types/gradient';
 import cx from '@/utils/cx';
 
-import { FooterNowPlaying } from '../now-playing/now-playing';
-
 import { FooterLink, FooterLinkSpan, List } from './links-list.styles';
 
 export interface FooterLinkProps {
@@ -12,18 +10,17 @@ export interface FooterLinkProps {
   href: string;
   a11yTitle?: string;
   openInNewTab?: boolean;
-  className?: GradientClass;
+  className?: GradientClass | string;
   underlineColor?: RainbowColor;
 }
 
 interface FooterLinksListProps {
   title?: string;
   links?: Array<FooterLinkProps>;
-  meta?: boolean;
 }
 
 export const FooterLinksList = (props: FooterLinksListProps) => {
-  const { title, links, meta } = props;
+  const { title, links } = props;
   return (
     <List aria-label={title}>
       {links?.map((link) => {
@@ -49,7 +46,6 @@ export const FooterLinksList = (props: FooterLinksListProps) => {
           </li>
         );
       })}
-      {meta && <FooterNowPlaying />}
     </List>
   );
 };

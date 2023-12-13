@@ -1,7 +1,5 @@
-import { Heading } from '@/components/core/heading';
 import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
-import cx from '@/utils/cx';
 
 import {
   StyledFooter,
@@ -108,7 +106,7 @@ export const Footer = () => {
         </details>
         <details title={'Meta links'} className={'w-full'} open>
           <LinksGroupTitle>Meta</LinksGroupTitle>
-          <FooterLinksList meta title={'Meta pages links'} links={metaLinks} />
+          <FooterLinksList title={'Meta pages links'} links={metaLinks} />
         </details>
       </LinksContainer>
       <InnerFooter>
