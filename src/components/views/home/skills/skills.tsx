@@ -11,13 +11,13 @@ import { skills } from './data';
 
 export const Skills = () => {
   return (
-    <Section id={'skills'} className={'gap-2'}>
+    <Section id={'skills'} className={'gap-0'}>
       <Heading
         $as={'h2'}
         className={'text-xl'}
-        shadow={'blue'}
-        from={'blue'}
-        to={'green'}
+        shadow={'green'}
+        from={'green'}
+        to={'brand'}
       >
         Skills
       </Heading>

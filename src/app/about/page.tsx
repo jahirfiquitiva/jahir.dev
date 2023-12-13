@@ -3,13 +3,12 @@ import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { NowPlaying } from '@/components/molecules/now-playing/now-playing';
 import { TunezCard } from '@/components/molecules/now-playing/tunez';
-import { SocialLinks } from '@/components/molecules/social-links/social-links';
+import { LetsConnect } from '@/components/views/home/lets-connect';
+import { Skills } from '@/components/views/home/skills/skills';
 import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-import ContactButtons from './contact-buttons';
-import Doodle from './doodle';
 import Photo from './photo';
 
 export default function AboutPage() {
@@ -66,55 +65,17 @@ export default function AboutPage() {
         </p>
 
         <p>Thanks for reading. Hope you have an awesome day! 🌟</p>
-
-        <div
-          className={cx(
-            'flex items-center transition-colors',
-            'border border-divider rounded-6',
-            'py-4 px-6 min-h-[2.625rem]',
-            'hover:border-accent-dark self-start',
-            'mx-auto my-8',
-          )}
-        >
-          <SocialLinks className={'mx-0 mobile-lg:mx-0 tablet-sm:mx-0'} />
-        </div>
       </Section>
-      <Section id={'contact'}>
-        <Heading $as={'h2'} shadow={'brand'} from={'brand'} to={'blue'}>
-          Contact
-        </Heading>
-        <p>
-          I&apos;m always open to chat, connect with new people and explore new
-          opportunities.
-        </p>
-        <div
-          className={cx(
-            'flex flex-col-reverse gap-48',
-            'tablet-sm:flex-row tablet-sm:items-start',
-          )}
-        >
-          <Doodle />
-          <div className={cx('flex flex-col gap-12')}>
-            <p>
-              If you have a project or idea in mind where I can contribute,
-              don&apos;t hesitate contacting me!
-              <br />
-              But please{' '}
-              <Link
-                title={"Don't just say hello page"}
-                href={'https://nohello.net/'}
-              >
-                don&apos;t just say hello
-              </Link>
-              .
-            </p>
-            <p>There&apos;s a few ways you can get it touch:</p>
-            <ContactButtons />
-          </div>
-        </div>
-      </Section>
+      <LetsConnect />
+      <Skills />
       <Section id={'activity'}>
-        <Heading $as={'h2'} className={cx('text-xl')}>
+        <Heading
+          $as={'h2'}
+          className={cx('text-xl')}
+          shadow={'brand'}
+          from={'brand'}
+          to={'blue'}
+        >
           Activity
         </Heading>
         <div

@@ -2,12 +2,11 @@ import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
 
 import {
-  StyledFooter,
-  InnerFooter,
   BrandLink,
   BrandLinkSpan,
-  LinksContainer,
+  InnerFooter,
   LinksGroupTitle,
+  StyledFooter,
 } from './footer.styles';
 import { FooterLinksList, type FooterLinkProps } from './links-list/links-list';
 
@@ -33,14 +32,14 @@ const primaryLinks: Array<FooterLinkProps> = [
   {
     title: 'Donate',
     href: '/donate',
-    className: 'from-gradient-brand to-gradient-blue',
-    underlineColor: 'brand',
+    className: 'from-gradient-purple to-gradient-brand',
+    underlineColor: 'purple',
   },
   {
     title: 'Uses',
     href: '/uses',
-    className: 'from-gradient-purple to-gradient-brand',
-    underlineColor: 'purple',
+    className: 'from-gradient-brand to-gradient-blue',
+    underlineColor: 'brand',
   },
 ];
 

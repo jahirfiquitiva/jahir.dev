@@ -24,7 +24,7 @@ const DonatePageContent = async () => {
 export default async function DonatePage() {
   return (
     <Section id={'donate'}>
-      <Heading shadow={'brand'} from={'brand'} to={'blue'}>
+      <Heading shadow={'purple'} from={'purple'} to={'brand'}>
         Donate
       </Heading>
       <DonatePageContent />

@@ -32,12 +32,12 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
   {
     title: 'Donate',
     href: '/donate',
-    className: 'from-gradient-brand to-gradient-blue',
+    className: 'from-gradient-purple to-gradient-brand',
   },
   {
     title: 'Uses',
     href: '/uses',
-    className: 'from-gradient-purple to-gradient-brand',
+    className: 'from-gradient-brand to-gradient-blue',
     mobileOnly: true,
   },
 ];
