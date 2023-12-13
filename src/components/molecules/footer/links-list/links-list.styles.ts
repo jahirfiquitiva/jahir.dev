@@ -7,7 +7,12 @@ export const List = tw.ul`
   list-none
   flex
   flex-col
-  gap-8
+  items-start
+  flex-wrap
+  gap-y-8
+  tablet-sm:flex-row
+  tablet-sm:items-center
+  tablet-sm:gap-x-16
 `;
 
 export const FooterLink = tw(Link)`

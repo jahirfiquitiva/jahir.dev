@@ -6,15 +6,17 @@ export const StyledFooter = tw.footer`
   w-full
   max-w-[666px]
   mx-auto
-  flex
-  flex-col
+  grid
+  grid-cols-2
   py-[var(--verticalContentPadding)]
   px-14
-  gap-[var(--verticalContentPadding)]
+  gap-x-[calc(var(--verticalContentPadding)/2)]
+  gap-y-[var(--verticalContentPadding)]
   border-t
   border-divider
   tablet-sm:px-16
   tablet-md:px-0
+  tablet-sm:gap-x-40
 `;
 
 export const InnerFooter = tw.div`
@@ -23,6 +25,7 @@ export const InnerFooter = tw.div`
   gap-16
   -mx-2
   items-center
+  col-span-2
   mobile-lg:justify-between
 `;
 
@@ -30,6 +33,7 @@ export const BrandLink = tw(FooterLink)`
   inline-flex
   self-start
   p-4
+  pl-0
   gap-6
   min-h-[30]
   !h-[unset]
@@ -43,24 +47,11 @@ export const BrandLinkSpan = tw(FooterLinkSpan)`
   dark:saturate-150
 `;
 
-export const LinksContainer = tw.div`
-  grid
-  grid-cols-3
-  gap-x-[calc(var(--verticalContentPadding)/2)]
-  gap-y-[var(--verticalContentPadding)]
-  justify-between
-  max-w-full
-  mobile-md:justify-start
-  tablet-sm:justify-between
-  tablet-sm:grid-cols-3
-`;
-
 export const LinksGroupTitle = tw.summary`
   font-manrope font-bold text-primary-txt
-  -py-2 mb-12 cursor-pointer
-  [&::marker]:block [&::marker]:mr-12
+  -py-2 mb-8 cursor-pointer select-none
   [&::marker]:content-['']
   [details[open]_&::marker]:content-['']
-  after:content-['↘'] after:ml-6
-  [details[open]_&::after]:content-['↖']
+  after:content-['→'] after:ml-6
+  [details[open]_&::after]:content-['←']
 `;

@@ -44,27 +44,6 @@ const primaryLinks: Array<FooterLinkProps> = [
   },
 ];
 
-const secondaryLinks: Array<FooterLinkProps> = [
-  {
-    title: 'Donate',
-    href: '/donate',
-    className: 'from-gradient-brand to-gradient-blue',
-    underlineColor: 'brand',
-  },
-  {
-    title: 'Uses',
-    href: '/uses',
-    className: 'from-gradient-purple to-gradient-brand',
-    underlineColor: 'purple',
-  },
-  {
-    title: 'Now',
-    href: '/now',
-    className: 'from-gradient-blue to-gradient-green',
-    underlineColor: 'blue',
-  },
-];
-
 const metaLinks: Array<FooterLinkProps> = [
   {
     title: 'RSS',
@@ -77,10 +56,9 @@ const metaLinks: Array<FooterLinkProps> = [
   {
     title: 'Colophon',
     href: '/uses#website',
-    className: 'from-gradient-brand to-gradient-blue',
+    className: 'from-gradient-purple to-gradient-brand',
     underlineColor: 'brand',
-    a11yTitle: 'View source code on GitHub',
-    openInNewTab: true,
+    a11yTitle: 'Website Colophon',
   },
   {
     title: 'Source',
@@ -95,20 +73,14 @@ const metaLinks: Array<FooterLinkProps> = [
 export const Footer = () => {
   return (
     <StyledFooter>
-      <LinksContainer>
-        <details title={'Website pages links'} className={'w-full'} open>
-          <LinksGroupTitle>Index</LinksGroupTitle>
-          <FooterLinksList title={'Website pages links'} links={primaryLinks} />
-        </details>
-        <details title={'Social links'} className={'w-full'} open>
-          <LinksGroupTitle>Social</LinksGroupTitle>
-          <FooterLinksList title={'Social links'} links={secondaryLinks} />
-        </details>
-        <details title={'Meta links'} className={'w-full'} open>
-          <LinksGroupTitle>Meta</LinksGroupTitle>
-          <FooterLinksList title={'Meta pages links'} links={metaLinks} />
-        </details>
-      </LinksContainer>
+      <details title={'Website pages links'} className={'w-full'} open>
+        <LinksGroupTitle>Index</LinksGroupTitle>
+        <FooterLinksList title={'Website pages links'} links={primaryLinks} />
+      </details>
+      <details title={'Meta links'} className={'w-full'} open>
+        <LinksGroupTitle>Meta</LinksGroupTitle>
+        <FooterLinksList title={'Meta pages links'} links={metaLinks} />
+      </details>
       <InnerFooter>
         <BrandLink
           href={'/'}

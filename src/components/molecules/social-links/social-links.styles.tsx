@@ -7,6 +7,7 @@ export const SocialLinksContainer = tw.ul`
   flex
   flex-1
   items-center
+  justify-end
   gap-6
   -mx-4
   w-full
