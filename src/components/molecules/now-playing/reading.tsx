@@ -1,6 +1,7 @@
 import type { Route } from 'next';
 
 import reading from '@/assets/images/reading.jpg';
+import cx from '@/utils/cx';
 
 import {
   NowPlayingCard,
@@ -32,7 +33,7 @@ export const ReadingCard = () => {
         <AlbumImg
           src={reading}
           alt={'Book cover "tunez" playlist'}
-          className={'aspect-auto border-none rounded-l-2 rounded-r-6'}
+          className={cx('aspect-auto rounded-l-2 rounded-r-6')}
         />
         <NowPlayingTexts>
           <NowPlayingHeader>
