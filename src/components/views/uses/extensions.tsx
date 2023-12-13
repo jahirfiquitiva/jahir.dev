@@ -11,7 +11,7 @@ const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
 const secondExtensionsHalf = extensions.slice(extensionsHalfIndex);
 
 export const ExtensionsGrid = () => (
-  <NoPaddingSection $as={'div'}>
+  <NoPaddingSection $as={'div'} className={'-mt-8'}>
     <p>
       I use the{' '}
       <Link title={'Arc browser'} href={'https://arc.net/gift/92a237df'}>

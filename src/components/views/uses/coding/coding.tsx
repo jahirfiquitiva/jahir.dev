@@ -5,7 +5,7 @@ import { CodeImage } from './code.image';
 
 export const Coding = () => {
   return (
-    <NoPaddingSection $as={'div'}>
+    <NoPaddingSection $as={'div'} className={'-mt-8'}>
       <p>
         I use{' '}
         <Link

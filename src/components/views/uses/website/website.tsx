@@ -60,9 +60,9 @@ const Colophon = () => {
 
 export const Website = () => {
   return (
-    <NoPaddingSection $as={'div'}>
+    <NoPaddingSection $as={'div'} className={'-mt-8'}>
       <p>
-        This website is built using{' '}
+        This website is created with{' '}
         <Link title={'Next.js'} href={'https://nextjs.org/'}>
           Next.js
         </Link>
@@ -89,11 +89,11 @@ export const Website = () => {
         <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
           PlanetScale
         </Link>
-        . It&apos;s all deployed on{' '}
+        . It&apos;s hosted on{' '}
         <Link title={'Vercel'} href={'https://vercel.com/'}>
           Vercel
-        </Link>{' '}
-        and you can check out the source code{' '}
+        </Link>
+        , and if you&apos;re curious, feel free to explore the source code{' '}
         <Link
           title={'View source code on GitHub'}
           href={'https://github.com/jahirfiquitiva/jahir.dev'}

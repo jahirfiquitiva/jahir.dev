@@ -39,7 +39,7 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
   }, [hasMounted, tabsIds]);
 
   return (
-    <NoPaddingSection $as={'div'} className={'gap-32 my-12 flex-1'}>
+    <NoPaddingSection $as={'div'} className={'gap-32 mb-12 flex-1'}>
       <TabsList role={'tablist'}>
         {tabsNames.map((tabName, index) => {
           return (
