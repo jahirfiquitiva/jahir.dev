@@ -4,8 +4,8 @@ import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
 import { Ring } from '@/components/core/loaders/ring/ring';
-import type { NowPlayingResponse } from '@/components/molecules/footer/now-playing/now-playing';
 import { useRequest } from '@/hooks/use-request';
+import type { ReadableTrack } from '@/types/spotify/entities';
 import cx from '@/utils/cx';
 
 import {
@@ -20,6 +20,11 @@ import {
   TrackArtist,
   TrackName,
 } from './now-playing.styles';
+
+export interface NowPlayingResponse {
+  track?: ReadableTrack | null;
+  isPlaying?: boolean;
+}
 
 export const NowPlaying = () => {
   const { data, loading } = useRequest<NowPlayingResponse>('/api/spotify');

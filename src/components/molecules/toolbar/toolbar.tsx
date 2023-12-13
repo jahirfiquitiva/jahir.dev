@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { mdiMenu, mdiPlus } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import cx from '@/utils/cx';
 
 import { MobileMenuIcon, MobileMenuToggle } from './buttons/mobile-menu-toggle';
 import { ThemeToggle } from './buttons/theme-toggle';

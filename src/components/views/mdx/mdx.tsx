@@ -3,12 +3,12 @@ import { getMDXComponent } from 'next-contentlayer/hooks';
 import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
+import { Img } from '@/components/core/img';
 import cx from '@/utils/cx';
 
 import { Grid, GridColumn } from './components/components.styles';
 import { ImageComparison } from './components/image-comparison/image-comparison';
 import { MdxLink } from './components/mdx-link';
-import { ZoomableImg } from './components/zoomable-img/zoomable-img';
 import styles from './mdx.module.scss';
 
 interface MdxProps {
@@ -23,8 +23,9 @@ const components = {
   hr: tw.hr`border-divider`,
   a: MdxLink,
   Link: MdxLink,
-  img: ZoomableImg,
-  Image: ZoomableImg,
+  img: Img,
+  Image: Img,
+  Img,
   Heading,
 };
 

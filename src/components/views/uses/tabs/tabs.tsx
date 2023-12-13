@@ -4,8 +4,8 @@ import { Children, useEffect, useState, type PropsWithChildren } from 'react';
 
 import image from '@/assets/images/setup-2023.jpg';
 import { Heading } from '@/components/core/heading';
+import { Img } from '@/components/core/img';
 import { NoPaddingSection } from '@/components/core/section';
-import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoomable-img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { ThemeContext, useTheme } from '@/providers/theme-provider';
 import cx from '@/utils/cx';
@@ -66,7 +66,7 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
         className={cx('flex flex-col', currentTab === 0 ? 'gap-32' : 'gap-0')}
       >
         {currentTab === 0 && (
-          <ZoomableImg
+          <Img
             src={image}
             alt={"Jahir's desk setup in 2022"}
             className={cx(
@@ -76,7 +76,6 @@ export const Tabs = (props: PropsWithChildren<TabsProps>) => {
             quality={100}
             placeholder={'blur'}
             priority
-            zoomable
           />
         )}
         {Children.map(children, (child, index) => {
