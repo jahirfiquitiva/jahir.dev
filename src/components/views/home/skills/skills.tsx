@@ -1,23 +1,23 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 import type { CSSProperties } from 'react';
 
 import { Chip, ChipGroup } from '@/components/core/chip/chip.styles';
 import { Heading } from '@/components/core/heading';
 import { Section } from '@/components/core/section';
 import { hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 
 import { skills } from './data';
 
 export const Skills = () => {
   return (
-    <Section id={'skills'} className={'gap-2'}>
+    <Section id={'skills'} className={'gap-0'}>
       <Heading
         $as={'h2'}
         className={'text-xl'}
-        shadow={'blue'}
-        from={'blue'}
-        to={'green'}
+        shadow={'green'}
+        from={'green'}
+        to={'brand'}
       >
         Skills
       </Heading>

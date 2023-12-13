@@ -2,11 +2,11 @@ import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
 
 import {
-  StyledFooter,
-  InnerFooter,
   BrandLink,
   BrandLinkSpan,
-  LinksContainer,
+  InnerFooter,
+  LinksGroupTitle,
+  StyledFooter,
 } from './footer.styles';
 import { FooterLinksList, type FooterLinkProps } from './links-list/links-list';
 
@@ -29,26 +29,17 @@ const primaryLinks: Array<FooterLinkProps> = [
     className: 'from-gradient-red to-gradient-purple',
     underlineColor: 'red',
   },
-];
-
-const secondaryLinks: Array<FooterLinkProps> = [
   {
     title: 'Donate',
     href: '/donate',
-    className: 'from-gradient-brand to-gradient-blue',
-    underlineColor: 'brand',
-  },
-  {
-    title: 'Uses',
-    href: '/uses',
     className: 'from-gradient-purple to-gradient-brand',
     underlineColor: 'purple',
   },
   {
-    title: 'Now',
-    href: '/now',
-    className: 'from-gradient-blue to-gradient-green',
-    underlineColor: 'blue',
+    title: 'Uses',
+    href: '/uses',
+    className: 'from-gradient-brand to-gradient-blue',
+    underlineColor: 'brand',
   },
 ];
 
@@ -60,6 +51,13 @@ const metaLinks: Array<FooterLinkProps> = [
     underlineColor: 'yellow',
     a11yTitle: 'RSS Feed',
     openInNewTab: true,
+  },
+  {
+    title: 'Colophon',
+    href: '/uses#website',
+    className: 'from-gradient-purple to-gradient-brand',
+    underlineColor: 'brand',
+    a11yTitle: 'Website Colophon',
   },
   {
     title: 'Source',
@@ -74,14 +72,14 @@ const metaLinks: Array<FooterLinkProps> = [
 export const Footer = () => {
   return (
     <StyledFooter>
-      <LinksContainer>
-        <FooterLinksList title={'Primary pages links'} links={primaryLinks} />
-        <FooterLinksList
-          title={'Secondary pages links'}
-          links={secondaryLinks}
-        />
-        <FooterLinksList meta title={'Meta pages links'} links={metaLinks} />
-      </LinksContainer>
+      <details title={'Website pages links'} className={'w-full'} open>
+        <LinksGroupTitle>Index</LinksGroupTitle>
+        <FooterLinksList title={'Website pages links'} links={primaryLinks} />
+      </details>
+      <details title={'Meta links'} className={'w-full'} open>
+        <LinksGroupTitle>Meta</LinksGroupTitle>
+        <FooterLinksList title={'Meta pages links'} links={metaLinks} />
+      </details>
       <InnerFooter>
         <BrandLink
           href={'/'}

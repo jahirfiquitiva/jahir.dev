@@ -7,19 +7,12 @@ export const List = tw.ul`
   list-none
   flex
   flex-col
-  gap-12
-  min-w-[140px]
-  mobile-md:min-w-[164px]
-`;
-
-export const MetaList = tw(List)`
-  flex-row
-  mt-12
-  w-full
-  tablet-sm:w-[unset]
-  tablet-sm:flex-col
-  tablet-sm:mt-0
-  tablet-sm:min-w-[204px]
+  items-start
+  flex-wrap
+  gap-y-8
+  tablet-sm:flex-row
+  tablet-sm:items-center
+  tablet-sm:gap-x-16
 `;
 
 export const FooterLink = tw(Link)`
@@ -27,6 +20,7 @@ export const FooterLink = tw(Link)`
   inline-flex
   items-center
   self-start
+  text-2xs
   text-tertiary-txt
   font-manrope
   font-semibold

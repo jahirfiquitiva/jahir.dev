@@ -15,5 +15,5 @@ export const Stat = tw(StatBase)`
   rounded-6
   transition
   bg-accent-dark/[0.042]
-  dark:bg-accent-dark/[0.09]
+  dark:bg-accent-dark/[0.12]
 `;

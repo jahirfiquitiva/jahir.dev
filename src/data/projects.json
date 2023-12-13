@@ -87,6 +87,7 @@
     "link": "https://dashbud.dev",
     "color": "#9853fd",
     "darkColor": "#9853fd",
+    "hide": true,
     "stack": ["html5", "css3", "javascript", "react"],
     "repo": "dashbud",
     "iconMeta": {

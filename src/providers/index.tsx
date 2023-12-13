@@ -2,7 +2,6 @@
 
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { type PropsWithChildren } from 'react';
-import { Provider as BalancerProvider } from 'react-wrap-balancer';
 
 import { ThemeProvider } from './theme-provider';
 
@@ -18,9 +17,7 @@ export function Providers(props: PropsWithChildren) {
       defaultTheme={'system'}
       value={themes}
     >
-      <ThemeProvider>
-        <BalancerProvider>{props.children}</BalancerProvider>
-      </ThemeProvider>
+      <ThemeProvider>{props.children}</ThemeProvider>
     </NextThemeProvider>
   );
 }

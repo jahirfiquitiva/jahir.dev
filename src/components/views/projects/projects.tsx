@@ -1,5 +1,4 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 import type { Route } from 'next';
 
 import { Heading } from '@/components/core/heading';
@@ -7,6 +6,7 @@ import { ButtonLink } from '@/components/core/link/button-link';
 import { Section } from '@/components/core/section';
 import { mdiEyeOutline, mdiFileCodeOutline } from '@/components/icons/mdi';
 import projects from '@/data/projects.json';
+import cx from '@/utils/cx';
 
 import { ProjectCard } from './card/card';
 import { ProjectsButtons, ProjectsHeader } from './projects.styles';

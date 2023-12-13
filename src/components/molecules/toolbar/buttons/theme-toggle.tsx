@@ -1,12 +1,12 @@
 'use client';
 
-import cx from 'classix';
 import { useMemo } from 'react';
 
 import { moonOutline, sunOutline } from '@/components/icons/icons';
 import { mdiLoading } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
+import cx from '@/utils/cx';
 
 import { ToolbarButton, ToolbarButtonIcon } from './buttons.styles';
 
@@ -27,8 +27,6 @@ export const ThemeToggle = () => {
 
   return (
     <ToolbarButton
-      data-umami-event={'Switch theme'}
-      data-umami-event-theme={themeText}
       onClick={toggleTheme}
       disabled={!hasMounted}
       title={`Enable ${themeText} theme`}

@@ -7,6 +7,7 @@ export const SocialLinksContainer = tw.ul`
   flex
   flex-1
   items-center
+  justify-end
   gap-6
   -mx-4
   w-full
@@ -19,8 +20,8 @@ export const SocialLinksContainer = tw.ul`
 
 export const SocialLinkItem = tw.li`
   block
-  h-[30px]
-  w-[30px]
+  h-[34px]
+  min-w-[34px]
 `;
 
 export const SocialLink = tw(Link)`
@@ -32,9 +33,10 @@ export const SocialLink = tw(Link)`
   w-full
   rounded-6
   text-tertiary-txt
-  hocus:bg-accent-dark/[0.1]
+  hocus:bg-accent-dark/[0.06]
   hocus:text-secondary-txt
   hocus:no-underline
+  dark:hocus:bg-accent-dark/[0.24]
 `;
 
 export const GitHubLink = tw(SocialLink)`
@@ -53,11 +55,11 @@ export const TwitterLink = tw(SocialLink)`
 `;
 
 export const InstagramLink = tw(SocialLink)`
-  hocus:text-[#d6249f]
-  hocus:dark:text-[#da3aa9]
+  hocus:text-[#c13584]
+  hocus:dark:text-[#cd5d9d]
 `;
 
-export const BlueskyLink = tw(SocialLink)`
-  hocus:text-[#0078e6]
-  hocus:dark:text-[#0085ff]
+export const EmailLink = tw(SocialLink)`
+  hocus:text-[#ea4335]
+  hocus:dark:text-[#ec5649]
 `;

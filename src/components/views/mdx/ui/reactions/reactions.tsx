@@ -1,7 +1,6 @@
 'use client';
 
 import confetti from 'canvas-confetti';
-import cx from 'classix';
 import { useEffect } from 'react';
 
 import { award, awardOutline } from '@/components/icons/icons';
@@ -17,6 +16,7 @@ import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName } from '@/lib/planetscale';
 import { useReactions } from '@/providers/reactions-provider';
 import { useTheme } from '@/providers/theme-provider';
+import cx from '@/utils/cx';
 
 import { ReactionButton } from './reaction-button';
 import { ReactionsGroup } from './reactions.styles';

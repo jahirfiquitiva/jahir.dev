@@ -1,7 +1,7 @@
 import type { Route } from 'next';
 
+import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link/link';
-import { ZoomableImg } from '@/components/views/mdx/components/zoomable-img/zoomable-img';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
 
@@ -26,13 +26,12 @@ export const Hero = (props: HeroProps) => {
 
   return (
     <figure className={'my-20'}>
-      <ZoomableImg
+      <Img
         src={hero || ''}
         alt={`Hero image for blog post "${title}"`}
         className={'aspect-[2/1] h-auto rounded-8 w-full'}
         quality={100}
         priority
-        zoomable
         {...extraProps}
       />
       {source ? (

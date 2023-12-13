@@ -72,5 +72,6 @@ export const PostStatsContainer = tw.div`
   text-tertiary-txt
   text-[0.75rem]
   flex-wrap
+  max-w-full
   tablet-sm:gap-x-12
 `;

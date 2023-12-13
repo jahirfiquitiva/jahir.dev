@@ -1,12 +1,12 @@
 'use client';
 
-import cx from 'classix';
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
 import { Ring } from '@/components/core/loaders/ring/ring';
-import type { NowPlayingResponse } from '@/components/molecules/footer/now-playing/now-playing';
 import { useRequest } from '@/hooks/use-request';
+import type { ReadableTrack } from '@/types/spotify/entities';
+import cx from '@/utils/cx';
 
 import {
   AlbumImg,
@@ -21,6 +21,11 @@ import {
   TrackName,
 } from './now-playing.styles';
 
+export interface NowPlayingResponse {
+  track?: ReadableTrack | null;
+  isPlaying?: boolean;
+}
+
 export const NowPlaying = () => {
   const { data, loading } = useRequest<NowPlayingResponse>('/api/spotify');
   const { track, isPlaying } = data || { isPlaying: false };
@@ -30,15 +35,14 @@ export const NowPlaying = () => {
       title={`Listen to "${track?.name}" by "${track?.artist}" on Spotify`}
       href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
-      data-umami-event={'Click Now Playing'}
-      data-umami-event-src={'Now Page'}
+      data-umami-event={'Now Playing'}
     >
       {loading ? (
         <div
           className={cx(
             'flex flex-row',
             'items-center self-center justify-center',
-            'h-full mx-12 my-16',
+            'h-full mx-12 my-28',
           )}
         >
           <Ring

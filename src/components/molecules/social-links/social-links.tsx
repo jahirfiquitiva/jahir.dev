@@ -1,17 +1,13 @@
 import Icon from '@mdi/react';
 import type { CSSProperties } from 'react';
 
-import {
-  bluesky,
-  gitHubOutline,
-  linkedInOutline,
-  twitterOutline,
-} from '@/components/icons/icons';
-import { mdiInstagram } from '@/components/icons/mdi';
+import { gitHub, linkedIn } from '@/components/icons/icons';
+import { mdiEmail, mdiInstagram } from '@/components/icons/mdi';
+import cx from '@/utils/cx';
 
 import { BackToTopLink } from './back-to-top';
 import {
-  BlueskyLink,
+  EmailLink,
   GitHubLink,
   InstagramLink,
   LinkedInLink,
@@ -42,7 +38,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
           data-umami-event={'Social link'}
           data-umami-event-site={'GitHub'}
         >
-          <Icon path={gitHubOutline} size={iconSize} />
+          <Icon path={gitHub} size={iconSize} />
         </GitHubLink>
       </SocialLinkItem>
       <SocialLinkItem>
@@ -52,27 +48,26 @@ export const SocialLinks = (props: SocialLinksProps) => {
           data-umami-event={'Social link'}
           data-umami-event-site={'LinkedIn'}
         >
-          <Icon path={linkedInOutline} size={iconSize} />
+          <Icon path={linkedIn} size={iconSize} />
         </LinkedInLink>
       </SocialLinkItem>
       <SocialLinkItem>
-        <BlueskyLink
-          title={'Bluesky'}
-          href={'https://bsky.jahir.dev'}
-          data-umami-event={'Social link'}
-          data-umami-event-site={'Bluesky'}
-        >
-          <Icon path={bluesky} size={iconSize} />
-        </BlueskyLink>
-      </SocialLinkItem>
-      <SocialLinkItem>
         <TwitterLink
-          title={'Twitter'}
+          title={'𝕏 or Twitter'}
           href={'https://twitter.com/jahirfiquitiva'}
           data-umami-event={'Social link'}
-          data-umami-event-site={'Twitter'}
+          data-umami-event-site={'𝕏 or Twitter'}
         >
-          <Icon path={twitterOutline} size={iconSize} />
+          <span
+            className={cx(
+              'font-manrope font-bold',
+              'w-[18px] h-[18px]',
+              'flex items-center justify-center',
+              'leading-none text-lg',
+            )}
+          >
+            𝕏
+          </span>
         </TwitterLink>
       </SocialLinkItem>
       <SocialLinkItem>
@@ -84,6 +79,16 @@ export const SocialLinks = (props: SocialLinksProps) => {
         >
           <Icon path={mdiInstagram} size={iconSize} />
         </InstagramLink>
+      </SocialLinkItem>
+      <SocialLinkItem>
+        <EmailLink
+          title={'Email'}
+          href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
+          data-umami-event={'Social link'}
+          data-umami-event-site={'Email'}
+        >
+          <Icon path={mdiEmail} size={iconSize} />
+        </EmailLink>
       </SocialLinkItem>
       {Boolean(withBackToTop) && <BackToTopLink />}
     </SocialLinksContainer>

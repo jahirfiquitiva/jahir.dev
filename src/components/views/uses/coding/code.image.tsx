@@ -1,14 +1,13 @@
 'use client';
 
-import cx from 'classix';
 import { useMemo } from 'react';
 
 import darkCode from '@/assets/images/code/code-dark.png';
 import lightCode from '@/assets/images/code/code-light.png';
+import { Img } from '@/components/core/img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
-
-import { ZoomableImg } from '../../mdx/components/zoomable-img/zoomable-img';
+import cx from '@/utils/cx';
 
 export const CodeImage = () => {
   const hasMounted = useHasMounted();
@@ -20,7 +19,7 @@ export const CodeImage = () => {
   }, [hasMounted, isDark]);
 
   return (
-    <ZoomableImg
+    <Img
       src={image}
       alt={"Preview of Jahir's VSCodium configuration"}
       className={cx(
@@ -31,7 +30,6 @@ export const CodeImage = () => {
         hasMounted ? 'opacity-100' : 'opacity-50',
       )}
       placeholder={'blur'}
-      zoomable
     />
   );
 };

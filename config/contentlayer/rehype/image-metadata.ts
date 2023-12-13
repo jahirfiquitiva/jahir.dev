@@ -113,34 +113,6 @@ const addProps = async (node: ImageNode): Promise<ImageNode> => {
   return node;
 };
 
-const elementsWhereImgCantZoom = ['a', 'button', 'Link', 'GridColumn'];
-const canZoomImg = (parentTag?: string) => {
-  if (!parentTag) return true;
-  // Images within one of `elementsWhereImgCantZoom`  tag cannot be zoomed.
-  const canZoom = !elementsWhereImgCantZoom.includes(parentTag);
-  if (canZoom && parentTag !== 'p') {
-    console.log(`Found an img within <${parentTag} />. Can it be zoomed?`);
-  }
-  return canZoom;
-};
-
-const addZoomableProp = (node?: ImageNode | null, parentTag?: string) => {
-  if (!node) return;
-  const isJsxImage = node.type === 'mdxJsxFlowElement' && node.name === 'Image';
-  // If node is not an image node, do nothing
-  if (!(isImageNode(node) || isJsxImage)) return;
-
-  const zoomableDefined =
-    node.properties && node.properties.hasOwnProperty('zoomable');
-  // if zoomable property was already set, do nothing
-  if (zoomableDefined) return;
-
-  node.properties = {
-    ...(node.properties || {}),
-    zoomable: canZoomImg(parentTag),
-  };
-};
-
 const imageMetadata = () => {
   return async (tree: Node) => {
     const images: ImageNode[] = [];
@@ -148,22 +120,12 @@ const imageMetadata = () => {
     // Traverse elements
     visit(tree, ['mdxJsxFlowElement', 'element'], (node) => {
       const typedNode = node as ImageNode;
-      if (typedNode) {
-        const { children = [] } = typedNode;
-        for (const child of children) {
-          addZoomableProp(child, typedNode.tagName || typedNode.name);
-        }
-        addZoomableProp(typedNode);
-        if (isImageNode(typedNode)) {
-          images.push(typedNode);
-        }
-      }
+      if (typedNode && isImageNode(typedNode)) images.push(typedNode);
     });
 
     for (const image of images) {
       await addProps(image);
     }
-
     return tree;
   };
 };

@@ -1,12 +1,12 @@
 import 'server-only';
 
 import Icon from '@mdi/react';
-import cx from 'classix';
 import { Suspense, cache } from 'react';
 
 import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';
 import { mdiEyeOutline } from '@/components/icons/mdi';
 import { db } from '@/lib/planetscale';
+import cx from '@/utils/cx';
 
 import { Stat, StatBase } from './../stat';
 import { trackView as trackViewFunc } from './actions';

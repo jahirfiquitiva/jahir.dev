@@ -6,6 +6,6 @@ export const fontSizes = {
   md: '1.25rem', // h5
   sm: '1.125rem', // h6
   xs: '1rem', // body, p
-  '2xs': '0.921875rem', // small
-  '3xs': '0.84375rem', // (?)
+  '2xs': '0.90625rem', // small
+  '3xs': '0.8125rem', // (?)
 };

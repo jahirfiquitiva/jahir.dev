@@ -1,7 +1,7 @@
-import cx from 'classix';
 import type { Route } from 'next';
 
 import type { GradientClass } from '@/types/gradient';
+import cx from '@/utils/cx';
 
 import { PageLinkSpan, ToolbarLink } from './link.styles';
 import { LinkItem, PagesLinksContainer } from './links-container.styles';
@@ -32,18 +32,12 @@ const toolbarLinksList: Array<ToolbarLinkItem> = [
   {
     title: 'Donate',
     href: '/donate',
-    className: 'from-gradient-brand to-gradient-blue',
+    className: 'from-gradient-purple to-gradient-brand',
   },
   {
     title: 'Uses',
     href: '/uses',
-    className: 'from-gradient-purple to-gradient-brand',
-    mobileOnly: true,
-  },
-  {
-    title: 'Now',
-    href: '/now',
-    className: 'from-gradient-blue to-gradient-green',
+    className: 'from-gradient-brand to-gradient-blue',
     mobileOnly: true,
   },
 ];

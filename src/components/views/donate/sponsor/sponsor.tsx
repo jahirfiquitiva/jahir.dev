@@ -1,5 +1,4 @@
 import Icon from '@mdi/react';
-import cx from 'classix';
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
@@ -7,6 +6,7 @@ import { Img } from '@/components/core/img';
 import { diamond, rocket, star, unicorn } from '@/components/icons/icons';
 import { mdiCrystalBall } from '@/components/icons/mdi';
 import { hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 
 import {
   Container,
@@ -26,11 +26,11 @@ const imgSizesForTier: Record<AllCategoriesKey, number> = {
 };
 
 const fontSizesForTier: Record<AllCategoriesKey, string> = {
-  unicorn: 'text-2xs',
-  star: 'text-xs',
-  ball: 'text-sm',
-  rocket: 'text-md',
-  diamond: 'text-lg',
+  unicorn: 'text-3xs',
+  star: 'text-2xs',
+  ball: 'text-xs',
+  rocket: 'text-sm',
+  diamond: 'text-md',
 };
 
 const iconForTier: Record<AllCategoriesKey, string> = {

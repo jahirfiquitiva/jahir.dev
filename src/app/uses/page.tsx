@@ -14,7 +14,7 @@ import { buildOgImageUrl } from '@/utils/og';
 export default function UsesPage() {
   return (
     <Section id={'uses'} className={'flex-1 gap-24'}>
-      <Heading shadow={'purple'} from={'purple'} to={'brand'}>
+      <Heading shadow={'brand'} from={'brand'} to={'blue'}>
         What do I use?
       </Heading>
       <ReactionsProvider slug={'blog--uses'}>

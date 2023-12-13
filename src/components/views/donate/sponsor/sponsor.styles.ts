@@ -7,10 +7,11 @@ export const Container = tw(Link)`
   flex
   items-center
   justify-between
-  gap-12
-  pl-14
-  pr-12
-  py-12
+  gap-10
+  pl-10
+  pr-8
+  py-8
+  rounded-0
   text-secondary-txt
   no-underline
   group/sponsor
@@ -23,8 +24,6 @@ export const NameAndPhotoContainer = tw.div`
   flex
   items-center
   gap-10
-  font-manrope
-  font-semibold
   group-hocus/sponsor:underline
 `;
 
@@ -41,4 +40,6 @@ export const ListItem = tw.li`
   first-of-type:rounded-t-8
   last-of-type:rounded-b-8
   last-of-type:border-b-0
+  [&:first-of-type>a]:rounded-t-8
+  [&:last-of-type>a]:rounded-b-8
 `;

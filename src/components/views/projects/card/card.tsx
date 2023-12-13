@@ -1,7 +1,6 @@
 'use client';
 
 import Icon from '@mdi/react';
-import cx from 'classix';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties } from 'react';
 
@@ -11,6 +10,7 @@ import { useImmutableRequest } from '@/hooks/use-request';
 import { useTheme } from '@/providers/theme-provider';
 import type { Project } from '@/types/project';
 import { getReadableColor, hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 
 import {
   ProjectIcon,

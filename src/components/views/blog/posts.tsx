@@ -1,5 +1,4 @@
-import cx from 'classix';
-
+import cx from '@/utils/cx';
 import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../mdx/ui/views/counter';
