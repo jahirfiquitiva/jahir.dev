@@ -36,7 +36,7 @@ export const PostCardHero = tw(Img)`
   rounded-4
   tablet-sm:mt-2
   tablet-sm:min-h-full
-  tablet-sm:aspect-[5/3]
+  tablet-sm:aspect-[4/3]
   tablet-sm:max-w-[160px]
 `;
 
