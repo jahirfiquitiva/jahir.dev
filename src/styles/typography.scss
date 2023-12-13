@@ -18,9 +18,14 @@ h4,
 h5,
 h6 {
   @apply inline-block text-primary-txt font-bold font-manrope;
+  text-wrap: balance;
   p {
     font-weight: inherit;
   }
+}
+
+.balance {
+  text-wrap: balance;
 }
 
 b,

@@ -8899,15 +8899,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-wrap-balancer@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "react-wrap-balancer@npm:1.1.0"
-  peerDependencies:
-    react: ">=16.8.0 || ^17.0.0 || ^18"
-  checksum: 4cf5f78231b22be80f9580b6fee69ad87a8689dc0efef56dd5d6358b1c5028fb624c4b3070d8375815209d06c1795ed3e9e43adc35558aedd2c618076cf4ccb6
-  languageName: node
-  linkType: hard
-
 "react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -9412,7 +9403,6 @@ __metadata:
     react: "npm:^18.2.0"
     react-compare-image: "npm:^3.4.0"
     react-dom: "npm:^18.2.0"
-    react-wrap-balancer: "npm:^1.1.0"
     reading-time: "npm:^1.5.0"
     rehype: "npm:^13.0.1"
     rehype-accessible-emojis: "npm:^0.3.2"

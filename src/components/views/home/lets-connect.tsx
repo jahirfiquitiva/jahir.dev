@@ -3,11 +3,9 @@ import cx from '@/utils/cx';
 
 export const LetsConnect = () => {
   return (
-    <>
-      <section id={'contact'} className={cx('flex flex-col gap-6', '-mt-28')}>
-        <p className={'text-2xs font-manrope font-bold'}>Let&apos;s connect!</p>
-        <SocialLinks className={'justify-start'} />
-      </section>
-    </>
+    <section id={'contact'} className={cx('flex flex-col gap-6 -mt-20')}>
+      <p className={'text-2xs font-manrope font-bold'}>Let&apos;s connect!</p>
+      <SocialLinks className={'justify-start'} />
+    </section>
   );
 };

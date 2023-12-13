@@ -1,5 +1,4 @@
 import Icon from '@mdi/react';
-import Balancer from 'react-wrap-balancer';
 
 import { Heading } from '@/components/core/heading';
 import { Img } from '@/components/core/img';
@@ -24,9 +23,7 @@ const getComponentForSponsor = (
           size={2}
           className={'text-divider absolute top-6 right-8'}
         />
-        <p className={'transition-colors mr-28'}>
-          <Balancer ratio={0.5}>{sponsor.message}</Balancer>
-        </p>
+        <p className={'transition-colors mr-28 balance'}>{sponsor.message}</p>
         <div className={'flex flex-row flex-wrap gap-8 items-center'}>
           <Img
             src={sponsor.photo || ''}

@@ -1,5 +1,4 @@
 import type { ComponentProps, ElementType } from 'react';
-import Balancer from 'react-wrap-balancer';
 import tw from 'tailwind-styled-components';
 
 import type { RainbowColor } from '@/types/gradient';
@@ -21,7 +20,6 @@ const StyledHeading = tw.h1`
 
 interface HeadingProps {
   $as?: ElementType;
-  balancerRatio?: number;
   shadow?: RainbowColor;
   from?: RainbowColor;
   to?: RainbowColor;
@@ -30,15 +28,7 @@ interface HeadingProps {
 export const Heading = (
   props: ComponentProps<typeof StyledHeading> & HeadingProps,
 ) => {
-  const {
-    $as: asElement,
-    children,
-    balancerRatio,
-    shadow,
-    from,
-    to,
-    ...otherProps
-  } = props;
+  const { $as: asElement, children, shadow, from, to, ...otherProps } = props;
   return (
     <StyledHeading
       {...otherProps}
@@ -55,7 +45,7 @@ export const Heading = (
           : {}),
       }}
     >
-      <Balancer ratio={balancerRatio}>{children}</Balancer>
+      {children}
     </StyledHeading>
   );
 };

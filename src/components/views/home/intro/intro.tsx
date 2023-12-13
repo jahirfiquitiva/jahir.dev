@@ -4,6 +4,7 @@ import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link/button-link';
 import { Link } from '@/components/core/link/link';
 import { mdiAccountCircleOutline } from '@/components/icons/mdi';
+import { VerifiedIcon } from '@/components/icons/verified';
 
 import {
   IntroParagraph,
@@ -24,18 +25,21 @@ export const Intro = () => {
             <Heading
               shadow={'blue'}
               // look like h2
-              className={'text-2xl'}
+              className={'text-2xl flex gap-8 items-center'}
             >
-              I am&nbsp;
-              <Heading
-                $as={'span'}
-                shadow={'blue'}
-                from={'brand'}
-                to={'blue'}
-                className={'[&>span]:w-[unset]'}
-              >
-                Jahir Fiquitiva
-              </Heading>
+              <span>
+                I am&nbsp;
+                <Heading
+                  $as={'span'}
+                  shadow={'blue'}
+                  from={'brand'}
+                  to={'blue'}
+                  className={'[&>span]:w-[unset]'}
+                >
+                  Jahir Fiquitiva
+                </Heading>
+              </span>
+              <VerifiedIcon className={'w-28 h-28'} />
             </Heading>
             <WavingHello />
           </TitlesContainer>
