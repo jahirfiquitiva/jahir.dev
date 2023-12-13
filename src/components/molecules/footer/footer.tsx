@@ -5,6 +5,7 @@ import {
   BrandLink,
   BrandLinkSpan,
   InnerFooter,
+  LinksGroup,
   LinksGroupTitle,
   StyledFooter,
 } from './footer.styles';
@@ -72,14 +73,14 @@ const metaLinks: Array<FooterLinkProps> = [
 export const Footer = () => {
   return (
     <StyledFooter>
-      <details title={'Website pages links'} className={'w-full'} open>
+      <LinksGroup title={'Website pages links'}>
         <LinksGroupTitle>Index</LinksGroupTitle>
         <FooterLinksList title={'Website pages links'} links={primaryLinks} />
-      </details>
-      <details title={'Meta links'} className={'w-full'} open>
+      </LinksGroup>
+      <LinksGroup title={'Meta links'} className={'tablet-sm:items-end'}>
         <LinksGroupTitle>Meta</LinksGroupTitle>
         <FooterLinksList title={'Meta pages links'} links={metaLinks} />
-      </details>
+      </LinksGroup>
       <InnerFooter>
         <BrandLink
           href={'/'}

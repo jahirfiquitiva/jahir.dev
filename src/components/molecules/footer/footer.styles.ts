@@ -47,11 +47,15 @@ export const BrandLinkSpan = tw(FooterLinkSpan)`
   dark:saturate-150
 `;
 
-export const LinksGroupTitle = tw.summary`
-  font-manrope font-bold text-primary-txt
-  -py-2 mb-8 cursor-pointer select-none
-  [&::marker]:content-['']
-  [details[open]_&::marker]:content-['']
-  after:content-['→'] after:ml-6
-  [details[open]_&::after]:content-['←']
+export const LinksGroup = tw.div`
+  flex flex-col
+  gap-8 -mt-2
+  w-full
+`;
+
+export const LinksGroupTitle = tw.p`
+  text-3xs text-tertiary-txt
+  font-manrope font-bold
+  select-none
+  uppercase tracking-wider
 `;
