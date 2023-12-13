@@ -2,7 +2,7 @@ import { Heading } from '@/components/core/heading';
 import { Link } from '@/components/core/link/link';
 import { Section } from '@/components/core/section';
 import { NowPlaying } from '@/components/molecules/now-playing/now-playing';
-import { TunezCard } from '@/components/molecules/now-playing/tunez';
+import { ReadingCard } from '@/components/molecules/now-playing/reading';
 import { LetsConnect } from '@/components/views/home/lets-connect';
 import { Skills } from '@/components/views/home/skills/skills';
 import cx from '@/utils/cx';
@@ -85,7 +85,7 @@ export default function AboutPage() {
           )}
         >
           <NowPlaying />
-          <TunezCard />
+          <ReadingCard />
         </div>
       </Section>
     </>

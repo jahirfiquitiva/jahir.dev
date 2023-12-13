@@ -2,6 +2,7 @@ html,
 body {
   @apply font-sans text-xs text-secondary-txt font-normal;
   @apply leading-normal mobile-lg:leading-relaxed;
+  font-feature-settings: 'calt', 'dlig', 'case', 'ccmp', 'zero', 'ss01', 'ss02';
 }
 
 @media (min-width: 425px) {
