@@ -25,6 +25,7 @@ export const NameAndPhotoContainer = tw.div`
   items-center
   gap-10
   group-hocus/sponsor:underline
+  group-hocus/sponsor:decoration-2
 `;
 
 export const Tier = tw(Chip)`

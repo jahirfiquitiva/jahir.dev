@@ -35,6 +35,8 @@ body {
 
 a {
   @apply decoration-2 underline-offset-2 cursor-pointer;
+  @apply underline decoration-divider;
+  @apply hocus:decoration-accent-dark;
 }
 
 figure {

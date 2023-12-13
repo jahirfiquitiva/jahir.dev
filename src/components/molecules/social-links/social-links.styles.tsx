@@ -33,6 +33,7 @@ export const SocialLink = tw(Link)`
   w-full
   rounded-6
   text-tertiary-txt
+  no-underline
   hocus:bg-accent-dark/[0.06]
   hocus:text-secondary-txt
   hocus:no-underline

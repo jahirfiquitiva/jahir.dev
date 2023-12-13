@@ -8,7 +8,5 @@ export const StyledLink = tw(NextLink)`
   self-start
   transition-colors
   hocus:text-accent-dark
-  hocus:underline
-  hocus:underline-offset-2
   hocus:decoration-2
 `;

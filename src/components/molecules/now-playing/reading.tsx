@@ -33,7 +33,7 @@ export const ReadingCard = () => {
         <AlbumImg
           src={reading}
           alt={'Book cover "tunez" playlist'}
-          className={cx('aspect-auto rounded-l-2 rounded-r-6')}
+          className={cx('aspect-auto rounded-l-2 rounded-r-8')}
         />
         <NowPlayingTexts>
           <NowPlayingHeader>

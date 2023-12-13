@@ -15,6 +15,7 @@ export const PostCard = tw(Link)`
   overflow-hidden
   transform
   group/post
+  no-underline
   tablet-sm:p-12
   tablet-sm:-mx-12
   tablet-sm:flex-row
@@ -52,6 +53,7 @@ export const PostTitle = tw.p`
   text-primary-txt
   transition
   group-hocus/post:underline
+  group-hocus/post:decoration-2
   group-hocus/post:text-[rgba(var(--post-text-color))]
 `;
 

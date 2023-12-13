@@ -46,10 +46,18 @@ export default async function BlogPostLayout(
       <Link
         href={'/blog'}
         title={'Navigate back to blog posts list page'}
-        className={'inline-flex items-end gap-8 leading-none py-4'}
+        className={cx(
+          'inline-flex items-end',
+          'gap-8 py-4 group/back',
+          'leading-none no-underline',
+        )}
       >
         <span className={'font-manrope font-bold mb-1'}>{'<-'}</span>
-        <span>Back to blog posts</span>
+        <span
+          className={'group-hocus/back:underline group-hocus/back:decoration-2'}
+        >
+          Back to blog posts
+        </span>
       </Link>
       {post ? (
         <>

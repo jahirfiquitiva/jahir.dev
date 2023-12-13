@@ -49,10 +49,13 @@ export const SoftwareItem = tw(Link)`
   transition
   text-[#fff]
   hocus:text-[#fff]
-  decoration-[#fff]
+  hocus:decoration-[#fff]
   outline-primary-txt
+  no-underline
   hocus:-translate-y-1
   hocus:translate-x-0
+  hocus:underline
+  hocus:decoration-2
   mobile-lg:gap-4
   mobile-lg:pb-4
 `;

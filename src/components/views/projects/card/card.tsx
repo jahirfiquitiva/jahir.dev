@@ -77,6 +77,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
             className={cx(
               'font-manrope font-semibold',
               'group-hocus/project:underline',
+              'group-hocus/project:decoration-2',
               'group-hocus/project:text-[rgb(var(--project-text-color))]',
             )}
           >

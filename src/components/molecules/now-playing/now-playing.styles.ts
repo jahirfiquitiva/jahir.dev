@@ -90,7 +90,7 @@ export const TrackName = tw.p`
   max-w-full
   group-hocus/track:text-primary-txt
   group-hocus/track:underline
-  group-hocus/track:decoration-wavy
+  group-hocus/track:decoration-2
 `;
 
 export const TrackArtist = tw.span`

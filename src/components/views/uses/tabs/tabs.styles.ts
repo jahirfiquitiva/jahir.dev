@@ -42,6 +42,7 @@ export const TabButton = tw.a`
   text-3xs
   text-secondary-txt
   group/tab
+  no-underline
   hocus:outline-offset-0
   mobile-lg:text-2xs
   [&[aria-selected="true"]]:pt-6

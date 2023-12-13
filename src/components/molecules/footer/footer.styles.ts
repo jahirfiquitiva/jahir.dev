@@ -38,6 +38,7 @@ export const BrandLink = tw(FooterLink)`
   min-h-[30]
   !h-[unset]
   font-bold
+  no-underline
 `;
 
 export const BrandLinkSpan = tw(FooterLinkSpan)`
