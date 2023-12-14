@@ -51,7 +51,6 @@ export const TitleContainer = tw.div`
   flex-1
   gap-4
   text-xs
-  text-primary-txt
   transition
 `;
 
@@ -60,7 +59,7 @@ export const StarsCounter = tw(Chip)`
   px-[0.3125rem]
   gap-4
   !rounded-6
-  text-[0.75rem]
+  text-4xs
   font-manrope
   font-semibold
   transition

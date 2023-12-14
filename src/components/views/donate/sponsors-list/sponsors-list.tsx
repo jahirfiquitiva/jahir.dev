@@ -62,7 +62,7 @@ export const SponsorsList = (props: SponsorsListProps) => {
           );
         })}
       </StyledList>
-      <small className={'block text-[0.8125rem] -mt-8'}>
+      <small className={'block text-4xs -mt-8'}>
         <sup>*</sup> Unicorn sponsors are special one-time supporters
       </small>
     </NoPaddingSection>

@@ -31,7 +31,7 @@ export const PostCard = tw(Link)`
 `;
 
 export const PostCardHero = tw(Img)`
-  aspect-[2/1]
+  aspect-[5/2]
   h-auto
   rounded-4
   tablet-sm:mt-2
@@ -58,11 +58,13 @@ export const PostTitle = tw.p`
 `;
 
 export const PostDescription = tw.p`
+  font-normal
   text-2xs
   text-secondary-txt
   overflow-ellipsis
   line-clamp-1
   mobile-lg:line-clamp-2
+  group-hocus/post:text-primary-txt
 `;
 
 export const PostStatsContainer = tw.div`
@@ -72,8 +74,9 @@ export const PostStatsContainer = tw.div`
   gap-y-6
   mt-4
   text-tertiary-txt
-  text-[0.75rem]
+  text-4xs
   flex-wrap
   max-w-full
   tablet-sm:gap-x-12
+  group-hocus/post:text-secondary-txt
 `;

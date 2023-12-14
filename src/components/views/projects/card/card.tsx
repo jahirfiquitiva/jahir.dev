@@ -75,6 +75,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
         <p className={'flex items-center gap-10'}>
           <span
             className={cx(
+              'text-primary-txt',
               'font-manrope font-semibold',
               'group-hocus/project:underline',
               'group-hocus/project:decoration-2',
@@ -92,7 +93,13 @@ export const ProjectCard = (props: ProjectCardProps) => {
             </StarsCounter>
           ) : null}
         </p>
-        <p className={'text-3xs mr-4 group-hocus/project:text-primary-txt'}>
+        <p
+          className={cx(
+            'text-2xs mr-4',
+            'font-normal',
+            'group-hocus/project:text-primary-txt',
+          )}
+        >
           {project.description}
         </p>
       </TitleContainer>

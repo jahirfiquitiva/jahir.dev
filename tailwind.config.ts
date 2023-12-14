@@ -62,9 +62,6 @@ module.exports = {
         manrope: ['var(--font-manrope)', 'Manrope', ...sansFontFamily],
         mono: ['monospace', ...fontFamily.mono],
       },
-      fontWeight: {
-        normal: '450',
-      },
       lineHeight: {
         relaxed: '1.75',
       },

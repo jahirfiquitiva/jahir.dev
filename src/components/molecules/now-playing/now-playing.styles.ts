@@ -72,7 +72,7 @@ export const NowPlayingHeader = tw.p`
   flex
   items-center
   gap-12
-  text-[0.75rem]
+  text-4xs
   font-bold
   font-manrope
   tracking-wider

@@ -52,9 +52,10 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
   bg-toolbar
   backdrop-blur-[10px]
   backdrop-saturate-150
-  rounded-10
+  rounded-12
   border
   border-accent-dark/[0.12]
+  dark:border-accent-dark/[0.18]
   ${(p) =>
     p.$elevated
       ? '[box-shadow:0_0_6px_1px_rgba(var(--color-accent-dark)/0.16)]'
@@ -68,6 +69,7 @@ export const Nav = tw.nav<{ $elevated?: boolean }>`
   [grid-template-columns:auto_1fr]
   
   hover:border-accent-dark/[0.24]
+  dark:hover:border-accent-dark/[0.32]
   hover:[box-shadow:0_0_8px_2px_rgba(var(--color-accent-dark)/0.16)]
   
   tablet-sm:[--spaceDivider:1.5]
