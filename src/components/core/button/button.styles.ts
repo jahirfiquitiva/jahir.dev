@@ -15,7 +15,7 @@ export const StyledButton = tw.button<{ $outlined?: boolean }>`
   tracking-wide
   transition
   truncate
-  ${(p) => (p.$outlined ? 'bg-[#fff]' : 'bg-accent')}
+  ${(p) => (p.$outlined ? 'bg-[#fff] dark:bg-accent-dark/[0.12]' : 'bg-accent')}
   ${(p) => (p.$outlined ? 'border border-divider' : 'border-none')}
   ${(p) => (p.$outlined ? 'text-secondary-txt' : 'text-on-accent')}
   ${(p) => (p.$outlined ? 'shadow-sm' : 'shadow')}
@@ -24,7 +24,9 @@ export const StyledButton = tw.button<{ $outlined?: boolean }>`
   hocus:no-underline
   ${(p) => (p.$outlined ? 'hocus:shadow' : 'hocus:shadow-md')}
   ${(p) =>
-    p.$outlined ? 'hocus:bg-accent-dark/[0.12]' : 'hocus:bg-accent-dark'}
+    p.$outlined
+      ? 'hocus:bg-accent-dark/[0.12] dark:hocus:bg-accent-dark/[0.18]'
+      : 'hocus:bg-accent-dark'}
   ${(p) => (p.$outlined ? 'hocus:border-accent-dark' : '')}
   ${(p) => (p.$outlined ? 'hocus:text-primary-txt' : 'hocus:text-on-accent')}
   disabled:opacity-50

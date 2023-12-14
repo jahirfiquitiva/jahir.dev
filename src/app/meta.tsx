@@ -44,6 +44,17 @@ export const Meta = () => {
       {colorMetaTags.map((tag) => (
         <meta key={tag} name={tag} content={'transparent'} />
       ))}
+
+      <meta
+        name={'theme-color'}
+        media={'(prefers-color-scheme: light)'}
+        content={'#fdfeff'}
+      />
+      <meta
+        name={'theme-color'}
+        media={'(prefers-color-scheme: dark)'}
+        content={'#151925'}
+      />
     </>
   );
 };
