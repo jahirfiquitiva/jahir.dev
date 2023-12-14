@@ -61,13 +61,7 @@ export default async function BlogPostLayout(
       </Link>
       {post ? (
         <>
-          <Header title={post.title} color={post.color} />
-          <Stats
-            slug={post.slug}
-            date={post.date}
-            readingTime={post.readingTime}
-            inProgress={post.inProgress}
-          />
+          <Header post={post} />
           <ReactionsProvider
             slug={`blog--${post.slug}`}
             inProgress={post.inProgress}

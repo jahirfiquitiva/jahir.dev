@@ -5,10 +5,11 @@ import { Suspense, cache } from 'react';
 
 import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';
 import { mdiEyeOutline } from '@/components/icons/mdi';
+import { PostStat } from '@/components/views/blog/card/card.styles';
 import { db } from '@/lib/planetscale';
 import cx from '@/utils/cx';
 
-import { Stat, StatBase } from './../stat';
+import { StatBase } from './../stat';
 import { trackView as trackViewFunc } from './actions';
 import { ViewTracker } from './tracker';
 
@@ -56,7 +57,7 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
       {trackView && !inProgress ? (
         <ViewTracker slug={slug} trackView={trackViewFunc} />
       ) : null}
-      <Stat $sm={$sm} className={'p-0'}>
+      <PostStat $sm={$sm} className={'p-0'}>
         <Suspense
           fallback={
             <StatBase $sm={$sm}>
@@ -71,7 +72,7 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
         >
           <InternalCounter slug={slug} $sm={$sm} />
         </Suspense>
-      </Stat>
+      </PostStat>
     </>
   );
 };

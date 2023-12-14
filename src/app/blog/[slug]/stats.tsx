@@ -1,9 +1,11 @@
 import Icon from '@mdi/react';
+import type { CSSProperties } from 'react';
 
 import { calendarOutline } from '@/components/icons/icons';
 import { mdiClockOutline } from '@/components/icons/mdi';
-import { Stat } from '@/components/views/mdx/ui/stat';
+import { PostStat } from '@/components/views/blog/card/card.styles';
 import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
+import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import type { Blog } from 'contentlayer/generated';
 
@@ -12,30 +14,39 @@ interface StatsProps {
   date?: Blog['date'];
   readingTime?: Blog['readingTime'];
   inProgress?: Blog['inProgress'];
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const Stats = (props: StatsProps) => {
-  const { slug, date, readingTime, inProgress } = props;
+  const { slug, date, readingTime, inProgress, className, style } = props;
   const readableDate = formatDate(date);
   return (
-    <div className={'flex flex-wrap items-center gap-16 mt-8 mb-16 text-3xs'}>
+    <div
+      className={cx(
+        'flex flex-wrap items-center',
+        'gap-16 mt-8 mb-16 text-3xs',
+        className,
+      )}
+      style={style}
+    >
       {Boolean(readableDate) && (
-        <Stat
+        <PostStat
           title={`This blog post was published on ${readableDate}`}
           aria-label={`This blog post was published on ${readableDate}`}
         >
           <Icon path={calendarOutline} size={0.625} />
           {readableDate}
-        </Stat>
+        </PostStat>
       )}
       {Boolean(readingTime?.text?.length) && (
-        <Stat
+        <PostStat
           title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
           aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
         >
           <Icon path={mdiClockOutline} size={0.625} />
           {readingTime?.text}
-        </Stat>
+        </PostStat>
       )}
       <ViewsCounter slug={`blog--${slug}`} inProgress={inProgress} trackView />
     </div>

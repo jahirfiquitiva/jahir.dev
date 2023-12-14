@@ -14,8 +14,6 @@ import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
 
-import { Stat } from '../../mdx/ui/stat';
-
 import {
   PostCard,
   PostCardContent,
@@ -24,6 +22,7 @@ import {
   PostStatsContainer,
   PostTitle,
   SmallPostHero,
+  PostStat,
 } from './card.styles';
 
 interface PostCardProps {
@@ -90,24 +89,24 @@ export const BlogPostCard = (props: PostCardProps) => {
         ) : null}
         <PostStatsContainer>
           {Boolean(readableDate) && (
-            <Stat
+            <PostStat
               title={`This blog post was published on ${a11yDate}`}
               aria-label={`This blog post was published on ${a11yDate}`}
               $sm
             >
               <Icon path={calendarOutline} size={0.5} />
               <span>{readableDate}</span>
-            </Stat>
+            </PostStat>
           )}
           {Boolean(readingTime?.minutes) && !small && (
-            <Stat
+            <PostStat
               title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
               aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
               $sm
             >
               <Icon path={mdiClockOutline} size={0.5} />
               <span>{readingTime?.text}</span>
-            </Stat>
+            </PostStat>
           )}
           {viewsCounter}
         </PostStatsContainer>

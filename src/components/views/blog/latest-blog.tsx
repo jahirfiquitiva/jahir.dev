@@ -30,9 +30,9 @@ export const LatestBlogPost = async (props: PropsWithChildren) => (
           outlined
           className={cx(
             'hocus:bg-[rgba(218,91,31,0.12)]',
-            'border-[rgba(218,91,31,0.36)] hocus:border-[#da5b1f]',
+            'hocus:border-[#da5b1f]',
             'dark:hocus:bg-[rgba(242,101,34,0.18)]',
-            'dark:border-[rgba(242,101,34,0.48)] hocus:border-[#f26522]',
+            'dark:hocus:border-[#f26522]',
           )}
           data-umami-event={'RSS feed'}
         >

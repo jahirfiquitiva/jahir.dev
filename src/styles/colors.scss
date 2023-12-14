@@ -39,8 +39,8 @@
 html.dark,
 html.dark-inverted {
   --color-inverse: 235 240 251;
-  --color-background: #161c2c;
-  --color-toolbar: rgba(18 27 44 / 0.65);
+  --color-background: #151925;
+  --color-toolbar: rgba(14 26 54 / 0.5);
   --color-divider: rgba(var(--color-inverse) / 0.18);
 
   --color-primary-txt: #fff;
@@ -52,7 +52,7 @@ html.dark-inverted {
   --color-on-accent: rgba(9 17 34 / 0.925);
 
   --color-scrollbar-bg: var(--color-accent);
-  --color-scrollbar-thumb: #161c2c;
+  --color-scrollbar-thumb: #151925;
   --color-selection: rgba(136 164 230 / 0.25);
   --color-illustrations-shadow: #d8d1f6;
   --color-img-drop-shadow: rgba(var(--color-inverse) / 0.28);

@@ -65,13 +65,13 @@ export const StarsCounter = tw(Chip)`
   font-semibold
   transition
   border-transparent
-  bg-[rgba(var(--project-color)/0.042)]
-  dark:bg-[rgba(var(--project-color)/0.09)]
+  bg-[rgba(var(--project-color)/0.048)]
+  dark:bg-[rgba(var(--project-color)/0.12)]
   hocus:transform-none
   group-hocus/project:text-primary-txt
   group-hocus/project:border
   group-hocus/project:border-[rgba(var(--project-text-color)/0.24)]
-  group-hocus/project:dark:border-[rgba(var(--project-text-color)/0.48)]
-  group-hocus/project:bg-transparent
-  group-hocus/project:dark:bg-transparent
+  group-hocus/project:dark:border-[rgba(var(--project-text-color)/0.36)]
+  group-hocus/project:bg-[rgba(var(--project-color)/0.036)]
+  group-hocus/project:dark:bg-[rgba(var(--project-color)/0.096)]
 `;

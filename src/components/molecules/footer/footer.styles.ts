@@ -42,6 +42,7 @@ export const BrandLink = tw(FooterLink)`
 `;
 
 export const BrandLinkSpan = tw(FooterLinkSpan)`
+  text-xs
   from-gradient-brand
   to-gradient-blue
   saturate-125

@@ -3,6 +3,8 @@ import tw from 'tailwind-styled-components';
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link/link';
 
+import { Stat } from '../../mdx/ui/stat';
+
 export const PostCard = tw(Link)`
   flex
   flex-col
@@ -85,4 +87,14 @@ export const PostStatsContainer = tw.div`
   max-w-full
   tablet-sm:gap-x-12
   group-hocus/post:text-secondary-txt
+`;
+
+export const PostStat = tw(Stat)`
+  bg-[rgba(var(--post-text-color)/0.048)]
+  dark:bg-[rgba(var(--post-text-color)/0.12)]
+  border border-transparent
+  group-hocus/post:border-[rgba(var(--post-text-color)/0.24)]
+  group-hocus/post:dark:border-[rgba(var(--post-text-color)/0.36)]
+  group-hocus/post:bg-[rgba(var(--post-text-color)/0.036)]
+  group-hocus/post:dark:bg-[rgba(var(--post-text-color)/0.096)]
 `;

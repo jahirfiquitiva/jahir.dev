@@ -14,6 +14,6 @@ export const StatBase = tw.span<{ $sm?: boolean }>`
 export const Stat = tw(StatBase)`
   rounded-6
   transition
-  bg-accent-dark/[0.04]
-  dark:bg-accent-dark/[0.12]
+  bg-accent-dark/[0.05]
+  dark:bg-accent-dark/[0.1]
 `;
