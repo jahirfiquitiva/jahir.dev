@@ -1,7 +1,6 @@
 import { BlogPostCard } from '@/components/views/blog/card/card';
 import { LatestBlogPost } from '@/components/views/blog/latest-blog';
 import { Intro } from '@/components/views/home/intro/intro';
-import { LetsConnect } from '@/components/views/home/lets-connect';
 import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
 import { Projects } from '@/components/views/projects/projects';
 import { allReadableBlogs } from '@/utils/blog';
@@ -15,7 +14,6 @@ export default function Home() {
   return (
     <>
       <Intro />
-      <LetsConnect />
       <LatestBlogPost>
         <ul
           title={'The two most recent blog posts'}

@@ -15,7 +15,7 @@ export const StyledButton = tw.button<{ $outlined?: boolean }>`
   tracking-wide
   transition
   truncate
-  ${(p) => (p.$outlined ? 'bg-transparent' : 'bg-accent')}
+  ${(p) => (p.$outlined ? 'bg-[#fff]' : 'bg-accent')}
   ${(p) => (p.$outlined ? 'border border-divider' : 'border-none')}
   ${(p) => (p.$outlined ? 'text-secondary-txt' : 'text-on-accent')}
   ${(p) => (p.$outlined ? 'shadow-sm' : 'shadow')}
