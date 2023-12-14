@@ -21,6 +21,7 @@ export const StyledProjectCard = tw(Link)`
   transition
   group/project
   no-underline
+  hocus:-translate-y-1
   hocus:no-underline
   hocus:text-primary-txt
   hocus:outline-offset-0
@@ -33,7 +34,7 @@ export const ProjectIcon = tw(Img)`
   bg-none
   filter
   p-6
-  rounded-10
+  rounded-8
   bg-[rgba(var(--project-color)/0.07)]
   dark:bg-[rgba(var(--project-color)/0.14)]
   drop-shadow-none

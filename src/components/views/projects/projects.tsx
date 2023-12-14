@@ -18,13 +18,14 @@ const getSortedProjects = (hide?: boolean) => {
 };
 
 interface ProjectsProps {
+  title: string;
   full?: boolean;
 }
 
 const ProjectsList = (props: ProjectsProps) => {
   const projects = getSortedProjects(!props.full);
   return (
-    <ul className={'list-none flex flex-col gap-6'}>
+    <ul title={props.title} className={'list-none flex flex-col gap-6'}>
       {(projects || []).map((project, index) => {
         return (
           <li
@@ -38,7 +39,7 @@ const ProjectsList = (props: ProjectsProps) => {
   );
 };
 
-export const Projects = ({ full }: ProjectsProps) => (
+export const Projects = ({ title, full }: ProjectsProps) => (
   <Section id={'projects'}>
     <ProjectsHeader>
       <Heading
@@ -48,7 +49,7 @@ export const Projects = ({ full }: ProjectsProps) => (
         $as={full ? 'h1' : 'h2'}
         className={cx('w-[unset]', full ? '' : 'text-xl [line-height:inherit]')}
       >
-        {!full ? 'Featured ' : ''}Projects
+        {title}
       </Heading>
       <ProjectsButtons>
         <ButtonLink
@@ -69,6 +70,6 @@ export const Projects = ({ full }: ProjectsProps) => (
         )}
       </ProjectsButtons>
     </ProjectsHeader>
-    <ProjectsList full={full} />
+    <ProjectsList title={title} full={full} />
   </Section>
 );

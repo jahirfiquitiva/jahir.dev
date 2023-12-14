@@ -22,5 +22,5 @@ export const metadata = getStaticMetadata({
 });
 
 export default function ProjectsPage() {
-  return <Projects full />;
+  return <Projects title={'Projects'} full />;
 }
