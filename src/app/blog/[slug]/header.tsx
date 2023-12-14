@@ -10,8 +10,8 @@ interface HeaderProps {
 
 export const Header = (props: HeaderProps) => {
   const { title, color } = props;
-  const shadowColor = color ? hexToRgb(color, 0.36) : null;
   const readableColor = getReadableColor(color, true);
+  const shadowColor = hexToRgb(readableColor, 0.56);
 
   return (
     <Heading

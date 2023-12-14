@@ -4,7 +4,7 @@ import a11yPlugin from 'colord/plugins/a11y';
 extend([a11yPlugin]);
 
 // Colors from css variables: primary
-const bgColor = { dark: '#080f1e', light: '#ffffff' };
+const bgColor = { dark: '#161c2c', light: '#fdfeff' };
 export const getReadableColor = (
   desiredFgColor?: string | null,
   isDark?: boolean,
