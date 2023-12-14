@@ -69,8 +69,7 @@ export const PostDescription = tw.p`
   text-2xs
   text-secondary-txt
   overflow-ellipsis
-  line-clamp-1
-  mobile-lg:line-clamp-2
+  line-clamp-2
   group-hocus/post:text-primary-txt
 `;
 

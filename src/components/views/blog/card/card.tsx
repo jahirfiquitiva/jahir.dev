@@ -9,6 +9,7 @@ import { mdiClockOutline } from '@/components/icons/mdi';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
@@ -59,7 +60,7 @@ export const BlogPostCard = (props: PostCardProps) => {
     <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink as Route}
-      className={className}
+      className={cx(small ? 'flex-row' : '', className)}
       style={
         {
           ...style,
@@ -79,7 +80,7 @@ export const BlogPostCard = (props: PostCardProps) => {
       />
       <PostCardContent>
         <PostTitle>{post.title}</PostTitle>
-        <PostDescription className={small ? 'mobile-lg:line-clamp-1' : ''}>
+        <PostDescription className={cx(small ? 'mobile-lg:line-clamp-1' : '')}>
           {post.excerpt}
         </PostDescription>
         {domain ? (
