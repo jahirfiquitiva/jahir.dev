@@ -15,7 +15,7 @@ export const IntroSection = tw(Section)`
 export const TextsContainer = tw.div`
   flex
   flex-col
-  gap-8
+  gap-28
   [grid-row:2]
   tablet-sm:[grid-row:1]
 `;
@@ -25,7 +25,7 @@ export const TitlesContainer = tw.div`
 `;
 
 export const IntroParagraph = tw.p`
-  my-12
+  -mt-12
   max-w-[325px]
   mobile-lg:max-w-[384px]
 `;
