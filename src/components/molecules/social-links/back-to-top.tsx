@@ -21,6 +21,7 @@ export const BackToTopLink = () => {
         data-umami-event-src={'Footer'}
       >
         <Icon path={squaredChevronUp} size={0.9} />
+        <span className={'sr-only'}>Back to Top</span>
       </SocialLink>
     </SocialLinkItem>
   );

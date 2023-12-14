@@ -15,7 +15,7 @@ export const SocialLinksContainer = tw.ul`
   mobile-lg:-mx-6
   mobile-lg:flex-[unset]
   mobile-lg:w-[unset]
-  tablet-sm:-mr-2
+  tablet-sm:-mr-6
 `;
 
 export const SocialLinkItem = tw.li`

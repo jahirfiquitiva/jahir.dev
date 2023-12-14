@@ -54,9 +54,7 @@ export const Toolbar = () => {
       <Nav $elevated={elevated}>
         <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
           <LogoAnimoji />
-          <HomeLinkSpan className={'tablet-sm:hidden tablet-md:block'}>
-            Jahir Fiquitiva
-          </HomeLinkSpan>
+          <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
         </HomeLink>
         <ToolbarNavLinks pathname={pathname} />
         <ToolbarLinksContainer className={'self-start tablet-md:self-center'}>

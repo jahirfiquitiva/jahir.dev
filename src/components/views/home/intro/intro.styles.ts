@@ -27,7 +27,7 @@ export const TitlesContainer = tw.div`
 export const IntroParagraph = tw.p`
   my-12
   max-w-[325px]
-  mobile-lg:max-w-[410px]
+  mobile-lg:max-w-[384px]
 `;
 
 export const PhotoContainer = tw.div`
