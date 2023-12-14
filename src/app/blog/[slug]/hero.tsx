@@ -25,7 +25,7 @@ export const Hero = (props: HeroProps) => {
     : {};
 
   return (
-    <figure className={'my-20'}>
+    <figure className={'my-16'}>
       <Img
         src={hero || ''}
         alt={`Hero image for blog post "${title}"`}
