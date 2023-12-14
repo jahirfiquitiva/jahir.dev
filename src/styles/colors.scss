@@ -14,7 +14,7 @@
   --color-on-accent: #fff;
 
   --color-scrollbar-bg: rgba(var(--color-accent-dark) / 0.5);
-  --color-scrollbar-thumb: #f6f9fe;
+  --color-scrollbar-thumb: #fbfcfe;
   --color-selection: rgba(56 103 214 / 0.25);
   --color-illustrations-shadow: #c0b4f0;
   --color-img-drop-shadow: rgba(var(--color-inverse) / 0.28);
@@ -39,7 +39,7 @@
 html.dark,
 html.dark-inverted {
   --color-inverse: 235 240 251;
-  --color-background: #161C2C;
+  --color-background: #161c2c;
   --color-toolbar: rgba(18 27 44 / 0.65);
   --color-divider: rgba(var(--color-inverse) / 0.18);
 
@@ -52,7 +52,7 @@ html.dark-inverted {
   --color-on-accent: rgba(9 17 34 / 0.925);
 
   --color-scrollbar-bg: var(--color-accent);
-  --color-scrollbar-thumb: #161C2C;
+  --color-scrollbar-thumb: #161c2c;
   --color-selection: rgba(136 164 230 / 0.25);
   --color-illustrations-shadow: #d8d1f6;
   --color-img-drop-shadow: rgba(var(--color-inverse) / 0.28);
