@@ -17,30 +17,41 @@ export default function Home() {
       <Intro />
       <LetsConnect />
       <LatestBlogPost>
-        <BlogPostCard
-          post={latestBlogPost}
-          viewsCounter={
-            <ViewsCounter
-              slug={`blog--${latestBlogPost.slug}`}
-              inProgress={latestBlogPost.inProgress}
-              $sm
+        <ul
+          title={'The two most recent blog posts'}
+          className={'list-none flex flex-col gap-6'}
+        >
+          <li>
+            <BlogPostCard
+              post={latestBlogPost}
+              viewsCounter={
+                <ViewsCounter
+                  slug={`blog--${latestBlogPost.slug}`}
+                  inProgress={latestBlogPost.inProgress}
+                  $sm
+                />
+              }
+              showYear
+              small
             />
-          }
-          showYear
-        />
-        <BlogPostCard
-          post={latestBlogPostB}
-          viewsCounter={
-            <ViewsCounter
-              slug={`blog--${latestBlogPostB.slug}`}
-              inProgress={latestBlogPostB.inProgress}
-              $sm
+          </li>
+          <li>
+            <BlogPostCard
+              post={latestBlogPostB}
+              viewsCounter={
+                <ViewsCounter
+                  slug={`blog--${latestBlogPostB.slug}`}
+                  inProgress={latestBlogPostB.inProgress}
+                  $sm
+                />
+              }
+              showYear
+              small
             />
-          }
-          showYear
-        />
+          </li>
+        </ul>
       </LatestBlogPost>
-      <Projects />
+      <Projects title={'Featured projects'} />
     </>
   );
 }

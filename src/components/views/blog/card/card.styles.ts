@@ -8,8 +8,9 @@ export const PostCard = tw(Link)`
   flex-col
   p-10
   -mx-10
-  gap-12
+  gap-14
   rounded-10
+  min-w-[calc(100%_+_1.25rem)]
   text-secondary-txt
   transition
   overflow-hidden
@@ -19,9 +20,7 @@ export const PostCard = tw(Link)`
   tablet-sm:p-12
   tablet-sm:-mx-12
   tablet-sm:flex-row
-  tablet-lg:p-16
-  tablet-lg:-mx-16
-  tablet-lg:gap-16
+  tablet-sm:min-w-[calc(100%_+_1.5rem)]
   hocus:-translate-y-1
   hocus:outline-offset-0
   hocus:bg-[rgba(var(--post-color)/0.07)]
@@ -30,14 +29,22 @@ export const PostCard = tw(Link)`
   dark:hocus:bg-[rgba(var(--post-color)/0.14)]
 `;
 
-export const PostCardHero = tw(Img)`
-  aspect-[5/2]
+const PostHero = tw(Img)`
   h-auto
   rounded-4
-  tablet-sm:mt-2
   tablet-sm:min-h-full
+`;
+
+export const PostCardHero = tw(PostHero)`
+  aspect-[5/2]
+  tablet-sm:mt-4
   tablet-sm:aspect-[4/3]
   tablet-sm:max-w-[160px]
+`;
+
+export const SmallPostHero = tw(PostHero)`
+  aspect-auto
+  max-w-[3.75rem]
 `;
 
 export const PostCardContent = tw.div`
@@ -48,7 +55,7 @@ export const PostCardContent = tw.div`
 
 export const PostTitle = tw.p`
   text-xs
-  font-bold
+  font-semibold
   font-manrope
   text-primary-txt
   transition

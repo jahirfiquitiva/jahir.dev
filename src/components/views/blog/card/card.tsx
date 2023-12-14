@@ -22,6 +22,7 @@ import {
   PostDescription,
   PostStatsContainer,
   PostTitle,
+  SmallPostHero,
 } from './card.styles';
 
 interface PostCardProps {
@@ -30,13 +31,14 @@ interface PostCardProps {
   className?: string;
   style?: CSSProperties;
   showYear?: boolean;
+  small?: boolean;
 }
 
 export const BlogPostCard = (props: PostCardProps) => {
   const hasMounted = useHasMounted();
   const { isDark } = useTheme();
 
-  const { post, viewsCounter, className, style, showYear } = props;
+  const { post, viewsCounter, className, style, showYear, small } = props;
   const { link, slug, readingTime } = post;
   const rightLink = link && link.length > 0 ? link : `/blog/${slug}`;
   const domain = getUrlDomain(rightLink);
@@ -50,6 +52,8 @@ export const BlogPostCard = (props: PostCardProps) => {
   const readableDate = formatDate(post.date, {
     year: showYear ? 'numeric' : undefined,
   });
+
+  const Hero = small ? SmallPostHero : PostCardHero;
 
   return (
     <PostCard
@@ -65,7 +69,7 @@ export const BlogPostCard = (props: PostCardProps) => {
         } as CSSProperties
       }
     >
-      <PostCardHero
+      <Hero
         src={post.hero || ''}
         alt={`Hero image for blog post "${post.title}"`}
         width={post?.heroMeta?.size?.width || 144}
@@ -75,7 +79,9 @@ export const BlogPostCard = (props: PostCardProps) => {
       />
       <PostCardContent>
         <PostTitle>{post.title}</PostTitle>
-        <PostDescription>{post.excerpt}</PostDescription>
+        <PostDescription className={small ? 'mobile-lg:line-clamp-1' : ''}>
+          {post.excerpt}
+        </PostDescription>
         {domain ? (
           <span className={'text-3xs text-tertiary-txt'}>
             Published on <span className={'underline'}>{domain}</span>
@@ -92,7 +98,7 @@ export const BlogPostCard = (props: PostCardProps) => {
               <span>{readableDate}</span>
             </Stat>
           )}
-          {Boolean(readingTime?.minutes) && (
+          {Boolean(readingTime?.minutes) && !small && (
             <Stat
               title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
               aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
