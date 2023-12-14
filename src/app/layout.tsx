@@ -16,15 +16,17 @@ import { Meta } from './meta';
 
 const inter = Inter({
   subsets: ['latin'],
-  preload: true,
   variable: '--font-inter',
   display: 'fallback',
+  weight: ['400', '500', '600', '700'],
 });
 
 const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-manrope',
   display: 'fallback',
+  weight: ['400', '500', '600', '700'],
+  preload: false,
 });
 
 export const metadata = {
