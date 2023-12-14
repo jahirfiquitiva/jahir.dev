@@ -1,6 +1,7 @@
 /* Basic layout definition */
 .article {
-  @apply flex flex-col gap-12 prose prose-quoteless max-w-full;
+  @apply flex flex-col gap-12 max-w-full;
+  @apply prose prose-quoteless min-w-full;
   @apply p-0 w-full text-secondary-txt break-words;
   @apply leading-normal mobile-lg:leading-relaxed;
 
@@ -46,7 +47,7 @@
   }
 
   & p {
-    @apply w-full m-0;
+    @apply w-full m-0 mb-2;
     max-width: 69ch; // nice
   }
 }
@@ -88,7 +89,7 @@
 }
 
 .article code {
-  @apply py-2 px-4 text-3xs bg-accent-dark/[0.036];
+  @apply py-2 px-4 text-2xs bg-accent-dark/[0.036];
   @apply border border-divider rounded-6;
   @apply font-normal;
   color: inherit;
@@ -103,7 +104,7 @@
 
 .article [data-rehype-pretty-code-figure] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent;
-  @apply p-0 text-3xs font-normal;
+  @apply p-0 text-2xs font-normal;
   line-height: 2;
   counter-reset: line;
   box-decoration-break: clone;
@@ -113,7 +114,7 @@
   @apply border border-divider;
   @apply rounded-tl-8 rounded-tr-8;
   @apply text-secondary-txt bg-background;
-  @apply mt-2 font-mono text-3xs py-8 px-12 text-start;
+  @apply mt-2 font-mono text-2xs py-8 px-12 text-start;
 }
 
 .article [data-rehype-pretty-code-title] + pre {
@@ -141,17 +142,18 @@
   @apply w-full h-auto rounded-8;
 }
 
-.article video {
-  @apply my-0;
-}
-
+.article video,
 .article img {
-  @apply my-6;
+  @apply my-8;
 }
 
 .article figure {
-  @apply mt-0;
+  @apply mt-4;
   figcaption {
     @apply text-tertiary-txt;
   }
+}
+
+.article * figure {
+  @apply mt-6 mb-0;
 }

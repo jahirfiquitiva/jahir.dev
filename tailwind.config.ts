@@ -39,6 +39,7 @@ module.exports = {
       typography: ({ theme }: PluginAPI) => ({
         DEFAULT: {
           css: {
+            fontSize: fontSize.xs,
             color: theme('colors.secondary-txt'),
             a: {
               color: theme('colors.accent'),

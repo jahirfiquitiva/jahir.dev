@@ -13,10 +13,12 @@ const shouldIgnoreNextLink = (className?: string): boolean => {
 
 const StyledLink = tw.a`
   inline-block
-  font-normal
+  font-medium
   text-accent
-  hocus:underline
+  self-start
+  transition-colors
   hocus:text-accent-dark
+  hocus:decoration-2
 `;
 
 export const MdxLink = (props: ComponentProps<typeof Link>) => {
