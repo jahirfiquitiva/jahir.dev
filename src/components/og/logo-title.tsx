@@ -23,7 +23,7 @@ const pathTitleMap = {
   error: 'Error',
 };
 
-const titleFontSize = 72;
+const titleFontSize = 64;
 export const LogoOrEmoji = (props: { path?: PathName }) => {
   const emoji = props.path ? pathEmojiMap[props.path] : null;
   if (!emoji) {
@@ -47,7 +47,7 @@ export const PageTitle = (props: {
   title?: string | null;
 }) => {
   const { path, title } = props;
-  const pathTitle = path ? pathTitleMap[path] : null;
+  const pathTitle = path ? pathTitleMap[path] || null : null;
   return (
     <p
       style={{

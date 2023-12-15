@@ -9,7 +9,7 @@ export const ReactionsGroup = tw.div`
 
 export const StyledReactionButton = tw(Button)<{ $reacted?: boolean }>`
   group/reaction
-  py-10 px-12
+  py-10 px-14
   rounded-full
   text-3xs
   text-secondary-txt

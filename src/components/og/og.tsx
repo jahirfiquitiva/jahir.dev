@@ -19,6 +19,14 @@ interface OgImageProps {
   hero?: string | null;
 }
 
+const getGradientOverlay = (title?: string | null) => {
+  return [
+    'rgba(8, 15, 30, 1) 0%',
+    Boolean(title) ? 'rgba(8, 15, 30, 0.5) 60%' : 'rgba(8, 15, 30, 0.5) 50%',
+    Boolean(title) ? 'rgba(8, 15, 30, 0.05) 100%' : 'rgba(8, 15, 30, 0) 100%',
+  ];
+};
+
 export const OgImage = (props: OgImageProps) => {
   const { path, title, hero } = props;
   return (
@@ -28,10 +36,10 @@ export const OgImage = (props: OgImageProps) => {
         flexDirection: 'column',
         height: '100%',
         width: '100%',
-        padding: '48px 72px',
+        padding: '56px 104px',
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
-        gap: 12,
+        gap: Boolean(path) ? 0 : 12,
         fontFamily: 'Manrope',
         color: 'white',
         textShadow: '0px 2px 4px rgba(8 15 30 / 0.5)',
@@ -58,19 +66,10 @@ export const OgImage = (props: OgImageProps) => {
       />
       <div
         style={{
-          backgroundColor: 'rgba(8, 15, 30, 0.36)',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          left: 0,
-          bottom: 0,
-        }}
-      />
-      <div
-        style={{
+          mixBlendMode: 'multiply',
           backgroundImage:
             // eslint-disable-next-line max-len
-            'linear-gradient(65deg, rgba(8, 15, 30, 1) 0%, rgba(8, 15, 30, 0.5) 60%, rgba(8, 15, 30, 0) 100%)',
+            `linear-gradient(65deg, ${getGradientOverlay(title).join(', ')})`,
           position: 'absolute',
           top: 0,
           right: 0,
@@ -78,7 +77,6 @@ export const OgImage = (props: OgImageProps) => {
           bottom: 0,
         }}
       />
-
       <LogoOrEmoji path={path} />
       <PageTitle path={path} title={title} />
       <Name path={path} />

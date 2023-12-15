@@ -2,9 +2,10 @@ import { Logo } from '../icons/logo';
 
 import type { PathName } from './logo-title';
 
-const fontSize = 40;
-export const Name = (props: { path?: PathName }) => {
-  if (!props.path) return null;
+const defaultFontSize = 36;
+export const Name = (props: { path?: PathName; fontSize?: number }) => {
+  const { path, fontSize = defaultFontSize } = props;
+  if (!path) return null;
   return (
     <div
       style={{
