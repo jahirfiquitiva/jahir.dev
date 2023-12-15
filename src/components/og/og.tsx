@@ -1,6 +1,8 @@
 import 'server-only';
 /* eslint-disable @next/next/no-img-element */
 
+import { config } from '@/utils/og';
+
 import { LogoOrEmoji, PageTitle, PathName } from './logo-title';
 import { Name } from './name';
 
@@ -20,10 +22,11 @@ interface OgImageProps {
 }
 
 const getGradientOverlay = (title?: string | null) => {
+  const hasTitle = Boolean(title);
   return [
-    'rgba(8, 15, 30, 0.8) 0%',
-    Boolean(title) ? 'rgba(8, 15, 30, 0.5) 60%' : 'rgba(8, 15, 30, 0.5) 50%',
-    Boolean(title) ? 'rgba(8, 15, 30, 0.05) 100%' : 'rgba(8, 15, 30, 0) 100%',
+    `rgba(8, 15, 30, ${hasTitle ? 1 : 0.8}) 0%`,
+    `rgba(8, 15, 30, 0.5) ${hasTitle ? 60 : 50}%`,
+    `rgba(8, 15, 30, ${hasTitle ? 0.05 : 0}) 100%`,
   ];
 };
 
@@ -34,8 +37,8 @@ export const OgImage = (props: OgImageProps) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
-        width: '100%',
+        height: config.size.height,
+        width: config.size.width,
         padding: '56px 104px',
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
@@ -44,11 +47,26 @@ export const OgImage = (props: OgImageProps) => {
         color: 'white',
         textShadow: '0px 2px 4px rgba(8 15 30 / 0.5)',
         backgroundColor: 'rgb(8, 15, 30)',
-        backgroundImage: `url(${baseUrl}/${hero})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
       }}
     >
+      <img
+        src={`${baseUrl}/${hero}`}
+        alt={title || 'Hero image'}
+        width={config.size.height}
+        height={config.size.width}
+        style={{
+          position: 'absolute',
+          width: 'auto',
+          height: 'auto',
+          margin: 0,
+          objectFit: 'cover',
+          objectPosition: 'center',
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+        }}
+      />
       <div
         style={{
           backgroundImage:
