@@ -1,13 +1,11 @@
 import tw from 'tailwind-styled-components';
 
-import { FooterLink, FooterLinkSpan } from './links-list/links-list.styles';
-
 export const StyledFooter = tw.footer`
   w-full
   max-w-[666px]
   mx-auto
   grid
-  grid-cols-2
+  grid-cols-3
   py-[var(--verticalContentPadding)]
   px-14
   gap-x-[calc(var(--verticalContentPadding)/2)]
@@ -16,43 +14,14 @@ export const StyledFooter = tw.footer`
   border-divider
   tablet-sm:px-16
   tablet-md:px-0
-  tablet-sm:gap-x-40
-`;
-
-export const InnerFooter = tw.div`
-  flex
-  flex-wrap
-  gap-16
-  -mx-2
-  items-center
-  col-span-2
-  mobile-lg:justify-between
-`;
-
-export const BrandLink = tw(FooterLink)`
-  inline-flex
-  self-start
-  p-4
-  pl-0
-  gap-6
-  min-h-[30]
-  !h-[unset]
-  font-bold
-  no-underline
-`;
-
-export const BrandLinkSpan = tw(FooterLinkSpan)`
-  text-xs
-  from-gradient-brand
-  to-gradient-blue
-  saturate-125
-  dark:saturate-150
+  tablet-sm:[grid-template-columns:repeat(2,minmax(0,auto))]
+  tablet-sm:gap-y-[calc(var(--verticalContentPadding)/1.5)]
 `;
 
 export const LinksGroup = tw.div`
   flex flex-col
-  gap-8 -mt-2
-  w-full
+  gap-12 -mt-2
+  w-full tablet-sm:gap-0
 `;
 
 export const LinksGroupTitle = tw.p`
@@ -60,4 +29,5 @@ export const LinksGroupTitle = tw.p`
   font-manrope font-bold
   select-none
   uppercase tracking-wider
+  tablet-sm:sr-only
 `;

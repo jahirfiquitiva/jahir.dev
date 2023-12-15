@@ -19,7 +19,7 @@ export const scrollToTop = () => {
   }
 };
 
-const SCROLL_OFFSET = 287;
+const SCROLL_OFFSET = 192;
 export const BackToTop = () => {
   const [showButton, setShowButton] = useState(false);
   const hasMounted = useHasMounted();
