@@ -16,6 +16,7 @@ export const SocialLinksContainer = tw.ul`
   mobile-lg:flex-[unset]
   mobile-lg:w-[unset]
   tablet-sm:-mr-8
+  tablet-sm:gap-4
 `;
 
 export const SocialLink = tw(Link)`

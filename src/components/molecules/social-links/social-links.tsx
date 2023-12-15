@@ -27,8 +27,8 @@ export const SocialLinks = (props: SocialLinksProps) => {
 
   const itemClassName = cx(
     textOnly
-      ? 'tablet-sm:min-h-[34px] tablet-sm:min-w-[34px]'
-      : 'min-h-[34px] min-w-[34px]',
+      ? 'tablet-sm:h-[34px] tablet-sm:min-w-[34px]'
+      : 'h-[34px] min-w-[34px]',
   );
 
   const iconClassName = cx(
