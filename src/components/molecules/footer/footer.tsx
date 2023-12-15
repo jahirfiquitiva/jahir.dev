@@ -1,11 +1,15 @@
-// import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
-import { Link } from '@/components/core/link/link';
 import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
 import cx from '@/utils/cx';
 
 import { BackToTopLink } from './back-to-top';
-import { LinksGroup, LinksGroupTitle, StyledFooter } from './footer.styles';
+import {
+  BrandLink,
+  BrandLinkSpan,
+  LinksGroup,
+  LinksGroupTitle,
+  StyledFooter,
+} from './footer.styles';
 import { FooterLinksList, type FooterLinkProps } from './links-list/links-list';
 
 const primaryLinks: Array<FooterLinkProps> = [
@@ -79,21 +83,18 @@ export const Footer = () => {
       <div
         className={cx(
           'flex flex-row items-center h-full',
+          'max-tablet-sm:col-span-2',
           '[grid-row:2] tablet-sm:[grid-column:1]',
         )}
       >
-        <Link
+        <BrandLink
           href={'/'}
           title={'Home page'}
-          className={cx(
-            'self-center p-5 rounded-6',
-            'mobile-lg:-ml-6',
-            'hocus:bg-accent-dark/[0.06]',
-            'dark:hocus:bg-accent-dark/[0.24]',
-          )}
+          className={'hocus:decoration-gradient-brand group/link group/animoji'}
         >
           <LogoAnimoji />
-        </Link>
+          <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>
+        </BrandLink>
       </div>
       <LinksGroup
         title={'Social links'}

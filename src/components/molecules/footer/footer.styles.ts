@@ -1,5 +1,7 @@
 import tw from 'tailwind-styled-components';
 
+import { FooterLink, FooterLinkSpan } from './links-list/links-list.styles';
+
 export const StyledFooter = tw.footer`
   w-full
   max-w-[666px]
@@ -31,4 +33,28 @@ export const LinksGroupTitle = tw.p`
   select-none
   uppercase tracking-wider
   tablet-sm:sr-only
+`;
+
+export const BrandLink = tw(FooterLink)`
+  inline-flex
+  self-center
+  py-3
+  px-4
+  gap-6
+  min-h-[34px]
+  !h-[unset]
+  font-bold
+  no-underline
+  -ml-6
+`;
+
+export const BrandLinkSpan = tw(FooterLinkSpan)`
+  text-xs
+  from-gradient-brand
+  to-gradient-blue
+  saturate-125
+  dark:saturate-150
+  group-hocus/link:underline
+  group-hocus/link:decoration-2
+  group-hocus/link:decoration-gradient-brand
 `;
