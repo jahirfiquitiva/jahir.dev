@@ -1,6 +1,8 @@
 import 'server-only';
 /* eslint-disable @next/next/no-img-element */
 
+import defaultHero from '@/assets/images/default-og.png';
+
 import { LogoOrEmoji, PageTitle, PathName } from './logo-title';
 import { Name } from './name';
 
@@ -47,7 +49,7 @@ export const OgImage = (props: OgImageProps) => {
       }}
     >
       <img
-        src={`${baseUrl}/${hero}`}
+        src={!hero ? defaultHero.src : `${baseUrl}/${hero}`}
         alt={title || 'Hero image'}
         width={1200}
         height={630}

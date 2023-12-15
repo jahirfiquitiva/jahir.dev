@@ -50,8 +50,9 @@ export const getOgImage = async (
   hero?: string | null,
 ) => {
   const actualPath = (path || '').toLowerCase() as PathName;
-  let actualHero = hero || '/static/images/site/default-og.png';
-  if (actualHero.startsWith('/')) actualHero = actualHero.substring(1);
+  let actualHero = hero || null; //'/static/images/site/default-og.png';
+  if (actualHero && actualHero.startsWith('/'))
+    actualHero = actualHero.substring(1);
 
   return new ImageResponse(
     <OgImage path={actualPath} title={title} hero={actualHero} />,

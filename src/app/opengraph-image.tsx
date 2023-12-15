@@ -6,7 +6,6 @@ export const runtime = config.runtime;
 export const size = config.size;
 export const contentType = config.contentType;
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  console.error({ params });
+export default async function Image() {
   return getOgImage();
 }
