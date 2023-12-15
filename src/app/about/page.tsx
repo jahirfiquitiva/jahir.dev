@@ -63,8 +63,6 @@ export default function AboutPage() {
           </Link>{' '}
           page.
         </p>
-
-        <p>Thanks for reading. Hope you have an awesome day! 🌟</p>
       </Section>
       <LetsConnect />
       <Skills />

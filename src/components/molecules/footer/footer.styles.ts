@@ -17,7 +17,7 @@ export const StyledFooter = tw.footer`
   tablet-sm:px-16
   tablet-md:px-0
   tablet-sm:[grid-template-columns:repeat(2,minmax(0,auto))]
-  tablet-sm:gap-y-[calc(var(--verticalContentPadding)/1.5)]
+  tablet-sm:gap-y-[calc(var(--verticalContentPadding)/1.25)]
 `;
 
 export const LinksGroup = tw.div`
