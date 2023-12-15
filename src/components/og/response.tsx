@@ -1,17 +1,10 @@
 import type { SatoriOptions } from 'next/dist/compiled/@vercel/og/satori';
 import { ImageResponse } from 'next/og';
 
+import { config } from '@/utils/og';
+
 import type { PathName } from './logo-title';
 import { OgImage } from './og';
-
-export const config = {
-  runtime: 'edge',
-  size: {
-    width: 1200,
-    height: 630,
-  },
-  contentType: 'image/png',
-};
 
 export const runtime = config.runtime;
 
@@ -50,9 +43,8 @@ export const getOgImage = async (
   hero?: string | null,
 ) => {
   const actualPath = (path || '').toLowerCase() as PathName;
-  let actualHero = hero || null; //'/static/images/site/default-og.png';
-  if (actualHero && actualHero.startsWith('/'))
-    actualHero = actualHero.substring(1);
+  let actualHero = hero || '/static/images/site/default-og.png';
+  if (actualHero.startsWith('/')) actualHero = actualHero.substring(1);
 
   return new ImageResponse(
     <OgImage path={actualPath} title={title} hero={actualHero} />,
