@@ -24,7 +24,6 @@ export const buildOgImageUrl = (
 };
 
 export const config = {
-  runtime: 'edge',
   size: {
     width: 1200,
     height: 630,
