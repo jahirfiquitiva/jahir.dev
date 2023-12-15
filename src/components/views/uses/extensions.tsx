@@ -14,7 +14,7 @@ export const ExtensionsGrid = () => (
   <NoPaddingSection $as={'div'} className={'-mt-8'}>
     <p>
       I use the{' '}
-      <Link title={'Arc browser'} href={'https://arc.net/gift/92a237df'}>
+      <Link title={'Arc browser'} href={'https://arc.net/gift/cb3f518f'}>
         Arc browser
       </Link>{' '}
       along with the following extensions:
