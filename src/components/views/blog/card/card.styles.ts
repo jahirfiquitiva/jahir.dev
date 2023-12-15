@@ -39,9 +39,8 @@ const PostHero = tw(Img)`
 
 export const PostCardHero = tw(PostHero)`
   aspect-[5/2]
-  tablet-sm:mt-4
   tablet-sm:aspect-[4/3]
-  tablet-sm:max-w-[160px]
+  tablet-sm:max-w-[144px]
 `;
 
 export const SmallPostHero = tw(PostHero)`
