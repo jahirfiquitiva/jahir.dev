@@ -15,7 +15,6 @@ import type { Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
-import { Stats } from './stats';
 import type { BlogPostPageContext } from './types';
 
 const blogPostStructuredData = (post: Blog): string =>
