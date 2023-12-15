@@ -20,8 +20,9 @@ export const StyledFooter = tw.footer`
 
 export const LinksGroup = tw.div`
   flex flex-col
-  gap-12 -mt-2
-  w-full tablet-sm:gap-0
+  gap-12
+  w-full
+  tablet-sm:gap-0
 `;
 
 export const LinksGroupTitle = tw.p`
