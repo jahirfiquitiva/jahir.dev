@@ -20,8 +20,8 @@ const getComponentForSponsor = (
       <TestimonialCard>
         <Icon
           path={mdiFormatQuoteClose}
-          size={2}
-          className={'text-divider absolute top-6 right-8'}
+          size={2.5}
+          className={'text-divider absolute -top-4 right-0'}
         />
         <p className={'transition-colors mr-28 balance'}>{sponsor.message}</p>
         <div className={'flex flex-row flex-wrap gap-8 items-center'}>
