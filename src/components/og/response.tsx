@@ -16,7 +16,6 @@ const getManropeFont = async (): Promise<
     const fontData = await fetch(url)
       .then((res) => res.arrayBuffer())
       .catch(null);
-    console.error({ url: url.href, fontData });
     if (!fontData) return undefined;
     return [
       {
@@ -26,13 +25,6 @@ const getManropeFont = async (): Promise<
       },
     ];
   } catch (e) {
-    if (e instanceof Error) {
-      console.error({
-        url: url.href,
-        error: `${e.name}: ${e.message}`,
-        cause: e.cause?.toString()?.split(/\r?\n/)[0],
-      });
-    }
     return undefined;
   }
 };
@@ -41,9 +33,11 @@ export const getOgImage = async (
   path?: string | null,
   title?: string | null,
   hero?: string | null,
+  hd?: boolean | null,
 ) => {
   const actualPath = (path || '').toLowerCase() as PathName;
-  let actualHero = hero || '/static/images/site/default-og.png';
+  let actualHero =
+    hero || `/static/images/site/default-og.${hd ? 'png' : 'jpg'}`;
   if (actualHero.startsWith('/')) actualHero = actualHero.substring(1);
 
   return new ImageResponse(
