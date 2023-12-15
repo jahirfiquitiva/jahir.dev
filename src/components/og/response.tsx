@@ -11,7 +11,7 @@ export const runtime = 'edge';
 const getManropeFont = async (): Promise<
   SatoriOptions['fonts'] | undefined
 > => {
-  const url = new URL('../../assets/fonts/manrope-bold.ttf', import.meta.url);
+  const url = new URL('../../assets/fonts/Manrope-Bold.ttf', import.meta.url);
   try {
     const fontData = await fetch(url)
       .then((res) => res.arrayBuffer())

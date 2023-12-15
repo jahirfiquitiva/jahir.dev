@@ -2,11 +2,18 @@ html,
 body {
   @apply font-sans text-secondary-txt font-normal;
   @apply leading-normal mobile-lg:leading-relaxed;
-  font-feature-settings: 'calt', 'dlig', 'case', 'ccmp', 'zero', 'ss01', 'ss02';
+  font-feature-settings: 'dlig', 'case', 'ccmp', 'zero', 'ss02', 'cv01',
+    'cv03', 'cv04', 'cv06', 'cv09';
 }
 
 body {
   @apply text-xs;
+}
+
+@supports (font-variation-settings: normal) {
+  body {
+    font-weight: 450;
+  }
 }
 
 @media (min-width: 425px) {

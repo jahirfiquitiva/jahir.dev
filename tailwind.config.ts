@@ -8,7 +8,12 @@ import { colors } from './config/tailwind/colors';
 import { fontSizes as fontSize } from './config/tailwind/font-sizes';
 import { spaces as spacing } from './config/tailwind/spacing';
 
-const sansFontFamily = ['var(--font-inter)', 'Inter', ...fontFamily.sans];
+const sansFontFamily = [
+  'var(--font-inter-variable)',
+  'var(--font-inter)',
+  'Inter',
+  ...fontFamily.sans,
+];
 
 const breakpoints = {
   default: '0px',
@@ -60,7 +65,15 @@ module.exports = {
       }),
       fontFamily: {
         sans: sansFontFamily,
-        manrope: ['var(--font-manrope)', 'Manrope', ...sansFontFamily],
+        manrope: [
+          [
+            'var(--font-manrope-variable)',
+            'var(--font-manrope)',
+            'Manrope',
+            ...sansFontFamily,
+          ],
+          { fontFeatureSettings: "'calt'" },
+        ],
         mono: ['monospace', ...fontFamily.mono],
       },
       lineHeight: {
