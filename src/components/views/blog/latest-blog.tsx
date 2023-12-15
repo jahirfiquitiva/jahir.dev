@@ -11,7 +11,7 @@ import { mdiEyeOutline, mdiRss } from '@/components/icons/mdi';
 import { ProjectsButtons, ProjectsHeader } from './../projects/projects.styles';
 
 export const LatestBlogPost = async (props: PropsWithChildren) => (
-  <Section id={'latest-blog'}>
+  <Section id={'latest-blog'} className={'gap-24'}>
     <ProjectsHeader>
       <Heading
         shadow={'yellow'}

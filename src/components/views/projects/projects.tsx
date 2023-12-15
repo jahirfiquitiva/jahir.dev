@@ -40,7 +40,7 @@ const ProjectsList = (props: ProjectsProps) => {
 };
 
 export const Projects = ({ title, full }: ProjectsProps) => (
-  <Section id={'projects'}>
+  <Section id={'projects'} className={'gap-24'}>
     <ProjectsHeader>
       <Heading
         shadow={'red'}
