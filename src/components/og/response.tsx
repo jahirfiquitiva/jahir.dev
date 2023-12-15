@@ -8,10 +8,10 @@ import { OgImage } from './og';
 
 export const runtime = config.runtime;
 
-const getFontData = async (
-  path: string,
-): Promise<SatoriOptions['fonts'] | undefined> => {
-  const url = new URL(path, import.meta.url);
+const getManropeFont = async (): Promise<
+  SatoriOptions['fonts'] | undefined
+> => {
+  const url = new URL('../../assets/fonts/manrope-bold.ttf', import.meta.url);
   try {
     const fontData = await fetch(url)
       .then((res) => res.arrayBuffer())
@@ -52,7 +52,7 @@ export const getOgImage = async (
       width: config.size.width,
       height: config.size.height,
       emoji: 'fluent',
-      fonts: await getFontData('../../assets/fonts/manrope-bold.ttf'),
+      fonts: await getManropeFont(),
     },
   );
 };
