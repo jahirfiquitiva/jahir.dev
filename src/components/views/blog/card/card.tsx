@@ -59,7 +59,10 @@ export const BlogPostCard = (props: PostCardProps) => {
     <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink as Route}
-      className={cx(small ? 'flex-row items-center' : '', className)}
+      className={cx(
+        small ? 'flex-row items-center' : 'tablet-sm:gap-16',
+        className,
+      )}
       style={
         {
           ...style,
@@ -85,7 +88,7 @@ export const BlogPostCard = (props: PostCardProps) => {
             Published on <span className={'underline'}>{domain}</span>
           </span>
         ) : null}
-        <PostStatsContainer className={small ? 'mt-2' : 'mt-4'}>
+        <PostStatsContainer className={small ? 'mt-4' : ''}>
           {Boolean(readableDate) && (
             <PostStat
               title={`This blog post was published on ${a11yDate}`}
@@ -100,6 +103,7 @@ export const BlogPostCard = (props: PostCardProps) => {
             <PostStat
               title={`It takes ${readingTime?.minutes} minutes to read this blog post`}
               aria-label={`It takes ${readingTime?.minutes} minutes to read this blog post`}
+              className={'max-tablet-sm:sr-only'}
               $sm
             >
               <Icon path={mdiClockOutline} size={0.5} />
