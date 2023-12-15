@@ -37,8 +37,8 @@ export const OgImage = (props: OgImageProps) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        height: config.size.height,
-        width: config.size.width,
+        height: '100%',
+        width: '100%',
         padding: '56px 104px',
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
