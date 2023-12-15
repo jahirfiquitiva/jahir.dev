@@ -21,7 +21,7 @@ interface OgImageProps {
 
 const getGradientOverlay = (title?: string | null) => {
   return [
-    'rgba(8, 15, 30, 1) 0%',
+    'rgba(8, 15, 30, 0.8) 0%',
     Boolean(title) ? 'rgba(8, 15, 30, 0.5) 60%' : 'rgba(8, 15, 30, 0.5) 50%',
     Boolean(title) ? 'rgba(8, 15, 30, 0.05) 100%' : 'rgba(8, 15, 30, 0) 100%',
   ];
@@ -51,7 +51,6 @@ export const OgImage = (props: OgImageProps) => {
     >
       <div
         style={{
-          mixBlendMode: 'multiply',
           backgroundImage:
             // eslint-disable-next-line max-len
             `linear-gradient(65deg, ${getGradientOverlay(title).join(', ')})`,
