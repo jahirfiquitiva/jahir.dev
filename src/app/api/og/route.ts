@@ -8,6 +8,5 @@ export async function GET(req: Request) {
     searchParams.get('path'),
     searchParams.get('title'),
     searchParams.get('hero'),
-    searchParams.get('hd') === '1',
   );
 }
