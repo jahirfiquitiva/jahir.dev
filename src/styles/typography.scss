@@ -2,8 +2,6 @@ html,
 body {
   @apply font-sans text-secondary-txt font-normal;
   @apply leading-normal mobile-lg:leading-relaxed;
-  font-feature-settings: 'dlig', 'case', 'ccmp', 'zero', 'ss02', 'cv01',
-    'cv03', 'cv04', 'cv06', 'cv09';
 }
 
 body {

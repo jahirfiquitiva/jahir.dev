@@ -64,7 +64,14 @@ module.exports = {
         },
       }),
       fontFamily: {
-        sans: sansFontFamily,
+        sans: [
+          sansFontFamily,
+          {
+            fontFeatureSettings:
+              // eslint-disable-next-line max-len
+              "'calt', 'dlig', 'case', 'ccmp', 'zero', 'ss01', 'ss02', 'cv01', 'cv03', 'cv04', 'cv06', 'cv09'",
+          },
+        ],
         manrope: [
           [
             'var(--font-manrope-variable)',
