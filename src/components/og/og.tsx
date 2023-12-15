@@ -24,7 +24,7 @@ interface OgImageProps {
 const getGradientOverlay = (title?: string | null) => {
   const hasTitle = Boolean(title);
   return [
-    `rgba(8, 15, 30, ${hasTitle ? 1 : 0.8}) 0%`,
+    'rgba(8, 15, 30, 1) 0%',
     `rgba(8, 15, 30, 0.5) ${hasTitle ? 60 : 50}%`,
     `rgba(8, 15, 30, ${hasTitle ? 0.05 : 0}) 100%`,
   ];
