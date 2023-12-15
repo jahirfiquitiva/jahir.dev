@@ -45,8 +45,10 @@ export const PostCardHero = tw(PostHero)`
 `;
 
 export const SmallPostHero = tw(PostHero)`
-  aspect-auto
+  aspect-square
+  h-full
   max-w-[3.75rem]
+  max-h-[3.75rem]
 `;
 
 export const PostCardContent = tw.div`
@@ -80,7 +82,6 @@ export const PostStatsContainer = tw.div`
   items-center
   gap-x-8
   gap-y-6
-  mt-4
   text-tertiary-txt
   text-4xs
   flex-wrap

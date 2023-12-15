@@ -3,9 +3,10 @@ import tw from 'tailwind-styled-components';
 export const StatBase = tw.span<{ $sm?: boolean }>`
   inline-flex
   items-center
-  h-full
-  ${(p) => (p.$sm ? 'py-3' : 'py-6')}
-  ${(p) => (p.$sm ? 'px-8' : 'px-10')}
+  font-manrope
+  font-semibold
+  ${(p) => (p.$sm ? 'py-0' : 'py-3')}
+  ${(p) => (p.$sm ? 'px-6' : 'px-8')}
   ${(p) => (p.$sm ? 'min-h-[1.75rem]' : 'min-h-[2rem]')}
   ${(p) => (p.$sm ? 'min-w-[72px]' : 'min-w-[90px]')}
   ${(p) => (p.$sm ? 'gap-6' : 'gap-8')}

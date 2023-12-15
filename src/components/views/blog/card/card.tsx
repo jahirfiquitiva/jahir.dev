@@ -59,7 +59,7 @@ export const BlogPostCard = (props: PostCardProps) => {
     <PostCard
       title={`Blog post: ${post?.title}`}
       href={rightLink as Route}
-      className={cx(small ? 'flex-row' : '', className)}
+      className={cx(small ? 'flex-row items-center' : '', className)}
       style={
         {
           ...style,
@@ -79,15 +79,13 @@ export const BlogPostCard = (props: PostCardProps) => {
       />
       <PostCardContent>
         <PostTitle>{post.title}</PostTitle>
-        <PostDescription className={cx(small ? 'mobile-lg:line-clamp-1' : '')}>
-          {post.excerpt}
-        </PostDescription>
-        {domain ? (
+        {!small ? <PostDescription>{post.excerpt}</PostDescription> : null}
+        {domain && !small ? (
           <span className={'text-3xs text-tertiary-txt'}>
             Published on <span className={'underline'}>{domain}</span>
           </span>
         ) : null}
-        <PostStatsContainer>
+        <PostStatsContainer className={small ? 'mt-2' : 'mt-4'}>
           {Boolean(readableDate) && (
             <PostStat
               title={`This blog post was published on ${a11yDate}`}
