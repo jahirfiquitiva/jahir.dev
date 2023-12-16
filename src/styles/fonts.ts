@@ -4,7 +4,7 @@ export const InterVariable = localFont({
   src: './../assets/fonts/InterVariable.woff2',
   variable: '--font-inter-variable',
   display: 'fallback',
-  weight: 'variable',
+  weight: '1 1000',
 });
 
 export const Inter = localFont({
@@ -34,7 +34,7 @@ export const ManropeVariable = localFont({
   src: './../assets/fonts/ManropeVariable.woff2',
   variable: '--font-manrope-variable',
   display: 'fallback',
-  weight: 'variable',
+  weight: '1 1000',
   preload: false,
 });
 
