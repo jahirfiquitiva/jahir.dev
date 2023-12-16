@@ -7,9 +7,7 @@ import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';
 import { mdiEyeOutline } from '@/components/icons/mdi';
 import { PostStat } from '@/components/views/blog/card/card.styles';
 import { db } from '@/lib/planetscale';
-import cx from '@/utils/cx';
 
-import { StatBase } from './../stat';
 import { trackView as trackViewFunc } from './actions';
 import { ViewTracker } from './tracker';
 
