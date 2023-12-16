@@ -91,7 +91,8 @@ export const TrackName = tw.p`
   font-manrope
   text-secondary-txt
   transition-colors
-  max-w-full
+  w-full
+  min-h-[1.5rem]
   group-hocus/track:text-primary-txt
   group-hocus/track:underline
   group-hocus/track:decoration-2
@@ -103,13 +104,14 @@ export const TrackArtist = tw.span`
   truncate
   text-secondary-txt
   transition-colors
-  max-w-full
+  w-full
+  min-h-[1.375rem]
   group-hocus/track:text-primary-txt
 `;
 
 export const AlbumImg = tw(Img)`
   block
-  rounded-6
+  rounded-4
   aspect-square
   w-auto
   h-auto
