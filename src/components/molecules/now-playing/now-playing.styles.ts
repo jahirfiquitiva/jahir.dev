@@ -18,6 +18,10 @@ export const NowPlayingCard = tw(Link)`
   rounded-8
   border
   border-divider
+  min-h-[6.125rem]
+  mobile-lg:max-h-[6.125rem]
+  tablet-sm:min-h-[6.5rem]
+  tablet-sm:max-h-[unset]
   hocus:no-underline
   hocus:transform
   hocus:-translate-y-1

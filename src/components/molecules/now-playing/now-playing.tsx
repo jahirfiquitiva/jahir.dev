@@ -36,22 +36,15 @@ export const NowPlaying = () => {
       href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
       data-umami-event={'Now Playing'}
+      className={'flex items-center justify-center'}
     >
       {loading ? (
-        <div
-          className={cx(
-            'flex flex-row',
-            'items-center self-center justify-center',
-            'h-full mx-12 my-28',
-          )}
-        >
-          <Ring
-            size={48}
-            lineWeight={6}
-            speed={2}
-            color={'rgb(var(--stat-color))'}
-          />
-        </div>
+        <Ring
+          size={48}
+          lineWeight={6}
+          speed={2}
+          color={'rgb(var(--stat-color))'}
+        />
       ) : (
         <>
           <BackgroundImage
