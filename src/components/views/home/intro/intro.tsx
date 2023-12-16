@@ -58,7 +58,7 @@ export const Intro = () => {
           <div
             className={cx(
               'flex flex-row flex-wrap items-center',
-              'gap-x-8 mobile-lg:gap-x-28',
+              'gap-x-16 mobile-lg:gap-x-28',
               'gap-y-20',
             )}
           >
