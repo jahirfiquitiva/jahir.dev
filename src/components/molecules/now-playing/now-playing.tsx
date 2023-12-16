@@ -3,7 +3,6 @@
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
-import { Ring } from '@/components/core/loaders/ring/ring';
 import { useRequest } from '@/hooks/use-request';
 import type { ReadableTrack } from '@/types/spotify/entities';
 import cx from '@/utils/cx';
