@@ -26,6 +26,7 @@ body {
   background-color: var(--color-background);
   scroll-behavior: smooth;
   accent-color: var(--color-accent);
+  margin: 0 auto;
   margin-left: calc(calc(100vw - 100%) / 2);
 }
 
@@ -60,7 +61,6 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 0 auto;
 }
 
 input[type='text'],
