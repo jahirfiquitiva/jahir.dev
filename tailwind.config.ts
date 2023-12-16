@@ -79,7 +79,7 @@ module.exports = {
             'Manrope',
             ...sansFontFamily,
           ],
-          { fontFeatureSettings: "'calt'" },
+          { fontFeatureSettings: "'calt', 'zero', 'dlig'" },
         ],
         mono: ['monospace', ...fontFamily.mono],
       },
