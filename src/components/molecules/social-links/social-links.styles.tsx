@@ -26,7 +26,7 @@ export const SocialLink = tw(Link)`
   justify-center
   h-full
   w-full
-  rounded-6
+  rounded-4
   text-tertiary-txt
   no-underline
   group/link

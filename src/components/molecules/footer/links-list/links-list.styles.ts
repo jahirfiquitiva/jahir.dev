@@ -24,10 +24,12 @@ export const FooterLink = tw(Link)`
   text-tertiary-txt
   font-manrope
   font-semibold
+  rounded-4
   group/link
 `;
 
 export const FooterLinkSpan = tw.span`
+  decoration-2
   bg-gradient-to-r
   from-tertiary-txt
   to-tertiary-txt

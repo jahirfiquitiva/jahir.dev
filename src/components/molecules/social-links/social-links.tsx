@@ -38,6 +38,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
   );
 
   const linkClassName = cx(
+    textOnly ? 'tablet-sm:rounded-6' : 'rounded-6',
     textOnly ? 'tablet-sm:min-h-[34px]' : 'min-h-[34px]',
     textOnly
       ? 'tablet-sm:hocus:bg-accent-dark/[0.06] '

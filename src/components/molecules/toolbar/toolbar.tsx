@@ -52,7 +52,11 @@ export const Toolbar = () => {
   return (
     <Header data-expanded={isExpanded} id={'header'}>
       <Nav $elevated={elevated}>
-        <HomeLink href={'/'} title={'Home page'} className={'group/animoji'}>
+        <HomeLink
+          href={'/'}
+          title={'Home page'}
+          className={'leading-none h-[unset] group/animoji'}
+        >
           <LogoAnimoji />
           <HomeLinkSpan>Jahir Fiquitiva</HomeLinkSpan>
         </HomeLink>
