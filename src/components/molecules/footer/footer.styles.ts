@@ -8,6 +8,7 @@ export const StyledFooter = tw.footer`
   mx-auto
   grid
   grid-cols-3
+  [grid-auto-rows:min-content]
   py-[var(--verticalContentPadding)]
   px-14
   gap-x-[calc(var(--verticalContentPadding)/2)]
