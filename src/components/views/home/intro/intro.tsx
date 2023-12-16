@@ -6,6 +6,7 @@ import { Link } from '@/components/core/link/link';
 import { mdiAccountCircleOutline } from '@/components/icons/mdi';
 import { VerifiedIcon } from '@/components/icons/verified';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
+import cx from '@/utils/cx';
 
 import {
   IntroParagraph,
@@ -40,7 +41,7 @@ export const Intro = () => {
                   Jahir Fiquitiva
                 </Heading>
               </span>
-              <VerifiedIcon className={'w-24 h-24 mt-4'} />
+              <VerifiedIcon className={'w-24 h-24 mt-2'} />
             </Heading>
             <WavingHello />
           </TitlesContainer>
@@ -55,7 +56,11 @@ export const Intro = () => {
             </Link>
           </IntroParagraph>
           <div
-            className={'flex flex-row flex-wrap items-center gap-x-28 gap-y-20'}
+            className={cx(
+              'flex flex-row flex-wrap items-center',
+              'gap-x-8 mobile-lg:gap-x-28',
+              'gap-y-20',
+            )}
           >
             <ButtonLink
               title={'More about me'}
