@@ -53,7 +53,7 @@ export const Meta = () => {
       <meta
         name={'theme-color'}
         media={'(prefers-color-scheme: dark)'}
-        content={'#151925'}
+        content={'#0c121e'}
       />
     </>
   );
