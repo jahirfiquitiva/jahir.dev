@@ -44,7 +44,7 @@ export const ThemeProvider = (props: PropsWithChildren) => {
         .querySelector(`meta[name="${tag}"]`)
         ?.setAttribute(
           'content',
-          actualTheme === 'dark' ? '#080f1e' : '#ffffff',
+          actualTheme === 'dark' ? '#151925' : '#fdfeff',
         );
     });
   }, [actualTheme]);

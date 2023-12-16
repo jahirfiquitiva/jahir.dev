@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { config } from '@/utils/og';
+
 import { buildOgImageUrl } from './og';
 
 type MetaImageStyle = 'summary_large_image' | 'summary';
@@ -25,6 +27,15 @@ export const getStaticMetadata = (data: {
     actualImage === defaultLogoImage
       ? 'summary'
       : metaImageStyle || 'summary_large_image';
+  const images = [
+    {
+      url: actualImage,
+      alt: `Preview for site: "${title}"`,
+      type: config.contentType,
+      width: config.size.width,
+      height: config.size.height,
+    },
+  ];
 
   return {
     title,
@@ -36,14 +47,14 @@ export const getStaticMetadata = (data: {
       description,
       url: exactUrl || 'https://jahir.dev',
       siteName: title,
-      images: [{ url: actualImage }],
+      images,
       locale: 'en_US',
       type: 'website',
     },
     twitter: {
       title,
       description,
-      images: [{ url: actualImage }],
+      images,
       card: actualMetaImageStyle,
       creator: '@jahirfiquitiva',
       site: '@jahirfiquitiva',

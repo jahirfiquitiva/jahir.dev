@@ -7,7 +7,7 @@ import { Stat } from '../../mdx/ui/stat';
 
 export const PostCard = tw(Link)`
   flex
-  flex-col
+  flex-row
   p-10
   -mx-10
   gap-14
@@ -21,7 +21,6 @@ export const PostCard = tw(Link)`
   no-underline
   tablet-sm:p-12
   tablet-sm:-mx-12
-  tablet-sm:flex-row
   tablet-sm:min-w-[calc(100%_+_1.5rem)]
   hocus:-translate-y-1
   hocus:outline-offset-0
@@ -33,26 +32,34 @@ export const PostCard = tw(Link)`
 
 const PostHero = tw(Img)`
   h-auto
+  w-full
   rounded-4
-  tablet-sm:min-h-full
+  min-h-full
+  transition
+  border border-transparent -m-1
+  group-hocus/post:border-[rgba(var(--post-text-color)/0.24)]
+  group-hocus/post:dark:border-[rgba(var(--post-text-color)/0.36)]
 `;
 
 export const PostCardHero = tw(PostHero)`
-  aspect-[5/2]
-  tablet-sm:mt-4
+  aspect-[3/4]
+  max-w-[3.5rem]
   tablet-sm:aspect-[4/3]
-  tablet-sm:max-w-[160px]
+  tablet-sm:max-w-[148px]
+  tablet-sm:max-h-full
 `;
 
 export const SmallPostHero = tw(PostHero)`
-  aspect-auto
-  max-w-[3.75rem]
+  aspect-square
+  max-w-[3.5rem]
+  max-h-[3.5rem]
 `;
 
 export const PostCardContent = tw.div`
   flex flex-col
   gap-4 flex-1
   tablet-sm:self-center
+  mr-10 tablet-sm:mr-12
 `;
 
 export const PostTitle = tw.p`
@@ -61,6 +68,10 @@ export const PostTitle = tw.p`
   font-manrope
   text-primary-txt
   transition
+  line-clamp-1
+  -mt-4
+  balance
+  tablet-sm:line-clamp-2
   group-hocus/post:underline
   group-hocus/post:decoration-2
   group-hocus/post:text-[rgba(var(--post-text-color))]
@@ -68,10 +79,13 @@ export const PostTitle = tw.p`
 
 export const PostDescription = tw.p`
   font-normal
-  text-2xs
+  text-3xs
   text-secondary-txt
   overflow-ellipsis
-  line-clamp-2
+  line-clamp-1
+  -mt-1
+  tablet-sm:text-2xs
+  tablet-sm:line-clamp-2
   group-hocus/post:text-primary-txt
 `;
 
@@ -80,7 +94,7 @@ export const PostStatsContainer = tw.div`
   items-center
   gap-x-8
   gap-y-6
-  mt-4
+  mt-6
   text-tertiary-txt
   text-4xs
   flex-wrap

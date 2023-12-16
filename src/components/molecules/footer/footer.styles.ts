@@ -7,7 +7,8 @@ export const StyledFooter = tw.footer`
   max-w-[666px]
   mx-auto
   grid
-  grid-cols-2
+  grid-cols-3
+  [grid-auto-rows:min-content]
   py-[var(--verticalContentPadding)]
   px-14
   gap-x-[calc(var(--verticalContentPadding)/2)]
@@ -16,29 +17,36 @@ export const StyledFooter = tw.footer`
   border-divider
   tablet-sm:px-16
   tablet-md:px-0
-  tablet-sm:gap-x-40
+  tablet-sm:[grid-template-columns:repeat(2,minmax(0,auto))]
+  tablet-sm:gap-y-[calc(var(--verticalContentPadding)/1.25)]
 `;
 
-export const InnerFooter = tw.div`
-  flex
-  flex-wrap
-  gap-16
-  -mx-2
-  items-center
-  col-span-2
-  mobile-lg:justify-between
+export const LinksGroup = tw.div`
+  flex flex-col
+  gap-12
+  w-full
+  tablet-sm:gap-0
+`;
+
+export const LinksGroupTitle = tw.p`
+  text-3xs text-tertiary-txt
+  font-manrope font-bold
+  select-none
+  uppercase tracking-wider
+  tablet-sm:sr-only
 `;
 
 export const BrandLink = tw(FooterLink)`
   inline-flex
-  self-start
-  p-4
-  pl-0
+  self-center
+  py-3
+  px-4
   gap-6
-  min-h-[30]
+  min-h-[34px]
   !h-[unset]
   font-bold
   no-underline
+  -ml-6
 `;
 
 export const BrandLinkSpan = tw(FooterLinkSpan)`
@@ -47,17 +55,7 @@ export const BrandLinkSpan = tw(FooterLinkSpan)`
   to-gradient-blue
   saturate-125
   dark:saturate-150
-`;
-
-export const LinksGroup = tw.div`
-  flex flex-col
-  gap-8 -mt-2
-  w-full
-`;
-
-export const LinksGroupTitle = tw.p`
-  text-3xs text-tertiary-txt
-  font-manrope font-bold
-  select-none
-  uppercase tracking-wider
+  group-hocus/link:underline
+  group-hocus/link:decoration-2
+  group-hocus/link:decoration-gradient-brand
 `;

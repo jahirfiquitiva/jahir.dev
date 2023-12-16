@@ -1,7 +1,6 @@
 import '@/styles/globals.scss';
 
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Inter, Manrope } from 'next/font/google';
 import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
@@ -10,24 +9,11 @@ import { Footer } from '@/components/molecules/footer/footer';
 import { Main } from '@/components/molecules/main';
 import { Toolbar } from '@/components/molecules/toolbar/toolbar';
 import { Providers } from '@/providers';
+import { Inter, InterVariable, Manrope, ManropeVariable } from '@/styles/fonts';
+import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 
 import { Meta } from './meta';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'fallback',
-  weight: ['400', '500', '600', '700'],
-});
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
-  display: 'fallback',
-  weight: ['400', '500', '600', '700'],
-  preload: false,
-});
 
 export const metadata = {
   ...getStaticMetadata({
@@ -59,7 +45,10 @@ export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
       lang={'en'}
-      className={`${inter.variable} ${manrope.variable}`}
+      className={cx(
+        `${Inter.variable} ${Manrope.variable}`,
+        `${InterVariable.variable} ${ManropeVariable.variable}`,
+      )}
       suppressHydrationWarning
     >
       <head>

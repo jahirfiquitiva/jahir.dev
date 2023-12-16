@@ -1,4 +1,5 @@
 import type { Route } from 'next';
+import type { CSSProperties, PropsWithChildren } from 'react';
 
 import type { GradientClass, RainbowColor } from '@/types/gradient';
 import cx from '@/utils/cx';
@@ -14,15 +15,17 @@ export interface FooterLinkProps {
   underlineColor?: RainbowColor;
 }
 
-interface FooterLinksListProps {
+interface FooterLinksListProps extends PropsWithChildren {
   title?: string;
   links?: Array<FooterLinkProps>;
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const FooterLinksList = (props: FooterLinksListProps) => {
-  const { title, links } = props;
+  const { title, links, className, style, children } = props;
   return (
-    <List aria-label={title}>
+    <List aria-label={title} className={className} style={style}>
       {links?.map((link) => {
         return (
           <li key={link.title}>
@@ -46,6 +49,7 @@ export const FooterLinksList = (props: FooterLinksListProps) => {
           </li>
         );
       })}
+      {children}
     </List>
   );
 };

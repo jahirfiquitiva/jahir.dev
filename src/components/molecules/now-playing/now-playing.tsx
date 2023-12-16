@@ -3,7 +3,6 @@
 import type { Route } from 'next';
 import type { CSSProperties } from 'react';
 
-import { Ring } from '@/components/core/loaders/ring/ring';
 import { useRequest } from '@/hooks/use-request';
 import type { ReadableTrack } from '@/types/spotify/entities';
 import cx from '@/utils/cx';
@@ -36,56 +35,60 @@ export const NowPlaying = () => {
       href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
       data-umami-event={'Now Playing'}
-    >
-      {loading ? (
-        <div
-          className={cx(
-            'flex flex-row',
-            'items-center self-center justify-center',
-            'h-full mx-12 my-28',
-          )}
-        >
-          <Ring
-            size={48}
-            lineWeight={6}
-            speed={2}
-            color={'rgb(var(--stat-color))'}
-          />
-        </div>
-      ) : (
-        <>
-          <BackgroundImage
-            src={track?.image?.url || ''}
-            width={track?.image?.width || 128}
-            height={track?.image?.height || 128}
-            alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
-            className={cx(isPlaying ? 'motion-safe:animate-spin' : '')}
-          />
-          <NowPlayingContent>
-            <AlbumImg
-              src={track?.image?.url || ''}
-              size={track?.image?.height || 72}
-              alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
-            />
-            <NowPlayingTexts>
-              <NowPlayingHeader>
-                <span>{isPlaying ? 'Now Playing' : 'Last Played'}</span>
-                {isPlaying ? (
-                  <NowPlayingBarsGroup>
-                    <NowPlayingBar />
-                    <NowPlayingBar className={'[animation-delay:-2.2s]'} />
-                    <NowPlayingBar className={'[animation-delay:-3.7s]'} />
-                  </NowPlayingBarsGroup>
-                ) : null}
-              </NowPlayingHeader>
-              <div className={'flex flex-col gap-2'}>
-                <TrackName>{track?.name}</TrackName>
-                <TrackArtist>{track?.artist}</TrackArtist>
-              </div>
-            </NowPlayingTexts>
-          </NowPlayingContent>
-        </>
+      className={cx(
+        'flex items-center justify-center',
+        loading ? 'select-none pointer-events-none' : '',
       )}
+      aria-disabled={loading}
+    >
+      <BackgroundImage
+        src={track?.image?.url || ''}
+        width={track?.image?.width || 128}
+        height={track?.image?.height || 128}
+        alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
+        className={cx(
+          isPlaying
+            ? 'motion-safe:animate-spin'
+            : loading
+              ? 'hidden invisible'
+              : '',
+        )}
+      />
+      <NowPlayingContent
+        className={loading ? 'motion-safe:animate-pulse' : undefined}
+      >
+        <AlbumImg
+          src={track?.image?.url || ''}
+          size={track?.image?.height || 72}
+          alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
+          className={cx(
+            'bg-divider',
+            'min-w-[7.5rem] tablet-sm:min-w-[4.875rem]',
+          )}
+        />
+        <NowPlayingTexts>
+          <NowPlayingHeader>
+            <span>
+              {loading ? 'Loading' : isPlaying ? 'Now Playing' : 'Last Played'}
+            </span>
+            {isPlaying ? (
+              <NowPlayingBarsGroup>
+                <NowPlayingBar />
+                <NowPlayingBar className={'[animation-delay:-2.2s]'} />
+                <NowPlayingBar className={'[animation-delay:-3.7s]'} />
+              </NowPlayingBarsGroup>
+            ) : null}
+          </NowPlayingHeader>
+          <div className={'flex flex-col gap-2'}>
+            <TrackName className={loading ? 'bg-divider' : undefined}>
+              {track?.name}
+            </TrackName>
+            <TrackArtist className={loading ? 'bg-divider' : undefined}>
+              {track?.artist}
+            </TrackArtist>
+          </div>
+        </NowPlayingTexts>
+      </NowPlayingContent>
     </NowPlayingCard>
   );
 };

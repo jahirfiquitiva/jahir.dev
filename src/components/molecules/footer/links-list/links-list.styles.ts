@@ -20,7 +20,7 @@ export const FooterLink = tw(Link)`
   inline-flex
   items-center
   self-start
-  text-2xs
+  text-3xs
   text-tertiary-txt
   font-manrope
   font-semibold

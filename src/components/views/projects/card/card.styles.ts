@@ -56,9 +56,10 @@ export const TitleContainer = tw.div`
 `;
 
 export const StarsCounter = tw(Chip)`
-  py-1
-  px-[0.3125rem]
+  py-0
+  px-5
   gap-4
+  min-h-[1.5rem]
   !rounded-6
   text-4xs
   font-manrope

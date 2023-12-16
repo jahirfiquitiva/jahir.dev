@@ -18,6 +18,10 @@ export const NowPlayingCard = tw(Link)`
   rounded-8
   border
   border-divider
+  min-h-[6.125rem]
+  mobile-lg:max-h-[6.125rem]
+  tablet-sm:min-h-[6.5rem]
+  tablet-sm:max-h-[unset]
   hocus:no-underline
   hocus:transform
   hocus:-translate-y-1
@@ -87,7 +91,8 @@ export const TrackName = tw.p`
   font-manrope
   text-secondary-txt
   transition-colors
-  max-w-full
+  w-full
+  min-h-[1.5rem]
   group-hocus/track:text-primary-txt
   group-hocus/track:underline
   group-hocus/track:decoration-2
@@ -99,13 +104,14 @@ export const TrackArtist = tw.span`
   truncate
   text-secondary-txt
   transition-colors
-  max-w-full
+  w-full
+  min-h-[1.375rem]
   group-hocus/track:text-primary-txt
 `;
 
 export const AlbumImg = tw(Img)`
   block
-  rounded-6
+  rounded-4
   aspect-square
   w-auto
   h-auto

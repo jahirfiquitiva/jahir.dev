@@ -7,9 +7,7 @@ import { LineWobble } from '@/components/core/loaders/line-wobble/line-wobble';
 import { mdiEyeOutline } from '@/components/icons/mdi';
 import { PostStat } from '@/components/views/blog/card/card.styles';
 import { db } from '@/lib/planetscale';
-import cx from '@/utils/cx';
 
-import { StatBase } from './../stat';
 import { trackView as trackViewFunc } from './actions';
 import { ViewTracker } from './tracker';
 
@@ -37,15 +35,14 @@ interface ViewsCounterProps {
 const InternalCounter = async (props: { slug: string; $sm?: boolean }) => {
   const views = (await getViews(props.slug).catch(() => 0)) || 1;
   return (
-    <StatBase
+    <PostStat
       $sm={props.$sm}
-      className={cx('bg-transparent dark:bg-transparent')}
       title={`This blog post has been viewed ${views.toLocaleString()} times`}
       aria-label={`This blog post has been viewed ${views.toLocaleString()} times`}
     >
       <Icon path={mdiEyeOutline} size={props.$sm ? 0.5 : 0.625} />
       <span>{`${views.toLocaleString()} views`}</span>
-    </StatBase>
+    </PostStat>
   );
 };
 
@@ -57,22 +54,20 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
       {trackView && !inProgress ? (
         <ViewTracker slug={slug} trackView={trackViewFunc} />
       ) : null}
-      <PostStat $sm={$sm} className={'p-0'}>
-        <Suspense
-          fallback={
-            <StatBase $sm={$sm}>
-              <LineWobble
-                size={$sm ? 56 : 70}
-                lineWeight={$sm ? 2 : 4}
-                speed={1.5}
-                color={'var(--color-accent, #88a4e6)'}
-              />
-            </StatBase>
-          }
-        >
-          <InternalCounter slug={slug} $sm={$sm} />
-        </Suspense>
-      </PostStat>
+      <Suspense
+        fallback={
+          <PostStat $sm={$sm}>
+            <LineWobble
+              size={$sm ? 56 : 70}
+              lineWeight={$sm ? 2 : 4}
+              speed={1.5}
+              color={'var(--color-accent, #88a4e6)'}
+            />
+          </PostStat>
+        }
+      >
+        <InternalCounter slug={slug} $sm={$sm} />
+      </Suspense>
     </>
   );
 };

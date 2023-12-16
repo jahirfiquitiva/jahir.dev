@@ -32,7 +32,7 @@ export const BlogPosts = (props: BlogPostsProps) => {
               <h4>{group.year}</h4>
               <hr className={'w-full border-none m-0 h-1 bg-divider flex-1'} />
             </div>
-            <ul className={'list-none flex flex-col gap-16'}>
+            <ul className={'list-none flex flex-col gap-8 tablet-sm:gap-12'}>
               {(group.posts || []).map((post, index) => {
                 return (
                   <li

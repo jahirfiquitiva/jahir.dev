@@ -1,10 +1,11 @@
 import { LogoAnimoji } from '@/components/core/logo-animoji/logo-animoji';
 import { SocialLinks } from '@/components/molecules/social-links/social-links';
+import cx from '@/utils/cx';
 
+import { BackToTopLink } from './back-to-top';
 import {
   BrandLink,
   BrandLinkSpan,
-  InnerFooter,
   LinksGroup,
   LinksGroupTitle,
   StyledFooter,
@@ -60,14 +61,6 @@ const metaLinks: Array<FooterLinkProps> = [
     underlineColor: 'brand',
     a11yTitle: 'Website Colophon',
   },
-  {
-    title: 'Source',
-    href: 'https://github.com/jahirfiquitiva/jahir.dev',
-    className: 'from-gradient-brand to-gradient-blue',
-    underlineColor: 'brand',
-    a11yTitle: 'View source code on GitHub',
-    openInNewTab: true,
-  },
 ];
 
 export const Footer = () => {
@@ -79,9 +72,21 @@ export const Footer = () => {
       </LinksGroup>
       <LinksGroup title={'Meta links'} className={'tablet-sm:items-end'}>
         <LinksGroupTitle>Meta</LinksGroupTitle>
-        <FooterLinksList title={'Meta pages links'} links={metaLinks} />
+        <FooterLinksList
+          title={'Meta pages links'}
+          links={metaLinks}
+          className={'tablet-sm:justify-end'}
+        >
+          <BackToTopLink />
+        </FooterLinksList>
       </LinksGroup>
-      <InnerFooter>
+      <div
+        className={cx(
+          'flex flex-row items-center h-full',
+          'max-tablet-sm:col-span-2',
+          '[grid-row:2] tablet-sm:[grid-column:1]',
+        )}
+      >
         <BrandLink
           href={'/'}
           title={'Home page'}
@@ -90,8 +95,20 @@ export const Footer = () => {
           <LogoAnimoji />
           <BrandLinkSpan>Jahir Fiquitiva</BrandLinkSpan>
         </BrandLink>
-        <SocialLinks withBackToTop />
-      </InnerFooter>
+      </div>
+      <LinksGroup
+        title={'Social links'}
+        className={'tablet-sm:[grid-column:2]'}
+      >
+        <LinksGroupTitle>Social</LinksGroupTitle>
+        <SocialLinks
+          className={cx(
+            'flex-col items-start justify-start mx-0',
+            'mobile-lg:mx-0 tablet-sm:flex-row tablet-sm:justify-end',
+          )}
+          textOnly
+        />
+      </LinksGroup>
     </StyledFooter>
   );
 };

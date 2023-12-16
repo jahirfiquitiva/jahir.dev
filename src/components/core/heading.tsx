@@ -34,6 +34,7 @@ export const Heading = (
       {...otherProps}
       $as={asElement}
       className={cx(
+        'balance',
         otherProps.className,
         from ? `dark:from-gradient-${from}` : null,
         to ? `dark:to-gradient-${to}` : null,

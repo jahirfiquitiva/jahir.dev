@@ -1,6 +1,8 @@
 import 'server-only';
 /* eslint-disable @next/next/no-img-element */
 
+import { config } from '@/utils/og';
+
 import { LogoOrEmoji, PageTitle, PathName } from './logo-title';
 import { Name } from './name';
 
@@ -20,10 +22,11 @@ interface OgImageProps {
 }
 
 const getGradientOverlay = (title?: string | null) => {
+  const hasTitle = Boolean(title);
   return [
     'rgba(8, 15, 30, 1) 0%',
-    Boolean(title) ? 'rgba(8, 15, 30, 0.5) 60%' : 'rgba(8, 15, 30, 0.5) 50%',
-    Boolean(title) ? 'rgba(8, 15, 30, 0.05) 100%' : 'rgba(8, 15, 30, 0) 100%',
+    `rgba(8, 15, 30, 0.5) ${hasTitle ? 60 : 50}%`,
+    `rgba(8, 15, 30, ${hasTitle ? 0.05 : 0}) 100%`,
   ];
 };
 
@@ -49,8 +52,8 @@ export const OgImage = (props: OgImageProps) => {
       <img
         src={`${baseUrl}/${hero}`}
         alt={title || 'Hero image'}
-        width={1200}
-        height={630}
+        width={config.size.height}
+        height={config.size.width}
         style={{
           position: 'absolute',
           width: 'auto',
@@ -66,7 +69,6 @@ export const OgImage = (props: OgImageProps) => {
       />
       <div
         style={{
-          mixBlendMode: 'multiply',
           backgroundImage:
             // eslint-disable-next-line max-len
             `linear-gradient(65deg, ${getGradientOverlay(title).join(', ')})`,
