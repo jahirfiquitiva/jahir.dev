@@ -100,7 +100,7 @@ export const Footer = () => {
         title={'Social links'}
         className={'tablet-sm:[grid-column:2]'}
       >
-        <LinksGroupTitle>Social</LinksGroupTitle>
+        <LinksGroupTitle>Connect</LinksGroupTitle>
         <SocialLinks
           className={cx(
             'flex-col items-start justify-start mx-0',
