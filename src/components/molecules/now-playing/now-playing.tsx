@@ -34,7 +34,9 @@ export const NowPlaying = () => {
       title={`Listen to "${track?.name}" by "${track?.artist}" on Spotify`}
       href={(track?.url || '#') as Route}
       style={{ '--stat-color': '30 215 96' } as CSSProperties}
-      data-umami-event={'Now Playing'}
+      data-umami-event={
+        loading ? '-' : isPlaying ? 'Now Playing' : 'Last Played'
+      }
       className={cx(
         'flex items-center justify-center',
         loading ? 'select-none pointer-events-none' : '',
@@ -63,7 +65,7 @@ export const NowPlaying = () => {
           alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
           className={cx(
             'bg-divider',
-            'min-w-[7.5rem] tablet-sm:min-w-[4.875rem]',
+            'min-w-[4.5rem] tablet-sm:min-w-[4.875rem]',
           )}
         />
         <NowPlayingTexts>
