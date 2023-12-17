@@ -66,14 +66,20 @@ const metaLinks: Array<FooterLinkProps> = [
 export const Footer = () => {
   return (
     <StyledFooter>
-      <LinksGroup title={'Website pages links'}>
+      <LinksGroup title={'Link to navigate the website'}>
         <LinksGroupTitle>Navigate</LinksGroupTitle>
-        <FooterLinksList title={'Website pages links'} links={primaryLinks} />
-      </LinksGroup>
-      <LinksGroup title={'Meta links'} className={'tablet-sm:items-end'}>
-        <LinksGroupTitle>Meta</LinksGroupTitle>
         <FooterLinksList
-          title={'Meta pages links'}
+          title={'Link to navigate the website'}
+          links={primaryLinks}
+        />
+      </LinksGroup>
+      <LinksGroup
+        title={'Miscellaneous links'}
+        className={'tablet-sm:items-end'}
+      >
+        <LinksGroupTitle aria-label={'miscellaneous'}>Misc</LinksGroupTitle>
+        <FooterLinksList
+          title={'Miscellaneous links'}
           links={metaLinks}
           className={'tablet-sm:justify-end'}
         >
