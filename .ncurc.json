@@ -1,0 +1,4 @@
+{
+  "upgrade": true,
+  "reject": ["remark-gfm", "remark-unwrap-images", "sharp"]
+}

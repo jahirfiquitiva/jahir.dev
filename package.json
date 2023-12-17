@@ -7,7 +7,7 @@
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
-    "update-deps": "npx --yes npm-check-updates -u -x remark-gfm -x remark-unwrap-images -x sharp && yarn",
+    "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.contentlayer|src/app'",
     "postinstall": "is-ci || husky install"
@@ -29,7 +29,7 @@
     "react-compare-image": "^3.4.0",
     "react-dom": "^18.2.0",
     "server-only": "^0.0.1",
-    "shikiji": "^0.9.3",
+    "shikiji": "^0.9.9",
     "swr": "^2.2.4"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
+    "@types/react-dom": "^18.2.18",
     "@types/remove-markdown": "^0.3.4",
     "@types/xml": "^1.0.11",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -50,7 +50,7 @@
     "cross-env": "^7.0.3",
     "cssnano": "^6.0.2",
     "dotenv": "^16.3.1",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
