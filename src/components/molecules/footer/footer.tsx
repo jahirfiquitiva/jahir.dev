@@ -67,7 +67,7 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <LinksGroup title={'Website pages links'}>
-        <LinksGroupTitle>Index</LinksGroupTitle>
+        <LinksGroupTitle>Navigate</LinksGroupTitle>
         <FooterLinksList title={'Website pages links'} links={primaryLinks} />
       </LinksGroup>
       <LinksGroup title={'Meta links'} className={'tablet-sm:items-end'}>
