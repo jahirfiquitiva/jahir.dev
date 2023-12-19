@@ -10,7 +10,7 @@ export const getGitHubSponsors = async (): Promise<{
   let monthlySponsors: Array<ReadableSupporter> = [];
   let oneTimeSponsors: Array<ReadableSupporter> = [];
 
-  tiers.forEach((tier) => {
+  tiers?.forEach((tier) => {
     const { monthlyPriceInDollars, isOneTime } = tier;
     const people: Array<ReadableSupporter> = (
       tier.adminInfo?.sponsorships?.nodes || []
