@@ -8,13 +8,13 @@ const isLocalLink = (href?: string) =>
 
 interface LinkProps extends ComponentProps<typeof NextLink> {
   title: string;
-  openInNewTab?: boolean;
+  $openInNewTab?: boolean;
 }
 
 export const Link = (props: LinkProps) => {
   const { href, ...otherProps } = props;
   const {
-    openInNewTab = !isLocalLink(
+    $openInNewTab = !isLocalLink(
       typeof href !== 'string' ? href.toString() : href,
     ),
     ...rest
@@ -24,7 +24,7 @@ export const Link = (props: LinkProps) => {
     <StyledLink
       {...{ href, ...rest }}
       aria-label={rest.title}
-      {...(openInNewTab
+      {...($openInNewTab
         ? {
             target: '_blank',
             rel: `${props.rel || ''} noopener noreferrer`.trim(),

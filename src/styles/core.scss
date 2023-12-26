@@ -1,31 +1,16 @@
 :root {
   --size-scrollbar-width: 8px;
-  --totalToolbarHeight: 64px;
-  --scrollMargin: calc(var(--totalToolbarHeight) + 0.5rem); // 8px
-  --verticalContentPadding: 1.5rem;
-}
-
-@media screen and (min-width: 596px) {
-  :root {
-    --totalToolbarHeight: 68px;
-    --scrollMargin: calc(var(--totalToolbarHeight) + 1rem); // 16px
-    --verticalContentPadding: 1.75rem;
-  }
 }
 
 @media screen and (min-width: 768px) {
   :root {
-    --totalToolbarHeight: 68px;
     --size-scrollbar-width: 12px;
-    --verticalContentPadding: 2.25rem;
   }
 }
 
 html,
 body {
-  background-color: var(--color-background);
-  scroll-behavior: smooth;
-  accent-color: var(--color-accent);
+  @apply motion-safe:scroll-smooth bg-background accent-accent;
 }
 
 html {
@@ -33,10 +18,15 @@ html {
 }
 
 body {
-  @apply overflow-x-hidden;
+  @apply text-xs overflow-x-hidden;
+}
+
+button {
+  @apply cursor-default;
 }
 
 a {
+  @apply transition-colors;
   @apply decoration-2 underline-offset-2 cursor-pointer;
   @apply underline decoration-divider;
   @apply hocus:decoration-accent-dark;
@@ -99,7 +89,7 @@ samp {
 /* == Custom Scrollbar Colors == */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar-bg) var(--color-scrollbar-thumb);
+  scrollbar-color: theme('colors.brand.400') var(--color-background);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -108,13 +98,13 @@ samp {
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--color-scrollbar-thumb);
+  background: var(--color-background);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--color-scrollbar-bg);
+  background-color: theme('colors.brand.300');
   border-radius: 20px;
-  border: 3px solid var(--color-scrollbar-thumb);
+  border: 3px solid var(--color-background);
 }
 
 *:focus {
@@ -129,11 +119,6 @@ samp {
   }
 }
 
-body section,
-body article {
-  scroll-margin-top: var(--scrollMargin);
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::after,
@@ -144,4 +129,24 @@ body article {
     transition-duration: 1ms !important;
     transition-delay: -1ms !important;
   }
+}
+
+.safe-blur {
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  @apply transform-gpu;
+}
+
+body main,
+body section,
+body article,
+body article [id] {
+  @apply scroll-mt-20 tablet-sm:scroll-mt-24 tablet-md:scroll-mt-28;
 }

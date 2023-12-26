@@ -15,28 +15,16 @@ body {
   }
 }
 
-@media (min-width: 425px) {
-  html,
-  body {
-    line-height: 1.75;
-  }
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  @apply inline-block text-primary-txt font-bold font-manrope;
-  text-wrap: balance;
+  @apply inline-block text-primary-txt font-bold font-manrope text-balance;
   p {
     font-weight: inherit;
   }
-}
-
-.balance {
-  text-wrap: balance;
 }
 
 b,
@@ -50,29 +38,29 @@ small {
 }
 
 h1 {
-  @apply text-3xl;
+  @apply text-2xl;
   line-height: 1.5;
 }
 
 h2 {
-  @apply text-2xl;
+  @apply text-xl;
   line-height: 1.375;
 }
 
 h3 {
-  @apply text-xl;
-}
-
-h4 {
   @apply text-lg;
 }
 
-h5 {
+h4 {
   @apply text-md;
 }
 
-h6 {
+h5 {
   @apply text-sm;
+}
+
+h6 {
+  @apply text-xs;
 }
 
 p {

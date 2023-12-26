@@ -1,18 +1,26 @@
 import type { Config } from 'tailwindcss';
-import { fontFamily } from 'tailwindcss/defaultTheme';
-import type { PluginAPI } from 'tailwindcss/types/config';
+import twColors from 'tailwindcss/colors';
+import { fontFamily, spacing } from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 import hocus from 'tailwindcss-hocus';
 
-import { colors } from './config/tailwind/colors';
-import { fontSizes as fontSize } from './config/tailwind/font-sizes';
-import { spaces as spacing } from './config/tailwind/spacing';
+import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from './src/constants/theme';
 
-const sansFontFamily = [
-  'var(--font-inter-variable)',
-  'var(--font-inter)',
-  'Inter',
-  ...fontFamily.sans,
-];
+const reduceObjArray = <T>(objs: Array<T>) =>
+  objs.reduce((r, c) => Object.assign(r, c), {});
+
+const sansFontFamily = ['var(--font-inter)', 'Inter', ...fontFamily.sans];
+
+const fontSize = {
+  '2xl': '1.5625rem', // h1
+  xl: '1.375rem', // h2
+  lg: '1.25rem', // h3
+  md: '1.125rem', // h4
+  sm: '1rem', // h5
+  xs: '0.9375rem', // h6, body, p
+  '2xs': '0.875rem', // small
+  '3xs': '0.8125rem', // (?)
+};
 
 const breakpoints = {
   default: '0px',
@@ -25,38 +33,87 @@ const breakpoints = {
   desktop: '960px',
 };
 
+const colors = [
+  'background',
+  'inverse',
+  'toolbar',
+  'toolbar-highlight',
+  'selection',
+  'divider',
+  'primary-txt',
+  'secondary-txt',
+  'tertiary-txt',
+  'accent',
+  'accent-dark',
+  'on-accent',
+];
+
+const mappedColors = colors.map((color) => ({
+  [color]: `var(--color-${color})`,
+}));
+
 module.exports = {
   darkMode: 'class',
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
-    './src/app/**/*.{js,ts,jsx,tsx}',
-    './content/**/*.mdx',
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    spacing: { ...spacing, '0': '0rem' },
-    borderRadius: { ...spacing, none: '0rem', half: '50%', full: '9999px' },
-    colors,
     fontSize,
     screens: breakpoints,
+    spacing: { ...spacing, px: '0.0625rem', 22: '5.5rem' },
+    borderRadius: { ...spacing, half: '50%', full: '9999px', px: '0.0625rem' },
+    borderWidth: { ...spacing, DEFAULT: '0.0625rem' },
+    fontWeight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+    },
+    colors: {
+      transparent: 'rgba(0,0,0,0)',
+      current: 'currentColor',
+      inherit: 'inherit',
+      black: twColors.black,
+      white: twColors.white,
+      blue: twColors.sky,
+      green: twColors.green,
+      yellow: twColors.yellow,
+      orange: twColors.orange,
+      red: twColors.rose,
+      purple: twColors.violet,
+    },
     extend: {
+      spacing: {
+        site: '666px',
+      },
+      colors: {
+        brand: {
+          950: '#060A15',
+          900: '#0B152B',
+          800: '#162956',
+          700: '#223E80',
+          600: '#2D52AB',
+          500: '#3867D6',
+          400: '#6085DE',
+          300: '#88A4E6',
+          200: '#AFC2EF',
+          100: '#D7E1F7',
+          50: '#EBF0FB',
+        },
+        light: THEME_COLOR_LIGHT,
+        dark: THEME_COLOR_DARK,
+        ...reduceObjArray(mappedColors),
+      },
       fontFamily: {
         sans: [
           sansFontFamily,
           {
             fontFeatureSettings:
               // eslint-disable-next-line max-len
-              "'calt', 'dlig', 'case', 'ccmp', 'zero', 'ss01', 'ss02', 'cv01', 'cv03', 'cv04', 'cv06', 'cv09'",
+              "'calt' 1, 'dlig' 1, 'case' 1, 'ccmp' 1, 'zero' 1, 'ss01' 1, 'ss02' 1, 'cv01' 1, 'cv03' 1, 'cv04' 1, 'cv06' 1, 'cv09' 1",
           },
         ],
         manrope: [
-          [
-            'var(--font-manrope-variable)',
-            'var(--font-manrope)',
-            'Manrope',
-            ...sansFontFamily,
-          ],
-          { fontFeatureSettings: "'calt', 'zero', 'dlig'" },
+          ['var(--font-manrope)', 'Manrope', ...sansFontFamily],
+          { fontFeatureSettings: "'calt' 1, 'zero' 1, 'dlig' 1" },
         ],
         mono: ['monospace', ...fontFamily.mono],
       },
@@ -66,26 +123,54 @@ module.exports = {
       saturate: {
         125: '1.25',
       },
-      dropShadow: {
-        doodle: [
-          '-4px -4px 2px var(--color-illustrations-shadow)',
-          '4px 4px 2px var(--color-illustrations-shadow)',
-          '4px -4px 2px var(--color-illustrations-shadow)',
-          '-4px 4px 2px var(--color-illustrations-shadow)',
-        ],
+      boxShadow: {
+        'toolbar-hover': '0 0 8px 2px var(--tw-shadow-color)',
+        'toolbar-elevated': '0 0 6px 1px var(--tw-shadow-color)',
       },
-      transformOrigin: {
-        waving: '70% 70%',
+      textShadow: {
+        none: 'none',
+        DEFAULT: '0 0.0625rem 0.125rem var(--tw-shadow-color)',
       },
-      transitionTimingFunction: { eio: 'ease-in-out', DEFAULT: 'ease-in-out' },
+      ringWidth: {
+        0: '0rem',
+        1: '0.0625rem',
+        2: '0.125rem',
+        DEFAULT: '0.1875rem',
+      },
+      textDecorationThickness: {
+        0: '0rem',
+        1: '0.0625rem',
+        2: '0.125rem',
+        DEFAULT: '0.1875rem',
+      },
+      textUnderlineOffset: {
+        0: '0rem',
+        1: '0.0625rem',
+        2: '0.125rem',
+        DEFAULT: '0.1875rem',
+      },
+      transitionDuration: {
+        '50': '50ms',
+        '250': '250ms',
+      },
+      transitionDelay: {
+        '50': '50ms',
+        '250': '250ms',
+      },
+      transitionTimingFunction: {
+        in: 'ease-in',
+        out: 'ease-out',
+        'in-out': 'ease-in-out',
+        DEFAULT: 'ease-in-out',
+      },
       keyframes: {
         'page-transition': {
           '0%': { transform: 'scale(0.975)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         scroll: {
-          '0%': { transform: 'translateX(1.5rem)' },
-          '100%': { transform: 'translateX(-100%)' },
+          '0%': { transform: 'translate3d(1.5rem, 0, 0)' },
+          '100%': { transform: 'translate3d(-100%, 0, 0)' },
         },
         wave: {
           'from, 50%, to': { transform: 'rotate(0deg)' },
@@ -112,7 +197,7 @@ module.exports = {
         },
       },
       animation: {
-        'page-transition': 'page-transition 300ms ease-in-out backwards',
+        'page-transition': 'page-transition 200ms ease-in-out backwards',
         scroll: 'scroll 15s linear infinite',
         wave: 'wave 2.5s infinite',
         'music-bars': 'music-bars 2.2s ease infinite alternate',
@@ -122,24 +207,31 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  corePlugins: {
-    float: false,
-  },
-  plugins: [hocus],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') },
+      );
+    }),
+    hocus,
+  ],
   safelist: [
     {
-      pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,
+      pattern:
+        /(from|to|shadow|decoration)-(brand|blue|green|yellow|orange|red|purple)-(50|100|200|300|400|500|600|700|800|900|950)/,
       variants: [
         'dark',
         'hocus',
-        'group-hocus/link',
-        '[[aria-current="page"]_&]',
+        'hocus:dark',
+        'dark:hocus',
+        '[&[aria-current="page"]]',
+        '[&[aria-current="page"]]:dark',
       ],
-    },
-    {
-      pattern:
-        /decoration-gradient-(brand|blue|green|yellow|orange|red|purple)/,
-      variants: ['hocus'],
     },
   ],
 } satisfies Config;

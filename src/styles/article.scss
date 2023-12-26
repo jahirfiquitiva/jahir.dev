@@ -1,14 +1,192 @@
-/* created because css modules change the class name */
+/* Basic layout definition */
+article {
+  @apply flex flex-col gap-3 w-full;
+  @apply p-0 w-full text-secondary-txt break-words;
+  @apply leading-normal mobile-lg:leading-relaxed;
 
-.mdx-article ul,
-.mdx-article ol {
+  & > a,
+  & > button {
+    @apply self-start;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply relative self-start text-primary-txt;
+  }
+
+  strong,
+  b {
+    @apply text-primary-txt;
+  }
+}
+
+/* Headings and paragraphs margin */
+article {
+  & h1 {
+    @apply mt-8 mb-1.5 font-bold;
+  }
+
+  & h2 {
+    @apply mt-6 mb-1 font-bold;
+  }
+
+  & h3,
+  & h4 {
+    @apply mt-4 mb-0.5 font-bold;
+  }
+
+  & h5,
+  & h6 {
+    @apply mt-2 mb-px font-semibold;
+  }
+
+  & p {
+    @apply w-full m-0 mb-0.5 text-pretty;
+    max-width: 69ch; // nice
+  }
+}
+
+/* Default styles for links */
+article a {
+  @apply text-accent hocus:text-accent-dark;
+  @apply transition-colors;
+  @apply decoration-2 underline-offset-2 cursor-pointer;
+  @apply underline decoration-divider;
+  @apply hocus:decoration-accent-dark;
+}
+
+article ul[aria-label='Social links'] {
+  @apply p-0;
+  & > li {
+    @apply p-0 m-0 text-tertiary-txt;
+  }
+}
+
+article details[data-type='toc'] {
+  @apply mb-2;
+  & summary {
+    @apply font-manrope font-bold text-sm text-primary-txt cursor-pointer;
+    & > span {
+      @apply ml-2;
+    }
+  }
+  & > ol {
+    @apply mt-1;
+  }
+  & ol {
+    @apply flex flex-col gap-0.5;
+  }
+  & li {
+    @apply self-start;
+  }
+  & > nav {
+    @apply my-2;
+  }
+}
+
+article code[data-theme*=' '],
+article code[data-theme*=' '] span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+html.dark {
+  article code[data-theme*=' '],
+  article code[data-theme*=' '] span {
+    color: var(--shiki-dark);
+    font-style: var(--shiki-dark-font-style);
+    font-weight: var(--shiki-dark-font-weight);
+    text-decoration: var(--shiki-dark-text-decoration);
+  }
+}
+
+article code {
+  @apply py-0.5 px-1 text-2xs;
+  @apply bg-white/80 dark:bg-brand-200/[0.048];
+  @apply border border-divider rounded-1.5;
+  @apply font-normal;
+  color: inherit;
+  box-decoration-break: clone;
+}
+
+article pre {
+  @apply opacity-100 rounded-2 border border-divider;
+  @apply bg-white/80 dark:bg-brand-200/[0.048];
+  @apply mt-0 mb-3 py-3 px-0 text-inherit overflow-x-auto;
+}
+
+article [data-rehype-pretty-code-figure] code {
+  @apply grid min-w-full break-words rounded-0 border-0 bg-transparent;
+  @apply p-0 text-2xs font-normal;
+  line-height: 2;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+article [data-rehype-pretty-code-title] {
+  @apply border border-divider;
+  @apply rounded-tl-2 rounded-tr-2;
+  @apply text-secondary-txt bg-background;
+  @apply mt-0.5 mb-0 font-mono text-2xs py-2 px-3 text-start;
+}
+
+article [data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-tl-0 rounded-tr-0 border-t-0;
+}
+
+article mark {
+  @apply p-[0.1875rem] text-on-accent;
+  @apply bg-[#5f27cd] dark:bg-[#f368e0];
+}
+
+article blockquote {
+  @apply bg-brand-500/[0.024] dark:bg-brand-200/[0.048];
+  @apply border-0 border-l-1 border-divider;
+  @apply pt-4 py-3.5 pl-4 pr-3 rounded-1 my-1 text-secondary-txt font-normal;
+  & img {
+    @apply mt-4 mb-2;
+  }
+}
+
+article span[role='img'][aria-label] {
+  @apply mx-0.5;
+}
+
+article img {
+  @apply w-full h-auto rounded-2;
+}
+
+article video,
+article img {
+  @apply my-2;
+}
+
+article figure {
+  @apply mt-1;
+  figcaption {
+    @apply text-tertiary-txt;
+  }
+}
+
+article * figure {
+  @apply mt-1.5 mb-0;
+}
+
+article ul,
+article ol {
   @apply my-0;
 }
 
-.mdx-article ul:not([aria-label='Social links']),
-.mdx-article ol:not([aria-label='Social links']) {
+article ul,
+article ol {
   @apply flex flex-col list-none relative;
-  @apply pl-24 mx-6 -mt-2 gap-8;
+  @apply pl-5 mx-1.5 -mt-0.5 gap-2;
   counter-reset: start 1;
   & > li {
     @apply m-0 pl-0;
@@ -16,7 +194,7 @@
       content: counter(list-item, decimal) '.';
       position: absolute;
       font-weight: inherit;
-      @apply text-tertiary-txt left-0 -ml-4;
+      @apply text-tertiary-txt left-0 -ml-1;
     }
     & > ol {
       @apply m-0;
@@ -29,75 +207,59 @@
   }
 }
 
-.mdx-article ul:not([aria-label='Social links']) > li::before {
+article ul > li::before {
   content: counter(list-item, disc);
 }
 
-article.mdx-article {
+article a.anchor {
+  @apply block invisible absolute;
+  @apply h-full cursor-pointer no-underline;
+  @apply transition-colors opacity-0;
+  --margin: 1.25em;
+  padding-right: 0.75em;
+  margin-left: calc(var(--margin) * -1);
+  width: calc(100% + var(--margin));
+  &::after {
+    @apply no-underline text-tertiary-txt text-end;
+    content: '#';
+  }
+}
+
+article {
   & h1,
   & h2,
   & h3,
   & h4,
   & h5,
   & h6 {
-    &:hover,
-    &:focus {
-      & > a.anchor {
-        @apply visible;
-      }
+    &:hover > a.anchor,
+    &:focus > a.anchor {
+      @apply visible opacity-100;
     }
   }
+}
 
-  /* Anchor links for titles */
-  a.anchor {
-    @apply block invisible absolute;
-    @apply h-full cursor-pointer no-underline;
-    --margin: 1.25em;
-    padding-right: 0.75em;
-    margin-left: calc(var(--margin) * -1);
-    width: calc(100% + var(--margin));
-    &::after {
-      @apply no-underline text-tertiary-txt;
-      text-align: end;
-      content: '#';
-    }
-  }
+article a:has(code) {
+  @apply no-underline;
+}
 
-  /* List with [] or [x] */
-  ul.contains-task-list,
-  ol.contains-task-list {
-    list-style: none;
-    @apply pl-0;
-    & li {
-      @apply flex items-center gap-6;
-      & input[type='checkbox'] {
-        @apply w-16 h-16 text-accent;
-      }
-      &::before {
-        content: '';
-        @apply hidden;
-      }
-    }
-    & ul,
-    & ol {
-      @apply m-0 ml-12;
-    }
-  }
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 5;
+}
 
-  /* Social Links component */
-  ul[aria-label='Social links'] {
-    @apply list-none flex items-center text-secondary-txt;
-  }
+.medium-zoom-overlay {
+  @apply bg-background #{!important};
 }
 
 [data-rehype-pretty-code-figure] .line,
 [data-rehype-pretty-code-figure] [data-line] {
-  @apply px-14 border-l-2 border-transparent;
+  @apply px-3.5 border-l-0.5 border-transparent;
 }
 
 [data-rehype-pretty-code-figure] .line--highlighted,
 [data-rehype-pretty-code-figure] [data-highlighted-line] {
-  @apply bg-accent-dark/[0.06] dark:bg-accent-dark/[0.12];
+  @apply bg-brand-600/[0.06] dark:bg-brand-200/[0.08];
   @apply border-[#5f27cd] dark:border-[#f368e0];
   & span {
     @apply relative;
@@ -106,7 +268,8 @@ article.mdx-article {
 
 [data-rehype-pretty-code-figure] .word--highlighted,
 [data-rehype-pretty-code-figure] [data-highlighted-chars] {
-  @apply rounded-4 py-4 px-8 bg-accent-dark/[0.056] dark:bg-accent-dark/[0.096];
+  @apply rounded-1 py-1 px-2;
+  @apply bg-brand-600/[0.056] dark:bg-brand-200/[0.096];
 }
 
 [data-rehype-pretty-code-figure] [data-line-numbers] > .line,
@@ -127,7 +290,7 @@ article.mdx-article {
 [data-rehype-pretty-code-figure]
   [data-line-numbers-max-digits='2']
   > [data-line] {
-  @apply pl-6;
+  @apply pl-1.5;
   &::before {
     width: 1.5rem;
   }
@@ -137,28 +300,8 @@ article.mdx-article {
 [data-rehype-pretty-code-figure]
   [data-line-numbers-max-digits='3']
   > [data-line] {
-  @apply pl-8;
+  @apply pl-2;
   &::before {
     width: 2rem;
-  }
-}
-
-code[data-theme*=' '],
-code[data-theme*=' '] span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
-  font-style: var(--shiki-light-font-style);
-  font-weight: var(--shiki-light-font-weight);
-  text-decoration: var(--shiki-light-text-decoration);
-}
-
-html.dark {
-  code[data-theme*=' '],
-  code[data-theme*=' '] span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
-    font-style: var(--shiki-dark-font-style);
-    font-weight: var(--shiki-dark-font-weight);
-    text-decoration: var(--shiki-dark-text-decoration);
   }
 }

@@ -9,7 +9,7 @@ import { Footer } from '@/components/molecules/footer/footer';
 import { Main } from '@/components/molecules/main';
 import { Toolbar } from '@/components/molecules/toolbar/toolbar';
 import { Providers } from '@/providers';
-import { Inter, InterVariable, Manrope, ManropeVariable } from '@/styles/fonts';
+import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 
@@ -45,10 +45,7 @@ export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
       lang={'en'}
-      className={cx(
-        `${Inter.variable} ${Manrope.variable}`,
-        `${InterVariable.variable} ${ManropeVariable.variable}`,
-      )}
+      className={cx(`${InterVariable.variable} ${ManropeVariable.variable}`)}
       suppressHydrationWarning
     >
       <head>
