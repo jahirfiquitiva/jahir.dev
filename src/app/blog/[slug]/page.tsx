@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
-import { Mdx } from '@/components/views/mdx/mdx';
+import { getBlogPosts } from '@/lib/blog';
+import { compileMDX } from '@/lib/mdx';
 import { allReadableBlogs, getBlog } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -11,16 +12,20 @@ import Loading from '../../loading';
 
 import type { BlogPostPageContext } from './types';
 
-export default function BlogPostPage(context: BlogPostPageContext) {
+export default async function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
   const post = getBlog(slug);
+  const newPost = getBlogPosts().find((it) => it.slug === slug);
+
+  const { content } = await compileMDX(newPost?.content);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
 
   return (
     <Suspense fallback={<Loading />}>
-      <Mdx code={post.body.code} />
+      {/* <Mdx code={post.body.code} /> */}
+      {content}
     </Suspense>
   );
 }
