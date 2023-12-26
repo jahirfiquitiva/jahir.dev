@@ -1,7 +1,7 @@
-import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
+import { getBlogPosts, type Blog } from '@/lib/blog';
 
 const hiddenBlogs = ['about', 'donate', 'uses'];
-
+const generatedBlogs = getBlogPosts();
 export const allReadableBlogs = generatedBlogs.filter(
   (it) => !hiddenBlogs.includes(it.slug),
 );

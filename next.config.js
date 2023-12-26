@@ -2,7 +2,6 @@
 const path = require('path');
 
 const million = require('million/compiler');
-const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./config/next/headers');
 const redirects = require('./config/next/redirects');
@@ -53,7 +52,4 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-module.exports = million.next(
-  withContentlayer(defaultNextConfig),
-  millionConfig,
-);
+module.exports = million.next(defaultNextConfig, millionConfig);

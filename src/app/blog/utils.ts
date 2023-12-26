@@ -1,5 +1,5 @@
+import type { Blog } from '@/lib/blog';
 import { groupBy } from '@/utils/group-by';
-import type { Blog } from 'contentlayer/generated';
 
 interface BlogGroup {
   year: number;
@@ -19,7 +19,7 @@ export const groupBlogPosts = (
           post?.excerpt?.toLowerCase().includes(query.toLowerCase()),
       );
   const groups = groupBy(filteredPosts, (post) => {
-    return post.year || new Date(post.date).getFullYear();
+    return new Date(post.date).getFullYear();
   });
   return Object.keys(groups)
     .map((year) => ({

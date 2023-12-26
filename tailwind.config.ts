@@ -1,4 +1,3 @@
-import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import type { PluginAPI } from 'tailwindcss/types/config';
@@ -41,28 +40,6 @@ module.exports = {
     fontSize,
     screens: breakpoints,
     extend: {
-      typography: ({ theme }: PluginAPI) => ({
-        DEFAULT: {
-          css: {
-            fontSize: fontSize.xs,
-            color: theme('colors.secondary-txt'),
-            a: {
-              color: theme('colors.accent'),
-              textDecoration: 'none',
-              '&:hover,&:focus': {
-                color: theme('colors.accent-dark/1'),
-              },
-            },
-          },
-        },
-        quoteless: {
-          css: {
-            blockquote: { 'font-style': 'normal' },
-            'blockquote p:first-of-type::before': { content: 'none' },
-            'blockquote p:first-of-type::after': { content: 'none' },
-          },
-        },
-      }),
       fontFamily: {
         sans: [
           sansFontFamily,
@@ -148,7 +125,7 @@ module.exports = {
   corePlugins: {
     float: false,
   },
-  plugins: [typography, hocus],
+  plugins: [hocus],
   safelist: [
     {
       pattern: /(from|to)-gradient-(brand|blue|green|yellow|orange|red|purple)/,

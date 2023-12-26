@@ -25,7 +25,7 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
   return (
     <Suspense fallback={<Loading />}>
       {/* <Mdx code={post.body.code} /> */}
-      {content}
+      <article>{content}</article>
     </Suspense>
   );
 }

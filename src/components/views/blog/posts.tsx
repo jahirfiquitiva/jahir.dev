@@ -1,5 +1,5 @@
+import type { Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
-import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../mdx/ui/views/counter';
 

@@ -1,7 +1,7 @@
 import xml from 'xml';
 
+import type { Blog } from '@/lib/blog';
 import { allReadableBlogs } from '@/utils/blog';
-import type { Blog } from 'contentlayer/generated';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 

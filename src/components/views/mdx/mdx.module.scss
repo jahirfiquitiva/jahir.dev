@@ -1,7 +1,7 @@
 /* Basic layout definition */
 .article {
   @apply flex flex-col gap-12 max-w-full;
-  @apply prose prose-quoteless min-w-full;
+  @apply min-w-full;
   @apply p-0 w-full text-secondary-txt break-words;
   @apply leading-normal mobile-lg:leading-relaxed;
 

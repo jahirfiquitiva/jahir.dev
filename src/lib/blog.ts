@@ -1,13 +1,21 @@
+import { unique } from 'config/contentlayer/utils/unique';
 import fs from 'fs';
 import path from 'path';
 
-export interface BlogPostMetadata {
+interface BlogPostMetadata {
   title: string;
   date: string;
   color: string;
   excerpt?: string;
   hero?: string;
+  heroSource?: string;
+  link?: string;
+  inProgress?: boolean;
+  keywords?: Array<string>;
 }
+
+const getActualHeroUrl = (hero?: string) =>
+  hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -20,7 +28,23 @@ function parseFrontmatter(fileContent: string) {
     const [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-    metadata[key.trim() as keyof BlogPostMetadata] = value;
+    const metaKey = key.trim() as keyof BlogPostMetadata;
+
+    if (metaKey === 'inProgress') {
+      metadata['inProgress'] = value === 'true';
+    } else if (metaKey === 'hero') {
+      metadata['hero'] = getActualHeroUrl(value);
+    } else if (metaKey === 'keywords') {
+      const docKeywords: string = value || '';
+      let filteredKeywords: Array<string> = [];
+      try {
+        filteredKeywords = docKeywords
+          ?.split('|')
+          ?.map((it: string) => it.trim())
+          ?.filter((it: string) => it.length > 0);
+      } catch (e) {}
+      metadata['keywords'] = unique([...filteredKeywords]);
+    } else metadata[metaKey] = value;
   });
   return { metadata: metadata as BlogPostMetadata, content };
 }
@@ -34,13 +58,18 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir: string) {
+export type Blog = BlogPostMetadata & {
+  slug: string;
+  content?: string;
+};
+
+function getMDXData(dir: string): Array<Blog> {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
     return {
-      metadata,
+      ...metadata,
       slug,
       content,
     };

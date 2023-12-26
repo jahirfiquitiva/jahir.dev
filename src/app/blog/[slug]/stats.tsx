@@ -5,9 +5,9 @@ import { calendarOutline } from '@/components/icons/icons';
 import { mdiClockOutline } from '@/components/icons/mdi';
 import { PostStat } from '@/components/views/blog/card/card.styles';
 import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
+import type { Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
-import type { Blog } from 'contentlayer/generated';
 
 interface StatsProps {
   slug: Blog['slug'];

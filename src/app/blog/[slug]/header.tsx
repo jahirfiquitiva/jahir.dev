@@ -1,8 +1,8 @@
 import type { CSSProperties } from 'react';
 
 import { Heading } from '@/components/core/heading';
+import type { Blog } from '@/lib/blog';
 import { getReadableColor, hexToRgb } from '@/utils/color';
-import type { Blog } from 'contentlayer/generated';
 
 import { Stats } from './stats';
 

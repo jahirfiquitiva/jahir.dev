@@ -2,8 +2,8 @@ import type { Route } from 'next';
 
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link/link';
+import type { Blog } from '@/lib/blog';
 import { getUrlDomain } from '@/utils/domain';
-import type { Blog } from 'contentlayer/generated';
 
 interface HeroProps {
   title: Blog['title'];

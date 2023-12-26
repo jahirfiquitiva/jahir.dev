@@ -7,11 +7,11 @@ import { Section } from '@/components/core/section';
 import { mdiPencilOutline } from '@/components/icons/mdi';
 import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
 import { ShareButton } from '@/components/views/mdx/ui/share-button';
+import type { Blog } from '@/lib/blog';
 import { ReactionsProvider } from '@/providers/reactions-provider';
 import { getBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
-import type { Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
