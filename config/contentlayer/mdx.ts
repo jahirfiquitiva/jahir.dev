@@ -1,4 +1,4 @@
-import type { MDXOptions } from 'contentlayer/core';
+import type { SerializeOptions } from 'next-mdx-remote/dist/types';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -9,7 +9,7 @@ import { prettyCode } from './rehype/code';
 import imageMetadata from './rehype/image-metadata';
 import { toc } from './rehype/toc';
 
-const mdx: MDXOptions = {
+const mdx: SerializeOptions['mdxOptions'] = {
   remarkPlugins: [remarkGfm, remarkUnwrapImages],
   rehypePlugins: [
     imageMetadata,
@@ -17,6 +17,7 @@ const mdx: MDXOptions = {
     // @ts-expect-error MDX IDK
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
+    // @ts-expect-error MDX IDK
     toc,
     rehypeAccessibleEmojis,
   ],
