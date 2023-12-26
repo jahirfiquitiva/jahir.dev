@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 export const NoPaddingSection = tw.section`
   flex

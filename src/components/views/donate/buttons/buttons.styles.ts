@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 import { ButtonLink } from '@/components/core/link/button-link';
 

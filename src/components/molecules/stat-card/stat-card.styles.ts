@@ -1,5 +1,5 @@
+import { tw } from '@/utils/cx';
 import Icon from '@mdi/react';
-import tw from 'tailwind-styled-components';
 
 import { Link } from '@/components/core/link/link';
 

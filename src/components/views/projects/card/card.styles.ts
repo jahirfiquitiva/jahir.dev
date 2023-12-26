@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 import { Chip } from '@/components/core/chip/chip.styles';
 import { Img } from '@/components/core/img';

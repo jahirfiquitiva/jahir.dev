@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 import { FooterLink, FooterLinkSpan } from './links-list/links-list.styles';
 

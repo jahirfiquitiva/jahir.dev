@@ -1,9 +1,9 @@
 import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
-import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
 import { Img } from '@/components/core/img';
+import { tw } from '@/utils/cx';
 import cx from '@/utils/cx';
 
 import { Grid, GridColumn } from './components/components.styles';

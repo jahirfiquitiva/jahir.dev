@@ -1,6 +1,5 @@
-import tw from 'tailwind-styled-components';
-
 import { Link } from '@/components/core/link/link';
+import { tw } from '@/utils/cx';
 
 export const SocialLinksContainer = tw.ul`
   list-none

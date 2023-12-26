@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType } from 'react';
-import tw from 'tailwind-styled-components';
 
 import type { RainbowColor } from '@/types/gradient';
+import { tw } from '@/utils/cx';
 import cx from '@/utils/cx';
 
 const StyledHeading = tw.h1`

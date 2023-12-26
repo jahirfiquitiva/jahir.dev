@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import tw from 'tailwind-styled-components';
+import { useEffect, useState } from 'react';
 
 import { Heading } from '@/components/core/heading';
+import { tw } from '@/utils/cx';
 
 const WavingSpan = tw.span`
   inline-block

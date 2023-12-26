@@ -1,9 +1,9 @@
 import Icon from '@mdi/react';
-import tw from 'tailwind-styled-components';
 
 import { Heading } from '@/components/core/heading';
 import { ButtonLink } from '@/components/core/link/button-link';
 import { mdiRss } from '@/components/icons/mdi';
+import { tw } from '@/utils/cx';
 import cx from '@/utils/cx';
 
 const BlogHeader = tw.div`

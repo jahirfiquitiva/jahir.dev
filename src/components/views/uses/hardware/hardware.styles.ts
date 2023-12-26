@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 import { Img } from '@/components/core/img';
 import { Link } from '@/components/core/link/link';

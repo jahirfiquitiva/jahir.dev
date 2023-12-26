@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 export const LinkItem = tw.li`block self-start w-full tablet-sm:w-[unset] tablet-sm:self-center`;
 

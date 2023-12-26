@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import tw from 'tailwind-styled-components';
+import { tw } from '@/utils/cx';
 
 export const Header = tw.header`
   [--toolbarHeight:56px]
