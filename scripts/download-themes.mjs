@@ -14,7 +14,7 @@ const downloadThemeFile = async (light) => {
     if (!response.ok)
       console.error(`Status: ${response.status} <=> Error ${response.error}`);
     writeFileSync(
-      `./config/contentlayer/themes/${light ? 'light' : 'dark'}.json`,
+      `./config/mdx/themes/${light ? 'light' : 'dark'}.json`,
       JSON.stringify(json, null, 2),
     );
   } catch (e) {

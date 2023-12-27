@@ -6,7 +6,7 @@
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
-    "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
+    "clean": "rimraf .next && rimraf dist && rimraf out",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.contentlayer|src/app'",
@@ -87,10 +87,5 @@
     "trailingComma": "all",
     "semi": true
   },
-  "packageManager": "yarn@4.0.2",
-  "overrides": {
-    "next-contentlayer": {
-      "next": "$next"
-    }
-  }
+  "packageManager": "yarn@4.0.2"
 }

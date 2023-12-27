@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
-import { getBlogPosts } from '@/lib/blog';
 import { compileMDX } from '@/lib/mdx';
-import styles from '@/styles/article.scss';
 import { getReadableBlogs, getBlog } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -23,8 +21,7 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
   const { content } = await compileMDX(post.content);
   return (
     <Suspense fallback={<Loading />}>
-      {/* <Mdx code={post.body.code} /> */}
-      <article className={styles.article}>{content}</article>
+      <article>{content}</article>
     </Suspense>
   );
 }

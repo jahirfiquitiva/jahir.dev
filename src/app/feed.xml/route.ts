@@ -1,7 +1,7 @@
 import xml from 'xml';
 
 import type { Blog } from '@/lib/blog';
-import { allReadableBlogs } from '@/utils/blog';
+import { getReadableBlogs } from '@/utils/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -13,11 +13,7 @@ const formatImageUrl = (url?: string) => {
 
 const buildDescriptionHtml = (post: Blog): string => {
   let description = '';
-  if (post.longExcerpt) {
-    description += `<p>${post.longExcerpt}</p><br/>`;
-  } else if (post.excerpt) {
-    description += `<p>${post.excerpt}</p><br/>`;
-  }
+  if (post.excerpt) description += `<p>${post.excerpt}</p><br/>`;
 
   if (post.link)
     description += `<b><a href="${post.link}">Read more...</a></b><br/><br/>`;
@@ -125,7 +121,7 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allBlogs = allReadableBlogs
+  const allBlogs = (await getReadableBlogs())
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(

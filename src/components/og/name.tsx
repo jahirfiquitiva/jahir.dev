@@ -1,4 +1,4 @@
-import { Logo } from '../icons/logo';
+import { Logo } from '../logo';
 
 import type { PathName } from './logo-title';
 

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 // import { Heading } from '@/components/core/heading';
 // import { Link } from '@/components/core/link/link';
 // import { Section } from '@/components/core/section';
-import { RequestContext } from '@/types/request';
+import type { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 

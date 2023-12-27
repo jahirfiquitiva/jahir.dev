@@ -57,6 +57,7 @@ export const BackToTop = () => {
       className={showButton ? 'shown' : ''}
       data-umami-event={'Back to top'}
       data-umami-event-src={'FAB'}
+      onClick={scrollToTop}
     >
       <svg
         viewBox={'0 0 24 24'}
