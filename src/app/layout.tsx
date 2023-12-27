@@ -6,6 +6,7 @@ import { type PropsWithChildren } from 'react';
 
 // import { Footer } from '@/components/molecules/footer/footer';
 import { BackToTop } from '@/components/back-to-top';
+import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Main } from '@/components/main';
 import { Providers } from '@/providers';
@@ -62,7 +63,7 @@ export default function RootLayout(props: PropsWithChildren) {
         <Providers>
           <Header />
           <Main>{props.children}</Main>
-          {/* <Footer /> */}
+          <Footer />
           <BackToTop />
         </Providers>
         <SpeedInsights />
