@@ -61,7 +61,7 @@ export const Experience = () => {
           title={'Resume'}
           href={'/resume'}
           openInNewTab
-          className={'self-start mr-1'}
+          className={'self-start pr-4'}
         >
           <svg
             viewBox={'0 0 24 24'}
