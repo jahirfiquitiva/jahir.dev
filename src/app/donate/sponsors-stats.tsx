@@ -1,6 +1,6 @@
-import { money } from '@/components/icons/icons';
-import { mdiHeartOutline } from '@/components/icons/mdi';
-import { StatCard } from '@/components/molecules/stat-card/stat-card';
+// import { money } from '@/components/icons/icons';
+// import { mdiHeartOutline } from '@/components/icons/mdi';
+// import { StatCard } from '@/components/molecules/stat-card/stat-card';
 
 interface SimpleSponsorsStatsProps {
   sponsorsCount?: number;
@@ -12,7 +12,7 @@ export const SimpleSponsorsStats = (props: SimpleSponsorsStatsProps) => {
   const { sponsorsCount = 0, totalEarningsPerMonth = 0, small } = props;
   return (
     <>
-      <StatCard
+      {/* <StatCard
         title={'View sponsors'}
         href={'/donate#thanks'}
         text={sponsorsCount <= 1 ? 'sponsor' : 'sponsors'}
@@ -29,7 +29,7 @@ export const SimpleSponsorsStats = (props: SimpleSponsorsStatsProps) => {
         iconPath={money}
         color={'#26de81'}
         className={small ? 'tablet-sm:aspect-auto' : ''}
-      />
+      /> */}
     </>
   );
 };

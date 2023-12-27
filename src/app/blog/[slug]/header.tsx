@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-import { Heading } from '@/components/core/heading';
+// import { Heading } from '@/components/core/heading';
 import type { Blog } from '@/lib/blog';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 
@@ -13,12 +13,12 @@ interface HeaderProps {
 export const Header = (props: HeaderProps) => {
   const { title, color, slug, date, readingTime, inProgress } = props.post;
   const readableColor = getReadableColor(color, true);
-  const shadowColor = hexToRgb(readableColor, 0.56);
+  // const shadowColor = hexToRgb(readableColor, 0.56);
   const statColor = hexToRgb(readableColor, 1, true);
 
   return (
     <>
-      <Heading
+      {/* <Heading
         className={'mt-12 dark:text-[var(--text-color)]'}
         style={
           {
@@ -28,7 +28,8 @@ export const Header = (props: HeaderProps) => {
         }
       >
         {title}
-      </Heading>
+      </Heading> */}
+      {title}
       <Stats
         slug={slug}
         date={date}

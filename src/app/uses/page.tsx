@@ -1,39 +1,38 @@
-import { Heading } from '@/components/core/heading';
-import { Section } from '@/components/core/section';
-import { Coding } from '@/components/views/uses/coding/coding';
-import { ExtensionsGrid } from '@/components/views/uses/extensions';
-import { Everyday, GamingPc } from '@/components/views/uses/hardware/hardware';
-import { Software } from '@/components/views/uses/software/software';
-import { Tabs } from '@/components/views/uses/tabs/tabs';
-import { Website } from '@/components/views/uses/website/website';
+// import { Heading } from '@/components/core/heading';
+// import { Section } from '@/components/core/section';
+// import { Coding } from '@/components/views/uses/coding/coding';
+// import { ExtensionsGrid } from '@/components/views/uses/extensions';
+// import { Everyday, GamingPc } from '@/components/views/uses/hardware/hardware';
+// import { Software } from '@/components/views/uses/software/software';
+// import { Tabs } from '@/components/views/uses/tabs/tabs';
+// import { Website } from '@/components/views/uses/website/website';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 export default function UsesPage() {
-  return (
-    <Section id={'uses'} className={'flex-1 gap-24'}>
-      <Heading shadow={'brand'} from={'brand'} to={'blue'}>
-        What do I use?
-      </Heading>
-      <Tabs
-        tabsNames={[
-          'Everyday',
-          'Gaming PC',
-          'Software',
-          'Browser',
-          'Coding',
-          'Website',
-        ]}
-      >
-        <Everyday />
-        <GamingPc />
-        <Software />
-        <ExtensionsGrid />
-        <Coding />
-        <Website />
-      </Tabs>
-    </Section>
-  );
+  return null;
+  // <Section id={'uses'} className={'flex-1 gap-24'}>
+  //   <Heading shadow={'brand'} from={'brand'} to={'blue'}>
+  //     What do I use?
+  //   </Heading>
+  //   <Tabs
+  //     tabsNames={[
+  //       'Everyday',
+  //       'Gaming PC',
+  //       'Software',
+  //       'Browser',
+  //       'Coding',
+  //       'Website',
+  //     ]}
+  //   >
+  //     <Everyday />
+  //     <GamingPc />
+  //     <Software />
+  //     <ExtensionsGrid />
+  //     <Coding />
+  //     <Website />
+  //   </Tabs>
+  // </Section>
 }
 
 export const metadata = getStaticMetadata({

@@ -1,7 +1,7 @@
 import type { Route } from 'next';
 
-import { Img } from '@/components/core/img';
-import { Link } from '@/components/core/link/link';
+import { Img } from '@/components/img';
+import { Link } from '@/components/link/link';
 import type { Blog } from '@/lib/blog';
 import { getUrlDomain } from '@/utils/domain';
 

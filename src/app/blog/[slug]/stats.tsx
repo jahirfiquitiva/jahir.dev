@@ -1,10 +1,10 @@
 import Icon from '@mdi/react';
 import type { CSSProperties } from 'react';
 
-import { calendarOutline } from '@/components/icons/icons';
-import { mdiClockOutline } from '@/components/icons/mdi';
-import { PostStat } from '@/components/views/blog/card/card.styles';
-import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
+// import { calendarOutline } from '@/components/icons/icons';
+// import { mdiClockOutline } from '@/components/icons/mdi';
+// import { PostStat } from '@/components/views/blog/card/card.styles';
+// import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
 import type { Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
@@ -30,7 +30,7 @@ export const Stats = (props: StatsProps) => {
       )}
       style={style}
     >
-      {Boolean(readableDate) && (
+      {/* {Boolean(readableDate) && (
         <PostStat
           title={`This blog post was published on ${readableDate}`}
           aria-label={`This blog post was published on ${readableDate}`}
@@ -48,7 +48,7 @@ export const Stats = (props: StatsProps) => {
           {readingTime?.text}
         </PostStat>
       )}
-      <ViewsCounter slug={`blog--${slug}`} inProgress={inProgress} trackView />
+      <ViewsCounter slug={`blog--${slug}`} inProgress={inProgress} trackView /> */}
     </div>
   );
 };

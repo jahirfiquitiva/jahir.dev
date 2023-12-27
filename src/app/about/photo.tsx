@@ -1,4 +1,4 @@
-import { Img } from '@/components/core/img';
+import { Img } from '@/components/img';
 
 import { getAboutImage } from './images';
 

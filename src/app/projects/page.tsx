@@ -1,4 +1,4 @@
-import { Projects } from '@/components/views/projects/projects';
+// import { Projects } from '@/components/views/projects/projects';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
@@ -22,5 +22,6 @@ export const metadata = getStaticMetadata({
 });
 
 export default function ProjectsPage() {
-  return <Projects title={'Projects'} full />;
+  return null;
+  // return <Projects title={'Projects'} full />;
 }

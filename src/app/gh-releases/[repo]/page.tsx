@@ -1,9 +1,9 @@
 import type { Metadata, Route } from 'next';
 import { notFound } from 'next/navigation';
 
-import { Heading } from '@/components/core/heading';
-import { Link } from '@/components/core/link/link';
-import { Section } from '@/components/core/section';
+// import { Heading } from '@/components/core/heading';
+// import { Link } from '@/components/core/link/link';
+// import { Section } from '@/components/core/section';
 import { RequestContext } from '@/types/request';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -22,32 +22,31 @@ export default async function ReleasePage(context: ReleasePageContext) {
   if (!repo) return notFound();
 
   const data = await getRepoReleaseData(repo).catch();
-  return (
-    <Section id={'github-release'}>
-      <Heading>{data?.success ? '🎉' : '😮'}</Heading>
-      <Heading $as={'h3'}>
-        {data?.success ? 'Download started!' : 'Oh no!'}
-      </Heading>
-      <p>
-        {data?.success
-          ? 'Feel free to close this tab 😉'
-          : 'Direct download is not available right now 😕'}
-      </p>
-      {data?.success ? null : (
-        <p>
-          Please follow this link to&nbsp;
-          <Link
-            title={'GitHub releases link'}
-            href={(data?.download || '#') as Route}
-          >
-            GitHub Releases
-          </Link>{' '}
-          …
-        </p>
-      )}
-      <Downloader url={data?.success ? data?.download : null} />
-    </Section>
-  );
+  return null;
+  // <Section id={'github-release'}>
+  //   <Heading>{data?.success ? '🎉' : '😮'}</Heading>
+  //   <Heading $as={'h3'}>
+  //     {data?.success ? 'Download started!' : 'Oh no!'}
+  //   </Heading>
+  //   <p>
+  //     {data?.success
+  //       ? 'Feel free to close this tab 😉'
+  //       : 'Direct download is not available right now 😕'}
+  //   </p>
+  //   {data?.success ? null : (
+  //     <p>
+  //       Please follow this link to&nbsp;
+  //       <Link
+  //         title={'GitHub releases link'}
+  //         href={(data?.download || '#') as Route}
+  //       >
+  //         GitHub Releases
+  //       </Link>{' '}
+  //       …
+  //     </p>
+  //   )}
+  //   <Downloader url={data?.success ? data?.download : null} />
+  // </Section>
 }
 
 export const generateStaticParams = () =>

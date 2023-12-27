@@ -1,6 +1,9 @@
-import { unique } from 'config/contentlayer/utils/unique';
 import fs from 'fs';
 import path from 'path';
+
+import readingTime from 'reading-time';
+
+import { unique } from 'config/contentlayer/utils/unique';
 
 interface BlogPostMetadata {
   title: string;
@@ -12,6 +15,8 @@ interface BlogPostMetadata {
   link?: string;
   inProgress?: boolean;
   keywords?: Array<string>;
+  readingTime: string;
+  heroMeta?: { blur64?: string; size: { width: number; height: number } };
 }
 
 const getActualHeroUrl = (hero?: string) =>
@@ -44,6 +49,10 @@ function parseFrontmatter(fileContent: string) {
           ?.filter((it: string) => it.length > 0);
       } catch (e) {}
       metadata['keywords'] = unique([...filteredKeywords]);
+    } else if (metaKey === 'readingTime') {
+      metadata['readingTime'] = `${Math.ceil(
+        readingTime(content).time,
+      )} min read`;
     } else metadata[metaKey] = value;
   });
   return { metadata: metadata as BlogPostMetadata, content };
