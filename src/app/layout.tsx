@@ -7,7 +7,7 @@ import { type PropsWithChildren } from 'react';
 // import { BackToTop } from '@/components/molecules/back-to-top/back-to-top';
 // import { Footer } from '@/components/molecules/footer/footer';
 // import { Main } from '@/components/molecules/main';
-import { Header } from '@/components/toolbar/header';
+import { Header } from '@/components/header';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
