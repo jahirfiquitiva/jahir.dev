@@ -1,9 +1,9 @@
 import type { Route } from 'next';
 import { cx } from 'react-twc';
 
+import bookCover from '@/assets/images/reading.jpg';
 import { Img } from '@/components/img';
 
-import bookCover from './../assets/reading.jpg';
 import {
   ActivityCard,
   Content,

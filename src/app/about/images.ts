@@ -11,7 +11,7 @@ const randomBetween = (min: number, max: number): number =>
 
 export const getAboutImage = async () => {
   const index = randomBetween(0, imagesAlts.length - 1);
-  const src = await import(`../../assets/images/about/${index}.jpeg`);
+  const src = await import(`../../assets/images/about/${index + 1}.jpeg`);
   return {
     src: JSON.parse(JSON.stringify(src)),
     alt: imagesAlts[index],

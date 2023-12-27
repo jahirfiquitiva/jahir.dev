@@ -32,11 +32,13 @@ export const BackgroundImage = tw(Img)<ImgProps>`
   -top-[100%]
   mobile-md:-top-[125%]
   -z-[1]
+  rounded-2.5
   opacity-50
   saturate-125
   pointer-events-none
   select-none
   max-w-[unset]
+  truncate
   ![animation-duration:15s]
 `;
 
@@ -49,7 +51,7 @@ export const Content = tw.div`
   p-3
   max-w-full
   truncate
-  rounded-2
+  rounded-2.5
   mobile-md:max-h-[7rem]
   items-center
   bg-white/65
