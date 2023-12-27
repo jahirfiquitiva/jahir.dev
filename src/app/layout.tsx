@@ -4,12 +4,10 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
-// import { BackToTop } from '@/components/molecules/back-to-top/back-to-top';
 // import { Footer } from '@/components/molecules/footer/footer';
-// import { Main } from '@/components/molecules/main';
+import { BackToTop } from '@/components/back-to-top';
 import { Header } from '@/components/header';
 import { Main } from '@/components/main';
-import { SocialLinks } from '@/components/social-links';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
@@ -64,9 +62,8 @@ export default function RootLayout(props: PropsWithChildren) {
         <Providers>
           <Header />
           <Main>{props.children}</Main>
-          {/*
-          <Footer />
-          <BackToTop /> */}
+          {/* <Footer /> */}
+          <BackToTop />
         </Providers>
         <SpeedInsights />
       </body>
