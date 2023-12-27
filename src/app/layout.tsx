@@ -8,6 +8,8 @@ import { type PropsWithChildren } from 'react';
 // import { Footer } from '@/components/molecules/footer/footer';
 // import { Main } from '@/components/molecules/main';
 import { Header } from '@/components/header';
+import { Main } from '@/components/main';
+import { SocialLinks } from '@/components/social-links';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
@@ -61,9 +63,8 @@ export default function RootLayout(props: PropsWithChildren) {
       <body>
         <Providers>
           <Header />
-          {props.children}
-          {/* <Toolbar />
           <Main>{props.children}</Main>
+          {/*
           <Footer />
           <BackToTop /> */}
         </Providers>

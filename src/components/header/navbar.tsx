@@ -1,10 +1,10 @@
 import type { Route } from 'next';
-import type { TwcComponentProps } from 'react-twc';
 
 import {
   buildColoredLinkClasses,
   getColoredTextClasses,
 } from '@/utils/colored-text';
+import type { TWComponentProps } from '@/utils/cx';
 
 import { Logo } from '../logo';
 
@@ -41,7 +41,7 @@ const toolbarLinksList = [
   },
 ];
 
-interface NavbarProps extends TwcComponentProps<typeof Nav> {
+interface NavbarProps extends TWComponentProps<typeof Nav> {
   path?: string;
   isExpanded?: boolean;
   onNavToggleClick?: () => void;

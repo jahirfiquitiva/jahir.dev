@@ -1,6 +1,4 @@
-import type { TwcComponentProps } from 'react-twc';
-
-import { tw } from '@/utils/cx';
+import { tw, type TWComponentProps } from '@/utils/cx';
 
 const NavToggleButton = tw.button`
   flex
@@ -28,12 +26,7 @@ const MenuLine = tw.span.attrs({ 'aria-hidden': true })`
   group-hocus/nav-toggle:bg-accent-dark
 `;
 
-export const NavToggle = (
-  props: Omit<
-    TwcComponentProps<typeof NavToggleButton>,
-    'children' | 'className'
-  >,
-) => {
+export const NavToggle = (props: TWComponentProps<typeof NavToggleButton>) => {
   return (
     <NavToggleButton
       title={'Expand menu'}

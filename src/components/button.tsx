@@ -1,8 +1,6 @@
-import type { TwcComponentProps } from 'react-twc';
+import { tw, type TWComponentProps } from '@/utils/cx';
 
-import { tw } from '@/utils/cx';
-
-type ButtonProps = TwcComponentProps<'button'> & { title: string };
+type ButtonProps = TWComponentProps<'button'> & { title: string };
 
 export const Button = tw.button.attrs<ButtonProps>((p) => ({
   title: p.title,
