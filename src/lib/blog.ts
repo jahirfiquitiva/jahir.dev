@@ -59,7 +59,7 @@ const parseFrontmatter = async (fileContent: string) => {
     } else metadata[metaKey] = value;
   });
   metadata['readingTime'] = getReadingTime(content);
-  metadata['heroMeta'] = await getBlurData(metadata['hero']).catch(null);
+  // metadata['heroMeta'] = await getBlurData(metadata['hero']).catch(null);
   return { metadata: metadata as BlogPostMetadata, content };
 };
 
