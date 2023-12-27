@@ -1,10 +1,12 @@
 import { colord, extend } from 'colord';
 import a11yPlugin from 'colord/plugins/a11y';
 
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/constants/theme';
+
 extend([a11yPlugin]);
 
 // Colors from css variables: primary
-const bgColor = { dark: '#161c2c', light: '#fdfeff' };
+const bgColor = { dark: THEME_COLOR_DARK, light: THEME_COLOR_LIGHT };
 export const getReadableColor = (
   desiredFgColor?: string | null,
   isDark?: boolean,
