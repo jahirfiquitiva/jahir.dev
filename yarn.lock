@@ -2130,13 +2130,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classix@npm:^2.1.35":
-  version: 2.1.35
-  resolution: "classix@npm:2.1.35"
-  checksum: 1e35c3e968e7ea951ebb8ff368871d296a8ca5ccd970263413103c6bd3c880787bf1e13db002cda9464bb0c8a5b4ff411f85200868f95061642b4908a5429e0f
-  languageName: node
-  linkType: hard
-
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -7461,7 +7454,6 @@ __metadata:
     "@vercel/speed-insights": "npm:^1.0.2"
     autoprefixer: "npm:^10.4.16"
     canvas-confetti: "npm:^1.9.2"
-    classix: "npm:^2.1.35"
     colord: "npm:^2.9.3"
     cross-env: "npm:^7.0.3"
     dotenv: "npm:^16.3.1"

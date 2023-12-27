@@ -7,7 +7,7 @@ import { type PropsWithChildren } from 'react';
 // import { BackToTop } from '@/components/molecules/back-to-top/back-to-top';
 // import { Footer } from '@/components/molecules/footer/footer';
 // import { Main } from '@/components/molecules/main';
-// import { Toolbar } from '@/components/molecules/toolbar/toolbar';
+import { Header } from '@/components/toolbar/header';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
@@ -58,8 +58,9 @@ export default function RootLayout(props: PropsWithChildren) {
           data-domains={'jahir.dev'}
         />
       </head>
-      <body className={'tablet-sm:overflow-y-auto'}>
+      <body>
         <Providers>
+          <Header />
           {props.children}
           {/* <Toolbar />
           <Main>{props.children}</Main>

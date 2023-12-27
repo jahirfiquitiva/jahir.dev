@@ -1,8 +1,16 @@
-import classix from 'classix';
 import { createTwc } from 'react-twc';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge, type ClassNameValue } from 'tailwind-merge';
 
-type Argument = string | boolean | null | undefined;
-const cx = (...args: Argument[]) => twMerge(classix(...args));
+type AdditionalClassGroupIds = 'text-shadow';
+
+const twMerge = extendTailwindMerge<AdditionalClassGroupIds>({
+  extend: {
+    classGroups: {
+      'text-shadow': [{ 'text-shadow': ['', 'none'] }],
+    },
+  },
+});
+
+const cx = (...args: ClassNameValue[]) => twMerge(...args);
 export const tw = createTwc({ compose: cx });
 export default cx;
