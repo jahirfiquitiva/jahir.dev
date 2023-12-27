@@ -1,10 +1,7 @@
-'use client';
-
 import type { Route } from 'next';
-import { useMemo, type CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 
 import { Img, type ImgProps } from '@/components/img';
-import { useTheme } from '@/providers/theme-provider';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
@@ -22,12 +19,7 @@ export interface ExperienceItemProps {
 }
 
 export const ExpItem = (props: ExperienceItemProps) => {
-  const { isDark } = useTheme();
-
-  const color = useMemo<string>(() => {
-    return hexToRgb(getReadableColor(props.color, isDark), 1, true) || '';
-  }, [isDark, props.color]);
-
+  const color = hexToRgb(getReadableColor(props.color, true), 1, true);
   const Component = props.last ? ExperienceItem : ExperienceItemWithLine;
   return (
     <Component
@@ -57,7 +49,9 @@ export const ExpItem = (props: ExperienceItemProps) => {
         >
           {props.company}
         </p>
-        <p className={'line-clamp-1 text-2xs flex-1'}>{props.position}</p>
+        <p className={'line-clamp-1 text-2xs flex-1 text-secondary-txt'}>
+          {props.position}
+        </p>
       </div>
     </Component>
   );

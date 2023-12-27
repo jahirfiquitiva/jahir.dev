@@ -21,7 +21,7 @@ export default async function Photo() {
           alt={photo.alt}
           quality={100}
           placeholder={'blur'}
-          className={'aspect-[21/9] rounded-8'}
+          className={'h-full'}
           priority
         />
       </div>

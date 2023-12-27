@@ -58,6 +58,9 @@ export const OutlinedButton = tw(Button)`
   text-secondary-txt
   transition
   ring-divider
+  hocus:ring-divider
+  dark:ring-divider
+  dark:hocus:ring-divider
   hocus:-translate-y-px
   hocus:shadow
   hocus:text-primary-txt

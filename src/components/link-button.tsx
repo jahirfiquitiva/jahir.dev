@@ -14,7 +14,9 @@ export const LinkButton = (props: TWComponentProps<typeof Link>) => {
 export const OutlinedLinkButton = (props: TWComponentProps<typeof Link>) => {
   return (
     <OutlinedButton title={props.title} asChild>
-      <Link {...props} />
+      <Button title={props.title} asChild>
+        <Link {...props} />
+      </Button>
     </OutlinedButton>
   );
 };
