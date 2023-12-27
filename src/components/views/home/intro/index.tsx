@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { Link } from '@/components/link';
 import { LinkButton } from '@/components/link-button';
+import { Section } from '@/components/section';
 import { SocialLinks } from '@/components/social-links';
 import cx from '@/utils/cx';
 
@@ -11,7 +12,7 @@ import { WavingHello } from './waving-hello';
 
 export const Intro = () => {
   return (
-    <>
+    <Section id={'intro'} className={'gap-6'}>
       <div
         className={'flex flex-col gap-5 tablet-sm:block tablet-sm:space-y-4'}
       >
@@ -98,6 +99,6 @@ export const Intro = () => {
         </LinkButton>
         <SocialLinks />
       </div>
-    </>
+    </Section>
   );
 };
