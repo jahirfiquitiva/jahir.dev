@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
-import { allReadableBlogs } from '@/utils/blog';
+import { getReadableBlogs } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
@@ -11,14 +11,54 @@ import { buildOgImageUrl } from '@/utils/og';
 
 import Loading from '../loading';
 
-import { groupBlogPosts } from './utils';
+import { groupBlogPosts as groupBlogPostsUtil } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const blogGroups = groupBlogPosts(
-  allReadableBlogs
-    .filter((it) => allowInProgress || !it.inProgress)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
-);
+const groupBlogPosts = async (): Promise<
+  ReturnType<typeof groupBlogPostsUtil>
+> => {
+  const blogPosts = await getReadableBlogs();
+  return groupBlogPostsUtil(
+    blogPosts
+      .filter((it) => allowInProgress || !it.inProgress)
+      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
+  );
+};
+
+const BlogPostsGroups = async () => {
+  const blogGroups = await groupBlogPosts();
+  return (
+    <Suspense fallback={<Loading />}>
+      {blogGroups.map((group) => (
+        <li className={'block'} key={group.year}>
+          <Section
+            id={`posts-from-${group.year}`}
+            title={`Posts from ${group.year}`}
+            aria-label={`Posts from ${group.year}`}
+          >
+            <div className={'flex items-end gap-3 mt-3 w-full'}>
+              <h2 className={'text-lg font-manrope font-bold leading-none'}>
+                {group.year}
+              </h2>
+              <hr
+                className={
+                  'w-full border-none m-0 -mt-0.5 h-px bg-divider flex-1'
+                }
+              />
+            </div>
+            <ol className={'flex flex-col gap-1.5'}>
+              {group.posts?.map((post) => (
+                <li className={'block'} key={post.slug}>
+                  <BlogPostItem post={post} />
+                </li>
+              ))}
+            </ol>
+          </Section>
+        </li>
+      ))}
+    </Suspense>
+  );
+};
 
 export default function BlogPage() {
   return (
@@ -59,37 +99,9 @@ export default function BlogPage() {
         </LinkButton>
       </div>
 
-      <Suspense fallback={<Loading />}>
-        <ol className={'flex flex-col gap-6'}>
-          {blogGroups.map((group) => (
-            <li className={'block'} key={group.year}>
-              <Section
-                id={`posts-from-${group.year}`}
-                title={`Posts from ${group.year}`}
-                aria-label={`Posts from ${group.year}`}
-              >
-                <div className={'flex items-end gap-3 mt-3 w-full'}>
-                  <h2 className={'text-lg font-manrope font-bold leading-none'}>
-                    {group.year}
-                  </h2>
-                  <hr
-                    className={
-                      'w-full border-none m-0 -mt-0.5 h-px bg-divider flex-1'
-                    }
-                  />
-                </div>
-                <ol className={'flex flex-col gap-1.5'}>
-                  {group.posts?.map((post) => (
-                    <li className={'block'} key={post.slug}>
-                      <BlogPostItem post={post} />
-                    </li>
-                  ))}
-                </ol>
-              </Section>
-            </li>
-          ))}
-        </ol>
-      </Suspense>
+      <ol className={'flex flex-col gap-6'}>
+        <BlogPostsGroups />
+      </ol>
     </Section>
   );
 }

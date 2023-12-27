@@ -4,6 +4,7 @@ import path from 'path';
 import readingTime from 'reading-time';
 
 import { unique } from 'config/contentlayer/utils/unique';
+import { getBlurData } from 'config/contentlayer/rehype/image-metadata';
 
 interface BlogPostMetadata {
   title: string;
@@ -16,13 +17,16 @@ interface BlogPostMetadata {
   inProgress?: boolean;
   keywords?: Array<string>;
   readingTime: string;
-  heroMeta?: { blur64?: string; size: { width: number; height: number } };
+  heroMeta?: {
+    blur64?: string;
+    size: { width: number; height: number };
+  } | null;
 }
 
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
 
-function parseFrontmatter(fileContent: string) {
+const parseFrontmatter = async (fileContent: string) => {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
   const frontMatterBlock = match![1];
@@ -54,11 +58,12 @@ function parseFrontmatter(fileContent: string) {
         readingTime(content).time,
       )} min read`;
     } else if (metaKey === 'heroMeta') {
-      metadata['heroMeta'] = undefined;
+      // skip
     } else metadata[metaKey] = value;
   });
+  metadata['heroMeta'] = await getBlurData(metadata['hero']).catch(null);
   return { metadata: metadata as BlogPostMetadata, content };
-}
+};
 
 function getMDXFiles(dir: string) {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
@@ -74,10 +79,10 @@ export type Blog = BlogPostMetadata & {
   content?: string;
 };
 
-function getMDXData(dir: string): Array<Blog> {
+const getMDXData = async (dir: string): Promise<Array<Blog>> => {
   const mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file));
+  const promises = mdxFiles.map(async (file) => {
+    const { metadata, content } = await readMDXFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
     return {
       ...metadata,
@@ -85,7 +90,8 @@ function getMDXData(dir: string): Array<Blog> {
       content,
     };
   });
-}
+  return Promise.all(promises).catch();
+};
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'content'));

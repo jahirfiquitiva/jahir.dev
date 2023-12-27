@@ -10,49 +10,6 @@ const getActualHeroUrl = (hero?: string) =>
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
-  slug: {
-    type: 'string',
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
-  },
-  hero: {
-    type: 'string',
-    resolve: (doc) => getActualHeroUrl(doc.hero),
-  },
-  keywords: {
-    type: 'list',
-    resolve: (doc) => {
-      const docKeywords: string = (doc?.keywords ?? '') || '';
-      let filteredKeywords: Array<string> = [];
-      try {
-        filteredKeywords = docKeywords
-          ?.split('|')
-          ?.map((it: string) => it.trim())
-          ?.filter((it: string) => it.length > 0);
-      } catch (e) {}
-      return unique([...filteredKeywords]);
-    },
-  },
-  excerpt: {
-    type: 'string',
-    resolve: (doc) =>
-      getPostDescription(doc.body.raw, doc.excerpt || doc.description, true),
-  },
-  longExcerpt: {
-    type: 'string',
-    resolve: (doc) =>
-      getPostDescription(doc.body.raw, doc.excerpt || doc.description),
-  },
-  year: {
-    type: 'number',
-    resolve: (doc) => {
-      try {
-        const date = new Date(doc.date);
-        return date.getFullYear();
-      } catch (e) {
-        return 0;
-      }
-    },
-  },
   heroMeta: {
     type: 'json',
     resolve: async (doc) => {
