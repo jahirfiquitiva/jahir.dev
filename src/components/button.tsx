@@ -29,6 +29,7 @@ export const Button = tw.button.attrs<ButtonProps>((p) => ({
   dark:ring-brand-400
   dark:hocus:ring-brand-300
   transition
+  no-underline
   hocus:-translate-y-px
   hocus:shadow
   hocus:bg-accent-dark

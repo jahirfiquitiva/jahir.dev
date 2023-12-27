@@ -7,6 +7,7 @@
 
 import { Button, OutlinedButton } from '@/components/button';
 import { Link } from '@/components/link';
+import { Intro } from '@/components/views/home/intro';
 
 // const allowInProgress = process.env.NODE_ENV === 'development';
 // const [latestBlogPost, latestBlogPostB] = allReadableBlogs
@@ -15,14 +16,15 @@ import { Link } from '@/components/link';
 
 export default function Home() {
   return (
-    <div>
+    <>
+      <Intro />
       <p>Hola</p>
       <Button title={'hola'}>Hola</Button>
       <OutlinedButton title={'test'}>Hola</OutlinedButton>
       <Link title={'link'} href={'/blog'}>
         Blog
       </Link>
-    </div>
+    </>
   );
   // <>
   //   <Intro />
