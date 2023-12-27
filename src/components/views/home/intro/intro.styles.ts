@@ -1,6 +1,4 @@
-import type { ComponentProps } from 'react';
-
-import { Img } from '@/components/img';
+import { Img, type ImgProps } from '@/components/img';
 import { tw } from '@/utils/cx';
 
 export const WavingSpan = tw.span`
@@ -28,7 +26,7 @@ export const Name = tw.span`
   dark:bg-clip-text
 `;
 
-export const Photo = tw(Img)<ComponentProps<typeof Img>>`
+export const Photo = tw(Img)<ImgProps>`
   rounded-full
   object-center
   object-cover

@@ -1,17 +1,7 @@
 const imagesAlts: Array<string> = [
-  "Hanging out with friends in Playa Blanca, Boyacá, Colombia – Jul '21",
-  "Visiting Sativa Norte, Boyacá, Colombia – Jan '22",
-  "Hanging out with friends at a cafe – Feb '22",
-  "In a neon room at Graffiti Tour in Medellin – Jun '22",
-  "Visiting Medellin – Jun '22",
   "At Festival Estéreo Picnic – Mar '23",
-  "At Festival Estéreo Picnic – Mar '23",
-  "Next to a waterfall in my hometown – Jun '23",
   "At The Angel of Independence in Mexico City – Oct '23",
-  "At The Angel of Independence in Mexico City – Oct '23",
-  "At Museo Torres Bicentenario, Toluca, México – Oct '23",
   "In Valle de Bravo, México – Oct '23",
-  "In Medellin, Colombia – Nov '23",
   "In Medellin, Colombia – Nov '23",
   "In Medellin, Colombia – Nov '23",
 ];

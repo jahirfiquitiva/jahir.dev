@@ -1,6 +1,6 @@
 import Image, { type ImageProps } from 'next/image';
 
-import cx from '@/utils/cx';
+import cx, { tw } from '@/utils/cx';
 
 type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
 type SizeProps = BaseImageProps & { size?: number | string };
@@ -9,9 +9,9 @@ type WidthHeightProps = BaseImageProps & {
   height?: number | string;
 };
 
-type ImgProps = SizeProps | WidthHeightProps;
+export type ImgProps = SizeProps | WidthHeightProps;
 
-export const Img = (props: ImgProps) => {
+const BaseImg = (props: ImgProps) => {
   const { size = 0, ...otherProps } = props as SizeProps;
   const {
     width = size,
@@ -30,3 +30,5 @@ export const Img = (props: ImgProps) => {
     />
   );
 };
+
+export const Img = tw(BaseImg)<ImgProps>``;

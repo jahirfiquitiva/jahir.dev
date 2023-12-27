@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import photo from '@/assets/images/photo.jpg';
 import { Link } from '@/components/link';
 import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
@@ -6,7 +7,6 @@ import { SocialLinks } from '@/components/social-links';
 import cx from '@/utils/cx';
 
 import { Name, Photo, SubHeader, WavingSpan } from './intro.styles';
-import photo from './photo.jpg';
 import { Verified } from './verified';
 import { WavingHello } from './waving-hello';
 
