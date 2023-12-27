@@ -1,3 +1,4 @@
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/constants/theme';
 import { colorMetaTags } from '@/utils/metadata';
 
 export const Meta = () => {
@@ -48,12 +49,12 @@ export const Meta = () => {
       <meta
         name={'theme-color'}
         media={'(prefers-color-scheme: light)'}
-        content={'#fdfeff'}
+        content={THEME_COLOR_LIGHT}
       />
       <meta
         name={'theme-color'}
         media={'(prefers-color-scheme: dark)'}
-        content={'#0c121e'}
+        content={THEME_COLOR_DARK}
       />
     </>
   );

@@ -15,7 +15,7 @@ const getData = (slug: string) =>
   db
     .selectFrom('counters')
     .where('slug', '=', slug)
-    .select(['likes', 'loves', 'awards', 'bookmarks'])
+    .select(['likes', 'loves', 'awards', 'bookmarks', 'views'])
     .execute();
 
 export async function GET(
@@ -32,7 +32,10 @@ export async function GET(
 
     const total = Object.keys(counters).reduce(
       (accumulator, key): number =>
-        accumulator + Number(counters[key as keyof typeof counters] || 0),
+        accumulator +
+        (key !== 'views'
+          ? Number(counters[key as keyof typeof counters] || 0)
+          : 0),
       0,
     );
 

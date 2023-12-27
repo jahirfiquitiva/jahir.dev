@@ -53,6 +53,8 @@ function parseFrontmatter(fileContent: string) {
       metadata['readingTime'] = `${Math.ceil(
         readingTime(content).time,
       )} min read`;
+    } else if (metaKey === 'heroMeta') {
+      metadata['heroMeta'] = undefined;
     } else metadata[metaKey] = value;
   });
   return { metadata: metadata as BlogPostMetadata, content };
