@@ -5,7 +5,7 @@ import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx, { tw } from '@/utils/cx';
 
 import { Img } from '../img';
-import { LineWobble } from '../loaders/line-wobble/line-wobble';
+import { LineWobble } from '../loaders/line-wobble';
 
 import { Clock } from './time';
 

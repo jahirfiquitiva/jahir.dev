@@ -1,10 +1,11 @@
+'use client';
+
 import type { Route } from 'next';
 import { useMemo } from 'react';
 
 import { Button } from '@/components/button';
 import { LinkButton } from '@/components/link-button';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import cx from '@/utils/cx';
 
 const shareUrl = (title: string, slug: string) =>
   `https://twitter.com/intent/tweet?text=${encodeURIComponent(

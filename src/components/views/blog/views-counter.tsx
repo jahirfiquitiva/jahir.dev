@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect } from 'react';
 
-import { LineWobble } from '@/components/loaders/line-wobble/line-wobble';
+import { LineWobble } from '@/components/loaders/line-wobble';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useImmutableRequest } from '@/hooks/use-request';
 

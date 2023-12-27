@@ -4,7 +4,8 @@ import { Suspense } from 'react';
 
 import { getBlogPosts } from '@/lib/blog';
 import { compileMDX } from '@/lib/mdx';
-import { allReadableBlogs, getBlog } from '@/utils/blog';
+import styles from '@/styles/article.scss';
+import { getReadableBlogs, getBlog } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
@@ -14,32 +15,30 @@ import type { BlogPostPageContext } from './types';
 
 export default async function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
-  const post = getBlog(slug);
-  const newPost = getBlogPosts().find((it) => it.slug === slug);
-
-  const { content } = await compileMDX(newPost?.content);
+  const post = await getBlog(slug);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
 
+  const { content } = await compileMDX(post.content);
   return (
     <Suspense fallback={<Loading />}>
       {/* <Mdx code={post.body.code} /> */}
-      <article>{content}</article>
+      <article className={styles.article}>{content}</article>
     </Suspense>
   );
 }
 
-export const generateStaticParams = () =>
-  allReadableBlogs.map((post) => ({ slug: post.slug }));
+export const generateStaticParams = async () =>
+  (await getReadableBlogs()).map((post) => ({ slug: post.slug }));
 
 export const dynamicParams = false;
 
-export function generateMetadata(
+export async function generateMetadata(
   context: BlogPostPageContext,
-): Metadata | undefined {
+): Promise<Metadata | undefined> {
   const { slug } = context.params;
-  const post = getBlog(slug);
+  const post = await getBlog(slug);
   if (!slug || !post) return undefined;
 
   const { title, date, excerpt, hero } = post;

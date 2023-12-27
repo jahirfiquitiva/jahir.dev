@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import readingTime from 'reading-time';
-
-import { unique } from 'config/contentlayer/utils/unique';
-import { getBlurData } from 'config/contentlayer/rehype/image-metadata';
+import { getReadingTime } from '@/utils/reading-time';
+import { unique } from '@/utils/unique';
+import { getBlurData } from 'config/mdx/rehype/image-metadata';
 
 interface BlogPostMetadata {
   title: string;
@@ -54,13 +53,12 @@ const parseFrontmatter = async (fileContent: string) => {
       } catch (e) {}
       metadata['keywords'] = unique([...filteredKeywords]);
     } else if (metaKey === 'readingTime') {
-      metadata['readingTime'] = `${Math.ceil(
-        readingTime(content).time,
-      )} min read`;
+      // skip
     } else if (metaKey === 'heroMeta') {
       // skip
     } else metadata[metaKey] = value;
   });
+  metadata['readingTime'] = getReadingTime(content);
   metadata['heroMeta'] = await getBlurData(metadata['hero']).catch(null);
   return { metadata: metadata as BlogPostMetadata, content };
 };

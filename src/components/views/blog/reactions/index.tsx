@@ -8,7 +8,7 @@ import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { CountersReactions, ReactionName } from '@/lib/planetscale';
 import { reactionsNames } from '@/lib/planetscale';
-import { getReadableColor, hexToRgb } from '@/utils/color';
+import { hexToRgb } from '@/utils/color';
 
 import { ReactionButton } from './reaction-button';
 
@@ -191,7 +191,7 @@ export const ReactionsButtons = (props: ReactionsButtonsProps) => {
           style={
             {
               '--reaction-color': hexToRgb(
-                getReadableColor(reactionsSetup[reaction].color, isDark),
+                reactionsSetup[reaction].color,
                 1,
                 true,
               ),

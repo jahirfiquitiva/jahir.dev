@@ -1,4 +1,4 @@
-import { Ring } from '@/components/loaders/ring/ring';
+import { Ring } from '@/components/loaders/ring';
 
 const Loading = () => (
   <div

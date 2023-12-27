@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { Ring } from '@/components/loaders/ring/ring';
+import { Ring } from '@/components/loaders/ring';
 import cx from '@/utils/cx';
 
 import { StyledReactionButton } from './reaction-button.styles';

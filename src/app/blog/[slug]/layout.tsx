@@ -1,9 +1,9 @@
-import Icon from '@mdi/react';
 import type { PropsWithChildren } from 'react';
 
-import { Link } from '@/components/link/link';
+import { OutlinedLinkButton } from '@/components/link-button';
+import { ReactionsButtons } from '@/components/views/blog/reactions';
+import { ShareButton } from '@/components/views/blog/share-button';
 import type { Blog } from '@/lib/blog';
-import { ReactionsProvider } from '@/providers/reactions-provider';
 import { getBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
@@ -11,12 +11,7 @@ import { buildOgImageUrl } from '@/utils/og';
 import { Header } from './header';
 import { Hero } from './hero';
 import type { BlogPostPageContext } from './types';
-
-// import { ButtonLink } from '@/components/core/link/button-link';
-// import { Section } from '@/components/core/section';
-// import { mdiPencilOutline } from '@/components/icons/mdi';
-// import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
-// import { ShareButton } from '@/components/views/mdx/ui/share-button';
+import { Zoom } from './zoom';
 
 const blogPostStructuredData = (post: Blog): string =>
   post
@@ -39,78 +34,67 @@ const blogPostStructuredData = (post: Blog): string =>
 export default async function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
-  // const { slug } = props.params;
-  // const post = getBlog(slug);
-  return null;
-  // <Section id={'blog-post'}>
-  //   <Link
-  //     href={'/blog'}
-  //     title={'Navigate back to blog posts list page'}
-  //     className={cx(
-  //       'inline-flex items-end',
-  //       'gap-8 py-4 group/back',
-  //       'leading-none no-underline',
-  //     )}
-  //   >
-  //     <span className={'font-manrope font-bold mb-1'}>{'<-'}</span>
-  //     <span
-  //       className={'group-hocus/back:underline group-hocus/back:decoration-2'}
-  //     >
-  //       Back to blog posts
-  //     </span>
-  //   </Link>
-  //   {post ? (
-  //     <>
-  //       <Header post={post} />
-  //       <ReactionsProvider
-  //         slug={`blog--${post.slug}`}
-  //         inProgress={post.inProgress}
-  //       >
-  //         <Reactions />
-  //         <Hero
-  //           title={post.title}
-  //           hero={post.hero}
-  //           meta={post.heroMeta}
-  //           source={post.heroSource}
-  //         />
-  //         {props.children}
-  //         <hr
-  //           className={cx(
-  //             'my-20 mx-0 h-1 w-full',
-  //             'border-none border-0 bg-divider',
-  //             'overflow-hidden desktop:my-28',
-  //             '-mx-14 w-[calc(100%+1.75rem)]',
-  //             'tablet-md:mx-0 tablet-md:w-full',
-  //           )}
-  //         />
-  //         <div
-  //           className={cx(
-  //             'flex flex-col-reverse',
-  //             'gap-24',
-  //             'mt-0 mb-16',
-  //             'tablet-md:mt-2 tablet-md:mb-8',
-  //             'tablet-md:flex-row tablet-md:items-center',
-  //             'tablet-md:justify-between',
-  //           )}
-  //         >
-  //           <div className={'flex gap-12'}>
-  //             <ShareButton title={post.title} slug={post.slug} />
-  //             <ButtonLink
-  //               outlined
-  //               title={'Edit blog post content on GitHub'}
-  //               href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${post.slug}.mdx`}
-  //             >
-  //               <Icon path={mdiPencilOutline} size={0.9} />
-  //               <span>Edit on GitHub</span>
-  //             </ButtonLink>
-  //           </div>
-  //           <Reactions />
-  //         </div>
-  //       </ReactionsProvider>
-  //       <script type={'application/ld+json'} suppressHydrationWarning>
-  //         {blogPostStructuredData(post)}
-  //       </script>
-  //     </>
-  //   ) : null}
-  // </Section>
+  const { slug } = props.params;
+  const post = await getBlog(slug);
+  if (!post) return null;
+  return (
+    <>
+      <Header post={post} />
+      <Hero
+        title={post.title}
+        hero={post.hero}
+        meta={post.heroMeta}
+        source={post.heroSource}
+      />
+      {props.children}
+      <hr
+        className={cx(
+          'm-0 border-none h-px w-full bg-divider',
+          '-mt-7 mobile-lg:-mt-6 tablet-sm:-mt-5',
+          '-mb-14',
+          '-mx-2.5 w-[calc(100%_+_1.25rem)]',
+          'mobile-lg:-mx-3 mobile-lg:w-[calc(100%_+_1.5rem)]',
+          'tablet-md:mx-0 tablet-md:w-full',
+        )}
+      />
+      <div
+        className={cx(
+          'flex flex-col-reverse gap-8',
+          'tablet-md:flex-row tablet-md:items-center',
+          'justify-between tablet-md:gap-4',
+          'pt-7 mobile-lg:pt-8 tablet-sm:pt-9',
+        )}
+      >
+        <div className={'flex flex-row items-center gap-2.5 tablet-md:gap-3'}>
+          <ShareButton title={'Share blog post'} slug={slug || ''} />
+          <OutlinedLinkButton
+            title={'Edit blog post'}
+            href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/src/content/blog/${slug}/index.mdx`}
+            className={'pr-4'}
+          >
+            <svg
+              viewBox={'0 0 24 24'}
+              role={'presentation'}
+              className={'size-5'}
+              aria-hidden={'true'}
+            >
+              <path
+                className={'fill-current'}
+                d={
+                  // eslint-disable-next-line max-len
+                  'M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z'
+                }
+              ></path>
+            </svg>
+            <span>Edit on GitHub</span>
+          </OutlinedLinkButton>
+        </div>
+        <ReactionsButtons slug={slug || ''} />
+        <Zoom />
+      </div>
+      <script type={'application/ld+json'} suppressHydrationWarning>
+        {blogPostStructuredData(post)}
+      </script>
+    </>
+  );
 }

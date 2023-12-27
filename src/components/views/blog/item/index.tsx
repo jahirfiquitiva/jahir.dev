@@ -2,13 +2,12 @@
 
 import type { Route } from 'next';
 import { useMemo, type CSSProperties } from 'react';
-import { cx } from 'react-twc';
 
 import { Img } from '@/components/img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import type { Blog } from '@/lib/blog';
-import { useTheme } from '@/providers/theme-provider';
-import { getReadableColor, hexToRgb } from '@/utils/color';
+import { hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 
