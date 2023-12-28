@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
-import { tw } from '@/utils/cx';
+import cx, { tw } from '@/utils/cx';
 
 import { loading, moon, sun } from '../icons';
 
@@ -44,7 +44,10 @@ export const ThemeToggle = () => {
       <svg
         viewBox={'0 0 24 24'}
         role={'presentation'}
-        className={'size-6 text-accent fill-accent'}
+        className={cx(
+          'size-6 text-accent fill-accent',
+          !hasMounted && 'motion-safe:animate-spin',
+        )}
         aria-hidden={'true'}
       >
         <path className={'fill-current'} d={iconPath}></path>
