@@ -5,21 +5,26 @@ import { Link } from '@/components/link';
 import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
+import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ErrorComponent = (props: { error: Error }) => {
   const { error } = props;
+  const [, ...errorStack] = error.stack?.toString().split(/\r?\n/) || [];
   return (
     <Section id={'error'} className={'w-full h-full'}>
       <h1
-        className={getColoredTextClasses('red', 'orange', 'red', false, 'mb-4')}
+        className={getColoredTextClasses('red', 'orange', 'red', false, 'mb-3')}
       >
         Something went wrong
       </h1>
-      <p>Unfortunately an unexpected error occurred.</p>
       <p>
+        <span className={'font-medium'}>Whoops!</span> Unfortunately an
+        unexpected error occurred.
+      </p>
+      <p className={'-mt-2'}>
         Please{' '}
         <Link
           title={'Create issue on GitHub'}
@@ -27,39 +32,42 @@ const ErrorComponent = (props: { error: Error }) => {
             'https://github.com/jahirfiquitiva/jahir.dev/issues/new?assignees=jahirfiquitiva&labels=bug&template=1_bug_report.yaml'
           }
         >
-          let me know
+          share the details
         </Link>{' '}
-        about this issue, so that I can fix it.
+        of this issue, so I can fix it for you.
       </p>
       {error ? (
         <details className={'rounded-2 border border-divider'}>
-          <summary className={'select-none p-2'}>Error logs</summary>
-          <div
-            data-rehype-pretty-code-fragment
-            className={'border-t border-divider p-3 max-w-full break-words'}
+          <summary className={'select-none p-2 font-medium'}>
+            Error details
+          </summary>
+          <article
+            className={cx(
+              'border-t border-divider max-w-full overflow-hidden',
+              'flex flex-col gap-2 p-0',
+            )}
           >
-            <pre data-language={'json'} className={'overflow-x-auto'}>
-              <code
-                data-language={'json'}
-                className={'text-3xs font-mono max-w-full whitespace-pre-line'}
-              >
-                {JSON.stringify(
-                  {
-                    ...error,
-                    message: error.message,
-                    name: error.name,
-                    cause: error.cause,
-                    stack: error.stack,
-                  },
-                  null,
-                  2,
-                )}
-              </code>
-            </pre>
-          </div>
+            <code
+              className={cx(
+                'flex flex-col p-3 border-none',
+                'text-nowrap overflow-x-auto',
+                'text-2xs font-mono',
+                'max-w-full whitespace-pre-line',
+              )}
+            >
+              <span className={'font-medium'}>
+                {error.name}: {error.message}
+              </span>
+              {errorStack.map((l, i) => (
+                <span key={i} className={'pl-3'}>
+                  {l}
+                </span>
+              ))}
+            </code>
+          </article>
         </details>
       ) : null}
-      <LinkButton href={'/'} title={'Home page'} className={'mt-8'}>
+      <LinkButton href={'/'} title={'Home page'} className={'mt-3'}>
         Go back home
       </LinkButton>
       <img
@@ -67,7 +75,7 @@ const ErrorComponent = (props: { error: Error }) => {
         alt={'Monkey throwing laptop aggressively'}
         loading={'lazy'}
         decoding={'async'}
-        className={'mt-8 max-w-[425px]'}
+        className={'mt-3 max-w-[425px]'}
       />
     </Section>
   );
