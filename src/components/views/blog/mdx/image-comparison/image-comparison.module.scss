@@ -1,11 +1,11 @@
 figure.imgComparison {
   @apply flex flex-col items-center;
-  @apply mb-20 min-h-[52px];
+  @apply mb-5 min-h-[52px];
 
   & div[data-testid]:first-of-type {
-    @apply rounded-8 border border-divider;
+    @apply rounded-2 border border-divider;
     & img {
-      @apply rounded-8 object-contain m-0;
+      @apply rounded-2 object-contain m-0;
     }
   }
 
