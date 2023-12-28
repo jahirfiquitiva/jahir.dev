@@ -59,17 +59,16 @@ export const BackToTop = () => {
       data-umami-event-src={'FAB'}
       onClick={scrollToTop}
     >
-      <svg
+      <BackToTopIcon
         viewBox={'0 0 24 24'}
         role={'presentation'}
-        className={BackToTopIcon}
         aria-hidden={'true'}
       >
         <path
           className={'fill-current'}
           d={'M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z'}
         ></path>
-      </svg>
+      </BackToTopIcon>
       <BackToTopText>Back to Top</BackToTopText>
     </BackToTopButton>
   );

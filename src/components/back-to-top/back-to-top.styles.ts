@@ -43,13 +43,13 @@ export const BackToTopButton = tw(Button)`
   [&.shown]:pointer-events-auto
 `;
 
-export const BackToTopIcon = cx(`
+export const BackToTopIcon = tw.svg`
   size-6
   block
   visible
   desktop:hidden
   desktop:invisible
-`);
+`;
 
 export const BackToTopText = tw.span`
   hidden
