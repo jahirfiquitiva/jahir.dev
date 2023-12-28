@@ -3,14 +3,18 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
-import { db, type ReactionName } from '@/lib/planetscale';
+import {
+  db,
+  type ReactionName,
+  type ReactionsCounters,
+} from '@/lib/planetscale';
 
 const url = process.env.VERCEL_URL || '';
 export const incrementReaction = cache(
   async (slug: string, reaction: ReactionName) => {
-    if (process.env.NODE_ENV === 'development') return;
+    if (process.env.NODE_ENV === 'development') return {};
     console.error(`Running action from ${url}`);
-    if (url !== 'jahir.dev') return;
+    if (url !== 'jahir.dev') return {};
     noStore();
     try {
       const data = await db
@@ -24,19 +28,15 @@ export const incrementReaction = cache(
         .values({ slug, [reaction]: 1 })
         .onDuplicateKeyUpdate({ [reaction]: reactionCount + 1 })
         .execute();
-    } catch (e) {}
+      return { [reaction]: reactionCount + 1 };
+    } catch (e) {
+      return {};
+    }
   },
 );
 
-const defaultCounters: Record<ReactionName, number> = {
-  likes: 0,
-  loves: 0,
-  awards: 0,
-  bookmarks: 0,
-};
-
 export const getReactions = cache(
-  async (slug: string): Promise<Record<ReactionName, number>> => {
+  async (slug: string): Promise<ReactionsCounters> => {
     try {
       const data = await db
         .selectFrom('counters')
@@ -44,7 +44,7 @@ export const getReactions = cache(
         .select(['likes', 'loves', 'awards', 'bookmarks'])
         .execute();
       const [counters] = data;
-      if (!counters) return defaultCounters;
+      if (!counters) return {};
       return {
         likes: counters.likes || 0,
         loves: counters.loves || 0,
@@ -52,7 +52,7 @@ export const getReactions = cache(
         bookmarks: counters.bookmarks || 0,
       };
     } catch (e) {
-      return defaultCounters;
+      return {};
     }
   },
 );

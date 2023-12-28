@@ -12,7 +12,7 @@ interface ViewsCounterProps {
 
 export const ViewsCounter = async (props: ViewsCounterProps) => {
   const dbSlug = `blog--${props.slug}`;
-  const views = await getViews(dbSlug);
+  const views = await getViews(dbSlug).catch(() => 0);
   if (props.write) recordView(dbSlug);
 
   return (
