@@ -1,11 +1,8 @@
-'use client';
-
 import type { Blog } from 'contentlayer/generated';
 import type { Route } from 'next';
-import { useMemo, type CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/img';
-import { useHasMounted } from '@/hooks/use-has-mounted';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
@@ -18,21 +15,18 @@ import { BlogPostLink } from './item.styles';
 interface BlogPostItemProps {
   post: Blog;
   fullDate?: boolean;
+  viewsCounter?: JSX.Element;
 }
 
 export const BlogPostItem = (props: BlogPostItemProps) => {
   const { post, fullDate } = props;
-  const hasMounted = useHasMounted();
 
   const a11yDate = formatDate(post.date);
   const readableDate = formatDate(post.date, {
     year: fullDate ? 'numeric' : undefined,
   });
 
-  const color = useMemo<string | null>(() => {
-    if (!hasMounted) return null;
-    return hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)';
-  }, [post.color, hasMounted]);
+  const color = hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)';
 
   return (
     <BlogPostLink

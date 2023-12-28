@@ -1,12 +1,11 @@
 import { Suspense } from 'react';
 
-import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
+import { ViewsCounter } from '@/components/views/blog/views-counter';
 import { allReadableBlogs } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
-import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
