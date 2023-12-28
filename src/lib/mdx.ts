@@ -5,13 +5,13 @@ import { Img } from '@/components/img';
 import { ImageComparison } from '@/components/views/blog/mdx/image-comparison';
 import { MdxLink } from '@/components/views/blog/mdx/link';
 import { tw } from '@/utils/cx';
-import mdx from 'config/mdx/options';
+import mdx from 'config/contentlayer/mdx';
 
 const Grid = tw.div`
   grid
   grid-cols-1
   tablet-sm:grid-cols-2
-  tablet-sm:gap-16
+  tablet-sm:gap-4
 `;
 
 const GridColumn = tw.div`

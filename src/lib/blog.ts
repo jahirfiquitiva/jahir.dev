@@ -3,7 +3,7 @@ import path from 'path';
 
 import { getReadingTime } from '@/utils/reading-time';
 import { unique } from '@/utils/unique';
-import { getBlurData } from 'config/mdx/rehype/image-metadata';
+import { getBlurData } from 'config/contentlayer/rehype/image-metadata';
 
 interface BlogPostMetadata {
   title: string;
