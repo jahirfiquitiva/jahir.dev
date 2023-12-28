@@ -1,15 +1,12 @@
 // Code based on https://github.com/nikolovlazar/nikolovlazar.com/blob/main/src/utils/plugins/image-metadata.ts
 import { readFile } from 'node:fs/promises';
 import path from 'path';
-import { promisify } from 'util';
 
-import imageSize from 'image-size';
-import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
+import sizeOf from 'image-size';
 import { getPlaiceholder } from 'plaiceholder';
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
-const sizeOf = promisify(imageSize);
 interface ImageNode {
   name: string;
   type: 'element' | string;
@@ -58,44 +55,34 @@ export const getBlurData = async (
 ): Promise<BlurResult | null> => {
   if (!imageSrc) return null;
   const isExternal = imageSrc.startsWith('http');
-  let res: ISizeCalculationResult | undefined;
-  let blur64: string;
 
-  if (!isExternal) {
-    const filePath = path.join(process.cwd(), 'public', imageSrc);
-    res = await sizeOf(filePath);
-    const imgBuffer = await readFile(filePath);
-    const plaiceholderResult = await getPlaiceholder(imgBuffer, {
-      size: placeholderSize,
-    });
-    res = {
-      ...res,
-      width: plaiceholderResult.metadata.width,
-      height: plaiceholderResult.metadata.height,
-    };
-    blur64 = plaiceholderResult.base64;
-  } else {
-    const imageRes = await fetch(imageSrc);
-    const arrayBuffer = await imageRes.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+  try {
+    let imgBuffer: Buffer | undefined = undefined;
+    if (!isExternal) {
+      const filePath = path.join(process.cwd(), 'public', imageSrc);
+      imgBuffer = await readFile(filePath);
+    } else {
+      const imageRes = await fetch(imageSrc);
+      const arrayBuffer = await imageRes.arrayBuffer();
+      imgBuffer = Buffer.from(arrayBuffer);
+    }
 
-    res = await imageSize(buffer);
-    const plaiceholderResult = await getPlaiceholder(buffer, {
-      size: placeholderSize,
-    });
-    res = {
-      ...res,
-      width: plaiceholderResult.metadata.width,
-      height: plaiceholderResult.metadata.height,
+    const size = await sizeOf(imgBuffer);
+    const blur = await getPlaiceholder(imgBuffer, { size: placeholderSize });
+
+    const result = {
+      size: {
+        width: size?.width || blur.metadata.width || 0,
+        height: size?.height || blur.metadata.height || 0,
+      },
+      blur64: blur.base64,
     };
-    blur64 = plaiceholderResult.base64;
+    return result;
+  } catch (e) {
+    console.error(`Error processing image: "${imageSrc}"`);
+    console.error(e);
+    return null;
   }
-
-  if (!res) throw Error(`Invalid image with src "${imageSrc}"`);
-  return {
-    size: { width: res.width || 0, height: res.height || 0 },
-    blur64,
-  };
 };
 
 const addProps = async (node: ImageNode): Promise<ImageNode> => {
