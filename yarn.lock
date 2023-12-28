@@ -1574,7 +1574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-slot@npm:*":
+"@radix-ui/react-slot@npm:^1.0.2":
   version: 1.0.2
   resolution: "@radix-ui/react-slot@npm:1.0.2"
   dependencies:
@@ -2939,7 +2939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:*":
+"clsx@npm:^2.0.0":
   version: 2.0.0
   resolution: "clsx@npm:2.0.0"
   checksum: c09f43b3144a0b7826b6b11b6a111b2c7440831004eecc02d333533c5e58ef0aa5f2dce071d3b25fbb8c8ea97b45df96c74bcc1d51c8c2027eb981931107b0cd
@@ -8455,13 +8455,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-twc@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "react-twc@npm:1.2.1"
+"react-twc@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "react-twc@npm:1.2.2"
   dependencies:
-    "@radix-ui/react-slot": "npm:*"
-    clsx: "npm:*"
-  checksum: ef2896a75790c69536354e4f061cf4ab632f74c8fd3461867ef77702525c71d42128c38212b9050f19e7fdeb73c62b8996d566d38a6be5ceeda6d9365f11e36a
+    "@radix-ui/react-slot": "npm:^1.0.2"
+    clsx: "npm:^2.0.0"
+  checksum: aa1837d9eefd679f2d5a05dae94ab5338270b95a1ab69be911be33cff6a3dc309842baf17be4f5c3d694e1e34be06ab029a80ef38fb7e6dd52fbec6f108490c1
   languageName: node
   linkType: hard
 
@@ -9280,7 +9280,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-compare-image: "npm:^3.4.0"
     react-dom: "npm:^18.2.0"
-    react-twc: "npm:^1.2.1"
+    react-twc: "npm:^1.2.2"
     reading-time: "npm:^1.5.0"
     rehype: "npm:^13.0.1"
     rehype-accessible-emojis: "npm:^0.3.2"

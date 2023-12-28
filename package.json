@@ -59,7 +59,7 @@
     "postcss": "^8.4.32",
     "postcss-csso": "^6.0.1",
     "prettier": "^3.1.1",
-    "react-twc": "^1.2.1",
+    "react-twc": "^1.2.2",
     "reading-time": "^1.5.0",
     "rehype": "^13.0.1",
     "rehype-accessible-emojis": "^0.3.2",
