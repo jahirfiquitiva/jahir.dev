@@ -45,7 +45,7 @@ export const ThemeToggle = () => {
       <Icon
         path={iconPath}
         className={cx(
-          'size-6 text-accent fill-accent',
+          'size-5 text-accent fill-accent',
           !hasMounted && 'motion-safe:animate-spin',
         )}
       />

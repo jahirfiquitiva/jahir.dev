@@ -27,7 +27,7 @@ export const ReactionButton = (props: ReactionButtonProps) => {
     >
       <Icon
         className={cx(
-          'transition-colors',
+          'size-5 transition-colors',
           reacted ? 'fill-[rgba(var(--reaction-color)/1)]' : 'fill-current',
           'group-hocus/reaction:fill-[rgba(var(--reaction-color)/1)]',
         )}

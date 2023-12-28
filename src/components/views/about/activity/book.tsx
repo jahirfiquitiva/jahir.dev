@@ -31,6 +31,7 @@ export const Book = () => {
       href={book.link as Route}
       target={'_blank'}
       data-umami-event={'Reading'}
+      data-umami-event-book={book.title}
     >
       <Content>
         <Img

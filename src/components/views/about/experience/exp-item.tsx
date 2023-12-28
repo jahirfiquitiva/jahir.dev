@@ -27,6 +27,8 @@ export const ExpItem = (props: ExperienceItemProps) => {
       href={props.link as Route}
       target={'_blank'}
       style={{ '--exp-color': color } as CSSProperties}
+      data-umami-event={'Experience'}
+      data-umami-event-company={props.company}
     >
       <Img
         src={props.image}

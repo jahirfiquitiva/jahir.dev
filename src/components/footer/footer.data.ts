@@ -50,6 +50,9 @@ export const linksGroups = [
         title: 'RSS Feed',
         href: '/feed.xml',
         className: buildColoredLinkClasses('yellow', 'orange', true),
+        props: {
+          'data-umami-event': 'RSS feed',
+        },
       },
       {
         title: 'Colophon',
@@ -62,7 +65,8 @@ export const linksGroups = [
         href: '#',
         className: buildColoredLinkClasses('brand', 'blue', true),
         props: {
-          'data-btt': '',
+          'data-umami-event': 'Back to top',
+          'data-umami-event-src': 'Footer',
         },
       },
     ],

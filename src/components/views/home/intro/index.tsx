@@ -26,9 +26,9 @@ export const Intro = () => {
         >
           <Photo
             src={photo}
-            width={photo.width}
-            height={photo.height}
             alt={'Photo of Jahir Fiquitiva'}
+            size={Math.min(photo.width, photo.height)}
+            priority
           />
         </div>
 
@@ -82,8 +82,10 @@ export const Intro = () => {
             'justify-center max-mobile-lg:w-full',
             'mobile-lg:self-start mobile-lg:justify-start',
           )}
+          data-umami-event={'More about me'}
         >
           <Icon
+            className={'size-5'}
             path={
               'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z'
             }

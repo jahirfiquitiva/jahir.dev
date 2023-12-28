@@ -36,7 +36,15 @@ export const Music = () => {
       }
       href={track?.url || '#'}
       target={'_blank'}
-      className={cx(loading ? 'motion-safe:animate-pulse' : '')}
+      className={cx(
+        loading ? 'motion-safe:animate-pulse' : '',
+        loading ? 'select-none pointer-events-none' : '',
+      )}
+      aria-disabled={loading}
+      data-umami-event={
+        loading ? '-' : isPlaying ? 'Now Playing' : 'Last Played'
+      }
+      data-umami-event-from={'Activity'}
     >
       <BackgroundImage
         src={track?.image?.url || ''}

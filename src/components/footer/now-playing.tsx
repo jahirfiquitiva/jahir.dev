@@ -5,6 +5,7 @@ import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx, { tw } from '@/utils/cx';
 
 import { Img } from '../img';
+import { Link } from '../link';
 import { LineWobble } from '../loaders/line-wobble';
 
 import { Clock } from './time';
@@ -38,9 +39,8 @@ export const FooterNowPlaying = () => {
   const scrollingText = `${track.name} • ${track.artist}`;
   const animationDuration = scrollingText.length * 0.325;
   return (
-    <a
+    <Link
       title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
-      aria-label={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
       href={track.url}
       target={'_blank'}
       className={cx(
@@ -50,6 +50,8 @@ export const FooterNowPlaying = () => {
         'no-underline group/music',
         'hocus:text-secondary-txt',
       )}
+      data-umami-event={'Now Playing'}
+      data-umami-event-from={'Footer'}
     >
       <Img
         alt={`Album cover: "${track.album}" by "${track.artist}"`}
@@ -80,6 +82,6 @@ export const FooterNowPlaying = () => {
           {scrollingText}
         </ScrollingText>
       </div>
-    </a>
+    </Link>
   );
 };

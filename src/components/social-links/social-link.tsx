@@ -24,7 +24,11 @@ interface SocialLinkProps extends TWComponentProps<typeof StyledSocialLink> {
 }
 
 export const SocialLink = ({ iconPath, ...props }: SocialLinkProps) => (
-  <StyledSocialLink {...props}>
+  <StyledSocialLink
+    {...props}
+    data-umami-event={'Social link'}
+    data-umami-event-site={props.title}
+  >
     {props.children || (
       <Icon
         className={'transition-colors delay-[-100ms]'}

@@ -52,7 +52,7 @@ export const Clock = () => {
         'flex flex-row items-center gap-1.5 text-tertiary-txt text-3xs font-medium uppercase'
       }
     >
-      <Icon path={getIconPath(timeText)} />
+      <Icon className={'size-5'} path={getIconPath(timeText)} />
       <span className={'tabular-nums'}>{timeText} COL.</span>
     </p>
   );

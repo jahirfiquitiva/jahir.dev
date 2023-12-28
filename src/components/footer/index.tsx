@@ -3,10 +3,10 @@ import type { Route } from 'next';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-import { Link } from '../link';
 import { Logo } from '../logo';
 import { SocialLinks } from '../social-links';
 
+import { BackToTopLink } from './back-to-top-link';
 import { linksGroups } from './footer.data';
 import {
   Description,
@@ -69,15 +69,19 @@ export const Footer = () => {
               {group.links.map((link) => {
                 return (
                   <li key={link.title}>
-                    <FooterLink
-                      title={link.a11yTitle || link.title}
-                      aria-label={link.a11yTitle || link.title}
-                      href={link.href as Route}
-                      className={link.className}
-                      {...link.props}
-                    >
-                      {link.title}
-                    </FooterLink>
+                    {link.href !== '#' ? (
+                      <FooterLink
+                        title={link.a11yTitle || link.title}
+                        aria-label={link.a11yTitle || link.title}
+                        href={link.href as Route}
+                        className={link.className}
+                        {...link.props}
+                      >
+                        {link.title}
+                      </FooterLink>
+                    ) : (
+                      <BackToTopLink {...link} />
+                    )}
                   </li>
                 );
               })}
