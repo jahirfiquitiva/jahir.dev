@@ -5,8 +5,11 @@ import { cache } from 'react';
 
 import { db } from '@/lib/planetscale';
 
+const url = process.env.VERCEL_URL || '';
 export const recordView = cache(async (slug: string) => {
   if (process.env.NODE_ENV === 'development') return;
+  console.error(`Running action from ${url}`);
+  if (url !== 'jahir.dev') return;
   noStore();
   try {
     const data = await db
