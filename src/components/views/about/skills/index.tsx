@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 
+import { Icon } from '@/components/icon';
 import { Section } from '@/components/section';
 import { hexToRgb } from '@/utils/color';
 import { getColoredTextClasses } from '@/utils/colored-text';
@@ -42,14 +43,7 @@ export const Skills = () => {
                   )}
                   style={{ '--skill-color': color } as CSSProperties}
                 >
-                  <svg
-                    viewBox={'0 0 24 24'}
-                    role={'presentation'}
-                    className={'size-4'}
-                    aria-hidden={'true'}
-                  >
-                    <path className={'fill-current'} d={skill.icon} />
-                  </svg>
+                  <Icon path={skill.icon} className={'size-4'} />
                   <span>{skill.name}</span>
                 </span>
               </li>

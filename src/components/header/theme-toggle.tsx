@@ -6,6 +6,7 @@ import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 import cx, { tw } from '@/utils/cx';
 
+import { Icon } from '../icon';
 import { loading, moon, sun } from '../icons';
 
 const ThemeToggleButton = tw.button`
@@ -41,17 +42,13 @@ export const ThemeToggle = () => {
       disabled={!hasMounted}
       title={buttonText}
     >
-      <svg
-        viewBox={'0 0 24 24'}
-        role={'presentation'}
+      <Icon
+        path={iconPath}
         className={cx(
           'size-6 text-accent fill-accent',
           !hasMounted && 'motion-safe:animate-spin',
         )}
-        aria-hidden={'true'}
-      >
-        <path className={'fill-current'} d={iconPath}></path>
-      </svg>
+      />
     </ThemeToggleButton>
   );
 };

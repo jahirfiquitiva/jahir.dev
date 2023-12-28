@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import photo from '@/assets/images/photo.jpg';
+import { Icon } from '@/components/icon';
 import { Link } from '@/components/link';
 import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
@@ -82,19 +83,11 @@ export const Intro = () => {
             'mobile-lg:self-start mobile-lg:justify-start',
           )}
         >
-          <svg
-            viewBox={'0 0 24 24'}
-            role={'presentation'}
-            className={'size-6'}
-            aria-hidden={'true'}
-          >
-            <path
-              className={'fill-current'}
-              d={
-                'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z'
-              }
-            ></path>
-          </svg>
+          <Icon
+            path={
+              'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z'
+            }
+          />
           <span>More about me</span>
         </LinkButton>
         <SocialLinks />

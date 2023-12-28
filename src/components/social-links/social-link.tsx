@@ -1,5 +1,6 @@
 import { tw, type TWComponentProps } from '@/utils/cx';
 
+import { Icon } from '../icon';
 import { Link } from '../link';
 
 const StyledSocialLink = tw(Link)`
@@ -25,17 +26,10 @@ interface SocialLinkProps extends TWComponentProps<typeof StyledSocialLink> {
 export const SocialLink = ({ iconPath, ...props }: SocialLinkProps) => (
   <StyledSocialLink {...props}>
     {props.children || (
-      <svg
-        viewBox={'0 0 24 24'}
-        role={'presentation'}
-        className={'size-6'}
-        aria-hidden={'true'}
-      >
-        <path
-          className={'fill-current transition-colors delay-[-100ms]'}
-          d={iconPath}
-        ></path>
-      </svg>
+      <Icon
+        className={'transition-colors delay-[-100ms]'}
+        path={iconPath || ''}
+      />
     )}
   </StyledSocialLink>
 );

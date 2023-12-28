@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
 
+import { Icon } from '@/components/icon';
 import { Ring } from '@/components/loaders/ring';
 import cx from '@/utils/cx';
 
@@ -24,21 +25,14 @@ export const ReactionButton = (props: ReactionButtonProps) => {
       aria-pressed={reacted}
       disabled={loading === true || reacted === true}
     >
-      <svg
-        viewBox={'0 0 24 24'}
-        role={'presentation'}
-        className={'size-5'}
-        aria-hidden={'true'}
-      >
-        <path
-          className={cx(
-            'transition-colors',
-            reacted ? 'fill-[rgba(var(--reaction-color)/1)]' : 'fill-current',
-            'group-hocus/reaction:fill-[rgba(var(--reaction-color)/1)]',
-          )}
-          d={iconPath}
-        ></path>
-      </svg>
+      <Icon
+        className={cx(
+          'transition-colors',
+          reacted ? 'fill-[rgba(var(--reaction-color)/1)]' : 'fill-current',
+          'group-hocus/reaction:fill-[rgba(var(--reaction-color)/1)]',
+        )}
+        path={iconPath}
+      />
       {loading ? (
         <Ring
           size={16}
