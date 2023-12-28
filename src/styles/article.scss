@@ -108,7 +108,7 @@ html.dark {
 
 article code {
   @apply py-0.5 px-1 text-2xs;
-  @apply bg-white/80 dark:bg-brand-200/[0.048];
+  @apply bg-brand-500/[0.024] dark:bg-brand-200/[0.048];
   @apply border border-divider rounded-1.5;
   @apply font-normal;
   color: inherit;
@@ -117,7 +117,7 @@ article code {
 
 article pre {
   @apply opacity-100 rounded-2 border border-divider;
-  @apply bg-white/80 dark:bg-brand-200/[0.048];
+  @apply bg-brand-500/[0.024] dark:bg-brand-200/[0.048];
   @apply mt-0 mb-3 py-3 px-0 text-inherit overflow-x-auto;
 }
 
