@@ -1,9 +1,9 @@
+import type { Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { OutlinedLinkButton } from '@/components/link-button';
 import { ReactionsButtons } from '@/components/views/blog/reactions';
 import { ShareButton } from '@/components/views/blog/share-button';
-import type { Blog } from '@/lib/blog';
 import { getBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';

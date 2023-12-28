@@ -1,4 +1,5 @@
-import type { Blog } from '@/lib/blog';
+import type { Blog } from 'contentlayer/generated';
+
 import { groupBy } from '@/utils/group-by';
 
 interface BlogGroup {

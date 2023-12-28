@@ -1,11 +1,11 @@
 'use client';
 
+import type { Blog } from 'contentlayer/generated';
 import type { Route } from 'next';
 import { useMemo, type CSSProperties } from 'react';
 
 import { Img } from '@/components/img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import type { Blog } from '@/lib/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
@@ -100,10 +100,15 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           >
             {readableDate}
           </span>
-          {post.readingTime ? (
+          {Boolean(post.readingTime.minutes) ? (
             <>
               <span aria-hidden={'true'}> • </span>
-              <span>{post.readingTime}</span>
+              <span
+                title={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
+                aria-label={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
+              >
+                {post.readingTime.text}
+              </span>
             </>
           ) : null}
           <ViewsCounter slug={post.slug} />

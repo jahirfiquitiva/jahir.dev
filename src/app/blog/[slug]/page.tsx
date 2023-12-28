@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
-import { compileMDX } from '@/lib/mdx';
-import { getReadableBlogs, getBlog } from '@/utils/blog';
+import { Mdx } from '@/components/views/blog/mdx';
+import { getBlog, allReadableBlogs } from '@/utils/blog';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
@@ -18,24 +18,23 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
 
-  const { content } = await compileMDX(post.content);
   return (
     <Suspense fallback={<Loading />}>
-      <article>{content}</article>
+      <Mdx code={post.body.code} />
     </Suspense>
   );
 }
 
 export const generateStaticParams = async () =>
-  (await getReadableBlogs()).map((post) => ({ slug: post.slug }));
+  allReadableBlogs.map((post) => ({ slug: post.slug }));
 
 export const dynamicParams = false;
 
-export async function generateMetadata(
+export function generateMetadata(
   context: BlogPostPageContext,
-): Promise<Metadata | undefined> {
+): Metadata | undefined {
   const { slug } = context.params;
-  const post = await getBlog(slug);
+  const post = getBlog(slug);
   if (!slug || !post) return undefined;
 
   const { title, date, excerpt, hero } = post;

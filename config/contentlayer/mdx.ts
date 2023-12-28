@@ -1,4 +1,4 @@
-import type { SerializeOptions } from 'next-mdx-remote/dist/types';
+import type { MDXOptions } from 'contentlayer/core';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePresetMinify from 'rehype-preset-minify';
@@ -11,7 +11,7 @@ import { prettyCode } from './rehype/code';
 import imageMetadata from './rehype/image-metadata';
 import { toc } from './rehype/toc';
 
-const mdx: SerializeOptions['mdxOptions'] = {
+const mdx: MDXOptions = {
   remarkPlugins: [remarkGfm, remarkSqueezeParagraphs, remarkUnwrapImages],
   rehypePlugins: [
     imageMetadata,

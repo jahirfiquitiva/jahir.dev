@@ -14,13 +14,7 @@ const ErrorComponent = (props: { error: Error }) => {
   return (
     <Section id={'error'} className={'w-full h-full'}>
       <h1
-        className={getColoredTextClasses(
-          'red',
-          'orange',
-          'red',
-          false,
-          'mb-16',
-        )}
+        className={getColoredTextClasses('red', 'orange', 'red', false, 'mb-4')}
       >
         Something went wrong
       </h1>
@@ -38,11 +32,11 @@ const ErrorComponent = (props: { error: Error }) => {
         about this issue, so that I can fix it.
       </p>
       {error ? (
-        <details className={'rounded-8 border border-divider'}>
-          <summary className={'select-none p-8'}>Error logs</summary>
+        <details className={'rounded-2 border border-divider'}>
+          <summary className={'select-none p-2'}>Error logs</summary>
           <div
             data-rehype-pretty-code-fragment
-            className={'border-t border-divider p-12 max-w-full break-words'}
+            className={'border-t border-divider p-3 max-w-full break-words'}
           >
             <pre data-language={'json'} className={'overflow-x-auto'}>
               <code
@@ -65,7 +59,7 @@ const ErrorComponent = (props: { error: Error }) => {
           </div>
         </details>
       ) : null}
-      <LinkButton href={'/'} title={'Home page'} className={'mt-32'}>
+      <LinkButton href={'/'} title={'Home page'} className={'mt-8'}>
         Go back home
       </LinkButton>
       <img
@@ -73,7 +67,7 @@ const ErrorComponent = (props: { error: Error }) => {
         alt={'Monkey throwing laptop aggressively'}
         loading={'lazy'}
         decoding={'async'}
-        className={'mt-32 max-w-[425px]'}
+        className={'mt-8 max-w-[425px]'}
       />
     </Section>
   );

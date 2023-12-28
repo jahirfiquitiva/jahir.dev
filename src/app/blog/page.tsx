@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
-import { getReadableBlogs } from '@/utils/blog';
+import { allReadableBlogs } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { getStaticMetadata } from '@/utils/metadata';
@@ -11,25 +11,19 @@ import { buildOgImageUrl } from '@/utils/og';
 
 import Loading from '../loading';
 
-import { groupBlogPosts as groupBlogPostsUtil } from './utils';
+import { groupBlogPosts } from './utils';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
-const groupBlogPosts = async (): Promise<
-  ReturnType<typeof groupBlogPostsUtil>
-> => {
-  const blogPosts = await getReadableBlogs();
-  return groupBlogPostsUtil(
-    blogPosts
-      .filter((it) => allowInProgress || !it.inProgress)
-      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
-  );
-};
+const blogPostsGroups = groupBlogPosts(
+  allReadableBlogs
+    .filter((it) => allowInProgress || !it.inProgress)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
+);
 
 const BlogPostsGroups = async () => {
-  const blogGroups = await groupBlogPosts();
   return (
     <Suspense fallback={<Loading />}>
-      {blogGroups.map((group) => (
+      {blogPostsGroups.map((group) => (
         <li className={'block'} key={group.year}>
           <Section
             id={`posts-from-${group.year}`}
