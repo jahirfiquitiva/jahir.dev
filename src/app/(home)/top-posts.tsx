@@ -5,14 +5,13 @@ import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
-import { Intro } from '@/components/views/home/intro';
 import { getPopularPosts } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-import Loading from './loading';
+import Loading from './../loading';
 
-const TopBlogPosts = async () => {
+export const TopBlogPosts = async () => {
   const topPosts = await getPopularPosts();
   return (
     <Suspense fallback={<Loading />}>
@@ -24,14 +23,7 @@ const TopBlogPosts = async () => {
               'tablet-sm:flex-row tablet-sm:items-center tablet-sm:justify-between',
             )}
           >
-            <h2
-              className={getColoredTextClasses(
-                'orange',
-                'yellow',
-                'orange',
-                false,
-              )}
-            >
+            <h2 className={getColoredTextClasses('orange', 'yellow', 'orange')}>
               Top blog posts
             </h2>
             <div
@@ -77,51 +69,3 @@ const TopBlogPosts = async () => {
     </Suspense>
   );
 };
-
-export default function Home() {
-  return (
-    <>
-      <Intro />
-      <TopBlogPosts />
-    </>
-  );
-  // <>
-  //   <Intro />
-  //   <LatestBlogPost>
-  //     <ul
-  //       title={'The two most recent blog posts'}
-  //       className={'list-none flex flex-col gap-6'}
-  //     >
-  //       <li>
-  //         <BlogPostCard
-  //           post={latestBlogPost}
-  //           viewsCounter={
-  //             <ViewsCounter
-  //               slug={`blog--${latestBlogPost.slug}`}
-  //               inProgress={latestBlogPost.inProgress}
-  //               $sm
-  //             />
-  //           }
-  //           showYear
-  //           small
-  //         />
-  //       </li>
-  //       <li>
-  //         <BlogPostCard
-  //           post={latestBlogPostB}
-  //           viewsCounter={
-  //             <ViewsCounter
-  //               slug={`blog--${latestBlogPostB.slug}`}
-  //               inProgress={latestBlogPostB.inProgress}
-  //               $sm
-  //             />
-  //           }
-  //           showYear
-  //           small
-  //         />
-  //       </li>
-  //     </ul>
-  //   </LatestBlogPost>
-  //   <Projects title={'Featured projects'} />
-  // </>
-}
