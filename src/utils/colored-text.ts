@@ -1,6 +1,6 @@
 import cx from './cx';
 
-export type Color =
+type Color =
   | 'brand'
   | 'blue'
   | 'green'

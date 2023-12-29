@@ -102,5 +102,3 @@ export const Music = () => {
     </ActivityCard>
   );
 };
-
-export const prerender = false;
