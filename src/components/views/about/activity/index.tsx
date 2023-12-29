@@ -12,7 +12,6 @@ export const Activity = () => {
           'brand',
           'brand',
           'purple',
-          false,
           'self-start',
         )}
       >

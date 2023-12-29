@@ -55,7 +55,7 @@ export const Experience = () => {
   return (
     <Section id={'experience'} className={'gap-6'}>
       <div className={'flex flex-row gap-4 items-center justify-between'}>
-        <h2 className={getColoredTextClasses('blue', 'blue', 'brand', false)}>
+        <h2 className={getColoredTextClasses('blue', 'blue', 'brand')}>
           Experience
         </h2>
         <LinkButton

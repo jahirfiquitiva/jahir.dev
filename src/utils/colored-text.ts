@@ -13,11 +13,10 @@ export const getColoredTextClasses = (
   shadow?: Color,
   from?: Color,
   to?: Color,
-  includeLightTheme?: boolean,
   otherClasses?: string,
+  includeLightTheme?: boolean,
 ): string => {
   const gradientPrefix = includeLightTheme ? '' : 'dark:';
-
   const classes = [];
   if (shadow) {
     classes.push(

@@ -63,8 +63,8 @@ export const Navbar = (props: NavbarProps) => {
             'brand',
             'brand',
             'blue',
-            true,
             'dark:saturate-100',
+            true,
           )}
         >
           Jahir Fiquitiva

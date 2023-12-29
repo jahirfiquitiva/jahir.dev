@@ -19,7 +19,6 @@ export default function AboutPage() {
             'blue',
             'blue',
             'green',
-            false,
             'self-start',
           )}
         >

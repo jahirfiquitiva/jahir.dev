@@ -16,7 +16,6 @@ export const Skills = () => {
           'green',
           'green',
           'blue',
-          false,
           'self-start',
         )}
       >
