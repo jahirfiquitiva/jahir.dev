@@ -61,7 +61,7 @@ const TopBlogPosts = async () => {
 
               <LinkButton
                 title={'View all'}
-                href={'/about'}
+                href={'/blog'}
                 className={cx(
                   'pr-4',
                   'justify-center max-mobile-lg:flex-1',
@@ -80,7 +80,7 @@ const TopBlogPosts = async () => {
             </div>
           </div>
 
-          <ol className={'flex flex-col gap-1.5'}>
+          <ol className={'flex flex-col gap-2'}>
             {topPosts.map((post) => (
               <li className={'block'} key={post.slug}>
                 <BlogPostItem post={post} fullDate />

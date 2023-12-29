@@ -18,6 +18,19 @@ interface BlogPostItemProps {
   viewsCounter?: JSX.Element;
 }
 
+const MAX_WIDTH = 96;
+const MAX_HEIGHT = 72;
+const calcHeroWidthAndHeight = (dimensions: {
+  width?: number;
+  height?: number;
+}) => {
+  const { width = MAX_WIDTH, height = MAX_HEIGHT } = dimensions;
+  return {
+    width: Math.max(width, MAX_WIDTH),
+    height: Math.max(height, MAX_HEIGHT),
+  };
+};
+
 export const BlogPostItem = (props: BlogPostItemProps) => {
   const { post, fullDate } = props;
 
@@ -39,13 +52,12 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       <Img
         src={post.hero || ''}
         alt={`Hero image for blog post "${post.title}"`}
-        width={post?.heroMeta?.size?.width || 144}
-        height={post?.heroMeta?.size?.height || 72}
+        {...calcHeroWidthAndHeight(post?.heroMeta?.size)}
         placeholder={Boolean(post?.heroMeta?.blur64) ? 'blur' : undefined}
         blurDataURL={post?.heroMeta?.blur64}
         className={cx(
           'rounded-1 max-w-12',
-          'mobile-lg:max-w-24 tablet-sm:max-w-32',
+          'mobile-lg:max-w-24',
           'object-center object-cover',
           'aspect-[4/3]',
           'border border-transparent',
