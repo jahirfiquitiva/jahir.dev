@@ -3,8 +3,8 @@ import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
 import { Mdx } from '@/components/views/blog/mdx';
-import { getBlog, allReadableBlogs } from '@/utils/blog';
-import { getStaticMetadata } from '@/utils/metadata';
+import { allReadableBlogs, getBlog } from '@/utils/blog';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 import Loading from '../../loading';
@@ -41,7 +41,7 @@ export function generateMetadata(
 
   const ogImage = buildOgImageUrl('blog', title, hero);
 
-  const metadata = getStaticMetadata({
+  const metadata = createMetadata({
     title: `${title} | Blog – Jahir Fiquitiva`,
     description: excerpt || 'Blog post by Jahir Fiquitiva',
     image: ogImage,

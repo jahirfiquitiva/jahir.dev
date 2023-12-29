@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 // import { Link } from '@/components/core/link/link';
 // import { Section } from '@/components/core/section';
 import type { RequestContext } from '@/types/request';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 import { getRepoReleaseData } from './data';
@@ -60,7 +60,7 @@ export async function generateMetadata(
   );
   if (!repo) return undefined;
 
-  return getStaticMetadata({
+  return createMetadata({
     title: `${repo} Release Download – Jahir Fiquitiva`,
     description: `Download the latest release artifacts from the ${repo} repository on GitHub`,
     image: buildOgImageUrl(),

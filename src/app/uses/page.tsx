@@ -6,7 +6,7 @@
 // import { Software } from '@/components/views/uses/software/software';
 // import { Tabs } from '@/components/views/uses/tabs/tabs';
 // import { Website } from '@/components/views/uses/website/website';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 export default function UsesPage() {
@@ -35,7 +35,7 @@ export default function UsesPage() {
   // </Section>
 }
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Uses – Jahir Fiquitiva',
   description:
     'Get to know the hardware, software and tools I use on a daily basis',

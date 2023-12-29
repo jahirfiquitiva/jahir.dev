@@ -5,7 +5,7 @@ import { Activity } from '@/components/views/about/activity';
 import { Experience } from '@/components/views/about/experience';
 import { Skills } from '@/components/views/about/skills';
 import { getColoredTextClasses } from '@/utils/colored-text';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 import Photo from './photo';
@@ -75,7 +75,7 @@ export default function AboutPage() {
   );
 }
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'About – Jahir Fiquitiva',
   description: 'Learn more about me (Jahir Fiquitiva), my career and more',
   exactUrl: 'https://jahir.dev/about',

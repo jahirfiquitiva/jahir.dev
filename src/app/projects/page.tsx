@@ -1,8 +1,8 @@
 // import { Projects } from '@/components/views/projects/projects';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Projects – Jahir Fiquitiva',
   description:
     // eslint-disable-next-line max-len

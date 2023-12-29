@@ -6,7 +6,7 @@ import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -83,7 +83,7 @@ const ErrorComponent = (props: { error: Error }) => {
 
 export default ErrorComponent;
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   // TODO: Use error code in title
   title: 'Error: 500!',
   description: 'An unexpected error occurred.',

@@ -12,12 +12,12 @@ import { Main } from '@/components/main';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 
 import { Meta } from './meta';
 
 export const metadata = {
-  ...getStaticMetadata({
+  ...createMetadata({
     title: 'Jahir Fiquitiva – Full-stack Software Engineer',
     description:
       // eslint-disable-next-line max-len

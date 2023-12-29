@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 import { Section } from '@/components/section';
 import { Mdx } from '@/components/views/blog/mdx';
 import { getColoredTextClasses } from '@/utils/colored-text';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 import { allBlogs } from 'contentlayer/generated';
 
@@ -38,7 +38,7 @@ export default function DonatePage() {
   );
 }
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Donate – Jahir Fiquitiva',
   description:
     // eslint-disable-next-line max-len

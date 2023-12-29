@@ -4,7 +4,7 @@
 // import { ButtonLink } from '@/components/core/link/button-link';
 // import { Section } from '@/components/core/section';
 // import cx from '@/utils/cx';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 const NotFound = () => {
@@ -36,7 +36,7 @@ const NotFound = () => {
 
 export default NotFound;
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Page not found',
   description: "The page you're looking for doesn't exist or has been moved.",
   keywords: ['404', 'not found', 'page not found'],

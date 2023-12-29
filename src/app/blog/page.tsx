@@ -1,7 +1,7 @@
 import { Section } from '@/components/section';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
 import { getColoredTextClasses } from '@/utils/colored-text';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 import { GroupedBlogPosts } from './grouped-blog-posts';
@@ -22,7 +22,7 @@ export default function BlogPage() {
   );
 }
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Blog – Jahir Fiquitiva',
   description:
     // eslint-disable-next-line max-len
