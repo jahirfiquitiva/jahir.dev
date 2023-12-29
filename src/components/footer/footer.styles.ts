@@ -9,13 +9,11 @@ export const StyledFooter = tw.footer`
   grid
   grid-cols-2
   gap-6
-  px-2.5
+  px-3
   pt-6 pb-8
   border-t
   border-t-divider
-  mobile-lg:px-3.5
   mobile-lg:pt-7
-  tablet-sm:px-3
   tablet-sm:pt-8
   tablet-sm:pb-12
   tablet-sm:grid-cols-4

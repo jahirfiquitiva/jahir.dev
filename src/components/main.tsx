@@ -5,16 +5,13 @@ export const Main = tw.main`
   flex-col
   flex-1
   z-0
-  pt-24
-  px-2.5
-  pb-7
+  pt-28
+  px-3
+  pb-8
   gap-16
   w-full
   max-w-site
   mx-auto
-  mobile-lg:px-3
-  mobile-lg:pb-8
-  tablet-sm:pt-28
   tablet-sm:pb-9
   tablet-md:pt-32
   tablet-md:px-0

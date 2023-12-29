@@ -14,15 +14,12 @@ const StyledHeader = tw.header`
   left-0 right-0
   bg-gradient-to-b from-light to-light/5
   dark:from-dark dark:to-dark/5
-  p-2
-  mobile-lg:px-2.5
-  tablet-sm:px-3
-  tablet-sm:pt-3 tablet-sm:pb-0
+  p-3 tablet-sm:pb-0
   bg-blend-hard-light
   backdrop-blur safe-blur
   transition-[max-height]
   duration-300
-  max-h-[4.5rem]
+  max-h-20 tablet-sm:max-h-18
   [&[data-expanded="true"]]:max-tablet-sm:max-h-full
   [&[data-expanded="true"]]:tablet-sm:h-[unset]
 `;
