@@ -63,7 +63,7 @@ export default function AboutPage() {
           </Link>{' '}
           page.
         </p>
-        <div className={'flex flex-col gap-2 mt-2'}>
+        <div id={'contact'} className={'flex flex-col gap-2 mt-2'}>
           <p className={'font-medium'}>Let&apos;s connect!</p>
           <SocialLinks />
         </div>

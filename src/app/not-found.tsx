@@ -1,40 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
-
-// import { Heading } from '@/components/core/heading';
-// import { ButtonLink } from '@/components/core/link/button-link';
-// import { Section } from '@/components/core/section';
-// import cx from '@/utils/cx';
+import { LinkButton } from '@/components/link-button';
+import { Section } from '@/components/section';
+import { getColoredTextClasses } from '@/utils/colored-text';
+import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-const NotFound = () => {
-  return null;
-  // <Section id={'error'} className={'w-full h-full'}>
-  //   <Heading shadow={'red'} from={'orange'} to={'red'} className={'mb-16'}>
-  //     Woops! ~ Page not found
-  //   </Heading>
-  //   <p>
-  //     Unfortunately, the page you&apos;re looking for doesn&apos;t exist or
-  //     has been moved.
-  //   </p>
-  //   <p>Please double check the URL for typos. Otherwise,</p>
-  //   <ButtonLink href={'/'} title={'Home page'} className={'mt-32'}>
-  //     Go back home
-  //   </ButtonLink>
-  //   <img
-  //     src={'/static/images/site/404.gif'}
-  //     alt={'John Travolta gif'}
-  //     loading={'lazy'}
-  //     decoding={'async'}
-  //     className={cx(
-  //       'drop-shadow-[0_0_2px_#fff] mt-auto mx-auto w-full max-w-[425px]',
-  //       'mb-[calc(var(--verticalContentPadding)*-1)]',
-  //     )}
-  //   />
-  // </Section>
-};
-
-export default NotFound;
+export default function NotFound() {
+  return (
+    <Section
+      id={'error'}
+      className={'flex-1 w-full h-full -mb-8 tablet-sm:-mb-9'}
+    >
+      <h1
+        className={getColoredTextClasses('red', 'orange', 'red', false, 'mb-4')}
+      >
+        Woops! ~ Page not found
+      </h1>
+      <p>
+        Unfortunately, the page you&apos;re looking for doesn&apos;t exist or
+        has been moved.
+      </p>
+      <p className={'-mt-3'}>
+        Please double check the URL for typos. Otherwise,
+      </p>
+      <LinkButton href={'/'} title={'Home page'} className={'mt-1.5 mb-5'}>
+        Go back home
+      </LinkButton>
+      <img
+        src={'/static/images/site/404.gif'}
+        alt={'John Travolta gif'}
+        loading={'lazy'}
+        decoding={'async'}
+        className={cx(
+          'drop-shadow-[0_0_2px_#fff] mt-auto mx-auto w-full max-w-[425px]',
+        )}
+      />
+    </Section>
+  );
+}
 
 export const metadata = createMetadata({
   title: 'Page not found',
