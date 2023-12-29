@@ -1,4 +1,3 @@
-import type { Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/icon';
@@ -8,6 +7,7 @@ import { ShareButton } from '@/components/views/blog/share-button';
 import { getBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
+import type { Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';

@@ -1,15 +1,6 @@
-// import { BlogPostCard } from '@/components/views/blog/card/card';
-// import { LatestBlogPost } from '@/components/views/blog/latest-blog';
-// import { Intro } from '@/components/views/home/intro/intro';
-// import { ViewsCounter } from '@/components/views/mdx/ui/views/counter';
-// import { Projects } from '@/components/views/projects/projects';
-// import { allReadableBlogs } from '@/utils/blog';
-
 import { Suspense } from 'react';
 
-import { Button, OutlinedButton } from '@/components/button';
 import { Icon } from '@/components/icon';
-import { Link } from '@/components/link';
 import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
@@ -20,11 +11,6 @@ import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 import Loading from './loading';
-
-// const allowInProgress = process.env.NODE_ENV === 'development';
-// const [latestBlogPost, latestBlogPostB] = allReadableBlogs
-//   .filter((it) => allowInProgress || !it.inProgress)
-//   .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
 const TopBlogPosts = async () => {
   const topPosts = await getPopularPosts();

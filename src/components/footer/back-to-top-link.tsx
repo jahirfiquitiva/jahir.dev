@@ -1,7 +1,7 @@
 'use client';
 
 import type { Route } from 'next';
-import type { ComponentProps, MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
 import { scrollToTop } from '../back-to-top';
 

@@ -1,4 +1,4 @@
-import cx, { tw } from '@/utils/cx';
+import { tw } from '@/utils/cx';
 
 import { Button } from '../button';
 
