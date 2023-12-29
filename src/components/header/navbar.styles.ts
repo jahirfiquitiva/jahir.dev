@@ -34,6 +34,7 @@ export const Nav = tw.nav`
   tablet-sm:grid-cols-[auto_1fr_auto]
   tablet-sm:grid-rows-1
   tablet-sm:gap-2
+  [[data-expanded="true"]>&]:max-tablet-sm:shadow-toolbar-elevated
 
   before:pointer-events-none
   before:select-none
