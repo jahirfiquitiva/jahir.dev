@@ -32,11 +32,11 @@ const blogPostStructuredData = (post: Blog): string =>
       })
     : '';
 
-export default async function BlogPostLayout(
+export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = await getBlog(slug);
+  const post = getBlog(slug);
   if (!post) return null;
   return (
     <>

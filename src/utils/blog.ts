@@ -7,20 +7,18 @@ export type SimpleBlog = Omit<Blog, '_raw' | 'body' | 'mdx'>;
 
 const hiddenBlogs = ['about', 'donate', 'uses'];
 
+export const sortBlogPostsByDate = (a: SimpleBlog, b: SimpleBlog) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime();
+
 export const allReadableBlogs: Array<SimpleBlog> = generatedBlogs
   .filter((it) => !hiddenBlogs.includes(it.slug))
   .map((b) => ({ ...b, _raw: undefined, body: undefined, mdx: undefined }));
 
-export const getBlog = (
-  slug?: string | null,
-  readableOnly?: boolean,
-): Blog | undefined => {
+export const getBlog = (slug?: string | null): Blog | undefined => {
   if (!slug) return undefined;
-  return (
-    readableOnly
-      ? generatedBlogs.filter((it) => !hiddenBlogs.includes(it.slug))
-      : generatedBlogs
-  ).find((b) => b.slug === slug);
+  return generatedBlogs
+    .filter((it) => !hiddenBlogs.includes(it.slug))
+    .find((b) => b.slug === slug);
 };
 
 export const getPopularPosts = cache(async (): Promise<Array<SimpleBlog>> => {

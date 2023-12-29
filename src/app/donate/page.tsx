@@ -4,34 +4,38 @@ import { Suspense } from 'react';
 // import { Heading } from '@/components/core/heading';
 // import { Section } from '@/components/core/section';
 // import { DonateButtons } from '@/components/views/donate/buttons/buttons';
-// import { Mdx } from '@/components/views/mdx/mdx';
-import { getBlog } from '@/utils/blog';
+import { Section } from '@/components/section';
+import { Mdx } from '@/components/views/blog/mdx';
+import { getColoredTextClasses } from '@/utils/colored-text';
 import { getStaticMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
+import { allBlogs } from 'contentlayer/generated';
 
 import Loading from '../loading';
 
 import DynamicDonateContent from './dynamic-content';
 
-const DonatePageContent = async () => {
-  const donate = await getBlog('donate');
+const DonatePageContent = () => {
+  const donate = allBlogs.find((it) => it.slug === 'donate');
   if (!donate) return notFound();
-  return null;
-  // <Mdx code={donate.body.code || ''} className={'gap-8 tablet-sm:-mt-16'} />
+  return (
+    <Mdx code={donate.body.code || ''} className={'gap-2 tablet-sm:-mt-4'} />
+  );
 };
 
-export default async function DonatePage() {
-  return null;
-  // <Section id={'donate'}>
-  //   <Heading shadow={'purple'} from={'purple'} to={'brand'}>
-  //     Donate
-  //   </Heading>
-  //   <DonatePageContent />
-  //   <DonateButtons />
-  //   <Suspense fallback={<Loading />}>
-  //     <DynamicDonateContent />
-  //   </Suspense>
-  // </Section>
+export default function DonatePage() {
+  return (
+    <Section id={'donate'}>
+      <h1 className={getColoredTextClasses('purple', 'purple', 'brand')}>
+        Donate
+      </h1>
+      <DonatePageContent />
+      {/* <DonateButtons />
+      <Suspense fallback={<Loading />}>
+        <DynamicDonateContent />
+      </Suspense> */}
+    </Section>
+  );
 }
 
 export const metadata = getStaticMetadata({
