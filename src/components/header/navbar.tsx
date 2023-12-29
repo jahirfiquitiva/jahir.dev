@@ -48,9 +48,9 @@ interface NavbarProps extends TWComponentProps<typeof Nav> {
 }
 
 export const Navbar = (props: NavbarProps) => {
-  const { isExpanded } = props;
+  const { isExpanded, className } = props;
   return (
-    <Nav id={'navigation'}>
+    <Nav id={'navigation'} className={className}>
       <NavLink
         title={'Home page'}
         href={'/'}
