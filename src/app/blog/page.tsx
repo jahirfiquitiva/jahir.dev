@@ -59,7 +59,7 @@ export default function BlogPage() {
     <Section id={'blog'} className={'gap-8'}>
       <div className={'flex flex-row gap-4 items-center justify-between'}>
         <h1
-          className={getColoredTextClasses('yellow', 'yellow', 'orange', false)}
+          className={getColoredTextClasses('orange', 'yellow', 'orange', false)}
         >
           Blog
         </h1>

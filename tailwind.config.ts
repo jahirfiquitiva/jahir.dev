@@ -52,15 +52,26 @@ const mappedColors = colors.map((color) => ({
   [color]: `var(--color-${color})`,
 }));
 
+const extendedSpacing = {
+  ...spacing,
+  px: '0.0625rem',
+  18: '4.5rem',
+  22: '5.5rem',
+};
+
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontSize,
     screens: breakpoints,
-    spacing: { ...spacing, px: '0.0625rem', 22: '5.5rem' },
-    borderRadius: { ...spacing, half: '50%', full: '9999px', px: '0.0625rem' },
-    borderWidth: { ...spacing, DEFAULT: '0.0625rem' },
+    spacing: extendedSpacing,
+    borderRadius: {
+      ...extendedSpacing,
+      half: '50%',
+      full: '9999px',
+    },
+    borderWidth: { ...extendedSpacing, DEFAULT: '0.0625rem' },
     fontWeight: {
       normal: '400',
       medium: '500',

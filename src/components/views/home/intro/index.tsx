@@ -32,7 +32,7 @@ export const Intro = () => {
           />
         </div>
 
-        <h1 className={'flex flex-col gap-1 tablet-sm:!-mt-4'}>
+        <h1 className={'flex flex-col gap-1 tablet-sm:!-mt-2'}>
           <p
             className={
               'flex flex-row items-center gap-1 text-shadow shadow-yellow-300 dark:text-shadow-none min-h-8'
@@ -51,7 +51,7 @@ export const Intro = () => {
           </SubHeader>
         </h1>
 
-        <p className={'text-pretty flex flex-col gap-2 text-xs'}>
+        <p className={'text-pretty flex flex-col gap-2 text-sm'}>
           <span className={'max-w-[42ch]'}>
             Passionate and creative full-stack software engineer from{' '}
             <Link

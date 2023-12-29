@@ -2,7 +2,7 @@ import { Icon } from '@/components/icon';
 import { LinkButton } from '@/components/link-button';
 import cx from '@/utils/cx';
 
-export const RSSFeedButton = () => {
+export const RSSFeedButton = (props: { className?: string }) => {
   return (
     <LinkButton
       title={'Resume'}
@@ -14,6 +14,7 @@ export const RSSFeedButton = () => {
         'hocus:bg-orange-700 dark:hocus:bg-orange-400',
         'ring-orange-700 dark:ring-orange-600',
         'hocus:ring-orange-800 dark:hocus:ring-orange-500',
+        props.className,
       )}
       data-umami-event={'RSS feed'}
     >

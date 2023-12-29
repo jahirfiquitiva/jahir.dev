@@ -1,8 +1,8 @@
-import type { Blog } from 'contentlayer/generated';
 import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/img';
+import type { SimpleBlog } from '@/utils/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
@@ -13,7 +13,7 @@ import { ViewsCounter } from '../views-counter';
 import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
-  post: Blog;
+  post: SimpleBlog;
   fullDate?: boolean;
   viewsCounter?: JSX.Element;
 }
@@ -22,9 +22,11 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
   const { post, fullDate } = props;
 
   const a11yDate = formatDate(post.date);
-  const readableDate = formatDate(post.date, {
-    year: fullDate ? 'numeric' : undefined,
-  });
+  const readableDate = fullDate
+    ? a11yDate
+    : formatDate(post.date, {
+        year: undefined,
+      });
 
   const color = hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)';
 

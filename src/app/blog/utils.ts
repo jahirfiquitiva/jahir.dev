@@ -1,14 +1,13 @@
-import type { Blog } from 'contentlayer/generated';
-
+import type { SimpleBlog } from '@/utils/blog';
 import { groupBy } from '@/utils/group-by';
 
 interface BlogGroup {
   year: number;
-  posts: Array<Blog>;
+  posts: Array<SimpleBlog>;
 }
 
 export const groupBlogPosts = (
-  blogPosts: Array<Blog> | undefined,
+  blogPosts: Array<SimpleBlog> | undefined,
   query: string | undefined | null = null,
 ): Array<BlogGroup> => {
   if (!blogPosts) return [];

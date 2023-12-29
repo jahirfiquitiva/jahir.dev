@@ -1,7 +1,6 @@
-import type { Blog } from 'contentlayer/generated';
 import xml from 'xml';
 
-import { allReadableBlogs } from '@/utils/blog';
+import { allReadableBlogs, type SimpleBlog } from '@/utils/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -11,7 +10,7 @@ const formatImageUrl = (url?: string) => {
   return url;
 };
 
-const buildDescriptionHtml = (post: Blog): string => {
+const buildDescriptionHtml = (post: SimpleBlog): string => {
   let description = '';
   if (post.excerpt) description += `<p>${post.excerpt}</p><br/>`;
 
@@ -27,7 +26,7 @@ const buildDescriptionHtml = (post: Blog): string => {
   return description;
 };
 
-const getAllPostRssData = (post: Blog) => {
+const getAllPostRssData = (post: SimpleBlog) => {
   const descriptionHtml = buildDescriptionHtml(post);
   return {
     title: post.title,

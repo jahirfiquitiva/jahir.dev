@@ -32,7 +32,6 @@ export const Photo = tw(Img)<ImgProps>`
   object-cover
   [@media(hover:hover)]:filter
   [@media(hover:hover)]:grayscale
-  [@media(hover:hover)]:contrast-125
   [@media(hover:hover)]:brightness-150
   [@media(hover:hover)]:transition
   [@media(hover:hover)]:[transition-duration:.25s]
