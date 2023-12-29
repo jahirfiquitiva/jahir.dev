@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
-import { ViewsCounter } from '@/components/views/blog/views-counter';
 import { allReadableBlogs } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { getStaticMetadata } from '@/utils/metadata';

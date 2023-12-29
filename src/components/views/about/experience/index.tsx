@@ -3,7 +3,7 @@ import msco from '@/assets/images/experience/msco.jpeg';
 import nwyc from '@/assets/images/experience/nwyc.jpeg';
 import servex from '@/assets/images/experience/servex.jpeg';
 import { Icon } from '@/components/icon';
-import { LinkButton, OutlinedLinkButton } from '@/components/link-button';
+import { LinkButton } from '@/components/link-button';
 import { Section } from '@/components/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
@@ -58,7 +58,7 @@ export const Experience = () => {
         <h2 className={getColoredTextClasses('blue', 'blue', 'brand', false)}>
           Experience
         </h2>
-        <OutlinedLinkButton
+        <LinkButton
           title={'Resume'}
           href={'/resume'}
           openInNewTab
@@ -73,7 +73,7 @@ export const Experience = () => {
             }
           />
           <span>Resume</span>
-        </OutlinedLinkButton>
+        </LinkButton>
       </div>
       <ol className={'flex flex-col gap-1.5'}>
         {experience.map((exp) => {

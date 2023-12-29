@@ -3,8 +3,6 @@ import cx from '@/utils/cx';
 
 import { getAboutImage } from './images';
 
-export const revalidate = 86400;
-
 export default async function Photo() {
   const photo = await getAboutImage();
   return (
