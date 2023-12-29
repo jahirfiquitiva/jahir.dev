@@ -44,7 +44,6 @@ const TopBlogPosts = async () => {
                 'yellow',
                 'orange',
                 false,
-                'self-center',
               )}
             >
               Top blog posts
