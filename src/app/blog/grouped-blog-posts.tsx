@@ -1,15 +1,23 @@
+import { cache } from 'react';
+
 import { Section } from '@/components/section';
 import { BlogPostItem } from '@/components/views/blog/item';
-import { allReadableBlogs, type SimpleBlog } from '@/utils/blog';
+import {
+  allReadableBlogs,
+  sortBlogPostsByDate,
+  type SimpleBlog,
+} from '@/utils/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
-const blogPostsByYear = allReadableBlogs
-  .filter((it) => allowInProgress || !it.inProgress)
-  .reduce<Record<number, Array<SimpleBlog>>>((acc, post) => {
-    const year = new Date(post.date).getFullYear();
-    return { ...acc, [year]: [...(acc[year] || []), post] };
-  }, {});
+const blogPostsByYear = cache(() =>
+  allReadableBlogs
+    .filter((it) => allowInProgress || !it.inProgress)
+    .reduce<Record<number, Array<SimpleBlog>>>((acc, post) => {
+      const year = new Date(post.date).getFullYear();
+      return { ...acc, [year]: [...(acc[year] || []), post] };
+    }, {}),
+)();
 
 export const GroupedBlogPosts = () => (
   <ol className={'flex flex-col gap-6'}>
@@ -33,7 +41,7 @@ export const GroupedBlogPosts = () => (
               />
             </div>
             <ol className={'flex flex-col gap-1.5'}>
-              {posts.map((post) => (
+              {posts.sort(sortBlogPostsByDate).map((post) => (
                 <li className={'block'} key={post.slug}>
                   <BlogPostItem post={post} />
                 </li>
