@@ -40,14 +40,16 @@ export const ThemeProvider = (props: PropsWithChildren) => {
   };
 
   useEffect(() => {
+    const bgColor =
+      actualTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT;
     colorMetaTags.forEach((tag) => {
       document.head
         .querySelector(`meta[name="${tag}"]`)
-        ?.setAttribute(
-          'content',
-          actualTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
-        );
+        ?.setAttribute('content', bgColor);
     });
+    document
+      .querySelectorAll("meta[name='theme-color']")
+      .forEach((el) => el.setAttribute('content', bgColor));
   }, [actualTheme]);
 
   return (
