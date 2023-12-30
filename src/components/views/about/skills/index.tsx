@@ -34,7 +34,7 @@ export const Skills = () => {
                     'rounded-2 pl-3 pr-3.5 py-1.5 min-h-9',
                     'border border-divider',
                     'text-3xs font-medium cursor-default',
-                    'transition-colors hocus:scale-[1.015]',
+                    'transition-colors',
                     'bg-brand-200/[0.06] dark:bg-brand-700/[0.12]',
                     'hocus:bg-[rgba(var(--skill-color)/0.12)]',
                     'dark:hocus:bg-[rgba(var(--skill-color)/0.24)]',

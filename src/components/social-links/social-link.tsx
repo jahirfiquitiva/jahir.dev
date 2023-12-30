@@ -14,6 +14,7 @@ const StyledSocialLink = tw(Link)`
   no-underline
   transition-colors
   text-secondary-txt
+  bg-transparent
   hocus:bg-brand-600/[0.08]
   dark:hocus:bg-brand-300/[0.16]
 `;

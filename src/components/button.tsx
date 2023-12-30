@@ -30,7 +30,6 @@ export const Button = tw.button.attrs<ButtonProps>((p) => ({
   dark:hocus:ring-brand-300
   transition
   no-underline
-  hocus:-translate-y-px
   hocus:shadow
   hocus:bg-accent-dark
   hocus:text-on-accent
@@ -61,7 +60,6 @@ export const OutlinedButton = tw(Button)`
   hocus:ring-divider
   dark:ring-divider
   dark:hocus:ring-divider
-  hocus:-translate-y-px
   hocus:shadow
   hocus:text-primary-txt
   hocus:bg-brand-300/[0.08]

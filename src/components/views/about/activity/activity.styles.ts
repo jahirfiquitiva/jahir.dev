@@ -19,8 +19,6 @@ export const ActivityCard = tw(Link)`
   mobile-lg:max-h-[6.125rem]
   tablet-sm:min-h-[6.5rem]
   tablet-sm:max-h-[unset]
-  transform
-  hocus:-translate-y-px
   hocus:shadow-sm
   group/track
 `;

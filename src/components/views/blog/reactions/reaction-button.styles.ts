@@ -7,7 +7,6 @@ export const StyledReactionButton = tw.button`
   border border-divider
   text-2xs cursor-default
   transition
-  transform hocus:-translate-y-px
   group/reaction
   bg-brand-200/[0.06] dark:bg-brand-700/[0.12]
   hocus:shadow

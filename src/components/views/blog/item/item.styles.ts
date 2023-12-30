@@ -8,9 +8,8 @@ export const BlogPostLink = tw(Link)`
   tablet-md:rounded-2.5
   -mx-2.5 mobile-lg:-mx-3
   w-[calc(100%_+_1.25rem)] mobile-lg:w-[calc(100%_+_1.5rem)]
-  transition-transform
-  transform
-  hocus:-translate-y-1
+  bg-transparent
+  transition-colors
   hocus:bg-[rgba(var(--post-color)/0.12)]
   hocus:dark:bg-[rgba(var(--post-color)/0.24)]
   grid
