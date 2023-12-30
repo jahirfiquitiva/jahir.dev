@@ -51,8 +51,7 @@ export default function BlogPostLayout(
       <hr
         className={cx(
           'm-0 border-none h-px w-full bg-divider',
-          '-mt-7 mobile-lg:-mt-6 tablet-sm:-mt-5',
-          '-mb-14',
+          '-my-8 tablet-md:-my-9',
           '-mx-2.5 w-[calc(100%_+_1.25rem)]',
           'mobile-lg:-mx-3 mobile-lg:w-[calc(100%_+_1.5rem)]',
           'tablet-md:mx-0 tablet-md:w-full',
@@ -63,7 +62,6 @@ export default function BlogPostLayout(
           'flex flex-col-reverse gap-8',
           'tablet-md:flex-row tablet-md:items-center',
           'justify-between tablet-md:gap-4',
-          'pt-7 mobile-lg:pt-8 tablet-sm:pt-9',
         )}
       >
         <div className={'flex flex-row items-center gap-2.5 tablet-md:gap-3'}>
