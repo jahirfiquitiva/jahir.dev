@@ -18,7 +18,8 @@
   --color-tertiary-txt: theme(colors.dark / 70%);
 }
 
-html.dark {
+html.dark,
+html.dark-inverted {
   --color-background: theme('colors.dark');
   --color-inverse: theme('colors.light');
 

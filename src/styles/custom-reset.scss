@@ -1,32 +1,34 @@
-html,
-body {
-  font-size: 100%;
-}
+@layer base {
+  html,
+  body {
+    font-size: 100%;
+  }
 
-html {
-  height: stretch;
-}
+  html {
+    height: stretch;
+  }
 
-body,
-#root,
-#__next {
-  margin: 0;
-  min-height: stretch;
-  min-height: 100vh;
-}
+  body,
+  #root,
+  #__next {
+    margin: 0;
+    min-height: stretch;
+    min-height: 100vh;
+  }
 
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
 
-sub {
-  bottom: -0.25em;
-}
+  sub {
+    bottom: -0.25em;
+  }
 
-sup {
-  top: -0.5em;
+  sup {
+    top: -0.5em;
+  }
 }
