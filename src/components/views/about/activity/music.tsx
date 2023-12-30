@@ -47,10 +47,13 @@ export const Music = () => {
       data-umami-event-from={'Activity'}
     >
       <BackgroundImage
+        alt={
+          !track
+            ? 'Loading…'
+            : `Album cover: "${track.album}" by "${track.artist}"`
+        }
         src={track?.image?.url || ''}
-        width={track?.image?.width || 128}
-        height={track?.image?.height || 128}
-        alt={`Image for album: "${track?.album}" by "${track?.artist}"`}
+        size={78}
         className={cx(
           isPlaying
             ? 'motion-safe:animate-spin'
@@ -58,10 +61,9 @@ export const Music = () => {
               ? 'hidden invisible'
               : '',
         )}
+        quality={50}
       />
-      <Content
-        className={cx('safe-blur backdrop-blur-xl backdrop-saturate-200')}
-      >
+      <Content>
         <Img
           alt={
             !track
@@ -69,11 +71,10 @@ export const Music = () => {
               : `Album cover: "${track.album}" by "${track.artist}"`
           }
           src={track?.image?.url || ''}
-          width={track?.image?.width || 24}
-          height={track?.image?.height || 24}
+          size={track?.image?.width || 78}
           className={cx(
-            'rounded-1 object-cover object-center',
-            'aspect-square w-auto h-auto',
+            'rounded-1',
+            'aspect-square w-auto h-full',
             'max-w-full max-h-[72px] tablet-sm:max-h-[78px]',
             'border border-divider',
           )}

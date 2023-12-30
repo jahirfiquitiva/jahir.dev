@@ -58,7 +58,6 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
         className={cx(
           'rounded-1 max-w-12',
           'mobile-lg:max-w-24',
-          'object-center object-cover',
           'aspect-[4/3]',
           'border border-transparent',
           'group-hocus/post:border-[rgba(var(--post-color)/.24)]',

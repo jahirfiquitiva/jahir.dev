@@ -17,10 +17,18 @@ const mapTrackData = (track?: Track | null): ReadableTrack | null => {
       album: track.album.name,
       previewUrl: track.preview_url,
       url: track.external_urls.spotify,
-      image: albumImage,
+      image: albumImage
+        ? {
+            url: albumImage?.url || '',
+            height: Math.min(albumImage?.height || 78, 78),
+            width: Math.min(albumImage?.width || 78, 78),
+          }
+        : undefined,
+      hdImage: albumImage,
       duration: track.duration_ms || 0,
     };
   } catch (e) {
+    console.error(e);
     return null;
   }
 };

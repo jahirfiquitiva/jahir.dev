@@ -28,8 +28,6 @@ export const Name = tw.span`
 
 export const Photo = tw(Img)<ImgProps>`
   rounded-full
-  object-center
-  object-cover
   [@media(hover:hover)]:filter
   [@media(hover:hover)]:grayscale
   [@media(hover:hover)]:brightness-150

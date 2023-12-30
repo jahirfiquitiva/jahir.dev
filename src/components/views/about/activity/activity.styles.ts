@@ -31,13 +31,14 @@ export const BackgroundImage = tw(Img)<ImgProps>`
   mobile-md:-top-[125%]
   -z-[1]
   rounded-2.5
-  opacity-50
-  saturate-125
+  opacity-55
+  saturate-200
   pointer-events-none
   select-none
   max-w-[unset]
   truncate
   ![animation-duration:15s]
+  blur-[8px]
 `;
 
 export const Content = tw.div`
