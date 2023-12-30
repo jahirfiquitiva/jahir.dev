@@ -11,9 +11,8 @@ export default async function Photo() {
         className={cx(
           'aspect-[21/9]',
           'tablet-md:rounded-4',
-          'overflow-hidden -mx-2.5',
-          'mobile-lg:-mx-3',
-          'tablet-md:-mx-4',
+          'overflow-hidden',
+          '-mx-3 tablet-md:-mx-4',
         )}
       >
         <Img

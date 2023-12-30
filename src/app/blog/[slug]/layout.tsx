@@ -52,8 +52,7 @@ export default function BlogPostLayout(
         className={cx(
           'm-0 border-none h-px w-full bg-divider',
           '-my-8 tablet-md:-my-9',
-          '-mx-2.5 w-[calc(100%_+_1.25rem)]',
-          'mobile-lg:-mx-3 mobile-lg:w-[calc(100%_+_1.5rem)]',
+          '-mx-3 w-[calc(100%_+_1.5rem)]',
           'tablet-md:mx-0 tablet-md:w-full',
         )}
       />

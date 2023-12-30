@@ -46,7 +46,7 @@ export const ExpItem = (props: ExperienceItemProps) => {
           className={cx(
             'line-clamp-1 font-semibold text-primary-txt',
             'group-hocus/exp:underline group-hocus/exp:decoration-primary-txt',
-            'group-hocus/exp:underline-offset-2 group-hocus/post:decoration-2',
+            'group-hocus/exp:underline-offset-2 group-hocus/exp:decoration-2',
           )}
         >
           {props.company}
