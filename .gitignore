@@ -60,3 +60,4 @@ src/data/*.json
 !.env
 static/media/*.png
 .astro
+*.tsbuildinfo
