@@ -10,8 +10,8 @@ export const BlogPostLink = tw(Link)`
   w-[calc(100%_+_1.5rem)]
   bg-transparent
   transition-colors
-  hocus:bg-[rgba(var(--post-color)/0.12)]
-  hocus:dark:bg-[rgba(var(--post-color)/0.24)]
+  hocus:bg-[rgba(var(--post-color)/0.1)]
+  hocus:dark:bg-[rgba(var(--post-color)/0.2)]
   grid
   grid-cols-[auto_1fr]
   gap-2

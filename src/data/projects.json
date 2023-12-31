@@ -2,7 +2,7 @@
   {
     "order": 0,
     "name": "Blueprint",
-    "description": "Feature-rich dashboard Android icon packs",
+    "description": "Feature-rich dashboard for Android icon packs",
     "icon": "android/blueprint.png",
     "preview": "android/blueprint-preview.png",
     "link": "https://github.com/jahirfiquitiva/Blueprint/",
@@ -121,7 +121,7 @@
   {
     "order": 1,
     "name": "Frames",
-    "description": "Immersive Android wallpaper gallery",
+    "description": "Immersive Android wallpaper gallery dashboard app",
     "icon": "android/frames.png",
     "preview": "android/frames-preview.png",
     "link": "https://github.com/jahirfiquitiva/Frames/",
