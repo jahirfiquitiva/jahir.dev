@@ -27,8 +27,8 @@ export const ProjectIcon = tw(Img)<ImgProps>`
   rounded-2 p-1.5
   transition-all
   aspect-square object-contain
-  bg-[rgba(var(--project-color)/0.07)]
-  dark:bg-[rgba(var(--project-color)/0.14)]
+  bg-[rgba(var(--project-color)/0.1)]
+  dark:bg-[rgba(var(--project-color)/0.2)]
   drop-shadow-none
   group-hocus/project:p-1
   group-hocus/project:saturate-125

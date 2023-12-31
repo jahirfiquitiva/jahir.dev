@@ -17,12 +17,13 @@ export const ProjectsList = (props: ProjectsListProps) => {
   const filteredProjects = props.featuredOnly
     ? projects.filter((it) => !it.hide)
     : projects;
+  const Heading = props.featuredOnly ? 'h2' : 'h1';
   return (
     <Section id={'projects'} className={'gap-8'}>
       <div className={'flex flex-row gap-4 items-center justify-between'}>
-        <h2 className={getColoredTextClasses('red', 'red', 'purple')}>
+        <Heading className={getColoredTextClasses('red', 'red', 'purple')}>
           {props.title}
-        </h2>
+        </Heading>
         {props.featuredOnly ? (
           <LinkButton
             title={'View all'}
