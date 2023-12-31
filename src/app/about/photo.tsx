@@ -1,4 +1,4 @@
-import { Img } from '@/components/img';
+import { Img } from '@/components/atoms/img';
 import cx from '@/utils/cx';
 
 import { getAboutImage } from './images';

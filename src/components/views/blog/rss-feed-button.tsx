@@ -1,5 +1,5 @@
-import { Icon } from '@/components/icon';
-import { LinkButton } from '@/components/link-button';
+import { Icon } from '@/components/atoms/icon';
+import { LinkButton } from '@/components/atoms/link-button';
 import cx from '@/utils/cx';
 
 export const RSSFeedButton = (props: { className?: string }) => {

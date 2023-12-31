@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { Icon } from '../icon';
+import { Icon } from '@/components/atoms/icon';
 
 const formatter = new Intl.DateTimeFormat([], {
   timeZone: 'America/Bogota',

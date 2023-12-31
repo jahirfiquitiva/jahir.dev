@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { Link } from '@/components/link';
-import { LinkButton } from '@/components/link-button';
-import { Section } from '@/components/section';
+import { Link } from '@/components/atoms/link';
+import { LinkButton } from '@/components/atoms/link-button';
+import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';

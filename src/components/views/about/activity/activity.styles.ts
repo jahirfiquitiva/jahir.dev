@@ -1,5 +1,5 @@
-import { Img, type ImgProps } from '@/components/img';
-import { Link } from '@/components/link';
+import { Img, type ImgProps } from '@/components/atoms/img';
+import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const ActivityCard = tw(Link)`

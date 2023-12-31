@@ -3,9 +3,9 @@
 import type { Route } from 'next';
 import { useMemo } from 'react';
 
-import { Button } from '@/components/button';
-import { Icon } from '@/components/icon';
-import { LinkButton } from '@/components/link-button';
+import { Button } from '@/components/atoms/button';
+import { Icon } from '@/components/atoms/icon';
+import { LinkButton } from '@/components/atoms/link-button';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 
 const shareUrl = (title: string, slug: string) =>

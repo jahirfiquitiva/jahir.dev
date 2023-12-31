@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { Link } from '@/components/link';
+import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 const ignoredLinksClasses = ['anchor', 'toc-link'];

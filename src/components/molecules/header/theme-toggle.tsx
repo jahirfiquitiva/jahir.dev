@@ -2,12 +2,11 @@
 
 import { useMemo } from 'react';
 
+import { Icon } from '@/components/atoms/icon';
+import { loading, moon, sun } from '@/components/icons';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useTheme } from '@/providers/theme-provider';
 import cx, { tw } from '@/utils/cx';
-
-import { Icon } from '../icon';
-import { loading, moon, sun } from '../icons';
 
 const ThemeToggleButton = tw.button`
   flex

@@ -1,6 +1,5 @@
+import { Button } from '@/components/atoms/button';
 import { tw } from '@/utils/cx';
-
-import { Button } from '../button';
 
 export const BackToTopButton = tw(Button)`
   rounded-full

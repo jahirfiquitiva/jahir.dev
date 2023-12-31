@@ -1,4 +1,4 @@
-import { Section } from '@/components/section';
+import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
 import { Book } from './book';

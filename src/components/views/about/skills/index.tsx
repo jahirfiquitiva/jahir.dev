@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
-import { Icon } from '@/components/icon';
-import { Section } from '@/components/section';
+import { Icon } from '@/components/atoms/icon';
+import { Section } from '@/components/atoms/section';
 import { hexToRgb } from '@/utils/color';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';

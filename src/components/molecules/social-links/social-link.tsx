@@ -1,7 +1,6 @@
+import { Icon } from '@/components/atoms/icon';
+import { Link } from '@/components/atoms/link';
 import { tw, type TWComponentProps } from '@/utils/cx';
-
-import { Icon } from '../icon';
-import { Link } from '../link';
 
 const StyledSocialLink = tw(Link)`
   flex

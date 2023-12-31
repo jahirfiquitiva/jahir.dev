@@ -1,7 +1,7 @@
 import type { Route } from 'next';
 
 import bookCover from '@/assets/images/reading.jpg';
-import { Img } from '@/components/img';
+import { Img } from '@/components/atoms/img';
 import cx from '@/utils/cx';
 
 import {

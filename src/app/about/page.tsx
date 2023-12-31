@@ -1,6 +1,6 @@
-import { Link } from '@/components/link';
-import { Section } from '@/components/section';
-import { SocialLinks } from '@/components/social-links';
+import { Link } from '@/components/atoms/link';
+import { Section } from '@/components/atoms/section';
+import { SocialLinks } from '@/components/molecules/social-links';
 import { Activity } from '@/components/views/about/activity';
 import { Experience } from '@/components/views/about/experience';
 import { Skills } from '@/components/views/about/skills';

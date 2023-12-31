@@ -2,9 +2,9 @@ import bpsmart from '@/assets/images/experience/bpsmart.jpeg';
 import msco from '@/assets/images/experience/msco.jpeg';
 import nwyc from '@/assets/images/experience/nwyc.jpeg';
 import servex from '@/assets/images/experience/servex.jpeg';
-import { Icon } from '@/components/icon';
-import { LinkButton } from '@/components/link-button';
-import { Section } from '@/components/section';
+import { Icon } from '@/components/atoms/icon';
+import { LinkButton } from '@/components/atoms/link-button';
+import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
 import {

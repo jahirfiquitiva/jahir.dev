@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
+import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
-
-import { Link } from '../link';
 
 export const Nav = tw.nav`
   relative

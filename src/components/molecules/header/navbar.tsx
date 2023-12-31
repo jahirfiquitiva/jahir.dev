@@ -1,12 +1,11 @@
 import type { Route } from 'next';
 
+import { Logo } from '@/components/atoms/logo';
 import {
   buildColoredLinkClasses,
   getColoredTextClasses,
 } from '@/utils/colored-text';
 import type { TWComponentProps } from '@/utils/cx';
-
-import { Logo } from '../logo';
 
 import { NavToggle } from './nav-toggle';
 import {

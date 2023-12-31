@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 
-import { Img } from '@/components/img';
+import { Img } from '@/components/atoms/img';
 import cx, { tw } from '@/utils/cx';
 
 import { ImageComparison } from './image-comparison';

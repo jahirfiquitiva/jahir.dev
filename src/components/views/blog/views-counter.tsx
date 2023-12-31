@@ -3,7 +3,7 @@ import 'server-only';
 import { Suspense } from 'react';
 
 import { getViews, recordView } from '@/actions/views';
-import { LineWobble } from '@/components/loaders/line-wobble';
+import { LineWobble } from '@/components/atoms/loaders/line-wobble';
 
 interface ViewsCounterProps {
   slug: string;

@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-import { Link } from '@/components/link';
+import { Link } from '@/components/atoms/link';
 import { ViewsCounter } from '@/components/views/blog/views-counter';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';

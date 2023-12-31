@@ -1,9 +1,9 @@
 import type { Route } from 'next';
 
+import { Logo } from '@/components/atoms/logo';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-import { Logo } from '../logo';
 import { SocialLinks } from '../social-links';
 
 import { BackToTopLink } from './back-to-top-link';

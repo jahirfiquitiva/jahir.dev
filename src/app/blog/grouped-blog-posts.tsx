@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { Section } from '@/components/section';
+import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import {
   allReadableBlogs,

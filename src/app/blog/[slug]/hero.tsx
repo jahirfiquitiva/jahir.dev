@@ -1,7 +1,7 @@
 import type { Route } from 'next';
 
-import { Img } from '@/components/img';
-import { Link } from '@/components/link';
+import { Img } from '@/components/atoms/img';
+import { Link } from '@/components/atoms/link';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
 

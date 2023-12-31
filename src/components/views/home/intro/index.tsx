@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import photo from '@/assets/images/photo.jpg';
-import { Icon } from '@/components/icon';
-import { Link } from '@/components/link';
-import { LinkButton } from '@/components/link-button';
-import { Section } from '@/components/section';
-import { SocialLinks } from '@/components/social-links';
+import { Icon } from '@/components/atoms/icon';
+import { Link } from '@/components/atoms/link';
+import { LinkButton } from '@/components/atoms/link-button';
+import { Section } from '@/components/atoms/section';
+import { SocialLinks } from '@/components/molecules/social-links';
 import cx from '@/utils/cx';
 
 import { Name, Photo, SubHeader, WavingSpan } from './intro.styles';

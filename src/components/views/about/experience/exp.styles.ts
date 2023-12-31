@@ -1,4 +1,4 @@
-import { Link } from '@/components/link';
+import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const ExperienceItem = tw(Link)`

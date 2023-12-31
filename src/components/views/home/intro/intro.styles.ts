@@ -1,4 +1,4 @@
-import { Img, type ImgProps } from '@/components/img';
+import { Img, type ImgProps } from '@/components/atoms/img';
 import { tw } from '@/utils/cx';
 
 export const WavingSpan = tw.span`

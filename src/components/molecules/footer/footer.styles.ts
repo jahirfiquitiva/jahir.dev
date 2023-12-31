@@ -1,6 +1,5 @@
+import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
-
-import { Link } from '../link';
 
 export const StyledFooter = tw.footer`
   w-full

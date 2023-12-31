@@ -1,12 +1,11 @@
 'use client';
 
+import { Img } from '@/components/atoms/img';
+import { Link } from '@/components/atoms/link';
+import { LineWobble } from '@/components/atoms/loaders/line-wobble';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx, { tw } from '@/utils/cx';
-
-import { Img } from '../img';
-import { Link } from '../link';
-import { LineWobble } from '../loaders/line-wobble';
 
 import { Clock } from './time';
 

@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 
-import { Icon } from '@/components/icon';
-import { LinkButton } from '@/components/link-button';
-import { Section } from '@/components/section';
+import { Icon } from '@/components/atoms/icon';
+import { LinkButton } from '@/components/atoms/link-button';
+import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
 import { getPopularPosts } from '@/utils/blog';

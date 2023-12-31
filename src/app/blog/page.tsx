@@ -1,4 +1,4 @@
-import { Section } from '@/components/section';
+import { Section } from '@/components/atoms/section';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';

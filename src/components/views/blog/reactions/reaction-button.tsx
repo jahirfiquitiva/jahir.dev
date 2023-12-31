@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
-import { Icon } from '@/components/icon';
-import { Ring } from '@/components/loaders/ring';
+import { Icon } from '@/components/atoms/icon';
+import { Ring } from '@/components/atoms/loaders/ring';
 import cx from '@/utils/cx';
 
 import { StyledReactionButton } from './reaction-button.styles';

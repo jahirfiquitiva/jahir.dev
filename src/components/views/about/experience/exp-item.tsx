@@ -1,7 +1,7 @@
 import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
-import { Img, type ImgProps } from '@/components/img';
+import { Img, type ImgProps } from '@/components/atoms/img';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 

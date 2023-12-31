@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 // import { Heading } from '@/components/core/heading';
 // import { Section } from '@/components/core/section';
 // import { DonateButtons } from '@/components/views/donate/buttons/buttons';
-import { Section } from '@/components/section';
+import { Section } from '@/components/atoms/section';
 import { Mdx } from '@/components/views/blog/mdx';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
