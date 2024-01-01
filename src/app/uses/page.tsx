@@ -7,6 +7,7 @@
 // import { Tabs } from '@/components/views/uses/tabs/tabs';
 // import { Website } from '@/components/views/uses/website/website';
 import { Section } from '@/components/atoms/section';
+import { ExtensionsGrid } from '@/components/views/uses/extensions';
 import { EverydayHardware } from '@/components/views/uses/hardware';
 import { Tabs } from '@/components/views/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
@@ -29,7 +30,7 @@ export default function UsesPage() {
       <Tabs>
         <EverydayHardware />
         <p>Software</p>
-        <p>Browser</p>
+        <ExtensionsGrid />
         <p>Coding</p>
       </Tabs>
     </Section>
