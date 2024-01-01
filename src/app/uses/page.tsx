@@ -9,6 +9,7 @@
 import { Section } from '@/components/atoms/section';
 import { ExtensionsGrid } from '@/components/views/uses/extensions';
 import { EverydayHardware } from '@/components/views/uses/hardware';
+import { Software } from '@/components/views/uses/software';
 import { Tabs } from '@/components/views/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
@@ -29,7 +30,7 @@ export default function UsesPage() {
       </h1>
       <Tabs>
         <EverydayHardware />
-        <p>Software</p>
+        <Software />
         <ExtensionsGrid />
         <p>Coding</p>
       </Tabs>
