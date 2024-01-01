@@ -5,7 +5,6 @@ import { Children, useState, type PropsWithChildren, useEffect } from 'react';
 import image from '@/assets/images/setup-2023.jpg';
 import { Img } from '@/components/atoms/img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import { ThemeContext, useTheme } from '@/providers/theme-provider';
 import cx from '@/utils/cx';
 
 import { TabButton, TabButtonText, TabPanel, TabsList } from './tabs.styles';
@@ -22,7 +21,6 @@ const tabs: Array<{ id: TabKey; title: string }> = [
 
 export const Tabs = (props: PropsWithChildren) => {
   const hasMounted = useHasMounted();
-  const themeData = useTheme();
   const [currentTab, setCurrentTab] = useState<TabKey>('all');
 
   useEffect(() => {
@@ -68,7 +66,7 @@ export const Tabs = (props: PropsWithChildren) => {
         )}
       >
         {currentTab === 'all' && (
-          <figure className={'my-4'}>
+          <figure className={'my-2'}>
             <div
               className={cx(
                 'aspect-video',
@@ -100,9 +98,7 @@ export const Tabs = (props: PropsWithChildren) => {
               hidden={currentTab !== 'all' && currentTab !== tabs[index + 1].id}
             >
               <h2 className={'text-xl'}>{tabs[index + 1].title}</h2>
-              <ThemeContext.Provider value={themeData}>
-                {child}
-              </ThemeContext.Provider>
+              {child}
             </TabPanel>
           );
         })}
