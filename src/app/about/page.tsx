@@ -62,10 +62,20 @@ export default function AboutPage() {
           </Link>{' '}
           page.
         </p>
-        <div id={'contact'} className={'flex flex-col gap-2 mt-2'}>
-          <p className={'font-medium'}>Let&apos;s connect!</p>
-          <SocialLinks />
-        </div>
+      </Section>
+      <Section id={'contact'} className={'-mt-6 gap-2.5'}>
+        <h2 className={'text-sm mb-2'}>Let&apos;s connect!</h2>
+        <p>
+          Feel free to reach out to me at{' '}
+          <Link
+            title={'Email'}
+            href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
+          >
+            hola@jahir.dev
+          </Link>
+          , or find me on social media:
+        </p>
+        <SocialLinks />
       </Section>
       <Skills />
       <Experience />

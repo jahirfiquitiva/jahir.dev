@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import { Icon } from '@/components/atoms/icon';
 import { Link } from '@/components/atoms/link';
+import { Section } from '@/components/atoms/section';
 import { github, nextJs, tailwind } from '@/components/icons';
 
 import { StackContainer, IconContainer, IconLink } from './tech-stack.styles';
-import { Section } from '@/components/atoms/section';
 
 const StackIcons = () => (
   <StackContainer>

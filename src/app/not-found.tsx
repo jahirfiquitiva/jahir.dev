@@ -12,7 +12,14 @@ export default function NotFound() {
       id={'error'}
       className={'flex-1 w-full h-full -mb-8 tablet-sm:-mb-9'}
     >
-      <h1 className={getColoredTextClasses('red', 'orange', 'red', 'mb-4')}>
+      <h1
+        className={getColoredTextClasses(
+          'red',
+          'orange',
+          'red',
+          'mb-4 self-start',
+        )}
+      >
         Woops! ~ Page not found
       </h1>
       <p>

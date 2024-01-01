@@ -26,7 +26,14 @@ const DonatePageContent = () => {
 export default function DonatePage() {
   return (
     <Section id={'donate'}>
-      <h1 className={getColoredTextClasses('purple', 'purple', 'brand')}>
+      <h1
+        className={getColoredTextClasses(
+          'purple',
+          'purple',
+          'brand',
+          'self-start',
+        )}
+      >
         Donate
       </h1>
       <DonatePageContent />

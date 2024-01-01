@@ -15,7 +15,14 @@ const ErrorComponent = (props: { error: Error }) => {
   const [, ...errorStack] = error.stack?.toString().split(/\r?\n/) || [];
   return (
     <Section id={'error'} className={'w-full h-full'}>
-      <h1 className={getColoredTextClasses('red', 'orange', 'red', 'mb-3')}>
+      <h1
+        className={getColoredTextClasses(
+          'red',
+          'orange',
+          'red',
+          'mb-3 self-start',
+        )}
+      >
         Something went wrong
       </h1>
       <p>
