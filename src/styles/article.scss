@@ -107,7 +107,7 @@ html.dark {
 
 article code {
   @apply py-0.5 px-1 text-2xs;
-  @apply bg-brand-500/[0.024] dark:bg-brand-200/[0.048];
+  @apply bg-brand-500/[0.024] dark:bg-brand-100/5;
   @apply border border-divider rounded-1.5;
   @apply font-normal;
   color: inherit;
@@ -115,9 +115,9 @@ article code {
 }
 
 article pre {
-  @apply opacity-100 rounded-2 border border-divider;
-  @apply bg-brand-500/[0.024] dark:bg-brand-200/[0.048];
-  @apply mt-0 mb-3 py-3 px-0 text-inherit overflow-x-auto;
+  @apply opacity-100 rounded-3 border border-divider;
+  @apply bg-brand-500/[0.024] dark:bg-brand-100/5;
+  @apply mt-0 mb-3 py-4 px-0 text-inherit overflow-x-auto;
 }
 
 article [data-rehype-pretty-code-figure] code {
@@ -130,9 +130,9 @@ article [data-rehype-pretty-code-figure] code {
 
 article [data-rehype-pretty-code-title] {
   @apply border border-divider;
-  @apply rounded-tl-2 rounded-tr-2;
+  @apply rounded-tl-3 rounded-tr-3;
   @apply text-secondary-txt bg-background;
-  @apply mt-0.5 mb-0 font-mono text-2xs py-2 px-3 text-start;
+  @apply mt-0.5 mb-0 font-mono text-2xs py-2.5 px-4 text-start;
 }
 
 article [data-rehype-pretty-code-title] + pre {
@@ -145,9 +145,9 @@ article mark {
 }
 
 article blockquote {
-  @apply bg-brand-500/[0.024] dark:bg-brand-200/[0.048];
-  @apply border-0 border-l-1 border-divider;
-  @apply pt-4 py-3.5 pl-4 pr-3 rounded-1 my-1 text-secondary-txt font-normal;
+  @apply bg-brand-500/[0.024] dark:bg-brand-100/5;
+  @apply border border-dashed border-divider;
+  @apply p-4 rounded-3 my-1 text-secondary-txt font-normal;
   & img {
     @apply mt-4 mb-2;
   }
@@ -253,12 +253,12 @@ article a:has(code) {
 
 [data-rehype-pretty-code-figure] .line,
 [data-rehype-pretty-code-figure] [data-line] {
-  @apply px-3.5 border-l-0.5 border-transparent;
+  @apply px-4 py-px border-l-0.5 border-transparent;
 }
 
 [data-rehype-pretty-code-figure] .line--highlighted,
 [data-rehype-pretty-code-figure] [data-highlighted-line] {
-  @apply bg-brand-600/[0.06] dark:bg-brand-200/[0.08];
+  @apply bg-brand-600/5 dark:bg-brand-100/10;
   @apply border-[#5f27cd] dark:border-[#f368e0];
   & span {
     @apply relative;
@@ -268,7 +268,7 @@ article a:has(code) {
 [data-rehype-pretty-code-figure] .word--highlighted,
 [data-rehype-pretty-code-figure] [data-highlighted-chars] {
   @apply rounded-1 py-1 px-2;
-  @apply bg-brand-600/[0.056] dark:bg-brand-200/[0.096];
+  @apply bg-brand-600/5 dark:bg-brand-100/10;
 }
 
 [data-rehype-pretty-code-figure] [data-line-numbers] > .line,
