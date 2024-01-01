@@ -40,7 +40,6 @@ const redirects = [
   /* Uses blog post aliases */
   buildRedirect('/blog/uses', '/uses'),
   buildRedirect('/gear', '/uses'),
-  buildRedirect('/colophon', '/uses#colophon'),
   buildRedirect('/releases/:path*', '/gh-releases/:path*'),
   buildRedirect('/feed', '/feed.xml'),
   buildRedirect('/sitemap', '/sitemap.xml'),
