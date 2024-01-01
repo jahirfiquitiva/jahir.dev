@@ -23,7 +23,7 @@ export const Typography = () => (
       <Link title={'Manrope font'} href={'https://gent.media/manrope'}>
         Manrope
       </Link>{' '}
-      for headings, buttons and a few other places. Both have some{' '}
+      for headings, buttons and a few other elements. Both have some{' '}
       <Link
         title={'CSS font features'}
         href={
