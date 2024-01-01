@@ -26,7 +26,7 @@ export default function NotFound() {
         Go back home
       </LinkButton>
       <img
-        src={'/static/images/site/404.gif'}
+        src={'/media/site/404.gif'}
         alt={'John Travolta gif'}
         loading={'lazy'}
         decoding={'async'}

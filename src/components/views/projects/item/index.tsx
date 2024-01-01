@@ -30,7 +30,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
       data-umami-event-project={project.name}
     >
       <ProjectIcon
-        src={`/static/images/projects/${project.icon || ''}`}
+        src={`/media/projects/${project.icon || ''}`}
         alt={`Icon for project "${project.name}"`}
         size={56}
         placeholder={Boolean(project?.iconMeta?.blur64) ? 'blur' : undefined}

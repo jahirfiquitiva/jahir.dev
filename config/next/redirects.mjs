@@ -15,9 +15,10 @@ const redirects = [
   buildRedirect('/blog/post-of-fame', '/donate#thanks'),
   buildRedirect('/inspiration', '/blog/people-websites-that-inspire'),
   /* Old static assets paths to new ones */
-  buildRedirect('/assets/:path*', '/static/:path*'),
+  buildRedirect('/assets/images/:path*', '/media/:path*'),
+  buildRedirect('/static/images/:path*', '/media/:path*'),
   /* Needed for android dashboards */
-  buildRedirect('/static/images/me/me.jpg', '/static/images/jahir/jahir.jpg'),
+  buildRedirect('/static/images/me/me.jpg', '/media/jahir/jahir.jpg'),
   /* Dashbud links */
   buildRedirect('/dashbud', 'https://dashbud.dev'),
   buildRedirect('/dashbud/:path*', 'https://dashbud.dev'),

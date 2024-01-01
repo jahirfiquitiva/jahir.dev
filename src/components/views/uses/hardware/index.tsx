@@ -27,7 +27,7 @@ const HardwareGrid = (props: HardwareGridProps) => (
         title={item.name}
       >
         <HardwareImage
-          src={`/static/images/${item.image}`}
+          src={`/media/${item.image}`}
           alt={item.name}
           size={222}
         />

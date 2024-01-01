@@ -3,11 +3,11 @@ import type { Route } from 'next';
 import software from '@/data/software.json';
 
 import {
+  AppIcon,
+  AppName,
   GridContainer,
   SoftwareGrid,
   SoftwareItem,
-  AppIcon,
-  AppName,
 } from './software.styles';
 
 const sortedSoftware = software.sort((a, b) => {
@@ -30,7 +30,7 @@ export const Software = () => {
                 title={item.name}
               >
                 <AppIcon
-                  src={`/static/images/${item.image}`}
+                  src={`/media/${item.image}`}
                   size={72}
                   alt={item.name}
                 />

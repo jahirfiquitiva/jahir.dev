@@ -1,6 +1,6 @@
 import {
-  type ComputedFields,
   defineDocumentType,
+  type ComputedFields,
 } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
@@ -8,7 +8,7 @@ import { unique } from './../../src/utils/unique';
 import { getBlurData } from './rehype/image-metadata';
 
 const getActualHeroUrl = (hero?: string) =>
-  hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
+  hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },

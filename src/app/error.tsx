@@ -69,7 +69,7 @@ const ErrorComponent = (props: { error: Error }) => {
         Go back home
       </LinkButton>
       <img
-        src={'/static/images/site/monkey.gif'}
+        src={'/media/site/monkey.gif'}
         alt={'Monkey throwing laptop aggressively'}
         loading={'lazy'}
         decoding={'async'}
