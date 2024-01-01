@@ -1,4 +1,5 @@
 import { TechStack } from '@/components/views/colophon/tech-stack';
+import { Typography } from '@/components/views/colophon/typography';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
 export default function Colophon() {
@@ -15,6 +16,7 @@ export default function Colophon() {
         Colophon
       </h1>
       <TechStack />
+      <Typography />
     </>
   );
 }
