@@ -7,6 +7,7 @@
 // import { Tabs } from '@/components/views/uses/tabs/tabs';
 // import { Website } from '@/components/views/uses/website/website';
 import { Section } from '@/components/atoms/section';
+import { EverydayHardware } from '@/components/views/uses/hardware';
 import { Tabs } from '@/components/views/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
@@ -26,7 +27,7 @@ export default function UsesPage() {
         What do I use?
       </h1>
       <Tabs>
-        <p>Everyday</p>
+        <EverydayHardware />
         <p>Software</p>
         <p>Browser</p>
         <p>Coding</p>
