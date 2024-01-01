@@ -19,7 +19,6 @@ export const SoftwareGrid = tw.ol`
   grid
   grid-cols-[repeat(3,minmax(0,120px))]
   [box-shadow:0_0_4px_2px_var(--color-accent-dark)]
-  rounded-2.5
   gap-6
   py-6 px-3
   items-center
