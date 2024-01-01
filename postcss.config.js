@@ -2,6 +2,6 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    'postcss-csso': {},
+    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
   },
 };
