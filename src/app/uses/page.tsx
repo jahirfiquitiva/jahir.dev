@@ -6,33 +6,33 @@
 // import { Software } from '@/components/views/uses/software/software';
 // import { Tabs } from '@/components/views/uses/tabs/tabs';
 // import { Website } from '@/components/views/uses/website/website';
+import { Section } from '@/components/atoms/section';
+import { Tabs } from '@/components/views/uses/tabs';
+import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 export default function UsesPage() {
-  return null;
-  // <Section id={'uses'} className={'flex-1 gap-24'}>
-  //   <Heading shadow={'brand'} from={'brand'} to={'blue'}>
-  //     What do I use?
-  //   </Heading>
-  //   <Tabs
-  //     tabsNames={[
-  //       'Everyday',
-  //       'Gaming PC',
-  //       'Software',
-  //       'Browser',
-  //       'Coding',
-  //       'Website',
-  //     ]}
-  //   >
-  //     <Everyday />
-  //     <GamingPc />
-  //     <Software />
-  //     <ExtensionsGrid />
-  //     <Coding />
-  //     <Website />
-  //   </Tabs>
-  // </Section>
+  return (
+    <Section id={'uses'} className={'flex-1 gap-6'}>
+      <h1
+        className={getColoredTextClasses(
+          'brand',
+          'brand',
+          'blue',
+          'self-start',
+        )}
+      >
+        What do I use?
+      </h1>
+      <Tabs>
+        <p>Everyday</p>
+        <p>Software</p>
+        <p>Browser</p>
+        <p>Coding</p>
+      </Tabs>
+    </Section>
+  );
 }
 
 export const metadata = createMetadata({
