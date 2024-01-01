@@ -32,6 +32,7 @@ export const Book = () => {
       target={'_blank'}
       data-umami-event={'Reading'}
       data-umami-event-book={book.title}
+      className={'hocus:border-brand-600/35 dark:hocus:border-brand-200/35'}
     >
       <Content>
         <Img
@@ -48,7 +49,9 @@ export const Book = () => {
           <Header>
             <span>Reading ({readProgress}%)</span>
           </Header>
-          <TrackName>{book.title}</TrackName>
+          <TrackName className={'group-hocus/track:text-accent-dark'}>
+            {book.title}
+          </TrackName>
           <TrackArtist>{book.authors}</TrackArtist>
         </Texts>
       </Content>

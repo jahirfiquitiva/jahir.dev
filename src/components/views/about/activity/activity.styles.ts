@@ -50,11 +50,11 @@ export const Content = tw.div`
   p-3
   max-w-full
   truncate
-  rounded-2.5
+  rounded-2
   mobile-md:max-h-[7rem]
   items-center
-  bg-white/70
-  dark:bg-brand-800/30
+  bg-white/50
+  dark:bg-brand-800/15
 `;
 
 export const Texts = tw.div`
@@ -63,7 +63,6 @@ export const Texts = tw.div`
   flex-1
   gap-1.5
   truncate
-  mix-blend-hard-light
 `;
 
 export const Header = tw.p`

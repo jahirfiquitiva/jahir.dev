@@ -63,7 +63,7 @@ export const Music = () => {
         )}
         quality={50}
       />
-      <Content>
+      <Content className={'bg-white/75 dark:bg-brand-900/25'}>
         <Img
           alt={
             !track
@@ -79,7 +79,7 @@ export const Music = () => {
             'border border-divider',
           )}
         />
-        <Texts>
+        <Texts className={'mix-blend-hard-light'}>
           <Header>
             <span>
               {loading ? 'Loading' : isPlaying ? 'Now Playing' : 'Last Played'}
@@ -92,7 +92,12 @@ export const Music = () => {
               </MusicBarsGroup>
             ) : null}
           </Header>
-          <TrackName className={cx(loading ? 'bg-divider' : '')}>
+          <TrackName
+            className={cx(
+              loading ? 'bg-divider' : '',
+              isPlaying ? 'group-hocus/track:decoration-wavy' : '',
+            )}
+          >
             {track?.name}
           </TrackName>
           <TrackArtist className={cx(loading ? 'bg-divider' : '')}>
