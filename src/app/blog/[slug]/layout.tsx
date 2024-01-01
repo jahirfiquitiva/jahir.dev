@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
+import { Zoom } from '@/components/molecules/zoom';
 import { ReactionsButtons } from '@/components/views/blog/reactions';
 import { ShareButton } from '@/components/views/blog/share-button';
 import { getBlog } from '@/utils/blog';
@@ -12,7 +13,6 @@ import type { Blog } from 'contentlayer/generated';
 import { Header } from './header';
 import { Hero } from './hero';
 import type { BlogPostPageContext } from './types';
-import { Zoom } from './zoom';
 
 const blogPostStructuredData = (post: Blog): string =>
   post

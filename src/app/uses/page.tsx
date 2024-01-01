@@ -7,6 +7,8 @@
 // import { Tabs } from '@/components/views/uses/tabs/tabs';
 // import { Website } from '@/components/views/uses/website/website';
 import { Section } from '@/components/atoms/section';
+import { Zoom } from '@/components/molecules/zoom';
+import { Coding } from '@/components/views/uses/coding';
 import { ExtensionsGrid } from '@/components/views/uses/extensions';
 import { EverydayHardware } from '@/components/views/uses/hardware';
 import { Software } from '@/components/views/uses/software';
@@ -32,8 +34,9 @@ export default function UsesPage() {
         <EverydayHardware />
         <Software />
         <ExtensionsGrid />
-        <p>Coding</p>
+        <Coding />
       </Tabs>
+      <Zoom />
     </Section>
   );
 }
