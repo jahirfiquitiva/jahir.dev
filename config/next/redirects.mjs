@@ -1,4 +1,4 @@
-const buildRedirect = (source, destination, permanent = true) => {
+const buildRedirect = (source, destination, permanent = false) => {
   return {
     source,
     destination,
@@ -25,7 +25,7 @@ const redirects = [
   buildRedirect('/dashsetup', 'https://dashbud.dev'),
   buildRedirect('/dashsetup/:path*', 'https://dashbud.dev'),
   /* Other redirections */
-  buildRedirect('/links', 'https://links.jahir.dev'),
+  buildRedirect('/links', 'https://bio.jahir.dev'),
   buildRedirect('/contact', '/about#contact'),
   /* Dashboard aliases */
   buildRedirect('/music', '/about#activity'),

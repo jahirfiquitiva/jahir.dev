@@ -8,7 +8,7 @@ const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
 const secondExtensionsHalf = extensions.slice(extensionsHalfIndex);
 
 export const ExtensionsGrid = () => (
-  <div className={'flex flex-col gap-6'}>
+  <div className={'flex flex-col gap-5'}>
     <p>
       I use the{' '}
       <Link title={'Arc browser'} href={'https://arc.net/gift/cb3f518f'}>

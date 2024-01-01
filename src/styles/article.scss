@@ -45,8 +45,7 @@ article {
   }
 
   & p {
-    @apply w-full m-0 mb-0.5 text-pretty;
-    max-width: 69ch; // nice
+    @apply w-full m-0 mb-0.5 text-pretty max-w-nice;
   }
 }
 
