@@ -18,7 +18,7 @@
     "canvas-confetti": "^1.9.2",
     "colord": "^2.9.3",
     "contentlayer": "^0.3.4",
-    "kysely": "^0.26.3",
+    "kysely": "^0.27.0",
     "kysely-planetscale": "^1.4.0",
     "medium-zoom": "^1.1.0",
     "million": "^2.6.4",
@@ -29,7 +29,7 @@
     "react-compare-image": "^3.4.0",
     "react-dom": "^18.2.0",
     "server-only": "^0.0.1",
-    "shikiji": "^0.9.15",
+    "shikiji": "^0.9.17",
     "swr": "^2.2.4"
   },
   "devDependencies": {
@@ -43,8 +43,8 @@
     "@types/react-dom": "^18.2.18",
     "@types/remove-markdown": "^0.3.4",
     "@types/xml": "^1.0.11",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "autoprefixer": "^10.4.16",
     "cross-env": "^7.0.3",
     "cssnano": "^6.0.2",
