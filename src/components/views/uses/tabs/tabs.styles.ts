@@ -1,4 +1,3 @@
-import { Section } from '@/components/atoms/section';
 import { tw } from '@/utils/cx';
 
 export const TabsList = tw.div`
@@ -22,12 +21,12 @@ export const TabsList = tw.div`
   tablet-md:[mask-image:none]
 `;
 
-export const TabPanel = tw.div.attrs({
+export const TabPanel = tw.section.attrs({
   role: 'tabpanel',
 })`
   flex
   flex-col
-  gap-1.5
+  gap-6
   mb-4
   transition
   opacity-100

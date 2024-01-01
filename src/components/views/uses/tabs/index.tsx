@@ -1,6 +1,5 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
 import { Children, useState, type PropsWithChildren, useEffect } from 'react';
 
 import image from '@/assets/images/setup-2023.jpg';
