@@ -42,7 +42,8 @@ export const Book = () => {
             'rounded-l-0.5 rounded-r-1.5',
             'aspect-auto w-auto h-auto',
             'max-w-full max-h-[72px] tablet-sm:max-h-[78px]',
-            'border border-divider',
+            'border border-divider transition',
+            'scale-95 group-hocus/track:scale-100',
           )}
         />
         <Texts>

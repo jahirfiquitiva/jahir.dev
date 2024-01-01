@@ -76,7 +76,8 @@ export const Music = () => {
             'rounded-1',
             'aspect-square w-auto h-full',
             'max-w-full max-h-[72px] tablet-sm:max-h-[78px]',
-            'border border-divider',
+            'border border-divider transition',
+            'scale-95 group-hocus/track:scale-100',
           )}
         />
         <Texts className={'mix-blend-hard-light'}>
