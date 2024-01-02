@@ -9,7 +9,13 @@ import cx from '@/utils/cx';
 
 import { TabButton, TabButtonText, TabPanel, TabsList } from './tabs.styles';
 
-type TabKey = 'all' | 'everyday' | 'software' | 'browser' | 'coding';
+type TabKey =
+  | 'all'
+  | 'everyday'
+  | 'software'
+  | 'browser'
+  | 'coding'
+  | 'website';
 
 const tabs: Array<{ id: TabKey; title: string }> = [
   { id: 'all', title: 'All' },
@@ -17,6 +23,7 @@ const tabs: Array<{ id: TabKey; title: string }> = [
   { id: 'software', title: 'Software' },
   { id: 'browser', title: 'Browser' },
   { id: 'coding', title: 'Coding' },
+  { id: 'website', title: 'Website' },
 ] as const;
 
 export const Tabs = (props: PropsWithChildren) => {
