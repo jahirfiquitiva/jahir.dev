@@ -47,7 +47,6 @@ export const SoftwareItem = tw(Link)`
   outline-primary-txt
   no-underline
   hocus:underline
-  hocus:decoration-2
   mobile-lg:gap-1
   mobile-lg:pb-1
   group/software

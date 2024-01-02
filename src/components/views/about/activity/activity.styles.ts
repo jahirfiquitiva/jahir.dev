@@ -106,7 +106,6 @@ export const TrackName = tw.span`
   min-h-[1.5rem]
   group-hocus/track:text-primary-txt
   group-hocus/track:underline
-  group-hocus/track:decoration-2
 `;
 
 export const TrackArtist = tw.span`

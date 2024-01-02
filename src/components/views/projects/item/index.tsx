@@ -42,7 +42,6 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
             className={cx(
               'text-xs text-primary-txt line-clamp-2 text-pretty',
               'group-hocus/project:underline group-hocus/project:decoration-primary-txt',
-              'group-hocus/project:underline-offset-2 group-hocus/project:decoration-2',
             )}
           >
             {project.name}

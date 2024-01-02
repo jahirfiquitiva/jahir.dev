@@ -70,7 +70,6 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           'w-full tablet-md:self-end',
           'text-xs text-primary-txt line-clamp-2 text-pretty',
           'group-hocus/post:underline group-hocus/post:decoration-primary-txt',
-          'group-hocus/post:underline-offset-2 group-hocus/post:decoration-2',
         )}
       >
         {post.title}

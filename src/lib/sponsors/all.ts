@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import { groupBy } from '@/utils/group-by';
 
 import { getBmacData } from './bmac/bmac';
@@ -38,7 +40,7 @@ const getAllMonthlySponsors = (
     .sort((a, b) => b.price - a.price);
 };
 
-export const getSponsorsAndCategories = async () => {
+export const getSponsorsAndCategories = cache(async () => {
   const { members, oneTime: bmacOneTime } = await getBmacData();
   const { sponsors, oneTime: githubOneTime } = await getGitHubSponsors();
 
@@ -75,4 +77,6 @@ export const getSponsorsAndCategories = async () => {
     totalEarningsPerMonth,
     sponsorsCount,
   };
-};
+});
+
+export const revalidate = 43200;

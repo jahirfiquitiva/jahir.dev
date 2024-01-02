@@ -68,8 +68,6 @@ export const HardwareName = tw.p`
   m-0
   transition
   group-hocus/hardware:underline
-  group-hocus/hardware:decoration-2
-  group-hocus/hardware:underline-offset-2
   group-hocus/hardware:text-accent-dark
 `;
 

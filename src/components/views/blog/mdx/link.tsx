@@ -18,7 +18,6 @@ const StyledLink = tw.a`
   self-start
   transition-colors
   hocus:text-accent-dark
-  hocus:decoration-2
 `;
 
 export const MdxLink = (props: ComponentProps<typeof Link>) => {

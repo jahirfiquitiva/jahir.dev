@@ -15,5 +15,4 @@ export const StyledLink = tw(NextLink).attrs<LinkProps>((p) => ({
   self-start
   transition-colors
   hocus:text-accent-dark
-  hocus:decoration-2
 `;
