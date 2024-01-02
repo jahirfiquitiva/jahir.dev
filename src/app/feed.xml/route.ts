@@ -1,8 +1,6 @@
 import xml from 'xml';
 
-// import { allSimpleBlogs, type SimpleBlog } from '@/utils/blog';
-import { allBlogs as allSimpleBlogs } from 'contentlayer/generated';
-import type { Blog as SimpleBlog } from 'contentlayer/generated';
+import { allSimpleBlogs, type SimpleBlog } from '@/utils/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -35,7 +33,7 @@ const getAllPostRssData = (post: SimpleBlog) => {
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
     description: post.excerpt,
-    html: post.body.raw, // descriptionHtml,
+    html: descriptionHtml,
     slug: post.slug,
     hero: post.hero,
   };
