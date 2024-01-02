@@ -19,7 +19,7 @@ export const Name = (props: { path?: PathName; fontSize?: number }) => {
         style={{
           width: fontSize,
           height: fontSize,
-          filter: 'saturate(150%)',
+          filter: 'saturate(1.5)',
           color: '#88a4e6',
           fill: '#88a4e6',
         }}
@@ -29,9 +29,9 @@ export const Name = (props: { path?: PathName; fontSize?: number }) => {
           alignSelf: 'flex-start',
           fontWeight: 700,
           color: 'rgba(0, 0, 0, 0)',
-          backgroundImage: 'linear-gradient(to right, #88a4e6, #81c1e9)',
+          backgroundImage: 'linear-gradient(to right, #88a4e6, #38bdf8)',
           backgroundClip: 'text',
-          filter: 'saturate(150%)',
+          filter: 'saturate(1.5)',
         }}
       >
         Jahir Fiquitiva

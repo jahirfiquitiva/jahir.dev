@@ -32,7 +32,7 @@ export const LogoOrEmoji = (props: { path?: PathName }) => {
         style={{
           width: titleFontSize * 2,
           height: titleFontSize * 2,
-          filter: 'saturate(150%)',
+          filter: 'saturate(1.5)',
           color: '#88a4e6',
           fill: '#88a4e6',
         }}
@@ -59,9 +59,9 @@ export const PageTitle = (props: {
         ...(path
           ? {}
           : {
-              backgroundImage: 'linear-gradient(to right, #88a4e6, #81c1e9)',
+              backgroundImage: 'linear-gradient(to right, #88a4e6, #38bdf8)',
               backgroundClip: 'text',
-              filter: 'saturate(150%)',
+              filter: 'saturate(1.5)',
             }),
       }}
     >

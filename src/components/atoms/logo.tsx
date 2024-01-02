@@ -19,6 +19,7 @@ export const Logo = ({ bgClassName, fgClassName, ...props }: LogoProps) => {
     >
       <path
         className={cx('fill-accent', bgClassName)}
+        fill={props.style?.fill || props.fill || 'inherit'}
         d={
           'M25.4,3.9C22.8,1.3,19.4,0,16,0S9.2,1.3,6.6,3.9C1.5,9,1.5,17.5,6.6,22.6L16,32l9.4-9.4C30.5,17.5,30.5,9,25.4,3.9z'
         }
