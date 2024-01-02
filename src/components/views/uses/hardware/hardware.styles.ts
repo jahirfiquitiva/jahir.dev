@@ -53,12 +53,7 @@ export const HardwareImage = tw(Img)<ImgProps>`
 
 export const TextsContainer = tw.div`
   flex flex-col w-full
-  py-0.5
-  gap-0.5
-  transition
-  [text-shadow:0_1px_4px_rgba(235_240_251/1)]
-  dark:[text-shadow:0_1px_4px_rgba(9_17_34/1)]
-  group-hocus/hardware:tablet-sm:backdrop-blur-[2px]
+  py-0.5 gap-0.5
 `;
 
 export const HardwareName = tw.p`

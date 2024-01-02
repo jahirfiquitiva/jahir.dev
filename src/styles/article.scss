@@ -52,10 +52,6 @@ article {
 /* Default styles for links */
 article a {
   @apply text-accent hocus:text-accent-dark;
-  @apply transition-colors;
-  @apply decoration-2 underline-offset-2 cursor-pointer;
-  @apply underline decoration-divider;
-  @apply hocus:decoration-accent-dark;
 }
 
 article ul[aria-label='Social links'] {
