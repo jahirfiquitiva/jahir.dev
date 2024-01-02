@@ -32,7 +32,7 @@ export const Typography = () => (
       >
         font features
       </Link>{' '}
-      enabled to make them slightly different than the default.
+      enabled to make them stand out from the default.
     </p>
     <div
       className={cx(
