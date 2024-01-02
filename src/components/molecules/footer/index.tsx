@@ -46,7 +46,10 @@ export const Footer = () => {
           </span>
         </FooterLink>
         <Description>
-          Passionate and creative full-stack software engineer from Colombia 🇨🇴
+          Passionate and creative full-stack software engineer from Colombia{' '}
+          <span role={'img'} aria-label={'Colombia flag'}>
+            🇨🇴
+          </span>
         </Description>
         <SocialLinks />
       </Details>

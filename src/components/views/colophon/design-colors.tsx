@@ -2,7 +2,7 @@ import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { tw } from '@/utils/cx';
 
-export const ColorSquare = tw.div`
+const ColorSquare = tw.div`
   aspect-square
   flex flex-col
   items-center
@@ -15,12 +15,13 @@ export const DesignAndColors = () => (
   <Section id={'design-colors'}>
     <h2 className={'text-lg'}>Design & Colors</h2>
     <p className={'max-w-nice'}>
-      The brand color palette has been picked by myself. The design is{' '}
+      I personally handpicked the brand&apos;s color palette. The design is a
+      blend of{' '}
       <Link title={'inspiration'} href={'/inspiration'}>
-        inspired
+        inspirations
       </Link>{' '}
-      by multiple people and websites, but customized to my very own personal
-      liking.
+      from various people and websites, tailored to my personal taste and
+      enriched by valuable feedback from friends.
     </p>
     <div className={'grid grid-cols-6 tablet-sm:grid-cols-11 items-center'}>
       <ColorSquare className={'bg-brand-50 text-brand-950'}>50</ColorSquare>

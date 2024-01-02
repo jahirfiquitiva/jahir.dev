@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-import { Suspense } from 'react';
-
 import illustration from '@/assets/images/donate/3.png';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
@@ -11,9 +8,7 @@ import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-import Loading from '../loading';
-
-import DynamicDonateContent from './dynamic-content';
+import Sponsorships from './sponsorships';
 
 export default function DonatePage() {
   return (
@@ -91,12 +86,9 @@ export default function DonatePage() {
             </Link>{' '}
             like other Android apps, websites, and more.
           </p>
-          <p>
-            <Link title={'Testimonials'} href={'#testimonials'}>
-              Don&apos;t just take my word for it
-            </Link>
-            !
-          </p>
+          <Link title={'Testimonials'} href={'#testimonials'}>
+            Don&apos;t just take my word for it!
+          </Link>
           <h3 className={'text-xs'}>Your donation comes with perks:</h3>
           <ul>
             <li>Featured on this page</li>
@@ -127,9 +119,7 @@ export default function DonatePage() {
         </article>
         <DonateButtons />
       </Section>
-      <Suspense fallback={<Loading />}>
-        <DynamicDonateContent />
-      </Suspense>
+      <Sponsorships />
     </>
   );
 }

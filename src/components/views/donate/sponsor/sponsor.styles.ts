@@ -6,9 +6,7 @@ export const Container = tw(Link)`
   items-center
   justify-between
   gap-2.5
-  pl-2.5
-  pr-2
-  py-2.5
+  p-2
   rounded-0
   text-secondary-txt
   no-underline
@@ -28,7 +26,7 @@ export const NameAndPhotoContainer = tw.div`
 
 export const Tier = tw.span`
   flex items-center gap-1
-  rounded-2 pl-2 pr-2.5 py-0.5 min-h-9
+  rounded-2 pl-2 pr-2.5 min-h-9
   border border-divider
   text-3xs font-medium cursor-default
   transition-colors

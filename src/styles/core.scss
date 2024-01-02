@@ -26,10 +26,14 @@ button {
 }
 
 a {
-  @apply transition-colors;
-  @apply decoration-2 underline-offset-2 cursor-pointer;
+  @apply transition-colors cursor-pointer;
   @apply underline decoration-divider;
   @apply hocus:decoration-accent-dark;
+}
+
+a,
+a * {
+  @apply decoration-2 underline-offset-2;
 }
 
 figure {

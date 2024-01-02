@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';
+import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
@@ -66,12 +67,11 @@ export const SponsorItem = (props: SponsorProps) => {
         <NameAndPhotoContainer>
           <Img
             src={
-              sponsor.photo ||
-              `https://source.boringavatars.com/beam/${imgSizesForTier[tier]}/`
+              sponsor.photo || buildBoringAvatarUrl('', imgSizesForTier[tier])
             }
             alt={sponsor.name}
             size={imgSizesForTier[tier]}
-            className={'rounded-half h-full'}
+            className={'rounded-half h-full bg-accent'}
             style={{ minHeight: imgSizesForTier[tier] }}
           />
           <span className={fontSizesForTier[tier]}>{sponsor.name}</span>

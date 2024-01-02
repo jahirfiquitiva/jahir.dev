@@ -4,8 +4,8 @@ import {
 } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
-import { unique } from './../../src/utils/unique';
 import { getBlurData } from './rehype/image-metadata';
+import { unique } from './unique';
 
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';

@@ -1,6 +1,7 @@
 import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';
 import { Section } from '@/components/atoms/section';
+import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 import type { SponsorsListProps as TestimonialsProps } from '../sponsors-list';
@@ -25,7 +26,7 @@ const getComponentForSponsor = (
             src={sponsor.photo || ''}
             alt={`Photo of ${sponsor.name}`}
             size={28}
-            className={'rounded-half border border-divider'}
+            className={'rounded-half bg-accent'}
           />
           <SponsorName>{sponsor.name}&nbsp; –</SponsorName>
         </div>
@@ -42,8 +43,17 @@ export const Testimonials = (props: TestimonialsProps) => {
     .filter((it) => Boolean(it.message));
 
   return (
-    <Section className={'my-3'} id={'testimonials'}>
-      <h2 className={'text-xl'}>Don&apos;t just take my word for it</h2>
+    <Section id={'testimonials'}>
+      <h2
+        className={getColoredTextClasses(
+          'blue',
+          'blue',
+          'green',
+          'text-xl self-start',
+        )}
+      >
+        Don&apos;t just take my word for it!
+      </h2>
       <ul
         className={cx('columns-1 tablet-sm:columns-2', 'gap-4 space-y-4 my-2')}
       >

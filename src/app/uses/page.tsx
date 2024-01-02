@@ -1,11 +1,4 @@
-// import { Heading } from '@/components/core/heading';
-// import { Section } from '@/components/core/section';
-// import { Coding } from '@/components/views/uses/coding/coding';
-// import { ExtensionsGrid } from '@/components/views/uses/extensions';
-// import { Everyday, GamingPc } from '@/components/views/uses/hardware/hardware';
-// import { Software } from '@/components/views/uses/software/software';
-// import { Tabs } from '@/components/views/uses/tabs/tabs';
-// import { Website } from '@/components/views/uses/website/website';
+import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { Zoom } from '@/components/molecules/zoom';
 import { Coding } from '@/components/views/uses/coding';
@@ -35,6 +28,16 @@ export default function UsesPage() {
         <Software />
         <ExtensionsGrid />
         <Coding />
+        <p>
+          Please check out the brand new{' '}
+          <Link title={'Colophon page'} href={'/colophon'}>
+            Colophon page
+          </Link>
+          !{' '}
+          <span role={'img'} aria-label={'party popper'}>
+            🎉
+          </span>
+        </p>
       </Tabs>
       <Zoom />
     </Section>

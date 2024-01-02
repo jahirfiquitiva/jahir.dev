@@ -12,6 +12,7 @@ interface Sponsorships {
     tierSelectedAt?: string; // timestamp
     isActive?: boolean;
     isOneTimePayment?: boolean;
+    privacyLevel?: 'PRIVATE' | 'PUBLIC';
   }>;
 }
 

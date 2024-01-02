@@ -12,8 +12,6 @@ const authHeaders =
 const oneMillion = 1000000;
 const oneThousand = 1000;
 
-// export const revalidate = 43200;
-
 export const getRepoStars = cache(
   async (repo: string, owner?: string): Promise<string | undefined> => {
     if (!repo || !repo.length) return undefined;

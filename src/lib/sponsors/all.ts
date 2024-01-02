@@ -1,5 +1,6 @@
 import { cache } from 'react';
 
+import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 import { groupBy } from '@/utils/group-by';
 
 import { getBmacData } from './bmac/bmac';
@@ -64,11 +65,7 @@ export const getSponsorsAndCategories = cache(async () => {
           ({
             ...it,
             photo: it.photo?.includes('unavatar')
-              ? `${
-                  it.photo
-                }?fallback=https://source.boringavatars.com/beam/96/${encodeURIComponent(
-                  it.name,
-                )}`
+              ? `${it.photo}?fallback=${buildBoringAvatarUrl(it.name)}`
               : it.photo,
             amount: 0,
           }) as ReadableSupporter,

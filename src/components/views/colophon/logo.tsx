@@ -3,7 +3,7 @@ import { Logo as LogoSVG } from '@/components/atoms/logo';
 import { Section } from '@/components/atoms/section';
 import cx, { tw } from '@/utils/cx';
 
-export const LogoPreview = tw.div`
+const LogoPreview = tw.div`
   flex flex-col
   items-center
   justify-center

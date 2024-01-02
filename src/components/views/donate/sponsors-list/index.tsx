@@ -11,14 +11,16 @@ import { Header, MonaGif, StyledList } from './sponsors-list.styles';
 export interface SponsorsListProps {
   categories: Array<SponsorsCategory>;
   unicorns: Array<ReadableSupporter>;
+  sponsorsCount?: number;
+  totalEarningsPerMonth?: number;
 }
 
 export const SponsorsList = (props: SponsorsListProps) => {
-  const { categories, unicorns } = props;
+  const { categories, unicorns, sponsorsCount, totalEarningsPerMonth } = props;
   return (
     <Section id={'thanks'}>
       <Header>
-        <div className={'flex flex-col flex-1 gap-2'}>
+        <div className={'flex flex-col flex-1 gap-2.5'}>
           <h2
             className={getColoredTextClasses(
               'brand',
@@ -29,10 +31,26 @@ export const SponsorsList = (props: SponsorsListProps) => {
           >
             Sponsors
           </h2>
-          <p>
-            I&apos;m forever grateful to all the awesome people that support my
-            work
-          </p>
+          <div className={'max-w-nice'}>
+            <p>
+              I currently have{' '}
+              <span className={'tabular-nums font-medium'}>
+                {sponsorsCount}
+              </span>{' '}
+              active sponsors helping me earn{' '}
+              <span className={'tabular-nums font-medium'}>
+                ${totalEarningsPerMonth} USD
+              </span>{' '}
+              per month.
+            </p>
+            <p>
+              I&apos;m forever grateful to all the awesome people that support
+              my work!{' '}
+              <span role={'img'} aria-label={'heart hands'}>
+                🫶
+              </span>
+            </p>
+          </div>
         </div>
         <MonaGif
           src={monaGifFile}
