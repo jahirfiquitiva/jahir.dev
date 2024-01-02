@@ -1,52 +1,56 @@
-/* eslint-disable max-len */
-import Icon from '@mdi/react';
-import tw from 'tailwind-styled-components';
+import { Button } from '@/components/atoms/button';
+import { tw } from '@/utils/cx';
 
-import { Button } from '@/components/core/button/button';
-
-export const Fab = tw(Button)<{ $shown: boolean }>`
-  flex
-  z-[2]
+export const BackToTopButton = tw(Button)`
+  rounded-full
   fixed
-  right-0
+  z-[2]
   bottom-0
-  m-16
-  p-12
-  rounded-half
-  h-48
-  w-48
+  right-0
+  m-4
+  p-3
+  size-14
   gap-0
-  ${(p) => (p.$shown ? 'pointer-events-auto' : 'pointer-events-none')}
-  ${(p) => (p.$shown ? 'select-auto' : 'select-none')}
-  ${(p) => (p.$shown ? 'opacity-1' : 'opacity-0')}
+  justify-center
   transform
-  ${(p) => (p.$shown ? 'translate-y-0' : 'translate-y-[72px]')}
   uppercase
   tracking-wider
   text-3xs
-  border
-  border-accent-dark/[0.12]
-  [box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)_/_.24)]
-  hocus:border-accent-dark/[0.24]
-  hocus:[box-shadow:0_0_1px_1px_var(--color-divider),0_0_6px_1px_rgba(var(--color-accent-dark)_/_.32)]
+  shadow
+  hocus:shadow-md
+  shadow-brand-600/[0.24]
+  hocus:shadow-brand-600/[0.36]
+  dark:shadow-brand-200/[0.36]
+  dark:hocus:shadow-brand-200/[0.48]
+  
+  tablet-sm:m-6
+  desktop:size-[unset]
+  desktop:min-h-11
+  desktop:m-8
+  desktop:py-3.5
+  desktop:px-5
 
-  tablet-sm:m-24
-  desktop:h-[unset]
-  desktop:w-[unset]
-  desktop:m-32
-  desktop:py-14
-  desktop:px-20
-  desktop:rounded-full
+  after:rounded-full
+
+  translate-y-24
+  opacity-0
+  select-none
+  pointer-events-none
+  [&.shown]:translate-y-0
+  [&.shown]:opacity-100
+  [&.shown]:select-auto
+  [&.shown]:pointer-events-auto
 `;
 
-export const FabIcon = tw(Icon)`
+export const BackToTopIcon = tw.svg`
+  size-6
   block
   visible
   desktop:hidden
   desktop:invisible
 `;
 
-export const FabText = tw.span`
+export const BackToTopText = tw.span`
   hidden
   invisible
   desktop:block

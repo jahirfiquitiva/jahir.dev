@@ -3,7 +3,7 @@ import 'server-only';
 
 import { config } from '@/utils/og';
 
-import { LogoOrEmoji, PageTitle, PathName } from './logo-title';
+import { LogoOrEmoji, PageTitle, type PathName } from './logo-title';
 import { Name } from './name';
 
 const baseUrl =

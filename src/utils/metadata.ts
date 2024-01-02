@@ -1,35 +1,25 @@
 import type { Metadata } from 'next';
 
-import { config } from '@/utils/og';
+import { buildOgImageUrl, config } from './og';
 
-import { buildOgImageUrl } from './og';
-
-type MetaImageStyle = 'summary_large_image' | 'summary';
-
-const defaultLogoImage =
-  'https://jahir.dev/static/images/brand/logo-full-me.png';
-
-export const getStaticMetadata = (data: {
+export const createMetadata = (data: {
   title: string;
   description: string;
   keywords?: string | Array<string> | null;
   exactUrl?: string;
   image?: string;
-  metaImageStyle?: MetaImageStyle;
 }): Metadata => {
-  const { title, description, keywords, exactUrl, image, metaImageStyle } =
-    data;
+  const {
+    title,
+    description,
+    keywords,
+    exactUrl,
+    image = buildOgImageUrl(),
+  } = data;
 
-  const actualDefaultImage =
-    metaImageStyle === 'summary' ? defaultLogoImage : buildOgImageUrl();
-  const actualImage = image || actualDefaultImage;
-  const actualMetaImageStyle =
-    actualImage === defaultLogoImage
-      ? 'summary'
-      : metaImageStyle || 'summary_large_image';
   const images = [
     {
-      url: actualImage,
+      url: image,
       alt: `Preview for site: "${title}"`,
       type: config.contentType,
       width: config.size.width,
@@ -55,7 +45,7 @@ export const getStaticMetadata = (data: {
       title,
       description,
       images,
-      card: actualMetaImageStyle,
+      card: 'summary_large_image',
       creator: '@jahirfiquitiva',
       site: '@jahirfiquitiva',
     },

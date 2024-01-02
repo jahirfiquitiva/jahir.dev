@@ -1,11 +1,10 @@
 import type { Metadata, Route } from 'next';
 import { notFound } from 'next/navigation';
 
-import { Heading } from '@/components/core/heading';
-import { Link } from '@/components/core/link/link';
-import { Section } from '@/components/core/section';
-import { RequestContext } from '@/types/request';
-import { getStaticMetadata } from '@/utils/metadata';
+import { Link } from '@/components/atoms/link';
+import { Section } from '@/components/atoms/section';
+import type { RequestContext } from '@/types/request';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 import { getRepoReleaseData } from './data';
@@ -24,10 +23,8 @@ export default async function ReleasePage(context: ReleasePageContext) {
   const data = await getRepoReleaseData(repo).catch();
   return (
     <Section id={'github-release'}>
-      <Heading>{data?.success ? '🎉' : '😮'}</Heading>
-      <Heading $as={'h3'}>
-        {data?.success ? 'Download started!' : 'Oh no!'}
-      </Heading>
+      <h1>{data?.success ? '🎉' : '😮'}</h1>
+      <h3>{data?.success ? 'Download started!' : 'Oh no!'}</h3>
       <p>
         {data?.success
           ? 'Feel free to close this tab 😉'
@@ -61,7 +58,7 @@ export async function generateMetadata(
   );
   if (!repo) return undefined;
 
-  return getStaticMetadata({
+  return createMetadata({
     title: `${repo} Release Download – Jahir Fiquitiva`,
     description: `Download the latest release artifacts from the ${repo} repository on GitHub`,
     image: buildOgImageUrl(),

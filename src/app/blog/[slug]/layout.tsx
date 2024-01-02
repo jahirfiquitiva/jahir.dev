@@ -1,17 +1,13 @@
-import Icon from '@mdi/react';
 import type { PropsWithChildren } from 'react';
 
-import { ButtonLink } from '@/components/core/link/button-link';
-import { Link } from '@/components/core/link/link';
-import { Section } from '@/components/core/section';
-import { mdiPencilOutline } from '@/components/icons/mdi';
-import { Reactions } from '@/components/views/mdx/ui/reactions/reactions';
-import { ShareButton } from '@/components/views/mdx/ui/share-button';
-import { ReactionsProvider } from '@/providers/reactions-provider';
-import { getBlog } from '@/utils/blog';
+import { Icon } from '@/components/atoms/icon';
+import { OutlinedLinkButton } from '@/components/atoms/link-button';
+import { Zoom } from '@/components/molecules/zoom';
+import { ReactionsButtons } from '@/components/views/blog/reactions';
+import { ShareButton } from '@/components/views/blog/share-button';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
-import type { Blog } from 'contentlayer/generated';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
@@ -35,82 +31,60 @@ const blogPostStructuredData = (post: Blog): string =>
       })
     : '';
 
-export default async function BlogPostLayout(
+export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = getBlog(slug);
+  const post = allBlogs.find((b) => b.slug === slug);
+  if (!post) return null;
   return (
-    <Section id={'blog-post'}>
-      <Link
-        href={'/blog'}
-        title={'Navigate back to blog posts list page'}
+    <>
+      <Header post={post} />
+      <Hero
+        title={post.title}
+        hero={post.hero}
+        meta={post.heroMeta}
+        source={post.heroSource}
+      />
+      {props.children}
+      <hr
         className={cx(
-          'inline-flex items-end',
-          'gap-8 py-4 group/back',
-          'leading-none no-underline',
+          'm-0 border-none h-px w-full bg-divider',
+          '-my-8 tablet-md:-my-9',
+          '-mx-3 w-[calc(100%_+_1.5rem)]',
+          'tablet-md:mx-0 tablet-md:w-full',
+        )}
+      />
+      <div
+        className={cx(
+          'flex flex-col-reverse gap-8',
+          'tablet-md:flex-row tablet-md:items-center',
+          'justify-between tablet-md:gap-4',
         )}
       >
-        <span className={'font-manrope font-bold mb-1'}>{'<-'}</span>
-        <span
-          className={'group-hocus/back:underline group-hocus/back:decoration-2'}
-        >
-          Back to blog posts
-        </span>
-      </Link>
-      {post ? (
-        <>
-          <Header post={post} />
-          <ReactionsProvider
-            slug={`blog--${post.slug}`}
-            inProgress={post.inProgress}
+        <div className={'flex flex-row items-center gap-2.5 tablet-md:gap-3'}>
+          <ShareButton title={'Share blog post'} slug={slug || ''} />
+          <OutlinedLinkButton
+            title={'Edit blog post'}
+            href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${slug}/index.mdx`}
+            className={'pr-3.5'}
           >
-            <Reactions />
-            <Hero
-              title={post.title}
-              hero={post.hero}
-              meta={post.heroMeta}
-              source={post.heroSource}
+            <Icon
+              className={'size-5'}
+              path={
+                // eslint-disable-next-line max-len
+                'M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z'
+              }
             />
-            {props.children}
-            <hr
-              className={cx(
-                'my-20 mx-0 h-1 w-full',
-                'border-none border-0 bg-divider',
-                'overflow-hidden desktop:my-28',
-                '-mx-14 w-[calc(100%+1.75rem)]',
-                'tablet-md:mx-0 tablet-md:w-full',
-              )}
-            />
-            <div
-              className={cx(
-                'flex flex-col-reverse',
-                'gap-24',
-                'mt-0 mb-16',
-                'tablet-md:mt-2 tablet-md:mb-8',
-                'tablet-md:flex-row tablet-md:items-center',
-                'tablet-md:justify-between',
-              )}
-            >
-              <div className={'flex gap-12'}>
-                <ShareButton title={post.title} slug={post.slug} />
-                <ButtonLink
-                  outlined
-                  title={'Edit blog post content on GitHub'}
-                  href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${post.slug}.mdx`}
-                >
-                  <Icon path={mdiPencilOutline} size={0.9} />
-                  <span>Edit on GitHub</span>
-                </ButtonLink>
-              </div>
-              <Reactions />
-            </div>
-          </ReactionsProvider>
-          <script type={'application/ld+json'} suppressHydrationWarning>
-            {blogPostStructuredData(post)}
-          </script>
-        </>
-      ) : null}
-    </Section>
+            <span>Edit on GitHub</span>
+          </OutlinedLinkButton>
+        </div>
+        <ReactionsButtons slug={slug || ''} />
+        <Zoom />
+      </div>
+      <script type={'application/ld+json'} suppressHydrationWarning>
+        {blogPostStructuredData(post)}
+      </script>
+    </>
   );
 }

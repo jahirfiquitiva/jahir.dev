@@ -28,5 +28,6 @@ export interface ReadableTrack {
   previewUrl: string;
   url: string;
   image?: Image;
+  hdImage?: Image;
   duration: number;
 }

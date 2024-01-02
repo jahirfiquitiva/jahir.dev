@@ -4,19 +4,19 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
-import { BackToTop } from '@/components/molecules/back-to-top/back-to-top';
-import { Footer } from '@/components/molecules/footer/footer';
-import { Main } from '@/components/molecules/main';
-import { Toolbar } from '@/components/molecules/toolbar/toolbar';
+import { Main } from '@/components/atoms/main';
+import { BackToTop } from '@/components/molecules/back-to-top';
+import { Footer } from '@/components/molecules/footer';
+import { Header } from '@/components/molecules/header';
 import { Providers } from '@/providers';
-import { Inter, InterVariable, Manrope, ManropeVariable } from '@/styles/fonts';
+import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import cx from '@/utils/cx';
-import { getStaticMetadata } from '@/utils/metadata';
+import { createMetadata } from '@/utils/metadata';
 
 import { Meta } from './meta';
 
 export const metadata = {
-  ...getStaticMetadata({
+  ...createMetadata({
     title: 'Jahir Fiquitiva – Full-stack Software Engineer',
     description:
       // eslint-disable-next-line max-len
@@ -45,10 +45,7 @@ export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
       lang={'en'}
-      className={cx(
-        `${Inter.variable} ${Manrope.variable}`,
-        `${InterVariable.variable} ${ManropeVariable.variable}`,
-      )}
+      className={cx(`${InterVariable.variable} ${ManropeVariable.variable}`)}
       suppressHydrationWarning
     >
       <head>
@@ -61,9 +58,9 @@ export default function RootLayout(props: PropsWithChildren) {
           data-domains={'jahir.dev'}
         />
       </head>
-      <body className={'tablet-sm:overflow-y-auto'}>
+      <body>
         <Providers>
-          <Toolbar />
+          <Header />
           <Main>{props.children}</Main>
           <Footer />
           <BackToTop />

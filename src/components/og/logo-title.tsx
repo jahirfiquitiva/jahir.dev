@@ -1,4 +1,4 @@
-import { Logo } from '../icons/logo';
+import { Logo } from '@/components/atoms/logo';
 
 const pathEmojiMap = {
   '404': '👻',

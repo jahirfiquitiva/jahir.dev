@@ -9,6 +9,7 @@ import {
   useEffect,
 } from 'react';
 
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/constants/theme';
 import { colorMetaTags } from '@/utils/metadata';
 
 interface ThemeContextValue {
@@ -20,8 +21,7 @@ const defaultContextState: ThemeContextValue = {
   isDark: false,
 };
 
-export const ThemeContext =
-  createContext<ThemeContextValue>(defaultContextState);
+const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider = (props: PropsWithChildren) => {
   const { theme, resolvedTheme, setTheme } = useNextTheme();
@@ -44,7 +44,7 @@ export const ThemeProvider = (props: PropsWithChildren) => {
         .querySelector(`meta[name="${tag}"]`)
         ?.setAttribute(
           'content',
-          actualTheme === 'dark' ? '#0c121e' : '#fdfeff',
+          actualTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
         );
     });
   }, [actualTheme]);

@@ -1,23 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import tw from 'tailwind-styled-components';
-
-import { Heading } from '@/components/core/heading';
-
-const WavingSpan = tw.span`
-  inline-block
-  text-primary-txt
-  motion-safe:animate-wave
-  motion-safe:origin-waving
-`;
+import { useEffect, useState } from 'react';
 
 const greetings = [
   'Hello, world',
   'Hola, mundo',
   'Ciao, mondo',
   'Hallo, Welt',
-  'Salut, monde',
+  'Bonjour, monde',
   'Olá, mundo',
 ];
 
@@ -31,12 +21,5 @@ export const WavingHello = () => {
     return () => clearInterval(changeHello);
   }, []);
 
-  return (
-    <Heading $as={'h2'} shadow={'yellow'}>
-      <WavingSpan role={'img'} aria-label={'waving hand'}>
-        👋
-      </WavingSpan>
-      &nbsp;&nbsp;{greetings[hello]}!
-    </Heading>
-  );
+  return <>&nbsp;&nbsp;{greetings[hello]}!</>;
 };

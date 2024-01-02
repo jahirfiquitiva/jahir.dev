@@ -1,10 +1,9 @@
-import tw from 'tailwind-styled-components';
-
-import { Img } from '@/components/core/img';
+import { Img, type ImgProps } from '@/components/atoms/img';
+import { tw } from '@/utils/cx';
 
 export const StyledList = tw.ul`
   block
-  rounded-10
+  rounded-2.5
   border border-divider
   list-none
   p-0
@@ -15,10 +14,11 @@ export const Header = tw.div`
   flex
   flex-col-reverse
   mobile-lg:flex-row
+  mobile-lg:items-end
   mobile-lg:justify-between
 `;
 
-export const MonaGif = tw(Img)`
+export const MonaGif = tw(Img)<ImgProps>`
   max-w-[3rem]
   filter
   drop-shadow-[0_0_2px_#fff]

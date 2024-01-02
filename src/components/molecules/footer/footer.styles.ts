@@ -1,61 +1,59 @@
-import tw from 'tailwind-styled-components';
-
-import { FooterLink, FooterLinkSpan } from './links-list/links-list.styles';
+import { Link } from '@/components/atoms/link';
+import { tw } from '@/utils/cx';
 
 export const StyledFooter = tw.footer`
   w-full
-  max-w-[666px]
+  max-w-site
   mx-auto
   grid
-  grid-cols-3
-  [grid-auto-rows:min-content]
-  py-[var(--verticalContentPadding)]
-  px-14
-  gap-x-[calc(var(--verticalContentPadding)/2)]
-  gap-y-[var(--verticalContentPadding)]
-  border-t
-  border-divider
-  tablet-sm:px-16
-  tablet-md:px-0
-  tablet-sm:[grid-template-columns:repeat(2,minmax(0,auto))]
-  tablet-sm:gap-y-[calc(var(--verticalContentPadding)/1.25)]
-`;
-
-export const LinksGroup = tw.div`
-  flex flex-col
-  gap-12
-  w-full
-  tablet-sm:gap-0
-`;
-
-export const LinksGroupTitle = tw.p`
-  text-3xs text-tertiary-txt
-  font-manrope font-bold
-  select-none
-  uppercase tracking-wider
-  tablet-sm:sr-only
-`;
-
-export const BrandLink = tw(FooterLink)`
-  inline-flex
-  self-center
-  py-3
-  px-4
+  grid-cols-2
   gap-6
-  min-h-[34px]
-  !h-[unset]
-  font-bold
-  no-underline
-  -ml-6
+  px-3
+  pt-6 pb-8
+  border-t
+  border-t-divider
+  mobile-lg:pt-7
+  tablet-sm:pt-8
+  tablet-sm:pb-12
+  tablet-sm:grid-cols-4
+  tablet-sm:grid-rows-[1fr_auto]
+  tablet-sm:gap-y-4
+  tablet-md:px-0
 `;
 
-export const BrandLinkSpan = tw(FooterLinkSpan)`
-  text-xs
-  from-gradient-brand
-  to-gradient-blue
-  saturate-125
-  dark:saturate-150
-  group-hocus/link:underline
-  group-hocus/link:decoration-2
-  group-hocus/link:decoration-gradient-brand
+export const Details = tw.div`
+  flex
+  flex-col
+  col-span-2
+  gap-3
+`;
+
+export const Description = tw.p`
+  text-2xs
+  text-pretty
+  max-w-[32ch]
+`;
+
+export const LinksList = tw.ul`
+  flex
+  flex-col
+  gap-3
+  tablet-sm:row-span-2
+`;
+
+export const FooterLink = tw(Link)`
+  text-3xs
+  font-manrope
+  font-semibold
+  transition-colors
+  text-transparent
+  bg-clip-text
+  bg-gradient-to-r
+  from-tertiary-txt
+  to-tertiary-txt
+  hocus:text-transparent
+  hocus:from-secondary-txt
+  hocus:to-secondary-txt
+  hocus:saturate-125
+  hocus:dark:saturate-150
 `;

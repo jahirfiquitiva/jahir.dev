@@ -4,6 +4,7 @@ date: '2018-10-28T00:00:00.000Z'
 color: '#547FA7'
 hero: xcode/hero.jpg
 devToId: 58033
+excerpt: Tired of interrupted Xcode downloads? Resume them seamlessly with a quick trick
 ---
 
 Downloading Xcode from the App Store, or even the **.xip** file while using a browser, regardless of which one it is, can be a pain when your connection is not as stable and fast as others' and when the download can be interrupted at any time and you're most likely going to have to restart the whole download.
@@ -16,56 +17,68 @@ Here's what I did to download it…
 
 It is a small package of ~183Mb which I think it's enough to be downloaded via your browser.
 
-* Go to [Developer Downloads site](https://developer.apple.com/download/more/)
-* Sign in with your Apple ID if you need to
-* Search for the command line package you want to download (I'm going to use the latest stable Command Line tools for Xcode 10 and macOS Mojave).
-  ![Command Line Tools download option](/static/images/blog/xcode/xcode-1.png)
-* Press the link on the right side and wait for download to complete
-* Once downloaded, install it as any other .dmg package.
+- Go to [Developer Downloads site](https://developer.apple.com/download/more/)
+- Sign in with your Apple ID if you need to
+- Search for the command line package you want to download (I'm going to use the latest stable Command Line tools for Xcode 10 and macOS Mojave).
+  ![Command Line Tools download option](/media/blog/xcode/xcode-1.png)
+- Press the link on the right side and wait for download to complete
+- Once downloaded, install it as any other .dmg package.
 
 ### Install Homebrew and wget
+
 I used [Homebrew](https://brew.sh/) to install **_wget_**. There might be another way, but this is how I did it. 😅
-* Open Terminal
-* Run
+
+- Open Terminal
+- Run
+
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-* Follow the prompted steps
-* Once done, run
+
+- Follow the prompted steps
+- Once done, run
+
 ```bash
 brew install wget
 ```
 
 ### Install and get cookies.txt from your browser
-* [Download for Google Chrome](https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg) (Don't have a link for other browsers, sorry)
-* Visit the [Developer Downloads site](https://developer.apple.com/download/more/) again.
-* Click the cookies.txt icon
-* In the top part you will see a link that says **_'click here'_**. Click it to download the **_cookies.txt_** file
-* Save it wherever you want
+
+- [Download for Google Chrome](https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg) (Don't have a link for other browsers, sorry)
+- Visit the [Developer Downloads site](https://developer.apple.com/download/more/) again.
+- Click the cookies.txt icon
+- In the top part you will see a link that says **_'click here'_**. Click it to download the **_cookies.txt_** file
+- Save it wherever you want
 
 ### Get Xcode direct download link
-* Visit the [Developer Downloads site](https://developer.apple.com/download/more/) once more.
-* Select the Xcode version you want to download (I'm going to download Xcode 10).
-  ![Xcode 10 download option](/static/images/blog/xcode/xcode-2.png)
-* Right-click the link on the right side an select "Copy link address"
-* Alternatively, visit this [StackOverflow answer](https://stackoverflow.com/a/10335943) for links to all Xcode versions.
+
+- Visit the [Developer Downloads site](https://developer.apple.com/download/more/) once more.
+- Select the Xcode version you want to download (I'm going to download Xcode 10).
+  ![Xcode 10 download option](/media/blog/xcode/xcode-2.png)
+- Right-click the link on the right side an select "Copy link address"
+- Alternatively, visit this [StackOverflow answer](https://stackoverflow.com/a/10335943) for links to all Xcode versions.
 
 ### Start download
-* Open Terminal and go to the location of your **_cookies.txt_** file.
-* Now run
+
+- Open Terminal and go to the location of your **_cookies.txt_** file.
+- Now run
+
 ```bash
 wget --load-cookies=cookies.txt -c https://download.developer.apple.com/Developer_Tools/Xcode_10/Xcode_10.xip
 ```
-* Replace the link at the end with the one you want for the file you want to download which you got in last step.
-* Wait for the download to finish.
+
+- Replace the link at the end with the one you want for the file you want to download which you got in last step.
+- Wait for the download to finish.
 
 **Notes:**
-* Add **_-b_** to the download command to run it in the background, although it is easier to check progress and state without it.
-* The **_-c_** option in the command allows you to **c**ontinue with the download even if you close your terminal, or cancel the process, or restart your laptop, etc.
+
+- Add **_-b_** to the download command to run it in the background, although it is easier to check progress and state without it.
+- The **_-c_** option in the command allows you to **c**ontinue with the download even if you close your terminal, or cancel the process, or restart your laptop, etc.
 
 ### Install Xcode
-* Open the downloaded file so it starts uncompressing.
-* Move the uncompressed file to the **_Applications folder_** and you're done!
+
+- Open the downloaded file so it starts uncompressing.
+- Move the uncompressed file to the **_Applications folder_** and you're done!
 
 Hope you find this useful and please don't forget to share it with others!
 

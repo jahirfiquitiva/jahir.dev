@@ -14,7 +14,7 @@ const graphQlQuery = `
           ... on SponsorsTier {
             id
             adminInfo {
-              sponsorships(first: 100) {
+              sponsorships(first: 100, includePrivate: true) {
                 totalRecurringMonthlyPriceInDollars
                 nodes {
                   ... on Sponsorship {
@@ -35,6 +35,7 @@ const graphQlQuery = `
                     tierSelectedAt
                     isActive
                     isOneTimePayment
+                    privacyLevel
                   }
                 }
               }

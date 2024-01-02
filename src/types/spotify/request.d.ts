@@ -28,3 +28,8 @@ export interface PlayHistoryObject {
   played_at?: string;
   context?: unknown | null;
 }
+
+export type NowPlayingAPIResponse = {
+  track?: ReadableTrack | null;
+  isPlaying: boolean;
+} | null;

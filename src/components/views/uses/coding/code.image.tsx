@@ -1,35 +1,41 @@
-'use client';
-
-import { useMemo } from 'react';
-
 import darkCode from '@/assets/images/code/code-dark.png';
 import lightCode from '@/assets/images/code/code-light.png';
-import { Img } from '@/components/core/img';
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useTheme } from '@/providers/theme-provider';
-import cx from '@/utils/cx';
+import { Img, type ImgProps } from '@/components/atoms/img';
+import cx, { tw } from '@/utils/cx';
 
-export const CodeImage = () => {
-  const hasMounted = useHasMounted();
-  const { isDark } = useTheme();
+const CodeImg = tw(Img)<ImgProps>`
+  h-full w-full
+  absolute
+  transition
+  select-none
+`;
 
-  const image = useMemo(() => {
-    if (!hasMounted) darkCode;
-    return isDark ? darkCode : lightCode;
-  }, [hasMounted, isDark]);
-
-  return (
-    <Img
-      src={image}
-      alt={"Preview of Jahir's VSCodium configuration"}
+export const CodeImage = () => (
+  <figure>
+    <div
       className={cx(
-        'filter transition-colors',
-        'rounded-8 bg-[#4474BE]',
-        hasMounted ? '' : 'motion-safe:animate-pulse',
-        hasMounted ? 'saturate-100' : 'saturate-0',
-        hasMounted ? 'opacity-100' : 'opacity-50',
+        'aspect-video relative',
+        'tablet-md:rounded-4',
+        'overflow-hidden',
+        '-mx-3 tablet-md:-mx-4',
       )}
-      placeholder={'blur'}
-    />
-  );
-};
+    >
+      <CodeImg
+        src={lightCode}
+        alt={"Preview of Jahir's VSCode configuration with Light theme"}
+        quality={100}
+        placeholder={'blur'}
+        className={'opacity-100 visible dark:opacity-0 dark:invisible'}
+      />
+      <CodeImg
+        src={darkCode}
+        alt={"Preview of Jahir's VSCode configuration with Dark theme"}
+        quality={100}
+        placeholder={'blur'}
+        className={'opacity-0 invisible dark:opacity-100 dark:visible'}
+        aria-hidden={'true'}
+      />
+    </div>
+    <figcaption>Preview of Jahir&apos;s VSCode configuration</figcaption>
+  </figure>
+);

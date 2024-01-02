@@ -1,3 +1,4 @@
+import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 import { groupBy } from '@/utils/group-by';
 
 const { BMAC_PAT: bmacPat = '' } = process.env;
@@ -37,7 +38,7 @@ const getPhotoUrl = (name: string): string => {
       name.substring(1),
     )}?fallback=`;
   }
-  url += `https://source.boringavatars.com/beam/96/${encodeURIComponent(name)}`;
+  url += buildBoringAvatarUrl(name);
   return url;
 };
 

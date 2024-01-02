@@ -1,8 +1,8 @@
-import { Projects } from '@/components/views/projects/projects';
-import { getStaticMetadata } from '@/utils/metadata';
+import { ProjectsList } from '@/components/views/projects';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Projects – Jahir Fiquitiva',
   description:
     // eslint-disable-next-line max-len
@@ -22,5 +22,5 @@ export const metadata = getStaticMetadata({
 });
 
 export default function ProjectsPage() {
-  return <Projects title={'Projects'} full />;
+  return <ProjectsList title={'Projects'} />;
 }

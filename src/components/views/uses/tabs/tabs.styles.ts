@@ -1,14 +1,12 @@
-import tw from 'tailwind-styled-components';
-
-import { NoPaddingSection } from '@/components/core/section';
+import { tw } from '@/utils/cx';
 
 export const TabsList = tw.div`
   flex
   flex-row
   items-center
-  p-2
+  p-0.5
   pb-0
-  pr-56
+  pr-14
   max-w-full
   overflow-y-hidden
   overflow-x-scroll
@@ -23,19 +21,25 @@ export const TabsList = tw.div`
   tablet-md:[mask-image:none]
 `;
 
-export const TabPanel = tw(NoPaddingSection)`
-  gap-24
-  mb-16
+export const TabPanel = tw.section.attrs({
+  role: 'tabpanel',
+})`
+  flex
+  flex-col
+  gap-6
+  mb-4
   transition
-  ${(p) => (p.hidden ? 'hidden' : 'flex')}
-  ${(p) => (p.hidden ? 'invisible' : 'visible')}
-  ${(p) => (p.hidden ? 'opacity-0' : 'opacity-100')}
-  ${(p) => (p.hidden ? 'pointer-events-none' : 'pointer-events-auto')}
-  ${(p) => (p.hidden ? 'select-none' : 'select-auto')}
+  opacity-100
+  visible
+  [&[aria-hidden="true"]]:hidden
+  [&[aria-hidden="true"]]:opacity-0
+  [&[aria-hidden="true"]]:invisible
+  [&[aria-hidden="true"]]:pointer-events-none
+  [&[aria-hidden="true"]]:select-none
 `;
 
 export const TabButton = tw.a`
-  px-6 py-4
+  px-1.5 py-1
   font-manrope
   font-semibold
   min-w-fit
@@ -45,9 +49,9 @@ export const TabButton = tw.a`
   no-underline
   hocus:outline-offset-0
   mobile-lg:text-2xs
-  [&[aria-selected="true"]]:pt-6
-  [&[aria-selected="true"]]:pb-4
-  [&[aria-selected="true"]]:border-b-2
+  [&[aria-selected="true"]]:pt-1.5
+  [&[aria-selected="true"]]:pb-1
+  [&[aria-selected="true"]]:border-b-0.5
   [&[aria-selected="true"]]:text-accent
   [&[aria-selected="true"]]:border-accent
 `;
@@ -55,8 +59,8 @@ export const TabButton = tw.a`
 export const TabButtonText = tw.span`
   block
   w-full
-  px-8 py-4
-  rounded-4
+  px-2 py-1
+  rounded-1
   transition
   tracking-wide
   group-hover/tab:bg-accent-dark/[0.08]

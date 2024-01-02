@@ -16,6 +16,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "removeComments": true,
+    "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
       "~/stitches": ["stitches.config.ts"],

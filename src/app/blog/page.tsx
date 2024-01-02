@@ -1,35 +1,26 @@
-import { Suspense } from 'react';
-
-import { Section } from '@/components/core/section';
-import { BlogPosts } from '@/components/views/blog/posts';
-import { allReadableBlogs } from '@/utils/blog';
-import { getStaticMetadata } from '@/utils/metadata';
+import { Section } from '@/components/atoms/section';
+import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
+import { getColoredTextClasses } from '@/utils/colored-text';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
-import Loading from '../loading';
-
-import { Header } from './header';
-import { groupBlogPosts } from './utils';
-
-const allowInProgress = process.env.NODE_ENV === 'development';
-const groupedBlogPosts = groupBlogPosts(
-  allReadableBlogs
-    .filter((it) => allowInProgress || !it.inProgress)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date))),
-);
+import { GroupedBlogPosts } from './grouped-blog-posts';
 
 export default function BlogPage() {
   return (
-    <Section id={'blog'}>
-      <Header />
-      <Suspense fallback={<Loading />}>
-        <BlogPosts groupedPosts={groupedBlogPosts} />
-      </Suspense>
+    <Section id={'blog'} className={'gap-8'}>
+      <div className={'flex flex-row gap-4 items-center justify-between'}>
+        <h1 className={getColoredTextClasses('orange', 'yellow', 'orange')}>
+          Blog
+        </h1>
+        <RSSFeedButton />
+      </div>
+      <GroupedBlogPosts />
     </Section>
   );
 }
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Blog – Jahir Fiquitiva',
   description:
     // eslint-disable-next-line max-len

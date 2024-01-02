@@ -1,7 +1,6 @@
 import xml from 'xml';
 
-import { allReadableBlogs } from '@/utils/blog';
-import type { Blog } from 'contentlayer/generated';
+import { allSimpleBlogs, type SimpleBlog } from '@/utils/blog';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -11,13 +10,9 @@ const formatImageUrl = (url?: string) => {
   return url;
 };
 
-const buildDescriptionHtml = (post: Blog): string => {
+const buildDescriptionHtml = (post: SimpleBlog): string => {
   let description = '';
-  if (post.longExcerpt) {
-    description += `<p>${post.longExcerpt}</p><br/>`;
-  } else if (post.excerpt) {
-    description += `<p>${post.excerpt}</p><br/>`;
-  }
+  if (post.excerpt) description += `<p>${post.excerpt}</p><br/>`;
 
   if (post.link)
     description += `<b><a href="${post.link}">Read more...</a></b><br/><br/>`;
@@ -31,7 +26,7 @@ const buildDescriptionHtml = (post: Blog): string => {
   return description;
 };
 
-const getAllPostRssData = (post: Blog) => {
+const getAllPostRssData = (post: SimpleBlog) => {
   const descriptionHtml = buildDescriptionHtml(post);
   return {
     title: post.title,
@@ -114,7 +109,8 @@ const defaultChannel = {
   language: 'en-US',
   link: 'https://jahir.dev',
   title: 'Jahir Fiquitiva',
-  description: 'Passionate and creative full-stack developer from Colombia',
+  description:
+    'Passionate and creative full-stack software engineer from Colombia',
   image_url: 'https://jahir.dev/api/og',
   image: {
     title: 'Jahir Fiquitiva',
@@ -125,7 +121,7 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allBlogs = allReadableBlogs
+  const allBlogs = allSimpleBlogs
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(

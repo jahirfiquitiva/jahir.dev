@@ -1,53 +1,41 @@
-import tw from 'tailwind-styled-components';
+import { Img, type ImgProps } from '@/components/atoms/img';
+import { tw } from '@/utils/cx';
 
-import { Img } from '@/components/core/img';
-import { Section } from '@/components/core/section';
-
-export const IntroSection = tw(Section)`
-  grid
-  grid-cols-1
-  gap-y-16
-  tablet-sm:grid-cols-[minmax(0,1fr)_auto]
-  tablet-sm:grid-rows-1
-  tablet-sm:gap-x-28
+export const WavingSpan = tw.span`
+  inline-block
+  text-primary-txt
+  motion-safe:animate-wave
+  motion-safe:origin-waving
 `;
 
-export const TextsContainer = tw.div`
-  flex
-  flex-col
-  gap-28
-  [grid-row:2]
-  tablet-sm:[grid-row:1]
+export const SubHeader = tw.span`
+  flex flex-row
+  items-center
+  gap-2
+  text-shadow
+  shadow-brand-300
+  dark:shadow-transparent
 `;
 
-export const TitlesContainer = tw.div`
-  flex flex-col-reverse gap-8
+export const Name = tw.span`
+  dark:text-transparent
+  dark:bg-gradient-to-r
+  dark:from-brand-300
+  dark:to-blue-400
+  dark:saturate-150
+  dark:bg-clip-text
 `;
 
-export const IntroParagraph = tw.p`
-  -mt-12
-  max-w-[325px]
-  mobile-lg:max-w-[384px]
-`;
-
-export const PhotoContainer = tw.div`
-  rounded-half
-  bg-[#38518d]
-  w-[168px]
-  h-[168px]
-`;
-
-export const Photo = tw(Img)`
-  rounded-half
+export const Photo = tw(Img)<ImgProps>`
+  rounded-full
   [@media(hover:hover)]:filter
   [@media(hover:hover)]:grayscale
-  [@media(hover:hover)]:contrast-75
   [@media(hover:hover)]:brightness-150
   [@media(hover:hover)]:transition
   [@media(hover:hover)]:[transition-duration:.25s]
   [@media(hover:hover)]:mix-blend-hard-light
   [@media(hover:hover)]:opacity-75
-  hocus:filter-none
-  hocus:mix-blend-normal
-  hocus:opacity-100
+  hover:filter-none
+  hover:mix-blend-normal
+  hover:opacity-100
 `;

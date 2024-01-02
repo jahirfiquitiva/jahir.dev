@@ -1,12 +1,14 @@
-import { ComputedFields, defineDocumentType } from 'contentlayer/source-files';
+import {
+  defineDocumentType,
+  type ComputedFields,
+} from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
 import { getBlurData } from './rehype/image-metadata';
-import { getPostDescription } from './utils/get-post-desc';
-import { unique } from './utils/unique';
+import { unique } from './unique';
 
 const getActualHeroUrl = (hero?: string) =>
-  hero ? (hero.startsWith('http') ? hero : `/static/images/blog/${hero}`) : '';
+  hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -32,27 +34,6 @@ const computedFields: ComputedFields = {
       return unique([...filteredKeywords]);
     },
   },
-  excerpt: {
-    type: 'string',
-    resolve: (doc) =>
-      getPostDescription(doc.body.raw, doc.excerpt || doc.description, true),
-  },
-  longExcerpt: {
-    type: 'string',
-    resolve: (doc) =>
-      getPostDescription(doc.body.raw, doc.excerpt || doc.description),
-  },
-  year: {
-    type: 'number',
-    resolve: (doc) => {
-      try {
-        const date = new Date(doc.date);
-        return date.getFullYear();
-      } catch (e) {
-        return 0;
-      }
-    },
-  },
   heroMeta: {
     type: 'json',
     resolve: async (doc) => {
@@ -69,7 +50,7 @@ const Blog = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     date: { type: 'string', required: true },
     color: { type: 'string', required: true },
-    excerpt: { type: 'string' },
+    excerpt: { type: 'string', required: true },
     hero: { type: 'string' },
     heroSource: { type: 'string' },
     link: { type: 'string' },

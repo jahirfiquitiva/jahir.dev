@@ -1,4 +1,4 @@
 {
   "upgrade": true,
-  "reject": ["remark-gfm", "remark-unwrap-images", "sharp"]
+  "reject": ["remark-gfm", "remark-unwrap-images", "sharp", "react-twc"]
 }

@@ -1,42 +1,50 @@
-import { Heading } from '@/components/core/heading';
-import { Section } from '@/components/core/section';
-import { Coding } from '@/components/views/uses/coding/coding';
+import { Link } from '@/components/atoms/link';
+import { Section } from '@/components/atoms/section';
+import { Zoom } from '@/components/molecules/zoom';
+import { Coding } from '@/components/views/uses/coding';
 import { ExtensionsGrid } from '@/components/views/uses/extensions';
-import { Everyday, GamingPc } from '@/components/views/uses/hardware/hardware';
-import { Software } from '@/components/views/uses/software/software';
-import { Tabs } from '@/components/views/uses/tabs/tabs';
-import { Website } from '@/components/views/uses/website/website';
-import { getStaticMetadata } from '@/utils/metadata';
+import { EverydayHardware } from '@/components/views/uses/hardware';
+import { Software } from '@/components/views/uses/software';
+import { Tabs } from '@/components/views/uses/tabs';
+import { getColoredTextClasses } from '@/utils/colored-text';
+import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
 
 export default function UsesPage() {
   return (
-    <Section id={'uses'} className={'flex-1 gap-24'}>
-      <Heading shadow={'brand'} from={'brand'} to={'blue'}>
-        What do I use?
-      </Heading>
-      <Tabs
-        tabsNames={[
-          'Everyday',
-          'Gaming PC',
-          'Software',
-          'Browser',
-          'Coding',
-          'Website',
-        ]}
+    <Section id={'uses'} className={'flex-1 gap-6'}>
+      <h1
+        className={getColoredTextClasses(
+          'brand',
+          'brand',
+          'blue',
+          'self-start',
+        )}
       >
-        <Everyday />
-        <GamingPc />
+        What do I use?
+      </h1>
+      <Tabs>
+        <EverydayHardware />
         <Software />
         <ExtensionsGrid />
         <Coding />
-        <Website />
+        <p>
+          Please check out the brand new{' '}
+          <Link title={'Colophon page'} href={'/colophon'}>
+            Colophon page
+          </Link>
+          !{' '}
+          <span role={'img'} aria-label={'party popper'}>
+            🎉
+          </span>
+        </p>
       </Tabs>
+      <Zoom />
     </Section>
   );
 }
 
-export const metadata = getStaticMetadata({
+export const metadata = createMetadata({
   title: 'Uses – Jahir Fiquitiva',
   description:
     'Get to know the hardware, software and tools I use on a daily basis',
