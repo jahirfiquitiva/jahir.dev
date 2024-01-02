@@ -2,7 +2,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'path';
 
-import sizeOf from 'image-size';
+// import sizeOf from 'image-size';
 import { getPlaiceholder } from 'plaiceholder';
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
@@ -49,6 +49,10 @@ interface BlurResult {
   blur64?: string;
 }
 
+const gcd = (a: number, b: number): number => {
+  return b == 0 ? a : gcd(b, a % b);
+};
+
 export const getBlurData = async (
   imageSrc?: string,
   placeholderSize: number = 12,
@@ -67,16 +71,26 @@ export const getBlurData = async (
       imgBuffer = Buffer.from(arrayBuffer);
     }
 
-    const size = await sizeOf(imgBuffer);
+    // const size = await sizeOf(imgBuffer);
     const blur = await getPlaiceholder(imgBuffer, { size: placeholderSize });
+    const size = {
+      width: blur.metadata.width || 0,
+      height: blur.metadata.height || 0,
+    };
+    const ratio = gcd(size.width, size.height);
+    const widthRatio = size.width / ratio;
+    const heightRatio = size.height / ratio;
+    const newWidth = Math.min(size.width, 666); // The website width content
+    const newHeight = Math.round((newWidth * heightRatio) / widthRatio);
 
     const result = {
       size: {
-        width: size?.width || blur.metadata.width || 0,
-        height: size?.height || blur.metadata.height || 0,
+        width: newWidth,
+        height: newHeight,
       },
       blur64: blur.base64,
     };
+    console.error({ ...result, imageSrc });
     return result;
   } catch (e) {
     console.error(`Error processing image: "${imageSrc}"`);
