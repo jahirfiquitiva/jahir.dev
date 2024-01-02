@@ -67,7 +67,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       />
       <p
         className={cx(
-          'w-full tablet-md:self-end',
+          'w-full tablet-md:self-end font-medium',
           'text-xs text-primary-txt line-clamp-2 text-pretty',
           'group-hocus/post:underline group-hocus/post:decoration-primary-txt',
         )}
@@ -77,8 +77,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       <div
         className={cx(
           'flex flex-col',
-          'gap-1.5 col-span-2',
-          'mobile-md:gap-1',
+          'gap-1 col-span-2',
           'mobile-lg:gap-0.5',
           'mobile-lg:col-span-1 mobile-lg:col-start-2',
         )}
@@ -95,7 +94,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
         <p
           className={cx(
             'flex flex-row items-center w-full',
-            'gap-1 text-3xs text-tertiary-txt',
+            'gap-0.5 text-3xs text-tertiary-txt',
             'tabular-nums line-clamp-1',
             'flex-nowrap flex overflow-x-auto',
           )}

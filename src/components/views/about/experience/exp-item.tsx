@@ -44,7 +44,7 @@ export const ExpItem = (props: ExperienceItemProps) => {
         </p>
         <p
           className={cx(
-            'line-clamp-1 font-semibold text-primary-txt',
+            'line-clamp-1 font-medium text-primary-txt',
             'group-hocus/exp:underline group-hocus/exp:decoration-primary-txt',
           )}
         >

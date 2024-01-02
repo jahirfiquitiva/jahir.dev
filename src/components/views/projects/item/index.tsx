@@ -40,6 +40,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
         <div className={'flex flex-row gap-3 items-center'}>
           <p
             className={cx(
+              'font-medium',
               'text-xs text-primary-txt line-clamp-2 text-pretty',
               'group-hocus/project:underline group-hocus/project:decoration-primary-txt',
             )}

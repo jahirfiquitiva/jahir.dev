@@ -36,5 +36,8 @@ export const IconContainer = tw.li`
 
 export const IconLink = tw(Link)`
   text-secondary-txt
+  transform
+  transition
   hocus:text-primary-txt
+  hocus:scale-110
 `;

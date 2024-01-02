@@ -3,6 +3,7 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const ProjectLink = tw(Link)`
+  font-normal
   group/project no-underline
   relative
   p-2.5 mobile-lg:p-3

@@ -3,6 +3,7 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const ActivityCard = tw(Link)`
+  font-normal
   block
   relative
   w-full
@@ -70,7 +71,7 @@ export const Header = tw.p`
   items-center
   gap-3
   text-3xs
-  font-bold
+  font-semibold
   font-manrope
   tracking-wider
   text-tertiary-txt
@@ -98,8 +99,7 @@ export const MusicBar = tw.span`
 export const TrackName = tw.span`
   text-2xs
   truncate
-  font-bold
-  font-manrope
+  font-medium
   text-secondary-txt
   transition-colors
   w-full

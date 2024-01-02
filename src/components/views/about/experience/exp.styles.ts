@@ -2,6 +2,7 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const ExperienceItem = tw(Link)`
+  font-normal
   group/exp no-underline
   relative flex flex-row items-start
   gap-2.5 mobile-lg:gap-3 tablet-md:gap-3.5

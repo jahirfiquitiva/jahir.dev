@@ -2,6 +2,7 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const Container = tw(Link)`
+  font-normal
   flex
   items-center
   justify-between

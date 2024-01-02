@@ -13,6 +13,7 @@ export const Grid = tw.div`
 `;
 
 export const HardwareItem = tw(Link)`
+  font-normal
   flex
   flex-row
   items-center

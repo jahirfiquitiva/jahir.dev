@@ -74,7 +74,9 @@ export const SponsorItem = (props: SponsorProps) => {
             className={'rounded-half h-full bg-accent'}
             style={{ minHeight: imgSizesForTier[tier] }}
           />
-          <span className={fontSizesForTier[tier]}>{sponsor.name}</span>
+          <span className={cx(fontSizesForTier[tier], 'font-medium')}>
+            {sponsor.name}
+          </span>
         </NameAndPhotoContainer>
         <Tier
           className={cx(

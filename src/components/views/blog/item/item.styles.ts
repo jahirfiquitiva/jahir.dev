@@ -2,6 +2,7 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const BlogPostLink = tw(Link)`
+  font-normal
   group/post no-underline
   relative
   p-2.5 mobile-lg:p-3
@@ -21,4 +22,5 @@ export const BlogPostLink = tw(Link)`
   mobile-lg:gap-y-1
   mobile-lg:items-start
   tablet-md:gap-x-3.5
+  tablet-md:gap-y-0.5
 `;
