@@ -64,7 +64,7 @@ export const Experience = () => {
             'https://drive.google.com/viewerng/viewer?url=https://jahir.dev/resume'
           }
           openInNewTab
-          className={'self-start pr-4'}
+          className={'self-start pr-3.5'}
           data-umami-event={'Resume'}
         >
           <Icon

@@ -66,7 +66,7 @@ export const ShareButton = (props: ShareButtonProps) => {
       }}
       data-umami-event={'Share blog post'}
       data-umami-event-title={title}
-      className={'pr-4'}
+      className={'pr-3.5'}
     >
       <Child />
     </Button>
@@ -76,7 +76,7 @@ export const ShareButton = (props: ShareButtonProps) => {
       href={shareUrl(title, slug) as Route}
       data-umami-event={'Share blog post link'}
       data-umami-event-title={title}
-      className={'pr-4 no-underline hocus:text-on-accent'}
+      className={'pr-3.5 no-underline hocus:text-on-accent'}
     >
       <Child />
     </LinkButton>

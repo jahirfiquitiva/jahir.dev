@@ -10,6 +10,7 @@ import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { Mdx } from '@/components/views/blog/mdx';
+import { DonateButtons } from '@/components/views/donate/buttons';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
@@ -128,6 +129,7 @@ export default function DonatePage() {
           together!
         </p>
       </article>
+      <DonateButtons />
       {/* <DonateButtons />
       <Suspense fallback={<Loading />}>
         <DynamicDonateContent />

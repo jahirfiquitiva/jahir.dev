@@ -9,7 +9,7 @@ export const RSSFeedButton = (props: { className?: string }) => {
       href={'/feed.xml'}
       openInNewTab
       className={cx(
-        'self-start pr-4',
+        'self-start pr-3.5',
         'bg-orange-600 dark:bg-orange-500',
         'hocus:bg-orange-700 dark:hocus:bg-orange-400',
         'ring-orange-700 dark:ring-orange-600',

@@ -67,7 +67,7 @@ export default function BlogPostLayout(
           <OutlinedLinkButton
             title={'Edit blog post'}
             href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${slug}/index.mdx`}
-            className={'pr-4'}
+            className={'pr-3.5'}
           >
             <Icon
               className={'size-5'}

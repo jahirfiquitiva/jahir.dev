@@ -29,7 +29,7 @@ export const ProjectsList = (props: ProjectsListProps) => {
             title={'View all'}
             href={'/projects'}
             className={cx(
-              'pr-4',
+              'pr-3.5',
               'justify-center max-mobile-lg:flex-1',
               'mobile-lg:self-start mobile-lg:justify-start',
             )}

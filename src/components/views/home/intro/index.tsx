@@ -78,7 +78,7 @@ export const Intro = () => {
           title={'More about me'}
           href={'/about'}
           className={cx(
-            'pr-4',
+            'pr-3.5',
             'justify-center max-mobile-lg:w-full',
             'mobile-lg:self-start mobile-lg:justify-start',
           )}
