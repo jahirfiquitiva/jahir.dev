@@ -248,7 +248,7 @@ module.exports = {
   safelist: [
     {
       pattern:
-        /(from|to|shadow|decoration)-(brand|blue|green|yellow|orange|red|purple)-(50|100|200|300|400|500|600|700|800|900|950)/,
+        /^(from|to)-(brand|blue|green|yellow|orange|red|purple)-(200|300|400|500|600)$/,
       variants: [
         'dark',
         'hocus',
@@ -257,6 +257,14 @@ module.exports = {
         '[&[aria-current="page"]]',
         '[&[aria-current="page"]]:dark',
       ],
+    },
+    {
+      pattern:
+        /^decoration-(brand|blue|green|yellow|orange|red|purple)-(300|400|500|600)$/,
+      variants: ['hocus', 'dark:hocus'],
+    },
+    {
+      pattern: /^shadow-(brand|blue|green|yellow|orange|red|purple)-300$/,
     },
   ],
 } satisfies Config;
