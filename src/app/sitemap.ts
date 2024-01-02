@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 import { allSimpleBlogs } from '@/utils/blog';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = allSimpleBlogs
     .filter((it) => !Boolean(it.link))
     .map((post) => ({

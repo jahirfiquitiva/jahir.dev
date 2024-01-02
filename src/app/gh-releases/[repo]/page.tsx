@@ -50,9 +50,9 @@ export default async function ReleasePage(context: ReleasePageContext) {
 export const generateStaticParams = () =>
   releasesRepos.map((it) => ({ repo: it.toLowerCase() }));
 
-export async function generateMetadata(
+export function generateMetadata(
   context: ReleasePageContext,
-): Promise<Metadata | undefined> {
+): Metadata | undefined {
   const repo = releasesRepos.find(
     (it) => it.toLowerCase() === context.params.repo,
   );
