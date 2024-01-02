@@ -2,7 +2,7 @@ import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import cx, { tw } from '@/utils/cx';
 
-export const TypographyPreview = tw.p`
+const TypographyPreview = tw.p`
   border
   border-divider
   border-dashed

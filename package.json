@@ -9,7 +9,7 @@
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
-    "prune-code": "ts-prune -i '.contentlayer|src/app'",
+    "prune-code": "ts-prune -i '.next|.contentlayer|src/app'",
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {

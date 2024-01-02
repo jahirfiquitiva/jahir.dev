@@ -25,14 +25,3 @@ export const useRequest = <T>(
     loading: !data && !error,
   };
 };
-
-export const useImmutableRequest = <T>(
-  url: string,
-  options?: SWRConfiguration,
-): SwrData<T> =>
-  useRequest(url, {
-    ...options,
-    revalidateIfStale: false,
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-  });

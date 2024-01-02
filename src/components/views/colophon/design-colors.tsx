@@ -2,7 +2,7 @@ import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { tw } from '@/utils/cx';
 
-export const ColorSquare = tw.div`
+const ColorSquare = tw.div`
   aspect-square
   flex flex-col
   items-center
