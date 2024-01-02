@@ -13,7 +13,6 @@
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
-    "@vercel/speed-insights": "^1.0.2",
     "canvas-confetti": "^1.9.2",
     "colord": "^2.9.3",
     "kysely": "^0.27.1",
