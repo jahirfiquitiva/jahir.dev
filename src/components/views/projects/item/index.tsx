@@ -26,7 +26,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
           '--project-color': color,
         } as CSSProperties
       }
-      data-umami-event={'Project'}
+      data-umami-event={'View project'}
       data-umami-event-project={project.name}
     >
       <ProjectIcon
