@@ -6,9 +6,7 @@ export const Container = tw(Link)`
   items-center
   justify-between
   gap-2.5
-  pl-2.5
-  pr-2
-  py-2.5
+  p-2
   rounded-0
   text-secondary-txt
   no-underline

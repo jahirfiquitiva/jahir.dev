@@ -14,6 +14,7 @@ export const Header = tw.div`
   flex
   flex-col-reverse
   mobile-lg:flex-row
+  mobile-lg:items-end
   mobile-lg:justify-between
 `;
 
