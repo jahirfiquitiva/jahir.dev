@@ -26,8 +26,8 @@ const calcHeroWidthAndHeight = (dimensions: {
 }) => {
   const { width = MAX_WIDTH, height = MAX_HEIGHT } = dimensions;
   return {
-    width: Math.max(width, MAX_WIDTH),
-    height: Math.max(height, MAX_HEIGHT),
+    width: Math.min(width, MAX_WIDTH),
+    height: Math.min(height, MAX_HEIGHT),
   };
 };
 
