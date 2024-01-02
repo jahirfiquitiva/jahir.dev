@@ -6158,10 +6158,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kysely@npm:^0.27.0":
-  version: 0.27.0
-  resolution: "kysely@npm:0.27.0"
-  checksum: ec2b3869cd68ff4a756a009b48c7cba4835e2e5ac7f23446721ce10df109ddc2cf8275250065eeb84999d57dc8e7fe2627b4a253284bd577593e554e2aad1fbc
+"kysely@npm:^0.27.1":
+  version: 0.27.1
+  resolution: "kysely@npm:0.27.1"
+  checksum: 2a0998f53c7e1f02744caac4bf92e708f65e5ff4cb85f5944e4cce417d0a06209ba09b26d51ab1c378d3c8300d01fce2b07618b233360baaf8274799569236b9
   languageName: node
   linkType: hard
 
@@ -9459,7 +9459,7 @@ __metadata:
     husky: "npm:^8.0.3"
     image-size: "npm:^1.1.0"
     is-ci: "npm:^3.0.1"
-    kysely: "npm:^0.27.0"
+    kysely: "npm:^0.27.1"
     kysely-planetscale: "npm:^1.4.0"
     medium-zoom: "npm:^1.1.0"
     million: "npm:^2.6.4"
