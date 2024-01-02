@@ -3,7 +3,7 @@ import { cache } from 'react';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import {
-  allReadableBlogs,
+  allSimpleBlogs,
   sortBlogPostsByDate,
   type SimpleBlog,
 } from '@/utils/blog';
@@ -11,7 +11,7 @@ import {
 const allowInProgress = process.env.NODE_ENV === 'development';
 
 const blogPostsByYear = cache(() =>
-  allReadableBlogs
+  allSimpleBlogs
     .filter((it) => allowInProgress || !it.inProgress)
     .reduce<Record<number, Array<SimpleBlog>>>((acc, post) => {
       const year = new Date(post.date).getFullYear();

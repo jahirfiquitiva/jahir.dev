@@ -5,10 +5,9 @@ import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { Zoom } from '@/components/molecules/zoom';
 import { ReactionsButtons } from '@/components/views/blog/reactions';
 import { ShareButton } from '@/components/views/blog/share-button';
-import { getBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
-import type { Blog } from 'contentlayer/generated';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
@@ -36,7 +35,7 @@ export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = getBlog(slug);
+  const post = allBlogs.find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>

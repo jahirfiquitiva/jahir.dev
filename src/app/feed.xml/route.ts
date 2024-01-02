@@ -1,6 +1,8 @@
 import xml from 'xml';
 
-import { allReadableBlogs, type SimpleBlog } from '@/utils/blog';
+// import { allSimpleBlogs, type SimpleBlog } from '@/utils/blog';
+import { allBlogs as allSimpleBlogs } from 'contentlayer/generated';
+import type { Blog as SimpleBlog } from 'contentlayer/generated';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -33,7 +35,7 @@ const getAllPostRssData = (post: SimpleBlog) => {
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
     description: post.excerpt,
-    html: descriptionHtml,
+    html: post.body.raw, // descriptionHtml,
     slug: post.slug,
     hero: post.hero,
   };
@@ -120,7 +122,7 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allBlogs = allReadableBlogs
+  const allBlogs = allSimpleBlogs
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(

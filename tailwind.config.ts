@@ -140,6 +140,14 @@ module.exports = {
       saturate: {
         125: '1.25',
       },
+      dropShadow: {
+        doodle: [
+          '-0.1875rem -0.1875rem 0.125rem var(--tw-shadow-color)',
+          '0.1875rem 0.1875rem 0.125rem var(--tw-shadow-color)',
+          '0.1875rem -0.1875rem 0.125rem var(--tw-shadow-color)',
+          '-0.1875rem 0.1875rem 0.125rem var(--tw-shadow-color)',
+        ],
+      },
       boxShadow: {
         'toolbar-hover': '0 0 8px 2px var(--tw-shadow-color)',
         'toolbar-elevated': '0 0 6px 1px var(--tw-shadow-color)',

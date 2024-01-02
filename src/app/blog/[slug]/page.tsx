@@ -3,9 +3,9 @@ import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
 import { Mdx } from '@/components/views/blog/mdx';
-import { allReadableBlogs, getBlog } from '@/utils/blog';
 import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
+import { allBlogs } from 'contentlayer/generated';
 
 import Loading from '../../loading';
 
@@ -13,7 +13,7 @@ import type { BlogPostPageContext } from './types';
 
 export default function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
-  const post = getBlog(slug);
+  const post = allBlogs.find((b) => b.slug === slug);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
@@ -26,7 +26,7 @@ export default function BlogPostPage(context: BlogPostPageContext) {
 }
 
 export const generateStaticParams = () =>
-  allReadableBlogs.map((post) => ({ slug: post.slug }));
+  allBlogs.map((post) => ({ slug: post.slug }));
 
 export const dynamicParams = false;
 
@@ -34,7 +34,7 @@ export function generateMetadata(
   context: BlogPostPageContext,
 ): Metadata | undefined {
   const { slug } = context.params;
-  const post = getBlog(slug);
+  const post = allBlogs.find((b) => b.slug === slug);
   if (!slug || !post) return undefined;
 
   const { title, date, excerpt, hero } = post;
