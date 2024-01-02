@@ -27,7 +27,8 @@ export const Intro = () => {
           <Photo
             src={photo}
             alt={'Photo of Jahir Fiquitiva'}
-            size={Math.min(photo.width, photo.height)}
+            size={160}
+            quality={100}
             priority
           />
         </div>

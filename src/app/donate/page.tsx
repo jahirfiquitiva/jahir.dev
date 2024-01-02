@@ -29,7 +29,6 @@ export default function DonatePage() {
             <Img
               src={illustration}
               alt={'Illustration of person with big heart'}
-              loading={'lazy'}
               size={144}
               className={cx(
                 'rounded-0 m-0 -scale-x-100',

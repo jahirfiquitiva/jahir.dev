@@ -55,8 +55,8 @@ export const FooterNowPlaying = () => {
       <Img
         alt={`Album cover: "${track.album}" by "${track.artist}"`}
         src={track.image?.url}
-        width={track.image?.width || 24}
-        height={track.image?.height || 24}
+        size={24}
+        quality={50}
         className={cx(
           'size-6 rounded-full border border-divider',
           'motion-safe:animate-spin motion-safe:[animation-duration:8s]',

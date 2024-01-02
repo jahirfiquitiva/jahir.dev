@@ -47,6 +47,7 @@ export const Music = () => {
         }
         src={track?.image?.url || ''}
         size={78}
+        quality={50}
         className={cx(
           isPlaying
             ? 'motion-safe:animate-spin'
@@ -54,7 +55,6 @@ export const Music = () => {
               ? 'hidden invisible'
               : '',
         )}
-        quality={50}
       />
       <Content className={'bg-white/75 dark:bg-brand-900/25'}>
         <Img
