@@ -1,11 +1,11 @@
 import { cache } from 'react';
 
+import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 import { groupBy } from '@/utils/group-by';
 
 import { getBmacData } from './bmac/bmac';
 import { getGitHubSponsors } from './github/sponsors';
 import { unicorns } from './unicorns';
-import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 
 const categoriesPriceAndKey: Record<number, CategoryKey> = {
   2: 'star',
