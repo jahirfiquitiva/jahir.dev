@@ -14,8 +14,8 @@ export const Container = tw(Link)`
   no-underline
   group/sponsor
   hocus:no-underline
-  hocus:bg-brand-600/10
-  dark:hocus:bg-brand-200/10
+  hocus:bg-brand-600/5
+  dark:hocus:bg-brand-200/5
   hocus:text-primary-txt
 `;
 
