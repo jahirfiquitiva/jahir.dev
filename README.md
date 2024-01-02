@@ -2,6 +2,8 @@
 
 [![GitHub Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=ff69b4)](https://github.com/sponsors/jahirfiquitiva)
 
+![Website Preview](./preview.png)
+
 ## Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
