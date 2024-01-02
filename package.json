@@ -30,7 +30,6 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@plaiceholder/next": "^3.0.0",
     "@planetscale/database": "^1.13.0",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.10.6",

@@ -1459,17 +1459,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@plaiceholder/next@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@plaiceholder/next@npm:3.0.0"
-  peerDependencies:
-    next: ">= 10.0.0"
-    plaiceholder: ">=3.0.0"
-    sharp: ">= 0.30.6"
-  checksum: 94f7125b288914f0633e45da43888a596e287fdff3b7a4fd72361e669613188a383eb53fcfd52fbae089da3544d9d6e1ebb5b37d95346a467a92651e5fecfb98
-  languageName: node
-  linkType: hard
-
 "@planetscale/database@npm:^1.13.0":
   version: 1.13.0
   resolution: "@planetscale/database@npm:1.13.0"
@@ -9429,7 +9418,6 @@ __metadata:
     "@commitlint/cli": "npm:^18.4.3"
     "@commitlint/config-conventional": "npm:^18.4.3"
     "@jsdevtools/rehype-toc": "npm:^3.0.2"
-    "@plaiceholder/next": "npm:^3.0.0"
     "@planetscale/database": "npm:^1.13.0"
     "@types/canvas-confetti": "npm:^1.6.4"
     "@types/node": "npm:^20.10.6"

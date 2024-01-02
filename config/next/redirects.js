@@ -6,7 +6,7 @@ const buildRedirect = (source, destination, permanent = false) => {
   };
 };
 
-const redirects = [
+module.exports = [
   /* Blog posts redirections */
   buildRedirect(
     '/blog/md-iconography-guidelines',
@@ -51,5 +51,3 @@ const redirects = [
     'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev',
   ),
 ];
-
-export default redirects;
