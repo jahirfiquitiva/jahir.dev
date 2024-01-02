@@ -23,7 +23,7 @@ export const Link = (props: LinkProps) => {
   return (
     <StyledLink
       {...{ href, ...rest }}
-      aria-label={rest.title}
+      aria-label={rest['aria-label'] || rest.title}
       {...(openInNewTab
         ? {
             target: '_blank',

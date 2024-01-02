@@ -31,7 +31,7 @@ export default function AboutPage() {
           Hey there! I&apos;m Jahir Fiquitiva, a full-stack software engineer
           from{' '}
           <Link
-            title={'Colombia on Google Maps'}
+            title={'Colombia'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
             data-umami-event={'Link to Colombia map'}
           >

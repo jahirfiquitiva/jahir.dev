@@ -25,14 +25,7 @@ export const Music = () => {
   return (
     <ActivityCard
       title={
-        !track
-          ? 'Loading…'
-          : `Listen to "${track.name}" by "${track.artist}" on Spotify`
-      }
-      aria-label={
-        !track
-          ? 'Loading…'
-          : `Listen to "${track.name}" by "${track.artist}" on Spotify`
+        !track ? 'Loading…' : `"${track.name}" by "${track.artist}" on Spotify`
       }
       href={track?.url || '#'}
       target={'_blank'}

@@ -34,7 +34,7 @@ export const Description = tw.p`
   max-w-[32ch]
 `;
 
-export const LinksList = tw.ul`
+export const LinksList = tw.div`
   flex
   flex-col
   gap-3

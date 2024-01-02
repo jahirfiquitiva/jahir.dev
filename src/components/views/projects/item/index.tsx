@@ -19,7 +19,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
     'var(--color-accent-dark)';
   return (
     <ProjectLink
-      title={`Project: "${project.name}"`}
+      title={project.name}
       href={project.link as Route}
       style={
         {

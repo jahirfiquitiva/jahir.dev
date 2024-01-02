@@ -55,7 +55,7 @@ export const Intro = () => {
           <span className={'max-w-[42ch]'}>
             Passionate and creative full-stack software engineer from{' '}
             <Link
-              title={'Colombia on Google Maps'}
+              title={'Colombia'}
               href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
               data-umami-event={'Link to Colombia map'}
             >

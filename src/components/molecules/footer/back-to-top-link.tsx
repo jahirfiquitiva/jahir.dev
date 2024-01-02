@@ -18,7 +18,6 @@ interface BackToTopLinkProps {
 export const BackToTopLink = (link: BackToTopLinkProps) => (
   <FooterLink
     title={link.a11yTitle || link.title}
-    aria-label={link.a11yTitle || link.title}
     href={link.href as Route}
     className={link.className}
     onClick={

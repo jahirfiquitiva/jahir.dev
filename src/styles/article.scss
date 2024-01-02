@@ -54,13 +54,6 @@ article a {
   @apply text-accent hocus:text-accent-dark;
 }
 
-article ul[aria-label='Social links'] {
-  @apply p-0;
-  & > li {
-    @apply p-0 m-0 text-tertiary-txt;
-  }
-}
-
 article details[data-type='toc'] {
   @apply mb-2;
   & summary {

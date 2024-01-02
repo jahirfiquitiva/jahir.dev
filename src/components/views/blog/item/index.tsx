@@ -45,7 +45,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
 
   return (
     <BlogPostLink
-      title={`Blog post: "${post.title}"`}
+      title={post.title}
       href={(post.link || `/blog/${post.slug}`) as Route}
       style={{ '--post-color': color } as CSSProperties}
     >

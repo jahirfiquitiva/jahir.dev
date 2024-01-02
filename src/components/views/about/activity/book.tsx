@@ -26,8 +26,7 @@ const readProgress = ((book.currentPage * 100) / book.totalPages).toFixed(2);
 export const Book = () => {
   return (
     <ActivityCard
-      title={`Currently reading: "${book.title}" by ${book.authors}`}
-      aria-label={`Currently reading: "${book.title}" by ${book.authors}`}
+      title={`"${book.title}" by ${book.authors}`}
       href={book.link as Route}
       target={'_blank'}
       data-umami-event={'Reading'}

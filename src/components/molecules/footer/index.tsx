@@ -22,7 +22,7 @@ export const Footer = () => {
     <StyledFooter>
       <Details>
         <FooterLink
-          title={'Home page'}
+          title={'Jahir Fiquitiva - Home Page'}
           href={'/'}
           className={cx(
             'self-start',
@@ -75,7 +75,6 @@ export const Footer = () => {
                     {link.href !== '#' ? (
                       <FooterLink
                         title={link.a11yTitle || link.title}
-                        aria-label={link.a11yTitle || link.title}
                         href={link.href as Route}
                         className={link.className}
                         {...link.props}

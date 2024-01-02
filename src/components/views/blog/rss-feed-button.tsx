@@ -5,7 +5,7 @@ import cx from '@/utils/cx';
 export const RSSFeedButton = (props: { className?: string }) => {
   return (
     <LinkButton
-      title={'Resume'}
+      title={'RSS Feed'}
       href={'/feed.xml'}
       openInNewTab
       className={cx(

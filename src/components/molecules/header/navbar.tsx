@@ -51,7 +51,7 @@ export const Navbar = (props: NavbarProps) => {
   return (
     <Nav id={'navigation'} className={className}>
       <NavLink
-        title={'Home page'}
+        title={'Jahir Fiquitiva - Home Page'}
         href={'/'}
         className={'gap-2 saturate-125 dark:saturate-150'}
         aria-current={props.path === '/' ? 'page' : undefined}
@@ -88,13 +88,18 @@ export const Navbar = (props: NavbarProps) => {
         })}
       </LinksList>
       <ButtonsGroup>
-        <ThemeToggle />
-        <NavToggle
-          title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
-          aria-expanded={isExpanded}
-          aria-controls={'header'}
-          onClick={props.onNavToggleClick}
-        />
+        <li>
+          <ThemeToggle />
+        </li>
+        <li>
+          <NavToggle
+            title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
+            aria-label={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
+            aria-expanded={isExpanded}
+            aria-controls={'header'}
+            onClick={props.onNavToggleClick}
+          />
+        </li>
       </ButtonsGroup>
     </Nav>
   );

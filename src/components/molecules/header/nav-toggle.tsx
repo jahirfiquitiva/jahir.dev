@@ -26,30 +26,22 @@ const MenuLine = tw.span.attrs({ 'aria-hidden': true })`
   group-hocus/nav-toggle:bg-accent-dark
 `;
 
-export const NavToggle = (props: TWComponentProps<typeof NavToggleButton>) => {
-  return (
-    <NavToggleButton
-      title={'Expand menu'}
-      aria-label={'Expand menu'}
-      aria-expanded={'false'}
-      aria-controls={'navigation'}
-      {...props}
-    >
-      <div aria-hidden={'true'} className={'flex flex-col gap-[0.1875rem]'}>
-        <MenuLine
-          className={
-            // eslint-disable-next-line max-len
-            '[[data-expanded="true"]_&]:translate-y-[var(--move)] [[data-expanded="true"]_&]:rotate-45'
-          }
-        />
-        <MenuLine className={'[[data-expanded="true"]_&]:opacity-0'} />
-        <MenuLine
-          className={
-            // eslint-disable-next-line max-len
-            '[[data-expanded="true"]_&]:translate-y-[calc(var(--move)_*_-1)] [[data-expanded="true"]_&]:-rotate-45'
-          }
-        />
-      </div>
-    </NavToggleButton>
-  );
-};
+export const NavToggle = (props: TWComponentProps<typeof NavToggleButton>) => (
+  <NavToggleButton {...props}>
+    <div aria-hidden={'true'} className={'flex flex-col gap-[0.1875rem]'}>
+      <MenuLine
+        className={
+          // eslint-disable-next-line max-len
+          '[[data-expanded="true"]_&]:translate-y-[var(--move)] [[data-expanded="true"]_&]:rotate-45'
+        }
+      />
+      <MenuLine className={'[[data-expanded="true"]_&]:opacity-0'} />
+      <MenuLine
+        className={
+          // eslint-disable-next-line max-len
+          '[[data-expanded="true"]_&]:translate-y-[calc(var(--move)_*_-1)] [[data-expanded="true"]_&]:-rotate-45'
+        }
+      />
+    </div>
+  </NavToggleButton>
+);
