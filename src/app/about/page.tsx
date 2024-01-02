@@ -25,13 +25,19 @@ export default function AboutPage() {
           About
         </h1>
         <p className={'max-w-nice'}>
-          👋 Hey there! I&apos;m Jahir Fiquitiva, a full-stack software engineer
+          <span role={'img'} aria-label={'waving hand'}>
+            👋
+          </span>{' '}
+          Hey there! I&apos;m Jahir Fiquitiva, a full-stack software engineer
           from{' '}
           <Link
             title={'Colombia on Google Maps'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
           >
-            Colombia 🇨🇴
+            Colombia{' '}
+            <span role={'img'} aria-label={'Colombia flag'}>
+              🇨🇴
+            </span>
           </Link>{' '}
           with over five (5) years of professional experience. My pronouns are
           he/they.

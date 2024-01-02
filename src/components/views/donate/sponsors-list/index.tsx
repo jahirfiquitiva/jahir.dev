@@ -45,7 +45,10 @@ export const SponsorsList = (props: SponsorsListProps) => {
             </p>
             <p>
               I&apos;m forever grateful to all the awesome people that support
-              my work! 🫶
+              my work!{' '}
+              <span role={'img'} aria-label={'heart hands'}>
+                🫶
+              </span>
             </p>
           </div>
         </div>

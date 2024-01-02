@@ -58,7 +58,10 @@ export const Intro = () => {
               title={'Colombia on Google Maps'}
               href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
             >
-              Colombia 🇨🇴
+              Colombia{' '}
+              <span role={'img'} aria-label={'Colombia flag'}>
+                🇨🇴
+              </span>
             </Link>
           </span>
           <span className={'max-w-[48ch]'}>
