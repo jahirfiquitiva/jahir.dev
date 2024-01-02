@@ -1,3 +1,5 @@
+import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
+
 import { getSponsorsGraphQLResponse } from './query';
 
 export const getGitHubSponsors = async (): Promise<{
@@ -19,15 +21,17 @@ export const getGitHubSponsors = async (): Promise<{
       .map((item) => {
         const { sponsorEntity: sponsor } = item;
         const name = sponsor.name || sponsor.login;
+        const isPrivate = item.privacyLevel === 'PRIVATE';
         return {
-          name,
-          photo:
-            sponsor.avatarUrl ||
-            `https://source.boringavatars.com/beam/96/${encodeURIComponent(
-              name,
-            )}`,
-          link: sponsor.websiteUrl || `https://github.com/${sponsor.login}`,
+          name: isPrivate ? 'Private sponsor' : name,
+          photo: isPrivate
+            ? buildBoringAvatarUrl()
+            : sponsor.avatarUrl || buildBoringAvatarUrl(name),
+          link: isPrivate
+            ? '#'
+            : sponsor.websiteUrl || `https://github.com/${sponsor.login}`,
           amount: monthlyPriceInDollars,
+          isPrivate: item.privacyLevel === 'PRIVATE',
         };
       });
     if (isOneTime) {

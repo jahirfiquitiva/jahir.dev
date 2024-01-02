@@ -35,4 +35,5 @@ interface ReadableSupporter {
   photo?: string;
   amount: number; // monthly
   message?: string | null;
+  isPrivate?: boolean;
 }
