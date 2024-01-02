@@ -56,7 +56,7 @@ export const Music = () => {
               : '',
         )}
       />
-      <Content className={'bg-white/75 dark:bg-brand-900/25'}>
+      <Content className={'bg-white/65 dark:bg-brand-900/35'}>
         <Img
           alt={
             !track
