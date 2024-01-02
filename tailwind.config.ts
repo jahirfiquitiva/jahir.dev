@@ -247,20 +247,31 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern:
-        /^(from|to)-(brand|blue|green|yellow|orange|red|purple)-(200|300|400|500|600)$/,
+      pattern: /^(from|to)-brand-(300|500)$/,
       variants: [
         'dark',
         'hocus',
         'hocus:dark',
-        'dark:hocus',
         '[&[aria-current="page"]]',
         '[&[aria-current="page"]]:dark',
       ],
     },
     {
-      pattern:
-        /^decoration-(brand|blue|green|yellow|orange|red|purple)-(300|400|500|600)$/,
+      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-(400|600)$/,
+      variants: [
+        'dark',
+        'hocus',
+        'hocus:dark',
+        '[&[aria-current="page"]]',
+        '[&[aria-current="page"]]:dark',
+      ],
+    },
+    {
+      pattern: /^decoration-brand-(300|500)$/,
+      variants: ['hocus', 'dark:hocus'],
+    },
+    {
+      pattern: /^decoration-(blue|green|yellow|orange|red|purple)-(400|600)$/,
       variants: ['hocus', 'dark:hocus'],
     },
     {

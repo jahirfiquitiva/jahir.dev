@@ -66,7 +66,7 @@ export const buildColoredLinkClasses = (
           ? [
               `hocus:${it}`,
               `hocus:decoration-${from}-${from === 'brand' ? '500' : '600'}`,
-              `dark:hocus:decoration-${from}-${
+              `hocus:dark:decoration-${from}-${
                 from === 'brand' ? '300' : '400'
               }`,
             ].join(' ')
