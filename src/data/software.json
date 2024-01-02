@@ -113,5 +113,10 @@
     "image": "uses/apps/magnet.png",
     "name": "Magnet",
     "link": "https://magnet.crowdcafe.com/"
+  },
+  {
+    "image": "uses/apps/focus.png",
+    "name": "Focus",
+    "link": "https://heyfocus.com/"
   }
 ]
