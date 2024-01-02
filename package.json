@@ -48,7 +48,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.2",
     "husky": "^8.0.3",
-    "image-size": "^1.1.0",
+    "image-size": "^1.1.1",
     "is-ci": "^3.0.1",
     "million": "^2.6.4",
     "next-contentlayer": "^0.3.4",
