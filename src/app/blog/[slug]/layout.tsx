@@ -66,7 +66,7 @@ export default function BlogPostLayout(
           <ShareButton title={'Share blog post'} slug={slug || ''} />
           <OutlinedLinkButton
             title={'Edit blog post'}
-            href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${slug}/index.mdx`}
+            href={`https://github.com/jahirfiquitiva/jahir.dev/edit/main/content/${slug}.mdx`}
             className={'pr-3.5'}
           >
             <Icon
