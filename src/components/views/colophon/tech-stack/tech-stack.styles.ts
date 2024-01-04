@@ -15,7 +15,6 @@ export const StackContainer = tw.ul`
   list-none
   [background-image:radial-gradient(var(--color-tertiary-txt)_1px,_transparent_1px)]
   [background-size:1rem_1rem]
-  backdrop-opacity-30
   bg-repeat
   mobile-lg:[background-size:1.25rem_1.25rem]
   tablet-sm:[background-size:1.5rem_1.5rem]

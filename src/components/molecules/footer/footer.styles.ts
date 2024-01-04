@@ -56,4 +56,5 @@ export const FooterLink = tw(Link)`
   hocus:to-secondary-txt
   hocus:saturate-125
   hocus:dark:saturate-150
+  hocus:decoration-[var(--tw-gradient-from)]
 `;

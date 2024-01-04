@@ -18,21 +18,19 @@ export const getColoredTextClasses = (
 ): string => {
   const gradientPrefix = includeLightTheme ? '' : 'dark:';
   const classes = [];
-  if (shadow) {
+  if (shadow && !includeLightTheme) {
     classes.push(
-      cx(
-        'text-shadow',
-        !includeLightTheme && `shadow-${shadow}-300`,
-        !includeLightTheme ? 'dark:text-shadow-none' : 'text-shadow-none',
-      ),
+      cx('text-shadow', `shadow-${shadow}-300`, 'dark:text-shadow-none'),
     );
   }
 
   if (from || to) {
     classes.push(
       cx(
-        `from-${from}-${from === 'brand' ? '500' : '600'}`,
-        `to-${to}-${to === 'brand' ? '500' : '600'}`,
+        includeLightTheme
+          ? `from-${from}-${from === 'brand' ? '500' : '600'}`
+          : '',
+        includeLightTheme ? `to-${to}-${to === 'brand' ? '500' : '600'}` : '',
         `dark:from-${from}-${from === 'brand' ? '300' : '400'}`,
         `dark:to-${to}-${to === 'brand' ? '300' : '400'}`,
         'dark:saturate-150',
@@ -63,13 +61,7 @@ export const buildColoredLinkClasses = (
     .map(
       (it) =>
         (forFooter
-          ? [
-              `hocus:${it}`,
-              `hocus:decoration-${from}-${from === 'brand' ? '500' : '600'}`,
-              `hocus:dark:decoration-${from}-${
-                from === 'brand' ? '300' : '400'
-              }`,
-            ].join(' ')
+          ? `hocus:${it}`
           : `hocus:${it} [&[aria-current="page"]]:${it}`) as string,
     )
     .join(' ') as string;

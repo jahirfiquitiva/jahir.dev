@@ -247,32 +247,20 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /^(from|to)-brand-(300|500)$/,
-      variants: [
-        'dark',
-        'hocus',
-        'hocus:dark',
-        '[&[aria-current="page"]]',
-        '[&[aria-current="page"]]:dark',
-      ],
+      pattern: /^(from|to)-brand-500$/,
+      variants: ['hocus', '[&[aria-current="page"]]'],
     },
     {
-      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-(400|600)$/,
-      variants: [
-        'dark',
-        'hocus',
-        'hocus:dark',
-        '[&[aria-current="page"]]',
-        '[&[aria-current="page"]]:dark',
-      ],
+      pattern: /^(from|to)-brand-300$/,
+      variants: ['dark', 'hocus:dark', '[&[aria-current="page"]]:dark'],
     },
     {
-      pattern: /^decoration-brand-(300|500)$/,
-      variants: ['hocus', 'dark:hocus'],
+      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-600$/,
+      variants: ['hocus', '[&[aria-current="page"]]'],
     },
     {
-      pattern: /^decoration-(blue|green|yellow|orange|red|purple)-(400|600)$/,
-      variants: ['hocus', 'dark:hocus'],
+      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-400$/,
+      variants: ['dark', 'hocus:dark', '[&[aria-current="page"]]:dark'],
     },
     {
       pattern: /^shadow-(brand|blue|green|yellow|orange|red|purple)-300$/,
