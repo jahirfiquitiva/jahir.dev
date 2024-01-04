@@ -64,10 +64,6 @@ export const linksGroups = [
         a11yTitle: 'Scroll back to top',
         href: '#',
         className: buildColoredLinkClasses('brand', 'blue', true),
-        props: {
-          'data-umami-event': 'Back to top',
-          'data-umami-event-src': 'Footer',
-        },
       },
     ],
   },

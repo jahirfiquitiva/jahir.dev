@@ -55,8 +55,6 @@ export const BackToTop = () => {
     <BackToTopButton
       title={'Scroll back to top'}
       className={showButton ? 'shown' : ''}
-      data-umami-event={'Back to top'}
-      data-umami-event-src={'FAB'}
       onClick={scrollToTop}
     >
       <BackToTopIcon
