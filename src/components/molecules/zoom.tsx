@@ -5,7 +5,9 @@ import { useEffect } from 'react';
 
 export const Zoom = () => {
   useEffect(() => {
-    const zoom = mediumZoom('img:not([data-nozoom]):not(a img)');
+    const zoom = mediumZoom(
+      'img:not([data-nozoom]):not(a img):not(.image-comparison img)',
+    );
     return () => {
       zoom.detach();
     };

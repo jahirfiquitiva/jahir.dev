@@ -20,7 +20,7 @@ export const ImageComparison = (props: ImageComparisonProps) => {
   const { hover = true, vertical = false, description = '' } = props;
 
   return (
-    <figure className={styles.imgComparison}>
+    <figure className={`image-comparison ${styles.imgComparison}`}>
       <ReactCompareImage
         hover={hover}
         vertical={vertical}
