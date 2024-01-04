@@ -45,6 +45,9 @@ export const linksGroups = [
         title: 'Contact',
         href: '/contact',
         className: buildColoredLinkClasses('blue', 'green', true),
+        props: {
+          ignoreNextLink: true,
+        },
       },
       {
         title: 'RSS Feed',
