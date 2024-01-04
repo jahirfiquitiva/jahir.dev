@@ -237,7 +237,12 @@ article a:has(code) {
 }
 
 .medium-zoom-overlay {
-  @apply bg-background #{!important};
+  @apply backdrop-blur backdrop-saturate-125;
+  @apply bg-light/75 dark:bg-dark/60 #{!important};
+}
+
+.medium-zoom-image--opened {
+  @apply rounded-0 aspect-auto;
 }
 
 [data-rehype-pretty-code-figure] .line,
