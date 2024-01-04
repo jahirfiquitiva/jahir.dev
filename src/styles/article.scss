@@ -237,7 +237,7 @@ article a:has(code) {
 }
 
 .medium-zoom-overlay {
-  @apply backdrop-blur backdrop-saturate-125;
+  @apply backdrop-blur backdrop-saturate-125 transform-gpu;
   @apply bg-light/75 dark:bg-dark/60 #{!important};
 }
 

@@ -11,7 +11,8 @@ export const Nav = tw.nav`
   z-[4] bg-toolbar
   p-1.5 tablet-sm:p-2
   backdrop-saturate-125
-  backdrop-blur-sm safe-blur
+  backdrop-blur-sm
+  transform-gpu
   ring-1
   ring-inset
   ring-brand-600/[0.12]

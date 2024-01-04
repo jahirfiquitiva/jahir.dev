@@ -16,7 +16,8 @@ const StyledHeader = tw.header`
   dark:from-dark dark:to-dark/5
   p-3
   bg-blend-hard-light
-  backdrop-blur safe-blur
+  backdrop-blur
+  transform-gpu
   transition-[max-height]
   duration-300
   max-h-20 tablet-sm:max-h-21
