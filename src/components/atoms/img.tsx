@@ -1,4 +1,4 @@
-import Image, { type ImageProps } from 'next/image';
+import Image, { type ImageProps, type StaticImageData } from 'next/image';
 
 import cx, { tw } from '@/utils/cx';
 
@@ -24,7 +24,13 @@ const BaseImg = (props: ImgProps) => {
       alt={rest.alt}
       width={width}
       height={height}
-      placeholder={typeof rest.src !== 'string' ? 'blur' : rest.placeholder}
+      placeholder={
+        typeof rest.src !== 'string'
+          ? (rest.src as StaticImageData)?.blurDataURL
+            ? 'blur'
+            : rest.placeholder
+          : rest.placeholder
+      }
       className={cx('object-cover object-center', rest.className)}
     />
   );

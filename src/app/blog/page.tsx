@@ -8,7 +8,7 @@ import { GroupedBlogPosts } from './grouped-blog-posts';
 
 export default function BlogPage() {
   return (
-    <Section id={'blog'} className={'gap-8'}>
+    <Section id={'blog'} className={'gap-6'}>
       <div className={'flex flex-row gap-4 items-center justify-between'}>
         <h1 className={getColoredTextClasses('orange', 'yellow', 'orange')}>
           Blog
@@ -19,8 +19,6 @@ export default function BlogPage() {
     </Section>
   );
 }
-
-export const revalidate = 86400;
 
 export const metadata = createMetadata({
   title: 'Blog – Jahir Fiquitiva',
@@ -42,3 +40,6 @@ export const metadata = createMetadata({
   ],
   image: buildOgImageUrl('blog'),
 });
+
+export const revalidate = 86400;
+export const runtime = 'edge';

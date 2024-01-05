@@ -40,7 +40,7 @@ const FeaturedBlogPostsList = async () => {
 };
 
 export const FeaturedBlogPosts = () => (
-  <Section id={'blog'} className={'gap-8'}>
+  <Section id={'blog'} className={'gap-6'}>
     <div
       className={cx(
         'w-full flex flex-col items-start gap-4',

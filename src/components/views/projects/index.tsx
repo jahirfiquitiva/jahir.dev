@@ -19,7 +19,7 @@ export const ProjectsList = (props: ProjectsListProps) => {
     : projects;
   const Heading = props.featuredOnly ? 'h2' : 'h1';
   return (
-    <Section id={'projects'} className={'gap-8'}>
+    <Section id={'projects'} className={'gap-6'}>
       <div className={'flex flex-row gap-4 items-center justify-between'}>
         <Heading className={getColoredTextClasses('red', 'red', 'purple')}>
           {props.title}
