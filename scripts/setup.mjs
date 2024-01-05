@@ -8,11 +8,12 @@ import dotenv from 'dotenv';
 
 const template = `---
 title: 'Hello, world!'
-excerpt: 'This is an excerpt or description'
+summary: 'This is a summary or description'
 date: '2023-01-28'
 keywords: 'hello|world|keyword'
 hero: hello-world/hero.jpg
 color: #123
+keywords: 'key,word'
 ---
 
 Hello, World!`;

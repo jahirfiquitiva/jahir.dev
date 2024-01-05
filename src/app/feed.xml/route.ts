@@ -13,7 +13,7 @@ const formatImageUrl = (url?: string) => {
 
 const buildDescriptionHtml = (post: SimpleBlog): string => {
   let description = '';
-  if (post.excerpt) description += `<p>${post.excerpt}</p><br/>`;
+  if (post.summary) description += `<p>${post.summary}</p><br/>`;
 
   if (post.link)
     description += `<b><a href="${post.link}">Read more...</a></b><br/><br/>`;
@@ -33,7 +33,7 @@ const getAllPostRssData = (post: SimpleBlog) => {
     title: post.title,
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
-    description: post.excerpt,
+    description: post.summary,
     html: descriptionHtml,
     slug: post.slug,
     hero: post.hero,

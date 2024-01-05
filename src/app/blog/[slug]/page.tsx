@@ -37,13 +37,13 @@ export function generateMetadata(
   const post = allBlogs.find((b) => b.slug === slug);
   if (!slug || !post) return undefined;
 
-  const { title, date, excerpt, hero } = post;
+  const { title, date, summary, hero } = post;
 
   const ogImage = buildOgImageUrl('blog', title, hero);
 
   const metadata = createMetadata({
     title: `${title} | Blog – Jahir Fiquitiva`,
-    description: excerpt || 'Blog post by Jahir Fiquitiva',
+    description: summary || 'Blog post by Jahir Fiquitiva',
     image: ogImage,
     exactUrl: `https://jahir.dev/blog/${slug}`,
     keywords: post.seoKeywords,

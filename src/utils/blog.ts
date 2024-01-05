@@ -7,7 +7,7 @@ export type SimpleBlog = Pick<
   Blog,
   | 'slug'
   | 'title'
-  | 'excerpt'
+  | 'summary'
   | 'hero'
   | 'heroMeta'
   | 'date'

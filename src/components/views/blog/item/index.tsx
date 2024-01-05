@@ -79,7 +79,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
         )}
       >
         <p className={'text-2xs text-secondary-txt line-clamp-2 text-pretty'}>
-          {post.excerpt}
+          {post.summary}
         </p>
         {post.link ? (
           <p className={'text-3xs text-tertiary-txt line-clamp-1'}>

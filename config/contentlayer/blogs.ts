@@ -49,9 +49,9 @@ const Blog = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    summary: { type: 'string', required: true },
     date: { type: 'string', required: true },
     color: { type: 'string', required: true },
-    excerpt: { type: 'string', required: true },
     keywords: { type: 'string', required: true },
     hero: { type: 'string', required: true },
     heroSource: { type: 'string' },

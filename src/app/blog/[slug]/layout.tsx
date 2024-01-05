@@ -21,7 +21,7 @@ const blogPostStructuredData = (post: Blog): string =>
         headline: post.title,
         datePublished: post.date,
         dateModified: post.date,
-        description: post.excerpt,
+        description: post.summary,
         image: buildOgImageUrl('blog', post.title, post.hero),
         url: `https://jahir.dev/blog/${post.slug}`,
         author: {
