@@ -8,13 +8,13 @@ export type SimpleBlog = Pick<
   | 'slug'
   | 'title'
   | 'summary'
+  | 'date'
+  | 'color'
   | 'hero'
   | 'heroMeta'
-  | 'date'
   | 'link'
-  | 'color'
-  | 'readingTime'
   | 'inProgress'
+  | 'readingTime'
 >;
 
 export const sortBlogPostsByDate = (a: SimpleBlog, b: SimpleBlog) =>
@@ -25,6 +25,10 @@ export const allSimpleBlogs: Array<SimpleBlog> = generatedBlogs.map((b) => ({
   _id: undefined,
   _raw: undefined,
   body: undefined,
+  keywords: undefined,
+  seoKeywords: undefined,
+  heroSource: undefined,
+  devToId: undefined,
 }));
 
 export const getFeaturedPosts = cache(async (): Promise<Array<SimpleBlog>> => {
