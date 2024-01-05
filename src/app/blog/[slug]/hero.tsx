@@ -14,16 +14,6 @@ interface HeroProps {
 
 export const Hero = (props: HeroProps) => {
   const { title, hero, meta, source } = props;
-
-  const extraProps = meta
-    ? {
-        blurDataURL: meta.blur64,
-        width: meta.size.width || 666,
-        height: meta.size.height || 375,
-        placeholder: 'blur' as const,
-      }
-    : {};
-
   return (
     <figure className={'-my-4'}>
       <Img
@@ -32,7 +22,7 @@ export const Hero = (props: HeroProps) => {
         className={'aspect-[2/1] h-auto rounded-2 w-full'}
         quality={100}
         priority
-        {...extraProps}
+        {...meta}
       />
       {source ? (
         <figcaption>

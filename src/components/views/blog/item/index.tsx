@@ -20,14 +20,12 @@ interface BlogPostItemProps {
 
 const MAX_WIDTH = 96;
 const MAX_HEIGHT = 72;
-const calcHeroWidthAndHeight = (dimensions: {
-  width?: number;
-  height?: number;
-}) => {
-  const { width = MAX_WIDTH, height = MAX_HEIGHT } = dimensions;
+const getHeroProps = (heroMeta: SimpleBlog['heroMeta']) => {
+  const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta;
   return {
     width: Math.min(width, MAX_WIDTH),
     height: Math.min(height, MAX_HEIGHT),
+    ...rest,
   };
 };
 
@@ -52,9 +50,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       <Img
         src={post.hero || ''}
         alt={`Hero image for blog post "${post.title}"`}
-        {...calcHeroWidthAndHeight(post?.heroMeta?.size)}
-        placeholder={Boolean(post?.heroMeta?.blur64) ? 'blur' : undefined}
-        blurDataURL={post?.heroMeta?.blur64}
+        {...getHeroProps(post.heroMeta)}
         className={cx(
           'rounded-1 max-w-12',
           'mobile-lg:max-w-24',
@@ -105,16 +101,16 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           >
             {readableDate}
           </span>
-          {Boolean(post.readingTime.minutes) ? (
+          {Boolean(post.readingTime) ? (
             <>
               <span aria-hidden={'true'} className={'font-bold'}>
                 ·
               </span>
               <span
-                title={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
-                aria-label={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
+                title={`It takes ${post.readingTime} minutes to read this blog post`}
+                aria-label={`It takes ${post.readingTime} minutes to read this blog post`}
               >
-                {Math.ceil(post.readingTime.minutes)} min read
+                {Math.ceil(post.readingTime)} min read
               </span>
             </>
           ) : null}

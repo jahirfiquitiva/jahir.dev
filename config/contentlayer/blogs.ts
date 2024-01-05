@@ -5,13 +5,15 @@ import {
 import readingTime from 'reading-time';
 
 import { getBlurData } from './rehype/image-metadata';
-import { unique } from './unique';
 
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
 
 const computedFields: ComputedFields = {
-  readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
+  readingTime: {
+    type: 'number',
+    resolve: (doc) => readingTime(doc.body.raw).minutes,
+  },
   slug: {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
@@ -31,7 +33,7 @@ const computedFields: ComputedFields = {
           ?.map((it: string) => it.trim())
           ?.filter((it: string) => it.length > 0);
       } catch (e) {}
-      return unique([...filteredKeywords]);
+      return Array.from(new Set([...filteredKeywords]));
     },
   },
   heroMeta: {

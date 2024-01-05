@@ -50,16 +50,16 @@ export const Header = (props: HeaderProps) => {
           <span className={'sr-only'}>Published on</span>
           <span>{readableDate}</span>
         </span>
-        {Boolean(readingTime?.minutes) ? (
+        {Boolean(readingTime) ? (
           <>
             <span aria-hidden={'true'} className={'font-bold'}>
               ·
             </span>
             <span
-              title={`It takes ${readingTime.minutes} minutes to read this blog post`}
-              aria-label={`It takes ${readingTime.minutes} minutes to read this blog post`}
+              title={`It takes ${readingTime} minutes to read this blog post`}
+              aria-label={`It takes ${readingTime} minutes to read this blog post`}
             >
-              {Math.ceil(readingTime.minutes)} minutes read
+              {Math.ceil(readingTime)} minutes read
             </span>
           </>
         ) : null}

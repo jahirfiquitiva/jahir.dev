@@ -1,7 +1,6 @@
 import type { MDXOptions } from 'contentlayer/core';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePresetMinify from 'rehype-preset-minify';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
@@ -21,8 +20,6 @@ const mdx: MDXOptions = {
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
     toc,
-    // @ts-expect-error idk
-    rehypePresetMinify,
   ],
 };
 
