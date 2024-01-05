@@ -1,7 +1,6 @@
 import type { SerializeOptions } from 'next-mdx-remote/dist/types';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-// import rehypePresetMinify from 'rehype-preset-minify';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
@@ -20,10 +19,7 @@ const mdx: SerializeOptions['mdxOptions'] = {
     // @ts-expect-error idk
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
-    // @ts-expect-error idk
     toc,
-    // @ts-expect-error idk
-    // rehypePresetMinify,
   ],
 };
 

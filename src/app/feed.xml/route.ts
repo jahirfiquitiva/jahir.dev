@@ -1,6 +1,6 @@
 import xml from 'xml';
 
-import { allSimpleBlogs, type SimpleBlog } from '@/utils/blog';
+import { getBlogPosts, type Blog } from '@/lib/blog';
 import { getDate } from '@/utils/date';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
@@ -11,9 +11,9 @@ const formatImageUrl = (url?: string) => {
   return url;
 };
 
-const buildDescriptionHtml = (post: SimpleBlog): string => {
+const buildDescriptionHtml = (post: Blog): string => {
   let description = '';
-  if (post.excerpt) description += `<p>${post.excerpt}</p><br/>`;
+  if (post.summary) description += `<p>${post.summary}</p><br/>`;
 
   if (post.link)
     description += `<b><a href="${post.link}">Read more...</a></b><br/><br/>`;
@@ -27,13 +27,13 @@ const buildDescriptionHtml = (post: SimpleBlog): string => {
   return description;
 };
 
-const getAllPostRssData = (post: SimpleBlog) => {
+const getAllPostRssData = (post: Blog) => {
   const descriptionHtml = buildDescriptionHtml(post);
   return {
     title: post.title,
     url: post.link || `https://jahir.dev/blog/${post.slug}`,
     date: post.date,
-    description: post.excerpt,
+    description: post.summary,
     html: descriptionHtml,
     slug: post.slug,
     hero: post.hero,
@@ -122,7 +122,7 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allBlogs = allSimpleBlogs
+  const allBlogs = getBlogPosts()
     .filter((it) => allowInProgress || !it.inProgress)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(

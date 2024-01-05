@@ -48,7 +48,7 @@ interface BlurResult {
   blur64?: string;
 }
 
-export const getBlurData = async (
+const getBlurData = async (
   imageSrc?: string,
   placeholderSize: number = 12,
 ): Promise<BlurResult | null> => {

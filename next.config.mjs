@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const million = require('million/compiler');
+import withPlaiceholder from '@plaiceholder/next';
+import million from 'million/compiler';
 
-const appHeaders = require('./config/next/headers');
-const redirects = require('./config/next/redirects');
+import appHeaders from './config/next/headers.mjs';
+import redirects from './config/next/redirects.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * @type {import('next').NextConfig}
@@ -53,4 +57,5 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-module.exports = million.next(defaultNextConfig, millionConfig);
+const config = million.next(withPlaiceholder(defaultNextConfig), millionConfig);
+export default config;

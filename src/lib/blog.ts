@@ -3,8 +3,6 @@ import path from 'path';
 
 import readingTime from 'reading-time';
 
-import { unique } from '@/utils/unique';
-
 interface BlogPostMetadata {
   title: string;
   date: string;
