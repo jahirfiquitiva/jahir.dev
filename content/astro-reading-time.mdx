@@ -1,0 +1,181 @@
+---
+title: Adding reading time to Astro without the hassle
+date: '2024-01-04'
+color: '#A47057'
+hero: astro-reading-time/hero.jpg
+excerpt: An alternative way to calculate reading time without full blog post rendering
+---
+
+## Intro
+
+I recently [tried to](/blog/a-fresh-start#there-was-an-attempt) move my website to Astro, but I wanted to keep most of the existing features.
+
+As you can see in the [blog](/blog) page, the list of blog posts include the time it takes to read each post.
+
+This feature in Astro requires quite a bit of work to be implemented.
+
+## The "official" way
+
+Following, the [official docs](https://docs.astro.build/en/recipes/reading-time/) recipe, first you need to install 2 packages:
+
+```bash
+yarn add -D reading-time mdast-util-to-string
+```
+
+Then, you create a custom Remark plugin to add the reading time to the frontmatter property of your blog posts.
+
+```javascript title="remark-reading-time.mjs"
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
+
+export function remarkReadingTime() {
+  return function (tree, { data }) {
+    const textOnPage = toString(tree);
+    const readingTime = getReadingTime(textOnPage);
+    // readingTime.text will give us minutes read as a friendly string,
+    // i.e. "3 min read"
+    data.astro.frontmatter.minutesRead = readingTime.text;
+  };
+}
+```
+
+And finally, you add it to your remark plugins array.
+
+```javascript title="astro.config.mjs" {2,6}
+import { defineConfig } from 'astro/config';
+import { remarkReadingTime } from './remark-reading-time.mjs';
+
+export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
+});
+```
+
+## The problem
+
+By following these steps, you need to access the `remarkPluginFrontmatter` property from your post. And to do so, you first need to render the whole blog post content using the `entry.render()` function.
+
+```astro title="src/pages/posts/[slug].astro"
+---
+...
+
+const { entry } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await entry.render();
+---
+
+<html>
+  <head>...</head>
+  <body>
+    ...
+    <p>{remarkPluginFrontmatter.minutesRead}</p>
+    ...
+  </body>
+</html>
+```
+
+Besides, as I told you before, I wanted to display this information in the blog posts list too, so it was a bit tedious to render the whole markdown for every post before being able to access the `minutesRead` property.
+
+And even though I tried to do it this way, for some reason the `minutesRead` property was not really added to the frontmatter. Not sure if I did something wrong, but it simply didn't work for me.
+
+## My approach (or solution)
+
+By doing a small modification to the custom Remark plugin originally suggested in Astro docs, I created an utility function to calculate the reading time.
+
+It requires installing and using an additional dependency though:
+
+```bash
+yarn add -D mdast-util-from-markdown
+```
+
+It, instead of requiring rendering the blog post first, just takes the `body` property that already comes with the blog post entry.
+
+```typescript title="src/utils/reading-time.ts"
+import calculateReadingTime from 'reading-time';
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { toString } from 'mdast-util-to-string';
+
+export const getReadingTime = (text: string): string | undefined => {
+  if (!text || !text.length) return undefined;
+  try {
+    const { minutes } = calculateReadingTime(toString(fromMarkdown(text)));
+    if (minutes && minutes > 0) {
+      return `${Math.ceil(minutes)} min read`;
+    }
+    return undefined;
+  } catch (e) {
+    return undefined;
+  }
+};
+```
+
+Now, you no longer need to add the custom Remark plugin to `astro.config.mjs`
+
+```diff title="astro.config.mjs" {2,6}
+import { defineConfig } from 'astro/config';
+- import { remarkReadingTime } from './remark-reading-time.mjs';
+
+export default defineConfig({
+  markdown: {
+-    remarkPlugins: [...],
+  },
+});
+```
+
+Instead, use a `BlogPost` component in your blog page:
+
+```astro title="src/pages/blog.astro" {13}
+---
+import { getCollection } from 'astro:content';
+import BlogPost from '@/components/blog/blog-post-item.astro';
+
+// Get all `src/content/blog/` entries
+const allBlogPosts = await getCollection('blog');
+---
+
+...
+<ul>
+  {
+    allBlogPosts.map((post) => (
+      <li><BlogPost post={post} /></li>
+    ))
+  }
+</ul>
+...
+```
+
+Then call the `getReadingTime` function from the component file and use that property anywhere:
+
+```astro title="src/components/blog-post-item.astro" {12,13,21}
+---
+import type { CollectionEntry } from 'astro:content';
+
+import { getReadingTime } from '@/utils/reading-time';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+// Calculate reading time using `body` property
+const readingTime = getReadingTime(post.body);
+---
+
+...
+<div>
+  <a>
+    <p>{post.title}</p>
+  </a>
+  <p>{readingTime}</p>
+</div>
+...
+```
+
+## Conclusion
+
+While the official Astro method works and is valid, it does require rendering each post.
+
+A simpler alternative using existing data (the `body` property) and a custom utility function, avoids the extra step and is more efficient to calculate the reading time.
+
+To summarize, by creating customized solutions, it is often possible to improve upon official methods by eliminating unnecessary steps. especially when your use case differs and you look for a more straightforward approach.

@@ -48,7 +48,7 @@ export const Header = (props: HeaderProps) => {
           aria-label={`This blog post was published on ${readableDate}`}
         >
           <span className={'sr-only'}>Published on</span>
-          {readableDate}
+          <span>{readableDate}</span>
         </span>
         {Boolean(readingTime?.minutes) ? (
           <>
