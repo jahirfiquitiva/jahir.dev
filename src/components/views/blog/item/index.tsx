@@ -37,7 +37,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
   const a11yDate = formatDate(post.date);
   const readableDate = fullDate
     ? a11yDate
-    : formatDate(post.date, {
+    : formatDate(post.date, false, {
         year: undefined,
       });
 
