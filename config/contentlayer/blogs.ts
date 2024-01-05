@@ -4,8 +4,8 @@ import {
 } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
+import { unique } from './../../src/utils/unique';
 import { getBlurData } from './rehype/image-metadata';
-import { unique } from './unique';
 
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
@@ -50,7 +50,7 @@ const Blog = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     date: { type: 'string', required: true },
     color: { type: 'string', required: true },
-    excerpt: { type: 'string', required: true },
+    summary: { type: 'string', required: true },
     hero: { type: 'string' },
     heroSource: { type: 'string' },
     link: { type: 'string' },

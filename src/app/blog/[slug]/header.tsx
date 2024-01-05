@@ -2,9 +2,9 @@ import type { CSSProperties } from 'react';
 
 import { Link } from '@/components/atoms/link';
 import { ViewsCounter } from '@/components/views/blog/views-counter';
+import type { Blog } from '@/lib/blog';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
-import type { Blog } from 'contentlayer/generated';
 
 interface HeaderProps {
   post: Blog;
@@ -50,16 +50,16 @@ export const Header = (props: HeaderProps) => {
           <span className={'sr-only'}>Published on</span>
           <span>{readableDate}</span>
         </span>
-        {Boolean(readingTime?.minutes) ? (
+        {Boolean(readingTime) ? (
           <>
             <span aria-hidden={'true'} className={'font-bold'}>
               ·
             </span>
             <span
-              title={`It takes ${readingTime.minutes} minutes to read this blog post`}
-              aria-label={`It takes ${readingTime.minutes} minutes to read this blog post`}
+              title={`It takes ${readingTime} minutes to read this blog post`}
+              aria-label={`It takes ${readingTime} minutes to read this blog post`}
             >
-              {Math.ceil(readingTime.minutes)} minutes read
+              {Math.ceil(readingTime || 0)} minutes read
             </span>
           </>
         ) : null}

@@ -7,11 +7,11 @@ import { ReactionsButtons } from '@/components/views/blog/reactions';
 import { ShareButton } from '@/components/views/blog/share-button';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
 import type { BlogPostPageContext } from './types';
+import { getBlogPosts } from '@/lib/blog';
 
 const blogPostStructuredData = (post: Blog): string =>
   post
@@ -21,7 +21,7 @@ const blogPostStructuredData = (post: Blog): string =>
         headline: post.title,
         datePublished: post.date,
         dateModified: post.date,
-        description: post.excerpt,
+        description: post.summary,
         image: buildOgImageUrl('blog', post.title, post.hero),
         url: `https://jahir.dev/blog/${post.slug}`,
         author: {
@@ -35,7 +35,7 @@ export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = allBlogs.find((b) => b.slug === slug);
+  const post = getBlogPosts().find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>
@@ -43,7 +43,7 @@ export default function BlogPostLayout(
       <Hero
         title={post.title}
         hero={post.hero}
-        meta={post.heroMeta}
+        // meta={post.heroMeta}
         source={post.heroSource}
       />
       {props.children}

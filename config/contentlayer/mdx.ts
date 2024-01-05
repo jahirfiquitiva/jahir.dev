@@ -1,7 +1,7 @@
-import type { MDXOptions } from 'contentlayer/core';
+import type { SerializeOptions } from 'next-mdx-remote/dist/types';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePresetMinify from 'rehype-preset-minify';
+// import rehypePresetMinify from 'rehype-preset-minify';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
@@ -11,7 +11,7 @@ import { prettyCode } from './rehype/code';
 import imageMetadata from './rehype/image-metadata';
 import { toc } from './rehype/toc';
 
-const mdx: MDXOptions = {
+const mdx: SerializeOptions['mdxOptions'] = {
   remarkPlugins: [remarkGfm, remarkSqueezeParagraphs, remarkUnwrapImages],
   rehypePlugins: [
     imageMetadata,
@@ -22,7 +22,7 @@ const mdx: MDXOptions = {
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
     toc,
     // @ts-expect-error idk
-    rehypePresetMinify,
+    // rehypePresetMinify,
   ],
 };
 

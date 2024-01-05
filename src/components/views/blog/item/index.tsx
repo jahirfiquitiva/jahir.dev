@@ -2,7 +2,7 @@ import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
-import type { SimpleBlog } from '@/utils/blog';
+import type { Blog } from '@/lib/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
@@ -13,23 +13,10 @@ import { ViewsCounter } from '../views-counter';
 import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
-  post: SimpleBlog;
+  post: Blog;
   fullDate?: boolean;
   viewsCounter?: JSX.Element;
 }
-
-const MAX_WIDTH = 96;
-const MAX_HEIGHT = 72;
-const calcHeroWidthAndHeight = (dimensions: {
-  width?: number;
-  height?: number;
-}) => {
-  const { width = MAX_WIDTH, height = MAX_HEIGHT } = dimensions;
-  return {
-    width: Math.min(width, MAX_WIDTH),
-    height: Math.min(height, MAX_HEIGHT),
-  };
-};
 
 export const BlogPostItem = (props: BlogPostItemProps) => {
   const { post, fullDate } = props;
@@ -52,9 +39,8 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       <Img
         src={post.hero || ''}
         alt={`Hero image for blog post "${post.title}"`}
-        {...calcHeroWidthAndHeight(post?.heroMeta?.size)}
-        placeholder={Boolean(post?.heroMeta?.blur64) ? 'blur' : undefined}
-        blurDataURL={post?.heroMeta?.blur64}
+        width={96}
+        height={72}
         className={cx(
           'rounded-1 max-w-12',
           'mobile-lg:max-w-24',
@@ -83,7 +69,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
         )}
       >
         <p className={'text-2xs text-secondary-txt line-clamp-2 text-pretty'}>
-          {post.excerpt}
+          {post.summary}
         </p>
         {post.link ? (
           <p className={'text-3xs text-tertiary-txt line-clamp-1'}>
@@ -105,16 +91,16 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           >
             {readableDate}
           </span>
-          {Boolean(post.readingTime.minutes) ? (
+          {Boolean(post.readingTime) ? (
             <>
               <span aria-hidden={'true'} className={'font-bold'}>
                 ·
               </span>
               <span
-                title={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
-                aria-label={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
+                title={`It takes ${post.readingTime} minutes to read this blog post`}
+                aria-label={`It takes ${post.readingTime} minutes to read this blog post`}
               >
-                {Math.ceil(post.readingTime.minutes)} min read
+                {Math.ceil(post.readingTime || 0)} min read
               </span>
             </>
           ) : null}

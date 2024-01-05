@@ -1,32 +1,12 @@
-import { pick } from 'contentlayer/client';
 import { cache } from 'react';
 
+import { getBlogPosts, type Blog } from '@/lib/blog';
 import { db } from '@/lib/planetscale';
-import { allBlogs as generatedBlogs, type Blog } from 'contentlayer/generated';
 
-const simpleBlogProps = [
-  'slug',
-  'title',
-  'excerpt',
-  'hero',
-  'heroMeta',
-  'date',
-  'link',
-  'color',
-  'readingTime',
-  'inProgress',
-] as const as Array<keyof Blog>;
-
-export type SimpleBlog = Pick<Blog, (typeof simpleBlogProps)[number]>;
-
-export const sortBlogPostsByDate = (a: SimpleBlog, b: SimpleBlog) =>
+export const sortBlogPostsByDate = (a: Blog, b: Blog) =>
   new Date(b.date).getTime() - new Date(a.date).getTime();
 
-export const allSimpleBlogs: Array<SimpleBlog> = generatedBlogs.map((b) =>
-  pick(b, simpleBlogProps),
-);
-
-export const getPopularPosts = cache(async (): Promise<Array<SimpleBlog>> => {
+export const getPopularPosts = cache(async (): Promise<Array<Blog>> => {
   try {
     const topPosts = await db
       .selectFrom('counters')
@@ -37,9 +17,9 @@ export const getPopularPosts = cache(async (): Promise<Array<SimpleBlog>> => {
       .execute();
     return topPosts
       .map((record) =>
-        allSimpleBlogs.find((blog) => `blog--${blog.slug}` === record.slug),
+        getBlogPosts().find((blog) => `blog--${blog.slug}` === record.slug),
       )
-      .filter(Boolean) as Array<SimpleBlog>;
+      .filter(Boolean) as Array<Blog>;
   } catch (e) {
     return [];
   }

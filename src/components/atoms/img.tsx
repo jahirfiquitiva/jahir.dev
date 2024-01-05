@@ -31,8 +31,8 @@ const BaseImg = (props: ImgProps) => {
       placeholder={typeof rest.src !== 'string' ? 'blur' : undefined}
       className={cx(
         'object-cover object-center',
-        'transition-[scale,filter] duration-500',
-        isLoading ? 'grayscale blur-md scale-105' : '',
+        'transition-[filter] duration-500',
+        isLoading ? 'grayscale blur' : '',
         rest.className,
       )}
       onLoad={() => {
