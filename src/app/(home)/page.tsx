@@ -1,14 +1,16 @@
 import { Intro } from '@/components/views/home/intro';
 import { ProjectsList } from '@/components/views/projects';
 
-import { TopBlogPosts } from './top-posts';
+import { FeaturedBlogPosts } from './featured-posts';
 
 export default function Home() {
   return (
     <>
       <Intro />
-      <TopBlogPosts />
+      <FeaturedBlogPosts />
       <ProjectsList title={'Featured projects'} featuredOnly />
     </>
   );
 }
+
+export const revalidate = 86400;

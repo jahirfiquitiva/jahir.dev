@@ -20,6 +20,8 @@ export default function BlogPage() {
   );
 }
 
+export const revalidate = 86400;
+
 export const metadata = createMetadata({
   title: 'Blog – Jahir Fiquitiva',
   description:
