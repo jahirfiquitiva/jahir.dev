@@ -20,7 +20,12 @@ export const ProjectsList = (props: ProjectsListProps) => {
   const Heading = props.featuredOnly ? 'h2' : 'h1';
   return (
     <Section id={'projects'} className={'gap-6'}>
-      <div className={'flex flex-row gap-4 items-center justify-between'}>
+      <div
+        className={cx(
+          'w-full flex flex-col items-start gap-4',
+          'mobile-md:flex-row mobile-md:items-center mobile-md:justify-between',
+        )}
+      >
         <Heading className={getColoredTextClasses('red', 'red', 'purple')}>
           {props.title}
         </Heading>
@@ -30,8 +35,8 @@ export const ProjectsList = (props: ProjectsListProps) => {
             href={'/projects'}
             className={cx(
               'pr-3.5',
-              'justify-center max-mobile-lg:flex-1',
-              'mobile-lg:self-start mobile-lg:justify-start',
+              'justify-center max-mobile-md:flex-1',
+              'mobile-md:self-start mobile-md:justify-start',
             )}
             data-umami-event={'View all projects'}
           >
