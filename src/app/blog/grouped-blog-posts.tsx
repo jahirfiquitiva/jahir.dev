@@ -7,6 +7,7 @@ import {
   sortBlogPostsByDate,
   type SimpleBlog,
 } from '@/utils/blog';
+import { getDate } from '@/utils/date';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -14,7 +15,7 @@ const blogPostsByYear = cache(() =>
   allSimpleBlogs
     .filter((it) => allowInProgress || !it.inProgress)
     .reduce<Record<number, Array<SimpleBlog>>>((acc, post) => {
-      const year = new Date(post.date).getFullYear();
+      const year = (getDate(post.date) || new Date()).getFullYear();
       return { ...acc, [year]: [...(acc[year] || []), post] };
     }, {}),
 )();
