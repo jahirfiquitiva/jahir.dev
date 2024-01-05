@@ -1,5 +1,5 @@
 import type { Route } from 'next';
-import { type CSSProperties } from 'react';
+import { cache, type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
 import type { Blog } from '@/lib/blog';
@@ -18,7 +18,13 @@ interface BlogPostItemProps {
   viewsCounter?: JSX.Element;
 }
 
-export const BlogPostItem = (props: BlogPostItemProps) => {
+const getHeroImage = cache(async (imagePath?: string) => {
+  if (!imagePath) return undefined;
+  const src = await import(`../../../../assets/images${imagePath}`);
+  return src;
+});
+
+export const BlogPostItem = async (props: BlogPostItemProps) => {
   const { post, fullDate } = props;
 
   const a11yDate = formatDate(post.date);
@@ -29,6 +35,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       });
 
   const color = hexToRgb(post.color, 1, true) || 'var(--color-accent-dark)';
+  const heroSrc = await getHeroImage(post.hero);
 
   return (
     <BlogPostLink
@@ -37,7 +44,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       style={{ '--post-color': color } as CSSProperties}
     >
       <Img
-        src={post.hero || ''}
+        src={heroSrc}
         alt={`Hero image for blog post "${post.title}"`}
         width={96}
         height={72}

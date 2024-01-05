@@ -17,7 +17,7 @@ interface BlogPostMetadata {
 }
 
 const getActualHeroUrl = (hero?: string) =>
-  hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
+  hero ? (hero.startsWith('http') ? hero : `/blog/${hero}`) : '';
 
 const parseFrontmatter = (fileContent: string) => {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;

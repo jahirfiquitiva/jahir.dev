@@ -1,4 +1,5 @@
 import type { Route } from 'next';
+import { cache } from 'react';
 
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
@@ -12,29 +13,23 @@ interface HeroProps {
   source?: Blog['heroSource'];
 }
 
-export const Hero = (props: HeroProps) => {
+const getHeroImage = cache(async (imagePath?: string) => {
+  if (!imagePath) return undefined;
+  const src = await import(`../../../assets/images${imagePath}`);
+  return src;
+});
+
+export const Hero = async (props: HeroProps) => {
   const { title, hero, source } = props;
-
-  // const extraProps = meta
-  //   ? {
-  //       blurDataURL: meta.blur64,
-  //       width: meta.size.width || 666,
-  //       height: meta.size.height || 375,
-  //       placeholder: 'blur' as const,
-  //     }
-  //   : {};
-
+  const heroSrc = await getHeroImage(hero);
   return (
     <figure className={'-my-4'}>
       <Img
-        src={hero || ''}
+        src={heroSrc}
         alt={`Cover image for blog post: "${title}"`}
         className={'aspect-[2/1] h-auto rounded-2 w-full'}
-        width={666}
-        height={375}
         quality={100}
         priority
-        // {...extraProps}
       />
       {source ? (
         <figcaption>

@@ -1,12 +1,12 @@
 import type { MDXComponents } from 'mdx/types';
 import { compileMDX as mdxCompileMDX } from 'next-mdx-remote/rsc';
 
-import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 import mdx from 'config/mdx';
 
-import { ImageComparison } from './image-comparison';
+import { AsyncImg } from './async-img';
+import { ImageComparison } from './img-comparison';
 
 const Grid = tw.div`
   grid
@@ -26,9 +26,9 @@ const components = {
   hr: tw.hr`border-divider`,
   a: Link,
   Link,
-  img: Img,
-  Image: Img,
-  Img,
+  img: AsyncImg,
+  Image: AsyncImg,
+  Img: AsyncImg,
 };
 
 export const compileMDX = async (text?: string) => {

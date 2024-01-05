@@ -6,8 +6,6 @@ import { config } from '@/utils/og';
 import type { PathName } from './logo-title';
 import { OgImage } from './og';
 
-export const runtime = 'edge';
-
 const getManropeFont = async (): Promise<
   SatoriOptions['fonts'] | undefined
 > => {
