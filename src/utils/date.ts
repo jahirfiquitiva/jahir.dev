@@ -10,7 +10,7 @@ const dateFormattingOptions: Intl.DateTimeFormatOptions = {
   year: 'numeric',
 };
 
-const getDate = (baseDate?: string | Date): Date | null => {
+export const getDate = (baseDate?: string | Date): Date | null => {
   if (!baseDate) return null;
   if (typeof baseDate !== 'string') return baseDate;
   if (!baseDate.includes('T')) {
