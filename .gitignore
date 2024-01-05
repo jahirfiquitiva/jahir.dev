@@ -45,6 +45,7 @@ public/*.xml
 content/sheet.mdx
 content/hello-world.mdx
 config/contentlayer/themes/*.json
+config/mdx/themes/*.json
 config/themes/*.json
 
 .frontmatter
