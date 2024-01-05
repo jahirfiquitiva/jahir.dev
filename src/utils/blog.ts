@@ -1,4 +1,3 @@
-import { pick } from 'contentlayer/client';
 import { cache } from 'react';
 
 import { db } from '@/lib/planetscale';
