@@ -21,7 +21,6 @@
     "paths": {
       "~/stitches": ["stitches.config.ts"],
       "@/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
       "react": ["./node_modules/@types/react"]
     },
     "incremental": true,
@@ -39,7 +38,6 @@
     "global.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "./.contentlayer/generated",
     "next.config.mjs",
     ".next/types/**/*.ts"
   ]

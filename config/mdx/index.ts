@@ -20,6 +20,7 @@ const mdx: SerializeOptions['mdxOptions'] = {
     // @ts-expect-error idk
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
+    // @ts-expect-error idk
     toc,
     // @ts-expect-error idk
     // rehypePresetMinify,
