@@ -22,16 +22,15 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => getActualHeroUrl(doc.hero),
   },
-  keywords: {
+  seoKeywords: {
     type: 'list',
     resolve: (doc) => {
       const docKeywords: string = (doc?.keywords ?? '') || '';
       let filteredKeywords: Array<string> = [];
       try {
         filteredKeywords = docKeywords
-          ?.split('|')
-          ?.map((it: string) => it.trim())
-          ?.filter((it: string) => it.length > 0);
+          ?.split(',')
+          ?.map((it: string) => it.trim());
       } catch (e) {}
       return Array.from(new Set([...filteredKeywords]));
     },
@@ -53,12 +52,12 @@ const Blog = defineDocumentType(() => ({
     date: { type: 'string', required: true },
     color: { type: 'string', required: true },
     excerpt: { type: 'string', required: true },
-    hero: { type: 'string' },
+    keywords: { type: 'string', required: true },
+    hero: { type: 'string', required: true },
     heroSource: { type: 'string' },
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
     devToId: { type: 'number' },
-    keywords: { type: 'string' },
   },
   computedFields,
 }));
