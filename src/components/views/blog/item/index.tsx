@@ -37,7 +37,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
   const a11yDate = formatDate(post.date);
   const readableDate = fullDate
     ? a11yDate
-    : formatDate(post.date, {
+    : formatDate(post.date, false, {
         year: undefined,
       });
 
@@ -94,7 +94,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
         <p
           className={cx(
             'flex flex-row items-center w-full',
-            'gap-0.5 text-3xs text-tertiary-txt',
+            'gap-1.5 text-3xs text-tertiary-txt',
             'tabular-nums line-clamp-1',
             'flex-nowrap flex overflow-x-auto',
           )}
@@ -107,12 +107,14 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           </span>
           {Boolean(post.readingTime.minutes) ? (
             <>
-              <span aria-hidden={'true'}> • </span>
+              <span aria-hidden={'true'} className={'font-bold'}>
+                ·
+              </span>
               <span
                 title={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
                 aria-label={`It takes ${post.readingTime.minutes} minutes to read this blog post`}
               >
-                {post.readingTime.text}
+                {Math.ceil(post.readingTime.minutes)} min read
               </span>
             </>
           ) : null}

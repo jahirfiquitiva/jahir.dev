@@ -29,7 +29,9 @@ export const ViewsCounter = async (props: ViewsCounterProps) => {
     >
       {views > 0 ? (
         <>
-          <span aria-hidden={'true'}> • </span>
+          <span aria-hidden={'true'} className={'font-bold'}>
+            ·
+          </span>
           <span>{views} views</span>
         </>
       ) : null}

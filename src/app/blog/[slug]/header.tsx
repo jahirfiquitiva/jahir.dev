@@ -40,7 +40,7 @@ export const Header = (props: HeaderProps) => {
       </h1>
       <p
         className={
-          'flex flex-row items-center gap-1 text-2xs text-tertiary-txt tabular-nums line-clamp-1'
+          'flex flex-row items-center gap-2 text-2xs text-tertiary-txt tabular-nums line-clamp-1'
         }
       >
         <span
@@ -48,16 +48,18 @@ export const Header = (props: HeaderProps) => {
           aria-label={`This blog post was published on ${readableDate}`}
         >
           <span className={'sr-only'}>Published on</span>
-          {readableDate}
+          <span>{readableDate}</span>
         </span>
         {Boolean(readingTime?.minutes) ? (
           <>
-            <span aria-hidden={'true'}> • </span>
+            <span aria-hidden={'true'} className={'font-bold'}>
+              ·
+            </span>
             <span
               title={`It takes ${readingTime.minutes} minutes to read this blog post`}
               aria-label={`It takes ${readingTime.minutes} minutes to read this blog post`}
             >
-              {readingTime.text}
+              {Math.ceil(readingTime.minutes)} minutes read
             </span>
           </>
         ) : null}

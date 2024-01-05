@@ -1,7 +1,8 @@
+import type { Route } from 'next';
 import NextLink from 'next/link';
 import type { ComponentProps } from 'react';
 
-import { StyledLink } from './link.styles';
+import cx from '@/utils/cx';
 
 const isLocalLink = (href?: string) =>
   href && (href.startsWith('/') || href.startsWith('#'));
@@ -9,6 +10,7 @@ const isLocalLink = (href?: string) =>
 interface LinkProps extends ComponentProps<typeof NextLink> {
   title: string;
   openInNewTab?: boolean;
+  ignoreNextLink?: boolean;
 }
 
 export const Link = (props: LinkProps) => {
@@ -17,13 +19,24 @@ export const Link = (props: LinkProps) => {
     openInNewTab = !isLocalLink(
       typeof href !== 'string' ? href.toString() : href,
     ),
+    ignoreNextLink,
     ...rest
   } = otherProps;
 
+  // Next.js Link does not scroll to elements with id
+  const LinkComponent =
+    href.toString().includes('#') || ignoreNextLink ? 'a' : NextLink;
+
+  const className = cx(
+    'inline-block font-medium text-accent self-start transition-colors hocus:text-accent-dark',
+    props.className,
+  );
+
   return (
-    <StyledLink
+    <LinkComponent
       {...{ href, ...rest }}
-      aria-label={rest['aria-label'] || rest.title}
+      href={href.toString() as Route}
+      className={className}
       {...(openInNewTab
         ? {
             target: '_blank',

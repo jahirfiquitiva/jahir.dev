@@ -1,6 +1,7 @@
 import xml from 'xml';
 
 import { allSimpleBlogs, type SimpleBlog } from '@/utils/blog';
+import { getDate } from '@/utils/date';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -76,7 +77,7 @@ const buildFeed = (posts: Array<ReturnType<typeof getAllPostRssData>>) => {
       const description = post.html ? post.html : { _cdata: post.description };
       const actualItem = {
         title: post.title,
-        pubDate: new Date(post.date).toUTCString(),
+        pubDate: getDate(post.date)?.toUTCString(),
         url: post.url,
         guid: {
           _attr: { isPermaLink: true },

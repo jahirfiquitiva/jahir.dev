@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 const template = `---
 title: 'Hello, world!'
 excerpt: 'This is an excerpt or description'
-date: '${new Date().toISOString()}'
+date: '2023-01-28'
 keywords: 'hello|world|keyword'
 hero: hello-world/hero.jpg
 color: #123

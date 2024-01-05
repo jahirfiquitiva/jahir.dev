@@ -2,10 +2,10 @@ import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 
 import { Img } from '@/components/atoms/img';
+import { Link } from '@/components/atoms/link';
 import cx, { tw } from '@/utils/cx';
 
 import { ImageComparison } from './image-comparison';
-import { MdxLink } from './link';
 
 const Grid = tw.div`
   grid
@@ -23,8 +23,8 @@ const components = {
   GridColumn,
   ImageComparison,
   hr: tw.hr`border-divider`,
-  a: MdxLink,
-  Link: MdxLink,
+  a: Link,
+  Link,
   img: Img,
   Image: Img,
   Img,

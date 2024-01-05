@@ -1,14 +1,36 @@
+const timeFormattingOptions: Intl.DateTimeFormatOptions = {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: true,
+};
+
+const dateFormattingOptions: Intl.DateTimeFormatOptions = {
+  month: 'long',
+  day: '2-digit',
+  year: 'numeric',
+};
+
+export const getDate = (baseDate?: string | Date): Date | null => {
+  if (!baseDate) return null;
+  if (typeof baseDate !== 'string') return baseDate;
+  if (!baseDate.includes('T')) {
+    // Use Colombia Timezone (UTC-5)
+    baseDate = `${baseDate}T00:00:00-05:00`;
+  }
+  return new Date(baseDate);
+};
+
 export const formatDate = (
-  preDate?: string,
+  baseDate?: string | Date,
+  asTime?: boolean,
   options: Intl.DateTimeFormatOptions | undefined | null = {},
 ): string => {
-  if (!preDate || preDate.length <= 0) return '';
   try {
-    const date = new Date(preDate);
+    const date = getDate(baseDate);
+    if (!date) return '';
     return new Intl.DateTimeFormat('en-US', {
-      month: 'long',
-      day: '2-digit',
-      year: 'numeric',
+      timeZone: 'America/Bogota',
+      ...(asTime ? timeFormattingOptions : dateFormattingOptions),
       ...options,
     }).format(date);
   } catch (e) {
