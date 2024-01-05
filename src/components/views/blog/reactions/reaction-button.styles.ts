@@ -8,10 +8,10 @@ export const StyledReactionButton = tw.button`
   text-2xs cursor-default
   transition
   group/reaction
-  bg-brand-200/[0.06] dark:bg-brand-700/[0.12]
+  bg-brand-200/[0.06] dark:bg-brand-200/[0.12]
   hocus:shadow
   hocus:bg-[rgba(var(--reaction-color)/0.08)]
-  dark:hocus:bg-[rgba(var(--reaction-color)/0.16)]
+  dark:hocus:bg-[rgba(var(--reaction-color)/0.2)]
   hocus:border-[rgba(var(--reaction-color)/0.56)]
   [&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.08)]
   dark:[&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.16)]
