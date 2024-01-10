@@ -20,7 +20,7 @@ interface BlogPostItemProps {
 const MAX_WIDTH = 96;
 const MAX_HEIGHT = 72;
 const getHeroProps = (heroMeta: SimpleBlog['heroMeta']) => {
-  const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta;
+  const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta || {};
   return {
     width: Math.min(width, MAX_WIDTH),
     height: Math.min(height, MAX_HEIGHT),

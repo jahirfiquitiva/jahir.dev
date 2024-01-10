@@ -3,7 +3,7 @@
 
 import type { CSSProperties } from 'react';
 
-import { reactionsNames } from '@/lib/planetscale';
+import { reactionsNames, type ReactionsCounters } from '@/lib/planetscale';
 import { hexToRgb } from '@/utils/color';
 
 import { ReactionButton } from './reaction-button';
@@ -12,11 +12,14 @@ import { useReactions } from './use-reactions';
 
 interface ReactionsButtonsProps {
   slug: string;
+  initialReactionCounters?: ReactionsCounters;
 }
 
 export const ReactionsButtons = (props: ReactionsButtonsProps) => {
-  const { counters, reacted, submitting, loading, onButtonClick } =
-    useReactions(`blog--${props.slug}`);
+  const { counters, reacted, submitting, onButtonClick } = useReactions(
+    `blog--${props.slug}`,
+    props.initialReactionCounters,
+  );
 
   return (
     <div
@@ -32,7 +35,7 @@ export const ReactionsButtons = (props: ReactionsButtonsProps) => {
               ? reactionsSetup[reaction].icon.filled
               : reactionsSetup[reaction].icon.outlined
           }
-          loading={submitting === reaction || loading}
+          loading={submitting === reaction}
           reacted={reacted[reaction] === true}
           onClick={async (event) => {
             onButtonClick(event, reaction);

@@ -38,7 +38,7 @@ export const getReactions = cache(
     try {
       const data = await db
         .selectFrom('counters')
-        .where('slug', '=', slug)
+        .where('slug', '=', `blog--${slug}`)
         .select(['likes', 'loves', 'awards', 'bookmarks'])
         .execute();
       const [counters] = data;

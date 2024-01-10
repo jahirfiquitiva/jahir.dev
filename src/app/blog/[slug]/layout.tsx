@@ -11,6 +11,7 @@ import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
+import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
 const blogPostStructuredData = (post: Blog): string =>
@@ -79,7 +80,7 @@ export default function BlogPostLayout(
             <span>Edit on GitHub</span>
           </OutlinedLinkButton>
         </div>
-        <ReactionsButtons slug={slug || ''} />
+        <Reactions slug={slug} />
         <Zoom />
       </div>
       <script type={'application/ld+json'} suppressHydrationWarning>
