@@ -8,12 +8,13 @@ import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 
+import { ViewsCounter } from '../views-counter';
+
 import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
   post: SimpleBlog;
   fullDate?: boolean;
-  viewsCounter?: JSX.Element;
 }
 
 const MAX_WIDTH = 96;
@@ -112,7 +113,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
               </span>
             </>
           ) : null}
-          {props.viewsCounter}
+          <ViewsCounter slug={post.slug} />
         </p>
       </div>
     </BlogPostLink>

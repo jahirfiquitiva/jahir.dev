@@ -1,12 +1,7 @@
-import { Suspense, cache } from 'react';
+import { cache } from 'react';
 
-import { getViews } from '@/actions/views';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
-import {
-  ViewsCounter,
-  ViewsCounterFallback,
-} from '@/components/views/blog/views-counter';
 import {
   allSimpleBlogs,
   sortBlogPostsByDate,
@@ -24,12 +19,6 @@ const blogPostsByYear = cache(() =>
       return { ...acc, [year]: [...(acc[year] || []), post] };
     }, {}),
 )();
-
-async function Views(props: { slug: string }) {
-  const dbSlug = `blog--${props.slug}`;
-  const views = await getViews(dbSlug);
-  return <ViewsCounter views={views} />;
-}
 
 export const GroupedBlogPosts = () => (
   <ol className={'flex flex-col gap-6'}>
@@ -55,14 +44,7 @@ export const GroupedBlogPosts = () => (
             <ol className={'flex flex-col gap-1.5'}>
               {posts.sort(sortBlogPostsByDate).map((post) => (
                 <li className={'block'} key={post.slug}>
-                  <BlogPostItem
-                    post={post}
-                    viewsCounter={
-                      <Suspense fallback={<ViewsCounterFallback />}>
-                        <Views slug={post.slug} />
-                      </Suspense>
-                    }
-                  />
+                  <BlogPostItem post={post} />
                 </li>
               ))}
             </ol>
