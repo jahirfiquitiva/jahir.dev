@@ -2,9 +2,9 @@ import 'server-only';
 
 import { Suspense } from 'react';
 
-import { getRepoStars } from '@/actions/stars';
 import { Icon } from '@/components/atoms/icon';
 import { LineWobble } from '@/components/atoms/loaders/line-wobble';
+import { getRepoStars } from '@/db/stars';
 import cx from '@/utils/cx';
 
 interface StarsCountProps {

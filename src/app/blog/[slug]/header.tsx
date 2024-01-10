@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
 import { Link } from '@/components/atoms/link';
-import { ViewsCounter } from '@/components/views/blog/views-counter';
+// import { ViewsCounter } from '@/components/views/blog/views-counter';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import { formatDate } from '@/utils/date';
 import type { Blog } from 'contentlayer/generated';
@@ -11,7 +11,7 @@ interface HeaderProps {
 }
 
 export const Header = (props: HeaderProps) => {
-  const { title, color, slug, date, readingTime } = props.post;
+  const { title, color, date, readingTime } = props.post;
   const readableColor = getReadableColor(color, true);
   const shadowColor = hexToRgb(readableColor, 0.85);
   const readableDate = formatDate(date);
@@ -63,7 +63,7 @@ export const Header = (props: HeaderProps) => {
             </span>
           </>
         ) : null}
-        <ViewsCounter slug={slug} write />
+        {/* <ViewsCounter slug={slug} write /> */}
       </p>
     </div>
   );

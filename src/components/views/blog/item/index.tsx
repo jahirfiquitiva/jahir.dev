@@ -8,8 +8,6 @@ import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 
-import { ViewsCounter } from '../views-counter';
-
 import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
@@ -114,7 +112,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
               </span>
             </>
           ) : null}
-          <ViewsCounter slug={post.slug} />
+          {props.viewsCounter}
         </p>
       </div>
     </BlogPostLink>

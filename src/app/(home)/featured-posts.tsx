@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, cache } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
@@ -6,9 +6,44 @@ import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { BlogPostItemSkeleton } from '@/components/views/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
-import { getFeaturedPosts } from '@/utils/blog';
+import { db } from '@/lib/planetscale';
+import {
+  allSimpleBlogs,
+  sortBlogPostsByDate,
+  type SimpleBlog,
+} from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
+
+export const getFeaturedPosts = cache(async (): Promise<Array<SimpleBlog>> => {
+  try {
+    const sortedPosts = allSimpleBlogs.sort(sortBlogPostsByDate);
+    const latestPost = sortedPosts[0];
+    const [mostViewedPost] = await db
+      .selectFrom('counters')
+      .select(['slug', 'views'])
+      .where('slug', '!=', 'blog--uses')
+      .where('slug', '!=', `blog--${latestPost.slug}`)
+      .where('views', '>', 1)
+      .orderBy(['views desc'])
+      .limit(1)
+      .execute();
+    const otherPosts = sortedPosts.filter(
+      (it) =>
+        mostViewedPost.slug !== `blog--${it.slug}` &&
+        latestPost.slug !== `blog--${it.slug}`,
+    );
+    const randomPost =
+      otherPosts[Math.floor(Math.random() * otherPosts.length)];
+    return [
+      latestPost,
+      sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
+      randomPost,
+    ].filter(Boolean) as Array<SimpleBlog>;
+  } catch (e) {
+    return [];
+  }
+});
 
 const BlogPostsListFallback = () => {
   return (
