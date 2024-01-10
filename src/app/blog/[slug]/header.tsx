@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { Link } from '@/components/atoms/link';
 import { ViewsCounter } from '@/components/views/blog/views-counter';
 import { getReadableColor, hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import type { Blog } from 'contentlayer/generated';
 
@@ -39,9 +40,11 @@ export const Header = (props: HeaderProps) => {
         {title}
       </h1>
       <p
-        className={
-          'flex flex-row items-center gap-2 text-2xs text-tertiary-txt tabular-nums line-clamp-1'
-        }
+        className={cx(
+          'flex flex-row items-center gap-2',
+          'text-tertiary-txt tabular-nums',
+          'text-3xs mobile-md:text-2xs',
+        )}
       >
         <span
           title={`This blog post was published on ${readableDate}`}

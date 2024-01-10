@@ -14,7 +14,7 @@ type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 
 export const useReactions = (
   slug: string,
-  initialReactionCounters?: ReactionsCounters,
+  initialCounters?: ReactionsCounters,
 ) => {
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -24,7 +24,7 @@ export const useReactions = (
   );
 
   const [counters, setCounters] = useState<ReactionsCounters>(
-    initialReactionCounters || {},
+    initialCounters || {},
   );
   const [reacted, setReacted] = useState<ReactedLocalStorage>({});
 

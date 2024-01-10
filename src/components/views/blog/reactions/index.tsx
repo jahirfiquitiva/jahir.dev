@@ -12,13 +12,13 @@ import { useReactions } from './use-reactions';
 
 interface ReactionsButtonsProps {
   slug: string;
-  initialReactionCounters?: ReactionsCounters;
+  initialCounters?: ReactionsCounters;
 }
 
 export const ReactionsButtons = (props: ReactionsButtonsProps) => {
   const { counters, reacted, submitting, onButtonClick } = useReactions(
     `blog--${props.slug}`,
-    props.initialReactionCounters,
+    props.initialCounters,
   );
 
   return (

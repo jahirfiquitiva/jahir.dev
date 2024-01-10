@@ -46,8 +46,7 @@ export const BlogPostItemSkeleton = () => (
         className={cx(
           'flex flex-row items-center w-full',
           'gap-1.5 text-3xs text-tertiary-txt',
-          'tabular-nums line-clamp-1',
-          'flex-nowrap flex overflow-x-auto',
+          'tabular-nums overflow-x-auto',
         )}
       >
         <span> </span>
