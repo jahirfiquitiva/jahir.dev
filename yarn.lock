@@ -8928,7 +8928,6 @@ __metadata:
     remark-unwrap-images: "npm:^4.0.0"
     rimraf: "npm:^5.0.5"
     sass: "npm:^1.69.7"
-    server-only: "npm:^0.0.1"
     sharp: "npm:^0.32.6"
     shikiji: "npm:^0.9.17"
     swr: "npm:^2.2.4"
@@ -9063,13 +9062,6 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: e3d79b609071caa78bcb6ce2ad81c7966a46a7431d9d58b8800cfa9cb6a63699b3899a0e4bcce36167a284578212d9ae6942b6929ba4aa5015c079a67751d42d
-  languageName: node
-  linkType: hard
-
-"server-only@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "server-only@npm:0.0.1"
-  checksum: 4704f0ef85da0be981af6d4ed8e739d39bcfd265b9c246a684060acda5642d0fdc6daffc2308e71e2682c5f508090978802eae0a77623c9b90a49f9ae68048d6
   languageName: node
   linkType: hard
 

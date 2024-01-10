@@ -1,5 +1,3 @@
-import 'server-only';
-
 import { Suspense } from 'react';
 
 import { getRepoStars } from '@/actions/stars';
