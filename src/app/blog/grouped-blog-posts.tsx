@@ -1,12 +1,12 @@
 import { Suspense, cache } from 'react';
 
+import { getViews } from '@/actions/views';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import {
   ViewsCounter,
   ViewsCounterFallback,
 } from '@/components/views/blog/views-counter';
-import { getViews } from '@/db/queries';
 import {
   allSimpleBlogs,
   sortBlogPostsByDate,

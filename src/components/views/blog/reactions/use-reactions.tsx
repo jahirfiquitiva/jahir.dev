@@ -3,8 +3,7 @@
 import confetti from 'canvas-confetti';
 import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 
-import { incrementReaction } from '@/db/actions';
-import { getReactions } from '@/db/queries';
+import { getReactions, incrementReaction } from '@/actions/reactions';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName, ReactionsCounters } from '@/lib/planetscale';
