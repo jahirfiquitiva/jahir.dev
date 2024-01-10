@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from 'next/cache';
 import { Suspense, cache } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
@@ -16,6 +17,7 @@ import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 export const getFeaturedPosts = cache(async (): Promise<Array<SimpleBlog>> => {
+  noStore();
   try {
     const sortedPosts = allSimpleBlogs.sort(sortBlogPostsByDate);
     const latestPost = sortedPosts[0];
@@ -31,7 +33,7 @@ export const getFeaturedPosts = cache(async (): Promise<Array<SimpleBlog>> => {
     const otherPosts = sortedPosts.filter(
       (it) =>
         mostViewedPost.slug !== `blog--${it.slug}` &&
-        latestPost.slug !== `blog--${it.slug}`,
+        latestPost.slug !== it.slug,
     );
     const randomPost =
       otherPosts[Math.floor(Math.random() * otherPosts.length)];
@@ -64,13 +66,13 @@ const BlogPostsListFallback = () => {
 const FeaturedBlogPostsList = async () => {
   const featuredPosts = await getFeaturedPosts();
   return (
-    <Suspense fallback={<BlogPostsListFallback />}>
+    <>
       {featuredPosts.map((post) => (
         <li className={'block'} key={post.slug}>
           <BlogPostItem post={post} fullDate />
         </li>
       ))}
-    </Suspense>
+    </>
   );
 };
 
@@ -117,7 +119,9 @@ export const FeaturedBlogPosts = () => (
     </div>
 
     <ol className={'flex flex-col gap-2'}>
-      <FeaturedBlogPostsList />
+      <Suspense fallback={<BlogPostsListFallback />}>
+        <FeaturedBlogPostsList />
+      </Suspense>
     </ol>
   </Section>
 );

@@ -22,7 +22,7 @@ const allowInProgress = process.env.NODE_ENV === 'development';
 
 async function Views(props: { slug: string }) {
   const dbSlug = `blog--${props.slug}`;
-  const views = await getViews(dbSlug); //.catch(() => 0);
+  const views = await getViews(dbSlug);
   return <ViewsCounter views={views} />;
 }
 

@@ -12,6 +12,3 @@ export default function Home() {
     </>
   );
 }
-
-export const revalidate = 86400;
-export const runtime = 'edge';
