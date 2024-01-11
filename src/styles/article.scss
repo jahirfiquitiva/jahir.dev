@@ -55,11 +55,31 @@ article a {
 }
 
 article details[data-type='toc'] {
-  @apply mb-2;
+  @apply -mt-8 mb-4;
+  @apply bg-brand-500/[0.024] dark:bg-brand-100/5;
+  @apply border border-divider py-3 px-4 rounded-2;
   & summary {
     @apply font-manrope font-bold text-sm text-primary-txt cursor-pointer;
     & > span {
       @apply ml-2;
+    }
+    &::after {
+      --action: '(Tap to open)';
+      content: var(--action);
+      @apply ml-2 text-tertiary-txt text-2xs;
+      @media (any-hover: hover) {
+        --action: '(Click to open)';
+      }
+    }
+  }
+  &[open] {
+    & summary {
+      &::after {
+        --action: '(Tap to close)';
+        @media (any-hover: hover) {
+          --action: '(Click to close)';
+        }
+      }
     }
   }
   & > ol {
