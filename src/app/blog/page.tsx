@@ -40,6 +40,3 @@ export const metadata = createMetadata({
   ],
   image: buildOgImageUrl('blog'),
 });
-
-export const revalidate = 86400;
-export const runtime = 'edge';
