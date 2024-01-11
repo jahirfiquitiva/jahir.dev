@@ -7332,7 +7332,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.0.5-canary.49":
+"next@npm:^14.0.5-canary.50":
   version: 14.0.5-canary.50
   resolution: "next@npm:14.0.5-canary.50"
   dependencies:
@@ -8992,7 +8992,7 @@ __metadata:
     kysely-planetscale: "npm:^1.4.0"
     medium-zoom: "npm:^1.1.0"
     million: "npm:^2.6.4"
-    next: "npm:^14.0.5-canary.49"
+    next: "npm:^14.0.5-canary.50"
     next-contentlayer: "npm:^0.3.4"
     next-themes: "npm:0.2.1"
     plaiceholder: "npm:^3.0.0"

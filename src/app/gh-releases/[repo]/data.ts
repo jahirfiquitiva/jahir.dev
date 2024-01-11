@@ -1,5 +1,4 @@
 import { unstable_noStore as noStore } from 'next/cache';
-import { cache } from 'react';
 
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
@@ -7,9 +6,7 @@ const authHeaders =
     ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
-export const fetchCache = 'force-no-store';
-
-export const getRepoReleaseData = cache(async (name?: string) => {
+export const getRepoReleaseData = async (name?: string) => {
   if (!name || !name.length) return null;
   noStore();
   try {
@@ -36,4 +33,4 @@ export const getRepoReleaseData = cache(async (name?: string) => {
   } catch (e) {
     return null;
   }
-});
+};
