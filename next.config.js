@@ -20,7 +20,7 @@ const defaultNextConfig = {
   crossOrigin: 'anonymous',
   experimental: {
     typedRoutes: true,
-    ppr: true,
+    // ppr: true,
     useLightningcss: true,
   },
   compiler: {
@@ -55,7 +55,7 @@ const defaultNextConfig = {
 };
 
 const millionConfig = {
-  // mute: true,
+  mute: true,
   auto: { rsc: true },
 };
 
