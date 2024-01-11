@@ -21,7 +21,7 @@ const defaultNextConfig = {
   experimental: {
     typedRoutes: true,
     // ppr: true,
-    useLightningcss: true,
+    // useLightningcss: true,
   },
   compiler: {
     removeConsole: {
