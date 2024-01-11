@@ -4,7 +4,7 @@ import { tw } from '@/utils/cx';
 export const BackToTopButton = tw(Button)`
   rounded-full
   fixed
-  z-[2]
+  z-2
   bottom-0
   right-0
   m-4

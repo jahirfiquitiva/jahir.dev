@@ -30,7 +30,7 @@ export const BackgroundImage = tw(Img)<ImgProps>`
   -left-[5%]
   -top-[100%]
   mobile-md:-top-[125%]
-  -z-[1]
+  -z-1
   rounded-2.5
   opacity-50
   saturate-200

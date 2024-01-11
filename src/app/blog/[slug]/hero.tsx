@@ -18,7 +18,7 @@ export const Hero = (props: HeroProps) => {
   return (
     <figure
       className={cx(
-        'overflow-hidden -z-[1]',
+        'overflow-hidden -z-1',
         'h-[85vh] max-h-[384px]',
         'w-[100vw] max-w-[calc(100vw_+_calc(100vw_-_100%))]',
         'absolute top-0 -left-[calc(100vw_-_100%)] -right-[calc(100vw_-_100%)]',
