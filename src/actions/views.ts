@@ -1,5 +1,3 @@
-'use server';
-
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
@@ -26,6 +24,7 @@ export const recordView = cache(async (slug: string) => {
 });
 
 export const getViews = cache(async (slug: string): Promise<number> => {
+  noStore();
   try {
     const data = await db
       .selectFrom('counters')

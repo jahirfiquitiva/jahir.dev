@@ -46,9 +46,9 @@ Despite requiring no configuration, I encountered a couple problems during the p
 
 ##### 1. React Fragments 🖼
 
-I was getting compilation errors for using React Fragments like this `<>{...}</>`, so I changed that to `<React.Fragment>{...}</React.Fragment>` and they stopped... well, kinda.
+I was getting compilation errors for using React Fragments like this `<>{...}</>{:jsx}`, so I changed that to `<React.Fragment>{...}</React.Fragment>{:jsx}` and they stopped... well, kinda.
 
-Then I started getting `ReferenceError: Fragment is not defined` errors. It wasn't easy to solve so I asked for help in the [Unicorn Utterances](https://discord.gg/FMcvc6T) discord server, and [Corbin](http://crutchcorn.dev/) found [an issue](https://github.com/transitive-bullshit/create-react-library/issues/243#issuecomment-653525598) in the `create-react-library` repo that mentioned adding `--jsxFragment React.Fragment` to the `build` and `start` scripts.
+Then I started getting `ReferenceError: Fragment is not defined{:.key}` errors. It wasn't easy to solve so I asked for help in the [Unicorn Utterances](https://discord.gg/FMcvc6T) discord server, and [Corbin](http://crutchcorn.dev/) found [an issue](https://github.com/transitive-bullshit/create-react-library/issues/243#issuecomment-653525598) in the `create-react-library` repo that mentioned adding `--jsxFragment React.Fragment{:bash}` to the `build` and `start` scripts.
 
 And then it was all working again.
 
@@ -72,7 +72,7 @@ The quick solution, was to make it a prop and allow passing it to the component,
 
 ##### 3. CSS 🎨
 
-I was using css modules for the library components, but I also needed a little of normal css, because the component used other components from [`rmwc`](rmwc.io), and they use that and I needed to override a few styles.
+I was using css modules for the library components, but I also needed a little of normal css, because the component used other components from [`rmwc`](https://rmwc.io), and they use that and I needed to override a few styles.
 
 From what I understood `create-react-library` the normal css and the module css files would coexist and work along normally, but for some reason, it wasn't like that, and the normal css was still compiled as a module, i.e. the compiled classes names would have some random suffix to make them unique, and therefore none of the overriden styles were applied.
 
@@ -80,9 +80,9 @@ At the end, I ended up changing the css modules to normal css, so no suffix was 
 
 ### Closing up 👋🏼
 
-So, after struggling with those few things, I was able to use the component from the library without any other issues, and everything was working as expected, including react hooks like `useContext` and `useReducer`.
+So, after struggling with those few things, I was able to use the component from the library without any other issues, and everything was working as expected, including react hooks like `useContext{:.fn}` and `useReducer{:.fn}`.
 
-Also, `create-react-library` definitely allowed publishing the package by just running `npm publish` as I wanted it to be.
+Also, `create-react-library` definitely allowed publishing the package by just running `npm publish{:bash}` as I wanted it to be.
 
 There are probably other approaches to build a react component(s) package, but this one worked for me and was easy to use, so I liked it and wanted to share my experience.
 

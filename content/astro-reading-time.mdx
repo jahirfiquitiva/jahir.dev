@@ -123,7 +123,7 @@ export default defineConfig({
 });
 ```
 
-Instead, use a `BlogPost` component in your blog page:
+Instead, use a `BlogPost{:.cls}` component in your blog page:
 
 ```astro title="src/pages/blog.astro" {13}
 ---
@@ -145,7 +145,7 @@ const allBlogPosts = await getCollection('blog');
 ...
 ```
 
-Then call the `getReadingTime` function from the component file and use that property anywhere:
+Then call the `getReadingTime{:.fn}` function from the component file and use that property anywhere:
 
 ```astro title="src/components/blog-post-item.astro" {12,13,21}
 ---

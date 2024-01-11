@@ -20,7 +20,7 @@ export default async function ReleasePage(context: ReleasePageContext) {
   );
   if (!repo) return notFound();
 
-  const data = await getRepoReleaseData(repo).catch();
+  const data = await getRepoReleaseData(repo);
   return (
     <Section id={'github-release'}>
       <h1>{data?.success ? '🎉' : '😮'}</h1>

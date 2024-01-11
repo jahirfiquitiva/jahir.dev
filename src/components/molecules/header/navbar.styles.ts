@@ -8,7 +8,7 @@ export const Nav = tw.nav`
   h-full
   w-full
   max-w-site
-  z-[4] bg-toolbar
+  z-4 bg-toolbar
   p-1.5 tablet-sm:p-2
   backdrop-saturate-125
   backdrop-blur-sm

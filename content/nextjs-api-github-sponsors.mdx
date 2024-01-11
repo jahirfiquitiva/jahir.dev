@@ -204,11 +204,11 @@ export default async function handler(
 }
 ```
 
-Here, we import the function previously created, then we call it using the `async` function `handler` , then we get the JSON body from it and return it as our API response.
+Here, we import the function previously created, then we call it using the `async{:.key}` function `handler{:.fn}` , then we get the JSON body from it and return it as our API response.
 
 ### Testing
 
-Let's test our simple API, in order to do that, run `npm run dev` or `yarn dev` in your Terminal or CMD from the project root.
+Let's test our simple API, in order to do that, run `npm run dev{:bash}` or `yarn dev{:bash}` in your Terminal or CMD from the project root.
 
 Once the project is running, you'll see this:
 
@@ -216,7 +216,7 @@ Once the project is running, you'll see this:
 ready - started server on 0.0.0.0:3000, url: http://localhost:3000
 ```
 
-Next, go to `http://localhost:3000/api/sponsors`, if everything was setup correctly, you will see the raw response from the API, which format isn't really nice to read or use, and looks like this:
+Next, go to `http://localhost:3000/api/sponsors{:.fn}`, if everything was setup correctly, you will see the raw response from the API, which format isn't really nice to read or use, and looks like this:
 
 ```json
 {
@@ -268,7 +268,7 @@ Next, go to `http://localhost:3000/api/sponsors`, if everything was setup correc
 
 Let's define interfaces for the raw response from the GitHub GraphQL API. Create a file named `types.ts` under the `lib/sponsors` folder.
 
-We can start with the deepest nested object, which would be the `sponsorEntity`
+We can start with the deepest nested object, which would be the `SponsorEntity{:.cls}`
 
 ```tsx title="lib/sponsors/types.ts"
 export interface SponsorEntity {
@@ -279,7 +279,7 @@ export interface SponsorEntity {
 }
 ```
 
-Now we can go one level up to `sponsorships`
+Now we can go one level up to `Sponsorships{:.cls}`
 
 ```tsx title="lib/sponsors/types.ts"
 interface Sponsorships {
@@ -307,7 +307,7 @@ export interface SponsorsTier {
 }
 ```
 
-Now let's go up to `sponsorsListing`
+Now let's go up to `SponsorsListing{:.cls}`
 
 ```tsx title="lib/sponsors/types.ts"
 interface SponsorsListing {
@@ -334,7 +334,7 @@ export interface SponsorsResponse {
 }
 ```
 
-Now, can import the `SponsorsResponse` interface in `request.ts` and type the `getSponsorsGraphQLResponse` function, so it will look like:
+Now, can import the `SponsorsResponse{:.cls}` interface in `request.ts` and type the `getSponsorsGraphQLResponse{:.fn}` function, so it will look like:
 
 ```tsx title="lib/sponsors/request.ts"
 import type { SponsorsResponse } from './types';
@@ -380,7 +380,7 @@ First, let's plan the desired object format to make the response easier to read:
 }
 ```
 
-With this format, we have an object with 2 properties: `tiers` and `total`. Tiers will have all its corresponding information including a `sponsors` object array with the information for each sponsor. There's a couple fields renamed from the raw response, to make them a bit simpler:
+With this format, we have an object with 2 properties: `tiers{:.fn}` and `total{:.fn}`. Tiers will have all its corresponding information including a `sponsors{:.fn}` object array with the information for each sponsor. There's a couple fields renamed from the raw response, to make them a bit simpler:
 
 - `login` → `username`
 - `avatarUrl` → `avatar`
@@ -417,7 +417,7 @@ export interface Sponsors {
 }
 ```
 
-Finally, let's create a function to transform the `SponsorsResponse` object into the `Sponsors` one, in the `lib/sponsors/request.ts` file:
+Finally, let's create a function to transform the `SponsorsResponse{:.cls}` object into the `Sponsors{:.cls}` one, in the `lib/sponsors/request.ts` file:
 
 ```tsx title="lib/sponsors/request.ts"
 import type {
@@ -494,7 +494,7 @@ export default async function handler(
 }
 ```
 
-Now if we go to `http://localhost:3000/api/sponsors`, we will see a response with the format we initially planned for. 🎉
+Now if we go to `http://localhost:3000/api/sponsors{:.fn}`, we will see a response with the format we initially planned for. 🎉
 
 You can try the deployed version of this endpoint at [https://sponsors-edge-api.vercel.app/api/sponsors](https://sponsors-edge-api.vercel.app/api/sponsors)
 
@@ -529,7 +529,7 @@ import {
 }
 ```
 
-As you can see, we change the type `NextApiRequest` for `NextRequest`, remove the `res` parameter from the handler function, and change the way we return the JSON response by using the `Response` object.
+As you can see, we change the type `NextApiRequest{:.cls}` for `NextRequest{:.cls}`, remove the `res{:.prm}` parameter from the handler function, and change the way we return the JSON response by using the `Response{:.cls}` object.
 
 You can try the deployed version of this endpoint at [https://sponsors-edge-api.vercel.app/api/sponsors-edge](https://sponsors-edge-api.vercel.app/api/sponsors-edge)
 

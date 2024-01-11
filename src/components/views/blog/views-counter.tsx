@@ -1,5 +1,3 @@
-import 'server-only';
-
 import { Suspense } from 'react';
 
 import { getViews, recordView } from '@/actions/views';
@@ -12,9 +10,8 @@ interface ViewsCounterProps {
 
 export const ViewsCounter = async (props: ViewsCounterProps) => {
   const dbSlug = `blog--${props.slug}`;
-  const views = await getViews(dbSlug).catch(() => 0);
+  const views = await getViews(dbSlug);
   if (props.write) recordView(dbSlug);
-
   return (
     <Suspense
       fallback={

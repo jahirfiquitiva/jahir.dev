@@ -12,7 +12,10 @@ import {
 import { canRunAction } from './utils';
 
 export const incrementReaction = cache(
-  async (slug: string, reaction: ReactionName) => {
+  async (
+    slug: string,
+    reaction: ReactionName,
+  ): Promise<{ [reaction in ReactionName]?: number }> => {
     if (!canRunAction) return {};
     noStore();
     try {
@@ -34,12 +37,15 @@ export const incrementReaction = cache(
   },
 );
 
+export type IncrementReactionFnType = typeof incrementReaction;
+
 export const getReactions = cache(
   async (slug: string): Promise<ReactionsCounters> => {
+    noStore();
     try {
       const data = await db
         .selectFrom('counters')
-        .where('slug', '=', slug)
+        .where('slug', '=', `blog--${slug}`)
         .select(['likes', 'loves', 'awards', 'bookmarks'])
         .execute();
       const [counters] = data;

@@ -3,7 +3,7 @@ import { getMDXComponent } from 'next-contentlayer/hooks';
 
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
-import cx, { tw } from '@/utils/cx';
+import { tw } from '@/utils/cx';
 
 import { ImageComparison } from './image-comparison';
 
@@ -32,13 +32,12 @@ const components = {
 
 interface MdxProps {
   code: string;
-  className?: string;
 }
 
 export const Mdx = (props: MdxProps) => {
   const MdxComponent = getMDXComponent(props.code);
   return (
-    <article className={cx(props.className)}>
+    <article>
       <MdxComponent components={components as MDXComponents} />
     </article>
   );

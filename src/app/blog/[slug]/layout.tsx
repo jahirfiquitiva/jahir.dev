@@ -3,7 +3,6 @@ import type { PropsWithChildren } from 'react';
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { Zoom } from '@/components/molecules/zoom';
-import { ReactionsButtons } from '@/components/views/blog/reactions';
 import { ShareButton } from '@/components/views/blog/share-button';
 import cx from '@/utils/cx';
 import { buildOgImageUrl } from '@/utils/og';
@@ -11,6 +10,7 @@ import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
+import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
 const blogPostStructuredData = (post: Blog): string =>
@@ -39,13 +39,13 @@ export default function BlogPostLayout(
   if (!post) return null;
   return (
     <>
-      <Header post={post} />
       <Hero
         title={post.title}
         hero={post.hero}
         meta={post.heroMeta}
         source={post.heroSource}
       />
+      <Header post={post} />
       {props.children}
       <hr
         className={cx(
@@ -79,7 +79,7 @@ export default function BlogPostLayout(
             <span>Edit on GitHub</span>
           </OutlinedLinkButton>
         </div>
-        <ReactionsButtons slug={slug || ''} />
+        <Reactions slug={slug} />
         <Zoom />
       </div>
       <script type={'application/ld+json'} suppressHydrationWarning>

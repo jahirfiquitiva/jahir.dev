@@ -15,13 +15,12 @@ import { BlogPostLink } from './item.styles';
 interface BlogPostItemProps {
   post: SimpleBlog;
   fullDate?: boolean;
-  viewsCounter?: JSX.Element;
 }
 
 const MAX_WIDTH = 96;
 const MAX_HEIGHT = 72;
 const getHeroProps = (heroMeta: SimpleBlog['heroMeta']) => {
-  const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta;
+  const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta || {};
   return {
     width: Math.min(width, MAX_WIDTH),
     height: Math.min(height, MAX_HEIGHT),
@@ -91,8 +90,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           className={cx(
             'flex flex-row items-center w-full',
             'gap-1.5 text-3xs text-tertiary-txt',
-            'tabular-nums line-clamp-1',
-            'flex-nowrap flex overflow-x-auto',
+            'tabular-nums overflow-x-auto',
           )}
         >
           <span

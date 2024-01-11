@@ -1,4 +1,3 @@
-import 'server-only';
 /* eslint-disable @next/next/no-img-element */
 
 import { config } from '@/utils/og';

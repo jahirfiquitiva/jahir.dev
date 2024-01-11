@@ -12,7 +12,7 @@ const customizeToc = (toc: RehypeElement): RehypeElement | null => {
   return {
     type: 'element',
     tagName: 'details',
-    properties: { className: ['toc'], open: true, 'data-type': 'toc' },
+    properties: { className: ['toc'], 'data-type': 'toc' },
     children: [
       {
         type: 'element',

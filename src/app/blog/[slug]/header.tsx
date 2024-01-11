@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { Link } from '@/components/atoms/link';
 import { ViewsCounter } from '@/components/views/blog/views-counter';
 import { getReadableColor, hexToRgb } from '@/utils/color';
+import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import type { Blog } from 'contentlayer/generated';
 
@@ -11,24 +12,25 @@ interface HeaderProps {
 }
 
 export const Header = (props: HeaderProps) => {
-  const { title, color, slug, date, readingTime } = props.post;
+  const { title, summary, color, slug, date, readingTime } = props.post;
   const readableColor = getReadableColor(color, true);
   const shadowColor = hexToRgb(readableColor, 0.85);
   const readableDate = formatDate(date);
 
   return (
-    <div className={'flex flex-col gap-3'}>
+    <div className={'flex flex-col gap-3 text-shadow shadow-background -mt-2'}>
       <Link
         title={'Go back to blog posts list'}
         href={'/blog'}
-        className={'self-start no-underline hocus:underline py-1 mb-5'}
+        className={'self-start no-underline hocus:underline py-1 mb-2'}
       >
         ← Back to blog posts
       </Link>
       <h1
-        className={
-          'text-shadow dark:text-shadow-none dark:text-[var(--title-color)] dark:saturate-150'
-        }
+        className={cx(
+          'text-shadow dark:text-[var(--title-color)] dark:saturate-150',
+          'dark:!shadow-background',
+        )}
         style={
           {
             '--tw-shadow-color': shadowColor,
@@ -38,10 +40,14 @@ export const Header = (props: HeaderProps) => {
       >
         {title}
       </h1>
+      <p className={'text-secondary-txt'}>{summary}</p>
       <p
-        className={
-          'flex flex-row items-center gap-2 text-2xs text-tertiary-txt tabular-nums line-clamp-1'
-        }
+        className={cx(
+          'flex flex-row items-center gap-2',
+          'text-tertiary-txt tabular-nums',
+          'flex-wrap',
+          'text-3xs mobile-md:text-2xs',
+        )}
       >
         <span
           title={`This blog post was published on ${readableDate}`}

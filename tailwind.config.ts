@@ -101,6 +101,13 @@ module.exports = {
         site: '666px',
         nice: '69ch',
       },
+      zIndex: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+      },
       colors: {
         brand: {
           950: '#060A15',

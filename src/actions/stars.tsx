@@ -1,5 +1,4 @@
-'use server';
-
+import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
 const gitHubApiUrl = 'https://api.github.com';
@@ -15,6 +14,7 @@ const oneThousand = 1000;
 export const getRepoStars = cache(
   async (repo: string, owner?: string): Promise<string | undefined> => {
     if (!repo || !repo.length) return undefined;
+    noStore();
     try {
       const repoRequest = await fetch(
         `${gitHubApiUrl}/repos/${owner || 'jahirfiquitiva'}/${repo}`,

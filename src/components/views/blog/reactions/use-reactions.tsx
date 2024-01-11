@@ -3,7 +3,7 @@
 import confetti from 'canvas-confetti';
 import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 
-import { getReactions, incrementReaction } from '@/actions/reactions';
+import type { IncrementReactionFnType } from '@/actions/reactions';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName, ReactionsCounters } from '@/lib/planetscale';
@@ -12,32 +12,25 @@ import { confettiOptions, reactionsSetup } from './reaction-button.config';
 
 type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 
-export const useReactions = (slug: string) => {
+export const useReactions = (
+  slug: string,
+  initialCounters?: ReactionsCounters,
+  incrementReactionFn?: IncrementReactionFnType,
+) => {
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
   const [submitting, setSubmitting] = useState<ReactionName | undefined>(
     undefined,
   );
-  const [loading, setLoading] = useState<boolean>(true);
 
-  const [counters, setCounters] = useState<ReactionsCounters>({});
+  const [counters, setCounters] = useState<ReactionsCounters>(
+    initialCounters || {},
+  );
   const [reacted, setReacted] = useState<ReactedLocalStorage>({});
 
   useEffect(() => {
     if (!hasMounted) return;
-    // Get reactions counters
-    getReactions(slug)
-      .then((reactions) => {
-        setCounters((previousCounters) => ({
-          ...previousCounters,
-          ...reactions,
-        }));
-      })
-      .catch()
-      .finally(() => {
-        setLoading(false);
-      });
     // Get if has reacted before (locally)
     const data = window.localStorage.getItem(slug);
     if (data) {
@@ -56,12 +49,13 @@ export const useReactions = (slug: string) => {
 
   const submitReaction = useCallback(
     async (reaction: ReactionName) => {
-      // Do nothing in SSR or a reaction has been already submitted
+      // Do nothing in SSR or if a reaction has been already submitted
       if (!hasMounted || submitting || reacted[reaction]) return false;
       setSubmitting(reaction);
       let success = false;
       try {
-        const newReactions = await incrementReaction(slug, reaction);
+        const newReactions =
+          (await incrementReactionFn?.(slug, reaction)) || {};
         if (Object.keys(newReactions).length) {
           setCounters((previousCounters) => ({
             ...previousCounters,
@@ -79,7 +73,7 @@ export const useReactions = (slug: string) => {
       setSubmitting(undefined);
       return success;
     },
-    [hasMounted, reacted, submitting, slug],
+    [hasMounted, submitting, reacted, incrementReactionFn, slug],
   );
 
   const onButtonClick = async (
@@ -104,5 +98,5 @@ export const useReactions = (slug: string) => {
     }
   };
 
-  return { onButtonClick, submitting, loading, reacted, counters };
+  return { onButtonClick, submitting, reacted, counters };
 };

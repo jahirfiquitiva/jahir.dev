@@ -29,7 +29,7 @@ export const IconContainer = tw.li`
   bg-background
   rounded-half
   p-1
-  z-[1]
+  z-1
   max-w-[3.5rem]
 `;
 
