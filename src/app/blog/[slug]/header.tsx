@@ -18,18 +18,19 @@ export const Header = (props: HeaderProps) => {
   const readableDate = formatDate(date);
 
   return (
-    <div className={'flex flex-col gap-3'}>
+    <div className={'flex flex-col gap-3 text-shadow shadow-background -mt-2'}>
       <Link
         title={'Go back to blog posts list'}
         href={'/blog'}
-        className={'self-start no-underline hocus:underline py-1 mb-5'}
+        className={'self-start no-underline hocus:underline py-1 mb-2'}
       >
         ← Back to blog posts
       </Link>
       <h1
-        className={
-          'text-shadow dark:text-shadow-none dark:text-[var(--title-color)] dark:saturate-150'
-        }
+        className={cx(
+          'text-shadow dark:text-[var(--title-color)] dark:saturate-150',
+          'dark:!shadow-background',
+        )}
         style={
           {
             '--tw-shadow-color': shadowColor,
