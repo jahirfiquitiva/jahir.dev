@@ -1,3 +1,5 @@
+'use server';
+
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
@@ -10,7 +12,10 @@ import {
 import { canRunAction } from './utils';
 
 export const incrementReaction = cache(
-  async (slug: string, reaction: ReactionName) => {
+  async (
+    slug: string,
+    reaction: ReactionName,
+  ): Promise<{ [reaction in ReactionName]?: number }> => {
     if (!canRunAction) return {};
     noStore();
     try {
@@ -31,6 +36,8 @@ export const incrementReaction = cache(
     }
   },
 );
+
+export type IncrementReactionFnType = typeof incrementReaction;
 
 export const getReactions = cache(
   async (slug: string): Promise<ReactionsCounters> => {

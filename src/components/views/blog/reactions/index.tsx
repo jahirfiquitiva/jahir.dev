@@ -3,6 +3,7 @@
 
 import type { CSSProperties } from 'react';
 
+import type { IncrementReactionFnType } from '@/actions/reactions';
 import { reactionsNames, type ReactionsCounters } from '@/lib/planetscale';
 import { hexToRgb } from '@/utils/color';
 
@@ -13,12 +14,14 @@ import { useReactions } from './use-reactions';
 interface ReactionsButtonsProps {
   slug: string;
   initialCounters?: ReactionsCounters;
+  incrementReactionFn?: IncrementReactionFnType;
 }
 
 export const ReactionsButtons = (props: ReactionsButtonsProps) => {
   const { counters, reacted, submitting, onButtonClick } = useReactions(
     `blog--${props.slug}`,
     props.initialCounters,
+    props.incrementReactionFn,
   );
 
   return (

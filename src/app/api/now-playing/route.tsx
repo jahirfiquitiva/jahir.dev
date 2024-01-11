@@ -28,7 +28,6 @@ const mapTrackData = (track?: Track | null): ReadableTrack | null => {
       duration: track.duration_ms || 0,
     };
   } catch (e) {
-    console.error(e);
     return null;
   }
 };

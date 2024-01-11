@@ -3,7 +3,7 @@
 import confetti from 'canvas-confetti';
 import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 
-import { incrementReaction } from '@/actions/reactions';
+import type { IncrementReactionFnType } from '@/actions/reactions';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName, ReactionsCounters } from '@/lib/planetscale';
@@ -15,6 +15,7 @@ type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 export const useReactions = (
   slug: string,
   initialCounters?: ReactionsCounters,
+  incrementReactionFn?: IncrementReactionFnType,
 ) => {
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -53,7 +54,8 @@ export const useReactions = (
       setSubmitting(reaction);
       let success = false;
       try {
-        const newReactions = await incrementReaction(slug, reaction);
+        const newReactions =
+          (await incrementReactionFn?.(slug, reaction)) || {};
         if (Object.keys(newReactions).length) {
           setCounters((previousCounters) => ({
             ...previousCounters,
@@ -71,7 +73,7 @@ export const useReactions = (
       setSubmitting(undefined);
       return success;
     },
-    [hasMounted, reacted, submitting, slug],
+    [hasMounted, submitting, reacted, incrementReactionFn, slug],
   );
 
   const onButtonClick = async (
