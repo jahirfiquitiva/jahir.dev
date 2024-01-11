@@ -25,7 +25,7 @@ export const Hero = (props: HeroProps) => {
         'pointer-events-none blur',
         'saturate-125 opacity-50 dark:opacity-65',
         // eslint-disable-next-line max-len
-        '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_100%)]',
+        '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_100%)]',
       )}
     >
       <Img
