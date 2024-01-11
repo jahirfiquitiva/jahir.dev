@@ -6,6 +6,8 @@ const authHeaders =
     ? { headers: { Authorization: `token ${githubApiToken}` } }
     : {};
 
+export const fetchCache = 'force-no-store';
+
 export const getRepoReleaseData = async (name?: string) => {
   if (!name || !name.length) return null;
   noStore();
