@@ -115,8 +115,7 @@ html.dark {
 }
 
 article code {
-  @apply py-0.5 px-1 text-2xs rounded-1.5;
-  @apply font-normal;
+  @apply py-0.5 px-1 text-2xs rounded-1.5 font-normal;
   color: inherit;
   box-decoration-break: clone;
 }
@@ -141,12 +140,11 @@ article pre::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 
-article [data-rehype-pretty-code-figure] code {
+article [data-rehype-pretty-code-figure] pre code {
   @apply grid min-w-full break-words rounded-0 border-0 bg-transparent;
-  @apply p-0 text-2xs font-normal;
+  @apply p-0;
   line-height: 2;
   counter-reset: line;
-  box-decoration-break: clone;
 }
 
 article [data-rehype-pretty-code-title] {

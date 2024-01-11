@@ -33,8 +33,8 @@ it and be able to create components that extended from other components, so that
 if needed.
 
 I used this for a while, and everything was working pretty good. Anyways, about a week ago, I decided to give
-[tailwind css](https://tailwindcss.com/) a try.
-I honestly don't like it much for a specific reason: the `class` attribute in `html` code is way too long and I don't like that.
+[Tailwind CSS](https://tailwindcss.com/) a try.
+I honestly don't like it much for a specific reason: the `class{:.fn}` attribute in `html` code is way too long and I don't like that.
 
 So I started to look around on ways to use and learn about tailwind, while keeping a styled components syntax. And that's when I found
 [`twin.macro`](https://github.com/ben-rogerson/twin.macro). It allows to take advantage of all the classes and utilities from tailwind, while
@@ -56,10 +56,10 @@ const StyledLink = tw.a`
 `;
 ```
 
-It also comes with a lot of utilities to write less code, like `hocus` so you can style `hover` and `focus` at the same time. Or being able to
-write css directly within the `tw` string, like
+It also comes with a lot of utilities to write less code, like `hocus{:.fn}` so you can style `hover{:.fn}` and `focus{:.fn}` at the same time. Or being able to
+write css directly within the `tw{:.fn}` string, like
 
-`--custom-color[#4285f4]`
+`--custom-color[#4285f4]{:.fn}`
 
 It's pretty powerful to be honest. And now I put both tailwind and styled components into practice, while reducing a lot of code in my website.
 You can check a [recent Pull Request](https://github.com/jahirfiquitiva/jahir.dev/pull/6) I did for this. The difference is huge.
