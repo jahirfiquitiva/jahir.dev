@@ -20,4 +20,4 @@ export const getAboutImage = cache(async () => {
   };
 });
 
-export const revalidate = 86400;
+// export const revalidate = 86400;

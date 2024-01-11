@@ -7,7 +7,7 @@ import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 import Loading from '../loading';
 
 // Update data once every 12 hours
-export const revalidate = 43200;
+// export const revalidate = 43200;
 
 export default async function Sponsorships() {
   const sponsors = await getSponsorsAndCategories().catch(null);

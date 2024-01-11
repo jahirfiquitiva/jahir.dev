@@ -76,4 +76,4 @@ export const getSponsorsAndCategories = cache(async () => {
   };
 });
 
-export const revalidate = 43200;
+// export const revalidate = 43200;
