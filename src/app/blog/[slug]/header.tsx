@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 export const Header = (props: HeaderProps) => {
-  const { title, color, slug, date, readingTime } = props.post;
+  const { title, summary, color, slug, date, readingTime } = props.post;
   const readableColor = getReadableColor(color, true);
   const shadowColor = hexToRgb(readableColor, 0.85);
   const readableDate = formatDate(date);
@@ -39,6 +39,7 @@ export const Header = (props: HeaderProps) => {
       >
         {title}
       </h1>
+      <p className={'text-secondary-txt'}>{summary}</p>
       <p
         className={cx(
           'flex flex-row items-center gap-2',
