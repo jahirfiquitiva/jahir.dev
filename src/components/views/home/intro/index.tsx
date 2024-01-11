@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
 import photo from '@/assets/images/photo.jpg';
 import { Icon } from '@/components/atoms/icon';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { SocialLinks } from '@/components/molecules/social-links';
 import cx from '@/utils/cx';
 
-import { Name, Photo, SubHeader, WavingSpan } from './intro.styles';
+import { Name, SubHeader, WavingSpan } from './intro.styles';
 import { Verified } from './verified';
 import { WavingHello } from './waving-hello';
 
@@ -17,22 +18,18 @@ export const Intro = () => {
       <div
         className={'flex flex-col gap-5 tablet-sm:block tablet-sm:space-y-4'}
       >
-        <div
+        <Img
+          src={photo}
+          alt={'Photo of Jahir Fiquitiva'}
+          size={160}
+          quality={100}
+          priority
           className={cx(
             'rounded-full aspect-square tablet-sm:float-right',
             'max-w-24 mobile-lg:max-w-28 tablet-sm:max-w-36 tablet-md:max-w-40',
-            'bg-brand-700 overflow-hidden',
+            'bg-brand-700 overflow-hidden saturate-125',
           )}
-        >
-          <Photo
-            src={photo}
-            alt={'Photo of Jahir Fiquitiva'}
-            size={160}
-            quality={100}
-            priority
-          />
-        </div>
-
+        />
         <h1 className={'flex flex-col gap-1 tablet-sm:!-mt-2'}>
           <p
             className={
