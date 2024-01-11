@@ -43,6 +43,7 @@ export const Header = (props: HeaderProps) => {
         className={cx(
           'flex flex-row items-center gap-2',
           'text-tertiary-txt tabular-nums',
+          'flex-wrap',
           'text-3xs mobile-md:text-2xs',
         )}
       >
