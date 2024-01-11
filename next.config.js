@@ -4,7 +4,7 @@
 // https://github.com/contentlayerdev/contentlayer/issues/313#issuecomment-1305424923
 const path = require('path');
 
-// const million = require('million/compiler');
+const million = require('million/compiler');
 const { withContentlayer } = require('next-contentlayer');
 
 const appHeaders = require('./config/next/headers');
@@ -54,10 +54,8 @@ const defaultNextConfig = {
   redirects: () => redirects,
 };
 
-module.exports = withContentlayer(defaultNextConfig);
-/*
 const millionConfig = {
-  mute: true,
+  // mute: true,
   auto: { rsc: true },
 };
 
@@ -65,4 +63,3 @@ module.exports = million.next(
   withContentlayer(defaultNextConfig),
   millionConfig,
 );
-*/
