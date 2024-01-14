@@ -8,13 +8,12 @@ import { buildOgImageUrl } from '@/utils/og';
 
 import type { BlogPostPageContext } from './types';
 
-export default async function BlogPostPage(context: BlogPostPageContext) {
+export default function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
   const post = getBlogPosts().find((b) => b.slug === slug);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
-  // const { content } = await compileMDX(post.content);
   return (
     <article>
       <Mdx source={post.content} />
