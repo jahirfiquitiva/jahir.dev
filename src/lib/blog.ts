@@ -13,7 +13,7 @@ interface BlogPostMetadata {
   link?: string;
   inProgress?: boolean;
   keywords?: Array<string>;
-  readingTime?: number;
+  readingTime: number;
 }
 
 const getActualHeroUrl = (hero?: string) =>
@@ -49,7 +49,7 @@ const parseFrontmatter = (fileContent: string) => {
       // Skip. It won't be defined in frontmatter
     } else metadata[metaKey] = value;
   });
-  metadata['readingTime'] = readingTime(content).minutes;
+  metadata['readingTime'] = readingTime(content).minutes || 0;
   return { metadata: metadata as BlogPostMetadata, content };
 };
 
