@@ -8,7 +8,7 @@
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://contentlayer.dev)
+- **Content**: [MDX](https://github.com/mdx-js/mdx)
 - **Database**: [PlanetScale](https://planetscale.com/)
 - **Analytics**: [Umami](https://jahir.dev/analytics)
 - **Deployment**: [Vercel](https://vercel.com)
@@ -40,7 +40,7 @@
 | |____utils
 ```
 
-- **`config/*`** - Includes all the custom configuration for [contentlayer](https://contentlayer.dev) and [Next.js](https://nextjs.org/)
+- **`config/*`** - Includes all the custom configuration for MDX and [Next.js](https://nextjs.org/)
 - **`content/*`** - MDX blog posts and the content for the `donate` pages
 - **`public/*`** - Static assets including images, fonts, audios, files, etc.
 - **`scripts/*`** - Utilities to setup the project

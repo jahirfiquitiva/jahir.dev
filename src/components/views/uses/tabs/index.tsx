@@ -30,7 +30,7 @@ const tabs: Array<{ id: TabKey; title: string }> = [
   { id: 'website', title: 'Website' },
 ] as const;
 
-export interface TabsProps extends PropsWithChildren {
+interface TabsProps extends PropsWithChildren {
   heroImage: ReactNode;
 }
 
