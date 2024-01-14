@@ -9,20 +9,20 @@ const darkThemeUrl =
 
 const downloadThemeFile = async (light) => {
   const filePath = `./config/mdx/themes/${light ? 'light' : 'dark'}.json`;
-  try {
-    if (existsSync(filePath)) return;
-    const response = await fetch(light ? lightThemeUrl : darkThemeUrl);
-    const json = await response.json();
-    if (!response.ok)
-      console.error(`Status: ${response.status} <=> Error ${response.error}`);
-    writeFileSync(filePath, JSON.stringify(json, null, 2));
-  } catch (e) {
-    console.error('Error downloading themes files');
-    console.error(e);
-  }
+  if (existsSync(filePath)) return;
+  const response = await fetch(light ? lightThemeUrl : darkThemeUrl);
+  const json = await response.json();
+  if (!response.ok)
+    console.error(`Status: ${response.status} <=> Error ${response.error}`);
+  writeFileSync(filePath, JSON.stringify(json, null, 2));
 };
 
 console.log('Downloading theme json files…');
-Promise.all([downloadThemeFile(true), downloadThemeFile()]).then(() => {
-  console.log('Theme files downloaded successfully!');
-});
+Promise.all([downloadThemeFile(true), downloadThemeFile()])
+  .then(() => {
+    console.log('Theme files downloaded successfully!');
+  })
+  .catch((e) => {
+    console.error('Error downloading themes files');
+    console.error(e);
+  });

@@ -5,6 +5,7 @@ import type { Track, ReadableTrack } from '@/types/spotify/entities.d';
 
 export const runtime = 'edge';
 export const fetchCache = 'force-no-store';
+export const dynamic = 'force-dynamic';
 
 const mapTrackData = (track?: Track | null): ReadableTrack | null => {
   if (!track) return null;
