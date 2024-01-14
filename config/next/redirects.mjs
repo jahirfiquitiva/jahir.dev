@@ -13,6 +13,7 @@ const redirects = [
     'https://stories.uplabs.com/what-google-missed-in-their-guidelines-for-material-design-iconography-daf9f88000ec',
   ),
   buildRedirect('/blog/post-of-fame', '/donate#thanks'),
+  buildRedirect('/blog/uses', '/uses'),
   buildRedirect('/inspiration', '/blog/people-websites-that-inspire'),
   /* Old static assets paths to new ones */
   buildRedirect('/assets/images/:path*', '/media/:path*'),
@@ -38,8 +39,6 @@ const redirects = [
   buildRedirect('/thanks', '/donate#thanks'),
   buildRedirect('/sponsors', '/donate#thanks'),
   buildRedirect('/supporters', '/donate#thanks'),
-  /* Uses blog post aliases */
-  buildRedirect('/blog/uses', '/uses'),
   buildRedirect('/gear', '/uses'),
   buildRedirect('/releases/:path*', '/gh-releases/:path*'),
   buildRedirect('/feed', '/feed.xml'),

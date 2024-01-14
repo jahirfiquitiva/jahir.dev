@@ -18,8 +18,11 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
   return <article>{content}</article>;
 }
 
+const allowInProgress = process.env.NODE_ENV === 'development';
 export const generateStaticParams = () =>
-  getBlogPosts().map((post) => ({ slug: post.slug }));
+  getBlogPosts()
+    .filter((post) => (allowInProgress || !post.inProgress) && !post.link)
+    .map((post) => ({ slug: post.slug }));
 
 export const dynamicParams = false;
 
