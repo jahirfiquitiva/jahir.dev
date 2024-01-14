@@ -46,3 +46,5 @@ export function generateMetadata(
     openGraph: { ...metadata.openGraph, type: 'article', publishedTime: date },
   };
 }
+
+export const dynamic = 'force-static';

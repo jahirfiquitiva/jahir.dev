@@ -24,3 +24,5 @@ export const metadata = createMetadata({
 export default function ProjectsPage() {
   return <ProjectsList title={'Projects'} />;
 }
+
+export const dynamic = 'force-static';
