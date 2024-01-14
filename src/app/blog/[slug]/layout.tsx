@@ -4,47 +4,45 @@ import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { Zoom } from '@/components/molecules/zoom';
 import { ShareButton } from '@/components/views/blog/share-button';
+import { getBlogPosts, type Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
+import { getDate } from '@/utils/date';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
-const blogPostStructuredData = (post: Blog): string =>
-  post
-    ? JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: post.title,
-        datePublished: post.date,
-        dateModified: post.date,
-        description: post.summary,
-        image: buildOgImageUrl('blog', post.title, post.hero),
-        url: `https://jahir.dev/blog/${post.slug}`,
-        author: {
-          '@type': 'Person',
-          name: 'Jahir Fiquitiva',
-        },
-      })
-    : '';
+const blogPostStructuredData = (post?: Blog): string => {
+  if (!post) return '';
+  const date = getDate(post.date) || new Date(post.date);
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: date.toISOString(),
+    dateModified: date.toISOString(),
+    description: post.summary,
+    image: buildOgImageUrl('blog', post.title, post.hero),
+    url: `https://jahir.dev/blog/${post.slug}`,
+    author: {
+      '@type': 'Person',
+      name: 'Jahir Fiquitiva',
+      url: 'https://jahir.dev/about',
+    },
+  });
+};
 
 export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = allBlogs.find((b) => b.slug === slug);
+  const post = getBlogPosts().find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>
-      <Hero
-        title={post.title}
-        hero={post.hero}
-        meta={post.heroMeta}
-        source={post.heroSource}
-      />
+      <Hero title={post.title} hero={post.hero} source={post.heroSource} />
       <Header post={post} />
       {props.children}
       <hr

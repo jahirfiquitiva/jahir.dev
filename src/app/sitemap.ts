@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { allSimpleBlogs, sortBlogPostsByDate } from '@/utils/blog';
+import { getBlogPosts, sortBlogPostsByDate } from '@/lib/blog';
 import { getDate } from '@/utils/date';
 
 const today = ((): Date => {
@@ -11,7 +11,7 @@ const today = ((): Date => {
 })();
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const blogs = allSimpleBlogs
+  const blogs = getBlogPosts()
     .filter((it) => !Boolean(it.link))
     .sort(sortBlogPostsByDate)
     .map((post) => ({

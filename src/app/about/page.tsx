@@ -10,6 +10,28 @@ import { buildOgImageUrl } from '@/utils/og';
 
 import Photo from './photo';
 
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  dateCreated: new Date('1997-01-28T18:30:00-05:00').toISOString(),
+  dateModified: new Date().toISOString(),
+  mainEntity: {
+    '@id': '#main-author',
+    '@type': 'Person',
+    name: 'Jahir Fiquitiva',
+    alternateName: ['jahirfiquitiva', 'jahirdotdev'],
+    description:
+      'Passionate and creative full-stack software engineer from Colombia 🇨🇴',
+    image: 'https://jahir.dev/media/jahir/jahir-hd.jpg',
+    sameAs: [
+      'https://github.com/jahirfiquitiva',
+      'https://linkedin.com/in/jahirfiquitiva',
+      'https://twitter.com/jahirfiquitiva',
+      'https://instagram.com/jahirfiquitiva',
+    ],
+  },
+});
+
 export default function AboutPage() {
   return (
     <>
@@ -87,6 +109,9 @@ export default function AboutPage() {
       <Skills />
       <Experience />
       <Activity />
+      <script type={'application/ld+json'} suppressHydrationWarning>
+        {jsonLd}
+      </script>
     </>
   );
 }

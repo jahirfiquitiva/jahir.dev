@@ -1,6 +1,7 @@
 import darkCode from '@/assets/images/code/code-dark.png';
 import lightCode from '@/assets/images/code/code-light.png';
-import { Img, type ImgProps } from '@/components/atoms/img';
+import type { ImgProps } from '@/components/atoms/client-img';
+import { Img } from '@/components/atoms/img';
 import cx, { tw } from '@/utils/cx';
 
 const CodeImg = tw(Img)<ImgProps>`

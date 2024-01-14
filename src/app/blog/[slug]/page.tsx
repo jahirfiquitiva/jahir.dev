@@ -1,24 +1,25 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-import { Mdx } from '@/components/views/blog/mdx';
+import { compileMDX } from '@/components/views/blog/mdx';
+import { getBlogPosts } from '@/lib/blog';
 import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
-import { allBlogs } from 'contentlayer/generated';
 
 import type { BlogPostPageContext } from './types';
 
-export default function BlogPostPage(context: BlogPostPageContext) {
+export default async function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
-  const post = allBlogs.find((b) => b.slug === slug);
+  const post = getBlogPosts().find((b) => b.slug === slug);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
-  return <Mdx code={post.body.code} />;
+  const { content } = await compileMDX(post.content);
+  return <article>{content}</article>;
 }
 
 export const generateStaticParams = () =>
-  allBlogs.map((post) => ({ slug: post.slug }));
+  getBlogPosts().map((post) => ({ slug: post.slug }));
 
 export const dynamicParams = false;
 
@@ -26,7 +27,7 @@ export function generateMetadata(
   context: BlogPostPageContext,
 ): Metadata | undefined {
   const { slug } = context.params;
-  const post = allBlogs.find((b) => b.slug === slug);
+  const post = getBlogPosts().find((b) => b.slug === slug);
   if (!slug || !post) return undefined;
 
   const { title, date, summary, hero } = post;
@@ -38,7 +39,7 @@ export function generateMetadata(
     description: summary || 'Blog post by Jahir Fiquitiva',
     image: ogImage,
     exactUrl: `https://jahir.dev/blog/${slug}`,
-    keywords: post.seoKeywords,
+    keywords: post.keywords,
   });
   return {
     ...metadata,

@@ -1,9 +1,13 @@
 'use client';
 
-import { Children, useState, type PropsWithChildren, useEffect } from 'react';
+import {
+  Children,
+  useState,
+  useEffect,
+  type PropsWithChildren,
+  type ReactNode,
+} from 'react';
 
-import image from '@/assets/images/setup-2023.jpg';
-import { Img } from '@/components/atoms/img';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import cx from '@/utils/cx';
 
@@ -26,7 +30,11 @@ const tabs: Array<{ id: TabKey; title: string }> = [
   { id: 'website', title: 'Website' },
 ] as const;
 
-export const Tabs = (props: PropsWithChildren) => {
+export interface TabsProps extends PropsWithChildren {
+  heroImage: ReactNode;
+}
+
+export const Tabs = (props: TabsProps) => {
   const hasMounted = useHasMounted();
   const [currentTab, setCurrentTab] = useState<TabKey>('all');
 
@@ -82,14 +90,7 @@ export const Tabs = (props: PropsWithChildren) => {
                 '-mx-3 tablet-md:-mx-4',
               )}
             >
-              <Img
-                src={image}
-                alt={"Jahir's desk setup in early 2023"}
-                quality={100}
-                placeholder={'blur'}
-                className={'h-full object-top'}
-                priority
-              />
+              {props.heroImage}
             </div>
             <figcaption>Jahir&apos;s desk setup in early 2023</figcaption>
           </figure>

@@ -1,39 +1,23 @@
-import Image, { type ImageProps, type StaticImageData } from 'next/image';
+import 'server-only';
 
-import cx, { tw } from '@/utils/cx';
+import { tw } from '@/utils/cx';
+import { getBlurData } from '@/utils/img-blur';
 
-type BaseImageProps = Omit<ImageProps, 'width' | 'height'>;
-type SizeProps = BaseImageProps & { size?: number };
-type WidthHeightProps = BaseImageProps & {
-  width?: number;
-  height?: number;
+import { ClientImg, type ImgProps } from './client-img';
+
+const getImageDimensions = (props: ImgProps) => {
+  if ('size' in props) return { width: props.size, height: props.size };
+  if ('width' in props) return { width: props.width, height: props.height };
+  return {};
 };
 
-export type ImgProps = SizeProps | WidthHeightProps;
-
-const BaseImg = (props: ImgProps) => {
-  const { size = 0, ...otherProps } = props as SizeProps;
-  const {
-    width = size,
-    height = size,
-    ...rest
-  } = otherProps as WidthHeightProps;
-  return (
-    <Image
-      {...rest}
-      alt={rest.alt}
-      width={width}
-      height={height}
-      placeholder={
-        typeof rest.src !== 'string'
-          ? (rest.src as StaticImageData)?.blurDataURL
-            ? 'blur'
-            : rest.placeholder
-          : rest.placeholder
-      }
-      className={cx('object-cover object-center', rest.className)}
-    />
-  );
+const BaseImg = async (props: ImgProps) => {
+  const { width, height } = getImageDimensions(props);
+  const blurData =
+    typeof props.src === 'string' && !props.blurDataURL
+      ? await getBlurData(props.src, 10, width || 0, height || 0)
+      : null;
+  return <ClientImg {...props} {...blurData} />;
 };
 
 export const Img = tw(BaseImg)<ImgProps>``;
