@@ -11,11 +11,11 @@ interface HeaderProps {
   post: Blog;
 }
 
-export const Header = (props: HeaderProps) => {
-  const { title, summary, color, slug, date, readingTime } = props.post;
+export const Header = ({ post }: HeaderProps) => {
+  const { color, readingTime } = post;
   const readableColor = getReadableColor(color, true);
   const shadowColor = hexToRgb(readableColor, 0.85);
-  const readableDate = formatDate(date);
+  const readableDate = formatDate(post.date);
 
   return (
     <div className={'flex flex-col gap-3 text-shadow shadow-background -mt-2'}>
@@ -38,9 +38,9 @@ export const Header = (props: HeaderProps) => {
           } as CSSProperties
         }
       >
-        {title}
+        {post.title}
       </h1>
-      <p className={'text-secondary-txt'}>{summary}</p>
+      <p className={'text-secondary-txt'}>{post.summary}</p>
       <p
         className={cx(
           'flex flex-row items-center gap-2',
@@ -69,7 +69,7 @@ export const Header = (props: HeaderProps) => {
             </span>
           </>
         ) : null}
-        <ViewsCounter slug={slug} write />
+        {!post.link ? <ViewsCounter slug={post.slug} write /> : null}
       </p>
     </div>
   );
