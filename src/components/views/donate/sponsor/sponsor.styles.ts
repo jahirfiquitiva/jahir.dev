@@ -27,7 +27,7 @@ export const NameAndPhotoContainer = tw.div`
 
 export const Tier = tw.span`
   flex items-center gap-1
-  rounded-2 pl-2 pr-2.5 min-h-9
+  rounded-2 pl-2 pr-2.5 py-1
   border border-divider
   text-3xs font-medium cursor-default
   transition-colors
