@@ -60,6 +60,5 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const config = million.next(withPlaiceholder(defaultNextConfig), millionConfig);
-export default defaultNextConfig;
+export default config;
