@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { tw } from '@/utils/cx';
-import { getBlurData } from 'config/mdx/rehype/image-metadata';
+import { getBlurData } from '@/utils/img-blur';
 
 import { ClientImg, type ImgProps } from './client-img';
 
