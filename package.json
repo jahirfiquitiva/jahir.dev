@@ -6,10 +6,10 @@
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
-    "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
+    "clean": "rimraf .next && rimraf dist && rimraf out",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
-    "prune-code": "ts-prune -i '.next|.contentlayer|src/app'",
+    "prune-code": "ts-prune -i '.next|src/app'",
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
@@ -38,7 +38,6 @@
     "@typescript-eslint/parser": "^6.18.1",
     "autoprefixer": "^10.4.16",
     "colord": "^2.9.3",
-    "contentlayer": "^0.3.4",
     "cssnano": "^6.0.3",
     "dotenv": "^16.3.1",
     "eslint": "^8.56.0",
@@ -50,7 +49,6 @@
     "kysely": "^0.27.2",
     "kysely-planetscale": "^1.4.0",
     "million": "^2.6.4",
-    "next-contentlayer": "^0.3.4",
     "next-mdx-remote": "^4.4.1",
     "plaiceholder": "^3.0.0",
     "postcss": "^8.4.33",
@@ -82,10 +80,5 @@
     "trailingComma": "all",
     "semi": true
   },
-  "packageManager": "yarn@4.0.2",
-  "overrides": {
-    "next-contentlayer": {
-      "next": "$next"
-    }
-  }
+  "packageManager": "yarn@4.0.2"
 }
