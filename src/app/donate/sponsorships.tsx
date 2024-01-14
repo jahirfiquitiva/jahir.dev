@@ -11,14 +11,14 @@ export default async function Sponsorships() {
   return (
     <Suspense fallback={<Loading />}>
       <SponsorsList
-        categories={sponsors?.categories || []}
-        unicorns={sponsors?.unicorns || []}
+        categories={sponsors.categories}
+        unicorns={sponsors.unicorns}
         sponsorsCount={sponsors.sponsorsCount}
         totalEarningsPerMonth={sponsors.totalEarningsPerMonth}
       />
       <Testimonials
-        categories={sponsors?.categories || []}
-        unicorns={sponsors?.unicorns || []}
+        categories={sponsors.categories}
+        unicorns={sponsors.unicorns}
       />
     </Suspense>
   );

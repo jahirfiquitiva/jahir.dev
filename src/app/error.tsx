@@ -41,37 +41,35 @@ const ErrorComponent = (props: { error: Error }) => {
         </Link>{' '}
         of this issue, so I can fix it for you.
       </p>
-      {error ? (
-        <details className={'rounded-2 border border-divider'}>
-          <summary className={'select-none p-2 font-medium'}>
-            Error details
-          </summary>
-          <article
+      <details className={'rounded-2 border border-divider'}>
+        <summary className={'select-none p-2 font-medium'}>
+          Error details
+        </summary>
+        <article
+          className={cx(
+            'border-t border-divider max-w-full overflow-hidden',
+            'flex flex-col gap-2 p-0',
+          )}
+        >
+          <code
             className={cx(
-              'border-t border-divider max-w-full overflow-hidden',
-              'flex flex-col gap-2 p-0',
+              'flex flex-col p-3 border-none',
+              'text-nowrap overflow-x-auto',
+              'text-2xs font-mono',
+              'max-w-full whitespace-pre-line',
             )}
           >
-            <code
-              className={cx(
-                'flex flex-col p-3 border-none',
-                'text-nowrap overflow-x-auto',
-                'text-2xs font-mono',
-                'max-w-full whitespace-pre-line',
-              )}
-            >
-              <span className={'font-medium'}>
-                {error.name}: {error.message}
+            <span className={'font-medium'}>
+              {error.name}: {error.message}
+            </span>
+            {errorStack.map((l, i) => (
+              <span key={i} className={'pl-3'}>
+                {l}
               </span>
-              {errorStack.map((l, i) => (
-                <span key={i} className={'pl-3'}>
-                  {l}
-                </span>
-              ))}
-            </code>
-          </article>
-        </details>
-      ) : null}
+            ))}
+          </code>
+        </article>
+      </details>
       <LinkButton href={'/'} title={'Home page'} className={'mt-3'}>
         Go back home
       </LinkButton>

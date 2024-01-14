@@ -7,15 +7,15 @@ export const getGitHubSponsors = async (): Promise<{
   oneTime: Array<ReadableSupporter>;
 }> => {
   const { data } = await getSponsorsGraphQLResponse().catch();
-  const { nodes: tiers } = data?.user?.sponsorsListing?.tiers || {};
+  const { nodes: tiers } = data.user.sponsorsListing.tiers;
 
   let monthlySponsors: Array<ReadableSupporter> = [];
   let oneTimeSponsors: Array<ReadableSupporter> = [];
 
-  tiers?.forEach((tier) => {
+  tiers.forEach((tier) => {
     const { monthlyPriceInDollars, isOneTime } = tier;
     const people: Array<ReadableSupporter> = (
-      tier.adminInfo?.sponsorships?.nodes || []
+      tier.adminInfo?.sponsorships.nodes || []
     )
       .filter((it) => it.isActive || isOneTime)
       .map((item) => {

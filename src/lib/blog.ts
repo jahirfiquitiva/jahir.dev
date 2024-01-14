@@ -41,8 +41,8 @@ const parseFrontmatter = (fileContent: string) => {
       let filteredKeywords: Array<string> = [];
       try {
         filteredKeywords = docKeywords
-          ?.split(',')
-          ?.map((it: string) => it.trim());
+          .split(',')
+          .map((it: string) => it.trim());
       } catch (e) {}
       metadata['keywords'] = Array.from(new Set([...filteredKeywords]));
     } else if (metaKey === 'readingTime') {

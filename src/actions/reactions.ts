@@ -44,13 +44,11 @@ export const getReactions = async (
 ): Promise<ReactionsCounters> => {
   noStore();
   try {
-    const data = await db
+    const [counters] = await db
       .selectFrom('counters')
       .where('slug', '=', `blog--${slug}`)
       .select(['likes', 'loves', 'awards', 'bookmarks'])
       .execute();
-    const [counters] = data;
-    if (!counters) return {};
     return {
       likes: counters.likes || 0,
       loves: counters.loves || 0,

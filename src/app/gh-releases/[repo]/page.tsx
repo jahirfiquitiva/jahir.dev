@@ -42,7 +42,7 @@ export default async function ReleasePage(context: ReleasePageContext) {
           …
         </p>
       )}
-      <Downloader url={data?.success ? data?.download : null} />
+      <Downloader url={data?.success ? data.download : null} />
     </Section>
   );
 }

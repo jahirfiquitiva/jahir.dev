@@ -22,7 +22,7 @@ const BaseImg = (baseProps: ImgProps) => {
       height={height}
       placeholder={
         typeof props.src !== 'string'
-          ? (props.src as StaticImageData)?.blurDataURL
+          ? (props.src as StaticImageData).blurDataURL
             ? 'blur'
             : props.placeholder
           : props.placeholder
