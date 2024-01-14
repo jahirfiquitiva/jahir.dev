@@ -9,7 +9,8 @@ const blogPostsByYear = getBlogPosts()
   .filter((it) => allowInProgress || !it.inProgress)
   .reduce<Record<number, Array<Blog>>>((acc, post) => {
     const year = (getDate(post.date) || new Date()).getFullYear();
-    return { ...acc, [year]: [...acc[year], post] };
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    return { ...acc, [year]: [...(acc[year] || []), post] };
   }, {});
 
 export const GroupedBlogPosts = () => (
