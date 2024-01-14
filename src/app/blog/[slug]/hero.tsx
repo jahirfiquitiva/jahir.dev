@@ -9,12 +9,11 @@ import { getUrlDomain } from '@/utils/domain';
 interface HeroProps {
   title: Blog['title'];
   hero?: Blog['hero'];
-  meta?: Blog['heroMeta'];
   source?: Blog['heroSource'];
 }
 
 export const Hero = (props: HeroProps) => {
-  const { title, hero, meta, source } = props;
+  const { title, hero, source } = props;
   return (
     <figure
       className={cx(
@@ -34,7 +33,6 @@ export const Hero = (props: HeroProps) => {
         className={'h-full w-full'}
         quality={100}
         priority
-        {...meta}
         data-nozoom
       />
       {source ? (

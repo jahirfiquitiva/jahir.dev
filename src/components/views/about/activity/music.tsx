@@ -1,6 +1,6 @@
 'use client';
 
-import { Img } from '@/components/atoms/img';
+import { ClientImg as Img } from '@/components/atoms/client-img';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx from '@/utils/cx';

@@ -14,16 +14,10 @@ interface BlogPostMetadata {
   inProgress?: boolean;
   keywords?: Array<string>;
   readingTime?: number;
-  heroMeta?: {
-    height?: number;
-    width?: number;
-    placeholder?: 'blur' | 'empty';
-    blurDataURL?: string;
-  };
 }
 
 const getActualHeroUrl = (hero?: string) =>
-  hero ? (hero.startsWith('http') ? hero : `/blog/${hero}`) : '';
+  hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
 
 const parseFrontmatter = (fileContent: string) => {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;

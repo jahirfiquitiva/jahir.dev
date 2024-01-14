@@ -7,13 +7,11 @@ import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 import { prettyCode } from './rehype/code';
-import imageMetadata from './rehype/image-metadata';
 import { toc } from './rehype/toc';
 
 const mdx: MDXOptions = {
   remarkPlugins: [remarkGfm, remarkSqueezeParagraphs, remarkUnwrapImages],
   rehypePlugins: [
-    imageMetadata,
     rehypeSlug,
     rehypeAccessibleEmojis,
     // @ts-expect-error idk

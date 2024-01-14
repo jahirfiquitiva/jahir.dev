@@ -1,5 +1,3 @@
-import type { HeroMeta } from './post';
-
 export interface Project {
   order: number;
   name: string;
@@ -14,5 +12,10 @@ export interface Project {
   hide?: boolean;
   repo?: string;
   owner?: string;
-  iconMeta?: HeroMeta;
+  iconMeta?: {
+    height?: number;
+    width?: number;
+    placeholder?: 'blur' | 'empty';
+    blurDataURL?: string;
+  };
 }

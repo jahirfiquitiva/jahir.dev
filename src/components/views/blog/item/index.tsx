@@ -17,17 +17,6 @@ interface BlogPostItemProps {
   fullDate?: boolean;
 }
 
-const MAX_WIDTH = 96;
-const MAX_HEIGHT = 72;
-const getHeroProps = (heroMeta: Blog['heroMeta']) => {
-  const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta || {};
-  return {
-    width: Math.min(width, MAX_WIDTH),
-    height: Math.min(height, MAX_HEIGHT),
-    ...rest,
-  };
-};
-
 export const BlogPostItem = (props: BlogPostItemProps) => {
   const { post, fullDate } = props;
 
@@ -49,7 +38,8 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       <Img
         src={post.hero || ''}
         alt={`Hero image for blog post "${post.title}"`}
-        {...getHeroProps(post.heroMeta)}
+        width={96}
+        height={72}
         className={cx(
           'rounded-1 max-w-12',
           'mobile-lg:max-w-24',

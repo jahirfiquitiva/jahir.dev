@@ -68,8 +68,14 @@ export const getBlurData = async (
 
     const blur = await getPlaiceholder(imgBuffer, { size: placeholderSize });
     return {
-      width: blur.metadata.width || defaultWidth,
-      height: blur.metadata.height || defaultHeight,
+      width:
+        defaultWidth > 0
+          ? Math.min(defaultWidth, blur.metadata.width)
+          : defaultWidth,
+      height:
+        defaultHeight > 0
+          ? Math.min(defaultHeight, blur.metadata.height)
+          : defaultHeight,
       blurDataURL: blur.base64,
       placeholder: 'blur',
     };
