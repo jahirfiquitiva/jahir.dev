@@ -10,7 +10,7 @@ type WidthHeightProps = ImageProps & {
 
 export type ImgProps = SizeProps | WidthHeightProps;
 
-const BaseImg = async (baseProps: ImgProps) => {
+const BaseImg = (baseProps: ImgProps) => {
   const { size = 0, ...whProps } = baseProps as SizeProps;
   const { width = size, height = size, ...props } = whProps as WidthHeightProps;
   return (
