@@ -1058,7 +1058,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/mdx@npm:^2.0.0":
+"@mdx-js/mdx@npm:^2.0.0, @mdx-js/mdx@npm:^2.2.1":
   version: 2.3.0
   resolution: "@mdx-js/mdx@npm:2.3.0"
   dependencies:
@@ -1080,6 +1080,18 @@ __metadata:
     unist-util-visit: "npm:^4.0.0"
     vfile: "npm:^5.0.0"
   checksum: 719384d8e72abd3e83aa2fd3010394636e32cc0e5e286b6414427ef03121397586ce97ec816afcc4d2b22ba65939c3801a8198e04cf921dd597c0aa9fd75dbb4
+  languageName: node
+  linkType: hard
+
+"@mdx-js/react@npm:^2.2.1":
+  version: 2.3.0
+  resolution: "@mdx-js/react@npm:2.3.0"
+  dependencies:
+    "@types/mdx": "npm:^2.0.0"
+    "@types/react": "npm:>=16"
+  peerDependencies:
+    react: ">=16"
+  checksum: 6d647115703dbe258f7fe372499fa8c6fe17a053ff0f2a208111c9973a71ae738a0ed376770445d39194d217e00e1a015644b24f32c2f7cb4f57988de0649b15
   languageName: node
   linkType: hard
 
@@ -1457,6 +1469,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@plaiceholder/next@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@plaiceholder/next@npm:3.0.0"
+  peerDependencies:
+    next: ">= 10.0.0"
+    plaiceholder: ">=3.0.0"
+    sharp: ">= 0.30.6"
+  checksum: 94f7125b288914f0633e45da43888a596e287fdff3b7a4fd72361e669613188a383eb53fcfd52fbae089da3544d9d6e1ebb5b37d95346a467a92651e5fecfb98
+  languageName: node
+  linkType: hard
+
 "@planetscale/database@npm:^1.13.0":
   version: 1.13.0
   resolution: "@planetscale/database@npm:1.13.0"
@@ -1719,6 +1742,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/js-yaml@npm:^4.0.0":
+  version: 4.0.9
+  resolution: "@types/js-yaml@npm:4.0.9"
+  checksum: 24de857aa8d61526bbfbbaa383aa538283ad17363fcd5bb5148e2c7f604547db36646440e739d78241ed008702a8920665d1add5618687b6743858fae00da211
+  languageName: node
+  linkType: hard
+
 "@types/jsdom@npm:^20.0.0":
   version: 20.0.1
   resolution: "@types/jsdom@npm:20.0.1"
@@ -1849,7 +1879,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.47":
+"@types/react@npm:>=16, @types/react@npm:^18.2.47":
   version: 18.2.47
   resolution: "@types/react@npm:18.2.47"
   dependencies:
@@ -7328,6 +7358,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-mdx-remote@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "next-mdx-remote@npm:4.4.1"
+  dependencies:
+    "@mdx-js/mdx": "npm:^2.2.1"
+    "@mdx-js/react": "npm:^2.2.1"
+    vfile: "npm:^5.3.0"
+    vfile-matter: "npm:^3.0.1"
+  peerDependencies:
+    react: ">=16.x <=18.x"
+    react-dom: ">=16.x <=18.x"
+  checksum: d48ad271f58312d11f392b0fbd7b2dbc5990cc82fcb6d28f687875a52b28b695c0700b93f197c72910a4c73da0a1fe4867db95315bc2ee7f0fc1743279f41b80
+  languageName: node
+  linkType: hard
+
 "next-themes@npm:0.2.1":
   version: 0.2.1
   resolution: "next-themes@npm:0.2.1"
@@ -8975,6 +9020,7 @@ __metadata:
     "@commitlint/cli": "npm:^18.4.4"
     "@commitlint/config-conventional": "npm:^18.4.4"
     "@jsdevtools/rehype-toc": "npm:^3.0.2"
+    "@plaiceholder/next": "npm:^3.0.0"
     "@planetscale/database": "npm:^1.13.0"
     "@types/canvas-confetti": "npm:^1.6.4"
     "@types/node": "npm:^20.11.0"
@@ -9001,6 +9047,7 @@ __metadata:
     million: "npm:^2.6.4"
     next: "npm:^14.0.5-canary.56"
     next-contentlayer: "npm:^0.3.4"
+    next-mdx-remote: "npm:^4.4.1"
     next-themes: "npm:0.2.1"
     plaiceholder: "npm:^3.0.0"
     postcss: "npm:^8.4.33"
@@ -10473,6 +10520,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vfile-matter@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "vfile-matter@npm:3.0.1"
+  dependencies:
+    "@types/js-yaml": "npm:^4.0.0"
+    is-buffer: "npm:^2.0.0"
+    js-yaml: "npm:^4.0.0"
+  checksum: 45ff9b49e7a5817b646d76f14d2486e12a93a16951bd8cfa6c64f0c78c4e56e48d30a0542a980bc9c7aae1bb430d457f9dfc2677e514d66cc2976ab31f10403a
+  languageName: node
+  linkType: hard
+
 "vfile-message@npm:^3.0.0":
   version: 3.1.4
   resolution: "vfile-message@npm:3.1.4"
@@ -10493,7 +10551,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile@npm:^5.0.0, vfile@npm:^5.3.2":
+"vfile@npm:^5.0.0, vfile@npm:^5.3.0, vfile@npm:^5.3.2":
   version: 5.3.7
   resolution: "vfile@npm:5.3.7"
   dependencies:

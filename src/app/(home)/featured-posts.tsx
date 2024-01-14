@@ -7,19 +7,15 @@ import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { BlogPostItemSkeleton } from '@/components/views/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
+import { getBlogPosts, type Blog, sortBlogPostsByDate } from '@/lib/blog';
 import { db } from '@/lib/planetscale';
-import {
-  allSimpleBlogs,
-  sortBlogPostsByDate,
-  type SimpleBlog,
-} from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-export const getFeaturedPosts = cache(async (): Promise<Array<SimpleBlog>> => {
+export const getFeaturedPosts = cache(async (): Promise<Array<Blog>> => {
   noStore();
   try {
-    const sortedPosts = allSimpleBlogs.sort(sortBlogPostsByDate);
+    const sortedPosts = getBlogPosts().sort(sortBlogPostsByDate);
     const latestPost = sortedPosts[0];
     const [mostViewedPost] = await db
       .selectFrom('counters')
@@ -41,7 +37,7 @@ export const getFeaturedPosts = cache(async (): Promise<Array<SimpleBlog>> => {
       latestPost,
       sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
       randomPost,
-    ].filter(Boolean) as Array<SimpleBlog>;
+    ].filter(Boolean) as Array<Blog>;
   } catch (e) {
     return [];
   }

@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// NOTE
-// Do not change this file to .mjs
-// https://github.com/contentlayerdev/contentlayer/issues/313#issuecomment-1305424923
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const million = require('million/compiler');
-const { withContentlayer } = require('next-contentlayer');
+import withPlaiceholder from '@plaiceholder/next';
+import million from 'million/compiler';
 
-const appHeaders = require('./config/next/headers');
-const redirects = require('./config/next/redirects');
+import appHeaders from './config/next/headers.mjs';
+import redirects from './config/next/redirects.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * @type {import('next').NextConfig}
@@ -60,7 +60,5 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-module.exports = million.next(
-  withContentlayer(defaultNextConfig),
-  millionConfig,
-);
+const config = million.next(withPlaiceholder(defaultNextConfig), millionConfig);
+export default config;

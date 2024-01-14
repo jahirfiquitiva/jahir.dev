@@ -1,9 +1,10 @@
 import type { MDXComponents } from 'mdx/types';
-import { getMDXComponent } from 'next-contentlayer/hooks';
+import { compileMDX as mdxCompileMDX } from 'next-mdx-remote/rsc';
 
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
+import mdx from 'config/mdx';
 
 import { ImageComparison } from './image-comparison';
 
@@ -30,15 +31,10 @@ const components = {
   Img,
 };
 
-interface MdxProps {
-  code: string;
-}
-
-export const Mdx = (props: MdxProps) => {
-  const MdxComponent = getMDXComponent(props.code);
-  return (
-    <article>
-      <MdxComponent components={components as MDXComponents} />
-    </article>
-  );
+export const compileMDX = async (text?: string) => {
+  return mdxCompileMDX({
+    source: text || '',
+    options: { mdxOptions: mdx },
+    components: components as MDXComponents,
+  });
 };

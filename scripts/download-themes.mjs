@@ -8,9 +8,7 @@ const darkThemeUrl =
   'https://raw.githubusercontent.com/fabian-hiller/vscode-pace-theme/main/themes/dark.json';
 
 const downloadThemeFile = async (light) => {
-  const filePath = `./config/contentlayer/themes/${
-    light ? 'light' : 'dark'
-  }.json`;
+  const filePath = `./config/mdx/themes/${light ? 'light' : 'dark'}.json`;
   try {
     if (existsSync(filePath)) return;
     const response = await fetch(light ? lightThemeUrl : darkThemeUrl);

@@ -2,19 +2,15 @@ import { cache } from 'react';
 
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
-import {
-  allSimpleBlogs,
-  sortBlogPostsByDate,
-  type SimpleBlog,
-} from '@/utils/blog';
+import { getBlogPosts, type Blog, sortBlogPostsByDate } from '@/lib/blog';
 import { getDate } from '@/utils/date';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
 const blogPostsByYear = cache(() =>
-  allSimpleBlogs
+  getBlogPosts()
     .filter((it) => allowInProgress || !it.inProgress)
-    .reduce<Record<number, Array<SimpleBlog>>>((acc, post) => {
+    .reduce<Record<number, Array<Blog>>>((acc, post) => {
       const year = (getDate(post.date) || new Date()).getFullYear();
       return { ...acc, [year]: [...(acc[year] || []), post] };
     }, {}),
