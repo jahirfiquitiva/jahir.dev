@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-import { compileMDX } from '@/components/views/blog/mdx';
+import { Mdx } from '@/components/views/blog/mdx';
 import { getBlogPosts } from '@/lib/blog';
 import { createMetadata } from '@/utils/metadata';
 import { buildOgImageUrl } from '@/utils/og';
@@ -14,8 +14,12 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
-  const { content } = await compileMDX(post.content);
-  return <article>{content}</article>;
+  // const { content } = await compileMDX(post.content);
+  return (
+    <article>
+      <Mdx source={post.content} />
+    </article>
+  );
 }
 
 const allowInProgress = process.env.NODE_ENV === 'development';

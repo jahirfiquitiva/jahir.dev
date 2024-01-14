@@ -1,5 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
-import { compileMDX as compileRemoteMDX } from 'next-mdx-remote/rsc';
+import { MDXRemote, compileMDX as compileRemoteMDX } from 'next-mdx-remote/rsc';
 
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
@@ -37,3 +37,11 @@ export const compileMDX = (source?: string) =>
     options: { mdxOptions: mdx },
     components,
   });
+
+export const Mdx = (props: { source?: string }) => (
+  <MDXRemote
+    source={props.source || ''}
+    components={components}
+    options={{ mdxOptions: mdx }}
+  />
+);

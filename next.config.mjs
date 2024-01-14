@@ -20,9 +20,8 @@ const defaultNextConfig = {
   crossOrigin: 'anonymous',
   experimental: {
     typedRoutes: true,
-    ppr: true,
-    useLightningcss: true,
-    webpackBuildWorker: true,
+    // ppr: true,
+    // useLightningcss: true,
   },
   compiler: {
     removeConsole: {
