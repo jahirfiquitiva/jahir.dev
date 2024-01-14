@@ -1,5 +1,3 @@
-import { cache } from 'react';
-
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { getBlogPosts, type Blog, sortBlogPostsByDate } from '@/lib/blog';
@@ -7,14 +5,12 @@ import { getDate } from '@/utils/date';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
-const blogPostsByYear = cache(() =>
-  getBlogPosts()
-    .filter((it) => allowInProgress || !it.inProgress)
-    .reduce<Record<number, Array<Blog>>>((acc, post) => {
-      const year = (getDate(post.date) || new Date()).getFullYear();
-      return { ...acc, [year]: [...(acc[year] || []), post] };
-    }, {}),
-)();
+const blogPostsByYear = getBlogPosts()
+  .filter((it) => allowInProgress || !it.inProgress)
+  .reduce<Record<number, Array<Blog>>>((acc, post) => {
+    const year = (getDate(post.date) || new Date()).getFullYear();
+    return { ...acc, [year]: [...(acc[year] || []), post] };
+  }, {});
 
 export const GroupedBlogPosts = () => (
   <ol className={'flex flex-col gap-6'}>

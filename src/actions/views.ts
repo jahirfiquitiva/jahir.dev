@@ -23,7 +23,7 @@ export const recordView = cache(async (slug: string) => {
   } catch (e) {}
 });
 
-export const getViews = cache(async (slug: string): Promise<number> => {
+export const getViews = async (slug: string): Promise<number> => {
   noStore();
   try {
     const data = await db
@@ -35,4 +35,4 @@ export const getViews = cache(async (slug: string): Promise<number> => {
   } catch (e) {
     return 0;
   }
-});
+};

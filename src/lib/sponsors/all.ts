@@ -1,4 +1,4 @@
-import { cache } from 'react';
+import { unstable_cache as cache } from 'next/cache';
 
 import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 import { groupBy } from '@/utils/group-by';
@@ -41,39 +41,41 @@ const getAllMonthlySponsors = (
     .sort((a, b) => b.price - a.price);
 };
 
-export const getSponsorsAndCategories = cache(async () => {
-  const { members, oneTime: bmacOneTime } = await getBmacData();
-  const { sponsors, oneTime: githubOneTime } = await getGitHubSponsors();
+export const getSponsorsAndCategories = cache(
+  async () => {
+    const { members, oneTime: bmacOneTime } = await getBmacData();
+    const { sponsors, oneTime: githubOneTime } = await getGitHubSponsors();
 
-  const allMonthly = getAllMonthlySponsors([...members, ...sponsors]);
+    const allMonthly = getAllMonthlySponsors([...members, ...sponsors]);
 
-  const totalEarningsPerMonth = allMonthly.reduce((p, c) => {
-    return p + c.totalEarningsPerMonth;
-  }, 0);
+    const totalEarningsPerMonth = allMonthly.reduce((p, c) => {
+      return p + c.totalEarningsPerMonth;
+    }, 0);
 
-  const sponsorsCount = allMonthly.reduce((p, c) => {
-    return p + c.sponsorsCount;
-  }, 0);
+    const sponsorsCount = allMonthly.reduce((p, c) => {
+      return p + c.sponsorsCount;
+    }, 0);
 
-  return {
-    categories: allMonthly,
-    unicorns: [
-      ...bmacOneTime,
-      ...githubOneTime,
-      ...unicorns.map(
-        (it) =>
-          ({
-            ...it,
-            photo: it.photo?.includes('unavatar')
-              ? `${it.photo}?fallback=${buildBoringAvatarUrl(it.name)}`
-              : it.photo,
-            amount: 0,
-          }) as ReadableSupporter,
-      ),
-    ],
-    totalEarningsPerMonth,
-    sponsorsCount,
-  };
-});
-
-export const revalidate = 43200;
+    return {
+      categories: allMonthly,
+      unicorns: [
+        ...bmacOneTime,
+        ...githubOneTime,
+        ...unicorns.map(
+          (it) =>
+            ({
+              ...it,
+              photo: it.photo?.includes('unavatar')
+                ? `${it.photo}?fallback=${buildBoringAvatarUrl(it.name)}`
+                : it.photo,
+              amount: 0,
+            }) as ReadableSupporter,
+        ),
+      ],
+      totalEarningsPerMonth,
+      sponsorsCount,
+    };
+  },
+  ['sponsors'],
+  { revalidate: 43200 },
+);

@@ -1,5 +1,8 @@
-import { unstable_noStore as noStore } from 'next/cache';
-import { Suspense, cache } from 'react';
+import {
+  unstable_noStore as noStore,
+  unstable_cache as cache,
+} from 'next/cache';
+import { Suspense } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
@@ -12,36 +15,40 @@ import { db } from '@/lib/planetscale';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-export const getFeaturedPosts = cache(async (): Promise<Array<Blog>> => {
-  noStore();
-  try {
-    const sortedPosts = getBlogPosts().sort(sortBlogPostsByDate);
-    const latestPost = sortedPosts[0];
-    const [mostViewedPost] = await db
-      .selectFrom('counters')
-      .select(['slug', 'views'])
-      .where('slug', '!=', 'blog--uses')
-      .where('slug', '!=', `blog--${latestPost.slug}`)
-      .where('views', '>', 1)
-      .orderBy(['views desc'])
-      .limit(1)
-      .execute();
-    const otherPosts = sortedPosts.filter(
-      (it) =>
-        mostViewedPost.slug !== `blog--${it.slug}` &&
-        latestPost.slug !== it.slug,
-    );
-    const randomPost =
-      otherPosts[Math.floor(Math.random() * otherPosts.length)];
-    return [
-      latestPost,
-      sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
-      randomPost,
-    ].filter(Boolean) as Array<Blog>;
-  } catch (e) {
-    return [];
-  }
-});
+export const getFeaturedPosts = cache(
+  async (): Promise<Array<Blog>> => {
+    noStore();
+    try {
+      const sortedPosts = getBlogPosts().sort(sortBlogPostsByDate);
+      const latestPost = sortedPosts[0];
+      const [mostViewedPost] = await db
+        .selectFrom('counters')
+        .select(['slug', 'views'])
+        .where('slug', '!=', 'blog--uses')
+        .where('slug', '!=', `blog--${latestPost.slug}`)
+        .where('views', '>', 1)
+        .orderBy(['views desc'])
+        .limit(1)
+        .execute();
+      const otherPosts = sortedPosts.filter(
+        (it) =>
+          mostViewedPost.slug !== `blog--${it.slug}` &&
+          latestPost.slug !== it.slug,
+      );
+      const randomPost =
+        otherPosts[Math.floor(Math.random() * otherPosts.length)];
+      return [
+        latestPost,
+        sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
+        randomPost,
+      ].filter(Boolean) as Array<Blog>;
+    } catch (e) {
+      return [];
+    }
+  },
+  ['featured-posts'],
+  { revalidate: 86400 },
+);
 
 const BlogPostsListFallback = () => {
   return (
