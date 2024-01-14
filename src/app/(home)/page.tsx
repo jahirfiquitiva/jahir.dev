@@ -13,4 +13,4 @@ export default function Home() {
   );
 }
 
-export const dynamic = 'force-static';
+export const revalidate = 86400;

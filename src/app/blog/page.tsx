@@ -40,5 +40,3 @@ export const metadata = createMetadata({
   ],
   image: buildOgImageUrl('blog'),
 });
-
-export const dynamic = 'force-static';
