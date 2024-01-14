@@ -6,6 +6,7 @@ import { Zoom } from '@/components/molecules/zoom';
 import { ShareButton } from '@/components/views/blog/share-button';
 import { getBlogPosts, type Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
+import { getDate } from '@/utils/date';
 import { buildOgImageUrl } from '@/utils/og';
 
 import { Header } from './header';
@@ -13,23 +14,25 @@ import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
-const blogPostStructuredData = (post: Blog): string =>
-  post
-    ? JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: post.title,
-        datePublished: post.date,
-        dateModified: post.date,
-        description: post.summary,
-        image: buildOgImageUrl('blog', post.title, post.hero),
-        url: `https://jahir.dev/blog/${post.slug}`,
-        author: {
-          '@type': 'Person',
-          name: 'Jahir Fiquitiva',
-        },
-      })
-    : '';
+const blogPostStructuredData = (post?: Blog): string => {
+  if (!post) return '';
+  const date = getDate(post.date) || new Date(post.date);
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: date.toISOString(),
+    dateModified: date.toISOString(),
+    description: post.summary,
+    image: buildOgImageUrl('blog', post.title, post.hero),
+    url: `https://jahir.dev/blog/${post.slug}`,
+    author: {
+      '@type': 'Person',
+      name: 'Jahir Fiquitiva',
+      url: 'https://jahir.dev/about',
+    },
+  });
+};
 
 export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
