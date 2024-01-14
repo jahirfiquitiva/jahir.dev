@@ -6,22 +6,19 @@ import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 
 import Loading from '../loading';
 
-// Update data once every 12 hours
-export const revalidate = 43200;
-
 export default async function Sponsorships() {
-  const sponsors = await getSponsorsAndCategories().catch(null);
+  const sponsors = await getSponsorsAndCategories();
   return (
     <Suspense fallback={<Loading />}>
       <SponsorsList
-        categories={sponsors?.categories || []}
-        unicorns={sponsors?.unicorns || []}
+        categories={sponsors.categories}
+        unicorns={sponsors.unicorns}
         sponsorsCount={sponsors.sponsorsCount}
         totalEarningsPerMonth={sponsors.totalEarningsPerMonth}
       />
       <Testimonials
-        categories={sponsors?.categories || []}
-        unicorns={sponsors?.unicorns || []}
+        categories={sponsors.categories}
+        unicorns={sponsors.unicorns}
       />
     </Suspense>
   );

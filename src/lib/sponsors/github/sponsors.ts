@@ -6,16 +6,17 @@ export const getGitHubSponsors = async (): Promise<{
   sponsors: Array<ReadableSupporter>;
   oneTime: Array<ReadableSupporter>;
 }> => {
-  const { data } = await getSponsorsGraphQLResponse().catch();
-  const { nodes: tiers } = data?.user?.sponsorsListing?.tiers || {};
+  const { data } = await getSponsorsGraphQLResponse().catch(null);
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  const { nodes: tiers = [] } = data?.user?.sponsorsListing?.tiers || {};
 
   let monthlySponsors: Array<ReadableSupporter> = [];
   let oneTimeSponsors: Array<ReadableSupporter> = [];
 
-  tiers?.forEach((tier) => {
+  tiers.forEach((tier) => {
     const { monthlyPriceInDollars, isOneTime } = tier;
     const people: Array<ReadableSupporter> = (
-      tier.adminInfo?.sponsorships?.nodes || []
+      tier.adminInfo?.sponsorships.nodes || []
     )
       .filter((it) => it.isActive || isOneTime)
       .map((item) => {

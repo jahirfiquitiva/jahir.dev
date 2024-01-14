@@ -19,9 +19,9 @@ const mapTrackData = (track?: Track | null): ReadableTrack | null => {
       url: track.external_urls.spotify,
       image: albumImage
         ? {
-            url: albumImage?.url || '',
-            height: Math.min(albumImage?.height || 78, 78),
-            width: Math.min(albumImage?.width || 78, 78),
+            url: albumImage.url || '',
+            height: Math.min(albumImage.height || 78, 78),
+            width: Math.min(albumImage.width || 78, 78),
           }
         : undefined,
       hdImage: albumImage,
@@ -59,8 +59,7 @@ export async function GET() {
   // Otherwise, get the most recently played track
   const recentlyPlayed = await getRecentlyPlayed().catch(null);
   let lastPlayed: Track | null = null;
-  if (!('error' in recentlyPlayed))
-    lastPlayed = recentlyPlayed.items?.[0]?.track;
+  if (!('error' in recentlyPlayed)) lastPlayed = recentlyPlayed.items[0]?.track;
   return spotifyResponse({
     track: mapTrackData(lastPlayed),
     isPlaying: false,

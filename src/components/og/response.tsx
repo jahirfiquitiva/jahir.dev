@@ -14,7 +14,6 @@ const getManropeFont = async (): Promise<
     const fontData = await fetch(url)
       .then((res) => res.arrayBuffer())
       .catch(null);
-    if (!fontData) return undefined;
     return [
       {
         name: 'Manrope',

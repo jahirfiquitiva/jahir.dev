@@ -56,6 +56,4 @@ export const ThemeProvider = (props: PropsWithChildren) => {
   );
 };
 
-export const useTheme = (): ThemeContextValue => {
-  return useContext(ThemeContext) || defaultContextState;
-};
+export const useTheme = (): ThemeContextValue => useContext(ThemeContext);

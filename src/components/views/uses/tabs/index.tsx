@@ -41,7 +41,7 @@ export const Tabs = (props: TabsProps) => {
   useEffect(() => {
     if (hasMounted) {
       try {
-        const tabId = (window?.location?.hash || '#').substring(1);
+        const tabId = (window.location.hash || '#').substring(1);
         if (!tabId) return;
         setCurrentTab(tabId as TabKey);
       } catch (e) {}

@@ -80,14 +80,14 @@ export const useReactions = (
     event: MouseEvent<HTMLButtonElement>,
     reaction: ReactionName,
   ) => {
-    const hostname = window?.location?.hostname || 'localhost';
+    const hostname = window.location.hostname || 'localhost';
     const shouldRecordReaction = hostname === 'jahir.dev';
 
     const reacted = shouldRecordReaction
-      ? await submitReaction?.(reaction)
+      ? await submitReaction(reaction)
       : true;
     // If reaction was submitted successfully
-    if (event && reacted) {
+    if (reacted) {
       const x = event.clientX / windowWidth;
       const y = event.clientY / windowHeight;
       confetti({

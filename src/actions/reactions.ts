@@ -39,25 +39,23 @@ export const incrementReaction = cache(
 
 export type IncrementReactionFnType = typeof incrementReaction;
 
-export const getReactions = cache(
-  async (slug: string): Promise<ReactionsCounters> => {
-    noStore();
-    try {
-      const data = await db
-        .selectFrom('counters')
-        .where('slug', '=', `blog--${slug}`)
-        .select(['likes', 'loves', 'awards', 'bookmarks'])
-        .execute();
-      const [counters] = data;
-      if (!counters) return {};
-      return {
-        likes: counters.likes || 0,
-        loves: counters.loves || 0,
-        awards: counters.awards || 0,
-        bookmarks: counters.bookmarks || 0,
-      };
-    } catch (e) {
-      return {};
-    }
-  },
-);
+export const getReactions = async (
+  slug: string,
+): Promise<ReactionsCounters> => {
+  noStore();
+  try {
+    const [counters] = await db
+      .selectFrom('counters')
+      .where('slug', '=', `blog--${slug}`)
+      .select(['likes', 'loves', 'awards', 'bookmarks'])
+      .execute();
+    return {
+      likes: counters.likes || 0,
+      loves: counters.loves || 0,
+      awards: counters.awards || 0,
+      bookmarks: counters.bookmarks || 0,
+    };
+  } catch (e) {
+    return {};
+  }
+};
