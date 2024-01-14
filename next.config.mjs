@@ -22,6 +22,7 @@ const defaultNextConfig = {
     typedRoutes: true,
     ppr: true,
     useLightningcss: true,
+    webpackBuildWorker: true,
   },
   compiler: {
     removeConsole: {
