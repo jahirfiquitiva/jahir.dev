@@ -9,7 +9,7 @@ import Loading from '../loading';
 export default async function Sponsorships() {
   const sponsors = await getSponsorsAndCategories();
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading sm />}>
       <SponsorsList
         categories={sponsors.categories}
         unicorns={sponsors.unicorns}
