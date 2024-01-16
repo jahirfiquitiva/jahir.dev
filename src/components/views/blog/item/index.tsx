@@ -42,12 +42,13 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
         height={72}
         className={cx(
           'rounded-1 max-w-12',
+          'mobile-md:max-w-18',
           'mobile-lg:max-w-24',
           'aspect-[4/3]',
           'border border-transparent',
           'group-hocus/post:border-[rgba(var(--post-color)/.24)]',
           'dark:group-hocus/post:border-[rgba(var(--post-color)/.36)]',
-          'mobile-lg:row-span-2 mobile-lg:mt-[0.1875rem]',
+          'mobile-md:row-span-2 mobile-md:mt-[0.1875rem]',
         )}
       />
       <p
@@ -64,7 +65,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           'flex flex-col',
           'gap-1 col-span-2',
           'mobile-lg:gap-0.5',
-          'mobile-lg:col-span-1 mobile-lg:col-start-2',
+          'mobile-md:col-span-1 mobile-md:col-start-2',
         )}
       >
         <p className={'text-2xs text-secondary-txt line-clamp-2 text-pretty'}>

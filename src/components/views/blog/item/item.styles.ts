@@ -18,9 +18,9 @@ export const BlogPostLink = tw(Link)`
   gap-2
   place-items-stretch
   items-center
-  mobile-lg:gap-x-3
-  mobile-lg:gap-y-1
-  mobile-lg:items-start
+  mobile-md:gap-x-3
+  mobile-md:gap-y-1
+  mobile-md:items-start
   tablet-md:gap-x-3.5
   tablet-md:gap-y-0.5
 `;
