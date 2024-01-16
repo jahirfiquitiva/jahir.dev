@@ -17,7 +17,9 @@ const ThemeToggleButton = tw.button`
   p-2
   rounded-1.5
   transition
+  text-accent
   hocus:bg-toolbar-highlight
+  hocus:text-accent-dark
 `;
 
 export const ThemeToggle = () => {
@@ -43,10 +45,7 @@ export const ThemeToggle = () => {
     >
       <Icon
         path={iconPath}
-        className={cx(
-          'size-5 text-accent fill-accent',
-          !hasMounted && 'motion-safe:animate-spin',
-        )}
+        className={cx('size-5', !hasMounted && 'motion-safe:animate-spin')}
       />
     </ThemeToggleButton>
   );

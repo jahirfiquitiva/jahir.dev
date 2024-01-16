@@ -98,12 +98,10 @@ export const NavLink = tw(Link)`
   px-2.5 py-1.5 rounded-1.5
   flex items-center
   transition-colors duration-200
-  text-transparent
-  from-secondary-txt
-  to-secondary-txt
-  bg-gradient-to-r
-  bg-clip-text
+`;
 
+export const NavItem = tw.li`
+  relative
   before:absolute
   before:top-0
   before:right-0
@@ -114,15 +112,20 @@ export const NavLink = tw(Link)`
   before:duration-150
   before:bg-transparent
   hocus:before:bg-toolbar-highlight
+  has-[[aria-current="page"]]:before:bg-toolbar-highlight
 `;
 
 export const NavPageLink = tw(NavLink)`
+  text-transparent
+  from-secondary-txt
+  to-secondary-txt
+  bg-gradient-to-r
+  bg-clip-text
   hocus:text-transparent
   hocus:saturate-125
   hocus:dark:saturate-150
   [&[aria-current="page"]]:saturate-125
   [&[aria-current="page"]]:dark:saturate-150
-  [&[aria-current="page"]]:before:bg-toolbar-highlight
 `;
 
 export const ButtonsGroup = tw.ul`
