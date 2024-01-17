@@ -1,8 +1,6 @@
 /* Basic layout definition */
 article {
   @apply flex flex-col gap-3 w-full;
-  @apply p-0 w-full text-secondary-txt break-words;
-  @apply leading-normal mobile-lg:leading-relaxed;
 
   & > a,
   & > button {
@@ -27,16 +25,16 @@ article {
 /* Headings and paragraphs margin */
 article {
   & h1 {
-    @apply mt-8 mb-1.5 font-bold;
+    @apply mt-8 mb-1.5;
   }
 
   & h2 {
-    @apply mt-6 mb-1 font-bold;
+    @apply mt-6 mb-1;
   }
 
   & h3,
   & h4 {
-    @apply mt-4 mb-0.5 font-bold;
+    @apply mt-4 mb-0.5;
   }
 
   & h5,
@@ -45,7 +43,7 @@ article {
   }
 
   & p {
-    @apply w-full m-0 text-pretty max-w-nice;
+    @apply w-full m-0 max-w-nice;
   }
 }
 
@@ -115,8 +113,7 @@ html.dark {
 }
 
 article code {
-  @apply py-0.5 px-1 text-2xs rounded-1.5 font-normal;
-  color: inherit;
+  @apply py-0.5 px-1 text-2xs rounded-1.5 font-normal text-inherit;
   box-decoration-break: clone;
 }
 
@@ -136,8 +133,7 @@ article pre {
 
 article [data-rehype-pretty-code-figure] pre code {
   @apply grid min-w-full break-words rounded-0 border-0 bg-transparent;
-  @apply p-0;
-  line-height: 2;
+  @apply p-0 leading-loose;
   counter-reset: line;
 }
 
@@ -204,9 +200,7 @@ article ol {
     @apply m-0 pl-0;
     &::before {
       content: counter(list-item, decimal) '.';
-      position: absolute;
-      font-weight: inherit;
-      @apply text-tertiary-txt left-0 -ml-1;
+      @apply absolute text-tertiary-txt left-0 -ml-1;
     }
     & > ol {
       @apply m-0;
