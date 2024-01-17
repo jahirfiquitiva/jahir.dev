@@ -3,39 +3,39 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
-import { db, type ReactionName, type Counters } from '@/lib/planetscale';
+import { db, type CounterName, type Counters } from '@/lib/planetscale';
 
 import { canRunAction } from './utils';
 
-export const incrementReaction = cache(
+export const incrementCounter = cache(
   async (
     slug: string,
-    reaction: ReactionName,
-  ): Promise<{ [reaction in ReactionName]?: number }> => {
+    counter: CounterName,
+  ): Promise<{ [counter in CounterName]?: number }> => {
     if (!canRunAction) return {};
     noStore();
     try {
       const data = await db
         .selectFrom('counters')
         .where('slug', '=', slug)
-        .select([reaction])
+        .select([counter])
         .execute();
 
-      const reactionCount = !data.length ? 0 : Number(data[0][reaction]);
+      const counterCount = !data.length ? 0 : Number(data[0][counter]);
       db.insertInto('counters')
-        .values({ slug, [reaction]: 1 })
-        .onDuplicateKeyUpdate({ [reaction]: reactionCount + 1 })
+        .values({ slug, [counter]: 1 })
+        .onDuplicateKeyUpdate({ [counter]: counterCount + 1 })
         .execute();
-      return { [reaction]: reactionCount + 1 };
+      return { [counter]: counterCount + 1 };
     } catch (e) {
       return {};
     }
   },
 );
 
-export type IncrementReactionFnType = typeof incrementReaction;
+export type IncrementCounterFnType = typeof incrementCounter;
 
-export const getReactions = async (slug: string): Promise<Counters> => {
+export const getCounters = async (slug: string): Promise<Counters> => {
   noStore();
   try {
     const [counters] = await db
