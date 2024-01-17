@@ -5,7 +5,7 @@ import type { Project } from '@/types/project';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
-import { StarsCount } from '../stars-count';
+// import { StarsCount } from '../stars-count';
 
 import { ProjectIcon, ProjectLink } from './item.styles';
 
@@ -46,7 +46,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
           >
             {project.name}
           </p>
-          <StarsCount repo={project.repo || ''} owner={project.owner} />
+          {/* <StarsCount repo={project.repo || ''} owner={project.owner} /> */}
         </div>
         <p className={'text-2xs text-secondary-txt line-clamp-2 text-pretty'}>
           {project.description}
