@@ -1,7 +1,6 @@
 'use client';
 
 import { Icon } from '@/components/atoms/icon';
-import { LineWobble } from '@/components/atoms/loaders/line-wobble';
 import { useImmutableRequest } from '@/hooks/use-request';
 import cx from '@/utils/cx';
 

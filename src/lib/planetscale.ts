@@ -1,15 +1,15 @@
 import { Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 
-export const countersNames = [
+export const reactionsNames = [
   'likes',
   'loves',
   'awards',
   'bookmarks',
-  'views',
 ] as const;
 
-export type CounterName = (typeof countersNames)[number];
+export type ReactionName = (typeof reactionsNames)[number];
+export type CounterName = ReactionName | 'views';
 
 export type Counters = { [Key in CounterName]?: number };
 

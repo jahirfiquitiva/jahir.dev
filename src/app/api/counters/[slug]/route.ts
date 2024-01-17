@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 import {
   db,
-  countersNames,
+  reactionsNames,
   type CounterName,
   type Counters,
 } from '@/lib/planetscale';
@@ -16,7 +16,7 @@ const getData = (slug: string): Promise<Array<Counters>> =>
   db
     .selectFrom('counters')
     .where('slug', '=', slug)
-    .select(countersNames)
+    .select([...reactionsNames, 'views'])
     .execute();
 
 export async function GET(

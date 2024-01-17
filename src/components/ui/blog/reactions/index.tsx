@@ -4,7 +4,7 @@
 import type { CSSProperties } from 'react';
 
 import type { IncrementReactionFnType } from '@/actions/reactions';
-import { reactionsNames, type ReactionsCounters } from '@/lib/planetscale';
+import { reactionsNames, type Counters } from '@/lib/planetscale';
 import { hexToRgb } from '@/utils/color';
 
 import { ReactionButton } from './reaction-button';
@@ -13,7 +13,7 @@ import { useReactions } from './use-reactions';
 
 interface ReactionsButtonsProps {
   slug: string;
-  initialCounters?: ReactionsCounters;
+  initialCounters?: Counters;
   incrementReactionFn?: IncrementReactionFnType;
 }
 

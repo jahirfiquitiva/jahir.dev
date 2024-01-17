@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 import type { IncrementReactionFnType } from '@/actions/reactions';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
-import type { ReactionName, ReactionsCounters } from '@/lib/planetscale';
+import type { ReactionName, Counters } from '@/lib/planetscale';
 
 import { confettiOptions, reactionsSetup } from './reaction-button.config';
 
@@ -14,7 +14,7 @@ type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 
 export const useReactions = (
   slug: string,
-  initialCounters?: ReactionsCounters,
+  initialCounters?: Counters,
   incrementReactionFn?: IncrementReactionFnType,
 ) => {
   const hasMounted = useHasMounted();
@@ -24,9 +24,7 @@ export const useReactions = (
     undefined,
   );
 
-  const [counters, setCounters] = useState<ReactionsCounters>(
-    initialCounters || {},
-  );
+  const [counters, setCounters] = useState<Counters>(initialCounters || {});
   const [reacted, setReacted] = useState<ReactedLocalStorage>({});
 
   useEffect(() => {

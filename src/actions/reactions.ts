@@ -3,11 +3,7 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
-import {
-  db,
-  type ReactionName,
-  type ReactionsCounters,
-} from '@/lib/planetscale';
+import { db, type ReactionName, type Counters } from '@/lib/planetscale';
 
 import { canRunAction } from './utils';
 
@@ -39,9 +35,7 @@ export const incrementReaction = cache(
 
 export type IncrementReactionFnType = typeof incrementReaction;
 
-export const getReactions = async (
-  slug: string,
-): Promise<ReactionsCounters> => {
+export const getReactions = async (slug: string): Promise<Counters> => {
   noStore();
   try {
     const [counters] = await db
