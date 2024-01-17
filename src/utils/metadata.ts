@@ -1,13 +1,25 @@
 import type { Metadata } from 'next';
 
+import { config } from './og';
+
 export const createMetadata = (data: {
   title: string;
   description: string;
   keywords?: string | Array<string> | null;
   exactUrl?: string;
-  image?: unknown;
+  image?: string;
 }): Metadata => {
-  const { title, description, keywords, exactUrl } = data;
+  const { title, description, keywords, exactUrl, image } = data;
+  const images = image
+    ? [
+        {
+          url: image,
+          type: config.contentType,
+          width: config.size.width,
+          height: config.size.height,
+        },
+      ]
+    : [];
   return {
     title,
     description,
@@ -20,6 +32,7 @@ export const createMetadata = (data: {
       siteName: title,
       locale: 'en_US',
       type: 'website',
+      images,
     },
     twitter: {
       title,
@@ -27,6 +40,7 @@ export const createMetadata = (data: {
       card: 'summary_large_image',
       creator: '@jahirfiquitiva',
       site: '@jahirfiquitiva',
+      images,
     },
     verification: {
       google: 'lJwL3cKpjX_Eqp6yEY4hsydJazQl85xv29ZUmEg4oEE',
