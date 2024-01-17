@@ -5,6 +5,7 @@ export const createMetadata = (data: {
   description: string;
   keywords?: string | Array<string> | null;
   exactUrl?: string;
+  image?: unknown;
 }): Metadata => {
   const { title, description, keywords, exactUrl } = data;
   return {

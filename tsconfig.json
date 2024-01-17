@@ -20,6 +20,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
       "react": ["./node_modules/@types/react"]
     },
     "incremental": true,
@@ -35,9 +36,12 @@
   "include": [
     "next-env.d.ts",
     "global.d.ts",
+    "**/*.js",
+    "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
     "next.config.mjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "./.contentlayer/generated"
   ]
 }

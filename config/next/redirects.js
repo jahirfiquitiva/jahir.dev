@@ -51,4 +51,4 @@ const redirects = [
   ),
 ];
 
-export default redirects;
+module.exports = redirects;

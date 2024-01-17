@@ -10,7 +10,7 @@ import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { BlogPostItemSkeleton } from '@/components/views/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
-import { getBlogPosts, type Blog, sortBlogPostsByDate } from '@/lib/blog';
+import { getBlogPosts, sortBlogPostsByDate } from '@/lib/blog';
 import { db } from '@/lib/planetscale';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';

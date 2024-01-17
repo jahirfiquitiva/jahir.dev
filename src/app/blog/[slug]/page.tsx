@@ -4,7 +4,6 @@ import { notFound, redirect } from 'next/navigation';
 import { Mdx } from '@/components/views/blog/mdx';
 import { getBlogPosts } from '@/lib/blog';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 import type { BlogPostPageContext } from './types';
 
@@ -33,17 +32,15 @@ export function generateMetadata(
   context: BlogPostPageContext,
 ): Metadata | undefined {
   const { slug } = context.params;
+  if (!slug) return undefined;
   const post = getBlogPosts().find((b) => b.slug === slug);
-  if (!slug || !post) return undefined;
+  if (!post) return undefined;
 
-  const { title, date, summary, hero } = post;
-
-  const ogImage = buildOgImageUrl('blog', title, hero);
+  const { title, date, summary } = post;
 
   const metadata = createMetadata({
     title: `${title} | Blog – Jahir Fiquitiva`,
     description: summary || 'Blog post by Jahir Fiquitiva',
-    image: ogImage,
     exactUrl: `https://jahir.dev/blog/${slug}`,
     keywords: post.keywords,
   });
