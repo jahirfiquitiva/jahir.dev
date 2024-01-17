@@ -23,8 +23,6 @@ const fontSize = {
 };
 
 const breakpoints = {
-  default: '0px',
-  'mobile-sm': '320px',
   'mobile-md': '375px',
   'mobile-lg': '425px',
   'tablet-sm': '596px',
@@ -77,12 +75,6 @@ module.exports = {
       full: '9999px',
     },
     borderWidth: { ...extendedSpacing, DEFAULT: '0.0625rem' },
-    fontWeight: {
-      normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-    },
     colors: {
       transparent: 'rgba(0,0,0,0)',
       current: 'currentColor',
