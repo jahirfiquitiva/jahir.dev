@@ -48,5 +48,5 @@ export const metadata = createMetadata({
   title: 'Page not found',
   description: "The page you're looking for doesn't exist or has been moved.",
   keywords: ['404', 'not found', 'page not found'],
-  image: 'https://jahir.dev/og.png',
+  image: 'https://jahir.dev/404-og.png',
 });
