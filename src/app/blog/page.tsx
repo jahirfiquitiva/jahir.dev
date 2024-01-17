@@ -1,7 +1,11 @@
+import { Suspense } from 'react';
+
 import { Section } from '@/components/atoms/section';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
+
+import Loading from '../loading';
 
 import { GroupedBlogPosts } from './grouped-blog-posts';
 
@@ -14,7 +18,9 @@ export default function BlogPage() {
         </h1>
         <RSSFeedButton />
       </div>
-      <GroupedBlogPosts />
+      <Suspense fallback={<Loading />}>
+        <GroupedBlogPosts />
+      </Suspense>
     </Section>
   );
 }
