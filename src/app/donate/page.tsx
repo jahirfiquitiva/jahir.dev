@@ -1,24 +1,14 @@
 import illustration from '@/assets/images/donate/3.png';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
+import { List, ListItem } from '@/components/atoms/list';
 import { Section } from '@/components/atoms/section';
 import { DonateButtons } from '@/components/ui/donate/buttons';
 import { getColoredTextClasses } from '@/utils/colored-text';
-import cx, { tw } from '@/utils/cx';
+import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 
 import Sponsorships from './sponsorships';
-
-const PerksList = tw.ul`
-  relative
-  flex flex-col
-  pl-5 mx-1.5 gap-1.5
-  [&>li]:before:[content:counter(list-item,_disc)]
-  [&>li]:before:absolute
-  [&>li]:before:text-tertiary-txt
-  [&>li]:before:left-0
-  [&>li]:before:-ml-1
-`;
 
 export default function DonatePage() {
   return (
@@ -97,11 +87,11 @@ export default function DonatePage() {
           Don&apos;t just take my word for it!
         </Link>
         <h3 className={'text-xs mt-4'}>Your donation comes with perks:</h3>
-        <PerksList>
-          <li>Featured on this page</li>
-          <li>Priority for bug reports or feature requests</li>
-          <li>A stylish one-page static website</li>
-          <li>
+        <List>
+          <ListItem>Featured on this page</ListItem>
+          <ListItem>Priority for bug reports or feature requests</ListItem>
+          <ListItem>A stylish one-page static website</ListItem>
+          <ListItem>
             Early and free access to future projects and{' '}
             <Link
               title={'Sponsor Jahir Fiquitiva on GitHub'}
@@ -110,15 +100,17 @@ export default function DonatePage() {
               more
             </Link>
             !
-          </li>
-        </PerksList>
+          </ListItem>
+        </List>
         <h3 className={'text-xs mt-4'}>Where does your contribution go?</h3>
-        <PerksList>
-          <li>Cover domain and platform services for various projects</li>
-          <li>Support my continuous learning through courses</li>
-          <li>Fuel the creation of more open-source projects</li>
-          <li>Allow me to sponsor other talented individuals</li>
-        </PerksList>
+        <List>
+          <ListItem>
+            Cover domain and platform services for various projects
+          </ListItem>
+          <ListItem>Support my continuous learning through courses</ListItem>
+          <ListItem>Fuel the creation of more open-source projects</ListItem>
+          <ListItem>Allow me to sponsor other talented individuals</ListItem>
+        </List>
         <p>
           Join the cause and donate today – let&apos;s make a lasting impact
           together!
