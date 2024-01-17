@@ -21,6 +21,8 @@ export const Ring = (props: RingProps) => {
       width={size}
       className={cx(styles.container, props.className)}
       viewBox={'25 25 50 50'}
+      role={'presentation'}
+      aria-hidden={'true'}
       style={
         {
           ...(props.style || {}),
