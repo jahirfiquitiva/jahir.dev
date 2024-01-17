@@ -3,6 +3,7 @@ import xml from 'xml';
 import { getDate } from '@/utils/date';
 import { allBlogs, type Blog } from 'contentlayer/generated';
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-static';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
