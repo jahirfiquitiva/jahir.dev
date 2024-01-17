@@ -6,7 +6,6 @@ import { DonateButtons } from '@/components/views/donate/buttons';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 import Sponsorships from './sponsorships';
 
@@ -137,5 +136,4 @@ export const metadata = createMetadata({
     'supporter',
     'sponsorship',
   ],
-  image: buildOgImageUrl('donate'),
 });

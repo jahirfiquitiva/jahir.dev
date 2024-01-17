@@ -7,7 +7,6 @@ import { Zoom } from '@/components/molecules/zoom';
 import { ShareButton } from '@/components/views/blog/share-button';
 import cx from '@/utils/cx';
 import { getDate } from '@/utils/date';
-import { buildOgImageUrl } from '@/utils/og';
 
 import { Header } from './header';
 import { Hero } from './hero';
@@ -24,7 +23,7 @@ const blogPostStructuredData = (post?: Blog): string => {
     datePublished: date.toISOString(),
     dateModified: date.toISOString(),
     description: post.summary,
-    image: buildOgImageUrl('blog', post.title, post.hero),
+    image: `https://jahir.dev/blog/${post.slug}/opengraph-image`,
     url: `https://jahir.dev/blog/${post.slug}`,
     author: {
       '@type': 'Person',

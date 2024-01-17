@@ -8,7 +8,7 @@ const pathEmojiMap = {
   projects: '💼',
   uses: '💻',
   blog: '📄',
-  error: '🚨',
+  colophon: '🛠️',
 };
 export type PathName = keyof typeof pathEmojiMap | null;
 
@@ -20,7 +20,7 @@ const pathTitleMap = {
   projects: 'Projects',
   uses: 'Uses',
   blog: 'Blog',
-  error: 'Error',
+  colophon: 'Colophon',
 };
 
 const titleFontSize = 64;

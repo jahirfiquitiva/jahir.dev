@@ -4,7 +4,6 @@ import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 export default function NotFound() {
   return (
@@ -49,5 +48,5 @@ export const metadata = createMetadata({
   title: 'Page not found',
   description: "The page you're looking for doesn't exist or has been moved.",
   keywords: ['404', 'not found', 'page not found'],
-  image: buildOgImageUrl('404'),
+  image: 'https://jahir.dev/og.png',
 });

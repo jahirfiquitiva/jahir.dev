@@ -10,5 +10,5 @@ export const size = {
 export const contentType = config.contentType;
 
 export default async function Image() {
-  return getOgImage('blog');
+  return getOgImage('donate');
 }

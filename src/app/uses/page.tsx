@@ -10,7 +10,6 @@ import { Software } from '@/components/views/uses/software';
 import { Tabs } from '@/components/views/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 export default function UsesPage() {
   return (
@@ -72,5 +71,4 @@ export const metadata = createMetadata({
     'tech',
     'uses',
   ],
-  image: buildOgImageUrl('uses'),
 });

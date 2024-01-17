@@ -1,6 +1,5 @@
 import { ProjectsList } from '@/components/views/projects';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 export const metadata = createMetadata({
   title: 'Projects – Jahir Fiquitiva',
@@ -18,7 +17,6 @@ export const metadata = createMetadata({
     'programming',
     'open-source',
   ],
-  image: buildOgImageUrl('projects'),
 });
 
 export default function ProjectsPage() {

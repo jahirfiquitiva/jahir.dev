@@ -5,7 +5,6 @@ import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import type { RequestContext } from '@/types/request';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 import { getRepoReleaseData } from './data';
 import { Downloader } from './downloader';
@@ -61,7 +60,6 @@ export function generateMetadata(
   return createMetadata({
     title: `${repo} Release Download – Jahir Fiquitiva`,
     description: `Download the latest release artifacts from the ${repo} repository on GitHub`,
-    image: buildOgImageUrl(),
     exactUrl: `https://jahir.dev/gh-releases/${repo}`,
   });
 }

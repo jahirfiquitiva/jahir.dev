@@ -6,7 +6,6 @@ import { Experience } from '@/components/views/about/experience';
 import { Skills } from '@/components/views/about/skills';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 import Photo from './photo';
 
@@ -121,5 +120,4 @@ export const metadata = createMetadata({
   description: 'Learn more about me (Jahir Fiquitiva), my career and more',
   exactUrl: 'https://jahir.dev/about',
   keywords: ['bio', 'biography', 'information', 'about', 'career'],
-  image: buildOgImageUrl('about'),
 });
