@@ -1,10 +1,10 @@
+import { allBlogs, type Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { Zoom } from '@/components/molecules/zoom';
 import { ShareButton } from '@/components/views/blog/share-button';
-import { getBlogPosts, type Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
 import { getDate } from '@/utils/date';
 import { buildOgImageUrl } from '@/utils/og';
@@ -38,7 +38,7 @@ export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = getBlogPosts().find((b) => b.slug === slug);
+  const post = allBlogs.find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>

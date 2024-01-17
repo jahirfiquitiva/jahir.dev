@@ -1,6 +1,6 @@
 'use client';
 
-import { ClientImg as Img } from '@/components/atoms/client-img';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { LineWobble } from '@/components/atoms/loaders/line-wobble';
 import { useRequest } from '@/hooks/use-request';

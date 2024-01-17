@@ -1,10 +1,9 @@
 import type { MDXComponents } from 'mdx/types';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
-import mdx from 'config/mdx';
 
 import { ImageComparison } from './image-comparison';
 
@@ -31,10 +30,11 @@ const components = {
   Img,
 } as MDXComponents;
 
-export const Mdx = (props: { source?: string }) => (
-  <MDXRemote
-    source={props.source || ''}
-    components={components}
-    options={{ mdxOptions: mdx }}
-  />
-);
+interface MdxProps {
+  code: string;
+}
+
+export const Mdx = (props: MdxProps) => {
+  const MdxComponent = getMDXComponent(props.code);
+  return <MdxComponent components={components as MDXComponents} />;
+};

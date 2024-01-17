@@ -60,8 +60,5 @@ const millionConfig = {
   auto: { rsc: true },
 };
 
-const config = million.next(
-  withContentlayer(withPlaiceholder(defaultNextConfig)),
-  millionConfig,
-);
+const config = million.next(withContentlayer(defaultNextConfig), millionConfig);
 module.exports = config;

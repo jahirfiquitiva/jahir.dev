@@ -1,3 +1,4 @@
+import { allBlogs, type Blog } from 'contentlayer/generated';
 import {
   unstable_noStore as noStore,
   unstable_cache as cache,
@@ -10,8 +11,8 @@ import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/views/blog/item';
 import { BlogPostItemSkeleton } from '@/components/views/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
-import { getBlogPosts, sortBlogPostsByDate } from '@/lib/blog';
 import { db } from '@/lib/planetscale';
+import { sortBlogPostsByDate } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
@@ -19,7 +20,7 @@ export const getFeaturedPosts = cache(
   async (): Promise<Array<Blog>> => {
     noStore();
     try {
-      const sortedPosts = getBlogPosts().sort(sortBlogPostsByDate);
+      const sortedPosts = allBlogs.sort(sortBlogPostsByDate);
       const latestPost = sortedPosts[0];
       const [mostViewedPost] = await db
         .selectFrom('counters')

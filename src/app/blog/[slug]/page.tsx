@@ -1,28 +1,28 @@
+import { allBlogs } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
 import { Mdx } from '@/components/views/blog/mdx';
-import { getBlogPosts } from '@/lib/blog';
 import { createMetadata } from '@/utils/metadata';
 
 import type { BlogPostPageContext } from './types';
 
 export default function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
-  const post = getBlogPosts().find((b) => b.slug === slug);
+  const post = allBlogs.find((b) => b.slug === slug);
 
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
   return (
     <article>
-      <Mdx source={post.content} />
+      <Mdx code={post.body.code} />
     </article>
   );
 }
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 export const generateStaticParams = () =>
-  getBlogPosts()
+  allBlogs
     .filter((post) => (allowInProgress || !post.inProgress) && !post.link)
     .map((post) => ({ slug: post.slug }));
 
@@ -33,7 +33,7 @@ export function generateMetadata(
 ): Metadata | undefined {
   const { slug } = context.params;
   if (!slug) return undefined;
-  const post = getBlogPosts().find((b) => b.slug === slug);
+  const post = allBlogs.find((b) => b.slug === slug);
   if (!post) return undefined;
 
   const { title, date, summary } = post;

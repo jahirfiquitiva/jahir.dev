@@ -1,8 +1,8 @@
+import type { Blog } from 'contentlayer/generated';
 import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
-import type { Blog } from '@/lib/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';

@@ -4,7 +4,7 @@ import {
 } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
-import { getBlurData } from './../../src/utils/img-blur';
+import { getBlurData } from './rehype/blur';
 
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
@@ -25,7 +25,7 @@ const computedFields: ComputedFields = {
   seoKeywords: {
     type: 'list',
     resolve: (doc) => {
-      const docKeywords: string = (doc?.keywords ?? '') || '';
+      const docKeywords: string = (doc.keywords ?? '') || '';
       let filteredKeywords: Array<string> = [];
       try {
         filteredKeywords = docKeywords
