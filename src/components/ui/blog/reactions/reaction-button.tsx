@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
-import { Ring } from '@/components/atoms/loaders/ring';
+import { loading as loadingIcon } from '@/components/icons';
 import cx from '@/utils/cx';
 
 import { StyledReactionButton } from './reaction-button.styles';
@@ -34,12 +34,7 @@ export const ReactionButton = (props: ReactionButtonProps) => {
         path={iconPath}
       />
       {loading ? (
-        <Ring
-          size={16}
-          lineWeight={6}
-          speed={2}
-          color={'var(--color-tertiary-txt)'}
-        />
+        <Icon className={cx('size-4 animate-spin')} path={loadingIcon} />
       ) : (
         <span className={'font-manrope font-bold'}>{count}</span>
       )}

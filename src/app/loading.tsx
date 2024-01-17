@@ -1,4 +1,5 @@
-import { Ring } from '@/components/atoms/loaders/ring';
+import { Icon } from '@/components/atoms/icon';
+import { loading } from '@/components/icons';
 import cx from '@/utils/cx';
 
 const Loading = (props: { sm?: boolean }) => (
@@ -9,12 +10,7 @@ const Loading = (props: { sm?: boolean }) => (
       !props.sm ? 'desktop:h-[calc(100vh_-_28rem)]' : 'h-full',
     )}
   >
-    <Ring
-      size={48}
-      lineWeight={6}
-      speed={2}
-      color={'var(--color-accent, #88a4e6)'}
-    />
+    <Icon className={cx('size-12 animate-spin text-accent')} path={loading} />
     <span className={'sr-only'}>Loading...</span>
   </div>
 );
