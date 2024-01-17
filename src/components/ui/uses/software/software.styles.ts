@@ -24,8 +24,8 @@ export const SoftwareGrid = tw.ol`
   py-6 px-3
   items-center
   justify-center
-  bg-light/5
-  dark:bg-dark/5
+  bg-light/10
+  dark:bg-light/5
   list-none
   mobile-md:grid-cols-[repeat(3,minmax(0,108px))]
   mobile-lg:grid-cols-[repeat(4,minmax(0,108px))]
@@ -42,9 +42,12 @@ export const SoftwareItem = tw(Link)`
   pb-1
   rounded-2
   transition
-  text-white
-  hocus:text-white
-  hocus:decoration-white
+  text-black
+  hocus:text-black
+  hocus:decoration-black
+  dark:text-white
+  dark:hocus:text-white
+  dark:hocus:decoration-white
   outline-primary-txt
   no-underline
   hocus:underline
@@ -69,9 +72,9 @@ export const AppIcon = tw(Img)<ImgProps>`
 `;
 
 export const AppName = tw.span`
-  text-white
+  text-inherit
   text-3xs
   truncate
   max-w-[calc(100%-0.25rem)]
-  [text-shadow:0_0_2px_rgba(9_17_34/0.72)]
+  dark:[text-shadow:0_0_2px_rgba(9_17_34/0.72)]
 `;
