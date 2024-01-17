@@ -13,10 +13,9 @@ export const TabsList = tw.div`
   [-webkit-overflow-scrolling:touch]
   border-b
   border-divider
+  no-scrollbar
   tablet-md:pr-0
   tablet-md:overflow-x-hidden
-  [&::-webkit-scrollbar]:hidden
-  [&::-webkit-scrollbar]:[scrollbar-width:var(--size-scrollbar-width)]
   [mask-image:linear-gradient(to_right,rgba(0_0_0/1)_0%,rgba(0_0_0/1)_90%,rgba(0_0_0/0)_100%)]
   tablet-md:[mask-image:none]
 `;

@@ -1,14 +1,23 @@
 @tailwind base;
 @import './reset.scss';
-@import './custom-reset.scss';
+@import './core.scss';
 
 @tailwind components;
 @tailwind utilities;
 
 @import './colors.scss';
-@import './core.scss';
 @import './typography.scss';
-@import './article.scss';
+// @import './article.scss';
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
 
 /* 
   TODO: If you're using my website source code as a template,
@@ -20,8 +29,7 @@ html.light-inverted,
 html.dark-inverted {
   &,
   & * {
-    @apply pointer-events-none select-none saturate-[30] invert-[1.5];
-
+    @apply pointer-events-none select-none saturate-125 invert;
     &::before {
       z-index: 9999;
       content: '–';

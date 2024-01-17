@@ -130,14 +130,8 @@ article code:not([data-language]) {
 
 article pre {
   @apply opacity-100 rounded-2.5 border border-divider;
-  @apply bg-brand-200/5 dark:bg-brand-300/10;
+  @apply bg-brand-200/5 dark:bg-brand-300/10 no-scrollbar;
   @apply mt-0 mb-4 py-2.5 px-0 text-inherit overflow-x-auto;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-
-article pre::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
 }
 
 article [data-rehype-pretty-code-figure] pre code {
