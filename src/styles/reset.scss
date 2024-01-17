@@ -35,4 +35,11 @@
   p {
     @apply text-pretty;
   }
+  code,
+  kbd,
+  pre,
+  samp {
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+  }
 }
