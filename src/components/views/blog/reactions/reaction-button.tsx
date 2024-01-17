@@ -17,7 +17,6 @@ interface ReactionButtonProps
 
 export const ReactionButton = (props: ReactionButtonProps) => {
   const { title, count, iconPath, loading, reacted, ...otherProps } = props;
-
   return (
     <StyledReactionButton
       {...otherProps}

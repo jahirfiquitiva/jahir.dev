@@ -74,7 +74,7 @@ samp {
 }
 
 ::selection {
-  background-color: var(--color-selection);
+  @apply bg-brand-500/25 dark:bg-brand-300/25;
 }
 
 ::placeholder {

@@ -33,11 +33,9 @@ const breakpoints = {
 
 const colors = [
   'background',
-  'inverse',
+  'divider',
   'toolbar',
   'toolbar-highlight',
-  'selection',
-  'divider',
   'primary-txt',
   'secondary-txt',
   'tertiary-txt',

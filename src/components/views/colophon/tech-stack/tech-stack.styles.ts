@@ -26,7 +26,6 @@ export const IconContainer = tw.li`
   m-auto
   items-center
   justify-center
-  bg-background
   rounded-half
   p-1
   z-1
