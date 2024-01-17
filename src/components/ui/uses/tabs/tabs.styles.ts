@@ -56,12 +56,12 @@ export const TabButtonText = tw.span`
   relative
   block
   w-full
-  px-2 py-0.5
-  rounded-1
+  px-2 py-1
+  rounded-1.5
   transition
   tracking-wide
-  group-hover/tab:bg-brand-600/10
-  group-hover/tab:dark:bg-brand-200/10
+  group-hover/tab:bg-brand-500/10
+  group-hover/tab:dark:bg-brand-100/15
   after:absolute
   after:-bottom-1
   after:left-1.5
