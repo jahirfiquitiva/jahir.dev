@@ -6,6 +6,7 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 import { ImageComparison } from './image-comparison';
+import styles from './mdx.module.scss';
 
 const Grid = tw.div`
   grid
@@ -36,5 +37,9 @@ interface MdxProps {
 
 export const Mdx = (props: MdxProps) => {
   const MdxComponent = getMDXComponent(props.code);
-  return <MdxComponent components={components as MDXComponents} />;
+  return (
+    <article className={styles.mdx}>
+      <MdxComponent components={components as MDXComponents} />
+    </article>
+  );
 };

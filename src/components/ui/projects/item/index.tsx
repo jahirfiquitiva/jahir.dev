@@ -5,9 +5,8 @@ import type { Project } from '@/types/project';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
-import { StarsCount } from '../stars-count';
-
 import { ProjectIcon, ProjectLink } from './item.styles';
+import { StarsCount } from './stars-count';
 
 interface ProjectItemProps {
   project: Project;

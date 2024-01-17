@@ -3,8 +3,8 @@
 
 import type { CSSProperties } from 'react';
 
-import type { IncrementReactionFnType } from '@/actions/reactions';
-import { reactionsNames, type ReactionsCounters } from '@/lib/planetscale';
+import type { IncrementCounterFnType } from '@/actions/counters';
+import { reactionsNames, type Counters } from '@/lib/planetscale';
 import { hexToRgb } from '@/utils/color';
 
 import { ReactionButton } from './reaction-button';
@@ -13,8 +13,8 @@ import { useReactions } from './use-reactions';
 
 interface ReactionsButtonsProps {
   slug: string;
-  initialCounters?: ReactionsCounters;
-  incrementReactionFn?: IncrementReactionFnType;
+  initialCounters?: Counters;
+  incrementReactionFn?: IncrementCounterFnType;
 }
 
 export const ReactionsButtons = (props: ReactionsButtonsProps) => {

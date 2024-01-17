@@ -69,7 +69,9 @@ export const Header = ({ post }: HeaderProps) => {
             </span>
           </>
         ) : null}
-        {!post.link ? <ViewsCounter slug={post.slug} write /> : null}
+        {!post.link ? (
+          <ViewsCounter slug={post.slug} inProgress={post.inProgress} write />
+        ) : null}
       </p>
     </div>
   );

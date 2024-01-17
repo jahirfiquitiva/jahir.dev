@@ -1,10 +1,11 @@
-import type { Route } from 'next';
-import { Suspense } from 'react';
+'use client';
 
+import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
-import { LineWobble } from '@/components/atoms/loaders/line-wobble';
-import { getMusicData } from '@/lib/now-playing';
+import { loading as loadingIcon } from '@/components/icons';
+import { useRequest } from '@/hooks/use-request';
+import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx, { tw } from '@/utils/cx';
 
 import { Clock } from './time';
@@ -16,17 +17,21 @@ const ScrollingText = tw.span`
   group-hocus/music:motion-safe:[animation-play-state:paused]
 `;
 
-const NowPlaying = (
-  props: Partial<Awaited<ReturnType<typeof getMusicData>>>,
-) => {
-  const { track } = props;
-  if (!track) return null;
+export const FooterNowPlaying = () => {
+  const { data, loading } =
+    useRequest<NowPlayingAPIResponse>('/api/now-playing');
+  const { track, isPlaying } = data || { isPlaying: false };
+
+  if (loading)
+    return <Icon path={loadingIcon} className={'size-5 animate-spin'} />;
+
+  if (!isPlaying || !track) return <Clock />;
   const scrollingText = `${track.name} • ${track.artist}`;
   const animationDuration = scrollingText.length * 0.325;
   return (
     <Link
       title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
-      href={track.url as Route}
+      href={track.url}
       target={'_blank'}
       className={cx(
         'max-w-[28ch]',
@@ -40,7 +45,7 @@ const NowPlaying = (
     >
       <Img
         alt={`Album cover: "${track.album}" by "${track.artist}"`}
-        src={track.image?.url || ''}
+        src={track.image?.url}
         size={24}
         quality={50}
         className={cx(
@@ -67,25 +72,5 @@ const NowPlaying = (
         </ScrollingText>
       </div>
     </Link>
-  );
-};
-
-export const FooterNowPlaying = async () => {
-  const data = await getMusicData();
-  const { track, isPlaying } = data;
-  return (
-    <Suspense
-      fallback={
-        <LineWobble
-          size={84}
-          lineWeight={5}
-          speed={1.75}
-          color={'var(--color-accent, #88a4e6)'}
-          className={'mx-6 tablet-sm:mx-2'}
-        />
-      }
-    >
-      {!isPlaying || !track ? <Clock /> : <NowPlaying {...data} />}
-    </Suspense>
   );
 };

@@ -9,12 +9,12 @@ export const reactionsNames = [
 ] as const;
 
 export type ReactionName = (typeof reactionsNames)[number];
+export type CounterName = ReactionName | 'views';
 
-export type ReactionsCounters = { [Key in ReactionName]?: number };
+export type Counters = { [Key in CounterName]?: number };
 
-interface CountersTable extends ReactionsCounters {
+interface CountersTable extends Counters {
   slug: string;
-  views?: number;
 }
 
 interface Database {

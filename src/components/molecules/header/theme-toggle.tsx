@@ -45,7 +45,7 @@ export const ThemeToggle = () => {
     >
       <Icon
         path={iconPath}
-        className={cx('size-5', !hasMounted && 'motion-safe:animate-spin')}
+        className={cx('size-5', !hasMounted && 'animate-spin')}
       />
     </ThemeToggleButton>
   );

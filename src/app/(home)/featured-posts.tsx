@@ -34,7 +34,8 @@ export const getFeaturedPosts = cache(
       const otherPosts = sortedPosts.filter(
         (it) =>
           mostViewedPost.slug !== `blog--${it.slug}` &&
-          latestPost.slug !== it.slug,
+          latestPost.slug !== it.slug &&
+          !it.inProgress,
       );
       const randomPost =
         otherPosts[Math.floor(Math.random() * otherPosts.length)];

@@ -1,8 +1,7 @@
-import { Suspense } from 'react';
+'use client';
 
-import { getRepoStars } from '@/actions/stars';
 import { Icon } from '@/components/atoms/icon';
-import { LineWobble } from '@/components/atoms/loaders/line-wobble';
+import { useImmutableRequest } from '@/hooks/use-request';
 import cx from '@/utils/cx';
 
 interface StarsCountProps {
@@ -10,19 +9,19 @@ interface StarsCountProps {
   owner?: string;
 }
 
-export const StarsCount = async (props: StarsCountProps) => {
-  const stars = await getRepoStars(props.repo, props.owner);
+const useStarsRequest = (repo: string, owner?: string) => {
+  let url = `/api/stars/${repo}`;
+  if (owner) url += `?owner=${owner}`;
+  return useImmutableRequest<{
+    stars?: string;
+  }>(url);
+};
+
+export const StarsCount = (props: StarsCountProps) => {
+  const { data } = useStarsRequest(props.repo, props.owner);
+  const { stars } = data || {};
   return (
-    <Suspense
-      fallback={
-        <LineWobble
-          size={40}
-          lineWeight={3}
-          speed={1.75}
-          color={'var(--color-accent, #88a4e6)'}
-        />
-      }
-    >
+    <>
       {Boolean(stars) ? (
         <span
           title={`${stars} on GitHub`}
@@ -50,6 +49,6 @@ export const StarsCount = async (props: StarsCountProps) => {
           <span className={'font-medium'}>{stars}</span>
         </span>
       ) : null}
-    </Suspense>
+    </>
   );
 };

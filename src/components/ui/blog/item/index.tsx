@@ -113,7 +113,9 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
               </span>
             </>
           ) : null}
-          {!post.link ? <ViewsCounter slug={post.slug} /> : null}
+          {!post.link ? (
+            <ViewsCounter slug={post.slug} inProgress={post.inProgress} />
+          ) : null}
         </p>
       </div>
     </BlogPostLink>
