@@ -1,0 +1,61 @@
+/* eslint-disable no-undef */
+import { NextResponse } from 'next/server';
+
+import {
+  db,
+  countersNames,
+  type CounterName,
+  type Counters,
+} from '@/lib/planetscale';
+import type { RequestContext } from '@/types/request';
+
+export const runtime = 'edge';
+export const revalidate = 3600;
+
+const getData = (slug: string): Promise<Array<Counters>> =>
+  db
+    .selectFrom('counters')
+    .where('slug', '=', slug)
+    .select(countersNames)
+    .execute();
+
+export async function GET(
+  req: Request,
+  context?: RequestContext<{ slug?: string }>,
+) {
+  try {
+    const slug = context?.params.slug;
+    if (!slug) return NextResponse.json({});
+    const [counters] = await getData(slug);
+    return NextResponse.json(counters);
+  } catch (e) {
+    return NextResponse.json({});
+  }
+}
+
+export async function POST(
+  req: Request,
+  reqData?: RequestContext<{ slug?: string }>,
+) {
+  try {
+    const slug = reqData?.params.slug;
+    if (!slug) return NextResponse.json({});
+
+    const { counter }: { counter?: CounterName } = await req.json();
+    if (!counter) return NextResponse.json({});
+
+    const [counters] = await getData(slug);
+    const counterCount = Number(counters[counter] || 0);
+    await db
+      .insertInto('counters')
+      .values({ slug, [counter]: 1 })
+      .onDuplicateKeyUpdate({
+        [counter]: counterCount + 1,
+      })
+      .execute();
+
+    return NextResponse.json({ ...counters, [counter]: counterCount + 1 });
+  } catch (e) {
+    return NextResponse.json({});
+  }
+}

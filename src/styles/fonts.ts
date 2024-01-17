@@ -5,6 +5,7 @@ export const InterVariable = localFont({
   variable: '--font-inter',
   display: 'fallback',
   weight: '1 999',
+  fallback: ['system-ui'],
 });
 
 export const ManropeVariable = localFont({

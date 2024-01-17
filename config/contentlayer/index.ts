@@ -57,7 +57,7 @@ const Blog = defineDocumentType(() => ({
     heroSource: { type: 'string' },
     link: { type: 'string' },
     inProgress: { type: 'boolean' },
-    devToId: { type: 'number' },
+    // devToId: { type: 'number' },
   },
   computedFields,
 }));

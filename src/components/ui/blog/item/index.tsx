@@ -8,7 +8,7 @@ import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
 
-// import { ViewsCounter } from '../views-counter';
+import { ViewsCounter } from '../views-counter';
 
 import { BlogPostLink } from './item.styles';
 
@@ -113,7 +113,9 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
               </span>
             </>
           ) : null}
-          {/* {!post.link ? <ViewsCounter slug={post.slug} /> : null} */}
+          {!post.link ? (
+            <ViewsCounter slug={post.slug} inProgress={post.inProgress} />
+          ) : null}
         </p>
       </div>
     </BlogPostLink>

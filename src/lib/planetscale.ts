@@ -1,20 +1,20 @@
 import { Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 
-export const reactionsNames = [
+export const countersNames = [
   'likes',
   'loves',
   'awards',
   'bookmarks',
+  'views',
 ] as const;
 
-export type ReactionName = (typeof reactionsNames)[number];
+export type CounterName = (typeof countersNames)[number];
 
-export type ReactionsCounters = { [Key in ReactionName]?: number };
+export type Counters = { [Key in CounterName]?: number };
 
-interface CountersTable extends ReactionsCounters {
+interface CountersTable extends Counters {
   slug: string;
-  views?: number;
 }
 
 interface Database {

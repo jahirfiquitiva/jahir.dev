@@ -16,7 +16,7 @@ interface LineWobbleProps {
 export const LineWobble = (props: LineWobbleProps) => {
   const { size = 80, color = 'black', lineWeight = 5, speed = 1.75 } = props;
   return (
-    <div
+    <span
       className={cx(styles.container, props.className)}
       style={
         {
