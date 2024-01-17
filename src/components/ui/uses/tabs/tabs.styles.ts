@@ -41,7 +41,7 @@ export const TabButton = tw.a`
   px-1.5 py-1
   font-manrope
   font-semibold
-  min-w-12
+  min-w-fit
   text-center
   text-3xs
   text-secondary-txt
@@ -55,6 +55,7 @@ export const TabButton = tw.a`
 export const TabButtonText = tw.span`
   relative
   block
+  min-w-9
   w-full
   px-2 py-1
   rounded-1.5
