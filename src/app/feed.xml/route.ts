@@ -1,7 +1,7 @@
-import { allBlogs, type Blog } from 'contentlayer/generated';
 import xml from 'xml';
 
 import { getDate } from '@/utils/date';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 export const dynamic = 'force-static';
 

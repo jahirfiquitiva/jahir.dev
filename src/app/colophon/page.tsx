@@ -1,8 +1,8 @@
 import { Section } from '@/components/atoms/section';
-import { DesignAndColors } from '@/components/views/colophon/design-colors';
-import { Logo } from '@/components/views/colophon/logo';
-import { TechStack } from '@/components/views/colophon/tech-stack';
-import { Typography } from '@/components/views/colophon/typography';
+import { DesignAndColors } from '@/components/ui/colophon/design-colors';
+import { Logo } from '@/components/ui/colophon/logo';
+import { TechStack } from '@/components/ui/colophon/tech-stack';
+import { Typography } from '@/components/ui/colophon/typography';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
 export default function Colophon() {

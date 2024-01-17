@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { getReactions, incrementReaction } from '@/actions/reactions';
-import { ReactionsButtons } from '@/components/views/blog/reactions';
+import { ReactionsButtons } from '@/components/ui/blog/reactions';
 
 export const Reactions = async ({ slug }: { slug?: string }) => {
   if (!slug) return null;

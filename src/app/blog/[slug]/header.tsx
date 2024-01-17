@@ -1,11 +1,11 @@
-import type { Blog } from 'contentlayer/generated';
 import type { CSSProperties } from 'react';
 
 import { Link } from '@/components/atoms/link';
-import { ViewsCounter } from '@/components/views/blog/views-counter';
+import { ViewsCounter } from '@/components/ui/blog/views-counter';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
+import type { Blog } from 'contentlayer/generated';
 
 interface HeaderProps {
   post: Blog;

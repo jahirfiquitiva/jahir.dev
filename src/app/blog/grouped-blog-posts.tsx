@@ -1,9 +1,8 @@
-import { allBlogs, type Blog } from 'contentlayer/generated';
-
 import { Section } from '@/components/atoms/section';
-import { BlogPostItem } from '@/components/views/blog/item';
+import { BlogPostItem } from '@/components/ui/blog/item';
 import { sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 

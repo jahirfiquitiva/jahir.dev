@@ -1,8 +1,8 @@
-import { allBlogs } from 'contentlayer/generated';
 import type { MetadataRoute } from 'next';
 
 import { sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
+import { allBlogs } from 'contentlayer/generated';
 
 const today = ((): Date => {
   const d = new Date();

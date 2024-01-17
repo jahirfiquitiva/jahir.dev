@@ -1,4 +1,4 @@
-import { ProjectsList } from '@/components/views/projects';
+import { ProjectsList } from '@/components/ui/projects';
 import { createMetadata } from '@/utils/metadata';
 
 export const metadata = createMetadata({

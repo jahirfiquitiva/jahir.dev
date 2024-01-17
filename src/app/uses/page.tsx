@@ -3,11 +3,11 @@ import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { Zoom } from '@/components/molecules/zoom';
-import { Coding } from '@/components/views/uses/coding';
-import { ExtensionsGrid } from '@/components/views/uses/extensions';
-import { EverydayHardware } from '@/components/views/uses/hardware';
-import { Software } from '@/components/views/uses/software';
-import { Tabs } from '@/components/views/uses/tabs';
+import { Coding } from '@/components/ui/uses/coding';
+import { ExtensionsGrid } from '@/components/ui/uses/extensions';
+import { EverydayHardware } from '@/components/ui/uses/hardware';
+import { Software } from '@/components/ui/uses/software';
+import { Tabs } from '@/components/ui/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
 

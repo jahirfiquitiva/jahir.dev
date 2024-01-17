@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
-import { Intro } from '@/components/views/home/intro';
-import { ProjectsList } from '@/components/views/projects';
+import { Intro } from '@/components/ui/home/intro';
+import { ProjectsList } from '@/components/ui/projects';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',

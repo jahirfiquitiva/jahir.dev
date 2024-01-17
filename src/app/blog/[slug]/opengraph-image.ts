@@ -1,7 +1,6 @@
-import { allBlogs } from 'contentlayer/generated';
-
 import { getOgImage } from '@/components/og/response';
 import { config } from '@/utils/og';
+import { allBlogs } from 'contentlayer/generated';
 
 import type { BlogPostPageContext } from './types';
 

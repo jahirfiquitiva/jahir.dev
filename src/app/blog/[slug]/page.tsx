@@ -1,9 +1,9 @@
-import { allBlogs } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-import { Mdx } from '@/components/views/blog/mdx';
+import { Mdx } from '@/components/ui/blog/mdx';
 import { createMetadata } from '@/utils/metadata';
+import { allBlogs } from 'contentlayer/generated';
 
 import type { BlogPostPageContext } from './types';
 

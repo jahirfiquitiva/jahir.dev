@@ -1,4 +1,3 @@
-import type { Blog } from 'contentlayer/generated';
 import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
@@ -7,6 +6,7 @@ import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
+import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../views-counter';
 

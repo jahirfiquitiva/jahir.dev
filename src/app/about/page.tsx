@@ -1,9 +1,9 @@
 import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { SocialLinks } from '@/components/molecules/social-links';
-import { Activity } from '@/components/views/about/activity';
-import { Experience } from '@/components/views/about/experience';
-import { Skills } from '@/components/views/about/skills';
+import { Activity } from '@/components/ui/about/activity';
+import { Experience } from '@/components/ui/about/experience';
+import { Skills } from '@/components/ui/about/skills';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
 

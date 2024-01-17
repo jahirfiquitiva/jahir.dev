@@ -1,12 +1,12 @@
-import { allBlogs, type Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { Zoom } from '@/components/molecules/zoom';
-import { ShareButton } from '@/components/views/blog/share-button';
+import { ShareButton } from '@/components/ui/blog/share-button';
 import cx from '@/utils/cx';
 import { getDate } from '@/utils/date';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';

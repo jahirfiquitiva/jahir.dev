@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
-import { SponsorsList } from '@/components/views/donate/sponsors-list';
-import { Testimonials } from '@/components/views/donate/testimonials';
+import { SponsorsList } from '@/components/ui/donate/sponsors-list';
+import { Testimonials } from '@/components/ui/donate/testimonials';
 import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 
 import Loading from '../loading';

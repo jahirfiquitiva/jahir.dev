@@ -2,7 +2,7 @@ import illustration from '@/assets/images/donate/3.png';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
-import { DonateButtons } from '@/components/views/donate/buttons';
+import { DonateButtons } from '@/components/ui/donate/buttons';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
