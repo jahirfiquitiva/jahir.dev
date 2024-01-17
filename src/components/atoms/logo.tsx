@@ -13,9 +13,9 @@ export const Logo = ({ bgClassName, fgClassName, ...props }: LogoProps) => {
     <svg
       viewBox={'0 0 32 32'}
       role={'presentation'}
-      className={'size-6'}
       aria-hidden={'true'}
       {...props}
+      className={cx('size-6', props.className)}
     >
       <path
         className={cx('fill-accent', bgClassName)}

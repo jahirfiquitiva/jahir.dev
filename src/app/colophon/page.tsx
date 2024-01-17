@@ -1,19 +1,19 @@
 import { Section } from '@/components/atoms/section';
-import { DesignAndColors } from '@/components/views/colophon/design-colors';
-import { Logo } from '@/components/views/colophon/logo';
-import { TechStack } from '@/components/views/colophon/tech-stack';
-import { Typography } from '@/components/views/colophon/typography';
+import { DesignAndColors } from '@/components/ui/colophon/design-colors';
+import { Logo } from '@/components/ui/colophon/logo';
+import { TechStack } from '@/components/ui/colophon/tech-stack';
+import { Typography } from '@/components/ui/colophon/typography';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
 export default function Colophon() {
   return (
-    <Section id={'colophon'} className={'gap-12'}>
+    <Section id={'colophon'} className={'gap-10'}>
       <h1
         className={getColoredTextClasses(
           'brand',
           'brand',
           'blue',
-          'self-start -mb-4',
+          'self-start -mb-5',
         )}
       >
         Colophon

@@ -3,11 +3,10 @@ import type { PropsWithChildren } from 'react';
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { Zoom } from '@/components/molecules/zoom';
-import { ShareButton } from '@/components/views/blog/share-button';
-import { getBlogPosts, type Blog } from '@/lib/blog';
+import { ShareButton } from '@/components/ui/blog/share-button';
 import cx from '@/utils/cx';
 import { getDate } from '@/utils/date';
-import { buildOgImageUrl } from '@/utils/og';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
@@ -24,7 +23,7 @@ const blogPostStructuredData = (post?: Blog): string => {
     datePublished: date.toISOString(),
     dateModified: date.toISOString(),
     description: post.summary,
-    image: buildOgImageUrl('blog', post.title, post.hero),
+    image: `https://jahir.dev/blog/${post.slug}/opengraph-image`,
     url: `https://jahir.dev/blog/${post.slug}`,
     author: {
       '@type': 'Person',
@@ -38,11 +37,16 @@ export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = getBlogPosts().find((b) => b.slug === slug);
+  const post = allBlogs.find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>
-      <Hero title={post.title} hero={post.hero} source={post.heroSource} />
+      <Hero
+        title={post.title}
+        hero={post.hero}
+        source={post.heroSource}
+        heroMeta={post.heroMeta}
+      />
       <Header post={post} />
       {props.children}
       <hr

@@ -12,6 +12,7 @@ import {
   ButtonsGroup,
   LinksList,
   Nav,
+  NavItem,
   NavLink,
   NavPageLink,
 } from './navbar.styles';
@@ -53,16 +54,16 @@ export const Navbar = (props: NavbarProps) => {
       <NavLink
         title={'Jahir Fiquitiva - Home Page'}
         href={'/'}
-        className={'gap-2 saturate-125 dark:saturate-150'}
+        className={'gap-2 hocus:bg-toolbar-highlight'}
         aria-current={props.path === '/' ? 'page' : undefined}
       >
-        <Logo />
+        <Logo className={'saturate-125 dark:saturate-150'} />
         <span
           className={getColoredTextClasses(
             'brand',
             'brand',
             'blue',
-            'dark:saturate-100',
+            'saturate-125',
             true,
           )}
         >
@@ -72,7 +73,7 @@ export const Navbar = (props: NavbarProps) => {
       <LinksList>
         {toolbarLinksList.map((link) => {
           return (
-            <li key={link.href}>
+            <NavItem key={link.href}>
               <NavPageLink
                 title={`${link.title} page`}
                 href={link.href as Route}
@@ -81,9 +82,9 @@ export const Navbar = (props: NavbarProps) => {
                 }
                 className={link.className}
               >
-                {link.title}
+                <span>{link.title}</span>
               </NavPageLink>
-            </li>
+            </NavItem>
           );
         })}
       </LinksList>

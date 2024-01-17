@@ -1,13 +1,10 @@
 :root,
 ::backdrop {
   --color-background: theme('colors.light');
-  --color-inverse: theme('colors.dark');
-
-  --color-toolbar: theme(colors.brand.500 / 8%);
-  --color-toolbar-highlight: theme(colors.brand.600 / 12%);
-
-  --color-selection: theme(colors.brand.500 / 25%);
   --color-divider: theme(colors.brand.950 / 12%);
+
+  --color-toolbar: theme(colors.brand.500 / 5%);
+  --color-toolbar-highlight: theme(colors.brand.600 / 8%);  
 
   --color-accent: theme('colors.brand.500');
   --color-accent-dark: theme('colors.brand.600');
@@ -21,13 +18,10 @@
 html.dark,
 html.dark-inverted {
   --color-background: theme('colors.dark');
-  --color-inverse: theme('colors.light');
+  --color-divider: theme(colors.brand.50 / 18%);
 
   --color-toolbar: theme(colors.brand.300 / 8%);
-  --color-toolbar-highlight: theme(colors.brand.200 / 12%);
-
-  --color-selection: theme(colors.brand.300 / 25%);
-  --color-divider: theme(colors.brand.50 / 18%);
+  --color-toolbar-highlight: theme(colors.brand.200 / 12%);  
 
   --color-accent: theme('colors.brand.300');
   --color-accent-dark: theme('colors.brand.200');

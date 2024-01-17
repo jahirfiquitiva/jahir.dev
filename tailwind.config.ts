@@ -4,7 +4,7 @@ import { fontFamily, spacing } from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
 import hocus from 'tailwindcss-hocus';
 
-import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from './src/constants/theme';
+import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from './src/utils/color';
 
 const reduceObjArray = <T>(objs: Array<T>) =>
   objs.reduce((r, c) => Object.assign(r, c), {});
@@ -23,8 +23,6 @@ const fontSize = {
 };
 
 const breakpoints = {
-  default: '0px',
-  'mobile-sm': '320px',
   'mobile-md': '375px',
   'mobile-lg': '425px',
   'tablet-sm': '596px',
@@ -35,11 +33,9 @@ const breakpoints = {
 
 const colors = [
   'background',
-  'inverse',
+  'divider',
   'toolbar',
   'toolbar-highlight',
-  'selection',
-  'divider',
   'primary-txt',
   'secondary-txt',
   'tertiary-txt',
@@ -77,12 +73,6 @@ module.exports = {
       full: '9999px',
     },
     borderWidth: { ...extendedSpacing, DEFAULT: '0.0625rem' },
-    fontWeight: {
-      normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-    },
     colors: {
       transparent: 'rgba(0,0,0,0)',
       current: 'currentColor',

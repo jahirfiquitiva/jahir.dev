@@ -99,9 +99,7 @@ const getOneTimeSupporters = async (): Promise<Array<ReadableSupporter>> =>
           amount: donations.reduce((p, c) => p + c.amount, 0),
         };
       });
-    })
-    // Filter the people that have donated at least $50 in total (unicorns)
-    .then((supporters) => supporters.filter((person) => person.amount >= 50));
+    });
 
 const calculateMembershipMonthlyPrice = (
   coffees: number,

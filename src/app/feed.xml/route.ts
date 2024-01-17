@@ -1,7 +1,10 @@
 import xml from 'xml';
 
-import { getBlogPosts, type Blog } from '@/lib/blog';
 import { getDate } from '@/utils/date';
+import { allBlogs, type Blog } from 'contentlayer/generated';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-static';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
@@ -122,11 +125,11 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allBlogs = getBlogPosts()
-    .filter((it) => allowInProgress || !it.inProgress)
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
   const feedItems = await Promise.all(
-    allBlogs.filter((it) => !it.inProgress).map(getAllPostRssData),
+    allBlogs
+      .filter((it) => allowInProgress || !it.inProgress)
+      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+      .map(getAllPostRssData),
   );
 
   const feedObject = {

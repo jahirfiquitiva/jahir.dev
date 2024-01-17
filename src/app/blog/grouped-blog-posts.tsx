@@ -1,11 +1,12 @@
 import { Section } from '@/components/atoms/section';
-import { BlogPostItem } from '@/components/views/blog/item';
-import { getBlogPosts, type Blog, sortBlogPostsByDate } from '@/lib/blog';
+import { BlogPostItem } from '@/components/ui/blog/item';
+import { sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
-const blogPostsByYear = getBlogPosts()
+const blogPostsByYear = allBlogs
   .filter((it) => allowInProgress || !it.inProgress)
   .reduce<Record<number, Array<Blog>>>((acc, post) => {
     const year = (getDate(post.date) || new Date()).getFullYear();

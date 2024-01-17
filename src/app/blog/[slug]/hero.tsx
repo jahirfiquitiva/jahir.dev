@@ -2,18 +2,19 @@ import type { Route } from 'next';
 
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
-import type { Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
 import { getUrlDomain } from '@/utils/domain';
+import type { Blog } from 'contentlayer/generated';
 
 interface HeroProps {
   title: Blog['title'];
   hero?: Blog['hero'];
   source?: Blog['heroSource'];
+  heroMeta?: Blog['heroMeta'];
 }
 
 export const Hero = (props: HeroProps) => {
-  const { title, hero, source } = props;
+  const { title, hero, source, heroMeta } = props;
   return (
     <figure
       className={cx(
@@ -34,6 +35,7 @@ export const Hero = (props: HeroProps) => {
         quality={100}
         priority
         data-nozoom
+        {...heroMeta}
       />
       {source ? (
         <figcaption>

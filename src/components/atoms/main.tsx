@@ -12,10 +12,8 @@ export const Main = tw.main`
   w-full
   max-w-site
   mx-auto
-  tablet-sm:pb-9
   tablet-md:pt-32
   tablet-md:px-0
-  tablet-md:gap-18
   motion-safe:animate-page-transition
   motion-safe:[animation-delay:150ms]
 `;

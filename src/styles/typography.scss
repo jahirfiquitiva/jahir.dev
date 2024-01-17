@@ -14,10 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply inline-block text-primary-txt font-bold font-manrope text-balance;
-  p {
-    font-weight: inherit;
-  }
+  @apply inline-block text-primary-txt font-bold font-manrope;
 }
 
 b,
@@ -27,17 +24,15 @@ strong {
 
 p,
 small {
-  width: fit-content;
+  @apply w-fit;
 }
 
 h1 {
   @apply text-2xl;
-  line-height: 1.5;
 }
 
 h2 {
   @apply text-xl;
-  line-height: 1.375;
 }
 
 h3 {
@@ -56,15 +51,6 @@ h6 {
   @apply text-xs;
 }
 
-p {
-  font-weight: inherit;
-  font-size: inherit;
-}
-
 small {
   @apply text-3xs;
-}
-
-button {
-  @apply font-manrope;
 }

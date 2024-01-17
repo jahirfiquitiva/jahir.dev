@@ -51,6 +51,7 @@ config/themes/*.json
 .frontmatter
 frontmatter.json
 
+src/data/*.ts
 src/data/*.json
 !src/data/projects.json
 !src/data/hardware.json

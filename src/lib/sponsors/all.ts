@@ -41,6 +41,7 @@ const getAllMonthlySponsors = (
     .sort((a, b) => b.price - a.price);
 };
 
+const MIN_AMOUNT_FOR_UNICORN = 75;
 export const getSponsorsAndCategories = cache(
   async () => {
     const { members, oneTime: bmacOneTime } = await getBmacData();
@@ -59,8 +60,8 @@ export const getSponsorsAndCategories = cache(
     return {
       categories: allMonthly,
       unicorns: [
-        ...bmacOneTime,
-        ...githubOneTime,
+        ...bmacOneTime.filter((it) => it.amount >= MIN_AMOUNT_FOR_UNICORN),
+        ...githubOneTime.filter((it) => it.amount >= MIN_AMOUNT_FOR_UNICORN),
         ...unicorns.map(
           (it) =>
             ({

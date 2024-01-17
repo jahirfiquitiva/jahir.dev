@@ -1,8 +1,7 @@
 import { Section } from '@/components/atoms/section';
-import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
+import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 import { GroupedBlogPosts } from './grouped-blog-posts';
 
@@ -38,5 +37,4 @@ export const metadata = createMetadata({
     'storytelling',
     'news',
   ],
-  image: buildOgImageUrl('blog'),
 });

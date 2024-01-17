@@ -42,6 +42,13 @@ interface SponsorsResponse {
       sponsors: {
         totalCount: number;
       };
+      sponsorsActivities: {
+        nodes: Array<{
+          currentPrivacyLevel: 'PRIVATE' | 'PUBLIC';
+          sponsor: SponsorEntity;
+          sponsorsTier: SponsorsTier;
+        }>;
+      };
     };
   };
 }

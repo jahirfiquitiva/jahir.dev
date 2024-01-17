@@ -6,8 +6,6 @@ import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
-import { createMetadata } from '@/utils/metadata';
-import { buildOgImageUrl } from '@/utils/og';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ErrorComponent = (props: { error: Error }) => {
@@ -85,10 +83,3 @@ const ErrorComponent = (props: { error: Error }) => {
 };
 
 export default ErrorComponent;
-
-export const metadata = createMetadata({
-  // TODO: Use error code in title
-  title: 'Error: 500!',
-  description: 'An unexpected error occurred.',
-  image: buildOgImageUrl('error'),
-});

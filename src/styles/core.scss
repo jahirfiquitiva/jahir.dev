@@ -1,13 +1,3 @@
-:root {
-  --size-scrollbar-width: 8px;
-}
-
-@media screen and (min-width: 768px) {
-  :root {
-    --size-scrollbar-width: 12px;
-  }
-}
-
 html,
 body {
   @apply motion-safe:scroll-smooth bg-background accent-accent;
@@ -19,10 +9,11 @@ html {
 
 body {
   @apply text-xs overflow-x-hidden;
+  @apply flex flex-col;
 }
 
 button {
-  @apply cursor-default;
+  @apply cursor-default font-manrope;
 }
 
 a {
@@ -37,78 +28,29 @@ a * {
 }
 
 figure {
-  display: block;
-  position: relative;
-  margin: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
+  @apply block relative m-0;
 }
 
 figure figcaption {
-  @apply text-3xs;
-  text-align: center;
-  margin: 0.625rem 0;
-}
-
-body {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: 0 auto;
+  @apply text-3xs text-center my-2.5;
 }
 
 input[type='text'],
 input[type='email'] {
-  appearance: none;
-}
-
-pre,
-code,
-kbd,
-samp {
-  -moz-osx-font-smoothing: auto;
-  -webkit-font-smoothing: auto;
+  @apply appearance-none;
 }
 
 ::selection {
-  background-color: var(--color-selection);
+  @apply bg-brand-500/25 dark:bg-brand-300/25;
 }
-
 ::placeholder {
-  color: var(--color-tertiary-txt);
-  opacity: 1;
+  @apply text-tertiary-txt opacity-100;
 }
 :-ms-input-placeholder {
-  color: var(--color-tertiary-txt);
-  opacity: 1;
+  @apply text-tertiary-txt opacity-100;
 }
 ::-ms-input-placeholder {
-  color: var(--color-tertiary-txt);
-  opacity: 1;
-}
-
-/* == Custom Scrollbar Colors == */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: theme('colors.brand.400') var(--color-background);
-}
-
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: var(--size-scrollbar-width);
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: theme('colors.brand.300');
-  border-radius: 20px;
-  border: 3px solid var(--color-background);
+  @apply text-tertiary-txt opacity-100;
 }
 
 *:focus {

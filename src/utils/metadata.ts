@@ -1,32 +1,13 @@
 import type { Metadata } from 'next';
 
-import { buildOgImageUrl, config } from './og';
-
 export const createMetadata = (data: {
   title: string;
   description: string;
   keywords?: string | Array<string> | null;
   exactUrl?: string;
-  image?: string;
+  image?: unknown;
 }): Metadata => {
-  const {
-    title,
-    description,
-    keywords,
-    exactUrl,
-    image = buildOgImageUrl(),
-  } = data;
-
-  const images = [
-    {
-      url: image,
-      alt: `Preview for site: "${title}"`,
-      type: config.contentType,
-      width: config.size.width,
-      height: config.size.height,
-    },
-  ];
-
+  const { title, description, keywords, exactUrl } = data;
   return {
     title,
     description,
@@ -37,14 +18,12 @@ export const createMetadata = (data: {
       description,
       url: exactUrl || 'https://jahir.dev',
       siteName: title,
-      images,
       locale: 'en_US',
       type: 'website',
     },
     twitter: {
       title,
       description,
-      images,
       card: 'summary_large_image',
       creator: '@jahirfiquitiva',
       site: '@jahirfiquitiva',

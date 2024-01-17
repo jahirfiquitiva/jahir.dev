@@ -1,25 +1,26 @@
 import {
-  unstable_noStore as noStore,
   unstable_cache as cache,
+  unstable_noStore as noStore,
 } from 'next/cache';
 import { Suspense } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
-import { BlogPostItem } from '@/components/views/blog/item';
-import { BlogPostItemSkeleton } from '@/components/views/blog/item/skeleton';
-import { RSSFeedButton } from '@/components/views/blog/rss-feed-button';
-import { getBlogPosts, type Blog, sortBlogPostsByDate } from '@/lib/blog';
+import { BlogPostItem } from '@/components/ui/blog/item';
+import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
+import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
 import { db } from '@/lib/planetscale';
+import { sortBlogPostsByDate } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
+import { allBlogs, type Blog } from 'contentlayer/generated';
 
 export const getFeaturedPosts = cache(
   async (): Promise<Array<Blog>> => {
     noStore();
     try {
-      const sortedPosts = getBlogPosts().sort(sortBlogPostsByDate);
+      const sortedPosts = allBlogs.sort(sortBlogPostsByDate);
       const latestPost = sortedPosts[0];
       const [mostViewedPost] = await db
         .selectFrom('counters')
