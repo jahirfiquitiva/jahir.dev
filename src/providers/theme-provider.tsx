@@ -9,7 +9,7 @@ import {
   useEffect,
 } from 'react';
 
-import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/constants/theme';
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/utils/color';
 import { colorMetaTags } from '@/utils/metadata';
 
 interface ThemeContextValue {
