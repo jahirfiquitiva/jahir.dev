@@ -194,7 +194,7 @@ article ol {
 article ul,
 article ol {
   @apply flex flex-col list-none relative;
-  @apply pl-5 mx-1.5 -mt-0.5 gap-2;
+  @apply pl-5 mx-1.5 -mt-0.5 gap-1.5;
   counter-reset: start 1;
   & > li {
     @apply m-0 pl-0;
