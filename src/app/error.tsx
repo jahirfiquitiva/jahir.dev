@@ -43,7 +43,7 @@ const ErrorComponent = (props: { error: Error }) => {
         <summary className={'select-none p-2 font-medium'}>
           Error details
         </summary>
-        <article
+        <div
           className={cx(
             'border-t border-divider max-w-full overflow-hidden',
             'flex flex-col gap-2 p-0',
@@ -53,8 +53,9 @@ const ErrorComponent = (props: { error: Error }) => {
             className={cx(
               'flex flex-col p-3 border-none',
               'text-nowrap overflow-x-auto',
-              'text-2xs font-mono',
+              'text-2xs font-mono no-scrollbar',
               'max-w-full whitespace-pre-line',
+              'bg-brand-200/5 dark:bg-brand-300/10',
             )}
           >
             <span className={'font-medium'}>
@@ -66,7 +67,7 @@ const ErrorComponent = (props: { error: Error }) => {
               </span>
             ))}
           </code>
-        </article>
+        </div>
       </details>
       <LinkButton href={'/'} title={'Home page'} className={'mt-3'}>
         Go back home
