@@ -1092,10 +1092,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/env@npm:14.0.5-canary.60"
-  checksum: 80f89eaf01c1d352db73f751a6ae99f0cc92264bcd4fcbbf93f2038ddfc66e9d7a057e845eee141d50e7e76d0925c8fa1a7aeee41acbcabfb3eee17e35987b21
+"@next/env@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/env@npm:14.0.5-canary.64"
+  checksum: 0eda5e921caf102de5ba4a61d22c4c5a7ce674d8438cb245efb0c010052dba333028b98e77010e96c514957a7f89e0daf8e61ae619e677ac5cc9f1a53a5c6a5d
   languageName: node
   linkType: hard
 
@@ -1108,65 +1108,65 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-darwin-arm64@npm:14.0.5-canary.60"
+"@next/swc-darwin-arm64@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-darwin-arm64@npm:14.0.5-canary.64"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-darwin-x64@npm:14.0.5-canary.60"
+"@next/swc-darwin-x64@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-darwin-x64@npm:14.0.5-canary.64"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-linux-arm64-gnu@npm:14.0.5-canary.60"
+"@next/swc-linux-arm64-gnu@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-linux-arm64-gnu@npm:14.0.5-canary.64"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-linux-arm64-musl@npm:14.0.5-canary.60"
+"@next/swc-linux-arm64-musl@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-linux-arm64-musl@npm:14.0.5-canary.64"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-linux-x64-gnu@npm:14.0.5-canary.60"
+"@next/swc-linux-x64-gnu@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-linux-x64-gnu@npm:14.0.5-canary.64"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-linux-x64-musl@npm:14.0.5-canary.60"
+"@next/swc-linux-x64-musl@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-linux-x64-musl@npm:14.0.5-canary.64"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-win32-arm64-msvc@npm:14.0.5-canary.60"
+"@next/swc-win32-arm64-msvc@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-win32-arm64-msvc@npm:14.0.5-canary.64"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-win32-ia32-msvc@npm:14.0.5-canary.60"
+"@next/swc-win32-ia32-msvc@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-win32-ia32-msvc@npm:14.0.5-canary.64"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "@next/swc-win32-x64-msvc@npm:14.0.5-canary.60"
+"@next/swc-win32-x64-msvc@npm:14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "@next/swc-win32-x64-msvc@npm:14.0.5-canary.64"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -1801,12 +1801,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20.11.4":
+"@types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 20.11.4
   resolution: "@types/node@npm:20.11.4"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: af6e1ad4d8f210d06d6db6c85b9aba25b022b493a4f2289e5ac693b418de746db812ab1537096e10e7cb7b78f1d835a06e61f31d93ebe36ef116bfbbf8f04c97
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.11.5":
+  version: 20.11.5
+  resolution: "@types/node@npm:20.11.5"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 6d18cec852f5cfbed3ec42b5c01c026e7a3f9da540d6e3d6738d4cee9979fb308cf27b6df7ba40a6553e7bc82e678f0ef53ba6e6ad52e5b86bd97b7783c2a42c
   languageName: node
   linkType: hard
 
@@ -2493,13 +2502,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.16":
-  version: 10.4.16
-  resolution: "autoprefixer@npm:10.4.16"
+"autoprefixer@npm:^10.4.17":
+  version: 10.4.17
+  resolution: "autoprefixer@npm:10.4.17"
   dependencies:
-    browserslist: "npm:^4.21.10"
-    caniuse-lite: "npm:^1.0.30001538"
-    fraction.js: "npm:^4.3.6"
+    browserslist: "npm:^4.22.2"
+    caniuse-lite: "npm:^1.0.30001578"
+    fraction.js: "npm:^4.3.7"
     normalize-range: "npm:^0.1.2"
     picocolors: "npm:^1.0.0"
     postcss-value-parser: "npm:^4.2.0"
@@ -2507,7 +2516,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: e00256e754d481a026d928bca729b25954074dd142dbec022f0a7db0d3bbc0dc2e2dc7542e94fec22eff81e21fe140e6856448e2d9a002660cb1e2ad434daee0
+  checksum: 1d21cc8edb7bf993682094ceed03a32c18f5293f071182a64c2c6defb44bbe91d576ad775d2347469a81997b80cea0bbc4ad3eeb5b12710f9feacf2e6c04bb51
   languageName: node
   linkType: hard
 
@@ -2615,7 +2624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.0.0, browserslist@npm:^4.21.10, browserslist@npm:^4.22.2":
+"browserslist@npm:^4.0.0, browserslist@npm:^4.22.2":
   version: 4.22.2
   resolution: "browserslist@npm:4.22.2"
   dependencies:
@@ -2740,7 +2749,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001538, caniuse-lite@npm:^1.0.30001565":
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001565":
   version: 1.0.30001572
   resolution: "caniuse-lite@npm:1.0.30001572"
   checksum: 7d02570fa576b158d96739f2c65ea3ad22e90a8b028a343902de1f13b7db8512144870f1d29ec5e9ae7189d96158d9643871b6e902e6680a06b27a9afe556da2
@@ -2751,6 +2760,13 @@ __metadata:
   version: 1.0.30001576
   resolution: "caniuse-lite@npm:1.0.30001576"
   checksum: 79cf666f9139c542bdf75eab76171534dc638d2f8efacd325649c8ec6be59de400f0e9d6dc02504f12125626b306c0a848fe86904c01722218b2a479be82a9c1
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001578":
+  version: 1.0.30001578
+  resolution: "caniuse-lite@npm:1.0.30001578"
+  checksum: c3bd9c08a945cee4f0cc284a217ebe9c2613e04d5aef4b48f1871a779b1875c34286469eb8d7d94bd028b5a354613e676ad503b6bf8db20a2f154574bd5fde48
   languageName: node
   linkType: hard
 
@@ -4502,7 +4518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fraction.js@npm:^4.3.6":
+"fraction.js@npm:^4.3.7":
   version: 4.3.7
   resolution: "fraction.js@npm:4.3.7"
   checksum: df291391beea9ab4c263487ffd9d17fed162dbb736982dee1379b2a8cc94e4e24e46ed508c6d278aded9080ba51872f1bc5f3a5fd8d7c74e5f105b508ac28711
@@ -7348,20 +7364,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.0.5-canary.60":
-  version: 14.0.5-canary.60
-  resolution: "next@npm:14.0.5-canary.60"
+"next@npm:^14.0.5-canary.64":
+  version: 14.0.5-canary.64
+  resolution: "next@npm:14.0.5-canary.64"
   dependencies:
-    "@next/env": "npm:14.0.5-canary.60"
-    "@next/swc-darwin-arm64": "npm:14.0.5-canary.60"
-    "@next/swc-darwin-x64": "npm:14.0.5-canary.60"
-    "@next/swc-linux-arm64-gnu": "npm:14.0.5-canary.60"
-    "@next/swc-linux-arm64-musl": "npm:14.0.5-canary.60"
-    "@next/swc-linux-x64-gnu": "npm:14.0.5-canary.60"
-    "@next/swc-linux-x64-musl": "npm:14.0.5-canary.60"
-    "@next/swc-win32-arm64-msvc": "npm:14.0.5-canary.60"
-    "@next/swc-win32-ia32-msvc": "npm:14.0.5-canary.60"
-    "@next/swc-win32-x64-msvc": "npm:14.0.5-canary.60"
+    "@next/env": "npm:14.0.5-canary.64"
+    "@next/swc-darwin-arm64": "npm:14.0.5-canary.64"
+    "@next/swc-darwin-x64": "npm:14.0.5-canary.64"
+    "@next/swc-linux-arm64-gnu": "npm:14.0.5-canary.64"
+    "@next/swc-linux-arm64-musl": "npm:14.0.5-canary.64"
+    "@next/swc-linux-x64-gnu": "npm:14.0.5-canary.64"
+    "@next/swc-linux-x64-musl": "npm:14.0.5-canary.64"
+    "@next/swc-win32-arm64-msvc": "npm:14.0.5-canary.64"
+    "@next/swc-win32-ia32-msvc": "npm:14.0.5-canary.64"
+    "@next/swc-win32-x64-msvc": "npm:14.0.5-canary.64"
     "@swc/helpers": "npm:0.5.2"
     busboy: "npm:1.6.0"
     caniuse-lite: "npm:^1.0.30001406"
@@ -7399,7 +7415,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 2462fd7d4df8775930b97047fe14d25f9338ad49ac162f92af195e7c789ba7c2bc7879ade078e376219ba0ef390fa497d469d1250287e515561dc2abb3937fbd
+  checksum: f34d0915db980b4f07ef9698b175b2d3bfc430b8ffd14f725fcf991ebd1ed7867d39e46b426e0892c51db4fda7d0e39e6b7e6d8a29044e11127850807ca7efe1
   languageName: node
   linkType: hard
 
@@ -8351,12 +8367,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.3":
-  version: 3.2.3
-  resolution: "prettier@npm:3.2.3"
+"prettier@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "prettier@npm:3.2.4"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 210ad7faa80ebaa285573b1f72cbf852ee5efdf9ec67d4f480af64fcd0510f0c0ba4d92db538bba91bd0aec69772279937ccd30d8482fefb734d38e55173d4e8
+  checksum: 88dfeb78ac6096522c9a5b81f1413d875f568420d9bb6a5e5103527912519b993f2bcdcac311fcff5718d5869671d44e4f85827d3626f3a6ce32b9abc65d88e0
   languageName: node
   linkType: hard
 
@@ -8687,9 +8703,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-pretty-code@npm:^0.12.4":
-  version: 0.12.4
-  resolution: "rehype-pretty-code@npm:0.12.4"
+"rehype-pretty-code@npm:^0.12.5":
+  version: 0.12.5
+  resolution: "rehype-pretty-code@npm:0.12.5"
   dependencies:
     "@types/hast": "npm:^3.0.3"
     hast-util-to-string: "npm:^3.0.0"
@@ -8699,7 +8715,7 @@ __metadata:
     unist-util-visit: "npm:^5.0.0"
   peerDependencies:
     shikiji: ^0.7.0 || ^0.8.0 || ^0.9.0
-  checksum: 0da382348f4a7db019acf441cdf63ef807ad696ed2c451761a2c98c8fe28bbc57179749b72e3a50dd7721f00a5ad2c2f58be0eb68b79902872153cca86de9707
+  checksum: ebc4bb35a2e2a505ad927a0f2085283d13aaa034a5628b76e665c7f03e542458580938d681d156bb277ae2ff268786a9defe4ee8ffc6698b8e8582b19ffbc6aa
   languageName: node
   linkType: hard
 
@@ -8986,13 +9002,13 @@ __metadata:
     "@jsdevtools/rehype-toc": "npm:^3.0.2"
     "@planetscale/database": "npm:^1.13.0"
     "@types/canvas-confetti": "npm:^1.6.4"
-    "@types/node": "npm:^20.11.4"
+    "@types/node": "npm:^20.11.5"
     "@types/react": "npm:^18.2.48"
     "@types/react-dom": "npm:^18.2.18"
     "@types/xml": "npm:^1.0.11"
     "@typescript-eslint/eslint-plugin": "npm:^6.19.0"
     "@typescript-eslint/parser": "npm:^6.19.0"
-    autoprefixer: "npm:^10.4.16"
+    autoprefixer: "npm:^10.4.17"
     canvas-confetti: "npm:^1.9.2"
     colord: "npm:^2.9.3"
     contentlayer: "npm:^0.3.4"
@@ -9008,12 +9024,12 @@ __metadata:
     kysely-planetscale: "npm:^1.4.0"
     medium-zoom: "npm:^1.1.0"
     million: "npm:^2.6.4"
-    next: "npm:^14.0.5-canary.60"
+    next: "npm:^14.0.5-canary.64"
     next-contentlayer: "npm:^0.3.4"
     next-themes: "npm:0.2.1"
     plaiceholder: "npm:^3.0.0"
     postcss: "npm:^8.4.33"
-    prettier: "npm:^3.2.3"
+    prettier: "npm:^3.2.4"
     react: "npm:^18.2.0"
     react-compare-image: "npm:^3.4.0"
     react-dom: "npm:^18.2.0"
@@ -9021,7 +9037,7 @@ __metadata:
     reading-time: "npm:^1.5.0"
     rehype-accessible-emojis: "npm:^0.3.2"
     rehype-autolink-headings: "npm:^7.1.0"
-    rehype-pretty-code: "npm:^0.12.4"
+    rehype-pretty-code: "npm:^0.12.5"
     rehype-slug: "npm:^6.0.0"
     remark-gfm: "npm:^3.0.1"
     remark-squeeze-paragraphs: "npm:^6.0.0"
