@@ -7,7 +7,7 @@ export const StackContainer = tw.ul`
   grid
   grid-cols-4
   grid-flow-dense
-  py-12
+  py-8
   px-4
   gap-y-10
   items-center
@@ -30,6 +30,7 @@ export const IconContainer = tw.li`
   p-1
   z-1
   max-w-[3.5rem]
+  bg-background
 `;
 
 export const IconLink = tw(Link)`

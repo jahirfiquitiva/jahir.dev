@@ -29,7 +29,7 @@ const StackIcons = () => (
       </IconLink>
     </IconContainer>
     <IconContainer>
-      <IconLink title={'Contentlayer'} href={'http://contentlayer.dev/'}>
+      <IconLink title={'Contentlayer'} href={'https://contentlayer.dev/'}>
         <Icon
           path={
             'M12.41 22c-.55 0-1.09-.18-1.46-.55L5.4 16.53a6.797 6.797 0 0 1-2.28-5.38c.18-2.09 1.28-3.91 3.01-5l5.01-3.74c.82-.55 1.91-.55 2.73 0l6.1 4.65c.55.46.91 1.09.91 1.73 0 .73-.36 1.37-.91 1.73l-1.73 1.37 1.82 1.46c.55.46.82 1.09.82 1.82s-.36 1.37-.91 1.73l-6.2 4.65c-.45.36-.9.45-1.36.45zm.19-17.77L7.4 7.97c-1.18.73-1.91 2-2 3.37-.09 1.37.46 2.64 1.46 3.55l.64.55 4.92 4.37 6.2-4.65-2.19-1.73-2.46 1.91c-.82.64-1.91.64-2.73 0l-2.1-1.64c-.55-.46-.91-1.09-.91-1.73 0-.73.36-1.37.91-1.73l2.1-1.64c.82-.64 2-.64 2.73 0l2.46 2 2.19-1.64-6.02-4.73zm0 6.02-2.1 1.64 2.1 1.64 2-1.55-2-1.73z'
@@ -39,10 +39,7 @@ const StackIcons = () => (
       </IconLink>
     </IconContainer>
     <IconContainer>
-      <IconLink
-        title={'Umami Analytics'}
-        href={'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev'}
-      >
+      <IconLink title={'Umami Analytics'} href={'/analytics'} openInNewTab>
         <Icon
           path={
             'M21.3 8.9h-1.1c-1-3.6-4.3-6.3-8.2-6.3-3.9 0-7.2 2.7-8.2 6.3H2.7c-.4 0-.7.4-.7.7v1.2c0 5.5 4.5 10 10 10 5.4 0 9.9-4.3 10-9.8V9.6c0-.3-.3-.7-.7-.7zM12 3.6c3.4 0 6.3 2.2 7.2 5.3H4.8c1-3 3.8-5.3 7.2-5.3z'

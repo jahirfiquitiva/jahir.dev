@@ -7,13 +7,13 @@ import { getColoredTextClasses } from '@/utils/colored-text';
 
 export default function Colophon() {
   return (
-    <Section id={'colophon'} className={'gap-12'}>
+    <Section id={'colophon'} className={'gap-10'}>
       <h1
         className={getColoredTextClasses(
           'brand',
           'brand',
           'blue',
-          'self-start -mb-4',
+          'self-start -mb-5',
         )}
       >
         Colophon
