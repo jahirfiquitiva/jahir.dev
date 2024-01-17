@@ -7,6 +7,35 @@ const authHeaders =
 const graphQlQuery = `
 {
   user(login: "jahirfiquitiva") {
+    sponsorsActivities(first: 100, period: ALL, includePrivate: true, actions: NEW_SPONSORSHIP) {
+      nodes {
+        ... on SponsorsActivity {
+          currentPrivacyLevel
+          sponsor {
+            ... on User {
+              login
+              avatarUrl
+              name
+              websiteUrl
+            }
+            ... on Organization {
+              login
+              avatarUrl
+              name
+              websiteUrl
+            }
+          }
+          sponsorsTier {
+            id
+            monthlyPriceInDollars
+            isOneTime
+            isCustomAmount
+            name
+            description
+          }
+        }
+      }
+    }
     sponsorsListing {
       id
       tiers(first: 20) {
