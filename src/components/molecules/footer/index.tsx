@@ -15,7 +15,7 @@ import {
   LinksList,
   StyledFooter,
 } from './footer.styles';
-// import { FooterNowPlaying } from './now-playing';
+import { FooterNowPlaying } from './now-playing';
 
 export const Footer = () => {
   return (
@@ -96,7 +96,7 @@ export const Footer = () => {
           'flex flex-row items-center justify-start self-start col-span-2 min-h-6'
         }
       >
-        {/* <FooterNowPlaying /> */}
+        <FooterNowPlaying />
       </div>
     </StyledFooter>
   );

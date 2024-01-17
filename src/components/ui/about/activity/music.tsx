@@ -1,8 +1,10 @@
+'use client';
+
 import type { Route } from 'next';
-import { Suspense } from 'react';
 
 import { Img } from '@/components/atoms/img';
-import { getMusicData } from '@/lib/now-playing';
+import { useRequest } from '@/hooks/use-request';
+import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx from '@/utils/cx';
 
 import {
@@ -17,12 +19,10 @@ import {
   TrackName,
 } from './activity.styles';
 
-const NowPlaying = (
-  props: Partial<Awaited<ReturnType<typeof getMusicData>>> & {
-    loading?: boolean;
-  },
-) => {
-  const { track, isPlaying, loading } = props;
+export const Music = () => {
+  const { data, loading } =
+    useRequest<NowPlayingAPIResponse>('/api/now-playing');
+  const { track, isPlaying } = data || {};
   return (
     <ActivityCard
       title={
@@ -99,14 +99,5 @@ const NowPlaying = (
         </Texts>
       </Content>
     </ActivityCard>
-  );
-};
-
-export const Music = async () => {
-  const data = await getMusicData();
-  return (
-    <Suspense fallback={<NowPlaying loading />}>
-      <NowPlaying {...data} />
-    </Suspense>
   );
 };

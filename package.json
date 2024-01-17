@@ -20,7 +20,8 @@
     "next-themes": "0.2.1",
     "react": "^18.2.0",
     "react-compare-image": "^3.4.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
