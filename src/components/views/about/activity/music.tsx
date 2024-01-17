@@ -1,8 +1,8 @@
-'use client';
+import type { Route } from 'next';
+import { Suspense } from 'react';
 
 import { Img } from '@/components/atoms/img';
-import { useRequest } from '@/hooks/use-request';
-import type { NowPlayingAPIResponse } from '@/types/spotify/request';
+import { getMusicData } from '@/lib/now-playing';
 import cx from '@/utils/cx';
 
 import {
@@ -17,17 +17,18 @@ import {
   TrackName,
 } from './activity.styles';
 
-export const Music = () => {
-  const { data, loading } =
-    useRequest<NowPlayingAPIResponse>('/api/now-playing');
-  const { track, isPlaying } = data || { isPlaying: false };
-
+const NowPlaying = (
+  props: Partial<Awaited<ReturnType<typeof getMusicData>>> & {
+    loading?: boolean;
+  },
+) => {
+  const { track, isPlaying, loading } = props;
   return (
     <ActivityCard
       title={
         !track ? 'Loading…' : `"${track.name}" by "${track.artist}" on Spotify`
       }
-      href={track?.url || '#'}
+      href={(track?.url || '#') as Route}
       target={'_blank'}
       className={cx(
         loading ? 'motion-safe:animate-pulse' : '',
@@ -59,9 +60,7 @@ export const Music = () => {
       <Content className={'bg-white/65 dark:bg-brand-900/35'}>
         <Img
           alt={
-            !track
-              ? 'Loading…'
-              : `Album cover: "${track.album}" by "${track.artist}"`
+            !track ? '' : `Album cover: "${track.album}" by "${track.artist}"`
           }
           src={track?.image?.url || ''}
           size={track?.image?.width || 78}
@@ -100,5 +99,17 @@ export const Music = () => {
         </Texts>
       </Content>
     </ActivityCard>
+  );
+};
+
+export const Music = async () => {
+  const data = await getMusicData().catch(() => ({
+    isPlaying: false,
+    track: null,
+  }));
+  return (
+    <Suspense fallback={<NowPlaying loading />}>
+      <NowPlaying {...data} />
+    </Suspense>
   );
 };

@@ -60,6 +60,9 @@ const getAccessToken = async () => {
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
     }),
+    next: {
+      revalidate: 0,
+    },
   });
 
   return response.json();
