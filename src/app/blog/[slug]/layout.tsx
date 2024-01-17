@@ -42,7 +42,12 @@ export default function BlogPostLayout(
   if (!post) return null;
   return (
     <>
-      <Hero title={post.title} hero={post.hero} source={post.heroSource} />
+      <Hero
+        title={post.title}
+        hero={post.hero}
+        source={post.heroSource}
+        heroMeta={post.heroMeta}
+      />
       <Header post={post} />
       {props.children}
       <hr

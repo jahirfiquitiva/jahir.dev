@@ -10,10 +10,11 @@ interface HeroProps {
   title: Blog['title'];
   hero?: Blog['hero'];
   source?: Blog['heroSource'];
+  heroMeta?: Blog['heroMeta'];
 }
 
 export const Hero = (props: HeroProps) => {
-  const { title, hero, source } = props;
+  const { title, hero, source, heroMeta } = props;
   return (
     <figure
       className={cx(
@@ -34,6 +35,7 @@ export const Hero = (props: HeroProps) => {
         quality={100}
         priority
         data-nozoom
+        {...heroMeta}
       />
       {source ? (
         <figcaption>
