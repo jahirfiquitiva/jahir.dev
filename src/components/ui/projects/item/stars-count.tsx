@@ -19,18 +19,7 @@ const useStarsRequest = (repo: string, owner?: string) => {
 };
 
 export const StarsCount = (props: StarsCountProps) => {
-  const { data, loading } = useStarsRequest(props.repo, props.owner);
-
-  if (loading)
-    return (
-      <LineWobble
-        size={40}
-        lineWeight={3}
-        speed={1.75}
-        color={'var(--color-accent, #88a4e6)'}
-      />
-    );
-
+  const { data } = useStarsRequest(props.repo, props.owner);
   const { stars } = data || {};
   return (
     <>

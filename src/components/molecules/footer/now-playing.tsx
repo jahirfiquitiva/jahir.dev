@@ -1,8 +1,9 @@
 'use client';
 
+import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
-import { LineWobble } from '@/components/atoms/loaders/line-wobble';
+import { loading as loadingIcon } from '@/components/icons';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx, { tw } from '@/utils/cx';
@@ -21,20 +22,10 @@ export const FooterNowPlaying = () => {
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
   const { track, isPlaying } = data || { isPlaying: false };
 
-  if (loading) {
-    return (
-      <LineWobble
-        size={84}
-        lineWeight={5}
-        speed={1.75}
-        color={'var(--color-accent, #88a4e6)'}
-        className={'mx-6 tablet-sm:mx-2'}
-      />
-    );
-  }
+  if (loading)
+    return <Icon path={loadingIcon} className={'size-5 animate-spin'} />;
 
   if (!isPlaying || !track) return <Clock />;
-
   const scrollingText = `${track.name} • ${track.artist}`;
   const animationDuration = scrollingText.length * 0.325;
   return (
