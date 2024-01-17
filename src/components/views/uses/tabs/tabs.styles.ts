@@ -41,27 +41,34 @@ export const TabButton = tw.a`
   px-1.5 py-1
   font-manrope
   font-semibold
-  min-w-fit
+  min-w-12
+  text-center
   text-3xs
   text-secondary-txt
   group/tab
   no-underline
-  hocus:outline-offset-0
   mobile-lg:text-2xs
-  [&[aria-selected="true"]]:pt-1.5
-  [&[aria-selected="true"]]:pb-1
-  [&[aria-selected="true"]]:border-b-0.5
+  hocus:outline-offset-0
   [&[aria-selected="true"]]:text-accent
-  [&[aria-selected="true"]]:border-accent
 `;
 
 export const TabButtonText = tw.span`
+  relative
   block
   w-full
-  px-2 py-1
+  px-2 py-0.5
   rounded-1
   transition
   tracking-wide
-  group-hover/tab:bg-accent-dark/[0.08]
-  group-hover/tab:dark:bg-accent-dark/[0.16]
+  group-hover/tab:bg-brand-600/10
+  group-hover/tab:dark:bg-brand-200/10
+  after:absolute
+  after:-bottom-1
+  after:left-1.5
+  after:right-1.5
+  after:h-[0.1875rem]
+  after:rounded-t-[0.1875rem]
+  after:transition-colors
+  after:bg-transparent
+  [[aria-selected="true"]>&]:after:bg-accent
 `;
