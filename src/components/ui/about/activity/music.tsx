@@ -103,10 +103,7 @@ const NowPlaying = (
 };
 
 export const Music = async () => {
-  const data = await getMusicData().catch(() => ({
-    isPlaying: false,
-    track: null,
-  }));
+  const data = await getMusicData();
   return (
     <Suspense fallback={<NowPlaying loading />}>
       <NowPlaying {...data} />

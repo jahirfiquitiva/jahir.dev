@@ -71,12 +71,8 @@ const NowPlaying = (
 };
 
 export const FooterNowPlaying = async () => {
-  const data = await getMusicData().catch(() => ({
-    isPlaying: false,
-    track: null,
-  }));
+  const data = await getMusicData();
   const { track, isPlaying } = data;
-
   return (
     <Suspense
       fallback={

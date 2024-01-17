@@ -1,9 +1,11 @@
+import { unstable_noStore as noStore } from 'next/cache';
+
 import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
 import type { Track, ReadableTrack } from '@/types/spotify/entities.d';
 
-export const runtime = 'edge';
-export const fetchCache = 'force-no-store';
-export const dynamic = 'force-dynamic';
+// export const runtime = 'edge';
+// export const fetchCache = 'force-no-store';
+// export const dynamic = 'force-dynamic';
 
 const mapTrackData = (track?: Track | null): ReadableTrack | null => {
   if (!track) return null;
@@ -32,7 +34,8 @@ const mapTrackData = (track?: Track | null): ReadableTrack | null => {
 };
 
 export const getMusicData = async () => {
-  const nowPlaying = await getNowPlaying().catch(null);
+  noStore();
+  const nowPlaying = await getNowPlaying();
   let isPlaying = false;
   let nowPlayingTrack: Track | null = null;
   if (!('error' in nowPlaying)) {
@@ -49,7 +52,7 @@ export const getMusicData = async () => {
   }
 
   // Otherwise, get the most recently played track
-  const recentlyPlayed = await getRecentlyPlayed().catch(null);
+  const recentlyPlayed = await getRecentlyPlayed();
   let lastPlayed: Track | null = null;
   if (!('error' in recentlyPlayed)) lastPlayed = recentlyPlayed.items[0]?.track;
   return {
