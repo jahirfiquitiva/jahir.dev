@@ -1,4 +1,4 @@
-import type { ImgProps } from '@/components/atoms/client-img';
+import type { ImgProps } from '@/components/atoms/img';
 import { Img } from '@/components/atoms/img';
 import { tw } from '@/utils/cx';
 
