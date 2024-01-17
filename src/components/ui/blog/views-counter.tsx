@@ -15,7 +15,7 @@ interface ViewsCounterProps {
 export const ViewsCounter = (props: ViewsCounterProps) => {
   const { slug, inProgress, write } = props;
   const hasMounted = useHasMounted();
-  const { data } = useImmutableRequest<Counters>(`/api/counters/blog--${slug}`);
+  const { data } = useImmutableRequest<Counters>(`/api/views/blog--${slug}`);
 
   useEffect(() => {
     // Do nothing in SSR or if article is in progress

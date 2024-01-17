@@ -1,23 +1,14 @@
 /* eslint-disable no-undef */
 import { NextResponse } from 'next/server';
 
-import {
-  db,
-  reactionsNames,
-  type CounterName,
-  type Counters,
-} from '@/lib/planetscale';
+import { db, type Counters } from '@/lib/planetscale';
 import type { RequestContext } from '@/types/request';
 
 export const runtime = 'edge';
 export const revalidate = 3600;
 
 const getData = (slug: string): Promise<Array<Counters>> =>
-  db
-    .selectFrom('counters')
-    .where('slug', '=', slug)
-    .select([...reactionsNames, 'views'])
-    .execute();
+  db.selectFrom('counters').where('slug', '=', slug).select('views').execute();
 
 export async function GET(
   req: Request,
@@ -41,20 +32,17 @@ export async function POST(
     const slug = reqData?.params.slug;
     if (!slug) return NextResponse.json({});
 
-    const { counter }: { counter?: CounterName } = await req.json();
-    if (!counter) return NextResponse.json({});
-
     const [counters] = await getData(slug);
-    const counterCount = Number(counters[counter] || 0);
+    const counterCount = Number(counters['views'] || 0);
     await db
       .insertInto('counters')
-      .values({ slug, [counter]: 1 })
+      .values({ slug, views: 1 })
       .onDuplicateKeyUpdate({
-        [counter]: counterCount + 1,
+        views: counterCount + 1,
       })
       .execute();
 
-    return NextResponse.json({ ...counters, [counter]: counterCount + 1 });
+    return NextResponse.json({ views: counterCount + 1 });
   } catch (e) {
     return NextResponse.json({});
   }
