@@ -16,11 +16,9 @@ export default function BlogPostPage(context: BlogPostPageContext) {
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
   return (
-    <article>
-      <Suspense fallback={<Loading />}>
-        <Mdx code={post.body.code} />
-      </Suspense>
-    </article>
+    <Suspense fallback={<Loading />}>
+      <Mdx code={post.body.code} />
+    </Suspense>
   );
 }
 
