@@ -3,7 +3,12 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
-import { db, type CounterName, type Counters } from '@/lib/planetscale';
+import {
+  db,
+  type CounterName,
+  type Counters,
+  reactionsNames,
+} from '@/lib/planetscale';
 
 import { canRunAction } from './utils';
 
@@ -41,14 +46,9 @@ export const getCounters = async (slug: string): Promise<Counters> => {
     const [counters] = await db
       .selectFrom('counters')
       .where('slug', '=', `blog--${slug}`)
-      .select(['likes', 'loves', 'awards', 'bookmarks'])
+      .select(reactionsNames)
       .execute();
-    return {
-      likes: counters.likes || 0,
-      loves: counters.loves || 0,
-      awards: counters.awards || 0,
-      bookmarks: counters.bookmarks || 0,
-    };
+    return counters;
   } catch (e) {
     return {};
   }

@@ -14,8 +14,8 @@ article.mdx {
   & h5,
   & h6 {
     @apply relative self-start text-primary-txt;
-    &:hover > a[class*="anchor"],
-    &:focus > a[class*="anchor"] {
+    &:hover > a[class*='anchor'],
+    &:focus > a[class*='anchor'] {
       @apply visible opacity-100;
     }
   }
@@ -103,7 +103,7 @@ article.mdx {
     text-decoration: var(--shiki-light-text-decoration, inherit);
   }
 
-  html[class*="dark"] & {
+  html[class*='dark'] & {
     code[data-theme*=' '],
     code[data-theme*=' '] span {
       color: var(--shiki-dark, inherit);
@@ -128,8 +128,13 @@ article.mdx {
 
   pre {
     @apply opacity-100 rounded-2.5 border border-divider;
-    @apply bg-brand-200/5 dark:bg-brand-300/10 no-scrollbar;
+    @apply bg-brand-200/5 dark:bg-brand-300/10;
     @apply mt-0 mb-4 py-2.5 px-0 text-inherit overflow-x-auto;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
   }
 
   [data-rehype-pretty-code-figure] pre code {
@@ -218,7 +223,7 @@ article.mdx {
     content: counter(list-item, disc);
   }
 
-  a[class*="anchor"] {
+  a[class*='anchor'] {
     @apply block invisible absolute;
     @apply h-full cursor-pointer no-underline;
     @apply transition-colors opacity-0;
