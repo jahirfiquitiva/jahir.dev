@@ -2,6 +2,7 @@ import type { Metadata, Route } from 'next';
 import { notFound } from 'next/navigation';
 
 import { Link } from '@/components/atoms/link';
+import { Main } from '@/components/atoms/main';
 import { Section } from '@/components/atoms/section';
 import type { RequestContext } from '@/types/request';
 import { createMetadata } from '@/utils/metadata';
@@ -21,28 +22,30 @@ export default async function ReleasePage(context: ReleasePageContext) {
 
   const data = await getRepoReleaseData(repo);
   return (
-    <Section id={'github-release'}>
-      <h1>{data?.success ? '🎉' : '😮'}</h1>
-      <h3>{data?.success ? 'Download started!' : 'Oh no!'}</h3>
-      <p>
-        {data?.success
-          ? 'Feel free to close this tab 😉'
-          : 'Direct download is not available right now 😕'}
-      </p>
-      {data?.success ? null : (
+    <Main>
+      <Section id={'github-release'}>
+        <h1>{data?.success ? '🎉' : '😮'}</h1>
+        <h3>{data?.success ? 'Download started!' : 'Oh no!'}</h3>
         <p>
-          Please follow this link to&nbsp;
-          <Link
-            title={'GitHub releases link'}
-            href={(data?.download || '#') as Route}
-          >
-            GitHub Releases
-          </Link>{' '}
-          …
+          {data?.success
+            ? 'Feel free to close this tab 😉'
+            : 'Direct download is not available right now 😕'}
         </p>
-      )}
-      <Downloader url={data?.success ? data.download : null} />
-    </Section>
+        {data?.success ? null : (
+          <p>
+            Please follow this link to&nbsp;
+            <Link
+              title={'GitHub releases link'}
+              href={(data?.download || '#') as Route}
+            >
+              GitHub Releases
+            </Link>{' '}
+            …
+          </p>
+        )}
+        <Downloader url={data?.success ? data.download : null} />
+      </Section>
+    </Main>
   );
 }
 

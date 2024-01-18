@@ -186,8 +186,8 @@ module.exports = {
         DEFAULT: 'ease-in-out',
       },
       keyframes: {
-        'page-transition': {
-          '0%': { transform: 'scale(0.95)', opacity: '0' },
+        present: {
+          '0%': { transform: 'scale(0.975)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         scroll: {
@@ -219,7 +219,7 @@ module.exports = {
         },
       },
       animation: {
-        'page-transition': 'page-transition 300ms ease-in-out backwards',
+        present: 'present 300ms ease-in-out 150ms backwards',
         scroll: 'scroll 15s linear infinite',
         wave: 'wave 2.5s infinite',
         'music-bars': 'music-bars 2.2s ease infinite alternate',

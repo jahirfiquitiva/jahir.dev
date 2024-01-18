@@ -14,6 +14,5 @@ export const Main = tw.main`
   mx-auto
   tablet-md:pt-32
   tablet-md:px-0
-  motion-safe:animate-page-transition
-  motion-safe:[animation-delay:150ms]
+  motion-safe:animate-present
 `;

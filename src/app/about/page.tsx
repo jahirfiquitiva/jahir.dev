@@ -1,4 +1,5 @@
 import { Link } from '@/components/atoms/link';
+import { Main } from '@/components/atoms/main';
 import { Section } from '@/components/atoms/section';
 import { SocialLinks } from '@/components/molecules/social-links';
 import { Activity } from '@/components/ui/about/activity';
@@ -33,7 +34,7 @@ const jsonLd = JSON.stringify({
 
 export default function AboutPage() {
   return (
-    <>
+    <Main>
       <Section id={'about'}>
         <h1
           className={getColoredTextClasses(
@@ -111,7 +112,7 @@ export default function AboutPage() {
       <script type={'application/ld+json'} suppressHydrationWarning>
         {jsonLd}
       </script>
-    </>
+    </Main>
   );
 }
 

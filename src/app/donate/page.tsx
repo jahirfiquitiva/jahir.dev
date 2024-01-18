@@ -2,6 +2,7 @@ import illustration from '@/assets/images/donate/3.png';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { List, ListItem } from '@/components/atoms/list';
+import { Main } from '@/components/atoms/main';
 import { Section } from '@/components/atoms/section';
 import { DonateButtons } from '@/components/ui/donate/buttons';
 import { getColoredTextClasses } from '@/utils/colored-text';
@@ -12,7 +13,7 @@ import Sponsorships from './sponsorships';
 
 export default function DonatePage() {
   return (
-    <>
+    <Main>
       <Section id={'donate'} className={'gap-3'}>
         <h1
           className={getColoredTextClasses(
@@ -118,7 +119,7 @@ export default function DonatePage() {
         <DonateButtons />
       </Section>
       <Sponsorships />
-    </>
+    </Main>
   );
 }
 

@@ -60,7 +60,7 @@ export default function RootLayout(props: PropsWithChildren) {
       <body>
         <Providers>
           <Header />
-          <Main>{props.children}</Main>
+          {props.children}
           <Footer />
           <BackToTop />
         </Providers>
