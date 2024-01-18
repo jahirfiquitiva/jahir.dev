@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
 import { Mdx } from '@/components/ui/blog/mdx';
@@ -17,8 +17,9 @@ export default function BlogPostPage(context: BlogPostPageContext) {
   if (!slug || !post) return <NotFound />;
   if (post.link) return redirect(post.link);
   return (
-    // <Suspense fallback={<Loading />}>
-    <Mdx code={post.body.code} />
+    <Suspense fallback={<Loading />}>
+      <Mdx code={post.body.code} />
+    </Suspense>
   );
 }
 
