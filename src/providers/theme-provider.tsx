@@ -12,19 +12,22 @@ import {
 import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/utils/color';
 import { colorMetaTags } from '@/utils/metadata';
 
+type ThemeOption = 'system' | 'light' | 'dark';
 interface ThemeContextValue {
+  theme: ThemeOption;
   isDark: boolean;
   toggleTheme?: () => void;
 }
 
 const defaultContextState: ThemeContextValue = {
+  theme: 'system',
   isDark: false,
 };
 
 const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 
 export const ThemeProvider = (props: PropsWithChildren) => {
-  const { theme, resolvedTheme, setTheme } = useNextTheme();
+  const { theme = 'system', resolvedTheme, setTheme } = useNextTheme();
 
   const actualTheme = useMemo(
     () => resolvedTheme || theme,
@@ -32,9 +35,12 @@ export const ThemeProvider = (props: PropsWithChildren) => {
   );
 
   const themeContextValue: ThemeContextValue = {
+    theme: theme as ThemeOption,
     isDark: actualTheme === 'dark',
     toggleTheme: () => {
-      setTheme(actualTheme === 'dark' ? 'light' : 'dark');
+      setTheme(
+        theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'system',
+      );
     },
   };
 
