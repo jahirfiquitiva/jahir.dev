@@ -1,4 +1,4 @@
-import image from '@/assets/images/setup-2023.jpg';
+import setupImage from '@/assets/images/setup.jpg';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { Main } from '@/components/atoms/main';
@@ -29,10 +29,9 @@ export default function UsesPage() {
         <Tabs
           heroImage={
             <Img
-              src={image}
+              src={setupImage}
               alt={"Jahir's desk setup in early 2023"}
               quality={100}
-              className={'h-full object-top'}
               priority
             />
           }

@@ -30,6 +30,8 @@ export const TabPanel = tw.section.attrs({
   transition
   opacity-100
   visible
+  motion-safe:animate-fade-in
+  motion-safe:[animation-delay:0ms]
   [&[aria-hidden="true"]]:hidden
   [&[aria-hidden="true"]]:opacity-0
   [&[aria-hidden="true"]]:invisible

@@ -24,9 +24,11 @@ export const SoftwareGrid = tw.ol`
   py-6 px-3
   items-center
   justify-center
-  bg-light/10
-  dark:bg-light/5
   list-none
+  backdrop-blur
+  backdrop-saturate-125
+  bg-light/15
+  dark:bg-dark/10
   mobile-md:grid-cols-[repeat(3,minmax(0,108px))]
   mobile-lg:grid-cols-[repeat(4,minmax(0,108px))]
   tablet-sm:grid-cols-[repeat(5,minmax(0,108px))]
