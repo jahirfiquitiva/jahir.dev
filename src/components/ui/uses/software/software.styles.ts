@@ -11,8 +11,8 @@ export const GridContainer = tw.div`
   bg-cover
   bg-no-repeat
   bg-center
-  bg-[url('/media/uses/wallpaper.png')]
-  dark:bg-[url('/media/uses/wallpaper-dark.png')]
+  bg-[url('/media/uses/wallpaper.jpg')]
+  dark:bg-[url('/media/uses/wallpaper-dark.jpg')]
 `;
 
 export const SoftwareGrid = tw.ol`
