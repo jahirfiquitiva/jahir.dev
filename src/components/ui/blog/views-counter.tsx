@@ -38,7 +38,7 @@ export const ViewsCounter = (props: ViewsCounterProps) => {
           <span aria-hidden={'true'} className={'font-bold'}>
             ·
           </span>
-          <span>{views} views</span>
+          <span className={'motion-safe:animate-fade-in'}>{views} views</span>
         </>
       ) : null}
     </>

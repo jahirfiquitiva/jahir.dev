@@ -26,6 +26,8 @@ export const Hero = (props: HeroProps) => {
         'saturate-125 opacity-50 dark:opacity-65',
         // eslint-disable-next-line max-len
         '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_100%)]',
+        'motion-safe:animate-fade-in',
+        '[--end-opacity:0.5] dark:[--end-opacity:0.65]',
       )}
     >
       <Img

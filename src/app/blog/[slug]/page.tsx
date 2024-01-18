@@ -7,18 +7,18 @@ import { createMetadata } from '@/utils/metadata';
 import { allBlogs } from 'contentlayer/generated';
 
 import Loading from './../../loading';
+import NotFound from './../../not-found';
 import type { BlogPostPageContext } from './types';
 
 export default function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
   const post = allBlogs.find((b) => b.slug === slug);
 
-  if (!slug || !post) return notFound();
+  if (!slug || !post) return <NotFound />;
   if (post.link) return redirect(post.link);
   return (
-    <Suspense fallback={<Loading />}>
-      <Mdx code={post.body.code} />
-    </Suspense>
+    // <Suspense fallback={<Loading />}>
+    <Mdx code={post.body.code} />
   );
 }
 

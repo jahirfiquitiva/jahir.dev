@@ -190,6 +190,10 @@ module.exports = {
           '0%': { transform: 'scale(0.975)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: 'var(--end-opacity, 1)' },
+        },
         scroll: {
           '0%': { transform: 'translate3d(1.5rem, 0, 0)' },
           '100%': { transform: 'translate3d(-100%, 0, 0)' },
@@ -220,6 +224,7 @@ module.exports = {
       },
       animation: {
         present: 'present 300ms ease-in-out 150ms backwards',
+        'fade-in': 'fade-in 200ms ease-in-out 50ms backwards',
         scroll: 'scroll 15s linear infinite',
         wave: 'wave 2.5s infinite',
         'music-bars': 'music-bars 2.2s ease infinite alternate',

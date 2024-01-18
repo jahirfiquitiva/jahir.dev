@@ -37,6 +37,7 @@ export const StarsCount = (props: StarsCountProps) => {
             'group-hocus/project:dark:border-[rgba(var(--project-color)/0.36)]',
             'group-hocus/project:bg-transparent',
             'group-hocus/project:dark:bg-transparent',
+            'motion-safe:animate-fade-in',
           )}
         >
           <Icon
