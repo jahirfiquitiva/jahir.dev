@@ -47,10 +47,12 @@ export const ThemeProvider = (props: PropsWithChildren) => {
   useEffect(() => {
     colorMetaTags.forEach((tag) => {
       document.head
-        .querySelector(`meta[name="${tag}"]`)
-        ?.setAttribute(
-          'content',
-          actualTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
+        .querySelectorAll(`meta[name="${tag}"]`)
+        .forEach((meta) =>
+          meta.setAttribute(
+            'content',
+            actualTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
+          ),
         );
     });
   }, [actualTheme]);
