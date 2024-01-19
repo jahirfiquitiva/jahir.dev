@@ -1634,6 +1634,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/helpers@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "@swc/helpers@npm:0.5.3"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 7003b9dafad38e27a4474a3dcf78d2aee85ce4bb7ee171ecc2d5b533768fb4f8fc9dbd6a1c3a9df5f8001e61ff416b93681e0a7dcbdc0df109b3e09c50cd4615
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -8579,6 +8588,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-tweet@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "react-tweet@npm:3.2.0"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.3"
+    clsx: "npm:^2.0.0"
+    date-fns: "npm:^2.30.0"
+    swr: "npm:^2.2.4"
+  peerDependencies:
+    react: ">= 18.0.0"
+    react-dom: ">= 18.0.0"
+  checksum: 17876e3356849685bbfcf763342f25b7683aaa6ee3f86234c07982ab5509d415918e8374a79dc9d7f02c531d7cd2a6ed0091077e89134b5e9d4480ea0960016d
+  languageName: node
+  linkType: hard
+
 "react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -9058,6 +9082,7 @@ __metadata:
     react-compare-image: "npm:^3.4.0"
     react-dom: "npm:^18.2.0"
     react-twc: "npm:^1.2.2"
+    react-tweet: "npm:^3.2.0"
     reading-time: "npm:^1.5.0"
     rehype-accessible-emojis: "npm:^0.3.2"
     rehype-autolink-headings: "npm:^7.1.0"

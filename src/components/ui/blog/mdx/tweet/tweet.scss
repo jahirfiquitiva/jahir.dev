@@ -1,0 +1,88 @@
+article.mdx {
+  .react-tweet-theme {
+    /* margin is handled by our wrappers */
+    --tweet-container-margin: 0;
+    --tweet-font-color: theme('colors.secondary-txt');
+    --tweet-font-color-secondary: theme('colors.tertiary-txt');
+    --tweet-verified-old-color: theme('colors.tertiary-txt');
+    --tweet-color-blue-primary: theme('colors.blue.500');
+    --tweet-color-blue-primary-hover: theme(colors.blue.600 / 10%);
+    --tweet-color-blue-secondary: var(--tweet-color-blue-primary);
+    --tweet-verified-blue-color: var(--tweet-color-blue-primary);
+    --tweet-color-blue-secondary-hover: var(--tweet-color-blue-primary-hover);
+    --tweet-color-red-primary: theme('colors.red.500');
+    --tweet-color-red-primary-hover: theme(colors.red.600 / 10%);
+    --tweet-color-green-primary: theme('colors.green.500');
+    --tweet-color-green-primary-hover: theme(colors.green.600 / 10%);
+    @apply mx-auto font-normal;
+    @apply bg-brand-100/5;
+  }
+
+  html[class*='dark'] .react-tweet-theme {
+    --tweet-color-blue-primary: theme('colors.blue.300');
+    --tweet-color-blue-primary-hover: theme(colors.blue.200 / 10%);
+    --tweet-color-red-primary: theme('colors.red.300');
+    --tweet-color-red-primary-hover: theme(colors.red.200 / 10%);
+    --tweet-color-green-primary: theme('colors.green.300');
+    --tweet-color-green-primary-hover: theme(colors.green.200 / 10%);
+  }
+
+  .react-tweet-theme,
+  .react-tweet-theme p,
+  .react-tweet-theme span {
+    font: inherit;
+  }
+
+  .react-tweet-theme img {
+    @apply m-0 rounded-1;
+  }
+
+  .react-tweet-theme article {
+    @apply p-4 pb-3 flex flex-col gap-1;
+  }
+
+  .react-tweet-theme a {
+    @apply text-inherit font-medium;
+    @apply underline underline-offset-2 decoration-2;
+    @apply decoration-divider hocus:decoration-inherit;
+    &[class*='tweet-in-reply-to'] {
+      @apply text-tertiary-txt text-2xs;
+    }
+  }
+
+  .react-tweet-theme a[class*='tweet-in-reply-to'],
+  .react-tweet-theme div[class*='tweet-header_authorMeta'],
+  .react-tweet-theme time {
+    @apply text-3xs;
+  }
+
+  .react-tweet-theme article > div[class*='tweet-actions'] {
+    @apply mt-2 pt-3 text-2xs;
+    a {
+      @apply no-underline;
+    }
+    button {
+      @apply text-inherit font-medium;
+    }
+  }
+
+  .react-tweet-theme
+    article:not([class*='quoted-tweet-container'])
+    > div[class*='tweet-header'] {
+    @apply gap-1.5;
+  }
+
+  .react-tweet-theme article div[class*='tweet-header_author'] {
+    @apply gap-1;
+    & a[class*='tweet-header_authorLink'] {
+      @apply gap-1;
+    }
+  }
+
+  .react-tweet-theme article[class*='quoted-tweet-container'] {
+    @apply p-3;
+    & > * {
+      @apply p-0;
+    }
+  }
+}

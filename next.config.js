@@ -22,7 +22,7 @@ const defaultNextConfig = {
     typedRoutes: true,
     // ppr: true,
     // useLightningcss: true,
-    optimizePackageImports: ['framer-motion'],
+    optimizePackageImports: ['framer-motion', 'react-tweet'],
   },
   compiler: {
     removeConsole: {

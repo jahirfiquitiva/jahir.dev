@@ -55,6 +55,7 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "react-twc": "^1.2.2",
+    "react-tweet": "^3.2.0",
     "reading-time": "^1.5.0",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^7.1.0",

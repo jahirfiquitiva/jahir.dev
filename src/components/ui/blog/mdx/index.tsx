@@ -6,7 +6,9 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 import { ImageComparison } from './image-comparison';
-import styles from './mdx.module.scss';
+import { ReactTweet } from './tweet';
+
+import './mdx.scss';
 
 const Grid = tw.div`
   grid
@@ -29,6 +31,7 @@ const components = {
   img: Img,
   Image: Img,
   Img,
+  Tweet: ReactTweet,
 } as MDXComponents;
 
 interface MdxProps {
@@ -38,7 +41,7 @@ interface MdxProps {
 export const Mdx = (props: MdxProps) => {
   const MdxComponent = getMDXComponent(props.code);
   return (
-    <article className={styles.mdx}>
+    <article className={'mdx'}>
       <MdxComponent components={components as MDXComponents} />
     </article>
   );
