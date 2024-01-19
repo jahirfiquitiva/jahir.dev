@@ -10,8 +10,8 @@ import { getBlurData } from './rehype/blur';
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
 
-  const getSlug = (doc: LocalDocument): string =>
-    doc._raw.sourceFileName.replace(/\.mdx$/, '');
+const getSlug = (doc: LocalDocument): string =>
+  doc._raw.sourceFileName.replace(/\.mdx$/, '');
 
 const computedFields: ComputedFields = {
   readingTime: {
@@ -24,10 +24,7 @@ const computedFields: ComputedFields = {
   },
   hero: {
     type: 'string',
-    resolve: (doc) =>
-      getActualHeroUrl(
-        doc.hero || `${getSlug(doc)}/hero.jpg`,
-      ),
+    resolve: (doc) => getActualHeroUrl(doc.hero || `${getSlug(doc)}/hero.jpg`),
   },
   seoKeywords: {
     type: 'list',
@@ -45,7 +42,7 @@ const computedFields: ComputedFields = {
   heroMeta: {
     type: 'json',
     resolve: async (doc) => {
-      return getBlurData(getActualHeroUrl(doc.hero));
+      return getBlurData(getActualHeroUrl(doc.hero || `${getSlug(doc)}/hero.jpg`));
     },
   },
 };

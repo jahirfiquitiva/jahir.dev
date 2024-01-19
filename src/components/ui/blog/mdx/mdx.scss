@@ -44,8 +44,8 @@ article.mdx {
     @apply mt-2 mb-px font-semibold;
   }
 
-  & p {
-    @apply w-full m-0 max-w-nice;
+  & > p {
+    @apply w-full max-w-nice;
   }
 
   /* Default styles for links */
@@ -132,7 +132,7 @@ article.mdx {
     @apply mt-0 mb-4 py-2.5 px-0 text-inherit overflow-x-auto;
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
-    ::-webkit-scrollbar {
+    &::-webkit-scrollbar {
       display: none; /* Safari and Chrome */
     }
   }
@@ -162,9 +162,12 @@ article.mdx {
   blockquote {
     @apply bg-brand-500/[0.024] [html[class*='dark']_&]:bg-brand-100/5;
     @apply border border-dashed border-divider;
-    @apply p-4 rounded-3 my-1 text-secondary-txt font-normal;
+    @apply p-4 rounded-3 my-3 text-secondary-txt font-normal;
     & img {
       @apply mt-4 mb-2;
+    }
+    & p:not(:last-child):not(:first-child) {
+      @apply my-1.5;
     }
   }
 
@@ -172,13 +175,9 @@ article.mdx {
     @apply mx-0.5;
   }
 
-  img {
-    @apply w-full h-auto rounded-2;
-  }
-
-  video,
-  img {
-    @apply my-2;
+  & > video,
+  & > img {
+    @apply my-2 rounded-2;
   }
 
   figure {

@@ -12,8 +12,8 @@ article.mdx {
     --tweet-color-blue-secondary-hover: var(--tweet-color-blue-primary-hover);
     --tweet-color-red-primary: theme('colors.red.500');
     --tweet-color-red-primary-hover: theme(colors.red.600 / 10%);
-    --tweet-color-green-primary: theme('colors.green.500');
-    --tweet-color-green-primary-hover: theme(colors.green.600 / 10%);
+    --tweet-color-green-primary: theme('colors.green.600');
+    --tweet-color-green-primary-hover: theme(colors.green.700 / 10%);
     @apply mx-auto font-normal;
     @apply bg-brand-100/5;
   }
