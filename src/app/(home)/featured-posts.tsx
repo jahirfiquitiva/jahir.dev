@@ -11,16 +11,16 @@ import { BlogPostItem } from '@/components/ui/blog/item';
 import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
 import { db } from '@/lib/planetscale';
-import { sortBlogPostsByDate } from '@/utils/blog';
+import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
-import { allBlogs, type Blog } from 'contentlayer/generated';
+import { type Blog } from 'contentlayer/generated';
 
 export const getFeaturedPosts = cache(
   async (): Promise<Array<Blog>> => {
     noStore();
     try {
-      const sortedPosts = allBlogs.sort(sortBlogPostsByDate);
+      const sortedPosts = allReadableBlogs.sort(sortBlogPostsByDate);
       const latestPost = sortedPosts[0];
       const [mostViewedPost] = await db
         .selectFrom('counters')
@@ -34,8 +34,7 @@ export const getFeaturedPosts = cache(
       const otherPosts = sortedPosts.filter(
         (it) =>
           mostViewedPost.slug !== `blog--${it.slug}` &&
-          latestPost.slug !== it.slug &&
-          !it.inProgress,
+          latestPost.slug !== it.slug,
       );
       const randomPost =
         otherPosts[Math.floor(Math.random() * otherPosts.length)];

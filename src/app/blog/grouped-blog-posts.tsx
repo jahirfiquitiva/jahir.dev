@@ -1,18 +1,17 @@
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
-import { sortBlogPostsByDate } from '@/utils/blog';
+import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
-import { allBlogs, type Blog } from 'contentlayer/generated';
+import { type Blog } from 'contentlayer/generated';
 
-const allowInProgress = process.env.NODE_ENV === 'development';
-
-const blogPostsByYear = allBlogs
-  .filter((it) => allowInProgress || !it.inProgress)
-  .reduce<Record<number, Array<Blog>>>((acc, post) => {
+const blogPostsByYear = allReadableBlogs.reduce<Record<number, Array<Blog>>>(
+  (acc, post) => {
     const year = (getDate(post.date) || new Date()).getFullYear();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     return { ...acc, [year]: [...(acc[year] || []), post] };
-  }, {});
+  },
+  {},
+);
 
 export const GroupedBlogPosts = () => (
   <ol className={'flex flex-col gap-6'}>
