@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
 import { Main } from '@/components/atoms/main';
-import { Intro } from '@/components/ui/home/intro';
+import { Intro } from '@/components/ui/home';
 import { ProjectsList } from '@/components/ui/projects';
 
 const jsonLd = JSON.stringify({
