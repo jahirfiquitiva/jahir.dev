@@ -48,7 +48,7 @@ export default function BlogPostLayout(
         source={post.heroSource}
         heroMeta={post.heroMeta}
       />
-      <Main>
+      <Main transition={{ duration: 0.3, delay: 0, ease: 'easeInOut' }}>
         <Header post={post} />
         {props.children}
         <hr

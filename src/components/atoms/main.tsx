@@ -25,11 +25,11 @@ const StyledMain = tw(m.main)`
 export const Main = (props: TWComponentProps<typeof StyledMain>) => (
   <Anim>
     <StyledMain
-      {...props}
       initial={{ opacity: 0, scale: 0.975 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.975 }}
-      transition={{ duration: 0.3, delay: 0.15 }}
+      transition={{ duration: 0.3, delay: 0.1, ease: 'easeInOut' }}
+      {...props}
     />
   </Anim>
 );
