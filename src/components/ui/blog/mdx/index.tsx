@@ -5,6 +5,7 @@ import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
+import { Bookmark } from './bookmark';
 import { ImageComparison } from './image-comparison';
 import { ReactTweet } from './tweet';
 
@@ -32,6 +33,7 @@ const components = {
   Image: Img,
   Img,
   Tweet: ReactTweet,
+  Bookmark,
 } as MDXComponents;
 
 interface MdxProps {
