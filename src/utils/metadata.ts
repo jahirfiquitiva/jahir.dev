@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 
 import { config } from './og';
 
-type NonNullable<T> = T extends null | undefined ? never : T;
-
 export const createMetadata = (data: {
   title: string;
   description: string;
