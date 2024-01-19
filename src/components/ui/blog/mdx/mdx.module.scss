@@ -219,8 +219,11 @@ article.mdx {
         content: counter(list-item, disc);
         @apply m-0;
       }
-      & > p:not(:first-of-type) {
-        @apply my-1;
+      & > p:not(:first-child) {
+        @apply mt-1.5;
+      }
+      & > p:last-child:not(:first-child) {
+        @apply mb-2;
       }
     }
   }
