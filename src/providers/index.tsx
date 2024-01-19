@@ -17,7 +17,7 @@ export function Providers(props: PropsWithChildren) {
       defaultTheme={'system'}
       value={themes}
       enableColorScheme
-      disableTransitionOnChange={false}
+      disableTransitionOnChange
     >
       <ThemeProvider>{props.children}</ThemeProvider>
     </NextThemeProvider>

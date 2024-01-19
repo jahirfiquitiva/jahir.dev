@@ -62,4 +62,6 @@ export const ThemeProvider = (props: PropsWithChildren) => {
   );
 };
 
-export const useTheme = (): ThemeContextValue => useContext(ThemeContext);
+export const useTheme = (): ThemeContextValue =>
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  useContext(ThemeContext) || defaultContextState;
