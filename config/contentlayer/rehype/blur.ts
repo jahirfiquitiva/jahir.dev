@@ -52,8 +52,8 @@ export const getBlurData = async (
 };
 
 interface ImageNode {
-  name: string;
-  type: 'element' | string;
+  type: 'mdxJsxFlowElement' | 'element' | string;
+  name: 'img' | string;
   tagName: 'img' | string;
   properties: {
     src: string;
@@ -63,12 +63,9 @@ interface ImageNode {
     placeholder?: 'blur' | 'empty';
   } & Record<string, unknown>;
   attributes?: Array<{
-    type: string;
-    name: string;
-    value: {
-      type: string;
-      value: unknown;
-    };
+    type: 'mdxJsxAttribute' | string;
+    name: 'src' | string;
+    value: unknown;
   }>;
   children?: Array<ImageNode>;
   parent?: ImageNode;
@@ -76,21 +73,79 @@ interface ImageNode {
 
 const isImageNode = (node: Node): node is ImageNode => {
   const img = node as ImageNode;
+  const isJsxImage =
+    img.type === 'mdxJsxFlowElement' &&
+    (img.name === 'img' || img.name === 'Img');
+  if (isJsxImage)
+    return Boolean(img.attributes?.find((it) => it.name === 'src')?.value);
+  const isNormalImage = img.type === 'element' && img.tagName === 'img';
   return (
-    img.type === 'element' &&
-    img.tagName === 'img' &&
+    isNormalImage &&
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     img.properties &&
     typeof img.properties.src === 'string'
   );
 };
 
+const getSrcFromImageNode = (
+  node?: ImageNode,
+): {
+  src: string;
+  width?: number;
+  height?: number;
+} | null => {
+  if (!node) return null;
+  const isJsxImage = node.type === 'mdxJsxFlowElement' && node.name === 'img';
+  const isNormalImage = node.type === 'element' && node.tagName === 'img';
+  let src = '';
+  let w = 0;
+  let h = 0;
+  if (isJsxImage) {
+    src =
+      node.attributes?.find((it) => it.name === 'src')?.value?.toString() || '';
+    w = Number(
+      node.attributes?.find((it) => it.name === 'width')?.value?.toString() ||
+        '0',
+    );
+    h = Number(
+      node.attributes?.find((it) => it.name === 'height')?.value?.toString() ||
+        '0',
+    );
+  } else if (isNormalImage) {
+    src = node.properties.src;
+    w = node.properties.width || 0;
+    h = node.properties.height || 0;
+  }
+  return {
+    src: src.replace(/["']/g, '').replace(/%22/g, ''),
+    width: w,
+    height: h,
+  };
+};
+
 const addProps = async (node: ImageNode): Promise<ImageNode> => {
-  const src = node.properties.src.replace(/["']/g, '').replace(/%22/g, '');
-  const res = await getBlurData(src).catch(() => null);
+  const { src, width, height } = getSrcFromImageNode(node) || {};
+  if (!src) return node;
+  const res = await getBlurData(src, 10, width, height).catch(() => null);
   if (!res) return node;
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  node.properties = { ...(node.properties || {}), ...res };
+  const isJsxImage = node.type === 'mdxJsxFlowElement' && node.name === 'img';
+  if (isJsxImage) {
+    node.name = 'Img';
+    const newProps = Object.keys(res).map((prop) => ({
+      type: 'mdxJsxAttribute',
+      name: prop,
+      value: res[prop as keyof typeof res],
+    })) as ImageNode['attributes'];
+    const unique = [...(node.attributes || []), ...(newProps || [])].reduce(
+      (prev, o) =>
+        prev?.some((x) => x.name === o.name) ? prev : [...(prev || []), o],
+      [] as ImageNode['attributes'],
+    );
+    node.attributes = unique;
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    node.properties = { ...(node.properties || {}), ...res };
+  }
   return node;
 };
 

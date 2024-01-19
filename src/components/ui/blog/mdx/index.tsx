@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 
-import { Img } from '@/components/atoms/img';
+import { Img, type ImgProps } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
@@ -29,8 +29,7 @@ const components = {
   hr: tw.hr`border-divider`,
   a: Link,
   Link,
-  img: Img,
-  Image: Img,
+  img: (props: ImgProps) => <Img {...props} suppressHydrationWarning />,
   Img,
   Tweet: ReactTweet,
   Bookmark,
