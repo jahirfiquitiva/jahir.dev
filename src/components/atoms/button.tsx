@@ -45,7 +45,7 @@ export const Button = tw.button.attrs<ButtonProps>((p) => ({
   after:m-px
   after:border-px
   after:border-white
-  after:opacity-[0.12]
+  after:opacity-20
   after:bg-gradient-to-b
   after:from-white/90
   after:to-white/0
@@ -67,8 +67,8 @@ export const OutlinedButton = tw(Button)`
   dark:hocus:bg-brand-200/[0.24]
 
   after:border-accent-dark
-  after:opacity-[0.06]
-  dark:after:opacity-[0.12]
+  after:opacity-10
+  dark:after:opacity-15
   after:bg-gradient-to-b
   after:from-brand-600/0
   after:to-brand-600/80
