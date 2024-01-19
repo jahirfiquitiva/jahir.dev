@@ -1,0 +1,59 @@
+---
+title: Improving the User Experience of Autoplay Videos
+date: '2024-01-20'
+color: '#7D9499'
+summary: Excited to share the design, content and performance improvements
+keywords: 'website,changes,blog,posts,projects,uses,Next.js,Tailwind CSS'
+inProgress: true
+---
+
+We all want users to have a smooth experience when visiting our websites, especially on mobile. One common practice that can unintentionally disrupt the user is autoplaying videos without the proper settings.
+
+On iOS devices, videos with the `autoplay` attribute will begin playing automatically without user interaction. However, without additional attributes, each one will also zoom to fullscreen - whether the user wants them to or not.
+
+Apologies to the devs, but let me use this video as an example of the unexpected behavior. Just take a look: the videos in the website are playing automatically, in fullscreen, no user interaction was done, and they are even stacking on top of each other! 😨
+
+<video
+  autoPlay="autoplay"
+  loop
+  muted
+  playsInline
+  controls
+  controlsList="nodownload"
+  style={{ maxWidth: 256 }}
+  poster="/media/blog/autoplay-videos-ux/poster.png"
+  className="mx-auto my-8 rounded-3"
+>
+  <source
+    src="/media/blog/autoplay-videos-ux/bad-behavior.mp4"
+    type="video/mp4"
+  />
+</video>
+
+<br />
+
+This unexpected zooming can confuse users and negatively impact their experience on your site. Fortunately, there is a simple fix: adding the `playsinline` attribute.
+
+> `playsinline`
+>
+> A Boolean attribute indicating that the video is to be played "inline", that is within the element's playback area. Note that the absence of this attribute does not imply that the video will always be played in fullscreen.
+>
+> <span className="text-3xs">
+>   Source: [mdn web
+>   docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#playsinline)
+> </span>
+
+Basically, `playsinline` tells the browser to play videos without expanding into fullscreen mode. It allows `autoplay` to work smoothly while preserving the user's context on the page.
+
+With this one small change, you can ensure videos autoplay as intended in the background without obstructing or surprising your mobile visitors. An improved user experience leads to happier, more engaged users and better outcomes for your business.
+
+So in summary, always remember to include `playsinline` alongside `autoplay` for a smoother mobile viewing. A single line of code can go a long way towards optimizing how users consume content on your site.
+
+I hope this tip help make browsing even more enjoyable for everyone! Let me know if you have any other questions.
+
+Otherwise, happy coding friends! 👨‍💻
+
+<p className="!mt-5 text-md font-manrope font-semibold">Read more:</p>
+
+<Bookmark url="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#playsinline" />
+<Bookmark url="https://webkit.org/blog/6784/new-video-policies-for-ios/" />
