@@ -92,7 +92,7 @@ export const MusicBar = tw.span`
   bg-accent-dark
   rounded-[0.1875rem]
   content-['']
-  animate-music-bars
+  motion-safe:animate-music-bars
   [transform-origin:bottom]
 `;
 

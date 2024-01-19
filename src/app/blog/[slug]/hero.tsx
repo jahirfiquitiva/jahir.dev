@@ -1,5 +1,9 @@
+'use client';
+
+import { m } from 'framer-motion';
 import type { Route } from 'next';
 
+import { Anim } from '@/components/atoms/anim';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import cx from '@/utils/cx';
@@ -16,37 +20,41 @@ interface HeroProps {
 export const Hero = (props: HeroProps) => {
   const { title, hero, source, heroMeta } = props;
   return (
-    <figure
-      className={cx(
-        'overflow-hidden -z-1',
-        'h-[85vh] max-h-[384px]',
-        'w-[100vw] max-w-[calc(100vw_+_calc(100vw_-_100%))]',
-        'absolute top-0 -left-[calc(100vw_-_100%)] -right-[calc(100vw_-_100%)]',
-        'pointer-events-none blur',
-        'saturate-125 opacity-50 dark:opacity-65',
-        // eslint-disable-next-line max-len
-        '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_100%)]',
-        'motion-safe:animate-fade-in',
-        '[--end-opacity:0.5] dark:[--end-opacity:0.65]',
-      )}
-    >
-      <Img
-        src={hero || ''}
-        alt={`Cover image for blog post: "${title}"`}
-        className={'h-full w-full'}
-        quality={100}
-        priority
-        data-nozoom
-        {...heroMeta}
-      />
-      {source ? (
-        <figcaption>
-          Image from{' '}
-          <Link title={source} href={source as Route}>
-            {getUrlDomain(source, true)}
-          </Link>
-        </figcaption>
-      ) : null}
-    </figure>
+    <Anim>
+      <m.figure
+        className={cx(
+          'overflow-hidden -z-1',
+          'h-[85vh] max-h-[384px]',
+          'w-[100vw] max-w-[calc(100vw_+_calc(100vw_-_100%))]',
+          'absolute top-0 -left-[calc(100vw_-_100%)] -right-[calc(100vw_-_100%)]',
+          'pointer-events-none blur transition',
+          'saturate-125 opacity-50 dark:opacity-65',
+          // eslint-disable-next-line max-len
+          '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_100%)]',
+        )}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2, delay: 0.05 }}
+      >
+        <Img
+          src={hero || ''}
+          alt={`Cover image for blog post: "${title}"`}
+          className={'h-full w-full'}
+          quality={100}
+          priority
+          data-nozoom
+          {...heroMeta}
+        />
+        {source ? (
+          <figcaption>
+            Image from{' '}
+            <Link title={source} href={source as Route}>
+              {getUrlDomain(source, true)}
+            </Link>
+          </figcaption>
+        ) : null}
+      </m.figure>
+    </Anim>
   );
 };
