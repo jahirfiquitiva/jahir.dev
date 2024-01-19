@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 
+import { Link } from '@/components/atoms/link';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import cx from '@/utils/cx';
 
@@ -81,7 +82,11 @@ export const Tabs = (props: TabsProps) => {
         )}
       >
         {currentTab === 'all' && (
-          <figure className={'my-2'}>
+          <figure
+            className={
+              'my-2 motion-safe:animate-fade-in motion-safe:[animation-delay:0ms]'
+            }
+          >
             <div
               className={cx(
                 'aspect-video',
@@ -110,6 +115,25 @@ export const Tabs = (props: TabsProps) => {
             </TabPanel>
           );
         })}
+        {currentTab === 'all' && (
+          <blockquote
+            className={cx(
+              'bg-brand-500/[0.024] dark:bg-brand-100/5',
+              'border border-dashed border-divider',
+              'p-4 rounded-3 my-1',
+              'motion-safe:animate-fade-in motion-safe:[animation-delay:0ms]',
+            )}
+          >
+            <span role={'img'} aria-label={'lightning emoji'}>
+              ⚡
+            </span>{' '}
+            Make sure to check out{' '}
+            <Link href={'https://uses.tech'} title={'uses.tech'}>
+              uses.tech
+            </Link>{' '}
+            for a list of everyone&apos;s /uses pages!
+          </blockquote>
+        )}
       </div>
     </div>
   );
