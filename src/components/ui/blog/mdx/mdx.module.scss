@@ -55,7 +55,7 @@ article.mdx {
 
   details[data-type='toc'] {
     @apply -mt-8 mb-4;
-    @apply bg-brand-500/[0.024] dark:bg-brand-100/5;
+    @apply bg-brand-500/[0.024] [html[class*='dark']_&]:bg-brand-100/5;
     @apply border border-divider py-3 px-4 rounded-2;
     & summary {
       @apply font-manrope font-bold text-sm text-primary-txt cursor-pointer;
@@ -128,7 +128,7 @@ article.mdx {
 
   pre {
     @apply opacity-100 rounded-2.5 border border-divider;
-    @apply bg-brand-200/5 dark:bg-brand-300/10;
+    @apply bg-brand-200/5 [html[class*='dark']_&]:bg-brand-300/10;
     @apply mt-0 mb-4 py-2.5 px-0 text-inherit overflow-x-auto;
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
@@ -156,11 +156,11 @@ article.mdx {
 
   mark {
     @apply p-[0.1875rem] text-on-accent;
-    @apply bg-[#5f27cd] dark:bg-[#f368e0];
+    @apply bg-[#5f27cd] [html[class*='dark']_&]:bg-[#f368e0];
   }
 
   blockquote {
-    @apply bg-brand-500/[0.024] dark:bg-brand-100/5;
+    @apply bg-brand-500/[0.024] [html[class*='dark']_&]:bg-brand-100/5;
     @apply border border-dashed border-divider;
     @apply p-4 rounded-3 my-1 text-secondary-txt font-normal;
     & img {
@@ -185,6 +185,9 @@ article.mdx {
     @apply mt-1;
     figcaption {
       @apply text-tertiary-txt;
+      p {
+        @apply mx-auto;
+      }
     }
   }
 
@@ -215,6 +218,9 @@ article.mdx {
       & > ul > li::before {
         content: counter(list-item, disc);
         @apply m-0;
+      }
+      & > p:not(:first-of-type) {
+        @apply my-1;
       }
     }
   }
@@ -247,11 +253,11 @@ article.mdx {
 
   [data-rehype-pretty-code-figure] [data-highlighted-line],
   [data-rehype-pretty-code-figure] [data-highlighted-chars] {
-    @apply bg-brand-500/5 dark:bg-brand-300/10;
+    @apply bg-brand-500/5 [html[class*='dark']_&]:bg-brand-300/10;
   }
 
   [data-rehype-pretty-code-figure] [data-highlighted-line] {
-    @apply border-[#5f27cd] dark:border-[#f368e0];
+    @apply border-[#5f27cd] [html[class*='dark']_&]:border-[#f368e0];
     & span {
       @apply relative;
     }
