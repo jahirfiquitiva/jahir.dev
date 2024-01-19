@@ -46,7 +46,6 @@ export function generateMetadata(
     description: summary || 'Blog post by Jahir Fiquitiva',
     exactUrl: `https://jahir.dev/blog/${slug}`,
     keywords: post.keywords,
-    image: `https://jahir.dev/blog/${post.slug}/opengraph-image`,
   });
   return {
     ...metadata,

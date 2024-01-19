@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import { config } from './og';
 
+type NonNullable<T> = T extends null | undefined ? never : T;
+
 export const createMetadata = (data: {
   title: string;
   description: string;
@@ -9,18 +11,8 @@ export const createMetadata = (data: {
   exactUrl?: string;
   image?: string;
 }): Metadata => {
-  const { title, description, keywords, exactUrl, image } = data;
-  const images = image
-    ? [
-        {
-          url: image,
-          type: config.contentType,
-          width: config.size.width,
-          height: config.size.height,
-        },
-      ]
-    : [];
-  return {
+  const { title, description, keywords, exactUrl, image: imageURL } = data;
+  const metadata: Metadata = {
     title,
     description,
     keywords,
@@ -32,7 +24,6 @@ export const createMetadata = (data: {
       siteName: title,
       locale: 'en_US',
       type: 'website',
-      images,
     },
     twitter: {
       title,
@@ -40,13 +31,23 @@ export const createMetadata = (data: {
       card: 'summary_large_image',
       creator: '@jahirfiquitiva',
       site: '@jahirfiquitiva',
-      images,
     },
     verification: {
       google: 'lJwL3cKpjX_Eqp6yEY4hsydJazQl85xv29ZUmEg4oEE',
     },
     metadataBase: new URL('https://jahir.dev'),
   };
+  if (imageURL && Boolean(imageURL)) {
+    const image = {
+      url: imageURL,
+      type: config.contentType,
+      width: config.size.width,
+      height: config.size.height,
+    };
+    if (metadata.openGraph) metadata.openGraph['images'] = image;
+    if (metadata.twitter) metadata.twitter['images'] = image;
+  }
+  return metadata;
 };
 
 export const colorMetaTags = [
