@@ -15,20 +15,17 @@ interface ViewsCounterProps {
 export const ViewsCounter = (props: ViewsCounterProps) => {
   const { slug, inProgress, write } = props;
   const hasMounted = useHasMounted();
-  const { data } = useImmutableRequest<Counters>(`/api/views/blog--${slug}`);
+  const endpoint = `/api/views/blog--${slug}`;
+  const { data } = useImmutableRequest<Counters>(endpoint);
 
   useEffect(() => {
     // Do nothing in SSR or if article is in progress
     if (!hasMounted || inProgress || !write) return;
-
     const hostname = window.location.hostname || 'localhost';
     // Count views in production website only
     if (hostname !== 'jahir.dev') return;
-
-    fetch(`/api/views/${slug}`, {
-      method: 'POST',
-    }).catch();
-  }, [hasMounted, slug, inProgress, write]);
+    fetch(endpoint, { method: 'POST' }).catch();
+  }, [hasMounted, endpoint, inProgress, write]);
 
   const { views = 0 } = data || {};
   return (
