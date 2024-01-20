@@ -55,6 +55,7 @@ export const linksGroups = [
         className: buildColoredLinkClasses('yellow', 'orange', true),
         props: {
           'data-umami-event': 'RSS feed',
+          prefetch: false,
         },
       },
       {
@@ -67,6 +68,7 @@ export const linksGroups = [
         a11yTitle: 'Scroll back to top',
         href: '#',
         className: buildColoredLinkClasses('brand', 'blue', true),
+        prefetch: false,
       },
     ],
   },
