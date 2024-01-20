@@ -10,8 +10,7 @@
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.next|.contentlayer|src/app'",
-    "postinstall": "is-ci || husky install",
-    "gen": "node ./scripts/generate-blogs.mjs"
+    "postinstall": "is-ci || husky install"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.2",
@@ -39,7 +38,7 @@
     "colord": "^2.9.3",
     "contentlayer": "^0.3.4",
     "cssnano": "^6.0.3",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.3.2",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
