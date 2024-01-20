@@ -1,7 +1,6 @@
 import setupImage from '@/assets/images/setup.jpg';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
-import { Main } from '@/components/atoms/main';
 import { Section } from '@/components/atoms/section';
 import { Zoom } from '@/components/molecules/zoom';
 import { Coding } from '@/components/ui/uses/coding';
@@ -14,7 +13,7 @@ import { createMetadata } from '@/utils/metadata';
 
 export default function UsesPage() {
   return (
-    <Main>
+    <>
       <Section id={'uses'} className={'flex-1 gap-6'}>
         <h1
           className={getColoredTextClasses(
@@ -51,9 +50,9 @@ export default function UsesPage() {
             </span>
           </p>
         </Tabs>
-        <Zoom />
       </Section>
-    </Main>
+      <Zoom />
+    </>
   );
 }
 

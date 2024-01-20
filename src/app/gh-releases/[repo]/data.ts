@@ -14,7 +14,7 @@ export const getRepoReleaseData = async (name?: string) => {
   try {
     const dataRequest = await fetch(
       `https://api.github.com/repos/jahirfiquitiva/${name}/releases/latest`,
-      authHeaders,
+      { ...authHeaders, next: { revalidate: 0 } },
     );
     const data = await dataRequest.json();
     const { assets = [] } = data;

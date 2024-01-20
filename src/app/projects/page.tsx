@@ -1,4 +1,3 @@
-import { Main } from '@/components/atoms/main';
 import { ProjectsList } from '@/components/ui/projects';
 import { createMetadata } from '@/utils/metadata';
 
@@ -21,9 +20,5 @@ export const metadata = createMetadata({
 });
 
 export default function ProjectsPage() {
-  return (
-    <Main>
-      <ProjectsList title={'Projects'} />
-    </Main>
-  );
+  return <ProjectsList title={'Projects'} />;
 }

@@ -3,6 +3,7 @@ import '@/styles/globals.scss';
 import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
+import { Main } from '@/components/atoms/main';
 import { BackToTop } from '@/components/molecules/back-to-top';
 import { Footer } from '@/components/molecules/footer';
 import { Header } from '@/components/molecules/header';
@@ -59,7 +60,7 @@ export default function RootLayout(props: PropsWithChildren) {
       <body>
         <Providers>
           <Header />
-          {props.children}
+          <Main>{props.children}</Main>
           <Footer />
           <BackToTop />
         </Providers>

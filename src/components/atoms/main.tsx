@@ -14,4 +14,5 @@ export const Main = tw.main`
   mx-auto
   tablet-md:pt-32
   tablet-md:px-0
+  motion-safe:animate-fade-in
 `;

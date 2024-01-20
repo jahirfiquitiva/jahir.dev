@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from 'react';
 
-import { Main } from '@/components/atoms/main';
 import { Intro } from '@/components/ui/home';
 import { ProjectsList } from '@/components/ui/projects';
 
@@ -20,13 +19,13 @@ const jsonLd = JSON.stringify({
 
 export default function HomeLayout(props: PropsWithChildren) {
   return (
-    <Main>
+    <>
       <Intro />
       {props.children}
       <ProjectsList title={'Featured projects'} featuredOnly />
       <script type={'application/ld+json'} suppressHydrationWarning>
         {jsonLd}
       </script>
-    </Main>
+    </>
   );
 }

@@ -6,10 +6,10 @@ import { getSponsorsAndCategories } from '@/lib/sponsors/all';
 
 import Loading from '../loading';
 
-export default async function Sponsorships() {
+const Lists = async () => {
   const sponsors = await getSponsorsAndCategories();
   return (
-    <Suspense fallback={<Loading sm />}>
+    <>
       <SponsorsList
         categories={sponsors.categories}
         unicorns={sponsors.unicorns}
@@ -20,6 +20,14 @@ export default async function Sponsorships() {
         categories={sponsors.categories}
         unicorns={sponsors.unicorns}
       />
+    </>
+  );
+};
+
+export default function Sponsorships() {
+  return (
+    <Suspense fallback={<Loading sm />}>
+      <Lists />
     </Suspense>
   );
 }

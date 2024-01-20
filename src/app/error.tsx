@@ -3,7 +3,6 @@
 
 import { Link } from '@/components/atoms/link';
 import { LinkButton } from '@/components/atoms/link-button';
-import { Main } from '@/components/atoms/main';
 import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
@@ -13,76 +12,74 @@ const ErrorComponent = (props: { error: Error }) => {
   const { error } = props;
   const [, ...errorStack] = error.stack?.toString().split(/\r?\n/) || [];
   return (
-    <Main>
-      <Section id={'error'} className={'w-full h-full'}>
-        <h1
-          className={getColoredTextClasses(
-            'red',
-            'orange',
-            'red',
-            'mb-3 self-start',
+    <Section id={'error'} className={'w-full h-full'}>
+      <h1
+        className={getColoredTextClasses(
+          'red',
+          'orange',
+          'red',
+          'mb-3 self-start',
+        )}
+      >
+        Something went wrong
+      </h1>
+      <p>
+        <span className={'font-medium'}>Whoops!</span> Unfortunately an
+        unexpected error occurred.
+      </p>
+      <p className={'-mt-2'}>
+        Please{' '}
+        <Link
+          title={'Create issue on GitHub'}
+          href={
+            'https://github.com/jahirfiquitiva/jahir.dev/issues/new?assignees=jahirfiquitiva&labels=bug&template=1_bug_report.yaml'
+          }
+        >
+          share the details
+        </Link>{' '}
+        of this issue, so I can fix it for you.
+      </p>
+      <details className={'rounded-2 border border-divider'}>
+        <summary className={'select-none p-2 font-medium'}>
+          Error details
+        </summary>
+        <div
+          className={cx(
+            'border-t border-divider max-w-full overflow-hidden',
+            'flex flex-col gap-2 p-0',
           )}
         >
-          Something went wrong
-        </h1>
-        <p>
-          <span className={'font-medium'}>Whoops!</span> Unfortunately an
-          unexpected error occurred.
-        </p>
-        <p className={'-mt-2'}>
-          Please{' '}
-          <Link
-            title={'Create issue on GitHub'}
-            href={
-              'https://github.com/jahirfiquitiva/jahir.dev/issues/new?assignees=jahirfiquitiva&labels=bug&template=1_bug_report.yaml'
-            }
-          >
-            share the details
-          </Link>{' '}
-          of this issue, so I can fix it for you.
-        </p>
-        <details className={'rounded-2 border border-divider'}>
-          <summary className={'select-none p-2 font-medium'}>
-            Error details
-          </summary>
-          <div
+          <code
             className={cx(
-              'border-t border-divider max-w-full overflow-hidden',
-              'flex flex-col gap-2 p-0',
+              'flex flex-col p-3 border-none',
+              'text-nowrap overflow-x-auto',
+              'text-2xs font-mono no-scrollbar',
+              'max-w-full whitespace-pre-line',
+              'bg-brand-200/5 dark:bg-brand-300/10',
             )}
           >
-            <code
-              className={cx(
-                'flex flex-col p-3 border-none',
-                'text-nowrap overflow-x-auto',
-                'text-2xs font-mono no-scrollbar',
-                'max-w-full whitespace-pre-line',
-                'bg-brand-200/5 dark:bg-brand-300/10',
-              )}
-            >
-              <span className={'font-medium'}>
-                {error.name}: {error.message}
+            <span className={'font-medium'}>
+              {error.name}: {error.message}
+            </span>
+            {errorStack.map((l, i) => (
+              <span key={i} className={'pl-3'}>
+                {l}
               </span>
-              {errorStack.map((l, i) => (
-                <span key={i} className={'pl-3'}>
-                  {l}
-                </span>
-              ))}
-            </code>
-          </div>
-        </details>
-        <LinkButton href={'/'} title={'Home page'} className={'mt-3'}>
-          Go back home
-        </LinkButton>
-        <img
-          src={'/media/site/monkey.gif'}
-          alt={'Monkey throwing laptop aggressively'}
-          loading={'lazy'}
-          decoding={'async'}
-          className={'mt-3 max-w-[425px]'}
-        />
-      </Section>
-    </Main>
+            ))}
+          </code>
+        </div>
+      </details>
+      <LinkButton href={'/'} title={'Home page'} className={'mt-3'}>
+        Go back home
+      </LinkButton>
+      <img
+        src={'/media/site/monkey.gif'}
+        alt={'Monkey throwing laptop aggressively'}
+        loading={'lazy'}
+        decoding={'async'}
+        className={'mt-3 max-w-[425px]'}
+      />
+    </Section>
   );
 };
 
