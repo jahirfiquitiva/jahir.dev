@@ -20,6 +20,7 @@ export async function GET(
     const [counters] = await getData(slug);
     return NextResponse.json(counters);
   } catch (e) {
+    console.error(e);
     return NextResponse.json({});
   }
 }
@@ -44,6 +45,7 @@ export async function POST(
 
     return NextResponse.json({ views: counterCount + 1 });
   } catch (e) {
+    console.error(e);
     return NextResponse.json({});
   }
 }
