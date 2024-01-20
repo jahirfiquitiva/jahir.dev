@@ -9,7 +9,7 @@ export const StyledReactionButton = tw(OutlinedButton)`
   dark:hocus:bg-[rgba(var(--reaction-color)/0.2)]
   hocus:ring-[rgba(var(--reaction-color)/0.56)]
   [&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.08)]
-  dark:[&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.16)]
+  dark:[&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.2)]
   [&[aria-pressed="true"]]:ring-[rgba(var(--reaction-color)/0.56)]
   after:rounded-full
 `;
