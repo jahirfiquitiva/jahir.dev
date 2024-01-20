@@ -8,7 +8,7 @@ export const Main = tw.main`
   pt-28
   px-3
   pb-8
-  gap-16
+  gap-14
   w-full
   max-w-site
   mx-auto
