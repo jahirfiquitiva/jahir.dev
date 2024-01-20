@@ -23,6 +23,7 @@ const defaultNextConfig = {
     // ppr: true,
     // useLightningcss: true,
     optimizePackageImports: ['framer-motion', 'react-tweet'],
+    optimizePackageImports: ['react-tweet'],
   },
   compiler: {
     removeConsole: {
