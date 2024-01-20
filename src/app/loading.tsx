@@ -5,7 +5,7 @@ import cx from '@/utils/cx';
 const Loading = (props: { sm?: boolean }) => (
   <div
     className={cx(
-      'flex flex-col w-full flex-1 items-center justify-center',
+      'flex flex-col w-full flex-1 items-center justify-center p-4',
       !props.sm ? 'min-h-screen' : 'h-full',
     )}
   >
