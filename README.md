@@ -2,13 +2,17 @@
 
 [![GitHub Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=ff69b4)](https://github.com/sponsors/jahirfiquitiva)
 
-![Website Preview](./preview.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./preview-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./preview.png">
+  <img alt="Website preview" src="./preview.png">
+</picture>
 
 ## Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Content**: [MDX](https://github.com/mdx-js/mdx)
+- **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://contentlayer.dev)
 - **Database**: [PlanetScale](https://planetscale.com/)
 - **Analytics**: [Umami](https://jahir.dev/analytics)
 - **Deployment**: [Vercel](https://vercel.com)
@@ -40,7 +44,7 @@
 | |____utils
 ```
 
-- **`config/*`** - Includes all the custom configuration for MDX and [Next.js](https://nextjs.org/)
+- **`config/*`** - Includes all the custom configuration for MDX, [contentlayer](https://contentlayer.dev) and [Next.js](https://nextjs.org/)
 - **`content/*`** - MDX blog posts and the content for the `donate` pages
 - **`public/*`** - Static assets including images, fonts, audios, files, etc.
 - **`scripts/*`** - Utilities to setup the project
