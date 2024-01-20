@@ -5,7 +5,6 @@ import {
   type PropsWithChildren,
   createContext,
   useContext,
-  useMemo,
   useEffect,
 } from 'react';
 
@@ -29,21 +28,6 @@ const ThemeContext = createContext<ThemeContextValue>(defaultContextState);
 export const ThemeProvider = (props: PropsWithChildren) => {
   const { theme = 'system', resolvedTheme, setTheme } = useNextTheme();
 
-  const actualTheme = useMemo(
-    () => resolvedTheme || theme,
-    [resolvedTheme, theme],
-  );
-
-  const themeContextValue: ThemeContextValue = {
-    theme: theme as ThemeOption,
-    isDark: actualTheme === 'dark',
-    toggleTheme: () => {
-      setTheme(
-        theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'system',
-      );
-    },
-  };
-
   useEffect(() => {
     colorMetaTags.forEach((tag) => {
       document.head
@@ -51,14 +35,24 @@ export const ThemeProvider = (props: PropsWithChildren) => {
         .forEach((meta) =>
           meta.setAttribute(
             'content',
-            actualTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
+            resolvedTheme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
           ),
         );
     });
-  }, [actualTheme]);
+  }, [resolvedTheme]);
 
   return (
-    <ThemeContext.Provider value={themeContextValue}>
+    <ThemeContext.Provider
+      value={{
+        theme: theme as ThemeOption,
+        isDark: resolvedTheme === 'dark',
+        toggleTheme: () => {
+          setTheme(
+            theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'system',
+          );
+        },
+      }}
+    >
       {props.children}
     </ThemeContext.Provider>
   );
