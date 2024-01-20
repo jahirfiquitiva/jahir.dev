@@ -22,15 +22,17 @@ export const getFeaturedPosts = cache(
     try {
       const sortedPosts = allReadableBlogs.sort(sortBlogPostsByDate);
       const latestPost = sortedPosts[0];
-      const [mostViewedPost] = await db
+      const topThree = await db
         .selectFrom('counters')
         .select(['slug', 'views'])
         .where('slug', '!=', 'blog--uses')
         .where('slug', '!=', `blog--${latestPost.slug}`)
         .where('views', '>', 1)
         .orderBy(['views desc'])
-        .limit(1)
+        .limit(3)
         .execute();
+      const mostViewedPost =
+        topThree[Math.floor(Math.random() * topThree.length)];
       const otherPosts = sortedPosts.filter(
         (it) =>
           mostViewedPost.slug !== `blog--${it.slug}` &&
@@ -89,7 +91,7 @@ export const FeaturedBlogPosts = () => (
       )}
     >
       <h2 className={getColoredTextClasses('orange', 'yellow', 'orange')}>
-        Featured blog posts
+        From the blog
       </h2>
       <div
         className={cx(
