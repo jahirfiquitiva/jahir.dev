@@ -28,10 +28,10 @@ export const Bookmark = async ({ url }: { url: string }) => {
         'text-inherit bg-brand-500/[0.024] dark:bg-brand-100/5',
         'border border-divider rounded-2.5 font-normal',
         'no-underline group/link w-full max-w-full',
-        'grid grid-cols-[auto_1fr] overflow-hidden',
+        'flex flex-row overflow-hidden',
       )}
     >
-      <div className={'flex flex-col flex-1 gap-1 p-4'}>
+      <div className={'flex flex-col gap-1 p-4'}>
         <p
           className={cx(
             'text-primary-txt text-2xs text-pretty',
@@ -53,20 +53,20 @@ export const Bookmark = async ({ url }: { url: string }) => {
           <span className={'text-3xs line-clamp-1'}>{domain}</span>
         </div>
       </div>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <Img
-        src={data.image || ''}
-        alt={data.title}
-        width={192}
-        height={108}
-        className={cx(
-          'w-auto h-full',
-          'aspect-video',
-          'pointer-events-none select-none',
-          'min-w-24 mobile-md:min-w-36 mobile-lg:min-w-48',
-        )}
-        unoptimized
-      />
+      <div className={'flex-1 min-h-0'}>
+        <Img
+          src={data.image || ''}
+          alt={data.title}
+          width={192}
+          height={108}
+          className={cx(
+            'w-full h-full aspect-video',
+            'pointer-events-none select-none',
+            'min-w-24 mobile-md:min-w-36 mobile-lg:min-w-48',
+          )}
+          unoptimized
+        />
+      </div>
     </Link>
   );
 };
