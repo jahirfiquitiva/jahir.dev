@@ -13,13 +13,11 @@ const greetings = [
 
 export const WavingHello = () => {
   const [hello, setHello] = useState(0);
-
   useEffect(() => {
     const changeHello = setInterval(() => {
       setHello((helloo) => (helloo >= greetings.length - 1 ? 0 : helloo + 1));
     }, 2500);
     return () => clearInterval(changeHello);
   }, []);
-
   return <>&nbsp;&nbsp;{greetings[hello]}!</>;
 };

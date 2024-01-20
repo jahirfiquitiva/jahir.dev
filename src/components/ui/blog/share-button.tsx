@@ -18,8 +18,6 @@ interface ShareButtonProps {
   slug: string;
 }
 
-const buttonTitle = 'Share blog post';
-
 const Child = () => {
   return (
     <>
@@ -35,6 +33,7 @@ const Child = () => {
   );
 };
 
+const buttonTitle = 'Share blog post';
 export const ShareButton = (props: ShareButtonProps) => {
   const hasMounted = useHasMounted();
   const { title, slug } = props;

@@ -10,7 +10,9 @@ export const Verified = () => {
     <svg
       viewBox={'0 0 24 24'}
       role={'presentation'}
-      className={'size-6 mt-0.5 pointer-events-none select-none'}
+      className={
+        'size-6 mt-0.5 pointer-events-none select-none motion-safe:animate-fade-in'
+      }
       aria-hidden={'true'}
     >
       <path
