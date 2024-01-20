@@ -38,25 +38,24 @@ export const ThemeToggle = () => {
   const hasMounted = useHasMounted();
   const { theme, isDark, toggleTheme } = useTheme();
 
-  const buttonText = useMemo<string>(() => {
-    if (!hasMounted) return 'Switch theme';
+  const { text, icon } = useMemo<{ text: string; icon: string }>(() => {
+    if (!hasMounted) return { text: 'Switch theme', icon: loading };
     const themeText = theme === 'system' ? 'dark' : isDark ? 'light' : 'system';
-    return 'Enable ' + themeText + ' theme';
-  }, [hasMounted, isDark, theme]);
-
-  const iconPath = useMemo<string>(() => {
-    if (!hasMounted) return loading;
-    return theme === 'system' ? moon : isDark ? sun : sunMoon;
+    return {
+      text: 'Enable ' + themeText + ' theme',
+      icon: theme === 'system' ? moon : isDark ? sun : sunMoon,
+    };
   }, [hasMounted, theme, isDark]);
 
   return (
     <ThemeToggleButton
       onClick={toggleTheme}
       disabled={!hasMounted}
-      title={buttonText}
+      title={text}
+      aria-label={text}
     >
       <Icon
-        path={iconPath}
+        path={icon}
         className={cx('size-5', !hasMounted && 'animate-spin')}
       />
     </ThemeToggleButton>
