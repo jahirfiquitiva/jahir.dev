@@ -21,8 +21,10 @@ const StyledHeader = tw.header`
   transition-[max-height]
   duration-300
   max-h-20 tablet-sm:max-h-21
-  [&[data-expanded="true"]]:max-tablet-sm:max-h-full
   [&[data-expanded="true"]]:tablet-sm:h-[unset]
+  [&[data-expanded="true"]]:max-tablet-sm:max-h-full
+  [&[data-expanded="true"]]:max-tablet-sm:to-light/50
+  [&[data-expanded="true"]]:max-tablet-sm:dark:to-dark/50
 `;
 
 const scrollThreshold = 56; //px

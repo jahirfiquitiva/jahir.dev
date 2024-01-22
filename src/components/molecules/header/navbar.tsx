@@ -15,6 +15,7 @@ import {
   NavItem,
   NavLink,
   NavPageLink,
+  NavPageLinkText,
 } from './navbar.styles';
 import { ThemeToggle } from './theme-toggle';
 
@@ -82,7 +83,7 @@ export const Navbar = (props: NavbarProps) => {
                 }
                 className={link.className}
               >
-                <span>{link.title}</span>
+                <NavPageLinkText>{link.title}</NavPageLinkText>
               </NavPageLink>
             </NavItem>
           );

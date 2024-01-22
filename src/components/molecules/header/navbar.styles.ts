@@ -35,6 +35,7 @@ export const Nav = tw.nav`
   tablet-sm:grid-rows-1
   tablet-sm:gap-2
   [[data-expanded="true"]>&]:max-tablet-sm:shadow-toolbar-elevated
+  [[data-expanded="true"]>&]:gap-2
 
   before:pointer-events-none
   before:select-none
@@ -116,16 +117,20 @@ export const NavItem = tw.li`
 `;
 
 export const NavPageLink = tw(NavLink)`
-  text-transparent
   from-secondary-txt
   to-secondary-txt
-  bg-gradient-to-r
-  bg-clip-text
-  hocus:text-transparent
   hocus:saturate-125
   hocus:dark:saturate-150
   [&[aria-current="page"]]:saturate-125
   [&[aria-current="page"]]:dark:saturate-150
+`;
+
+export const NavPageLinkText = tw.span`
+  text-transparent
+  bg-gradient-to-r
+  bg-clip-text
+  transition-colors
+  max-tablet-sm:pl-7
 `;
 
 export const ButtonsGroup = tw.ul`
