@@ -130,7 +130,7 @@ export const NavPageLinkText = tw.span`
   bg-gradient-to-r
   bg-clip-text
   transition-colors
-  max-tablet-sm:pl-7
+  max-tablet-sm:ml-7
 `;
 
 export const ButtonsGroup = tw.ul`
