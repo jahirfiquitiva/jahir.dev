@@ -71,16 +71,18 @@ export const ThemeToggle = () => {
           <option value={'dark'}>Dark</option>
         </optgroup>
       </select>
-      <Icon
-        path={icon}
+      <div
         className={cx(
-          'size-5',
-          !hasMounted && 'animate-spin',
-          'absolute top-1/2 left-1/2 right-0 bottom-0',
-          '-translate-x-1/2 -translate-y-1/2',
+          'absolute top-0 left-0 right-0 bottom-0',
+          'flex items-center justify-center',
           'pointer-events-none select-none',
         )}
-      />
+      >
+        <Icon
+          path={icon}
+          className={cx('size-5', !hasMounted && 'animate-spin')}
+        />
+      </div>
     </ThemeToggleContainer>
   );
 };
