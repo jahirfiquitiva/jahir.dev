@@ -12,8 +12,8 @@ const StyledHeader = tw.header`
   fixed top-0 h-full
   w-screen z-3
   left-0 right-0
-  bg-gradient-to-b from-light to-light/5
-  dark:from-dark dark:to-dark/5
+  bg-gradient-to-b from-light to-light/10
+  dark:from-dark dark:to-dark/10
   p-3
   bg-blend-hard-light
   backdrop-blur

@@ -11,11 +11,11 @@ import {
 import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/utils/color';
 import { colorMetaTags } from '@/utils/metadata';
 
-type ThemeOption = 'system' | 'light' | 'dark';
+export type ThemeOption = 'system' | 'light' | 'dark';
 interface ThemeContextValue {
   theme: ThemeOption;
   isDark: boolean;
-  toggleTheme?: () => void;
+  setTheme?: (theme: ThemeOption) => void;
 }
 
 const defaultContextState: ThemeContextValue = {
@@ -46,11 +46,7 @@ export const ThemeProvider = (props: PropsWithChildren) => {
       value={{
         theme: theme as ThemeOption,
         isDark: resolvedTheme === 'dark',
-        toggleTheme: () => {
-          setTheme(
-            theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'system',
-          );
-        },
+        setTheme,
       }}
     >
       {props.children}
