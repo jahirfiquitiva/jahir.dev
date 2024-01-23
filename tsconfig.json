@@ -32,7 +32,7 @@
       }
     ]
   },
-  "exclude": [".idea", "node_modules", "old-src"],
+  "exclude": [".idea", "node_modules"],
   "include": [
     "next-env.d.ts",
     "global.d.ts",
@@ -40,7 +40,7 @@
     "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.mjs",
+    "next.config.js",
     ".next/types/**/*.ts",
     "./.contentlayer/generated"
   ]
