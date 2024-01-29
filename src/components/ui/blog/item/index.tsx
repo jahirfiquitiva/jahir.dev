@@ -63,10 +63,9 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           src={post.hero || ''}
           alt={`Hero image for blog post "${post.title}"`}
           {...getHeroProps(post.heroMeta)}
-          className={cx(
-            'aspect-[4/3]',
-            'transition duration-200 group-hocus/post:scale-110',
-          )}
+          className={
+            'h-full transition duration-200 group-hocus/post:scale-110'
+          }
         />
       </div>
       <p
