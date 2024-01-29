@@ -18,7 +18,7 @@
     "next": "^14.1.0",
     "next-themes": "0.2.1",
     "react": "^18.2.0",
-    "react-compare-image": "^3.4.0",
+    "react-compare-slider": "^3.0.1",
     "react-dom": "^18.2.0",
     "swr": "^2.2.4"
   },
