@@ -46,21 +46,29 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       href={(post.link || `/blog/${post.slug}`) as Route}
       style={{ '--post-color': color } as CSSProperties}
     >
-      <Img
-        src={post.hero || ''}
-        alt={`Hero image for blog post "${post.title}"`}
-        {...getHeroProps(post.heroMeta)}
+      <div
         className={cx(
+          'overflow-hidden',
           'rounded-1 max-w-12',
           'mobile-md:max-w-18',
           'mobile-lg:max-w-24',
-          'aspect-[4/3]',
+          'aspect-[4/3] transition',
           'border border-transparent',
           'group-hocus/post:border-[rgba(var(--post-color)/.24)]',
           'dark:group-hocus/post:border-[rgba(var(--post-color)/.36)]',
           'mobile-md:row-span-2 mobile-md:mt-[0.1875rem]',
         )}
-      />
+      >
+        <Img
+          src={post.hero || ''}
+          alt={`Hero image for blog post "${post.title}"`}
+          {...getHeroProps(post.heroMeta)}
+          className={cx(
+            'aspect-[4/3]',
+            'transition duration-200 group-hocus/post:scale-110',
+          )}
+        />
+      </div>
       <p
         className={cx(
           'w-full tablet-md:self-end font-medium',
