@@ -70,6 +70,7 @@ You can check a [recent Pull Request](https://github.com/jahirfiquitiva/jahir.de
   }
   width={324}
   height={78}
+  class={'mx-auto'}
 />
 
 Additionally, I'd like to mention I was planning on creating some kind of design system for this website, and have docs with Storybook. I did it
@@ -150,7 +151,7 @@ Here's the [result](/dashboard).
 The previous design had some flaws. Images being positioned absolutely, caused some issues with some specific screen
 sizes. Here's what they used to look like:
 
-<Grid className={'mb-16'}>
+<Grid className={'mb-4'}>
 <GridColumn>
 
 <Img
@@ -189,34 +190,28 @@ I also updated the blog posts cards because I thought they were actually taking 
 Here's what they looked like before, compared to what they looked in a first iteration.
 
 <ImageComparison
-  sliderPosition={0.35}
-  firstImageAlt={'Previous website blog posts cards design'}
-  firstImage={'/media/blog/building-website-from-scratch/blog-cards-before.png'}
-  secondImageAlt={'First iteration of blog posts cards design'}
-  secondImage={
-    '/media/blog/building-website-from-scratch/blog-cards-iteration.png'
-  }
+  position={0.35}
   description={
     'Previous website blog posts cards (left). First iteration of new design (right).'
   }
-/>
+>
+  ![Previous website blog posts cards design](/media/blog/building-website-from-scratch/blog-cards-before.png)
+  ![First iteration of blog posts cards design](/media/blog/building-website-from-scratch/blog-cards-iteration.png)
+</ImageComparison>
 
 As you can see, I started using the blog post hero image as the card background, covered by a cool blurry
 scrim. Anyways, this design didn't convince me as I also wanted the hero to be more visible. Therefore,
 I changed it again, to what the current look is:
 
 <ImageComparison
-  sliderPosition={0.35}
-  firstImageAlt={'First iteration of blog posts cards design'}
-  firstImage={
-    '/media/blog/building-website-from-scratch/blog-cards-iteration.png'
-  }
-  secondImageAlt={'Final design for blog posts cards'}
-  secondImage={'/media/blog/building-website-from-scratch/blog-cards-now.png'}
+  position={0.35}
   description={
     'First iteration of new design (left). Final design for blog posts cards (right).'
   }
-/>
+>
+  ![First iteration of blog posts cards design](/media/blog/building-website-from-scratch/blog-cards-iteration.png)
+  ![Final design for blog posts cards](/media/blog/building-website-from-scratch/blog-cards-now.png)
+</ImageComparison>
 
 ## What's next?
 
