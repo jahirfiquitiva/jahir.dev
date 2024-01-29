@@ -53,7 +53,7 @@ export default function BlogPostLayout(
       <hr
         className={cx(
           'm-0 border-none h-px w-full bg-divider',
-          '-my-8 tablet-md:-my-9',
+          '-my-6',
           '-mx-3 w-[calc(100%_+_1.5rem)]',
           'tablet-md:mx-0 tablet-md:w-full',
         )}
