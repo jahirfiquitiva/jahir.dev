@@ -6,6 +6,9 @@ import {
   getColoredTextClasses,
 } from '@/utils/colored-text';
 import type { TWComponentProps } from '@/utils/cx';
+import cx from '@/utils/cx';
+
+import { SocialLinks } from '../social-links';
 
 import { NavToggle } from './nav-toggle';
 import {
@@ -88,6 +91,23 @@ export const Navbar = (props: NavbarProps) => {
             </NavItem>
           );
         })}
+        <li
+          className={cx(
+            'min-h-11',
+            'tablet-sm:hidden tablet-sm:invisible',
+            'tablet-sm:pointer-events-none tablet-sm:select-none',
+          )}
+          aria-hidden={'true'}
+        />
+        <li
+          className={cx(
+            'mx-auto',
+            'tablet-sm:hidden tablet-sm:invisible',
+            'tablet-sm:pointer-events-none tablet-sm:select-none',
+          )}
+        >
+          <SocialLinks />
+        </li>
       </LinksList>
       <ButtonsGroup>
         <li>
