@@ -44,7 +44,7 @@ export const SocialLinks = (props: ComponentProps<'ul'>) => {
           <span
             className={cx(
               'font-manrope font-semibold',
-              'size-[22px] select-none',
+              'size-5.5 select-none',
               'flex items-center justify-center',
               'leading-none text-xl text-center',
             )}

@@ -31,7 +31,7 @@ export const SocialLink = ({ iconPath, ...props }: SocialLinkProps) => (
   >
     {props.children || (
       <Icon
-        className={'transition-colors delay-[-100ms]'}
+        className={'transition-colors delay-[-100ms] size-5.5'}
         path={iconPath || ''}
       />
     )}
