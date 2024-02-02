@@ -1,4 +1,4 @@
 {
   "upgrade": true,
-  "reject": ["remark-gfm", "sharp"]
+  "reject": ["remark-gfm", "sharp", "million"]
 }
