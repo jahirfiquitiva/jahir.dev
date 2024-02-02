@@ -47,7 +47,7 @@
     "is-ci": "^3.0.1",
     "kysely": "^0.27.2",
     "kysely-planetscale": "^1.4.0",
-    "million": "^2.6.4",
+    "million": "^3.0.2",
     "next-contentlayer": "^0.3.4",
     "plaiceholder": "^3.0.0",
     "postcss": "^8.4.33",
