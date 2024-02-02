@@ -100,6 +100,7 @@ module.exports = {
       },
       colors: {
         brand: {
+          DEFAULT: '#3867D6',
           950: '#060A15',
           900: '#0B152B',
           800: '#162956',
