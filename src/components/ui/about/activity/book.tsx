@@ -16,7 +16,7 @@ import {
 const book = {
   title: 'Talking to Strangers',
   authors: 'Malcolm Gladwell',
-  currentPage: 50,
+  currentPage: 93,
   totalPages: 389,
   link: 'https://literal.club/jahirfiquitiva/book/talking-to-strangers-e99c4',
 };
