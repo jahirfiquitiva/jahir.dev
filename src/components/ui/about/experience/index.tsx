@@ -60,9 +60,7 @@ export const Experience = () => {
         </h2>
         <LinkButton
           title={'Resume'}
-          href={
-            'https://drive.google.com/viewerng/viewer?url=https://jahir.dev/resume'
-          }
+          href={'https://jahir.dev/resume'}
           openInNewTab
           className={'self-start pr-3.5'}
           data-umami-event={'Resume'}
