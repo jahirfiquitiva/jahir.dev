@@ -60,7 +60,7 @@ export const Experience = () => {
         </h2>
         <LinkButton
           title={'Resume'}
-          href={'https://jahir.dev/resume'}
+          href={'/resume'}
           openInNewTab
           className={'self-start pr-3.5'}
           data-umami-event={'Resume'}
