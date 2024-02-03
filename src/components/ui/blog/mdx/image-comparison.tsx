@@ -27,7 +27,8 @@ interface ImageComparisonProps
   fitStrategy?: 'taller' | 'wider';
 }
 
-const Handle = (props: { portrait?: boolean }) => {
+const Handle = (props: { portrait?: boolean; disabled?: boolean }) => {
+  if (props.disabled) return null;
   return (
     <ReactCompareSliderHandle
       portrait={props.portrait}
@@ -93,6 +94,7 @@ export const ImageComparison = (props: ImageComparisonProps) => {
 
   const [itemOneLoaded, setItemOneLoaded] = useState(false);
   const [itemTwoLoaded, setItemTwoLoaded] = useState(false);
+  const [componentReady, setComponentReady] = useState(false);
 
   const children = getChildrenArray(childrenFromProps);
 
@@ -107,6 +109,7 @@ export const ImageComparison = (props: ImageComparisonProps) => {
 
     if (typeof fitStrategy === 'undefined') {
       rootContainer.style.aspectRatio = 'auto';
+      setComponentReady(true);
       return;
     }
 
@@ -124,6 +127,7 @@ export const ImageComparison = (props: ImageComparisonProps) => {
     const h = rootContainer.getBoundingClientRect().width * aspectRatio;
     const r = gcd(w, h);
     rootContainer.style.aspectRatio = `${w / r} / ${h / r}`;
+    setComponentReady(true);
   }, [fitStrategy, reactCompareSliderRef, itemOneLoaded, itemTwoLoaded]);
 
   return (
@@ -132,7 +136,9 @@ export const ImageComparison = (props: ImageComparisonProps) => {
         {...otherProps}
         ref={reactCompareSliderRef}
         position={(otherProps.position || 0.5) * 100}
-        handle={<Handle portrait={otherProps.portrait} />}
+        handle={
+          <Handle portrait={otherProps.portrait} disabled={!componentReady} />
+        }
         itemOne={addRefToElement(children[0], itemOneRef, () => {
           setItemOneLoaded(true);
         })}
@@ -142,8 +148,10 @@ export const ImageComparison = (props: ImageComparisonProps) => {
         className={cx(
           'border border-divider rounded-2',
           '[&_img]:object-contain [&_img]:h-full [&_img]:bg-background',
+          !componentReady ? 'cursor-not-allowed' : '',
         )}
-        disabled={!itemOneLoaded && !itemTwoLoaded}
+        transition={'.25s ease-in-out'}
+        disabled={!componentReady}
         changePositionOnHover
       />
       <figcaption>{description}</figcaption>
