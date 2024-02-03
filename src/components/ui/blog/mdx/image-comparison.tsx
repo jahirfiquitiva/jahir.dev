@@ -1,12 +1,20 @@
+'use client';
+
 import {
   Children,
+  cloneElement,
+  useRef,
   type ComponentProps,
   type PropsWithChildren,
+  type ReactElement,
   type ReactNode,
+  type Ref,
+  useEffect,
 } from 'react';
 import {
   ReactCompareSlider,
   ReactCompareSliderHandle,
+  useReactCompareSliderRef,
 } from 'react-compare-slider';
 
 import cx from '@/utils/cx';
@@ -15,6 +23,7 @@ interface ImageComparisonProps
   extends PropsWithChildren,
     Omit<ComponentProps<typeof ReactCompareSlider>, 'itemOne' | 'itemTwo'> {
   description?: string;
+  fitStrategy?: 'taller' | 'wider';
 }
 
 const Handle = (props: { portrait?: boolean }) => {
@@ -51,17 +60,66 @@ const getChildrenArray = (
       typeof it !== 'boolean',
   ) as Array<Exclude<ReactNode, string | number | boolean>>;
 
+const addRefToElement = (
+  element: ReactNode | null | undefined,
+  ref: Ref<HTMLImageElement>,
+) => {
+  if (!element) return null;
+  try {
+    return cloneElement(element as ReactElement, { ref });
+  } catch (e) {
+    return null;
+  }
+};
+
 export const ImageComparison = (props: ImageComparisonProps) => {
-  const { children: childrenFromProps, description, ...otherProps } = props;
+  const {
+    children: childrenFromProps,
+    description,
+    fitStrategy,
+    ...otherProps
+  } = props;
+
+  const reactCompareSliderRef = useReactCompareSliderRef();
+  const itemOneRef = useRef<HTMLImageElement>(null);
+  const itemTwoRef = useRef<HTMLImageElement>(null);
+
   const children = getChildrenArray(childrenFromProps);
+
+  useEffect(() => {
+    const rootContainer = reactCompareSliderRef.current.rootContainer;
+    const itemOne = itemOneRef.current;
+    const itemTwo = itemTwoRef.current;
+
+    if (!rootContainer || !itemOne || !itemTwo) {
+      return;
+    }
+
+    if (typeof fitStrategy === 'undefined') {
+      rootContainer.style.aspectRatio = 'auto';
+      return;
+    }
+
+    const itemOneAspectRatio = itemOne.naturalHeight / itemOne.naturalWidth;
+    const itemTwoAspectRatio = itemTwo.naturalHeight / itemTwo.naturalWidth;
+
+    const aspectRatio =
+      fitStrategy === 'wider'
+        ? Math.max(itemOneAspectRatio, itemTwoAspectRatio)
+        : Math.min(itemOneAspectRatio, itemTwoAspectRatio);
+
+    rootContainer.style.aspectRatio = `${aspectRatio}`;
+  }, [fitStrategy, reactCompareSliderRef]);
+
   return (
     <figure className={'image-comparison'}>
       <ReactCompareSlider
         {...otherProps}
+        ref={reactCompareSliderRef}
         position={(otherProps.position || 0.5) * 100}
         handle={<Handle portrait={otherProps.portrait} />}
-        itemOne={children[0]}
-        itemTwo={children[1]}
+        itemOne={addRefToElement(children[0], itemOneRef)}
+        itemTwo={addRefToElement(children[1], itemTwoRef)}
         className={cx(
           'border border-divider rounded-2',
           '[&_img]:object-contain [&_img]:h-full [&_img]:bg-background',
