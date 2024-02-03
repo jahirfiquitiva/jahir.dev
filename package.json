@@ -80,7 +80,7 @@
     "trailingComma": "all",
     "semi": true
   },
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.0",
   "overrides": {
     "next-contentlayer": {
       "next": "$next"
