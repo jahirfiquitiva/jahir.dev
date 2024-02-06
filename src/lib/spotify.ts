@@ -20,7 +20,12 @@ const buildSpotifyRequest = async <T>(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
   body?: Record<string, unknown>,
 ): Promise<T | ErrorResponse> => {
-  const { access_token: accessToken } = await getAccessToken();
+  const { access_token: accessToken } = await getAccessToken().catch(null);
+  if (!accessToken) {
+    return {
+      error: { message: 'Could not get access token', status: 401 },
+    };
+  }
   const response = await fetch(endpoint, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -49,7 +54,7 @@ const refreshToken = process.env.SPOTIFY_CLIENT_REFRESH_TOKEN || '';
 const basic = btoa(`${clientId}:${clientSecret}`);
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 
-const getAccessToken = async () => {
+const getAccessToken = async (): Promise<{ access_token?: string }> => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {

@@ -1,4 +1,4 @@
-import { Track } from './entities';
+import type { ReadableTrack, Track } from './entities';
 import type { SpotifyEntity } from './entity.d';
 
 export interface SpotifyResponse<T extends SpotifyEntity | PlayHistoryObject> {

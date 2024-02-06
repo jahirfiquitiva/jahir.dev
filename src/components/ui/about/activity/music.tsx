@@ -2,6 +2,7 @@
 
 import type { Route } from 'next';
 
+import tunez from '@/assets/images/tunez.png';
 import { Img } from '@/components/atoms/img';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
@@ -22,13 +23,17 @@ import {
 export const Music = () => {
   const { data, loading } =
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
-  const { track, isPlaying } = data || {};
+  const { track, isPlaying = false } = data || {};
   return (
     <ActivityCard
       title={
-        !track ? 'Loading…' : `"${track.name}" by "${track.artist}" on Spotify`
+        loading
+          ? 'Loading…'
+          : !track
+            ? 'tunez playlist on Spotify'
+            : `"${track.name}" by "${track.artist}" on Spotify`
       }
-      href={(track?.url || '#') as Route}
+      href={(track?.url || 'https://tunez.jahir.dev') as Route}
       target={'_blank'}
       className={cx(
         loading ? 'motion-safe:animate-pulse' : '',
@@ -42,11 +47,13 @@ export const Music = () => {
     >
       <BackgroundImage
         alt={
-          !track
+          loading
             ? 'Loading…'
-            : `Album cover: "${track.album}" by "${track.artist}"`
+            : !track
+              ? 'tunez playlist cover'
+              : `Album cover: "${track.album}" by "${track.artist}"`
         }
-        src={track?.image?.url || ''}
+        src={track?.image?.url ?? tunez}
         size={78}
         quality={50}
         className={cx(
@@ -60,9 +67,13 @@ export const Music = () => {
       <Content className={'bg-white/65 dark:bg-brand-900/35'}>
         <Img
           alt={
-            !track ? '' : `Album cover: "${track.album}" by "${track.artist}"`
+            loading
+              ? 'Loading…'
+              : !track
+                ? 'tunez playlist cover'
+                : `Album cover: "${track.album}" by "${track.artist}"`
           }
-          src={track?.image?.url || ''}
+          src={track?.image?.url ?? tunez}
           size={track?.image?.width || 78}
           className={cx(
             'rounded-1',
@@ -91,10 +102,10 @@ export const Music = () => {
               isPlaying ? 'group-hocus/track:decoration-wavy' : '',
             )}
           >
-            {track?.name}
+            {track?.name ?? 'tunez'}
           </TrackName>
           <TrackArtist className={cx(loading ? 'bg-divider' : '')}>
-            {track?.artist}
+            {track?.artist ?? '99 top recently listened songs'}
           </TrackArtist>
         </Texts>
       </Content>
