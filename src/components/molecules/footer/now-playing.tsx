@@ -46,7 +46,7 @@ export const FooterNowPlaying = () => {
     >
       <Img
         alt={`Album cover: "${track.album}" by "${track.artist}"`}
-        src={track.image?.url}
+        src={track.image?.url || ''}
         size={24}
         quality={50}
         className={cx(
