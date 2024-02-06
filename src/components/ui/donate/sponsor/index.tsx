@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import type { Route } from 'next';
+
 import type { CSSProperties } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
@@ -63,7 +63,7 @@ export const SponsorItem = (props: SponsorProps) => {
   const color = hexToRgb(colorForTier[tier], 1, true);
   return (
     <ListItem>
-      <Container title={sponsor.name} href={(sponsor.link || '#') as Route}>
+      <Container title={sponsor.name} href={sponsor.link || '#'}>
         <NameAndPhotoContainer>
           <Img
             src={

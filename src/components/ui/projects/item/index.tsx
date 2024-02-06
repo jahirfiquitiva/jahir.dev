@@ -1,4 +1,3 @@
-import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import type { Project } from '@/types/project';
@@ -19,7 +18,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
   return (
     <ProjectLink
       title={project.name}
-      href={project.link as Route}
+      href={project.link}
       style={
         {
           '--project-color': color,

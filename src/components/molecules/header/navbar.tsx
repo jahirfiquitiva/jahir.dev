@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import { Logo } from '@/components/atoms/logo';
 import {
   buildColoredLinkClasses,
@@ -80,7 +78,7 @@ export const Navbar = (props: NavbarProps) => {
             <NavItem key={link.href}>
               <NavPageLink
                 title={`${link.title} page`}
-                href={link.href as Route}
+                href={link.href}
                 aria-current={
                   props.path?.startsWith(link.href) ? 'page' : undefined
                 }

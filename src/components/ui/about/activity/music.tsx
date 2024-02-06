@@ -1,7 +1,5 @@
 'use client';
 
-import type { Route } from 'next';
-
 import tunez from '@/assets/images/tunez.png';
 import { Img } from '@/components/atoms/img';
 import { useRequest } from '@/hooks/use-request';
@@ -33,7 +31,7 @@ export const Music = () => {
             ? 'tunez playlist on Spotify'
             : `"${track.name}" by "${track.artist}" on Spotify`
       }
-      href={(track?.url || 'https://tunez.jahir.dev') as Route}
+      href={track?.url || 'https://tunez.jahir.dev'}
       target={'_blank'}
       className={cx(
         loading ? 'motion-safe:animate-pulse' : '',

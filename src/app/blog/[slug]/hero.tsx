@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import cx from '@/utils/cx';
@@ -40,7 +38,7 @@ export const Hero = (props: HeroProps) => {
       {source ? (
         <figcaption>
           Image from{' '}
-          <Link title={source} href={source as Route}>
+          <Link title={source} href={source}>
             {getUrlDomain(source, true)}
           </Link>
         </figcaption>

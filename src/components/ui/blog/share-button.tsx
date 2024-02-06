@@ -1,6 +1,5 @@
 'use client';
 
-import type { Route } from 'next';
 import { useMemo } from 'react';
 
 import { Button } from '@/components/atoms/button';
@@ -72,7 +71,7 @@ export const ShareButton = (props: ShareButtonProps) => {
   ) : (
     <LinkButton
       title={buttonTitle}
-      href={shareUrl(title, slug) as Route}
+      href={shareUrl(title, slug)}
       data-umami-event={'Share blog post link'}
       data-umami-event-title={title}
       className={'pr-3.5 no-underline hocus:text-on-accent'}

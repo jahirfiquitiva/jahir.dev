@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import bookCover from '@/assets/images/reading.jpg';
 import { Img } from '@/components/atoms/img';
 import cx from '@/utils/cx';
@@ -27,7 +25,7 @@ export const Book = () => {
   return (
     <ActivityCard
       title={`"${book.title}" by ${book.authors}`}
-      href={book.link as Route}
+      href={book.link}
       target={'_blank'}
       data-umami-event={'Reading'}
       data-umami-event-book={book.title}

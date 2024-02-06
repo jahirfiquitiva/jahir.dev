@@ -1,6 +1,5 @@
 'use client';
 
-import type { Route } from 'next';
 import type { MouseEventHandler } from 'react';
 
 import { scrollToTop } from '../back-to-top';
@@ -18,7 +17,7 @@ interface BackToTopLinkProps {
 export const BackToTopLink = (link: BackToTopLinkProps) => (
   <FooterLink
     title={link.a11yTitle || link.title}
-    href={link.href as Route}
+    href={link.href}
     className={link.className}
     onClick={
       link.href === '#'

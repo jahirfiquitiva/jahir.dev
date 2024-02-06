@@ -1,4 +1,3 @@
-import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
@@ -43,7 +42,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
   return (
     <BlogPostLink
       title={post.title}
-      href={(post.link || `/blog/${post.slug}`) as Route}
+      href={post.link || `/blog/${post.slug}`}
       style={{ '--post-color': color } as CSSProperties}
     >
       <div

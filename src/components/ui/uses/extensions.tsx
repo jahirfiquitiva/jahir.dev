@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import { Link } from '@/components/atoms/link';
 import { List, ListItem } from '@/components/atoms/list';
 import extensions from '@/data/extensions.json';
@@ -23,7 +21,7 @@ export const ExtensionsGrid = () => (
           <List>
             {extensions.map((ext) => (
               <ListItem key={ext.title}>
-                <Link href={ext.url as Route} title={ext.title}>
+                <Link href={ext.url} title={ext.title}>
                   {ext.title}
                 </Link>
               </ListItem>

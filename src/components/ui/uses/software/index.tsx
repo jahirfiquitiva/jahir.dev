@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import software from '@/data/software.json';
 
 import {
@@ -25,10 +23,7 @@ export const Software = () => {
         {sortedSoftware.map((item, index) => {
           return (
             <li key={index}>
-              <SoftwareItem
-                href={(item.link || '#') as Route}
-                title={item.name}
-              >
+              <SoftwareItem href={item.link || '#'} title={item.name}>
                 <AppIcon
                   src={`/media/${item.image}`}
                   size={72}

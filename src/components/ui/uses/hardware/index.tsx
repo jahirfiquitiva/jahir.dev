@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 // import gaming from '@/data/gaming.json';
 import hardware from '@/data/hardware.json';
 
@@ -21,11 +19,7 @@ interface HardwareGridProps {
 const HardwareGrid = (props: HardwareGridProps) => (
   <Grid>
     {props.items.map((item, index) => (
-      <HardwareItem
-        key={index}
-        href={(item.link || '#') as Route}
-        title={item.name}
-      >
+      <HardwareItem key={index} href={item.link || '#'} title={item.name}>
         <HardwareImage
           src={`/media/${item.image}`}
           alt={item.name}

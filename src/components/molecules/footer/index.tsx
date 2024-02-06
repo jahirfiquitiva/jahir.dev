@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import { Logo } from '@/components/atoms/logo';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
@@ -75,7 +73,7 @@ export const Footer = () => {
                     {link.href !== '#' ? (
                       <FooterLink
                         title={link.a11yTitle || link.title}
-                        href={link.href as Route}
+                        href={link.href}
                         className={link.className}
                         {...link.props}
                       >
