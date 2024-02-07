@@ -34,7 +34,7 @@ export const FooterNowPlaying = () => {
       href={track.url}
       target={'_blank'}
       className={cx(
-        'max-w-[28ch]',
+        'max-w-[28ch] font-normal',
         'flex flex-row items-center gap-2',
         'text-tertiary-txt text-3xs truncate',
         'no-underline group/music',
