@@ -5,11 +5,9 @@ export const StyledReactionButton = tw(OutlinedButton)`
   rounded-full px-4 py-2
   text-2xs
   group/reaction
-  hocus:bg-[rgba(var(--reaction-color)/0.08)]
-  dark:hocus:bg-[rgba(var(--reaction-color)/0.2)]
-  hocus:ring-[rgba(var(--reaction-color)/0.56)]
-  [&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.08)]
-  dark:[&[aria-pressed="true"]]:bg-[rgba(var(--reaction-color)/0.2)]
-  [&[aria-pressed="true"]]:ring-[rgba(var(--reaction-color)/0.56)]
+  hocus:bg-tint-bg
+  hocus:ring-tint-border
+  [&[aria-pressed="true"]]:bg-tint-bg
+  [&[aria-pressed="true"]]:ring-tint-border
   after:rounded-full
 `;

@@ -62,9 +62,9 @@ export const OutlinedButton = tw(Button)`
   dark:hocus:ring-divider
   hocus:shadow
   hocus:text-primary-txt
-  hocus:bg-brand-300/[0.08]
-  dark:bg-brand-200/[0.12]
-  dark:hocus:bg-brand-200/[0.24]
+  hocus:bg-brand-300/5
+  dark:bg-brand-200/10
+  dark:hocus:bg-brand-200/15
 
   after:border-accent-dark
   after:opacity-10

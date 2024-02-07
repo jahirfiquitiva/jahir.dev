@@ -43,7 +43,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
     <BlogPostLink
       title={post.title}
       href={post.link || `/blog/${post.slug}`}
-      style={{ '--post-color': color } as CSSProperties}
+      style={{ '--tint': color } as CSSProperties}
     >
       <div
         className={cx(
@@ -53,8 +53,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           'mobile-lg:max-w-24',
           'aspect-[4/3] transition',
           'border border-transparent',
-          'group-hocus/post:border-[rgba(var(--post-color)/.24)]',
-          'dark:group-hocus/post:border-[rgba(var(--post-color)/.36)]',
+          'group-hocus/post:border-tint-border',
           'mobile-md:row-span-2 mobile-md:mt-[0.1875rem]',
         )}
       >
