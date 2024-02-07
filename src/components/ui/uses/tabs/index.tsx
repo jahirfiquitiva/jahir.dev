@@ -97,7 +97,7 @@ export const Tabs = (props: TabsProps) => {
             >
               {props.heroImage}
             </div>
-            <figcaption>Jahir&apos;s desk setup in early 2023</figcaption>
+            <figcaption>Jahir&apos;s desk setup in early 2024</figcaption>
           </figure>
         )}
         {Children.map(props.children, (child, index) => {
