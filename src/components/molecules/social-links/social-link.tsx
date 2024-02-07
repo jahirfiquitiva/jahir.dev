@@ -14,8 +14,8 @@ const StyledSocialLink = tw(Link)`
   transition-colors
   text-secondary-txt
   bg-transparent
-  hocus:bg-brand-600/[0.08]
-  dark:hocus:bg-brand-300/[0.16]
+  hocus:bg-brand-600/10
+  dark:hocus:bg-brand-300/15
 `;
 
 interface SocialLinkProps extends TWComponentProps<typeof StyledSocialLink> {
