@@ -1,9 +1,8 @@
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
-export const StyledFooter = tw.footer`
+export const StyledFooter = tw.footer.attrs({ style: { maxWidth: 666 } })`
   w-full
-  max-w-site
   mx-auto
   grid
   grid-cols-2

@@ -94,7 +94,6 @@ module.exports = {
     },
     extend: {
       spacing: {
-        site: '666px',
         nice: '69ch',
       },
       zIndex: {

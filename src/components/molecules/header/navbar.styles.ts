@@ -2,12 +2,11 @@
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
-export const Nav = tw.nav`
+export const Nav = tw.nav.attrs({ style: { maxWidth: 666 } })`
   relative
   mx-auto
   h-full
   w-full
-  max-w-site
   z-4 bg-toolbar
   p-1.5 tablet-sm:p-2
   backdrop-saturate-125
