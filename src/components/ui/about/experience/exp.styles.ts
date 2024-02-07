@@ -12,8 +12,7 @@ export const ExperienceItem = tw(Link)`
   w-[calc(100%_+_1.5rem)]
   bg-transparent
   transition-colors
-  hocus:bg-[rgba(var(--exp-color)/0.1)]
-  hocus:dark:bg-[rgba(var(--exp-color)/0.2)]
+  hocus:bg-tint-bg
 `;
 
 export const ExperienceItemWithLine = tw(ExperienceItem)`

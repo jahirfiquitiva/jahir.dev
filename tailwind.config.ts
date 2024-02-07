@@ -86,6 +86,10 @@ module.exports = {
       orange: twColors.orange,
       red: twColors.rose,
       purple: twColors.violet,
+      tint: {
+        bg: 'rgba(var(--tint)/var(--opacity-tint-bg))',
+        border: 'rgba(var(--tint)/var(--opacity-tint-border))',
+      },
     },
     extend: {
       spacing: {

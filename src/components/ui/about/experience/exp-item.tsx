@@ -26,7 +26,7 @@ export const ExpItem = (props: ExperienceItemProps) => {
       title={`${props.position} at ${props.company}`}
       href={props.link}
       target={'_blank'}
-      style={{ '--exp-color': color } as CSSProperties}
+      style={{ '--tint': color } as CSSProperties}
       data-umami-event={'Experience'}
       data-umami-event-company={props.company}
     >
