@@ -19,11 +19,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
     <ProjectLink
       title={project.name}
       href={project.link}
-      style={
-        {
-          '--project-color': color,
-        } as CSSProperties
-      }
+      style={{ '--tint': color } as CSSProperties}
       data-umami-event={'View project'}
       data-umami-event-project={project.name}
     >

@@ -35,12 +35,11 @@ export const Skills = () => {
                     'border border-divider',
                     'text-3xs font-medium cursor-default',
                     'transition-colors',
-                    'bg-brand-200/[0.06] dark:bg-brand-700/[0.12]',
-                    'hocus:bg-[rgba(var(--skill-color)/0.12)]',
-                    'dark:hocus:bg-[rgba(var(--skill-color)/0.24)]',
-                    'hocus:border-[rgba(var(--skill-color)/0.56)]',
+                    'bg-brand-200/5 dark:bg-brand-700/10',
+                    'hocus:!bg-tint-bg',
+                    'hocus:border-tint-border',
                   )}
-                  style={{ '--skill-color': color } as CSSProperties}
+                  style={{ '--tint': color } as CSSProperties}
                 >
                   <Icon path={skill.icon} className={'size-4'} />
                   <span>{skill.name}</span>

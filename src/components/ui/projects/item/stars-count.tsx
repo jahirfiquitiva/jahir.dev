@@ -31,12 +31,9 @@ export const StarsCount = (props: StarsCountProps) => {
             'text-tertiary-txt text-[0.75rem]',
             'px-1 rounded-1.5 transition-colors',
             'border border-transparent',
-            'bg-[rgba(var(--project-color)/0.075)] dark:bg-[rgba(var(--project-color)/0.15)]',
+            'bg-tint-bg',
             'group-hocus/project:text-secondary-txt',
-            'group-hocus/project:border-[rgba(var(--project-color)/0.24)]',
-            'group-hocus/project:dark:border-[rgba(var(--project-color)/0.36)]',
-            'group-hocus/project:bg-transparent',
-            'group-hocus/project:dark:bg-transparent',
+            'group-hocus/project:border-tint-border',
             'motion-safe:animate-fade-in',
           )}
         >
