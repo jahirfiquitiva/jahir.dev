@@ -13,7 +13,7 @@ import {
 } from './activity.styles';
 
 const getBackground = (colors: Array<string>): string => {
-  if (!colors.length) return '';
+  if (!colors.length || colors.length < 2) return '';
   const steps = 100 / (colors.length - 1);
   let bg = 'linear-gradient(to bottom right, ';
   bg += colors
