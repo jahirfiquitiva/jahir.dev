@@ -36,11 +36,11 @@ export default function DonatePage() {
               'drop-shadow-doodle shadow-brand-200 select-none',
             )}
           />
-          <p className={'max-w-[50ch]'}>
+          <p style={{ maxWidth: '50ch' }}>
             I&apos;m passionate about building amazing open-source projects, but
             it wouldn&apos;t be possible to keep them going without your help!
           </p>
-          <p className={'max-w-[50ch]'}>
+          <p style={{ maxWidth: '50ch' }}>
             If you&apos;ve benefited from any of them, consider donating to
             ensure their continued development.
           </p>

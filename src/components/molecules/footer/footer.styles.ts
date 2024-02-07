@@ -28,10 +28,9 @@ export const Details = tw.div`
   gap-3
 `;
 
-export const Description = tw.p`
+export const Description = tw.p.attrs({ style: { maxWidth: '32ch' } })`
   text-2xs
   text-pretty
-  max-w-[32ch]
 `;
 
 export const LinksList = tw.div`
