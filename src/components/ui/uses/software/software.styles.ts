@@ -65,10 +65,10 @@ export const AppIcon = tw(Img)<ImgProps>`
   drop-shadow-[0_1px_3px_var(--tw-shadow-color)]
   dark:shadow-brand-50/25
   dark:drop-shadow-[0_2px_5px_var(--tw-shadow-color)]
-  max-w-[3rem]
-  mobile-md:max-w-[3.5rem]
-  mobile-lg:max-w-[4rem]
-  tablet-sm:max-w-[4.5rem]
+  max-w-12
+  mobile-md:max-w-14
+  mobile-lg:max-w-16
+  tablet-sm:max-w-18
   scale-95
   group-hocus/software:scale-100
 `;

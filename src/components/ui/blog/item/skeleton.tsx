@@ -16,9 +16,9 @@ export const BlogPostItemSkeleton = () => (
         'min-w-24 h-full',
         'rounded-1 max-w-12',
         'mobile-lg:max-w-24',
-        'aspect-[4/3]',
         'mobile-lg:row-span-2',
       )}
+      style={{ aspectRatio: '4/3' }}
     />
     <p
       className={cx(

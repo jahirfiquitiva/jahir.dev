@@ -56,6 +56,7 @@ export const SponsorsList = (props: SponsorsListProps) => {
           src={monaGifFile}
           alt={'GitHub Mona pixelated animation with hearts'}
           size={72}
+          style={{ filter: 'drop-shadow(0 0 2px #fff)' }}
         />
       </Header>
       <StyledList>

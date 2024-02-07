@@ -28,7 +28,7 @@ export const StarsCount = (props: StarsCountProps) => {
           aria-label={`${stars} on GitHub`}
           className={cx(
             'flex flex-row items-center gap-1',
-            'text-tertiary-txt text-[0.75rem]',
+            'text-tertiary-txt',
             'px-1 rounded-1.5 transition-colors',
             'border border-transparent',
             'bg-tint-bg',
@@ -36,6 +36,7 @@ export const StarsCount = (props: StarsCountProps) => {
             'group-hocus/project:border-tint-border',
             'motion-safe:animate-fade-in',
           )}
+          style={{ fontSize: '0.75rem' }}
         >
           <Icon
             className={'size-3'}

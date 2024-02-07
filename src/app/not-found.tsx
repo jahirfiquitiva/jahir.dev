@@ -3,7 +3,6 @@ import { Img } from '@/components/atoms/img';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
-import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 
 export default function NotFound() {
@@ -35,9 +34,8 @@ export default function NotFound() {
       <Img
         src={'/media/site/404.gif'}
         alt={'John Travolta gif'}
-        className={cx(
-          'drop-shadow-[0_0_2px_#fff] mt-auto mx-auto w-full max-w-[425px]',
-        )}
+        className={'mt-auto mx-auto w-full'}
+        style={{ maxWidth: 425, filter: 'drop-shadow(0 0 2px #fff)' }}
       />
     </Section>
   );
