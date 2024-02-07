@@ -46,6 +46,7 @@ const defaultNextConfig = {
       { hostname: '**.cdninstagram.com' },
       { hostname: '**.pixpa.com' },
       { hostname: '**.fbcdn.net' },
+      { hostname: 'assets.literal.club' },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
