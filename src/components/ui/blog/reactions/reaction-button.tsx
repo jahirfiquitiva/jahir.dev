@@ -28,8 +28,8 @@ export const ReactionButton = (props: ReactionButtonProps) => {
         className={cx(
           'size-4 mobile-md:size-5',
           'transition-colors',
-          reacted ? 'text-[rgb(var(--reaction-color))]' : 'text-current',
-          'group-hocus/reaction:text-[rgb(var(--reaction-color))]',
+          reacted ? 'text-[rgb(var(--tint))]' : 'text-current',
+          'group-hocus/reaction:text-[rgb(var(--tint))]',
         )}
         path={iconPath}
       />

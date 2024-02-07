@@ -45,11 +45,7 @@ export const ReactionsButtons = (props: ReactionsButtonsProps) => {
           }}
           style={
             {
-              '--reaction-color': hexToRgb(
-                reactionsSetup[reaction].color,
-                1,
-                true,
-              ),
+              '--tint': hexToRgb(reactionsSetup[reaction].color, 1, true),
             } as CSSProperties
           }
         />
