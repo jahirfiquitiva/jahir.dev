@@ -89,8 +89,8 @@ export const Music = () => {
             {isPlaying ? (
               <MusicBarsGroup>
                 <MusicBar />
-                <MusicBar className={'[animation-delay:-2.2s]'} />
-                <MusicBar className={'[animation-delay:-3.7s]'} />
+                <MusicBar className={'![animation-delay:-2.2s]'} />
+                <MusicBar className={'![animation-delay:-3.7s]'} />
               </MusicBarsGroup>
             ) : null}
           </Header>

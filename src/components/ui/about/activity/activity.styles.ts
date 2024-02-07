@@ -79,7 +79,6 @@ export const Header = tw.p`
 `;
 
 export const MusicBarsGroup = tw.span`
-  relative
   flex
   justify-between
   w-3
@@ -91,7 +90,6 @@ export const MusicBar = tw.span`
   h-full
   bg-accent-dark
   rounded-[0.1875rem]
-  content-['']
   motion-safe:animate-music-bars
   [transform-origin:bottom]
 `;
