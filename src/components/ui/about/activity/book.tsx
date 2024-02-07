@@ -13,13 +13,16 @@ import {
 } from './activity.styles';
 
 const getBackground = (colors: Array<string>): string => {
-  if (!colors.length || colors.length < 2) return '';
+  if (!colors.length) return '';
+  if (colors.length === 1)
+    return `rgba(${hexToRgb(colors[0], 0, true)} / var(--opacity-tint-bg))`;
+  // At least 2 colors
   const steps = 100 / (colors.length - 1);
   let bg = 'linear-gradient(to bottom right, ';
   bg += colors
     .map(
       (c, i) =>
-        `rgba(${hexToRgb(c, 0, true)} / var(--bg-op, 0.12)) ${i * steps}%`,
+        `rgba(${hexToRgb(c, 0, true)} / var(--opacity-tint-bg)) ${i * steps}%`,
     )
     .join(', ');
   bg += ')';
@@ -40,10 +43,7 @@ export const Book = async () => {
       data-umami-event-book={book.title}
       className={'hocus:border-brand-600/35 dark:hocus:border-brand-200/35'}
     >
-      <Content
-        className={'[--bg-op:0.12] dark:[--bg-op:0.24]'}
-        style={{ background: getBackground(book.gradientColors) }}
-      >
+      <Content style={{ background: getBackground(book.gradientColors) }}>
         <Img
           src={book.cover}
           alt={`"${book.title}" book cover`}
