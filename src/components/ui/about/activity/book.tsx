@@ -50,7 +50,7 @@ export const Book = async () => {
           className={cx(
             'rounded-l-0.5 rounded-r-1.5',
             'aspect-auto w-auto h-full min-w-11',
-            'max-w-full max-h-18 tablet-sm:max-h-[78px]',
+            'max-w-full max-h-18 tablet-sm:max-h-20',
             'border border-divider transition',
             'scale-95 group-hocus/track:scale-100',
           )}

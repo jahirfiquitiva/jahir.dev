@@ -54,7 +54,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           'transition',
           'border border-transparent',
           'group-hocus/post:border-tint-border',
-          'mobile-md:row-span-2 mobile-md:mt-[0.1875rem]',
+          'mobile-md:row-span-2 mobile-md:mt-0.75',
         )}
         style={{ aspectRatio: '4/3' }}
       >

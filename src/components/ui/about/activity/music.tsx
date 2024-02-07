@@ -61,6 +61,7 @@ export const Music = () => {
               ? 'hidden invisible'
               : '',
         )}
+        style={{ animationDuration: '15s' }}
       />
       <Content className={'bg-white/65 dark:bg-brand-900/35'}>
         <Img
@@ -76,7 +77,7 @@ export const Music = () => {
           className={cx(
             'rounded-1',
             'aspect-square w-auto h-full',
-            'max-w-full max-h-[72px] tablet-sm:max-h-[78px]',
+            'max-w-full max-h-18 tablet-sm:max-h-20',
             'border border-divider transition',
             'scale-95 group-hocus/track:scale-100',
           )}
@@ -89,8 +90,12 @@ export const Music = () => {
             {isPlaying ? (
               <MusicBarsGroup>
                 <MusicBar />
-                <MusicBar className={'![animation-delay:-2.2s]'} />
-                <MusicBar className={'![animation-delay:-3.7s]'} />
+                <MusicBar
+                  style={{ animationDelay: '-2.2s', transformOrigin: 'bottom' }}
+                />
+                <MusicBar
+                  style={{ animationDelay: '-3.7s', transformOrigin: 'bottom' }}
+                />
               </MusicBarsGroup>
             ) : null}
           </Header>

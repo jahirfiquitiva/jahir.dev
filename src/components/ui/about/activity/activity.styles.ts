@@ -38,7 +38,6 @@ export const BackgroundImage = tw(Img)<ImgProps>`
   select-none
   max-w-[unset]
   truncate
-  ![animation-duration:15s]
   blur-md
 `;
 
@@ -85,13 +84,12 @@ export const MusicBarsGroup = tw.span`
   h-3
 `;
 
-export const MusicBar = tw.span`
-  w-[0.1875rem]
+export const MusicBar = tw.span.attrs({ style: { transformOrigin: 'bottom' } })`
+  w-0.75
   h-full
   bg-accent-dark
-  rounded-[0.1875rem]
+  rounded-0.75
   motion-safe:animate-music-bars
-  [transform-origin:bottom]
 `;
 
 export const TrackName = tw.span`
