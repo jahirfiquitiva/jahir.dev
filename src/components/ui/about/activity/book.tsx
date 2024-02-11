@@ -1,7 +1,6 @@
-import type { Route } from 'next';
-
-import bookCover from '@/assets/images/reading.jpg';
 import { Img } from '@/components/atoms/img';
+import { getReadingProgress } from '@/lib/literal';
+import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
 import {
@@ -13,46 +12,60 @@ import {
   TrackName,
 } from './activity.styles';
 
-const book = {
-  title: 'Talking to Strangers',
-  authors: 'Malcolm Gladwell',
-  currentPage: 93,
-  totalPages: 389,
-  link: 'https://literal.club/jahirfiquitiva/book/talking-to-strangers-e99c4',
+const getBackground = (colors: Array<string>): string => {
+  if (!colors.length) return '';
+  if (colors.length === 1)
+    return `rgba(${hexToRgb(colors[0], 0, true)} / var(--opacity-tint-bg))`;
+  // At least 2 colors
+  const steps = 100 / (colors.length - 1);
+  let bg = 'linear-gradient(to bottom right, ';
+  bg += colors
+    .map(
+      (c, i) =>
+        `rgba(${hexToRgb(c, 0, true)} / var(--opacity-tint-bg)) ${i * steps}%`,
+    )
+    .join(', ');
+  bg += ')';
+  return bg;
 };
 
-const readProgress = ((book.currentPage * 100) / book.totalPages).toFixed(2);
-
-export const Book = () => {
+export const Book = async () => {
+  const book = await getReadingProgress();
+  if (!book) return null;
+  const authors = book.authors.map((a) => a.name).join(', ');
+  const readProgress = ((book.progress || 0) * 100) / (book.capacity || 1);
   return (
     <ActivityCard
-      title={`"${book.title}" by ${book.authors}`}
-      href={book.link as Route}
+      title={`"${book.title}" by ${authors}`}
+      href={`https://literal.club/jahirfiquitiva/book/${book.slug}`}
       target={'_blank'}
       data-umami-event={'Reading'}
       data-umami-event-book={book.title}
       className={'hocus:border-brand-600/35 dark:hocus:border-brand-200/35'}
     >
-      <Content>
+      <Content style={{ background: getBackground(book.gradientColors) }}>
         <Img
-          src={bookCover}
+          src={book.cover}
           alt={`"${book.title}" book cover`}
           className={cx(
             'rounded-l-0.5 rounded-r-1.5',
-            'aspect-auto w-auto h-auto',
-            'max-w-full max-h-[72px] tablet-sm:max-h-[78px]',
+            'aspect-auto w-auto h-full min-w-11',
+            'max-w-full max-h-18 tablet-sm:max-h-20',
             'border border-divider transition',
             'scale-95 group-hocus/track:scale-100',
           )}
+          {...book.coverData}
         />
         <Texts>
           <Header>
-            <span>Reading ({readProgress}%)</span>
+            <span>
+              {`Reading ${readProgress > 0 ? `(${readProgress.toFixed(2)}%)` : ''}`.trim()}
+            </span>
           </Header>
           <TrackName className={'group-hocus/track:text-accent-dark'}>
             {book.title}
           </TrackName>
-          <TrackArtist>{book.authors}</TrackArtist>
+          <TrackArtist>{authors}</TrackArtist>
         </Texts>
       </Content>
     </ActivityCard>

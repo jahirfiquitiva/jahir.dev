@@ -51,6 +51,7 @@ const mappedColors = colors.map((color) => ({
 const extendedSpacing = {
   ...spacing,
   px: '0.0625rem',
+  '0.75': '0.1875rem',
   '5.5': '1.375rem',
   18: '4.5rem',
   21: '5.25rem',
@@ -86,10 +87,13 @@ module.exports = {
       orange: twColors.orange,
       red: twColors.rose,
       purple: twColors.violet,
+      tint: {
+        bg: 'rgba(var(--tint)/var(--opacity-tint-bg))',
+        border: 'rgba(var(--tint)/var(--opacity-tint-border))',
+      },
     },
     extend: {
       spacing: {
-        site: '666px',
         nice: '69ch',
       },
       zIndex: {

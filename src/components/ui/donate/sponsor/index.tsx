@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import type { Route } from 'next';
+
 import type { CSSProperties } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
@@ -63,7 +63,7 @@ export const SponsorItem = (props: SponsorProps) => {
   const color = hexToRgb(colorForTier[tier], 1, true);
   return (
     <ListItem>
-      <Container title={sponsor.name} href={(sponsor.link || '#') as Route}>
+      <Container title={sponsor.name} href={sponsor.link || '#'}>
         <NameAndPhotoContainer>
           <Img
             src={
@@ -78,16 +78,7 @@ export const SponsorItem = (props: SponsorProps) => {
             {sponsor.name}
           </span>
         </NameAndPhotoContainer>
-        <Tier
-          className={cx(
-            'bg-[rgba(var(--sponsor-color)/0.06)]',
-            'group-hocus/sponsor:bg-[rgba(var(--sponsor-color)/0.12)]',
-            'dark:bg-[rgba(var(--sponsor-color)/0.12)]',
-            'dark:group-hocus/sponsor:bg-[rgba(var(--sponsor-color)/0.24)]',
-            'group-hocus/sponsor:border-[rgba(var(--sponsor-color)/0.56)]',
-          )}
-          style={{ '--sponsor-color': color } as CSSProperties}
-        >
+        <Tier style={{ '--tint': color } as CSSProperties}>
           <Icon
             path={iconForTier[tier]}
             className={tier === 'unicorn' ? 'size-4' : 'size-3'}

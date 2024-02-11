@@ -1,5 +1,3 @@
-import type { Route } from 'next';
-
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import cx from '@/utils/cx';
@@ -23,7 +21,7 @@ export const Bookmark = async ({ url }: { url: string }) => {
   return (
     <Link
       title={data.title}
-      href={url as Route}
+      href={url}
       className={cx(
         'text-inherit bg-brand-500/[0.024] dark:bg-brand-100/5',
         'border border-divider rounded-2.5 font-normal',

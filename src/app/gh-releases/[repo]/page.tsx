@@ -1,4 +1,4 @@
-import type { Metadata, Route } from 'next';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { Link } from '@/components/atoms/link';
@@ -32,10 +32,7 @@ export default async function ReleasePage(context: ReleasePageContext) {
       {data?.success ? null : (
         <p>
           Please follow this link to&nbsp;
-          <Link
-            title={'GitHub releases link'}
-            href={(data?.download || '#') as Route}
-          >
+          <Link title={'GitHub releases link'} href={data?.download || '#'}>
             GitHub Releases
           </Link>{' '}
           …

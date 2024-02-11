@@ -20,13 +20,11 @@ export const Header = tw.div`
 `;
 
 export const MonaGif = tw(Img)<ImgProps>`
-  max-w-[3rem]
-  filter
-  drop-shadow-[0_0_2px_#fff]
+  max-w-12
   mobile-lg:self-end
   mobile-lg:transform
   mobile-lg:-scale-x-100
-  mobile-lg:max-w-[3.5rem]
-  tablet-sm:max-w-[4rem]
-  tablet-lg:max-w-[4.5rem]
+  mobile-lg:max-w-14
+  tablet-sm:max-w-16
+  tablet-lg:max-w-18
 `;

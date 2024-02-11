@@ -1,4 +1,3 @@
-import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
@@ -43,8 +42,8 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
   return (
     <BlogPostLink
       title={post.title}
-      href={(post.link || `/blog/${post.slug}`) as Route}
-      style={{ '--post-color': color } as CSSProperties}
+      href={post.link || `/blog/${post.slug}`}
+      style={{ '--tint': color } as CSSProperties}
     >
       <div
         className={cx(
@@ -52,12 +51,12 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
           'rounded-1 max-w-12',
           'mobile-md:max-w-18',
           'mobile-lg:max-w-24',
-          'aspect-[4/3] transition',
+          'transition',
           'border border-transparent',
-          'group-hocus/post:border-[rgba(var(--post-color)/.24)]',
-          'dark:group-hocus/post:border-[rgba(var(--post-color)/.36)]',
-          'mobile-md:row-span-2 mobile-md:mt-[0.1875rem]',
+          'group-hocus/post:border-tint-border',
+          'mobile-md:row-span-2 mobile-md:mt-0.75',
         )}
+        style={{ aspectRatio: '4/3' }}
       >
         <Img
           src={post.hero || ''}

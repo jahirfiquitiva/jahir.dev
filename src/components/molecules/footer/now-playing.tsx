@@ -34,7 +34,7 @@ export const FooterNowPlaying = () => {
       href={track.url}
       target={'_blank'}
       className={cx(
-        'max-w-[28ch]',
+        'font-normal',
         'flex flex-row items-center gap-2',
         'text-tertiary-txt text-3xs truncate',
         'no-underline group/music',
@@ -43,10 +43,11 @@ export const FooterNowPlaying = () => {
       )}
       data-umami-event={'Now Playing'}
       data-umami-event-from={'Footer'}
+      style={{ maxWidth: '28ch' }}
     >
       <Img
         alt={`Album cover: "${track.album}" by "${track.artist}"`}
-        src={track.image?.url}
+        src={track.image?.url || ''}
         size={24}
         quality={50}
         className={cx(

@@ -28,15 +28,12 @@ export const NameAndPhotoContainer = tw.div`
 export const Tier = tw.span`
   flex items-center gap-1
   rounded-2 pl-2 pr-2.5 py-1
-  border border-divider
+  border
   text-3xs font-medium cursor-default
   transition-colors
-  bg-brand-200/[0.06] dark:bg-brand-700/[0.12]
-  hocus:bg-[rgba(var(--sponsor-color)/0.12)]
-  dark:hocus:bg-[rgba(var(--sponsor-color)/0.24)]
-  hocus:border-[rgba(var(--sponsor-color)/0.56)]
+  bg-tint-bg
+  border-tint-border
   [color:inherit]
-  hocus:transform-none
 `;
 
 export const ListItem = tw.li`

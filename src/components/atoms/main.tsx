@@ -1,6 +1,6 @@
 import { tw } from '@/utils/cx';
 
-export const Main = tw.main`
+export const Main = tw.main.attrs({ style: { maxWidth: 666 } })`
   flex
   flex-col
   flex-1
@@ -10,7 +10,6 @@ export const Main = tw.main`
   pb-8
   gap-14
   w-full
-  max-w-site
   mx-auto
   tablet-md:pt-32
   tablet-md:px-0

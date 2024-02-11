@@ -8,7 +8,7 @@ export const ActivityCard = tw(Link)`
   relative
   w-full
   h-auto
-  max-h-[7rem]
+  max-h-28
   max-w-full
   rounded-2.5
   no-underline
@@ -28,7 +28,7 @@ export const BackgroundImage = tw(Img)<ImgProps>`
   absolute
   w-[110%]
   -left-[5%]
-  -top-[100%]
+  -top-full
   mobile-md:-top-[125%]
   -z-1
   rounded-2.5
@@ -38,7 +38,6 @@ export const BackgroundImage = tw(Img)<ImgProps>`
   select-none
   max-w-[unset]
   truncate
-  ![animation-duration:15s]
   blur-md
 `;
 
@@ -52,7 +51,7 @@ export const Content = tw.div`
   max-w-full
   truncate
   rounded-2
-  mobile-md:max-h-[7rem]
+  mobile-md:max-h-28
   items-center
   bg-white/50
   dark:bg-brand-800/15
@@ -79,21 +78,18 @@ export const Header = tw.p`
 `;
 
 export const MusicBarsGroup = tw.span`
-  relative
   flex
   justify-between
   w-3
   h-3
 `;
 
-export const MusicBar = tw.span`
-  w-[0.1875rem]
+export const MusicBar = tw.span.attrs({ style: { transformOrigin: 'bottom' } })`
+  w-0.75
   h-full
   bg-accent-dark
-  rounded-[0.1875rem]
-  content-['']
+  rounded-0.75
   motion-safe:animate-music-bars
-  [transform-origin:bottom]
 `;
 
 export const TrackName = tw.span`
@@ -103,7 +99,7 @@ export const TrackName = tw.span`
   text-secondary-txt
   transition-colors
   w-full
-  min-h-[1.5rem]
+  min-h-6
   group-hocus/track:text-primary-txt
   group-hocus/track:underline
 `;
@@ -115,6 +111,6 @@ export const TrackArtist = tw.span`
   text-secondary-txt
   transition-colors
   w-full
-  min-h-[1.375rem]
+  min-h-5.5
   group-hocus/track:text-primary-txt
 `;

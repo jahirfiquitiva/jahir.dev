@@ -155,7 +155,7 @@ article.mdx {
   }
 
   mark {
-    @apply p-[0.1875rem] text-on-accent;
+    @apply p-0.75 text-on-accent;
     @apply bg-[#5f27cd] [html[class*='dark']_&]:bg-[#f368e0];
   }
 

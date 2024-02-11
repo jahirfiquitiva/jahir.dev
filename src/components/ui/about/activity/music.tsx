@@ -1,7 +1,6 @@
 'use client';
 
-import type { Route } from 'next';
-
+import tunez from '@/assets/images/tunez.png';
 import { Img } from '@/components/atoms/img';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
@@ -22,13 +21,17 @@ import {
 export const Music = () => {
   const { data, loading } =
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
-  const { track, isPlaying } = data || {};
+  const { track, isPlaying = false } = data || {};
   return (
     <ActivityCard
       title={
-        !track ? 'Loading…' : `"${track.name}" by "${track.artist}" on Spotify`
+        loading
+          ? 'Loading…'
+          : !track
+            ? 'tunez playlist on Spotify'
+            : `"${track.name}" by "${track.artist}" on Spotify`
       }
-      href={(track?.url || '#') as Route}
+      href={track?.url || 'https://tunez.jahir.dev'}
       target={'_blank'}
       className={cx(
         loading ? 'motion-safe:animate-pulse' : '',
@@ -42,11 +45,13 @@ export const Music = () => {
     >
       <BackgroundImage
         alt={
-          !track
+          loading
             ? 'Loading…'
-            : `Album cover: "${track.album}" by "${track.artist}"`
+            : !track
+              ? 'tunez playlist cover'
+              : `Album cover: "${track.album}" by "${track.artist}"`
         }
-        src={track?.image?.url || ''}
+        src={track?.image?.url ?? tunez}
         size={78}
         quality={50}
         className={cx(
@@ -56,18 +61,23 @@ export const Music = () => {
               ? 'hidden invisible'
               : '',
         )}
+        style={{ animationDuration: '15s' }}
       />
       <Content className={'bg-white/65 dark:bg-brand-900/35'}>
         <Img
           alt={
-            !track ? '' : `Album cover: "${track.album}" by "${track.artist}"`
+            loading
+              ? 'Loading…'
+              : !track
+                ? 'tunez playlist cover'
+                : `Album cover: "${track.album}" by "${track.artist}"`
           }
-          src={track?.image?.url || ''}
+          src={track?.image?.url ?? tunez}
           size={track?.image?.width || 78}
           className={cx(
             'rounded-1',
             'aspect-square w-auto h-full',
-            'max-w-full max-h-[72px] tablet-sm:max-h-[78px]',
+            'max-w-full max-h-18 tablet-sm:max-h-20',
             'border border-divider transition',
             'scale-95 group-hocus/track:scale-100',
           )}
@@ -80,8 +90,12 @@ export const Music = () => {
             {isPlaying ? (
               <MusicBarsGroup>
                 <MusicBar />
-                <MusicBar className={'[animation-delay:-2.2s]'} />
-                <MusicBar className={'[animation-delay:-3.7s]'} />
+                <MusicBar
+                  style={{ animationDelay: '-2.2s', transformOrigin: 'bottom' }}
+                />
+                <MusicBar
+                  style={{ animationDelay: '-3.7s', transformOrigin: 'bottom' }}
+                />
               </MusicBarsGroup>
             ) : null}
           </Header>
@@ -91,10 +105,10 @@ export const Music = () => {
               isPlaying ? 'group-hocus/track:decoration-wavy' : '',
             )}
           >
-            {track?.name}
+            {loading ? '' : track?.name ?? 'tunez'}
           </TrackName>
           <TrackArtist className={cx(loading ? 'bg-divider' : '')}>
-            {track?.artist}
+            {loading ? '' : track?.artist ?? '99 top recently listened songs'}
           </TrackArtist>
         </Texts>
       </Content>

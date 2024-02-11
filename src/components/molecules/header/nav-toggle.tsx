@@ -28,7 +28,7 @@ const MenuLine = tw.span.attrs({ 'aria-hidden': true })`
 
 export const NavToggle = (props: TWComponentProps<typeof NavToggleButton>) => (
   <NavToggleButton {...props}>
-    <div aria-hidden={'true'} className={'flex flex-col gap-[0.1875rem]'}>
+    <div aria-hidden={'true'} className={'flex flex-col gap-0.75'}>
       <MenuLine
         className={
           // eslint-disable-next-line max-len

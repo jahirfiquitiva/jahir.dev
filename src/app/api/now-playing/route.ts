@@ -41,7 +41,7 @@ const spotifyResponse = (data: unknown) =>
   });
 
 export async function GET() {
-  const nowPlaying = await getNowPlaying().catch(null);
+  const nowPlaying = await getNowPlaying();
   let isPlaying = false;
   let nowPlayingTrack: Track | null = null;
   if (!('error' in nowPlaying)) {
@@ -58,9 +58,10 @@ export async function GET() {
   }
 
   // Otherwise, get the most recently played track
-  const recentlyPlayed = await getRecentlyPlayed().catch(null);
+  const recentlyPlayed = await getRecentlyPlayed();
   let lastPlayed: Track | null = null;
   if (!('error' in recentlyPlayed)) lastPlayed = recentlyPlayed.items[0]?.track;
+
   return spotifyResponse({
     track: mapTrackData(lastPlayed),
     isPlaying: false,

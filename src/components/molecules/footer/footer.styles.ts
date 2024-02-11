@@ -1,9 +1,8 @@
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
-export const StyledFooter = tw.footer`
+export const StyledFooter = tw.footer.attrs({ style: { maxWidth: 666 } })`
   w-full
-  max-w-site
   mx-auto
   grid
   grid-cols-2
@@ -28,10 +27,9 @@ export const Details = tw.div`
   gap-3
 `;
 
-export const Description = tw.p`
+export const Description = tw.p.attrs({ style: { maxWidth: '32ch' } })`
   text-2xs
   text-pretty
-  max-w-[32ch]
 `;
 
 export const LinksList = tw.div`

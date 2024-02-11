@@ -2,12 +2,11 @@
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
-export const Nav = tw.nav`
+export const Nav = tw.nav.attrs({ style: { maxWidth: 666 } })`
   relative
   mx-auto
   h-full
   w-full
-  max-w-site
   z-4 bg-toolbar
   p-1.5 tablet-sm:p-2
   backdrop-saturate-125
@@ -15,10 +14,10 @@ export const Nav = tw.nav`
   transform-gpu
   ring-1
   ring-inset
-  ring-brand-600/[0.12]
-  dark:ring-brand-200/[0.18]
-  hover:ring-brand-600/[0.18]
-  hover:dark:ring-brand-200/[0.24]
+  ring-brand-600/10
+  dark:ring-brand-200/15
+  hover:ring-brand-600/20
+  hover:dark:ring-brand-200/25
   rounded-3.5
   grid
   grid-cols-[auto_1fr]
@@ -28,8 +27,8 @@ export const Nav = tw.nav`
   bg-[linear-gradient(to_bottom,_var(--color-background)_0%,_var(--color-background)_100%),_var(--color-toolbar)]
   shadow-none
   hover:shadow-toolbar-hover
-  shadow-brand-600/[0.18]
-  dark:shadow-brand-200/[0.18]
+  shadow-brand-600/15
+  dark:shadow-brand-200/15
   tablet-sm:items-center
   tablet-sm:grid-cols-[auto_1fr_auto]
   tablet-sm:grid-rows-1
@@ -48,8 +47,8 @@ export const Nav = tw.nav`
   before:m-px
   before:border-px
   before:border-accent-dark
-  before:opacity-[0.06]
-  dark:before:opacity-[0.12]
+  before:opacity-5
+  dark:before:opacity-10
   before:bg-gradient-to-b
   before:from-brand-600/0
   before:to-brand-600/80

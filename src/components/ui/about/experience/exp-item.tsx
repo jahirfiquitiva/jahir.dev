@@ -1,4 +1,3 @@
-import type { Route } from 'next';
 import { type CSSProperties } from 'react';
 
 import type { ImgProps } from '@/components/atoms/img';
@@ -25,9 +24,9 @@ export const ExpItem = (props: ExperienceItemProps) => {
   return (
     <Component
       title={`${props.position} at ${props.company}`}
-      href={props.link as Route}
+      href={props.link}
       target={'_blank'}
-      style={{ '--exp-color': color } as CSSProperties}
+      style={{ '--tint': color } as CSSProperties}
       data-umami-event={'Experience'}
       data-umami-event-company={props.company}
     >

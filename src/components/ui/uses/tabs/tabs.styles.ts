@@ -69,8 +69,8 @@ export const TabButtonText = tw.span`
   after:-bottom-1
   after:left-1.5
   after:right-1.5
-  after:h-[0.1875rem]
-  after:rounded-t-[0.1875rem]
+  after:h-0.75
+  after:rounded-t-0.75
   after:transition-colors
   after:bg-transparent
   [[aria-selected="true"]>&]:after:bg-accent

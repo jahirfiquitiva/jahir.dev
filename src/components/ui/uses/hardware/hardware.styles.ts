@@ -23,7 +23,7 @@ export const HardwareItem = tw(Link)`
   pl-0.5
   pr-1.5
   py-1.5
-  min-h-[6rem]
+  min-h-24
   group/hardware
   text-secondary-txt
   bg-white/50
@@ -40,13 +40,13 @@ export const HardwareImage = tw(Img)<ImgProps>`
   p-2
   select-none
   transition
-  max-w-[4.5rem]
+  max-w-18
   shadow-brand-950/30
   drop-shadow-[0_1px_3px_var(--tw-shadow-color)]
   dark:shadow-brand-50/25
   dark:drop-shadow-[0_2px_5px_var(--tw-shadow-color)]
-  mobile-md:max-w-[5rem]
-  mobile-lg:max-w-[5.5rem]
+  mobile-md:max-w-20
+  mobile-lg:max-w-22
   scale-95
   group-hocus/hardware:scale-100
 `;

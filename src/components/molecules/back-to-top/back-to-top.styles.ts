@@ -18,10 +18,10 @@ export const BackToTopButton = tw(Button)`
   text-3xs
   shadow
   hocus:shadow-md
-  shadow-brand-600/[0.24]
-  hocus:shadow-brand-600/[0.36]
-  dark:shadow-brand-200/[0.36]
-  dark:hocus:shadow-brand-200/[0.48]
+  shadow-brand-600/25
+  hocus:shadow-brand-600/35
+  dark:shadow-brand-200/35
+  dark:hocus:shadow-brand-200/45
   
   tablet-sm:m-6
   desktop:size-[unset]

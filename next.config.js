@@ -19,7 +19,6 @@ const defaultNextConfig = {
   compress: true,
   crossOrigin: 'anonymous',
   experimental: {
-    typedRoutes: true,
     // ppr: true,
     // useLightningcss: true,
     optimizePackageImports: ['react-tweet'],
@@ -47,6 +46,7 @@ const defaultNextConfig = {
       { hostname: '**.cdninstagram.com' },
       { hostname: '**.pixpa.com' },
       { hostname: '**.fbcdn.net' },
+      { hostname: 'assets.literal.club' },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

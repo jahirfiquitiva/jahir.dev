@@ -1,4 +1,3 @@
-import type { Route } from 'next';
 import NextLink from 'next/link';
 import type { ComponentProps } from 'react';
 
@@ -35,7 +34,7 @@ export const Link = (props: LinkProps) => {
   return (
     <LinkComponent
       {...{ href, ...rest }}
-      href={href.toString() as Route}
+      href={href.toString()}
       className={className}
       prefetch={
         openInNewTab || rest.target === '_blank' ? false : rest.prefetch
