@@ -33,7 +33,7 @@ export const Nav = tw.nav.attrs({ style: { maxWidth: 666 } })`
   tablet-sm:grid-cols-[auto_1fr_auto]
   tablet-sm:grid-rows-1
   tablet-sm:gap-2
-  [[data-expanded="true"]>&]:max-tablet-sm:shadow-toolbar-elevated
+  [[data-expanded="true"]>&]:max-tablet-sm:shadow-toolbar-hover
   [[data-expanded="true"]>&]:gap-2
 
   before:pointer-events-none

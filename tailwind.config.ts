@@ -153,7 +153,6 @@ module.exports = {
       },
       boxShadow: {
         'toolbar-hover': '0 0 8px 2px var(--tw-shadow-color)',
-        'toolbar-elevated': '0 0 6px 1px var(--tw-shadow-color)',
       },
       textShadow: {
         none: 'none',
