@@ -90,7 +90,7 @@ const getReadingBooks = async (): Promise<ReadingBooksResponse> => {
         offset: 0,
       },
     }),
-    next: { revalidate: 43200 },
+    next: { revalidate: 21600 },
   }).then((res) => res.json());
 };
 
@@ -110,11 +110,11 @@ const getBookProgress = async (
         active: true,
       },
     }),
-    next: { revalidate: 43200 },
+    next: { revalidate: 21600 },
   }).then((res) => res.json());
 };
 
-type BookWithProgress = Book &
+export type BookWithProgress = Book &
   Partial<ReadingProgress> & {
     coverData?: Awaited<ReturnType<typeof getBlurData>>;
   };
