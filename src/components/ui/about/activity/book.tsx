@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { Img } from '@/components/atoms/img';
-import { getReadingProgress, type BookWithProgress } from '@/lib/literal';
+import { getReadingProgress } from '@/lib/literal';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 

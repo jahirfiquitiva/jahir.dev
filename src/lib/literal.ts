@@ -114,7 +114,7 @@ const getBookProgress = async (
   }).then((res) => res.json());
 };
 
-export type BookWithProgress = Book &
+type BookWithProgress = Book &
   Partial<ReadingProgress> & {
     coverData?: Awaited<ReturnType<typeof getBlurData>>;
   };

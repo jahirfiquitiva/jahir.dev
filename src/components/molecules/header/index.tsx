@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { tw } from '@/utils/cx';
