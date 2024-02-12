@@ -249,22 +249,6 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /^(from|to)-brand-500$/,
-      variants: ['hocus', '[&[aria-current="page"]]'],
-    },
-    {
-      pattern: /^(from|to)-brand-300$/,
-      variants: ['dark', 'hocus:dark', '[&[aria-current="page"]]:dark'],
-    },
-    {
-      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-600$/,
-      variants: ['hocus', '[&[aria-current="page"]]'],
-    },
-    {
-      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-400$/,
-      variants: ['dark', 'hocus:dark', '[&[aria-current="page"]]:dark'],
-    },
-    {
       pattern: /^shadow-(brand|blue|green|yellow|orange|red|purple)-300$/,
     },
   ],

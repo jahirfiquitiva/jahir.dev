@@ -27,12 +27,6 @@ export const getColoredTextClasses = (
   if (from || to) {
     classes.push(
       cx(
-        includeLightTheme
-          ? `from-${from}-${from === 'brand' ? '500' : '600'}`
-          : '',
-        includeLightTheme ? `to-${to}-${to === 'brand' ? '500' : '600'}` : '',
-        `dark:from-${from}-${from === 'brand' ? '300' : '400'}`,
-        `dark:to-${to}-${to === 'brand' ? '300' : '400'}`,
         'dark:saturate-150',
         `${gradientPrefix}bg-gradient-to-r`,
         `${gradientPrefix}bg-clip-text`,
@@ -41,7 +35,12 @@ export const getColoredTextClasses = (
     );
   }
 
-  return cx(classes, otherClasses);
+  return [
+    cx(classes, otherClasses),
+    `from-${from}`,
+    `to-${to}`,
+    'gradient',
+  ].join(' ');
 };
 
 export const buildColoredLinkClasses = (
@@ -49,12 +48,7 @@ export const buildColoredLinkClasses = (
   to: Color,
   forFooter?: boolean,
 ) => {
-  const className = [
-    `from-${from}-${from === 'brand' ? '500' : '600'}`,
-    `to-${to}-${to === 'brand' ? '500' : '600'}`,
-    `dark:from-${from}-${from === 'brand' ? '300' : '400'}`,
-    `dark:to-${to}-${to === 'brand' ? '300' : '400'}`,
-  ].join(' ');
+  const className = [`from-${from}`, `to-${to}`].join(' ');
 
   return (className || '')
     .split(' ')
