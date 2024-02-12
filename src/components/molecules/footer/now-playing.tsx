@@ -26,8 +26,8 @@ export const FooterNowPlaying = () => {
     return <Icon path={loadingIcon} className={'size-5 animate-spin'} />;
 
   if (!isPlaying || !track) return <Clock />;
-  const scrollingText = `${track.name} • ${track.artist}`;
-  const animationDuration = scrollingText.length * 0.325;
+  const scrollingText = `${track.name} by ${track.artist}`;
+  const animationDuration = scrollingText.length * 0.35;
   return (
     <Link
       title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
