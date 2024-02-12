@@ -29,7 +29,7 @@ const fontSizesForTier: Record<AllCategoriesKey, string> = {
   unicorn: 'text-3xs',
   star: 'text-2xs',
   ball: 'text-xs',
-  rocket: 'text-sm',
+  rocket: '',
   diamond: 'text-md',
 };
 
@@ -74,7 +74,10 @@ export const SponsorItem = (props: SponsorProps) => {
             className={'rounded-half h-full bg-accent'}
             style={{ minHeight: imgSizesForTier[tier] }}
           />
-          <span className={cx(fontSizesForTier[tier], 'font-medium')}>
+          <span
+            className={cx(fontSizesForTier[tier], 'font-medium')}
+            style={{ fontSize: tier === 'rocket' ? '1rem' : undefined }}
+          >
             {sponsor.name}
           </span>
         </NameAndPhotoContainer>

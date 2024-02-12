@@ -8,7 +8,7 @@ const ColorSquare = tw.div`
   items-center
   justify-center
   w-full select-none
-  font-medium text-sm
+  font-medium
 `;
 
 export const DesignAndColors = () => (

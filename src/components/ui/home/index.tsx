@@ -49,7 +49,7 @@ export const Intro = () => {
           </SubHeader>
         </h1>
 
-        <p className={'text-pretty flex flex-col gap-2 text-sm'}>
+        <p className={'text-pretty flex flex-col gap-2'}>
           <span style={{ maxWidth: '42ch' }}>
             Passionate and creative full-stack software engineer from{' '}
             <Link
