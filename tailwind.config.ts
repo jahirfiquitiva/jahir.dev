@@ -27,7 +27,6 @@ const breakpoints = {
   'mobile-lg': '425px',
   'tablet-sm': '596px',
   'tablet-md': '768px',
-  'tablet-lg': '792px',
   desktop: '960px',
 };
 
