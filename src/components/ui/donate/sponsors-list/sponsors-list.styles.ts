@@ -26,5 +26,4 @@ export const MonaGif = tw(Img)<ImgProps>`
   mobile-lg:-scale-x-100
   mobile-lg:max-w-14
   tablet-sm:max-w-16
-  tablet-lg:max-w-18
 `;

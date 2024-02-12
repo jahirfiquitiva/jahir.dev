@@ -16,7 +16,7 @@ const fontSize = {
   xl: '1.375rem', // h2
   lg: '1.25rem', // h3
   md: '1.125rem', // h4
-  sm: '1rem', // h5
+  // h5: 1rem (defined in css)
   xs: '0.9375rem', // h6, body, p
   '2xs': '0.875rem', // small
   '3xs': '0.8125rem', // (?)
@@ -27,7 +27,6 @@ const breakpoints = {
   'mobile-lg': '425px',
   'tablet-sm': '596px',
   'tablet-md': '768px',
-  'tablet-lg': '792px',
   desktop: '960px',
 };
 
@@ -56,6 +55,7 @@ const extendedSpacing = {
   18: '4.5rem',
   21: '5.25rem',
   22: '5.5rem',
+  30: '7.5rem',
 };
 
 module.exports = {
@@ -249,22 +249,6 @@ module.exports = {
     hocus,
   ],
   safelist: [
-    {
-      pattern: /^(from|to)-brand-500$/,
-      variants: ['hocus', '[&[aria-current="page"]]'],
-    },
-    {
-      pattern: /^(from|to)-brand-300$/,
-      variants: ['dark', 'hocus:dark', '[&[aria-current="page"]]:dark'],
-    },
-    {
-      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-600$/,
-      variants: ['hocus', '[&[aria-current="page"]]'],
-    },
-    {
-      pattern: /^(from|to)-(blue|green|yellow|orange|red|purple)-400$/,
-      variants: ['dark', 'hocus:dark', '[&[aria-current="page"]]:dark'],
-    },
     {
       pattern: /^shadow-(brand|blue|green|yellow|orange|red|purple)-300$/,
     },

@@ -32,9 +32,8 @@ export const SoftwareGrid = tw.ol`
   mobile-md:grid-cols-[repeat(3,minmax(0,108px))]
   mobile-lg:grid-cols-[repeat(4,minmax(0,108px))]
   tablet-sm:grid-cols-[repeat(5,minmax(0,108px))]
-  tablet-sm:py-8
+  tablet-sm:py-12
   tablet-sm:px-6
-  tablet-lg:py-12
 `;
 
 export const SoftwareItem = tw(Link)`

@@ -6,6 +6,7 @@
 @tailwind utilities;
 
 @import './colors.scss';
+@import './gradients.scss';
 @import './typography.scss';
 
 @layer utilities {
@@ -15,6 +16,9 @@
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
+  }
+  .gradient {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   }
 }
 

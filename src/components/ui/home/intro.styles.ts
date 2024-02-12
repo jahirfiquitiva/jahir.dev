@@ -17,10 +17,10 @@ export const SubHeader = tw.span`
 `;
 
 export const Name = tw.span`
+  from-brand
+  to-blue
   dark:text-transparent
   dark:bg-gradient-to-r
-  dark:from-brand-300
-  dark:to-blue-400
   dark:saturate-150
   dark:bg-clip-text
 `;

@@ -26,7 +26,7 @@ export const Intro = () => {
           priority
           className={cx(
             'rounded-full aspect-square tablet-sm:float-right',
-            'max-w-24 mobile-lg:max-w-28 tablet-sm:max-w-36 tablet-md:max-w-40',
+            'max-w-28 mobile-lg:max-w-30 tablet-sm:max-w-36 tablet-md:max-w-40',
             'bg-brand-700 overflow-hidden saturate-125',
           )}
         />
@@ -49,7 +49,7 @@ export const Intro = () => {
           </SubHeader>
         </h1>
 
-        <p className={'text-pretty flex flex-col gap-2 text-sm'}>
+        <p className={'text-pretty flex flex-col gap-2'}>
           <span style={{ maxWidth: '42ch' }}>
             Passionate and creative full-stack software engineer from{' '}
             <Link

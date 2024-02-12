@@ -92,7 +92,9 @@ export default function AboutPage() {
         </p>
       </Section>
       <Section id={'contact'} className={'-mt-5 gap-2.5'}>
-        <h2 className={'text-sm mb-2'}>Let&apos;s connect!</h2>
+        <h2 className={'mb-1'} style={{ fontSize: '1rem' }}>
+          Let&apos;s connect!
+        </h2>
         <p>
           Feel free to reach out to me at{' '}
           <Link

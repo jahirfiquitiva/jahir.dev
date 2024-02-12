@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { Img } from '@/components/atoms/img';
 import { getReadingProgress } from '@/lib/literal';
 import { hexToRgb } from '@/utils/color';
@@ -29,7 +31,7 @@ const getBackground = (colors: Array<string>): string => {
   return bg;
 };
 
-export const Book = async () => {
+const BookCard = async () => {
   const book = await getReadingProgress();
   if (!book) return null;
   const authors = book.authors.map((a) => a.name).join(', ');
@@ -71,3 +73,18 @@ export const Book = async () => {
     </ActivityCard>
   );
 };
+
+export const Book = () => (
+  <Suspense
+    fallback={
+      <ActivityCard
+        title={''}
+        href={''}
+        aria-disabled
+        className={'pointer-events-none'}
+      />
+    }
+  >
+    <BookCard />
+  </Suspense>
+);
