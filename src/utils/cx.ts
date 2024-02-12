@@ -8,7 +8,7 @@ const twMerge = extendTailwindMerge<AdditionalClassGroupIds>({
   extend: {
     classGroups: {
       'text-shadow': [{ 'text-shadow': ['', 'none'] }],
-      shadow: ['shadow-toolbar-hover'],
+      shadow: ['shadow-toolbar-hover', 'shadow-toolbar-elevated'],
     },
   },
 });

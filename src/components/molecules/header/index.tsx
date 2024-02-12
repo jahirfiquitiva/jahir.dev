@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { tw } from '@/utils/cx';
@@ -27,10 +27,30 @@ const StyledHeader = tw.header`
   [&[data-expanded="true"]]:max-tablet-sm:dark:to-dark/50
 `;
 
+const scrollThreshold = 56; //px
 export const Header = () => {
   const pathname = usePathname();
   const [isExpanded, setExpanded] = useState(false);
+  const [elevated, setElevated] = useState(false);
   const hasMounted = useHasMounted();
+
+  const checkScrolledDistance = useCallback(() => {
+    if (!hasMounted) return;
+    const scrolledDistance = window.scrollY || window.pageYOffset;
+    try {
+      setElevated(scrolledDistance >= scrollThreshold);
+    } catch (e) {}
+  }, [hasMounted]);
+
+  useEffect(() => {
+    if (!hasMounted) return;
+    window.addEventListener('scroll', checkScrolledDistance);
+    checkScrolledDistance();
+    // eslint-disable-next-line consistent-return
+    return () => {
+      window.removeEventListener('scroll', checkScrolledDistance);
+    };
+  }, [hasMounted, checkScrolledDistance]);
 
   useEffect(() => {
     if (!hasMounted) return;
@@ -48,6 +68,7 @@ export const Header = () => {
       <Navbar
         path={pathname}
         isExpanded={isExpanded}
+        className={elevated ? 'shadow-toolbar-elevated' : ''}
         onNavToggleClick={() => {
           setExpanded(!isExpanded);
         }}
