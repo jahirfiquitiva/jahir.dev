@@ -2,12 +2,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn clean && yarn download-themes && next telemetry disable && next build",
+    "build": "bun clean && bun download-themes && next telemetry disable && next build",
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
-    "update-deps": "npx --yes npm-check-updates -u && yarn",
+    "update-deps": "npx --yes npm-check-updates -u && bun",
     "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.next|.contentlayer|src/app'",
     "postinstall": "is-ci || husky install"
@@ -80,7 +80,6 @@
     "trailingComma": "all",
     "semi": true
   },
-  "packageManager": "yarn@4.1.0",
   "overrides": {
     "next-contentlayer": {
       "next": "$next"

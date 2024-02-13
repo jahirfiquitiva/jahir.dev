@@ -19,6 +19,7 @@ const mdx: MDXOptions = {
     // @ts-expect-error idk
     prettyCode,
     [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
+    // @ts-expect-error idk
     toc,
   ],
 };
