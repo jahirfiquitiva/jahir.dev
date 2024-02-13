@@ -1,5 +1,5 @@
 import { getOgImage } from '@/components/og/response';
-import { allReadableBlogs } from '@/utils/blog';
+import { getAllPosts } from '@/lib/blog';
 import { config } from '@/utils/og';
 
 import type { BlogPostPageContext } from './types';
@@ -15,7 +15,8 @@ export const contentType = config.contentType;
 export default async function Image(context: BlogPostPageContext) {
   const { slug } = context.params;
   if (!slug) return getOgImage('blog');
-  const post = allReadableBlogs.find((b) => b.slug === slug);
+  const allPosts = await getAllPosts();
+  const post = allPosts.find((b) => b.slug === slug);
   if (!post) return getOgImage('blog');
   return getOgImage('blog', post.title, post.hero);
 }

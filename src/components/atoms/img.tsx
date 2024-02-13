@@ -13,6 +13,7 @@ export type ImgProps = SizeProps | WidthHeightProps;
 const BaseImg = (baseProps: ImgProps) => {
   const { size = 0, ...whProps } = baseProps as SizeProps;
   const { width = size, height = size, ...props } = whProps as WidthHeightProps;
+  console.error({ width, height });
   return (
     // Disabled warning. Alt props already is present in props
     // eslint-disable-next-line jsx-a11y/alt-text
@@ -28,6 +29,7 @@ const BaseImg = (baseProps: ImgProps) => {
           : props.placeholder
       }
       className={cx('object-cover object-center', props.className)}
+      sizes={'(max-width: 960px) 100vw, 960px'}
     />
   );
 };

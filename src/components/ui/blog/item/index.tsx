@@ -1,12 +1,11 @@
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
-import type { PartialBlog } from '@/lib/blog';
+import type { Blog, PartialBlog } from '@/lib/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
-import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../views-counter';
 

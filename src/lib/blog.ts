@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import { readdir } from 'fs/promises';
 import path from 'path';
 
 import matter from 'gray-matter';
@@ -33,7 +33,7 @@ export const sortBlogPostsByDate = (a: PartialBlog, b: PartialBlog) =>
 let allPosts: Blog[] = []; // Cache posts
 export async function getAllPosts(): Promise<Array<Blog>> {
   if (!allPosts.length) {
-    const files = await fs.readdir(path.join(process.cwd(), 'content'));
+    const files = await readdir(path.join(process.cwd(), 'content'));
     const posts = await Promise.all(files.map(getPost));
     allPosts = posts
       .sort(sortBlogPostsByDate)

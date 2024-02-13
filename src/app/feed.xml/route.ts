@@ -1,8 +1,7 @@
 import xml from 'xml';
 
-import { allReadableBlogs } from '@/utils/blog';
+import { getAllPosts, type Blog } from '@/lib/blog';
 import { getDate } from '@/utils/date';
-import { type Blog } from 'contentlayer/generated';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-static';
@@ -124,11 +123,8 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const feedItems = await Promise.all(
-    allReadableBlogs
-      .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
-      .map(getAllPostRssData),
-  );
+  const allPosts = await getAllPosts();
+  const feedItems = await Promise.all(allPosts.map(getAllPostRssData));
 
   const feedObject = {
     rss: [
