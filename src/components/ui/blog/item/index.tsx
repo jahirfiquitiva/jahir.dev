@@ -1,6 +1,7 @@
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
+import type { PartialBlog } from '@/lib/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
@@ -12,7 +13,7 @@ import { ViewsCounter } from '../views-counter';
 import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
-  post: Blog;
+  post: PartialBlog;
   fullDate?: boolean;
 }
 
