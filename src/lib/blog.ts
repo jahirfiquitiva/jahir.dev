@@ -59,18 +59,19 @@ const getPost = async (file: string): Promise<Blog> => {
     path.join(process.cwd(), 'content', file),
   );
   const slug = path.basename(file, '.mdx');
+  const hero = getActualHeroUrl(data.hero || `${slug}/hero.jpg`);
   return {
     slug,
     title: data.title,
     summary: data.summary,
     date: data.date,
     color: data.color,
-    hero: getActualHeroUrl(data.hero || `${slug}/hero.jpg`),
+    hero,
     heroSource: data.heroSource,
     link: data.link,
     inProgress: data.inProgress,
     readingTime: readingTime(content).minutes,
-    heroMeta: await getBlurData(data.cover),
+    heroMeta: await getBlurData(hero),
     keywords: getKeywords(data.keywords),
     content,
   };

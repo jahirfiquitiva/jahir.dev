@@ -3,6 +3,7 @@ import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import smartypants from 'remark-smartypants';
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
@@ -11,7 +12,13 @@ import { prettyCode } from './rehype/code';
 import { toc } from './rehype/toc';
 
 const mdx: SerializeOptions['mdxOptions'] = {
-  remarkPlugins: [remarkGfm, remarkSqueezeParagraphs, remarkUnwrapImages],
+  remarkPlugins: [
+    remarkGfm,
+    remarkSqueezeParagraphs,
+    remarkUnwrapImages,
+    // @ts-expect-error idk
+    smartypants,
+  ],
   rehypePlugins: [
     imageBlurMetadata,
     rehypeSlug,
