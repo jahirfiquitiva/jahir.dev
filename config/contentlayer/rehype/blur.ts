@@ -2,7 +2,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'path';
 
-import { getPlaiceholder } from 'plaiceholder';
+import sharp from 'sharp';
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
@@ -33,17 +33,21 @@ export const getBlurData = async (
       imgBuffer = Buffer.from(arrayBuffer);
     }
 
-    const blur = await getPlaiceholder(imgBuffer, { size: placeholderSize });
+    const sharpInstance = await sharp(imgBuffer, {});
+    const meta = await sharpInstance.metadata();
+    const blur = await sharpInstance
+      .resize(placeholderSize, placeholderSize, { fit: 'inside' })
+      .toBuffer({ resolveWithObject: true });
     return {
       width:
         defaultWidth > 0
-          ? Math.min(defaultWidth, blur.metadata.width)
-          : blur.metadata.width || defaultWidth,
+          ? Math.min(defaultWidth, meta.width || defaultWidth)
+          : meta.width || defaultWidth,
       height:
         defaultHeight > 0
-          ? Math.min(defaultHeight, blur.metadata.height)
-          : blur.metadata.height || defaultHeight,
-      blurDataURL: blur.base64,
+          ? Math.min(defaultHeight, meta.height || defaultHeight)
+          : meta.height || defaultHeight,
+      blurDataURL: `data:image/${blur.info.format};base64,${blur.data.toString('base64')}`,
       placeholder: 'blur',
     };
   } catch (e) {

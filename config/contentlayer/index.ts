@@ -42,7 +42,9 @@ const computedFields: ComputedFields = {
   heroMeta: {
     type: 'json',
     resolve: async (doc) => {
-      return getBlurData(getActualHeroUrl(doc.hero || `${getSlug(doc)}/hero.jpg`));
+      return getBlurData(
+        getActualHeroUrl(doc.hero || `${getSlug(doc)}/hero.jpg`),
+      );
     },
   },
 };
