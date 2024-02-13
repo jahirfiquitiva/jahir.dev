@@ -28,6 +28,7 @@ const BaseImg = (baseProps: ImgProps) => {
           : props.placeholder
       }
       className={cx('object-cover object-center', props.className)}
+      sizes={'(max-width: 960px) 100vw, 960px'}
     />
   );
 };

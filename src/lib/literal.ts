@@ -1,4 +1,4 @@
-import { getBlurData } from 'config/contentlayer/rehype/blur';
+import { getBlurData } from '@/utils/blur';
 
 const {
   LITERAL_PROFILE_ID: profileId = '',

@@ -2,7 +2,6 @@ import setupImage from '@/assets/images/setup.jpg';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
-import { Zoom } from '@/components/molecules/zoom';
 import { Coding } from '@/components/ui/uses/coding';
 import { ExtensionsGrid } from '@/components/ui/uses/extensions';
 import { EverydayHardware } from '@/components/ui/uses/hardware';
@@ -51,7 +50,6 @@ export default function UsesPage() {
           </p>
         </Tabs>
       </Section>
-      <Zoom />
     </>
   );
 }

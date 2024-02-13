@@ -58,7 +58,7 @@ const extendedSpacing = {
   30: '7.5rem',
 };
 
-module.exports = {
+const config: Config = {
   darkMode: 'class',
   content: [
     './src/components/**/*.{js,ts,jsx,tsx}',
@@ -253,4 +253,6 @@ module.exports = {
       pattern: /^shadow-(brand|blue|green|yellow|orange|red|purple)-300$/,
     },
   ],
-} satisfies Config;
+};
+
+export default config;

@@ -1,33 +1,37 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-import { Mdx } from '@/components/ui/blog/mdx';
-import { allReadableBlogs } from '@/utils/blog';
+import { MDX } from '@/components/ui/blog/mdx';
+import { getAllPosts } from '@/lib/blog';
 import { createMetadata } from '@/utils/metadata';
 
 import type { BlogPostPageContext } from './types';
 
-export default function BlogPostPage(context: BlogPostPageContext) {
-  const { slug } = context.params;
-  const post = allReadableBlogs.find((b) => b.slug === slug);
-  if (!slug || !post) return notFound();
-  if (post.link) return redirect(post.link);
-  return <Mdx code={post.body.code} />;
-}
-
-export const generateStaticParams = () =>
-  allReadableBlogs
-    .filter((post) => !post.link)
-    .map((post) => ({ slug: post.slug }));
-
 export const dynamicParams = false;
 
-export function generateMetadata(
+export default async function BlogPostPage(context: BlogPostPageContext) {
+  const { slug } = context.params;
+  const allPosts = await getAllPosts();
+  const post = allPosts.find((b) => b.slug === slug);
+  if (!slug || !post) return notFound();
+  if (post.link) return redirect(post.link);
+  return <MDX source={post.content} />;
+}
+
+export async function generateStaticParams() {
+  const allPosts = await getAllPosts();
+  return allPosts
+    .filter((post) => !post.link)
+    .map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata(
   context: BlogPostPageContext,
-): Metadata | undefined {
+): Promise<Metadata | undefined> {
   const { slug } = context.params;
   if (!slug) return undefined;
-  const post = allReadableBlogs.find((b) => b.slug === slug);
+  const allPosts = await getAllPosts();
+  const post = allPosts.find((b) => b.slug === slug);
   if (!post) return undefined;
 
   const { title, date, summary } = post;

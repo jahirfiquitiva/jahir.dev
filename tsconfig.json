@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -13,35 +12,26 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "removeComments": true,
     "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
       "react": ["./node_modules/@types/react"]
     },
-    "incremental": true,
-    "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true,
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["node"]
   },
-  "exclude": [".idea", "node_modules"],
-  "include": [
-    "next-env.d.ts",
-    "global.d.ts",
-    "**/*.js",
-    "**/*.mjs",
-    "**/*.ts",
-    "**/*.tsx",
-    "next.config.js",
-    ".next/types/**/*.ts",
-    "./.contentlayer/generated"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": [".idea", "node_modules"]
 }

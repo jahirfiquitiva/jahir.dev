@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
+import { getAllPosts } from '@/lib/blog';
 import { getDate } from '@/utils/date';
 
 const today = ((): Date => {
@@ -10,10 +10,10 @@ const today = ((): Date => {
   return d;
 })();
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogs = allReadableBlogs
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const allBlogs = await getAllPosts();
+  const blogs = allBlogs
     .filter((it) => !Boolean(it.link))
-    .sort(sortBlogPostsByDate)
     .map((post) => ({
       url: `https://jahir.dev/blog/${post.slug}`,
       lastModified: getDate(post.date)?.toISOString().split('T')[0],

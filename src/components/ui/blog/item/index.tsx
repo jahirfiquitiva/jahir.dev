@@ -1,24 +1,24 @@
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
+import type { PartialBlog } from '@/lib/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
-import type { Blog } from 'contentlayer/generated';
 
 import { ViewsCounter } from '../views-counter';
 
 import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
-  post: Blog;
+  post: PartialBlog;
   fullDate?: boolean;
 }
 
 const MAX_WIDTH = 96;
 const MAX_HEIGHT = 72;
-const getHeroProps = (heroMeta: Blog['heroMeta']) => {
+const getHeroProps = (heroMeta: PartialBlog['heroMeta']) => {
   const { width = MAX_WIDTH, height = MAX_HEIGHT, ...rest } = heroMeta || {};
   return {
     width: Math.min(width, MAX_WIDTH),
