@@ -2,7 +2,6 @@ import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
-import { Zoom } from '@/components/molecules/zoom';
 import { ShareButton } from '@/components/ui/blog/share-button';
 import { getAllPosts, type Blog } from '@/lib/blog';
 import cx from '@/utils/cx';
@@ -12,6 +11,8 @@ import { Header } from './header';
 import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
+
+import { Zoom } from '@/components/molecules/zoom';
 
 const blogPostStructuredData = (post?: Blog): string => {
   if (!post) return '';
@@ -87,7 +88,6 @@ export default async function BlogPostLayout(
       <script type={'application/ld+json'} suppressHydrationWarning>
         {blogPostStructuredData(post)}
       </script>
-      <Zoom />
     </>
   );
 }
