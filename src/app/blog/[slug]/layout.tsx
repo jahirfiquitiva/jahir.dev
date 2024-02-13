@@ -12,8 +12,6 @@ import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
-import { Zoom } from '@/components/molecules/zoom';
-
 const blogPostStructuredData = (post?: Blog): string => {
   if (!post) return '';
   const date = getDate(post.date) || new Date(post.date);

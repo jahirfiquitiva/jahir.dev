@@ -10,8 +10,6 @@ import { Tabs } from '@/components/ui/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
 
-import { Zoom } from '@/components/molecules/zoom';
-
 export default function UsesPage() {
   return (
     <>

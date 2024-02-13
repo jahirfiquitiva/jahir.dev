@@ -7,7 +7,7 @@
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
     "clean": "rimraf .next && rimraf dist && rimraf out",
-    "update-deps": "npx npm-check-updates -u && bun",
+    "update-deps": "npx npm-check-updates -u && bun i",
     "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.next|src/app'",
     "postinstall": "is-ci || husky install"
@@ -40,6 +40,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
     "gray-matter": "^4.0.3",
     "husky": "^9.0.10",

@@ -4,8 +4,9 @@ import { config } from '@/utils/og';
 
 import type { BlogPostPageContext } from './types';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-static';
+
 export const size = {
   width: config.size.width,
   height: config.size.height,
