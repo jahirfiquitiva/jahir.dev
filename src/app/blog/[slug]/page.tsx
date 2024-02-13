@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-// import { Mdx } from '@/components/ui/blog/mdx';
+import { MDX } from '@/components/ui/blog/mdx';
 import { getAllPosts } from '@/lib/blog';
 import { createMetadata } from '@/utils/metadata';
 
@@ -15,8 +15,7 @@ export default async function BlogPostPage(context: BlogPostPageContext) {
   const post = allPosts.find((b) => b.slug === slug);
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
-  return <p>{post.content}</p>;
-  // return <Mdx code={post.body.code} />;
+  return <MDX source={post.content} />;
 }
 
 export async function generateStaticParams() {
