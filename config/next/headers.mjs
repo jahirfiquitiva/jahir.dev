@@ -60,4 +60,4 @@ const headers = [
   },
 ];
 
-module.exports = headers;
+export default headers;
