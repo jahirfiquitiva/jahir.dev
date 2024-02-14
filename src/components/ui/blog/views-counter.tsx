@@ -1,10 +1,6 @@
-'use client';
+import { Suspense } from 'react';
 
-import { useEffect } from 'react';
-
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useImmutableRequest } from '@/hooks/use-request';
-import type { Counters } from '@/lib/planetscale';
+import { getCounters, incrementCounter } from '@/actions/counters';
 
 interface ViewsCounterProps {
   slug: string;
@@ -12,22 +8,10 @@ interface ViewsCounterProps {
   inProgress?: boolean;
 }
 
-export const ViewsCounter = (props: ViewsCounterProps) => {
+const AsyncViewsCounter = async (props: ViewsCounterProps) => {
   const { slug, inProgress, write } = props;
-  const hasMounted = useHasMounted();
-  const endpoint = `/api/views/blog--${slug}`;
-  const { data } = useImmutableRequest<Counters>(endpoint);
-
-  useEffect(() => {
-    // Do nothing in SSR or if article is in progress
-    if (!hasMounted || inProgress || !write) return;
-    const hostname = window.location.hostname || 'localhost';
-    // Count views in production website only
-    if (hostname !== 'jahir.dev') return;
-    fetch(endpoint, { method: 'POST' }).catch();
-  }, [hasMounted, endpoint, inProgress, write]);
-
-  const { views = 0 } = data || {};
+  const { views = 0 } = inProgress ? {} : await getCounters(slug, 'views');
+  if (write) incrementCounter(`blog--${slug}`, 'views');
   return (
     <>
       {views > 1 ? (
@@ -41,3 +25,9 @@ export const ViewsCounter = (props: ViewsCounterProps) => {
     </>
   );
 };
+
+export const ViewsCounter = (props: ViewsCounterProps) => (
+  <Suspense fallback={<span className={'min-w-9 min-h-6'} />}>
+    <AsyncViewsCounter {...props} />
+  </Suspense>
+);

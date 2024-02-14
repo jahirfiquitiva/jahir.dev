@@ -40,13 +40,16 @@ export const incrementCounter = cache(
 
 export type IncrementCounterFnType = typeof incrementCounter;
 
-export const getCounters = async (slug: string): Promise<Counters> => {
+export const getCounters = async (
+  slug: string,
+  counter?: CounterName,
+): Promise<Counters> => {
   noStore();
   try {
     const [counters] = await db
       .selectFrom('counters')
       .where('slug', '=', `blog--${slug}`)
-      .select(reactionsNames)
+      .select(counter ? [counter] : reactionsNames)
       .execute();
     return counters;
   } catch (e) {
