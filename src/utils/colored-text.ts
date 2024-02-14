@@ -42,21 +42,3 @@ export const getColoredTextClasses = (
     'gradient',
   ].join(' ');
 };
-
-export const buildColoredLinkClasses = (
-  from: Color,
-  to: Color,
-  forFooter?: boolean,
-) => {
-  const className = [`from-${from}`, `to-${to}`].join(' ');
-
-  return (className || '')
-    .split(' ')
-    .map(
-      (it) =>
-        (forFooter
-          ? `hocus:${it}`
-          : `hocus:${it} [&[aria-current="page"]]:${it}`) as string,
-    )
-    .join(' ') as string;
-};

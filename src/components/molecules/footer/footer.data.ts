@@ -8,27 +8,27 @@ export const linksGroups = [
       {
         title: 'Home',
         href: '/',
-        className: buildColoredLinkClasses('brand', 'blue', true),
+        className: ['from-brand', 'to-blue'],
       },
       {
         title: 'About',
         href: '/about',
-        className: buildColoredLinkClasses('blue', 'green', true),
+        className: ['from-blue', 'to-green'],
       },
       {
         title: 'Blog',
         href: '/blog',
-        className: buildColoredLinkClasses('yellow', 'orange', true),
+        className: ['from-yellow', 'to-orange'],
       },
       {
         title: 'Projects',
         href: '/projects',
-        className: buildColoredLinkClasses('red', 'purple', true),
+        className: ['from-red', 'to-purple'],
       },
       {
         title: 'Uses',
         href: '/uses',
-        className: buildColoredLinkClasses('brand', 'blue', true),
+        className: ['from-brand', 'to-blue'],
       },
     ],
   },
@@ -39,12 +39,12 @@ export const linksGroups = [
       {
         title: 'Donate',
         href: '/donate',
-        className: buildColoredLinkClasses('purple', 'brand', true),
+        className: ['from-purple', 'to-brand'],
       },
       {
         title: 'Contact',
         href: '/contact',
-        className: buildColoredLinkClasses('blue', 'green', true),
+        className: ['from-blue', 'to-green'],
         props: {
           ignoreNextLink: true,
         },
@@ -52,7 +52,7 @@ export const linksGroups = [
       {
         title: 'RSS Feed',
         href: '/feed.xml',
-        className: buildColoredLinkClasses('yellow', 'orange', true),
+        className: ['from-yellow', 'to-orange'],
         props: {
           'data-umami-event': 'RSS feed',
           prefetch: false,
@@ -61,13 +61,13 @@ export const linksGroups = [
       {
         title: 'Colophon',
         href: '/colophon',
-        className: buildColoredLinkClasses('red', 'purple', true),
+        className: ['from-red', 'to-purple'],
       },
       {
         title: 'Back to Top',
         a11yTitle: 'Scroll back to top',
         href: '#',
-        className: buildColoredLinkClasses('brand', 'blue', true),
+        className: ['from-brand', 'to-blue'],
         prefetch: false,
       },
     ],

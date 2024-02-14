@@ -73,19 +73,22 @@ export const Footer = () => {
               className={'flex flex-col gap-2'}
             >
               {group.links.map((link) => {
+                const className = link.className
+                  .map((c) => `hocus:${c}`)
+                  .join(' ');
                 return (
                   <li key={link.title}>
                     {link.href !== '#' ? (
                       <FooterLink
                         title={link.a11yTitle || link.title}
                         href={link.href}
-                        className={link.className}
+                        className={className}
                         {...link.props}
                       >
                         {link.title}
                       </FooterLink>
                     ) : (
-                      <BackToTopLink {...link} />
+                      <BackToTopLink {...link} className={className} />
                     )}
                   </li>
                 );
