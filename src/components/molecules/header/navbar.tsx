@@ -1,10 +1,7 @@
 import dynamic from 'next/dynamic';
 
 import { Logo } from '@/components/atoms/logo';
-import {
-  buildColoredLinkClasses,
-  getColoredTextClasses,
-} from '@/utils/colored-text';
+import { getColoredTextClasses } from '@/utils/colored-text';
 import type { TWComponentProps } from '@/utils/cx';
 import cx from '@/utils/cx';
 
@@ -27,22 +24,22 @@ const toolbarLinksList = [
   {
     title: 'About',
     href: '/about',
-    className: buildColoredLinkClasses('blue', 'green'),
+    className: ['from-blue', 'to-green'],
   },
   {
     title: 'Blog',
     href: '/blog',
-    className: buildColoredLinkClasses('yellow', 'orange'),
+    className: ['from-yellow', 'to-orange'],
   },
   {
     title: 'Projects',
     href: '/projects',
-    className: buildColoredLinkClasses('red', 'purple'),
+    className: ['from-red', 'to-purple'],
   },
   {
     title: 'Uses',
     href: '/uses',
-    className: buildColoredLinkClasses('brand', 'blue'),
+    className: ['from-brand', 'to-blue'],
   },
 ];
 
@@ -77,17 +74,22 @@ export const Navbar = (props: NavbarProps) => {
       </NavLink>
       <LinksList>
         {toolbarLinksList.map((link) => {
+          const isActive = props.path?.startsWith(link.href) || false;
           return (
             <NavItem key={link.href}>
               <NavPageLink
                 title={`${link.title} page`}
                 href={link.href}
-                aria-current={
-                  props.path?.startsWith(link.href) ? 'page' : undefined
+                aria-current={isActive ? 'page' : undefined}
+                className={
+                  isActive
+                    ? link.className.join(' ')
+                    : link.className.map((c) => `hocus:${c}`)
                 }
-                className={link.className}
               >
-                <NavPageLinkText>{link.title}</NavPageLinkText>
+                <NavPageLinkText className={'gradient'}>
+                  {link.title}
+                </NavPageLinkText>
               </NavPageLink>
             </NavItem>
           );

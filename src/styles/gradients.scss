@@ -1,89 +1,75 @@
 .from-brand,
 .hocus\:from-brand:hover,
-.hocus\:from-brand:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-brand[aria-current='page'] {
+.hocus\:from-brand:focus {
   --tw-gradient-from: theme('colors.brand.500') var(--tw-gradient-from-position);
 }
 .from-blue,
 .hocus\:from-blue:hover,
-.hocus\:from-blue:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-blue[aria-current='page'] {
+.hocus\:from-blue:focus {
   --tw-gradient-from: theme('colors.blue.600') var(--tw-gradient-from-position);
 }
 .from-green,
 .hocus\:from-green:hover,
-.hocus\:from-green:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-green[aria-current='page'] {
+.hocus\:from-green:focus {
   --tw-gradient-from: theme('colors.green.600') var(--tw-gradient-from-position);
 }
 .from-yellow,
 .hocus\:from-yellow:hover,
-.hocus\:from-yellow:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-yellow[aria-current='page'] {
+.hocus\:from-yellow:focus {
   --tw-gradient-from: theme('colors.yellow.600')
     var(--tw-gradient-from-position);
 }
 .from-orange,
 .hocus\:from-orange:hover,
-.hocus\:from-orange:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-orange[aria-current='page'] {
+.hocus\:from-orange:focus {
   --tw-gradient-from: theme('colors.orange.600')
     var(--tw-gradient-from-position);
 }
 .from-red,
 .hocus\:from-red:hover,
-.hocus\:from-red:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-red[aria-current='page'] {
+.hocus\:from-red:focus {
   --tw-gradient-from: theme('colors.red.600') var(--tw-gradient-from-position);
 }
 .from-purple,
 .hocus\:from-purple:hover,
-.hocus\:from-purple:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:from-purple[aria-current='page'] {
+.hocus\:from-purple:focus {
   --tw-gradient-from: theme('colors.purple.600')
     var(--tw-gradient-from-position);
 }
 
 .to-brand,
 .hocus\:to-brand:hover,
-.hocus\:to-brand:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-brand[aria-current='page'] {
+.hocus\:to-brand:focus {
   --tw-gradient-to: theme('colors.brand.500') var(--tw-gradient-to-position);
 }
 .to-blue,
 .hocus\:to-blue:hover,
-.hocus\:to-blue:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-blue[aria-current='page'] {
+.hocus\:to-blue:focus {
   --tw-gradient-to: theme('colors.blue.600') var(--tw-gradient-to-position);
 }
 .to-green,
 .hocus\:to-green:hover,
-.hocus\:to-green:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-green[aria-current='page'] {
+.hocus\:to-green:focus {
   --tw-gradient-to: theme('colors.green.600') var(--tw-gradient-to-position);
 }
 .to-yellow,
 .hocus\:to-yellow:hover,
-.hocus\:to-yellow:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-yellow[aria-current='page'] {
+.hocus\:to-yellow:focus {
   --tw-gradient-to: theme('colors.yellow.600') var(--tw-gradient-to-position);
 }
 .to-orange,
 .hocus\:to-orange:hover,
-.hocus\:to-orange:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-orange[aria-current='page'] {
+.hocus\:to-orange:focus {
   --tw-gradient-to: theme('colors.orange.600') var(--tw-gradient-to-position);
 }
 .to-red,
 .hocus\:to-red:hover,
-.hocus\:to-red:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-red[aria-current='page'] {
+.hocus\:to-red:focus {
   --tw-gradient-to: theme('colors.red.600') var(--tw-gradient-to-position);
 }
 .to-purple,
 .hocus\:to-purple:hover,
-.hocus\:to-purple:focus,
-.\[\&\[aria-current\=\"page\"\]\]\:to-purple[aria-current='page'] {
+.hocus\:to-purple:focus {
   --tw-gradient-to: theme('colors.purple.600') var(--tw-gradient-to-position);
 }
 
@@ -91,93 +77,79 @@ html.dark,
 html.dark-inverted {
   .from-brand,
   .hocus\:from-brand:hover,
-  .hocus\:from-brand:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-brand[aria-current='page'] {
+  .hocus\:from-brand:focus {
     --tw-gradient-from: theme('colors.brand.300')
       var(--tw-gradient-from-position);
   }
   .from-blue,
   .hocus\:from-blue:hover,
-  .hocus\:from-blue:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-blue[aria-current='page'] {
+  .hocus\:from-blue:focus {
     --tw-gradient-from: theme('colors.blue.400')
       var(--tw-gradient-from-position);
   }
   .from-green,
   .hocus\:from-green:hover,
-  .hocus\:from-green:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-green[aria-current='page'] {
+  .hocus\:from-green:focus {
     --tw-gradient-from: theme('colors.green.400')
       var(--tw-gradient-from-position);
   }
   .from-yellow,
   .hocus\:from-yellow:hover,
-  .hocus\:from-yellow:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-yellow[aria-current='page'] {
+  .hocus\:from-yellow:focus {
     --tw-gradient-from: theme('colors.yellow.400')
       var(--tw-gradient-from-position);
   }
   .from-orange,
   .hocus\:from-orange:hover,
-  .hocus\:from-orange:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-orange[aria-current='page'] {
+  .hocus\:from-orange:focus {
     --tw-gradient-from: theme('colors.orange.400')
       var(--tw-gradient-from-position);
   }
   .from-red,
   .hocus\:from-red:hover,
-  .hocus\:from-red:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-red[aria-current='page'] {
+  .hocus\:from-red:focus {
     --tw-gradient-from: theme('colors.red.400') var(--tw-gradient-from-position);
   }
   .from-purple,
   .hocus\:from-purple:hover,
-  .hocus\:from-purple:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:from-purple[aria-current='page'] {
+  .hocus\:from-purple:focus {
     --tw-gradient-from: theme('colors.purple.400')
       var(--tw-gradient-from-position);
   }
 
   .to-brand,
   .hocus\:to-brand:hover,
-  .hocus\:to-brand:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-brand[aria-current='page'] {
+  .hocus\:to-brand:focus {
     --tw-gradient-to: theme('colors.brand.300') var(--tw-gradient-to-position);
   }
   .to-blue,
   .hocus\:to-blue:hover,
-  .hocus\:to-blue:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-blue[aria-current='page'] {
+  .hocus\:to-blue:focus {
     --tw-gradient-to: theme('colors.blue.400') var(--tw-gradient-to-position);
   }
   .to-green,
   .hocus\:to-green:hover,
-  .hocus\:to-green:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-green[aria-current='page'] {
+  .hocus\:to-green:focus {
     --tw-gradient-to: theme('colors.green.400') var(--tw-gradient-to-position);
   }
   .to-yellow,
   .hocus\:to-yellow:hover,
-  .hocus\:to-yellow:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-yellow[aria-current='page'] {
+  .hocus\:to-yellow:focus {
     --tw-gradient-to: theme('colors.yellow.400') var(--tw-gradient-to-position);
   }
   .to-orange,
   .hocus\:to-orange:hover,
-  .hocus\:to-orange:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-orange[aria-current='page'] {
+  .hocus\:to-orange:focus {
     --tw-gradient-to: theme('colors.orange.400') var(--tw-gradient-to-position);
   }
   .to-red,
   .hocus\:to-red:hover,
-  .hocus\:to-red:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-red[aria-current='page'] {
+  .hocus\:to-red:focus {
     --tw-gradient-to: theme('colors.red.400') var(--tw-gradient-to-position);
   }
   .to-purple,
   .hocus\:to-purple:hover,
-  .hocus\:to-purple:focus,
-  .\[\&\[aria-current\=\"page\"\]\]\:to-purple[aria-current='page'] {
+  .hocus\:to-purple:focus {
     --tw-gradient-to: theme('colors.purple.400') var(--tw-gradient-to-position);
   }
 }
