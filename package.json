@@ -63,7 +63,7 @@
     "remark-unwrap-images": "^4.0.0",
     "rimraf": "^5.0.5",
     "sass": "^1.70.0",
-    "sharp": "^0.33.2",
+    "sharp": "0.32.6",
     "shiki": "^1.1.2",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",

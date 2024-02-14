@@ -1,4 +1,10 @@
 {
   "upgrade": true,
-  "reject": ["remark-gfm", "million", "@commitlint/cli", "@commitlint/config-conventional"]
+  "reject": [
+    "remark-gfm",
+    "sharp",
+    "million",
+    "@commitlint/cli",
+    "@commitlint/config-conventional"
+  ]
 }
