@@ -51,8 +51,6 @@ const defaultNextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     formats: ['image/avif', 'image/webp'],
-    // Same breakpoints as Tailwind CSS config
-    deviceSizes: [375, 425, 596, 768, 960],
   },
   headers: () => appHeaders,
   redirects: () => redirects,
