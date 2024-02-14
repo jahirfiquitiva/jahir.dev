@@ -27,7 +27,7 @@ const expandedClasses = cx(
   'max-tablet-sm:dark:to-dark/50',
 );
 
-const Header = () => {
+export const Header = () => {
   const { pathname, elevated, expanded, setExpanded } = useNavbarState();
 
   return (
@@ -43,5 +43,3 @@ const Header = () => {
     </StyledHeader>
   );
 };
-
-export default Header;

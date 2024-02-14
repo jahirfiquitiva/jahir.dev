@@ -1,21 +1,17 @@
 import '@/styles/globals.scss';
 
-import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
 import { Main } from '@/components/atoms/main';
+import { BackToTop } from '@/components/molecules/back-to-top';
 import { Footer } from '@/components/molecules/footer';
+import { Header } from '@/components/molecules/header';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
 import { createMetadata } from '@/utils/metadata';
 
 import { Meta } from './meta';
-
-const Header = dynamic(() => import('@/components/molecules/header'));
-const BackToTop = dynamic(() => import('@/components/molecules/back-to-top'), {
-  ssr: false,
-});
 
 export const metadata = {
   ...createMetadata({

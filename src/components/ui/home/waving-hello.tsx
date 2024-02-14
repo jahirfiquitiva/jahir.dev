@@ -11,7 +11,7 @@ const greetings = [
   'Olá, mundo',
 ];
 
-const WavingHello = () => {
+export const WavingHello = () => {
   const [hello, setHello] = useState(0);
   useEffect(() => {
     const changeHello = setInterval(() => {
@@ -21,5 +21,3 @@ const WavingHello = () => {
   }, []);
   return <>&nbsp;&nbsp;{greetings[hello]}!</>;
 };
-
-export default WavingHello;

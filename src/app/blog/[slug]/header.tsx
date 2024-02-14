@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic';
 import type { CSSProperties } from 'react';
 
 import { Link } from '@/components/atoms/link';
+import { ViewsCounter } from '@/components/ui/blog/views-counter';
 import type { CleanBlog } from '@/utils/blog';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
@@ -10,13 +10,6 @@ import { formatDate } from '@/utils/date';
 interface HeaderProps {
   post: CleanBlog;
 }
-
-const ViewsCounter = dynamic(
-  () => import('@/components/ui/blog/views-counter'),
-  {
-    ssr: false,
-  },
-);
 
 export const Header = ({ post }: HeaderProps) => {
   const { color, readingTime } = post;

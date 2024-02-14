@@ -36,7 +36,7 @@ const ThemeToggleContainer = tw.div`
 `;
 
 const toggleText = 'Change theme';
-const ThemeToggle = () => {
+export const ThemeToggle = () => {
   const hasMounted = useHasMounted();
   const { theme, isDark, setTheme } = useTheme();
 
@@ -86,5 +86,3 @@ const ThemeToggle = () => {
     </ThemeToggleContainer>
   );
 };
-
-export default ThemeToggle;

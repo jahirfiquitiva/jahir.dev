@@ -1,6 +1,4 @@
 /* eslint-disable max-len */
-import dynamic from 'next/dynamic';
-
 import photo from '@/assets/images/photo.jpg';
 import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';
@@ -12,8 +10,7 @@ import cx from '@/utils/cx';
 
 import { Name, SubHeader, WavingSpan } from './intro.styles';
 import { Verified } from './verified';
-
-const WavingHello = dynamic(() => import('./waving-hello'));
+import { WavingHello } from './waving-hello';
 
 export const Intro = () => {
   return (

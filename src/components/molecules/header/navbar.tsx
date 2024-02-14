@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic';
-
 import { Logo } from '@/components/atoms/logo';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import type { TWComponentProps } from '@/utils/cx';
@@ -17,8 +15,7 @@ import {
   NavPageLink,
   NavPageLinkText,
 } from './navbar.styles';
-
-const ThemeToggle = dynamic(() => import('./theme-toggle'), { ssr: false });
+import { ThemeToggle } from './theme-toggle';
 
 const toolbarLinksList = [
   {

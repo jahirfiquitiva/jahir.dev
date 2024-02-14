@@ -12,7 +12,7 @@ interface ViewsCounterProps {
   inProgress?: boolean;
 }
 
-const ViewsCounter = (props: ViewsCounterProps) => {
+export const ViewsCounter = (props: ViewsCounterProps) => {
   const { slug, inProgress, write } = props;
   const hasMounted = useHasMounted();
   const endpoint = `/api/views/blog--${slug}`;
@@ -41,5 +41,3 @@ const ViewsCounter = (props: ViewsCounterProps) => {
     </>
   );
 };
-
-export default ViewsCounter;

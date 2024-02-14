@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
@@ -8,11 +7,9 @@ import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 
-import { BlogPostLink } from './item.styles';
+import { ViewsCounter } from '../views-counter';
 
-const ViewsCounter = dynamic(() => import('./../views-counter'), {
-  ssr: false,
-});
+import { BlogPostLink } from './item.styles';
 
 interface BlogPostItemProps {
   post: PartialBlog;
