@@ -14,7 +14,7 @@ interface BackToTopLinkProps {
   props?: Record<string, unknown>;
 }
 
-export const BackToTopLink = (link: BackToTopLinkProps) => (
+const BackToTopLink = (link: BackToTopLinkProps) => (
   <FooterLink
     title={link.a11yTitle || link.title}
     href={link.href}
@@ -32,3 +32,5 @@ export const BackToTopLink = (link: BackToTopLinkProps) => (
     {link.title}
   </FooterLink>
 );
+
+export default BackToTopLink;

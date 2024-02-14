@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
+
 import { Logo } from '@/components/atoms/logo';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 import { SocialLinks } from '../social-links';
 
-import { BackToTopLink } from './back-to-top-link';
 import { linksGroups } from './footer.data';
 import {
   Description,
@@ -13,7 +14,11 @@ import {
   LinksList,
   StyledFooter,
 } from './footer.styles';
-import { FooterNowPlaying } from './now-playing';
+
+const BackToTopLink = dynamic(() => import('./back-to-top-link'), {
+  ssr: false,
+});
+const FooterNowPlaying = dynamic(() => import('./now-playing'), { ssr: false });
 
 export const Footer = () => {
   return (

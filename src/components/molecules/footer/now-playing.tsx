@@ -17,7 +17,7 @@ const ScrollingText = tw.span`
   group-hocus/music:motion-safe:[animation-play-state:paused]
 `;
 
-export const FooterNowPlaying = () => {
+const FooterNowPlaying = () => {
   const { data, loading } =
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
   const { track, isPlaying } = data || { isPlaying: false };
@@ -76,3 +76,5 @@ export const FooterNowPlaying = () => {
     </Link>
   );
 };
+
+export default FooterNowPlaying;
