@@ -1,5 +1,3 @@
-import { buildColoredLinkClasses } from '@/utils/colored-text';
-
 export const linksGroups = [
   {
     title: 'Navigate',

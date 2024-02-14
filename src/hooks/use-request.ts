@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import type { MutatorCallback, SWRConfiguration } from 'swr';
+import type { SWRConfiguration } from 'swr';
 
 /* eslint-disable no-undef */
 async function fetcher<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
@@ -10,22 +10,15 @@ async function fetcher<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
 interface SwrData<T = unknown> {
   data?: T | null;
   loading: boolean;
-  error?: string | Error | null;
-  mutate?: (
-    data?: T | Promise<T> | MutatorCallback<T>,
-    shouldRevalidate?: boolean,
-  ) => Promise<T | undefined>;
 }
 
 export const useRequest = <T>(
   url: string,
   options?: SWRConfiguration,
 ): SwrData<T> => {
-  const { data, error, mutate, isLoading } = useSWR<T>(url, fetcher, options);
+  const { data, error, isLoading } = useSWR<T>(url, fetcher, options);
   return {
     data,
-    error,
-    mutate,
     loading: isLoading || (!data && !error),
   };
 };
