@@ -22,8 +22,8 @@
     "swr": "^2.2.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.6.0",
-    "@commitlint/config-conventional": "18.6.0",
+    "@commitlint/cli": "18.6.1",
+    "@commitlint/config-conventional": "18.6.2",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@planetscale/database": "^1.16.0",
     "@types/canvas-confetti": "^1.6.4",
