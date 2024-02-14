@@ -1,14 +1,14 @@
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
+import type { CleanBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { getUrlDomain } from '@/utils/domain';
-import type { Blog } from 'contentlayer/generated';
 
 interface HeroProps {
-  title: Blog['title'];
-  hero?: Blog['hero'];
-  source?: Blog['heroSource'];
-  heroMeta?: Blog['heroMeta'];
+  title: CleanBlog['title'];
+  hero?: CleanBlog['hero'];
+  source?: CleanBlog['heroSource'];
+  heroMeta?: CleanBlog['heroMeta'];
 }
 
 export const Hero = (props: HeroProps) => {

@@ -3,17 +3,16 @@ import type { PropsWithChildren } from 'react';
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { ShareButton } from '@/components/ui/blog/share-button';
-import { allReadableBlogs } from '@/utils/blog';
+import { allReadableBlogsWithContent, type PartialBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { getDate } from '@/utils/date';
-import type { Blog } from 'contentlayer/generated';
 
 import { Header } from './header';
 import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
-const blogPostStructuredData = (post?: Blog): string => {
+const blogPostStructuredData = (post?: PartialBlog): string => {
   if (!post) return '';
   const date = getDate(post.date) || new Date(post.date);
   return JSON.stringify({
@@ -37,7 +36,7 @@ export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const post = allReadableBlogs.find((b) => b.slug === slug);
+  const post = allReadableBlogsWithContent.find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>

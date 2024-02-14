@@ -1,8 +1,11 @@
 import xml from 'xml';
 
-import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
+import {
+  allReadableBlogs,
+  sortBlogPostsByDate,
+  type PartialBlog,
+} from '@/utils/blog';
 import { getDate } from '@/utils/date';
-import type { Blog } from 'contentlayer/generated';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-static';
@@ -13,7 +16,7 @@ const formatImageUrl = (url?: string) => {
   return url;
 };
 
-const buildDescriptionHtml = (post: Blog): string => {
+const buildDescriptionHtml = (post: PartialBlog): string => {
   let description = '';
   if (post.summary) description += `<p>${post.summary}</p><br/>`;
 
@@ -29,7 +32,7 @@ const buildDescriptionHtml = (post: Blog): string => {
   return description;
 };
 
-const getAllPostRssData = (post: Blog) => {
+const getAllPostRssData = (post: PartialBlog) => {
   const descriptionHtml = buildDescriptionHtml(post);
   return {
     title: post.title,

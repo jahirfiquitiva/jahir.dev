@@ -36,10 +36,11 @@ const components = {
 } as MDXComponents;
 
 interface MdxProps {
-  code: string;
+  code?: string;
 }
 
 export const MDX = (props: MdxProps) => {
+  if (!props.code) return null;
   const MdxComponent = getMDXComponent(props.code);
   return (
     <article className={'mdx'}>

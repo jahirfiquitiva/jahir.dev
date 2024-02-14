@@ -2,20 +2,22 @@ import { Suspense } from 'react';
 
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
-import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
+import {
+  allReadableBlogs,
+  sortBlogPostsByDate,
+  type PartialBlog,
+} from '@/utils/blog';
 import { getDate } from '@/utils/date';
-import type { Blog } from 'contentlayer/generated';
 
 import Loading from '../loading';
 
-const blogPostsByYear = allReadableBlogs.reduce<Record<number, Array<Blog>>>(
-  (acc, post) => {
-    const year = (getDate(post.date) || new Date()).getFullYear();
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    return { ...acc, [year]: [...(acc[year] || []), post] };
-  },
-  {},
-);
+const blogPostsByYear = allReadableBlogs.reduce<
+  Record<number, Array<PartialBlog>>
+>((acc, post) => {
+  const year = (getDate(post.date) || new Date()).getFullYear();
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  return { ...acc, [year]: [...(acc[year] || []), post] };
+}, {});
 
 export const BlogPostsList = () => (
   <ol className={'flex flex-col gap-6'}>

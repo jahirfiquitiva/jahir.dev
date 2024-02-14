@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
 import { MDX } from '@/components/ui/blog/mdx';
-import { allReadableBlogs } from '@/utils/blog';
+import { allReadableBlogs, allReadableBlogsWithContent } from '@/utils/blog';
 import { createMetadata } from '@/utils/metadata';
 
 import type { BlogPostPageContext } from './types';
@@ -11,10 +11,10 @@ export const dynamicParams = false;
 
 export default async function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
-  const post = allReadableBlogs.find((b) => b.slug === slug);
+  const post = allReadableBlogsWithContent.find((b) => b.slug === slug);
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
-  return <MDX code={post.body.code} />;
+  return <MDX code={post.code} />;
 }
 
 export const generateStaticParams = () =>
@@ -27,7 +27,7 @@ export function generateMetadata(
 ): Metadata | undefined {
   const { slug } = context.params;
   if (!slug) return undefined;
-  const post = allReadableBlogs.find((b) => b.slug === slug);
+  const post = allReadableBlogsWithContent.find((b) => b.slug === slug);
   if (!post) return undefined;
 
   const { title, date, summary } = post;
@@ -36,7 +36,7 @@ export function generateMetadata(
     title: `${title} | Blog – Jahir Fiquitiva`,
     description: summary || 'Blog post by Jahir Fiquitiva',
     exactUrl: `https://jahir.dev/blog/${slug}`,
-    keywords: post.keywords,
+    keywords: post.seoKeywords,
   });
   return {
     ...metadata,
