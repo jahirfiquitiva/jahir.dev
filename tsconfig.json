@@ -30,8 +30,7 @@
       {
         "name": "next"
       }
-    ],
-    "types": ["node"]
+    ]
   },
   "exclude": [".idea", "node_modules"],
   "include": [
