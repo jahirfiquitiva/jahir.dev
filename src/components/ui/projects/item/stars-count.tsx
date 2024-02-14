@@ -1,7 +1,7 @@
-'use client';
+import { Suspense } from 'react';
 
+import { getStars } from '@/actions/stars';
 import { Icon } from '@/components/atoms/icon';
-import { useImmutableRequest } from '@/hooks/use-request';
 import cx from '@/utils/cx';
 
 interface StarsCountProps {
@@ -9,17 +9,8 @@ interface StarsCountProps {
   owner?: string;
 }
 
-const useStarsRequest = (repo: string, owner?: string) => {
-  let url = `/api/stars/${repo}`;
-  if (owner) url += `?owner=${owner}`;
-  return useImmutableRequest<{
-    stars?: string;
-  }>(url);
-};
-
-export const StarsCount = (props: StarsCountProps) => {
-  const { data } = useStarsRequest(props.repo, props.owner);
-  const { stars } = data || {};
+const StarsCount = async (props: StarsCountProps) => {
+  const stars = await getStars(props.repo, props.owner);
   return (
     <>
       {Boolean(stars) ? (
@@ -51,3 +42,9 @@ export const StarsCount = (props: StarsCountProps) => {
     </>
   );
 };
+
+export const StarsCounter = (props: StarsCountProps) => (
+  <Suspense fallback={<span className={'min-w-9 min-h-6'} />}>
+    <StarsCount {...props} />
+  </Suspense>
+);

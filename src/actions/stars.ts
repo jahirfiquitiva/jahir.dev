@@ -1,8 +1,4 @@
-import { NextResponse } from 'next/server';
-
-import type { RequestContext } from '@/types/request';
-
-export const runtime = 'edge';
+'use server';
 
 const gitHubReposApiUrl = 'https://api.github.com/repos';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
@@ -14,16 +10,11 @@ const authHeaders =
 const oneMillion = 1000000;
 const oneThousand = 1000;
 
-export async function GET(
-  req: Request,
-  context?: RequestContext<{ repo?: string }>,
-) {
+export const getStars = async (
+  repo: string,
+  owner: string = 'jahirfiquitiva',
+): Promise<string | null> => {
   try {
-    const { searchParams } = new URL(req.url);
-    const repo = context?.params.repo;
-    if (!repo) return NextResponse.json({ stars: null });
-
-    const owner = searchParams.get('owner') || 'jahirfiquitiva';
     const repoRequest = await fetch(
       `${gitHubReposApiUrl}/${owner || 'jahirfiquitiva'}/${repo}`,
       { ...authHeaders, next: { revalidate: 43200 } },
@@ -40,9 +31,8 @@ export async function GET(
         starsAsText = `${Math.floor(stargazers / oneThousand)}K+`;
       } else starsAsText = `${stargazers}`;
     }
-
-    return NextResponse.json({ stars: starsAsText });
-  } catch (err) {
-    return NextResponse.json({ stars: null });
+    return starsAsText;
+  } catch (e) {
+    return null;
   }
-}
+};
