@@ -1,11 +1,8 @@
 /* eslint-disable max-len */
-'use client';
-
-import { useHasMounted } from '@/hooks/use-has-mounted';
+import { canRunAction as isProd } from '@/actions/utils';
 
 export const Verified = () => {
-  const hasMounted = useHasMounted();
-  if (!hasMounted || window.location.host !== 'jahir.dev') return null;
+  if (!isProd) return null;
   return (
     <svg
       viewBox={'0 0 24 24'}
