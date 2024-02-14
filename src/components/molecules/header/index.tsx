@@ -1,10 +1,7 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
-
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { tw } from '@/utils/cx';
+import { useNavbarState } from '@/hooks/use-navbar-state';
+import cx, { tw } from '@/utils/cx';
 
 import { Navbar } from './navbar';
 
@@ -21,58 +18,30 @@ const StyledHeader = tw.header`
   transition-[max-height]
   duration-300
   max-h-20 tablet-sm:max-h-21
-  [&[data-expanded="true"]]:tablet-sm:h-[unset]
-  [&[data-expanded="true"]]:max-tablet-sm:max-h-full
-  [&[data-expanded="true"]]:max-tablet-sm:to-light/50
-  [&[data-expanded="true"]]:max-tablet-sm:dark:to-dark/50
 `;
 
-const scrollThreshold = 56; //px
-export const Header = () => {
-  const pathname = usePathname();
-  const [isExpanded, setExpanded] = useState(false);
-  const [elevated, setElevated] = useState(false);
-  const hasMounted = useHasMounted();
+const expandedClasses = cx(
+  'tablet-sm:h-[unset]',
+  'max-tablet-sm:max-h-full',
+  'max-tablet-sm:to-light/50',
+  'max-tablet-sm:dark:to-dark/50',
+);
 
-  const checkScrolledDistance = useCallback(() => {
-    if (!hasMounted) return;
-    const scrolledDistance = window.scrollY || window.pageYOffset;
-    try {
-      setElevated(scrolledDistance >= scrollThreshold);
-    } catch (e) {}
-  }, [hasMounted]);
-
-  useEffect(() => {
-    if (!hasMounted) return;
-    window.addEventListener('scroll', checkScrolledDistance);
-    checkScrolledDistance();
-    // eslint-disable-next-line consistent-return
-    return () => {
-      window.removeEventListener('scroll', checkScrolledDistance);
-    };
-  }, [hasMounted, checkScrolledDistance]);
-
-  useEffect(() => {
-    if (!hasMounted) return;
-    if (isExpanded)
-      document.body.classList.add('max-tablet-sm:overflow-hidden');
-    else document.body.classList.remove('max-tablet-sm:overflow-hidden');
-  }, [isExpanded, hasMounted]);
-
-  useEffect(() => {
-    setExpanded(false);
-  }, [pathname]);
+const Header = () => {
+  const { pathname, elevated, expanded, setExpanded } = useNavbarState();
 
   return (
-    <StyledHeader id={'header'} data-expanded={isExpanded}>
+    <StyledHeader id={'header'} className={expanded ? expandedClasses : ''}>
       <Navbar
         path={pathname}
-        isExpanded={isExpanded}
+        isExpanded={expanded}
         className={elevated ? 'shadow-toolbar-elevated' : ''}
         onNavToggleClick={() => {
-          setExpanded(!isExpanded);
+          setExpanded(!expanded);
         }}
       />
     </StyledHeader>
   );
 };
+
+export default Header;
