@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-.yarn/install-state.gz
+# .yarn/install-state.gz
 
 # testing
 /coverage
@@ -33,7 +33,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+# next-env.d.ts
 
 # Contentlayer
 .contentlayer
