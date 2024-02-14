@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { type CSSProperties } from 'react';
 
 import { Img } from '@/components/atoms/img';
@@ -7,9 +8,11 @@ import { formatDate } from '@/utils/date';
 import { getUrlDomain } from '@/utils/domain';
 import type { Blog } from 'contentlayer/generated';
 
-import { ViewsCounter } from '../views-counter';
-
 import { BlogPostLink } from './item.styles';
+
+const ViewsCounter = dynamic(() => import('./../views-counter'), {
+  ssr: false,
+});
 
 interface BlogPostItemProps {
   post: Blog;
