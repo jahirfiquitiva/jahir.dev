@@ -1,8 +1,8 @@
-import type { Blog } from 'contentlayer/generated';
 import xml from 'xml';
 
 import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
+import type { Blog } from 'contentlayer/generated';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-static';

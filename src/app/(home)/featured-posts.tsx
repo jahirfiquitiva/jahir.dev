@@ -1,4 +1,3 @@
-import type { Blog } from 'contentlayer/generated';
 import {
   unstable_cache as cache,
   unstable_noStore as noStore,
@@ -15,6 +14,7 @@ import { db } from '@/lib/planetscale';
 import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
+import type { Blog } from 'contentlayer/generated';
 
 export const getFeaturedPosts = cache(
   async (): Promise<Array<Blog>> => {

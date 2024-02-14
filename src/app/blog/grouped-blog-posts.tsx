@@ -1,10 +1,10 @@
-import type { Blog } from 'contentlayer/generated';
 import { Suspense } from 'react';
 
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
 import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
+import type { Blog } from 'contentlayer/generated';
 
 import Loading from '../loading';
 
