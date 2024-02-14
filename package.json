@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn clean && yarn download-themes && next telemetry disable && next build",
+    "build": "yarn download-themes && next telemetry disable && next build",
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
