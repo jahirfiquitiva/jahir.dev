@@ -38,7 +38,7 @@ next-env.d.ts
 # Contentlayer
 .contentlayer
 !.env.example
-config/mdx/themes/*.json
+config/contentlayer/themes/*.json
 
 !.env
 static/media/*.png

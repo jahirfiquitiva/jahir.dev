@@ -2,14 +2,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "bun clean && bun download-themes && next telemetry disable && next build",
+    "build": "bun download-themes && next telemetry disable && next build",
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
-    "clean": "rimraf .next && rimraf dist && rimraf out",
+    "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
     "update-deps": "npx npm-check-updates -u && bun i",
     "download-themes": "node ./scripts/download-themes.mjs",
-    "prune-code": "ts-prune -i '.next|src/app'",
+    "prune-code": "ts-prune -i '.next|.contentlayer|src/app'",
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "@typescript-eslint/parser": "^7.0.1",
     "autoprefixer": "^10.4.17",
     "colord": "^2.9.3",
+    "contentlayer": "^0.3.4",
     "cssnano": "^6.0.3",
     "dotenv": "^16.4.4",
     "eslint": "^8.56.0",
@@ -42,13 +43,12 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "gray-matter": "^4.0.3",
     "husky": "^9.0.10",
     "is-ci": "^3.0.1",
     "kysely": "^0.27.2",
     "kysely-planetscale": "^1.4.0",
     "million": "^2.6.4",
-    "next-mdx-remote": "^4.4.1",
+    "next-contentlayer": "^0.3.4",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "react-twc": "^1.4.1",
@@ -79,5 +79,10 @@
     "tabWidth": 2,
     "trailingComma": "all",
     "semi": true
+  },
+  "overrides": {
+    "next-contentlayer": {
+      "next": "$next"
+    }
   }
 }

@@ -1,6 +1,7 @@
+import type { Blog } from 'contentlayer/generated';
 import xml from 'xml';
 
-import { getAllPosts, type Blog } from '@/lib/blog';
+import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getDate } from '@/utils/date';
 
 export const runtime = 'nodejs';
@@ -123,8 +124,9 @@ const defaultChannel = {
 };
 
 export async function GET() {
-  const allPosts = await getAllPosts();
-  const feedItems = await Promise.all(allPosts.map(getAllPostRssData));
+  const feedItems = await Promise.all(
+    allReadableBlogs.sort(sortBlogPostsByDate).map(getAllPostRssData),
+  );
 
   const feedObject = {
     rss: [

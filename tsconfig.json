@@ -23,6 +23,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
       "react": ["./node_modules/@types/react"]
     },
     "plugins": [
@@ -32,6 +33,15 @@
     ],
     "types": ["node"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": [".idea", "node_modules"]
+  "exclude": [".idea", "node_modules"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js",
+    ".next/types/**/*.ts",
+    "./.contentlayer/generated"
+  ]
 }

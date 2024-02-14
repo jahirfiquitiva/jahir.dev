@@ -1,3 +1,4 @@
+import type { Blog } from 'contentlayer/generated';
 import {
   unstable_cache as cache,
   unstable_noStore as noStore,
@@ -10,19 +11,16 @@ import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
 import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
-import { getAllPosts, sortBlogPostsByDate, type PartialBlog } from '@/lib/blog';
 import { db } from '@/lib/planetscale';
+import { allReadableBlogs, sortBlogPostsByDate } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 export const getFeaturedPosts = cache(
-  async (): Promise<Array<PartialBlog>> => {
+  async (): Promise<Array<Blog>> => {
     noStore();
     try {
-      const allPosts = await getAllPosts();
-      const sortedPosts = allPosts
-        .sort(sortBlogPostsByDate)
-        .map((it) => ({ ...it, keywords: undefined, content: undefined }));
+      const sortedPosts = allReadableBlogs.sort(sortBlogPostsByDate);
       const latestPost = sortedPosts[0];
       const topThree = await db
         .selectFrom('counters')
@@ -46,7 +44,7 @@ export const getFeaturedPosts = cache(
         latestPost,
         sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
         randomPost,
-      ].filter(Boolean) as Array<PartialBlog>;
+      ].filter(Boolean) as Array<Blog>;
     } catch (e) {
       return [];
     }

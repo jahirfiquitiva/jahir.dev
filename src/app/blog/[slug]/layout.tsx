@@ -1,9 +1,10 @@
+import type { Blog } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
 import { ShareButton } from '@/components/ui/blog/share-button';
-import { getAllPosts, type Blog } from '@/lib/blog';
+import { allReadableBlogs } from '@/utils/blog';
 import cx from '@/utils/cx';
 import { getDate } from '@/utils/date';
 
@@ -32,12 +33,11 @@ const blogPostStructuredData = (post?: Blog): string => {
   });
 };
 
-export default async function BlogPostLayout(
+export default function BlogPostLayout(
   props: PropsWithChildren & BlogPostPageContext,
 ) {
   const { slug } = props.params;
-  const allPosts = await getAllPosts();
-  const post = allPosts.find((b) => b.slug === slug);
+  const post = allReadableBlogs.find((b) => b.slug === slug);
   if (!post) return null;
   return (
     <>

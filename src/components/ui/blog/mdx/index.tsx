@@ -1,10 +1,9 @@
 import type { MDXComponents } from 'mdx/types';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 
 import { Img, type ImgProps } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
-import mdx from 'config/mdx';
 
 import { Bookmark } from './bookmark';
 import { ImageComparison } from './image-comparison';
@@ -37,17 +36,14 @@ const components = {
 } as MDXComponents;
 
 interface MdxProps {
-  source: string;
+  code: string;
 }
 
 export const MDX = (props: MdxProps) => {
+  const MdxComponent = getMDXComponent(props.code);
   return (
     <article className={'mdx'}>
-      <MDXRemote
-        source={props.source}
-        components={components}
-        options={{ mdxOptions: mdx }}
-      />
+      <MdxComponent components={components} />
     </article>
   );
 };
