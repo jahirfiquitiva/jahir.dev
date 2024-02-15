@@ -35,7 +35,7 @@ export const Hero = (props: HeroProps) => {
         {...heroMeta}
       />
       {source ? (
-        <figcaption>
+        <figcaption className={'sr-only'}>
           Image from{' '}
           <Link title={source} href={source}>
             {getUrlDomain(source, true)}
