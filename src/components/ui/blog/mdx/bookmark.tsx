@@ -24,6 +24,7 @@ export const Bookmark = async ({ url }: { url: string }) => {
       href={url}
       className={cx(
         'text-inherit bg-brand-500/[0.024] dark:bg-brand-100/5',
+        'hocus:bg-brand-300/5 dark:hocus:bg-brand-100/10',
         'border border-divider rounded-2.5 font-normal',
         'no-underline group/link w-full max-w-full',
         'flex flex-row overflow-hidden',

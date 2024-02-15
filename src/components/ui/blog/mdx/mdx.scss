@@ -128,7 +128,7 @@ article.mdx {
 
   pre {
     @apply opacity-100 rounded-2.5 border border-divider;
-    @apply bg-brand-200/5 [html[class*='dark']_&]:bg-brand-300/10;
+    @apply bg-brand-200/5 [html[class*='dark']_&]:bg-brand-100/10;
     @apply mt-0 mb-4 py-2.5 px-0 text-inherit overflow-x-auto;
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
