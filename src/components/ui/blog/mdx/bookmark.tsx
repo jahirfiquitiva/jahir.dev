@@ -7,8 +7,12 @@ export const Bookmark = async ({ url }: { url: string }) => {
   const req = await fetch(`https://api.dub.co/metatags?url=${url}`).catch(null);
   if (!req.ok) return null;
 
-  const data: { title: string; description?: string; image?: string } =
-    await req.json();
+  let data: { title: string; description?: string; image?: string };
+  try {
+    data = await req.json();
+  } catch (e) {
+    return null;
+  }
   const domain = getUrlDomain(url);
 
   const faviconURL =
