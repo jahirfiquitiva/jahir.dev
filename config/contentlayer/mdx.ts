@@ -9,16 +9,18 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 
 import imageBlurMetadata from './rehype/blur';
 import { prettyCode } from './rehype/code';
+import unwrapFigure from './rehype/figure';
 import { toc } from './rehype/toc';
 
 const mdx: MDXOptions = {
   remarkPlugins: [
     remarkGfm,
-    remarkSqueezeParagraphs,
-    remarkUnwrapImages,
     smartypants,
+    remarkUnwrapImages,
+    remarkSqueezeParagraphs,
   ],
   rehypePlugins: [
+    unwrapFigure,
     imageBlurMetadata,
     rehypeSlug,
     rehypeAccessibleEmojis,
