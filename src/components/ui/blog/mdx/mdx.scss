@@ -176,8 +176,10 @@ article.mdx {
   }
 
   & > video,
-  & > img {
-    @apply my-2 rounded-2;
+  & > img,
+  & > [class*="grid"] img,
+  & > figure > p > img {
+    @apply my-1.5 rounded-1.5;
   }
 
   figure {
