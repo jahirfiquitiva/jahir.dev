@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
+import { Zoom } from '@/components/atoms/zoom';
 import { ShareButton } from '@/components/ui/blog/share-button';
 import { allReadableBlogsWithContent, type PartialBlog } from '@/utils/blog';
 import cx from '@/utils/cx';
@@ -85,6 +86,7 @@ export default function BlogPostLayout(
       <script type={'application/ld+json'} suppressHydrationWarning>
         {blogPostStructuredData(post)}
       </script>
+      <Zoom />
     </>
   );
 }

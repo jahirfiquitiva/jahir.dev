@@ -91,3 +91,17 @@ body article [id] {
 span[role='img'][aria-label] {
   @apply text-primary-txt;
 }
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 5;
+}
+
+.medium-zoom-overlay {
+  @apply backdrop-blur backdrop-saturate-125 transform-gpu;
+  @apply bg-light/75 dark:bg-dark/60 #{!important};
+}
+
+.medium-zoom-image--opened {
+  @apply rounded-0 aspect-auto;
+}
