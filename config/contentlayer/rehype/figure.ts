@@ -9,17 +9,19 @@ interface Node extends BaseNode {
 
 const unwrapFigure = () => {
   return async (tree: Node) => {
-    visit(tree, ['mdxJsxFlowElement', 'element'], (node) => {
-      const tag = node.tagName || node.name;
-      if (tag === 'figure') {
-        const { children = [] } = node;
-        if (children.length === 1) {
-          const [child] = children;
-          const childTag = child.tagName || child.name;
-          if (childTag === 'p') node.children = child.children;
+    try {
+      visit(tree, ['mdxJsxFlowElement', 'element'], (node) => {
+        const tag = node.tagName || node.name;
+        if (tag === 'figure') {
+          const { children = [] } = node;
+          if (children.length === 1) {
+            const [child] = children;
+            const childTag = child.tagName || child.name;
+            if (childTag === 'p') node.children = child.children;
+          }
         }
-      }
-    });
+      });
+    } catch (e) {}
     return tree;
   };
 };
