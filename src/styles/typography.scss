@@ -54,3 +54,8 @@ h6 {
 small {
   @apply text-3xs;
 }
+
+em,
+i {
+  @apply italic;
+}
