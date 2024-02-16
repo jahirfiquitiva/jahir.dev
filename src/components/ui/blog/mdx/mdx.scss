@@ -118,7 +118,7 @@ article.mdx {
     box-decoration-break: clone;
   }
 
-  code:not([data-language]) {
+  :not(pre) code:not([data-language]) {
     &::before,
     &::after {
       content: '`';
@@ -251,6 +251,7 @@ article.mdx {
     @apply no-underline;
   }
 
+  & > pre > code,
   [data-rehype-pretty-code-figure] pre [data-line] {
     @apply px-3 border-l-0.5 border-transparent;
   }
