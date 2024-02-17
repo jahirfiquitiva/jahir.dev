@@ -1,3 +1,5 @@
+'use server';
+
 import { unstable_noStore as noStore } from 'next/cache';
 import type { TweetProps } from 'react-tweet';
 import { getTweet as getTweetFromApi } from 'react-tweet/api';
