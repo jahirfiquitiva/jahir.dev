@@ -7,7 +7,7 @@ import { createMetadata } from '@/utils/metadata';
 
 import type { BlogPostPageContext } from './types';
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
 export default async function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
