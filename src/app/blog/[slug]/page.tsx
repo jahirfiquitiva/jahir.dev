@@ -9,7 +9,7 @@ import type { BlogPostPageContext } from './types';
 
 // export const dynamicParams = false;
 
-export default async function BlogPostPage(context: BlogPostPageContext) {
+export default function BlogPostPage(context: BlogPostPageContext) {
   const { slug } = context.params;
   const post = allReadableBlogsWithContent.find((b) => b.slug === slug);
   if (!slug || !post) return notFound();
