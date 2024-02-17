@@ -59,6 +59,7 @@ const defaultNextConfig = {
 const millionConfig = {
   mute: true,
   auto: { rsc: true },
+  rsc: true,
 };
 
 const config = million.next(withContentlayer(defaultNextConfig), millionConfig);
