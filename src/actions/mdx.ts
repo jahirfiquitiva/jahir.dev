@@ -33,6 +33,7 @@ interface SiteMetadata {
 
 export const getMetadata = async (url: string) => {
   if (!url) return null;
+  noStore();
   try {
     const req = await fetch(`https://api.dub.co/metatags?url=${url}`).catch(
       null,
