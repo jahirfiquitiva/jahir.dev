@@ -1,6 +1,6 @@
 'use server';
 
-import { eq } from 'drizzle-orm';
+import { and, desc, eq, gt, ne } from 'drizzle-orm';
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
@@ -50,5 +50,30 @@ export const getCounters = async (slug: string): Promise<Counters> => {
     return result as Counters;
   } catch (e) {
     return {};
+  }
+};
+
+export const getTopThreeBlogPosts = async (latestBlogPostSlug: string) => {
+  noStore();
+  try {
+    const topThree = await db
+      .select({ slug: counters.slug, views: counters.views })
+      .from(counters)
+      .where(
+        and(
+          // It isn't "uses" blog post
+          ne(counters.slug, 'uses'),
+          // It isn't the most recent blog post
+          ne(counters.slug, latestBlogPostSlug),
+          // Has more than 1 view
+          gt(counters.views, 1),
+        ),
+      )
+      .orderBy(desc(counters.views))
+      .limit(3)
+      .execute();
+    return topThree;
+  } catch (e) {
+    return [];
   }
 };

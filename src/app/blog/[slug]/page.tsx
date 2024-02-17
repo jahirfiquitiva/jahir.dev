@@ -7,6 +7,8 @@ import { createMetadata } from '@/utils/metadata';
 
 import type { BlogPostPageContext } from './types';
 
+// This seems to cause this error:
+// Error: Invariant: PPR lambda isn't streaming
 // export const dynamicParams = false;
 
 export default function BlogPostPage(context: BlogPostPageContext) {

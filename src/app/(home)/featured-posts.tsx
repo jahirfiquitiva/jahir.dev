@@ -1,17 +1,16 @@
-import { and, desc, gt, ne } from 'drizzle-orm';
 import {
   unstable_cache as cache,
   unstable_noStore as noStore,
 } from 'next/cache';
 import { Suspense } from 'react';
 
+import { getTopThreeBlogPosts } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
 import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
-import { counters, db } from '@/lib/db';
 import {
   allReadableBlogs,
   sortBlogPostsByDate,
@@ -24,28 +23,13 @@ export const getFeaturedPosts = cache(
   async (): Promise<Array<PartialBlog>> => {
     noStore();
     try {
-      const sortedPosts = allReadableBlogs.sort(sortBlogPostsByDate);
-      const latestPost = sortedPosts[0];
-      const topThree = await db
-        .select({ slug: counters.slug, views: counters.views })
-        .from(counters)
-        .where(
-          and(
-            // It isn't "uses" blog post
-            ne(counters.slug, 'uses'),
-            // It isn't the most recent blog post
-            ne(counters.slug, latestPost.slug),
-            // Has more than 1 view
-            gt(counters.views, 1),
-          ),
-        )
-        .orderBy(desc(counters.views))
-        .limit(3)
-        .execute();
+      const [latestPost, ...sortedPosts] =
+        allReadableBlogs.sort(sortBlogPostsByDate);
+      const topThree = await getTopThreeBlogPosts(latestPost.slug);
       const mostViewedPost =
         topThree[Math.floor(Math.random() * topThree.length)];
       const otherPosts = sortedPosts.filter(
-        (it) => mostViewedPost.slug !== it.slug && latestPost.slug !== it.slug,
+        (it) => mostViewedPost.slug !== it.slug,
       );
       const randomPost =
         otherPosts[Math.floor(Math.random() * otherPosts.length)];
