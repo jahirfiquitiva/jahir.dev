@@ -6,7 +6,10 @@
     "silent": true
   },
   "functions": {
-    "src/**/*": {
+    "src/app/**/*": {
+      "excludeFiles": "public/**"
+    },
+    "src/lib/**/*": {
       "excludeFiles": "public/**"
     }
   }
