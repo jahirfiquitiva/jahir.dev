@@ -3,7 +3,7 @@ import { varchar } from 'drizzle-orm/mysql-core';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { integer, pgTable } from 'drizzle-orm/pg-core';
 
-const sql = neon(process.env.NEON_DB_URL || '');
+const sql = neon(process.env.DATABASE_URL || '');
 
 export const counters = pgTable('counters', {
   // @ts-expect-error idk

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 import type { IncrementCounterFnType } from '@/actions/counters';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
-import type { ReactionName, Counters } from '@/lib/planetscale';
+import type { ReactionName, Counters } from '@/lib/db';
 
 import { confettiOptions, reactionsSetup } from './reaction-button.config';
 

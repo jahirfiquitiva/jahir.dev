@@ -1418,13 +1418,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@planetscale/database@npm:^1.16.0":
-  version: 1.16.0
-  resolution: "@planetscale/database@npm:1.16.0"
-  checksum: 10c0/8c5391fe9924c750f3df9d4f9e7591c9335743848c9b76da201236537702e13c2aa05d5446475f71ebf27799b4231495fe2ea22faa2edcd1222ad9eed4bccd73
-  languageName: node
-  linkType: hard
-
 "@protobufjs/aspromise@npm:^1.1.1, @protobufjs/aspromise@npm:^1.1.2":
   version: 1.1.2
   resolution: "@protobufjs/aspromise@npm:1.1.2"
@@ -5743,25 +5736,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kysely-planetscale@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "kysely-planetscale@npm:1.4.0"
-  dependencies:
-    date-fns: "npm:^2.30.0"
-  peerDependencies:
-    "@planetscale/database": "*"
-    kysely: "*"
-  checksum: 10c0/99112b77b06d6ac7618ff4f5a99ae92c5e32fd620d3d9731669803d9899ab91d02c2cfa8424c3b5a49d7e52ffc8a7f6184f2e48a585aee903f6d23fb568bf700
-  languageName: node
-  linkType: hard
-
-"kysely@npm:^0.27.2":
-  version: 0.27.2
-  resolution: "kysely@npm:0.27.2"
-  checksum: 10c0/c9bf222d66896bb1310c3c179cfbfb9a8159a2a381fbfe3658c9def6572a19f7d427c4fd39b26263fe19093a3eb43ff135e55d5c59714e637b6dec69dc8e7f87
-  languageName: node
-  linkType: hard
-
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -8794,7 +8768,6 @@ __metadata:
     "@commitlint/config-conventional": "npm:18.6.2"
     "@jsdevtools/rehype-toc": "npm:^3.0.2"
     "@neondatabase/serverless": "npm:^0.8.1"
-    "@planetscale/database": "npm:^1.16.0"
     "@types/canvas-confetti": "npm:^1.6.4"
     "@types/node": "npm:^20.11.19"
     "@types/react": "npm:^18.2.55"
@@ -8815,8 +8788,6 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.1.3"
     husky: "npm:^9.0.11"
     is-ci: "npm:^3.0.1"
-    kysely: "npm:^0.27.2"
-    kysely-planetscale: "npm:^1.4.0"
     medium-zoom: "npm:^1.1.0"
     million: "npm:^2.6.4"
     next: "npm:^14.1.0"
