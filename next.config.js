@@ -19,8 +19,8 @@ const defaultNextConfig = {
   compress: true,
   crossOrigin: 'anonymous',
   experimental: {
-    // ppr: true,
-    // useLightningcss: true,
+    ppr: true,
+    useLightningcss: true,
     optimizePackageImports: ['react-tweet'],
   },
   compiler: {
