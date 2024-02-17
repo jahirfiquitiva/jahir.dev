@@ -1,3 +1,4 @@
+import { and, desc, gt, ne } from 'drizzle-orm';
 import {
   unstable_cache as cache,
   unstable_noStore as noStore,
@@ -10,7 +11,7 @@ import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
 import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
-import { db } from '@/lib/planetscale';
+import { counters, db } from '@/lib/db';
 import {
   allReadableBlogs,
   sortBlogPostsByDate,
@@ -26,26 +27,31 @@ export const getFeaturedPosts = cache(
       const sortedPosts = allReadableBlogs.sort(sortBlogPostsByDate);
       const latestPost = sortedPosts[0];
       const topThree = await db
-        .selectFrom('counters')
-        .select(['slug', 'views'])
-        .where('slug', '!=', 'blog--uses')
-        .where('slug', '!=', `blog--${latestPost.slug}`)
-        .where('views', '>', 1)
-        .orderBy(['views desc'])
+        .select({ slug: counters.slug, views: counters.views })
+        .from(counters)
+        .where(
+          and(
+            // It isn't "uses" blog post
+            ne(counters.slug, 'uses'),
+            // It isn't the most recent blog post
+            ne(counters.slug, latestPost.slug),
+            // Has more than 1 view
+            gt(counters.views, 1),
+          ),
+        )
+        .orderBy(desc(counters.views))
         .limit(3)
         .execute();
       const mostViewedPost =
         topThree[Math.floor(Math.random() * topThree.length)];
       const otherPosts = sortedPosts.filter(
-        (it) =>
-          mostViewedPost.slug !== `blog--${it.slug}` &&
-          latestPost.slug !== it.slug,
+        (it) => mostViewedPost.slug !== it.slug && latestPost.slug !== it.slug,
       );
       const randomPost =
         otherPosts[Math.floor(Math.random() * otherPosts.length)];
       return [
         latestPost,
-        sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
+        sortedPosts.find((it) => mostViewedPost.slug === it.slug),
         randomPost,
       ].filter(Boolean) as Array<PartialBlog>;
     } catch (e) {
