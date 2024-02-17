@@ -1,43 +1,29 @@
-'use client';
+import { Suspense } from 'react';
 
-import { useEffect } from 'react';
-
-import { useHasMounted } from '@/hooks/use-has-mounted';
-import { useImmutableRequest } from '@/hooks/use-request';
-import type { Counters } from '@/lib/planetscale';
+import { getCounters, incrementCounter } from '@/actions/counters';
+import type { CleanBlog } from '@/utils/blog';
 
 interface ViewsCounterProps {
-  slug: string;
+  slug: CleanBlog['slug'];
   write?: boolean;
-  inProgress?: boolean;
 }
 
-export const ViewsCounter = (props: ViewsCounterProps) => {
-  const { slug, inProgress, write } = props;
-  const hasMounted = useHasMounted();
-  const endpoint = `/api/views/blog--${slug}`;
-  const { data } = useImmutableRequest<Counters>(endpoint);
-
-  useEffect(() => {
-    // Do nothing in SSR or if article is in progress
-    if (!hasMounted || inProgress || !write) return;
-    const hostname = window.location.hostname || 'localhost';
-    // Count views in production website only
-    if (hostname !== 'jahir.dev') return;
-    fetch(endpoint, { method: 'POST' }).catch();
-  }, [hasMounted, endpoint, inProgress, write]);
-
-  const { views = 0 } = data || {};
+const Views = async ({ slug, write }: ViewsCounterProps) => {
+  const { views = 0 } = await getCounters(slug);
+  if (write) incrementCounter(slug, 'views');
+  if (views <= 1) return null;
   return (
     <>
-      {views > 1 ? (
-        <>
-          <span aria-hidden={'true'} className={'font-bold'}>
-            ·
-          </span>
-          <span className={'motion-safe:animate-fade-in'}>{views} views</span>
-        </>
-      ) : null}
+      <span aria-hidden={'true'} className={'font-bold'}>
+        ·
+      </span>
+      <span className={'motion-safe:animate-fade-in'}>{views} views</span>
     </>
   );
 };
+
+export const ViewsCounter = (props: ViewsCounterProps) => (
+  <Suspense fallback={<span className={'min-w-9 min-h-6'} />}>
+    <Views {...props} />
+  </Suspense>
+);
