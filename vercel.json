@@ -4,5 +4,10 @@
   "trailingSlash": false,
   "github": {
     "silent": true
+  },
+  "functions": {
+    "src/**/*": {
+      "excludeFiles": "public/**"
+    }
   }
 }
