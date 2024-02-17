@@ -10,7 +10,7 @@ import { getDate } from '@/utils/date';
 
 import { Header } from './header';
 import { Hero } from './hero';
-import { Reactions } from './reactions';
+// import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
 
 const blogPostStructuredData = (post?: PartialBlog): string => {
@@ -81,7 +81,7 @@ export default function BlogPostLayout(
             <span>Edit on GitHub</span>
           </OutlinedLinkButton>
         </div>
-        <Reactions slug={slug} />
+        {/* <Reactions slug={slug} /> */}
       </div>
       <script type={'application/ld+json'} suppressHydrationWarning>
         {blogPostStructuredData(post)}
