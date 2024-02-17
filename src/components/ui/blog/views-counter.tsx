@@ -23,7 +23,7 @@ const Views = async ({ slug, write }: ViewsCounterProps) => {
 };
 
 export const ViewsCounter = (props: ViewsCounterProps) => (
-  <Suspense fallback={<span className={'min-w-9 min-h-6'} />}>
+  <Suspense fallback={<span className={'min-w-9 min-h-5'} />}>
     <Views {...props} />
   </Suspense>
 );
