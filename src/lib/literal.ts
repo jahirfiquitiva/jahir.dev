@@ -1,3 +1,5 @@
+'use server';
+
 import { unstable_noStore as noStore } from 'next/cache';
 
 import { getBlurData } from 'config/contentlayer/rehype/blur';
