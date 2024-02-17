@@ -59,7 +59,7 @@ export const getFeaturedPosts = cache(
     }
   },
   ['featured-posts'],
-  { revalidate: 86400 },
+  { revalidate: 43200 },
 );
 
 const BlogPostsListFallback = () => {
