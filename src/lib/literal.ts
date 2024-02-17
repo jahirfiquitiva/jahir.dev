@@ -1,4 +1,4 @@
-import { unstable_noStore as noStore } from 'next/cache';
+// import { unstable_noStore as noStore } from 'next/cache';
 
 import { getBlurData } from 'config/contentlayer/rehype/blur';
 
@@ -124,7 +124,7 @@ type BookWithProgress = Book &
 export const getReadingProgress = async (): Promise<
   BookWithProgress | undefined
 > => {
-  noStore();
+  // noStore();
   try {
     const { data: readingBooksData, errors } = await getReadingBooks();
     if (errors) console.error(errors.map((e) => e.message).join(', '));
