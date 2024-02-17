@@ -1,8 +1,8 @@
-import type { CSSProperties } from 'react';
+import { Suspense, type CSSProperties } from 'react';
 
+import { getCounters, incrementCounter } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
 import { Link } from '@/components/atoms/link';
-import { ViewsCounter } from '@/components/ui/blog/views-counter';
 import type { CleanBlog } from '@/utils/blog';
 import { getReadableColor, hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
@@ -11,6 +11,23 @@ import { formatDate } from '@/utils/date';
 interface HeaderProps {
   post: CleanBlog;
 }
+
+const Views = async ({ slug }: { slug: CleanBlog['slug'] }) => {
+  const { views = 0 } = await getCounters(slug);
+  incrementCounter(slug, 'views');
+  return (
+    <>
+      {views > 1 ? (
+        <>
+          <span aria-hidden={'true'} className={'font-bold'}>
+            ·
+          </span>
+          <span className={'motion-safe:animate-fade-in'}>{views} views</span>
+        </>
+      ) : null}
+    </>
+  );
+};
 
 export const Header = ({ post }: HeaderProps) => {
   const { color, readingTime } = post;
@@ -82,8 +99,10 @@ export const Header = ({ post }: HeaderProps) => {
             </span>
           </>
         ) : null}
-        {!post.link ? (
-          <ViewsCounter slug={post.slug} inProgress={post.inProgress} write />
+        {!post.link && !post.inProgress ? (
+          <Suspense>
+            <Views slug={post.slug} />
+          </Suspense>
         ) : null}
       </p>
     </div>
