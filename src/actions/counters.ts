@@ -1,14 +1,10 @@
 'use server';
 
+import { eq } from 'drizzle-orm';
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
-import {
-  db,
-  type CounterName,
-  type Counters,
-  reactionsNames,
-} from '@/lib/planetscale';
+import { db, type CounterName, counters, type Counters } from '@/lib/db';
 
 import { canRunAction } from './utils';
 
@@ -21,15 +17,18 @@ export const incrementCounter = cache(
     noStore();
     try {
       const data = await db
-        .selectFrom('counters')
-        .where('slug', '=', slug)
-        .select([counter])
+        .select({ [counter]: counters[counter] })
+        .from(counters)
+        .where(eq(counters.slug, slug))
         .execute();
 
       const counterCount = !data.length ? 0 : Number(data[0][counter]);
-      db.insertInto('counters')
-        .values({ slug, [counter]: 1 })
-        .onDuplicateKeyUpdate({ [counter]: counterCount + 1 })
+      db.insert(counters)
+        .values({ slug, [counter]: 0 })
+        .onConflictDoUpdate({
+          target: counters.slug,
+          set: { [counter]: counterCount + 1 },
+        })
         .execute();
       return { [counter]: counterCount + 1 };
     } catch (e) {
@@ -43,12 +42,12 @@ export type IncrementCounterFnType = typeof incrementCounter;
 export const getCounters = async (slug: string): Promise<Counters> => {
   noStore();
   try {
-    const [counters] = await db
-      .selectFrom('counters')
-      .where('slug', '=', `blog--${slug}`)
-      .select(reactionsNames)
+    const [result] = await db
+      .select()
+      .from(counters)
+      .where(eq(counters.slug, slug))
       .execute();
-    return counters;
+    return result as Counters;
   } catch (e) {
     return {};
   }

@@ -19,7 +19,7 @@ interface ReactionsButtonsProps {
 
 export const ReactionsButtons = (props: ReactionsButtonsProps) => {
   const { counters, reacted, submitting, onButtonClick } = useReactions(
-    `blog--${props.slug}`,
+    props.slug,
     props.initialCounters,
     props.incrementReactionFn,
   );
