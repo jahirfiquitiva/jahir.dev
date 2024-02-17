@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from 'next/cache';
+
 import { buildBoringAvatarUrl } from '@/utils/boring-avatars';
 import { groupBy } from '@/utils/group-by';
 
@@ -11,6 +13,7 @@ const recursiveBmacRequest = async <T = unknown>(
   items?: Array<T>,
 ): Promise<Array<T>> => {
   if (!endpoint) return items || [];
+  noStore();
   try {
     const request = await fetch(endpoint, {
       // @ts-ignore
