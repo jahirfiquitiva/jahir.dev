@@ -32,7 +32,7 @@ export const getOgImage = async (
   hero?: string | null,
 ) => {
   const actualPath = (path || '').toLowerCase() as PathName;
-  let actualHero = hero || '/media/site/default-og.jpg';
+  let actualHero = hero || '/media/site/default-og.png';
   if (actualHero.startsWith('/')) actualHero = actualHero.substring(1);
 
   return new ImageResponse(
