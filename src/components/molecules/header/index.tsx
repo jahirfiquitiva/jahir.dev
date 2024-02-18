@@ -31,7 +31,11 @@ export const Header = () => {
   const { pathname, elevated, expanded, setExpanded } = useNavbarState();
 
   return (
-    <StyledHeader id={'header'} className={expanded ? expandedClasses : ''}>
+    <StyledHeader
+      id={'header'}
+      className={expanded ? expandedClasses : ''}
+      data-expanded={expanded}
+    >
       <Navbar
         path={pathname}
         isExpanded={expanded}
