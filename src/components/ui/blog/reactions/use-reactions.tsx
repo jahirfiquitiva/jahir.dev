@@ -3,20 +3,16 @@
 import confetti from 'canvas-confetti';
 import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 
-import type { IncrementCounterFnType } from '@/actions/counters';
+import { incrementCounter } from '@/actions/counters';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
-import type { ReactionName, Counters } from '@/lib/db';
+import type { ReactionName, Counters } from '@/types/db';
 
 import { confettiOptions, reactionsSetup } from './reaction-button.config';
 
 type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
 
-export const useReactions = (
-  slug: string,
-  initialCounters?: Counters,
-  incrementReactionFn?: IncrementCounterFnType,
-) => {
+export const useReactions = (slug: string, initialCounters?: Counters) => {
   const hasMounted = useHasMounted();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
@@ -52,8 +48,7 @@ export const useReactions = (
       setSubmitting(reaction);
       let success = false;
       try {
-        const newReactions =
-          (await incrementReactionFn?.(slug, reaction)) || {};
+        const newReactions = await incrementCounter(slug, reaction);
         if (Object.keys(newReactions).length) {
           setCounters((previousCounters) => ({
             ...previousCounters,
@@ -71,7 +66,7 @@ export const useReactions = (
       setSubmitting(undefined);
       return success;
     },
-    [hasMounted, submitting, reacted, incrementReactionFn, slug],
+    [hasMounted, submitting, reacted, slug],
   );
 
   const onButtonClick = async (

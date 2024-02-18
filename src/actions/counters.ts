@@ -4,7 +4,8 @@ import { and, desc, eq, gt, ne } from 'drizzle-orm';
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
-import { db, type CounterName, counters, type Counters } from '@/lib/db';
+import { db, counters } from '@/lib/db';
+import type { CounterName, Counters } from '@/types/db';
 
 import { canRunAction } from './utils';
 

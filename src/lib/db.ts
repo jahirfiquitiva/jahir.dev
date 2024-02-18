@@ -16,14 +16,3 @@ export const counters = pgTable('counters', {
 });
 
 export const db = drizzle(sql, { schema: { ...counters } });
-
-export const reactionsNames = [
-  'likes',
-  'loves',
-  'awards',
-  'bookmarks',
-] as const;
-
-export type ReactionName = (typeof reactionsNames)[number];
-export type CounterName = ReactionName | 'views';
-export type Counters = { [Key in CounterName]?: number };
