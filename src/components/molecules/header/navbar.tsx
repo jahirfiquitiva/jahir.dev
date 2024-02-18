@@ -55,6 +55,7 @@ export const Navbar = (props: NavbarProps) => {
         href={'/'}
         className={'gap-2 hocus:bg-toolbar-highlight'}
         aria-current={props.path === '/' ? 'page' : undefined}
+        prefetch={false}
       >
         <Logo className={'saturate-125 dark:saturate-150'} />
         <span
@@ -83,6 +84,7 @@ export const Navbar = (props: NavbarProps) => {
                     ? link.className.join(' ')
                     : link.className.map((c) => `hocus:${c}`)
                 }
+                prefetch={false}
               >
                 <NavPageLinkText className={'gradient'}>
                   {link.title}
