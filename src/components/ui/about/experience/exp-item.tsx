@@ -2,7 +2,7 @@ import { type CSSProperties } from 'react';
 
 import type { ImgProps } from '@/components/atoms/img';
 import { Img } from '@/components/atoms/img';
-import { getReadableColor, hexToRgb } from '@/utils/color';
+import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
 import { ExperienceItem, ExperienceItemWithLine } from './exp.styles';
@@ -18,9 +18,8 @@ export interface ExperienceItemProps {
   last?: boolean;
 }
 
-export const ExpItem = async (props: ExperienceItemProps) => {
-  const readableColor = await getReadableColor(props.color, true);
-  const color = await hexToRgb(readableColor, 1, true);
+export const ExpItem = (props: ExperienceItemProps) => {
+  const color = hexToRgb(props.color, 1, true);
   const Component = props.last ? ExperienceItem : ExperienceItemWithLine;
   return (
     <Component
