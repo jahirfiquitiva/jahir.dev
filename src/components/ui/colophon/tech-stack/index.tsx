@@ -49,10 +49,10 @@ const StackIcons = () => (
       </IconLink>
     </IconContainer>
     <IconContainer>
-      <IconLink title={'PlanetScale'} href={'https://planetscale.com/'}>
+      <IconLink title={'Neon'} href={'https://neon.tech/'}>
         <Icon
           path={
-            'M1.9 12c0-5.5 4.5-10 10-10C16 2 19.5 4.4 21 7.9L7.8 21.1c-.6-.3-1.1-.6-1.6-.9l8.2-8.2h-2.5l-7.1 7.1C3 17.3 1.9 14.8 1.9 12zm20 0-10 10c5.5 0 10-4.5 10-10z'
+            'M3 6.1C3 4.4 4.4 3 6.1 3h11.8C19.6 3 21 4.4 21 6.1v10c0 1.8-2.2 2.5-3.3 1.1l-3.4-4.4v5.3c0 1.5-1.3 2.8-2.8 2.8H6.1c-1.7.1-3.1-1.3-3.1-3V6.1zm3.1-.6c-.3 0-.6.3-.6.6v11.8c0 .3.3.6.6.6h5.5c.2 0 .2-.1.2-.3v-7.1c0-1.8 2.2-2.5 3.3-1.1l3.4 4.4V6.1c0-.3 0-.6-.3-.6H6.1z'
           }
           className={'size-12'}
         />
@@ -102,8 +102,8 @@ export const TechStack = () => (
         Umami
       </Link>{' '}
       and{' '}
-      <Link title={'PlanetScale'} href={'https://planetscale.com/'}>
-        PlanetScale
+      <Link title={'Neon'} href={'https://neon.tech/'}>
+        Neon
       </Link>
       . It&apos;s hosted on{' '}
       <Link title={'Vercel'} href={'https://vercel.com/'}>
