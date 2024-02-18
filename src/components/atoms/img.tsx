@@ -1,6 +1,6 @@
 import Image, { type ImageProps, type StaticImageData } from 'next/image';
 
-import cx, { tw } from '@/utils/cx';
+import cx from '@/utils/cx';
 
 type SizeProps = Omit<ImageProps, 'width' | 'height'> & {
   size?: number | `${number}`;
