@@ -70,9 +70,9 @@
     "link": "https://www.macbartender.com/"
   },
   {
-    "image": "uses/apps/pika.png",
-    "name": "Pika",
-    "link": "https://superhighfives.com/pika"
+    "image": "uses/apps/contraste.png",
+    "name": "Contraste",
+    "link": "https://contrasteapp.com/"
   },
   {
     "image": "uses/apps/soundsource.png",
@@ -118,5 +118,10 @@
     "image": "uses/apps/focus.png",
     "name": "Focus",
     "link": "https://heyfocus.com/"
+  },
+  {
+    "image": "uses/apps/alttab.png",
+    "name": "AltTab",
+    "link": "https://github.com/lwouis/alt-tab-macos"
   }
 ]
