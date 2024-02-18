@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
 import {
@@ -9,8 +7,6 @@ import {
 } from '@/utils/blog';
 import { getDate } from '@/utils/date';
 
-import Loading from '../loading';
-
 const blogPostsByYear = allReadableBlogs.reduce<
   Record<number, Array<PartialBlog>>
 >((acc, post) => {
@@ -19,7 +15,7 @@ const blogPostsByYear = allReadableBlogs.reduce<
   return { ...acc, [year]: [...(acc[year] || []), post] };
 }, {});
 
-export const BlogPostsList = () => (
+export const GroupedBlogPosts = () => (
   <ol className={'flex flex-col gap-6'}>
     {Object.entries(blogPostsByYear)
       .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
@@ -51,10 +47,4 @@ export const BlogPostsList = () => (
         </li>
       ))}
   </ol>
-);
-
-export const GroupedBlogPosts = () => (
-  <Suspense fallback={<Loading />}>
-    <BlogPostsList />
-  </Suspense>
 );

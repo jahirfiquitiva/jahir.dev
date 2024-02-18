@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
 import { Link } from '@/components/atoms/link';
@@ -82,8 +82,8 @@ export const Header = ({ post }: HeaderProps) => {
             </span>
           </>
         ) : null}
-        {!post.link ? (
-          <ViewsCounter slug={post.slug} inProgress={post.inProgress} write />
+        {!post.link && !post.inProgress ? (
+          <ViewsCounter slug={post.slug} write />
         ) : null}
       </p>
     </div>
