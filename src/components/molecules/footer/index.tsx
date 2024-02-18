@@ -29,7 +29,6 @@ export const Footer = () => {
             'hocus:underline hocus:decoration-brand-500',
             'dark:hocus:decoration-brand-300',
           )}
-          prefetch={false}
         >
           <Logo />
           <span
@@ -80,7 +79,6 @@ export const Footer = () => {
                         href={link.href}
                         className={className}
                         {...link.props}
-                        prefetch={false}
                       >
                         {link.title}
                       </FooterLink>

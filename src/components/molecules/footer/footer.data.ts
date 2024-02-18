@@ -53,7 +53,6 @@ export const linksGroups = [
         className: ['from-yellow', 'to-orange'],
         props: {
           'data-umami-event': 'RSS feed',
-          prefetch: false,
         },
       },
       {

@@ -36,13 +36,7 @@ export const Link = (props: LinkProps) => {
       {...{ href, ...rest }}
       href={href.toString()}
       className={className}
-      prefetch={
-        LinkComponent === 'a'
-          ? undefined
-          : openInNewTab || rest.target === '_blank'
-            ? false
-            : rest.prefetch
-      }
+      prefetch={LinkComponent === 'a' ? undefined : false}
       {...(openInNewTab
         ? {
             target: '_blank',
