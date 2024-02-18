@@ -8,13 +8,10 @@ const imagesAlts: Array<string> = [
   "In Medellin, Colombia – Nov '23",
 ];
 
-const randomBetween = (min: number, max: number): number =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-
 export const getAboutImage = cache(
   async () => {
-    const index = randomBetween(0, imagesAlts.length - 1);
-    const src = await import(`../../assets/images/about/${index + 1}.jpeg`);
+    const index = Math.floor(Math.random() * imagesAlts.length);
+    const src = await import(`../../assets/images/about/${index}.jpeg`);
     return {
       src: JSON.parse(JSON.stringify(src)),
       alt: imagesAlts[index],
