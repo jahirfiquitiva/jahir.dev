@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { useHasMounted } from '@/hooks/use-has-mounted';
 
-export const Zoom = () => {
+const Zoom = () => {
   const hasMounted = useHasMounted();
   useEffect(() => {
     if (!hasMounted) return;
@@ -18,3 +18,5 @@ export const Zoom = () => {
   });
   return null;
 };
+
+export default Zoom;
