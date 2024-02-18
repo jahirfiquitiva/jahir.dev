@@ -8,7 +8,7 @@ import {
   useEffect,
 } from 'react';
 
-import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/utils/color';
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/constants';
 import { colorMetaTags } from '@/utils/metadata';
 
 export type ThemeOption = 'system' | 'light' | 'dark';

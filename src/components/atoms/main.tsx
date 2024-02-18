@@ -1,6 +1,7 @@
+import { MAX_SITE_WIDTH } from '@/constants';
 import { tw } from '@/utils/cx';
 
-export const Main = tw.main.attrs({ style: { maxWidth: 666 } })`
+export const Main = tw.main.attrs({ style: { maxWidth: MAX_SITE_WIDTH } })`
   flex
   flex-col
   flex-1

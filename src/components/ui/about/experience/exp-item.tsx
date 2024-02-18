@@ -18,8 +18,9 @@ export interface ExperienceItemProps {
   last?: boolean;
 }
 
-export const ExpItem = (props: ExperienceItemProps) => {
-  const color = hexToRgb(getReadableColor(props.color, true), 1, true);
+export const ExpItem = async (props: ExperienceItemProps) => {
+  const readableColor = await getReadableColor(props.color, true);
+  const color = await hexToRgb(readableColor, 1, true);
   const Component = props.last ? ExperienceItem : ExperienceItemWithLine;
   return (
     <Component

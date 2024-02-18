@@ -1,4 +1,4 @@
-import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from '@/utils/color';
+import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from '@/constants';
 import { colorMetaTags } from '@/utils/metadata';
 
 export const Meta = () => {

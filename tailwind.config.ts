@@ -4,7 +4,7 @@ import { fontFamily, spacing } from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
 import hocus from 'tailwindcss-hocus';
 
-import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from './src/utils/color';
+import { THEME_COLOR_LIGHT, THEME_COLOR_DARK } from './src/constants';
 
 const reduceObjArray = <T>(objs: Array<T>) =>
   objs.reduce((r, c) => Object.assign(r, c), {});

@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import { Link } from '@/components/atoms/link';
+import { MAX_SITE_WIDTH } from '@/constants';
 import { tw } from '@/utils/cx';
 
-export const Nav = tw.nav.attrs({ style: { maxWidth: 666 } })`
+export const Nav = tw.nav.attrs({ style: { maxWidth: MAX_SITE_WIDTH } })`
   relative
   mx-auto
   h-full

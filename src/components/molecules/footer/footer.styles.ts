@@ -1,7 +1,10 @@
 import { Link } from '@/components/atoms/link';
+import { MAX_SITE_WIDTH } from '@/constants';
 import { tw } from '@/utils/cx';
 
-export const StyledFooter = tw.footer.attrs({ style: { maxWidth: 666 } })`
+export const StyledFooter = tw.footer.attrs({
+  style: { maxWidth: MAX_SITE_WIDTH },
+})`
   w-full
   mx-auto
   grid

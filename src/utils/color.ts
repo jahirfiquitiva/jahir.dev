@@ -1,9 +1,9 @@
 import { colord, extend } from 'colord';
 import a11yPlugin from 'colord/plugins/a11y';
-extend([a11yPlugin]);
 
-export const THEME_COLOR_LIGHT = '#fbfcfe';
-export const THEME_COLOR_DARK = '#0c121e';
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from '@/constants';
+
+extend([a11yPlugin]);
 
 // Colors from css variables: primary
 const bgColor = { dark: THEME_COLOR_DARK, light: THEME_COLOR_LIGHT };
