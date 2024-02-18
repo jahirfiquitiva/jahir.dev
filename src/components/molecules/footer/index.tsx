@@ -29,6 +29,7 @@ export const Footer = () => {
             'hocus:underline hocus:decoration-brand-500',
             'dark:hocus:decoration-brand-300',
           )}
+          prefetch={false}
         >
           <Logo />
           <span
