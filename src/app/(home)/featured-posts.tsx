@@ -4,13 +4,13 @@ import {
 } from 'next/cache';
 import { Suspense } from 'react';
 
+import { getTopThreeBlogPosts } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
 import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
-import { db } from '@/lib/planetscale';
 import {
   allReadableBlogs,
   sortBlogPostsByDate,
@@ -23,29 +23,19 @@ export const getFeaturedPosts = cache(
   async (): Promise<Array<PartialBlog>> => {
     noStore();
     try {
-      const sortedPosts = allReadableBlogs.sort(sortBlogPostsByDate);
-      const latestPost = sortedPosts[0];
-      const topThree = await db
-        .selectFrom('counters')
-        .select(['slug', 'views'])
-        .where('slug', '!=', 'blog--uses')
-        .where('slug', '!=', `blog--${latestPost.slug}`)
-        .where('views', '>', 1)
-        .orderBy(['views desc'])
-        .limit(3)
-        .execute();
+      const [latestPost, ...sortedPosts] =
+        allReadableBlogs.sort(sortBlogPostsByDate);
+      const topThree = await getTopThreeBlogPosts(latestPost.slug);
       const mostViewedPost =
         topThree[Math.floor(Math.random() * topThree.length)];
       const otherPosts = sortedPosts.filter(
-        (it) =>
-          mostViewedPost.slug !== `blog--${it.slug}` &&
-          latestPost.slug !== it.slug,
+        (it) => mostViewedPost.slug !== it.slug,
       );
       const randomPost =
         otherPosts[Math.floor(Math.random() * otherPosts.length)];
       return [
         latestPost,
-        sortedPosts.find((it) => mostViewedPost.slug === `blog--${it.slug}`),
+        sortedPosts.find((it) => mostViewedPost.slug === it.slug),
         randomPost,
       ].filter(Boolean) as Array<PartialBlog>;
     } catch (e) {
@@ -53,7 +43,7 @@ export const getFeaturedPosts = cache(
     }
   },
   ['featured-posts'],
-  { revalidate: 86400 },
+  { revalidate: 43200 },
 );
 
 const BlogPostsListFallback = () => {

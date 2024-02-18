@@ -1,17 +1,11 @@
 import { Suspense } from 'react';
 
-import { getCounters, incrementCounter } from '@/actions/counters';
+import { getCounters } from '@/actions/counters';
 import { ReactionsButtons } from '@/components/ui/blog/reactions';
 
 const Buttons = async ({ slug }: { slug: string }) => {
   const counters = await getCounters(slug);
-  return (
-    <ReactionsButtons
-      slug={slug}
-      initialCounters={counters}
-      incrementReactionFn={incrementCounter}
-    />
-  );
+  return <ReactionsButtons slug={slug} initialCounters={counters} />;
 };
 
 export const Reactions = ({ slug }: { slug?: string }) => {

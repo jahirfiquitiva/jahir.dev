@@ -1,18 +1,15 @@
+import { Suspense } from 'react';
+
+import { getMetadata } from '@/actions/mdx';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import cx from '@/utils/cx';
 import { getUrlDomain } from '@/utils/domain';
 
-export const Bookmark = async ({ url }: { url: string }) => {
-  const req = await fetch(`https://api.dub.co/metatags?url=${url}`).catch(null);
-  if (!req.ok) return null;
+const AsyncBookmark = async ({ url }: { url: string }) => {
+  const data = await getMetadata(url);
+  if (!data) return null;
 
-  let data: { title: string; description?: string; image?: string };
-  try {
-    data = await req.json();
-  } catch (e) {
-    return null;
-  }
   const domain = getUrlDomain(url);
 
   const faviconURL =
@@ -73,3 +70,9 @@ export const Bookmark = async ({ url }: { url: string }) => {
     </Link>
   );
 };
+
+export const Bookmark = ({ url }: { url: string }) => (
+  <Suspense fallback={<div className={'w-full min-h-11'} />}>
+    <AsyncBookmark url={url} />
+  </Suspense>
+);

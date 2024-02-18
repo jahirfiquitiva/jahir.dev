@@ -13,7 +13,7 @@
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Content**: [MDX](https://github.com/mdx-js/mdx) and [contentlayer](https://contentlayer.dev)
-- **Database**: [PlanetScale](https://planetscale.com/)
+- **Database**: [Neon](https://neon.tech/) and [Drizzle ORM](https://orm.drizzle.team/)
 - **Analytics**: [Umami](https://jahir.dev/analytics)
 - **Deployment**: [Vercel](https://vercel.com)
 

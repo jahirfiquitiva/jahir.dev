@@ -19,8 +19,8 @@ const defaultNextConfig = {
   compress: true,
   crossOrigin: 'anonymous',
   experimental: {
-    // ppr: true,
-    // useLightningcss: true,
+    ppr: true,
+    useLightningcss: true,
     optimizePackageImports: ['react-tweet'],
   },
   compiler: {
@@ -59,6 +59,7 @@ const defaultNextConfig = {
 const millionConfig = {
   mute: true,
   auto: { rsc: true },
+  rsc: true,
 };
 
 const config = million.next(withContentlayer(defaultNextConfig), millionConfig);

@@ -66,7 +66,6 @@ export const linksGroups = [
         a11yTitle: 'Scroll back to top',
         href: '#',
         className: ['from-brand', 'to-blue'],
-        prefetch: false,
       },
     ],
   },

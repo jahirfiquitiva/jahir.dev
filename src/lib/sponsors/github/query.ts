@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from 'next/cache';
+
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
 const authHeaders =
   githubApiToken && githubApiToken.length > 0
@@ -90,6 +92,7 @@ const graphQlQuery = `
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 export const getSponsorsGraphQLResponse =
   async (): Promise<SponsorsResponse> => {
+    noStore();
     return fetch('https://api.github.com/graphql', {
       method: 'POST',
       // @ts-ignore
