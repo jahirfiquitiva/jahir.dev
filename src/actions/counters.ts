@@ -1,6 +1,6 @@
 'use server';
 
-import { and, desc, eq, gt, ne } from 'drizzle-orm';
+import { and, desc, eq, gt, ne, sql } from 'drizzle-orm';
 import { unstable_noStore as noStore } from 'next/cache';
 import { cache } from 'react';
 
@@ -17,21 +17,15 @@ export const incrementCounter = cache(
     if (!canRunAction) return {};
     noStore();
     try {
-      const data = await db
-        .select({ [counter]: counters[counter] })
-        .from(counters)
-        .where(eq(counters.slug, slug))
-        .execute();
-
-      const counterCount = !data.length ? 0 : Number(data[0][counter]);
-      db.insert(counters)
+      const [data] = await db
+        .insert(counters)
         .values({ slug, [counter]: 0 })
         .onConflictDoUpdate({
           target: counters.slug,
-          set: { [counter]: counterCount + 1 },
+          set: { [counter]: sql`${counters[counter]} + 1` },
         })
-        .execute();
-      return { [counter]: counterCount + 1 };
+        .returning({ [counter]: counters[counter] });
+      return data;
     } catch (e) {
       return {};
     }
