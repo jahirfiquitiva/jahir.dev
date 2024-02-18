@@ -4,7 +4,7 @@ import { cx } from 'react-twc';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
-import Zoom from '@/components/atoms/zoom';
+import { Zoom } from '@/components/atoms/zoom';
 import { MDX } from '@/components/ui/blog/mdx';
 import { ShareButton } from '@/components/ui/blog/share-button';
 import {
