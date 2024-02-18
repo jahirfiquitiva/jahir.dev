@@ -23,7 +23,7 @@ const getProps = (baseProps: ImgProps) => {
   return { ...props, width: Number(pw), height: Number(ph) };
 };
 
-const BaseImg = (baseProps: ImgProps) => {
+export const Img = (baseProps: ImgProps) => {
   const { width = 0, height = 0, ...props } = getProps(baseProps);
   return (
     // Disabled warning. Alt props already is present in props
@@ -43,5 +43,3 @@ const BaseImg = (baseProps: ImgProps) => {
     />
   );
 };
-
-export const Img = tw(BaseImg)<ImgProps>``;

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { notFound, redirect } from 'next/navigation';
 import { cx } from 'react-twc';
 
 import { Icon } from '@/components/atoms/icon';
 import { OutlinedLinkButton } from '@/components/atoms/link-button';
+import Zoom from '@/components/atoms/zoom';
 import { MDX } from '@/components/ui/blog/mdx';
 import { ShareButton } from '@/components/ui/blog/share-button';
 import {
@@ -19,8 +19,6 @@ import { Header } from './header';
 import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
-
-const Zoom = dynamic(() => import('@/components/atoms/zoom'), { ssr: false });
 
 const blogPostStructuredData = (post?: PartialBlog): string => {
   if (!post) return '';
