@@ -60,7 +60,7 @@ export default function BlogPostPage(context: BlogPostPageContext) {
         heroMeta={post.heroMeta}
       />
       <Header post={post} />
-      <MDX code={post.code} />;
+      <MDX code={post.code} />
       <hr
         className={cx(
           'm-0 border-none h-px w-full bg-divider',
