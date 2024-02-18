@@ -83,6 +83,7 @@ export const Navbar = (props: NavbarProps) => {
                     ? link.className.join(' ')
                     : link.className.map((c) => `hocus:${c}`)
                 }
+                prefetch={!isActive}
               >
                 <NavPageLinkText className={'gradient'}>
                   {link.title}

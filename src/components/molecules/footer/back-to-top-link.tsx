@@ -28,6 +28,7 @@ export const BackToTopLink = (link: BackToTopLinkProps) => (
         : undefined
     }
     {...link.props}
+    prefetch={false}
   >
     {link.title}
   </FooterLink>

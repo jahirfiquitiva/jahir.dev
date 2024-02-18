@@ -79,6 +79,7 @@ export const Footer = () => {
                         href={link.href}
                         className={className}
                         {...link.props}
+                        prefetch={false}
                       >
                         {link.title}
                       </FooterLink>
