@@ -65,24 +65,41 @@
 
 ## Running Locally
 
-This application requires Node.js v16.20+.
+This application requires Node.js v18.18+.
 
-```bash
-git clone https://github.com/jahirfiquitiva/jahir.dev.git
-cd jahir.dev
-yarn
-yarn setup # Remove all of my personal content and files
-```
+1. Clone the project, install dependencies and run initial setup
 
-Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
+    ```bash
+    git clone https://github.com/jahirfiquitiva/jahir.dev.git
+    cd jahir.dev
+    yarn
+    yarn setup # Remove all of my personal content and files
+    ```
 
-```bash
-yarn dev
-```
+2. Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
+
+3. (Optional) This project uses a postgres database to store the views and reactions count.
+
+    ```postgresql
+    CREATE TABLE counters (
+      slug VARCHAR(255) PRIMARY KEY NOT NULL,
+      views INTEGER NOT NULL DEFAULT 0,
+      likes INTEGER NOT NULL DEFAULT 0,
+      loves INTEGER NOT NULL DEFAULT 0,
+      awards INTEGER NOT NULL DEFAULT 0,
+      bookmarks INTEGER NOT NULL DEFAULT 0
+    );
+    ```
+
+4. Run the project locally:
+
+    ```bash
+    yarn dev
+    ```
 
 <details>
 
-<summary>Note</summary>
+<summary><strong>Note</strong></summary>
 
 Some things might be broken or not found because the `yarn setup` script will remove many files.
 Please double check the code and implementations.
@@ -95,7 +112,7 @@ Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/mai
 
 <details>
 
-<summary>Additional changes</summary>
+<summary><strong>Additional changes</strong></summary>
 
 Make sure to set the `IS_TEMPLATE` environment variable to false.
 Otherwise, the colors in the website might be inverted. (See `src/styles/globals.scss`)
