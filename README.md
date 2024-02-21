@@ -80,7 +80,7 @@ This application requires Node.js v18.18+.
 
 3. (Optional) This project uses a postgres database to store the views and reactions count.
 
-    ```postgresql
+    ```sql
     CREATE TABLE counters (
       slug VARCHAR(255) PRIMARY KEY NOT NULL,
       views INTEGER NOT NULL DEFAULT 0,
