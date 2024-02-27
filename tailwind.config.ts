@@ -249,6 +249,7 @@ const config: Config = {
     hocus,
   ],
   safelist: [
+    'max-tablet-sm:overflow-hidden',
     {
       pattern: /^shadow-(brand|blue|green|yellow|orange|red|purple)-300$/,
     },
