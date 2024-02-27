@@ -11,7 +11,7 @@ interface ReactionsButtonsProps {
   initialCounters?: Counters;
 }
 
-export const ReactionsButtons = (props: ReactionsButtonsProps) => {
+const ReactionsButtons = (props: ReactionsButtonsProps) => {
   const { counters, reacted, submitting, onButtonClick } = useReactions(
     props.slug,
     props.initialCounters,
