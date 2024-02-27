@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
@@ -73,7 +72,7 @@ const ErrorComponent = (props: { error: Error }) => {
       <LinkButton href={'/'} title={'Home page'} className={'mt-3'}>
         Go back home
       </LinkButton>
-      <Img
+      <img
         src={'/media/site/monkey.gif'}
         alt={'Monkey throwing laptop aggressively'}
         loading={'lazy'}

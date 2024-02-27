@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { Img } from '@/components/atoms/img';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
@@ -31,7 +30,7 @@ export default function NotFound() {
       <LinkButton href={'/'} title={'Home page'} className={'mt-1.5 mb-5'}>
         Go back home
       </LinkButton>
-      <Img
+      <img
         src={'/media/site/404.gif'}
         alt={'John Travolta gif'}
         className={'mt-auto mx-auto w-full'}

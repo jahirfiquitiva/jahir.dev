@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 
-import monaGifFile from '@/assets/images/donate/pixel-mona-heart.gif';
 import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 
@@ -53,10 +52,13 @@ export const SponsorsList = (props: SponsorsListProps) => {
           </div>
         </div>
         <MonaGif
-          src={monaGifFile}
+          src={'/media/site/pixel-mona-heart.gif'}
           alt={'GitHub Mona pixelated animation with hearts'}
-          size={72}
+          width={72}
+          height={72}
           style={{ filter: 'drop-shadow(0 0 2px #fff)' }}
+          loading={'lazy'}
+          decoding={'async'}
         />
       </Header>
       <StyledList>
@@ -77,10 +79,10 @@ export const SponsorsList = (props: SponsorsListProps) => {
             </Fragment>
           );
         })}
-        {unicorns.map((sponsor) => {
+        {unicorns.map((sponsor, index) => {
           return (
             <SponsorItem
-              key={sponsor.name}
+              key={`${index}-${sponsor.name}`}
               sponsor={sponsor}
               category={'Unicorn'}
               tier={'unicorn'}

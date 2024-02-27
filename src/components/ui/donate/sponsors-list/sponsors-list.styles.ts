@@ -19,7 +19,7 @@ export const Header = tw.div`
   mobile-lg:justify-between
 `;
 
-export const MonaGif = tw(Img)<ImgProps>`
+export const MonaGif = tw.img`
   max-w-12
   mobile-lg:self-end
   mobile-lg:transform
