@@ -18,8 +18,7 @@
   --opacity-tint-border: 0.24;
 }
 
-html.dark,
-html.dark-inverted {
+html.dark {
   --color-background: theme('colors.dark');
   --color-divider: theme(colors.brand.50 / 18%);
 

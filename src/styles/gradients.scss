@@ -73,8 +73,7 @@
   --tw-gradient-to: theme('colors.purple.600') var(--tw-gradient-to-position);
 }
 
-html.dark,
-html.dark-inverted {
+html.dark {
   .from-brand,
   .hocus\:from-brand:hover,
   .hocus\:from-brand:focus {

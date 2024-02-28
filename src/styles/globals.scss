@@ -27,9 +27,7 @@
   you might want to remove these styles but also
   please change the styling and colors to match your own style or brand
 */
-html.inverted,
-html.light-inverted,
-html.dark-inverted {
+html.template {
   &,
   & * {
     @apply pointer-events-none select-none saturate-125 invert;

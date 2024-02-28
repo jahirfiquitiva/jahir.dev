@@ -9,6 +9,7 @@ import { Footer } from '@/components/molecules/footer';
 import { Header } from '@/components/molecules/header';
 import { Providers } from '@/providers';
 import { InterVariable, ManropeVariable } from '@/styles/fonts';
+import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 
 import { Meta } from './meta';
@@ -38,12 +39,17 @@ export const metadata = {
   }),
 };
 
-const { UMAMI_WEBSITE_ID: umamiWebsiteId = '' } = process.env;
+const { UMAMI_WEBSITE_ID: umamiWebsiteId = '', IS_TEMPLATE = 'true' } =
+  process.env;
 export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
       lang={'en'}
-      className={`${InterVariable.variable} ${ManropeVariable.variable}`}
+      className={cx(
+        InterVariable.variable,
+        ManropeVariable.variable,
+        IS_TEMPLATE === 'true' ? 'template' : '',
+      )}
       suppressHydrationWarning
     >
       <head>
