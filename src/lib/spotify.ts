@@ -55,22 +55,25 @@ const basic = btoa(`${clientId}:${clientSecret}`);
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 
 const getAccessToken = async (): Promise<{ access_token?: string }> => {
-  const response = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: serialize({
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    }),
-    next: {
-      revalidate: 0,
-    },
-  });
-
-  return response.json();
+  try {
+    const response = await fetch(TOKEN_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${basic}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: serialize({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }),
+      next: {
+        revalidate: 0,
+      },
+    });
+    return response.json();
+  } catch (e) {
+    return { access_token: undefined };
+  }
 };
 
 const NOW_PLAYING_ENDPOINT =
