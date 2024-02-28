@@ -36,12 +36,13 @@ const BookCard = async () => {
   if (!book) return null;
   const authors = book.authors.map((a) => a.name).join(', ');
   const readProgress = ((book.progress || 0) * 100) / (book.capacity || 1);
+  const state = book.finished ? 'Finished' : 'Reading';
   return (
     <ActivityCard
       title={`"${book.title}" by ${authors}`}
       href={`https://literal.club/jahirfiquitiva/book/${book.slug}`}
       target={'_blank'}
-      data-umami-event={'Reading'}
+      data-umami-event={state}
       data-umami-event-book={book.title}
       className={'hocus:border-brand-600/35 dark:hocus:border-brand-200/35'}
     >
@@ -61,7 +62,7 @@ const BookCard = async () => {
         <Texts>
           <Header>
             <span>
-              {`Reading ${readProgress > 0 ? `(${readProgress.toFixed(2)}%)` : ''}`.trim()}
+              {`${state} ${readProgress > 0 ? `(${readProgress.toFixed(2)}%)` : ''}`.trim()}
             </span>
           </Header>
           <TrackName className={'group-hocus/track:text-accent-dark'}>

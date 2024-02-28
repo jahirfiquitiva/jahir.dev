@@ -64,6 +64,7 @@ interface Book {
     name: string;
   }>;
   gradientColors: Array<string>;
+  finished?: boolean;
 }
 
 interface ReadingProgress {
@@ -81,7 +82,9 @@ type ReadingProgressResponse = GraphQLResponse<{
   readingProgresses: Array<ReadingProgress>;
 }>;
 
-const getReadingBooks = async (): Promise<ReadingBooksResponse> => {
+const getReadingBooks = async (
+  finished: boolean = false,
+): Promise<ReadingBooksResponse> => {
   return fetch('https://literal.club/graphql/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -89,7 +92,7 @@ const getReadingBooks = async (): Promise<ReadingBooksResponse> => {
       query: readingBooksQuery,
       variables: {
         profileId,
-        readingStatus: 'IS_READING',
+        readingStatus: finished ? 'FINISHED' : 'IS_READING',
         limit: 1,
         offset: 0,
       },
@@ -128,21 +131,36 @@ export const getReadingProgress = async (): Promise<
 > => {
   noStore();
   try {
+    let finished = false;
     const { data: readingBooksData, errors } = await getReadingBooks();
-    if (errors) console.error(errors.map((e) => e.message).join(', '));
-    if (!readingBooksData) return undefined;
-    const { booksByReadingStateAndProfile } = readingBooksData;
+    if (errors) {
+      console.error(errors.map((e) => e.message).join(', '));
+      return undefined;
+    }
+    let { booksByReadingStateAndProfile = [] } = readingBooksData || {};
+    if (!booksByReadingStateAndProfile.length) {
+      const { data: finishedBooksData, errors: finishedBooksErrors } =
+        await getReadingBooks(true);
+      if (finishedBooksErrors) {
+        console.error(finishedBooksErrors.map((e) => e.message).join(', '));
+        return undefined;
+      }
+      booksByReadingStateAndProfile =
+        finishedBooksData?.booksByReadingStateAndProfile || [];
+      finished = true;
+    }
     if (!booksByReadingStateAndProfile.length) return undefined;
     const [book] = booksByReadingStateAndProfile;
     const { data: readingProgressData, errors: progressErrors } =
       await getBookProgress(book.id);
     if (progressErrors)
       console.error(progressErrors.map((e) => e.message).join(', '));
-    const progress = readingProgressData?.readingProgresses.find(
-      (p) => p.bookId === book.id,
+    const progress = readingProgressData?.readingProgresses.find((p) =>
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      p ? p.bookId === book.id : false,
     );
     const coverData = await getBlurData(book.cover);
-    return { ...book, ...progress, coverData };
+    return { ...book, ...progress, coverData, finished };
   } catch (e) {
     console.error(e);
     return undefined;
