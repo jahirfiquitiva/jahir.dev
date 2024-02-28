@@ -1,5 +1,3 @@
-import type { ImgProps } from '@/components/atoms/img';
-import { Img } from '@/components/atoms/img';
 import { tw } from '@/utils/cx';
 
 export const StyledList = tw.ul`
