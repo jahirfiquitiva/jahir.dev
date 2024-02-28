@@ -36,10 +36,6 @@ export const BackToTopButton = tw(Button)`
   opacity-0
   select-none
   pointer-events-none
-  [&.shown]:translate-y-0
-  [&.shown]:opacity-100
-  [&.shown]:select-auto
-  [&.shown]:pointer-events-auto
 `;
 
 export const BackToTopIcon = tw.svg`

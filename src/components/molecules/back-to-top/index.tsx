@@ -54,7 +54,11 @@ export const BackToTop = () => {
   return (
     <BackToTopButton
       title={'Scroll back to top'}
-      className={showButton ? 'shown' : ''}
+      className={
+        showButton
+          ? 'translate-y-0 opacity-100 select-auto pointer-events-auto'
+          : ''
+      }
       onClick={scrollToTop}
     >
       <BackToTopIcon
