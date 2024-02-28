@@ -1,7 +1,6 @@
 'use client';
 
 import tunez from '@/assets/images/tunez.png';
-import { Img } from '@/components/atoms/img';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
 import cx from '@/utils/cx';
@@ -16,6 +15,7 @@ import {
   Texts,
   TrackArtist,
   TrackName,
+  AlbumCover,
 } from './activity.styles';
 
 export const Music = () => {
@@ -64,7 +64,7 @@ export const Music = () => {
         style={{ animationDuration: '15s' }}
       />
       <Content className={'bg-white/65 dark:bg-brand-900/35'}>
-        <Img
+        <AlbumCover
           alt={
             loading
               ? 'Loading…'
@@ -74,13 +74,6 @@ export const Music = () => {
           }
           src={track?.image?.url ?? tunez}
           size={track?.image?.width || 78}
-          className={cx(
-            'rounded-1',
-            'aspect-square w-auto h-full',
-            'max-w-full max-h-18 tablet-sm:max-h-20',
-            'border border-divider transition',
-            'scale-95 group-hocus/track:scale-100',
-          )}
         />
         <Texts className={'mix-blend-hard-light'}>
           <Header>
@@ -107,7 +100,7 @@ export const Music = () => {
           >
             {loading ? '' : track?.name ?? 'tunez'}
           </TrackName>
-          <TrackArtist className={cx(loading ? 'bg-divider' : '')}>
+          <TrackArtist className={loading ? 'bg-divider' : ''}>
             {loading ? '' : track?.artist ?? '99 top recently listened songs'}
           </TrackArtist>
         </Texts>

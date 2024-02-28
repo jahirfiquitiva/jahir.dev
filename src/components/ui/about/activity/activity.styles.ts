@@ -114,3 +114,14 @@ export const TrackArtist = tw.span`
   min-h-5.5
   group-hocus/track:text-primary-txt
 `;
+
+export const AlbumCover = tw(Img)<ImgProps>`
+  rounded-1 aspect-square
+  w-auto h-full
+  max-w-full
+  max-h-18 tablet-sm:max-h-20
+  border border-divider
+  transition
+  scale-95
+  group-hocus/track:scale-100
+`;
