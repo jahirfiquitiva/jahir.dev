@@ -106,7 +106,6 @@ export const NavItem = tw.li`
   before:duration-150
   before:bg-transparent
   hocus:before:bg-toolbar-highlight
-  has-[[aria-current="page"]]:before:bg-toolbar-highlight
 `;
 
 export const NavPageLink = tw(NavLink)`
@@ -114,8 +113,6 @@ export const NavPageLink = tw(NavLink)`
   to-secondary-txt
   hocus:saturate-125
   hocus:dark:saturate-150
-  [&[aria-current="page"]]:saturate-125
-  [&[aria-current="page"]]:dark:saturate-150
 `;
 
 export const NavPageLinkText = tw.span`

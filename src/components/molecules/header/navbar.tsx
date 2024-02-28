@@ -79,16 +79,20 @@ export const Navbar = (props: NavbarProps) => {
         {toolbarLinksList.map((link) => {
           const isActive = props.path?.startsWith(link.href) || false;
           return (
-            <NavItem key={link.href}>
+            <NavItem
+              key={link.href}
+              className={isActive ? 'before:bg-toolbar-highlight' : ''}
+            >
               <NavPageLink
                 title={`${link.title} page`}
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={
+                className={cx(
                   isActive
                     ? link.className.join(' ')
-                    : link.className.map((c) => `hocus:${c}`)
-                }
+                    : link.className.map((c) => `hocus:${c}`),
+                  isActive ? 'saturate-125 dark:saturate-150' : '',
+                )}
                 prefetch={!isActive}
               >
                 <NavPageLinkText className={'gradient'}>
