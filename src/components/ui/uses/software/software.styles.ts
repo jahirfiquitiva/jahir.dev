@@ -4,15 +4,22 @@ import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
 export const GridContainer = tw.div`
+  relative
   tablet-md:rounded-4
   -mx-3 tablet-md:-mx-4
   border-none
   overflow-hidden
-  bg-cover
-  bg-no-repeat
-  bg-center
-  bg-[url('/media/uses/wallpaper.jpg')]
-  dark:bg-[url('/media/uses/wallpaper-dark.jpg')]
+  before:absolute
+  before:top-0
+  before:left-0
+  before:w-full
+  before:h-full
+  before:bg-cover
+  before:bg-no-repeat
+  before:bg-center
+  before:bg-[url('/media/uses/wallpaper.jpg')]
+  before:dark:bg-[url('/media/uses/wallpaper-dark.jpg')]
+  before:opacity-85
 `;
 
 export const SoftwareGrid = tw.ol`
@@ -27,8 +34,6 @@ export const SoftwareGrid = tw.ol`
   list-none
   backdrop-blur
   backdrop-saturate-125
-  bg-light/15
-  dark:bg-dark/10
   mobile-md:grid-cols-[repeat(3,minmax(0,108px))]
   mobile-lg:grid-cols-[repeat(4,minmax(0,108px))]
   tablet-sm:grid-cols-[repeat(5,minmax(0,108px))]

@@ -63,7 +63,7 @@ export const Music = () => {
         )}
         style={{ animationDuration: '15s' }}
       />
-      <Content className={'bg-white/65 dark:bg-brand-900/35'}>
+      <Content>
         <AlbumCover
           alt={
             loading
