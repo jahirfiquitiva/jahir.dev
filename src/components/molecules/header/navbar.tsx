@@ -42,12 +42,12 @@ const toolbarLinksList = [
 
 interface NavbarProps extends TWComponentProps<typeof Nav> {
   path?: string;
-  isExpanded?: boolean;
+  expanded?: boolean;
   onNavToggleClick?: () => void;
 }
 
 export const Navbar = (props: NavbarProps) => {
-  const { isExpanded, className } = props;
+  const { expanded, className } = props;
   return (
     <Nav id={'navigation'} className={className}>
       <NavLink
@@ -69,7 +69,13 @@ export const Navbar = (props: NavbarProps) => {
           Jahir Fiquitiva
         </span>
       </NavLink>
-      <LinksList>
+      <LinksList
+        className={
+          expanded
+            ? 'max-h-full opacity-100 select-auto pointer-events-none visible'
+            : ''
+        }
+      >
         {toolbarLinksList.map((link) => {
           const isActive = props.path?.startsWith(link.href) || false;
           return (
@@ -116,9 +122,9 @@ export const Navbar = (props: NavbarProps) => {
         </li>
         <li>
           <NavToggle
-            title={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
-            aria-label={`${isExpanded ? 'Collapse' : 'Expand'} menu`}
-            aria-expanded={isExpanded}
+            title={`${expanded ? 'Collapse' : 'Expand'} menu`}
+            aria-label={`${expanded ? 'Collapse' : 'Expand'} menu`}
+            aria-expanded={expanded}
             aria-controls={'header'}
             onClick={props.onNavToggleClick}
           />

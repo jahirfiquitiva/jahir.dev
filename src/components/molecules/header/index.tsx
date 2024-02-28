@@ -31,15 +31,13 @@ export const Header = () => {
   const { pathname, elevated, expanded, setExpanded } = useNavbarState();
 
   return (
-    <StyledHeader
-      id={'header'}
-      className={expanded ? expandedClasses : ''}
-      data-expanded={expanded}
-    >
+    <StyledHeader id={'header'} className={expanded ? expandedClasses : ''}>
       <Navbar
         path={pathname}
-        isExpanded={expanded}
-        className={elevated ? 'shadow-toolbar-elevated' : ''}
+        expanded={expanded}
+        className={
+          elevated ? 'max-tablet-sm:shadow-toolbar-elevated gap-2' : ''
+        }
         onNavToggleClick={() => {
           setExpanded(!expanded);
         }}

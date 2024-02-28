@@ -34,8 +34,6 @@ export const Nav = tw.nav.attrs({ style: { maxWidth: MAX_SITE_WIDTH } })`
   tablet-sm:grid-cols-[auto_1fr_auto]
   tablet-sm:grid-rows-1
   tablet-sm:gap-2
-  [[data-expanded="true"]>&]:max-tablet-sm:shadow-toolbar-elevated
-  [[data-expanded="true"]>&]:gap-2
 
   before:pointer-events-none
   before:select-none
@@ -74,11 +72,6 @@ export const LinksList = tw.ol`
   duration-200
   delay-150
   will-change-[max-height,opacity,visibility]
-  [[data-expanded="true"]_&]:max-h-full
-  [[data-expanded="true"]_&]:opacity-100
-  [[data-expanded="true"]_&]:select-auto
-  [[data-expanded="true"]_&]:pointer-events-auto
-  [[data-expanded="true"]_&]:visible
   tablet-sm:max-h-full
   tablet-sm:p-0
   tablet-sm:opacity-100
