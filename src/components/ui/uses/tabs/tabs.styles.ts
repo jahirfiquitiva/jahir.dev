@@ -31,12 +31,7 @@ export const TabPanel = tw.section.attrs({
   opacity-100
   visible
   motion-safe:animate-fade-in
-  motion-safe:[animation-delay:0ms]
-  [&[aria-hidden="true"]]:hidden
-  [&[aria-hidden="true"]]:opacity-0
-  [&[aria-hidden="true"]]:invisible
-  [&[aria-hidden="true"]]:pointer-events-none
-  [&[aria-hidden="true"]]:select-none
+  motion-safe:[animation-delay:0s]
 `;
 
 export const TabButton = tw.a`
@@ -51,7 +46,6 @@ export const TabButton = tw.a`
   no-underline
   mobile-lg:text-2xs
   hocus:outline-offset-0
-  [&[aria-selected="true"]]:text-accent
 `;
 
 export const TabButtonText = tw.span`
@@ -73,5 +67,4 @@ export const TabButtonText = tw.span`
   after:rounded-t-0.75
   after:transition-colors
   after:bg-transparent
-  [[aria-selected="true"]>&]:after:bg-accent
 `;

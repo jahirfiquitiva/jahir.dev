@@ -53,6 +53,7 @@ export const Tabs = (props: TabsProps) => {
     <div className={'flex flex-col gap-8 mb-3 flex-1'}>
       <TabsList role={'tablist'}>
         {tabs.map((tab) => {
+          const selected = currentTab === tab.id;
           return (
             <TabButton
               role={'tab'}
@@ -60,7 +61,7 @@ export const Tabs = (props: TabsProps) => {
               id={`tab-${tab.id}`}
               title={`Select tab: "${tab.title}"`}
               href={tab.id === 'all' ? '#' : `#${tab.id}`}
-              aria-selected={currentTab === tab.id}
+              aria-selected={selected}
               aria-controls={
                 tab.id === 'all' ? undefined : `tab-${tab.id}-content`
               }
@@ -69,8 +70,11 @@ export const Tabs = (props: TabsProps) => {
               onClick={() => {
                 setCurrentTab(tab.id);
               }}
+              className={selected ? 'text-accent' : ''}
             >
-              <TabButtonText>{tab.title}</TabButtonText>
+              <TabButtonText className={selected ? 'after:bg-accent' : ''}>
+                {tab.title}
+              </TabButtonText>
             </TabButton>
           );
         })}
@@ -84,7 +88,7 @@ export const Tabs = (props: TabsProps) => {
         {currentTab === 'all' && (
           <figure
             className={
-              'my-2 motion-safe:animate-fade-in motion-safe:[animation-delay:0ms]'
+              'my-2 motion-safe:animate-fade-in motion-safe:[animation-delay:0s]'
             }
           >
             <div
@@ -101,14 +105,19 @@ export const Tabs = (props: TabsProps) => {
           </figure>
         )}
         {Children.map(props.children, (child, index) => {
+          const hidden =
+            currentTab !== 'all' && currentTab !== tabs[index + 1].id;
           return (
             <TabPanel
               id={`tab-${tabs[index + 1].id}-content`}
               aria-labelledby={`tab-${tabs[index + 1].id}`}
-              aria-hidden={
-                currentTab !== 'all' && currentTab !== tabs[index + 1].id
+              aria-hidden={hidden}
+              hidden={hidden}
+              className={
+                hidden
+                  ? 'hidden opacity-0 invisible pointer-events-none select-none'
+                  : ''
               }
-              hidden={currentTab !== 'all' && currentTab !== tabs[index + 1].id}
             >
               <h2 className={'text-xl'}>{tabs[index + 1].title}</h2>
               {child}
@@ -121,7 +130,7 @@ export const Tabs = (props: TabsProps) => {
               'bg-brand-500/[0.024] dark:bg-brand-100/5',
               'border border-dashed border-divider',
               'p-4 rounded-3 my-1',
-              'motion-safe:animate-fade-in motion-safe:[animation-delay:0ms]',
+              'motion-safe:animate-fade-in motion-safe:[animation-delay:0s]',
             )}
           >
             <span role={'img'} aria-label={'lightning emoji'}>
