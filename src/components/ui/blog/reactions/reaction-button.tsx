@@ -25,6 +25,7 @@ export const ReactionButton = (props: ReactionButtonProps) => {
       title={reactionsSetup[reaction].title}
       aria-pressed={reacted}
       disabled={loading === true || reacted === true}
+      className={reacted ? 'bg-tint-bg ring-tint-border' : ''}
       style={
         {
           '--tint': hexToRgb(reactionsSetup[reaction].color, 1, true),

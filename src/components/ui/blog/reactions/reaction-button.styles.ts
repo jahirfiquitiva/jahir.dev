@@ -7,7 +7,5 @@ export const StyledReactionButton = tw(OutlinedButton)`
   group/reaction
   hocus:bg-tint-bg
   hocus:ring-tint-border
-  [&[aria-pressed="true"]]:bg-tint-bg
-  [&[aria-pressed="true"]]:ring-tint-border
   after:rounded-full
 `;
