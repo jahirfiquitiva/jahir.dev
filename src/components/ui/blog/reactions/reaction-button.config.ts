@@ -20,6 +20,7 @@ export const reactionsSetup = {
         'M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z',
     },
     color: '#22c55e', // green 500
+    tint: '34 197 94', // rgb values for color ↑
   },
   loves: {
     title: 'Love',
@@ -30,6 +31,7 @@ export const reactionsSetup = {
         'M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z',
     },
     color: '#f43f5e', // rose 500
+    tint: '244 63 94', // rgb values for color ↑
   },
   awards: {
     title: 'Award',
@@ -40,6 +42,7 @@ export const reactionsSetup = {
         'M17 4V2H7V4H2V11C2 12.1 2.9 13 4 13H7.1C7.5 14.96 9.04 16.5 11 16.9V19.08C8 19.54 8 22 8 22H16C16 22 16 19.54 13 19.08V16.9C14.96 16.5 16.5 14.96 16.9 13H20C21.1 13 22 12.1 22 11V4H17M4 11V6H7V11L4 11M20 11L17 11V6H20L20 11Z',
     },
     color: '#f59e0b', // amber 500
+    tint: '245 158 11', // rgb values for color ↑
   },
   bookmarks: {
     title: 'Bookmark',
@@ -49,5 +52,6 @@ export const reactionsSetup = {
       filled: 'M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z',
     },
     color: '#8b5cf6', // violet 500
+    tint: '139 92 246', // rgb values for color ↑
   },
 };

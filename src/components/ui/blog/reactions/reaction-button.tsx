@@ -3,11 +3,9 @@ import type { CSSProperties, ComponentProps } from 'react';
 import { Icon } from '@/components/atoms/icon';
 import { loading as loadingIcon } from '@/components/icons';
 import type { ReactionName } from '@/types/db';
-import { hexToRgb } from '@/utils/color';
-import cx from '@/utils/cx';
 
 import { reactionsSetup } from './reaction-button.config';
-import { StyledReactionButton } from './reaction-button.styles';
+import { ReactionIcon, StyledReactionButton } from './reaction-button.styles';
 
 interface ReactionButtonProps
   extends Omit<ComponentProps<'button'>, 'loading'> {
@@ -28,17 +26,12 @@ export const ReactionButton = (props: ReactionButtonProps) => {
       className={reacted ? 'bg-tint-bg ring-tint-border' : ''}
       style={
         {
-          '--tint': hexToRgb(reactionsSetup[reaction].color, 1, true),
+          '--tint': reactionsSetup[reaction].tint,
         } as CSSProperties
       }
     >
-      <Icon
-        className={cx(
-          'size-4 mobile-md:size-5',
-          'transition-colors',
-          reacted ? 'text-[rgb(var(--tint))]' : 'text-current',
-          'group-hocus/reaction:text-[rgb(var(--tint))]',
-        )}
+      <ReactionIcon
+        className={reacted ? 'text-[rgb(var(--tint))]' : 'text-current'}
         path={
           reacted
             ? reactionsSetup[reaction].icon.filled
@@ -46,7 +39,7 @@ export const ReactionButton = (props: ReactionButtonProps) => {
         }
       />
       {loading ? (
-        <Icon className={cx('size-4 animate-spin')} path={loadingIcon} />
+        <Icon className={'size-4 animate-spin'} path={loadingIcon} />
       ) : (
         <span className={'font-manrope font-bold'}>{count}</span>
       )}
