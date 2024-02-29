@@ -8,7 +8,7 @@ import { BackToTop } from '@/components/molecules/back-to-top';
 import { Footer } from '@/components/molecules/footer';
 import { Header } from '@/components/molecules/header';
 import { Providers } from '@/providers';
-import { InterVariable, ManropeVariable } from '@/styles/fonts';
+import { Inter, Manrope } from '@/styles/fonts';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 
@@ -46,8 +46,8 @@ export default function RootLayout(props: PropsWithChildren) {
     <html
       lang={'en'}
       className={cx(
-        InterVariable.variable,
-        ManropeVariable.variable,
+        Inter.variable,
+        Manrope.variable,
         IS_TEMPLATE === 'true' ? 'template' : '',
       )}
       suppressHydrationWarning
