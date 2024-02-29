@@ -44,6 +44,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
       title={post.title}
       href={post.link || `/blog/${post.slug}`}
       style={{ '--tint': color } as CSSProperties}
+      prefetch={false}
     >
       <div
         className={cx(
