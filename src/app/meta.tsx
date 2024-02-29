@@ -49,6 +49,7 @@ export const Meta = () => {
         media={'(prefers-color-scheme: dark)'}
         content={THEME_COLOR_DARK}
       />
+      <meta name={'view-transition'} content={'same-origin'} />
     </>
   );
 };
