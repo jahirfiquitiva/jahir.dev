@@ -57,7 +57,7 @@ const BookCard = async () => {
             'border border-divider transition',
             'scale-95 group-hocus/track:scale-100',
           )}
-          {...book.coverData}
+          size={78}
         />
         <Texts>
           <Header>
