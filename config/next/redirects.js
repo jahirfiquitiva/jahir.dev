@@ -33,6 +33,7 @@ const redirects = [
   buildRedirect('/dashboard', '/about#activity'),
   buildRedirect('/stats', '/about#activity'),
   buildRedirect('/now', '/about#activity'),
+  buildRedirect('/activity', '/about#activity'),
   /* Donate aliases */
   buildRedirect('/support', '/donate'),
   buildRedirect('/sponsor', '/donate'),

@@ -2,8 +2,6 @@
 
 import { unstable_noStore as noStore } from 'next/cache';
 
-import { getBlurData } from 'config/contentlayer/rehype/blur';
-
 const {
   LITERAL_PROFILE_ID: profileId = '',
   LITERAL_ACCESS_TOKEN: accessToken = '',
@@ -121,10 +119,7 @@ const getBookProgress = async (
   }).then((res) => res.json());
 };
 
-type BookWithProgress = Book &
-  Partial<ReadingProgress> & {
-    coverData?: Awaited<ReturnType<typeof getBlurData>>;
-  };
+type BookWithProgress = Book & Partial<ReadingProgress>;
 
 export const getReadingProgress = async (): Promise<
   BookWithProgress | undefined
@@ -159,8 +154,8 @@ export const getReadingProgress = async (): Promise<
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       p ? p.bookId === book.id : false,
     );
-    const coverData = await getBlurData(book.cover);
-    return { ...book, ...progress, coverData, finished };
+    // const coverData = await getBlurData(book.cover);
+    return { ...book, ...progress, finished };
   } catch (e) {
     console.error(e);
     return undefined;

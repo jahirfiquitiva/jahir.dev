@@ -41,6 +41,7 @@
     "**/*.tsx",
     "next.config.js",
     ".next/types/**/*.ts",
-    "./.contentlayer/generated"
+    "./.contentlayer/generated",
+    "/Users/jahir/dev/jahir/website/.next/types/**/*.ts"
   ]
 }
