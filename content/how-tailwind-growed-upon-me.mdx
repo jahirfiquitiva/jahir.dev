@@ -1,0 +1,190 @@
+---
+title: How Tailwind CSS growed upon me
+date: '2024-03-03'
+color: '#38BDF9'
+summary: A journey from dislike to enjoy
+keywords: 'css,styling,tailwind css, tailwind,styled components,styles'
+inProgress: true
+---
+
+Tailwind CSS is an amazing tool that helps us style our websites in a quick way by using simple utility classes,
+over pre-defined styles unlike traditional frameworks like Bootstrap or Bulma, for example.
+
+> **Disclaimer:**
+>
+> The opinions below are based on my humble experience with Tailwind CSS.
+> They might be wrong, but it's just the way I've understood its usage.
+> There's always more to learn and explore, for sure.
+
+## The debate
+
+I think ever since Tailwind CSS was introduced, there's been a constant debate among developers on whether its usage is
+better or worse for development and building websites and whatnot.
+
+## Prevent duplicated CSS
+
+When we write our CSS, we might end up having something like the following:
+
+```css showLineNumbers title="styles.css"
+.card-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+}
+
+.card-two {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+```
+
+```html title="index.html"
+<div class="card-one">...</div>
+<div class="card-two">...</div>
+```
+
+That looks okay, our HTML code is pretty clean, and we have our CSS organized for every component.
+But our CSS could eventually grow bigger and bigger. And could get hard to maintain.
+
+Now, let's take a look at our code if we used Tailwind CSS instead:
+
+```css showLineNumbers title="styles.css"
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.flex-row {
+  flex-direction: row;
+}
+.gap-4 {
+  gap: 1rem;
+}
+```
+
+```html title="index.html"
+<div class="flex flex-col items-center justify-center px-6 py-4">...</div>
+<div class="flex flex-row items-center px-6 py-4 gap-4">...</div>
+```
+
+For this short example, we have more lines of CSS code, yes.
+
+But the more components we create, the more classes we have and the more styles we repeat.
+
+With Tailwind CSS, you will realize that having these utility classes will really help reducing the amount
+of CSS we ship, as we can reuse the styles utility classes as much as we'd like.
+
+Think of it as having a single `.flex { display: flex; }{:css}` in the CSS file, instead of having `display: flex;{:css}` a 100 times,
+once for each one of the 100 components that use that specific style property.
+
+That truly helps reducing our CSS file size.
+
+And this is even more helpful when we have a consistent design system, standardized components and user interfaces,
+as Tailwind CSS will try to reuse as many utility classes and CSS statements as possible.
+
+Finally, I know that the HTML doesn't look as clean as before, but if we think about our users, most of them will
+not care about how the HTML looks like.
+
+## Remove unused CSS
+
+Tailwind CSS also helps us finding and removing unused CSS. Even though Tailwind CSS comes with a handful of utility classes, the
+compiled, built or processed CSS will always include only those utility classes you are actually using.
+
+We always have all the utility classes available for usage, but we are safe that any classes we don't use will not make it to our project's CSS.
+
+This is harder to achieve and spot when using CSS, as there's much more code we need to look into and that takes time.
+Having Tailwind CSS do it automatically is really helpful.
+
+### Be careful
+
+Since Tailwind CSS only compiles the utility classes we actually use, it needs a bit of help on knowing where to check for
+used classes. And that's what we configure in the `tailwind.config.ts` file.
+
+```typescript
+...
+  content: [
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
+    './content/**/*.mdx',
+  ],
+...
+```
+
+In this case, for example, Tailwind CSS will check for the files with extensions `.js`, `.ts`, `.jsx` and `.tsx` within the
+`src/components` and `src/app` folders; as well as the files with the `.mdx` extension within the `content` folder.
+
+It could happen that if you create another component in a different folder than those, let's say `src/ui`, the classes you use there
+are not compiled. And then you wonder what's wrong with your code that not all styles are being applied.
+
+It happened to me, I think it's something easy to miss.
+
+## Stick to CSS
+
+If you still prefer to write CSS as you normally would, you can use the `@apply` directive along with Tailwind CSS
+and have your CSS compiled as expected.
+
+For example, you can write your CSS as:
+
+```css
+.card-one {
+  @apply flex flex-row items-center;
+}
+```
+
+and that will be compiled to
+
+```css
+.card-one {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+```
+
+This is also helpful as we can keep our CSS codebase cleaner and simpler and let the compilation process build the whole CSS
+we would normally expect.
+
+## Developer Experience
+
+It's common to think that having too many classes in the HTML would complicate the maintainance of our code,
+make it harder to read, and we would have long lines of code.
+
+Anyway, if we used a tool like `react-twc` for React projects, we could keep our HTML clean, while still using the
+Tailwind CSS utility classes.
+
+Here's an example:
+
+```tsx
+import { twc } from 'react-twc';
+
+const Card = twc.div`
+  flex
+  flex-col
+  items-center
+  px-6 py-4
+`;
+
+const Component = () => {
+  return <Card>...</Card>;
+};
+```
