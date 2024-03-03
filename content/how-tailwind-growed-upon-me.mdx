@@ -7,8 +7,8 @@ keywords: 'css,styling,tailwind css, tailwind,styled components,styles'
 inProgress: true
 ---
 
-Tailwind CSS is an amazing tool that helps us style our websites in a quick way by using simple utility classes,
-over pre-defined styles unlike traditional frameworks like Bootstrap or Bulma, for example.
+Tailwind CSS is an amazing tool that helps us style our websites quickly by using simple utility classes,
+over predefined styles, unlike traditional frameworks like Bootstrap or Bulma, for example.
 
 > **Disclaimer:**
 >
@@ -18,18 +18,18 @@ over pre-defined styles unlike traditional frameworks like Bootstrap or Bulma, f
 
 ## The debate
 
-I think ever since Tailwind CSS was introduced, there's been a constant debate among developers on whether its usage is
-better or worse for development and building websites and whatnot.
+I think ever since Tailwind CSS was introduced, there's been a constant debate among developers on whether
+its usage is better or worse for development and building websites and whatnot.
 
-It can be a bit overwhelming at first, when we realize we kinda need to mix our CSS with our HTML, going a bit against
-the separation of concerns, and adding more things to the HTML code than otherwise needed.
+It can be a bit overwhelming at first when we realize we kinda need to mix our CSS with our HTML, going a bit
+against the separation of concerns and adding more things to the HTML code than otherwise needed.
 
-It also will take some time to learn using Tailwind CSS. While some utility classes are similar to the expected CSS properties and values,
-others can vary a little, making it slightly harder to remember or use intuitively.
+It also will take some time to learn using Tailwind CSS. While some utility classes are similar to the expected
+CSS properties and values, others can vary a little, making it slightly harder to remember or use intuitively.
 
-And certainly Tailwind CSS might not be the best first approach for people new to CSS. I think it's really fair to
-suggest people to learn plain CSS first, at least its basics, because that will be the base and first steps to
-understand what Tailwind CSS is doing for us under the hood, and also know what the classes we use do.
+And certainly, Tailwind CSS might not be the best first approach for people new to CSS. I think it's really fair
+to suggest people learn plain CSS first, at least its basics because that will be the base and first steps to
+understand what Tailwind CSS is doing for us under the hood and also know what the classes we use do.
 
 Anyway, let me walk you through the points that have helped me overcome those unfavorable things:
 
@@ -60,8 +60,8 @@ When we write our CSS, we might end up having something like the following:
 <div class="card-two">...</div>
 ```
 
-That looks okay, our HTML code is pretty clean, and we have our CSS organized for every component.
-But our CSS could eventually grow bigger and bigger. And could get hard to maintain.
+That looks okay; our HTML code is pretty clean, and we have our CSS organized for every component.
+But our CSS could eventually grow bigger and bigger. And it could get hard to maintain.
 
 Now, let's take a look at our code if we used Tailwind CSS instead:
 
@@ -99,37 +99,40 @@ Now, let's take a look at our code if we used Tailwind CSS instead:
 <div class="flex flex-row items-center px-6 py-4 gap-4">...</div>
 ```
 
-For this short example, we have more lines of CSS code, yes. And it kinda looks like I have failed to make a point
-in favor of Tailwind CSS, but the more components we create, the more classes we have and the more styles we repeat.
+For this short example, we have more lines of CSS code, yes. And it kinda looks like I have failed to make
+a point in favor of Tailwind CSS, but the more components we create, the more classes we have, and the more
+styles we repeat.
 
-With Tailwind CSS, you will realize that having these utility classes will really help reducing the amount
-of CSS we ship, as we can reuse the styles using utility classes as much as we'd like.
+With Tailwind CSS, you will realize that having these utility classes will really help reduce the amount of
+CSS we ship, as we can reuse the styles using utility classes as much as we'd like.
 
-Think of it as having a single `.flex { display: flex; }{:css}` in the CSS file, instead of having `display: flex;{:css}` 100 times,
-once for each one of the 100 components in our project that use that specific style property.
+Think of it as having a single `.flex { display: flex; }{:css}` in the CSS file, instead of having
+`display: flex;{:css}` 100 times, once for each one of the 100 components in our project that uses
+that specific style property.
 
-That truly helps reducing our CSS file size.
+That truly helps reduce our CSS file size.
 
-And this is even more helpful when we have a consistent design system, standardized components and user interfaces,
-as Tailwind CSS will try to reuse as many utility classes and CSS statements as possible.
+And this is even more helpful when we have a consistent design system, standardized components, and user
+interfaces, as Tailwind CSS will try to reuse as many utility classes and CSS statements as possible.
 
-Finally, I know that the HTML doesn't look as clean as before, but if we think about our users, most of them will
-not care about how the HTML looks like, and must won't even look at it.
+Finally, I know that the HTML doesn't look as clean as before, but if we think about our users, most of them
+will not care about how the HTML looks like, and most won't even look at it.
 
 ## Remove unused CSS
 
-Tailwind CSS also helps us finding and removing unused CSS. Even though Tailwind CSS comes with a handful of utility classes, the
-compiled, built or processed CSS will always include only those utility classes you are actually using.
+Tailwind CSS also helps us find and remove unused CSS. Even though Tailwind CSS comes with a handful of utility
+classes, the compiled, built, or processed CSS will always include only those utility classes you are actually using.
 
-We always have all the utility classes available for usage, but we are safe that any classes we don't use will not make it to our project's CSS.
+We always have all the utility classes available for usage, but we are safe that any classes we don't use will
+not make it to our project's CSS.
 
-This is harder to achieve and spot when using CSS, as there's much more code we need to look into and that takes time.
-Having Tailwind CSS do it automatically is really helpful.
+This is harder to achieve and spot when using CSS, as there's much more code we need to look into and that takes
+time. Having Tailwind CSS do it automatically is really helpful.
 
-### Be careful
+### Be Careful
 
-Since Tailwind CSS only compiles the utility classes we actually use, it needs a bit of help on knowing where to check for
-used classes. And that's what we configure in the `tailwind.config.ts` file.
+Since Tailwind CSS only compiles the utility classes we actually use, it needs a bit of help in knowing where to check
+for used classes. And that's what we configure in the `tailwind.config.ts` file.
 
 ```typescript
 ...
@@ -147,7 +150,7 @@ In this case, for example, Tailwind CSS will check for the files with extensions
 It could happen that if you create another component in a different folder than those, let's say `src/ui`, the classes you use there
 are not compiled. And then you wonder what's wrong with your code that not all styles are being applied.
 
-It happened to me, I think it's something easy to miss.
+It happened to me; I think it's something easy to miss.
 
 ## Stick to CSS
 
