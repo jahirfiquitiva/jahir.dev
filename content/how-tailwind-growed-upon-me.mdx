@@ -2,7 +2,7 @@
 title: How Tailwind CSS growed upon me
 date: '2024-03-03'
 color: '#38BDF9'
-summary: A journey from dislike to enjoy
+summary: A journey turning skepticism and dislike into enthusiasm
 keywords: 'css,styling,tailwind css, tailwind,styled components,styles'
 inProgress: true
 ---
@@ -20,6 +20,18 @@ over pre-defined styles unlike traditional frameworks like Bootstrap or Bulma, f
 
 I think ever since Tailwind CSS was introduced, there's been a constant debate among developers on whether its usage is
 better or worse for development and building websites and whatnot.
+
+It can be a bit overwhelming at first, when we realize we kinda need to mix our CSS with our HTML, going a bit against
+the separation of concerns, and adding more things to the HTML code than otherwise needed.
+
+It also will take some time to learn using Tailwind CSS. While some utility classes are similar to the expected CSS properties and values,
+others can vary a little, making it slightly harder to remember or use intuitively.
+
+And certainly Tailwind CSS might not be the best first approach for people new to CSS. I think it's really fair to
+suggest people to learn plain CSS first, at least its basics, because that will be the base and first steps to
+understand what Tailwind CSS is doing for us under the hood, and also know what the classes we use do.
+
+Anyway, let me walk you through the points that have helped me overcome those unfavorable things:
 
 ## Prevent duplicated CSS
 
@@ -87,15 +99,14 @@ Now, let's take a look at our code if we used Tailwind CSS instead:
 <div class="flex flex-row items-center px-6 py-4 gap-4">...</div>
 ```
 
-For this short example, we have more lines of CSS code, yes.
-
-But the more components we create, the more classes we have and the more styles we repeat.
+For this short example, we have more lines of CSS code, yes. And it kinda looks like I have failed to make a point
+in favor of Tailwind CSS, but the more components we create, the more classes we have and the more styles we repeat.
 
 With Tailwind CSS, you will realize that having these utility classes will really help reducing the amount
-of CSS we ship, as we can reuse the styles utility classes as much as we'd like.
+of CSS we ship, as we can reuse the styles using utility classes as much as we'd like.
 
-Think of it as having a single `.flex { display: flex; }{:css}` in the CSS file, instead of having `display: flex;{:css}` a 100 times,
-once for each one of the 100 components that use that specific style property.
+Think of it as having a single `.flex { display: flex; }{:css}` in the CSS file, instead of having `display: flex;{:css}` 100 times,
+once for each one of the 100 components in our project that use that specific style property.
 
 That truly helps reducing our CSS file size.
 
@@ -103,7 +114,7 @@ And this is even more helpful when we have a consistent design system, standardi
 as Tailwind CSS will try to reuse as many utility classes and CSS statements as possible.
 
 Finally, I know that the HTML doesn't look as clean as before, but if we think about our users, most of them will
-not care about how the HTML looks like.
+not care about how the HTML looks like, and must won't even look at it.
 
 ## Remove unused CSS
 
@@ -169,7 +180,10 @@ we would normally expect.
 It's common to think that having too many classes in the HTML would complicate the maintainance of our code,
 make it harder to read, and we would have long lines of code.
 
-Anyway, if we used a tool like `react-twc` for React projects, we could keep our HTML clean, while still using the
+Even I dislike that and it stopped me from using Tailwind CSS for a while. But considering the benefits, and finding the right tools,
+it was more manageable and I ended up liking it.
+
+For example, if we used a tool like `react-twc` for React projects, we could keep our HTML clean, while still using the
 Tailwind CSS utility classes.
 
 Here's an example:
@@ -188,3 +202,25 @@ const Component = () => {
   return <Card>...</Card>;
 };
 ```
+
+As you can see, we can write our components similar to what we would write with styled-components, but instead of writing CSS properties,
+we use the Tailwind CSS utility classes.
+
+Which would get compiled and rendered as:
+
+```html
+<div class="flex flex-col items-center px-6 py-4">...</div>
+```
+
+That allows us to keep our codebase easy to read and maintain, and let the compiler do the rest.
+
+## Conclusion
+
+As with any other tool, framework or library, using Tailwind CSS will have its pros and cons.
+Those will also depend on the structure and architecture of our projects.
+
+But personally, it certainly has grown upon me, and I'm liking it more the more I use it.
+At the end, Tailwind CSS is, as its name says, still CSS.
+
+And it will keep getting better, faster and simpler to use, which is exciting.
+I'm looking forward to Tailwind CSS v4.
