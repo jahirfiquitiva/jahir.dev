@@ -37,12 +37,13 @@ export type IncrementCounterFnType = typeof incrementCounter;
 export const getCounters = async (slug: string): Promise<Counters> => {
   noStore();
   try {
-    const [result] = await db
+    const records = await db
       .select()
       .from(counters)
       .where(eq(counters.slug, slug))
       .execute();
-    return result as Counters;
+    if (!records.length) return {};
+    return records[0] as Counters;
   } catch (e) {
     return {};
   }
