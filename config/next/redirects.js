@@ -14,6 +14,10 @@ const redirects = [
   ),
   buildRedirect('/blog/post-of-fame', '/donate#thanks'),
   buildRedirect('/blog/uses', '/uses'),
+  buildRedirect(
+    '/blog/how-tailwind-growed-upon-me',
+    '/blog/how-tailwind-grew-on-me',
+  ),
   buildRedirect('/inspiration', '/blog/people-websites-that-inspire'),
   /* Old static assets paths to new ones */
   buildRedirect('/assets/images/:path*', '/media/:path*'),
