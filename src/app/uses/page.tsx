@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic';
-
 import setupImage from '@/assets/images/setup.jpg';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
@@ -11,8 +9,6 @@ import { Software } from '@/components/ui/uses/software';
 import { Tabs } from '@/components/ui/uses/tabs';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
-
-const Zoom = dynamic(() => import('@/components/atoms/zoom'), { ssr: false });
 
 export default function UsesPage() {
   return (
@@ -54,7 +50,6 @@ export default function UsesPage() {
           </p>
         </Tabs>
       </Section>
-      <Zoom />
     </>
   );
 }

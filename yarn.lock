@@ -6221,13 +6221,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"medium-zoom@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "medium-zoom@npm:1.1.0"
-  checksum: 10c0/7d1f05e8eab045c33d7c04d4ee7bf04f5246cf7a720d7b5f5a51c36ab23666e363bcbb6bffae50b5948d5eb19361914cb0e26a1fce5c1fff7a266bc0217893f3
-  languageName: node
-  linkType: hard
-
 "memfs@npm:^3.5.1":
   version: 3.5.3
   resolution: "memfs@npm:3.5.3"
@@ -8622,7 +8615,6 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.1.3"
     husky: "npm:^9.0.11"
     is-ci: "npm:^3.0.1"
-    medium-zoom: "npm:^1.1.0"
     million: "npm:^3.0.3"
     next: "npm:^14.1.2-canary.2"
     next-contentlayer: "npm:^0.3.4"

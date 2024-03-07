@@ -31,7 +31,6 @@ export const Hero = (props: HeroProps) => {
         alt={`Cover image for blog post: "${title}"`}
         className={'h-full w-full'}
         priority
-        data-nozoom
         {...heroMeta}
       />
       {source ? (

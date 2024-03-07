@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { notFound, redirect } from 'next/navigation';
 import { cx } from 'react-twc';
 
@@ -19,8 +18,6 @@ import { Header } from './header';
 import { Hero } from './hero';
 import { Reactions } from './reactions';
 import type { BlogPostPageContext } from './types';
-
-const Zoom = dynamic(() => import('@/components/atoms/zoom'), { ssr: false });
 
 const blogPostStructuredData = (post?: PartialBlog): string => {
   if (!post) return '';
@@ -98,7 +95,6 @@ export default function BlogPostPage(context: BlogPostPageContext) {
       <script type={'application/ld+json'} suppressHydrationWarning>
         {blogPostStructuredData(post)}
       </script>
-      <Zoom />
     </>
   );
 }
