@@ -52,7 +52,7 @@ const redirects = [
   buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
   buildRedirect(
     '/analytics',
-    'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev',
+    'https://umami.jahir.dev/share/C1XABUPBfbHYjPrw/jahir.dev',
   ),
 ];
 

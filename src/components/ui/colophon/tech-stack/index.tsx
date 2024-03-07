@@ -97,7 +97,7 @@ export const TechStack = () => (
       ,{' '}
       <Link
         title={'Umami Analytics'}
-        href={'https://umami.jahir.dev/share/uEOUfeOMI5kda1wn/jahir.dev'}
+        href={'https://umami.jahir.dev/share/C1XABUPBfbHYjPrw/jahir.dev'}
       >
         Umami
       </Link>{' '}
