@@ -1,9 +1,15 @@
 'use client';
 
 import confetti from 'canvas-confetti';
-import { useCallback, useEffect, useState, type MouseEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+  type MouseEvent,
+  cache,
+} from 'react';
 
-import { incrementCounter } from '@/actions/counters';
+import { incrementCounter as incCounter } from '@/actions/counters';
 import { useHasMounted } from '@/hooks/use-has-mounted';
 import { useWindowDimensions } from '@/hooks/use-window-dimensions';
 import type { ReactionName, Counters } from '@/types/db';
@@ -11,6 +17,8 @@ import type { ReactionName, Counters } from '@/types/db';
 import { confettiOptions, reactionsSetup } from './reaction-button.config';
 
 type ReactedLocalStorage = { [Key in ReactionName]?: boolean };
+
+const incrementCounter = cache(incCounter);
 
 export const useReactions = (slug: string, initialCounters?: Counters) => {
   const hasMounted = useHasMounted();

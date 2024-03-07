@@ -1,12 +1,17 @@
-import { Suspense } from 'react';
+import { Suspense, cache } from 'react';
 
-import { getCounters, incrementCounter } from '@/actions/counters';
+import {
+  getCounters,
+  incrementCounter as incCounter,
+} from '@/actions/counters';
 import type { CleanBlog } from '@/utils/blog';
 
 interface ViewsCounterProps {
   slug: CleanBlog['slug'];
   write?: boolean;
 }
+
+const incrementCounter = cache(incCounter);
 
 const Views = async ({ slug, write }: ViewsCounterProps) => {
   const { views = 0 } = await getCounters(slug);

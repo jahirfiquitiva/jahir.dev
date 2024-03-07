@@ -2,35 +2,32 @@
 
 import { and, desc, eq, gt, ne, sql } from 'drizzle-orm';
 import { unstable_noStore as noStore } from 'next/cache';
-import { cache } from 'react';
 
 import { db, counters } from '@/lib/db';
 import type { CounterName, Counters } from '@/types/db';
 
 import { canRunAction } from './utils';
 
-export const incrementCounter = cache(
-  async (
-    slug: string,
-    counter: CounterName,
-  ): Promise<{ [counter in CounterName]?: number }> => {
-    if (!canRunAction) return {};
-    noStore();
-    try {
-      const [data] = await db
-        .insert(counters)
-        .values({ slug, [counter]: 0 })
-        .onConflictDoUpdate({
-          target: counters.slug,
-          set: { [counter]: sql`${counters[counter]} + 1` },
-        })
-        .returning({ [counter]: counters[counter] });
-      return data;
-    } catch (e) {
-      return {};
-    }
-  },
-);
+export const incrementCounter = async (
+  slug: string,
+  counter: CounterName,
+): Promise<{ [counter in CounterName]?: number }> => {
+  if (!canRunAction) return {};
+  noStore();
+  try {
+    const [data] = await db
+      .insert(counters)
+      .values({ slug, [counter]: 0 })
+      .onConflictDoUpdate({
+        target: counters.slug,
+        set: { [counter]: sql`${counters[counter]} + 1` },
+      })
+      .returning({ [counter]: counters[counter] });
+    return data;
+  } catch (e) {
+    return {};
+  }
+};
 
 export type IncrementCounterFnType = typeof incrementCounter;
 
