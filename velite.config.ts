@@ -6,7 +6,7 @@ import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import { defineConfig } from 'velite';
 
-import { blogs } from './config/velite/index';
+import { blogs } from './config/velite/collections/blog';
 import imageBlurMetadata from './config/velite/rehype/blur';
 import { prettyCode } from './config/velite/rehype/code';
 import unwrapFigure from './config/velite/rehype/figure';

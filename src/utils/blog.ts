@@ -2,10 +2,10 @@ import { blogs as allBlogs, type Blog } from '@/content';
 
 export type PartialBlog = Omit<Blog, 'code' | 'keywords' | 'heroSource'>;
 
-const allowInProgress = process.env.NODE_ENV === 'development';
+const allowDrafts = process.env.NODE_ENV === 'development';
 
 export const allReadableBlogsWithContent: Array<Blog> = allBlogs.filter((it) =>
-  allowInProgress ? true : !it.inProgress,
+  allowDrafts ? true : !it.draft,
 );
 
 export const allReadableBlogs: Array<PartialBlog> =

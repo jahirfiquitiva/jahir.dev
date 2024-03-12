@@ -120,9 +120,7 @@ export const BlogPostItem = (props: BlogPostItemProps) => {
               </span>
             </>
           ) : null}
-          {!post.link && !post.inProgress ? (
-            <ViewsCounter slug={post.slug} />
-          ) : null}
+          {!post.link && !post.draft ? <ViewsCounter slug={post.slug} /> : null}
         </p>
       </div>
     </BlogPostLink>
