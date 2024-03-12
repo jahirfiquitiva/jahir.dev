@@ -24,6 +24,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
+      "@/content": ["./.velite"],
       "react": ["./node_modules/@types/react"]
     },
     "plugins": [

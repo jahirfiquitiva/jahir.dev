@@ -1,6 +1,6 @@
 import { s, defineCollection } from 'velite';
 
-import { getBlurData } from './utils/blur';
+import { getBlurData } from './rehype/blur';
 
 const getActualHeroUrl = (hero?: string) =>
   hero ? (hero.startsWith('http') ? hero : `/media/blog/${hero}`) : '';
@@ -31,7 +31,7 @@ export const blogs = defineCollection({
       inProgress: s.boolean().optional().default(false),
       // devToId: s.number().optional(),
       metadata: s.metadata(),
-      body: s.mdx(),
+      code: s.mdx(),
     })
     // more additional fields (computed fields)
     .transform(async (data) => {

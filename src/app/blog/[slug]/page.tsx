@@ -117,7 +117,7 @@ export function generateMetadata(
     title: `${title} | Blog – Jahir Fiquitiva`,
     description: summary || 'Blog post by Jahir Fiquitiva',
     exactUrl: `https://jahir.dev/blog/${slug}`,
-    keywords: post.seoKeywords,
+    keywords: post.keywords,
   });
   return {
     ...metadata,

@@ -1,30 +1,19 @@
-import { allBlogs, type Blog } from 'contentlayer/generated';
+// import { allBlogs, type Blog } from 'contentlayer/generated';
 
-export type CleanBlog = Omit<
-  Blog,
-  '_id' | '_raw' | 'type' | 'keywords' | 'body'
-> & { code: string };
+import { blogs as allBlogs, type Blog } from '@/content';
 
-export type PartialBlog = Omit<
-  CleanBlog,
-  'code' | 'seoKeywords' | 'heroSource'
->;
+export type PartialBlog = Omit<Blog, 'code' | 'keywords' | 'heroSource'>;
 
 const allowInProgress = process.env.NODE_ENV === 'development';
 
-export const allReadableBlogsWithContent: Array<CleanBlog> = allBlogs
-  .filter((it) => (allowInProgress ? true : !it.inProgress))
-  .map((b: Partial<Blog>) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { _id, _raw, type, keywords, body, ...blog } = b;
-    const code = `${body?.code || ''}`;
-    return { ...blog, code } as CleanBlog;
-  });
+export const allReadableBlogsWithContent: Array<Blog> = allBlogs.filter((it) =>
+  allowInProgress ? true : !it.inProgress,
+);
 
 export const allReadableBlogs: Array<PartialBlog> =
-  allReadableBlogsWithContent.map((b: Partial<CleanBlog>) => {
+  allReadableBlogsWithContent.map((b: Partial<Blog>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { code, seoKeywords, heroSource, ...blog } = b;
+    const { code, keywords, heroSource, ...blog } = b;
     return blog as PartialBlog;
   });
 
