@@ -2,7 +2,7 @@ import type { MDXOptions } from 'contentlayer/core';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
+// import remarkGfm from 'remark-gfm';
 import smartypants from 'remark-smartypants';
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
 import remarkUnwrapImages from 'remark-unwrap-images';
@@ -14,7 +14,7 @@ import { toc } from './rehype/toc';
 
 const mdx: MDXOptions = {
   remarkPlugins: [
-    remarkGfm,
+    // remarkGfm,
     smartypants,
     remarkUnwrapImages,
     remarkSqueezeParagraphs,

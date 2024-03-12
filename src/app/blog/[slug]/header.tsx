@@ -3,14 +3,15 @@ import { type CSSProperties } from 'react';
 import { Icon } from '@/components/atoms/icon';
 import { Link } from '@/components/atoms/link';
 import { ViewsCounter } from '@/components/ui/blog/views-counter';
-import type { CleanBlog } from '@/utils/blog';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 import { formatDate } from '@/utils/date';
 import { getReadableColor } from '@/utils/readable-color';
 
+import type { Blog } from '@/content';
+
 interface HeaderProps {
-  post: CleanBlog;
+  post: Blog;
 }
 
 export const Header = ({ post }: HeaderProps) => {

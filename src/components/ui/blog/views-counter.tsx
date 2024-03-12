@@ -4,10 +4,11 @@ import {
   getCounters,
   incrementCounter as incCounter,
 } from '@/actions/counters';
-import type { CleanBlog } from '@/utils/blog';
+
+import type { Blog } from '@/content';
 
 interface ViewsCounterProps {
-  slug: CleanBlog['slug'];
+  slug: Blog['slug'];
   write?: boolean;
 }
 

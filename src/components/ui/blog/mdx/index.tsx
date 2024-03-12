@@ -1,5 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
-import { getMDXComponent } from 'next-contentlayer/hooks';
+import * as runtime from 'react/jsx-runtime';
 
 import { Img, type ImgProps } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
@@ -38,6 +38,11 @@ const components = {
 interface MdxProps {
   code?: string;
 }
+
+const getMDXComponent = (code: string) => {
+  const fn = new Function(code);
+  return fn({ ...runtime }).default;
+};
 
 export const MDX = (props: MdxProps) => {
   if (!props.code) return null;
