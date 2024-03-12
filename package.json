@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "yarn download-themes && next telemetry disable && next build",
+    "dev": "yarn velite --watch & next dev",
+    "build": "yarn download-themes && next telemetry disable && yarn velite build && next build",
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",

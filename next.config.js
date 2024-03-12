@@ -9,9 +9,10 @@ const million = require('million/compiler');
 const appHeaders = require('./config/next/headers');
 const redirects = require('./config/next/redirects');
 
+/*
 class VeliteWebpackPlugin {
   static started = false;
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
+  apply(/** @type {import('webpack').Compiler} compiler) {
     // executed three times in nextjs
     // twice for the server (nodejs / edge runtime) and once for the client
     compiler.hooks.beforeCompile.tapPromise('VeliteWebpackPlugin', async () => {
@@ -23,6 +24,7 @@ class VeliteWebpackPlugin {
     });
   }
 }
+*/
 
 /**
  * @type {import('next').NextConfig}
@@ -68,10 +70,10 @@ const defaultNextConfig = {
   },
   headers: () => appHeaders,
   redirects: () => redirects,
-  webpack: (config) => {
-    config.plugins.push(new VeliteWebpackPlugin());
-    return config;
-  },
+  // webpack: (config) => {
+  //   config.plugins.push(new VeliteWebpackPlugin());
+  //   return config;
+  // },
 };
 
 const millionConfig = {
