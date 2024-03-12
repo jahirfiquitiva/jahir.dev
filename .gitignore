@@ -35,10 +35,10 @@ yarn-error.log*
 *.tsbuildinfo
 # next-env.d.ts
 
-# Contentlayer
+# Velite
 .contentlayer
 !.env.example
-config/contentlayer/themes/*.json
+config/velite/themes/*.json
 .velite
 
 !.env

@@ -1,13 +1,13 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+/* eslint-disable @typescript-eslint/no-var-requires */
+// NOTE
+// Do not change this file to .mjs
+// https://github.com/contentlayerdev/contentlayer/issues/313#issuecomment-1305424923
+const path = require('path');
 
-import million from 'million/compiler';
-import { build } from 'velite';
+const million = require('million/compiler');
 
-import appHeaders from './config/next/headers.mjs';
-import redirects from './config/next/redirects.mjs';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const appHeaders = require('./config/next/headers');
+const redirects = require('./config/next/redirects');
 
 class VeliteWebpackPlugin {
   static started = false;
@@ -23,6 +23,7 @@ class VeliteWebpackPlugin {
       const dev = compiler.options.mode === 'development';
       this.options.watch = this.options.watch ?? dev;
       this.options.clean = this.options.clean ?? !dev;
+      const { build } = await import('velite');
       await build(this.options); // start velite
     });
   }
@@ -85,4 +86,4 @@ const millionConfig = {
 };
 
 const config = million.next(defaultNextConfig, millionConfig);
-export default config;
+module.exports = config;

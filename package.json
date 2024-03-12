@@ -6,10 +6,10 @@
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./scripts/setup.mjs",
-    "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .contentlayer",
+    "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .velite",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
-    "prune-code": "ts-prune -i '.next|.contentlayer|src/app'",
+    "prune-code": "ts-prune -i '.next|.velite|src/app'",
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
@@ -35,7 +35,6 @@
     "@typescript-eslint/parser": "^7.2.0",
     "autoprefixer": "^10.4.18",
     "colord": "^2.9.3",
-    "contentlayer": "^0.3.4",
     "cssnano": "^6.1.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.1",
@@ -46,12 +45,10 @@
     "husky": "^9.0.11",
     "is-ci": "^3.0.1",
     "million": "^3.0.6",
-    "next-contentlayer": "^0.3.4",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "react-twc": "^1.4.1",
     "react-tweet": "^3.2.0",
-    "reading-time": "^1.5.0",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.13.0",
@@ -77,10 +74,5 @@
     "trailingComma": "all",
     "semi": true
   },
-  "packageManager": "yarn@4.1.0",
-  "overrides": {
-    "next-contentlayer": {
-      "next": "$next"
-    }
-  }
+  "packageManager": "yarn@4.1.0"
 }

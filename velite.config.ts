@@ -6,22 +6,17 @@ import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import { defineConfig } from 'velite';
 
-import imageBlurMetadata from './config/contentlayer/rehype/blur';
-import { prettyCode } from './config/contentlayer/rehype/code';
-import unwrapFigure from './config/contentlayer/rehype/figure';
-import { toc } from './config/contentlayer/rehype/toc';
-import { blogs } from './config/contentlayer/velite';
+import { blogs } from './config/velite/index';
+import imageBlurMetadata from './config/velite/rehype/blur';
+import { prettyCode } from './config/velite/rehype/code';
+import unwrapFigure from './config/velite/rehype/figure';
+import { toc } from './config/velite/rehype/toc';
 
 export default defineConfig({
   collections: { blogs },
   mdx: {
     copyLinkedFiles: false,
-    remarkPlugins: [
-      // @ts-expect-error idk
-      smartypants,
-      remarkUnwrapImages,
-      remarkSqueezeParagraphs,
-    ],
+    remarkPlugins: [smartypants, remarkUnwrapImages, remarkSqueezeParagraphs],
     rehypePlugins: [
       unwrapFigure,
       imageBlurMetadata,
@@ -30,7 +25,6 @@ export default defineConfig({
       // @ts-expect-error idk
       prettyCode,
       [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
-      // @ts-expect-error idk
       toc,
     ],
   },

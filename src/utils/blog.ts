@@ -1,5 +1,3 @@
-// import { allBlogs, type Blog } from 'contentlayer/generated';
-
 import { blogs as allBlogs, type Blog } from '@/content';
 
 export type PartialBlog = Omit<Blog, 'code' | 'keywords' | 'heroSource'>;

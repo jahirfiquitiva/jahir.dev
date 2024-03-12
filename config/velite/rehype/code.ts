@@ -13,7 +13,7 @@ const commentsCustomColor = (theme: 'light' | 'dark') => ({
 const getThemeJson = (theme: 'light' | 'dark'): JSON | string => {
   try {
     const json = readFileSync(
-      `${process.cwd()}/config/contentlayer/themes/${theme}.json`,
+      `${process.cwd()}/config/velite/themes/${theme}.json`,
       'utf-8',
     );
     const parsed = JSON.parse(json);
