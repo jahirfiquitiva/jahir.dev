@@ -1014,10 +1014,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/env@npm:14.2.0-canary.17"
-  checksum: 10c0/8c5214da682d7b1b5517f3e1ee455169af59ee0ad246afbd2f4ef1625e4a8baaa9a5fbe2110cc3fce3432c1b85d34ff00f59a7c46c72483cbdabf803b3730631
+"@next/env@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/env@npm:14.2.0-canary.18"
+  checksum: 10c0/9f968f2f97ee1e1f85cffcb14315db810d1d1cfc96112b48a1711945ed06e2be82360742a31d1f0ae994470eb8eef3d8d294473367c2214317289fc9f589d9b7
   languageName: node
   linkType: hard
 
@@ -1030,65 +1030,65 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-darwin-arm64@npm:14.2.0-canary.17"
+"@next/swc-darwin-arm64@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-darwin-arm64@npm:14.2.0-canary.18"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-darwin-x64@npm:14.2.0-canary.17"
+"@next/swc-darwin-x64@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-darwin-x64@npm:14.2.0-canary.18"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-linux-arm64-gnu@npm:14.2.0-canary.17"
+"@next/swc-linux-arm64-gnu@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-linux-arm64-gnu@npm:14.2.0-canary.18"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-linux-arm64-musl@npm:14.2.0-canary.17"
+"@next/swc-linux-arm64-musl@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-linux-arm64-musl@npm:14.2.0-canary.18"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-linux-x64-gnu@npm:14.2.0-canary.17"
+"@next/swc-linux-x64-gnu@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-linux-x64-gnu@npm:14.2.0-canary.18"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-linux-x64-musl@npm:14.2.0-canary.17"
+"@next/swc-linux-x64-musl@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-linux-x64-musl@npm:14.2.0-canary.18"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-win32-arm64-msvc@npm:14.2.0-canary.17"
+"@next/swc-win32-arm64-msvc@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-win32-arm64-msvc@npm:14.2.0-canary.18"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-win32-ia32-msvc@npm:14.2.0-canary.17"
+"@next/swc-win32-ia32-msvc@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-win32-ia32-msvc@npm:14.2.0-canary.18"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "@next/swc-win32-x64-msvc@npm:14.2.0-canary.17"
+"@next/swc-win32-x64-msvc@npm:14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "@next/swc-win32-x64-msvc@npm:14.2.0-canary.18"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -5867,20 +5867,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.2.0-canary.17":
-  version: 14.2.0-canary.17
-  resolution: "next@npm:14.2.0-canary.17"
+"next@npm:^14.2.0-canary.18":
+  version: 14.2.0-canary.18
+  resolution: "next@npm:14.2.0-canary.18"
   dependencies:
-    "@next/env": "npm:14.2.0-canary.17"
-    "@next/swc-darwin-arm64": "npm:14.2.0-canary.17"
-    "@next/swc-darwin-x64": "npm:14.2.0-canary.17"
-    "@next/swc-linux-arm64-gnu": "npm:14.2.0-canary.17"
-    "@next/swc-linux-arm64-musl": "npm:14.2.0-canary.17"
-    "@next/swc-linux-x64-gnu": "npm:14.2.0-canary.17"
-    "@next/swc-linux-x64-musl": "npm:14.2.0-canary.17"
-    "@next/swc-win32-arm64-msvc": "npm:14.2.0-canary.17"
-    "@next/swc-win32-ia32-msvc": "npm:14.2.0-canary.17"
-    "@next/swc-win32-x64-msvc": "npm:14.2.0-canary.17"
+    "@next/env": "npm:14.2.0-canary.18"
+    "@next/swc-darwin-arm64": "npm:14.2.0-canary.18"
+    "@next/swc-darwin-x64": "npm:14.2.0-canary.18"
+    "@next/swc-linux-arm64-gnu": "npm:14.2.0-canary.18"
+    "@next/swc-linux-arm64-musl": "npm:14.2.0-canary.18"
+    "@next/swc-linux-x64-gnu": "npm:14.2.0-canary.18"
+    "@next/swc-linux-x64-musl": "npm:14.2.0-canary.18"
+    "@next/swc-win32-arm64-msvc": "npm:14.2.0-canary.18"
+    "@next/swc-win32-ia32-msvc": "npm:14.2.0-canary.18"
+    "@next/swc-win32-x64-msvc": "npm:14.2.0-canary.18"
     "@swc/helpers": "npm:0.5.5"
     busboy: "npm:1.6.0"
     caniuse-lite: "npm:^1.0.30001579"
@@ -5918,7 +5918,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 10c0/6f703c56d0cb497e5dae5a9c612ff86008b9da0eff24a1bfc7da5b48ed9f1cdda2dd9c546c0010ac0a44f5cf0650327ae0168322d49844abab82618f3e91902a
+  checksum: 10c0/958e9b36d8f4c22825829c956cf1cef75b10cafcef2819d782b96de0449c5e291309c81a11c43035449de3e150d9ae5e63694ce3fb26aca8e3c7a7cf6c3e1eb4
   languageName: node
   linkType: hard
 
@@ -7316,7 +7316,7 @@ __metadata:
     husky: "npm:^9.0.11"
     is-ci: "npm:^3.0.1"
     million: "npm:^3.0.6"
-    next: "npm:^14.2.0-canary.17"
+    next: "npm:^14.2.0-canary.18"
     next-themes: "npm:0.2.1"
     postcss: "npm:^8.4.35"
     prettier: "npm:^3.2.5"
