@@ -39,6 +39,7 @@ yarn-error.log*
 .contentlayer
 !.env.example
 config/contentlayer/themes/*.json
+.velite
 
 !.env
 static/media/*.png
