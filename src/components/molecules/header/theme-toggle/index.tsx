@@ -55,6 +55,7 @@ export const ThemeToggle = () => {
           } catch (e) {}
           setTheme?.(newTheme);
         }}
+        disabled={!hasMounted}
       >
         <optgroup label={'Theme'}>
           <option value={'system'}>System</option>
