@@ -22,6 +22,10 @@ export const blogs = defineCollection({
       title: s.string(), // .max(69),
       summary: s.string(), //.max(69),
       // slug: s.path(), // auto generate slug from file path
+      slug: s.custom().transform((_, { meta }) => {
+        const slug = meta.basename?.replace(/\.mdx$/, '') || '';
+        return slug;
+      }),
       date: s.isodate(), // input Date-like string, output ISO Date string.
       color: s.string().regex(new RegExp('^#(?:[0-9a-fA-F]{3}){1,2}$')),
       keywords: s.string(),
@@ -34,13 +38,11 @@ export const blogs = defineCollection({
       code: s.mdx(),
     })
     // more additional fields (computed fields)
-    .transform(async (data, { meta }) => {
+    .transform(async (data) => {
       const { metadata, keywords, ...blogData } = data;
-      const slug = meta.basename?.replace(/\.mdx$/, '');
-      const hero = getActualHeroUrl(data.hero || `${slug}/hero.jpg`);
+      const hero = getActualHeroUrl(data.hero || `${data.slug}/hero.jpg`);
       return {
         ...blogData,
-        slug,
         hero,
         keywords: getKeywords(keywords),
         readingTime: metadata.readingTime,
