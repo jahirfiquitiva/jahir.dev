@@ -25,9 +25,8 @@ export const Intro = () => {
           quality={100}
           priority
           className={cx(
-            'rounded-full aspect-square tablet-sm:float-right',
+            'rounded-full tablet-sm:float-right saturate-125',
             'max-w-28 mobile-lg:max-w-30 tablet-sm:max-w-36 tablet-md:max-w-40',
-            'bg-brand-700 overflow-hidden saturate-125',
           )}
         />
         <h1 className={'flex flex-col gap-1 tablet-sm:!-mt-2'}>
