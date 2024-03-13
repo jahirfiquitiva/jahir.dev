@@ -1,4 +1,8 @@
+import dynamic from 'next/dynamic';
+
+import { Icon } from '@/components/atoms/icon';
 import { Logo } from '@/components/atoms/logo';
+import { loading as loadingIcon } from '@/components/icons';
 import cx from '@/utils/cx';
 
 import { SocialLinks } from '../social-links';
@@ -11,7 +15,10 @@ import {
   LinksList,
   StyledFooter,
 } from './footer.styles';
-import { FooterNowPlaying } from './now-playing';
+
+const FooterNowPlaying = dynamic(() => import('./now-playing/index'), {
+  loading: () => <Icon path={loadingIcon} className={'size-5 animate-spin'} />,
+});
 
 export const Footer = () => {
   return (
