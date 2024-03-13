@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "canvas-confetti": "^1.9.2",
-    "next": "14.2.0-canary.13",
+    "next": "^14.2.0-canary.19",
     "next-themes": "0.3.0",
     "react": "^18.2.0",
     "react-compare-slider": "^3.0.1",
@@ -29,7 +29,7 @@
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.26",
     "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.21",
+    "@types/react-dom": "^18.2.22",
     "@types/xml": "^1.0.11",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
