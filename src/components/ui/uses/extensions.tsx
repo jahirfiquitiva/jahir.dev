@@ -1,6 +1,6 @@
 import { Link } from '@/components/atoms/link';
 import { List, ListItem } from '@/components/atoms/list';
-import extensions from '@/data/extensions.json';
+import { extensions } from '@/content';
 
 const extensionsHalfIndex = Math.round(extensions.length / 2);
 const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
@@ -20,9 +20,9 @@ export const ExtensionsGrid = () => (
         <div key={`ext-group-${index}`} className={'flex flex-col w-full'}>
           <List>
             {extensions.map((ext) => (
-              <ListItem key={ext.title}>
-                <Link href={ext.url} title={ext.title}>
-                  {ext.title}
+              <ListItem key={ext.name}>
+                <Link href={ext.url} title={ext.name}>
+                  {ext.name}
                 </Link>
               </ListItem>
             ))}

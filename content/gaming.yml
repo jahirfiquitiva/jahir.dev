@@ -1,0 +1,54 @@
+- image: uses/pc/board.png
+  name: Aorus B450 Pro WiFi
+  description: MotherBoard
+  url: https://amzn.to/3g6mRsu
+
+- image: uses/pc/processor.png
+  name: AMD Ryzen 7 3700X
+  description: Processor
+  url: https://amzn.to/32tuHEF
+
+- image: uses/pc/graphics.png
+  name: AMD RX 5600XT
+  description: Graphics Card
+  url: https://www.amazon.com/s?k=AMD+RX+5600XT
+
+- image: uses/pc/ssd1.png
+  name: Western Digital 480GB SSD
+  description: Storage
+  url: https://amzn.to/3v4KAO7
+
+- image: uses/pc/ssd2.png
+  name: SAMSUNG 980 1TB SSD
+  description: Storage
+  url: https://www.amazon.com/dp/B08V83JZH4
+
+- image: uses/pc/ram.png
+  name: ThermalTake Toughram RGB
+  description: RAM, 16GB (2x8)
+  url: https://amzn.to/2Q4kJ9Z
+
+- image: uses/pc/case.png
+  name: Corsair iCue 465X
+  description: Case, Black
+  url: https://amzn.to/3ssBrgB
+
+- image: uses/pc/power.png
+  name: Cooler Master 750W
+  description: Power Supply, 80+ Gold
+  url: https://amzn.to/3dhi7yo
+
+- image: uses/pc/mouse.png
+  name: Logitech G305
+  description: Mouse, Black
+  url: https://www.amazon.com/dp/B07CMS5Q6P
+
+- image: uses/pc/headphones.png
+  name: Logitech G535
+  description: Headphones, Black
+  url: https://www.amazon.com/dp/B08KY2WFGP
+
+- image: uses/pc/stand.png
+  name: VIVO CART-PC01
+  description: Stand
+  url: https://www.amazon.com/dp/B074P76TBW

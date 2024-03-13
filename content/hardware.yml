@@ -1,0 +1,58 @@
+- image: uses/hardware/mbp.png
+  name: MacBook Pro 14"
+  description: M1 Pro 10-core CPU and 16-core GPU, 1TB SSD and 16GB RAM
+  url: https://support.apple.com/kb/SP854
+
+- image: uses/hardware/monitor.png
+  name: LG 27UP850-W
+  description: 27" 4K Monitor
+  url: https://www.amazon.com/dp/B08YJMMYBX
+
+- image: uses/hardware/vivo-mount.png
+  name: VIVO Mount
+  description: Holds the monitor
+  url: https://www.amazon.com/dp/B00B21TLQU/
+
+- image: uses/hardware/deltahub.png
+  name: DeltaHub Carpio 2.0
+  url: https://deltahub.io/
+
+- image: uses/hardware/keyboard.png
+  name: Nuphy Air75 V2
+  description: Basalt Black with Gateron Brown 2.0 Switches
+  url: https://nuphy.com/collections/in-stock-keyboards/products/air75-v2?variant=40671476645997
+
+- image: uses/hardware/mouse.png
+  name: Logitech MX Master 3S
+  description: for Mac
+  url: https://www.logitech.com/en-us/products/mice/mx-master-3s.910-006556.html
+
+- image: uses/hardware/webcam.png
+  name: Logitech Brio
+  description: 4K WebCam
+  url: https://www.amazon.com/dp/B01N5UOYC4
+
+- image: uses/hardware/phone.png
+  name: iPhone 15 Pro
+  description: Blue Titanium, 256GB
+  url: https://support.apple.com/kb/SP903
+
+- image: uses/hardware/airpods.png
+  name: AirPods Pro
+  description: 2nd Gen
+  url: https://www.apple.com/airpods-pro/
+
+- image: uses/hardware/ipad.png
+  name: iPad Air
+  description: 4th Gen, Space Gray
+  url: https://support.apple.com/kb/SP828
+
+- image: uses/hardware/apple-watch.png
+  name: Apple Watch
+  description: Series 8, Midnight
+  url: https://support.apple.com/kb/SP878
+
+- image: uses/hardware/brevite-backpack.png
+  name: The Brevitē Backpack
+  description: Black
+  url: https://brevite.co/collections/everyday-backpacks/products/the-brevite-backpack?variant=34952238858394
