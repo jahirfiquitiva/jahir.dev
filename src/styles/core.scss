@@ -57,6 +57,19 @@ input[type='checkbox'] {
   @apply text-tertiary-txt opacity-100;
 }
 
+/* == Custom Scrollbar Colors == */
+* {
+  scrollbar-color: var(--color-accent) var(--color-background);
+}
+*::-webkit-scrollbar-track {
+  background: var(--color-accent);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-background);
+  border-radius: 20px;
+  border: 3px solid var(--color-accent);
+}
+
 *:focus {
   outline: 2px dashed var(--color-secondary-txt);
   outline-offset: 0.25rem;
