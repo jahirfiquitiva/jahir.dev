@@ -43,7 +43,7 @@ const { UMAMI_WEBSITE_ID: umamiWebsiteId = '', IS_TEMPLATE = 'true' } =
 export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
-      id={'top'}
+      id={'page'}
       lang={'en'}
       className={cx(
         Inter.variable,
