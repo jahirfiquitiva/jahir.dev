@@ -125,3 +125,11 @@ export const ButtonsGroup = tw.ul`
   tablet-sm:justify-start
   tablet-sm:[grid-column:3/4]
 `;
+
+export const ExtraNavLinks = tw.li`
+  min-h-11
+  tablet-sm:hidden
+  tablet-sm:invisible
+  tablet-sm:select-none
+  tablet-sm:pointer-events-none
+`;

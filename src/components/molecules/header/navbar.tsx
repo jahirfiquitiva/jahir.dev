@@ -11,6 +11,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  ExtraNavLinks,
   NavPageLink,
   NavPageLinkText,
 } from './navbar.styles';
@@ -20,22 +21,22 @@ const toolbarLinksList = [
   {
     title: 'About',
     href: '/about',
-    className: ['text-green'],
+    className: 'text-green',
   },
   {
     title: 'Blog',
     href: '/blog',
-    className: ['text-orange'],
+    className: 'text-orange',
   },
   {
     title: 'Projects',
     href: '/projects',
-    className: ['text-purple'],
+    className: 'text-purple',
   },
   {
     title: 'Uses',
     href: '/uses',
-    className: ['text-blue'],
+    className: 'text-blue',
   },
 ];
 
@@ -79,8 +80,8 @@ export const Navbar = (props: NavbarProps) => {
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={cx(
-                  link.className.map((c) => `hocus:${c}`),
-                  isActive ? link.className.join(' ') : '',
+                  `hocus:${link.className}`,
+                  isActive ? link.className : '',
                   isActive ? 'saturate-125 dark:saturate-150' : '',
                 )}
                 prefetch={!isActive}
@@ -90,23 +91,10 @@ export const Navbar = (props: NavbarProps) => {
             </NavItem>
           );
         })}
-        <li
-          className={cx(
-            'min-h-11',
-            'tablet-sm:hidden tablet-sm:invisible',
-            'tablet-sm:pointer-events-none tablet-sm:select-none',
-          )}
-          aria-hidden={'true'}
-        />
-        <li
-          className={cx(
-            'mx-auto',
-            'tablet-sm:hidden tablet-sm:invisible',
-            'tablet-sm:pointer-events-none tablet-sm:select-none',
-          )}
-        >
+        <ExtraNavLinks aria-hidden={'true'} />
+        <ExtraNavLinks className={'mx-auto'}>
           <SocialLinks />
-        </li>
+        </ExtraNavLinks>
       </LinksList>
       <ButtonsGroup>
         <li>
