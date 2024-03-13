@@ -39,6 +39,7 @@ export const getFeaturedPosts = cache(
         randomPost,
       ].filter(Boolean) as Array<PartialBlog>;
     } catch (e) {
+      console.error(e);
       return [];
     }
   },
