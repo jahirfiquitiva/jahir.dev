@@ -1,5 +1,4 @@
 import { Logo } from '@/components/atoms/logo';
-import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 import { SocialLinks } from '../social-links';
@@ -31,17 +30,7 @@ export const Footer = () => {
           )}
         >
           <Logo />
-          <span
-            className={getColoredTextClasses(
-              'brand',
-              'brand',
-              'blue',
-              'dark:saturate-100',
-              true,
-            )}
-          >
-            Jahir Fiquitiva
-          </span>
+          <span className={'text-accent'}>Jahir Fiquitiva</span>
         </FooterLink>
         <Description>
           Passionate and creative full-stack software engineer from Colombia{' '}

@@ -46,14 +46,11 @@ export const Button = tw.button.attrs<ButtonProps>((p) => ({
   after:border-px
   after:border-white
   after:opacity-20
-  after:bg-gradient-to-b
-  after:from-white/90
-  after:to-white/0
   after:[mask:linear-gradient(to_bottom,_rgba(0,_0,_0,_1)_0%,_rgba(0,_0,_0,_0)_100%)]
 `;
 
 export const OutlinedButton = tw(Button)`
-  bg-transparent
+  bg-brand-200/5
   text-secondary-txt
   transition
   ring-divider
@@ -62,18 +59,13 @@ export const OutlinedButton = tw(Button)`
   dark:hocus:ring-divider
   hocus:shadow
   hocus:text-primary-txt
-  hocus:bg-brand-300/5
+  hocus:bg-brand-200/10
   dark:bg-brand-200/10
   dark:hocus:bg-brand-200/15
 
   after:border-accent-dark
   after:opacity-10
   dark:after:opacity-15
-  after:bg-gradient-to-b
-  after:from-brand-600/0
-  after:to-brand-600/80
-  dark:after:from-brand-200/0
-  dark:after:to-brand-200/60
   after:[mask:linear-gradient(to_bottom,_rgba(0,_0,_0,_0)_0%,_rgba(0,_0,_0,_1)_100%)]
   dark:after:[mask:linear-gradient(to_bottom,_rgba(0,_0,_0,_1)_0%,_rgba(0,_0,_0,_0)_100%)]
 `;

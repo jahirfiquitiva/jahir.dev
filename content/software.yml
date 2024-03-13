@@ -1,0 +1,99 @@
+- image: uses/apps/notion.webp
+  name: Notion
+  url: https://www.notion.so/
+
+- image: uses/apps/1password.png
+  name: 1Password
+  url: https://1password.com/
+
+- image: uses/apps/code.webp
+  name: VS Code
+  url: https://code.visualstudio.com/
+
+- image: uses/apps/android-studio.png
+  name: Android Studio
+  url: https://developer.android.com/studio
+
+- image: uses/apps/good-notes.png
+  name: Goodnotes
+  url: https://www.goodnotes.com/
+
+- image: uses/apps/iina.png
+  name: iina
+  url: https://iina.io/
+
+- image: uses/apps/airbuddy.png
+  name: AirBuddy
+  url: https://airbuddy.app/
+
+- image: uses/apps/lungo.png
+  name: Lungo
+  url: https://sindresorhus.com/lungo
+
+- image: uses/apps/app-cleaner.webp
+  name: App Cleaner
+  url: https://freemacsoft.net/appcleaner/
+
+- image: uses/apps/fig.png
+  name: Fig
+  url: https://fig.io/
+
+- image: uses/apps/top-notch.png
+  name: Top Notch
+  url: https://topnotch.app/
+
+- image: uses/apps/cleanshot-x.png
+  name: CleanShot X
+  url: https://cleanshot.com/
+
+- image: uses/apps/raycast.webp
+  name: Raycast
+  url: https://raycast.app/
+
+- image: uses/apps/bartender.png
+  name: Bartender
+  url: https://www.macbartender.com/
+
+- image: uses/apps/contraste.png
+  name: Contraste
+  url: https://contrasteapp.com/
+
+- image: uses/apps/soundsource.png
+  name: SoundSource
+  url: https://rogueamoeba.com/soundsource/
+
+- image: uses/apps/arc.png
+  name: Arc
+  url: https://arc.net/gift/cb3f518f
+
+- image: uses/apps/spotify.webp
+  name: Spotify
+  url: https://spotify.com/
+
+- image: uses/apps/hyper.png
+  name: Hyper
+  url: https://hyper.is/
+
+- image: uses/apps/monolisa.png
+  name: MonoLisa
+  url: https://monolisa.dev/
+
+- image: uses/apps/dato.png
+  name: Dato
+  url: https://sindresorhus.com/dato
+
+- image: uses/apps/pace-theme.png
+  name: Pace Theme
+  url: https://github.com/fabian-hiller/vscode-pace-theme
+
+- image: uses/apps/magnet.png
+  name: Magnet
+  url: https://magnet.crowdcafe.com/
+
+- image: uses/apps/focus.png
+  name: Focus
+  url: https://heyfocus.com/
+
+- image: uses/apps/alttab.png
+  name: AltTab
+  url: https://github.com/lwouis/alt-tab-macos

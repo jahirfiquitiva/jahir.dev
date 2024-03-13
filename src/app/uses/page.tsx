@@ -14,14 +14,7 @@ export default function UsesPage() {
   return (
     <>
       <Section id={'uses'} className={'flex-1 gap-6'}>
-        <h1
-          className={getColoredTextClasses(
-            'brand',
-            'brand',
-            'blue',
-            'self-start',
-          )}
-        >
+        <h1 className={getColoredTextClasses('blue', 'self-start')}>
           What do I use?
         </h1>
         <Tabs

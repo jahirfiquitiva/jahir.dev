@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
 import { Section } from '@/components/atoms/section';
-import { getColoredTextClasses } from '@/utils/colored-text';
 
 import { SponsorItem } from '../sponsor';
 
@@ -20,16 +19,7 @@ export const SponsorsList = (props: SponsorsListProps) => {
     <Section id={'thanks'}>
       <Header>
         <div className={'flex flex-col flex-1 gap-2.5'}>
-          <h2
-            className={getColoredTextClasses(
-              'brand',
-              'brand',
-              'blue',
-              'text-xl self-start',
-            )}
-          >
-            Sponsors
-          </h2>
+          <h2 className={'text-xl self-start'}>Sponsors</h2>
           <div className={'max-w-nice'}>
             <p>
               I currently have{' '}

@@ -1,7 +1,6 @@
 import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';
 import { Section } from '@/components/atoms/section';
-import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 import type { SponsorsListProps as TestimonialsProps } from '../sponsors-list';
@@ -44,14 +43,7 @@ export const Testimonials = (props: TestimonialsProps) => {
 
   return (
     <Section id={'testimonials'}>
-      <h2
-        className={getColoredTextClasses(
-          'blue',
-          'blue',
-          'green',
-          'text-xl self-start',
-        )}
-      >
+      <h2 className={'text-xl self-start'}>
         Don&apos;t just take my word for it!
       </h2>
       <ul

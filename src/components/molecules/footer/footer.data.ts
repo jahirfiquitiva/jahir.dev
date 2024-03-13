@@ -6,27 +6,27 @@ export const linksGroups = [
       {
         title: 'Home',
         href: '/',
-        className: ['from-brand', 'to-blue'],
+        className: ['text-brand'],
       },
       {
         title: 'About',
         href: '/about',
-        className: ['from-blue', 'to-green'],
+        className: ['text-green'],
       },
       {
         title: 'Blog',
         href: '/blog',
-        className: ['from-yellow', 'to-orange'],
+        className: ['text-orange'],
       },
       {
         title: 'Projects',
         href: '/projects',
-        className: ['from-red', 'to-purple'],
+        className: ['text-purple'],
       },
       {
         title: 'Uses',
         href: '/uses',
-        className: ['from-brand', 'to-blue'],
+        className: ['text-blue'],
       },
     ],
   },
@@ -37,12 +37,12 @@ export const linksGroups = [
       {
         title: 'Donate',
         href: '/donate',
-        className: ['from-purple', 'to-brand'],
+        className: ['text-yellow'],
       },
       {
         title: 'Contact',
         href: '/contact',
-        className: ['from-blue', 'to-green'],
+        className: ['text-green'],
         props: {
           ignoreNextLink: true,
         },
@@ -50,7 +50,7 @@ export const linksGroups = [
       {
         title: 'RSS Feed',
         href: '/feed.xml',
-        className: ['from-yellow', 'to-orange'],
+        className: ['text-orange'],
         props: {
           'data-umami-event': 'RSS feed',
         },
@@ -58,13 +58,13 @@ export const linksGroups = [
       {
         title: 'Colophon',
         href: '/colophon',
-        className: ['from-red', 'to-purple'],
+        className: ['text-purple'],
       },
       {
         title: 'Back to Top',
         a11yTitle: 'Scroll back to top',
         href: '#',
-        className: ['from-brand', 'to-blue'],
+        className: ['text-brand'],
       },
     ],
   },

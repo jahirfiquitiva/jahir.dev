@@ -3,7 +3,6 @@ import type { CSSProperties } from 'react';
 import { Icon } from '@/components/atoms/icon';
 import { Section } from '@/components/atoms/section';
 import { hexToRgb } from '@/utils/color';
-import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
 import { skills } from './data';
@@ -11,16 +10,7 @@ import { skills } from './data';
 export const Skills = () => {
   return (
     <Section id={'skills'}>
-      <h2
-        className={getColoredTextClasses(
-          'green',
-          'green',
-          'blue',
-          'self-start',
-        )}
-      >
-        Skills
-      </h2>
+      <h2>Skills</h2>
       <ul className={'flex items-center gap-2.5 flex-wrap'}>
         {skills
           .filter((skill) => !skill.hide)

@@ -13,9 +13,7 @@ export const Header = () => {
       <Navbar
         path={pathname}
         expanded={expanded}
-        className={
-          elevated ? 'max-tablet-sm:shadow-toolbar-elevated gap-2' : ''
-        }
+        className={elevated ? 'shadow-toolbar-elevated' : ''}
         onNavToggleClick={() => {
           setExpanded(!expanded);
         }}

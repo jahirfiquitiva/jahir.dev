@@ -39,6 +39,7 @@ export const getFeaturedPosts = cache(
         randomPost,
       ].filter(Boolean) as Array<PartialBlog>;
     } catch (e) {
+      console.error(e);
       return [];
     }
   },
@@ -83,9 +84,7 @@ export const FeaturedBlogPosts = () => (
         'tablet-sm:flex-row tablet-sm:items-center tablet-sm:justify-between',
       )}
     >
-      <h2 className={getColoredTextClasses('orange', 'yellow', 'orange')}>
-        From the blog
-      </h2>
+      <h2 className={getColoredTextClasses('orange')}>From the blog</h2>
       <div
         className={cx(
           'flex flex-row flex-1 items-center gap-4 self-end w-full',
