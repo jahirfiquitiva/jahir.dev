@@ -4,7 +4,6 @@ import {
   getCounters,
   incrementCounter as incCounter,
 } from '@/actions/counters';
-
 import type { Blog } from '@/content';
 
 interface ViewsCounterProps {
