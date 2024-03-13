@@ -63,7 +63,7 @@ export const Navbar = (props: NavbarProps) => {
       <LinksList
         className={
           expanded
-            ? 'max-h-full opacity-100 select-auto pointer-events-none visible'
+            ? 'max-h-full opacity-100 select-auto pointer-events-auto visible'
             : ''
         }
       >
