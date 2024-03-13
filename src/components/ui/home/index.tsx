@@ -25,7 +25,7 @@ export const Intro = () => {
           quality={100}
           priority
           className={cx(
-            'rounded-full tablet-sm:float-right saturate-125',
+            'rounded-full tablet-sm:float-right',
             'max-w-28 mobile-lg:max-w-30 tablet-sm:max-w-36 tablet-md:max-w-40',
           )}
         />

@@ -1,4 +1,4 @@
-import software from '@/data/software.json';
+import { software } from '@/content';
 
 import {
   AppIcon,
@@ -23,11 +23,12 @@ export const Software = () => {
         {sortedSoftware.map((item, index) => {
           return (
             <li key={index}>
-              <SoftwareItem href={item.link || '#'} title={item.name}>
+              <SoftwareItem href={item.url || '#'} title={item.name}>
                 <AppIcon
                   src={`/media/${item.image}`}
                   size={72}
                   alt={item.name}
+                  {...item.imageMeta}
                 />
                 <AppName>{item.name}</AppName>
               </SoftwareItem>
