@@ -1,6 +1,6 @@
 import { type CSSProperties } from 'react';
 
-import type { Project } from '@/types/project';
+import type { Project } from '@/content';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
 
@@ -18,7 +18,7 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
   return (
     <ProjectLink
       title={project.name}
-      href={project.link}
+      href={project.url}
       style={{ '--tint': color } as CSSProperties}
       data-umami-event={'View project'}
       data-umami-event-project={project.name}

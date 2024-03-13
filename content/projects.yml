@@ -1,0 +1,145 @@
+- order: 0
+  name: Blueprint
+  description: Feature-rich dashboard for Android icon packs
+  icon: android/blueprint.png
+  # preview: android/blueprint-preview.png
+  url: https://github.com/jahirfiquitiva/Blueprint/
+  color: "#4d8af0"
+  repo: Blueprint
+
+- order: 10
+  name: BoyaConf
+  description: First software development conference in Boyacá, Colombia
+  icon: other/boyaconf.png
+  # preview: other/boyaconf-preview.png
+  url: https://boyaconf.com
+  color: "#00202b"
+  darkColor: "#4dcc89"
+  repo: website
+  owner: boyaca-dev
+
+- order: 5
+  name: ChipView
+  description: Custom view to provide Material Design specs' Chip component
+  icon: android/chipview.png
+  # preview: android/chipview-preview.png
+  url: https://github.com/jahirfiquitiva/ChipView/
+  color: "#3E95FB"
+  hide: true
+  repo: chipview
+
+- order: 8
+  name: Colombian Holidays
+  description: Get to know upcoming Colombian holidays
+  icon: web/col-holidays.png
+  # preview: web/col-holidays-preview.png
+  url: https://col-holidays.co
+  color: "#003893"
+  darkColor: "#fcd116"
+  hide: true
+  repo: col-holidays
+
+- order: 7
+  name: Dashbud
+  description: Quickly setup any of my Android dashboards
+  icon: web/setup.png
+  # preview: web/dashbud-preview.png
+  url: https://dashbud.dev
+  color: "#9853fd"
+  hide: true
+  repo: dashbud
+
+- order: 6
+  name: FABsMenu
+  description: A menu of Material Design FloatingActionButtons
+  icon: android/fabsmenu.png
+  # preview: android/fabsmenu-preview.png
+  url: https://github.com/jahirfiquitiva/FABsMenu/
+  color: "#eb3b75"
+  hide: true
+  repo: FABsMenu
+
+- order: 1
+  name: Frames
+  description: Immersive Android wallpaper gallery dashboard app
+  icon: android/frames.png
+  # preview: android/frames-preview.png
+  url: https://github.com/jahirfiquitiva/Frames/
+  color: "#35b4ef"
+  repo: Frames
+
+- order: 2
+  name: Kuper
+  description: Widget showcase for Kustom & Zooper
+  icon: android/kuper.png
+  # preview: android/kuper-preview.png
+  url: https://github.com/jahirfiquitiva/Kuper/
+  color: "#6673C0"
+  repo: Kuper
+
+- order: 999999
+  name: More
+  description: Find other open-source projects on GitHub
+  icon: other/more.png
+  url: https://github.com/jahirfiquitiva/
+  color: "#92a3b5"
+  hide: true
+
+- order: 3
+  name: Pals
+  description: Access popular color palettes or create new ones from any color or image
+  icon: android/pals.png
+  # preview: android/pals-preview.png
+  url: https://jahir.xyz/PalsApp
+  color: "#4285F4"
+  hide: true
+  repo: Pals
+
+- order: 9
+  name: Prev Websites
+  description: Check the source code of previous versions of this website
+  icon: web/prev-websites.png
+  # preview: web/websites-preview.png
+  url: https://github.com/jahirfiquitiva/prev-websites/
+  color: "#88a4e6"
+  hide: true
+  repo: prev-websites
+
+- order: 11
+  name: Sliding Puzzle
+  description: Pseudo-AI+ML solves the 8-Puzzle aka Sliding Puzzle
+  icon: other/puzzle.png
+  # preview: other/sliding-puzzle-preview.png
+  url: https://puzzle.jahir.dev
+  color: "#929292"
+  hide: true
+  repo: SlidingPuzzle
+
+- order: 12
+  name: Stan
+  description: Slack bot to help with text-only SCRUM stand-ups
+  icon: other/stan.png
+  url: https://github.com/jahirfiquitiva/stanbot/
+  color: "#FC8303"
+  hide: true
+  repo: StanBot
+
+- order: 4
+  name: Tap
+  description: Floating Action Button for quickly creating Keep notes and Todoist tasks
+  icon: android/tap.png
+  # preview: android/tap-preview.png
+  url: https://jahir.xyz/TapApp
+  color: "#E69494"
+  hide: true
+  repo: Tap
+
+- order: 8
+  name: World Holidays
+  description: Get to know upcoming worldwide holidays
+  icon: web/world-holidays.png
+  # preview: web/world-holidays-preview.png
+  url: https://world-holidays.info
+  color: "#5360D2"
+  darkColor: "#79FFE1"
+  repo: worldwide-holidays
