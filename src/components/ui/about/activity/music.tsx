@@ -62,6 +62,7 @@ export const Music = () => {
               : '',
         )}
         style={{ animationDuration: '15s' }}
+        unoptimized
       />
       <Content>
         <AlbumCover
@@ -74,6 +75,7 @@ export const Music = () => {
           }
           src={track?.image?.url ?? tunez}
           size={track?.image?.width || 78}
+          unoptimized
         />
         <Texts className={'mix-blend-hard-light'}>
           <Header>

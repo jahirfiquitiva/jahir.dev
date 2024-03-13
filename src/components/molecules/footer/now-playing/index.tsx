@@ -38,6 +38,7 @@ const FooterNowPlaying = () => {
         src={track.image?.url || ''}
         size={24}
         quality={50}
+        unoptimized
       />
       <NowPlayingTextsContainer
         style={{ animationDuration: `${animationDuration}s` }}

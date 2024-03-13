@@ -1,7 +1,4 @@
-'use client';
-
 import Image, { type ImageProps, type StaticImageData } from 'next/image';
-import { useState } from 'react';
 
 import cx from '@/utils/cx';
 
@@ -28,7 +25,6 @@ const getProps = (baseProps: ImgProps) => {
 };
 
 export const Img = (baseProps: ImgProps) => {
-  const [errored, setErrored] = useState<boolean>(false);
   const { width = 0, height = 0, ...props } = getProps(baseProps);
   return (
     // Disabled warning. Alt props already is present in props
@@ -45,10 +41,8 @@ export const Img = (baseProps: ImgProps) => {
           : props.placeholder
       }
       className={cx('object-cover object-center', props.className)}
-      onError={() => {
-        setErrored(true);
-      }}
-      unoptimized={errored}
+      loading={!props.priority ? 'lazy' : undefined}
+      decoding={'async'}
     />
   );
 };
