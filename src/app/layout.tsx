@@ -4,7 +4,6 @@ import Script from 'next/script';
 import { type PropsWithChildren } from 'react';
 
 import { Main } from '@/components/atoms/main';
-import { BackToTop } from '@/components/molecules/back-to-top';
 import { Footer } from '@/components/molecules/footer';
 import { Header } from '@/components/molecules/header';
 import { Providers } from '@/providers';
@@ -44,6 +43,7 @@ const { UMAMI_WEBSITE_ID: umamiWebsiteId = '', IS_TEMPLATE = 'true' } =
 export default function RootLayout(props: PropsWithChildren) {
   return (
     <html
+      id={'top'}
       lang={'en'}
       className={cx(
         Inter.variable,
@@ -67,7 +67,6 @@ export default function RootLayout(props: PropsWithChildren) {
           <Header />
           <Main>{props.children}</Main>
           <Footer />
-          <BackToTop />
         </Providers>
       </body>
     </html>

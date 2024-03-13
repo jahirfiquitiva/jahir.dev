@@ -63,7 +63,7 @@ export const linksGroups = [
       {
         title: 'Back to Top',
         a11yTitle: 'Scroll back to top',
-        href: '#',
+        href: '#top',
         className: 'text-brand',
       },
     ],

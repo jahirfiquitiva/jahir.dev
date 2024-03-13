@@ -3,7 +3,6 @@ import cx from '@/utils/cx';
 
 import { SocialLinks } from '../social-links';
 
-import { BackToTopLink } from './back-to-top-link';
 import { linksGroups } from './footer.data';
 import {
   Description,
@@ -60,19 +59,15 @@ export const Footer = () => {
                 const className = `hocus:${link.className}`;
                 return (
                   <li key={link.title}>
-                    {link.href !== '#' ? (
-                      <FooterLink
-                        title={link.a11yTitle || link.title}
-                        href={link.href}
-                        className={className}
-                        {...link.props}
-                        prefetch={false}
-                      >
-                        {link.title}
-                      </FooterLink>
-                    ) : (
-                      <BackToTopLink {...link} className={className} />
-                    )}
+                    <FooterLink
+                      title={link.a11yTitle || link.title}
+                      href={link.href}
+                      className={className}
+                      {...link.props}
+                      prefetch={false}
+                    >
+                      {link.title}
+                    </FooterLink>
                   </li>
                 );
               })}
