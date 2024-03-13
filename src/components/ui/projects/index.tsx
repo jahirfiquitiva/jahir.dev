@@ -26,7 +26,7 @@ export const ProjectsList = (props: ProjectsListProps) => {
           'mobile-md:flex-row mobile-md:items-center mobile-md:justify-between',
         )}
       >
-        <Heading className={getColoredTextClasses('red', 'red', 'purple')}>
+        <Heading className={getColoredTextClasses('purple')}>
           {props.title}
         </Heading>
         {props.featuredOnly ? (

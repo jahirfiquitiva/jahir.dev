@@ -47,15 +47,9 @@ export const FooterLink = tw(Link)`
   font-manrope
   font-semibold
   transition-colors
-  text-transparent
-  bg-clip-text
-  bg-gradient-to-r
-  from-tertiary-txt
-  to-tertiary-txt
-  hocus:text-transparent
-  hocus:from-secondary-txt
-  hocus:to-secondary-txt
+  text-tertiary-txt
+  hocus:text-secondary-txt
   hocus:saturate-125
   hocus:dark:saturate-150
-  hocus:decoration-[var(--tw-gradient-from)]
+  hocus:decoration-current
 `;

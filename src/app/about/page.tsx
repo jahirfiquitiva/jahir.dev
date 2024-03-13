@@ -35,16 +35,7 @@ export default function AboutPage() {
   return (
     <>
       <Section id={'about'}>
-        <h1
-          className={getColoredTextClasses(
-            'blue',
-            'blue',
-            'green',
-            'self-start',
-          )}
-        >
-          About
-        </h1>
+        <h1 className={getColoredTextClasses('green')}>About</h1>
         <p className={'max-w-nice'}>
           <span role={'img'} aria-label={'waving hand'}>
             👋

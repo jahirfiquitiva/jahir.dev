@@ -1,5 +1,4 @@
 import { Logo } from '@/components/atoms/logo';
-import { getColoredTextClasses } from '@/utils/colored-text';
 import type { TWComponentProps } from '@/utils/cx';
 import cx from '@/utils/cx';
 
@@ -21,22 +20,22 @@ const toolbarLinksList = [
   {
     title: 'About',
     href: '/about',
-    className: ['from-blue', 'to-green'],
+    className: ['text-green'],
   },
   {
     title: 'Blog',
     href: '/blog',
-    className: ['from-yellow', 'to-orange'],
+    className: ['text-orange'],
   },
   {
     title: 'Projects',
     href: '/projects',
-    className: ['from-red', 'to-purple'],
+    className: ['text-purple'],
   },
   {
     title: 'Uses',
     href: '/uses',
-    className: ['from-brand', 'to-blue'],
+    className: ['text-blue'],
   },
 ];
 
@@ -57,15 +56,7 @@ export const Navbar = (props: NavbarProps) => {
         aria-current={props.path === '/' ? 'page' : undefined}
       >
         <Logo className={'saturate-125 dark:saturate-150'} />
-        <span
-          className={getColoredTextClasses(
-            'brand',
-            'brand',
-            'blue',
-            'saturate-125',
-            true,
-          )}
-        >
+        <span className={'text-accent saturate-125 dark:saturate-150'}>
           Jahir Fiquitiva
         </span>
       </NavLink>
@@ -95,9 +86,7 @@ export const Navbar = (props: NavbarProps) => {
                 )}
                 prefetch={!isActive}
               >
-                <NavPageLinkText className={'gradient'}>
-                  {link.title}
-                </NavPageLinkText>
+                <NavPageLinkText>{link.title}</NavPageLinkText>
               </NavPageLink>
             </NavItem>
           );

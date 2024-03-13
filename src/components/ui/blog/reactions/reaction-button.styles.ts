@@ -7,6 +7,7 @@ export const StyledReactionButton = tw(OutlinedButton)`
   text-2xs
   group/reaction
   hocus:bg-tint-bg
+  dark:hocus:bg-tint-bg
   hocus:ring-tint-border
   after:rounded-full
 `;

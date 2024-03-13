@@ -14,14 +14,7 @@ export default function DonatePage() {
   return (
     <>
       <Section id={'donate'} className={'gap-3'}>
-        <h1
-          className={getColoredTextClasses(
-            'purple',
-            'purple',
-            'brand',
-            'self-start',
-          )}
-        >
+        <h1 className={getColoredTextClasses('yellow', 'self-start')}>
           Donate
         </h1>
         <div className={'block space-y-3 -mt-2'}>

@@ -48,11 +48,6 @@ export const Nav = tw.nav.attrs({ style: { maxWidth: MAX_SITE_WIDTH } })`
   before:border-accent-dark
   before:opacity-5
   dark:before:opacity-10
-  before:bg-gradient-to-b
-  before:from-brand-600/0
-  before:to-brand-600/80
-  dark:before:from-brand-200/0
-  dark:before:to-brand-200/60
   before:[mask:linear-gradient(to_bottom,_rgba(0,_0,_0,_0)_0%,_rgba(0,_0,_0,_1)_100%)]
   dark:before:[mask:linear-gradient(to_bottom,_rgba(0,_0,_0,_1)_0%,_rgba(0,_0,_0,_0)_100%)]
 `;
@@ -109,17 +104,13 @@ export const NavItem = tw.li`
 `;
 
 export const NavPageLink = tw(NavLink)`
-  from-secondary-txt
-  to-secondary-txt
+  text-secondary-txt
+  transition-colors
   hocus:saturate-125
   hocus:dark:saturate-150
 `;
 
 export const NavPageLinkText = tw.span`
-  text-transparent
-  bg-gradient-to-r
-  bg-clip-text
-  transition-colors
   max-tablet-sm:ml-7
 `;
 

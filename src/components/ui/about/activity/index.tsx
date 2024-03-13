@@ -1,5 +1,4 @@
 import { Section } from '@/components/atoms/section';
-import { getColoredTextClasses } from '@/utils/colored-text';
 
 import { Book } from './book';
 import { Music } from './music';
@@ -7,16 +6,7 @@ import { Music } from './music';
 export const Activity = () => {
   return (
     <Section id={'activity'}>
-      <h2
-        className={getColoredTextClasses(
-          'brand',
-          'brand',
-          'purple',
-          'self-start',
-        )}
-      >
-        Activity
-      </h2>
+      <h2>Activity</h2>
       <div
         className={
           'grid grid-cols-1 gap-3 tablet-sm:grid-cols-2 tablet-sm:gap-4'

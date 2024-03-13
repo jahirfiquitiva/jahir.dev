@@ -82,7 +82,7 @@ const config: Config = {
       black: twColors.black,
       white: twColors.white,
       blue: twColors.sky,
-      green: twColors.green,
+      green: twColors.emerald,
       yellow: twColors.yellow,
       orange: twColors.orange,
       red: twColors.rose,

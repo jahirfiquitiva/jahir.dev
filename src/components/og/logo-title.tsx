@@ -59,8 +59,7 @@ export const PageTitle = (props: {
         ...(path
           ? {}
           : {
-              backgroundImage: 'linear-gradient(to right, #88a4e6, #38bdf8)',
-              backgroundClip: 'text',
+              color: '#88a4e6',
               filter: 'saturate(1.5)',
             }),
       }}

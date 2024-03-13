@@ -9,9 +9,7 @@ export default function BlogPage() {
   return (
     <Section id={'blog'} className={'gap-6'}>
       <div className={'flex flex-row gap-4 items-center justify-between'}>
-        <h1 className={getColoredTextClasses('orange', 'yellow', 'orange')}>
-          Blog
-        </h1>
+        <h1 className={getColoredTextClasses('orange')}>Blog</h1>
         <RSSFeedButton />
       </div>
       <GroupedBlogPosts />
