@@ -8,6 +8,7 @@ import cx from '@/utils/cx';
 type SizeProps = Omit<ImageProps, 'width' | 'height'> & {
   size?: number | `${number}`;
 };
+
 type WidthHeightProps = ImageProps & {
   width?: number | `${number}`;
   height?: number | `${number}`;
@@ -48,8 +49,6 @@ export const Img = (baseProps: ImgProps) => {
         setErrored(true);
       }}
       unoptimized={errored}
-      loading={!props.priority ? 'lazy' : undefined}
-      decoding={'async'}
     />
   );
 };
