@@ -27,7 +27,8 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
         src={`/media/projects/${project.icon || ''}`}
         alt={`Icon for project "${project.name}"`}
         size={56}
-        {...project.iconMeta}
+        blurDataURL={project.iconMeta?.blurDataURL}
+        placeholder={project.iconMeta?.placeholder}
       />
       <div className={'flex flex-col gap-0.5'}>
         <div className={'flex flex-row gap-3 items-center'}>
