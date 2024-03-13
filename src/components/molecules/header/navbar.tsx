@@ -79,9 +79,8 @@ export const Navbar = (props: NavbarProps) => {
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={cx(
-                  isActive
-                    ? link.className.join(' ')
-                    : link.className.map((c) => `hocus:${c}`),
+                  link.className.map((c) => `hocus:${c}`),
+                  isActive ? link.className.join(' ') : '',
                   isActive ? 'saturate-125 dark:saturate-150' : '',
                 )}
                 prefetch={!isActive}
