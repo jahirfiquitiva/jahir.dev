@@ -1,9 +1,8 @@
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
+import type { Blog } from '@/content';
 import cx from '@/utils/cx';
 import { getUrlDomain } from '@/utils/domain';
-
-import type { Blog } from '@/content';
 
 interface HeroProps {
   title: Blog['title'];
