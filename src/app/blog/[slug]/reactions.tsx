@@ -1,11 +1,7 @@
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
 import { getCounters } from '@/actions/counters';
-const ReactionsButtons = dynamic(
-  () => import('@/components/ui/blog/reactions'),
-  { ssr: false },
-);
+import { ReactionsButtons } from '@/components/ui/blog/reactions';
 
 const Buttons = async ({ slug }: { slug: string }) => {
   const counters = await getCounters(slug);

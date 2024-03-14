@@ -11,7 +11,7 @@ interface ReactionsButtonsProps {
   initialCounters?: Counters;
 }
 
-const ReactionsButtons = (props: ReactionsButtonsProps) => {
+export const ReactionsButtons = (props: ReactionsButtonsProps) => {
   const { counters, reacted, submitting, onButtonClick } = useReactions(
     props.slug,
     props.initialCounters,
@@ -36,5 +36,3 @@ const ReactionsButtons = (props: ReactionsButtonsProps) => {
     </div>
   );
 };
-
-export default ReactionsButtons;
