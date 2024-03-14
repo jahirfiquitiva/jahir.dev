@@ -31,7 +31,7 @@ export const Img = (baseProps: ImgProps) => {
   const [errored, setErrored] = useState<boolean>(false);
   const { width = 0, height = 0, ...props } = getProps(baseProps);
   return (
-    // Disabled warning. Alt props already is present in props
+    // Disabled warning. Alt prop already is present in props
     // eslint-disable-next-line jsx-a11y/alt-text
     <Image
       {...props}

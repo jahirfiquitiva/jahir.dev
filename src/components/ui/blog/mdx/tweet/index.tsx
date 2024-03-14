@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { TweetNotFound, type TweetProps } from 'react-tweet';
+import { TweetNotFound, TweetSkeleton, type TweetProps } from 'react-tweet';
 
 import { getTweet } from '@/actions/mdx';
 
@@ -17,7 +17,7 @@ const TweetContent = async ({ id, components, onError }: TweetProps) => {
 };
 
 export const ReactTweet = (props: TweetProps) => (
-  <Suspense fallback={<div className={'min-w-11 min-h-11'} />}>
+  <Suspense fallback={<TweetSkeleton />}>
     <TweetContent {...props} />
   </Suspense>
 );

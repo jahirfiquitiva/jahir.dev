@@ -8,9 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 
-import { Link } from '@/components/atoms/link';
 import { useHasMounted } from '@/hooks/use-has-mounted';
-import cx from '@/utils/cx';
 
 import { TabButton, TabButtonText, TabPanel, TabsList } from './tabs.styles';
 
@@ -32,7 +30,8 @@ const tabs: Array<{ id: TabKey; title: string }> = [
 ] as const;
 
 interface TabsProps extends PropsWithChildren {
-  heroImage: ReactNode;
+  heroComponent: ReactNode;
+  noticeComponent: ReactNode;
 }
 
 export const Tabs = (props: TabsProps) => {
@@ -79,31 +78,8 @@ export const Tabs = (props: TabsProps) => {
           );
         })}
       </TabsList>
-      <div
-        className={cx(
-          'flex flex-col',
-          currentTab === 'all' ? 'gap-8' : 'gap-0',
-        )}
-      >
-        {currentTab === 'all' && (
-          <figure
-            className={
-              'my-2 motion-safe:animate-fade-in motion-safe:[animation-delay:0s]'
-            }
-          >
-            <div
-              className={cx(
-                'aspect-video',
-                'tablet-md:rounded-4',
-                'overflow-hidden',
-                '-mx-3 tablet-md:-mx-4',
-              )}
-            >
-              {props.heroImage}
-            </div>
-            <figcaption>Jahir&apos;s desk setup in early 2024</figcaption>
-          </figure>
-        )}
+      <div className={'flex flex-col gap-8'}>
+        {currentTab === 'all' && props.heroComponent}
         {Children.map(props.children, (child, index) => {
           const hidden =
             currentTab !== 'all' && currentTab !== tabs[index + 1].id;
@@ -124,25 +100,7 @@ export const Tabs = (props: TabsProps) => {
             </TabPanel>
           );
         })}
-        {currentTab === 'all' && (
-          <blockquote
-            className={cx(
-              'bg-brand-500/[0.024] dark:bg-brand-100/5',
-              'border border-dashed border-divider',
-              'p-4 rounded-3 my-1',
-              'motion-safe:animate-fade-in motion-safe:[animation-delay:0s]',
-            )}
-          >
-            <span role={'img'} aria-label={'lightning emoji'}>
-              ⚡
-            </span>{' '}
-            Make sure to check out{' '}
-            <Link href={'https://uses.tech'} title={'uses.tech'}>
-              uses.tech
-            </Link>{' '}
-            for a list of everyone&apos;s /uses pages!
-          </blockquote>
-        )}
+        {currentTab === 'all' && props.noticeComponent}
       </div>
     </div>
   );
