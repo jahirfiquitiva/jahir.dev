@@ -13,7 +13,7 @@ import {
 } from './now-playing.styles';
 import { Clock } from './time';
 
-const FooterNowPlaying = () => {
+export const FooterNowPlaying = () => {
   const { data, loading } =
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
   const { track, isPlaying } = data || { isPlaying: false };
@@ -54,5 +54,3 @@ const FooterNowPlaying = () => {
     </NowPlayingLink>
   );
 };
-
-export default FooterNowPlaying;
