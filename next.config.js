@@ -9,6 +9,10 @@ const million = require('million/compiler');
 const appHeaders = require('./config/next/headers');
 const redirects = require('./config/next/redirects');
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /*
 class VeliteWebpackPlugin {
   static started = false;
@@ -82,5 +86,7 @@ const millionConfig = {
   rsc: true,
 };
 
-const config = million.next(defaultNextConfig, millionConfig);
+const config = withBundleAnalyzer(
+  million.next(defaultNextConfig, millionConfig),
+);
 module.exports = config;
