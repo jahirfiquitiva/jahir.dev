@@ -59,7 +59,8 @@ const deleteFolderRecursive = async (path) => {
   // eslint-disable-next-line no-console
   await Promise.all(deletePromises).catch(console.error);
   await fs.mkdir(contentDir).catch();
+  await fs.mkdir(path.join(contentDir, 'blog')).catch();
   await fs
-    .writeFile(path.join(contentDir, 'hello-world.mdx'), template)
+    .writeFile(path.join(contentDir, 'blog', 'hello-world.mdx'), template)
     .catch();
 })();

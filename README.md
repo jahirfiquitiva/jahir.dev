@@ -73,7 +73,7 @@ This application requires Node.js v18.18+.
     git clone https://github.com/jahirfiquitiva/jahir.dev.git
     cd jahir.dev
     yarn
-    yarn setup # Remove all of my personal content and files
+    yarn setup # You can skip this if you're contributing to this repository. It removes all of my personal content and files
     ```
 
 2. Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).

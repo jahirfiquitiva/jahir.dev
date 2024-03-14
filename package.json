@@ -5,7 +5,7 @@
     "build": "yarn download-themes && next telemetry disable && yarn velite build && next build",
     "start": "next start",
     "lint": "next lint",
-    "setup": "node ./scripts/setup.mjs",
+    "setup": "node ./scripts/setup.mjs && yarn download-themes",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .velite",
     "update-deps": "npx --yes npm-check-updates -u && yarn",
     "download-themes": "node ./scripts/download-themes.mjs",
