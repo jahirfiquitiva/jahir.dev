@@ -47,7 +47,8 @@ const AsyncBookmark = async ({ url }: { url: string }) => {
           <Img
             src={faviconURL}
             alt={data.title}
-            size={16}
+            width={16}
+            height={16}
             className={'max-w-4 !rounded-0 !my-0'}
           />
           <span className={'text-3xs line-clamp-1'}>{domain}</span>

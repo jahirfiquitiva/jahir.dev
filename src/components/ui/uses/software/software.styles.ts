@@ -1,4 +1,3 @@
-import type { ImgProps } from '@/components/atoms/img';
 import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
@@ -62,7 +61,7 @@ export const SoftwareItem = tw(Link)`
   group/software
 `;
 
-export const AppIcon = tw(Img)<ImgProps>`
+export const AppIcon = tw(Img)`
   transition
   border-none
   shadow-brand-950/30

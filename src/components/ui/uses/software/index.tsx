@@ -26,7 +26,8 @@ export const Software = () => {
               <SoftwareItem href={item.url || '#'} title={item.name}>
                 <AppIcon
                   src={`/media/${item.image}`}
-                  size={72}
+                  width={72}
+                  height={72}
                   alt={item.name}
                   {...item.imageMeta}
                 />

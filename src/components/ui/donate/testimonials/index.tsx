@@ -24,7 +24,8 @@ const getComponentForSponsor = (
           <Img
             src={sponsor.photo || ''}
             alt={`Photo of ${sponsor.name}`}
-            size={28}
+            width={28}
+            height={28}
             className={'rounded-half bg-accent'}
           />
           <SponsorName>{sponsor.name}&nbsp; –</SponsorName>

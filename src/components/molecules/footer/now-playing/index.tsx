@@ -36,7 +36,8 @@ export const FooterNowPlaying = () => {
       <NowPlayingAlbumCover
         alt={`Album cover: "${track.album}" by "${track.artist}"`}
         src={track.image?.url || ''}
-        size={24}
+        width={24}
+        height={24}
         quality={50}
         unoptimized
       />

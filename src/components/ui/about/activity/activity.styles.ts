@@ -1,4 +1,4 @@
-import { Img, type ImgProps } from '@/components/atoms/img';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
@@ -24,7 +24,7 @@ export const ActivityCard = tw(Link)`
   group/track
 `;
 
-export const BackgroundImage = tw(Img)<ImgProps>`
+export const BackgroundImage = tw(Img)`
   absolute
   w-[110%]
   -left-[5%]
@@ -115,7 +115,7 @@ export const TrackArtist = tw.span`
   group-hocus/track:text-primary-txt
 `;
 
-export const AlbumCover = tw(Img)<ImgProps>`
+export const AlbumCover = tw(Img)`
   rounded-1 aspect-square
   w-auto h-full
   max-w-full

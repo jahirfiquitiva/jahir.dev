@@ -26,7 +26,8 @@ export const ProjectItem = ({ project }: ProjectItemProps) => {
       <ProjectIcon
         src={`/media/projects/${project.icon || ''}`}
         alt={`Icon for project "${project.name}"`}
-        size={56}
+        width={56}
+        height={56}
         blurDataURL={project.iconMeta?.blurDataURL}
         placeholder={project.iconMeta?.placeholder}
       />

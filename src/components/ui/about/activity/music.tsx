@@ -52,7 +52,8 @@ export const Music = () => {
               : `Album cover: "${track.album}" by "${track.artist}"`
         }
         src={track?.image?.url ?? tunez}
-        size={78}
+        width={78}
+        height={78}
         quality={50}
         className={cx(
           isPlaying
@@ -74,7 +75,8 @@ export const Music = () => {
                 : `Album cover: "${track.album}" by "${track.artist}"`
           }
           src={track?.image?.url ?? tunez}
-          size={track?.image?.width || 78}
+          width={track?.image?.width || 78}
+          height={track?.image?.width || 78}
           unoptimized
         />
         <Texts className={'mix-blend-hard-light'}>

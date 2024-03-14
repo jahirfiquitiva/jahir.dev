@@ -4,13 +4,15 @@
 // https://github.com/contentlayerdev/contentlayer/issues/313#issuecomment-1305424923
 const path = require('path');
 
+const bundleAnalyzer = require('@next/bundle-analyzer');
 const million = require('million/compiler');
 
 const appHeaders = require('./config/next/headers');
 const redirects = require('./config/next/redirects');
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
 });
 
 /*

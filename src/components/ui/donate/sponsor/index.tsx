@@ -70,7 +70,8 @@ export const SponsorItem = (props: SponsorProps) => {
               sponsor.photo || buildBoringAvatarUrl('', imgSizesForTier[tier])
             }
             alt={sponsor.name}
-            size={imgSizesForTier[tier]}
+            width={imgSizesForTier[tier]}
+            height={imgSizesForTier[tier]}
             className={'rounded-half h-full bg-accent'}
             style={{ minHeight: imgSizesForTier[tier] }}
           />

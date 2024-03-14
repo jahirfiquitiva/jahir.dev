@@ -1,7 +1,8 @@
 import type { MDXComponents } from 'mdx/types';
+import type { ImageProps } from 'next/image';
 import * as runtime from 'react/jsx-runtime';
 
-import { Img, type ImgProps } from '@/components/atoms/img';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
@@ -29,7 +30,7 @@ const components = {
   hr: tw.hr`border-divider`,
   a: Link,
   Link,
-  img: (props: ImgProps) => <Img {...props} suppressHydrationWarning />,
+  img: (props: ImageProps) => <Img {...props} suppressHydrationWarning />,
   Img,
   Tweet: ReactTweet,
   Bookmark,

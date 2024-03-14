@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Img, type ImgProps } from '@/components/atoms/img';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
@@ -12,7 +12,7 @@ export const NowPlayingLink = tw(Link)`
   motion-safe:animate-fade-in
 `;
 
-export const NowPlayingAlbumCover = tw(Img)<ImgProps>`
+export const NowPlayingAlbumCover = tw(Img)`
   size-6 rounded-full
   border border-divider
   motion-safe:animate-spin

@@ -1,4 +1,4 @@
-import { Img, type ImgProps } from '@/components/atoms/img';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
@@ -23,7 +23,7 @@ export const ProjectLink = tw(Link)`
   tablet-md:gap-3.5
 `;
 
-export const ProjectIcon = tw(Img)<ImgProps>`
+export const ProjectIcon = tw(Img)`
   rounded-2 p-1.5
   transition-all
   aspect-square object-contain

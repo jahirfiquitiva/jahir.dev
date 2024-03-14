@@ -1,6 +1,6 @@
+import type { ImageProps } from 'next/image';
 import { type CSSProperties } from 'react';
 
-import type { ImgProps } from '@/components/atoms/img';
 import { Img } from '@/components/atoms/img';
 import { hexToRgb } from '@/utils/color';
 import cx from '@/utils/cx';
@@ -14,7 +14,7 @@ export interface ExperienceItemProps {
   until?: string;
   link: string;
   color: string;
-  image: ImgProps['src'];
+  image: ImageProps['src'];
   last?: boolean;
 }
 

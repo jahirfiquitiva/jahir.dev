@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Img, type ImgProps } from '@/components/atoms/img';
+import { Img } from '@/components/atoms/img';
 import { Link } from '@/components/atoms/link';
 import { tw } from '@/utils/cx';
 
@@ -36,7 +36,7 @@ export const HardwareItem = tw(Link)`
   hocus:shadow-sm
 `;
 
-export const HardwareImage = tw(Img)<ImgProps>`
+export const HardwareImage = tw(Img)`
   p-2
   select-none
   transition
