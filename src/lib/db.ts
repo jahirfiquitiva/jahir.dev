@@ -4,7 +4,9 @@ import { drizzle } from 'drizzle-orm/neon-http';
 import { integer, pgTable } from 'drizzle-orm/pg-core';
 
 type CastNeonQueryFunction = NeonQueryFunction<boolean, boolean>;
-const sql = neon(process.env.DATABASE_URL || '') as CastNeonQueryFunction;
+const { DATABASE_URL = '' } = process.env;
+console.error('Connecting to DB:', DATABASE_URL);
+const sql = neon(DATABASE_URL) as CastNeonQueryFunction;
 
 export const counters = pgTable('counters', {
   // @ts-expect-error idk
