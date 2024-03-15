@@ -10,7 +10,9 @@ export const TweetInfo = ({ tweet }: { tweet: EnrichedTweet }) => (
   <div className={'flex items-center justify-between'}>
     <TweetInfoCreatedAt tweet={tweet} />
     <a
-      className={'flex items-center justify-center -mr-1'}
+      className={
+        'flex items-center justify-center text-secondary-txt hocus:text-primary-txt'
+      }
       href={
         'https://help.twitter.com/en/twitter-for-websites-ads-info-and-privacy'
       }
