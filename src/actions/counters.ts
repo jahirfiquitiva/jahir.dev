@@ -67,7 +67,6 @@ export const getTopThreeBlogPosts = async (latestBlogPostSlug: string) => {
       .execute();
     return topThree;
   } catch (e) {
-    console.error(e);
     return [];
   }
 };

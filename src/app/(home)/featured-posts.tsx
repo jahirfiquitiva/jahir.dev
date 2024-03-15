@@ -26,6 +26,7 @@ export const getFeaturedPosts = cache(
       const [latestPost, ...sortedPosts] =
         allReadableBlogs.sort(sortBlogPostsByDate);
       const topThree = await getTopThreeBlogPosts(latestPost.slug);
+      if (!topThree.length) return [latestPost];
       const mostViewedPost =
         topThree[Math.floor(Math.random() * topThree.length)];
       const otherPosts = sortedPosts.filter(
@@ -39,7 +40,6 @@ export const getFeaturedPosts = cache(
         randomPost,
       ].filter(Boolean) as Array<PartialBlog>;
     } catch (e) {
-      console.error(e);
       return [];
     }
   },
