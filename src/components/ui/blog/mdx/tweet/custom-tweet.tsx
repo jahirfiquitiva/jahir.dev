@@ -5,12 +5,13 @@ import {
   TweetInReplyTo,
   TweetBody,
   TweetMedia,
-  TweetInfo,
   TweetActions,
   QuotedTweet,
   enrichTweet,
 } from 'react-tweet';
 import type { Tweet } from 'react-tweet/api';
+
+import { TweetInfo } from './tweet-info';
 
 type Props = {
   tweet: Tweet;
