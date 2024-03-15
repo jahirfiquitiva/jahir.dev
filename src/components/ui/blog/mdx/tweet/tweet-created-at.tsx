@@ -1,8 +1,4 @@
-'use client';
-
 import type { EnrichedTweet } from 'react-tweet';
-
-import { useHasMounted } from '@/hooks/use-has-mounted';
 
 type PartsObject = Record<keyof Intl.DateTimeFormatPartTypesRegistry, string>;
 
@@ -34,13 +30,8 @@ const formatDate = (date: Date) => {
 };
 
 export const TweetInfoCreatedAt = ({ tweet }: { tweet: EnrichedTweet }) => {
-  const mounted = useHasMounted();
-  const createdAt =
-    typeof window !== 'undefined' && mounted
-      ? new Date(tweet.created_at)
-      : null;
-  if (!createdAt) return null;
-
+  if (!tweet.created_at) return null;
+  const createdAt = new Date(tweet.created_at);
   const formattedCreatedAtDate = formatDate(createdAt);
   return (
     <a
