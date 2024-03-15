@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic';
 
+import { Icon } from '@/components/atoms/icon';
 import { Logo } from '@/components/atoms/logo';
+import { loading } from '@/components/icons';
 import type { TWComponentProps } from '@/utils/cx';
 import cx from '@/utils/cx';
 
@@ -20,6 +22,7 @@ import {
 
 const ThemeToggle = dynamic(() => import('./theme-toggle/index'), {
   ssr: false,
+  loading: () => <Icon path={loading} className={'size-5 animate-spin'} />,
 });
 
 const toolbarLinksList = [
