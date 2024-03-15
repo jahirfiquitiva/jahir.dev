@@ -1,1 +1,6 @@
 .env
+.env.example
+LICENSE
+README.md
+preview*.png
+scripts/setup.mjs
