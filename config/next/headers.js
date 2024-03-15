@@ -3,14 +3,14 @@ const ContentSecurityPolicy = `
   default-src 'self' vercel.live;
   worker-src 'self' blob:;
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.jahir.dev;
-  child-src *.google.com *.unsplash.com *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io cdn.discordapp.com *.cdninstagram.com;
-  style-src 'self' 'unsafe-inline' *.googleapis.com;
-  img-src *.cdninstagram.com *.gstatic.com * blob: data:;
+  child-src *.scdn.co *.spotify.com *.jahir.dev unavatar.now.sh *.unavatar.io;
+  style-src 'self' 'unsafe-inline';
+  img-src * blob: data:;
   object-src 'none';
   base-uri 'none';
-  media-src 'self' *.cdninstagram.com;
+  media-src 'self';
   connect-src *;
-  font-src 'self' *.gstatic.com data:;
+  font-src 'self' data:;
 `;
 
 const securityHeaders = [
