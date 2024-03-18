@@ -27,6 +27,7 @@ export const Img = (props: ImgProps) => {
       loading={rest.priority ? undefined : rest.loading || 'lazy'}
       decoding={'async'}
       className={cx('object-cover object-center', rest.className)}
+      unoptimized
     />
   );
 };
