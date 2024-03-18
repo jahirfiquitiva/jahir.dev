@@ -67,6 +67,7 @@ export const Image: Component<ImageProps> = (props) => {
           layout={layout || 'fixed'}
           className={className}
           loading={props.priority ? undefined : loading}
+          unoptimized
         />
       );
     }
@@ -76,6 +77,7 @@ export const Image: Component<ImageProps> = (props) => {
           {...rest}
           layout={'fill'}
           loading={props.priority ? undefined : loading}
+          unoptimized
         />
       </ImageWrapper>
     );
