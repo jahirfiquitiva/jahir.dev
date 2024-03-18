@@ -26,6 +26,7 @@ const BaseImg: FC<ImgProps> = (props) => {
       height={Number(height)}
       loading={props.priority ? undefined : props.loading}
       decoding={'async'}
+      unoptimized
     />
   );
 };
