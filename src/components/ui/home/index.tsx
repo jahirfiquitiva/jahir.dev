@@ -23,7 +23,7 @@ export const Intro = () => {
           alt={'Photo of Jahir Fiquitiva'}
           width={160}
           height={160}
-          quality={100}
+          quality={60}
           priority
           className={cx(
             'rounded-full tablet-sm:float-right',

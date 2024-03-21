@@ -55,8 +55,7 @@ export default function RootLayout(props: PropsWithChildren) {
       <head>
         <Meta />
         <Script
-          async
-          defer
+          strategy={'afterInteractive'}
           src={'https://umami.jahir.dev/script.js'}
           data-website-id={umamiWebsiteId}
           data-domains={'jahir.dev'}
