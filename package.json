@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "yarn velite --watch & next dev",
     "build": "yarn download-themes && next telemetry disable && yarn velite build && next build",
