@@ -1,4 +1,5 @@
 'use server';
+import { unstable_noStore as noStore } from 'next/cache';
 
 const gitHubReposApiUrl = 'https://api.github.com/repos';
 const { GITHUB_API_TOKEN: githubApiToken = '' } = process.env;
@@ -14,6 +15,7 @@ export const getStars = async (
   repo: string,
   owner: string = 'jahirfiquitiva',
 ): Promise<string | null> => {
+  noStore();
   try {
     const repoRequest = await fetch(
       `${gitHubReposApiUrl}/${owner || 'jahirfiquitiva'}/${repo}`,

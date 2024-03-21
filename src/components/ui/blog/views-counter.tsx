@@ -1,3 +1,5 @@
+import { Suspense, cache } from 'react';
+
 import {
   getCounters,
   incrementCounter as incCounter,
@@ -9,7 +11,7 @@ interface ViewsCounterProps {
   write?: boolean;
 }
 
-const incrementCounter = incCounter;
+const incrementCounter = cache(incCounter);
 
 const Views = async ({ slug, write }: ViewsCounterProps) => {
   const { views = 0 } = await getCounters(slug);
@@ -26,7 +28,7 @@ const Views = async ({ slug, write }: ViewsCounterProps) => {
 };
 
 export const ViewsCounter = (props: ViewsCounterProps) => (
-  <>
+  <Suspense>
     <Views {...props} />
-  </>
+  </Suspense>
 );
