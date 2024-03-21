@@ -5,6 +5,7 @@ import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
+import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
 import {
   allReadableBlogs,
@@ -13,6 +14,7 @@ import {
 } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
+import { Suspense } from 'react';
 
 const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
   try {
@@ -35,6 +37,22 @@ const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
   } catch (e) {
     return [];
   }
+};
+
+const BlogPostsListFallback = () => {
+  return (
+    <>
+      <li>
+        <BlogPostItemSkeleton />
+      </li>
+      <li>
+        <BlogPostItemSkeleton />
+      </li>
+      <li>
+        <BlogPostItemSkeleton />
+      </li>
+    </>
+  );
 };
 
 const FeaturedBlogPostsList = async () => {
@@ -91,9 +109,9 @@ export const FeaturedBlogPosts = () => (
     </div>
 
     <ol className={'flex flex-col gap-2'}>
-      <>
+      <Suspense fallback={<BlogPostsListFallback />}>
         <FeaturedBlogPostsList />
-      </>
+      </Suspense>
     </ol>
   </Section>
 );
