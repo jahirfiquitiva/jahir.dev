@@ -1,15 +1,10 @@
-import {
-  unstable_cache as cache,
-  unstable_noStore as noStore,
-} from 'next/cache';
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
 import { getTopThreeBlogPosts } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
 import { LinkButton } from '@/components/atoms/link-button';
 import { Section } from '@/components/atoms/section';
 import { BlogPostItem } from '@/components/ui/blog/item';
-import { BlogPostItemSkeleton } from '@/components/ui/blog/item/skeleton';
 import { RSSFeedButton } from '@/components/ui/blog/rss-feed-button';
 import {
   allReadableBlogs,
@@ -19,48 +14,27 @@ import {
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-export const getFeaturedPosts = cache(
-  async (): Promise<Array<PartialBlog>> => {
-    noStore();
-    try {
-      const [latestPost, ...sortedPosts] =
-        allReadableBlogs.sort(sortBlogPostsByDate);
-      const topThree = await getTopThreeBlogPosts(latestPost.slug);
-      if (!topThree.length) return [latestPost];
-      const mostViewedPost =
-        topThree[Math.floor(Math.random() * topThree.length)];
-      const otherPosts = sortedPosts.filter(
-        (it) => mostViewedPost.slug !== it.slug,
-      );
-      const randomPost =
-        otherPosts[Math.floor(Math.random() * otherPosts.length)];
-      return [
-        latestPost,
-        sortedPosts.find((it) => mostViewedPost.slug === it.slug),
-        randomPost,
-      ].filter(Boolean) as Array<PartialBlog>;
-    } catch (e) {
-      return [];
-    }
-  },
-  ['featured-posts'],
-  { revalidate: 43200 },
-);
-
-const BlogPostsListFallback = () => {
-  return (
-    <>
-      <li>
-        <BlogPostItemSkeleton />
-      </li>
-      <li>
-        <BlogPostItemSkeleton />
-      </li>
-      <li>
-        <BlogPostItemSkeleton />
-      </li>
-    </>
-  );
+const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
+  try {
+    const [latestPost, ...sortedPosts] =
+      allReadableBlogs.sort(sortBlogPostsByDate);
+    const topThree = await getTopThreeBlogPosts(latestPost.slug);
+    if (!topThree.length) return [latestPost];
+    const mostViewedPost =
+      topThree[Math.floor(Math.random() * topThree.length)];
+    const otherPosts = sortedPosts.filter(
+      (it) => mostViewedPost.slug !== it.slug,
+    );
+    const randomPost =
+      otherPosts[Math.floor(Math.random() * otherPosts.length)];
+    return [
+      latestPost,
+      sortedPosts.find((it) => mostViewedPost.slug === it.slug),
+      randomPost,
+    ].filter(Boolean) as Array<PartialBlog>;
+  } catch (e) {
+    return [];
+  }
 };
 
 const FeaturedBlogPostsList = async () => {
@@ -117,9 +91,9 @@ export const FeaturedBlogPosts = () => (
     </div>
 
     <ol className={'flex flex-col gap-2'}>
-      <Suspense fallback={<BlogPostsListFallback />}>
+      <>
         <FeaturedBlogPostsList />
-      </Suspense>
+      </>
     </ol>
   </Section>
 );

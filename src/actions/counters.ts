@@ -32,7 +32,6 @@ export const incrementCounter = async (
 export type IncrementCounterFnType = typeof incrementCounter;
 
 export const getCounters = async (slug: string): Promise<Counters> => {
-  noStore();
   try {
     const records = await db
       .select()
@@ -47,7 +46,6 @@ export const getCounters = async (slug: string): Promise<Counters> => {
 };
 
 export const getTopThreeBlogPosts = async (latestBlogPostSlug: string) => {
-  noStore();
   try {
     const topThree = await db
       .select({ slug: counters.slug, views: counters.views })
