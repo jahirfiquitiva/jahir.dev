@@ -25,7 +25,6 @@ const StarsCount = async (props: StarsCountProps) => {
             'bg-tint-bg',
             'group-hocus/project:text-secondary-txt',
             'group-hocus/project:border-tint-border',
-            'motion-safe:animate-fade-in',
           )}
           style={{ fontSize: '0.75rem' }}
         >

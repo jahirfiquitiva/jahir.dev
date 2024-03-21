@@ -30,8 +30,6 @@ export const TabPanel = tw.section.attrs({
   transition
   opacity-100
   visible
-  motion-safe:animate-fade-in
-  motion-safe:[animation-delay:0s]
 `;
 
 export const TabButton = tw.a`

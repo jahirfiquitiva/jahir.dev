@@ -20,7 +20,7 @@ const Views = async ({ slug, write }: ViewsCounterProps) => {
       <span aria-hidden={'true'} className={'font-bold'}>
         ·
       </span>
-      <span className={'motion-safe:animate-fade-in'}>{views} views</span>
+      <span>{views} views</span>
     </>
   );
 };

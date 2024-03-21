@@ -23,7 +23,6 @@ export const Intro = () => {
           alt={'Photo of Jahir Fiquitiva'}
           width={160}
           height={160}
-          quality={60}
           priority
           className={cx(
             'rounded-full tablet-sm:float-right',
@@ -49,8 +48,8 @@ export const Intro = () => {
           </SubHeader>
         </h1>
 
-        <p className={'text-pretty flex flex-col gap-2'}>
-          <span className={'md:max-w-[26rem]'}>
+        <p className={'text-pretty flex flex-col gap-2 max-w-[26rem]'}>
+          <span className={'mobile-lg:max-w-104'}>
             Passionate and creative full-stack software engineer from{' '}
             <Link
               title={'Colombia'}
@@ -63,7 +62,7 @@ export const Intro = () => {
               </span>
             </Link>
           </span>
-          <span className={'md:max-w-[26rem]'}>
+          <span className={'mobile-lg:max-w-104'}>
             Detail-driven, I strive to build great-looking, user-friendly
             software while enhancing my skills along the way
           </span>

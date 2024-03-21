@@ -1,4 +1,5 @@
 {
+  "private": true,
   "scripts": {
     "dev": "yarn velite --watch & next dev",
     "build": "yarn download-themes && next telemetry disable && yarn velite build && next build",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "canvas-confetti": "^1.9.2",
+    "cssnano": "^6.1.1",
     "next": "14.2.0-canary.13",
     "next-themes": "0.3.0",
     "react": "^18.2.0",
