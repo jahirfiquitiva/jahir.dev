@@ -43,7 +43,7 @@ export const Clock = () => {
   return (
     <p
       className={
-        'flex flex-row items-center gap-1.5 text-tertiary-txt text-3xs font-medium uppercase motion-safe:animate-fade-in'
+        'flex flex-row items-center gap-1.5 text-tertiary-txt text-3xs font-medium uppercase'
       }
     >
       <Icon className={'size-5'} path={getIconPath(timeText)} />

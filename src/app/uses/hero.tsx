@@ -3,11 +3,7 @@ import { Img } from '@/components/atoms/img';
 import cx from '@/utils/cx';
 
 export const UsesHero = () => (
-  <figure
-    className={
-      'my-2 motion-safe:animate-fade-in motion-safe:[animation-delay:0s]'
-    }
-  >
+  <figure className={'my-2'}>
     <div
       className={cx(
         'aspect-video overflow-hidden',

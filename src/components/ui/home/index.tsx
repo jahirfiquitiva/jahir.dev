@@ -50,7 +50,7 @@ export const Intro = () => {
         </h1>
 
         <p className={'text-pretty flex flex-col gap-2'}>
-          <span style={{ maxWidth: '42ch' }}>
+          <span className={'max-w-[26rem]'}>
             Passionate and creative full-stack software engineer from{' '}
             <Link
               title={'Colombia'}
@@ -63,7 +63,7 @@ export const Intro = () => {
               </span>
             </Link>
           </span>
-          <span style={{ maxWidth: '48ch' }}>
+          <span className={'max-w-[26rem]'}>
             Detail-driven, I strive to build great-looking, user-friendly
             software while enhancing my skills along the way
           </span>

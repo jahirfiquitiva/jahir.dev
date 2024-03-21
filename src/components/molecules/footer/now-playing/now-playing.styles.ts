@@ -9,7 +9,6 @@ export const NowPlayingLink = tw(Link)`
   text-tertiary-txt text-3xs truncate
   no-underline group/music
   hocus:text-secondary-txt
-  motion-safe:animate-fade-in
 `;
 
 export const NowPlayingAlbumCover = tw(Img)`
