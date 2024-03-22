@@ -264,20 +264,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:19.1.0":
-  version: 19.1.0
-  resolution: "@commitlint/cli@npm:19.1.0"
+"@commitlint/cli@npm:19.2.1":
+  version: 19.2.1
+  resolution: "@commitlint/cli@npm:19.2.1"
   dependencies:
     "@commitlint/format": "npm:^19.0.3"
     "@commitlint/lint": "npm:^19.1.0"
-    "@commitlint/load": "npm:^19.1.0"
-    "@commitlint/read": "npm:^19.0.3"
+    "@commitlint/load": "npm:^19.2.0"
+    "@commitlint/read": "npm:^19.2.1"
     "@commitlint/types": "npm:^19.0.3"
     execa: "npm:^8.0.1"
     yargs: "npm:^17.0.0"
   bin:
     commitlint: cli.js
-  checksum: 10c0/8eaaabb12b8d0f533641a4d458245f433392dc0d102531fce32a374d902feadeabbddff5cfb1ebb710c7ae6ab749904c33d11c29e2d07884a99fadd50dea4ac0
+  checksum: 10c0/14057446e60c403793af2a92c019440f83cdaf77bec6d48ad0102270a5b32fbd60b9929fbd4be6b6f7dadc7981ebe95ba54798d2f3d993429f364b3e9b46c9d1
   languageName: node
   linkType: hard
 
@@ -354,7 +354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:^19.1.0":
+"@commitlint/load@npm:^19.2.0":
   version: 19.2.0
   resolution: "@commitlint/load@npm:19.2.0"
   dependencies:
@@ -390,7 +390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/read@npm:^19.0.3":
+"@commitlint/read@npm:^19.2.1":
   version: 19.2.1
   resolution: "@commitlint/read@npm:19.2.1"
   dependencies:
@@ -988,7 +988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:^14.1.3":
+"@next/bundle-analyzer@npm:^14.1.4":
   version: 14.1.4
   resolution: "@next/bundle-analyzer@npm:14.1.4"
   dependencies:
@@ -1357,7 +1357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.27":
+"@types/node@npm:*, @types/node@npm:^20.11.30":
   version: 20.11.30
   resolution: "@types/node@npm:20.11.30"
   dependencies:
@@ -1400,7 +1400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.66":
+"@types/react@npm:*, @types/react@npm:^18.2.67":
   version: 18.2.67
   resolution: "@types/react@npm:18.2.67"
   dependencies:
@@ -1448,7 +1448,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^7.2.0":
+"@typescript-eslint/eslint-plugin@npm:^7.3.1":
   version: 7.3.1
   resolution: "@typescript-eslint/eslint-plugin@npm:7.3.1"
   dependencies:
@@ -1491,7 +1491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^7.2.0":
+"@typescript-eslint/parser@npm:^7.3.1":
   version: 7.3.1
   resolution: "@typescript-eslint/parser@npm:7.3.1"
   dependencies:
@@ -1962,7 +1962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.18":
+"autoprefixer@npm:^10.4.19":
   version: 10.4.19
   resolution: "autoprefixer@npm:10.4.19"
   dependencies:
@@ -2885,7 +2885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-orm@npm:^0.30.2":
+"drizzle-orm@npm:^0.30.4":
   version: 0.30.4
   resolution: "drizzle-orm@npm:0.30.4"
   peerDependencies:
@@ -3283,7 +3283,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^14.1.3":
+"eslint-config-next@npm:^14.1.4":
   version: 14.1.4
   resolution: "eslint-config-next@npm:14.1.4"
   dependencies:
@@ -6837,7 +6837,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.23, postcss@npm:^8.4.35":
+"postcss@npm:^8.4.23, postcss@npm:^8.4.38":
   version: 8.4.38
   resolution: "postcss@npm:8.4.38"
   dependencies:
@@ -7363,26 +7363,26 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@commitlint/cli": "npm:19.1.0"
+    "@commitlint/cli": "npm:19.2.1"
     "@commitlint/config-conventional": "npm:19.1.0"
     "@jsdevtools/rehype-toc": "npm:^3.0.2"
     "@neondatabase/serverless": "npm:^0.9.0"
-    "@next/bundle-analyzer": "npm:^14.1.3"
+    "@next/bundle-analyzer": "npm:^14.1.4"
     "@types/canvas-confetti": "npm:^1.6.4"
-    "@types/node": "npm:^20.11.27"
-    "@types/react": "npm:^18.2.66"
+    "@types/node": "npm:^20.11.30"
+    "@types/react": "npm:^18.2.67"
     "@types/react-dom": "npm:^18.2.22"
     "@types/xml": "npm:^1.0.11"
-    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
-    "@typescript-eslint/parser": "npm:^7.2.0"
-    autoprefixer: "npm:^10.4.18"
+    "@typescript-eslint/eslint-plugin": "npm:^7.3.1"
+    "@typescript-eslint/parser": "npm:^7.3.1"
+    autoprefixer: "npm:^10.4.19"
     canvas-confetti: "npm:^1.9.2"
     colord: "npm:^2.9.3"
     cssnano: "npm:^6.1.1"
     dotenv: "npm:^16.4.5"
-    drizzle-orm: "npm:^0.30.2"
+    drizzle-orm: "npm:^0.30.4"
     eslint: "npm:^8.57.0"
-    eslint-config-next: "npm:^14.1.3"
+    eslint-config-next: "npm:^14.1.4"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
     husky: "npm:^9.0.11"
@@ -7390,7 +7390,7 @@ __metadata:
     million: "npm:^3.0.6"
     next: "npm:14.2.0-canary.13"
     next-themes: "npm:0.3.0"
-    postcss: "npm:^8.4.35"
+    postcss: "npm:^8.4.38"
     prettier: "npm:^3.2.5"
     react: "npm:^18.2.0"
     react-compare-slider: "npm:^3.0.1"
@@ -7405,13 +7405,13 @@ __metadata:
     remark-squeeze-paragraphs: "npm:^6.0.0"
     remark-unwrap-images: "npm:^4.0.0"
     sass: "npm:^1.72.0"
-    shiki: "npm:^1.1.7"
+    shiki: "npm:^1.2.0"
     swr: "npm:^2.2.5"
-    tailwind-merge: "npm:^2.2.1"
+    tailwind-merge: "npm:^2.2.2"
     tailwindcss: "npm:^3.4.1"
     tailwindcss-hocus: "npm:^0.0.7"
     ts-prune: "npm:^0.10.3"
-    typescript: "npm:^5.4.2"
+    typescript: "npm:^5.4.3"
     velite: "npm:^0.1.0-beta.12"
     xml: "npm:^1.0.1"
   languageName: unknown
@@ -7609,7 +7609,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^1.1.7":
+"shiki@npm:^1.2.0":
   version: 1.2.0
   resolution: "shiki@npm:1.2.0"
   dependencies:
@@ -8013,7 +8013,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^2.2.1":
+"tailwind-merge@npm:^2.2.2":
   version: 2.2.2
   resolution: "tailwind-merge@npm:2.2.2"
   dependencies:
@@ -8311,7 +8311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.4.2":
+"typescript@npm:^5.4.3":
   version: 5.4.3
   resolution: "typescript@npm:5.4.3"
   bin:
@@ -8321,7 +8321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.4.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.4.3#optional!builtin<compat/typescript>":
   version: 5.4.3
   resolution: "typescript@patch:typescript@npm%3A5.4.3#optional!builtin<compat/typescript>::version=5.4.3&hash=5adc0c"
   bin:
