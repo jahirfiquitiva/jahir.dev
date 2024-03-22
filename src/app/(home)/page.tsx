@@ -29,3 +29,6 @@ export default function HomePage() {
     </>
   );
 }
+
+// revalidate at most once a day
+export const revalidate = 86400;
