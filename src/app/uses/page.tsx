@@ -17,7 +17,6 @@ const Notice = () => (
       'bg-brand-500/[0.024] dark:bg-brand-100/5',
       'border border-dashed border-divider',
       'p-4 rounded-3 my-1',
-      'motion-safe:animate-fade-in motion-safe:[animation-delay:0s]',
     )}
   >
     <span role={'img'} aria-label={'lightning emoji'}>

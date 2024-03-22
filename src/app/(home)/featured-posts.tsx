@@ -1,8 +1,4 @@
-import {
-  unstable_cache as cache,
-  unstable_noStore as noStore,
-} from 'next/cache';
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
 import { getTopThreeBlogPosts } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
@@ -18,34 +14,30 @@ import {
 } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
+import { Suspense } from 'react';
 
-export const getFeaturedPosts = cache(
-  async (): Promise<Array<PartialBlog>> => {
-    noStore();
-    try {
-      const [latestPost, ...sortedPosts] =
-        allReadableBlogs.sort(sortBlogPostsByDate);
-      const topThree = await getTopThreeBlogPosts(latestPost.slug);
-      if (!topThree.length) return [latestPost];
-      const mostViewedPost =
-        topThree[Math.floor(Math.random() * topThree.length)];
-      const otherPosts = sortedPosts.filter(
-        (it) => mostViewedPost.slug !== it.slug,
-      );
-      const randomPost =
-        otherPosts[Math.floor(Math.random() * otherPosts.length)];
-      return [
-        latestPost,
-        sortedPosts.find((it) => mostViewedPost.slug === it.slug),
-        randomPost,
-      ].filter(Boolean) as Array<PartialBlog>;
-    } catch (e) {
-      return [];
-    }
-  },
-  ['featured-posts'],
-  { revalidate: 43200 },
-);
+const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
+  try {
+    const [latestPost, ...sortedPosts] =
+      allReadableBlogs.sort(sortBlogPostsByDate);
+    const topThree = await getTopThreeBlogPosts(latestPost.slug);
+    if (!topThree.length) return [latestPost];
+    const mostViewedPost =
+      topThree[Math.floor(Math.random() * topThree.length)];
+    const otherPosts = sortedPosts.filter(
+      (it) => mostViewedPost.slug !== it.slug,
+    );
+    const randomPost =
+      otherPosts[Math.floor(Math.random() * otherPosts.length)];
+    return [
+      latestPost,
+      sortedPosts.find((it) => mostViewedPost.slug === it.slug),
+      randomPost,
+    ].filter(Boolean) as Array<PartialBlog>;
+  } catch (e) {
+    return [];
+  }
+};
 
 const BlogPostsListFallback = () => {
   return (

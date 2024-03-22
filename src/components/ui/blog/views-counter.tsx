@@ -22,13 +22,13 @@ const Views = async ({ slug, write }: ViewsCounterProps) => {
       <span aria-hidden={'true'} className={'font-bold'}>
         ·
       </span>
-      <span className={'motion-safe:animate-fade-in'}>{views} views</span>
+      <span>{views} views</span>
     </>
   );
 };
 
 export const ViewsCounter = (props: ViewsCounterProps) => (
-  <Suspense fallback={<span className={'min-w-9 min-h-5'} />}>
+  <Suspense>
     <Views {...props} />
   </Suspense>
 );

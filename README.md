@@ -69,33 +69,33 @@ This application requires Node.js v18.18+.
 
 1. Clone the project, install dependencies and run initial setup
 
-    ```bash
-    git clone https://github.com/jahirfiquitiva/jahir.dev.git
-    cd jahir.dev
-    yarn
-    yarn setup # You can skip this if you're contributing to this repository. It removes all of my personal content and files
-    ```
+   ```bash
+   git clone https://github.com/jahirfiquitiva/jahir.dev.git
+   cd jahir.dev
+   yarn
+   yarn setup # You can skip this if you're contributing to this repository. It removes all of my personal content and files
+   ```
 
 2. Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
 
 3. (Optional) This project uses a postgres database to store the views and reactions count.
 
-    ```sql
-    CREATE TABLE counters (
-      slug VARCHAR(255) PRIMARY KEY NOT NULL,
-      views INTEGER NOT NULL DEFAULT 0,
-      likes INTEGER NOT NULL DEFAULT 0,
-      loves INTEGER NOT NULL DEFAULT 0,
-      awards INTEGER NOT NULL DEFAULT 0,
-      bookmarks INTEGER NOT NULL DEFAULT 0
-    );
-    ```
+   ```sql
+   CREATE TABLE counters (
+     slug VARCHAR(255) PRIMARY KEY NOT NULL,
+     views INTEGER NOT NULL DEFAULT 0,
+     likes INTEGER NOT NULL DEFAULT 0,
+     loves INTEGER NOT NULL DEFAULT 0,
+     awards INTEGER NOT NULL DEFAULT 0,
+     bookmarks INTEGER NOT NULL DEFAULT 0
+   );
+   ```
 
 4. Run the project locally:
 
-    ```bash
-    yarn dev
-    ```
+   ```bash
+   yarn dev
+   ```
 
 <details>
 

@@ -14,5 +14,5 @@ export const Main = tw.main.attrs({ style: { maxWidth: MAX_SITE_WIDTH } })`
   mx-auto
   tablet-md:pt-32
   tablet-md:px-0
-  motion-safe:animate-fade-in
+
 `;
