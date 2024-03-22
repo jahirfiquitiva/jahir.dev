@@ -1,4 +1,7 @@
-import { unstable_cache as cache } from 'next/cache';
+import {
+  unstable_cache as cache,
+  unstable_noStore as noStore,
+} from 'next/cache';
 import { Suspense } from 'react';
 
 import { getTopThreeBlogPosts } from '@/actions/counters';
@@ -18,6 +21,7 @@ import cx from '@/utils/cx';
 
 const getFeaturedPosts = cache(
   async (): Promise<Array<PartialBlog>> => {
+    noStore();
     try {
       const [latestPost, ...sortedPosts] =
         allReadableBlogs.sort(sortBlogPostsByDate);
