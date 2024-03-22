@@ -1,4 +1,4 @@
-// import { Suspense } from 'react';
+import { Suspense } from 'react';
 
 import { getTopThreeBlogPosts } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
@@ -14,7 +14,6 @@ import {
 } from '@/utils/blog';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
-import { Suspense } from 'react';
 
 const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
   try {

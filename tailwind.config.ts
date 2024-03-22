@@ -93,9 +93,6 @@ const config: Config = {
       },
     },
     extend: {
-      maxWidth: {
-        '104': '26rem',
-      },
       spacing: {
         nice: '69ch',
       },
