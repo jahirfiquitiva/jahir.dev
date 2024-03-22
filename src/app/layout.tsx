@@ -55,10 +55,10 @@ export default function RootLayout(props: PropsWithChildren) {
       <head>
         <Meta />
         <Script
-          strategy={'afterInteractive'}
           src={'https://umami.jahir.dev/script.js'}
           data-website-id={umamiWebsiteId}
           data-domains={'jahir.dev'}
+          lazyOnLoad
         />
       </head>
       <body>
