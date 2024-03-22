@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, cache } from 'react';
 
 import { getTopThreeBlogPosts } from '@/actions/counters';
 import { Icon } from '@/components/atoms/icon';
@@ -15,7 +15,7 @@ import {
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
+const getFeaturedPosts = cache(async (): Promise<Array<PartialBlog>> => {
   try {
     const [latestPost, ...sortedPosts] =
       allReadableBlogs.sort(sortBlogPostsByDate);
@@ -36,7 +36,7 @@ const getFeaturedPosts = async (): Promise<Array<PartialBlog>> => {
   } catch (e) {
     return [];
   }
-};
+});
 
 const BlogPostsListFallback = () => {
   return (
