@@ -8,10 +8,9 @@ import {
   TweetActions,
   QuotedTweet,
   enrichTweet,
+  TweetInfo,
 } from 'react-tweet';
 import type { Tweet } from 'react-tweet/api';
-
-import { TweetInfo } from './tweet-info';
 
 type Props = {
   tweet: Tweet;
