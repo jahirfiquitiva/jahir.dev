@@ -1,17 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "dev": "yarn velite --watch & next dev",
-    "build": "yarn download-themes && next telemetry disable && yarn velite build && next build",
+    "dev": "bun velite --watch & next dev",
+    "build": "bun download-themes && next telemetry disable && bun velite build && next build",
     "start": "next start",
     "lint": "next lint",
-    "setup": "node ./scripts/setup.mjs && yarn download-themes",
+    "setup": "node ./scripts/setup.mjs && bun download-themes",
     "clean": "rimraf .next && rimraf dist && rimraf out && rimraf .velite",
-    "update-deps": "npx --yes npm-check-updates -u && yarn",
+    "update-deps": "npx --yes npm-check-updates -u && bun i",
     "download-themes": "node ./scripts/download-themes.mjs",
     "prune-code": "ts-prune -i '.next|.velite|src/app'",
     "postinstall": "is-ci || husky install",
-    "analyze": "ANALYZE=true && yarn build"
+    "analyze": "ANALYZE=true bun run build"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.2",
@@ -74,6 +74,5 @@
     "tabWidth": 2,
     "trailingComma": "all",
     "semi": true
-  },
-  "packageManager": "yarn@4.1.1"
+  }
 }
