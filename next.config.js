@@ -63,6 +63,7 @@ const defaultNextConfig = {
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'avatars.githubusercontent.com' },
       { hostname: 'assets.literal.club' },
+      { hostname: 'books.google.com' },
       { hostname: '**.pixpa.com' },
     ],
     dangerouslyAllowSVG: true,
