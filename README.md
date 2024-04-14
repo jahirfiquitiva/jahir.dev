@@ -72,8 +72,8 @@ This application requires Node.js v18.18+.
    ```bash
    git clone https://github.com/jahirfiquitiva/jahir.dev.git
    cd jahir.dev
-   yarn
-   yarn setup # You can skip this if you're contributing to this repository. It removes all of my personal content and files
+   bun
+   bun run setup # You can skip this if you're contributing to this repository. It removes all of my personal content and files
    ```
 
 2. Create a `.env` file similar to [`.env.example`](https://github.com/jahirfiquitiva/jahir.dev/blob/main/.env.example).
@@ -94,21 +94,21 @@ This application requires Node.js v18.18+.
 4. Run the project locally:
 
    ```bash
-   yarn dev
+   bun run dev
    ```
 
 <details>
 
 <summary><strong>Note</strong></summary>
 
-Some things might be broken or not found because the `yarn setup` script will remove many files.
+Some things might be broken or not found because the `bun run setup` script will remove many files.
 Please double check the code and implementations.
 
 </details>
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/main/LICENSE), do not copy it directly, remove all of my personal content and files (resume, blog posts, images, etc.) by running `yarn setup` and please change the styling and colors to match your personal brand. You are free to use this code as inspiration or learning reference but this is not really intended to be a template.
+Please review the [license](https://github.com/jahirfiquitiva/jahir.dev/blob/main/LICENSE), do not copy it directly, remove all of my personal content and files (resume, blog posts, images, etc.) by running `bun run setup` and please change the styling and colors to match your personal brand. You are free to use this code as inspiration or learning reference but this is not really intended to be a template.
 
 <details>
 
