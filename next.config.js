@@ -43,7 +43,7 @@ const defaultNextConfig = {
   experimental: {
     ppr: true,
     // useLightningcss: true,
-    optimizePackageImports: ['react-tweet'],
+    // optimizePackageImports: ['react-tweet'],
   },
   compiler: {
     removeConsole: {
