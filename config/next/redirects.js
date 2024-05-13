@@ -31,7 +31,7 @@ const redirects = [
   buildRedirect('/dashsetup/:path*', 'https://dashbud.dev'),
   /* Other redirections */
   buildRedirect('/links', 'https://bio.jahir.dev'),
-  buildRedirect('/contact', '/about#contact'),
+  buildRedirect('/contact', 'https://hi.new/jahir'),
   /* Dashboard aliases */
   buildRedirect('/music', '/about#activity'),
   buildRedirect('/dashboard', '/about#activity'),
