@@ -1,4 +1,4 @@
-import setupImage from '@/assets/images/setup.jpg';
+import setupImage from '@/assets/images/setup.jpeg';
 import { Img } from '@/components/atoms/img';
 import cx from '@/utils/cx';
 

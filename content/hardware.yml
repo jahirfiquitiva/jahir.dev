@@ -56,3 +56,13 @@
   name: The Brevitē Backpack
   description: Black
   url: https://brevite.co/collections/everyday-backpacks/products/the-brevite-backpack?variant=34952238858394
+
+- image: uses/hardware/speakers.png
+  name: Logitech Z207
+  description: Speakers
+  url: https://www.amazon.com/dp/B074KJ6JQW
+
+- image: uses/hardware/divoom.png
+  name: Divoom TimeBox Evo
+  description: Pixel Art LED Screen
+  url: https://www.amazon.com/dp/B07H7L1PLD
