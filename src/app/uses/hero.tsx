@@ -18,6 +18,6 @@ export const UsesHero = () => (
         priority
       />
     </div>
-    <figcaption>Jahir&apos;s desk setup in early 2024</figcaption>
+    <figcaption>Jahir&apos;s desk setup in early 2025</figcaption>
   </figure>
 );
