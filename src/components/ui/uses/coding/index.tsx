@@ -12,21 +12,14 @@ export const Coding = () => (
       >
         Visual Studio Code
       </Link>{' '}
-      as my primary editor, with a custom layout using the{' '}
-      <Link
-        title={'Apc Customize UI++ Extension'}
-        href={'https://github.com/drcika/apc-extension'}
-      >
-        Apc Customize UI++
-      </Link>{' '}
-      extension. I also use the{' '}
+      as my primary editor, along with the{' '}
       <Link
         title={'Pace Theme'}
         href={'https://github.com/fabian-hiller/vscode-pace-theme'}
       >
         Pace Theme
       </Link>{' '}
-      with it and the{' '}
+      and the{' '}
       <Link title={'MonoLisa'} href={'https://monolisa.dev/'}>
         MonoLisa
       </Link>{' '}
