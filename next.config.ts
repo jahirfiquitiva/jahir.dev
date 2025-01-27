@@ -1,11 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 import path from 'node:path';
 
-import million from "@million/lint";
+import million from '@million/lint';
 
-// const appHeaders = require('./config/next/headers');
-// const redirects = require('./config/next/redirects');
+import appHeaders from './config/next/headers';
+import redirects from './config/next/redirects';
 
 /*
 class VeliteWebpackPlugin {
@@ -59,8 +59,8 @@ const defaultNextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     formats: ['image/avif', 'image/webp'],
   },
-  // headers: () => appHeaders,
-  // redirects: () => redirects,
+  headers: () => appHeaders,
+  redirects: () => redirects,
   // webpack: (config) => {
   //   config.plugins.push(new VeliteWebpackPlugin());
   //   return config;

@@ -1,4 +1,10 @@
-const buildRedirect = (source, destination, permanent = false) => {
+import type { Redirect } from 'next/dist/lib/load-custom-routes';
+
+const buildRedirect = (
+  source: string,
+  destination: string,
+  permanent: boolean = false,
+) => {
   return {
     source,
     destination,
@@ -6,7 +12,7 @@ const buildRedirect = (source, destination, permanent = false) => {
   };
 };
 
-const redirects = [
+const redirects: Promise<Redirect[]> = Promise.resolve([
   /* Blog posts redirections */
   buildRedirect(
     '/blog/md-iconography-guidelines',
@@ -54,6 +60,6 @@ const redirects = [
     '/analytics',
     'https://umami.jahir.dev/share/C1XABUPBfbHYjPrw/jahir.dev',
   ),
-];
+]);
 
-module.exports = redirects;
+export default redirects;
