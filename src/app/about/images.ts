@@ -6,6 +6,9 @@ const imagesAlts: Array<string> = [
   "In Valle de Bravo, México – Oct '23",
   "In Medellin, Colombia – Nov '23",
   "In Medellin, Colombia – Nov '23",
+  "In Tlachihualtepetl, México – Mar '24",
+  "In Cosmovitral, Toluca, México – Mar '24",
+  "In Centro Ceremonial Otomi, Colombia – Mar '24",
 ];
 
 export const getAboutImage = cache(
