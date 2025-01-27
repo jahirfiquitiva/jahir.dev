@@ -1,6 +1,6 @@
 import { tw } from '@/utils/cx';
 
-export const ThemeToggleContainer = tw.div`
+export const ThemeSelectorContainer = tw.div`
   flex
   items-center
   justify-center
