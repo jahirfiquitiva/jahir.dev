@@ -6,12 +6,12 @@
 - image: uses/hardware/monitor.png
   name: ASUS ROG PG32UCDP
   description: 32" 4K OLED Monitor
-  url: https://a.co/d/5KOomIJ
+  url: https://www.amazon.com/dp/B0D7NNK43H
 
 - image: uses/hardware/vivo-mount.png
   name: VIVO Stand-V101BB
   description: Holds the monitor
-  url: https://a.co/d/fHZPX1V
+  url: https://www.amazon.com/dp/B07K6TLPNP
 
 - image: uses/hardware/deltahub.png
   name: DeltaHub Carpio 2.0

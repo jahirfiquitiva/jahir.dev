@@ -52,7 +52,7 @@ export default function AboutPage() {
               🇨🇴
             </span>
           </Link>{' '}
-          with over seven (7) years of professional experience. My pronouns are
+          with over six (6) years of professional experience. My pronouns are
           he/they.
         </p>
         <p className={'max-w-nice'}>
