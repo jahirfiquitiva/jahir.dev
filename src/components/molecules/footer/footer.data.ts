@@ -35,11 +35,6 @@ export const linksGroups = [
     a11yTitle: 'Miscellaneous links',
     links: [
       {
-        title: 'Donate',
-        href: '/donate',
-        className: 'text-yellow',
-      },
-      {
         title: 'Contact',
         href: '/contact',
         className: 'text-green',

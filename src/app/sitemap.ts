@@ -24,7 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     'about',
     'blog',
-    'donate',
     'projects',
     'uses',
     'colophon',
