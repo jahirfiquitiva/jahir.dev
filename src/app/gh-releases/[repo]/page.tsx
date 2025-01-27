@@ -14,8 +14,9 @@ const releasesRepos = ['Frames', 'Blueprint', 'Kuper', 'ChipView', 'FABsMenu'];
 type ReleasePageContext = RequestContext<{ repo?: string }>;
 
 export default async function ReleasePage(context: ReleasePageContext) {
+  const { repo: repoName } = await context.params;
   const repo = releasesRepos.find(
-    (it) => it.toLowerCase() === context.params.repo?.toLowerCase(),
+    (it) => it.toLowerCase() === repoName?.toLowerCase(),
   );
   if (!repo) return notFound();
 
@@ -46,12 +47,11 @@ export default async function ReleasePage(context: ReleasePageContext) {
 export const generateStaticParams = () =>
   releasesRepos.map((it) => ({ repo: it.toLowerCase() }));
 
-export function generateMetadata(
+export async function generateMetadata(
   context: ReleasePageContext,
-): Metadata | undefined {
-  const repo = releasesRepos.find(
-    (it) => it.toLowerCase() === context.params.repo,
-  );
+): Promise<Metadata | undefined> {
+  const { repo: repoName } = await context.params;
+  const repo = releasesRepos.find((it) => it.toLowerCase() === repoName);
   if (!repo) return undefined;
 
   return createMetadata({

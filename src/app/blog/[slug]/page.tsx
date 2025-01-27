@@ -43,8 +43,8 @@ const blogPostStructuredData = (post?: PartialBlog): string => {
 // Error: Invariant: PPR lambda isn't streaming
 // export const dynamicParams = false;
 
-export default function BlogPostPage(context: BlogPostPageContext) {
-  const { slug } = context.params;
+export default async function BlogPostPage(context: BlogPostPageContext) {
+  const { slug } = await context.params;
   const post = allReadableBlogsWithContent.find((b) => b.slug === slug);
   if (!slug || !post) return notFound();
   if (post.link) return redirect(post.link);
@@ -104,10 +104,10 @@ export const generateStaticParams = () =>
     .filter((post) => !post.link)
     .map((post) => ({ slug: post.slug }));
 
-export function generateMetadata(
+export async function generateMetadata(
   context: BlogPostPageContext,
-): Metadata | undefined {
-  const { slug } = context.params;
+): Promise<Metadata | undefined> {
+  const { slug } = await context.params;
   if (!slug) return undefined;
   const post = allReadableBlogsWithContent.find((b) => b.slug === slug);
   if (!post) return undefined;

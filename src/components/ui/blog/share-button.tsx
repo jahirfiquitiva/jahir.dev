@@ -60,7 +60,7 @@ export const ShareButton = (props: ShareButtonProps) => {
       onClick={async () => {
         try {
           await navigator.share(shareData);
-        } catch (err) {}
+        } catch (e) {}
       }}
       data-umami-event={'Share blog post'}
       data-umami-event-title={title}
