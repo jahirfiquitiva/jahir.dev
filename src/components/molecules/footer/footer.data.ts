@@ -35,6 +35,12 @@ export const linksGroups = [
     a11yTitle: 'Miscellaneous links',
     links: [
       {
+        key: 'code',
+        title: 'View Source Code',
+        href: 'https://github.com/jahirfiquitiva/jahir.dev',
+        className: 'text-yellow',
+      },
+      {
         title: 'Contact',
         href: '/contact',
         className: 'text-green',

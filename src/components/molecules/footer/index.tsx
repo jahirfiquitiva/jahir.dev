@@ -1,4 +1,5 @@
 import { Logo } from '@/components/atoms/logo';
+import { StarsCounter } from '@/components/ui/projects/item/stars-count';
 import cx from '@/utils/cx';
 
 import { SocialLinks } from '../social-links';
@@ -66,7 +67,18 @@ export const Footer = () => {
                       {...link.props}
                       prefetch={false}
                     >
-                      {link.title}
+                      {link.key === 'code' ? (
+                        <StarsCounter
+                          repo={'jahir.dev'}
+                          style={{ fontSize: '0.8125rem' }}
+                          className={
+                            // eslint-disable-next-line @stylistic/max-len
+                            'font-semibold -ml-1.5 text-inherit bg-inherit bg-clip-text transition-none'
+                          }
+                        />
+                      ) : (
+                        link.title
+                      )}
                     </FooterLink>
                   </li>
                 );
