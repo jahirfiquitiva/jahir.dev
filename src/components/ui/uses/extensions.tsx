@@ -2,9 +2,17 @@ import { Link } from '@/components/atoms/link';
 import { List, ListItem } from '@/components/atoms/list';
 import { extensions } from '@/content';
 
-const extensionsHalfIndex = Math.round(extensions.length / 2);
-const firstExtensionsHalf = extensions.slice(0, extensionsHalfIndex);
-const secondExtensionsHalf = extensions.slice(extensionsHalfIndex);
+const sortedExtensions = extensions.sort((a, b) => {
+  const nameA = a.name.toLowerCase();
+  const nameB = b.name.toLowerCase();
+  if (nameA < nameB) return -1;
+  if (nameA > nameB) return 1;
+  return 0;
+});
+
+const extensionsHalfIndex = Math.round(sortedExtensions.length / 2);
+const firstExtensionsHalf = sortedExtensions.slice(0, extensionsHalfIndex);
+const secondExtensionsHalf = sortedExtensions.slice(extensionsHalfIndex);
 
 export const ExtensionsGrid = () => (
   <div className={'flex flex-col gap-5'}>

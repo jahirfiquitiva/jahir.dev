@@ -4,23 +4,17 @@
 - name: Clear URLs
   url: https://gitlab.com/KevinRoebert/ClearUrls
 
-- name: DevTools Font Changer
-  url: https://chrome.google.com/webstore/detail/devtools-font-changer/fikbcnlbgoafooldbkgikejejhaddajg
-
 - name: Ink for Google
   url: https://apps.jeurissen.co/ink-for-google
 
-- name: JSON Viewer
-  url: https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh
+- name: JSON Formatter
+  url: hhttps://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en
 
 - name: m-wiki
   url: https://chrome.google.com/webstore/detail/m-wiki/ibnmikddaopgfbbngcgcfmanjfgbcopf
 
 - name: Material Icons for GitHub
   url: https://github.com/Claudiohbsantos/github-material-icons-extension
-
-- name: Minimal Theme for Twitter
-  url: https://chrome.google.com/webstore/detail/minimal-theme-for-twitter/pobhoodpcipjmedfenaigbeloiidbflp
 
 - name: Notion Boost
   url: https://chrome.google.com/webstore/detail/notion-boost/eciepnnimnjaojlkcpdpcgbfkpcagahd/
@@ -34,11 +28,20 @@
 - name: Simplify Gmail
   url: https://chrome.google.com/webstore/detail/simplify-gmail/pbmlfaiicoikhdbjagjbglnbfcbcojpj
 
-- name: uBlock Origin
-  url: https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
+- name: uBlock Origin Lite
+  url: https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh
 
-- name: User CSS
-  url: https://chrome.google.com/webstore/detail/user-css/okpjlejfhacmgjkmknjhadmkdbcldfcb
+- name: UnTrap for YouTube
+  url: https://chromewebstore.google.com/detail/untrap-for-youtube/enboaomnljigfhfjfoalacienlhjlfil
+
+- name: User JavaScript and CSS
+  url: https://chromewebstore.google.com/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld
 
 - name: YouTube Auto HD
   url: https://chrome.google.com/webstore/detail/youtube-auto-hd-%2B-fps/fcphghnknhkimeagdglkljinmpbagone?hl=en-US
+
+- name: Control Panel for Twitter
+  url: https://chromewebstore.google.com/detail/control-panel-for-twitter/kpmjjdhbcfebfjgdnpjagcndoelnidfj
+
+- name: Font Fingerprint Defender
+  url: https://chromewebstore.google.com/detail/font-fingerprint-defender/fhkphphbadjkepgfljndicmgdlndmoke
