@@ -1,9 +1,9 @@
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeUnwrapImages from 'rehype-unwrap-images';
 import rehypeSlug from 'rehype-slug';
 import smartypants from 'remark-smartypants';
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
-import remarkUnwrapImages from 'remark-unwrap-images';
 import { defineConfig } from 'velite';
 
 import { blogs } from './config/velite/collections/blog';
@@ -21,8 +21,9 @@ export default defineConfig({
   collections: { blogs, extensions, gaming, hardware, software, projects },
   mdx: {
     copyLinkedFiles: false,
-    remarkPlugins: [smartypants, remarkUnwrapImages, remarkSqueezeParagraphs],
+    remarkPlugins: [smartypants, remarkSqueezeParagraphs],
     rehypePlugins: [
+      rehypeUnwrapImages,
       unwrapFigure,
       imageBlurMetadata,
       rehypeSlug,
