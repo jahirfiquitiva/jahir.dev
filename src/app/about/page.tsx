@@ -52,7 +52,7 @@ export default function AboutPage() {
               🇨🇴
             </span>
           </Link>{' '}
-          with over five (5) years of professional experience. My pronouns are
+          with over seven (7) years of professional experience. My pronouns are
           he/they.
         </p>
         <p className={'max-w-nice'}>
@@ -79,7 +79,14 @@ export default function AboutPage() {
           <Link title={'Uses page'} href={'/uses'}>
             uses
           </Link>{' '}
-          page.
+          page. And discover new music with my{' '}
+          <Link
+            title={'tunez - a daily-updated playlist'}
+            href={'https://tunez.jahir.dev'}
+          >
+            daily-updated playlist
+          </Link>{' '}
+          of top recently listened songs!
         </p>
       </Section>
       <Section id={'contact'} className={'-mt-5 gap-2.5'}>

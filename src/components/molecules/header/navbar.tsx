@@ -15,7 +15,7 @@ import {
   NavPageLink,
   NavPageLinkText,
 } from './navbar.styles';
-import { ThemeToggle } from './theme-toggle';
+import { ThemeSelector } from './theme-selector';
 
 const toolbarLinksList = [
   {
@@ -98,7 +98,7 @@ export const Navbar = (props: NavbarProps) => {
       </LinksList>
       <ButtonsGroup>
         <li>
-          <ThemeToggle />
+          <ThemeSelector />
         </li>
         <li>
           <NavToggle

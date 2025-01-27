@@ -1,4 +1,4 @@
-import setupImage from '@/assets/images/setup.jpg';
+import setupImage from '@/assets/images/setup.jpeg';
 import { Img } from '@/components/atoms/img';
 import cx from '@/utils/cx';
 
@@ -18,6 +18,6 @@ export const UsesHero = () => (
         priority
       />
     </div>
-    <figcaption>Jahir&apos;s desk setup in early 2024</figcaption>
+    <figcaption>Jahir&apos;s desk setup in early 2025</figcaption>
   </figure>
 );

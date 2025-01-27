@@ -1,19 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// NOTE
-// Do not change this file to .mjs
-// https://github.com/contentlayerdev/contentlayer/issues/313#issuecomment-1305424923
-const path = require('path');
+import type { NextConfig } from 'next';
 
-const bundleAnalyzer = require('@next/bundle-analyzer');
-const million = require('million/compiler');
+import path from 'node:path';
 
-const appHeaders = require('./config/next/headers');
-const redirects = require('./config/next/redirects');
+import million from '@million/lint';
 
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-  openAnalyzer: false,
-});
+import appHeaders from './config/next/headers';
+import redirects from './config/next/redirects';
 
 /*
 class VeliteWebpackPlugin {
@@ -32,11 +24,8 @@ class VeliteWebpackPlugin {
 }
 */
 
-/**
- * @type {import('next').NextConfig}
- */
-const defaultNextConfig = {
-  swcMinify: true,
+const defaultNextConfig: NextConfig = {
+  // swcMinify: true,
   reactStrictMode: true,
   compress: true,
   crossOrigin: 'anonymous',
@@ -84,7 +73,5 @@ const millionConfig = {
   rsc: true,
 };
 
-const config = withBundleAnalyzer(
-  million.next(defaultNextConfig, millionConfig),
-);
+const config = million.next(millionConfig)(defaultNextConfig);
 module.exports = config;

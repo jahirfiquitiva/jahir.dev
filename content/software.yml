@@ -22,25 +22,9 @@
   name: iina
   url: https://iina.io/
 
-- image: uses/apps/airbuddy.png
-  name: AirBuddy
-  url: https://airbuddy.app/
-
-- image: uses/apps/lungo.png
-  name: Lungo
-  url: https://sindresorhus.com/lungo
-
 - image: uses/apps/app-cleaner.webp
   name: App Cleaner
   url: https://freemacsoft.net/appcleaner/
-
-- image: uses/apps/fig.png
-  name: Fig
-  url: https://fig.io/
-
-- image: uses/apps/top-notch.png
-  name: Top Notch
-  url: https://topnotch.app/
 
 - image: uses/apps/cleanshot-x.png
   name: CleanShot X
@@ -49,10 +33,6 @@
 - image: uses/apps/raycast.webp
   name: Raycast
   url: https://raycast.app/
-
-- image: uses/apps/bartender.png
-  name: Bartender
-  url: https://www.macbartender.com/
 
 - image: uses/apps/contraste.png
   name: Contraste
@@ -69,10 +49,6 @@
 - image: uses/apps/spotify.webp
   name: Spotify
   url: https://spotify.com/
-
-- image: uses/apps/hyper.png
-  name: Hyper
-  url: https://hyper.is/
 
 - image: uses/apps/monolisa.png
   name: MonoLisa
@@ -94,6 +70,50 @@
   name: Focus
   url: https://heyfocus.com/
 
-- image: uses/apps/alttab.png
-  name: AltTab
-  url: https://github.com/lwouis/alt-tab-macos
+- image: uses/apps/airpods.png
+  name: AirPods Sanity
+  url: https://github.com/Gaulomatic/AirPodsSanity
+
+- image: uses/apps/amazon-q.png
+  name: Amazon Q
+  url: https://aws.amazon.com/q/developer/
+
+- image: uses/apps/battery-indicator.png
+  name: Battery Indicator
+  url: https://sindresorhus.com/battery-indicator
+
+- image: uses/apps/betterdisplay.png
+  name: BetterDisplay
+  url: https://github.com/waydabber/BetterDisplay/
+
+- image: uses/apps/ghostty.png
+  name: Ghostty
+  url: https://ghostty.org/
+
+- image: uses/apps/ice.png
+  name: Ice
+  url: https://icemenubar.app/
+
+- image: uses/apps/orbstack.png
+  name: Orbstack
+  url: https://orbstack.dev/
+
+- image: uses/apps/cleanmymac.png
+  name: CleanMyMac
+  url: https://cleanmymac.com/
+
+- image: uses/apps/fork.png
+  name: Fork
+  url: https://git-fork.com/
+
+- image: uses/apps/raindropio.png
+  name: Raindrop.io
+  url: https://raindrop.io/
+
+- image: uses/apps/reflex.png
+  name: Reflex
+  url: https://stuntsoftware.com/reflex/
+
+- image: uses/apps/replacicon.png
+  name: Replacicon
+  url: https://replacicon.app/

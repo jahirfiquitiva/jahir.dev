@@ -68,9 +68,7 @@ export const OgImage = (props: OgImageProps) => {
       />
       <div
         style={{
-          backgroundImage:
-            // eslint-disable-next-line max-len
-            `linear-gradient(65deg, ${getGradientOverlay(title).join(', ')})`,
+          backgroundImage: `linear-gradient(65deg, ${getGradientOverlay(title).join(', ')})`,
           position: 'absolute',
           top: 0,
           right: 0,

@@ -1,3 +1,5 @@
+import type { Header } from 'next/dist/lib/load-custom-routes';
+
 /* eslint-disable max-len */
 const ContentSecurityPolicy = `
   default-src 'self' vercel.live;
@@ -44,7 +46,7 @@ const securityHeaders = [
   },
 ];
 
-const headers = [
+const headers: Promise<Header[]> = Promise.resolve([
   {
     source: '/(.*)',
     headers: securityHeaders,
@@ -58,6 +60,6 @@ const headers = [
       },
     ],
   },
-];
+]);
 
-module.exports = headers;
+export default headers;

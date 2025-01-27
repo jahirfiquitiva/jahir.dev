@@ -19,7 +19,6 @@ export const useWindowDimensions = (): WindowDimensions => {
     setDimens({ width: window.innerWidth, height: window.innerHeight });
   }, [hasMounted]);
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (hasMounted) {
       window.addEventListener('resize', handleResize);

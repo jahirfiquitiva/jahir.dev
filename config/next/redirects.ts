@@ -1,4 +1,10 @@
-const buildRedirect = (source, destination, permanent = false) => {
+import type { Redirect } from 'next/dist/lib/load-custom-routes';
+
+const buildRedirect = (
+  source: string,
+  destination: string,
+  permanent: boolean = false,
+) => {
   return {
     source,
     destination,
@@ -6,7 +12,7 @@ const buildRedirect = (source, destination, permanent = false) => {
   };
 };
 
-const redirects = [
+const redirects: Promise<Redirect[]> = Promise.resolve([
   /* Blog posts redirections */
   buildRedirect(
     '/blog/md-iconography-guidelines',
@@ -39,11 +45,12 @@ const redirects = [
   buildRedirect('/now', '/about#activity'),
   buildRedirect('/activity', '/about#activity'),
   /* Donate aliases */
-  buildRedirect('/support', '/donate'),
-  buildRedirect('/sponsor', '/donate'),
-  buildRedirect('/thanks', '/donate#thanks'),
-  buildRedirect('/sponsors', '/donate#thanks'),
-  buildRedirect('/supporters', '/donate#thanks'),
+  buildRedirect('/support', 'https://github.com/sponsors/jahirfiquitiva'),
+  buildRedirect('/sponsor', 'https://github.com/sponsors/jahirfiquitiva'),
+  buildRedirect('/thanks', 'https://github.com/sponsors/jahirfiquitiva'),
+  buildRedirect('/sponsors', 'https://github.com/sponsors/jahirfiquitiva'),
+  buildRedirect('/supporters', 'https://github.com/sponsors/jahirfiquitiva'),
+  buildRedirect('/donate', 'https://github.com/sponsors/jahirfiquitiva'),
   buildRedirect('/gear', '/uses'),
   buildRedirect('/releases/:path*', '/gh-releases/:path*'),
   buildRedirect('/feed', '/feed.xml'),
@@ -54,6 +61,6 @@ const redirects = [
     '/analytics',
     'https://umami.jahir.dev/share/C1XABUPBfbHYjPrw/jahir.dev',
   ),
-];
+]);
 
-module.exports = redirects;
+export default redirects;

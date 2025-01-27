@@ -7,7 +7,6 @@ import { Section } from '@/components/atoms/section';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ErrorComponent = (props: { error: Error }) => {
   const { error } = props;
   const [, ...errorStack] = error.stack?.toString().split(/\r?\n/) || [];

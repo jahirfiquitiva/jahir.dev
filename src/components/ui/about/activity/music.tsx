@@ -100,10 +100,10 @@ export const Music = () => {
               isPlaying ? 'group-hocus/track:decoration-wavy' : '',
             )}
           >
-            {loading ? '' : track?.name ?? 'tunez'}
+            {loading ? '' : (track?.name ?? 'tunez')}
           </TrackName>
           <TrackArtist className={loading ? 'bg-divider' : ''}>
-            {loading ? '' : track?.artist ?? '99 top recently listened songs'}
+            {loading ? '' : (track?.artist ?? '99 top recently listened songs')}
           </TrackArtist>
         </Texts>
       </Content>

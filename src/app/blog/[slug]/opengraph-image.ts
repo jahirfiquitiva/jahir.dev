@@ -14,7 +14,7 @@ export const size = {
 export const contentType = config.contentType;
 
 export default async function Image(context: BlogPostPageContext) {
-  const { slug } = context.params;
+  const { slug } = await context.params;
   if (!slug) return getOgImage('blog');
   const post = allReadableBlogs.find((b) => b.slug === slug);
   if (!post) return getOgImage('blog');

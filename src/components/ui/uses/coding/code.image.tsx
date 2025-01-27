@@ -14,7 +14,7 @@ export const CodeImage = () => (
   <figure>
     <div
       className={cx(
-        'aspect-video relative',
+        'aspect-[8/5] relative',
         'tablet-md:rounded-4',
         'overflow-hidden',
         '-mx-3 tablet-md:-mx-4',

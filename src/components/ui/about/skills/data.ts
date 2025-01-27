@@ -1,6 +1,6 @@
 import { nextJs, tailwind } from '@/components/icons';
 
-/* eslint-disable max-len */
+/* eslint-disable @stylistic/max-len */
 interface Skill {
   name: string;
   color: string;

@@ -45,3 +45,4 @@ config/velite/themes/*.json
 static/media/*.png
 .astro
 *.tsbuildinfo
+.million

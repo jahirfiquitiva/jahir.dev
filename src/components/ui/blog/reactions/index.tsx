@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 'use client';
 
 import { reactionsNames, type Counters } from '@/types/db';
