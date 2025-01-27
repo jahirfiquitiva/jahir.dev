@@ -18,7 +18,7 @@ export const GridContainer = tw.div`
   before:bg-center
   before:bg-[url('/media/uses/wallpaper.jpg')]
   before:dark:bg-[url('/media/uses/wallpaper-dark.jpg')]
-  before:opacity-85
+  before:opacity-80
 `;
 
 export const SoftwareGrid = tw.ol`
