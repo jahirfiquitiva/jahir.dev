@@ -24,7 +24,6 @@ export const useNavbarState = () => {
     if (!hasMounted) return;
     window.addEventListener('scroll', checkScrolledDistance);
     checkScrolledDistance();
-    // eslint-disable-next-line consistent-return
     return () => {
       window.removeEventListener('scroll', checkScrolledDistance);
     };
