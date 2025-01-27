@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable @stylistic/max-len */
 export const unicorns: Array<Omit<ReadableSupporter, 'amount'>> = [
   {
     name: 'Patryk Goworowski',

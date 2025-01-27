@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable @stylistic/max-len */
 import photo from '@/assets/images/photo.jpg';
 import { Icon } from '@/components/atoms/icon';
 import { Img } from '@/components/atoms/img';

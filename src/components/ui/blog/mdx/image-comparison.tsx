@@ -34,7 +34,7 @@ const Handle = (props: { portrait?: boolean }) => {
       }}
       style={{
         filter:
-          // eslint-disable-next-line max-len
+          // eslint-disable-next-line @stylistic/max-len
           'drop-shadow(rgba(0, 0, 0, 0.14) 0px 0px 4px) drop-shadow(rgba(0, 0, 0, 0.12) 0px 0px 2px)',
       }}
     />

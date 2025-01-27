@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable @stylistic/max-len */
 'use client';
 
 import { useEffect, useState } from 'react';

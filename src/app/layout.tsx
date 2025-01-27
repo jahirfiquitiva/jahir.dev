@@ -17,7 +17,7 @@ export const metadata = {
   ...createMetadata({
     title: 'Jahir Fiquitiva – Full-stack Software Engineer',
     description:
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/max-len
       "I'm a passionate and creative full-stack software engineer from Colombia 🇨🇴. Visit my website to learn more about me and my projects",
     keywords: [
       'jahir fiquitiva',

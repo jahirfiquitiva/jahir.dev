@@ -1,11 +1,11 @@
-/* eslint-disable max-len */
+/* eslint-disable @stylistic/max-len */
 import { Icon } from '@/components/atoms/icon';
 
 import {
   AmazonLink,
+  BuyMeACoffeeLink,
   GitHubSponsorsLink,
   PayPalLink,
-  BuyMeACoffeeLink,
 } from './buttons.styles';
 
 export const DonateButtons = () => {

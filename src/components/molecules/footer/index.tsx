@@ -44,7 +44,7 @@ export const Footer = () => {
           <LinksList key={group.title}>
             <p
               className={
-                // eslint-disable-next-line max-len
+                // eslint-disable-next-line @stylistic/max-len
                 'font-manrope font-bold text-tertiary-txt uppercase text-3xs select-none tracking-wider'
               }
             >

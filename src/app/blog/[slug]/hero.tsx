@@ -21,7 +21,7 @@ export const Hero = (props: HeroProps) => {
         'absolute top-0 -left-[calc(100vw_-_100%)] -right-[calc(100vw_-_100%)]',
         'pointer-events-none blur transition',
         'saturate-125 opacity-40 dark:opacity-65',
-        // eslint-disable-next-line max-len
+
         '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_100%)]',
       )}
       style={{ height: '85vh', maxHeight: 384, width: '100vw' }}

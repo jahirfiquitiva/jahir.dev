@@ -119,7 +119,7 @@ export default function DonatePage() {
 export const metadata = createMetadata({
   title: 'Donate – Jahir Fiquitiva',
   description:
-    // eslint-disable-next-line max-len
+    // eslint-disable-next-line @stylistic/max-len
     'Support Jahir Fiquitiva. Donate or sponsor him as a recognition for his work on different projects.',
   exactUrl: 'https://jahir.dev/donate',
   keywords: [
