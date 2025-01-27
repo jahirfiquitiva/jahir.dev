@@ -20,18 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     }));
 
-  const routes = [
-    '',
-    'about',
-    'blog',
-    'projects',
-    'uses',
-    'colophon',
-  ].map((route) => ({
-    url: `https://jahir.dev/${route}`,
-    lastModified: today.toISOString().split('T')[0],
-    priority: route ? 0.8 : 1,
-  }));
+  const routes = ['', 'about', 'blog', 'projects', 'uses', 'colophon'].map(
+    (route) => ({
+      url: `https://jahir.dev/${route}`,
+      lastModified: today.toISOString().split('T')[0],
+      priority: route ? 0.8 : 1,
+    }),
+  );
 
   return [...routes, ...blogs].sort(
     (a, b) => (b.priority || 0) - (a.priority || 0),
