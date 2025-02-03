@@ -12,7 +12,7 @@ const jsonLd = JSON.stringify({
   logo: 'https://jahir.dev/media/brand/logo-full.png',
   name: 'Jahir Fiquitiva',
   description:
-    'Passionate and creative full-stack software engineer from Colombia 🇨🇴',
+    'Passionate and creative frontend software engineer from Colombia 🇨🇴',
   email: 'hola@jahir.dev',
   foundingDate: new Date('1997-01-28T18:30:00-05:00').toISOString(),
 });

@@ -116,7 +116,7 @@ const defaultChannel = {
   link: 'https://jahir.dev',
   title: 'Jahir Fiquitiva',
   description:
-    'Passionate and creative full-stack software engineer from Colombia',
+    'Passionate and creative frontend software engineer from Colombia',
   image_url: 'https://jahir.dev/api/og',
   image: {
     title: 'Jahir Fiquitiva',

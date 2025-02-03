@@ -20,7 +20,7 @@ const jsonLd = JSON.stringify({
     name: 'Jahir Fiquitiva',
     alternateName: ['jahirfiquitiva', 'jahirdotdev'],
     description:
-      'Passionate and creative full-stack software engineer from Colombia 🇨🇴',
+      'Passionate and creative frontend software engineer from Colombia 🇨🇴',
     image: 'https://jahir.dev/media/jahir/jahir-hd.jpg',
     sameAs: [
       'https://github.com/jahirfiquitiva',
@@ -40,8 +40,7 @@ export default function AboutPage() {
           <span role={'img'} aria-label={'waving hand'}>
             👋
           </span>{' '}
-          Hey there! I&apos;m Jahir Fiquitiva, a full-stack software engineer
-          from{' '}
+          Hey there! I&apos;m Jahir Fiquitiva, a frontend software engineer from{' '}
           <Link
             title={'Colombia'}
             href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}

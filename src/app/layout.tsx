@@ -15,10 +15,10 @@ import { Meta } from './meta';
 
 export const metadata = {
   ...createMetadata({
-    title: 'Jahir Fiquitiva – Full-stack Software Engineer',
+    title: 'Jahir Fiquitiva – Frontend Software Engineer',
     description:
       // eslint-disable-next-line @stylistic/max-len
-      "I'm a passionate and creative full-stack software engineer from Colombia 🇨🇴. Visit my website to learn more about me and my projects",
+      "I'm a passionate and creative frontend software engineer from Colombia 🇨🇴. Visit my website to learn more about me and my projects",
     keywords: [
       'jahir fiquitiva',
       'jahir',
@@ -26,6 +26,7 @@ export const metadata = {
       'jahirfiquitiva',
       'open-source',
       'full-stack',
+      'frontend',
       'software engineer',
       'colombia',
       'bio',

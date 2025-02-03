@@ -41,7 +41,7 @@ const experience: Array<ExperienceRecord> = [
   },
   {
     company: 'Servex',
-    position: 'Full Stack Developer',
+    position: 'Full-Stack Developer',
     from: 'Sep 2018',
     until: 'Dec 2019',
     link: 'https://www.servex.com.pe/',

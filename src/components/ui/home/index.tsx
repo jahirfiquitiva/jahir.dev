@@ -50,7 +50,7 @@ export const Intro = () => {
 
         <p className={'text-pretty flex flex-col gap-2 max-w-[28rem]'}>
           <span>
-            Passionate and creative full-stack software engineer from{' '}
+            Passionate and creative frontend software engineer from{' '}
             <Link
               title={'Colombia'}
               href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}

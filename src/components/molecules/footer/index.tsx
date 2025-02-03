@@ -33,7 +33,7 @@ export const Footer = () => {
           <span className={'text-accent'}>Jahir Fiquitiva</span>
         </FooterLink>
         <Description>
-          Passionate and creative full-stack software engineer from Colombia{' '}
+          Passionate and creative frontend software engineer from Colombia{' '}
           <span role={'img'} aria-label={'Colombia flag'}>
             🇨🇴
           </span>
