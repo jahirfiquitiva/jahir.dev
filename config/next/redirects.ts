@@ -55,7 +55,7 @@ const redirects: Promise<Redirect[]> = Promise.resolve([
   buildRedirect('/releases/:path*', '/gh-releases/:path*'),
   buildRedirect('/feed', '/feed.xml'),
   buildRedirect('/sitemap', '/sitemap.xml'),
-  buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
+  // buildRedirect('/resume', '/share/Jahir-Fiquitiva-Resume.pdf'),
   buildRedirect('/shop', 'https://www.shop.jahir.dev/nuestros-productos'),
   buildRedirect(
     '/analytics',
