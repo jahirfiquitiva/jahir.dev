@@ -30,8 +30,8 @@ export const ContactForm = () => {
   });
 
   return (
-    <form action={sendEmailAction} className={'flex flex-col gap-4 relative'}>
-      <div className={'flex flex-col gap-2'}>
+    <form action={sendEmailAction} className={'flex flex-col gap-5 relative'}>
+      <div className={'flex flex-col gap-1.5'}>
         <label htmlFor={'name'} className={'font-semibold font-manrope'}>
           Name
         </label>
@@ -46,6 +46,7 @@ export const ContactForm = () => {
             setFormFields({ ...formFields, name: e.target.value });
           }}
           className={cx(
+            'text-primary-txt',
             'px-3 py-2 bg-white dark:bg-white/5',
             'rounded-2 border border-divider',
             'focus-visible:ring-1 focusvisible:ring-accent focus-visible:border-accent',
@@ -58,7 +59,7 @@ export const ContactForm = () => {
           </p>
         )}
       </div>
-      <div className={'flex flex-col gap-2'}>
+      <div className={'flex flex-col gap-1.5'}>
         <label htmlFor={'email'} className={'font-semibold font-manrope'}>
           Email
         </label>
@@ -73,6 +74,7 @@ export const ContactForm = () => {
             setFormFields({ ...formFields, email: e.target.value });
           }}
           className={cx(
+            'text-primary-txt',
             'px-3 py-2 bg-white dark:bg-white/5',
             'rounded-2 border border-divider',
             'focus-visible:ring-1 focusvisible:ring-accent focus-visible:border-accent',
@@ -85,7 +87,7 @@ export const ContactForm = () => {
           </p>
         )}
       </div>
-      <div className={'flex flex-col gap-2'}>
+      <div className={'flex flex-col gap-1.5'}>
         <label htmlFor={'message'} className={'font-semibold font-manrope'}>
           Message
         </label>
@@ -101,6 +103,7 @@ export const ContactForm = () => {
           }}
           placeholder={'Hello, Jahir!'}
           className={cx(
+            'text-primary-txt',
             'px-3 py-2 bg-white dark:bg-white/5',
             'rounded-2 border border-divider',
             'focus-visible:ring-1 focusvisible:ring-accent focus-visible:border-accent',

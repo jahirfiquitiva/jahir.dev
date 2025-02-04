@@ -88,17 +88,14 @@ export default function AboutPage() {
           of top recently listened songs!
         </p>
       </Section>
-      <Section id={'contact'} className={'-mt-5 gap-2.5'}>
+      <Section id={'connect'} className={'-mt-5 gap-2.5'}>
         <h2 className={'mb-1'} style={{ fontSize: '1rem' }}>
           Let&apos;s connect!
         </h2>
         <p>
-          Feel free to reach out to me at{' '}
-          <Link
-            title={'Email'}
-            href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
-          >
-            hola@jahir.dev
+          Feel free to{' '}
+          <Link title={'Contact Jahir via Email'} href={'/contact'}>
+            send me a message
           </Link>
           , or find me on social media:
         </p>
