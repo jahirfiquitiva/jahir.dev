@@ -67,18 +67,6 @@ export const SocialLinks = (props: ComponentProps<'ul'>) => {
       </li>
       <li>
         <SocialLink
-          title={'Email'}
-          href={'/contact'}
-          iconPath={
-            'm20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z'
-          }
-          className={
-            'hocus:text-[#356AC4] hocus:dark:text-[#5591f5] hocus:bg-[#ecf3fe] dark:hocus:bg-[#142849]'
-          }
-        />
-      </li>
-      <li>
-        <SocialLink
           title={'Bluesky'}
           href={'https://bsky.jahir.dev/'}
           iconPath={
@@ -86,6 +74,18 @@ export const SocialLinks = (props: ComponentProps<'ul'>) => {
           }
           className={
             'hocus:text-[#0085ff] hocus:dark:text-[#339dff] hocus:bg-[#e6f3ff] dark:hocus:bg-[#001b33]'
+          }
+        />
+      </li>
+      <li>
+        <SocialLink
+          title={'Email'}
+          href={'/contact'}
+          iconPath={
+            'm20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z'
+          }
+          className={
+            'hocus:text-[#356AC4] hocus:dark:text-[#5591f5] hocus:bg-[#ecf3fe] dark:hocus:bg-[#142849]'
           }
         />
       </li>
