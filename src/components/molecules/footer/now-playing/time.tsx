@@ -1,10 +1,13 @@
 /* eslint-disable @stylistic/max-len */
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/atoms/icon';
+import { Link } from '@/components/atoms/link';
 import { formatDate } from '@/utils/date';
+
+import { Doing } from './doing';
 
 const paths: Record<number, string> = {
   1: 'M12 20C16.42 20 20 16.42 20 12S16.42 4 12 4 4 7.58 4 12 7.58 20 12 20M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22C6.47 22 2 17.5 2 12C2 6.5 6.5 2 12 2M15.3 7.8L12.3 13H11V7H12.5V9.65L14 7.05L15.3 7.8Z',
@@ -31,7 +34,7 @@ const getIconPath = (time: string): string => {
   }
 };
 
-export const Clock = () => {
+export const Clock = (props: PropsWithChildren<{ longFormat?: boolean }>) => {
   const [time, setTime] = useState(new Date());
   useEffect(() => {
     const timeId = setInterval(() => setTime(new Date()), 1000);
@@ -39,15 +42,60 @@ export const Clock = () => {
       clearInterval(timeId);
     };
   });
-  const timeText = formatDate(time, true);
+
+  const [day, ...timeText] = formatDate(time, true, { weekday: 'long' })
+    .toUpperCase()
+    .split(' ');
+  const [hours, minutes] = timeText.join(' ').split(':');
+
+  if (props.longFormat) {
+    return (
+      <p>
+        It&apos;s currently
+        <Icon
+          className={'size-5 inline-block mx-1 mb-0.5'}
+          path={getIconPath(hours)}
+          aria-hidden
+        />
+        <span className={'tabular-nums'}>
+          {hours}
+          <span className={'animate-pulse'}>:</span>
+          {minutes} in{' '}
+          <Link
+            title={'Colombia'}
+            href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
+            data-umami-event={'Link to Colombia map'}
+          >
+            Colombia{' '}
+            <span role={'img'} aria-label={'Colombia flag'}>
+              🇨🇴
+            </span>
+          </Link>
+        </span>{' '}
+        and{' '}
+        <Doing
+          time={hours}
+          isPm={minutes.includes('PM')}
+          isWeekend={day.includes('SATURDAY') || day.includes('SUNDAY')}
+        />
+        .<br />
+        {props.children}
+      </p>
+    );
+  }
   return (
     <p
+      title={`It's currently ${hours}:${minutes} in Colombia`}
       className={
         'flex flex-row items-center gap-1.5 text-tertiary-txt text-3xs font-medium uppercase'
       }
     >
-      <Icon className={'size-5'} path={getIconPath(timeText)} />
-      <span className={'tabular-nums'}>{timeText} COL.</span>
+      <Icon className={'size-5'} path={getIconPath(hours)} />
+      <span className={'tabular-nums'}>
+        {hours}
+        <span className={'animate-pulse'}>:</span>
+        {minutes} COL.
+      </span>
     </p>
   );
 };

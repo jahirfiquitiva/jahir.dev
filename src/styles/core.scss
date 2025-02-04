@@ -104,3 +104,10 @@ body article [id] {
 span[role='img'][aria-label] {
   @apply text-primary-txt;
 }
+
+button, input, textarea {
+  &:disabled {
+    opacity: 0.85;
+    cursor: not-allowed;
+  }
+}

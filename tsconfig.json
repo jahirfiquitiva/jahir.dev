@@ -34,6 +34,7 @@
   },
   "exclude": [".idea", "node_modules"],
   "include": [
+    "global.d.ts",
     "next-env.d.ts",
     "**/*.js",
     "**/*.mjs",

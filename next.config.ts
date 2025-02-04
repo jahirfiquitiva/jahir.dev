@@ -1,8 +1,7 @@
-import type { NextConfig } from 'next';
-
 import path from 'node:path';
 
 import million from '@million/lint';
+import type { NextConfig } from 'next';
 
 import appHeaders from './config/next/headers';
 import redirects from './config/next/redirects';
@@ -73,5 +72,5 @@ const millionConfig = {
   rsc: true,
 };
 
-const config = million.next(millionConfig)(defaultNextConfig);
-module.exports = config;
+// const config = million.next(millionConfig)(defaultNextConfig);
+module.exports = defaultNextConfig;
