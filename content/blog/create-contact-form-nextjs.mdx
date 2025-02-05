@@ -1,0 +1,256 @@
+---
+title: Create a contact form in Next.js with Resend and Valibot
+date: '2025-02-05'
+color: '#B2D2D8'
+summary: Take advantage of server actions to build a simple contact form for your website
+keywords: 'form, contact, contact form, server actions, next.js, resend, valibot'
+---
+
+Hey, it's honestly been a while since my last post, yes. Also a while since I updated my website, which I've been doing recently. And that's why I'm writing this blog post.
+
+I decided to add a custom contact form to my website, and in the process I learnt a thing or two, and I have decided to share my experience with you.
+
+### Previous approach
+
+I've been using [hi.new](https://hi.new/jahir) for some time now. It is an email service that automatically protects your inbox from spammers by doing some server-side checks of the email contents, and processing it before actually sending it to your mail.
+
+This worked fine but it meant taking visitors of my website to another website just to submit an email, which I think will make them less likely to send the email at all. And I think I may have also missed some conversations because of that.
+
+Fortunately, they created a custom web component that makes their contact form part of your website. I gave it a try and it seemed to work just fine, except I wanted to give it a unique look that matched my website design, and I could not, because although it supports some styling features, it's limited to colors, and I wanted to do more changes than just that.
+
+It might be good enough for the majority of people, I admit. But again, I wanted to customize it as much as possible and felt limited. And I also think it wasn't worth paying for me because I am not really the kind of person who receives a lot of emails.
+
+### Looking for a solution
+
+As I decided to make something fully custom and making it part of my website itself, I made a post on Twitter (X) which, of course, drove 0 interactions.
+
+<Tweet id="1886561566625292621" />
+
+Well, I actually also posted it on [Mastodon](https://mastodon.social/@jahirfiquitiva/113942614375071167), [Threads](https://www.threads.net/@jahirfiquitiva/post/DFoSvyWPfLK) and [Bluesky](https://bsky.app/profile/jahir.dev/post/3lhcpxm7h3o2s), where I did get one comment 🥲:
+[Leonardo](https://bsky.app/profile/leonardocabeza.bsky.social/post/3lhd7tp3kos2v) suggested to use [Tally.so](https://tally.so/), and it looks really good, it includes many features for free, but once again, I find myself locked out of customization with it.
+
+After thinking about it for a while, I remembered of a tool I found some time ago, which has a great-looking website and seems to care a lot about Developer Experience (DX) because it is really simple to implement. Enter: [resend.com](https://resend.com)
+
+> Resend aims to simplify the process of sending transactional and marketing emails, making it particularly useful for startups.
+
+This made me think it was _not_ meant to be used on a simple website like mine, where I would only be sending an email to myself.
+
+It seemed better fitted for sending emails to a massive amount of people, also known as users, and mostly focused on startups and companies.
+
+But, while that is true, it's also actually possible to do something as simple as what I was looking for.
+
+### Implementation
+
+Resend already offers a JavaScript SDK (also [available for other languages](https://resend.com/docs/introduction) like Python, Ruby, PHP, and more) and it includes documentation for [implementing it using Next.js](https://resend.com/docs/send-with-nextjs), which is the framework [used to build](/colophon) my website.
+
+Anyway, its documentation uses Next.js API Routes with either [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) or [App Router](https://nextjs.org/docs/app/api-reference/file-conventions/route) (which I'm also using in this website) but I wanted to implement it using a feature introduced in React 19 called [Server ~Actions~ Functions](https://react.dev/reference/rsc/server-functions).
+
+> Server Functions allow Client Components to call async functions executed on the server.
+> [...]
+> When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+
+As the official Resend documentation lacks (at the time of writing this post) this approach, I did some research and was able to find a [thorough blog post](https://mydevpa.ge/blog/how-to-send-emails-using-next-14-resend-and-react-email#creating-a-nextjs-server-action) by [Shahmir Faisal](https://www.linkedin.com/in/shahmir-faisal/) which was of great help during the implementation process.
+
+Let's dive into it already…
+
+#### Prerequisites
+
+1. [Create an account](https://resend.com/signup) on Resend.com or [login](https://resend.com/login) if you already have one.
+2. [Create an API key](https://resend.com/api-keys):
+  
+    The `Sending access` permission is enough.
+
+3. [Verify your domain](https://resend.com/domains):
+  
+    Note: You can only verify domains you own.
+
+4. Create some environment variables to be used later:
+
+```bash title=".env"
+# Replace with the API key you created in step 2
+RESEND_API_KEY=re_ABC123
+# The email domain must have been verified in step 3
+RESEND_FROM_EMAIL=no-reply@example.com
+# This is your personal email or the one where you will receive messages
+RESEND_TARGET_EMAIL=your.email@example.com
+```
+
+5. Install the dependencies in your project
+```bash
+bun add -D resend react-email @react-email/components @react-email/render valibot
+```
+
+- `resend`: The SDK for the service we're going to use to send emails.
+- `react-email`: Allows creating email templates using React.
+- `@react-email/components`: It's a set of, well, React components to help with the email content.
+- `@react-email/render`: Converts components made with React into a HTML string.
+- `valibot`: Used for validating data using a schema.
+
+All these packages can be installed as `devDependencies` because they are only going to be used on the server.
+
+#### Create an Email Template
+
+The email template is basically the message you receive on your email. It will put the form values into some HTML for the email service to render.
+
+```tsx title="src/components/email.tsx"
+import { Html, Text, Link } from '@react-email/components';
+
+interface EmailBodyProps {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export const EmailBody = (props: EmailBodyProps) => {
+  return (
+    <Html lang={'en'}>
+      <Text>{props.message}</Text>
+      <Text style={{ fontStyle: 'italic' }}>
+        Message sent by <Link href={`mailto:${props.email}`}>{props.name}</Link>
+      </Text>
+    </Html>
+  );
+};
+```
+
+This will include the message in the email body and a "footer" with the sender's name and their email for you to get back to them (for example).
+
+#### Create the Server Function
+
+The server function is where the send email logic lives. It will include validation, error handling and, of course, sending the email.
+
+The code is a bit long and hard to be splitted, so I left a few comments explaining some key parts of it.
+
+```ts title="src/actions/email.ts"
+// This is a server function which, well, should only run on the server.
+'use server';
+
+import { render } from '@react-email/render';
+import { Resend } from 'resend';
+import {
+  object,
+  string,
+  email,
+  pipe,
+  trim,
+  minLength,
+  safeParse,
+  type InferInput,
+} from 'valibot';
+
+// This is the Email Template component we created previously
+import { EmailBody } from '@/components/email';
+
+// Validation schema. This will check that the form values are valid.
+const EmailSchema = object({
+  // Name (without trailing or leading spaces) is required (minLength=1)
+  name: pipe(string(), trim(), minLength(1, 'This field is required')),
+  // Email (without trailing or leading spaces) is required (minLength=1)
+  email: pipe(
+    string(),
+    trim(),
+    minLength(1, 'This field is required'),
+    // and should match an email regex
+    email('Email is not valid'),
+  ),
+  // Message (without trailing or leading spaces) is required
+  // and should be at least 30 characters long.
+  message: pipe(
+    string(),
+    trim(),
+    minLength(30, 'Message must be at least 30 characters long'),
+  ),
+});
+
+// Infer the form data types from our schema
+export type EmailForm = InferInput<typeof EmailSchema>;
+
+// The type that represents our email form state (success and errors)
+// errors will be an object with keys that match our EmailForm fields
+// plus a 'submission' field for other kinds of errors
+export interface EmailState {
+  success: boolean;
+  errors?: {
+    [key in keyof EmailForm | 'submission']?: string | null | undefined;
+  };
+}
+
+// We create an instance of the Resend API
+const resend = new Resend(process.env.RESEND_API_KEY || '');
+
+// The function where magic happens
+export const sendEmail = async (
+  // The previous state. Not really used in this case
+  prevState: EmailState,
+  // The FormData which will include the fields defined in type EmailForm
+  // Unfortunately this cannot be typed to match it
+  formData: FormData,
+// This function returns data of type EmailState, corresponding to the new form state
+): Promise<EmailState> => {
+  // We get the form fields from the formData object.
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const message = formData.get('message') as string;
+  try {
+    // Validate the data we received against the schema we previously defined
+    const validation = safeParse(EmailSchema, { name, email, message });
+    if (!validation.success) {
+      // If validation is not successful...
+      const errors: EmailState['errors'] = {};
+      // We map each issue or error to have an object where
+      // the keys are the fields names and the values are
+      // the error message for the corresponding field
+      validation.issues.forEach((issue) => {
+        const key = issue.path?.[0]?.key as keyof EmailForm;
+        errors[key] = issue.message;
+      });
+      return { success: false, errors };
+    }
+
+    // Schema validation was successful, let's try to send the email
+    // First, we render the EmailBody React component to get an HTML string
+    // which corresponds to the email body
+    const htmlBody = await render(EmailBody({ name, email, message }));
+    // Second, we call the send function from resend emails
+    // Which returns data and error
+    const { data, error } = await resend.emails.send({
+      // Here we use the environment variable for the email address to send this email from
+      // Remember you can only send emails from domains you verified
+      // We use the name of the sender as the name of the email owner
+      from: `${name} <${process.env.RESEND_FROM_EMAIL}>`,
+      // The email address that will receive the email
+      to: process.env.RESEND_TARGET_EMAIL || '',
+      // I'm using a default subject for all emails, but this can also
+      // be an additional form field.
+      subject: "New message",
+      // We take advantage of the `replyTo` field so that when we receive the email
+      // we can easily reply to the actual person that sent the message
+      // and not to an email on our domain
+      replyTo: email,
+      // The HTML string previously generated
+      html: htmlBody,
+    });
+    return {
+      errors: {
+        // If there was an error, we set it to the submission field
+        submission: error?.message,
+      },
+      // If email was sent, we will get an `id` for it
+      success: Boolean(data?.id),
+    };
+  } catch (error) {
+    // For any other kind of errors
+    return {
+      errors: {
+        submission: (error as Error).message || 'Something went wrong',
+      },
+      success: false,
+    };
+  }
+};
+```
+
+#### Create the Form
+
+>  If a Server Function is passed to an action prop or called from inside an action then it is a Server Action, but not all Server Functions are Server Actions.
+
