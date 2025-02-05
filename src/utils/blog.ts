@@ -8,7 +8,6 @@ const { NODE_ENV, VERCEL_ENV } = process.env as {
   VERCEL_ENV?: PossibleEnv;
 };
 const currentEnvironment = VERCEL_ENV || NODE_ENV;
-console.error({ currentEnvironment });
 const allowDrafts = currentEnvironment !== 'production';
 
 export const allReadableBlogsWithContent: Array<Blog> = allowDrafts
