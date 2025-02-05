@@ -1,10 +1,12 @@
 'use client';
 
+import { Markdown } from '@react-email/components';
 import { useActionState, useState } from 'react';
 
 import { sendEmail, type EmailState, type EmailForm } from '@/actions/email';
 import { Button } from '@/components/atoms/button';
 import { Icon } from '@/components/atoms/icon';
+import { Link } from '@/components/atoms/link';
 import { loading } from '@/components/icons';
 import cx from '@/utils/cx';
 
@@ -87,29 +89,67 @@ export const ContactForm = () => {
           </p>
         )}
       </div>
-      <div className={'flex flex-col gap-1.5'}>
-        <label htmlFor={'message'} className={'font-semibold font-manrope'}>
-          Message
-        </label>
-        <textarea
-          required
-          name={'message'}
-          id={'message'}
-          rows={5}
-          disabled={submitting || sendEmailState.success}
-          value={formFields.message}
-          onChange={(e) => {
-            setFormFields({ ...formFields, message: e.target.value });
-          }}
-          placeholder={'Hello, Jahir!'}
-          className={cx(
-            'text-primary-txt',
-            'px-3 py-2 bg-white dark:bg-white/5',
-            'rounded-2 border border-divider',
-            'focus-visible:ring-1 focusvisible:ring-accent focus-visible:border-accent',
-            'resize-y',
-          )}
-        />
+      <div className={'grid grid-cols-1 tablet-sm:grid-cols-2 gap-4'}>
+        <div className={'flex flex-col gap-1.5'}>
+          <label htmlFor={'message'} className={'font-semibold font-manrope'}>
+            Message
+          </label>
+          <textarea
+            required
+            name={'message'}
+            id={'message'}
+            rows={5}
+            disabled={submitting || sendEmailState.success}
+            value={formFields.message}
+            onChange={(e) => {
+              setFormFields({ ...formFields, message: e.target.value });
+            }}
+            placeholder={'Hello, Jahir!'}
+            className={cx(
+              'text-primary-txt text-2xs',
+              'px-3 py-2 bg-white dark:bg-white/5',
+              'rounded-2 border border-divider',
+              'focus-visible:ring-1 focusvisible:ring-accent focus-visible:border-accent',
+              'resize-y font-mono',
+            )}
+          />
+          <p className={'text-tertiary-txt text-3xs -mt-1'}>
+            You can use{' '}
+            <Link
+              title={'Markdown Cheat Sheet'}
+              href={'https://www.markdownguide.org/cheat-sheet/'}
+            >
+              simple markdown
+            </Link>{' '}
+            in here.
+          </p>
+        </div>
+        <div className={'flex flex-col gap-1.5'}>
+          <label className={'font-semibold font-manrope'}>Preview</label>
+          <Markdown
+            markdownContainerStyles={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.25rem',
+              height: '100%',
+              border: '0.0625rem dashed var(--color-divider)',
+              marginBottom: '1.75rem',
+              borderRadius: '0.5rem',
+              padding: '0.5rem 0.75rem',
+            }}
+            markdownCustomStyles={{
+              h1: {},
+              h2: {},
+              h3: {},
+              h4: {},
+              h5: {},
+              h6: {},
+              image: { maxHeight: 56 },
+            }}
+          >
+            {formFields.message}
+          </Markdown>
+        </div>
         {sendEmailState.errors?.message && !submitting && (
           <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.message}

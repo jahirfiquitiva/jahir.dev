@@ -1,4 +1,4 @@
-import { Html, Text, Link } from '@react-email/components';
+import { Html, Text, Link, Markdown } from '@react-email/components';
 
 interface EmailBodyProps {
   name: string;
@@ -9,7 +9,7 @@ interface EmailBodyProps {
 export const EmailBody = (props: EmailBodyProps) => {
   return (
     <Html lang={'en'}>
-      <Text>{props.message}</Text>
+      <Markdown>{props.message}</Markdown>
       <Text style={{ fontStyle: 'italic' }}>
         Message sent by <Link href={`mailto:${props.email}`}>{props.name}</Link>
       </Text>
