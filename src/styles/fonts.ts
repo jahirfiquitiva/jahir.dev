@@ -14,3 +14,12 @@ export const Manrope = localFont({
   weight: '1 999',
   preload: false,
 });
+
+export const MonoLisa = localFont({
+  src: './../assets/fonts/monolisa.woff2',
+  variable: '--font-monolisa',
+  display: 'swap',
+  weight: '1 999',
+  preload: false,
+  adjustFontFallback: false,
+});
