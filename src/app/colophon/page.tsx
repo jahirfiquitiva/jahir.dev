@@ -15,11 +15,13 @@ export default function Colophon() {
       <DesignAndColors />
       <Logo />
       <Section id={'carbon-footprint'}>
-        <h2 className={'text-lg'}>Carbon Footprint</h2>
+        <h2 className={'text-lg -mb-2'}>Carbon Footprint&nbsp;&nbsp;🍃</h2>
         <p>
           This website produces less than{' '}
-          <span className={'tabular-nums'}>0.15</span> g of CO<sup>2</sup> per
-          visit, according to{' '}
+          <span title={'0.15 grams of carbon dioxide'}>
+            <span className={'tabular-nums'}>0.15</span> g of CO<sub>2</sub>
+          </span>{' '}
+          per per visit, according to{' '}
           <Link
             title={'Website Carbon Calculator results for jahir.dev'}
             href={'https://www.websitecarbon.com/website/jahir-dev/'}
@@ -33,7 +35,7 @@ export default function Colophon() {
           >
             Digital Beacon
           </Link>
-          , achieving a carbon rating of A.
+          , achieving a carbon rating of <strong>A</strong> 🌳.
         </p>
       </Section>
     </Section>

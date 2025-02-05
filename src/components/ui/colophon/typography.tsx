@@ -13,7 +13,7 @@ const TypographyPreview = tw.p`
 
 export const Typography = () => (
   <Section id={'typography'}>
-    <h2 className={'text-lg'}>Typography</h2>
+    <h2 className={'text-lg -mb-2'}>Typography</h2>
     <p className={'max-w-nice'}>
       For the website typography, I am using{' '}
       <Link title={'Inter font'} href={'https://rsms.me/inter/'}>

@@ -17,7 +17,7 @@ const LogoPreview = tw.div`
 
 export const Logo = () => (
   <Section id={'logo'}>
-    <h2 className={'text-lg'}>Logo</h2>
+    <h2 className={'text-lg -mb-2'}>Logo</h2>
     <p className={'max-w-nice'}>
       My personal logo is designed by{' '}
       <Link title={"Eduardo Pratti's portfolio"} href={'https://pratti.design'}>
