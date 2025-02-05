@@ -2,11 +2,18 @@ import { blogs as allBlogs, type Blog } from '@/content';
 
 export type PartialBlog = Omit<Blog, 'code' | 'keywords' | 'heroSource'>;
 
-const allowDrafts = process.env.NODE_ENV === 'development';
+type PossibleEnv = 'development' | 'preview' | 'production';
+const { NODE_ENV, VERCEL_ENV } = process.env as {
+  NODE_ENV?: PossibleEnv;
+  VERCEL_ENV?: PossibleEnv;
+};
+const currentEnvironment = VERCEL_ENV || NODE_ENV;
+console.error({ currentEnvironment });
+const allowDrafts = currentEnvironment !== 'production';
 
-export const allReadableBlogsWithContent: Array<Blog> = allBlogs.filter((it) =>
-  allowDrafts ? true : !it.draft,
-);
+export const allReadableBlogsWithContent: Array<Blog> = allowDrafts
+  ? allBlogs
+  : allBlogs.filter((it) => !it.draft);
 
 export const allReadableBlogs: Array<PartialBlog> =
   allReadableBlogsWithContent.map((b: Partial<Blog>) => {
