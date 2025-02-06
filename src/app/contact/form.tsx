@@ -56,9 +56,9 @@ export const ContactForm = () => {
           placeholder={'Joan Doe'}
         />
         {sendEmailState.errors?.name && !submitting && (
-          <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
+          <small className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.name}
-          </p>
+          </small>
         )}
       </div>
       <div className={'flex flex-col gap-1.5'}>
@@ -84,9 +84,9 @@ export const ContactForm = () => {
           placeholder={'joan.doe@example.com'}
         />
         {sendEmailState.errors?.email && !submitting && (
-          <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
+          <small className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.email}
-          </p>
+          </small>
         )}
       </div>
       <div className={'grid grid-cols-1 tablet-sm:grid-cols-2 gap-4'}>
@@ -113,7 +113,7 @@ export const ContactForm = () => {
               'resize-y font-mono',
             )}
           />
-          <p className={'text-tertiary-txt text-3xs -mt-1'}>
+          <small className={'text-tertiary-txt text-3xs -mt-1'}>
             You can use{' '}
             <Link
               title={'Markdown Cheat Sheet'}
@@ -122,7 +122,7 @@ export const ContactForm = () => {
               simple markdown
             </Link>{' '}
             in here.
-          </p>
+          </small>
         </div>
         <div className={'flex flex-col gap-1.5'}>
           <label className={'font-semibold font-manrope'}>Preview</label>
@@ -151,9 +151,9 @@ export const ContactForm = () => {
           </Markdown>
         </div>
         {sendEmailState.errors?.message && !submitting && (
-          <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
+          <small className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.message}
-          </p>
+          </small>
         )}
       </div>
       <div
@@ -164,13 +164,13 @@ export const ContactForm = () => {
       >
         {!submitting ? (
           sendEmailState.errors?.submission ? (
-            <p
+            <small
               className={
                 'font-semibold text-red-600 dark:text-red-400 text-2xs flex-1'
               }
             >
               {sendEmailState.errors.submission}
-            </p>
+            </small>
           ) : sendEmailState.success ? (
             <p
               className={cx(
