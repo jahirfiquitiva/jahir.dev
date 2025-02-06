@@ -144,6 +144,29 @@ article.mdx {
     counter-reset: line;
   }
 
+  [data-rehype-pretty-code-figure] pre.has-diff .diff {
+    &.add {
+      @apply bg-green-100/40 dark:bg-green-500/15;
+      &::before {
+        content: "+";
+        @apply text-green-700 dark:text-green-300;
+      }
+    }
+    &.remove {
+      user-select: none;
+      @apply bg-red-100/40 dark:bg-red-500/15;
+      &::before {
+        content: "-";
+        @apply text-red-700 dark:text-red-300;
+      }
+    }
+    &::before {
+      position: absolute;
+      left: 0.75rem;
+      user-select: none;
+    }
+  }
+
   [data-rehype-pretty-code-title] {
     @apply border border-divider;
     @apply rounded-t-2.5;
