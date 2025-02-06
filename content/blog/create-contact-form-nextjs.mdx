@@ -2,8 +2,8 @@
 title: Create a contact form in Next.js with Resend and Valibot
 date: '2025-02-05'
 color: '#B2D2D8'
-summary: Take advantage of server actions to build a simple contact form for your website
-keywords: 'form, contact, contact form, server actions, next.js, resend, valibot'
+summary: Take advantage of server functions to build a simple contact form for your website
+keywords: 'form, contact, contact form, server actions, react, react 19, server functions, next.js, resend, valibot'
 draft: true
 ---
 
@@ -11,7 +11,7 @@ Hey, it's honestly been a while since my last post, yes. Also a while since I up
 
 I decided to add a custom contact form to my website, and in the process I learnt a thing or two, and I have decided to share my experience with you.
 
-### Previous approach
+## The Previous approach
 
 I've been using [hi.new](https://hi.new/jahir) for some time now. It is an email service that automatically protects your inbox from spammers by doing some server-side checks of the email contents, and processing it before actually sending it to your mail.
 
@@ -21,7 +21,7 @@ Fortunately, they created a custom web component that makes their contact form p
 
 It might be good enough for the majority of people, I admit. But again, I wanted to customize it as much as possible and felt limited. And I also think it wasn't worth paying for me because I am not really the kind of person who receives a lot of emails.
 
-### Looking for a solution
+## Looking for a solution
 
 As I decided to make something fully custom and making it part of my website itself, I made a post on Twitter (X) which, of course, drove 0 interactions.
 
@@ -40,7 +40,7 @@ It seemed better fitted for sending emails to a massive amount of people, also k
 
 But, while that is true, it's also actually possible to do something as simple as what I was looking for.
 
-### Implementation
+## Implementation
 
 Resend already offers a JavaScript SDK (also [available for other languages](https://resend.com/docs/introduction) like Python, Ruby, PHP, and more) and it includes documentation for [implementing it using Next.js](https://resend.com/docs/send-with-nextjs), which is the framework [used to build](/colophon) my website.
 
@@ -54,7 +54,7 @@ As the official Resend documentation lacks (at the time of writing this post) th
 
 Let's dive into it already…
 
-#### Prerequisites
+### Prerequisites
 
 1. [Create an account](https://resend.com/signup) on Resend.com or [login](https://resend.com/login) if you already have one.
 2. [Create an API key](https://resend.com/api-keys):
@@ -89,7 +89,7 @@ bun add -D resend react-email @react-email/components @react-email/render valibo
 
 All these packages can be installed as `devDependencies` because they are only going to be used on the server.
 
-#### Create an Email Template
+### Create an Email Template
 
 The email template is basically the message you receive on your email. It will put the form values into some HTML for the email service to render.
 
@@ -116,7 +116,7 @@ export const EmailBody = (props: EmailBodyProps) => {
 
 This will include the message in the email body and a "footer" with the sender's name and their email for you to get back to them (for example).
 
-#### Create the Server Function
+### Create the Server Function
 
 The server function is where the send email logic lives. It will include validation, error handling and, of course, sending the email.
 
@@ -251,7 +251,216 @@ export const sendEmail = async (
 };
 ```
 
-#### Create the Form
+### Create the Form
+
+Now that we have the email template and the server function ready, it's time to create the UI to capture the email data using a form.
+
+We will leverage the [`useActionState`](https://react.dev/reference/react/useActionState) hook from React:
+
+It accepts three parameters:
+- `action`: The server function to be called when the form is submitted
+- `initialState`: The initial action state
+- `permalink`: Optional. A string containing the unique page URL that this form modifies. (We don't need it in this case)
+
+It returns an array with three fields:
+- `state`: the current state, which will match the `initialState` during the first render.
+- `formAction`: the action we can pass to the form to be called when submitting the form.
+- `isPending`: tells whether the action is being executed, or more exactly, if there's a pending Transition.
+
+For this example, I've renamed those three fields to `sendEmailState`, `sendEmailAction` and `submitting` respectively.
+
+You can learn more about `useActionState` in the [official React docs](https://react.dev/reference/react/useActionState).
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+
+import { useActionState } from 'react';
+
+import { sendEmail, type EmailState, type EmailForm } from '@/actions/email';
+
+export const ContactForm = () => {
+  const [sendEmailState, sendEmailAction, submitting] = useActionState<
+    EmailState,
+    FormData
+  >(sendEmail, {
+    success: false,
+  });
+
+  return (
+    <form action={sendEmailAction}>
+      <div>
+        <label htmlFor={'name'}>Name</label>
+        <input
+          type={'text'}
+          id={'name'}
+          name={'name'}
+          disabled={submitting}
+        />
+        {sendEmailState.errors?.name && !submitting && (
+          <small>{sendEmailState.errors.name}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'email'}>Email</label>
+        <input
+          type={'email'}
+          id={'email'}
+          name={'email'}
+          disabled={submitting}
+        />
+        {sendEmailState.errors?.email && !submitting && (
+          <small>{sendEmailState.errors.email}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'message'}>Message</label>
+        <textarea
+          name={'message'}
+          id={'message'}
+          cols={30}
+          rows={10}
+          disabled={submitting}
+        />
+        {sendEmailState.errors?.message && !submitting && (
+          <small>{sendEmailState.errors.message}</small>
+        )}
+      </div>
+
+      {!submitting && sendEmailState.success && <p>Email sent successfully!</p>}
+
+      <button type={'submit'} disabled={submitting}>
+        {submitting ? 'Sending…' : 'Send'}
+      </button>
+    </form>
+  );
+};
+```
+
+In this component we are conditionally rendering the error messages if found and if the form is currently not submitting, and rendering the success message if the `success` field in `sendEmailState` is `true`.
+
+We will also disable all the fields and the submit button while the form is submitting to prevent accidental duplicate submissions.
+
+And the important part is to assign the `sendEmailAction` to the `action` prop of `form`. It will take care of passing the fields data (or values) to our server function.
+
+### Run and test
+
+Now that we have the email template, the server function and the form (UI) ready, it's time to test it all.
+
+So the next step is to run your project, navigate to the page you put the form in, and test a submission making sure the expected behavior is the actual one, that you see errors when you should see them and also see the success state if that's the case.
+
+## Level up
+
+With the code we have, we can already start allowing users contacting us and us receiving emails. Anyway, there are some user experience improvements that we can do.
+
+### Improve the user experience
+If you tested the form, you might have noticed that the form fields are cleared upon submission, regardless of whether if it succeeds or not. Meaning if there are errors, users will have to type everything in the fields again, which is certainly not ideal.
+
+To fix that, we can use React's `useState` hook and make our form fields controlled (instead of uncontrolled as in the code previously used). You can read more about controlled `input`s in the [React docs](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+
+import { useActionState } from 'react';
+
+import { sendEmail, type EmailState, type EmailForm } from '@/actions/email';
+
+export const ContactForm = () => {
+  const [sendEmailState, sendEmailAction, submitting] = useActionState<
+    EmailState,
+    FormData
+  >(sendEmail, {
+    success: false,
+  });
+
+  const [formFields, setFormFields] = useState<EmailForm>({ // [!code ++]
+    name: '', // [!code ++]
+    email: '', // [!code ++]
+    message: '', // [!code ++]
+  }); // [!code ++]
+
+  return (
+    <form action={sendEmailAction}>
+      <div>
+        <label htmlFor={'name'}>Name</label>
+        <input
+          type={'text'}
+          id={'name'}
+          name={'name'}
+          disabled={submitting}
+          value={formFields.name} // [!code ++]
+          onChange={(e) => { // [!code ++]
+            setFormFields({ ...formFields, name: e.target.value }); // [!code ++]
+          }} // [!code ++]
+        />
+        {sendEmailState.errors?.name && !submitting && (
+          <small>{sendEmailState.errors.name}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'email'}>Email</label>
+        <input
+          type={'email'}
+          id={'email'}
+          name={'email'}
+          disabled={submitting}
+          value={formFields.email} // [!code ++]
+          onChange={(e) => { // [!code ++]
+            setFormFields({ ...formFields, email: e.target.value }); // [!code ++]
+          }} // [!code ++]
+        />
+        {sendEmailState.errors?.email && !submitting && (
+          <small>{sendEmailState.errors.email}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'message'}>Message</label>
+        <textarea
+          name={'message'}
+          id={'message'}
+          cols={30}
+          rows={10}
+          disabled={submitting}
+          value={formFields.message} // [!code ++]
+          onChange={(e) => { // [!code ++]
+            setFormFields({ ...formFields, message: e.target.value }); // [!code ++]
+          }} // [!code ++]
+        />
+        {sendEmailState.errors?.message && !submitting && (
+          <small>{sendEmailState.errors.message}</small>
+        )}
+      </div>
+
+      {!submitting && sendEmailState.success && <p>Email sent successfully!</p>}
+
+      <button type={'submit'} disabled={submitting}>
+        {submitting ? 'Sending…' : 'Send'}
+      </button>
+    </form>
+  );
+};
+```
+
+With those few additions, our form will no longer reset when the user submits it, which will allow them to easily edit anything that had errors.
+
+### Support formatting
+
+Coming soon™
+
+### Simple bots protection
+
+Coming soon™
 
 >  If a Server Function is passed to an action prop or called from inside an action then it is a Server Action, but not all Server Functions are Server Actions.
 
+## Conclusion
+
+Creating a custom contact form can significantly enhance user engagement on your website. By leveraging modern tools like Resend, you can streamline the process of receiving messages while ensuring a seamless experience for your visitors.
+
+I hope this blog post helps you implement a contact form that meets your needs, and I encourage you to explore further enhancements to improve user experience.
+If you find some, feel free to [send me a message](/contact) — I’d love to hear about your insights!
+
+Thanks for reading! ✌️
