@@ -448,7 +448,58 @@ With those few additions, our form will no longer reset when the user submits it
 
 ### Support Formatting
 
-Coming soon™
+In case you'd like your users to be able to format their messages (like using bold, italics, underline, etc.), you could allow doing so with [Markdown](https://www.markdownguide.org/).
+
+> Markdown is a lightweight markup language used to format plain text, making it easy to create structured documents with headings, lists, links, and more. It is widely used for writing content for the web and documentation due to its simplicity and readability.
+
+You can easily do this by taking advantage of the email form state and a package we already have: `@react-email/components`, which includes a `Markdown` component that will transform plain text using Markdown into styled HTML.
+
+First, add the `Markdown` component into your contact form component.
+
+_I am omitting part of the code to avoid making it too long._
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+[...]
+import { Markdown } from '@react-email/components';
+
+[...]
+
+<div>
+  <label>Preview</label>
+  <Markdown>{formFields.message}</Markdown>
+</div>
+
+[...]
+```
+
+> **NOTE:**
+> 
+> Since you are now using `@react-email/components` in a Client Component, you might have to move the dependency in `package.json` from `devDependencies` into `dependencies` so that it's bundled correctly.
+
+And then, update the email template we previously created to use `Markdown` instead of simple `Text`, so that the Markdown string is properly transformed into HTML.
+
+```tsx title="src/components/email.tsx"
+import { Html, Text, Link, Markdown } from '@react-email/components';
+
+interface EmailBodyProps {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export const EmailBody = (props: EmailBodyProps) => {
+  return (
+    <Html lang={'en'}>
+      <Text>{props.message}</Text> // [!code --]
+      <Markdown>{props.message}</Markdown> // [!code ++]
+      <Text style={{ fontStyle: 'italic' }}>
+        Message sent by <Link href={`mailto:${props.email}`}>{props.name}</Link>
+      </Text>
+    </Html>
+  );
+};
+```
 
 ### Simple Bots Protection
 
