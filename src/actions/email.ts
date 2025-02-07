@@ -12,22 +12,30 @@ import {
   safeParse,
   type InferInput,
   optional,
+  maxLength,
 } from 'valibot';
 
 import { EmailBody } from '@/components/molecules/email';
 
 const EmailSchema = object({
-  name: pipe(string(), trim(), minLength(1, 'This field is required')),
+  name: pipe(
+    string(),
+    trim(),
+    minLength(1, 'This field is required'),
+    maxLength(254, 'Your name seems to be a bit too long'),
+  ),
   email: pipe(
     string(),
     trim(),
     minLength(1, 'This field is required'),
+    maxLength(254, 'Your email seems to be a bit too long'),
     email('Email is not valid'),
   ),
   message: pipe(
     string(),
     trim(),
-    minLength(30, 'Message must be at least 30 characters long'),
+    minLength(16, 'Message must be at least 16 characters long'),
+    maxLength(500, 'Message must be at most 500 characters long'),
   ),
   color: optional(string()),
 });
