@@ -266,6 +266,7 @@ export const ContactForm = () => {
               : '',
           )}
           aria-hidden={sendEmailState.success}
+          data-umami-event={'Submit Contact Form'}
         >
           <Icon
             path={submitting ? loading : sendIconPath}
