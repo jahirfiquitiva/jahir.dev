@@ -156,6 +156,14 @@ export const ContactForm = () => {
           </small>
         )}
       </div>
+      <input
+        type={'hidden'}
+        name={'color'}
+        value={formFields.color}
+        onChange={(e) => {
+          setFormFields({ ...formFields, color: e.target.value });
+        }}
+      />
       <div
         className={cx(
           'flex flex-col gap-1 flex-wrap w-full',

@@ -11,6 +11,7 @@ import {
   minLength,
   safeParse,
   type InferInput,
+  optional,
 } from 'valibot';
 
 import { EmailBody } from '@/components/molecules/email';
@@ -28,6 +29,7 @@ const EmailSchema = object({
     trim(),
     minLength(30, 'Message must be at least 30 characters long'),
   ),
+  color: optional(string()),
 });
 
 export type EmailForm = InferInput<typeof EmailSchema>;
@@ -48,7 +50,11 @@ export const sendEmail = async (
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const message = formData.get('message') as string;
+  const color = formData.get('color') as string;
   try {
+    if (Boolean(color))
+      return { success: false, errors: { color: 'Keep trying' } };
+
     const validation = safeParse(EmailSchema, { name, email, message });
     if (!validation.success) {
       const errors: EmailState['errors'] = {};
