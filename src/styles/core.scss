@@ -105,9 +105,31 @@ span[role='img'][aria-label] {
   @apply text-primary-txt;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
   &:disabled {
     opacity: 0.85;
     cursor: not-allowed;
+  }
+}
+
+/** Hack to prevent zooming into inputs in iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @supports (-webkit-touch-callout: none) {
+    select,
+    textarea,
+    input {
+      font-size: 16px !important;
+      width: 106.67%;
+      line-height: 2;
+      transform: scale(0.9375);
+      transform-origin: left top;
+
+      &.font-mono {
+        width: 114.29%;
+        transform: scale(0.875);
+      }
+    }
   }
 }
