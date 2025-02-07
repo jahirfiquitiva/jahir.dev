@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 
+import { transformerNotationDiff } from '@shikijs/transformers';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 const commentsCustomColor = (theme: 'light' | 'dark') => ({
@@ -48,5 +49,6 @@ export const prettyCode = [
       key: 'keyword', // red
       prm: 'variable.parameter', // orange
     },
+    transformers: [transformerNotationDiff()],
   },
 ];

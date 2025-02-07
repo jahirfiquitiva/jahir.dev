@@ -1,7 +1,7 @@
 article.mdx {
   .react-tweet-theme {
     /* margin is handled by our wrappers */
-    --tweet-container-margin: 0;
+    --tweet-container-margin: 0.5rem 0;
     --tweet-font-color: theme('colors.secondary-txt');
     --tweet-font-color-secondary: theme('colors.tertiary-txt');
     --tweet-verified-old-color: theme('colors.tertiary-txt');

@@ -76,7 +76,7 @@ const StackIcons = () => (
 
 export const TechStack = () => (
   <Section id={'tech-stack'}>
-    <h2 className={'text-lg'}>Tech Stack</h2>
+    <h2 className={'text-lg -mb-2'}>Tech Stack</h2>
     <p className={'max-w-nice'}>
       This website is created with{' '}
       <Link title={'Next.js'} href={'https://nextjs.org/'}>

@@ -1,6 +1,5 @@
 import type { Header } from 'next/dist/lib/load-custom-routes';
 
-/* eslint-disable max-len */
 const ContentSecurityPolicy = `
   default-src 'self' vercel.live;
   worker-src 'self' blob:;
@@ -10,7 +9,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   object-src 'none';
   base-uri 'none';
-  media-src 'self';
+  media-src 'self' video.twimg.com;
   connect-src *;
   font-src 'self' data:;
 `;

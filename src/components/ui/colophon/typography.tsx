@@ -13,17 +13,21 @@ const TypographyPreview = tw.p`
 
 export const Typography = () => (
   <Section id={'typography'}>
-    <h2 className={'text-lg'}>Typography</h2>
+    <h2 className={'text-lg -mb-2'}>Typography</h2>
     <p className={'max-w-nice'}>
       For the website typography, I am using{' '}
       <Link title={'Inter font'} href={'https://rsms.me/inter/'}>
         Inter
       </Link>{' '}
-      for most of the content and{' '}
+      for most of the content,{' '}
       <Link title={'Manrope font'} href={'https://gent.media/manrope'}>
         Manrope
       </Link>{' '}
-      for headings, buttons and a few other elements. Both have some{' '}
+      for headings, buttons and a few other elements, and,{' '}
+      <Link title={'MonoLisa font'} href={'https://monolisa.dev'}>
+        MonoLisa
+      </Link>{' '}
+      for code snippets. All of them have some{' '}
       <Link
         title={'CSS font features'}
         href={
@@ -40,7 +44,7 @@ export const Typography = () => (
         'border border-divider border-dashed border-collapse',
       )}
     >
-      <TypographyPreview className={' font-sans font-normal'}>
+      <TypographyPreview className={'font-sans font-normal'}>
         Inter Regular
       </TypographyPreview>
       <TypographyPreview className={'font-sans font-medium'}>
@@ -51,6 +55,12 @@ export const Typography = () => (
       </TypographyPreview>
       <TypographyPreview className={'font-manrope font-bold'}>
         Manrope Bold
+      </TypographyPreview>
+      <TypographyPreview className={'font-mono font-normal'}>
+        MonoLisa Normal
+      </TypographyPreview>
+      <TypographyPreview className={'font-mono font-normal italic'}>
+        MonoLisa Italic
       </TypographyPreview>
     </div>
   </Section>

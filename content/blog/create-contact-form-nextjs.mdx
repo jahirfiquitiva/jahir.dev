@@ -1,0 +1,601 @@
+---
+title: Create a contact form in Next.js with Resend and Valibot
+date: '2025-02-05'
+color: '#B2D2D8'
+summary: Take advantage of server functions to build a simple contact form for your website
+keywords: 'form, contact, contact form, server actions, react, react 19, server functions, next.js, resend, valibot'
+draft: true
+---
+
+Hey, it's honestly been a while since my last post, yes. Also a while since I updated my website, which I've been doing recently. And that's why I'm writing this blog post.
+
+I decided to add a custom contact form to my website, and in the process, I learnt a thing or two, and I have decided to share my experience with you.
+
+## The Previous Approach
+
+I've been using [hi.new](https://hi.new/jahir) for some time now. It is an email service that automatically protects your inbox from spammers by doing some server-side checks of the email contents and processing it before actually sending it to your mail.
+
+This worked fine, but it meant taking visitors off my website to another website just to submit an email, which I think will make them less likely to send the email at all. And I think I may have also missed some conversations because of that.
+
+Fortunately, they created a custom web component that makes their contact form part of your website. I gave it a try, and it seemed to work just fine, except I wanted to give it a unique look that matched my website design, and I could not because although it supports some styling features, it's limited to colors, and I wanted to do more changes than just that.
+
+It might be good enough for the majority of people, I admit. But again, I wanted to customize it as much as possible and felt limited. And I also think it wasn't worth paying for me because I am not really the kind of person who receives a lot of emails.
+
+## Looking for a Solution
+
+As I decided to make something fully custom and make it part of my website itself, I made a post on Twitter (X) which, of course, drove zero interactions.
+
+<Tweet id="1886561566625292621" />
+
+Well, I actually also posted it on [Mastodon](https://mastodon.social/@jahirfiquitiva/113942614375071167), [Threads](https://www.threads.net/@jahirfiquitiva/post/DFoSvyWPfLK) and [Bluesky](https://bsky.app/profile/jahir.dev/post/3lhcpxm7h3o2s), where I did get one comment 🥲:
+[Leonardo](https://bsky.app/profile/leonardocabeza.bsky.social/post/3lhd7tp3kos2v) suggested using [Tally.so](https://tally.so/), and it looks really good; it includes many features for free, but once again, I find myself locked out of customization with it.
+
+After thinking about it for a while, I remembered a tool I found some time ago, which has a great-looking website and seems to care a lot about Developer Experience (DX) because it is really simple to implement. Enter: [resend.com](https://resend.com)
+
+> Resend aims to simplify the process of sending transactional and marketing emails, making it particularly useful for startups.
+
+This made me think it was _not_ meant to be used on a simple website like mine, where I would only be sending an email to myself.
+
+It seemed better fitted for sending emails to a massive amount of people, also known as users, and mostly focused on startups and companies.
+
+But, while that is true, it's also actually possible to do something as simple as what I was looking for.
+
+## Implementation
+
+Resend already offers a JavaScript SDK (also [available for other languages](https://resend.com/docs/introduction) like Python, Ruby, PHP, and more), and it includes documentation for [implementing it using Next.js](https://resend.com/docs/send-with-nextjs), which is the framework [used to build](/colophon) my website.
+
+Anyway, its documentation uses Next.js API Routes with either [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) or [App Router](https://nextjs.org/docs/app/api-reference/file-conventions/route) (which I'm also using in this website), but I wanted to implement it using a feature introduced in React 19 called [Server ~Actions~ Functions](https://react.dev/reference/rsc/server-functions).
+
+> Server Functions allow Client Components to call async functions executed on the server.
+> [...]
+> When that function is called on the client, React will send a request to the server to execute the function and return the result.
+
+As the official Resend documentation lacks (at the time of writing this post) this approach, I did some research and was able to find a [thorough blog post](https://mydevpa.ge/blog/how-to-send-emails-using-next-14-resend-and-react-email#creating-a-nextjs-server-action) by [Shahmir Faisal](https://www.linkedin.com/in/shahmir-faisal/) which was of great help during the implementation process. Their article also inspired me to write mine, although I will cover a few additional things and update the code to use the most recent changes and features from React 19.
+
+Let's dive into it already…
+
+### Prerequisites
+
+1. [Create an account](https://resend.com/signup) on Resend.com or [login](https://resend.com/login) if you already have one.
+2. [Create an API key](https://resend.com/api-keys):
+  
+    The `Sending access` permission is enough.
+
+3. [Verify your domain](https://resend.com/domains):
+  
+    Note: You can only verify domains you own.
+
+4. Create some environment variables to be used later:
+
+```bash title=".env"
+# Replace with the API key you created in step 2
+RESEND_API_KEY=re_ABC123
+# The email domain must have been verified in step 3
+RESEND_FROM_EMAIL=no-reply@example.com
+# This is your personal email or the one where you will receive messages
+RESEND_TARGET_EMAIL=your.email@example.com
+```
+
+5. Install the dependencies in your project
+```bash
+bun add -D resend react-email @react-email/components @react-email/render valibot
+```
+
+- `resend`: The SDK for the service we're going to use to send emails.
+- `react-email`: Allows creating email templates using React.
+- `@react-email/components`: It's a set of, well, React components to help with the email content.
+- `@react-email/render`: Converts components made with React into a HTML string.
+- `valibot`: Used for validating data using a schema.
+
+All these packages can be installed as `devDependencies` because they are only going to be used on the server.
+
+### Create an Email Template
+
+The email template is basically the message you receive in your email. It will put the form values into some HTML for the email service to render.
+
+```tsx title="src/components/email.tsx"
+import { Html, Text, Link } from '@react-email/components';
+
+interface EmailBodyProps {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export const EmailBody = (props: EmailBodyProps) => {
+  return (
+    <Html lang={'en'}>
+      <Text>{props.message}</Text>
+      <Text style={{ fontStyle: 'italic' }}>
+        Message sent by <Link href={`mailto:${props.email}`}>{props.name}</Link>
+      </Text>
+    </Html>
+  );
+};
+```
+
+This will include the message in the email body and a "footer" with the sender's name and their email for you to get back to them (for example).
+
+### Create the Server Function
+
+The server function is where the send email logic lives. It will include validation, error handling, and, of course, sending the email.
+
+The code is a bit long and hard to be split, so I left a few comments explaining some key parts of it.
+
+```ts title="src/actions/email.ts"
+// This is a server function which, well, should only run on the server.
+'use server';
+
+import { render } from '@react-email/render';
+import { Resend } from 'resend';
+import {
+  object,
+  string,
+  email,
+  pipe,
+  trim,
+  minLength,
+  safeParse,
+  type InferInput,
+} from 'valibot';
+
+// This is the Email Template component we created previously
+import { EmailBody } from '@/components/email';
+
+// Validation schema. This will check that the form values are valid.
+const EmailSchema = object({
+  // Name (without trailing or leading spaces) is required (minLength=1)
+  name: pipe(string(), trim(), minLength(1, 'This field is required')),
+  // Email (without trailing or leading spaces) is required (minLength=1)
+  email: pipe(
+    string(),
+    trim(),
+    minLength(1, 'This field is required'),
+    // and should match an email regex
+    email('Email is not valid'),
+  ),
+  // Message (without trailing or leading spaces) is required
+  // and should be at least 30 characters long.
+  message: pipe(
+    string(),
+    trim(),
+    minLength(30, 'Message must be at least 30 characters long'),
+  ),
+});
+
+// Infer the form data types from our schema
+export type EmailForm = InferInput<typeof EmailSchema>;
+
+// The type that represents our email form state (success and errors)
+// errors will be an object with keys that match our EmailForm fields
+// plus a 'submission' field for other kinds of errors
+export interface EmailState {
+  success: boolean;
+  errors?: {
+    [key in keyof EmailForm | 'submission']?: string | null | undefined;
+  };
+}
+
+// We create an instance of the Resend API
+const resend = new Resend(process.env.RESEND_API_KEY || '');
+
+// The function where magic happens
+export const sendEmail = async (
+  // The previous state. Not really used in this case
+  prevState: EmailState,
+  // The FormData which will include the fields defined in type EmailForm
+  // Unfortunately, this cannot be typed to match it
+  formData: FormData,
+// This function returns data of type EmailState, corresponding to the new form state
+): Promise<EmailState> => {
+  // We get the form fields from the formData object.
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const message = formData.get('message') as string;
+  try {
+    // Validate the data we received against the schema we previously defined
+    const validation = safeParse(EmailSchema, { name, email, message });
+    if (!validation.success) {
+      // If validation is not successful...
+      const errors: EmailState['errors'] = {};
+      // We map each issue or error to have an object where
+      // the keys are the fields names and the values are
+      // the error message for the corresponding field
+      validation.issues.forEach((issue) => {
+        const key = issue.path?.[0]?.key as keyof EmailForm;
+        errors[key] = issue.message;
+      });
+      return { success: false, errors };
+    }
+
+    // Schema validation was successful, let's try to send the email
+    // First, we render the EmailBody React component to get an HTML string
+    // which corresponds to the email body
+    const htmlBody = await render(EmailBody({ name, email, message }));
+    // Second, we call the send function from resend emails
+    // Which returns data and error
+    const { data, error } = await resend.emails.send({
+      // Here we use the environment variable for the email address to send this email from
+      // Remember you can only send emails from domains you verified
+      // We use the name of the sender as the name of the email owner
+      from: `${name} <${process.env.RESEND_FROM_EMAIL}>`,
+      // The email address that will receive the email
+      to: process.env.RESEND_TARGET_EMAIL || '',
+      // I'm using a default subject for all emails, but this can also
+      // be an additional form field.
+      subject: "New message",
+      // We take advantage of the `replyTo` field so that when we receive the email
+      // we can easily reply to the actual person that sent the message
+      // and not to an email on our domain
+      replyTo: email,
+      // The HTML string previously generated
+      html: htmlBody,
+    });
+    return {
+      errors: {
+        // If there was an error, we set it to the submission field
+        submission: error?.message,
+      },
+      // If email was sent, we will get an `id` for it
+      success: Boolean(data?.id),
+    };
+  } catch (error) {
+    // For any other kind of errors
+    return {
+      errors: {
+        submission: (error as Error).message || 'Something went wrong',
+      },
+      success: false,
+    };
+  }
+};
+```
+
+### Create the Form
+
+Now that we have the email template and the server function ready, it's time to create the UI to capture the email data using a form.
+
+We will leverage the [`useActionState`](https://react.dev/reference/react/useActionState) hook from React:
+
+It accepts three parameters:
+- `action`: The server function to be called when the form is submitted
+- `initialState`: The initial action state
+- `permalink`: Optional. A string containing the unique page URL that this form modifies. (We don't need it in this case)
+
+It returns an array with three fields:
+- `state`: the current state, which will match the `initialState` during the first render.
+- `formAction`: the action we can pass to the form to be called when submitting the form.
+- `isPending`: tells whether the action is being executed, or more exactly, if there's a pending Transition.
+
+For this example, I've renamed those three fields to `sendEmailState`, `sendEmailAction` and `submitting` respectively.
+
+You can learn more about `useActionState` in the [official React docs](https://react.dev/reference/react/useActionState).
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+
+import { useActionState } from 'react';
+
+import { sendEmail, type EmailState, type EmailForm } from '@/actions/email';
+
+export const ContactForm = () => {
+  const [sendEmailState, sendEmailAction, submitting] = useActionState<
+    EmailState,
+    FormData
+  >(sendEmail, {
+    success: false,
+  });
+
+  return (
+    <form action={sendEmailAction}>
+      <div>
+        <label htmlFor={'name'}>Name</label>
+        <input
+          type={'text'}
+          id={'name'}
+          name={'name'}
+          disabled={submitting}
+        />
+        {sendEmailState.errors?.name && !submitting && (
+          <small>{sendEmailState.errors.name}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'email'}>Email</label>
+        <input
+          type={'email'}
+          id={'email'}
+          name={'email'}
+          disabled={submitting}
+        />
+        {sendEmailState.errors?.email && !submitting && (
+          <small>{sendEmailState.errors.email}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'message'}>Message</label>
+        <textarea
+          name={'message'}
+          id={'message'}
+          cols={30}
+          rows={10}
+          disabled={submitting}
+        />
+        {sendEmailState.errors?.message && !submitting && (
+          <small>{sendEmailState.errors.message}</small>
+        )}
+      </div>
+
+      {!submitting && sendEmailState.success && <p>Email sent successfully!</p>}
+
+      <button type={'submit'} disabled={submitting}>
+        {submitting ? 'Sending…' : 'Send'}
+      </button>
+    </form>
+  );
+};
+```
+
+In this component, we are conditionally rendering the error messages if found and if the form is currently not submitting, and rendering the success message if the `success` field in `sendEmailState` is `true`.
+
+We will also disable all the fields and the submit button while the form is submitting to prevent accidental duplicate submissions.
+
+And the important part is to assign the `sendEmailAction` to the `action` prop of `form`. It will take care of passing the fields data (or values) to our server function.
+
+### Run and test
+
+Now that we have the email template, the server function, and the form (UI) ready, it's time to test it all.
+
+So the next step is to run your project, navigate to the page you put the form in, and test a submission, making sure the expected behavior is the actual one, that you see errors when you should see them and also see the success state if that's the case.
+
+## Level Up
+
+With the code we have, we can already start allowing users to contact us and us receiving emails. Anyway, there are some user experience improvements that we can do.
+
+### Improve the User Experience
+If you tested the form, you might have noticed that the form fields are cleared upon submission, regardless of whether if it succeeds or not. Meaning if there are errors, users will have to type everything in the fields again, which is certainly not ideal.
+
+To fix that, we can use React's `useState` hook and make our form fields controlled (instead of uncontrolled as in the code previously used). You can read more about controlled `input`s in the [React docs](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+
+import { useActionState } from 'react';
+
+import { sendEmail, type EmailState, type EmailForm } from '@/actions/email';
+
+export const ContactForm = () => {
+  const [sendEmailState, sendEmailAction, submitting] = useActionState<
+    EmailState,
+    FormData
+  >(sendEmail, {
+    success: false,
+  });
+
+  const [formFields, setFormFields] = useState<EmailForm>({ // [!code ++]
+    name: '', // [!code ++]
+    email: '', // [!code ++]
+    message: '', // [!code ++]
+  }); // [!code ++]
+
+  return (
+    <form action={sendEmailAction}>
+      <div>
+        <label htmlFor={'name'}>Name</label>
+        <input
+          type={'text'}
+          id={'name'}
+          name={'name'}
+          disabled={submitting}
+          value={formFields.name} // [!code ++]
+          onChange={(e) => { // [!code ++]
+            setFormFields({ ...formFields, name: e.target.value }); // [!code ++]
+          }} // [!code ++]
+        />
+        {sendEmailState.errors?.name && !submitting && (
+          <small>{sendEmailState.errors.name}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'email'}>Email</label>
+        <input
+          type={'email'}
+          id={'email'}
+          name={'email'}
+          disabled={submitting}
+          value={formFields.email} // [!code ++]
+          onChange={(e) => { // [!code ++]
+            setFormFields({ ...formFields, email: e.target.value }); // [!code ++]
+          }} // [!code ++]
+        />
+        {sendEmailState.errors?.email && !submitting && (
+          <small>{sendEmailState.errors.email}</small>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor={'message'}>Message</label>
+        <textarea
+          name={'message'}
+          id={'message'}
+          cols={30}
+          rows={10}
+          disabled={submitting}
+          value={formFields.message} // [!code ++]
+          onChange={(e) => { // [!code ++]
+            setFormFields({ ...formFields, message: e.target.value }); // [!code ++]
+          }} // [!code ++]
+        />
+        {sendEmailState.errors?.message && !submitting && (
+          <small>{sendEmailState.errors.message}</small>
+        )}
+      </div>
+
+      {!submitting && sendEmailState.success && <p>Email sent successfully!</p>}
+
+      <button type={'submit'} disabled={submitting}>
+        {submitting ? 'Sending…' : 'Send'}
+      </button>
+    </form>
+  );
+};
+```
+
+With those few additions, our form will no longer reset when the user submits it, which will allow them to easily edit anything that had errors.
+
+### Support Formatting
+
+In case you'd like your users to be able to format their messages (like using bold, italics, underline, etc.), you could allow doing so with [Markdown](https://www.markdownguide.org/).
+
+> Markdown is a lightweight markup language used to format plain text, making it easy to create structured documents with headings, lists, links, and more. It is widely used for writing content for the web and documentation due to its simplicity and readability.
+
+You can easily do this by taking advantage of the email form state and a package we already have: `@react-email/components`, which includes a `Markdown` component that will transform plain text using Markdown into styled HTML.
+
+First, add the `Markdown` component into your contact form component.
+
+_I am omitting part of the code to avoid making it too long._
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+[...]
+import { Markdown } from '@react-email/components';
+
+[...]
+
+<div>
+  <label>Preview</label>
+  <Markdown>{formFields.message}</Markdown>
+</div>
+
+[...]
+```
+
+> **NOTE:**
+> 
+> Since you are now using `@react-email/components` in a Client Component, you might have to move the dependency in `package.json` from `devDependencies` into `dependencies` so that it's bundled correctly.
+
+And then, update the email template we previously created to use `Markdown` instead of simple `Text`, so that the Markdown string is properly transformed into HTML.
+
+```tsx title="src/components/email.tsx"
+import { Html, Text, Link, Markdown } from '@react-email/components';
+
+interface EmailBodyProps {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export const EmailBody = (props: EmailBodyProps) => {
+  return (
+    <Html lang={'en'}>
+      <Text>{props.message}</Text> // [!code --]
+      <Markdown>{props.message}</Markdown> // [!code ++]
+      <Text style={{ fontStyle: 'italic' }}>
+        Message sent by <Link href={`mailto:${props.email}`}>{props.name}</Link>
+      </Text>
+    </Html>
+  );
+};
+```
+
+### Simple Bots Protection
+
+We can implement a simple protection by adding a hidden field to our form.
+
+_Once again I am omitting part of the code to avoid making it too long._
+
+```tsx title="src/components/contact-form.tsx"
+'use client';
+[...]
+
+<form>
+  <input // [!code ++]
+    type={'hidden'} // [!code ++]
+    name={'color'} // [!code ++]
+    value={formFields.color} // [!code ++]
+    onChange={(e) => { // [!code ++]
+      setFormFields({ ...formFields, color: e.target.value }); // [!code ++]
+    }} // [!code ++]
+  /> // [!code ++]
+  [...]
+</form>
+
+[...]
+```
+
+I've used `color` as the input name but you can use anything like `city`, `dog's name`, etc. We will just check that this value is empty to consider it _not filled_ by a bot or something similar.
+
+Now we should update our Server Function to do that check:
+
+1. Update our schema
+
+```ts title="src/actions/email.ts"
+import {
+  object,
+  string,
+  email,
+  pipe,
+  trim,
+  minLength,
+  safeParse,
+  type InferInput,
+  optional,  // [!code ++]
+} from 'valibot';
+
+[...]
+
+const EmailSchema = object({
+  name: pipe(string(), trim(), minLength(1, 'This field is required')),
+  email: pipe(
+    string(),
+    trim(),
+    minLength(1, 'This field is required'),
+    email('Email is not valid'),
+  ),
+  message: pipe(
+    string(),
+    trim(),
+    minLength(30, 'Message must be at least 30 characters long'),
+  ),
+  color: optional(string()), // [!code ++]
+});
+
+[...]
+```
+
+2. Update the Server Function validation
+
+```ts title="src/actions/email.ts"
+[...]
+
+export const sendEmail = async (
+  prevState: EmailState,
+  formData: FormData,
+): Promise<EmailState> => {
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const message = formData.get('message') as string;
+  const color = formData.get('color') as string; // [!code ++]
+  try {
+    if (Boolean(color)) // [!code ++]
+      return { success: false, errors: { color: 'Keep trying' } }; // [!code ++]
+
+    const validation = safeParse(EmailSchema, { name, email, message });
+    [...]
+  } catch (error) {
+    [...]
+  }
+};
+```
+
+## Conclusion
+
+Creating a custom contact form can significantly enhance user engagement on your website. By leveraging modern tools like Resend, you can streamline the process of receiving messages while ensuring a seamless experience for your visitors.
+
+I hope this blog post helps you implement a contact form that meets your needs, and I encourage you to explore further enhancements to improve user experience.
+If you find some, feel free to [send me a message](/contact) — I’d love to hear about your insights!
+
+Thanks for reading! ✌️

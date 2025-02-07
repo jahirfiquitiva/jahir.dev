@@ -32,6 +32,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@neondatabase/serverless": "^0.10.4",
     "@react-email/render": "1.0.4",
+    "@shikijs/transformers": "^2.3.1",
     "@stylistic/eslint-plugin": "^3.0.1",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.13.1",

@@ -17,6 +17,28 @@ const sentIconPath =
   // eslint-disable-next-line @stylistic/max-len
   'M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z';
 
+const CharactersCount = (props: {
+  currentCount: number;
+  maxCount: number;
+  minCount?: number;
+}) => {
+  const { currentCount, maxCount, minCount = 1 } = props;
+  return (
+    <small
+      title={`${currentCount} out of ${maxCount} characters typed`}
+      className={cx(
+        'text-green-700 dark:text-green-400',
+        currentCount >= maxCount * 0.85 &&
+          'text-yellow-700 dark:text-yellow-400',
+        (currentCount >= maxCount || currentCount < minCount) &&
+          'text-red-700 dark:text-red-400',
+      )}
+    >
+      {currentCount} / {maxCount}
+    </small>
+  );
+};
+
 export const ContactForm = () => {
   const [sendEmailState, sendEmailAction, submitting] = useActionState<
     EmailState,
@@ -34,14 +56,26 @@ export const ContactForm = () => {
   return (
     <form action={sendEmailAction} className={'flex flex-col gap-5 relative'}>
       <div className={'flex flex-col gap-1.5'}>
-        <label htmlFor={'name'} className={'font-semibold font-manrope'}>
-          Name
-        </label>
+        <p
+          className={
+            'flex flex-row w-full flex-wrap items-center justify-between'
+          }
+        >
+          <label htmlFor={'name'} className={'font-semibold font-manrope'}>
+            Name
+          </label>
+          <CharactersCount
+            currentCount={formFields.name.length}
+            maxCount={254}
+          />
+        </p>
         <input
           required
           type={'text'}
           id={'name'}
           name={'name'}
+          minLength={1}
+          maxLength={254}
           disabled={submitting || sendEmailState.success}
           value={formFields.name}
           onChange={(e) => {
@@ -56,20 +90,32 @@ export const ContactForm = () => {
           placeholder={'Joan Doe'}
         />
         {sendEmailState.errors?.name && !submitting && (
-          <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
+          <small className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.name}
-          </p>
+          </small>
         )}
       </div>
       <div className={'flex flex-col gap-1.5'}>
-        <label htmlFor={'email'} className={'font-semibold font-manrope'}>
-          Email
-        </label>
+        <p
+          className={
+            'flex flex-row w-full flex-wrap items-center justify-between'
+          }
+        >
+          <label htmlFor={'email'} className={'font-semibold font-manrope'}>
+            Email
+          </label>
+          <CharactersCount
+            currentCount={formFields.email.length}
+            maxCount={254}
+          />
+        </p>
         <input
           required
           type={'email'}
           id={'email'}
           name={'email'}
+          minLength={1}
+          maxLength={254}
           disabled={submitting || sendEmailState.success}
           value={formFields.email}
           onChange={(e) => {
@@ -84,20 +130,33 @@ export const ContactForm = () => {
           placeholder={'joan.doe@example.com'}
         />
         {sendEmailState.errors?.email && !submitting && (
-          <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
+          <small className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.email}
-          </p>
+          </small>
         )}
       </div>
       <div className={'grid grid-cols-1 tablet-sm:grid-cols-2 gap-4'}>
         <div className={'flex flex-col gap-1.5'}>
-          <label htmlFor={'message'} className={'font-semibold font-manrope'}>
-            Message
-          </label>
+          <p
+            className={
+              'flex flex-row w-full flex-wrap items-center justify-between'
+            }
+          >
+            <label htmlFor={'message'} className={'font-semibold font-manrope'}>
+              Message
+            </label>
+            <CharactersCount
+              minCount={16}
+              currentCount={formFields.message.length}
+              maxCount={500}
+            />
+          </p>
           <textarea
             required
             name={'message'}
             id={'message'}
+            minLength={16}
+            maxLength={500}
             rows={5}
             disabled={submitting || sendEmailState.success}
             value={formFields.message}
@@ -106,14 +165,14 @@ export const ContactForm = () => {
             }}
             placeholder={'Hello, Jahir!'}
             className={cx(
-              'text-primary-txt text-2xs',
+              'text-primary-txt text-2xs min-h-24 h-auto',
               'px-3 py-2 bg-white dark:bg-white/5',
               'rounded-2 border border-divider',
               'focus-visible:ring-1 focusvisible:ring-accent focus-visible:border-accent',
-              'resize-y font-mono',
+              'resize-y font-mono [field-sizing:content]',
             )}
           />
-          <p className={'text-tertiary-txt text-3xs -mt-1'}>
+          <small className={'text-tertiary-txt text-3xs -mt-1'}>
             You can use{' '}
             <Link
               title={'Markdown Cheat Sheet'}
@@ -122,7 +181,7 @@ export const ContactForm = () => {
               simple markdown
             </Link>{' '}
             in here.
-          </p>
+          </small>
         </div>
         <div className={'flex flex-col gap-1.5'}>
           <label className={'font-semibold font-manrope'}>Preview</label>
@@ -133,7 +192,7 @@ export const ContactForm = () => {
               gap: '0.25rem',
               height: '100%',
               border: '0.0625rem dashed var(--color-divider)',
-              marginBottom: '1.75rem',
+              marginBottom: '1.625rem',
               borderRadius: '0.5rem',
               padding: '0.5rem 0.75rem',
             }}
@@ -151,11 +210,19 @@ export const ContactForm = () => {
           </Markdown>
         </div>
         {sendEmailState.errors?.message && !submitting && (
-          <p className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
+          <small className={'text-red-600 dark:text-red-400 text-2xs -mt-1'}>
             {sendEmailState.errors.message}
-          </p>
+          </small>
         )}
       </div>
+      <input
+        type={'hidden'}
+        name={'color'}
+        value={formFields.color}
+        onChange={(e) => {
+          setFormFields({ ...formFields, color: e.target.value });
+        }}
+      />
       <div
         className={cx(
           'flex flex-col gap-1 flex-wrap w-full',
@@ -164,13 +231,13 @@ export const ContactForm = () => {
       >
         {!submitting ? (
           sendEmailState.errors?.submission ? (
-            <p
+            <small
               className={
                 'font-semibold text-red-600 dark:text-red-400 text-2xs flex-1'
               }
             >
               {sendEmailState.errors.submission}
-            </p>
+            </small>
           ) : sendEmailState.success ? (
             <p
               className={cx(

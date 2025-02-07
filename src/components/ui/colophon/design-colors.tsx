@@ -13,7 +13,7 @@ const ColorSquare = tw.div`
 
 export const DesignAndColors = () => (
   <Section id={'design-colors'}>
-    <h2 className={'text-lg'}>Design & Colors</h2>
+    <h2 className={'text-lg -mb-2'}>Design & Colors</h2>
     <p className={'max-w-nice'}>
       I personally handpicked the brand&apos;s color palette. The design is a
       blend of{' '}
