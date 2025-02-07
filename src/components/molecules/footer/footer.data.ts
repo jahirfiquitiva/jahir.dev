@@ -41,7 +41,7 @@ export const linksGroups = [
         className: 'text-yellow',
       },
       {
-        title: 'Contact',
+        title: 'Get in Touch',
         href: '/contact',
         className: 'text-green',
         props: {

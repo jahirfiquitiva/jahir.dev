@@ -10,7 +10,9 @@ import { ContactForm } from './form';
 export default function ContactPage() {
   return (
     <Section id={'contact'} className={'flex-1 gap-6'}>
-      <h1 className={getColoredTextClasses('green', 'self-start')}>Contact</h1>
+      <h1 className={getColoredTextClasses('green', 'self-start')}>
+        Get in Touch!
+      </h1>
       <Clock longFormat>
         Feel free to send me a message, I will get back to you as soon as
         possible.
