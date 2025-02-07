@@ -9,28 +9,28 @@ draft: true
 
 Hey, it's honestly been a while since my last post, yes. Also a while since I updated my website, which I've been doing recently. And that's why I'm writing this blog post.
 
-I decided to add a custom contact form to my website, and in the process I learnt a thing or two, and I have decided to share my experience with you.
+I decided to add a custom contact form to my website, and in the process, I learnt a thing or two, and I have decided to share my experience with you.
 
-## The Previous approach
+## The Previous Approach
 
-I've been using [hi.new](https://hi.new/jahir) for some time now. It is an email service that automatically protects your inbox from spammers by doing some server-side checks of the email contents, and processing it before actually sending it to your mail.
+I've been using [hi.new](https://hi.new/jahir) for some time now. It is an email service that automatically protects your inbox from spammers by doing some server-side checks of the email contents and processing it before actually sending it to your mail.
 
-This worked fine but it meant taking visitors of my website to another website just to submit an email, which I think will make them less likely to send the email at all. And I think I may have also missed some conversations because of that.
+This worked fine, but it meant taking visitors off my website to another website just to submit an email, which I think will make them less likely to send the email at all. And I think I may have also missed some conversations because of that.
 
-Fortunately, they created a custom web component that makes their contact form part of your website. I gave it a try and it seemed to work just fine, except I wanted to give it a unique look that matched my website design, and I could not, because although it supports some styling features, it's limited to colors, and I wanted to do more changes than just that.
+Fortunately, they created a custom web component that makes their contact form part of your website. I gave it a try, and it seemed to work just fine, except I wanted to give it a unique look that matched my website design, and I could not because although it supports some styling features, it's limited to colors, and I wanted to do more changes than just that.
 
 It might be good enough for the majority of people, I admit. But again, I wanted to customize it as much as possible and felt limited. And I also think it wasn't worth paying for me because I am not really the kind of person who receives a lot of emails.
 
-## Looking for a solution
+## Looking for a Solution
 
-As I decided to make something fully custom and making it part of my website itself, I made a post on Twitter (X) which, of course, drove 0 interactions.
+As I decided to make something fully custom and make it part of my website itself, I made a post on Twitter (X) which, of course, drove zero interactions.
 
 <Tweet id="1886561566625292621" />
 
 Well, I actually also posted it on [Mastodon](https://mastodon.social/@jahirfiquitiva/113942614375071167), [Threads](https://www.threads.net/@jahirfiquitiva/post/DFoSvyWPfLK) and [Bluesky](https://bsky.app/profile/jahir.dev/post/3lhcpxm7h3o2s), where I did get one comment 🥲:
-[Leonardo](https://bsky.app/profile/leonardocabeza.bsky.social/post/3lhd7tp3kos2v) suggested to use [Tally.so](https://tally.so/), and it looks really good, it includes many features for free, but once again, I find myself locked out of customization with it.
+[Leonardo](https://bsky.app/profile/leonardocabeza.bsky.social/post/3lhd7tp3kos2v) suggested using [Tally.so](https://tally.so/), and it looks really good; it includes many features for free, but once again, I find myself locked out of customization with it.
 
-After thinking about it for a while, I remembered of a tool I found some time ago, which has a great-looking website and seems to care a lot about Developer Experience (DX) because it is really simple to implement. Enter: [resend.com](https://resend.com)
+After thinking about it for a while, I remembered a tool I found some time ago, which has a great-looking website and seems to care a lot about Developer Experience (DX) because it is really simple to implement. Enter: [resend.com](https://resend.com)
 
 > Resend aims to simplify the process of sending transactional and marketing emails, making it particularly useful for startups.
 
@@ -42,13 +42,13 @@ But, while that is true, it's also actually possible to do something as simple a
 
 ## Implementation
 
-Resend already offers a JavaScript SDK (also [available for other languages](https://resend.com/docs/introduction) like Python, Ruby, PHP, and more) and it includes documentation for [implementing it using Next.js](https://resend.com/docs/send-with-nextjs), which is the framework [used to build](/colophon) my website.
+Resend already offers a JavaScript SDK (also [available for other languages](https://resend.com/docs/introduction) like Python, Ruby, PHP, and more), and it includes documentation for [implementing it using Next.js](https://resend.com/docs/send-with-nextjs), which is the framework [used to build](/colophon) my website.
 
-Anyway, its documentation uses Next.js API Routes with either [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) or [App Router](https://nextjs.org/docs/app/api-reference/file-conventions/route) (which I'm also using in this website) but I wanted to implement it using a feature introduced in React 19 called [Server ~Actions~ Functions](https://react.dev/reference/rsc/server-functions).
+Anyway, its documentation uses Next.js API Routes with either [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) or [App Router](https://nextjs.org/docs/app/api-reference/file-conventions/route) (which I'm also using in this website), but I wanted to implement it using a feature introduced in React 19 called [Server ~Actions~ Functions](https://react.dev/reference/rsc/server-functions).
 
 > Server Functions allow Client Components to call async functions executed on the server.
 > [...]
-> When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+> When that function is called on the client, React will send a request to the server to execute the function and return the result.
 
 As the official Resend documentation lacks (at the time of writing this post) this approach, I did some research and was able to find a [thorough blog post](https://mydevpa.ge/blog/how-to-send-emails-using-next-14-resend-and-react-email#creating-a-nextjs-server-action) by [Shahmir Faisal](https://www.linkedin.com/in/shahmir-faisal/) which was of great help during the implementation process.
 
@@ -91,7 +91,7 @@ All these packages can be installed as `devDependencies` because they are only g
 
 ### Create an Email Template
 
-The email template is basically the message you receive on your email. It will put the form values into some HTML for the email service to render.
+The email template is basically the message you receive in your email. It will put the form values into some HTML for the email service to render.
 
 ```tsx title="src/components/email.tsx"
 import { Html, Text, Link } from '@react-email/components';
@@ -118,9 +118,9 @@ This will include the message in the email body and a "footer" with the sender's
 
 ### Create the Server Function
 
-The server function is where the send email logic lives. It will include validation, error handling and, of course, sending the email.
+The server function is where the send email logic lives. It will include validation, error handling, and, of course, sending the email.
 
-The code is a bit long and hard to be splitted, so I left a few comments explaining some key parts of it.
+The code is a bit long and hard to be split, so I left a few comments explaining some key parts of it.
 
 ```ts title="src/actions/email.ts"
 // This is a server function which, well, should only run on the server.
@@ -184,7 +184,7 @@ export const sendEmail = async (
   // The previous state. Not really used in this case
   prevState: EmailState,
   // The FormData which will include the fields defined in type EmailForm
-  // Unfortunately this cannot be typed to match it
+  // Unfortunately, this cannot be typed to match it
   formData: FormData,
 // This function returns data of type EmailState, corresponding to the new form state
 ): Promise<EmailState> => {
@@ -338,7 +338,7 @@ export const ContactForm = () => {
 };
 ```
 
-In this component we are conditionally rendering the error messages if found and if the form is currently not submitting, and rendering the success message if the `success` field in `sendEmailState` is `true`.
+In this component, we are conditionally rendering the error messages if found and if the form is currently not submitting, and rendering the success message if the `success` field in `sendEmailState` is `true`.
 
 We will also disable all the fields and the submit button while the form is submitting to prevent accidental duplicate submissions.
 
@@ -346,15 +346,15 @@ And the important part is to assign the `sendEmailAction` to the `action` prop o
 
 ### Run and test
 
-Now that we have the email template, the server function and the form (UI) ready, it's time to test it all.
+Now that we have the email template, the server function, and the form (UI) ready, it's time to test it all.
 
-So the next step is to run your project, navigate to the page you put the form in, and test a submission making sure the expected behavior is the actual one, that you see errors when you should see them and also see the success state if that's the case.
+So the next step is to run your project, navigate to the page you put the form in, and test a submission, making sure the expected behavior is the actual one, that you see errors when you should see them and also see the success state if that's the case.
 
-## Level up
+## Level Up
 
-With the code we have, we can already start allowing users contacting us and us receiving emails. Anyway, there are some user experience improvements that we can do.
+With the code we have, we can already start allowing users to contact us and us receiving emails. Anyway, there are some user experience improvements that we can do.
 
-### Improve the user experience
+### Improve the User Experience
 If you tested the form, you might have noticed that the form fields are cleared upon submission, regardless of whether if it succeeds or not. Meaning if there are errors, users will have to type everything in the fields again, which is certainly not ideal.
 
 To fix that, we can use React's `useState` hook and make our form fields controlled (instead of uncontrolled as in the code previously used). You can read more about controlled `input`s in the [React docs](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
@@ -446,11 +446,11 @@ export const ContactForm = () => {
 
 With those few additions, our form will no longer reset when the user submits it, which will allow them to easily edit anything that had errors.
 
-### Support formatting
+### Support Formatting
 
 Coming soon™
 
-### Simple bots protection
+### Simple Bots Protection
 
 Coming soon™
 
