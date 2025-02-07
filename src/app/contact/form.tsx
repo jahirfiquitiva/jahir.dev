@@ -195,6 +195,7 @@ export const ContactForm = () => {
               marginBottom: '1.625rem',
               borderRadius: '0.5rem',
               padding: '0.5rem 0.75rem',
+              minHeight: '6rem',
             }}
             markdownCustomStyles={{
               h1: {},
@@ -227,6 +228,7 @@ export const ContactForm = () => {
         className={cx(
           'flex flex-col gap-1 flex-wrap w-full',
           'tablet-sm:flex-row tablet-sm:justify-end tablet-sm:items-center',
+          '-mt-6 tablet-sm:mt-0',
         )}
       >
         {!submitting ? (
