@@ -1,4 +1,13 @@
 {
   "upgrade": true,
-  "reject": ["tailwindcss"]
+  "reject": [
+    "// Not updating to Tailwind 4 yet",
+    "tailwindcss",
+    "tailwind-merge",
+    "tailwindcss-hocus",
+    "// Upgrading shiki will cause velite to fail",
+    "// Requires an update for rehype-pretty-code",
+    "shiki",
+    "@shikijs/transformers"
+  ]
 }
