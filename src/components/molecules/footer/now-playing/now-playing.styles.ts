@@ -28,6 +28,7 @@ export const NowPlayingTextsContainer = tw.div`
 `;
 
 export const ScrollingText = tw.span`
+  decoration-wavy
   motion-safe:animate-scroll
   motion-safe:[animation-play-state:running]
   group-hocus/music:underline

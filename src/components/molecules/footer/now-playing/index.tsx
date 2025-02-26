@@ -1,5 +1,6 @@
 'use client';
 
+import tunez from '@/assets/images/tunez.png';
 import { Icon } from '@/components/atoms/icon';
 import { loading as loadingIcon } from '@/components/icons';
 import { useRequest } from '@/hooks/use-request';
@@ -22,20 +23,20 @@ export const FooterNowPlaying = () => {
     return <Icon path={loadingIcon} className={'size-5 animate-spin'} />;
 
   if (!isPlaying || !track) return <Clock />;
-  const scrollingText = `${track.name} by ${track.artist}`;
+  const scrollingText = `${track.name} by ${track.artist || 'unknown'}`;
   const animationDuration = scrollingText.length * 0.35;
   return (
     <NowPlayingLink
-      title={`Listen to "${track.name}" by "${track.artist}" on Spotify`}
-      href={track.url}
+      title={`Listen to "${track.name}" by "${track.artist || 'unknown'}"`}
+      href={track.url || 'https://tunez.jahir.dev'}
       target={'_blank'}
       data-umami-event={'Now Playing'}
       data-umami-event-from={'Footer'}
       style={{ maxWidth: '28ch' }}
     >
       <NowPlayingAlbumCover
-        alt={`Album cover: "${track.album}" by "${track.artist}"`}
-        src={track.image?.url || ''}
+        src={track.image?.url ?? tunez}
+        alt={`Album cover for "${track.album}" by "${track.artist || 'unknown'}"`}
         width={24}
         height={24}
         quality={50}

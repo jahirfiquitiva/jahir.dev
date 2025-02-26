@@ -18,10 +18,19 @@ import {
   AlbumCover,
 } from './activity.styles';
 
+const getTrackText = (
+  track?: Exclude<NowPlayingAPIResponse, null>['track'],
+) => {
+  if (!track) return '"unknown"';
+  if (!track.artist) return `"${track.name || 'unknown'}"`;
+  return `"${track.name}" by "${track.artist}"`;
+};
+
 export const Music = () => {
   const { data, loading } =
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
   const { track, isPlaying = false } = data || {};
+  const trackText = getTrackText(track);
   return (
     <ActivityCard
       title={
@@ -29,7 +38,7 @@ export const Music = () => {
           ? 'Loading…'
           : !track
             ? 'tunez playlist on Spotify'
-            : `"${track.name}" by "${track.artist}" on Spotify`
+            : `${trackText}`
       }
       href={track?.url || 'https://tunez.jahir.dev'}
       target={'_blank'}
@@ -49,7 +58,7 @@ export const Music = () => {
             ? 'Loading…'
             : !track
               ? 'tunez playlist cover'
-              : `Album cover: "${track.album}" by "${track.artist}"`
+              : `Album cover for ${trackText}`
         }
         src={track?.image?.url ?? tunez}
         width={78}
@@ -71,7 +80,7 @@ export const Music = () => {
               ? 'Loading…'
               : !track
                 ? 'tunez playlist cover'
-                : `Album cover: "${track.album}" by "${track.artist}"`
+                : `Album cover for ${trackText}`
           }
           src={track?.image?.url ?? tunez}
           width={track?.image?.width || 78}
@@ -103,7 +112,11 @@ export const Music = () => {
             {loading ? '' : (track?.name ?? 'tunez')}
           </TrackName>
           <TrackArtist className={loading ? 'bg-divider' : ''}>
-            {loading ? '' : (track?.artist ?? '99 top recently listened songs')}
+            {loading
+              ? ''
+              : !track
+                ? '99 top recently listened songs'
+                : track.artist || 'Unknown'}
           </TrackArtist>
         </Texts>
       </Content>
