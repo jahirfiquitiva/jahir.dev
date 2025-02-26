@@ -1,5 +1,6 @@
 'use client';
 
+import local from '@/assets/images/local-music.jpg';
 import tunez from '@/assets/images/tunez.png';
 import { Icon } from '@/components/atoms/icon';
 import { loading as loadingIcon } from '@/components/icons';
@@ -35,8 +36,12 @@ export const FooterNowPlaying = () => {
       style={{ maxWidth: '28ch' }}
     >
       <NowPlayingAlbumCover
-        src={track.image?.url ?? tunez}
-        alt={`Album cover for "${track.album}" by "${track.artist || 'unknown'}"`}
+        alt={
+          track.local
+            ? 'Image of a disc'
+            : `Album cover for "${track.album}" by "${track.artist || 'unknown'}"`
+        }
+        src={track.local ? local : (track.image?.url ?? tunez)}
         width={24}
         height={24}
         quality={50}

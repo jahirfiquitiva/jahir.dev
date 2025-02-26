@@ -27,6 +27,7 @@ const mapTrackData = (track?: Track | null): ReadableTrack | null => {
         : undefined,
       hdImage: albumImage,
       duration: track.duration_ms || 0,
+      local: track.is_local || false,
     };
   } catch (e) {
     return null;

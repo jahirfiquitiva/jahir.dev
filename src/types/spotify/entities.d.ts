@@ -30,4 +30,5 @@ export interface ReadableTrack {
   image?: Image;
   hdImage?: Image;
   duration: number;
+  local?: boolean;
 }

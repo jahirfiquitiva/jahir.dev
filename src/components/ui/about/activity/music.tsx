@@ -1,5 +1,6 @@
 'use client';
 
+import local from '@/assets/images/local-music.jpg';
 import tunez from '@/assets/images/tunez.png';
 import { useRequest } from '@/hooks/use-request';
 import type { NowPlayingAPIResponse } from '@/types/spotify/request';
@@ -58,9 +59,11 @@ export const Music = () => {
             ? 'Loading…'
             : !track
               ? 'tunez playlist cover'
-              : `Album cover for ${trackText}`
+              : track.local
+                ? 'Image of a disc'
+                : `Album cover for ${trackText}`
         }
-        src={track?.image?.url ?? tunez}
+        src={track?.local ? local : (track?.image?.url ?? tunez)}
         width={78}
         height={78}
         quality={50}
@@ -80,11 +83,14 @@ export const Music = () => {
               ? 'Loading…'
               : !track
                 ? 'tunez playlist cover'
-                : `Album cover for ${trackText}`
+                : track.local
+                  ? 'Image of a disc'
+                  : `Album cover for ${trackText}`
           }
-          src={track?.image?.url ?? tunez}
+          src={track?.local ? local : (track?.image?.url ?? tunez)}
           width={track?.image?.width || 78}
           height={track?.image?.width || 78}
+          className={track?.local ? 'rounded-half' : ''}
         />
         <Texts className={'mix-blend-hard-light'}>
           <Header>
