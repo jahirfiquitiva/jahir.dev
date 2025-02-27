@@ -16,6 +16,7 @@ import {
 } from 'valibot';
 
 import { EmailBody } from '@/components/molecules/email';
+import { calculateSpamScore } from '@/utils/spam-checker';
 
 const EmailSchema = object({
   name: pipe(
@@ -73,7 +74,19 @@ export const sendEmail = async (
       return { success: false, errors };
     }
 
-    const htmlBody = await render(EmailBody({ name, email, message }));
+    const spamScore = calculateSpamScore(email, message);
+    // TODO: Adjust the threshold
+    const isSpam = spamScore >= 0.7;
+    if (isSpam) {
+      return {
+        success: false,
+        errors: { submission: 'You shall not pass! 🧙‍♂️' },
+      };
+    }
+
+    const htmlBody = await render(
+      EmailBody({ name, email, message, score: spamScore }),
+    );
     const { data, error } = await resend.emails.send({
       from: `${name} <${process.env.RESEND_FROM_EMAIL}>`,
       to: process.env.RESEND_TARGET_EMAIL || '',
