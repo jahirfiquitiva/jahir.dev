@@ -76,7 +76,7 @@ export const sendEmail = async (
 
     const spamScore = calculateSpamScore(email, message);
     // TODO: Adjust the threshold
-    const isSpam = spamScore >= 0.7;
+    const isSpam = spamScore >= 0.65;
     if (isSpam) {
       return {
         success: false,
