@@ -78,6 +78,9 @@ export const sendEmail = async (
     // TODO: Adjust the threshold
     const isSpam = spamScore >= 0.65;
     if (isSpam) {
+      console.error(
+        `\n==========\nSPAM DETECTED!\nFrom: ${name} (${email})\n${message}\n==========\n`,
+      );
       return {
         success: false,
         errors: { submission: 'You shall not pass! 🧙‍♂️' },
