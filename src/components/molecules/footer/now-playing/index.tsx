@@ -26,13 +26,17 @@ export const FooterNowPlaying = () => {
   if (!isPlaying || !track) return <Clock />;
   const scrollingText = `${track.name} by ${track.artist || 'unknown'}`;
   const animationDuration = scrollingText.length * 0.35;
+  const trackURL = track.id
+    ? `https://song.link/s/${track.id}`
+    : track.url || 'https://tunez.jahir.dev';
   return (
     <NowPlayingLink
       title={`Listen to "${track.name}" by "${track.artist || 'unknown'}"`}
-      href={track.url || 'https://tunez.jahir.dev'}
+      href={trackURL}
       target={'_blank'}
       data-umami-event={'Now Playing'}
       data-umami-event-from={'Footer'}
+      data-umami-event-url={trackURL}
       style={{ maxWidth: '28ch' }}
     >
       <NowPlayingAlbumCover

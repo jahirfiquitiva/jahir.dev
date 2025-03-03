@@ -11,6 +11,7 @@ interface Artist extends SpotifyEntity {
 }
 
 export interface Track extends SpotifyEntity {
+  id?: string | null;
   type: 'track';
   popularity: number;
   duration_ms: number;
@@ -22,6 +23,7 @@ export interface Track extends SpotifyEntity {
 }
 
 export interface ReadableTrack {
+  id?: string | null;
   name: string;
   artist: string;
   album: string;

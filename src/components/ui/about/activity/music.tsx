@@ -32,6 +32,9 @@ export const Music = () => {
     useRequest<NowPlayingAPIResponse>('/api/now-playing');
   const { track, isPlaying = false } = data || {};
   const trackText = getTrackText(track);
+  const trackURL = track?.id
+    ? `https://song.link/s/${track.id}`
+    : track?.url || 'https://tunez.jahir.dev';
   return (
     <ActivityCard
       title={
@@ -41,7 +44,7 @@ export const Music = () => {
             ? 'tunez playlist on Spotify'
             : `${trackText}`
       }
-      href={track?.url || 'https://tunez.jahir.dev'}
+      href={trackURL}
       target={'_blank'}
       className={cx(
         loading ? 'motion-safe:animate-pulse' : '',
@@ -52,6 +55,7 @@ export const Music = () => {
         loading ? '-' : isPlaying ? 'Now Playing' : 'Last Played'
       }
       data-umami-event-from={'Activity'}
+      data-umami-event-url={trackURL}
     >
       <BackgroundImage
         alt={

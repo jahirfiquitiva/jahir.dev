@@ -13,6 +13,7 @@ const mapTrackData = (track?: Track | null): ReadableTrack | null => {
     const preAlbumImage = track.album.images.pop();
     const albumImage = track.album.images.pop() || preAlbumImage;
     return {
+      id: track.id,
       name: track.name,
       artist: track.artists.map((_artist) => _artist.name).join(', '),
       album: track.album.name,
