@@ -13,7 +13,7 @@ const experience: Array<ExperienceRecord> = [
   {
     company: 'National Write Your Congressman, Inc.',
     position: 'Frontend Engineer',
-    from: 'Mar 2023',
+    from: 'Feb 2023',
     link: 'https://www.nwyc.com/',
     image: nwyc,
     color: '#2E4C94',
