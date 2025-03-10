@@ -17,6 +17,7 @@
   darkColor: "#4dcc89"
   repo: website
   owner: boyaca-dev
+  hide: true
 
 - order: 5
   name: ChipView
