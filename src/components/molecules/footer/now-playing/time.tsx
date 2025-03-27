@@ -50,37 +50,39 @@ export const Clock = (props: PropsWithChildren<{ longFormat?: boolean }>) => {
 
   if (props.longFormat) {
     return (
-      <p>
-        It&apos;s currently
-        <Icon
-          className={'size-5 inline-block mx-1 mb-0.5'}
-          path={getIconPath(hours)}
-          aria-hidden
-        />
-        <span className={'tabular-nums'}>
-          {hours}
-          <span className={'animate-pulse'}>:</span>
-          {minutes} in{' '}
-          <Link
-            title={'Colombia'}
-            href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
-            data-umami-event={'Link to Colombia map'}
-          >
-            Colombia{' '}
-            <span role={'img'} aria-label={'Colombia flag'}>
-              🇨🇴
-            </span>
-          </Link>
-        </span>{' '}
-        and{' '}
-        <Doing
-          time={hours}
-          isPm={minutes.includes('PM')}
-          isWeekend={day.includes('SATURDAY') || day.includes('SUNDAY')}
-        />
-        .<br />
+      <div className={'flex flex-col gap-1.5'}>
+        <p>
+          It&apos;s currently
+          <Icon
+            className={'size-5 inline-block mx-1 mb-0.5'}
+            path={getIconPath(hours)}
+            aria-hidden
+          />
+          <span className={'tabular-nums'}>
+            {hours}
+            <span className={'animate-pulse'}>:</span>
+            {minutes} in{' '}
+            <Link
+              title={'Colombia'}
+              href={'https://www.google.com/maps/place/Colombia/@4,-72z/'}
+              data-umami-event={'Link to Colombia map'}
+            >
+              Colombia{' '}
+              <span role={'img'} aria-label={'Colombia flag'}>
+                🇨🇴
+              </span>
+            </Link>
+          </span>{' '}
+          and{' '}
+          <Doing
+            time={hours}
+            isPm={minutes.includes('PM')}
+            isWeekend={day.includes('SATURDAY') || day.includes('SUNDAY')}
+          />
+          .
+        </p>
         {props.children}
-      </p>
+      </div>
     );
   }
   return (

@@ -2,6 +2,7 @@ import contactImage from '@/assets/images/contact/0.png';
 import { Img } from '@/components/atoms/img';
 import { Section } from '@/components/atoms/section';
 import { Clock } from '@/components/molecules/footer/now-playing/time';
+import { SocialLinks } from '@/components/molecules/social-links';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
 
@@ -11,17 +12,21 @@ export default function ContactPage() {
       <h1 className={getColoredTextClasses('green', 'self-start')}>
         Get in Touch!
       </h1>
-      <Clock longFormat>
-        Feel free to send me a message, I will get back to you as soon as
-        possible.
-      </Clock>
-      <p>TODO</p>
+      <div className={'grid grid-cols-1 tablet-sm:grid-cols-2 gap-5'}>
+        <Clock longFormat>
+          <p>
+            Feel free to send me a message, I will get back to you as soon as
+            possible.
+          </p>
+        </Clock>
+        <SocialLinks extended />
+      </div>
       <Img
         src={contactImage}
         alt={
           'Illustration of a person holding a phone and a t-shirt that reads "Hi"'
         }
-        className={'max-w-64 mx-auto shadow-white/50 drop-shadow-doodle'}
+        className={'max-w-64 mx-auto shadow-white/50 drop-shadow-doodle mt-12'}
       />
     </Section>
   );
