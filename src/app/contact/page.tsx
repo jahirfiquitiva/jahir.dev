@@ -5,8 +5,6 @@ import { Clock } from '@/components/molecules/footer/now-playing/time';
 import { getColoredTextClasses } from '@/utils/colored-text';
 import { createMetadata } from '@/utils/metadata';
 
-import { ContactForm } from './form';
-
 export default function ContactPage() {
   return (
     <Section id={'contact'} className={'flex-1 gap-6'}>
@@ -17,7 +15,7 @@ export default function ContactPage() {
         Feel free to send me a message, I will get back to you as soon as
         possible.
       </Clock>
-      <ContactForm />
+      <p>TODO</p>
       <Img
         src={contactImage}
         alt={
