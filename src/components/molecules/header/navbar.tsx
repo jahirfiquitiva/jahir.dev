@@ -1,4 +1,3 @@
-import { Icon } from '@/components/atoms/icon';
 import { Logo } from '@/components/atoms/logo';
 import type { TWComponentProps } from '@/utils/cx';
 import cx from '@/utils/cx';
@@ -15,8 +14,6 @@ import {
   ExtraNavLinks,
   NavPageLink,
   NavPageLinkText,
-  ContactButton,
-  ContactButtonContainer,
 } from './navbar.styles';
 import { ThemeSelector } from './theme-selector';
 
@@ -100,21 +97,6 @@ export const Navbar = (props: NavbarProps) => {
         </ExtraNavLinks>
       </LinksList>
       <ButtonsGroup>
-        <ContactButtonContainer>
-          <ContactButton
-            title={'Get in Touch'}
-            href={'/contact'}
-            data-umami-event={'Contact Nav Link'}
-          >
-            <Icon
-              path={
-                // eslint-disable-next-line @stylistic/max-len
-                'm20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z'
-              }
-              className={'size-5'}
-            />
-          </ContactButton>
-        </ContactButtonContainer>
         <li>
           <ThemeSelector />
         </li>

@@ -30,7 +30,7 @@ export const Details = tw.div`
   gap-3
 `;
 
-export const Description = tw.p.attrs({ style: { maxWidth: '32ch' } })`
+export const Description = tw.p.attrs({ style: { maxWidth: '30ch' } })`
   text-2xs
   text-pretty
 `;

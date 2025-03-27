@@ -6,9 +6,9 @@ const StyledSocialLink = tw(Link)`
   flex
   items-center
   justify-center
-  min-h-11
-  min-w-11
-  p-2
+  min-h-10
+  min-w-10
+  p-1.5
   rounded-1.5
   no-underline
   transition-colors

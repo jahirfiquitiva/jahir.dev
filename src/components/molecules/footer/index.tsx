@@ -38,7 +38,7 @@ export const Footer = () => {
             🇨🇴
           </span>
         </Description>
-        <SocialLinks />
+        <SocialLinks className={'-ml-1.5'} />
       </Details>
       {linksGroups.map((group) => {
         return (

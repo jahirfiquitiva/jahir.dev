@@ -94,7 +94,10 @@ export default function AboutPage() {
         </h2>
         <p>
           Feel free to{' '}
-          <Link title={'Contact Jahir via Email'} href={'/contact'}>
+          <Link
+            title={'Send Jahir an Email'}
+            href={'mailto:hola@jahir.dev?subject=Hi%20Jahir!'}
+          >
             send me a message
           </Link>
           , or find me on social media:

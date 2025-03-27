@@ -133,27 +133,3 @@ export const ExtraNavLinks = tw.li`
   tablet-sm:select-none
   tablet-sm:pointer-events-none
 `;
-
-export const ContactButton = tw(Link)`
-  flex
-  items-center
-  justify-center
-  min-h-11
-  min-w-11
-  p-2
-  rounded-1.5
-  transition
-  hocus:bg-toolbar-highlight
-`;
-
-export const ContactButtonContainer = tw.li`
-  hidden
-  invisible
-  select-none
-  pointer-events-none
-  tablet-sm:list-item
-  tablet-sm:visible
-  tablet-sm:select-auto
-  tablet-sm:pointer-events-auto
-  tablet-sm:mr-2
-`;
