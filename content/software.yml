@@ -90,9 +90,9 @@
   name: Ghostty
   url: https://ghostty.org/
 
-- image: uses/apps/ice.png
-  name: Ice
-  url: https://icemenubar.app/
+- image: uses/apps/bartender.png
+  name: Bartender
+  url: https://www.macbartender.com/
 
 - image: uses/apps/orbstack.png
   name: Orbstack
