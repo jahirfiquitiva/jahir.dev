@@ -21,10 +21,8 @@ export const blogs = defineCollection({
     .object({
       title: s.string(), // .max(69),
       summary: s.string(), //.max(69),
-      // slug: s.path(), // auto generate slug from file path
-      slug: s.custom().transform((_, { meta }) => {
-        return meta.basename?.replace(/\.mdx$/, '') || '';
-      }),
+      // auto generate slug from file path
+      slug: s.path().transform((path) => path.replace('blog/', '')),
       date: s.isodate(), // input Date-like string, output ISO Date string.
       color: s.string().regex(new RegExp('^#(?:[0-9a-fA-F]{3}){1,2}$')),
       keywords: s.string(),
