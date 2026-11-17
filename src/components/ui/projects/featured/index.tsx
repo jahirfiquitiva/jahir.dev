@@ -7,8 +7,7 @@ import { getColoredTextClasses } from '@/utils/colored-text';
 
 import { ProjectCard } from './project-card';
 
-// One highlighted card followed by a 2x2 grid.
-const FEATURED_COUNT = 5;
+const FEATURED_COUNT = 4;
 
 const featuredProjects = allProjects
   .filter((it) => !it.hide)
@@ -41,12 +40,9 @@ export const FeaturedProjects = () => {
         </OutlinedLinkButton>
       </div>
       <StaggerList className={'grid grid-cols-1 gap-3 mobile-lg:grid-cols-2'}>
-        {featuredProjects.map((project, index) => (
-          <StaggerItem
-            key={project.name}
-            className={index === 0 ? 'mobile-lg:col-span-2' : ''}
-          >
-            <ProjectCard project={project} highlighted={index === 0} />
+        {featuredProjects.map((project) => (
+          <StaggerItem key={project.name}>
+            <ProjectCard project={project} compact />
           </StaggerItem>
         ))}
       </StaggerList>

@@ -23,9 +23,14 @@ const getHostLabel = (url: string) => {
 interface ProjectCardProps {
   project: Project;
   highlighted?: boolean;
+  compact?: boolean;
 }
 
-export const ProjectCard = ({ project, highlighted }: ProjectCardProps) => {
+export const ProjectCard = ({
+  project,
+  highlighted,
+  compact,
+}: ProjectCardProps) => {
   const color =
     hexToRgb(project.darkColor || project.color, 1, true) ||
     'var(--color-accent-dark)';
@@ -39,7 +44,10 @@ export const ProjectCard = ({ project, highlighted }: ProjectCardProps) => {
       <CardLink
         title={project.name}
         href={project.url}
-        className={highlighted ? 'tablet-sm:flex-row tablet-sm:gap-5' : ''}
+        className={cx(
+          compact && 'gap-3 p-3 tablet-sm:p-4',
+          highlighted && 'tablet-sm:flex-row tablet-sm:gap-5',
+        )}
         data-umami-event={'View project'}
         data-umami-event-project={project.name}
       >

@@ -1,9 +1,38 @@
 - order: 0
+  name: NATE Hannover
+  description: Custom WordPress theme and plugin development for NATE Hannover, a music and nightlife venue
+  icon: nate-hannover.svg
+  url: https://nate-hannover.de/
+  color: '#171717'
+
+- order: 0
   name: NutriNest
   description: Cross-platform app for tracking nutrition and planning healthy meals, on iOS, Android and the web
   icon: /nutrinest.png
   url: https://github.com/maniramezanpour
   color: '#16a34a'
+
+- order: 1
+  name: TopNotch
+  description: A Dynamic Island for macOS, with Windows support planned
+  icon: top-notch.svg
+  url: https://github.com/ManiRamezanpour/TopNotch
+  color: '#8b5cf6'
+  repo: TopNotch
+
+- order: 2
+  name: Budget Manager
+  description: An open-source personal budget manager built with Swift and SwiftUI
+  icon: budget-manager.svg
+  url: https://github.com/ManiRamezanpour?tab=repositories&q=budget
+  color: '#16a34a'
+
+- order: 3
+  name: Lindenblatt 800°
+  description: Custom WordPress theme and plugin development for Lindenblatt 800°, a steakhouse in Hannover
+  icon: lindenblatt-hannover.svg
+  url: https://lindenblatt-hannover.de/
+  color: '#344b31'
 
 - order: 0
   name: ShapeFormer – Hardware

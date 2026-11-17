@@ -2,10 +2,9 @@ import { Link } from '@/components/atoms/link';
 import { Section } from '@/components/atoms/section';
 import { SocialLinks } from '@/components/molecules/social-links';
 import { Activity } from '@/components/ui/about/activity';
+import { Education } from '@/components/ui/about/education';
 import { Experience } from '@/components/ui/about/experience';
 import { Skills } from '@/components/ui/about/skills';
-import { FlowField } from '@/components/ui/home/flow-field';
-import { getColoredTextClasses } from '@/utils/colored-text';
 import cx from '@/utils/cx';
 import { createMetadata } from '@/utils/metadata';
 
@@ -35,51 +34,35 @@ const jsonLd = JSON.stringify({
 export default function AboutPage() {
   return (
     <>
-      <Section id={'about'} className={'relative isolate gap-8'}>
-        <FlowField />
-        <div className={'relative flex flex-col gap-6 py-2 tablet-sm:py-6'}>
-          <div className={'flex flex-wrap items-center gap-2'}>
-            <span
-              className={cx(
-                'inline-flex items-center gap-2 rounded-full border border-divider',
-                'bg-background px-3 py-1.5 text-xs font-medium text-secondary-txt',
-              )}
-            >
-              <span className={'size-2 rounded-full bg-green-500'} />
-              Available for opportunities
-            </span>
-            <span
-              className={cx(
-                'rounded-full border border-divider px-3 py-1.5',
-                'text-xs font-medium text-secondary-txt',
-              )}
-            >
-              Full-stack software developer
-            </span>
-          </div>
+      <Section id={'about'} className={'gap-8'}>
+        <div
+          className={cx(
+            'grid gap-6 border-b border-divider pb-8',
+            'tablet-md:grid-cols-[1fr_auto] tablet-md:items-end',
+          )}
+        >
           <div className={'max-w-3xl'}>
             <p
               className={
-                'mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-tertiary-txt'
+                'mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-tertiary-txt'
               }
             >
-              About me
+              My story
             </p>
             <h1
               className={
-                'mb-4 text-4xl font-bold tracking-tight tablet-sm:text-5xl'
+                'mb-5 text-5xl font-bold leading-[1.05] tracking-tight tablet-sm:text-6xl'
               }
             >
-              Hi, I&apos;m{' '}
-              <span className={getColoredTextClasses('green')}>Mani.</span>
+              A little more <span className={'text-accent'}>about me.</span>
             </h1>
             <p
               className={
                 'max-w-nice text-lg leading-relaxed text-secondary-txt'
               }
             >
-              I&apos;m Mani Ramezanpour, a results-oriented full-stack software
-              developer based in{' '}
+              I&apos;m Mani Ramezanpour, a full-stack software developer based
+              in{' '}
               <Link
                 title={'The Netherlands'}
                 href={'https://www.google.com/maps/place/Netherlands/'}
@@ -87,39 +70,20 @@ export default function AboutPage() {
               >
                 the Netherlands 🇳🇱
               </Link>
-              . With three years of professional experience, I design and build
-              web applications with a focus on performance, accessibility, and
-              visual quality. My pronouns are he/they.
+              . I design and build web applications with a focus on performance,
+              accessibility, and visual quality. My pronouns are he/they.
             </p>
           </div>
-          <div className={'flex flex-wrap gap-3'}>
-            <Link
-              title={'Email Mani'}
-              href={'mailto:maniramznpoor2007@gmail.com?subject=Hi%20Mani!'}
-              className={cx(
-                'inline-flex items-center rounded-2 bg-accent px-4 py-2.5',
-                'text-sm font-semibold text-on-accent transition-opacity hover:opacity-85',
-              )}
-            >
-              Get in touch{' '}
-              <span aria-hidden={'true'} className={'ml-2'}>
-                ↗
-              </span>
-            </Link>
-            <Link
-              title={'View experience'}
-              href={'#experience'}
-              className={cx(
-                'inline-flex items-center rounded-2 border border-divider bg-background',
-                'px-4 py-2.5 text-sm font-semibold transition-colors hover:opacity-75',
-              )}
-            >
-              View experience
-            </Link>
-          </div>
-          <p className={'text-sm text-tertiary-txt'}>
-            Based in the Netherlands · Open to remote collaboration
-          </p>
+          <Link
+            title={'Jump to education'}
+            href={'#education'}
+            className={cx(
+              'text-sm font-medium text-secondary-txt underline decoration-divider',
+              'underline-offset-4 hocus:text-primary-txt',
+            )}
+          >
+            Education <span aria-hidden={'true'}>↓</span>
+          </Link>
         </div>
         <Photo />
         <div className={'grid gap-6 tablet-md:grid-cols-2 tablet-md:gap-10'}>
@@ -171,6 +135,7 @@ export default function AboutPage() {
         <SocialLinks className={'mr-0 justify-start tablet-sm:justify-end'} />
       </Section>
       <Skills />
+      <Education />
       <Experience />
       <Activity />
       <script type={'application/ld+json'} suppressHydrationWarning>

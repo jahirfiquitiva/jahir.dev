@@ -26,8 +26,8 @@ export default function HomePage() {
   return (
     <>
       <Intro />
-      <FeaturedProjects />
       <Experience featured />
+      <FeaturedProjects />
       <Skills />
       <script type={'application/ld+json'} suppressHydrationWarning>
         {jsonLd}
